@@ -17,8 +17,8 @@
 # * Foundation; with no Invariant Sections, no Front-Cover Texts and        *
 # * no Back-Cover Texts.  A copy of the license is available on the         *
 # * GNU site http://www.gnu.org/licenses/fdl.html or by writing to:         *
-# * Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,    *
-# * MA 02110-1301, USA.                                                     *
+# * Free Software Foundation, Inc., 59 Temple Place - Suite 330, Boston,    *
+# * MA 02111-1307, USA.                                                     *
 # ***************************************************************************
 #
 # This script creates *.pot translation template files in the krusader_kde3/doc/i18n folder
