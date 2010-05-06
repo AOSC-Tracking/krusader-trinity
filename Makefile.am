@@ -5,7 +5,11 @@ if with_tar
 TARDIR = tar
 endif
 
-SUBDIRS = krusader po pics doc krArc iso virt $(TARDIR)
+if with_iso
+ISODIR = iso
+endif
+
+SUBDIRS = krusader po pics doc krArc $(ISODIR) virt $(TARDIR)
 
 EXTRA_DIST = krusader.kdevprj admin AUTHORS COPYING ChangeLog INSTALL README TODO krusader.lsm krusader.spec 
 

@@ -79,7 +79,7 @@ fi
 AM_CONDITIONAL(include_libkjsembed, test "$have_libkjsembed" = yes)
 
 ###################################################
-#		If our own tar-KIO schould be build
+#		If our own tar-KIO should be built
 ###################################################
 
 AC_ARG_WITH(kiotar,
@@ -89,6 +89,20 @@ AC_ARG_WITH(kiotar,
 )
 
 AM_CONDITIONAL(with_tar, test "$with_tar" != "no")
+
+###################################################
+
+###################################################
+#		If our own iso-KIO should be built
+###################################################
+
+AC_ARG_WITH(kioiso,
+    AC_HELP_STRING([--with-kioiso],[use our version of Trinity's iso KIO-slave [default=without]]),
+    [with_iso=$withval],
+    [with_iso=no]
+)
+
+AM_CONDITIONAL(with_iso, test "$with_iso" != "no")
 
 ###################################################
 
