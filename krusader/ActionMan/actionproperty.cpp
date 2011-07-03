@@ -17,10 +17,10 @@
 #include "../UserAction/kraction.h"
 #include "../krusader.h"
 
-#include <qtoolbutton.h>
-#include <qcheckbox.h>
-#include <qradiobutton.h>
-#include <qbuttongroup.h>
+#include <tqtoolbutton.h>
+#include <tqcheckbox.h>
+#include <tqradiobutton.h>
+#include <tqbuttongroup.h>
 #include <klocale.h>
 #include <kfiledialog.h>
 #include <klineedit.h>
@@ -35,8 +35,8 @@
 
 #define ICON(N)		KGlobal::iconLoader()->loadIcon(N, KIcon::Small)
 
-ActionProperty::ActionProperty( QWidget *parent, const char *name, KrAction *action )
- : ActionPropertyBase( parent, name ), _modified(false)
+ActionProperty::ActionProperty( TQWidget *tqparent, const char *name, KrAction *action )
+ : ActionPropertyBase( tqparent, name ), _modified(false)
  {
    if ( action ) {
       _action = action;
@@ -49,37 +49,37 @@ ActionProperty::ActionProperty( QWidget *parent, const char *name, KrAction *act
    // fill with all existing categories
    cbCategory->insertStringList( krUserAction->allCategories() );
 
-   connect( ButtonAddPlaceholder, SIGNAL( clicked() ), this, SLOT( addPlaceholder() ) );
-   connect( ButtonAddStartpath, SIGNAL( clicked() ), this, SLOT( addStartpath() ) );
-   connect( ButtonNewProtocol, SIGNAL( clicked() ), this, SLOT( newProtocol() ) );
-   connect( ButtonEditProtocol, SIGNAL( clicked() ), this, SLOT( editProtocol() ) );
-   connect( ButtonRemoveProtocol, SIGNAL( clicked() ), this, SLOT( removeProtocol() ) );
-   connect( ButtonAddPath, SIGNAL( clicked() ), this, SLOT( addPath() ) );
-   connect( ButtonEditPath, SIGNAL( clicked() ), this, SLOT( editPath() ) );
-   connect( ButtonRemovePath, SIGNAL( clicked() ), this, SLOT( removePath() ) );
-   connect( ButtonAddMime, SIGNAL( clicked() ), this, SLOT( addMime() ) );
-   connect( ButtonEditMime, SIGNAL( clicked() ), this, SLOT( editMime() ) );
-   connect( ButtonRemoveMime, SIGNAL( clicked() ), this, SLOT( removeMime() ) );
-   connect( ButtonNewFile, SIGNAL( clicked() ), this, SLOT( newFile() ) );
-   connect( ButtonEditFile, SIGNAL( clicked() ), this, SLOT( editFile() ) );
-   connect( ButtonRemoveFile, SIGNAL( clicked() ), this, SLOT( removeFile() ) );
-   connect( KeyButtonShortcut, SIGNAL( capturedShortcut(const KShortcut&) ), this, SLOT( changedShortcut(const KShortcut&) ) );
+   connect( ButtonAddPlaceholder, TQT_SIGNAL( clicked() ), this, TQT_SLOT( addPlaceholder() ) );
+   connect( ButtonAddStartpath, TQT_SIGNAL( clicked() ), this, TQT_SLOT( addStartpath() ) );
+   connect( ButtonNewProtocol, TQT_SIGNAL( clicked() ), this, TQT_SLOT( newProtocol() ) );
+   connect( ButtonEditProtocol, TQT_SIGNAL( clicked() ), this, TQT_SLOT( editProtocol() ) );
+   connect( ButtonRemoveProtocol, TQT_SIGNAL( clicked() ), this, TQT_SLOT( removeProtocol() ) );
+   connect( ButtonAddPath, TQT_SIGNAL( clicked() ), this, TQT_SLOT( addPath() ) );
+   connect( ButtonEditPath, TQT_SIGNAL( clicked() ), this, TQT_SLOT( editPath() ) );
+   connect( ButtonRemovePath, TQT_SIGNAL( clicked() ), this, TQT_SLOT( removePath() ) );
+   connect( ButtonAddMime, TQT_SIGNAL( clicked() ), this, TQT_SLOT( addMime() ) );
+   connect( ButtonEditMime, TQT_SIGNAL( clicked() ), this, TQT_SLOT( editMime() ) );
+   connect( ButtonRemoveMime, TQT_SIGNAL( clicked() ), this, TQT_SLOT( removeMime() ) );
+   connect( ButtonNewFile, TQT_SIGNAL( clicked() ), this, TQT_SLOT( newFile() ) );
+   connect( ButtonEditFile, TQT_SIGNAL( clicked() ), this, TQT_SLOT( editFile() ) );
+   connect( ButtonRemoveFile, TQT_SIGNAL( clicked() ), this, TQT_SLOT( removeFile() ) );
+   connect( KeyButtonShortcut, TQT_SIGNAL( capturedShortcut(const KShortcut&) ), this, TQT_SLOT( changedShortcut(const KShortcut&) ) );
    // track modifications:
-   connect( leDistinctName, SIGNAL( textChanged(const QString&) ), SLOT( setModified() ) );
-   connect( leTitle, SIGNAL( textChanged(const QString&) ), SLOT( setModified() ) );
-   connect( ButtonIcon, SIGNAL( iconChanged(QString) ), SLOT( setModified() ) );
-   connect( cbCategory, SIGNAL( textChanged(const QString&) ), SLOT( setModified() ) );
-   connect( leTooltip, SIGNAL( textChanged(const QString&) ), SLOT( setModified() ) );
-   connect( textDescription, SIGNAL( textChanged() ), SLOT( setModified() ) );
-   connect( leDistinctName, SIGNAL( textChanged(const QString&) ), SLOT( setModified() ) );
-   connect( leCommandline, SIGNAL( textChanged(const QString&) ), SLOT( setModified() ) );
-   connect( leStartpath, SIGNAL( textChanged(const QString&) ), SLOT( setModified() ) );
-   connect( bgExecType, SIGNAL( clicked(int) ), SLOT( setModified() ) );
-   connect( bgAccept, SIGNAL( clicked(int) ), SLOT( setModified() ) );
-   connect( KeyButtonShortcut, SIGNAL( capturedShortcut(const KShortcut&) ), SLOT( setModified() ) );
-   connect( leDifferentUser, SIGNAL( textChanged(const QString&) ), SLOT( setModified() ) );
-   connect( chkDifferentUser, SIGNAL( clicked() ), SLOT( setModified() ) );
-   connect( chkConfirmExecution, SIGNAL( clicked() ), SLOT( setModified() ) );
+   connect( leDistinctName, TQT_SIGNAL( textChanged(const TQString&) ), TQT_SLOT( setModified() ) );
+   connect( leTitle, TQT_SIGNAL( textChanged(const TQString&) ), TQT_SLOT( setModified() ) );
+   connect( ButtonIcon, TQT_SIGNAL( iconChanged(TQString) ), TQT_SLOT( setModified() ) );
+   connect( cbCategory, TQT_SIGNAL( textChanged(const TQString&) ), TQT_SLOT( setModified() ) );
+   connect( leTooltip, TQT_SIGNAL( textChanged(const TQString&) ), TQT_SLOT( setModified() ) );
+   connect( textDescription, TQT_SIGNAL( textChanged() ), TQT_SLOT( setModified() ) );
+   connect( leDistinctName, TQT_SIGNAL( textChanged(const TQString&) ), TQT_SLOT( setModified() ) );
+   connect( leCommandline, TQT_SIGNAL( textChanged(const TQString&) ), TQT_SLOT( setModified() ) );
+   connect( leStartpath, TQT_SIGNAL( textChanged(const TQString&) ), TQT_SLOT( setModified() ) );
+   connect( bgExecType, TQT_SIGNAL( clicked(int) ), TQT_SLOT( setModified() ) );
+   connect( bgAccept, TQT_SIGNAL( clicked(int) ), TQT_SLOT( setModified() ) );
+   connect( KeyButtonShortcut, TQT_SIGNAL( capturedShortcut(const KShortcut&) ), TQT_SLOT( setModified() ) );
+   connect( leDifferentUser, TQT_SIGNAL( textChanged(const TQString&) ), TQT_SLOT( setModified() ) );
+   connect( chkDifferentUser, TQT_SIGNAL( clicked() ), TQT_SLOT( setModified() ) );
+   connect( chkConfirmExecution, TQT_SIGNAL( clicked() ), TQT_SLOT( setModified() ) );
    // The modified-state of the ShowOnly-lists is tracked in the access-functions below
 }
 
@@ -214,8 +214,8 @@ void ActionProperty::updateAction( KrAction *action ) {
    _action->setStartpath( leStartpath->text() );
    _action->setShortcut( KeyButtonShortcut->shortcut() );
 
-   QListBoxItem* lbi = lbShowonlyProtocol->firstItem();
-   QStringList list;
+   TQListBoxItem* lbi = lbShowonlyProtocol->firstItem();
+   TQStringList list;
    while ( lbi ) {
       list << lbi->text();
       lbi = lbi->next();
@@ -223,7 +223,7 @@ void ActionProperty::updateAction( KrAction *action ) {
    _action->setShowonlyProtocol( list );
 
    lbi = lbShowonlyPath->firstItem();
-   list = QStringList();
+   list = TQStringList();
    while ( lbi ) {
       list << lbi->text();
       lbi = lbi->next();
@@ -231,7 +231,7 @@ void ActionProperty::updateAction( KrAction *action ) {
    _action->setShowonlyPath( list );
 
    lbi = lbShowonlyMime->firstItem();
-   list = QStringList();
+   list = TQStringList();
    while ( lbi ) {
       list << lbi->text();
       lbi = lbi->next();
@@ -239,7 +239,7 @@ void ActionProperty::updateAction( KrAction *action ) {
    _action->setShowonlyMime( list );
 
    lbi = lbShowonlyFile->firstItem();
-   list = QStringList();
+   list = TQStringList();
    while ( lbi ) {
       list << lbi->text();
       lbi = lbi->next();
@@ -271,8 +271,8 @@ void ActionProperty::updateAction( KrAction *action ) {
 
 void ActionProperty::addPlaceholder() {
    AddPlaceholderPopup popup( this );
-   QString exp = popup.getPlaceholder( mapToGlobal(
-   		QPoint(
+   TQString exp = popup.getPlaceholder( mapToGlobal(
+   		TQPoint(
    			ButtonAddPlaceholder->pos().x() + ButtonAddPlaceholder->width()+6, // 6 is the default margin
    			ButtonAddPlaceholder->pos().y()
    		)
@@ -282,8 +282,8 @@ void ActionProperty::addPlaceholder() {
 
 
 void ActionProperty::addStartpath() {
-   QString folder = KFileDialog::getExistingDirectory(QString::null, this);
-   if (folder != QString::null) {
+   TQString folder = KFileDialog::getExistingDirectory(TQString(), this);
+   if (folder != TQString()) {
       leStartpath->setText( folder );
    }
 }
@@ -291,13 +291,13 @@ void ActionProperty::addStartpath() {
 
 void ActionProperty::newProtocol() {
   bool ok;
-  QString text = KInputDialog::getText(
+  TQString text = KInputDialog::getText(
 		i18n( "New protocol" ),
 		i18n( "Set a protocol:" ),
 		lbShowonlyProtocol->currentText(),
 		&ok, this );
     if ( ok && !text.isEmpty() ) {
-      lbShowonlyProtocol->insertStringList( QStringList::split( ";", text ) );
+      lbShowonlyProtocol->insertStringList( TQStringList::split( ";", text ) );
       setModified();
    }
 }
@@ -307,7 +307,7 @@ void ActionProperty::editProtocol() {
     return;
 
   bool ok;
-  QString text = KInputDialog::getText(
+  TQString text = KInputDialog::getText(
 		i18n( "Edit protocol" ),
 		i18n( "Set another protocol:" ),
 		lbShowonlyProtocol->currentText(),
@@ -326,8 +326,8 @@ void ActionProperty::removeProtocol() {
 }
 
 void ActionProperty::addPath() {
-   QString folder = KFileDialog::getExistingDirectory(QString::null, this);
-   if (folder != QString::null) {
+   TQString folder = KFileDialog::getExistingDirectory(TQString(), this);
+   if (folder != TQString()) {
      lbShowonlyPath->insertItem( folder );
      setModified();
    }
@@ -338,7 +338,7 @@ void ActionProperty::editPath() {
     return;
 
   bool ok;
-  QString text = KInputDialog::getText(
+  TQString text = KInputDialog::getText(
 		i18n( "Edit path" ),
 		i18n( "Set another path:" ),
 		lbShowonlyPath->currentText(),
@@ -358,13 +358,13 @@ void ActionProperty::removePath() {
 
 void ActionProperty::addMime() { 
   bool ok;
-  QString text = KInputDialog::getText(
+  TQString text = KInputDialog::getText(
 		i18n( "New mime-type" ),
 		i18n( "Set a mime-type:" ),
 		lbShowonlyMime->currentText(),
 		&ok, this );
     if ( ok && !text.isEmpty() ) {
-      lbShowonlyMime->insertStringList( QStringList::split( ";", text ) );
+      lbShowonlyMime->insertStringList( TQStringList::split( ";", text ) );
       setModified();
    }
 }
@@ -374,7 +374,7 @@ void ActionProperty::editMime() {
     return;
 
   bool ok;
-  QString text = KInputDialog::getText(
+  TQString text = KInputDialog::getText(
 		i18n( "Edit mime-type" ),
 		i18n( "Set another mime-type:" ),
 		lbShowonlyMime->currentText(),
@@ -394,13 +394,13 @@ void ActionProperty::removeMime() {
 
 void ActionProperty::newFile() {
   bool ok;
-  QString text = KInputDialog::getText(
+  TQString text = KInputDialog::getText(
 		i18n( "New filename" ),
 		i18n( "Set a filename:" ),
 		lbShowonlyFile->currentText(),
 		&ok, this );
     if ( ok && !text.isEmpty() ) {
-      lbShowonlyFile->insertStringList( QStringList::split( ";", text ) );
+      lbShowonlyFile->insertStringList( TQStringList::split( ";", text ) );
       setModified();
    }
 }
@@ -410,7 +410,7 @@ void ActionProperty::editFile() {
     return;
 
   bool ok;
-  QString text = KInputDialog::getText(
+  TQString text = KInputDialog::getText(
 		i18n( "Edit filename" ),
 		i18n( "Set another filename:" ),
 		lbShowonlyFile->currentText(),

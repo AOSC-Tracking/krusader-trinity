@@ -35,8 +35,9 @@
 
 class PackGUI : public PackGUIBase {
   Q_OBJECT
+  TQ_OBJECT
 public:
-  PackGUI(QString defaultName, QString defaultPath, int noOfFiles, QString filename="");
+  PackGUI(TQString defaultName, TQString defaultPath, int noOfFiles, TQString filename="");
 
 public slots:
   void browse();
@@ -46,8 +47,8 @@ protected slots:
   void reject();
 
 public:
-  static QString filename, destination, type;
-  static QMap<QString, QString> extraProps;
+  static TQString filename, destination, type;
+  static TQMap<TQString, TQString> extraProps;
 };
 
 #endif

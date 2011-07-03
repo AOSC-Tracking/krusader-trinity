@@ -1,9 +1,9 @@
 #ifndef POPULARURLS_H
 #define POPULARURLS_H
 
-#include <qobject.h>
+#include <tqobject.h>
 #include <kurl.h>
-#include <qdict.h>
+#include <tqdict.h>
 #include <kdialogbase.h>
 
 // the class holds a list of most popular links in a dual data structure
@@ -26,10 +26,11 @@ typedef struct _UrlNode {
 
 class PopularUrlsDlg;
 
-class PopularUrls : public QObject {
+class PopularUrls : public TQObject {
 	Q_OBJECT
+  TQ_OBJECT
 public:
-	PopularUrls(QObject *parent = 0, const char *name = 0);
+	PopularUrls(TQObject *tqparent = 0, const char *name = 0);
 	~PopularUrls();
 	void save();
 	void load();
@@ -52,7 +53,7 @@ protected:
 	
 private:
 	UrlNodeP head, tail;
-	QDict<UrlNode> ranks; // actually holds UrlNode*
+	TQDict<UrlNode> ranks; // actually holds UrlNode*
 	int count;
 	static const int maxUrls = 30; 
 	PopularUrlsDlg *dlg;
@@ -63,6 +64,7 @@ class KListViewSearchLine;
 
 class PopularUrlsDlg: public KDialogBase {
 	Q_OBJECT
+  TQ_OBJECT
 public:
 	PopularUrlsDlg();
 	~PopularUrlsDlg();
@@ -71,8 +73,8 @@ public:
 	
 
 protected slots:
-	void slotSearchReturnPressed(const QString&);
-	void slotItemSelected(QListViewItem *it);
+	void slotSearchReturnPressed(const TQString&);
+	void slotItemSelected(TQListViewItem *it);
 	
 private:
 	KListView *urls;

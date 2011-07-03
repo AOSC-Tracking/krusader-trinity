@@ -39,15 +39,15 @@
 DUFilelight::DUFilelight( DiskUsage *usage, const char *name )
   : RadialMap::Widget( usage, name ), diskUsage( usage ), currentDir( 0 ), refreshNeeded( true )
 {
-   setFocusPolicy( QWidget::StrongFocus );
+   setFocusPolicy( TQ_StrongFocus );
 
-   connect( diskUsage, SIGNAL( enteringDirectory( Directory * ) ), this, SLOT( slotDirChanged( Directory * ) ) );
-   connect( diskUsage, SIGNAL( clearing() ), this, SLOT( clear() ) );
-   connect( diskUsage, SIGNAL( changed( File * ) ), this, SLOT( slotChanged( File * ) ) );
-   connect( diskUsage, SIGNAL( deleted( File * ) ), this, SLOT( slotChanged( File * ) ) );
-   connect( diskUsage, SIGNAL( changeFinished()  ), this, SLOT( slotRefresh() ) );
-   connect( diskUsage, SIGNAL( deleteFinished()  ), this, SLOT( slotRefresh() ) );
-   connect( diskUsage, SIGNAL( aboutToShow( QWidget * ) ), this, SLOT( slotAboutToShow( QWidget * ) ) );
+   connect( diskUsage, TQT_SIGNAL( enteringDirectory( Directory * ) ), this, TQT_SLOT( slotDirChanged( Directory * ) ) );
+   connect( diskUsage, TQT_SIGNAL( clearing() ), this, TQT_SLOT( clear() ) );
+   connect( diskUsage, TQT_SIGNAL( changed( File * ) ), this, TQT_SLOT( slotChanged( File * ) ) );
+   connect( diskUsage, TQT_SIGNAL( deleted( File * ) ), this, TQT_SLOT( slotChanged( File * ) ) );
+   connect( diskUsage, TQT_SIGNAL( changeFinished()  ), this, TQT_SLOT( slotRefresh() ) );
+   connect( diskUsage, TQT_SIGNAL( deleteFinished()  ), this, TQT_SLOT( slotRefresh() ) );
+   connect( diskUsage, TQT_SIGNAL( aboutToShow( TQWidget * ) ), this, TQT_SLOT( slotAboutToShow( TQWidget * ) ) );
 }
 
 void DUFilelight::slotDirChanged( Directory *dir )
@@ -59,7 +59,7 @@ void DUFilelight::slotDirChanged( Directory *dir )
   {
     currentDir = dir;
     
-    invalidate( false );
+    tqinvalidate( false );
     create( dir );
     refreshNeeded = false;
   }
@@ -67,7 +67,7 @@ void DUFilelight::slotDirChanged( Directory *dir )
 
 void DUFilelight::clear()
 {
-  invalidate( false );
+  tqinvalidate( false );
   currentDir = 0;
 }
 
@@ -81,7 +81,7 @@ File * DUFilelight::getCurrentFile()
   return (File *)focus->file();
 }
 
-void DUFilelight::mousePressEvent( QMouseEvent *event )
+void DUFilelight::mousePressEvent( TQMouseEvent *event )
 {
    if( event->button() == Qt::RightButton )
    {
@@ -93,30 +93,30 @@ void DUFilelight::mousePressEvent( QMouseEvent *event )
        file = (File *)focus->file();
 
      KPopupMenu filelightPopup;
-     filelightPopup.insertItem( i18n("Zoom In"),  this, SLOT( zoomIn() ), Key_Plus );
-     filelightPopup.insertItem( i18n("Zoom Out"), this, SLOT( zoomOut() ), Key_Minus );
+     filelightPopup.insertItem( i18n("Zoom In"),  this, TQT_SLOT( zoomIn() ), Key_Plus );
+     filelightPopup.insertItem( i18n("Zoom Out"), this, TQT_SLOT( zoomOut() ), Key_Minus );
      
      KPopupMenu schemePopup;           
-     schemePopup.insertItem( i18n("Rainbow"),       this, SLOT( schemeRainbow() ) );
-     schemePopup.insertItem( i18n("High Contrast"), this, SLOT( schemeHighContrast() ) );
-     schemePopup.insertItem( i18n("KDE"),           this, SLOT( schemeKDE() ) );
+     schemePopup.insertItem( i18n("Rainbow"),       this, TQT_SLOT( schemeRainbow() ) );
+     schemePopup.insertItem( i18n("High Contrast"), this, TQT_SLOT( schemeHighContrast() ) );
+     schemePopup.insertItem( i18n("KDE"),           this, TQT_SLOT( schemeKDE() ) );
 
-     filelightPopup.insertItem( QPixmap(), &schemePopup, SCHEME_POPUP_ID );
+     filelightPopup.insertItem( TQPixmap(), &schemePopup, SCHEME_POPUP_ID );
      filelightPopup.changeItem( SCHEME_POPUP_ID, i18n( "Scheme" ) );     
 
-     filelightPopup.insertItem( i18n("Increase contrast"), this, SLOT( increaseContrast() ) );
-     filelightPopup.insertItem( i18n("Decrease contrast"), this, SLOT( decreaseContrast() ) );
+     filelightPopup.insertItem( i18n("Increase contrast"), this, TQT_SLOT( increaseContrast() ) );
+     filelightPopup.insertItem( i18n("Decrease contrast"), this, TQT_SLOT( decreaseContrast() ) );
           
-     int aid = filelightPopup.insertItem( i18n("Use anti-aliasing" ), this, SLOT( changeAntiAlias() ) );
+     int aid = filelightPopup.insertItem( i18n("Use anti-aliasing" ), this, TQT_SLOT( changeAntiAlias() ) );
      filelightPopup.setItemChecked( aid, Filelight::Config::antiAliasFactor > 1 );
      
-     int sid = filelightPopup.insertItem( i18n("Show small files" ), this, SLOT( showSmallFiles() ) );
+     int sid = filelightPopup.insertItem( i18n("Show small files" ), this, TQT_SLOT( showSmallFiles() ) );
      filelightPopup.setItemChecked( sid, Filelight::Config::showSmallFiles );
      
-     int vid = filelightPopup.insertItem( i18n("Vary label font sizes" ), this, SLOT( varyLabelFontSizes() ) );
+     int vid = filelightPopup.insertItem( i18n("Vary label font sizes" ), this, TQT_SLOT( varyLabelFontSizes() ) );
      filelightPopup.setItemChecked( vid, Filelight::Config::varyLabelFontSizes );
 
-     filelightPopup.insertItem( i18n("Minimum font size"), this, SLOT( minFontSize() ) );     
+     filelightPopup.insertItem( i18n("Minimum font size"), this, TQT_SLOT( minFontSize() ) );     
           
      diskUsage->rightClickMenu( file, &filelightPopup, i18n( "Filelight" ) );
      return;     
@@ -201,14 +201,14 @@ void DUFilelight::minFontSize()
   }
 }
 
-void DUFilelight::slotAboutToShow( QWidget *widget )
+void DUFilelight::slotAboutToShow( TQWidget *widget )
 { 
   if( widget == this && ( diskUsage->getCurrentDir() != currentDir || refreshNeeded ) )
   {
     refreshNeeded = false;
     if( ( currentDir = diskUsage->getCurrentDir() ) != 0 )
     {
-      invalidate( false );
+      tqinvalidate( false );
       create( currentDir );
     }
   }
@@ -222,7 +222,7 @@ void DUFilelight::slotRefresh()
   refreshNeeded = false;
   if( currentDir && currentDir == diskUsage->getCurrentDir() )
   {
-    invalidate( false );
+    tqinvalidate( false );
     create( currentDir );
   }
 }

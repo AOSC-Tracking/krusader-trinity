@@ -1,12 +1,12 @@
 #include <kmessagebox.h>
 #include <klocale.h>
-#include <qpushbutton.h>
+#include <tqpushbutton.h>
 #include <klistview.h>
 #include <kiconloader.h>
 #include <klistviewsearchline.h>
-#include <qheader.h>
-#include <qlayout.h>
-#include <qlabel.h>
+#include <tqheader.h>
+#include <tqlayout.h>
+#include <tqlabel.h>
 #include <ktoolbarbutton.h>
 #include "../krusader.h"
 #include "../krslots.h"
@@ -16,7 +16,7 @@
 #define INCREASE			2
 #define DECREASE			1
 
-PopularUrls::PopularUrls(QObject *parent, const char *name) : QObject(parent, name), 
+PopularUrls::PopularUrls(TQObject *tqparent, const char *name) : TQObject(tqparent, name), 
 	head(0), tail(0), count(0) {
 	dlg = new PopularUrlsDlg();
 }
@@ -42,8 +42,8 @@ void PopularUrls::clearList() {
 void PopularUrls::save() {
 	KConfigGroupSaver svr(krConfig, "Private");
 	// prepare the string list containing urls and int list with ranks
-	QStringList urlList;
-	QValueList<int> rankList;
+	TQStringList urlList;
+	TQValueList<int> rankList;
 	UrlNodeP p = head;
 	while (p) {
 		urlList << p->url.prettyURL();
@@ -56,8 +56,8 @@ void PopularUrls::save() {
 
 void PopularUrls::load() {
 	KConfigGroupSaver svr(krConfig, "Private");
-	QStringList urlList = krConfig->readListEntry("PopularUrls");
-	QValueList<int> rankList = krConfig->readIntListEntry("PopularUrlsRank");
+	TQStringList urlList = krConfig->readListEntry("PopularUrls");
+	TQValueList<int> rankList = krConfig->readIntListEntry("PopularUrlsRank");
 	if (urlList.count() != rankList.count()) {
 		KMessageBox::error(krApp, i18n("Saved 'Popular Urls' are invalid. List will be cleared"));
 		return;
@@ -65,8 +65,8 @@ void PopularUrls::load() {
 	clearList();
 	count = 0;
 	// iterate through both lists and
-	QStringList::Iterator uit;
-	QValueList<int>::Iterator rit;
+	TQStringList::Iterator uit;
+	TQValueList<int>::Iterator rit;
 	for (uit=urlList.begin(), rit=rankList.begin(); uit!=urlList.end() && rit!=rankList.end(); ++uit, ++rit) {
 		UrlNodeP node = new UrlNode;
 		node->url = KURL::fromPathOrURL( *uit );
@@ -108,7 +108,7 @@ void PopularUrls::addUrl(const KURL& url) {
 		appendNode(pnode);
 		ranks.insert(tmpurl.url(), head);
 	} else {
-		pnode = ranks.find(tmpurl.url());
+		pnode = ranks.tqfind(tmpurl.url());
 		if (!pnode) { // is the added url new? if so, append it
 			pnode = new UrlNode;
 			pnode->rank = STARTING_RANK;
@@ -228,49 +228,49 @@ void PopularUrls::showDialog() {
 // ===================================== PopularUrlsDlg ======================================
 PopularUrlsDlg::PopularUrlsDlg(): 
 	KDialogBase(Plain, i18n("Popular Urls"), Close, KDialogBase::NoDefault, krApp) {
-	QGridLayout *layout = new QGridLayout( plainPage(), 0, KDialog::spacingHint() );
+	TQGridLayout *tqlayout = new TQGridLayout( plainPage(), 0, KDialog::spacingHint() );
 	
 	// listview to contain the urls
 	urls = new KListView(plainPage());
 	urls->header()->hide();
 	urls->addColumn("");
 	urls->setSorting(-1);
-	urls->setVScrollBarMode(QScrollView::AlwaysOn);
+	urls->setVScrollBarMode(TQScrollView::AlwaysOn);
 	
 	// quick search
-	QToolButton *btn = new QToolButton(plainPage());
+	TQToolButton *btn = new TQToolButton(plainPage());
 	btn->setIconSet(SmallIcon("locationbar_erase"));
 	search = new KListViewSearchLine(plainPage(), urls);
 	search->setTrapReturnKey(true);
-	QLabel *lbl = new QLabel(search, i18n(" &Search: "), plainPage());
+	TQLabel *lbl = new TQLabel(search, i18n(" &Search: "), plainPage());
 
-	layout->addWidget(btn,0,0);
-	layout->addWidget(lbl,0,1);
-	layout->addWidget(search,0,2);
-	layout->addMultiCellWidget(urls,1,1,0,2);
+	tqlayout->addWidget(btn,0,0);
+	tqlayout->addWidget(lbl,0,1);
+	tqlayout->addWidget(search,0,2);
+	tqlayout->addMultiCellWidget(urls,1,1,0,2);
 	setMaximumSize(600, 500);
 	
 	setTabOrder(search, urls);
 	setTabOrder(urls, actionButton(Close));
 	
-	connect(urls, SIGNAL(executed(QListViewItem*)), 
-		this, SLOT(slotItemSelected(QListViewItem*)));
-	connect(urls, SIGNAL(returnPressed(QListViewItem*)), 
-		this, SLOT(slotItemSelected(QListViewItem*)));		
-	connect(btn, SIGNAL(clicked()), search, SLOT(clear()));
-	connect(search, SIGNAL(returnPressed(const QString&)), 
-		this, SLOT(slotSearchReturnPressed(const QString&)));
+	connect(urls, TQT_SIGNAL(executed(TQListViewItem*)), 
+		this, TQT_SLOT(slotItemSelected(TQListViewItem*)));
+	connect(urls, TQT_SIGNAL(returnPressed(TQListViewItem*)), 
+		this, TQT_SLOT(slotItemSelected(TQListViewItem*)));		
+	connect(btn, TQT_SIGNAL(clicked()), search, TQT_SLOT(clear()));
+	connect(search, TQT_SIGNAL(returnPressed(const TQString&)), 
+		this, TQT_SLOT(slotSearchReturnPressed(const TQString&)));
 }
 
-void PopularUrlsDlg::slotItemSelected(QListViewItem *it) {
+void PopularUrlsDlg::slotItemSelected(TQListViewItem *it) {
 	selection = urls->itemIndex(it);
 	accept();
 }
 
-void PopularUrlsDlg::slotSearchReturnPressed(const QString&) {
+void PopularUrlsDlg::slotSearchReturnPressed(const TQString&) {
 	urls->setFocus();
 	// select the first visible item
-	QListViewItemIterator it( urls );
+	TQListViewItemIterator it( urls );
    while ( it.current() ) {
 		if ( it.current()->isVisible() ) {
 			urls->setSelected(it.current(), true);
@@ -296,7 +296,7 @@ void PopularUrlsDlg::run(KURL::List list) {
 	}
 	//urls->setCurrentItem(urls->firstChild());
 	//urls->setSelected(urls->firstChild(), true);
-	setMinimumSize(urls->sizeHint().width()+45, 400);
+	setMinimumSize(urls->tqsizeHint().width()+45, 400);
 	
 	search->clear();
 	search->setFocus();

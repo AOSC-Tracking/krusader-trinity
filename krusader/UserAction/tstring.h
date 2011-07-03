@@ -10,28 +10,28 @@
 #ifndef __TAGSTRING__H
 #define __TAGSTRING__H
 
-#include <qstring.h>
-#include <qvaluelist.h>
+#include <tqstring.h>
+#include <tqvaluelist.h>
 #include <utility>
 #include <cassert>
 template <class T>
 class TagString_t
 {
-	QString str;
-	typedef QValueList<std::pair<uint,T> > taglist; // may change
+	TQString str;
+	typedef TQValueList<std::pair<uint,T> > taglist; // may change
 	taglist tags;
 public:
-	TagString_t(const QString& s) : str(s) {}
+	TagString_t(const TQString& s) : str(s) {}
 	TagString_t() {}
 	bool isSimple() const { return tags.empty(); }
-	const QString& string() const { return str; }
+	const TQString& string() const { return str; }
 	unsigned length() const { return str.length(); }
 	TagString_t mid(unsigned idx,unsigned len=~0) const;
 	TagString_t left(unsigned) const;
 	TagString_t right(unsigned) const;
-	void insert(uint,const QString& s);
-	int find ( QChar c, int index = 0, bool cs = TRUE ) const {
-		return str.find(c,index,cs);
+	void insert(uint,const TQString& s);
+	int tqfind ( TQChar c, int index = 0, bool cs = TRUE ) const {
+		return str.tqfind(c,index,cs);
 	}
 	TagString_t& operator+=(const TagString_t& s);
 	typename taglist::const_iterator tagsBegin() const { return tags.begin(); }
@@ -40,7 +40,7 @@ public:
 	typename taglist::iterator tagsEnd() { return tags.end(); }
 	void insertTag(uint pos,const T& t);
 	void eraseTag(const typename taglist::iterator& which) { tags.erase(which); }
-/*	void insert(uint idx,const QString&);
+/*	void insert(uint idx,const TQString&);
 	void insert(uint idx,const char*);
 	void addTag(uint);
 	void remove(uint start,uint len);*/
@@ -82,7 +82,7 @@ TagString_t<T> TagString_t<T>::right(unsigned len) const
 }
 
 template <class T>
-void TagString_t<T>::insert(uint idx,const QString& s)
+void TagString_t<T>::insert(uint idx,const TQString& s)
 {
 	str.insert(idx,s);
 	const unsigned disp=s.length();

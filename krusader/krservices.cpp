@@ -18,21 +18,21 @@
 #include <stdlib.h>
 #include <unistd.h>
 // QT includes
-#include <qdir.h>
+#include <tqdir.h>
 // KDE includes
 #include <kdebug.h>
 // Krusader includes
 #include "krservices.h"
 #include "krusader.h"
 
-QMap<QString,QString>* KrServices::slaveMap=0;
+TQMap<TQString,TQString>* KrServices::slaveMap=0;
 
-bool KrServices::cmdExist(QString cmdName)
+bool KrServices::cmdExist(TQString cmdName)
 {
-  QString lastGroup = krConfig->group();
+  TQString lastGroup = krConfig->group();
 
   krConfig->setGroup( "Dependencies" );
-  if( QFile( krConfig->readEntry( cmdName, QString::null )).exists() )
+  if( TQFile( krConfig->readEntry( cmdName, TQString() )).exists() )
   {
     krConfig->setGroup( lastGroup );
     return true;
@@ -42,15 +42,15 @@ bool KrServices::cmdExist(QString cmdName)
   return !detectFullPathName( cmdName ).isEmpty();  
 }
 
-QString KrServices::detectFullPathName(QString name)
+TQString KrServices::detectFullPathName(TQString name)
 {
-  QStringList path = QStringList::split(":",getenv("PATH"));
+  TQStringList path = TQStringList::split(":",getenv("PATH"));
 
-  for ( QStringList::Iterator it = path.begin(); it != path.end(); ++it )
+  for ( TQStringList::Iterator it = path.begin(); it != path.end(); ++it )
   {
-    if( QDir(*it).exists( name ) )
+    if( TQDir(*it).exists( name ) )
     {
-      QString dir = *it;
+      TQString dir = *it;
       if( !dir.endsWith( "/" ) )
         dir+="/";
         
@@ -61,16 +61,16 @@ QString KrServices::detectFullPathName(QString name)
   return "";
 }
 
-QString KrServices::fullPathName( QString name, QString confName )
+TQString KrServices::fullPathName( TQString name, TQString confName )
 {
-  QString lastGroup = krConfig->group();
-  QString supposedName;
+  TQString lastGroup = krConfig->group();
+  TQString supposedName;
 
   if( confName.isNull() )
     confName = name;
 
   krConfig->setGroup( "Dependencies" );
-  if( QFile( supposedName = krConfig->readEntry( confName, "" )).exists() )
+  if( TQFile( supposedName = krConfig->readEntry( confName, "" )).exists() )
   {
     krConfig->setGroup( lastGroup );
     return supposedName;
@@ -88,12 +88,12 @@ QString KrServices::fullPathName( QString name, QString confName )
 }
 
 // TODO: Document me!
-QStringList KrServices::separateArgs( QString args )
+TQStringList KrServices::separateArgs( TQString args )
 {
-  QStringList argList;
+  TQStringList argList;
   int   pointer = 0, tokenStart, len = args.length();
   bool  quoted = false;
-  QChar quoteCh;
+  TQChar quoteCh;
 
   do{
       while( pointer < len && args[ pointer ].isSpace() )
@@ -104,7 +104,7 @@ QStringList KrServices::separateArgs( QString args )
 
       tokenStart = pointer;
 
-      QString result="";
+      TQString result="";
       
       for(; pointer < len && ( quoted || !args[ pointer ].isSpace()) ; pointer++)
       {
@@ -132,15 +132,15 @@ QStringList KrServices::separateArgs( QString args )
   return argList;
 }
 
-QString KrServices::registerdProtocol(QString mimetype){
+TQString KrServices::registerdProtocol(TQString mimetype){
 	if( slaveMap == 0 ){
-		slaveMap = new QMap<QString,QString>();
+		slaveMap = new TQMap<TQString,TQString>();
 		
 		krConfig->setGroup( "Protocols" );
-		QStringList protList = krConfig->readListEntry( "Handled Protocols" );
-		for( QStringList::Iterator it = protList.begin(); it != protList.end(); it++ ){
-			QStringList mimes = krConfig->readListEntry( QString( "Mimes For %1" ).arg( *it ) );
-			for( QStringList::Iterator it2 = mimes.begin(); it2 != mimes.end(); it2++ )
+		TQStringList protList = krConfig->readListEntry( "Handled Protocols" );
+		for( TQStringList::Iterator it = protList.begin(); it != protList.end(); it++ ){
+			TQStringList mimes = krConfig->readListEntry( TQString( "Mimes For %1" ).tqarg( *it ) );
+			for( TQStringList::Iterator it2 = mimes.begin(); it2 != mimes.end(); it2++ )
 				(*slaveMap)[*it2] = *it;
   		}
 		
@@ -156,9 +156,9 @@ void KrServices::clearProtocolCache()
   slaveMap = 0;
 }
 
-bool KrServices::fileToStringList(QTextStream *stream, QStringList& target, bool keepEmptyLines) {
+bool KrServices::fileToStringList(TQTextStream *stream, TQStringList& target, bool keepEmptyLines) {
 	if (!stream) return false;
-	QString line;
+	TQString line;
 	while ( !stream->atEnd() ) {
 		line = stream->readLine().stripWhiteSpace();
 		if (keepEmptyLines || !line.isEmpty()) target.append(line);
@@ -166,33 +166,33 @@ bool KrServices::fileToStringList(QTextStream *stream, QStringList& target, bool
 	return true;
 }
 
-QString KrServices::quote( QString name ) {
-  if( !name.contains( '\'' ) )
+TQString KrServices::quote( TQString name ) {
+  if( !name.tqcontains( '\'' ) )
     return "'" + name + "'";
-  if( !name.contains( '"' ) && !name.contains( '$' ) )
+  if( !name.tqcontains( '"' ) && !name.tqcontains( '$' ) )
     return "\"" + name + "\"";
   return escape( name );
 }
 
-QStringList KrServices::quote( const QStringList& names ) {
-	QStringList result;
+TQStringList KrServices::quote( const TQStringList& names ) {
+	TQStringList result;
 	for (unsigned i=0; i<names.size(); ++i)
 		result.append(quote(names[i]));
 	return result;
 }
 
-QString KrServices::escape( QString name ) {
-  const QString evilstuff = "\\\"'`()[]{}!?;$&<>| \t\r\n";		// stuff that should get escaped
+TQString KrServices::escape( TQString name ) {
+  const TQString evilstuff = "\\\"'`()[]{}!?;$&<>| \t\r\n";		// stuff that should get escaped
      
     for ( unsigned int i = 0; i < evilstuff.length(); ++i )
-        name.replace( evilstuff[ i ], ('\\' + evilstuff[ i ]) );
+        name.tqreplace( evilstuff[ i ], (TQString('\\') + evilstuff[ i ]) );
 
   return name;
 }
 
 
 // ------- KEasyProcess
-KEasyProcess::KEasyProcess(QObject *parent, const char *name): KProcess(parent, name) {
+KEasyProcess::KEasyProcess(TQObject *tqparent, const char *name): KProcess(tqparent, name) {
 	init();
 }
 
@@ -201,16 +201,16 @@ KEasyProcess::KEasyProcess(): KProcess() {
 }
 
 void KEasyProcess::init() {
-	connect(this, SIGNAL(receivedStdout(KProcess *, char *, int)),
-		this, SLOT(receivedStdout(KProcess *, char *, int)));
-	connect(this, SIGNAL(receivedStderr(KProcess *, char *, int)),
-		this, SLOT(receivedStderr(KProcess *, char *, int)));
+	connect(this, TQT_SIGNAL(receivedStdout(KProcess *, char *, int)),
+		this, TQT_SLOT(receivedStdout(KProcess *, char *, int)));
+	connect(this, TQT_SIGNAL(receivedStderr(KProcess *, char *, int)),
+		this, TQT_SLOT(receivedStderr(KProcess *, char *, int)));
 }
 
 void KEasyProcess::receivedStdout (KProcess * /* proc */, char *buffer, int buflen) {
-	_stdout+=QString::fromLocal8Bit(buffer, buflen);
+	_stdout+=TQString::fromLocal8Bit(buffer, buflen);
 }
 
 void KEasyProcess::receivedStderr (KProcess * /* proc */, char *buffer, int buflen) {
-	_stderr+=QString::fromLocal8Bit(buffer, buflen);
+	_stderr+=TQString::fromLocal8Bit(buffer, buflen);
 }

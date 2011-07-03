@@ -34,28 +34,28 @@
 #include "../Panel/listpanel.h"
 #include "../kicons.h"
 #include "../Filter/filtertabs.h"
-#include <qcombobox.h>
-#include <qlabel.h>
-#include <qlineedit.h>
-#include <qcheckbox.h>
-#include <qlistbox.h>
-#include <qspinbox.h>
+#include <tqcombobox.h>
+#include <tqlabel.h>
+#include <tqlineedit.h>
+#include <tqcheckbox.h>
+#include <tqlistbox.h>
+#include <tqspinbox.h>
 #include <klocale.h>
 #include <kcombobox.h>
 #include <kiconloader.h>
 #include <kcursor.h>
-#include <qbitmap.h>
+#include <tqbitmap.h>
 #include "../resources.h"
 
 ///////////////////// initiation of the static members ////////////////////////
-QStrList KRSpWidgets::maskList;
+TQStrList KRSpWidgets::tqmaskList;
 
 ///////////////////////////////////////////////////////////////////////////////
 
 KRSpWidgets::KRSpWidgets(){
 }
 
-KRQuery KRSpWidgets::getMask(QString caption, bool nameOnly ) {
+KRQuery KRSpWidgets::getMask(TQString caption, bool nameOnly ) {
   if( !nameOnly ) {
     return FilterTabs::getQuery();
   }
@@ -75,19 +75,19 @@ KURL KRSpWidgets::newFTP() {
 	if (p->url->currentText()=="") return KURL(); // empty url
 	KURL url;
 	
-	QString protocol = p->prefix->currentText();
+	TQString protocol = p->prefix->currentText();
 	protocol.truncate(protocol.length() - 3); // remove the trailing ://
-	QString username = p->username->text().simplifyWhiteSpace();
-	QString password = p->password->text().simplifyWhiteSpace();
-	QString uri = p->url->currentText();
+	TQString username = p->username->text().simplifyWhiteSpace();
+	TQString password = p->password->text().simplifyWhiteSpace();
+	TQString uri = p->url->currentText();
 
-	int uriStart = uri.findRev( '@' ); /* lets the user enter user and password in the URI field */
+	int uriStart = uri.tqfindRev( '@' ); /* lets the user enter user and password in the URI field */
 	if( uriStart != -1 ) {
-		QString uriUser = uri.left( uriStart );
-		QString uriPsw = QString::null;
+		TQString uriUser = uri.left( uriStart );
+		TQString uriPsw = TQString();
 		uri = uri.mid( uriStart + 1 );
 
-		int pswStart = uriUser.find( ':' ); /* getting the password name from the URL */
+		int pswStart = uriUser.tqfind( ':' ); /* getting the password name from the URL */
 		if( pswStart != -1 ) {
 			uriPsw = uriUser.mid( pswStart + 1 );
 			uriUser = uriUser.left( pswStart );
@@ -100,9 +100,9 @@ KURL KRSpWidgets::newFTP() {
 			password = password.isEmpty() ? uriPsw : password + "@" + uriPsw;
 	}
 
-	QString host = uri;               /* separating the hostname and path from the uri */
-	QString path = QString::null;
-	int pathStart = uri.find( "/" );
+	TQString host = uri;               /* separating the hostname and path from the uri */
+	TQString path = TQString();
+	int pathStart = uri.tqfind( "/" );
 	if( pathStart != -1 ) {
 		path = host.mid( pathStart );
 		host = host.left( pathStart );
@@ -132,7 +132,7 @@ void newFTPSub::accept() {
   // save the history and completion list when the history combo is
   // destroyed
   krConfig->setGroup("Private");
-  QStringList list = url->completionObject()->items();
+  TQStringList list = url->completionObject()->items();
   krConfig->writeEntry( "newFTP Completion list", list );
   list = url->historyItems();
   krConfig->writeEntry( "newFTP History list", list );
@@ -151,12 +151,12 @@ KRMaskChoiceSub::KRMaskChoiceSub() : KRMaskChoice(0,0,true) {
   label->setText(i18n("Enter a selection:"));
   // the predefined selections list
   krConfig->setGroup("Private");
-  QStrList lst;
+  TQStrList lst;
   int i=krConfig->readListEntry("Predefined Selections",lst);
   if (i>0) preSelections->insertStrList(lst);
   // the combo-box tweaks
   selection->setDuplicatesEnabled(false);
-  selection->insertStrList(KRSpWidgets::maskList);
+  selection->insertStrList(KRSpWidgets::tqmaskList);
   selection->lineEdit()->setText("*");
   selection->lineEdit()->selectAll();
   selection->setFocus();
@@ -171,20 +171,20 @@ void KRMaskChoiceSub::accept() {
   bool add = true;
   char *tmp;
   // make sure we don't have that already
-  for ( tmp = KRSpWidgets::maskList.first(); tmp ; tmp = KRSpWidgets::maskList.next() )
-    if (QString(tmp).simplifyWhiteSpace() == selection->currentText().simplifyWhiteSpace()) {
+  for ( tmp = KRSpWidgets::tqmaskList.first(); tmp ; tmp = KRSpWidgets::tqmaskList.next() )
+    if (TQString(tmp).simplifyWhiteSpace() == selection->currentText().simplifyWhiteSpace()) {
       // break if we found one such as this
       add = false;
       break;
     }
 
   if (add)
-    KRSpWidgets::maskList.insert(0,selection->currentText().local8Bit());
+    KRSpWidgets::tqmaskList.insert(0,selection->currentText().local8Bit());
   // write down the predefined selections list
-  QStrList list;
-  QListBoxItem *i=preSelections->firstItem();
+  TQStrList list;
+  TQListBoxItem *i=preSelections->firstItem();
   while (i!=0) {
-    if (i->text().find(i18n("compare mode"))==-1)
+    if (i->text().tqfind(i18n("compare mode"))==-1)
       list.append(i->text().local8Bit());
     i=i->next();
   }
@@ -194,9 +194,9 @@ void KRMaskChoiceSub::accept() {
 }
 
 void KRMaskChoiceSub::addSelection() {
-  QString temp=selection->currentText();
+  TQString temp=selection->currentText();
   bool itemExists=false;
-  QListBoxItem *i=preSelections->firstItem();
+  TQListBoxItem *i=preSelections->firstItem();
   // check if the selection already exists
   while (i!=0)
     if (i->text()==temp) {
@@ -211,7 +211,7 @@ void KRMaskChoiceSub::addSelection() {
 
 void KRMaskChoiceSub::deleteSelection() {
   if (preSelections->currentItem()!=-1 &&
-      preSelections->currentText().find(i18n("compare mode"))==-1) {
+      preSelections->currentText().tqfind(i18n("compare mode"))==-1) {
     preSelections->removeItem(preSelections->currentItem());
     preSelections->update();
   }
@@ -222,20 +222,20 @@ void KRMaskChoiceSub::clearSelections() {
   preSelections->update();
 }
 
-void KRMaskChoiceSub::acceptFromList(QListBoxItem *i) {
+void KRMaskChoiceSub::acceptFromList(TQListBoxItem *i) {
   selection->insertItem(i->text(),0);
   accept();
 }
 
 ////////////////////////// QuickNavLineEdit ////////////////////
 
-QuickNavLineEdit::QuickNavLineEdit(const QString &string, QWidget *parent, const char *name):
-	KLineEdit(string, parent, name) { init(); }
+QuickNavLineEdit::QuickNavLineEdit(const TQString &string, TQWidget *tqparent, const char *name):
+	KLineEdit(string, tqparent, name) { init(); }
 	
-QuickNavLineEdit::QuickNavLineEdit(QWidget *parent, const char *name): 
-	KLineEdit(parent, name) { init(); }
+QuickNavLineEdit::QuickNavLineEdit(TQWidget *tqparent, const char *name): 
+	KLineEdit(tqparent, name) { init(); }
 
-int QuickNavLineEdit::findCharFromPos(const QString & str, const QFontMetrics & metrics, int pos)
+int QuickNavLineEdit::findCharFromPos(const TQString & str, const TQFontMetrics & metrics, int pos)
 {
 	if (pos < 0)
 		return -1;
@@ -252,11 +252,11 @@ void QuickNavLineEdit::init() {
 	//setCompletionMode( KGlobalSettings::CompletionPopupAuto );  ==> removed by public demand
 }
 
-void QuickNavLineEdit::leaveEvent(QEvent *) {
+void QuickNavLineEdit::leaveEvent(TQEvent *) {
 	clearAll();
 }
 
-void QuickNavLineEdit::mousePressEvent( QMouseEvent *m ) {
+void QuickNavLineEdit::mousePressEvent( TQMouseEvent *m ) {
 	if (m->state()!=ControlButton) clearAll();
 	else
 	{
@@ -272,10 +272,10 @@ void QuickNavLineEdit::mousePressEvent( QMouseEvent *m ) {
 	KLineEdit::mousePressEvent(m);
 }
 
-int QuickNavLineEdit::charCount(const QMouseEvent * const m,QString * const str) {
+int QuickNavLineEdit::charCount(const TQMouseEvent * const m,TQString * const str) {
 	// find how much of the string we've selected (approx) 
 	// and select from from the start to the closet slash (on the right)
-	const QString tx = text().simplifyWhiteSpace();
+	const TQString tx = text().simplifyWhiteSpace();
 	if (tx.isEmpty()) {
 		clearAll();
     return -1;
@@ -283,21 +283,21 @@ int QuickNavLineEdit::charCount(const QMouseEvent * const m,QString * const str)
 	
 	int numOfChars = findCharFromPos(tx, fontMetrics(), m->x() - 5);
 	if(str) *str=tx;
-	return tx.find('/', numOfChars);
+	return tx.tqfind('/', numOfChars);
 }
 
-void QuickNavLineEdit::mouseMoveEvent( QMouseEvent *m) {
+void QuickNavLineEdit::mouseMoveEvent( TQMouseEvent *m) {
 	if (m->state()!=ControlButton) { // works only with ctrl pressed
 		clearAll();
 		KLineEdit::mouseMoveEvent(m);
 		return;
 	}
-  QString tx;
+  TQString tx;
   int idx=charCount(m,&tx);
 		if (idx == -1 && !_dummyDisplayed) { // pointing on or after the current directory
 			if (_pop) delete _pop;
 			_pop = KPassivePopup::message( i18n("Quick Navigation"),
-				"<qt>" + i18n("Already at <i>%1</i>").arg(tx.left(idx)) + "</qt>",
+				"<qt>" + i18n("Already at <i>%1</i>").tqarg(tx.left(idx)) + "</qt>",
 				*(KCursor::handCursor().bitmap()), this);
 
 			_dummyDisplayed=true;
@@ -308,7 +308,7 @@ void QuickNavLineEdit::mouseMoveEvent( QMouseEvent *m) {
 			_dummyDisplayed=false;
 
 			_pop = KPassivePopup::message( i18n("Quick Navigation"),
-				"<qt>" + i18n("Click to go to <i>%1</i>").arg(tx.left(idx)) + "</qt>",
+				"<qt>" + i18n("Click to go to <i>%1</i>").tqarg(tx.left(idx)) + "</qt>",
 				*(KCursor::handCursor().bitmap()), this );
 		}
 	KLineEdit::mouseMoveEvent(m);

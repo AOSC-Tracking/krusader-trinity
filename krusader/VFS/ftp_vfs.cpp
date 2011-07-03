@@ -36,10 +36,10 @@
 #include <sys/types.h>
 #endif 
 // QT includes
-#include <qdir.h>
-#include <qregexp.h>
-#include <qtimer.h>
-#include <qeventloop.h>
+#include <tqdir.h>
+#include <tqregexp.h>
+#include <tqtimer.h>
+#include <tqeventloop.h>
 // KDE includes
 #include <kio/jobclasses.h>
 #include <klocale.h>
@@ -56,7 +56,7 @@
 #include "../defaults.h"
 #include "../resources.h"
 
-ftp_vfs::ftp_vfs( QObject* panel ) : vfs( panel ), busy( false ) {
+ftp_vfs::ftp_vfs( TQObject* panel ) : vfs( panel ), busy( false ) {
 	// set the writable attribute
 	isWritable = true;
 	vfs_type = FTP;
@@ -69,7 +69,7 @@ ftp_vfs::~ftp_vfs() {
 void ftp_vfs::slotAddFiles( KIO::Job *, const KIO::UDSEntryList& entries ) {
 	int rwx = -1;
 	
-	QString prot = vfs_origin.protocol();
+	TQString prot = vfs_origin.protocol();
 	if( prot == "krarc" || prot == "tar" || prot == "zip" )
 		rwx = PERM_ALL;
 	
@@ -82,7 +82,7 @@ void ftp_vfs::slotAddFiles( KIO::Job *, const KIO::UDSEntryList& entries ) {
 		vfile *temp;
 
 		// get file statistics
-		QString name = kfi.text();
+		TQString name = kfi.text();
 		// ignore un-needed entries
 		if ( name.isEmpty() || name == "." || name == ".." ) continue;
 
@@ -90,10 +90,10 @@ void ftp_vfs::slotAddFiles( KIO::Job *, const KIO::UDSEntryList& entries ) {
 		time_t mtime = kfi.time( KIO::UDS_MODIFICATION_TIME );
 		bool symLink = kfi.isLink();
 		mode_t mode = kfi.mode() | kfi.permissions();
-		QString perm = KRpermHandler::mode2QString( mode );
+		TQString perm = KRpermHandler::mode2TQString( mode );
 		// set the mimetype
-		QString mime = kfi.mimetype();
-		QString symDest = "";
+		TQString mime = kfi.mimetype();
+		TQString symDest = "";
 		if ( symLink ) {
 			symDest = kfi.linkDest();
 			if ( kfi.isDir() ) perm[ 0 ] = 'd';
@@ -103,14 +103,14 @@ void ftp_vfs::slotAddFiles( KIO::Job *, const KIO::UDSEntryList& entries ) {
 		if ( kfi.user().isEmpty() )
 			temp = new vfile( name, size, perm, mtime, symLink, getuid(), getgid(), mime, symDest, mode, rwx );
 		else {
-			QString currentUser = vfs_origin.user();
-			if ( currentUser.contains( "@" ) )  /* remove the FTP proxy tags from the username */
-				currentUser.truncate( currentUser.find( '@' ) );
+			TQString currentUser = vfs_origin.user();
+			if ( currentUser.tqcontains( "@" ) )  /* remove the FTP proxy tags from the username */
+				currentUser.truncate( currentUser.tqfind( '@' ) );
 			if ( currentUser.isEmpty() ) {
 				if( vfs_origin.host().isEmpty() )
 					currentUser = KRpermHandler::uid2user( getuid() );
 				else {
-					currentUser = ""; // empty, but not QString::null
+					currentUser = ""; // empty, but not TQString()
 				}
 			}
 #if KDE_IS_VERSION(3,5,0)
@@ -159,14 +159,14 @@ void ftp_vfs::slotListResult( KIO::Job *job ) {
 }
 
 bool ftp_vfs::populateVfsList( const KURL& origin, bool showHidden ) {
-	QString errorMsg = QString::null;
+	TQString errorMsg = TQString();
 	if ( !origin.isValid() )
-		errorMsg = i18n( "Malformed URL:\n%1" ).arg( origin.url() );
+		errorMsg = i18n( "Malformed URL:\n%1" ).tqarg( origin.url() );
 	if ( !KProtocolInfo::supportsListing( origin ) ) {
 		if( origin.protocol() == "ftp" && KProtocolInfo::supportsReading( origin ) ) 
 			errorMsg = i18n( "Krusader doesn't support FTP access via HTTP.\nIf it is not the case, please check and change the Proxy settings in kcontrol." );
 		else
-			errorMsg = i18n( "Protocol not supported by Krusader:\n%1" ).arg( origin.url() );
+			errorMsg = i18n( "Protocol not supported by Krusader:\n%1" ).tqarg( origin.url() );
 	}
 
 	if ( !errorMsg.isEmpty() ) {
@@ -179,21 +179,21 @@ bool ftp_vfs::populateVfsList( const KURL& origin, bool showHidden ) {
 	vfs_origin = origin;
 	vfs_origin.adjustPath(-1);
 
-	//QTimer::singleShot( 0,this,SLOT(startLister()) );
+	//TQTimer::singleShot( 0,this,TQT_SLOT(startLister()) );
 	listError = false;
 	// Open the directory	marked by origin
 	krConfig->setGroup( "Look&Feel" );
 	//vfs_origin.adjustPath(+1);
 	KIO::Job *job = KIO::listDir( vfs_origin, false, showHidden );
-	connect( job, SIGNAL( entries( KIO::Job*, const KIO::UDSEntryList& ) ),
-	         this, SLOT( slotAddFiles( KIO::Job*, const KIO::UDSEntryList& ) ) );
-	connect( job, SIGNAL( redirection( KIO::Job*, const KURL& ) ),
-	         this, SLOT( slotRedirection( KIO::Job*, const KURL& ) ) );
-	connect( job, SIGNAL( permanentRedirection( KIO::Job*, const KURL&, const KURL& ) ),
-	         this, SLOT( slotPermanentRedirection( KIO::Job*, const KURL&, const KURL& ) ) );
+	connect( job, TQT_SIGNAL( entries( KIO::Job*, const KIO::UDSEntryList& ) ),
+	         this, TQT_SLOT( slotAddFiles( KIO::Job*, const KIO::UDSEntryList& ) ) );
+	connect( job, TQT_SIGNAL( redirection( KIO::Job*, const KURL& ) ),
+	         this, TQT_SLOT( slotRedirection( KIO::Job*, const KURL& ) ) );
+	connect( job, TQT_SIGNAL( permanentRedirection( KIO::Job*, const KURL&, const KURL& ) ),
+	         this, TQT_SLOT( slotPermanentRedirection( KIO::Job*, const KURL&, const KURL& ) ) );
 
-	connect( job, SIGNAL( result( KIO::Job* ) ),
-	         this, SLOT( slotListResult( KIO::Job* ) ) );
+	connect( job, TQT_SIGNAL( result( KIO::Job* ) ),
+	         this, TQT_SLOT( slotListResult( KIO::Job* ) ) );
 
 	job->setWindow( krApp );
 
@@ -211,7 +211,7 @@ bool ftp_vfs::populateVfsList( const KURL& origin, bool showHidden ) {
 
 
 // copy a file to the vfs (physical)
-void ftp_vfs::vfs_addFiles( KURL::List *fileUrls, KIO::CopyJob::CopyMode mode, QObject* toNotify, QString dir,  PreserveMode /*pmode*/ ) {
+void ftp_vfs::vfs_addFiles( KURL::List *fileUrls, KIO::CopyJob::CopyMode mode, TQObject* toNotify, TQString dir,  PreserveMode /*pmode*/ ) {
 	KURL destUrl = vfs_origin;
 
 	if ( dir != "" ) {
@@ -219,38 +219,38 @@ void ftp_vfs::vfs_addFiles( KURL::List *fileUrls, KIO::CopyJob::CopyMode mode, Q
 		destUrl.cleanPath();  // removes the '..', '.' and extra slashes from the URL.
 
 		if ( destUrl.protocol() == "tar" || destUrl.protocol() == "zip" || destUrl.protocol() == "krarc" ) {
-			if ( QDir( destUrl.path( -1 ) ).exists() )
+			if ( TQDir( destUrl.path( -1 ) ).exists() )
 				destUrl.setProtocol( "file" );  // if we get out from the archive change the protocol
 		}
 	}
 
 	KIO::Job* job = new KIO::CopyJob( *fileUrls, destUrl, mode, false, true );
-	connect( job, SIGNAL( result( KIO::Job* ) ), this, SLOT( vfs_refresh( KIO::Job* ) ) );
+	connect( job, TQT_SIGNAL( result( KIO::Job* ) ), this, TQT_SLOT( vfs_refresh( KIO::Job* ) ) );
 	if ( mode == KIO::CopyJob::Move )  // notify the other panel
-		connect( job, SIGNAL( result( KIO::Job* ) ), toNotify, SLOT( vfs_refresh( KIO::Job* ) ) );
+		connect( job, TQT_SIGNAL( result( KIO::Job* ) ), toNotify, TQT_SLOT( vfs_refresh( KIO::Job* ) ) );
 }
 
 // remove a file from the vfs (physical)
-void ftp_vfs::vfs_delFiles( QStringList *fileNames ) {
+void ftp_vfs::vfs_delFiles( TQStringList *fileNames ) {
 	KURL::List filesUrls;
 	KURL url;
 
 	// names -> urls
 	for ( uint i = 0 ; i < fileNames->count(); ++i ) {
-		QString filename = ( *fileNames ) [ i ];
+		TQString filename = ( *fileNames ) [ i ];
 		url = vfs_origin;
 		url.addPath( filename );
 		filesUrls.append( url );
 	}
 	KIO::Job *job = new KIO::DeleteJob( filesUrls, false, true );
-	connect( job, SIGNAL( result( KIO::Job* ) ), this, SLOT( vfs_refresh( KIO::Job* ) ) );
+	connect( job, TQT_SIGNAL( result( KIO::Job* ) ), this, TQT_SLOT( vfs_refresh( KIO::Job* ) ) );
 }
 
 
-KURL::List* ftp_vfs::vfs_getFiles( QStringList* names ) {
+KURL::List* ftp_vfs::vfs_getFiles( TQStringList* names ) {
 	KURL url;
 	KURL::List* urls = new KURL::List();
-	for ( QStringList::Iterator name = names->begin(); name != names->end(); ++name ) {
+	for ( TQStringList::Iterator name = names->begin(); name != names->end(); ++name ) {
 		url = vfs_getFile( *name );
 		urls->append( url );
 	}
@@ -259,7 +259,7 @@ KURL::List* ftp_vfs::vfs_getFiles( QStringList* names ) {
 
 
 // return a path to the file
-KURL ftp_vfs::vfs_getFile( const QString& name ) {
+KURL ftp_vfs::vfs_getFile( const TQString& name ) {
 	vfile * vf = vfs_search( name );
 	if ( !vf ) return KURL(); // empty
 
@@ -268,15 +268,15 @@ KURL ftp_vfs::vfs_getFile( const QString& name ) {
 	return url;
 }
 
-void ftp_vfs::vfs_mkdir( const QString& name ) {
+void ftp_vfs::vfs_mkdir( const TQString& name ) {
 	KURL url = vfs_origin;
 	url.addPath( name );
 
 	KIO::SimpleJob* job = KIO::mkdir( url );
-	connect( job, SIGNAL( result( KIO::Job* ) ), this, SLOT( vfs_refresh( KIO::Job* ) ) );
+	connect( job, TQT_SIGNAL( result( KIO::Job* ) ), this, TQT_SLOT( vfs_refresh( KIO::Job* ) ) );
 }
 
-void ftp_vfs::vfs_rename( const QString& fileName, const QString& newName ) {
+void ftp_vfs::vfs_rename( const TQString& fileName, const TQString& newName ) {
 	KURL::List fileUrls;
 	KURL oldUrl = vfs_origin;
 	oldUrl.addPath( fileName ) ;
@@ -287,10 +287,10 @@ void ftp_vfs::vfs_rename( const QString& fileName, const QString& newName ) {
 	newUrl.addPath( newName );
 
 	KIO::Job *job = new KIO::CopyJob( fileUrls, newUrl, KIO::CopyJob::Move, true, true );
-	connect( job, SIGNAL( result( KIO::Job* ) ), this, SLOT( vfs_refresh( KIO::Job* ) ) );
+	connect( job, TQT_SIGNAL( result( KIO::Job* ) ), this, TQT_SLOT( vfs_refresh( KIO::Job* ) ) );
 }
 
-QString ftp_vfs::vfs_workingDir() {
+TQString ftp_vfs::vfs_workingDir() {
 	return vfs_origin.url( -1 );
 }
 

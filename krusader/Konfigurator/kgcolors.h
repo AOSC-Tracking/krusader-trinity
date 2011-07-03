@@ -32,17 +32,18 @@
 #define __KGCOLORS_H__
 
 #include "konfiguratorpage.h"
-#include <qptrlist.h>
-#include <qvaluelist.h>
-#include <qlistview.h>
-#include <qwidgetstack.h>
+#include <tqptrlist.h>
+#include <tqvaluelist.h>
+#include <tqlistview.h>
+#include <tqwidgetstack.h>
 
 class KgColors : public KonfiguratorPage
 {
   Q_OBJECT
+  TQ_OBJECT
 
 public:
-  KgColors( bool first, QWidget* parent=0,  const char* name=0 );
+  KgColors( bool first, TQWidget* tqparent=0,  const char* name=0 );
 
   bool apply();
 
@@ -66,73 +67,73 @@ protected slots:
 private:
   class PreviewItem;
 
-  int                        addColorSelector( QString cfgName, QString name, QColor dflt, QString dfltName = QString::null,
+  int                        addColorSelector( TQString cfgName, TQString name, TQColor dflt, TQString dfltName = TQString(),
                                                ADDITIONAL_COLOR *addColor = 0, int addColNum = 0);
-  KonfiguratorColorChooser  *getColorSelector( QString name );
-  QLabel                    *getSelectorLabel( QString name );
-  void                       serialize(class QDataStream &);
-  void                       deserialize(class QDataStream &);
-  void                       serializeItem(class QDataStream &, const char * name);
-  void                       setColorWithDimming(PreviewItem * item, QColor foreground, QColor background, bool dimmed );
+  KonfiguratorColorChooser  *getColorSelector( TQString name );
+  TQLabel                    *getSelectorLabel( TQString name );
+  void                       serialize(class TQDataStream &);
+  void                       deserialize(class TQDataStream &);
+  void                       serializeItem(class TQDataStream &, const char * name);
+  void                       setColorWithDimming(PreviewItem * item, TQColor foreground, TQColor background, bool dimmed );
 
 private:
-  QWidget                            *colorsGrp;
-  QGridLayout                        *colorsGrid;
+  TQWidget                            *colorsGrp;
+  TQGridLayout                        *colorsGrid;
   int                                 offset;
   int                                 endOfActiveColors;
   int                                 endOfPanelColors;
 
-  QGroupBox                          *previewGrp;
-  QGridLayout                        *previewGrid;
-  QTabWidget                         *colorTabWidget;
+  TQGroupBox                          *previewGrp;
+  TQGridLayout                        *previewGrid;
+  TQTabWidget                         *colorTabWidget;
 
-  QWidgetStack                       *inactiveColorStack;
-  QWidget                            *normalInactiveWidget;
-  QWidget                            *dimmedInactiveWidget;
+  TQWidgetStack                       *inactiveColorStack;
+  TQWidget                            *normalInactiveWidget;
+  TQWidget                            *dimmedInactiveWidget;
   KonfiguratorSpinBox                *dimFactor;
 
   KonfiguratorCheckBoxGroup          *generals;
 
-  QPtrList<QLabel>                    labelList;
-  QPtrList<KonfiguratorColorChooser>  itemList;
-  QValueList<QString>                 itemNames;
+  TQPtrList<TQLabel>                    labelList;
+  TQPtrList<KonfiguratorColorChooser>  itemList;
+  TQValueList<TQString>                 itemNames;
 
-  QListView                          *preview;
+  TQListView                          *preview;
   KPushButton *importBtn, *exportBtn;
 
-  class PreviewItem : public QListViewItem
+  class PreviewItem : public TQListViewItem
   {
   private:
-    QColor  defaultBackground;
-    QColor  defaultForeground;
-    QString label;
+    TQColor  defaultBackground;
+    TQColor  defaultForeground;
+    TQString label;
 
   public:
-    PreviewItem( QListView * parent, QString name ) : QListViewItem( parent, name )
+    PreviewItem( TQListView * tqparent, TQString name ) : TQListViewItem( tqparent, name )
     {
-      defaultBackground = QColor( 255, 255, 255 );
-      defaultForeground = QColor( 0, 0, 0 );
+      defaultBackground = TQColor( 255, 255, 255 );
+      defaultForeground = TQColor( 0, 0, 0 );
       label = name;
     }
 
-    void setColor( QColor foregnd, QColor backgnd )
+    void setColor( TQColor foregnd, TQColor backgnd )
     {
       defaultForeground = foregnd;
       defaultBackground = backgnd;
-      listView()->repaintItem( this );
+      listView()->tqrepaintItem( this );
     }
 
-    QString text()
+    TQString text()
     {
       return label;
     }
 
-    void paintCell ( QPainter * p, const QColorGroup & cg, int column, int width, int align )
+    void paintCell ( TQPainter * p, const TQColorGroup & cg, int column, int width, int align )
     {
-      QColorGroup _cg( cg );
-      _cg.setColor( QColorGroup::Base, defaultBackground );
-      _cg.setColor( QColorGroup::Text, defaultForeground );
-      QListViewItem::paintCell(p, _cg, column, width, align);
+      TQColorGroup _cg( cg );
+      _cg.setColor( TQColorGroup::Base, defaultBackground );
+      _cg.setColor( TQColorGroup::Text, defaultForeground );
+      TQListViewItem::paintCell(p, _cg, column, width, align);
     }
   };
 };

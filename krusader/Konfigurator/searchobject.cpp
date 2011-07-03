@@ -34,7 +34,7 @@ SearchObject::SearchObject()
 {
 }
 
-SearchObject::SearchObject(const QString& searchName, bool found, const QString& note)
+SearchObject::SearchObject(const TQString& searchName, bool found, const TQString& note)
   : _searchName(searchName),
     _found(found),
     _note(note)
@@ -52,7 +52,7 @@ Application::Application()
 {
 }
 
-Application::Application(const QString& searchName, bool found, const QString& appName, const QString& website, const QString& note)
+Application::Application(const TQString& searchName, bool found, const TQString& appName, const TQString& website, const TQString& note)
   : SearchObject(searchName, found, note),
     _appName(appName),
     _website(website),
@@ -60,7 +60,7 @@ Application::Application(const QString& searchName, bool found, const QString& a
 {
 }
 
-Application::Application(const QString& searchName, const QString& website, bool found, const QString& note)
+Application::Application(const TQString& searchName, const TQString& website, bool found, const TQString& note)
   : SearchObject(searchName, found, note),
     _appName(searchName),
     _website(website),
@@ -80,7 +80,7 @@ Archiver::Archiver()
 {
 }
 
-Archiver::Archiver(const QString& searchName, const QString& website, bool found, bool isPacker, bool isUnpacker, const QString& note)
+Archiver::Archiver(const TQString& searchName, const TQString& website, bool found, bool isPacker, bool isUnpacker, const TQString& note)
   : Application(searchName, website, found, note),
     _isPacker(isPacker),
     _isUnpacker(isUnpacker)
@@ -94,7 +94,7 @@ Archiver::~Archiver()
 // -----------------------------------------------------------------------------
 // -----------------------------------------------------------------------------
 
-ApplicationGroup::ApplicationGroup(const QString& searchName, bool foundGroup, const QValueVector<Application*>& apps, const QString& note)
+ApplicationGroup::ApplicationGroup(const TQString& searchName, bool foundGroup, const TQValueVector<Application*>& apps, const TQString& note)
  : SearchObject(searchName, foundGroup, note),
    _apps(apps),
   _foundGroup(foundGroup)

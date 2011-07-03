@@ -1,8 +1,8 @@
-#ifndef QUEUE_MGR_H
-#define QUEUE_MGR_H
+#ifndef TQUEUE_MGR_H
+#define TQUEUE_MGR_H
 
 #include "queue.h"
-#include <qmap.h>
+#include <tqmap.h>
 
 /**
  * QueueManager holds multiple queues and has a static
@@ -11,16 +11,16 @@
  */
 class QueueManager
 {
-	static const QString defaultName;
+	static const TQString defaultName;
 public:
 	QueueManager();
 	~QueueManager();
 	
-	static Queue* queue(const QString& queueName=defaultName);
-	QValueList<QString> queues() const;
+	static Queue* queue(const TQString& queueName=defaultName);
+	TQValueList<TQString> queues() const;
 
 protected:
-	static QMap<QString, Queue*> _queues;
+	static TQMap<TQString, Queue*> _queues;
 };
 
-#endif // QUEUE_MGR_H
+#endif // TQUEUE_MGR_H

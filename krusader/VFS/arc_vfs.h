@@ -33,65 +33,66 @@
 
 #include <sys/types.h>
 #include "vfs.h"
-#include <qvaluestack.h>
+#include <tqvaluestack.h>
 #include <kprocess.h>
-#include <qfile.h>
-#include <qprogressdialog.h>
+#include <tqfile.h>
+#include <tqprogressdialog.h>
 
 class arc_vfs : public vfs  {
   Q_OBJECT
+  TQ_OBJECT
   class arc_dir;
   class extFile;
 public:
-	arc_vfs(QString origin,QString type,QObject* panel,bool write);
+	arc_vfs(TQString origin,TQString type,TQObject* panel,bool write);
  ~arc_vfs();
 	
 	// copy a file to the vfs (physical)
-	void    vfs_addFiles(KURL::List *fileUrls,KIO::CopyJob::CopyMode mode,QObject* toNotify=0,QString dir = "",  PreserveMode pmode = PM_DEFAULT );	
+	void    vfs_addFiles(KURL::List *fileUrls,KIO::CopyJob::CopyMode mode,TQObject* toNotify=0,TQString dir = "",  PreserveMode pmode = PM_DEFAULT );	
 	// remove a file from the vfs (physical)
-	void 		vfs_delFiles(QStringList *fileNames);	
+	void 		vfs_delFiles(TQStringList *fileNames);	
 	// return a path to the file
-	QString vfs_getFile(QString name);
-	KURL::List* vfs_getFiles(QStringList* names);
+	TQString vfs_getFile(TQString name);
+	KURL::List* vfs_getFiles(TQStringList* names);
 	// make dir
-	void vfs_mkdir(QString name);
+	void vfs_mkdir(TQString name);
 	// rename file
-	void vfs_rename(QString fileName,QString newName);
+	void vfs_rename(TQString fileName,TQString newName);
 	// calculate space
-	void vfs_calcSpace(QString name ,KIO::filesize_t *totalSize,unsigned long *totalFiles,unsigned long *totalDirs, bool* stop);
+	void vfs_calcSpace(TQString name ,KIO::filesize_t *totalSize,unsigned long *totalFiles,unsigned long *totalDirs, bool* stop);
 	// return the working dir
-	QString vfs_workingDir();
+	TQString vfs_workingDir();
 	
 public slots:
 	// actually reads files and stats
-	bool vfs_refresh(QString origin);
+	bool vfs_refresh(TQString origin);
   void repack();
 	
 protected:
-  QString tmpDir;   // the temp directory tha archive is using
-  QString arcFile;  // the archive file URL
+  TQString tmpDir;   // the temp directory tha archive is using
+  TQString arcFile;  // the archive file URL
   bool changed;     // true if repack changed the archive
-  QList<arc_dir> dirList;
-  QValueList<extFile> extFiles; // the name, time & size of files unpacked from this archive
+  TQList<arc_dir> dirList;
+  TQValueList<extFile> extFiles; // the name, time & size of files unpacked from this archive
 
-  void processName(const QString& name,QStringList *urls,KIO::filesize_t *totalSize,unsigned long *totalFiles );
+  void processName(const TQString& name,TQStringList *urls,KIO::filesize_t *totalSize,unsigned long *totalFiles );
   bool getDirs();   // fill the dir list
-  vfileDict* findDir(QString name);
-  arc_dir* findArcDir(QString name);
-  void getFilesToPack  (QStringList* filesToPack,QString dir_name = "");
-	void getFilesToDelete(QStringList* filesToDelete,QString dir_name = "");
-  void getExtFiles( QString dir_name="" );
-  QString nextWord( QString &s, char d=' ' );
-  QString changeDir(QString name);
+  vfileDict* findDir(TQString name);
+  arc_dir* findArcDir(TQString name);
+  void getFilesToPack  (TQStringList* filesToPack,TQString dir_name = "");
+	void getFilesToDelete(TQStringList* filesToDelete,TQString dir_name = "");
+  void getExtFiles( TQString dir_name="" );
+  TQString nextWord( TQString &s, char d=' ' );
+  TQString changeDir(TQString name);
 
-  void parseLine(QString line,QFile* temp);
+  void parseLine(TQString line,TQFile* temp);
 
-	QString prefix;
-  QString cmd;      // the archiver main command
-  QString listCmd;  // the file listing option
-  QString delCmd;   // the delete option
-  QString addCmd;   // the add files option
-  QString getCmd;   // the extract files option
+	TQString prefix;
+  TQString cmd;      // the archiver main command
+  TQString listCmd;  // the file listing option
+  TQString delCmd;   // the delete option
+  TQString addCmd;   // the add files option
+  TQString getCmd;   // the extract files option
 
   // the interl progress bar variale
   int ignoreLines; // no of lines to ignore on stdout
@@ -99,26 +100,26 @@ protected:
 private:
   class arc_dir{
     public:
-    arc_dir(QString _name){
+    arc_dir(TQString _name){
       name = _name;
       entries.setAutoDelete(true);
     }
-    QString name;         // the name of the dir
+    TQString name;         // the name of the dir
     vfileDict entries; // the file and dir in this dir
   };
 
   class extFile{
     public:
     extFile(): url(""),time(0),size(0){}
-    extFile(QString u): url(u),time(0),size(0){}
-    extFile(QString u,time_t t,off_t s): url(u),time(t),size(s){}
+    extFile(TQString u): url(u),time(0),size(0){}
+    extFile(TQString u,time_t t,off_t s): url(u),time(t),size(s){}
     bool operator==(const extFile& ef) const{
       if( url != ef.url ) return false;
       if( size*ef.size && size!=ef.size )return false;
       if( time*ef.time && time!=ef.time )return false;
       return true;
     }
-    QString url;
+    TQString url;
     time_t time;
     off_t  size;
   };

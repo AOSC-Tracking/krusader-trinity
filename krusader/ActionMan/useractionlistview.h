@@ -15,18 +15,18 @@
 #include <klistview.h>
 
 class KrAction;
-class QString;
+class TQString;
 class UserActionListViewItem;
-class QDomDocument;
+class TQDomDocument;
 
 /**
  * @author Jonas Bähr
  */
 class UserActionListView : public KListView {
 public:
-   UserActionListView( QWidget* parent = 0, const char* name = 0 );
+   UserActionListView( TQWidget* tqparent = 0, const char* name = 0 );
    ~UserActionListView();
-   virtual QSize sizeHint() const;
+   virtual TQSize tqsizeHint() const;
 
    void update();
    void update( KrAction* action );
@@ -35,7 +35,7 @@ public:
    KrAction* currentAction() const;
    void setCurrentAction( const KrAction* );
 
-   QDomDocument dumpSelectedActions( QDomDocument* mergeDoc = 0 ) const;
+   TQDomDocument dumpSelectedActions( TQDomDocument* mergeDoc = 0 ) const;
 
    void removeSelectedActions();
 
@@ -47,10 +47,10 @@ public:
    /**
     * makes @e item current and ensures its visibility
     */
-   virtual void setCurrentItem( QListViewItem* item );
+   virtual void setCurrentItem( TQListViewItem* item );
 
 protected:
-   QListViewItem* findCategoryItem( const QString& category );
+   TQListViewItem* findCategoryItem( const TQString& category );
    UserActionListViewItem* findActionItem( const KrAction* action );
 };
 
@@ -60,8 +60,8 @@ protected:
  */
 class UserActionListViewItem : public KListViewItem {
 public:
-   UserActionListViewItem( QListView* view, KrAction* action );
-   UserActionListViewItem( QListViewItem* item, KrAction* action );
+   UserActionListViewItem( TQListView* view, KrAction* action );
+   UserActionListViewItem( TQListViewItem* item, KrAction* action );
    ~UserActionListViewItem();
 
    void setAction( KrAction* action );
@@ -71,7 +71,7 @@ public:
    /**
     * This reimplements qt's compare-function in order to have categories on the top of the list
     */
-   int compare ( QListViewItem * i, int col, bool ascending ) const;
+   int compare ( TQListViewItem * i, int col, bool ascending ) const;
 
 private:
    KrAction* _action;

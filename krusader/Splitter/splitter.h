@@ -32,14 +32,15 @@
 #define __SPLITTER_H__
 
 #include "crc32.h"
-#include <qstring.h>
-#include <qprogressdialog.h>
+#include <tqstring.h>
+#include <tqprogressdialog.h>
 #include <kurl.h>
 #include <kio/jobclasses.h>
  
-class Splitter : public QProgressDialog
+class Splitter : public TQProgressDialog
 {
   Q_OBJECT
+  TQ_OBJECT
   
 private:
   KURL            fileName;
@@ -48,20 +49,20 @@ private:
 
   KIO::filesize_t fileSize;
   int             permissions;
-  QString         splitFile;
+  TQString         splitFile;
 
   KURL            writeURL;
   int             fileNumber;
   KIO::filesize_t outputFileSize;
   bool            noValidWriteJob;
   CRC32          *crcContext;
-  QByteArray      transferArray;    
+  TQByteArray      transferArray;    
   
   KIO::TransferJob *splitReadJob;
   KIO::TransferJob *splitWriteJob;
     
 public:
-  Splitter( QWidget* parent,  KURL fileNameIn, KURL destinationDirIn );
+  Splitter( TQWidget* tqparent,  KURL fileNameIn, KURL destinationDirIn );
   ~Splitter();
   
   void split( KIO::filesize_t splitSizeIn );
@@ -71,12 +72,12 @@ private:
   void splitAbortJobs();
   
 public slots:
-  void splitDataReceived(KIO::Job *, const QByteArray &);
-  void splitDataSend(KIO::Job *, QByteArray &);
+  void splitDataReceived(KIO::Job *, const TQByteArray &);
+  void splitDataSend(KIO::Job *, TQByteArray &);
   void splitSendFinished(KIO::Job *);
   void splitReceiveFinished(KIO::Job *);
   void splitReceivePercent (KIO::Job *, unsigned long);
-  void splitFileSend(KIO::Job *, QByteArray &);
+  void splitFileSend(KIO::Job *, TQByteArray &);
   void splitFileFinished(KIO::Job *);
 };
 

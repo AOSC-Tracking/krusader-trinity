@@ -18,7 +18,7 @@
 #ifndef KRVFSHANDLER_H
 #define KRVFSHANDLER_H
 
-#include <qobject.h>
+#include <tqobject.h>
 
 #include <kurl.h>
 
@@ -28,13 +28,13 @@
   *@author Shie Erlich & Rafi Yanai
   */
 
-class KrVfsHandler : public QObject  {
+class KrVfsHandler : public TQObject  {
 public: 
 	KrVfsHandler();
 	~KrVfsHandler();
 
   static vfs::VFS_TYPE getVfsType(const KURL& url);
-  static vfs* getVfs(const KURL& url,QObject* parent=0,vfs* oldVfs=0);
+  static vfs* getVfs(const KURL& url,TQObject* tqparent=0,vfs* oldVfs=0);
 };
 
 #endif

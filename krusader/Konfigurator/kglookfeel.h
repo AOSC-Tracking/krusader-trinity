@@ -33,14 +33,15 @@
 
 #include "konfiguratorpage.h"
 
-class QListView;
+class TQListView;
 
 class KgLookFeel : public KonfiguratorPage
 {
   Q_OBJECT
+  TQ_OBJECT
 
 public:
-  KgLookFeel( bool first, QWidget* parent=0,  const char* name=0 );
+  KgLookFeel( bool first, TQWidget* tqparent=0,  const char* name=0 );
 
   virtual int activeSubPage();
 
@@ -51,7 +52,7 @@ protected:
   KonfiguratorCheckBoxGroup *panelToolbarActive;
   KonfiguratorRadioButtons  *mouseRadio;
   KonfiguratorCheckBoxGroup *mouseCheckboxes;
-  QListView* mousePreview;
+  TQListView* mousePreview;
 
 protected slots:
   void slotDisable();
@@ -63,7 +64,7 @@ private:
   void setupPanelTab();
   void setupPanelToolbarTab();
   void setupMouseModeTab();
-  QTabWidget *tabWidget;
+  TQTabWidget *tabWidget;
 };
 
 #endif /* __KGLOOKFEEL_H__ */

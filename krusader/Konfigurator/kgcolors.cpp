@@ -36,20 +36,20 @@
 #include <kfiledialog.h>
 #include <kglobalsettings.h>
 #include <kstandarddirs.h>
-#include <qhbox.h>
-#include <qheader.h>
-#include <qtabwidget.h>
+#include <tqhbox.h>
+#include <tqheader.h>
+#include <tqtabwidget.h>
 
-KgColors::KgColors( bool first, QWidget* parent,  const char* name ) :
-      KonfiguratorPage( first, parent, name ), offset( 0 )
+KgColors::KgColors( bool first, TQWidget* tqparent,  const char* name ) :
+      KonfiguratorPage( first, tqparent, name ), offset( 0 )
 {
-  QGridLayout *kgColorsLayout = new QGridLayout( parent );
+  TQGridLayout *kgColorsLayout = new TQGridLayout( tqparent );
   kgColorsLayout->setSpacing( 6 );
 
   //  -------------------------- GENERAL GROUPBOX ----------------------------------
 
-  QGroupBox *generalGrp = createFrame( i18n( "General" ), parent, "kgColorsGeneralGrp" );
-  QGridLayout *generalGrid = createGridLayout( generalGrp->layout() );
+  TQGroupBox *generalGrp = createFrame( i18n( "General" ), tqparent, "kgColorsGeneralGrp" );
+  TQGridLayout *generalGrid = createGridLayout( generalGrp->tqlayout() );
 
   generalGrid->setSpacing( 0 );
   generalGrid->setMargin( 5 );
@@ -64,35 +64,35 @@ KgColors::KgColors( bool first, QWidget* parent,  const char* name ) :
   generals = createCheckBoxGroup( 0, 2, generalSettings, sizeof(generalSettings)/sizeof(generalSettings[0]), generalGrp );
   generalGrid->addWidget( generals, 1, 0 );
 
-  generals->layout()->setSpacing( 5 );
+  generals->tqlayout()->setSpacing( 5 );
 
-  connect( generals->find( "KDE Default" ), SIGNAL( stateChanged( int ) ), this, SLOT( slotDisable() ) );
-  connect( generals->find( "Enable Alternate Background" ), SIGNAL( stateChanged( int ) ), this, SLOT( generatePreview() ) );
-  connect( generals->find( "Show Current Item Always" ), SIGNAL( stateChanged( int ) ), this, SLOT( slotDisable() ) );
-  connect( generals->find( "Dim Inactive Colors" ), SIGNAL( stateChanged( int ) ), this, SLOT( slotDisable() ) );
+  connect( generals->tqfind( "KDE Default" ), TQT_SIGNAL( stateChanged( int ) ), this, TQT_SLOT( slotDisable() ) );
+  connect( generals->tqfind( "Enable Alternate Background" ), TQT_SIGNAL( stateChanged( int ) ), this, TQT_SLOT( generatePreview() ) );
+  connect( generals->tqfind( "Show Current Item Always" ), TQT_SIGNAL( stateChanged( int ) ), this, TQT_SLOT( slotDisable() ) );
+  connect( generals->tqfind( "Dim Inactive Colors" ), TQT_SIGNAL( stateChanged( int ) ), this, TQT_SLOT( slotDisable() ) );
 
   kgColorsLayout->addMultiCellWidget( generalGrp, 0 ,0, 0, 2 );
-  QHBox *hbox = new QHBox( parent );
+  TQHBox *hbox = new TQHBox( tqparent );
 
   //  -------------------------- COLORS GROUPBOX ----------------------------------
 
-  QGroupBox *colorsFrameGrp = createFrame( i18n( "Colors" ), hbox, "kgColorsColorsGrp" );
-  QGridLayout *colorsFrameGrid = createGridLayout( colorsFrameGrp->layout() );
+  TQGroupBox *colorsFrameGrp = createFrame( i18n( "Colors" ), hbox, "kgColorsColorsGrp" );
+  TQGridLayout *colorsFrameGrid = createGridLayout( colorsFrameGrp->tqlayout() );
   colorsFrameGrid->setSpacing( 0 );
   colorsFrameGrid->setMargin( 3 );
 
-  colorTabWidget = new QTabWidget( colorsFrameGrp, "colorTabWidget" );
+  colorTabWidget = new TQTabWidget( colorsFrameGrp, "colorTabWidget" );
 
-  connect( colorTabWidget, SIGNAL( currentChanged ( QWidget * ) ), this, SLOT( generatePreview() ) );
+  connect( colorTabWidget, TQT_SIGNAL( currentChanged ( TQWidget * ) ), this, TQT_SLOT( generatePreview() ) );
 
-  colorsGrp = new QWidget( colorTabWidget, "colorTab" );
+  colorsGrp = new TQWidget( colorTabWidget, "colorTab" );
   colorTabWidget->insertTab( colorsGrp, i18n( "Active" ) );
 
-  colorsGrid = new QGridLayout( colorsGrp );
+  colorsGrid = new TQGridLayout( colorsGrp );
   colorsGrid->setSpacing( 0 );
   colorsGrid->setMargin( 2 );
 
-  ADDITIONAL_COLOR transparent  = { i18n("Transparent"),       Qt::white, "transparent" };
+  ADDITIONAL_COLOR transparent  = { i18n("Transparent"),       TQt::white, "transparent" };
 
   addColorSelector( "Foreground",                 i18n( "Foreground:" ),                  KGlobalSettings::textColor()                                                );
   addColorSelector( "Directory Foreground",       i18n( "Directory foreground:" ),        getColorSelector( "Foreground" )->getColor(), i18n( "Same as foreground" )  );
@@ -106,24 +106,24 @@ KgColors::KgColors( bool first, QWidget* parent,  const char* name ) :
   addColorSelector( "Marked Background",          i18n( "Selected background:" ),           KGlobalSettings::highlightColor(), "", &sameAsBckgnd, 1                     );
   ADDITIONAL_COLOR sameAsAltern = { i18n("Same as alt. background"), getColorSelector( "Alternate Background" )->getColor(), "Alternate Background" };
   addColorSelector( "Alternate Marked Background",i18n( "Alternate selected background:" ), getColorSelector( "Marked Background" )->getColor(), i18n( "Same as selected background" ), &sameAsAltern, 1 );
-  addColorSelector( "Current Foreground",         i18n( "Current foreground:" ),          Qt::white,                                    i18n( "Not used" )            );
+  addColorSelector( "Current Foreground",         i18n( "Current foreground:" ),          TQt::white,                                    i18n( "Not used" )            );
   ADDITIONAL_COLOR sameAsMarkedForegnd = { i18n("Same as selected foreground"), getColorSelector( "Marked Foreground" )->getColor(), "Marked Foreground" };
-  addColorSelector( "Marked Current Foreground",         i18n( "Selected current foreground:" ),          Qt::white,                                    i18n( "Not used" ), &sameAsMarkedForegnd, 1);
-  addColorSelector( "Current Background",         i18n( "Current background:" ),          Qt::white, i18n( "Not used" ), &sameAsBckgnd, 1                             );
+  addColorSelector( "Marked Current Foreground",         i18n( "Selected current foreground:" ),          TQt::white,                                    i18n( "Not used" ), &sameAsMarkedForegnd, 1);
+  addColorSelector( "Current Background",         i18n( "Current background:" ),          TQt::white, i18n( "Not used" ), &sameAsBckgnd, 1                             );
 
   colorsGrid->addWidget(createSpacer(colorsGrp, ""), itemList.count() - offset, 1);
 
-  connect( getColorSelector( "Foreground" ), SIGNAL( colorChanged() ), this, SLOT( slotForegroundChanged() ) );
-  connect( getColorSelector( "Background" ), SIGNAL( colorChanged() ), this, SLOT( slotBackgroundChanged() ) );
-  connect( getColorSelector( "Alternate Background" ), SIGNAL( colorChanged() ), this, SLOT( slotAltBackgroundChanged() ) );
-  connect( getColorSelector( "Marked Background" ), SIGNAL( colorChanged() ), this, SLOT( slotMarkedBackgroundChanged() ) );
+  connect( getColorSelector( "Foreground" ), TQT_SIGNAL( colorChanged() ), this, TQT_SLOT( slotForegroundChanged() ) );
+  connect( getColorSelector( "Background" ), TQT_SIGNAL( colorChanged() ), this, TQT_SLOT( slotBackgroundChanged() ) );
+  connect( getColorSelector( "Alternate Background" ), TQT_SIGNAL( colorChanged() ), this, TQT_SLOT( slotAltBackgroundChanged() ) );
+  connect( getColorSelector( "Marked Background" ), TQT_SIGNAL( colorChanged() ), this, TQT_SLOT( slotMarkedBackgroundChanged() ) );
 
-  inactiveColorStack = new QWidgetStack( colorTabWidget, "colorTab2" );
+  inactiveColorStack = new TQWidgetStack( colorTabWidget, "colorTab2" );
   colorTabWidget->insertTab( inactiveColorStack, i18n( "Inactive" ) );
 
-  colorsGrp = normalInactiveWidget = new QWidget( inactiveColorStack, "colorTab2" );
+  colorsGrp = normalInactiveWidget = new TQWidget( inactiveColorStack, "colorTab2" );
 
-  colorsGrid = new QGridLayout( normalInactiveWidget );
+  colorsGrid = new TQGridLayout( normalInactiveWidget );
   colorsGrid->setSpacing( 0 );
   colorsGrid->setMargin( 2 );
 
@@ -150,28 +150,28 @@ KgColors::KgColors( bool first, QWidget* parent,  const char* name ) :
 
   colorsGrid->addWidget(createSpacer(normalInactiveWidget, ""), itemList.count() - offset, 1);
 
-  connect( getColorSelector( "Inactive Foreground" ), SIGNAL( colorChanged() ), this, SLOT( slotInactiveForegroundChanged() ) );
-  connect( getColorSelector( "Inactive Background" ), SIGNAL( colorChanged() ), this, SLOT( slotInactiveBackgroundChanged() ) );
-  connect( getColorSelector( "Inactive Alternate Background" ), SIGNAL( colorChanged() ), this, SLOT( slotInactiveAltBackgroundChanged() ) );
-  connect( getColorSelector( "Inactive Marked Background" ), SIGNAL( colorChanged() ), this, SLOT( slotInactiveMarkedBackgroundChanged() ) );
+  connect( getColorSelector( "Inactive Foreground" ), TQT_SIGNAL( colorChanged() ), this, TQT_SLOT( slotInactiveForegroundChanged() ) );
+  connect( getColorSelector( "Inactive Background" ), TQT_SIGNAL( colorChanged() ), this, TQT_SLOT( slotInactiveBackgroundChanged() ) );
+  connect( getColorSelector( "Inactive Alternate Background" ), TQT_SIGNAL( colorChanged() ), this, TQT_SLOT( slotInactiveAltBackgroundChanged() ) );
+  connect( getColorSelector( "Inactive Marked Background" ), TQT_SIGNAL( colorChanged() ), this, TQT_SLOT( slotInactiveMarkedBackgroundChanged() ) );
 
   offset = endOfPanelColors = itemList.count();
 
   inactiveColorStack->addWidget( normalInactiveWidget );
 
-  colorsGrp = dimmedInactiveWidget = new QWidget( inactiveColorStack, "colorTab2dimmed" );
+  colorsGrp = dimmedInactiveWidget = new TQWidget( inactiveColorStack, "colorTab2dimmed" );
 
-  colorsGrid = new QGridLayout( dimmedInactiveWidget );
+  colorsGrid = new TQGridLayout( dimmedInactiveWidget );
   colorsGrid->setSpacing( 0 );
   colorsGrid->setMargin( 2 );
 
-  addColorSelector( "Dim Target Color", i18n( "Dim target color:" ), Qt::white);
+  addColorSelector( "Dim Target Color", i18n( "Dim target color:" ), TQt::white);
 
   int index = itemList.count() - offset;
-  labelList.append( addLabel( colorsGrid, index, 0, i18n("Dim factor:"), colorsGrp, QString( "ColorsLabel%1" ).arg( index ).ascii() ) );
+  labelList.append( addLabel( colorsGrid, index, 0, i18n("Dim factor:"), colorsGrp, TQString( "ColorsLabel%1" ).tqarg( index ).ascii() ) );
   dimFactor = createSpinBox("Colors", "Dim Factor", 100, 0, 100, colorsGrp);
-  dimFactor->setSizePolicy( QSizePolicy::Expanding, QSizePolicy::Fixed );
-  connect( dimFactor, SIGNAL( valueChanged( int ) ), this, SLOT( generatePreview() ) );
+  dimFactor->tqsetSizePolicy( TQSizePolicy::Expanding, TQSizePolicy::Fixed );
+  connect( dimFactor, TQT_SIGNAL( valueChanged( int ) ), this, TQT_SLOT( generatePreview() ) );
   colorsGrid->addWidget( dimFactor, index++, 1 );
 
   colorsGrid->addWidget(createSpacer(dimmedInactiveWidget, ""), itemList.count() + 1 - offset, 1);
@@ -180,10 +180,10 @@ KgColors::KgColors( bool first, QWidget* parent,  const char* name ) :
 
   inactiveColorStack->raiseWidget( normalInactiveWidget );
 
-  colorsGrp = new QWidget( colorTabWidget, "colorTab3" );
+  colorsGrp = new TQWidget( colorTabWidget, "colorTab3" );
   colorTabWidget->insertTab( colorsGrp, i18n( "Synchronizer" ) );
 
-  colorsGrid = new QGridLayout( colorsGrp );
+  colorsGrid = new TQGridLayout( colorsGrp );
   colorsGrid->setSpacing( 0 );
   colorsGrid->setMargin( 2 );
 
@@ -192,16 +192,16 @@ KgColors::KgColors( bool first, QWidget* parent,  const char* name ) :
 
   offset = endOfPanelColors = itemList.count();
 
-  addColorSelector( "Synchronizer Equals Foreground", i18n( "Equals foreground:" ), Qt::black, QString::null, &KDEDefaultFore, 1 );
-  addColorSelector( "Synchronizer Equals Background", i18n( "Equals background:" ), KGlobalSettings::baseColor(), QString::null, &KDEDefaultBase, 1 );
-  addColorSelector( "Synchronizer Differs Foreground", i18n( "Differing foreground:" ), Qt::red, QString::null, &KDEDefaultFore, 1 );
-  addColorSelector( "Synchronizer Differs Background", i18n( "Differing background:" ), KGlobalSettings::baseColor(), QString::null, &KDEDefaultBase, 1 );
-  addColorSelector( "Synchronizer LeftCopy Foreground", i18n( "Copy to left foreground:" ), Qt::blue, QString::null, &KDEDefaultFore, 1 );
-  addColorSelector( "Synchronizer LeftCopy Background", i18n( "Copy to left background:" ), KGlobalSettings::baseColor(), QString::null, &KDEDefaultBase, 1 );
-  addColorSelector( "Synchronizer RightCopy Foreground", i18n( "Copy to right foreground:" ), Qt::darkGreen, QString::null, &KDEDefaultFore, 1 );
-  addColorSelector( "Synchronizer RightCopy Background", i18n( "Copy to right background:" ), KGlobalSettings::baseColor(), QString::null, &KDEDefaultBase, 1 );
-  addColorSelector( "Synchronizer Delete Foreground", i18n( "Delete foreground:" ), Qt::white, QString::null, &KDEDefaultFore, 1 );
-  addColorSelector( "Synchronizer Delete Background", i18n( "Delete background:" ), Qt::red, QString::null, &KDEDefaultBase, 1 );
+  addColorSelector( "Synchronizer Equals Foreground", i18n( "Equals foreground:" ), TQt::black, TQString(), &KDEDefaultFore, 1 );
+  addColorSelector( "Synchronizer Equals Background", i18n( "Equals background:" ), KGlobalSettings::baseColor(), TQString(), &KDEDefaultBase, 1 );
+  addColorSelector( "Synchronizer Differs Foreground", i18n( "Differing foreground:" ), TQt::red, TQString(), &KDEDefaultFore, 1 );
+  addColorSelector( "Synchronizer Differs Background", i18n( "Differing background:" ), KGlobalSettings::baseColor(), TQString(), &KDEDefaultBase, 1 );
+  addColorSelector( "Synchronizer LeftCopy Foreground", i18n( "Copy to left foreground:" ), TQt::blue, TQString(), &KDEDefaultFore, 1 );
+  addColorSelector( "Synchronizer LeftCopy Background", i18n( "Copy to left background:" ), KGlobalSettings::baseColor(), TQString(), &KDEDefaultBase, 1 );
+  addColorSelector( "Synchronizer RightCopy Foreground", i18n( "Copy to right foreground:" ), TQt::darkGreen, TQString(), &KDEDefaultFore, 1 );
+  addColorSelector( "Synchronizer RightCopy Background", i18n( "Copy to right background:" ), KGlobalSettings::baseColor(), TQString(), &KDEDefaultBase, 1 );
+  addColorSelector( "Synchronizer Delete Foreground", i18n( "Delete foreground:" ), TQt::white, TQString(), &KDEDefaultFore, 1 );
+  addColorSelector( "Synchronizer Delete Background", i18n( "Delete background:" ), TQt::red, TQString(), &KDEDefaultBase, 1 );
 
   colorsGrid->addWidget(createSpacer(colorsGrp, ""), itemList.count() - offset, 1);
 
@@ -210,9 +210,9 @@ KgColors::KgColors( bool first, QWidget* parent,  const char* name ) :
   //  -------------------------- PREVIEW GROUPBOX ----------------------------------
 
   previewGrp = createFrame( i18n( "Preview" ), hbox, "kgColorsPreviewGrp" );
-  previewGrid = createGridLayout( previewGrp->layout() );
+  previewGrid = createGridLayout( previewGrp->tqlayout() );
 
-  preview = new QListView( previewGrp, "colorPreView" );
+  preview = new TQListView( previewGrp, "colorPreView" );
 
   preview->setShowSortIndicator(false);
   preview->setSorting(-1);
@@ -225,34 +225,34 @@ KgColors::KgColors( bool first, QWidget* parent,  const char* name ) :
 
   kgColorsLayout->addMultiCellWidget( hbox, 1 ,1, 0, 2 );
 
-  importBtn = new KPushButton(i18n("Import color-scheme"),parent);
+  importBtn = new KPushButton(i18n("Import color-scheme"),tqparent);
   kgColorsLayout->addWidget(importBtn,2,0);
-  exportBtn = new KPushButton(i18n("Export color-scheme"),parent);
+  exportBtn = new KPushButton(i18n("Export color-scheme"),tqparent);
   kgColorsLayout->addWidget(exportBtn,2,1);
-  kgColorsLayout->addWidget(createSpacer(parent, ""), 2,2);
-  connect(importBtn, SIGNAL(clicked()), this, SLOT(slotImportColors()));
-  connect(exportBtn, SIGNAL(clicked()), this, SLOT(slotExportColors()));
+  kgColorsLayout->addWidget(createSpacer(tqparent, ""), 2,2);
+  connect(importBtn, TQT_SIGNAL(clicked()), this, TQT_SLOT(slotImportColors()));
+  connect(exportBtn, TQT_SIGNAL(clicked()), this, TQT_SLOT(slotExportColors()));
 
   slotDisable();
 }
 
-int KgColors::addColorSelector( QString cfgName, QString name, QColor dflt, QString dfltName,
+int KgColors::addColorSelector( TQString cfgName, TQString name, TQColor dflt, TQString dfltName,
                                 ADDITIONAL_COLOR *addColor, int addColNum )
 {
   int index = itemList.count() - offset;
 
-  labelList.append( addLabel( colorsGrid, index, 0, name, colorsGrp, QString( "ColorsLabel%1" ).arg( index ).ascii() ) );
+  labelList.append( addLabel( colorsGrid, index, 0, name, colorsGrp, TQString( "ColorsLabel%1" ).tqarg( index ).ascii() ) );
   KonfiguratorColorChooser *chooser = createColorChooser( "Colors", cfgName, dflt, colorsGrp, false, addColor, addColNum );
-  chooser->setSizePolicy( QSizePolicy::Expanding, QSizePolicy::Fixed );
+  chooser->tqsetSizePolicy( TQSizePolicy::Expanding, TQSizePolicy::Fixed );
 
   if( !dfltName.isEmpty() )
     chooser->setDefaultText( dfltName );
 
   colorsGrid->addWidget( chooser, index, 1 );
 
-  connect( chooser, SIGNAL( colorChanged() ), this, SLOT( generatePreview() ) );
+  connect( chooser, TQT_SIGNAL( colorChanged() ), this, TQT_SLOT( generatePreview() ) );
   if( !offset )
-    connect( chooser, SIGNAL( colorChanged() ), this, SLOT( slotActiveChanged() ) );
+    connect( chooser, TQT_SIGNAL( colorChanged() ), this, TQT_SLOT( slotActiveChanged() ) );
 
   itemList.append( chooser );
   itemNames.append( cfgName );
@@ -260,9 +260,9 @@ int KgColors::addColorSelector( QString cfgName, QString name, QColor dflt, QStr
   return index;
 }
 
-KonfiguratorColorChooser *KgColors::getColorSelector( QString name )
+KonfiguratorColorChooser *KgColors::getColorSelector( TQString name )
 {
-  QValueList<QString>::iterator it;
+  TQValueList<TQString>::iterator it;
   int position = 0;
 
   for( it = itemNames.begin(); it != itemNames.end(); it++, position++ )
@@ -272,9 +272,9 @@ KonfiguratorColorChooser *KgColors::getColorSelector( QString name )
   return 0;
 }
 
-QLabel *KgColors::getSelectorLabel( QString name )
+TQLabel *KgColors::getSelectorLabel( TQString name )
 {
-  QValueList<QString>::iterator it;
+  TQValueList<TQString>::iterator it;
   int position = 0;
 
   for( it = itemNames.begin(); it != itemNames.end(); it++, position++ )
@@ -286,7 +286,7 @@ QLabel *KgColors::getSelectorLabel( QString name )
 
 void KgColors::slotDisable()
 {
-  bool enabled = generals->find( "KDE Default" )->isChecked();
+  bool enabled = generals->tqfind( "KDE Default" )->isChecked();
 
   importBtn->setEnabled(!enabled);
   exportBtn->setEnabled(!enabled);
@@ -297,17 +297,17 @@ void KgColors::slotDisable()
   for( int j = 0; itemList.at( j ) && j < endOfPanelColors ; j++ )
     itemList.at( j )->setEnabled( !enabled );
 
-  generals->find("Enable Alternate Background")->setEnabled( enabled );
-  generals->find("Show Current Item Always")->setEnabled( !enabled );
-  generals->find("Dim Inactive Colors")->setEnabled( !enabled );
+  generals->tqfind("Enable Alternate Background")->setEnabled( enabled );
+  generals->tqfind("Show Current Item Always")->setEnabled( !enabled );
+  generals->tqfind("Dim Inactive Colors")->setEnabled( !enabled );
 
-  bool dimmed = !enabled && generals->find("Dim Inactive Colors")->isChecked();
+  bool dimmed = !enabled && generals->tqfind("Dim Inactive Colors")->isChecked();
   if( dimmed )
     inactiveColorStack->raiseWidget( dimmedInactiveWidget );
   else
     inactiveColorStack->raiseWidget( normalInactiveWidget );
 
-  enabled = enabled || !generals->find( "Show Current Item Always" )->isChecked();
+  enabled = enabled || !generals->tqfind( "Show Current Item Always" )->isChecked();
 
   getColorSelector( "Inactive Current Foreground" )->setEnabled( !enabled );
   getColorSelector( "Inactive Current Background" )->setEnabled( !enabled );
@@ -323,7 +323,7 @@ void KgColors::slotActiveChanged()
 
 void KgColors::slotForegroundChanged()
 {
-  QColor color = getColorSelector( "Foreground" )->getColor();
+  TQColor color = getColorSelector( "Foreground" )->getColor();
 
   getColorSelector( "Directory Foreground" )->setDefaultColor( color );
   getColorSelector( "Executable Foreground" )->setDefaultColor( color );
@@ -333,7 +333,7 @@ void KgColors::slotForegroundChanged()
 
 void KgColors::slotBackgroundChanged()
 {
-  QColor color = getColorSelector( "Background" )->getColor();
+  TQColor color = getColorSelector( "Background" )->getColor();
 
   getColorSelector( "Alternate Background" )->changeAdditionalColor( 0, color );
   getColorSelector( "Marked Background" )->changeAdditionalColor( 0, color );
@@ -342,19 +342,19 @@ void KgColors::slotBackgroundChanged()
 
 void KgColors::slotAltBackgroundChanged()
 {
-  QColor color = getColorSelector( "Alternate Background" )->getColor();
+  TQColor color = getColorSelector( "Alternate Background" )->getColor();
   getColorSelector( "Alternate Marked Background" )->changeAdditionalColor( 0, color );
 }
 
 void KgColors::slotMarkedBackgroundChanged()
 {
-  QColor color = getColorSelector( "Marked Background" )->getColor();
+  TQColor color = getColorSelector( "Marked Background" )->getColor();
   getColorSelector( "Alternate Marked Background" )->setDefaultColor( color );
 }
 
 void KgColors::slotInactiveForegroundChanged()
 {
-  QColor color = getColorSelector( "Inactive Foreground" )->getColor();
+  TQColor color = getColorSelector( "Inactive Foreground" )->getColor();
 
   getColorSelector( "Inactive Directory Foreground" )->changeAdditionalColor( 0, color );
   getColorSelector( "Inactive Executable Foreground" )->changeAdditionalColor( 0, color );
@@ -364,7 +364,7 @@ void KgColors::slotInactiveForegroundChanged()
 
 void KgColors::slotInactiveBackgroundChanged()
 {
-  QColor color = getColorSelector( "Inactive Background" )->getColor();
+  TQColor color = getColorSelector( "Inactive Background" )->getColor();
 
   getColorSelector( "Inactive Alternate Background" )->changeAdditionalColor( 0, color );
   getColorSelector( "Inactive Marked Background" )->changeAdditionalColor( 0, color );
@@ -373,27 +373,27 @@ void KgColors::slotInactiveBackgroundChanged()
 
 void KgColors::slotInactiveAltBackgroundChanged()
 {
-  QColor color = getColorSelector( "Inactive Alternate Background" )->getColor();
+  TQColor color = getColorSelector( "Inactive Alternate Background" )->getColor();
   getColorSelector( "Inactive Alternate Marked Background" )->changeAdditionalColor( 0, color );
 }
 
 void KgColors::slotInactiveMarkedBackgroundChanged()
 {
-  QColor color = getColorSelector( "Inactive Marked Background" )->getColor();
+  TQColor color = getColorSelector( "Inactive Marked Background" )->getColor();
   getColorSelector( "Inactive Alternate Marked Background" )->changeAdditionalColor( 1, color );
 }
 
-void KgColors::setColorWithDimming(PreviewItem * item, QColor foreground, QColor background, bool dimmed )
+void KgColors::setColorWithDimming(PreviewItem * item, TQColor foreground, TQColor background, bool dimmed )
 {
    if ( dimmed && dimFactor->value() < 100)
    {
      int dim = dimFactor->value();
-     QColor dimColor = getColorSelector("Dim Target Color")->getColor();
+     TQColor dimColor = getColorSelector("Dim Target Color")->getColor();
 
-     foreground = QColor((dimColor.red() * (100 - dim) + foreground.red() * dim) / 100,
+     foreground = TQColor((dimColor.red() * (100 - dim) + foreground.red() * dim) / 100,
                          (dimColor.green() * (100 - dim) + foreground.green() * dim) / 100,
                          (dimColor.blue() * (100 - dim) + foreground.blue() * dim) / 100);
-     background = QColor((dimColor.red() * (100 - dim) + background.red() * dim) / 100,
+     background = TQColor((dimColor.red() * (100 - dim) + background.red() * dim) / 100,
                          (dimColor.green() * (100 - dim) + background.green() * dim) / 100,
                          (dimColor.blue() * (100 - dim) + background.blue() * dim) / 100);
    }
@@ -427,8 +427,8 @@ void KgColors::generatePreview()
     KrColorSettings colorSettings;
 
     // copy over local settings to color settings instance, which does not affect the persisted krConfig settings
-    QValueList<QString> names = KrColorSettings::getColorNames();
-    for ( QStringList::Iterator it = names.begin(); it != names.end(); ++it )
+    TQValueList<TQString> names = KrColorSettings::getColorNames();
+    for ( TQStringList::Iterator it = names.begin(); it != names.end(); ++it )
     {
         KonfiguratorColorChooser * chooser = getColorSelector( *it );
         if (!chooser)
@@ -437,20 +437,20 @@ void KgColors::generatePreview()
         if (chooser->isValueRGB())
             colorSettings.setColorValue( *it, chooser->getColor());
         else
-            colorSettings.setColorValue( *it, QColor());
+            colorSettings.setColorValue( *it, TQColor());
     }
 
-    colorSettings.setBoolValue("KDE Default", generals->find( "KDE Default" )->isChecked());
-    colorSettings.setBoolValue("Enable Alternate Background", generals->find( "Enable Alternate Background" )->isChecked());
-    colorSettings.setBoolValue("Show Current Item Always", generals->find( "Show Current Item Always" )->isChecked());
-    colorSettings.setBoolValue("Dim Inactive Colors", generals->find( "Dim Inactive Colors" )->isChecked());
+    colorSettings.setBoolValue("KDE Default", generals->tqfind( "KDE Default" )->isChecked());
+    colorSettings.setBoolValue("Enable Alternate Background", generals->tqfind( "Enable Alternate Background" )->isChecked());
+    colorSettings.setBoolValue("Show Current Item Always", generals->tqfind( "Show Current Item Always" )->isChecked());
+    colorSettings.setBoolValue("Dim Inactive Colors", generals->tqfind( "Dim Inactive Colors" )->isChecked());
     colorSettings.setNumValue("Dim Factor", dimFactor->value());
 
     // let the color cache use the local color settings
     colCache.setColors( colorSettings );
 
     // ask the local color cache for certain color groups and use them to color the preview
-    QColorGroup cg;
+    TQColorGroup cg;
     colCache.getColors(cg, KrColorItemType(KrColorItemType::Directory, false, isActive, false, false));
     pwDir->setColor( cg.text(), cg.background() );
     colCache.getColors(cg, KrColorItemType(KrColorItemType::File, true, isActive, false, false));
@@ -498,26 +498,26 @@ bool KgColors::apply()
 }
 
 void KgColors::slotImportColors() {
-	// find $KDEDIR/share/apps/krusader
-	QString basedir = KGlobal::dirs()->findResourceDir("appdata", "total_commander.keymap");
+	// tqfind $KDEDIR/share/apps/krusader
+	TQString basedir = KGlobal::dirs()->findResourceDir("appdata", "total_commander.keymap");
 	// let the user select a file to load
-	QString file = KFileDialog::getOpenFileName(basedir, "*.color", 0, i18n("Select a color-scheme file"));
-	if (file == QString::null) return;
-	QFile f(file);
+	TQString file = KFileDialog::getOpenFileName(basedir, "*.color", 0, i18n("Select a color-scheme file"));
+	if (file == TQString()) return;
+	TQFile f(file);
 	if (!f.open(IO_ReadOnly)) {
 		KMessageBox::error(this, i18n("Error: unable to read from file"), i18n("Error"));
 		return;
 	}
-	QDataStream stream(&f);
+	TQDataStream stream(&f);
 	// ok, import away
 	deserialize(stream);
 	generatePreview();
 }
 
 void KgColors::slotExportColors() {
-	QString file = KFileDialog::getSaveFileName(QString::null, "*", 0, i18n("Select a color scheme file"));
-	if (file == QString::null) return;
-	QFile f(file);
+	TQString file = KFileDialog::getSaveFileName(TQString(), "*", 0, i18n("Select a color scheme file"));
+	if (file == TQString()) return;
+	TQFile f(file);
 	if (f.exists() && KMessageBox::warningContinueCancel(this,
 		i18n("File ")+file+i18n(" already exists. Are you sure you want to overwrite it?"),
 		i18n("Warning"), i18n("Overwrite")) != KMessageBox::Continue) return;
@@ -525,11 +525,11 @@ void KgColors::slotExportColors() {
 		KMessageBox::error(this, i18n("Error: unable to write to file"), i18n("Error"));
 		return;
 	}
-	QDataStream stream(&f);
+	TQDataStream stream(&f);
 	serialize(stream);
 }
 
-void KgColors::serialize(QDataStream & stream)
+void KgColors::serialize(TQDataStream & stream)
 {
    serializeItem(stream, "Alternate Background");
    serializeItem(stream, "Alternate Marked Background");
@@ -573,14 +573,14 @@ void KgColors::serialize(QDataStream & stream)
    serializeItem(stream, "Synchronizer RightCopy Background");
    serializeItem(stream, "Synchronizer Delete Foreground");
    serializeItem(stream, "Synchronizer Delete Background");
-   stream << QString("") << QString("");
+   stream << TQString("") << TQString("");
 }
 
-void KgColors::deserialize(QDataStream & stream)
+void KgColors::deserialize(TQDataStream & stream)
 {
    for (;;)
    {
-      QString name, value;
+      TQString name, value;
       stream >> name >> value;
       if (name == "")
          break;
@@ -593,7 +593,7 @@ void KgColors::deserialize(QDataStream & stream)
         if( value == "true" || value == "yes" || value == "on" || value == "1" )
           bValue = true;
 
-        generals->find( name )->setChecked( bValue );
+        generals->tqfind( name )->setChecked( bValue );
         continue;
       }
 
@@ -610,19 +610,19 @@ void KgColors::deserialize(QDataStream & stream)
    }
 }
 
-void KgColors::serializeItem(class QDataStream & stream, const char * name)
+void KgColors::serializeItem(class TQDataStream & stream, const char * name)
 {
-   stream << QString(name);
+   stream << TQString(name);
    if( (strcmp( name, "KDE Default") == 0)
         || (strcmp( name, "Enable Alternate Background") == 0)
         || (strcmp( name, "Show Current Item Always") == 0)
         || (strcmp( name, "Dim Inactive Colors") == 0) )
    {
-     bool bValue = generals->find( name )->isChecked();
-     stream << QString( bValue ? "true" : "false" );
+     bool bValue = generals->tqfind( name )->isChecked();
+     stream << TQString( bValue ? "true" : "false" );
    }
    else if( strcmp( name, "Dim Factor") == 0 )
-     stream << QString::number(dimFactor->value());
+     stream << TQString::number(dimFactor->value());
    else
    {
      KonfiguratorColorChooser *selector = getColorSelector( name );

@@ -31,28 +31,29 @@
 #ifndef __PERCENTAL_SPLITTER__
 #define __PERCENTAL_SPLITTER__
 
-#include <qsplitter.h> 
-#include <qlabel.h> 
+#include <tqsplitter.h> 
+#include <tqlabel.h> 
 
 class PercentalSplitterToolTip;
 
-class PercentalSplitter : public QSplitter {
+class PercentalSplitter : public TQSplitter {
   Q_OBJECT
+  TQ_OBJECT
   
 public:
-  PercentalSplitter( QWidget * parent = 0, const char * name = 0 );  
+  PercentalSplitter( TQWidget * tqparent = 0, const char * name = 0 );  
   virtual ~PercentalSplitter();
   
-  QString toolTipString( int p = -1 );
+  TQString toolTipString( int p = -1 );
   
 protected:
   virtual void setRubberband ( int p );
   
 private:
   PercentalSplitterToolTip * toolTip;
-  QLabel * label;
+  TQLabel * label;
   int opaqueOldPos;
-  QPoint labelLocation;
+  TQPoint labelLocation;
 };
 
 #endif /* __PERCENTAL_SPLITTER__ */

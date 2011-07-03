@@ -32,32 +32,32 @@
 #include <kfiledialog.h>
 #include "../krusader.h"
 #include "../defaults.h"
-#include <qlineedit.h>
-#include <qcheckbox.h>
-#include <qstringlist.h>
-#include <qlabel.h>
-#include <qpushbutton.h>
+#include <tqlineedit.h>
+#include <tqcheckbox.h>
+#include <tqstringlist.h>
+#include <tqlabel.h>
+#include <tqpushbutton.h>
 
-#define PS(x) lst.contains(x)>0
+#define PS(x) lst.tqcontains(x)>0
 
 // clear the statics first
-QString PackGUI::filename=0;
-QString PackGUI::destination=0;
-QString PackGUI::type=0;
-QMap<QString, QString> PackGUI::extraProps;
+TQString PackGUI::filename=0;
+TQString PackGUI::destination=0;
+TQString PackGUI::type=0;
+TQMap<TQString, TQString> PackGUI::extraProps;
 
-PackGUI::PackGUI(QString defaultName, QString defaultPath, int noOfFiles, QString filename) :
+PackGUI::PackGUI(TQString defaultName, TQString defaultPath, int noOfFiles, TQString filename) :
     PackGUIBase(0,0,true) {
   // first, fill the WhatToPack textfield with information
   if(noOfFiles == 1)
-    TextLabel1->setText( i18n("Pack %1").arg(filename) );
+    TextLabel1->setText( i18n("Pack %1").tqarg(filename) );
   else
     TextLabel1->setText( i18n("Pack %n file", "Pack %n files", noOfFiles) );
 
   // now, according to the Konfigurator, fill the combobox with the information
   // about what kind of packing we can do
   krConfig->setGroup("Archives");
-  QStringList lst=krConfig->readListEntry("Supported Packers");
+  TQStringList lst=krConfig->readListEntry("Supported Packers");
   // now, clear the type combo and begin...
   typeData->clear();
   if (PS("tar")) typeData->insertItem("tar");
@@ -69,8 +69,8 @@ PackGUI::PackGUI(QString defaultName, QString defaultPath, int noOfFiles, QStrin
   if (PS("arj")) typeData->insertItem("arj");
   if (PS("7z")) typeData->insertItem("7z");
   // set the last used packer as the top one
-  QString tmp=krConfig->readEntry("lastUsedPacker",QString::null);
-  if (tmp!=QString::null) {
+  TQString tmp=krConfig->readEntry("lastUsedPacker",TQString());
+  if (tmp!=TQString()) {
     for (unsigned int i=0; i< typeData->listBox()->count(); ++i)
       if (typeData->listBox()->item(i)->text() == tmp) {
         typeData->listBox()->removeItem(i);
@@ -91,8 +91,8 @@ PackGUI::PackGUI(QString defaultName, QString defaultPath, int noOfFiles, QStrin
 }
 
 void PackGUI::browse() {
-  QString temp=KFileDialog::getExistingDirectory(dirData->text(),0,i18n("Please select a directory"));
-  if (temp != QString::null)
+  TQString temp=KFileDialog::getExistingDirectory(dirData->text(),0,i18n("Please select a directory"));
+  if (temp != TQString())
 			dirData->setText(temp);
 }
 
@@ -111,9 +111,9 @@ void PackGUI::accept() {
 }
 
 void PackGUI::reject() {
-  filename=QString::null;
-  destination=QString::null;
-  type=QString::null;
+  filename=TQString();
+  destination=TQString();
+  type=TQString();
   PackGUIBase::reject();
 }
 

@@ -13,7 +13,7 @@
 #include <kinputdialog.h>
 #include <klocale.h>
 
-#include <qerrormessage.h>
+#include <tqerrormessage.h>
 
 #include "kraction.h"
 #include "expander.h"
@@ -26,8 +26,8 @@ KrActionBase::~KrActionBase()
 void KrActionBase::exec() {
 	KrActionProc *proc;
 
-   // replace %% and prepare string
-	QStringList commandList;
+   // tqreplace %% and prepare string
+	TQStringList commandList;
 	if(doSubstitution()) {
 		Expander exp;
 		exp.expand(command(),acceptURLs());
@@ -45,7 +45,7 @@ void KrActionBase::exec() {
        return;
 
    if ( confirmExecution() ) {
-       for ( QStringList::iterator it = commandList.begin(); it != commandList.end(); ++it ) {
+       for ( TQStringList::iterator it = commandList.begin(); it != commandList.end(); ++it ) {
            bool exec = true;
            *it = KInputDialog::getText(
         i18n( "Confirm execution" ),
@@ -68,7 +68,7 @@ void KrActionBase::exec() {
 
 void KrActionBase::handleError(const Error& err)
 {
-	QErrorMessage::qtHandler()->message(err.what());
+	TQErrorMessage::qtHandler()->message(err.what());
 }
 
 KrActionProc* KrActionBase::actionProcFactoryMethod()

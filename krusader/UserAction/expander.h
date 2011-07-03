@@ -13,18 +13,18 @@
 #ifndef EXPANDER_H
 #define EXPANDER_H
 
-// class QString;
-#include <qstring.h>
-#include <qstringlist.h>
-#include <qvaluelist.h>
+// class TQString;
+#include <tqstring.h>
+#include <tqstringlist.h>
+#include <tqvaluelist.h>
 #include "tstring.h"
-// #include <qstringlist.h>
+// #include <tqstringlist.h>
 class ListPanel;
 class Expander;
 class Error;
 
-typedef TagString_t<QStringList> TagString;
-typedef QValueList<TagString> TagStringList;
+typedef TagString_t<TQStringList> TagString;
+typedef TQValueList<TagString> TagStringList;
 
 /**
  * This holds informations about each parameter
@@ -32,23 +32,23 @@ typedef QValueList<TagString> TagStringList;
 class exp_parameter {
 public:
 	exp_parameter() {}
-   inline exp_parameter( QString desc, QString pre, bool ness)
+   inline exp_parameter( TQString desc, TQString pre, bool ness)
       { _description = desc; _preset = pre; _nessesary = ness; }
-   inline QString description() const ///< A description of the parameter
+   inline TQString description() const ///< A description of the parameter
       { return _description; }
-   inline QString preset() const ///< the default of the parameter
+   inline TQString preset() const ///< the default of the parameter
       { return _preset; }
    inline bool nessesary() const ///< false if the parameter is optional
       { return _nessesary; }
 
 private:
-   QString _description;
-   QString _preset;
+   TQString _description;
+   TQString _preset;
    bool _nessesary;
 };
 
 #define EXP_FUNC virtual TagString expFunc ( const ListPanel*, const TagStringList&, const bool&, Expander& ) const
-#define SIMPLE_EXP_FUNC virtual TagString expFunc ( const ListPanel*, const QStringList&, const bool&, Expander& ) const
+#define SIMPLE_EXP_FUNC virtual TagString expFunc ( const ListPanel*, const TQStringList&, const bool&, Expander& ) const
 /** 
   *  Abstract baseclass for all expander-functions (which replace placeholder).
   *  A Placeholder is an entry containing the expression, its expanding function and Parameter.
@@ -59,9 +59,9 @@ private:
   */
 class exp_placeholder {
 public:
-   inline QString expression() const  ///< The placeholder (without '%' or panel-prefix)
+   inline TQString expression() const  ///< The placeholder (without '%' or panel-prefix)
       { return _expression; }
-   inline QString description() const ///< A description of the placeholder
+   inline TQString description() const ///< A description of the placeholder
       { return _description; }
    inline bool needPanel() const ///< true if the placeholder needs a panel to operate on
       { return _needPanel; }
@@ -75,15 +75,15 @@ public:
    EXP_FUNC = 0;
 protected:
 	static void setError(Expander& exp,const Error& e) ;
-	static void panelMissingError(const QString &s, Expander& exp);
-	static QStringList splitEach(const TagString& s);
-	static QStringList fileList(const ListPanel* const panel,const QString& type,const QString& mask,const bool ommitPath,const bool useUrl,Expander&,const QString&);
+	static void panelMissingError(const TQString &s, Expander& exp);
+	static TQStringList splitEach(const TagString& s);
+	static TQStringList fileList(const ListPanel* const panel,const TQString& type,const TQString& tqmask,const bool ommitPath,const bool useUrl,Expander&,const TQString&);
 	exp_placeholder();
 	exp_placeholder(const exp_placeholder& p);
 	~exp_placeholder() { }
-   QString _expression;
-   QString _description;
-   QValueList <exp_parameter> _parameter;
+   TQString _expression;
+   TQString _description;
+   TQValueList <exp_parameter> _parameter;
    bool _needPanel;
 };
 
@@ -97,14 +97,14 @@ protected:
 			S_OK, S_WARNING, S_ERROR, S_FATAL
 		};
 		Error() : s_(S_OK) {}
-		Error(Severity s,Cause c,QString d) : s_(s), c_(c), desc_(d) {}
+		Error(Severity s,Cause c,TQString d) : s_(s), c_(c), desc_(d) {}
 		Cause cause() const { return c_; }
 		operator bool() const { return s_!=S_OK; }
-		const QString& what() const { return desc_; }
+		const TQString& what() const { return desc_; }
 	private:
 		Severity s_;
 		Cause c_;
-		QString desc_;
+		TQString desc_;
 	};
 
 
@@ -120,7 +120,7 @@ protected:
  *    - @em Count is replaced by a nomber of
  *       -# Either "All", "Files", "Dirs", "Selected"
  *       .
- *    - @em Filter is preplaced by the panels filter-mask (ex: "*.cpp *.h")
+ *    - @em Filter is preplaced by the panels filter-tqmask (ex: "*.cpp *.h")
  *    - @em Current is replaced by the current item or, in case of onmultiple="call_each", by each selected item.
  *       -# If "yes", only the filename (without path) is returned
  *       .
@@ -128,12 +128,12 @@ protected:
  *       -# Either "All", "Files", "Dirs", "Selected"
  *       -# A seperator between the items (default: " " [one space])
  *       -# If "yes", only the filename (without path) is returned
- *       -# (for all but "Selected") a filter-mask (default: "*")
+ *       -# (for all but "Selected") a filter-tqmask (default: "*")
  *       .
  *   .
  * - Access to panel-dependent, krusader-internal, parameter-needed functions (panel-indicator has to be 'a', 'o', 'r' or 'l')
  *    - @em Select manipulates the selection of the panel
- *       -# A filter-mask (nessesary)
+ *       -# A filter-tqmask (nessesary)
  *       -# Either "Add", "Remove", "Set" (default)
   *       .
  *    - @em Bookmark manipulates the selection of the panel
@@ -172,7 +172,7 @@ public:
      * @param useUrl true iff the path's should be expanded to an URL instead of an local path
      * @return a list of all commands
      */
-   void expand( const QString& stringToExpand, bool useUrl );
+   void expand( const TQString& stringToExpand, bool useUrl );
 	 
 	 /**
 	  * Returns the list of all commands to be executed, provided that #expand was called
@@ -180,7 +180,7 @@ public:
 	  * 
 	  * @return The list of commands to be executed
      */
-	 const QStringList& result() const { assert(!error()); return resultList; }
+	 const TQStringList& result() const { assert(!error()); return resultList; }
 
 	 /**
 	  *  Returns the error object of this Expander. You can test whether there was
@@ -203,14 +203,14 @@ protected:
    * @param useUrl true if the path's should be expanded to an URL instead of an local path
    * @return the expanded commanline for the current item
    */
-  TagString expandCurrent( const QString& stringToExpand, bool useUrl );
+  TagString expandCurrent( const TQString& stringToExpand, bool useUrl );
   /**
    * This function searches for "@EACH"-marks to splitt the string in a list for each %_Each%-item
    * 
    * @param stringToSplit the string which should be splitted
    * @return the splitted list
    */
-  static QStringList splitEach( TagString stringToSplit );
+  static TQStringList splitEach( TagString stringToSplit );
   /**
    * @param panelIndicator either '_' for panel-independent placeholders, 'a', 'o', 'r', or 'l' for the active, other (inactive), right or left panel
    * @return a pointer to the right panel or NULL if no panel is needed.
@@ -222,24 +222,24 @@ protected:
    * @param useUrl true if the path's should be expanded to an URL instead of an local path
    * @return a list of all parameter
    */
-  TagStringList separateParameter( QString* const exp, bool useUrl );
+  TagStringList separateParameter( TQString* const exp, bool useUrl );
   /**
    * This finds the end of a placeholder, taking care of the parameter
    * @return the position where the placeholder ends
    */
-  int findEnd( const QString& str, int start );
+  int findEnd( const TQString& str, int start );
   
 	void setError(const Error &e) { _err=e; }
 	friend class exp_placeholder;
   
 private:
-  static QValueList <const exp_placeholder*>& _placeholder();
+  static TQValueList <const exp_placeholder*>& _placeholder();
 	Error _err;
-	QStringList resultList;
+	TQStringList resultList;
 };
 
 inline void exp_placeholder::setError(Expander& exp,const Error& e) { exp.setError(e); }
-inline QStringList exp_placeholder::splitEach(const TagString& s) { return Expander::splitEach(s); }
+inline TQStringList exp_placeholder::splitEach(const TagString& s) { return Expander::splitEach(s); }
 inline exp_placeholder::exp_placeholder() { Expander::_placeholder().push_back(this); }
 
 #endif // ifndef EXPANDER_H

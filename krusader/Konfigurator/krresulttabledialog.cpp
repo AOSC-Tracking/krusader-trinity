@@ -30,35 +30,35 @@
 
 #include "krresulttabledialog.h"
 
-KrResultTableDialog::KrResultTableDialog( QWidget *parent, DialogType type,
-  const QString& caption, const QString& heading, const QString& headerIcon,
-  const QString& hint)
-  : KDialogBase( parent, "KrSearchResultDialog", true, caption, KDialogBase::Help|KDialogBase::Ok,
+KrResultTableDialog::KrResultTableDialog( TQWidget *tqparent, DialogType type,
+  const TQString& caption, const TQString& heading, const TQString& headerIcon,
+  const TQString& hint)
+  : KDialogBase( tqparent, "KrSearchResultDialog", true, caption, KDialogBase::Help|KDialogBase::Ok,
                  KDialogBase::Ok, false )
 
 {
-  _page = new QWidget(this);
+  _page = new TQWidget(this);
   setMainWidget(_page);
-  _topLayout = new QVBoxLayout(_page, 0, spacingHint());
-  _topLayout->setAlignment( Qt::AlignTop );
+  _topLayout = new TQVBoxLayout(_page, 0, spacingHint());
+  _topLayout->tqsetAlignment( TQt::AlignTop );
 
   // +++ Heading +++
   // prepare the icon
-  _iconBox = new QHBox(_page, "_iconBox");
-  _iconLabel = new QLabel(_iconBox, "iconLabel");
+  _iconBox = new TQHBox(_page, "_iconBox");
+  _iconLabel = new TQLabel(_iconBox, "iconLabel");
   _iconLabel->setPixmap(krLoader->loadIcon(headerIcon, KIcon::Desktop, 32));
   _iconLabel->setMinimumWidth(fontMetrics().maxWidth()*20);
-  _iconLabel->setAlignment( Qt::AlignLeft | Qt::AlignVCenter );
-  _iconLabel->setFixedSize( _iconLabel->sizeHint() );
-  _headingLabel = new QLabel(heading, _iconBox);
-  QFont defFont = KGlobalSettings::generalFont();
+  _iconLabel->tqsetAlignment( TQt::AlignLeft | TQt::AlignVCenter );
+  _iconLabel->setFixedSize( _iconLabel->tqsizeHint() );
+  _headingLabel = new TQLabel(heading, _iconBox);
+  TQFont defFont = KGlobalSettings::generalFont();
   defFont.setBold(true);
   _headingLabel->setFont(defFont);
   _headingLabel->setIndent(10);
   _topLayout->addWidget(_iconBox);
 
   // +++ Add some space between heading and table +++
-  QSpacerItem* hSpacer1 = new QSpacerItem(0, 5);
+  TQSpacerItem* hSpacer1 = new TQSpacerItem(0, 5);
   _topLayout->addItem(hSpacer1);
 
   // +++ Table +++
@@ -77,19 +77,19 @@ KrResultTableDialog::KrResultTableDialog( QWidget *parent, DialogType type,
   _topLayout->addWidget(_resultTable);
 
   // +++ Separator +++
-  KSeparator* hSep = new KSeparator(QFrame::HLine, _page);
+  KSeparator* hSep = new KSeparator(TQFrame::HLine, _page);
   hSep->setMargin(5);
   _topLayout->addWidget(hSep);
 
   // +++ Hint +++
-  if(hint != QString::null) {
-    _hintLabel = new QLabel(hint, _page);
+  if(hint != TQString()) {
+    _hintLabel = new TQLabel(hint, _page);
     _hintLabel->setIndent(5);
-    _hintLabel->setAlignment(Qt::AlignRight);
+    _hintLabel->tqsetAlignment(TQt::AlignRight);
     _topLayout->addWidget(_hintLabel);
   }
 
-  this->setFixedSize( this->sizeHint() ); // make non-resizeable
+  this->setFixedSize( this->tqsizeHint() ); // make non-resizeable
 }
 
 KrResultTableDialog::~KrResultTableDialog()

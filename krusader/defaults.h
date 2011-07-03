@@ -58,7 +58,7 @@
 
 ////////////////////////[Look&Feel]
 // Filelist Font ///////
-#define _FilelistFont   new QFont(KGlobalSettings::generalFont())
+#define _FilelistFont   new TQFont(KGlobalSettings::generalFont())
 // Warn On Exit ////////
 #define _WarnOnExit     false 
 // Minimize To Tray ////
@@ -74,7 +74,7 @@
 // Html Min Font Size //
 #define _HtmlMinFontSize 12 
 // Filelist Icon Size //
-#define _FilelistIconSize QString("22") 
+#define _FilelistIconSize TQString("22") 
 // Mouse Selection /////
 #define _MouseSelection 0 // 0 - normal (shift+click, ctrl+click), 1 - left click, 2 - right click
 // Use fullpath tab names /////
@@ -197,23 +197,23 @@
 #define _TestArchives 	false 
 // Test Before Unpack ////
 #define _TestBeforeUnpack	true 
-// Supported Packers // ====> a QStringList of SYSTEM supported archives ( also new )
+// Supported Packers // ====> a TQStringList of SYSTEM supported archives ( also new )
 
 /////////////////////// [UserActions]
 // Terminal for UserActions ///////////
 #define _UserActions_Terminal      "konsole --noclose -e"
 // Normal font for output collection ///////
-#define _UserActions_NormalFont   new QFont(KGlobalSettings::generalFont())
+#define _UserActions_NormalFont   new TQFont(KGlobalSettings::generalFont())
 // Font for output collection with fixed width ///////
-#define _UserActions_FixedFont   new QFont(KGlobalSettings::fixedFont())
+#define _UserActions_FixedFont   new TQFont(KGlobalSettings::fixedFont())
 // Use for output collection  fixed width font as default ///////
 #define _UserActions_UseFixedFont   false
 
 /////////////////////// [Private]
 // Start Position /////
-#define _StartPosition new QPoint(QApplication::desktop()->width()/2 - mainView->sizeHint().width()/2,QApplication::desktop()->height()/2 - 250) 
+#define _StartPosition new TQPoint(TQApplication::desktop()->width()/2 - mainView->tqsizeHint().width()/2,TQApplication::desktop()->height()/2 - 250) 
 // Start Size /////////
-#define _StartSize     new QSize(mainView->sizeHint().width(),500) 
+#define _StartSize     new TQSize(mainView->tqsizeHint().width(),500) 
 // Panel Size /////////
 #define _PanelSize     0 
 // Terminal Size //////
@@ -283,7 +283,7 @@
 
 /////////////////////// [Custom Selection Mode]
 // QT Selection
-#define _QtSelection			false
+#define _TQtSelection			false
 // Left Selects
 #define _LeftSelects			true
 // Left Preserves

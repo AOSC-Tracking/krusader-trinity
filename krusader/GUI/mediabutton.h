@@ -31,35 +31,36 @@
 #ifndef MEDIABUTTON_H
 #define MEDIABUTTON_H
 
-#include <qwidget.h>
-#include <qtoolbutton.h>
+#include <tqwidget.h>
+#include <tqtoolbutton.h>
 #include <kurl.h>
 #include <kio/jobclasses.h>
-#include <qvaluelist.h>
+#include <tqvaluelist.h>
 #include <kmountpoint.h>
-#include <qtimer.h>
+#include <tqtimer.h>
 
 /**
   *@author Csaba Karai
   */
 
-class QPopupMenu;
+class TQPopupMenu;
 class KMountPoint;
 
-class MediaButton : public QToolButton  {
+class MediaButton : public TQToolButton  {
    Q_OBJECT
+  TQ_OBJECT
 public: 
-  MediaButton(QWidget *parent=0, const char *name=0);
+  MediaButton(TQWidget *tqparent=0, const char *name=0);
   ~MediaButton();
 
-  QString detectType( KMountPoint *mp );
+  TQString detectType( KMountPoint *mp );
 
 public slots:
   void slotAboutToShow();
   void slotAboutToHide();
   void slotTimeout();
   void slotPopupActivated( int );
-  void gettingSpaceData(const QString &mountPoint, unsigned long kBSize, unsigned long kBUsed, unsigned long kBAvail);
+  void gettingSpaceData(const TQString &mountPoint, unsigned long kBSize, unsigned long kBUsed, unsigned long kBAvail);
   void openPopup();
   void slotEntries( KIO::Job*, const KIO::UDSEntryList& );
   void slotListResult( KIO::Job* );
@@ -68,7 +69,7 @@ signals:
   void openUrl(const KURL&);
 
 protected:
-  bool eventFilter( QObject *o, QEvent *e );
+  bool eventFilter( TQObject *o, TQEvent *e );
 
 private:
   void createListWithMedia();
@@ -83,8 +84,8 @@ private:
 
   void addMountPoint( KMountPoint *mp, bool isMounted );
 
-  QPopupMenu *popupMenu;
-  QPopupMenu *rightMenu;
+  TQPopupMenu *popupMenu;
+  TQPopupMenu *rightMenu;
 
   bool        hasMedia;
   bool        busy;
@@ -93,14 +94,14 @@ private:
   bool        newTabAfterMount;
   int         maxMountWait;
 
-  QValueList<KURL>    urls;
-  QValueList<KURL>    mediaUrls;
-  QValueList<QString> mimes;
-  QValueList<bool>    quasiMounted;
+  TQValueList<KURL>    urls;
+  TQValueList<KURL>    mediaUrls;
+  TQValueList<TQString> mimes;
+  TQValueList<bool>    quasiMounted;
 
-  QString extraSpaces;  //prevents from increasing the size of the widget
+  TQString extraSpaces;  //prevents from increasing the size of the widget
 
-  QTimer      mountCheckerTimer;
+  TQTimer      mountCheckerTimer;
 };
 
 #endif /* MEDIABUTTON_H */

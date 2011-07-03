@@ -1,7 +1,7 @@
 #include "queue_mgr.h"
 
-const QString QueueManager::defaultName="default";
-QMap<QString, Queue*> QueueManager::_queues;
+const TQString QueueManager::defaultName="default";
+TQMap<TQString, Queue*> QueueManager::_queues;
 
 QueueManager::QueueManager()
 {
@@ -11,20 +11,20 @@ QueueManager::QueueManager()
 
 QueueManager::~QueueManager() 
 {
-	QMap<QString, Queue*>::iterator it;
+	TQMap<TQString, Queue*>::iterator it;
  	for (it = _queues.begin(); it != _queues.end(); ++it )
  		delete it.data();
 	_queues.clear();
 }
 
-Queue* QueueManager::queue(const QString& queueName)
+Queue* QueueManager::queue(const TQString& queueName)
 {
-	if (!_queues.contains(queueName))
+	if (!_queues.tqcontains(queueName))
 		return 0;
 	return _queues[queueName];
 }
 
-QValueList<QString> QueueManager::queues() const
+TQValueList<TQString> QueueManager::queues() const
 {
 	return _queues.keys();
 }

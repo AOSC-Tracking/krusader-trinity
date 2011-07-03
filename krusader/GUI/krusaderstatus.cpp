@@ -29,18 +29,18 @@
  ***************************************************************************/
 
 // Krusader includes
-#include <qfontmetrics.h>
+#include <tqfontmetrics.h>
 #include "krusaderstatus.h"
 #include "../resources.h"
 
 
-KrusaderStatus::KrusaderStatus(QWidget *parent, const char *name ):
-  KStatusBar(parent,name){
+KrusadertqStatus::KrusadertqStatus(TQWidget *tqparent, const char *name ):
+  KStatusBar(tqparent,name){
 	insertItem(i18n("Ready."), S_READY_ID);
-	setMaximumHeight(QFontMetrics(font()).height()+2);
+	setMaximumHeight(TQFontMetrics(font()).height()+2);
 }
 
-KrusaderStatus::~KrusaderStatus(){
+KrusadertqStatus::~KrusadertqStatus(){
 }
 
 #include "krusaderstatus.moc"

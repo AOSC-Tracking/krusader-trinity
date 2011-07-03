@@ -31,11 +31,11 @@
 #ifndef __SPLITTERGUI_H__
 #define __SPLITTERGUI_H__
 
-#include <qdialog.h>
-#include <qstring.h>
-#include <qspinbox.h>
-#include <qvalidator.h>
-#include <qcombobox.h>
+#include <tqdialog.h>
+#include <tqstring.h>
+#include <tqspinbox.h>
+#include <tqvalidator.h>
+#include <tqcombobox.h>
 #include <kurlrequester.h>
 #include <kio/global.h>
 
@@ -43,58 +43,24 @@
 
 struct PredefinedDevice
 {
-  QString name;
+  TQString name;
   KIO::filesize_t capacity;
 };
 
-class SplitterGUI : QDialog
-{
-  Q_OBJECT
-
-public:
-  class   SplitterSpinBox;
-  
-private:
-  int                             predefinedDeviceNum;
-  KIO::filesize_t                 userDefinedSize;
-  int                             lastSelectedDevice;
-  int                             resultCode;
-
-  static PredefinedDevice predefinedDevices[];
-
-  SplitterSpinBox *spinBox;
-  QComboBox       *deviceCombo;
-  QComboBox       *sizeCombo;
-  KURLRequester   *urlReq;
-  
-public:
-  SplitterGUI( QWidget* parent,  KURL fileURL, KURL defaultDir );
-
-  KURL    getDestinationDir()     {return vfs::fromPathOrURL( urlReq->url() );}
-  KIO::filesize_t getSplitSize()  {return spinBox->longValue();}
-  int     result()                {return resultCode;}
-
-public slots:
-  virtual void sizeComboActivated( int item );
-  virtual void predefinedComboActivated( int item );
-  virtual void splitPressed();
-
-protected:
-  virtual void keyPressEvent( QKeyEvent *e );
-
-public:
-  class SplitterSpinBox : public QSpinBox
+  class SplitterSpinBox : public TQSpinBox
   {
+    Q_OBJECT
+    TQ_OBJECT
   private:
     KIO::filesize_t division;
     KIO::filesize_t value;
     
   public:
-    SplitterSpinBox ( QWidget * parent = 0, const char * name = 0 ) : QSpinBox( parent, name ), division( 1 ), value( 1 )
+    SplitterSpinBox ( TQWidget * tqparent = 0, const char * name = 0 ) : TQSpinBox( tqparent, name ), division( 1 ), value( 1 )
     {
       setMaxValue( 0x7FFFFFFF );     /* setting the minimum and maximum values */
       setMinValue( 1 );
-      QDoubleValidator *dval = new QDoubleValidator( this );
+      TQDoubleValidator *dval = new TQDoubleValidator( TQT_TQOBJECT(this) );
       setValidator ( dval );
     }
 
@@ -112,9 +78,9 @@ public:
       return val;
     }
     
-    QString mapValueToText( int )
+    TQString mapValueToText( int )
     {
-      QString frac("");
+      TQString frac("");
       
       KIO::filesize_t int_part  = value / division;
       KIO::filesize_t frac_mod = value % division;
@@ -125,14 +91,14 @@ public:
 
         if( frac_part )
         {
-          frac = QString( "%1" ).arg( frac_part ).rightJustify( 3, '0' );
+          frac = TQString( "%1" ).tqarg( frac_part ).rightJustify( 3, '0' );
           frac = "." + frac;
           while( frac.endsWith("0") )
             frac.truncate( frac.length() - 1 );
         }
       }
 
-      return QString( "%1%2" ).arg( int_part ).arg( frac );
+      return TQString( "%1%2" ).tqarg( int_part ).tqarg( frac );
     }
 
     int mapTextToValue( bool * )
@@ -173,6 +139,42 @@ public:
       updateDisplay();     
     }
   };
+
+class SplitterGUI : TQDialog
+{
+  Q_OBJECT
+  TQ_OBJECT
+  
+private:
+  int                             predefinedDeviceNum;
+  KIO::filesize_t                 userDefinedSize;
+  int                             lastSelectedDevice;
+  int                             resultCode;
+
+  static PredefinedDevice predefinedDevices[];
+
+  SplitterSpinBox *spinBox;
+  TQComboBox       *deviceCombo;
+  TQComboBox       *sizeCombo;
+  KURLRequester   *urlReq;
+  
+public:
+  SplitterGUI( TQWidget* tqparent,  KURL fileURL, KURL defaultDir );
+
+  KURL    getDestinationDir()     {return vfs::fromPathOrURL( urlReq->url() );}
+  KIO::filesize_t getSplitSize()  {return spinBox->longValue();}
+  int     result()                {return resultCode;}
+
+public slots:
+  virtual void sizeComboActivated( int item );
+  virtual void predefinedComboActivated( int item );
+  virtual void splitPressed();
+
+protected:
+  virtual void keyPressEvent( TQKeyEvent *e );
+
+public:
+
 };
 
 #endif /* __SPLITTERGUI_H__ */

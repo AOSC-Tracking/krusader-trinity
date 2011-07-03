@@ -153,66 +153,66 @@ private:
 
 
 class Directory;
-class QString;
+class TQString;
 class KURL;
 
 class File
 {
 protected:
   Directory        *m_parent;   //0 if this is treeRoot  
-  QString           m_name;     //< file name
-  QString           m_directory;//< the directory of the file
+  TQString           m_name;     //< file name
+  TQString           m_directory;//< the directory of the file
   FileSize          m_size;     //< size with subdirectories
   FileSize          m_ownSize;  //< size without subdirectories
   mode_t            m_mode;     //< file mode
-  QString           m_owner;    //< file owner name
-  QString           m_group;    //< file group name
-  QString           m_perm;     //< file permissions string
+  TQString           m_owner;    //< file owner name
+  TQString           m_group;    //< file group name
+  TQString           m_perm;     //< file permissions string
   time_t            m_time;     //< file modification in time_t format
   bool              m_symLink;  //< true if the file is a symlink
-  QString           m_mimeType; //< file mimetype
+  TQString           m_mimeType; //< file mimetype
   bool              m_excluded; //< flag if the file is excluded from du
   int               m_percent;  //< percent flag
 
 public:
-  File( Directory *parentIn, const QString &nameIn, const QString &dir, FileSize sizeIn, mode_t modeIn,
-        const QString &ownerIn, const QString &groupIn, const QString &permIn, time_t timeIn, bool symLinkIn,
-        const QString &mimeTypeIn )
-  : m_parent( parentIn ), m_name( nameIn ), m_directory( dir ), m_size( sizeIn ), m_ownSize( sizeIn ), m_mode( modeIn ), 
+  File( Directory *tqparentIn, const TQString &nameIn, const TQString &dir, FileSize sizeIn, mode_t modeIn,
+        const TQString &ownerIn, const TQString &groupIn, const TQString &permIn, time_t timeIn, bool symLinkIn,
+        const TQString &mimeTypeIn )
+  : m_parent( tqparentIn ), m_name( nameIn ), m_directory( dir ), m_size( sizeIn ), m_ownSize( sizeIn ), m_mode( modeIn ), 
     m_owner( ownerIn ), m_group( groupIn ), m_perm( permIn ), m_time( timeIn ), m_symLink( symLinkIn ), 
     m_mimeType( mimeTypeIn ), m_excluded( false ), m_percent( -1 ) {}
     
-  File( const QString &nameIn, FileSize sizeIn )
-  : m_parent( 0 ), m_name( nameIn ), m_directory( QString::null ), m_size( sizeIn ), m_ownSize( sizeIn ), m_mode( 0 ), 
-    m_owner( QString::null ), m_group( QString::null ), m_perm( QString::null ), m_time( -1 ), 
-    m_symLink( false ), m_mimeType( QString::null ), m_excluded( false ), m_percent( -1 ) 
+  File( const TQString &nameIn, FileSize sizeIn )
+  : m_parent( 0 ), m_name( nameIn ), m_directory( TQString() ), m_size( sizeIn ), m_ownSize( sizeIn ), m_mode( 0 ), 
+    m_owner( TQString() ), m_group( TQString() ), m_perm( TQString() ), m_time( -1 ), 
+    m_symLink( false ), m_mimeType( TQString() ), m_excluded( false ), m_percent( -1 ) 
   {
   }
   
   virtual ~File() {}
       
-  inline const QString &  name()                const  {return m_name;}
-  inline const QString &  directory()           const  {return m_directory;}
+  inline const TQString &  name()                const  {return m_name;}
+  inline const TQString &  directory()           const  {return m_directory;}
   inline const FileSize   size()                const  {return m_excluded ? 0 : m_size;}
   inline const FileSize   ownSize()             const  {return m_excluded ? 0 : m_ownSize;}
   inline const mode_t     mode()                const  {return m_mode;}
-  inline const QString &  owner()               const  {return m_owner;}
-  inline const QString &  group()               const  {return m_group;}
-  inline const QString &  perm()                const  {return m_perm;}
+  inline const TQString &  owner()               const  {return m_owner;}
+  inline const TQString &  group()               const  {return m_group;}
+  inline const TQString &  perm()                const  {return m_perm;}
   inline const time_t     time()                const  {return m_time;}
-  inline const QString &  mime()                const  {return m_mimeType;}
+  inline const TQString &  mime()                const  {return m_mimeType;}
   inline const bool       isSymLink()           const  {return m_symLink;}
   virtual const bool      isDir()               const  {return false;}
   inline const bool       isExcluded()          const  {return m_excluded;}
   inline void             exclude( bool flag )         {m_excluded = flag;}
   inline const int        intPercent()          const  {return m_percent;}
-  inline const QString    percent()             const  {if( m_percent < 0 )
+  inline const TQString    percent()             const  {if( m_percent < 0 )
                                                          return "INV";
-                                                        QString buf; 
+                                                        TQString buf; 
                                                         buf.sprintf( "%d.%02d%%", m_percent / 100, m_percent % 100 );
                                                         return buf;}
   inline void             setPercent( int p )          {m_percent = p;}  
-  inline const Directory* parent()              const  {return m_parent;}
+  inline const Directory* tqparent()              const  {return m_parent;}
   
   inline void setSizes( KIO::filesize_t totalSize, KIO::filesize_t ownSize )
   {
@@ -225,10 +225,10 @@ public:
   static const FileSize DENOMINATOR[4];
   static const char PREFIX[5][2];
 
-  QString fullPath( const Directory* = 0 ) const;
-  QString humanReadableSize( UnitPrefix key = mega ) const;
+  TQString fullPath( const Directory* = 0 ) const;
+  TQString humanReadableSize( UnitPrefix key = mega ) const;
 
-  static QString humanReadableSize( FileSize size, UnitPrefix Key = mega );
+  static TQString humanReadableSize( FileSize size, UnitPrefix Key = mega );
   
   friend class Directory;
 };
@@ -238,14 +238,14 @@ public:
 class Directory : public Chain<File>, public File
 {
 public:
-  Directory( Directory *parentIn, const QString &nameIn, const QString &dir, FileSize sizeIn, mode_t modeIn,
-             const QString &ownerIn, const QString &groupIn, const QString &permIn, time_t timeIn, bool symLinkIn, 
-             const QString &mimeTypeIn )
-  : File( parentIn, nameIn, dir, sizeIn, modeIn, ownerIn, groupIn, permIn, timeIn, symLinkIn, mimeTypeIn ),
+  Directory( Directory *tqparentIn, const TQString &nameIn, const TQString &dir, FileSize sizeIn, mode_t modeIn,
+             const TQString &ownerIn, const TQString &groupIn, const TQString &permIn, time_t timeIn, bool symLinkIn, 
+             const TQString &mimeTypeIn )
+  : File( tqparentIn, nameIn, dir, sizeIn, modeIn, ownerIn, groupIn, permIn, timeIn, symLinkIn, mimeTypeIn ),
     m_fileCount( 0 ) 
   {}
  
-  Directory( const QString &name, QString url ) : File( name, 0 ), m_fileCount( 0 )
+  Directory( const TQString &name, TQString url ) : File( name, 0 ), m_fileCount( 0 )
   {
     m_directory = url;
   }
@@ -257,11 +257,11 @@ public:
   {
      ++m_fileCount;
      
-     Directory *parent = m_parent;
-     while( parent )
+     Directory *tqparent = m_parent;
+     while( tqparent )
      {
-       parent->m_fileCount++;
-       parent = parent->m_parent;
+       tqparent->m_fileCount++;
+       tqparent = tqparent->m_parent;
      }
      
      Chain<File>::append( p );
@@ -275,11 +275,11 @@ public:
       {
         --m_fileCount;
         
-        Directory *parent = m_parent;
-        while( parent )
+        Directory *tqparent = m_parent;
+        while( tqparent )
         {
-          parent->m_fileCount--;
-          parent = parent->m_parent;
+          tqparent->m_fileCount--;
+          tqparent = tqparent->m_parent;
         }
         
         it.remove();

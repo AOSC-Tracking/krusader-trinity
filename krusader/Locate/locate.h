@@ -35,11 +35,12 @@
 #include <kcombobox.h>
 #include <klistview.h>
 #include <kprocess.h>
-#include <qcheckbox.h>
+#include <tqcheckbox.h>
 
 class LocateDlg : public KDialogBase
 {
   Q_OBJECT
+  TQ_OBJECT
   
 public:
   LocateDlg();
@@ -56,17 +57,17 @@ public:
 public slots:
   void              processStdout(KProcess *, char *, int);
   void              processStderr(KProcess *proc, char *buffer, int length);
-  void              slotRightClick(QListViewItem *);
-  void              slotDoubleClick(QListViewItem *);
+  void              slotRightClick(TQListViewItem *);
+  void              slotDoubleClick(TQListViewItem *);
   void              updateFinished();
   
 protected:
-  virtual void      keyPressEvent( QKeyEvent * );
+  virtual void      keyPressEvent( TQKeyEvent * );
   
 private:
-  void              operate( QListViewItem *item, int task );
+  void              operate( TQListViewItem *item, int task );
 
-  bool              find();
+  bool              tqfind();
   void              nextLine();
 
   bool              stopping;
@@ -77,22 +78,22 @@ private:
   
   bool              isFeedToListBox;
 
-  QString           pattern;
+  TQString           pattern;
   
   KHistoryCombo    *locateSearchFor;
   KListView        *resultList;
-  QString           remaining;
+  TQString           remaining;
   KListViewItem    *lastItem;
 
-  QString           collectedErr;
+  TQString           collectedErr;
   
   long              findOptions;
-  QString           findPattern;
+  TQString           findPattern;
   KListViewItem    *findCurrentItem;
 
-  QCheckBox        *dontSearchInPath;
-  QCheckBox        *existingFiles;
-  QCheckBox        *caseSensitive;
+  TQCheckBox        *dontSearchInPath;
+  TQCheckBox        *existingFiles;
+  TQCheckBox        *caseSensitive;
 
   static KProcess  *updateProcess;
 };

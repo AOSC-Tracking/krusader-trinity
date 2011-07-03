@@ -31,12 +31,12 @@
 #ifndef KRRESULTTABLEDIALOG_H
 #define KRRESULTTABLEDIALOG_H
 
-#include <qlabel.h>
-#include <qvbox.h>
-#include <qhbox.h>
-#include <qlayout.h>
-#include <qstringlist.h>
-#include <qvaluevector.h>
+#include <tqlabel.h>
+#include <tqvbox.h>
+#include <tqhbox.h>
+#include <tqlayout.h>
+#include <tqstringlist.h>
+#include <tqvaluevector.h>
 
 #include <kdialogbase.h>
 #include <kiconloader.h>
@@ -60,24 +60,24 @@ public:
     Tool = 2
   };
 
-  KrResultTableDialog(QWidget *parent, DialogType type, const QString& caption, const QString& heading, const QString& headerIcon=QString::null, const QString& hint=QString::null);
+  KrResultTableDialog(TQWidget *tqparent, DialogType type, const TQString& caption, const TQString& heading, const TQString& headerIcon=TQString(), const TQString& hint=TQString());
   virtual ~KrResultTableDialog();
 
-  const QString& getHeading() const { return _heading; }
-  const QString& getHint() const { return _hint; }
-  void setHeading(const QString& s) { _heading = s; }
-  void setHint(const QString& s) { _hint = s; }
+  const TQString& getHeading() const { return _heading; }
+  const TQString& getHint() const { return _hint; }
+  void setHeading(const TQString& s) { _heading = s; }
+  void setHint(const TQString& s) { _hint = s; }
 
 protected:
-  QString _heading;
-  QString _hint;
+  TQString _heading;
+  TQString _hint;
 
-  QLabel* _headingLabel;
-  QLabel* _iconLabel;
-  QLabel* _hintLabel;
-  QHBox* _iconBox;
-  QWidget* _page;
-  QVBoxLayout* _topLayout;
+  TQLabel* _headingLabel;
+  TQLabel* _iconLabel;
+  TQLabel* _hintLabel;
+  TQHBox* _iconBox;
+  TQWidget* _page;
+  TQVBoxLayout* _topLayout;
   KrResultTable* _resultTable;
 };
 

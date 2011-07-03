@@ -1,6 +1,6 @@
 #include "queue.h"
 
-Queue::Queue(const QString& name): _name(name)
+Queue::Queue(const TQString& name): _name(name)
 {
 }
 

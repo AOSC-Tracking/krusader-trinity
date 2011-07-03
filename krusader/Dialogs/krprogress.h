@@ -21,7 +21,7 @@
 #ifndef __kr_progress_h__
 #define __kr_progress_h__
 
-#include <qlabel.h>
+#include <tqlabel.h>
 
 #include <kio/global.h>
 
@@ -30,10 +30,11 @@
 
 #include <kio/progressbase.h>
 
-#include <qobject.h>
+#include <tqobject.h>
 
 class KrProgress : public KIO::ProgressBase {
   Q_OBJECT
+  TQ_OBJECT
 public:
 
   KrProgress(KIO::Job* job);
@@ -50,10 +51,10 @@ public slots:
 
   virtual void slotSpeed( KIO::Job*, unsigned long bytes_per_second );
   virtual void slotPercent( KIO::Job*, unsigned long percent );
-  virtual void slotInfoMessage( KIO::Job*, const QString & msg );
+  virtual void slotInfoMessage( KIO::Job*, const TQString & msg );
 	
 	virtual void slotStop();
-  virtual void closeEvent( QCloseEvent* );
+  virtual void closeEvent( TQCloseEvent* );
 
 protected:
   void showTotals();
@@ -61,11 +62,11 @@ protected:
 
   KSqueezedTextLabel* sourceLabel;
   KSqueezedTextLabel* destLabel;
-  QLabel* progressLabel;
-  QLabel* destInvite;
-  QLabel* speedLabel;
-  QLabel* sizeLabel;
-  QLabel* resumeLabel;
+  TQLabel* progressLabel;
+  TQLabel* destInvite;
+  TQLabel* speedLabel;
+  TQLabel* sizeLabel;
+  TQLabel* resumeLabel;
 
   KProgress* m_pProgressBar;
 

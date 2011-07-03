@@ -31,31 +31,31 @@
 #include "kgdependencies.h"
 #include "../krservices.h"
 #include "../krusader.h"
-#include <qtabwidget.h>
+#include <tqtabwidget.h>
 #include <klocale.h>
-#include <qhbox.h>
+#include <tqhbox.h>
 #include <kmessagebox.h>
 
 #define PAGE_GENERAL   0
 #define PAGE_PACKERS   1
 #define PAGE_CHECKSUM  2
 
-KgDependencies::KgDependencies( bool first, QWidget* parent,  const char* name ) :
-      KonfiguratorPage( first, parent, name )
+KgDependencies::KgDependencies( bool first, TQWidget* tqparent,  const char* name ) :
+      KonfiguratorPage( first, tqparent, name )
 {
-  QGridLayout *kgDependenciesLayout = new QGridLayout( parent );
+  TQGridLayout *kgDependenciesLayout = new TQGridLayout( tqparent );
   kgDependenciesLayout->setSpacing( 6 );
 
   //  ---------------------------- GENERAL TAB -------------------------------------
-  tabWidget = new QTabWidget( parent, "tabWidget" );
+  tabWidget = new TQTabWidget( tqparent, "tabWidget" );
 
-  QWidget *general_tab = new QWidget( tabWidget, "tab" );
+  TQWidget *general_tab = new TQWidget( tabWidget, "tab" );
   tabWidget->insertTab( general_tab, i18n( "General" ) );
 
-  QGridLayout *pathsGrid = new QGridLayout( general_tab );
+  TQGridLayout *pathsGrid = new TQGridLayout( general_tab );
   pathsGrid->setSpacing( 6 );
   pathsGrid->setMargin( 11 );
-  pathsGrid->setAlignment( Qt::AlignTop );
+  pathsGrid->tqsetAlignment( TQt::AlignTop );
   
   addApplication( "df",       pathsGrid, 0, general_tab, PAGE_GENERAL );
   addApplication( "eject",    pathsGrid, 1, general_tab, PAGE_GENERAL );
@@ -71,13 +71,13 @@ KgDependencies::KgDependencies( bool first, QWidget* parent,  const char* name )
   addApplication( "updatedb", pathsGrid,11, general_tab, PAGE_GENERAL );
 
   //  ---------------------------- PACKERS TAB -------------------------------------
-  QWidget *packers_tab = new QWidget( tabWidget, "tab_3" );
+  TQWidget *packers_tab = new TQWidget( tabWidget, "tab_3" );
   tabWidget->insertTab( packers_tab, i18n( "Packers" ) );
 
-  QGridLayout *archGrid1 = new QGridLayout( packers_tab );
+  TQGridLayout *archGrid1 = new TQGridLayout( packers_tab );
   archGrid1->setSpacing( 6 );
   archGrid1->setMargin( 11 );
-  archGrid1->setAlignment( Qt::AlignTop );
+  archGrid1->tqsetAlignment( TQt::AlignTop );
 
   addApplication( "7z",    archGrid1, 0, packers_tab, PAGE_PACKERS, "7za" );
   addApplication( "arj",   archGrid1, 1, packers_tab, PAGE_PACKERS );
@@ -95,13 +95,13 @@ KgDependencies::KgDependencies( bool first, QWidget* parent,  const char* name )
   addApplication( "zip",   archGrid1,13, packers_tab, PAGE_PACKERS );
 
   //  ---------------------------- CHECKSUM TAB -------------------------------------
-  QWidget *checksum_tab = new QWidget( tabWidget, "tab_4" );
+  TQWidget *checksum_tab = new TQWidget( tabWidget, "tab_4" );
   tabWidget->insertTab( checksum_tab, i18n( "Checksum Utilities" ) );
 
-  QGridLayout *archGrid2 = new QGridLayout( checksum_tab );
+  TQGridLayout *archGrid2 = new TQGridLayout( checksum_tab );
   archGrid2->setSpacing( 6 );
   archGrid2->setMargin( 11 );
-  archGrid2->setAlignment( Qt::AlignTop );
+  archGrid2->tqsetAlignment( TQt::AlignTop );
 
   addApplication( "md5sum",         archGrid2, 0, checksum_tab, PAGE_CHECKSUM );
   addApplication( "sha1sum",        archGrid2, 1, checksum_tab, PAGE_CHECKSUM );
@@ -119,12 +119,12 @@ KgDependencies::KgDependencies( bool first, QWidget* parent,  const char* name )
   kgDependenciesLayout->addWidget( tabWidget, 0, 0 );
 }
 
-void KgDependencies::addApplication( QString name, QGridLayout *grid, int row, QWidget *parent, int page, QString additionalList )
+void KgDependencies::addApplication( TQString name, TQGridLayout *grid, int row, TQWidget *tqparent, int page, TQString additionalList )
 {
-  QString dflt = KrServices::fullPathName( name ); /* try to autodetect the full path name */
+  TQString dflt = KrServices::fullPathName( name ); /* try to autodetect the full path name */
 
   if( dflt.isEmpty() ) {
-    QStringList list = QStringList::split( ',', additionalList );
+    TQStringList list = TQStringList::split( ',', additionalList );
     for( unsigned i=0; i != list.count(); i++ )
       if( !KrServices::fullPathName( list[ i ] ).isEmpty() ) {
         dflt = KrServices::fullPathName( list[ i ] );
@@ -132,32 +132,32 @@ void KgDependencies::addApplication( QString name, QGridLayout *grid, int row, Q
       }
   }
 
-  addLabel( grid, row, 0, name, parent, (QString( "label:" )+name).ascii() );
+  addLabel( grid, row, 0, name, tqparent, (TQString( "label:" )+name).ascii() );
 
-  KonfiguratorURLRequester *fullPath = createURLRequester( "Dependencies", name, dflt, parent, false, page );
-  connect( fullPath->extension(), SIGNAL( applyManually( QObject *, QString, QString ) ),
-           this, SLOT( slotApply( QObject *, QString, QString ) ) );
+  KonfiguratorURLRequester *fullPath = createURLRequester( "Dependencies", name, dflt, tqparent, false, page );
+  connect( fullPath->extension(), TQT_SIGNAL( applyManually( TQObject *, TQString, TQString ) ),
+           this, TQT_SLOT( slotApply( TQObject *, TQString, TQString ) ) );
   grid->addWidget( fullPath, row, 1 );
 }
 
-void KgDependencies::slotApply( QObject *obj, QString cls, QString name )
+void KgDependencies::slotApply( TQObject *obj, TQString cls, TQString name )
 {
   KonfiguratorURLRequester *urlRequester = (KonfiguratorURLRequester *) obj;
 
   krConfig->setGroup( cls );
   krConfig->writeEntry( name, urlRequester->url() );
 
-  QString usedPath = KrServices::fullPathName( name );
+  TQString usedPath = KrServices::fullPathName( name );
 
   if( urlRequester->url() != usedPath )
   {
     krConfig->writeEntry( name, usedPath );
     if( usedPath.isEmpty() )
       KMessageBox::error( this, i18n( "The %1 path is incorrect, no valid path found." )
-                          .arg( urlRequester->url() ) );
+                          .tqarg( urlRequester->url() ) );
     else
       KMessageBox::error( this, i18n( "The %1 path is incorrect, %2 used instead." )
-                          .arg( urlRequester->url() ).arg( usedPath ) );
+                          .tqarg( urlRequester->url() ).tqarg( usedPath ) );
     urlRequester->setURL( usedPath );
   }
 }

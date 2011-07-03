@@ -7,7 +7,7 @@
 #include "listpanel.h"
 #include "krpreviewpopup.h"
 #include "../UserAction/useractionpopupmenu.h"
-#ifdef __LIBKONQ__
+#ifdef __LIBKONTQ__
 #include <konq_popupmenu.h>
 #include <konqbookmarkmanager.h>
 #endif
@@ -15,11 +15,12 @@
 // should be renamed to KrContextMenu or similar
 class KrPopupMenu : public KPopupMenu {
 	Q_OBJECT
+  TQ_OBJECT
 public:
-	static void run(const QPoint &pos, ListPanel *panel);
+	static void run(const TQPoint &pos, ListPanel *panel);
 
 protected:	
-	KrPopupMenu(ListPanel *thePanel, QWidget *parent=0);
+	KrPopupMenu(ListPanel *thePanel, TQWidget *tqparent=0);
 	~KrPopupMenu();
 	void performAction(int id);
 	void addEmptyMenuEntries(); // adds the choices for a menu without selected items
@@ -28,11 +29,11 @@ protected:
 	enum ID {
 		OPEN_ID,
 		OPEN_WITH_ID,
-		OPEN_KONQ_ID,
+		OPEN_KONTQ_ID,
 		OPEN_TERM_ID,
 		OPEN_TAB_ID,
 		PREVIEW_ID,
-		KONQ_MENU_ID,
+		KONTQ_MENU_ID,
 		CHOOSE_ID,
 		DELETE_ID,
 		COPY_ID,
@@ -68,8 +69,8 @@ private:
    KrViewItemList items; // list of selected items
    KrViewItem *item; // the (first) selected item
    KFileItemList _items;
-   QValueList<KServiceOffer> offers;
-#ifdef __LIBKONQ__
+   TQValueList<KServiceOffer> offers;
+#ifdef __LIBKONTQ__
    KonqPopupMenu *konqMenu;
 #endif
 };

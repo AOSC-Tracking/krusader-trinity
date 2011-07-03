@@ -32,14 +32,15 @@
 #define __COMBINER_H__
 
 #include "crc32.h"
-#include <qstring.h>
-#include <qprogressdialog.h>
+#include <tqstring.h>
+#include <tqprogressdialog.h>
 #include <kurl.h>
 #include <kio/jobclasses.h>
 
-class Combiner : public QProgressDialog
+class Combiner : public TQProgressDialog
 {
   Q_OBJECT
+  TQ_OBJECT
 
 private:
   KURL            splURL;
@@ -49,16 +50,16 @@ private:
   KURL            baseURL;
   KURL            destinationURL;
   CRC32          *crcContext;
-  QByteArray      transferArray;
+  TQByteArray      transferArray;
 
-  QString         splitFile;
-  QString         error;
+  TQString         splitFile;
+  TQString         error;
 
 
   bool            hasValidSplitFile;
-  QString         expectedFileName;
+  TQString         expectedFileName;
   KIO::filesize_t expectedSize;
-  QString         expectedCrcSum;
+  TQString         expectedCrcSum;
 
   int             fileCounter;
   int             permissions;
@@ -70,17 +71,17 @@ private:
   bool            unixNaming;
   
 public:
-  Combiner( QWidget* parent,  KURL baseURLIn, KURL destinationURLIn, bool unixNamingIn=false );
+  Combiner( TQWidget* tqparent,  KURL baseURLIn, KURL destinationURLIn, bool unixNamingIn=false );
   ~Combiner();
 
   void combine();
 
 public slots:
-  void combineSplitFileDataReceived(KIO::Job *, const QByteArray &byteArray);
+  void combineSplitFileDataReceived(KIO::Job *, const TQByteArray &byteArray);
   void combineSplitFileFinished(KIO::Job *job);
-  void combineDataReceived(KIO::Job *, const QByteArray &);
+  void combineDataReceived(KIO::Job *, const TQByteArray &);
   void combineReceiveFinished(KIO::Job *);
-  void combineDataSend(KIO::Job *, QByteArray &);
+  void combineDataSend(KIO::Job *, TQByteArray &);
   void combineSendFinished(KIO::Job *);
   void combineWritePercent(KIO::Job *, unsigned long);
 

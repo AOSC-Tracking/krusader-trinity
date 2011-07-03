@@ -32,94 +32,97 @@ A
 #ifndef KRSPECIALWIDGETS_H
 #define KRSPECIALWIDGETS_H
 
-#include <qwidget.h>
-#include <qpainter.h>
-#include <qcolor.h>
-#include <qptrlist.h>
+#include <tqwidget.h>
+#include <tqpainter.h>
+#include <tqcolor.h>
+#include <tqptrlist.h>
 #include <klineedit.h>
-#include <qevent.h>
+#include <tqevent.h>
 #include <kio/global.h>
 
 class KRPieSlice;
 
-class KRPie : public QWidget {
+class KRPie : public TQWidget {
     Q_OBJECT
+  TQ_OBJECT
   public:
-    KRPie( KIO::filesize_t _totalSize, QWidget *parent = 0 );
-    void addSlice( KIO::filesize_t size, QString label );
+    KRPie( KIO::filesize_t _totalSize, TQWidget *tqparent = 0 );
+    void addSlice( KIO::filesize_t size, TQString label );
 
   protected:
-    void paintEvent( QPaintEvent * );
+    void paintEvent( TQPaintEvent * );
 
   private:
-    QList<KRPieSlice> slices;
+    TQList<KRPieSlice> slices;
     KIO::filesize_t totalSize, sizeLeft;
-    static QColor colors[ 12 ];
+    static TQColor colors[ 12 ];
 };
 
-class KRFSDisplay : public QWidget {
+class KRFSDisplay : public TQWidget {
     Q_OBJECT
+  TQ_OBJECT
   public:
     // this constructor is used for a mounted filesystem
-    KRFSDisplay( QWidget *parent, QString _alias, QString _realName,
+    KRFSDisplay( TQWidget *tqparent, TQString _alias, TQString _realName,
                  KIO::filesize_t _total, KIO::filesize_t _free );
     // this one is for an unmounted/supermount file system
-    KRFSDisplay( QWidget *parent, QString _alias, QString _realName, bool sm = false );
+    KRFSDisplay( TQWidget *tqparent, TQString _alias, TQString _realName, bool sm = false );
     // the last one is used inside MountMan(R), when no filesystem is selected
-    KRFSDisplay( QWidget *parent );
+    KRFSDisplay( TQWidget *tqparent );
     inline void setTotalSpace( KIO::filesize_t t ) { totalSpace = t; }
     inline void setFreeSpace( KIO::filesize_t t ) { freeSpace = t; }
-    inline void setAlias( QString a ) { alias = a; }
-    inline void setRealName( QString r ) { realName = r; }
+    inline void setAlias( TQString a ) { alias = a; }
+    inline void setRealName( TQString r ) { realName = r; }
     inline void setMounted( bool m ) { mounted = m; }
     inline void setEmpty( bool e ) { empty = e; }
     inline void setSupermount( bool s ) { supermount = s; }
 
   protected:
-    void paintEvent( QPaintEvent * );
+    void paintEvent( TQPaintEvent * );
 
   private:
     KIO::filesize_t totalSpace, freeSpace;
-    QString alias, realName;
+    TQString alias, realName;
     bool mounted, empty, supermount;
 };
 
 class KRPieSlice {
   public:
-    KRPieSlice( float _perct, QColor _color, QString _label ) :
+    KRPieSlice( float _perct, TQColor _color, TQString _label ) :
     perct( _perct ), color( _color ), label( _label ) {}
-    inline QColor getColor() { return color; }
+    inline TQColor getColor() { return color; }
     inline float getPerct() { return perct; }
-    inline QString getLabel() { return label; }
+    inline TQString getLabel() { return label; }
     inline void setPerct( float _perct ) { perct = _perct; }
-    inline void setLabel( QString _label ) { label = _label; }
+    inline void setLabel( TQString _label ) { label = _label; }
 
   private:
     float perct;
-    QColor color;
-    QString label;
+    TQColor color;
+    TQString label;
 };
 
 class KrQuickSearch: public KLineEdit {
       Q_OBJECT
+  TQ_OBJECT
    public:
-      KrQuickSearch(QWidget *parent, const char * name = 0);
-      void addText(const QString &str) { setText(text()+str); }
-      void myKeyPressEvent(QKeyEvent *e);
-      void myIMStartEvent(QIMEvent* e) {
+      KrQuickSearch(TQWidget *tqparent, const char * name = 0);
+      void addText(const TQString &str) { setText(text()+str); }
+      void myKeyPressEvent(TQKeyEvent *e);
+      void myIMStartEvent(TQIMEvent* e) {
         imStartEvent(e);
       }
-      void myIMEndEvent(QIMEvent* e) {
+      void myIMEndEvent(TQIMEvent* e) {
         imEndEvent(e);
       }
-      void myIMComposeEvent(QIMEvent* e) {
+      void myIMComposeEvent(TQIMEvent* e) {
         imComposeEvent(e);
       }
 
    signals:
-      void stop(QKeyEvent *e);
-      void process(QKeyEvent *e);
-      void otherMatching(const QString &, int);
+      void stop(TQKeyEvent *e);
+      void process(TQKeyEvent *e);
+      void otherMatching(const TQString &, int);
 
 };
 

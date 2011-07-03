@@ -34,37 +34,38 @@
 #define REMOTEMAN_H
 
 #include "remotemanbase.h"
-#include <qlistview.h>
+#include <tqlistview.h>
 
 class remoteMan : public remoteManBase  {
   Q_OBJECT
+  TQ_OBJECT
 public:
 	remoteMan();
-	static QString getHost(); // we call remoteMan mainly with this function
+	static TQString getHost(); // we call remoteMan mainly with this function
 	
 protected:
   void config2tree(); // internal
   void tree2config(); // internal
-  QListViewItem *findItem(const QString &name, QListViewItem *p);
+  TQListViewItem *findItem(const TQString &name, TQListViewItem *p);
   	
 public slots:
   void addGroup();
   void refreshData()   ;              // called whenver the current session changes
-  void updateName(const QString&);    // update the session/group name in real-time
-  void updateConnect(const QString&); // enable/disable the connect button in real-time
+  void updateName(const TQString&);    // update the session/group name in real-time
+  void updateConnect(const TQString&); // enable/disable the connect button in real-time
   void addSession();
   void connection();
   void removeSession();
-  void expandDecos(QListViewItem*);
-  void collapseDecos(QListViewItem*);
+  void expandDecos(TQListViewItem*);
+  void collapseDecos(TQListViewItem*);
 
 protected slots:
   void accept();
   void reject();
 
 private:
-  QListViewItem *currentItem;
-  static QString url;
+  TQListViewItem *currentItem;
+  static TQString url;
 };
 
 #endif

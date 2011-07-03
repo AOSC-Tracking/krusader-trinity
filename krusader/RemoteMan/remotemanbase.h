@@ -9,53 +9,54 @@
 #ifndef REMOTEMANBASE_H
 #define REMOTEMANBASE_H
 
-#include <qvariant.h>
-#include <qdialog.h>
-class QVBoxLayout; 
-class QHBoxLayout; 
-class QGridLayout; 
-class QCheckBox;
-class QComboBox;
-class QLabel;
-class QLineEdit;
-class QListView;
-class QListViewItem;
-class QMultiLineEdit;
-class QPushButton;
-class QSpinBox;
+#include <tqvariant.h>
+#include <tqdialog.h>
+class TQVBoxLayout; 
+class TQHBoxLayout; 
+class TQGridLayout; 
+class TQCheckBox;
+class TQComboBox;
+class TQLabel;
+class TQLineEdit;
+class TQListView;
+class TQListViewItem;
+class TQMultiLineEdit;
+class TQPushButton;
+class TQSpinBox;
 
-class remoteManBase : public QDialog
+class remoteManBase : public TQDialog
 { 
     Q_OBJECT
+  TQ_OBJECT
 
 public:
-    remoteManBase( QWidget* parent = 0, const char* name = 0, bool modal = FALSE, WFlags fl = 0 );
+    remoteManBase( TQWidget* tqparent = 0, const char* name = 0, bool modal = FALSE, WFlags fl = 0 );
     ~remoteManBase();
 
-    QLabel* TextLabel1;
-    QLineEdit* sessionName;
-    QPushButton* moreBtn;
-    QPushButton* closeBtn;
-    QListView* sessions;
-    QLabel* TextLabel1_3_3;
-    QLineEdit* password;
-    QLabel* TextLabel1_3;
-    QLineEdit* userName;
-    QCheckBox* anonymous;
-    QLabel* TextLabel1_3_2;
-    QLineEdit* remoteDir;
-    QLabel* TextLabel1_3_2_2;
-    QMultiLineEdit* description;
-    QPushButton* removeBtn;
-    QPushButton* connectBtn;
-    QPushButton* newGroupBtn;
-    QPushButton* addBtn;
-    QLabel* TextLabel1_2;
-    QComboBox* protocol;
-    QLineEdit* hostName;
-    QSpinBox* portNum;
-    QLabel* TextLabel1_2_2;
-    QLabel* TextLabel1_4;
+    TQLabel* TextLabel1;
+    TQLineEdit* sessionName;
+    TQPushButton* moreBtn;
+    TQPushButton* closeBtn;
+    TQListView* sessions;
+    TQLabel* TextLabel1_3_3;
+    TQLineEdit* password;
+    TQLabel* TextLabel1_3;
+    TQLineEdit* userName;
+    TQCheckBox* anonymous;
+    TQLabel* TextLabel1_3_2;
+    TQLineEdit* remoteDir;
+    TQLabel* TextLabel1_3_2_2;
+    TQMultiLineEdit* description;
+    TQPushButton* removeBtn;
+    TQPushButton* connectBtn;
+    TQPushButton* newGroupBtn;
+    TQPushButton* addBtn;
+    TQLabel* TextLabel1_2;
+    TQComboBox* protocol;
+    TQLineEdit* hostName;
+    TQSpinBox* portNum;
+    TQLabel* TextLabel1_2_2;
+    TQLabel* TextLabel1_4;
 
 public slots:
     virtual void addSession();
@@ -64,19 +65,19 @@ public slots:
     virtual void addGroup();
     virtual void refreshData();
     virtual void removeSession();
-    virtual void updateName(const QString&);
+    virtual void updateName(const TQString&);
 
 protected:
-    QGridLayout* remoteManBaseLayout;
-    QVBoxLayout* Layout23;
-    QHBoxLayout* Layout12;
-    QVBoxLayout* Layout9;
-    QGridLayout* Layout10;
-    QVBoxLayout* Layout26;
-    QVBoxLayout* Layout27;
-    QGridLayout* layout;
-    QGridLayout* Layout11;
-    bool event( QEvent* );
+    TQGridLayout* remoteManBaseLayout;
+    TQVBoxLayout* Layout23;
+    TQHBoxLayout* Layout12;
+    TQVBoxLayout* Layout9;
+    TQGridLayout* Layout10;
+    TQVBoxLayout* Layout26;
+    TQVBoxLayout* Layout27;
+    TQGridLayout* tqlayout;
+    TQGridLayout* Layout11;
+    bool event( TQEvent* );
 };
 
 #endif // REMOTEMANBASE_H

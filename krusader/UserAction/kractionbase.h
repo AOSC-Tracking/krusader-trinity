@@ -12,7 +12,7 @@
 #ifndef KRACTIONBASE_H
 #define KRACTIONBASE_H
 
-#include <qstring.h>
+#include <tqstring.h>
 #include "expander.h"
 class KrActionProc;
 
@@ -44,7 +44,7 @@ public:
 	 * 
 	 * @return The command to execute
 	 */
-  virtual QString command() const =0;
+  virtual TQString command() const =0;
 	/** \brief Execution type of the action
 	 * 
 	 * @see #ExecType
@@ -55,19 +55,19 @@ public:
 	 * @return The working directory of the command. May be \a null,
 	 *   in which case the command is executed in current directory
 	 */
-  virtual QString startpath() const =0;
+  virtual TQString startpath() const =0;
 	/** \brief Username under which the command is run
 	 * 
 	 * @return The username of the command. May be \a null,
 	 *   in which case the command is executed under the current user
 	 */
-  virtual QString user() const=0;
+  virtual TQString user() const=0;
 	/** \brief Name of the action
 	 * 
 	 * @return The name of the action which will be shown to the user
 	 *   eg. any string will do
 	 */
-  virtual QString text() const=0;
+  virtual TQString text() const=0;
 	/** \brief Does the command accept URLs as filenames (like KDE apps)?
 	 * 
 	 * @return \a true iff it does

@@ -1,15 +1,15 @@
 #include "krbookmarkbutton.h"
 #include "krbookmarkhandler.h"
 #include "../krusader.h"
-#include <qpixmap.h>
+#include <tqpixmap.h>
 #include <kiconloader.h>
 #include <kaction.h>
 #include <klocale.h>
 #include <kpopupmenu.h>
 #include <kdebug.h>
 
-KrBookmarkButton::KrBookmarkButton(QWidget *parent): QToolButton(parent) {
-	QPixmap icon = krLoader->loadIcon("bookmark", KIcon::Toolbar, 16);
+KrBookmarkButton::KrBookmarkButton(TQWidget *tqparent): TQToolButton(tqparent) {
+	TQPixmap icon = krLoader->loadIcon("bookmark", KIcon::Toolbar, 16);
 	setFixedSize(icon.width() + 4, icon.height() + 4);
 	setPixmap(icon);
 	setTextLabel(i18n("BookMan II"), true);
@@ -22,7 +22,7 @@ KrBookmarkButton::KrBookmarkButton(QWidget *parent): QToolButton(parent) {
 	acmBookmarks->popupMenu()->setKeyboardShortcutsExecute(true);
 
 	setPopup(acmBookmarks->popupMenu());
-	connect(this, SIGNAL(pressed()), this, SLOT(populate()));
+	connect(this, TQT_SIGNAL(pressed()), this, TQT_SLOT(populate()));
 	populate();
 }
 
@@ -32,7 +32,7 @@ void KrBookmarkButton::populate() {
 
 void KrBookmarkButton::openPopup() {
 	populate();
-	popup()->exec(mapToGlobal(QPoint(0, height())));
+	popup()->exec(mapToGlobal(TQPoint(0, height())));
 }
 
 #include "krbookmarkbutton.moc"

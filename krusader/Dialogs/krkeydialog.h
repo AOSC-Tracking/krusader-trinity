@@ -21,8 +21,9 @@
 class KrKeyDialog : protected KKeyDialog
 {
 Q_OBJECT
+  TQ_OBJECT
 public:
-    KrKeyDialog( QWidget* parent = 0 );
+    KrKeyDialog( TQWidget* tqparent = 0 );
     ~KrKeyDialog();
 
 private slots:
@@ -30,7 +31,7 @@ private slots:
     void slotExportShortcuts();
 
 private:
-    void importLegacyShortcuts( const QString& file );
+    void importLegacyShortcuts( const TQString& file );
     KKeyChooser* _chooser;
 };
 

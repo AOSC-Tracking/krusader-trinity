@@ -18,34 +18,35 @@
 #define PANELTABBAR_H
 
 #include <kurl.h>
-#include <qtabbar.h>
-#include <qvaluelist.h>
+#include <tqtabbar.h>
+#include <tqvaluelist.h>
 
-class QMouseEvent;
+class TQMouseEvent;
 class KAction;
 class KActionMenu;
 class ListPanel;
 
 /**
- * Extends QTab to include a pointer to the panel contained in this tab
+ * Extends TQTab to include a pointer to the panel contained in this tab
  */
-class PanelTab: public QTab {
+class PanelTab: public TQTab {
 public:
-  PanelTab(const QString & text);
-  PanelTab(const QString & text, ListPanel *p);
+  PanelTab(const TQString & text);
+  PanelTab(const TQString & text, ListPanel *p);
 
   ListPanel *panel;
 };
 
 /**
- * This class extends QTabBar such that right-clicking on a tab pops-up a menu
+ * This class extends TQTabBar such that right-clicking on a tab pops-up a menu
  * containing relevant actions for the tab. It also emits signals (caught by PanelManager)
  * to create a new tab, close the current tab and change a panel when a tab was clicked
  */
-class PanelTabBar : public QTabBar {
+class PanelTabBar : public TQTabBar {
   Q_OBJECT
+  TQ_OBJECT
 public:
-  PanelTabBar( QWidget *parent );
+  PanelTabBar( TQWidget *tqparent );
 
 public slots:
   /**
@@ -79,12 +80,12 @@ signals:
   void newTab(const KURL& path);
 
 protected:
-  void mousePressEvent( QMouseEvent* );
+  void mousePressEvent( TQMouseEvent* );
   void insertAction( KAction* );
-  QString squeeze(QString text, int index=-1);
-  virtual void dragEnterEvent(QDragEnterEvent *);
-  virtual void dragMoveEvent(QDragMoveEvent *);
-  virtual void resizeEvent ( QResizeEvent *e );
+  TQString squeeze(TQString text, int index=-1);
+  virtual void dragEnterEvent(TQDragEnterEvent *);
+  virtual void dragMoveEvent(TQDragMoveEvent *);
+  virtual void resizeEvent ( TQResizeEvent *e );
 
 protected slots:
   void closeTab();

@@ -32,33 +32,33 @@
 #include "../kicons.h"
 #include "../krusader.h"
 #include "../VFS/krpermhandler.h"
-#include <qheader.h>
+#include <tqheader.h>
 #include <klocale.h>
-#include <qpen.h>
-#include <qpainter.h>
-#include <qfontmetrics.h>
-#include <qtimer.h>
-#include <qtooltip.h>
+#include <tqpen.h>
+#include <tqpainter.h>
+#include <tqfontmetrics.h>
+#include <tqtimer.h>
+#include <tqtooltip.h>
 #include <kpopupmenu.h>
 
-class DULinesItem : public QListViewItem
+class DULinesItem : public TQListViewItem
 {
 public:
-  DULinesItem( DiskUsage *diskUsageIn, File *fileItem, QListView * parent, QString label1, 
-               QString label2, QString label3, unsigned int italicPos ) : QListViewItem( parent, label1, label2, label3 ), 
+  DULinesItem( DiskUsage *diskUsageIn, File *fileItem, TQListView * tqparent, TQString label1, 
+               TQString label2, TQString label3, unsigned int italicPos ) : TQListViewItem( tqparent, label1, label2, label3 ), 
                diskUsage( diskUsageIn ), file( fileItem ), isTruncated( false ), italicTextPos( italicPos ) {}
-  DULinesItem( DiskUsage *diskUsageIn, File *fileItem, QListView * parent, QListViewItem * after, 
-               QString label1, QString label2, QString label3, unsigned int italicPos ) : QListViewItem( parent, after, label1, 
+  DULinesItem( DiskUsage *diskUsageIn, File *fileItem, TQListView * tqparent, TQListViewItem * after, 
+               TQString label1, TQString label2, TQString label3, unsigned int italicPos ) : TQListViewItem( tqparent, after, label1, 
                label2, label3 ), diskUsage( diskUsageIn ), file( fileItem ), isTruncated( false ), italicTextPos( italicPos ) {}
   
-  virtual int compare ( QListViewItem * i, int col, bool ascending ) const 
+  virtual int compare ( TQListViewItem * i, int col, bool ascending ) const 
   {
     if( text(0) == ".." ) return ascending ? -1 : 1;
     if( i->text(0) == "..") return ascending ? 1 : -1;
     
     DULinesItem *compWith = dynamic_cast< DULinesItem * >( i );
         
-    QString buf1,buf2;
+    TQString buf1,buf2;
     
     switch( col )
     {
@@ -66,26 +66,26 @@ public:
     case 1:
       buf1.sprintf("%025llu",file->size());
       buf2.sprintf("%025llu",compWith->file->size());
-      return -QString::compare( buf1, buf2 );
+      return -TQString::compare( buf1, buf2 );
     default:    
-      return QListViewItem::compare( i, col, ascending );
+      return TQListViewItem::compare( i, col, ascending );
     }
   }
 
-  virtual void paintCell( QPainter * p, const QColorGroup & cg, int column, int width, int align )
+  virtual void paintCell( TQPainter * p, const TQColorGroup & cg, int column, int width, int align )
   {
     if( column == 2 )
     {
       if ( isSelected() ) 
-        p->fillRect( 0, 0, width, height(), cg.brush( QColorGroup::Highlight ) );
+        p->fillRect( 0, 0, width, height(), cg.brush( TQColorGroup::Highlight ) );
       else
-        p->fillRect( 0, 0, width, height(), cg.brush( QColorGroup::Base ) );
+        p->fillRect( 0, 0, width, height(), cg.brush( TQColorGroup::Base ) );
         
-      QListView *lv = listView();
+      TQListView *lv = listView();
       
       int pos = lv->itemMargin();      
             
-      const QPixmap *icon = pixmap( column );
+      const TQPixmap *icon = pixmap( column );
       if( icon )
       {
         int iconWidth = icon->width() + lv->itemMargin();
@@ -97,15 +97,15 @@ public:
         pos += iconWidth;
       }
     
-      QFontMetrics fm( p->fontMetrics() );
+      TQFontMetrics fm( p->fontMetrics() );
       
       if( isSelected() )
         p->setPen( cg.highlightedText() );
       else
         p->setPen( cg.text() );
       
-      QString t = text( column );
-      QString b;
+      TQString t = text( column );
+      TQString b;
       
       if( t.length() > italicTextPos )
       {
@@ -136,11 +136,11 @@ public:
                     
       if( !b.isEmpty() && !isTruncated )
       {
-        QFont font( p->font() );
+        TQFont font( p->font() );
         font.setItalic( true );
         p->setFont( font );
 
-        QFontMetrics fm2( p->fontMetrics() );
+        TQFontMetrics fm2( p->fontMetrics() );
         
         int remWidth = width-pos;
         
@@ -160,7 +160,7 @@ public:
       }
     }
     else
-      QListViewItem::paintCell( p, cg, column, width, align );
+      TQListViewItem::paintCell( p, cg, column, width, align );
   }
     
   inline File * getFile() { return file; }
@@ -173,35 +173,35 @@ private:
   unsigned int italicTextPos;
 };
 
-class DULinesToolTip : public QToolTip
+class DULinesToolTip : public TQToolTip
 {
 public:
-    DULinesToolTip( DiskUsage *usage, QWidget *parent, QListView *lv );
-    void maybeTip( const QPoint &pos );
+    DULinesToolTip( DiskUsage *usage, TQWidget *tqparent, TQListView *lv );
+    void maybeTip( const TQPoint &pos );
 
     virtual ~DULinesToolTip() {}
 private:
-    QListView *view;
+    TQListView *view;
     DiskUsage *diskUsage;
 };
 
-DULinesToolTip::DULinesToolTip( DiskUsage *usage, QWidget *parent, QListView *lv )
-  : QToolTip( parent ), view( lv ), diskUsage( usage )
+DULinesToolTip::DULinesToolTip( DiskUsage *usage, TQWidget *tqparent, TQListView *lv )
+  : TQToolTip( tqparent ), view( lv ), diskUsage( usage )
 {
 }
 
-void DULinesToolTip::maybeTip( const QPoint &pos )
+void DULinesToolTip::maybeTip( const TQPoint &pos )
 {
-  QListViewItem *item = view->itemAt( pos );
-  QPoint contentsPos = view->viewportToContents( pos );
+  TQListViewItem *item = view->itemAt( pos );
+  TQPoint contentsPos = view->viewportToContents( pos );
   if ( !item )
     return;
     
   int col = view->header()->sectionAt( contentsPos.x() );
 
-  int width = item->width( QFontMetrics( view->font() ), view, col );
+  int width = item->width( TQFontMetrics( view->font() ), view, col );
     
-  QRect r = view->itemRect( item );
+  TQRect r = view->tqitemRect( item );
   int headerPos = view->header()->sectionPos( col );
   r.setLeft( headerPos );
   r.setRight( headerPos + view->header()->sectionSize( col ) );
@@ -216,15 +216,15 @@ void DULinesToolTip::maybeTip( const QPoint &pos )
 }
 
 DULines::DULines( DiskUsage *usage, const char *name )
-  : QListView( usage, name ), diskUsage( usage ), refreshNeeded( false )
+  : TQListView( usage, name ), diskUsage( usage ), refreshNeeded( false )
 {
   setAllColumnsShowFocus(true);
-  setVScrollBarMode(QScrollView::Auto);
-  setHScrollBarMode(QScrollView::Auto);
+  setVScrollBarMode(TQScrollView::Auto);
+  setHScrollBarMode(TQScrollView::Auto);
   setShowSortIndicator(true);
   setTreeStepSize( 10 );
 
-  int defaultSize = QFontMetrics(font()).width("W");
+  int defaultSize = TQFontMetrics(font()).width("W");
   
   krConfig->setGroup( diskUsage->getConfigGroup() ); 
 
@@ -232,15 +232,15 @@ DULines::DULines( DiskUsage *usage, const char *name )
   
   int lineWidth  = krConfig->readNumEntry("L Line Width",  defaultSize * 20 );    
   addColumn( i18n("Line View"), lineWidth );
-  setColumnWidthMode(0,QListView::Manual);
+  setColumnWidthMode(0,TQListView::Manual);
   int precentWidth  = krConfig->readNumEntry("L Percent Width",  defaultSize * 6 );    
   addColumn( i18n("Percent"), precentWidth );
-  setColumnWidthMode(1,QListView::Manual);
+  setColumnWidthMode(1,TQListView::Manual);
   int nameWidth  = krConfig->readNumEntry("L Name Width",  defaultSize * 20 );
   addColumn( i18n("Name"), nameWidth );
-  setColumnWidthMode(2,QListView::Manual);
+  setColumnWidthMode(2,TQListView::Manual);
   
-  setColumnAlignment( 1, Qt::AlignRight );
+  setColumnAlignment( 1, TQt::AlignRight );
   
   header()->setStretchEnabled( true, 0 );
   
@@ -248,15 +248,15 @@ DULines::DULines( DiskUsage *usage, const char *name )
   
   toolTip = new DULinesToolTip( diskUsage, viewport(), this );
 
-  connect( diskUsage, SIGNAL( enteringDirectory( Directory * ) ), this, SLOT( slotDirChanged( Directory * ) ) );
-  connect( diskUsage, SIGNAL( clearing() ), this, SLOT( clear() ) );
+  connect( diskUsage, TQT_SIGNAL( enteringDirectory( Directory * ) ), this, TQT_SLOT( slotDirChanged( Directory * ) ) );
+  connect( diskUsage, TQT_SIGNAL( clearing() ), this, TQT_SLOT( clear() ) );
   
-  connect( header(), SIGNAL( sizeChange( int, int, int ) ), this, SLOT( sectionResized( int ) ) );
+  connect( header(), TQT_SIGNAL( sizeChange( int, int, int ) ), this, TQT_SLOT( sectionResized( int ) ) );
 
-  connect( this, SIGNAL(rightButtonPressed(QListViewItem *, const QPoint &, int)),
-           this, SLOT( slotRightClicked(QListViewItem *) ) );
-  connect( diskUsage, SIGNAL( changed( File * ) ), this, SLOT( slotChanged( File * ) ) );
-  connect( diskUsage, SIGNAL( deleted( File * ) ), this, SLOT( slotDeleted( File * ) ) );
+  connect( this, TQT_SIGNAL(rightButtonPressed(TQListViewItem *, const TQPoint &, int)),
+           this, TQT_SLOT( slotRightClicked(TQListViewItem *) ) );
+  connect( diskUsage, TQT_SIGNAL( changed( File * ) ), this, TQT_SLOT( slotChanged( File * ) ) );
+  connect( diskUsage, TQT_SIGNAL( deleted( File * ) ), this, TQT_SLOT( slotDeleted( File * ) ) );
 }
 
 DULines::~DULines()
@@ -274,11 +274,11 @@ void DULines::slotDirChanged( Directory *dirEntry )
 {
   clear();  
   
-  QListViewItem * lastItem = 0;
+  TQListViewItem * lastItem = 0;
     
-  if( ! ( dirEntry->parent() == 0 ) )
+  if( ! ( dirEntry->tqparent() == 0 ) )
   {
-    lastItem = new QListViewItem( this, ".." );
+    lastItem = new TQListViewItem( this, ".." );
     lastItem->setPixmap( 0, FL_LOADICON( "up" ) );
     lastItem->setSelectable( false );
   }
@@ -295,7 +295,7 @@ void DULines::slotDirChanged( Directory *dirEntry )
   { 
     File *item = *it;
     
-    QString fileName = item->name();
+    TQString fileName = item->name();
     
     unsigned int italicStart = fileName.length();
     
@@ -317,23 +317,23 @@ void DULines::slotDirChanged( Directory *dirEntry )
   setCurrentItem( firstChild() );
 }
 
-QPixmap DULines::createPixmap( int percent, int maxPercent, int maxWidth )
+TQPixmap DULines::createPixmap( int percent, int maxPercent, int maxWidth )
 {
   if( percent < 0 || percent > maxPercent || maxWidth < 2 || maxPercent == 0 )
-    return QPixmap();
+    return TQPixmap();
   maxWidth -= 2;
 
   int actualWidth = maxWidth*percent/maxPercent;
   if( actualWidth == 0 )
-    return QPixmap();
+    return TQPixmap();
     
-  QPen pen;
-  pen.setColor( Qt::black );  
-  QPainter painter;
+  TQPen pen;
+  pen.setColor( TQt::black );  
+  TQPainter painter;
   
-  int size = QFontMetrics(font()).height()-2;
-  QRect rect( 0, 0, actualWidth, size );
-  QPixmap pixmap( rect.width(), rect.height() );
+  int size = TQFontMetrics(font()).height()-2;
+  TQRect rect( 0, 0, actualWidth, size );
+  TQPixmap pixmap( rect.width(), rect.height() );
 
   painter.begin( &pixmap );
   painter.setPen( pen );
@@ -342,15 +342,15 @@ QPixmap DULines::createPixmap( int percent, int maxPercent, int maxWidth )
   {
     int color = (511*i/maxWidth);
     if( color < 256 )
-      pen.setColor( QColor( 255-color, 255, 0 ) );
+      pen.setColor( TQColor( 255-color, 255, 0 ) );
     else
-      pen.setColor( QColor( color-256, 511-color, 0 ) );
+      pen.setColor( TQColor( color-256, 511-color, 0 ) );
     
     painter.setPen( pen );
     painter.drawLine( i, 1, i, size-1 );
   }
   
-  pen.setColor( Qt::black );  
+  pen.setColor( TQt::black );  
   painter.setPen( pen );
   painter.drawRect( rect );
   painter.end();
@@ -385,7 +385,7 @@ void DULines::sectionResized( int column )
   }
 }
 
-bool DULines::doubleClicked( QListViewItem * item )
+bool DULines::doubleClicked( TQListViewItem * item )
 {
   if( item )
   {
@@ -398,7 +398,7 @@ bool DULines::doubleClicked( QListViewItem * item )
     }
     else
     {
-      Directory *upDir = (Directory *)diskUsage->getCurrentDir()->parent();
+      Directory *upDir = (Directory *)diskUsage->getCurrentDir()->tqparent();
     
       if( upDir )
         diskUsage->changeDirectory( upDir );
@@ -408,22 +408,22 @@ bool DULines::doubleClicked( QListViewItem * item )
   return false;
 }
 
-void DULines::contentsMouseDoubleClickEvent ( QMouseEvent * e )
+void DULines::contentsMouseDoubleClickEvent ( TQMouseEvent * e )
 {
-  if ( e || e->button() == LeftButton )
+  if ( e || e->button() == Qt::LeftButton )
   {
-    QPoint vp = contentsToViewport(e->pos());
-    QListViewItem * item = itemAt( vp );
+    TQPoint vp = contentsToViewport(e->pos());
+    TQListViewItem * item = itemAt( vp );
 
     if( doubleClicked( item ) )
       return;
     
   }
-  QListView::contentsMouseDoubleClickEvent( e );
+  TQListView::contentsMouseDoubleClickEvent( e );
 }
 
 
-void DULines::keyPressEvent( QKeyEvent *e )
+void DULines::keyPressEvent( TQKeyEvent *e )
 {
   switch ( e->key() )
   {
@@ -446,10 +446,10 @@ void DULines::keyPressEvent( QKeyEvent *e )
     e->ignore();
     return;
   }
-  QListView::keyPressEvent( e );
+  TQListView::keyPressEvent( e );
 }
  
-void DULines::slotRightClicked( QListViewItem *item )
+void DULines::slotRightClicked( TQListViewItem *item )
 {
   File * file = 0;
   
@@ -457,7 +457,7 @@ void DULines::slotRightClicked( QListViewItem *item )
     file = ((DULinesItem *)item)->getFile();
 
   KPopupMenu linesPopup;    
-  int lid = linesPopup.insertItem( i18n("Show file sizes"), this, SLOT( slotShowFileSizes() ) );
+  int lid = linesPopup.insertItem( i18n("Show file sizes"), this, TQT_SLOT( slotShowFileSizes() ) );
   linesPopup.setItemChecked( lid, showFileSize );
     
   diskUsage->rightClickMenu( file, &linesPopup, i18n( "Lines" ) );
@@ -471,7 +471,7 @@ void DULines::slotShowFileSizes()
 
 File * DULines::getCurrentFile()
 {
-  QListViewItem *item = currentItem();
+  TQListViewItem *item = currentItem();
   
   if( item == 0 || item->text( 0 ) == ".." )
     return 0;
@@ -481,7 +481,7 @@ File * DULines::getCurrentFile()
 
 void DULines::slotChanged( File * item )
 {
-  QListViewItem *lvitem = firstChild();
+  TQListViewItem *lvitem = firstChild();
   while( lvitem )
   {
     if( lvitem->text( 0 ) != ".." ) {
@@ -493,7 +493,7 @@ void DULines::slotChanged( File * item )
         if( !refreshNeeded )
         {
           refreshNeeded = true;
-          QTimer::singleShot( 0, this, SLOT( slotRefresh() ) );
+          TQTimer::singleShot( 0, this, TQT_SLOT( slotRefresh() ) );
         }
         break;
       }
@@ -504,7 +504,7 @@ void DULines::slotChanged( File * item )
 
 void DULines::slotDeleted( File * item )
 {
-  QListViewItem *lvitem = firstChild();
+  TQListViewItem *lvitem = firstChild();
   while( lvitem )
   {
     if( lvitem->text( 0 ) != ".." ) {

@@ -2,14 +2,14 @@
 #define CHECKSUMDLG_H
 
 #include <kdialogbase.h>
-#include <qvaluelist.h>
+#include <tqvaluelist.h>
 
 class KTempFile;
 extern void initChecksumModule();
 
 class CreateChecksumDlg: public KDialogBase {
 public:
-	CreateChecksumDlg(const QStringList& files, bool containFolders, const QString& path);
+	CreateChecksumDlg(const TQStringList& files, bool containFolders, const TQString& path);
 
 private:
 	KTempFile *tmpOut, *tmpErr;
@@ -18,13 +18,13 @@ private:
 
 class MatchChecksumDlg: public KDialogBase {
 public:
-	MatchChecksumDlg(const QStringList& files, bool containFolders, 
-		const QString& path, const QString& checksumFile=QString::null);
+	MatchChecksumDlg(const TQStringList& files, bool containFolders, 
+		const TQString& path, const TQString& checksumFile=TQString());
 
-	static QString checksumTypesFilter;
+	static TQString checksumTypesFilter;
 
 protected:
-	bool verifyChecksumFile(QString path, QString& extension);
+	bool verifyChecksumFile(TQString path, TQString& extension);
 
 private:
 	KTempFile *tmpOut, *tmpErr;
@@ -33,22 +33,22 @@ private:
 
 class ChecksumResultsDlg: public KDialogBase {
 public:
-	ChecksumResultsDlg(const QStringList& stdOut, const QStringList& stdErr,
-		const QString& suggestedFilename, const QString& binary, const QString& type,
+	ChecksumResultsDlg(const TQStringList& stdOut, const TQStringList& stdErr,
+		const TQString& suggestedFilename, const TQString& binary, const TQString& type,
 		bool standardFormat);
 
 protected:
-	bool saveChecksum(const QStringList& data, QString filename);
-	void savePerFile(const QStringList& data, const QString& type);
+	bool saveChecksum(const TQStringList& data, TQString filename);
+	void savePerFile(const TQStringList& data, const TQString& type);
 	
 private:
-	QString _binary;
+	TQString _binary;
 };
 
 
 class VerifyResultDlg: public KDialogBase {
 public:
-	VerifyResultDlg(const QStringList& failed);
+	VerifyResultDlg(const TQStringList& failed);
 };
 
 #endif // CHECKSUMDLG_H

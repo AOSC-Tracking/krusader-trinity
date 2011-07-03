@@ -32,7 +32,7 @@ The current version only manages sync-browse and got no mode-switch options.
 
 //#include <kdebug.h>
 
-SyncBrowseButton::SyncBrowseButton(QWidget *parent, const char *name) : QToolButton(parent,name)
+SyncBrowseButton::SyncBrowseButton(TQWidget *tqparent, const char *name) : TQToolButton(tqparent,name)
 {
   KIconLoader *iconLoader = new KIconLoader();
   _icon_on = iconLoader->loadIcon( "kr_syncbrowse_on", KIcon::Toolbar, 16 );
@@ -46,7 +46,7 @@ SyncBrowseButton::SyncBrowseButton(QWidget *parent, const char *name) : QToolBut
 			"When active, each directory change is performed in the\n"
 			"active and inactive panel - if possible." ), true );	//set this as toop-tip (somehow whatsthis::add(this, ...) don't work)
 
-  connect( this, SIGNAL(toggled(bool)), this, SLOT(slotToggled(bool)) );
+  connect( this, TQT_SIGNAL(toggled(bool)), this, TQT_SLOT(slotToggled(bool)) );
 }
 
 SyncBrowseButton::~SyncBrowseButton() {

@@ -34,26 +34,27 @@
 #define PANELFUNC_H
 #include "listpanel.h"
 #include "krviewitem.h"
-#include <qobject.h>
-#include <qvaluestack.h>
-#include <qtimer.h>
+#include <tqobject.h>
+#include <tqvaluestack.h>
+#include <tqtimer.h>
 
-class ListPanelFunc : public QObject{
+class ListPanelFunc : public TQObject{
 friend class ListPanel;
 	Q_OBJECT
+  TQ_OBJECT
 public slots:
 	inline vfile* getVFile(KrViewItem *item) { return files()->vfs_search(item->name()); }
-	inline vfile* getVFile(const QString& name) { return files()->vfs_search(name); }
-	void execute(QString&);
-	void openUrl(const KURL& path, const QString& nameToMakeCurrent = QString::null);
-	void openUrl(const QString& path, const QString& nameToMakeCurrent = QString::null);
+	inline vfile* getVFile(const TQString& name) { return files()->vfs_search(name); }
+	void execute(TQString&);
+	void openUrl(const KURL& path, const TQString& nameToMakeCurrent = TQString());
+	void openUrl(const TQString& path, const TQString& nameToMakeCurrent = TQString());
    void immediateOpenUrl( const KURL& path);
    void doOpenUrl();
 	void refresh();
-	void rename(const QString &oldname, const QString &newname);
+	void rename(const TQString &oldname, const TQString &newname);
 
 public:
-	ListPanelFunc(class ListPanel *parent);
+	ListPanelFunc(class ListPanel *tqparent);
 	~ListPanelFunc();
 
 	vfs* files();  // return a pointer to the vfs
@@ -84,7 +85,7 @@ public:
 	// calculate the occupied space. A dialog appears, if calculation lasts more than 3 seconds
 	// and disappears, if the calculation is done. Returns true, if the result is ok and false
 	// otherwise (Cancel was pressed).
-	bool calcSpace(const QStringList & items,KIO::filesize_t & totalSize,unsigned long & totalFiles,unsigned long & totalDirs);
+	bool calcSpace(const TQStringList & items,KIO::filesize_t & totalSize,unsigned long & totalFiles,unsigned long & totalDirs);
 	void FTPDisconnect();
 	void newFTPconnection();
 	inline ListPanelFunc* otherFunc(){ return panel->otherPanel->func; }
@@ -94,12 +95,12 @@ private:
 
 protected:
 	ListPanel*           panel;     // our ListPanel
-	QValueStack<KURL>    urlStack;  // Path stack for the "back" button
+	TQValueStack<KURL>    urlStack;  // Path stack for the "back" button
 	bool                 inRefresh; // true when we are in refresh()
 	vfs*                 vfsP;      // pointer to vfs.
-	QTimer               delayTimer;
+	TQTimer               delayTimer;
 	KURL                 delayURL;
-	QString              nameToMakeCurrent;
+	TQString              nameToMakeCurrent;
 };
 
 #endif

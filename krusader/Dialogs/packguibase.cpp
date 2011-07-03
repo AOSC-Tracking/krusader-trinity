@@ -29,22 +29,22 @@
  ***************************************************************************/
 #include "packguibase.h"
 
-#include <qcheckbox.h>
-#include <qcombobox.h>
-#include <qlabel.h>
-#include <qlineedit.h>
-#include <qpushbutton.h>
-#include <qtoolbutton.h>
-#include <qlayout.h>
-#include <qvariant.h>
-#include <qtooltip.h>
-#include <qwhatsthis.h>
-#include <qimage.h>
-#include <qpixmap.h>
-#include <qspinbox.h>
-#include <qslider.h>
-#include <qhbox.h>
-#include <qvbox.h>
+#include <tqcheckbox.h>
+#include <tqcombobox.h>
+#include <tqlabel.h>
+#include <tqlineedit.h>
+#include <tqpushbutton.h>
+#include <tqtoolbutton.h>
+#include <tqlayout.h>
+#include <tqvariant.h>
+#include <tqtooltip.h>
+#include <tqwhatsthis.h>
+#include <tqimage.h>
+#include <tqpixmap.h>
+#include <tqspinbox.h>
+#include <tqslider.h>
+#include <tqhbox.h>
+#include <tqvbox.h>
 #include <kiconloader.h>
 #include <kglobalsettings.h>
 #include <kcombobox.h>
@@ -53,116 +53,116 @@
 #include "../krusader.h"
 
 /* 
- *  Constructs a PackGUIBase which is a child of 'parent', with the 
+ *  Constructs a PackGUIBase which is a child of 'tqparent', with the 
  *  name 'name' and widget flags set to 'f' 
  *
  *  The dialog will by default be modeless, unless you set 'modal' to
  *  TRUE to construct a modal dialog.
  */
-PackGUIBase::PackGUIBase( QWidget* parent,  const char* name, bool modal, WFlags fl )
-    : QDialog( parent, name, modal, fl ), expanded( false )
+PackGUIBase::PackGUIBase( TQWidget* tqparent,  const char* name, bool modal, WFlags fl )
+    : TQDialog( tqparent, name, modal, fl ), expanded( false )
 {
     if ( !name )
 	setName( "PackGUIBase" );
     resize( 430, 140 );
     setCaption( i18n( "Pack" ) );
-    grid = new QGridLayout( this );
+    grid = new TQGridLayout( this );
     grid->setSpacing( 6 );
     grid->setMargin( 11 );
 
-    hbox = new QHBoxLayout;
+    hbox = new TQHBoxLayout;
     hbox->setSpacing( 6 );
     hbox->setMargin( 0 );
 
-    TextLabel3 = new QLabel( this, "TextLabel3" );
+    TextLabel3 = new TQLabel( this, "TextLabel3" );
     TextLabel3->setText( i18n( "To archive"  ) );
     hbox->addWidget( TextLabel3 );
 
-    nameData = new QLineEdit( this, "nameData" );
+    nameData = new TQLineEdit( this, "nameData" );
     hbox->addWidget( nameData );
 
-    typeData = new QComboBox( FALSE, this, "typeData" );
-    typeData->setSizePolicy( QSizePolicy( (QSizePolicy::SizeType)1, (QSizePolicy::SizeType)0 ) );
-    connect( typeData, SIGNAL( activated( const QString & ) ), this,  SLOT( checkConsistency() ) );
-    connect( typeData, SIGNAL( highlighted( const QString & ) ), this,  SLOT( checkConsistency() ) );
+    typeData = new TQComboBox( FALSE, this, "typeData" );
+    typeData->tqsetSizePolicy( TQSizePolicy( (TQSizePolicy::SizeType)1, (TQSizePolicy::SizeType)0 ) );
+    connect( typeData, TQT_SIGNAL( activated( const TQString & ) ), this,  TQT_SLOT( checkConsistency() ) );
+    connect( typeData, TQT_SIGNAL( highlighted( const TQString & ) ), this,  TQT_SLOT( checkConsistency() ) );
     hbox->addWidget( typeData );
 
     grid->addLayout( hbox, 1, 0 );
 
-    hbox_2 = new QHBoxLayout;
+    hbox_2 = new TQHBoxLayout;
     hbox_2->setSpacing( 6 );
     hbox_2->setMargin( 0 );
 
-    TextLabel5 = new QLabel( this, "TextLabel5" );
+    TextLabel5 = new TQLabel( this, "TextLabel5" );
     TextLabel5->setText( i18n( "In directory"  ) );
     hbox_2->addWidget( TextLabel5 );
 
-    dirData = new QLineEdit( this, "dirData" );
+    dirData = new TQLineEdit( this, "dirData" );
     hbox_2->addWidget( dirData );
 
-    browseButton = new QToolButton( this, "browseButton" );
+    browseButton = new TQToolButton( this, "browseButton" );
     browseButton->setIconSet( SmallIcon( "fileopen" ) );
     hbox_2->addWidget( browseButton );
-    QSpacerItem* spacer = new QSpacerItem( 48, 20, QSizePolicy::Fixed, QSizePolicy::Fixed );
+    TQSpacerItem* spacer = new TQSpacerItem( 48, 20, TQSizePolicy::Fixed, TQSizePolicy::Fixed );
     hbox_2->addItem( spacer );
 
     grid->addLayout( hbox_2, 2, 0 );
 
-    hbox_3 = new QHBoxLayout;
+    hbox_3 = new TQHBoxLayout;
     hbox_3->setSpacing( 6 );
     hbox_3->setMargin( 0 );
 
-    PixmapLabel1 = new QLabel( this, "PixmapLabel1" );
+    PixmapLabel1 = new TQLabel( this, "PixmapLabel1" );
     PixmapLabel1->setPixmap( krLoader->loadIcon("package", KIcon::Desktop, 32) );
     PixmapLabel1->setScaledContents( TRUE );
-    PixmapLabel1->setSizePolicy( QSizePolicy( (QSizePolicy::SizeType)0, (QSizePolicy::SizeType)0 ) );
+    PixmapLabel1->tqsetSizePolicy( TQSizePolicy( (TQSizePolicy::SizeType)0, (TQSizePolicy::SizeType)0 ) );
     hbox_3->addWidget( PixmapLabel1 );
 
-    TextLabel1 = new QLabel( this, "TextLabel1" );
+    TextLabel1 = new TQLabel( this, "TextLabel1" );
     TextLabel1->setText( i18n( "Pack"  ) );
     hbox_3->addWidget( TextLabel1 );
 
     grid->addLayout( hbox_3, 0, 0 );
 
 
-    hbox_4 = new QHBoxLayout;
+    hbox_4 = new TQHBoxLayout;
     hbox_4->setSpacing( 6 );
     hbox_4->setMargin( 0 );
 
-    QSpacerItem* spacer_3 = new QSpacerItem( 20, 26, QSizePolicy::Fixed, QSizePolicy::Expanding );
+    TQSpacerItem* spacer_3 = new TQSpacerItem( 20, 26, TQSizePolicy::Fixed, TQSizePolicy::Expanding );
     hbox_4->addItem( spacer_3 );
     grid->addLayout( hbox_4, 3, 0 );
 
-    advancedWidget = new QWidget( this, "advancedWidget" );
+    advancedWidget = new TQWidget( this, "advancedWidget" );
 
-    hbox_5 = new QGridLayout( advancedWidget );
+    hbox_5 = new TQGridLayout( advancedWidget );
     hbox_5->setSpacing( 6 );
     hbox_5->setMargin( 0 );
 
 
-    QVBoxLayout *compressLayout = new QVBoxLayout;
+    TQVBoxLayout *compressLayout = new TQVBoxLayout;
     compressLayout->setSpacing( 6 );
     compressLayout->setMargin( 0 );
 
-    multipleVolume = new QCheckBox( i18n( "Multiple volume archive" ), advancedWidget, "multipleVolume" );
-    connect( multipleVolume, SIGNAL( toggled( bool ) ), this, SLOT( checkConsistency() ) );
+    multipleVolume = new TQCheckBox( i18n( "Multiple volume archive" ), advancedWidget, "multipleVolume" );
+    connect( multipleVolume, TQT_SIGNAL( toggled( bool ) ), this, TQT_SLOT( checkConsistency() ) );
     compressLayout->addWidget( multipleVolume, 0, 0 );
 
-    QHBoxLayout * volumeHbox = new QHBoxLayout;
+    TQHBoxLayout * volumeHbox = new TQHBoxLayout;
 
-    QSpacerItem* spacer_5 = new QSpacerItem( 20, 26, QSizePolicy::Fixed, QSizePolicy::Fixed );
+    TQSpacerItem* spacer_5 = new TQSpacerItem( 20, 26, TQSizePolicy::Fixed, TQSizePolicy::Fixed );
     volumeHbox->addItem( spacer_5 );
 
-    TextLabel7 = new QLabel( i18n("Size:" ), advancedWidget, "TextLabel7" );
+    TextLabel7 = new TQLabel( i18n("Size:" ), advancedWidget, "TextLabel7" );
     volumeHbox->addWidget( TextLabel7 );
     
-    volumeSpinBox = new QSpinBox( advancedWidget, "volumeSpinBox" );
+    volumeSpinBox = new TQSpinBox( advancedWidget, "volumeSpinBox" );
     volumeSpinBox->setMinValue( 1 );
     volumeSpinBox->setMaxValue( 9999 );
     volumeSpinBox->setValue( 1440 );
     volumeHbox->addWidget( volumeSpinBox );
 
-    volumeUnitCombo = new QComboBox( FALSE, advancedWidget, "volumeUnitCombo" );
+    volumeUnitCombo = new TQComboBox( FALSE, advancedWidget, "volumeUnitCombo" );
     volumeUnitCombo->insertItem( "B" );
     volumeUnitCombo->insertItem( "KB" );
     volumeUnitCombo->insertItem( "MB" );
@@ -171,24 +171,24 @@ PackGUIBase::PackGUIBase( QWidget* parent,  const char* name, bool modal, WFlags
 
     compressLayout->addLayout ( volumeHbox );
 
-    setCompressionLevel = new QCheckBox( i18n( "Set compression level" ), advancedWidget, "multipleVolume" );
-    connect( setCompressionLevel, SIGNAL( toggled( bool ) ), this, SLOT( checkConsistency() ) );
+    setCompressionLevel = new TQCheckBox( i18n( "Set compression level" ), advancedWidget, "multipleVolume" );
+    connect( setCompressionLevel, TQT_SIGNAL( toggled( bool ) ), this, TQT_SLOT( checkConsistency() ) );
     compressLayout->addWidget( setCompressionLevel, 0, 0 );
 
-    QHBoxLayout * sliderHbox = new QHBoxLayout;
+    TQHBoxLayout * sliderHbox = new TQHBoxLayout;
 
-    QSpacerItem* spacer_6 = new QSpacerItem( 20, 26, QSizePolicy::Fixed, QSizePolicy::Fixed );
+    TQSpacerItem* spacer_6 = new TQSpacerItem( 20, 26, TQSizePolicy::Fixed, TQSizePolicy::Fixed );
     sliderHbox->addItem( spacer_6 );
 
-    QVBox * sliderVBox = new QVBox( advancedWidget );
+    TQVBox * sliderVBox = new TQVBox( advancedWidget );
 
-    compressionSlider = new QSlider( 1, 9, 1, 5, Qt::Horizontal, sliderVBox, "compressionSlider" );
-    compressionSlider->setTickmarks( QSlider::Below );
+    compressionSlider = new TQSlider( 1, 9, 1, 5, Qt::Horizontal, sliderVBox, "compressionSlider" );
+    compressionSlider->setTickmarks( TQSlider::Below );
 
-    QHBox * minmaxHBox = new QHBox( sliderVBox );
-    minLabel = new QLabel( i18n("MIN"), minmaxHBox );
-    maxLabel = new QLabel( i18n("MAX"), minmaxHBox );
-    maxLabel->setSizePolicy( QSizePolicy::Fixed, QSizePolicy::Fixed );
+    TQHBox * minmaxHBox = new TQHBox( sliderVBox );
+    minLabel = new TQLabel( i18n("MIN"), minmaxHBox );
+    maxLabel = new TQLabel( i18n("MAX"), minmaxHBox );
+    maxLabel->tqsetSizePolicy( TQSizePolicy::Fixed, TQSizePolicy::Fixed );
 
     sliderHbox->addWidget( sliderVBox );
 
@@ -197,66 +197,66 @@ PackGUIBase::PackGUIBase( QWidget* parent,  const char* name, bool modal, WFlags
     compressLayout->addStretch( 0 );
     hbox_5->addLayout( compressLayout, 0, 0 );
 
-    QFrame *vline = new QFrame( advancedWidget, "vline" );
-    vline->setFrameStyle( QFrame::VLine | QFrame::Sunken );
+    TQFrame *vline = new TQFrame( advancedWidget, "vline" );
+    vline->setFrameStyle( TQFrame::VLine | TQFrame::Sunken );
     vline->setMinimumWidth( 20 );
     hbox_5->addWidget( vline, 0, 1 );
 
 
-    QGridLayout * passwordGrid = new QGridLayout;
+    TQGridLayout * passwordGrid = new TQGridLayout;
     passwordGrid->setSpacing( 6 );
     passwordGrid->setMargin( 0 );
 
-    TextLabel4 = new QLabel( advancedWidget, "TextLabel4" );
+    TextLabel4 = new TQLabel( advancedWidget, "TextLabel4" );
     TextLabel4->setText( i18n( "Password"  ) );
     passwordGrid->addWidget( TextLabel4, 0, 0 );
 
-    password = new QLineEdit( advancedWidget, "password" );
-    password->setEchoMode( QLineEdit::Password );
-    connect( password, SIGNAL( textChanged ( const QString & ) ), this, SLOT( checkConsistency() ) );
+    password = new TQLineEdit( advancedWidget, "password" );
+    password->setEchoMode( TQLineEdit::Password );
+    connect( password, TQT_SIGNAL( textChanged ( const TQString & ) ), this, TQT_SLOT( checkConsistency() ) );
 
     passwordGrid->addWidget( password, 0, 1 );
 
-    TextLabel6 = new QLabel( advancedWidget, "TextLabel6" );
+    TextLabel6 = new TQLabel( advancedWidget, "TextLabel6" );
     TextLabel6->setText( i18n( "Again"  ) );
     passwordGrid->addWidget( TextLabel6, 1, 0 );
 
-    passwordAgain = new QLineEdit( advancedWidget, "password" );
-    passwordAgain->setEchoMode( QLineEdit::Password );
-    connect( passwordAgain, SIGNAL( textChanged ( const QString & ) ), this, SLOT( checkConsistency() ) );
+    passwordAgain = new TQLineEdit( advancedWidget, "password" );
+    passwordAgain->setEchoMode( TQLineEdit::Password );
+    connect( passwordAgain, TQT_SIGNAL( textChanged ( const TQString & ) ), this, TQT_SLOT( checkConsistency() ) );
 
     passwordGrid->addWidget( passwordAgain, 1, 1 );
 
-    QHBoxLayout *consistencyHbox = new QHBoxLayout;
+    TQHBoxLayout *consistencyHbox = new TQHBoxLayout;
 
-    QSpacerItem* spacer_cons = new QSpacerItem( 48, 20, QSizePolicy::Expanding, QSizePolicy::Fixed );
+    TQSpacerItem* spacer_cons = new TQSpacerItem( 48, 20, TQSizePolicy::Expanding, TQSizePolicy::Fixed );
     consistencyHbox->addItem( spacer_cons );
 
-    passwordConsistencyLabel = new QLabel( advancedWidget, "passwordConsistencyLabel" );
+    passwordConsistencyLabel = new TQLabel( advancedWidget, "passwordConsistencyLabel" );
     consistencyHbox->addWidget( passwordConsistencyLabel );
     passwordGrid->addMultiCellLayout ( consistencyHbox, 2, 2, 0, 1 );
 
-    encryptHeaders = new QCheckBox( i18n( "Encrypt headers" ), advancedWidget, "encryptHeaders" );
+    encryptHeaders = new TQCheckBox( i18n( "Encrypt headers" ), advancedWidget, "encryptHeaders" );
     passwordGrid->addMultiCellWidget ( encryptHeaders, 3, 3, 0, 1 );
 
-    QSpacerItem* spacer_psw = new QSpacerItem( 20, 20, QSizePolicy::Fixed, QSizePolicy::Expanding );
+    TQSpacerItem* spacer_psw = new TQSpacerItem( 20, 20, TQSizePolicy::Fixed, TQSizePolicy::Expanding );
     passwordGrid->addItem( spacer_psw, 4, 0 );
 
     hbox_5->addLayout( passwordGrid, 0, 2 );
 
-    hbox_7 = new QHBoxLayout;
+    hbox_7 = new TQHBoxLayout;
     hbox_7->setSpacing( 6 );
     hbox_7->setMargin( 0 );
 
-    TextLabel8 = new QLabel( i18n( "Command line switches:" ), advancedWidget, "TextLabel8" );
-    TextLabel8->setSizePolicy( QSizePolicy::Fixed, QSizePolicy::Fixed );
+    TextLabel8 = new TQLabel( i18n( "Command line switches:" ), advancedWidget, "TextLabel8" );
+    TextLabel8->tqsetSizePolicy( TQSizePolicy::Fixed, TQSizePolicy::Fixed );
     hbox_7->addWidget( TextLabel8 );
 
     commandLineSwitches = new KHistoryCombo( advancedWidget, "commandLineSwitches" );
     commandLineSwitches->setMaxCount(25);  // remember 25 items
     commandLineSwitches->setDuplicatesEnabled(false);
     krConfig->setGroup("Archives");
-    QStringList list = krConfig->readListEntry("Command Line Switches");
+    TQStringList list = krConfig->readListEntry("Command Line Switches");
     commandLineSwitches->setHistoryItems(list);
 
     hbox_7->addWidget( commandLineSwitches );
@@ -269,33 +269,33 @@ PackGUIBase::PackGUIBase( QWidget* parent,  const char* name, bool modal, WFlags
 
     grid->addWidget( advancedWidget, 4, 0 );
     
-    hbox_6 = new QHBoxLayout;
+    hbox_6 = new TQHBoxLayout;
     hbox_6->setSpacing( 6 );
     hbox_6->setMargin( 0 );
 
-    advancedButton = new QPushButton( this, "advancedButton" );
+    advancedButton = new TQPushButton( this, "advancedButton" );
     advancedButton->setText( i18n( "&Advanced" ) + " >>" );
     hbox_6->addWidget( advancedButton );
 
-    QSpacerItem* spacer_2 = new QSpacerItem( 140, 20, QSizePolicy::Expanding, QSizePolicy::Fixed );
+    TQSpacerItem* spacer_2 = new TQSpacerItem( 140, 20, TQSizePolicy::Expanding, TQSizePolicy::Fixed );
     hbox_6->addItem( spacer_2 );
 
-    okButton = new QPushButton( this, "okButton" );
+    okButton = new TQPushButton( this, "okButton" );
     okButton->setText( i18n( "Ok"  ) );
     okButton->setDefault( true );
     hbox_6->addWidget( okButton );
 
-    cancelButton = new QPushButton( this, "cancelButton" );
+    cancelButton = new TQPushButton( this, "cancelButton" );
     cancelButton->setText( i18n( "Cancel"  ) );
     hbox_6->addWidget( cancelButton );
 
     grid->addLayout( hbox_6, 6, 0 );
 
     // signals and slots connections
-    connect( okButton, SIGNAL( clicked() ), this, SLOT( accept() ) );
-    connect( advancedButton, SIGNAL( clicked() ), this, SLOT( expand() ) );
-    connect( cancelButton, SIGNAL( clicked() ), this, SLOT( reject() ) );
-    connect( browseButton, SIGNAL( clicked() ), this, SLOT( browse() ) );
+    connect( okButton, TQT_SIGNAL( clicked() ), this, TQT_SLOT( accept() ) );
+    connect( advancedButton, TQT_SIGNAL( clicked() ), this, TQT_SLOT( expand() ) );
+    connect( cancelButton, TQT_SIGNAL( clicked() ), this, TQT_SLOT( reject() ) );
+    connect( browseButton, TQT_SIGNAL( clicked() ), this, TQT_SLOT( browse() ) );
 }
 
 /*  
@@ -303,7 +303,7 @@ PackGUIBase::PackGUIBase( QWidget* parent,  const char* name, bool modal, WFlags
  */
 PackGUIBase::~PackGUIBase()
 {
-    // no need to delete child widgets, Qt does it all for us
+    // no need to delete child widgets, TQt does it all for us
 }
 
 void PackGUIBase::browse()
@@ -320,8 +320,8 @@ void PackGUIBase::expand() {
       advancedWidget->show();
     else {
       advancedWidget->hide();
-      layout()->activate();
-      QSize minSize = minimumSize();
+      tqlayout()->activate();
+      TQSize minSize = tqminimumSize();
       resize( width(), minSize.height() );
     }
     show();
@@ -338,11 +338,11 @@ void PackGUIBase::checkConsistency() {
       passwordConsistencyLabel->setText( i18n( "The passwords are equal" ) );
     }
     else {
-      passwordConsistencyLabel->setPaletteForegroundColor( Qt::red );
+      passwordConsistencyLabel->setPaletteForegroundColor( TQt::red );
       passwordConsistencyLabel->setText( i18n( "The passwords are different" ) );
     }
 
-    QString packer = typeData->currentText();
+    TQString packer = typeData->currentText();
 
     bool passworded = false;
     if( packer == "7z" || packer == "rar" || packer == "zip" || packer == "arj" )
@@ -371,7 +371,7 @@ void PackGUIBase::checkConsistency() {
     maxLabel->setEnabled( sliderEnabled );
 }
 
-bool PackGUIBase::extraProperties( QMap<QString,QString> & inMap ) {
+bool PackGUIBase::extraProperties( TQMap<TQString,TQString> & inMap ) {
     inMap.clear();
 
     if( password->isEnabled() && passwordAgain->isEnabled() ) {
@@ -405,23 +405,23 @@ bool PackGUIBase::extraProperties( QMap<QString,QString> & inMap ) {
         return false;
       }
 
-      QString sbuffer;
+      TQString sbuffer;
       sbuffer.sprintf("%llu",size);
 
       inMap[ "VolumeSize" ] = sbuffer;
     }
 
     if( setCompressionLevel->isEnabled() && setCompressionLevel->isChecked() ) {
-      inMap[ "CompressionLevel" ] = QString("%1").arg( compressionSlider->value() );
+      inMap[ "CompressionLevel" ] = TQString("%1").tqarg( compressionSlider->value() );
     }
 
-    QString cmdArgs = commandLineSwitches->currentText().stripWhiteSpace();
+    TQString cmdArgs = commandLineSwitches->currentText().stripWhiteSpace();
     if( !cmdArgs.isEmpty() ) {
       bool firstChar = true;
-      QChar quote = '\0';
+      TQChar quote = '\0';
       
       for( unsigned i=0; i < cmdArgs.length(); i++ ) {
-         QChar ch( cmdArgs[ i ] );
+         TQChar ch( cmdArgs[ i ] );
          if( ch.isSpace() )
            continue;
 
@@ -456,7 +456,7 @@ bool PackGUIBase::extraProperties( QMap<QString,QString> & inMap ) {
       }
 
       commandLineSwitches->addToHistory( cmdArgs );
-      QStringList list = commandLineSwitches->historyItems();
+      TQStringList list = commandLineSwitches->historyItems();
       krConfig->setGroup("Archives");
       krConfig->writeEntry("Command Line Switches", list);
 

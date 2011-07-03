@@ -33,39 +33,40 @@
 
 #include "synchronizertask.h"
 #include "synchronizerfileitem.h"
-#include <qobject.h>
-#include <qptrvector.h>
-#include <qmap.h>
-#include <qcolor.h>
+#include <tqobject.h>
+#include <tqptrvector.h>
+#include <tqmap.h>
+#include <tqcolor.h>
 #include <kio/job.h>
 
 class KRQuery;
 class vfile;
 
-#define DECLARE_COLOR_NAME_ARRAY  QString COLOR_NAMES[] = { "Equals", "Differs", "LeftCopy", "RightCopy", "Delete", \
+#define DECLARE_COLOR_NAME_ARRAY  TQString COLOR_NAMES[] = { "Equals", "Differs", "LeftCopy", "RightCopy", "Delete", \
                                                             "Equals", "Equals",  "Equals",   "Equals",    "Equals" }
-#define DECLARE_BACKGROUND_DFLTS  QColor BCKG_DFLTS[] = { QColor(), QColor(), QColor(), QColor(), Qt::red, \
-                                                          QColor(), QColor(), QColor(), QColor(), QColor() }
-#define DECLARE_FOREGROUND_DFLTS  QColor FORE_DFLTS[] = { Qt::black, Qt::red,  Qt::blue, Qt::darkGreen, Qt::white, \
-                                                          Qt::black, Qt::black, Qt::black, Qt::black, Qt::black }
+#define DECLARE_BACKGROUND_DFLTS  TQColor BCKG_DFLTS[] = { TQColor(), TQColor(), TQColor(), TQColor(), TQt::red, \
+                                                          TQColor(), TQColor(), TQColor(), TQColor(), TQColor() }
+#define DECLARE_FOREGROUND_DFLTS  TQColor FORE_DFLTS[] = { TQt::black, TQt::red,  TQt::blue, TQt::darkGreen, TQt::white, \
+                                                          TQt::black, TQt::black, TQt::black, TQt::black, TQt::black }
 
-class Synchronizer : public QObject
+class Synchronizer : public TQObject
 {
   Q_OBJECT
+  TQ_OBJECT
 
   private:
     int     displayUpdateCount;   // the display is refreshed after every x-th change
   
   public:
     Synchronizer();
-    int     compare( QString leftURL, QString rightURL, KRQuery *query, bool subDirs, bool symLinks,
-                     bool igDate, bool asymm, bool cmpByCnt, bool igCase, bool autoSc, QStringList &selFiles,
+    int     compare( TQString leftURL, TQString rightURL, KRQuery *query, bool subDirs, bool symLinks,
+                     bool igDate, bool asymm, bool cmpByCnt, bool igCase, bool autoSc, TQStringList &selFiles,
                      int equThres, int timeOffs, int parThreads, bool hiddenFiles );
     void    stop() {stopped = true;}
     void    setMarkFlags( bool left, bool equal, bool differs, bool right, bool dup, bool sing, bool del );
     int     refresh( bool nostatus=false );
     bool    totalSizes( int *, KIO::filesize_t *, int *, KIO::filesize_t *, int *, KIO::filesize_t * );
-    void    synchronize( QWidget *,bool leftCopyEnabled, bool rightCopyEnabled, bool deleteEnabled,
+    void    synchronize( TQWidget *,bool leftCopyEnabled, bool rightCopyEnabled, bool deleteEnabled,
                          bool overWrite, int parThreads );
     void    synchronizeWithKGet();
     void    setScrolling( bool scroll );
@@ -81,13 +82,13 @@ class Synchronizer : public QObject
     void    copyToRight( SynchronizerFileItem * );
     void    deleteLeft( SynchronizerFileItem * );
     
-    QString leftBaseDirectory();
-    QString rightBaseDirectory();
-    static QString getTaskTypeName( TaskType taskType );
+    TQString leftBaseDirectory();
+    TQString rightBaseDirectory();
+    static TQString getTaskTypeName( TaskType taskType );
 
     SynchronizerFileItem *getItemAt( unsigned ndx ) {return resultList.at(ndx);}
 
-    void     setParentWidget( QWidget * widget )    {parentWidget = widget;}
+    void     setParentWidget( TQWidget * widget )    {tqparentWidget = widget;}
     void     compareContentResult( SynchronizerFileItem * item, bool result );
 
   signals:
@@ -96,7 +97,7 @@ class Synchronizer : public QObject
     void    synchronizationFinished();
     void    processedSizes( int, KIO::filesize_t, int, KIO::filesize_t, int, KIO::filesize_t );
     void    pauseAccepted();
-    void    statusInfo( QString );
+    void    statusInfo( TQString );
 
   public slots:
     void    slotTaskFinished(KIO::Job*);
@@ -104,28 +105,28 @@ class Synchronizer : public QObject
     
   private:
     bool                  isDir( const vfile * file );
-    QString               readLink( const vfile * file );
+    TQString               readLink( const vfile * file );
     
     void    compareDirectory( SynchronizerFileItem *,SynchronizerDirList *, SynchronizerDirList *,
-                              const QString &leftDir, const QString &rightDir );
-    void    addSingleDirectory( SynchronizerFileItem *, SynchronizerDirList *, const QString &, bool );
-    SynchronizerFileItem * addItem( SynchronizerFileItem *, const QString &, const QString &,
-                                    const QString &, const QString &, bool, bool, KIO::filesize_t,
-                                    KIO::filesize_t, time_t, time_t, const QString &, const QString &,
-                                    const QString &, const QString &, const QString &, const QString &,
-                                    mode_t, mode_t, const QString &, const QString &, TaskType, bool, bool);
-    SynchronizerFileItem * addLeftOnlyItem( SynchronizerFileItem *, const QString &, const QString &,
-                                            KIO::filesize_t, time_t, const QString &, const QString &,
-                                            const QString &, mode_t, const QString &, bool isDir = false, bool isTemp = false );
-    SynchronizerFileItem * addRightOnlyItem( SynchronizerFileItem *, const QString &, const QString &,
-                                             KIO::filesize_t, time_t, const QString &,  const QString &,
-                                             const QString &, mode_t, const QString &, bool isDir = false, bool isTemp = false  );
-    SynchronizerFileItem * addDuplicateItem( SynchronizerFileItem *, const QString &, const QString &,
-                                             const QString &, const QString &, KIO::filesize_t,
-                                             KIO::filesize_t, time_t, time_t, const QString &,
-                                             const QString &, const QString &, const QString &,
-                                             const QString &, const QString &, mode_t, mode_t, const QString &, 
-                                             const QString &, bool isDir = false, bool isTemp = false  );
+                              const TQString &leftDir, const TQString &rightDir );
+    void    addSingleDirectory( SynchronizerFileItem *, SynchronizerDirList *, const TQString &, bool );
+    SynchronizerFileItem * addItem( SynchronizerFileItem *, const TQString &, const TQString &,
+                                    const TQString &, const TQString &, bool, bool, KIO::filesize_t,
+                                    KIO::filesize_t, time_t, time_t, const TQString &, const TQString &,
+                                    const TQString &, const TQString &, const TQString &, const TQString &,
+                                    mode_t, mode_t, const TQString &, const TQString &, TaskType, bool, bool);
+    SynchronizerFileItem * addLeftOnlyItem( SynchronizerFileItem *, const TQString &, const TQString &,
+                                            KIO::filesize_t, time_t, const TQString &, const TQString &,
+                                            const TQString &, mode_t, const TQString &, bool isDir = false, bool isTemp = false );
+    SynchronizerFileItem * addRightOnlyItem( SynchronizerFileItem *, const TQString &, const TQString &,
+                                             KIO::filesize_t, time_t, const TQString &,  const TQString &,
+                                             const TQString &, mode_t, const TQString &, bool isDir = false, bool isTemp = false  );
+    SynchronizerFileItem * addDuplicateItem( SynchronizerFileItem *, const TQString &, const TQString &,
+                                             const TQString &, const TQString &, KIO::filesize_t,
+                                             KIO::filesize_t, time_t, time_t, const TQString &,
+                                             const TQString &, const TQString &, const TQString &,
+                                             const TQString &, const TQString &, mode_t, mode_t, const TQString &, 
+                                             const TQString &, bool isDir = false, bool isTemp = false  );
     bool    isMarked( TaskType task, bool dupl );
     bool    markParentDirectories( SynchronizerFileItem * );
     void    synchronizeLoop();
@@ -150,11 +151,11 @@ class Synchronizer : public QObject
     bool                              cmpByContent;   // compare the files by content
     bool                              ignoreCase;     // case insensitive synchronization for Windows fs
     bool                              autoScroll;     // automatic update of the directory
-    QPtrList<SynchronizerFileItem>    resultList;     // the found files
-    QPtrList<SynchronizerFileItem>    temporaryList;  // temporary files
-    QString                           leftBaseDir;    // the left-side base directory
-    QString                           rightBaseDir;   // the right-side base directory
-    QStringList                       excludedPaths;  // list of the excluded paths
+    TQPtrList<SynchronizerFileItem>    resultList;     // the found files
+    TQPtrList<SynchronizerFileItem>    temporaryList;  // temporary files
+    TQString                           leftBaseDir;    // the left-side base directory
+    TQString                           rightBaseDir;   // the right-side base directory
+    TQStringList                       excludedPaths;  // list of the excluded paths
     KRQuery                           *query;         // the filter used for the query
     bool                              stopped;        // 'Stop' button was pressed
 
@@ -190,15 +191,15 @@ class Synchronizer : public QObject
     int                               fileCount;      // the number of counted files
 
   private:
-    QPtrList<SynchronizerTask>        stack;          // stack for comparing
-    QMap<KIO::Job *,SynchronizerFileItem *> jobMap;   // job maps
-    QMap<KIO::Job *,KIO::filesize_t>  receivedMap;    // the received file size
+    TQPtrList<SynchronizerTask>        stack;          // stack for comparing
+    TQMap<KIO::Job *,SynchronizerFileItem *> jobMap;   // job maps
+    TQMap<KIO::Job *,KIO::filesize_t>  receivedMap;    // the received file size
     SynchronizerFileItem             *lastTask;       // reference to the last stack
     int                               inTaskFinished; // counter of quasy 'threads' in slotTaskFinished
 
-    QStringList                       selectedFiles;  // the selected files to compare
-    QWidget                          *parentWidget;   // the parent widget
-    QWidget                          *syncDlgWidget;  // the synchronizer dialog widget
+    TQStringList                       selectedFiles;  // the selected files to compare
+    TQWidget                          *tqparentWidget;   // the tqparent widget
+    TQWidget                          *syncDlgWidget;  // the synchronizer dialog widget
 };
 
 #endif /* __SYNCHRONIZER_H__ */

@@ -31,7 +31,7 @@
 #ifndef __SYNCHRONIZER_FILE_ITEM_H__
 #define __SYNCHRONIZER_FILE_ITEM_H__
 
-#include <qstring.h>
+#include <tqstring.h>
 #include <kio/global.h>
 
 typedef enum 
@@ -64,10 +64,10 @@ typedef enum
 class SynchronizerFileItem
 {
   private:
-    QString               m_leftName;     // the left file name
-    QString               m_rightName;    // the right file name
-    QString               m_leftDirectory;// the left relative directory path from the base
-    QString               m_rightDirectory;// the left relative directory path from the base
+    TQString               m_leftName;     // the left file name
+    TQString               m_rightName;    // the right file name
+    TQString               m_leftDirectory;// the left relative directory path from the base
+    TQString               m_rightDirectory;// the left relative directory path from the base
     bool                  m_marked;       // flag, indicates to show the file
     bool                  m_existsLeft;   // flag, the file exists in the left directory
     bool                  m_existsRight;  // flag, the file exists in the right directory
@@ -75,49 +75,49 @@ class SynchronizerFileItem
     KIO::filesize_t       m_rightSize;    // the file size at the right directory
     time_t                m_leftDate;     // the file date at the left directory
     time_t                m_rightDate;    // the file date at the left directory
-    QString               m_leftLink;     // the left file's symbolic link destination
-    QString               m_rightLink;    // the right file's symbolic link destination
-    QString               m_leftOwner;    // the left file's owner
-    QString               m_rightOwner;   // the right file's owner
-    QString               m_leftGroup;    // the left file's group
-    QString               m_rightGroup;   // the right file's group
+    TQString               m_leftLink;     // the left file's symbolic link destination
+    TQString               m_rightLink;    // the right file's symbolic link destination
+    TQString               m_leftOwner;    // the left file's owner
+    TQString               m_rightOwner;   // the right file's owner
+    TQString               m_leftGroup;    // the left file's group
+    TQString               m_rightGroup;   // the right file's group
     mode_t                m_leftMode;     // mode for left
     mode_t                m_rightMode;    // mode for right
-    QString               m_leftACL;      // ACL of the left file
-    QString               m_rightACL;     // ACL of the right file
+    TQString               m_leftACL;      // ACL of the left file
+    TQString               m_rightACL;     // ACL of the right file
     TaskType              m_task;         // the task with the file
     bool                  m_isDir;        // flag, indicates that the file is a directory
-    SynchronizerFileItem *m_parent;       // pointer to the parent directory item or 0
+    SynchronizerFileItem *m_parent;       // pointer to the tqparent directory item or 0
     void                 *m_userData;     // user data
     bool                  m_overWrite;    // overwrite flag
-    QString               m_destination;  // the destination URL at rename
+    TQString               m_destination;  // the destination URL at rename
     bool                  m_temporary;    // flag indicates temporary directory
     TaskType              m_originalTask; // the original task type
     
   public:
-    SynchronizerFileItem(const QString &leftNam, const QString &rightNam, const QString &leftDir,
-                       const QString &rightDir, bool mark, bool exL, bool exR, KIO::filesize_t leftSize,
+    SynchronizerFileItem(const TQString &leftNam, const TQString &rightNam, const TQString &leftDir,
+                       const TQString &rightDir, bool mark, bool exL, bool exR, KIO::filesize_t leftSize,
                        KIO::filesize_t rightSize, time_t leftDate, time_t rightDate,
-                       const QString &leftLink, const QString &rightLink, const QString &leftOwner,
-                       const QString &rightOwner, const QString &leftGroup, const QString &rightGroup,
-                       mode_t leftMode, mode_t rightMode, const QString &leftACL, const QString &rightACL, 
-                       TaskType tsk, bool isDir, bool tmp, SynchronizerFileItem *parent ) :
+                       const TQString &leftLink, const TQString &rightLink, const TQString &leftOwner,
+                       const TQString &rightOwner, const TQString &leftGroup, const TQString &rightGroup,
+                       mode_t leftMode, mode_t rightMode, const TQString &leftACL, const TQString &rightACL, 
+                       TaskType tsk, bool isDir, bool tmp, SynchronizerFileItem *tqparent ) :
                        m_leftName( leftNam ), m_rightName( rightNam ), m_leftDirectory( leftDir ),  m_rightDirectory( rightDir ),
                        m_marked( mark ),  m_existsLeft( exL ), m_existsRight( exR ), m_leftSize( leftSize ),
                        m_rightSize( rightSize ), m_leftDate( leftDate ), m_rightDate( rightDate ),
                        m_leftLink( leftLink ), m_rightLink( rightLink ), m_leftOwner( leftOwner ),
                        m_rightOwner( rightOwner ), m_leftGroup( leftGroup ), m_rightGroup( rightGroup ),
                        m_leftMode( leftMode ), m_rightMode( rightMode ), m_leftACL( leftACL ),
-                       m_rightACL( rightACL ), m_task( tsk ), m_isDir( isDir ), m_parent(parent),
-                       m_userData( 0 ), m_overWrite( false ), m_destination( QString::null ), 
+                       m_rightACL( rightACL ), m_task( tsk ), m_isDir( isDir ), m_parent(tqparent),
+                       m_userData( 0 ), m_overWrite( false ), m_destination( TQString() ), 
                        m_temporary( tmp ), m_originalTask( tsk ) {}
 
     inline bool                   isMarked()              {return m_marked;}
     inline void                   setMarked( bool flag )  {m_marked = flag;}
-    inline const QString &        leftName()              {return m_leftName;}
-    inline const QString &        rightName()             {return m_rightName;}
-    inline const QString &        leftDirectory()         {return m_leftDirectory;}
-    inline const QString &        rightDirectory()        {return m_rightDirectory;}
+    inline const TQString &        leftName()              {return m_leftName;}
+    inline const TQString &        rightName()             {return m_rightName;}
+    inline const TQString &        leftDirectory()         {return m_leftDirectory;}
+    inline const TQString &        rightDirectory()        {return m_rightDirectory;}
     inline bool                   existsInLeft()          {return m_existsLeft;}
     inline bool                   existsInRight()         {return m_existsRight;}
     inline bool                   overWrite()             {return m_overWrite;}
@@ -125,16 +125,16 @@ class SynchronizerFileItem
     inline KIO::filesize_t        rightSize()             {return m_rightSize;}
     inline time_t                 leftDate()              {return m_leftDate;}
     inline time_t                 rightDate()             {return m_rightDate;}
-    inline const QString &        leftLink()              {return m_leftLink;}
-    inline const QString &        rightLink()             {return m_rightLink;}
-    inline const QString &        leftOwner()             {return m_leftOwner;}
-    inline const QString &        rightOwner()            {return m_rightOwner;}
-    inline const QString &        leftGroup()             {return m_leftGroup;}
-    inline const QString &        rightGroup()            {return m_rightGroup;}
+    inline const TQString &        leftLink()              {return m_leftLink;}
+    inline const TQString &        rightLink()             {return m_rightLink;}
+    inline const TQString &        leftOwner()             {return m_leftOwner;}
+    inline const TQString &        rightOwner()            {return m_rightOwner;}
+    inline const TQString &        leftGroup()             {return m_leftGroup;}
+    inline const TQString &        rightGroup()            {return m_rightGroup;}
     inline mode_t                 leftMode()              {return m_leftMode;}
     inline mode_t                 rightMode()             {return m_rightMode;}
-    inline const QString &        leftACL()               {return m_leftACL;}
-    inline const QString &        rightACL()              {return m_rightACL;}
+    inline const TQString &        leftACL()               {return m_leftACL;}
+    inline const TQString &        rightACL()              {return m_rightACL;}
     inline TaskType               task()                  {return m_task;}
     inline void                   compareContentResult( bool res )
                                                           {if( res == true )
@@ -143,26 +143,26 @@ class SynchronizerFileItem
                                                              m_task = m_originalTask = (TaskType)(m_originalTask - TT_UNKNOWN);
                                                           }
     inline bool                   isDir()                 {return m_isDir;}
-    inline SynchronizerFileItem * parent()                {return m_parent;}
+    inline SynchronizerFileItem * tqparent()                {return m_parent;}
     inline void *                 userData()              {return m_userData;}
     inline void                   setUserData( void *ud)  {m_userData = ud;}
     inline void                   setOverWrite()          {m_overWrite = true;}
-    inline const QString &        destination()           {return m_destination;}
-    inline void                   setDestination(QString d) {m_destination = d;}
+    inline const TQString &        destination()           {return m_destination;}
+    inline void                   setDestination(TQString d) {m_destination = d;}
     inline bool                   isTemporary()           {return m_temporary;}
     inline void                   setPermanent()          {m_temporary = false;}
     inline TaskType               originalTask()          {return m_originalTask;}
     inline void                   restoreOriginalTask()   {m_task = m_originalTask;}
     inline void                   setTask( TaskType t )   {m_task = t;}
     inline void                   swap( bool asym=false ) {SWAP( m_existsLeft, m_existsRight, bool );
-                                                           SWAP( m_leftName, m_rightName, QString );
-                                                           SWAP( m_leftDirectory, m_rightDirectory, QString );
+                                                           SWAP( m_leftName, m_rightName, TQString );
+                                                           SWAP( m_leftDirectory, m_rightDirectory, TQString );
                                                            SWAP( m_leftSize, m_rightSize, KIO::filesize_t );
                                                            SWAP( m_leftDate, m_rightDate, time_t );
-                                                           SWAP( m_leftLink, m_rightLink, QString );
-                                                           SWAP( m_leftOwner, m_rightOwner, QString );
-                                                           SWAP( m_leftGroup, m_rightGroup, QString );
-                                                           SWAP( m_leftACL, m_rightACL, QString );
+                                                           SWAP( m_leftLink, m_rightLink, TQString );
+                                                           SWAP( m_leftOwner, m_rightOwner, TQString );
+                                                           SWAP( m_leftGroup, m_rightGroup, TQString );
+                                                           SWAP( m_leftACL, m_rightACL, TQString );
                                                            REVERSE_TASK( m_originalTask, asym );
                                                            REVERSE_TASK( m_task, asym );}
 };

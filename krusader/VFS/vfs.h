@@ -31,10 +31,10 @@
 #define VFS_H
 
 // QT includes
-#include <qstring.h>
-#include <qvaluelist.h>
-#include <qobject.h>
-#include <qdict.h>
+#include <tqstring.h>
+#include <tqvaluelist.h>
+#include <tqobject.h>
+#include <tqdict.h>
 // KDE includes
 #include <kurl.h>
 #include <kio/jobclasses.h>
@@ -48,10 +48,11 @@
  * nothing. other VFSs like the normal_vfs inherits from this class and
  * make it possible to use a consistent API for all types of VFSs.
  */
-class vfs: public QObject{
+class vfs: public TQObject{
 	Q_OBJECT
+  TQ_OBJECT
 public:
-	typedef QDict<vfile> vfileDict;	
+	typedef TQDict<vfile> vfileDict;	
 	enum VFS_TYPE{ERROR=0,NORMAL,FTP,TEMP,VIRT};
 
 	/**
@@ -59,34 +60,34 @@ public:
 	 * @param panel the panel father. the VFS will connect it's signals to this object.
 	 * @param quiet if true, the VFS will not display error messages
 	 */
-	vfs(QObject* panel, bool quiet=false);
+	vfs(TQObject* panel, bool quiet=false);
 	virtual			~vfs();
 
 	/// Copy a file to the vfs (physical).
-	virtual void vfs_addFiles(KURL::List *fileUrls,KIO::CopyJob::CopyMode mode,QObject* toNotify,QString dir = "", PreserveMode pmode = PM_DEFAULT)=0;	
+	virtual void vfs_addFiles(KURL::List *fileUrls,KIO::CopyJob::CopyMode mode,TQObject* toNotify,TQString dir = "", PreserveMode pmode = PM_DEFAULT)=0;	
 	/// Remove a file from the vfs (physical)
-	virtual void vfs_delFiles(QStringList *fileNames)=0;	
+	virtual void vfs_delFiles(TQStringList *fileNames)=0;	
 	/// Return a list of URLs for multiple files	
-	virtual KURL::List* vfs_getFiles(QStringList* names)=0;
+	virtual KURL::List* vfs_getFiles(TQStringList* names)=0;
 	/// Return a URL to a single file	
-	virtual KURL vfs_getFile(const QString& name)=0;
+	virtual KURL vfs_getFile(const TQString& name)=0;
 	/// Create a new directory
-	virtual void vfs_mkdir(const QString& name)=0;
+	virtual void vfs_mkdir(const TQString& name)=0;
 	/// Rename file
-	virtual void vfs_rename(const QString& fileName,const QString& newName)=0;
+	virtual void vfs_rename(const TQString& fileName,const TQString& newName)=0;
 	/// Calculate the amount of space occupied by a file or directory (recursive).
-	virtual void vfs_calcSpace(QString name ,KIO::filesize_t *totalSize,unsigned long *totalFiles,unsigned long *totalDirs, bool * stop);
+	virtual void vfs_calcSpace(TQString name ,KIO::filesize_t *totalSize,unsigned long *totalFiles,unsigned long *totalDirs, bool * stop);
 	/// Calculate the amount of space occupied by a local file or directory (recursive).
-	virtual void vfs_calcSpaceLocal(QString name ,KIO::filesize_t *totalSize,unsigned long *totalFiles,unsigned long *totalDirs, bool * stop);
+	virtual void vfs_calcSpaceLocal(TQString name ,KIO::filesize_t *totalSize,unsigned long *totalFiles,unsigned long *totalDirs, bool * stop);
 
 	/// Return the VFS working dir
-	virtual QString vfs_workingDir()=0;
+	virtual TQString vfs_workingDir()=0;
 	/// Return true if the VFS url is writable
 	virtual bool vfs_isWritable() { return isWritable; }
 	/// Return vfile* or 0 if not found
-	inline vfile* vfs_search(const QString& name){ return (*vfs_filesP)[name]; } 
+	inline vfile* vfs_search(const TQString& name){ return (*vfs_filesP)[name]; } 
 	/// Return an empty vfile* list if not found
-	QValueList<vfile*> vfs_search(const KRQuery& filter);
+	TQValueList<vfile*> vfs_search(const KRQuery& filter);
 	/// The total size of all the files in the VFS,
 	KIO::filesize_t vfs_totalSize();
 	/// The number of files in the VFS
@@ -110,8 +111,8 @@ public:
 	/// process the application events               
 	virtual bool vfs_isDeleting()    { return deleteRequested; }
    // KDE FTP proxy bug correction
-   static KURL fromPathOrURL( const QString &originIn );
-   static QString pathOrURL( const KURL &originIn, int trailingSlash = 0 );
+   static KURL fromPathOrURL( const TQString &originIn );
+   static TQString pathOrURL( const KURL &originIn, int trailingSlash = 0 );
 
 
 public slots:
@@ -123,14 +124,14 @@ public slots:
 	bool vfs_refresh();
 	void vfs_setQuiet(bool beQuiet){ quietMode=beQuiet; }
 	void vfs_enableRefresh(bool enable);        
-	void vfs_invalidate() { invalidated = true; }          
+	void vfs_tqinvalidate() { tqinvalidated = true; }          
 
 signals:
 	void startUpdate(); //< emitted when the VFS starts to refresh its list of vfiles.
 	void startJob(KIO::Job* job);
 	void incrementalRefreshFinished( const KURL& ); //< emitted when the incremental refresh was finished
 	void addedVfile(vfile* vf);
-	void deletedVfile(const QString& name);
+	void deletedVfile(const TQString& name);
 	void updatedVfile(vfile* vf);
 	void cleared();
 	void deleteAllowed();                
@@ -147,7 +148,7 @@ protected:
 	/// Add a new vfile to the list.
 	inline void addToList(vfile *data){ vfs_filesP->insert(data->vfile_getName(),data); }
 	/// Deletes a vfile from the list.
-	inline void removeFromList(QString name){ vfs_filesP->remove(name); }
+	inline void removeFromList(TQString name){ vfs_filesP->remove(name); }
 
 	/// Deletes a vfile from the list.
 	void calculateURLSize(KURL url,KIO::filesize_t *totalSize,unsigned long *totalFiles,unsigned long *totalDirs, bool * stop);
@@ -159,7 +160,7 @@ protected:
 	bool disableRefresh;        //< true if refresh is disabled
 	bool isWritable;            //< true if it's writable
 	KURL postponedRefreshURL;   //< true if vfs_refresh() was called when refresh is disabled.
-	bool invalidated;           //< the content of the cache is invalidated
+	bool tqinvalidated;           //< the content of the cache is tqinvalidated
 	bool panelConnected;        //< indicates that there's a panel connected. Important for disabling the dir watcher
 	
 protected slots:
@@ -170,7 +171,7 @@ protected slots:
 private:
 	vfileDict*  vfs_filesP;    //< Point to a lists of virtual files (vfile).
 	vfileDict*  vfs_tempFilesP;//< Temporary files are stored here
-	QDictIterator<vfile>* vfileIterator; //< Point to a dictionary of virtual files (vfile).
+	TQDictIterator<vfile>* vfileIterator; //< Point to a dictionary of virtual files (vfile).
 	
 	// used in the calcSpace function
 	bool* kds_busy;

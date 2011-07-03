@@ -36,8 +36,8 @@
 #include <kmessagebox.h>
 #include <kfileitem.h>
 #include <klargefile.h>
-#include <qapplication.h>
-#include <qdir.h>
+#include <tqapplication.h>
+#include <tqdir.h>
 #include <kdeversion.h>
 
 
@@ -48,8 +48,8 @@
 #endif
 #endif
 
-SynchronizerDirList::SynchronizerDirList( QWidget *w, bool hidden ) : QObject(), QDict<vfile>(), fileIterator( 0 ),
-                                   parentWidget( w ), busy( false ), result( false ), ignoreHidden( hidden ), currentUrl() {
+SynchronizerDirList::SynchronizerDirList( TQWidget *w, bool hidden ) : TQObject(), TQDict<vfile>(), fileIterator( 0 ),
+                                   tqparentWidget( w ), busy( false ), result( false ), ignoreHidden( hidden ), currentUrl() {
   setAutoDelete( true );
 }
 
@@ -58,12 +58,12 @@ SynchronizerDirList::~SynchronizerDirList() {
     delete fileIterator;
 }
 
-vfile * SynchronizerDirList::search( const QString &name, bool ignoreCase ) {
+vfile * SynchronizerDirList::search( const TQString &name, bool ignoreCase ) {
   if( !ignoreCase )
     return (*this)[ name ];
 
   vfile *item = first();
-  QString file = name.lower();
+  TQString file = name.lower();
 
   while( item )
   {
@@ -82,7 +82,7 @@ vfile * SynchronizerDirList::next() {
   return ++(*fileIterator);
 }
 
-bool SynchronizerDirList::load( const QString &urlIn, bool wait ) {
+bool SynchronizerDirList::load( const TQString &urlIn, bool wait ) {
   if( busy )
     return false;
 
@@ -90,37 +90,37 @@ bool SynchronizerDirList::load( const QString &urlIn, bool wait ) {
   KURL url = vfs::fromPathOrURL( urlIn );
 
   if( fileIterator == 0 )
-    fileIterator = new QDictIterator<vfile> ( *this );
+    fileIterator = new TQDictIterator<vfile> ( *this );
 
   clear();
 
   if( url.isLocalFile() ) {
-    QString path = url.path( -1 );
+    TQString path = url.path( -1 );
     DIR* dir = opendir(path.local8Bit());
     if(!dir)  {
-      KMessageBox::error(parentWidget, i18n("Can't open the %1 directory!").arg( path ), i18n("Error"));
+      KMessageBox::error(tqparentWidget, i18n("Can't open the %1 directory!").tqarg( path ), i18n("Error"));
       emit finished( result = false );
       return false;
     }
 
     struct dirent* dirEnt;
-    QString name;
+    TQString name;
 
     while( (dirEnt=readdir(dir)) != NULL ){
-      name = QString::fromLocal8Bit(dirEnt->d_name);
+      name = TQString::fromLocal8Bit(dirEnt->d_name);
 
       if (name=="." || name == "..") continue;
       if (ignoreHidden && name.startsWith( "." ) ) continue;
 
-      QString fullName = path + "/" + name;
+      TQString fullName = path + "/" + name;
 
       KDE_struct_stat stat_p;
       KDE_lstat(fullName.local8Bit(),&stat_p);
 
-      QString perm = KRpermHandler::mode2QString(stat_p.st_mode);
+      TQString perm = KRpermHandler::mode2TQString(stat_p.st_mode);
 
       bool symLink= S_ISLNK(stat_p.st_mode);
-      QString symlinkDest;
+      TQString symlinkDest;
 
       if( symLink ){  // who the link is pointing to ?
         char symDest[256];
@@ -128,17 +128,17 @@ bool SynchronizerDirList::load( const QString &urlIn, bool wait ) {
         int endOfName=0;
         endOfName=readlink(fullName.local8Bit(),symDest,256);
         if ( endOfName != -1 ) {
-          QString absSymDest = symlinkDest = QString::fromLocal8Bit( symDest );
+          TQString absSymDest = symlinkDest = TQString::fromLocal8Bit( symDest );
 
           if( !absSymDest.startsWith( "/" ) )
-            absSymDest = QDir::cleanDirPath( path + "/" + absSymDest );
+            absSymDest = TQDir::cleanDirPath( path + "/" + absSymDest );
 
-          if ( QDir( absSymDest ).exists() )
+          if ( TQDir( absSymDest ).exists() )
             perm[0] = 'd';
         }
       }
 
-      QString mime = QString::null;
+      TQString mime = TQString();
 
       KURL fileURL = KURL::fromPathOrURL( fullName );
 
@@ -154,17 +154,17 @@ bool SynchronizerDirList::load( const QString &urlIn, bool wait ) {
     return true;
   } else {
     KIO::Job *job = KIO::listDir( url, false, true );
-    connect( job, SIGNAL( entries( KIO::Job*, const KIO::UDSEntryList& ) ),
-             this, SLOT( slotEntries( KIO::Job*, const KIO::UDSEntryList& ) ) );
-    connect( job, SIGNAL( result( KIO::Job* ) ),
-             this, SLOT( slotListResult( KIO::Job* ) ) );
+    connect( job, TQT_SIGNAL( entries( KIO::Job*, const KIO::UDSEntryList& ) ),
+             this, TQT_SLOT( slotEntries( KIO::Job*, const KIO::UDSEntryList& ) ) );
+    connect( job, TQT_SIGNAL( result( KIO::Job* ) ),
+             this, TQT_SLOT( slotListResult( KIO::Job* ) ) );
     busy = true;
 
     if( !wait )
       return true;
 
     while( busy )
-      qApp->processEvents();
+      tqApp->processEvents();
     return result;
   }
 }
@@ -175,7 +175,7 @@ void SynchronizerDirList::slotEntries( KIO::Job * job, const KIO::UDSEntryList& 
   KIO::UDSEntryListConstIterator end = entries.end();
 
   int rwx = -1;
-  QString prot = (( KIO::ListJob *)job )->url().protocol();
+  TQString prot = (( KIO::ListJob *)job )->url().protocol();
 
   if( prot == "krarc" || prot == "tar" || prot == "zip" )
     rwx = PERM_ALL;
@@ -183,10 +183,10 @@ void SynchronizerDirList::slotEntries( KIO::Job * job, const KIO::UDSEntryList& 
   while( it != end )
   {
     KFileItem kfi( *it, (( KIO::ListJob *)job )->url(), true, true );
-    QString key = kfi.text();
+    TQString key = kfi.text();
     if( key != "." && key != ".." && (!ignoreHidden || !key.startsWith(".") ) ) {
       mode_t mode = kfi.mode() | kfi.permissions();
-      QString perm = KRpermHandler::mode2QString( mode );
+      TQString perm = KRpermHandler::mode2TQString( mode );
       if ( kfi.isDir() ) 
         perm[ 0 ] = 'd';
 
@@ -206,7 +206,7 @@ void SynchronizerDirList::slotEntries( KIO::Job * job, const KIO::UDSEntryList& 
 void SynchronizerDirList::slotListResult( KIO::Job *job ) {
   busy = false;
   if ( job && job->error() ) {
-    job->showErrorDialog( parentWidget );
+    job->showErrorDialog( tqparentWidget );
     emit finished( result = false );
     return;
   }

@@ -9,22 +9,22 @@
 #include <kglobalsettings.h>
 #include <klocale.h>
 #include <kpixmapeffect.h>
-#include <qpainter.h>
-#include <qtooltip.h>        //for its palette
+#include <tqpainter.h>
+#include <tqtooltip.h>        //for its palette
 
 
 
 namespace RadialMap {
 
 SegmentTip::SegmentTip( uint h )
-  : QWidget( 0, 0, WNoAutoErase | WStyle_Customize | WStyle_NoBorder | WStyle_Tool | WStyle_StaysOnTop | WX11BypassWM )
+  : TQWidget( 0, 0, WNoAutoErase | WStyle_Customize | WStyle_NoBorder | WStyle_Tool | WStyle_StaysOnTop | WX11BypassWM )
   , m_cursorHeight( -h )
 {
-   setBackgroundMode( Qt::NoBackground );
+   setBackgroundMode( TQt::NoBackground );
 }
 
 void
-SegmentTip::moveto( QPoint p, const QWidget &canvas, bool placeAbove )
+SegmentTip::moveto( TQPoint p, const TQWidget &canvas, bool placeAbove )
 {
   //**** this function is very slow and seems to be visibly influenced by operations like mapFromGlobal() (who knows why!)
   //  ** so any improvements are much desired
@@ -33,7 +33,7 @@ SegmentTip::moveto( QPoint p, const QWidget &canvas, bool placeAbove )
   p.rx() -= rect().center().x();
   p.ry() -= (placeAbove ? 8 + height() : m_cursorHeight - 8);
 
-  const QRect screen = KGlobalSettings::desktopGeometry( parentWidget() );
+  const TQRect screen = KGlobalSettings::desktopGeometry( tqparentWidget() );
 
   const int x  = p.x();
   const int y  = p.y();
@@ -48,25 +48,25 @@ SegmentTip::moveto( QPoint p, const QWidget &canvas, bool placeAbove )
   if( y2 > sh ) p.ry() -= y2 - sh;
 
 
-  //I'm using this QPoint to determine where to offset the bitBlt in m_pixmap
-  QPoint offset = canvas.mapToGlobal( QPoint() ) - p;
+  //I'm using this TQPoint to determine where to offset the bitBlt in m_pixmap
+  TQPoint offset = canvas.mapToGlobal( TQPoint() ) - p;
   if( offset.x() < 0 ) offset.setX( 0 );
   if( offset.y() < 0 ) offset.setY( 0 );
 
 
-  const QRect alphaMaskRect( canvas.mapFromGlobal( p ), size() );
-  const QRect intersection( alphaMaskRect.intersect( canvas.rect() ) );
+  const TQRect alphaMaskRect( canvas.mapFromGlobal( p ), size() );
+  const TQRect intersection( alphaMaskRect.intersect( canvas.rect() ) );
 
   m_pixmap.resize( size() ); //move to updateTip once you are sure it can never be null
-  bitBlt( &m_pixmap, offset, &canvas, intersection, Qt::CopyROP );
+  bitBlt( &m_pixmap, offset, &canvas, intersection, TQt::CopyROP );
 
-  QPainter paint( &m_pixmap );
-    paint.setPen( Qt::black );
-    paint.setBrush( Qt::NoBrush );
+  TQPainter paint( &m_pixmap );
+    paint.setPen( TQt::black );
+    paint.setBrush( TQt::NoBrush );
     paint.drawRect( rect() );
     paint.end();
 
-  m_pixmap = KPixmapEffect::fade( m_pixmap, 0.6, QToolTip::palette().color( QPalette::Active, QColorGroup::Background ) );
+  m_pixmap = KPixmapEffect::fade( m_pixmap, 0.6, TQToolTip::palette().color( TQPalette::Active, TQColorGroup::Background ) );
 
   paint.begin( &m_pixmap );
   paint.drawText( rect(), AlignCenter, m_text );
@@ -82,15 +82,15 @@ SegmentTip::moveto( QPoint p, const QWidget &canvas, bool placeAbove )
 void
 SegmentTip::updateTip( const File* const file, const Directory* const root )
 {
-    const QString s1  = file->fullPath( root );
-    QString s2        = file->humanReadableSize();
+    const TQString s1  = file->fullPath( root );
+    TQString s2        = file->humanReadableSize();
     KLocale *loc      = KGlobal::locale();
     const uint MARGIN = 3;
     const uint pc     = 100 * file->size() / root->size();
     uint maxw         = 0;
     uint h            = fontMetrics().height()*2 + 2*MARGIN;
 
-    if( pc > 0 ) s2 += QString( " (%1%)" ).arg( loc->formatNumber( pc, 0 ) );
+    if( pc > 0 ) s2 += TQString( " (%1%)" ).tqarg( loc->formatNumber( pc, 0 ) );
 
     m_text  = s1;
     m_text += '\n';
@@ -100,9 +100,9 @@ SegmentTip::updateTip( const File* const file, const Directory* const root )
     {
         double files  = static_cast<const Directory*>(file)->fileCount();
         const uint pc = uint((100 * files) / (double)root->fileCount());
-        QString s3    = i18n( "Files: %1" ).arg( loc->formatNumber( files, 0 ) );
+        TQString s3    = i18n( "Files: %1" ).tqarg( loc->formatNumber( files, 0 ) );
 
-        if( pc > 0 ) s3 += QString( " (%1%)" ).arg( loc->formatNumber( pc, 0 ) );
+        if( pc > 0 ) s3 += TQString( " (%1%)" ).tqarg( loc->formatNumber( pc, 0 ) );
 
         maxw    = fontMetrics().width( s3 );
         h      += fontMetrics().height();
@@ -118,19 +118,19 @@ SegmentTip::updateTip( const File* const file, const Directory* const root )
 }
 
 bool
-SegmentTip::event( QEvent *e )
+SegmentTip::event( TQEvent *e )
 {
     switch( e->type() )
     {
-    case QEvent::Show:
+    case TQEvent::Show:
         kapp->installEventFilter( this );
         break;
-    case QEvent::Hide:
+    case TQEvent::Hide:
         kapp->removeEventFilter( this );
         break;
-    case QEvent::Paint:
+    case TQEvent::Paint:
     {
-        //QPainter( this ).drawPixmap( 0, 0, m_pixmap );
+        //TQPainter( this ).drawPixmap( 0, 0, m_pixmap );
         bitBlt( this, 0, 0, &m_pixmap );
         return true;
     }
@@ -138,22 +138,22 @@ SegmentTip::event( QEvent *e )
         ;
     }
 
-    return false/*QWidget::event( e )*/;
+    return false/*TQWidget::event( e )*/;
 }
 
 bool
-SegmentTip::eventFilter( QObject*, QEvent *e )
+SegmentTip::eventFilter( TQObject*, TQEvent *e )
 {
     switch ( e->type() )
     {
-    case QEvent::Leave:
-//    case QEvent::MouseButtonPress:
-//    case QEvent::MouseButtonRelease:
-    case QEvent::KeyPress:
-    case QEvent::KeyRelease:
-    case QEvent::FocusIn:
-    case QEvent::FocusOut:
-    case QEvent::Wheel:
+    case TQEvent::Leave:
+//    case TQEvent::MouseButtonPress:
+//    case TQEvent::MouseButtonRelease:
+    case TQEvent::KeyPress:
+    case TQEvent::KeyRelease:
+    case TQEvent::FocusIn:
+    case TQEvent::FocusOut:
+    case TQEvent::Wheel:
         hide(); //FALL THROUGH
     default:
         return false; //allow this event to passed to target

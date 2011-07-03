@@ -1,17 +1,17 @@
 #include "krsqueezedtextlabel.h"
 #include <kstringhandler.h>
 #include <kurldrag.h>
-#include <qtooltip.h>
+#include <tqtooltip.h>
 
-KrSqueezedTextLabel::KrSqueezedTextLabel(QWidget *parent, const char *name):
-  KSqueezedTextLabel(parent, name), acceptDrops( false ), _index(-1), _length(-1) {
+KrSqueezedTextLabel::KrSqueezedTextLabel(TQWidget *tqparent, const char *name):
+  KSqueezedTextLabel(tqparent, name), acceptDrops( false ), _index(-1), _length(-1) {
 }
 
 
 KrSqueezedTextLabel::~KrSqueezedTextLabel() {
 }
 
-void KrSqueezedTextLabel::mousePressEvent(QMouseEvent *) {
+void KrSqueezedTextLabel::mousePressEvent(TQMouseEvent *) {
   emit clicked();
   
 }
@@ -21,11 +21,11 @@ void KrSqueezedTextLabel::enableDrops( bool flag )
   setAcceptDrops( acceptDrops = flag );
 }
 
-void KrSqueezedTextLabel::dropEvent(QDropEvent *e) {
+void KrSqueezedTextLabel::dropEvent(TQDropEvent *e) {
   emit dropped(e);
 }
 
-void KrSqueezedTextLabel::dragEnterEvent(QDragEnterEvent *e) {
+void KrSqueezedTextLabel::dragEnterEvent(TQDragEnterEvent *e) {
   if( acceptDrops )
     e->accept( KURLDrag::canDecode( e ) );
   else
@@ -36,8 +36,8 @@ void KrSqueezedTextLabel::squeezeTextToLabel(int index, int length) {
 	if (index==-1 || length==-1)
 		KSqueezedTextLabel::squeezeTextToLabel();
 	else {
-		QString sqtext=fullText;
-		QFontMetrics fm(fontMetrics());
+		TQString sqtext=fullText;
+		TQFontMetrics fm(fontMetrics());
 		int labelWidth = size().width();
 		int textWidth = fm.width(sqtext);
 		if (textWidth > labelWidth) {
@@ -47,29 +47,29 @@ void KrSqueezedTextLabel::squeezeTextToLabel(int index, int length) {
 			
 			// remove as much as possible from the left, and then from the right
 			if (index>3) {
-				delta=QMIN(index, numOfExtraChars);
+				delta=TQMIN(index, numOfExtraChars);
 				numOfExtraChars -= delta;
-				sqtext.replace(0, delta, "...");
+				sqtext.tqreplace(0, delta, "...");
 			}
 			
 			if (numOfExtraChars>0 && ((int)sqtext.length() > length+3)) {
-				delta = QMIN(numOfExtraChars, (int)sqtext.length() - (length+3));
-				sqtext.replace(sqtext.length()-delta, delta, "...");
+				delta = TQMIN(numOfExtraChars, (int)sqtext.length() - (length+3));
+				sqtext.tqreplace(sqtext.length()-delta, delta, "...");
 			}
-			QLabel::setText(sqtext);
+			TQLabel::setText(sqtext);
 
-			QToolTip::remove( this );
-			QToolTip::add( this, fullText );
+			TQToolTip::remove( this );
+			TQToolTip::add( this, fullText );
 		} else {
-			QLabel::setText(fullText);
+			TQLabel::setText(fullText);
 
-			QToolTip::remove( this );
-			QToolTip::hide();
+			TQToolTip::remove( this );
+			TQToolTip::hide();
 		}
 	}
 }
 
-void KrSqueezedTextLabel::setText( const QString &text, int index, int length ) {
+void KrSqueezedTextLabel::setText( const TQString &text, int index, int length ) {
 	_index=index;
 	_length=length;
 	fullText = text;

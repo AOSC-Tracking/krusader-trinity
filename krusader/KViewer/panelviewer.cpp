@@ -1,12 +1,12 @@
 #include <kurl.h>
-#include <qstring.h>
-#include <qwidgetstack.h>
-#include <qapplication.h>
+#include <tqstring.h>
+#include <tqwidgetstack.h>
+#include <tqapplication.h>
 #include <kparts/part.h>
 #include <kparts/browserextension.h>
 #include <kmessagebox.h>
-#include <qdict.h>
-#include <qlabel.h>
+#include <tqdict.h>
+#include <tqlabel.h>
 #include <kmimetype.h>
 #include <ktempfile.h>
 #include <klocale.h>
@@ -15,7 +15,7 @@
 #include <kdebug.h>
 #include <kfileitem.h>
 #include <kio/netaccess.h>
-#include <qfile.h>
+#include <tqfile.h>
 #include <klargefile.h>
 #include "panelviewer.h"
 
@@ -23,15 +23,15 @@
 
 /* ----==={ PanelViewerBase }===---- */
 
-PanelViewerBase::PanelViewerBase( QWidget *parent ) :
-QWidgetStack( parent ), mimes( 0 ), cpart( 0 ) {
-	setSizePolicy( QSizePolicy( QSizePolicy::Preferred, QSizePolicy::Ignored ) );
+PanelViewerBase::PanelViewerBase( TQWidget *tqparent ) :
+TQWidgetStack( tqparent ), mimes( 0 ), cpart( 0 ) {
+	tqsetSizePolicy( TQSizePolicy( TQSizePolicy::Preferred, TQSizePolicy::Ignored ) );
 
-	mimes = new QDict<KParts::ReadOnlyPart>( DICTSIZE, false );
+	mimes = new TQDict<KParts::ReadOnlyPart>( DICTSIZE, false );
 	mimes->setAutoDelete( true );
 	cpart = 0;
-	fallback = new QLabel( i18n( "No file selected or selected file can't be displayed." ), this );
-	fallback->setAlignment( AlignCenter | ExpandTabs | WordBreak );
+	fallback = new TQLabel( i18n( "No file selected or selected file can't be displayed." ), this );
+	fallback->tqsetAlignment( AlignCenter | ExpandTabs | WordBreak );
 	addWidget( fallback );
 	raiseWidget( fallback );
 }
@@ -46,8 +46,8 @@ PanelViewerBase::~PanelViewerBase() {
 
 /* ----==={ PanelViewer }===---- */
 
-PanelViewer::PanelViewer( QWidget *parent ) :
-PanelViewerBase( parent ) {
+PanelViewer::PanelViewer( TQWidget *tqparent ) :
+PanelViewerBase( tqparent ) {
 }
 
 PanelViewer::~PanelViewer() {
@@ -100,32 +100,32 @@ bool PanelViewer::closeURL() {
 	return false;
 }
 
-KParts::ReadOnlyPart* PanelViewer::getPart( QString mimetype ) {
+KParts::ReadOnlyPart* PanelViewer::getPart( TQString mimetype ) {
 	KParts::ReadOnlyPart * part = 0L;
 	KLibFactory *factory = 0;
 	KService::Ptr ptr = KServiceTypeProfile::preferredService( mimetype, "KParts/ReadOnlyPart" );
 	if ( ptr ) {
-		QStringList args;
-		QVariant argsProp = ptr->property( "X-KDE-BrowserView-Args" );
+		TQStringList args;
+		TQVariant argsProp = ptr->property( "X-KDE-BrowserView-Args" );
 		if ( argsProp.isValid() ) {
-			QString argStr = argsProp.toString();
-			args = QStringList::split( " ", argStr );
+			TQString argStr = argsProp.toString();
+			args = TQStringList::split( " ", argStr );
 		}
-		QVariant prop = ptr->property( "X-KDE-BrowserView-AllowAsDefault" );
+		TQVariant prop = ptr->property( "X-KDE-BrowserView-AllowAsDefault" );
 		if ( !prop.isValid() || prop.toBool() )   // defaults to true
 		{
 			factory = KLibLoader::self() ->factory( ptr->library().latin1() );
 			if ( factory ) {
-				part = static_cast<KParts::ReadOnlyPart *>( factory->create( this,
-				        ptr->name().latin1(), QString( "KParts::ReadOnlyPart" ).latin1(), args ) );
+				part = static_cast<KParts::ReadOnlyPart *>( factory->create( TQT_TQOBJECT(this),
+				        ptr->name().latin1(), TQString( "KParts::ReadOnlyPart" ).latin1(), args ) );
 			}
 		}
 	}
 	if ( part ) {
 		KParts::BrowserExtension * ext = KParts::BrowserExtension::childObject( part );
 		if ( ext ) {
-			connect( ext, SIGNAL( openURLRequestDelayed( const KURL &, const KParts::URLArgs & ) ), this, SLOT( openURL( const KURL & ) ) );
-			connect( ext, SIGNAL( openURLRequestDelayed( const KURL &, const KParts::URLArgs & ) ), this, SIGNAL( openURLRequest( const KURL & ) ) );
+			connect( ext, TQT_SIGNAL( openURLRequestDelayed( const KURL &, const KParts::URLArgs & ) ), this, TQT_SLOT( openURL( const KURL & ) ) );
+			connect( ext, TQT_SIGNAL( openURLRequestDelayed( const KURL &, const KParts::URLArgs & ) ), this, TQT_SIGNAL( openURLRequest( const KURL & ) ) );
 		}
 	}
 	return part;
@@ -137,14 +137,14 @@ KParts::ReadOnlyPart* PanelViewer::getHexPart(){
 	KLibFactory * factory = KLibLoader::self() ->factory( "libkhexedit2part" );
 	if ( factory ) {
 		// Create the part
-		part = ( KParts::ReadOnlyPart * ) factory->create( this, "hexedit2part","KParts::ReadOnlyPart" );
+		part = ( KParts::ReadOnlyPart * ) factory->create( TQT_TQOBJECT(this), "hexedit2part","KParts::ReadOnlyPart" );
 	}
 
 	return part;
 }
 
 void PanelViewer::oldHexViewer(KTempFile& tmpFile) {
-	QString file;
+	TQString file;
 	// files that are not local must first be downloaded
 	if ( !curl.isLocalFile() ) {
 		if ( !KIO::NetAccess::download( curl, file,this ) ) {
@@ -155,9 +155,9 @@ void PanelViewer::oldHexViewer(KTempFile& tmpFile) {
 
 
 	// create a hex file
-	QFile f_in( file );
+	TQFile f_in( file );
 	f_in.open( IO_ReadOnly );
-	QDataStream in( &f_in );
+	TQDataStream in( &f_in );
 
 	FILE *out = KDE_fopen( tmpFile.name().local8Bit(), "w" );
 
@@ -196,8 +196,8 @@ void PanelViewer::oldHexViewer(KTempFile& tmpFile) {
 
 /* ----==={ PanelEditor }===---- */
 
-PanelEditor::PanelEditor( QWidget *parent ) :
-PanelViewerBase( parent ) {
+PanelEditor::PanelEditor( TQWidget *tqparent ) :
+PanelViewerBase( tqparent ) {
 }
 
 PanelEditor::~PanelEditor() {
@@ -231,9 +231,9 @@ KParts::ReadOnlyPart* PanelEditor::openURL( const KURL &url, KrViewer::Mode mode
 
 	bool create = true;
 	KIO::StatJob* statJob = KIO::stat( url, false );
-	connect( statJob, SIGNAL( result( KIO::Job* ) ), this, SLOT( slotStatResult( KIO::Job* ) ) );
+	connect( statJob, TQT_SIGNAL( result( KIO::Job* ) ), this, TQT_SLOT( slotStatResult( KIO::Job* ) ) );
 	busy = true;
-	while ( busy ) qApp->processEvents();
+	while ( busy ) tqApp->processEvents();
 	if( !entry.isEmpty() ) {
 		KFileItem file( entry, url );
 		if( file.isReadable() ) create = false;
@@ -263,32 +263,32 @@ bool PanelEditor::closeURL() {
 	return true;
 }
 
-KParts::ReadWritePart* PanelEditor::getPart( QString mimetype ) {
+KParts::ReadWritePart* PanelEditor::getPart( TQString mimetype ) {
 	KParts::ReadWritePart * part = 0L;
 	KLibFactory *factory = 0;
 	KService::Ptr ptr = KServiceTypeProfile::preferredService( mimetype, "KParts/ReadWritePart" );
 	if ( ptr ) {
-		QStringList args;
-		QVariant argsProp = ptr->property( "X-KDE-BrowserView-Args" );
+		TQStringList args;
+		TQVariant argsProp = ptr->property( "X-KDE-BrowserView-Args" );
 		if ( argsProp.isValid() ) {
-			QString argStr = argsProp.toString();
-			args = QStringList::split( " ", argStr );
+			TQString argStr = argsProp.toString();
+			args = TQStringList::split( " ", argStr );
 		}
-		QVariant prop = ptr->property( "X-KDE-BrowserView-AllowAsDefault" );
+		TQVariant prop = ptr->property( "X-KDE-BrowserView-AllowAsDefault" );
 		if ( !prop.isValid() || prop.toBool() )  // defaults to true
 		{
 			factory = KLibLoader::self() ->factory( ptr->library().latin1() );
 			if ( factory ) {
-				part = static_cast<KParts::ReadWritePart *>( factory->create( this,
-				        ptr->name().latin1(), QString( "KParts::ReadWritePart" ).latin1(), args ) );
+				part = static_cast<KParts::ReadWritePart *>( factory->create( TQT_TQOBJECT(this),
+				        ptr->name().latin1(), TQString( "KParts::ReadWritePart" ).latin1(), args ) );
 			}
 		}
 	}
 	if ( part ) {
 		KParts::BrowserExtension * ext = KParts::BrowserExtension::childObject( part );
 		if ( ext ) {
-			connect( ext, SIGNAL( openURLRequestDelayed( const KURL &, const KParts::URLArgs & ) ), this, SLOT( openURL( const KURL & ) ) );
-			connect( ext, SIGNAL( openURLRequestDelayed( const KURL &, const KParts::URLArgs & ) ), this, SIGNAL( openURLRequest( const KURL & ) ) );
+			connect( ext, TQT_SIGNAL( openURLRequestDelayed( const KURL &, const KParts::URLArgs & ) ), this, TQT_SLOT( openURL( const KURL & ) ) );
+			connect( ext, TQT_SIGNAL( openURLRequestDelayed( const KURL &, const KParts::URLArgs & ) ), this, TQT_SIGNAL( openURLRequest( const KURL & ) ) );
 		}
 	}
 	return part;

@@ -31,8 +31,8 @@ A
 #define KMOUNTMAN_H
 
 // QT includes
-#include <qobject.h>
-#include <qstring.h>
+#include <tqobject.h>
+#include <tqstring.h>
 
 // KDE includes
 #include <kdeversion.h>
@@ -47,27 +47,28 @@ A
 
 class KMountManGUI;
 
-class KMountMan : public QObject {
+class KMountMan : public TQObject {
    Q_OBJECT
+  TQ_OBJECT
    friend class KMountManGUI;
 
 public:
-   enum mntStatus {DOESNT_EXIST, NOT_MOUNTED, MOUNTED};
+   enum mnttqStatus {DOESNT_EXIST, NOT_MOUNTED, MOUNTED};
 
    inline bool operational() {
       return Operational;
    } // check this 1st
    
 	void mainWindow();                        // opens up the GUI
-   void mount( QString mntPoint, bool blocking=true ); // this is probably what you need for mount
-   void unmount( QString mntPoint, bool blocking=true ); // this is probably what you need for unmount
-   mntStatus getStatus( QString mntPoint );  // return the status of a mntPoint (if any)
-   void autoMount( QString path );           // just call it before refreshing into a dir
-   static void eject( QString mntPoint );
-   bool ejectable( QString path );
-   QString convertSize( KIO::filesize_t size );
-	bool invalidFilesystem(QString type);
-	bool nonmountFilesystem(QString type, QString mntPoint);
+   void mount( TQString mntPoint, bool blocking=true ); // this is probably what you need for mount
+   void unmount( TQString mntPoint, bool blocking=true ); // this is probably what you need for unmount
+   mnttqStatus gettqStatus( TQString mntPoint );  // return the status of a mntPoint (if any)
+   void autoMount( TQString path );           // just call it before refreshing into a dir
+   static void eject( TQString mntPoint );
+   bool ejectable( TQString path );
+   TQString convertSize( KIO::filesize_t size );
+	bool invalidFilesystem(TQString type);
+	bool nonmountFilesystem(TQString type, TQString mntPoint);
 
    KMountMan();
    ~KMountMan();
@@ -82,21 +83,21 @@ protected slots:
 	
 protected:
 	// used internally
-	static KMountPoint *findInListByMntPoint(KMountPoint::List &lst, QString value); 
-   void toggleMount( QString mntPoint ); 
+	static KMountPoint *findInListByMntPoint(KMountPoint::List &lst, TQString value); 
+   void toggleMount( TQString mntPoint ); 
 		
 private:
-   QString *_actions;
+   TQString *_actions;
 
 private:
    bool Operational;   // if false, something went terribly wrong on startup
 	bool waiting; // used to block krusader while waiting for (un)mount operation
    KMountManGUI *mountManGui;
 	// the following is the FS type
-	QStringList invalid_fs;
-	QStringList nonmount_fs;
+	TQStringList invalid_fs;
+	TQStringList nonmount_fs;
 	// the following is the FS name
-		QStringList nonmount_fs_mntpoint;
+		TQStringList nonmount_fs_mntpoint;
 };
 
 #endif

@@ -25,7 +25,7 @@
 
 class ArchiveProtocol : public KIO::SlaveBase {
 public:
-	ArchiveProtocol( const QCString &pool, const QCString &app );
+	ArchiveProtocol( const TQCString &pool, const TQCString &app );
 	virtual ~ArchiveProtocol();
 
 	virtual void listDir( const KURL & url );
@@ -36,12 +36,12 @@ public:
 
 protected:
 	void createUDSEntry( const KArchiveEntry * tarEntry, KIO::UDSEntry & entry );
-	bool checkNewFile( const KURL & url, QString & path );
+	bool checkNewFile( const KURL & url, TQString & path );
 
 	KArchive * m_archiveFile;
-	QString m_archiveName;
-	QString user;
-	QString group;
+	TQString m_archiveName;
+	TQString user;
+	TQString group;
 	time_t m_mtime;
 };
 

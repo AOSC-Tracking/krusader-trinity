@@ -29,12 +29,12 @@
  ***************************************************************************/
 
 #include "konfiguratorpage.h"
-#include <qlayout.h>
+#include <tqlayout.h>
 #include "../krusader.h"
-#include <qwhatsthis.h>
+#include <tqwhatsthis.h>
 
-KonfiguratorPage::KonfiguratorPage( bool firstTime, QWidget* parent,  const char* name ) :
-  QFrame( parent, name ), firstCall( firstTime )
+KonfiguratorPage::KonfiguratorPage( bool firstTime, TQWidget* tqparent,  const char* name ) :
+  TQFrame( tqparent, name ), firstCall( firstTime )
 {
 }
 
@@ -91,110 +91,110 @@ bool KonfiguratorPage::isChanged()
     item = itemList.next();
   }
 
-  itemList.find( currentItem );  /* restore the current pointer */
+  itemList.tqfind( currentItem );  /* restore the current pointer */
   return isChanged;
 }
 
-KonfiguratorCheckBox* KonfiguratorPage::createCheckBox( QString cls, QString name,
-    bool dflt, QString text, QWidget *parent, bool rst, QString toolTip, int pg )
+KonfiguratorCheckBox* KonfiguratorPage::createCheckBox( TQString cls, TQString name,
+    bool dflt, TQString text, TQWidget *tqparent, bool rst, TQString toolTip, int pg )
 {
   KonfiguratorCheckBox *checkBox = new KonfiguratorCheckBox( cls, name, dflt, text,
-                                 parent, QString(cls + "/" + name).ascii(), rst, pg );
+                                 tqparent, TQString(cls + "/" + name).ascii(), rst, pg );
   if( !toolTip.isEmpty() )
-    QWhatsThis::add( checkBox, toolTip );
+    TQWhatsThis::add( checkBox, toolTip );
   
   registerObject( checkBox->extension() );
   return checkBox;
 }
 
-KonfiguratorSpinBox* KonfiguratorPage::createSpinBox(  QString cls, QString name,
-    int dflt, int min, int max, QWidget *parent, bool rst, int pg )
+KonfiguratorSpinBox* KonfiguratorPage::createSpinBox(  TQString cls, TQString name,
+    int dflt, int min, int max, TQWidget *tqparent, bool rst, int pg )
 {
   KonfiguratorSpinBox *spinBox = new KonfiguratorSpinBox( cls, name, dflt, min, max,
-                                 parent, QString(cls + "/" + name).ascii(), rst, pg );
+                                 tqparent, TQString(cls + "/" + name).ascii(), rst, pg );
 
   registerObject( spinBox->extension() );
   return spinBox;
 }
 
-KonfiguratorEditBox* KonfiguratorPage::createEditBox(  QString cls, QString name,
-    QString dflt, QWidget *parent, bool rst, int pg )
+KonfiguratorEditBox* KonfiguratorPage::createEditBox(  TQString cls, TQString name,
+    TQString dflt, TQWidget *tqparent, bool rst, int pg )
 {
-  KonfiguratorEditBox *editBox = new KonfiguratorEditBox( cls, name, dflt, parent,
-                                        QString(cls + "/" + name).ascii(), rst, pg );
+  KonfiguratorEditBox *editBox = new KonfiguratorEditBox( cls, name, dflt, tqparent,
+                                        TQString(cls + "/" + name).ascii(), rst, pg );
 
   registerObject( editBox->extension() );
   return editBox;
 }
 
-KonfiguratorListBox* KonfiguratorPage::createListBox(  QString cls, QString name,
-    QStringList dflt, QWidget *parent, bool rst, int pg )
+KonfiguratorListBox* KonfiguratorPage::createListBox(  TQString cls, TQString name,
+    TQStringList dflt, TQWidget *tqparent, bool rst, int pg )
 {
-  KonfiguratorListBox *listBox = new KonfiguratorListBox( cls, name, dflt, parent,
-                                        QString(cls + "/" + name).ascii(), rst, pg );
+  KonfiguratorListBox *listBox = new KonfiguratorListBox( cls, name, dflt, tqparent,
+                                        TQString(cls + "/" + name).ascii(), rst, pg );
 
   registerObject( listBox->extension() );
   return listBox;
 }
 
-KonfiguratorURLRequester* KonfiguratorPage::createURLRequester(  QString cls, QString name,
-    QString dflt, QWidget *parent, bool rst, int pg )
+KonfiguratorURLRequester* KonfiguratorPage::createURLRequester(  TQString cls, TQString name,
+    TQString dflt, TQWidget *tqparent, bool rst, int pg )
 {
   KonfiguratorURLRequester *urlRequester = new KonfiguratorURLRequester( cls, name, dflt,
-                                        parent, QString(cls + "/" + name).ascii(), rst, pg );
+                                        tqparent, TQString(cls + "/" + name).ascii(), rst, pg );
 
   registerObject( urlRequester->extension() );
   return urlRequester;
 }
 
-QGroupBox* KonfiguratorPage::createFrame( QString text, QWidget *parent,
+TQGroupBox* KonfiguratorPage::createFrame( TQString text, TQWidget *tqparent,
                                           const char *widgetName )
 {
-  QGroupBox *groupBox = new QGroupBox( parent, widgetName );
-  groupBox->setFrameShape( QGroupBox::Box );
-  groupBox->setFrameShadow( QGroupBox::Sunken );
+  TQGroupBox *groupBox = new TQGroupBox( tqparent, widgetName );
+  groupBox->setFrameShape( TQGroupBox::Box );
+  groupBox->setFrameShadow( TQGroupBox::Sunken );
   if( !text.isNull() )
     groupBox->setTitle( text );
   groupBox->setColumnLayout(0, Qt::Vertical );
-  groupBox->layout()->setSpacing( 0 );
-  groupBox->layout()->setMargin( 0 );
+  groupBox->tqlayout()->setSpacing( 0 );
+  groupBox->tqlayout()->setMargin( 0 );
   return groupBox;
 }                                          
 
-QGridLayout* KonfiguratorPage::createGridLayout( QLayout *parent )
+TQGridLayout* KonfiguratorPage::createGridLayout( TQLayout *tqparent )
 {
-  QGridLayout *gridLayout = new QGridLayout( parent );
-  gridLayout->setAlignment( Qt::AlignTop );
+  TQGridLayout *gridLayout = new TQGridLayout( tqparent );
+  gridLayout->tqsetAlignment( TQt::AlignTop );
   gridLayout->setSpacing( 6 );
   gridLayout->setMargin( 11 );
   return gridLayout;
 }
 
-QLabel* KonfiguratorPage::addLabel( QGridLayout *layout, int x, int y, QString label,
-                                    QWidget *parent, const char *widgetName )
+TQLabel* KonfiguratorPage::addLabel( TQGridLayout *tqlayout, int x, int y, TQString label,
+                                    TQWidget *tqparent, const char *widgetName )
 {
-  QLabel *lbl = new QLabel( label, parent, widgetName );
-  layout->addWidget( lbl, x, y );
+  TQLabel *lbl = new TQLabel( label, tqparent, widgetName );
+  tqlayout->addWidget( lbl, x, y );
   return lbl;
 }
 
-QWidget* KonfiguratorPage::createSpacer( QWidget *parent, const char *widgetName )
+TQWidget* KonfiguratorPage::createSpacer( TQWidget *tqparent, const char *widgetName )
 {
-  QWidget *widget = new QWidget( parent, widgetName );
-  QHBoxLayout *hboxlayout = new QHBoxLayout( widget );
-  QSpacerItem* spacer = new QSpacerItem( 40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum );
-  hboxlayout->addItem( spacer );
+  TQWidget *widget = new TQWidget( tqparent, widgetName );
+  TQHBoxLayout *hboxtqlayout = new TQHBoxLayout( widget );
+  TQSpacerItem* spacer = new TQSpacerItem( 40, 20, TQSizePolicy::Expanding, TQSizePolicy::Minimum );
+  hboxtqlayout->addItem( spacer );
   return widget;
 }
 
 KonfiguratorCheckBoxGroup* KonfiguratorPage::createCheckBoxGroup( int sizex, int sizey,
-    KONFIGURATOR_CHECKBOX_PARAM *params, int paramNum, QWidget *parent,
+    KONFIGURATOR_CHECKBOX_PARAM *params, int paramNum, TQWidget *tqparent,
     const char *widgetName, int pg )
 {
-  KonfiguratorCheckBoxGroup *groupWidget = new KonfiguratorCheckBoxGroup( parent, widgetName );
-  QGridLayout *layout = new QGridLayout( groupWidget );
-  layout->setSpacing( 6 );
-  layout->setMargin( 0 );
+  KonfiguratorCheckBoxGroup *groupWidget = new KonfiguratorCheckBoxGroup( tqparent, widgetName );
+  TQGridLayout *tqlayout = new TQGridLayout( groupWidget );
+  tqlayout->setSpacing( 6 );
+  tqlayout->setMargin( 0 );
   
   int x = 0, y = 0;
   
@@ -205,7 +205,7 @@ KonfiguratorCheckBoxGroup* KonfiguratorPage::createCheckBoxGroup( int sizex, int
       params[i].restart, params[i].toolTip, pg );
 
     groupWidget->add( checkBox );
-    layout->addWidget( checkBox, y, x );
+    tqlayout->addWidget( checkBox, y, x );
 
     if( sizex )
     {
@@ -222,34 +222,34 @@ KonfiguratorCheckBoxGroup* KonfiguratorPage::createCheckBoxGroup( int sizex, int
   return groupWidget;
 }
 
-KonfiguratorRadioButtons* KonfiguratorPage::createRadioButtonGroup( QString cls,
-    QString name, QString dflt, int sizex, int sizey, KONFIGURATOR_NAME_VALUE_TIP *params,
-    int paramNum, QWidget *parent, const char *widgetName, bool rst, int pg )
+KonfiguratorRadioButtons* KonfiguratorPage::createRadioButtonGroup( TQString cls,
+    TQString name, TQString dflt, int sizex, int sizey, KONFIGURATOR_NAME_VALUE_TIP *params,
+    int paramNum, TQWidget *tqparent, const char *widgetName, bool rst, int pg )
 {
-  KonfiguratorRadioButtons *radioWidget = new KonfiguratorRadioButtons( cls, name, dflt, parent, widgetName, rst, pg );
-  radioWidget->setFrameShape( QButtonGroup::NoFrame );
-  radioWidget->setFrameShadow( QButtonGroup::Sunken );
+  KonfiguratorRadioButtons *radioWidget = new KonfiguratorRadioButtons( cls, name, dflt, tqparent, widgetName, rst, pg );
+  radioWidget->setFrameShape( TQButtonGroup::NoFrame );
+  radioWidget->setFrameShadow( TQButtonGroup::Sunken );
   radioWidget->setTitle( "" );
   radioWidget->setExclusive( true );
   radioWidget->setRadioButtonExclusive( true );
   radioWidget->setColumnLayout(0, Qt::Vertical );
 
-  QGridLayout *layout = new QGridLayout( radioWidget->layout() );
-  layout->setAlignment( Qt::AlignTop );
-  layout->setSpacing( 6 );
-  layout->setMargin( 0 );
+  TQGridLayout *tqlayout = new TQGridLayout( radioWidget->tqlayout() );
+  tqlayout->tqsetAlignment( TQt::AlignTop );
+  tqlayout->setSpacing( 6 );
+  tqlayout->setMargin( 0 );
 
   int x = 0, y = 0;
 
   for( int i=0; i != paramNum; i++ )
   {
-    QRadioButton *radBtn = new QRadioButton( params[i].text, radioWidget,
-                        QString( cls + "/" + name + "/" + params[i].value ).ascii() );
+    TQRadioButton *radBtn = new TQRadioButton( params[i].text, radioWidget,
+                        TQString( cls + "/" + name + "/" + params[i].value ).ascii() );
 
     if( !params[i].tooltip.isEmpty() )
-      QWhatsThis::add( radBtn, params[i].tooltip );
+      TQWhatsThis::add( radBtn, params[i].tooltip );
 
-    layout->addWidget( radBtn, y, x );
+    tqlayout->addWidget( radBtn, y, x );
 
     radioWidget->addRadioButton( radBtn, params[i].text, params[i].value );
 
@@ -270,31 +270,31 @@ KonfiguratorRadioButtons* KonfiguratorPage::createRadioButtonGroup( QString cls,
   return radioWidget;
 }
 
-KonfiguratorFontChooser *KonfiguratorPage::createFontChooser( QString cls, QString name,
-  QFont *dflt, QWidget *parent, bool rst, int pg )
+KonfiguratorFontChooser *KonfiguratorPage::createFontChooser( TQString cls, TQString name,
+  TQFont *dflt, TQWidget *tqparent, bool rst, int pg )
 {
-  KonfiguratorFontChooser *fontChooser = new KonfiguratorFontChooser( cls, name, dflt, parent,
-                                        QString(cls + "/" + name).ascii(), rst, pg );
+  KonfiguratorFontChooser *fontChooser = new KonfiguratorFontChooser( cls, name, dflt, tqparent,
+                                        TQString(cls + "/" + name).ascii(), rst, pg );
 
   registerObject( fontChooser->extension() );
   return fontChooser;
 }
 
-KonfiguratorComboBox *KonfiguratorPage::createComboBox(  QString cls, QString name, QString dflt,
-    KONFIGURATOR_NAME_VALUE_PAIR *params, int paramNum, QWidget *parent, bool rst, bool editable, int pg )
+KonfiguratorComboBox *KonfiguratorPage::createComboBox(  TQString cls, TQString name, TQString dflt,
+    KONFIGURATOR_NAME_VALUE_PAIR *params, int paramNum, TQWidget *tqparent, bool rst, bool editable, int pg )
 {
   KonfiguratorComboBox *comboBox = new KonfiguratorComboBox( cls, name, dflt, params,
-                                        paramNum, parent, QString(cls + "/" + name).ascii(),
+                                        paramNum, tqparent, TQString(cls + "/" + name).ascii(),
                                         rst, editable, pg );
 
   registerObject( comboBox->extension() );
   return comboBox;
 }
 
-QFrame* KonfiguratorPage::createLine( QWidget *parent, const char *widgetName, bool vertical )
+TQFrame* KonfiguratorPage::createLine( TQWidget *tqparent, const char *widgetName, bool vertical )
 {
-  QFrame *line = new QFrame( parent, widgetName );
-  line->setFrameStyle( ( vertical ? QFrame::VLine : QFrame::HLine ) | QFrame::Sunken );
+  TQFrame *line = new TQFrame( tqparent, widgetName );
+  line->setFrameStyle( ( vertical ? TQFrame::VLine : TQFrame::HLine ) | TQFrame::Sunken );
   return line;
 }
 
@@ -303,9 +303,9 @@ void KonfiguratorPage::registerObject( KonfiguratorExtension *item )
   KonfiguratorExtension *currentItem = itemList.current();
   
   itemList.append( item );
-  connect( item, SIGNAL( sigChanged( bool ) ), this, SIGNAL ( sigChanged( ) ) );
+  connect( item, TQT_SIGNAL( sigChanged( bool ) ), this, TQT_SIGNAL ( sigChanged( ) ) );
 
-  itemList.find( currentItem );
+  itemList.tqfind( currentItem );
 }
 
 void KonfiguratorPage::removeObject( KonfiguratorExtension *item )
@@ -320,12 +320,12 @@ void KonfiguratorPage::removeObject( KonfiguratorExtension *item )
     itemList.removeRef( item );
 }
 
-KonfiguratorColorChooser *KonfiguratorPage::createColorChooser( QString cls, QString name, QColor dflt,
-                                                                QWidget *parent, bool rst,
+KonfiguratorColorChooser *KonfiguratorPage::createColorChooser( TQString cls, TQString name, TQColor dflt,
+                                                                TQWidget *tqparent, bool rst,
                                                                 ADDITIONAL_COLOR *addColPtr, int addColNum, int pg )
 {
-  KonfiguratorColorChooser *colorChooser = new KonfiguratorColorChooser( cls, name, dflt,  parent,
-                                        QString(cls + "/" + name).ascii(), rst, addColPtr, addColNum, pg );
+  KonfiguratorColorChooser *colorChooser = new KonfiguratorColorChooser( cls, name, dflt,  tqparent,
+                                        TQString(cls + "/" + name).ascii(), rst, addColPtr, addColNum, pg );
 
   registerObject( colorChooser->extension() );
   return colorChooser;

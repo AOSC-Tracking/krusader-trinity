@@ -14,14 +14,14 @@
 #include <kdebug.h>
 #include <klocale.h>
 #include <kinputdialog.h>
-#include <qtextedit.h>
-#include <qvbox.h>
-#include <qlayout.h>
-#include <qsplitter.h>
-#include <qpushbutton.h>
-#include <qcheckbox.h>
-#include <qfile.h>
-#include <qlabel.h>
+#include <tqtextedit.h>
+#include <tqvbox.h>
+#include <tqlayout.h>
+#include <tqsplitter.h>
+#include <tqpushbutton.h>
+#include <tqcheckbox.h>
+#include <tqfile.h>
+#include <tqlabel.h>
 #include <kaction.h>
 #include <kurl.h>
 #include <kmessagebox.h>
@@ -35,15 +35,15 @@
 
 //for the availabilitycheck:
 #include <kmimetype.h>
-#include <qregexp.h>
+#include <tqregexp.h>
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////  KrActionProcDlg  /////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////
-#include <qlayout.h>
-KrActionProcDlg::KrActionProcDlg( QString caption, bool enableStderr, QWidget *parent ) :
-KDialogBase( parent, 0, false, caption, KDialogBase::User1 | KDialogBase::Ok | KDialogBase::Cancel, KDialogBase::Cancel ),
+#include <tqlayout.h>
+KrActionProcDlg::KrActionProcDlg( TQString caption, bool enableStderr, TQWidget *tqparent ) :
+KDialogBase( tqparent, 0, false, caption, KDialogBase::User1 | KDialogBase::Ok | KDialogBase::Cancel, KDialogBase::Cancel ),
 _stdout(0), _stderr(0), _currentTextEdit(0) {
 
    setButtonOK( i18n( "Close" ) );
@@ -53,36 +53,36 @@ _stdout(0), _stderr(0), _currentTextEdit(0) {
 
    setButtonText(KDialogBase::User1, i18n("Save as") );
 
-   QVBox *page = makeVBoxMainWidget();
+   TQVBox *page = makeVBoxMainWidget();
    // do we need to separate stderr and stdout?
    if ( enableStderr ) {
-      QSplitter *splitt = new QSplitter( QSplitter::Vertical, page );
+      TQSplitter *splitt = new TQSplitter( Qt::Vertical, page );
       // create stdout
-      QVBox *stdoutBox = new QVBox( splitt, "stdout VBox" );
+      TQVBox *stdoutBox = new TQVBox( splitt, "stdout VBox" );
       stdoutBox->setSpacing( 6 );
-      new QLabel( i18n( "Standard Output (stdout)" ), stdoutBox );
-      _stdout = new QTextEdit( stdoutBox );
+      new TQLabel( i18n( "Standard Output (stdout)" ), stdoutBox );
+      _stdout = new TQTextEdit( stdoutBox );
       _stdout->setReadOnly( true );
       _stdout->setMinimumWidth( fontMetrics().maxWidth() * 40 );
       // create stderr
-      QVBox *stderrBox = new QVBox( splitt, "stderr VBox" );
+      TQVBox *stderrBox = new TQVBox( splitt, "stderr VBox" );
       stderrBox->setSpacing( 6 );
-      new QLabel( i18n( "Standard Error (stderr)" ), stderrBox );
-      _stderr = new QTextEdit( stderrBox );
+      new TQLabel( i18n( "Standard Error (stderr)" ), stderrBox );
+      _stderr = new TQTextEdit( stderrBox );
       _stderr->setReadOnly( true );
       _stderr->setMinimumWidth( fontMetrics().maxWidth() * 40 );
    } else {
       // create stdout
-      new QLabel( i18n( "Output" ), page );
-      _stdout = new QTextEdit( page );
+      new TQLabel( i18n( "Output" ), page );
+      _stdout = new TQTextEdit( page );
       _stdout->setReadOnly( true );
       _stdout->setMinimumWidth( fontMetrics().maxWidth() * 40 );
    }
 
    _currentTextEdit = _stdout;
-   connect( _stdout, SIGNAL( clicked(int, int) ), SLOT( currentTextEditChanged() ) );
+   connect( _stdout, TQT_SIGNAL( clicked(int, int) ), TQT_SLOT( currentTextEditChanged() ) );
    if (_stderr)
-      connect( _stderr, SIGNAL( clicked(int, int) ), SLOT( currentTextEditChanged() ) );
+      connect( _stderr, TQT_SIGNAL( clicked(int, int) ), TQT_SLOT( currentTextEditChanged() ) );
 
    krConfig->setGroup( "UserActions" );
    normalFont = krConfig->readFontEntry( "Normal Font", _UserActions_NormalFont );
@@ -90,29 +90,29 @@ _stdout(0), _stderr(0), _currentTextEdit(0) {
    bool startupState = krConfig->readBoolEntry( "Use Fixed Font", _UserActions_UseFixedFont );
    toggleFixedFont( startupState );
 
-   // HACK This fetches the layout of the buttonbox from KDialogBase, although it is not accessable with KDialogBase's API
+   // HACK This fetches the tqlayout of the buttonbox from KDialogBase, although it is not accessable with KDialogBase's API
    // None the less it's quite save to use since this implementation hasn't changed since KDE-3.3 (I haven't looked at earlier
    // versions since we don't support them) and now all work is done in KDE-4.
-   QWidget* buttonBox = static_cast<QWidget*>( actionButton(KDialogBase::Ok)->parent() );
-   QBoxLayout* buttonBoxLayout = static_cast<QBoxLayout*>( buttonBox->layout() );
-   QCheckBox* useFixedFont = new QCheckBox( i18n("Use font with fixed width"), buttonBox );
+   TQWidget* buttonBox = TQT_TQWIDGET( actionButton(KDialogBase::Ok)->tqparent() );
+   TQBoxLayout* buttonBoxLayout = static_cast<TQBoxLayout*>( buttonBox->tqlayout() );
+   TQCheckBox* useFixedFont = new TQCheckBox( i18n("Use font with fixed width"), buttonBox );
    buttonBoxLayout->insertWidget( 0, useFixedFont );
    useFixedFont->setChecked( startupState );
-   connect( useFixedFont, SIGNAL( toggled(bool) ), SLOT( toggleFixedFont(bool) ) );
+   connect( useFixedFont, TQT_SIGNAL( toggled(bool) ), TQT_SLOT( toggleFixedFont(bool) ) );
 }
 
 void KrActionProcDlg::addStderr( KProcess *, char *buffer, int buflen ) {
    if (_stderr)
-      _stderr->append( QString::fromLatin1( buffer, buflen ) );
+      _stderr->append( TQString::tqfromLatin1( buffer, buflen ) );
    else {
       _stdout->setItalic(true);
-      _stdout->append( QString::fromLatin1( buffer, buflen ) );
+      _stdout->append( TQString::tqfromLatin1( buffer, buflen ) );
       _stdout->setItalic(false);
    }
 }
 
 void KrActionProcDlg::addStdout( KProcess *, char *buffer, int buflen ) {
-   _stdout->append( QString::fromLatin1( buffer, buflen ) );
+   _stdout->append( TQString::tqfromLatin1( buffer, buflen ) );
 }
 
 void KrActionProcDlg::toggleFixedFont( bool state ) {
@@ -129,13 +129,13 @@ void KrActionProcDlg::toggleFixedFont( bool state ) {
 }
 
 void KrActionProcDlg::slotUser1() {
-   QString filename = KFileDialog::getSaveFileName(QString::null, i18n("*.txt|Text files\n*|all files"), this);
+   TQString filename = KFileDialog::getSaveFileName(TQString(), i18n("*.txt|Text files\n*|all files"), this);
    if ( filename.isEmpty() )
       return;
-   QFile file( filename );
+   TQFile file( filename );
    int answer = KMessageBox::Yes;
    if ( file.exists() )
-      answer = KMessageBox::warningYesNoCancel( this,	//parent
+      answer = KMessageBox::warningYesNoCancel( this,	//tqparent
       		i18n("This file already exists.\nDo you want to overwrite it or append the output?"),	//text
       		i18n("Overwrite or append?"),	//caption
       		i18n("Overwrite"),	//label for Yes-Button
@@ -151,13 +151,13 @@ void KrActionProcDlg::slotUser1() {
 
    if ( ! open ) {
       KMessageBox::error( this,
-      		i18n("Can't open %1 for writing!\nNothing exported.").arg(filename),
+      		i18n("Can't open %1 for writing!\nNothing exported.").tqarg(filename),
       		i18n("Export failed!")
       	);
       return;
    }
 
-   QTextStream stream( &file );
+   TQTextStream stream( &file );
    stream << _currentTextEdit->text();
    file.close();
 }
@@ -173,25 +173,25 @@ void KrActionProcDlg::currentTextEditChanged() {
 ////////////////////////////////////  KrActionProc  ////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////
 
-KrActionProc::KrActionProc( KrActionBase* action ) : QObject(), _action( action ), _proc( new KProcess(this) ), _output( 0 ) {
+KrActionProc::KrActionProc( KrActionBase* action ) : TQObject(), _action( action ), _proc( new KProcess(this) ), _output( 0 ) {
    _proc->setUseShell( true );
 
-   connect( _proc, SIGNAL( processExited( KProcess* ) ),
-            this, SLOT( processExited( KProcess* ) ) ) ;
+   connect( _proc, TQT_SIGNAL( processExited( KProcess* ) ),
+            this, TQT_SLOT( processExited( KProcess* ) ) ) ;
 }
 
 KrActionProc::~KrActionProc() {
    delete _proc;
 }
 
-void KrActionProc::start( QString cmdLine ) {
-   QStringList list = cmdLine;
+void KrActionProc::start( TQString cmdLine ) {
+   TQStringList list = cmdLine;
    start( list );
 }
 
-void KrActionProc::start( QStringList cmdLineList ) {
+void KrActionProc::start( TQStringList cmdLineList ) {
    _proc->clearArguments();
-   QString cmd;
+   TQString cmd;
 
    if ( ! _action->startpath().isEmpty() )
       _proc->setWorkingDirectory( _action->startpath() );
@@ -208,7 +208,7 @@ void KrActionProc::start( QStringList cmdLineList ) {
        || ( _action->execType() == KrAction::RunInTE && MAIN_VIEW->konsole_part && MAIN_VIEW->konsole_part->widget() )
    ) { // not collect output
       //TODO option to run them in paralell (not available for: collect output)
-      for ( QStringList::Iterator it = cmdLineList.begin(); it != cmdLineList.end(); ++it) {
+      for ( TQStringList::Iterator it = cmdLineList.begin(); it != cmdLineList.end(); ++it) {
          if ( ! cmd.isEmpty() )
             cmd += " ; ";	//TODO make this separator configurable (users may want && or || for spec. actions)
          cmd += *it;
@@ -216,13 +216,13 @@ void KrActionProc::start( QStringList cmdLineList ) {
       //run in TE
       if ( _action->execType() == KrAction::RunInTE ) {
          //send the commandline contents to the terminal emulator
-         QKeyEvent keyEvent( QEvent::KeyPress, 0, -1, 0,  cmd+"\n");
-         QApplication::sendEvent( MAIN_VIEW->konsole_part->widget(), &keyEvent );     
+         TQKeyEvent keyEvent( TQEvent::KeyPress, 0, -1, 0,  cmd+"\n");
+         TQApplication::sendEvent( MAIN_VIEW->konsole_part->widget(), &keyEvent );     
       } else { // will start a new process
          // run in terminal
          if ( _action->execType() == KrAction::Terminal ) {
            krConfig->setGroup( "UserActions" );
-           QString term = krConfig->readEntry( "Terminal", _UserActions_Terminal );
+           TQString term = krConfig->readEntry( "Terminal", _UserActions_Terminal );
 
             if ( _action->user().isEmpty() )
                ( *_proc ) << term << cmd;
@@ -244,11 +244,11 @@ void KrActionProc::start( QStringList cmdLineList ) {
          separateStderr = true;
       _output = new KrActionProcDlg( _action->text(), separateStderr );
       // connect the output to the dialog
-      connect( _proc, SIGNAL( receivedStderr( KProcess*, char*, int ) ), _output, SLOT( addStderr( KProcess*, char *, int ) ) );
-      connect( _proc, SIGNAL( receivedStdout( KProcess*, char*, int ) ), _output, SLOT( addStdout( KProcess*, char *, int ) ) );
-      connect( _output, SIGNAL( cancelClicked() ), this, SLOT( kill() ) );
+      connect( _proc, TQT_SIGNAL( receivedStderr( KProcess*, char*, int ) ), _output, TQT_SLOT( addStderr( KProcess*, char *, int ) ) );
+      connect( _proc, TQT_SIGNAL( receivedStdout( KProcess*, char*, int ) ), _output, TQT_SLOT( addStdout( KProcess*, char *, int ) ) );
+      connect( _output, TQT_SIGNAL( cancelClicked() ), this, TQT_SLOT( kill() ) );
       _output->show();
-      for ( QStringList::Iterator it = cmdLineList.begin(); it != cmdLineList.end(); ++it) {
+      for ( TQStringList::Iterator it = cmdLineList.begin(); it != cmdLineList.end(); ++it) {
          if ( ! cmd.isEmpty() )
             cmd += " ; ";	//TODO make this separator configurable (users may want && or ||)
          //TODO: read header fom config or action-properties and place it on top of each command
@@ -280,8 +280,8 @@ void KrActionProc::processExited( KProcess * ) {
 ///////////////////////////////////////  KrAction  ///////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////
 
-KrAction::KrAction( KActionCollection *parent, const char* name ) : KAction( parent, name ) {
-   connect(this, SIGNAL(activated()), this, SLOT(exec()) );
+KrAction::KrAction( KActionCollection *tqparent, const char* name ) : KAction( tqparent, name ) {
+   connect(this, TQT_SIGNAL(activated()), this, TQT_SLOT(exec()) );
 }
 
 KrAction::~KrAction() {
@@ -295,7 +295,7 @@ bool KrAction::isAvailable( const KURL& currentURL ) {
    //check protocol
    if ( ! _showonlyProtocol.empty() ) {
       available = false;
-      for ( QStringList::Iterator it = _showonlyProtocol.begin(); it != _showonlyProtocol.end(); ++it ) {
+      for ( TQStringList::Iterator it = _showonlyProtocol.begin(); it != _showonlyProtocol.end(); ++it ) {
          //kdDebug() << "KrAction::isAvailable currendProtocol: " << currentURL.protocol() << " =?= " << *it << endl;
          if ( currentURL.protocol() == *it ) {  // FIXME remove trailing slashes at the xml-parsing (faster because done only once)
             available = true;
@@ -307,9 +307,9 @@ bool KrAction::isAvailable( const KURL& currentURL ) {
    //check the Path-list:
    if ( ! _showonlyPath.empty() ) {
       available = false;
-      for ( QStringList::Iterator it = _showonlyPath.begin(); it != _showonlyPath.end(); ++it ) {
+      for ( TQStringList::Iterator it = _showonlyPath.begin(); it != _showonlyPath.end(); ++it ) {
          if ( (*it).right(1) == "*" ){
-             if ( currentURL.path().find( (*it).left( (*it).length() - 1 ) ) == 0 ) {
+             if ( currentURL.path().tqfind( (*it).left( (*it).length() - 1 ) ) == 0 ) {
                available = true;
                break;
             }
@@ -325,15 +325,15 @@ bool KrAction::isAvailable( const KURL& currentURL ) {
    if ( ! _showonlyMime.empty() ) {
       available = false;
       KMimeType::Ptr mime = KMimeType::findByURL( currentURL );
-      for ( QStringList::Iterator it = _showonlyMime.begin(); it != _showonlyMime.end(); ++it ) {
-         if ( (*it).contains("/") ) {
+      for ( TQStringList::Iterator it = _showonlyMime.begin(); it != _showonlyMime.end(); ++it ) {
+         if ( (*it).tqcontains("/") ) {
             if ( mime->is( *it ) ) {  // don't use ==; use 'is()' instead, which is aware of inheritence (ie: text/x-makefile is also text/plain)
                available = true;
                break;
             }
          }
          else {
-            if ( mime->name().find( *it ) == 0 ) {  // 0 is the beginning, -1 is not found
+            if ( mime->name().tqfind( *it ) == 0 ) {  // 0 is the beginning, -1 is not found
                available = true;
                break;
             }
@@ -344,8 +344,8 @@ bool KrAction::isAvailable( const KURL& currentURL ) {
    //check filename
    if ( ! _showonlyFile.empty() ) {
       available = false;
-      for ( QStringList::Iterator it = _showonlyFile.begin(); it != _showonlyFile.end(); ++it ) {
-         QRegExp regex = QRegExp( *it, false, true ); // case-sensitive = false; wildcards = true
+      for ( TQStringList::Iterator it = _showonlyFile.begin(); it != _showonlyFile.end(); ++it ) {
+         TQRegExp regex = TQRegExp( *it, false, true ); // case-sensitive = false; wildcards = true
          if ( regex.exactMatch( currentURL.fileName() ) ) {
             available = true;
             break;
@@ -357,7 +357,7 @@ bool KrAction::isAvailable( const KURL& currentURL ) {
 }
 
 
-bool KrAction::xmlRead( const QDomElement& element ) {
+bool KrAction::xmlRead( const TQDomElement& element ) {
 /*
    This has to be done elsewhere!!
 
@@ -369,8 +369,8 @@ bool KrAction::xmlRead( const QDomElement& element ) {
    setName( element.attribute( "name" ).latin1() );
 */
 
-   for ( QDomNode node = element.firstChild(); !node.isNull(); node = node.nextSibling() ) {
-      QDomElement e = node.toElement();
+   for ( TQDomNode node = element.firstChild(); !node.isNull(); node = node.nextSibling() ) {
+      TQDomElement e = node.toElement();
       if ( e.isNull() )
          continue; // this should skip nodes which are not elements ( i.e. comments, <!-- -->, or text nodes)
 
@@ -406,18 +406,18 @@ bool KrAction::xmlRead( const QDomElement& element ) {
       if ( ! e.tagName().isEmpty() )
          krOut << "KrAction::xmlRead() - unrecognized tag found: <action name=\"" << name() << "\"><" << e.tagName() << ">" << endl;
 
-   } // for ( QDomNode node = action->firstChild(); !node.isNull(); node = node.nextSibling() )
+   } // for ( TQDomNode node = action->firstChild(); !node.isNull(); node = node.nextSibling() )
 
    return true;
 } //KrAction::xmlRead
 
-QDomElement KrAction::xmlDump( QDomDocument& doc ) const {
-   QDomElement actionElement = doc.createElement("action");
+TQDomElement KrAction::xmlDump( TQDomDocument& doc ) const {
+   TQDomElement actionElement = doc.createElement("action");
    actionElement.setAttribute( "name", name() );
 
 #define TEXT_ELEMENT( TAGNAME, TEXT ) \
    { \
-   QDomElement e = doc.createElement( TAGNAME ); \
+   TQDomElement e = doc.createElement( TAGNAME ); \
    e.appendChild( doc.createTextNode( TEXT ) ); \
    actionElement.appendChild( e ); \
    }
@@ -441,7 +441,7 @@ QDomElement KrAction::xmlDump( QDomDocument& doc ) const {
    if ( ! startpath().isEmpty() )
       TEXT_ELEMENT( "startpath", startpath() )
 
-   QDomElement availabilityElement = dumpAvailability( doc );
+   TQDomElement availabilityElement = dumpAvailability( doc );
    if ( availabilityElement.hasChildNodes() )
       actionElement.appendChild( availabilityElement );
 
@@ -451,8 +451,8 @@ QDomElement KrAction::xmlDump( QDomDocument& doc ) const {
    return actionElement;
 } //KrAction::xmlDump
 
-void KrAction::readCommand( const QDomElement& element ) {
-   QString attr;
+void KrAction::readCommand( const TQDomElement& element ) {
+   TQString attr;
 
    attr = element.attribute( "executionmode", "normal" ); // default: "normal"
    if ( attr == "normal")
@@ -487,8 +487,8 @@ void KrAction::readCommand( const QDomElement& element ) {
 
 } //KrAction::readCommand
 
-QDomElement KrAction::dumpCommand( QDomDocument& doc ) const {
-   QDomElement commandElement = doc.createElement("command");
+TQDomElement KrAction::dumpCommand( TQDomDocument& doc ) const {
+   TQDomElement commandElement = doc.createElement("command");
 
    switch ( execType() ) {
    case Terminal:
@@ -519,13 +519,13 @@ QDomElement KrAction::dumpCommand( QDomDocument& doc ) const {
    return commandElement;
 } //KrAction::dumpCommand
 
-void KrAction::readAvailability( const QDomElement& element ) {
-   for ( QDomNode node = element.firstChild(); ! node.isNull(); node = node.nextSibling() ) {
-      QDomElement e = node.toElement();
+void KrAction::readAvailability( const TQDomElement& element ) {
+   for ( TQDomNode node = element.firstChild(); ! node.isNull(); node = node.nextSibling() ) {
+      TQDomElement e = node.toElement();
       if ( e.isNull() )
          continue; // this should skip nodes which are not elements ( i.e. comments, <!-- -->, or text nodes)
 
-      QStringList* showlist = 0;
+      TQStringList* showlist = 0;
 
       if ( e.tagName() == "protocol" )
          showlist = &_showonlyProtocol;
@@ -544,8 +544,8 @@ void KrAction::readAvailability( const QDomElement& element ) {
       }
 
       if ( showlist ) {
-          for ( QDomNode subnode = e.firstChild(); ! subnode.isNull(); subnode = subnode.nextSibling() ) {
-            QDomElement subelement = subnode.toElement();
+          for ( TQDomNode subnode = e.firstChild(); ! subnode.isNull(); subnode = subnode.nextSibling() ) {
+            TQDomElement subelement = subnode.toElement();
             if ( subelement.tagName() == "show" )
               showlist->append( subelement.text() );
           } // for
@@ -554,14 +554,14 @@ void KrAction::readAvailability( const QDomElement& element ) {
    } // for
 } //KrAction::readAvailability
 
-QDomElement KrAction::dumpAvailability( QDomDocument& doc ) const {
-   QDomElement availabilityElement = doc.createElement("command");
+TQDomElement KrAction::dumpAvailability( TQDomDocument& doc ) const {
+   TQDomElement availabilityElement = doc.createElement("command");
 
 # define LIST_ELEMENT( TAGNAME, LIST ) \
    { \
-   QDomElement e = doc.createElement( TAGNAME ); \
-   for ( QStringList::const_iterator it = LIST.constBegin(); it != LIST.constEnd(); ++it ) { \
-      QDomElement show = doc.createElement( "show" ); \
+   TQDomElement e = doc.createElement( TAGNAME ); \
+   for ( TQStringList::const_iterator it = LIST.constBegin(); it != LIST.constEnd(); ++it ) { \
+      TQDomElement show = doc.createElement( "show" ); \
       show.appendChild( doc.createTextNode( *it ) ); \
       e.appendChild( show ); \
       } \

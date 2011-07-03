@@ -1,33 +1,33 @@
 #include "checksumdlg.h"
 #include "../krusader.h"
 #include <klocale.h>
-#include <qlayout.h>
-#include <qlabel.h>
-#include <qcheckbox.h>
+#include <tqlayout.h>
+#include <tqlabel.h>
+#include <tqcheckbox.h>
 #include <klineedit.h>
 #include <klistview.h>
-#include <qpixmap.h>
+#include <tqpixmap.h>
 #include <kcursor.h>
 #include <kmessagebox.h>
-#include <qfile.h>
-#include <qtextstream.h>
+#include <tqfile.h>
+#include <tqtextstream.h>
 #include <kfiledialog.h>
-#include <qframe.h>
+#include <tqframe.h>
 #include <kiconloader.h>
 #include <kcombobox.h>
-#include <qfileinfo.h>
+#include <tqfileinfo.h>
 #include <kurlrequester.h>
 #include "../krservices.h"
-#include <qptrlist.h>
-#include <qmap.h>
+#include <tqptrlist.h>
+#include <tqmap.h>
 #include <ktempfile.h>
 #include <kstandarddirs.h>
 
 class CS_Tool; // forward
-typedef void PREPARE_PROC_FUNC(KProcess& proc, CS_Tool *self, const QStringList& files, 
-	const QString checksumFile, bool recursive, const QString& stdoutFileName, 
-	const QString& stderrFileName,	const QString& type=QString::null);
-typedef QStringList GET_FAILED_FUNC(const QStringList& stdOut, const QStringList& stdErr);
+typedef void PREPARE_PROC_FUNC(KProcess& proc, CS_Tool *self, const TQStringList& files, 
+	const TQString checksumFile, bool recursive, const TQString& stdoutFileName, 
+	const TQString& stderrFileName,	const TQString& type=TQString());
+typedef TQStringList GET_FAILED_FUNC(const TQStringList& stdOut, const TQStringList& stdErr);
 
 class CS_Tool {
 public:
@@ -38,7 +38,7 @@ public:
 	};
 	
 	Type type;
-	QString binary;
+	TQString binary;
 	bool recursive;
 	bool standardFormat;
 	PREPARE_PROC_FUNC *create, *verify;
@@ -47,38 +47,38 @@ public:
 
 class CS_ToolByType {
 public:
-	QPtrList<CS_Tool> tools, r_tools; // normal and recursive tools	
+	TQPtrList<CS_Tool> tools, r_tools; // normal and recursive tools	
 };
 
 // handles md5sum and sha1sum
-void sumCreateFunc(KProcess& proc, CS_Tool *self, const QStringList& files, 
-	const QString, bool recursive, const QString& stdoutFileName, 
-	const QString& stderrFileName, const QString&) {
+void sumCreateFunc(KProcess& proc, CS_Tool *self, const TQStringList& files, 
+	const TQString, bool recursive, const TQString& stdoutFileName, 
+	const TQString& stderrFileName, const TQString&) {
 	proc.setUseShell(true, "/bin/bash");
 	proc << KrServices::fullPathName( self->binary );
 	Q_ASSERT(!recursive); 
 	proc << files << "1>" << stdoutFileName << "2>" << stderrFileName;	
 }
 
-void sumVerifyFunc(KProcess& proc, CS_Tool *self, const QStringList& /* files */, 
-	const QString checksumFile, bool recursive, const QString& stdoutFileName, 
-	const QString& stderrFileName, const QString& /* type */) {
+void sumVerifyFunc(KProcess& proc, CS_Tool *self, const TQStringList& /* files */, 
+	const TQString checksumFile, bool recursive, const TQString& stdoutFileName, 
+	const TQString& stderrFileName, const TQString& /* type */) {
 	proc.setUseShell(true, "/bin/bash");
 	proc << KrServices::fullPathName( self->binary );
 	Q_ASSERT(!recursive);
 	proc << "-c" << checksumFile << "1>" << stdoutFileName << "2>" << stderrFileName;
 }
 
-QStringList sumFailedFunc(const QStringList& stdOut, const QStringList& stdErr) {
+TQStringList sumFailedFunc(const TQStringList& stdOut, const TQStringList& stdErr) {
 	// md5sum and sha1sum print "...: FAILED" for failed files and display
 	// the number of failures to stderr. so if stderr is empty, we'll assume all is ok
-	QStringList result;
+	TQStringList result;
 	if (stdErr.size()==0) return result;
 	result += stdErr;
 	// grep for the ":FAILED" substring
-	const QString tmp = QString(": FAILED").local8Bit();
+	const TQString tmp = TQString(": FAILED").local8Bit();
 	for (uint i=0; i<stdOut.size();++i) {
-		if (stdOut[i].find(tmp) != -1)
+		if (stdOut[i].tqfind(tmp) != -1)
 			result += stdOut[i];
 	}
 	
@@ -86,49 +86,49 @@ QStringList sumFailedFunc(const QStringList& stdOut, const QStringList& stdErr) 
 }
 
 // handles *deep binaries
-void deepCreateFunc(KProcess& proc, CS_Tool *self, const QStringList& files, 
-	const QString, bool recursive, const QString& stdoutFileName, 
-	const QString& stderrFileName, const QString&) {
+void deepCreateFunc(KProcess& proc, CS_Tool *self, const TQStringList& files, 
+	const TQString, bool recursive, const TQString& stdoutFileName, 
+	const TQString& stderrFileName, const TQString&) {
 	proc.setUseShell(true, "/bin/bash");
 	proc << KrServices::fullPathName( self->binary );
 	if (recursive) proc << "-r";
 	proc << "-l" << files << "1>" << stdoutFileName << "2>" << stderrFileName;
 }
 
-void deepVerifyFunc(KProcess& proc, CS_Tool *self, const QStringList& files, 
-	const QString checksumFile, bool recursive, const QString& stdoutFileName, 
-	const QString& stderrFileName, const QString&) {
+void deepVerifyFunc(KProcess& proc, CS_Tool *self, const TQStringList& files, 
+	const TQString checksumFile, bool recursive, const TQString& stdoutFileName, 
+	const TQString& stderrFileName, const TQString&) {
 	proc.setUseShell(true, "/bin/bash");
 	proc << KrServices::fullPathName( self->binary );
 	if (recursive) proc << "-r";
 	proc << "-x" << checksumFile << files << "1>" << stdoutFileName << "2>" << stderrFileName;
 }
 
-QStringList deepFailedFunc(const QStringList& stdOut, const QStringList&/* stdErr */) {
+TQStringList deepFailedFunc(const TQStringList& stdOut, const TQStringList&/* stdErr */) {
 	// *deep dumps (via -x) all failed hashes to stdout
 	return stdOut;
 }
 
 // handles cfv binary
-void cfvCreateFunc(KProcess& proc, CS_Tool *self, const QStringList& files, 
-	const QString, bool recursive, const QString& stdoutFileName, 
-	const QString& stderrFileName, const QString& type) {
+void cfvCreateFunc(KProcess& proc, CS_Tool *self, const TQStringList& files, 
+	const TQString, bool recursive, const TQString& stdoutFileName, 
+	const TQString& stderrFileName, const TQString& type) {
 	proc.setUseShell(true, "/bin/bash");
 	proc << KrServices::fullPathName( self->binary ) << "-C" << "-VV";
 	if (recursive) proc << "-rr";
 	proc << "-t" << type << "-f-" << "-U" << files << "1>" << stdoutFileName << "2>" << stderrFileName;	
 }
 
-void cfvVerifyFunc(KProcess& proc, CS_Tool *self, const QStringList& /* files */, 
-	const QString checksumFile, bool recursive, const QString& stdoutFileName, 
-	const QString& stderrFileName, const QString&type) {
+void cfvVerifyFunc(KProcess& proc, CS_Tool *self, const TQStringList& /* files */, 
+	const TQString checksumFile, bool recursive, const TQString& stdoutFileName, 
+	const TQString& stderrFileName, const TQString&type) {
 	proc.setUseShell(true, "/bin/bash");
 	proc << KrServices::fullPathName( self->binary ) << "-M";
 	if (recursive) proc << "-rr";
 	proc << "-U" << "-VV" << "-t" << type << "-f" << checksumFile << "1>" << stdoutFileName << "2>" << stderrFileName;// << files;
 }
 
-QStringList cfvFailedFunc(const QStringList& /* stdOut */, const QStringList& stdErr) {
+TQStringList cfvFailedFunc(const TQStringList& /* stdOut */, const TQStringList& stdErr) {
 	// cfv dumps all failed hashes to stderr
 	return stdErr;
 }
@@ -155,8 +155,8 @@ CS_Tool cs_tools[] = {
 	{CS_Tool::CRC,       "cfv",            true,       false,           cfvCreateFunc,    cfvVerifyFunc,   cfvFailedFunc},
 };
 
-QMap<QString, CS_Tool::Type> cs_textToType;
-QMap<CS_Tool::Type, QString> cs_typeToText;
+TQMap<TQString, CS_Tool::Type> cs_textToType;
+TQMap<CS_Tool::Type, TQString> cs_typeToText;
 
 void initChecksumModule() {
 	// prepare the dictionaries - pity it has to be manually
@@ -183,7 +183,7 @@ void initChecksumModule() {
 	cs_typeToText[CS_Tool::CRC]="crc";
 
 	// build the checksumFilter (for usage in KRQuery)
-	QMap<QString, CS_Tool::Type>::Iterator it;
+	TQMap<TQString, CS_Tool::Type>::Iterator it;
 	for (it=cs_textToType.begin(); it!=cs_textToType.end(); ++it)
 		MatchChecksumDlg::checksumTypesFilter += ("*."+it.key()+" ");
 }
@@ -192,8 +192,8 @@ void initChecksumModule() {
 
 // returns a list of tools which can work with recursive or non-recursive mode and are installed
 // note: only 1 tool from each type is suggested
-static QPtrList<CS_Tool> getTools(bool folders) {
-	QPtrList<CS_Tool> result;
+static TQPtrList<CS_Tool> getTools(bool folders) {
+	TQPtrList<CS_Tool> result;
 	uint i;
 	for (i=0; i < sizeof(cs_tools)/sizeof(CS_Tool); ++i) {
 		if (result.last() && result.last()->type == cs_tools[i].type) continue; // 1 from each type please
@@ -207,13 +207,13 @@ static QPtrList<CS_Tool> getTools(bool folders) {
 
 // ------------- CreateChecksumDlg
 
-CreateChecksumDlg::CreateChecksumDlg(const QStringList& files, bool containFolders, const QString& path):
+CreateChecksumDlg::CreateChecksumDlg(const TQStringList& files, bool containFolders, const TQString& path):
 	KDialogBase(Plain, i18n("Create Checksum"), Ok | Cancel, Ok, krApp) {
 	
-	QPtrList<CS_Tool> tools = getTools(containFolders);
+	TQPtrList<CS_Tool> tools = getTools(containFolders);
 
 	if (tools.count() == 0) { // nothing was suggested?!
-		QString error = i18n("<qt>Can't calculate checksum since no supported tool was found. "
+		TQString error = i18n("<qt>Can't calculate checksum since no supported tool was found. "
 			"Please check the <b>Dependencies</b> page in Krusader's settings.</qt>");
 		if (containFolders) 
 			error += i18n("<qt><b>Note</b>: you've selected directories, and probably have no recursive checksum tool installed."
@@ -222,40 +222,40 @@ CreateChecksumDlg::CreateChecksumDlg(const QStringList& files, bool containFolde
 		return;
 	}
 	
-	QGridLayout *layout = new QGridLayout( plainPage(), 1, 1,
+	TQGridLayout *tqlayout = new TQGridLayout( plainPage(), 1, 1,
 		KDialogBase::marginHint(), KDialogBase::spacingHint());
 	
 	int row=0;
 		
 	// title (icon+text)	
-	QHBoxLayout *hlayout = new QHBoxLayout(layout, KDialogBase::spacingHint());
-	QLabel *p = new QLabel(plainPage());
+	TQHBoxLayout *htqlayout = new TQHBoxLayout(tqlayout, KDialogBase::spacingHint());
+	TQLabel *p = new TQLabel(plainPage());
 	p->setPixmap(krLoader->loadIcon("binary", KIcon::Desktop, 32));
-	hlayout->addWidget(p);
-	QLabel *l1 = new QLabel(i18n("About to calculate checksum for the following files") + 
+	htqlayout->addWidget(p);
+	TQLabel *l1 = new TQLabel(i18n("About to calculate checksum for the following files") + 
 		(containFolders ? i18n(" and folders:") : ":"), plainPage());
-	hlayout->addWidget(l1);
-	layout->addMultiCellLayout(hlayout, row, row, 0, 1, Qt::AlignLeft); 
+	htqlayout->addWidget(l1);
+	tqlayout->addMultiCellLayout(htqlayout, row, row, 0, 1, TQt::AlignLeft); 
 	++row;
 	
 	// file list
 	KListBox *lb = new KListBox(plainPage());
 	lb->insertStringList(files);
-	layout->addMultiCellWidget(lb, row, row, 0, 1);
+	tqlayout->addMultiCellWidget(lb, row, row, 0, 1);
 	++row;
 
 	// checksum method
-	QHBoxLayout *hlayout2 = new QHBoxLayout(layout, KDialogBase::spacingHint());
-	QLabel *l2 = new QLabel(i18n("Select the checksum method:"), plainPage());
-	hlayout2->addWidget(l2);
+	TQHBoxLayout *htqlayout2 = new TQHBoxLayout(tqlayout, KDialogBase::spacingHint());
+	TQLabel *l2 = new TQLabel(i18n("Select the checksum method:"), plainPage());
+	htqlayout2->addWidget(l2);
 	KComboBox *method = new KComboBox(plainPage());
 	// -- fill the combo with available methods
 	uint i;
 	for ( i=0; i<tools.count(); ++i )
 		method->insertItem( cs_typeToText[tools.at(i)->type], i);
 	method->setFocus();
-	hlayout2->addWidget(method);	
-	layout->addMultiCellLayout(hlayout2, row, row, 0, 1, Qt::AlignLeft);
+	htqlayout2->addWidget(method);	
+	tqlayout->addMultiCellLayout(htqlayout2, row, row, 0, 1, TQt::AlignLeft);
 	++row;
 
 	if (exec() != Accepted) return;
@@ -264,34 +264,34 @@ CreateChecksumDlg::CreateChecksumDlg(const QStringList& files, bool containFolde
 	tmpErr = new KTempFile(locateLocal("tmp", "krusader"), ".stderr" );
 	KProcess proc;
 	CS_Tool *mytool = tools.at(method->currentItem());
-	mytool->create(proc, mytool, KrServices::quote(files), QString::null, containFolders, 
+	mytool->create(proc, mytool, KrServices::quote(files), TQString(), containFolders, 
 		tmpOut->name(), tmpErr->name(), method->currentText());
 	
 	krApp->startWaiting(i18n("Calculating checksums ..."), 0, true);	
-	QApplication::setOverrideCursor( KCursor::waitCursor() );
+	TQApplication::setOverrideCursor( KCursor::waitCursor() );
 	bool r = proc.start(KProcess::NotifyOnExit, KProcess::AllOutput);
 	if (r) while ( proc.isRunning() ) {
 		usleep( 500 );
-		qApp->processEvents();
+		tqApp->processEvents();
 		if (krApp->wasWaitingCancelled()) { // user cancelled
 			proc.kill();
-			QApplication::restoreOverrideCursor();
+			TQApplication::restoreOverrideCursor();
 			return;
 		}
    };
 	krApp->stopWait();
-	QApplication::restoreOverrideCursor();
+	TQApplication::restoreOverrideCursor();
 	if (!r || !proc.normalExit()) {	
-		KMessageBox::error(0, i18n("<qt>There was an error while running <b>%1</b>.</qt>").arg(mytool->binary));
+		KMessageBox::error(0, i18n("<qt>There was an error while running <b>%1</b>.</qt>").tqarg(mytool->binary));
 		return;
 	}
 	
 	// suggest a filename
-	QString suggestedFilename = path + '/';
+	TQString suggestedFilename = path + '/';
 	if (files.count() > 1) suggestedFilename += ("checksum." + cs_typeToText[mytool->type]);
 	else suggestedFilename += (files[0] + '.' + cs_typeToText[mytool->type]);
 	// send both stdout and stderr
-	QStringList stdOut, stdErr;
+	TQStringList stdOut, stdErr;
 	if (!KrServices::fileToStringList(tmpOut->textStream(), stdOut) || 
 			!KrServices::fileToStringList(tmpErr->textStream(), stdErr)) {
 		KMessageBox::error(krApp, i18n("Error reading stdout or stderr"));
@@ -305,16 +305,16 @@ CreateChecksumDlg::CreateChecksumDlg(const QStringList& files, bool containFolde
 
 // ------------- MatchChecksumDlg
 
-QString MatchChecksumDlg::checksumTypesFilter;
+TQString MatchChecksumDlg::checksumTypesFilter;
 
-MatchChecksumDlg::MatchChecksumDlg(const QStringList& files, bool containFolders, 
-	const QString& path, const QString& checksumFile):
+MatchChecksumDlg::MatchChecksumDlg(const TQStringList& files, bool containFolders, 
+	const TQString& path, const TQString& checksumFile):
 	KDialogBase(Plain, i18n("Verify Checksum"), Ok | Cancel, Ok, krApp) {
 	
-	QPtrList<CS_Tool> tools = getTools(containFolders);
+	TQPtrList<CS_Tool> tools = getTools(containFolders);
 
 	if (tools.count() == 0) { // nothing was suggested?!
-		QString error = i18n("<qt>Can't verify checksum since no supported tool was found. "
+		TQString error = i18n("<qt>Can't verify checksum since no supported tool was found. "
 			"Please check the <b>Dependencies</b> page in Krusader's settings.</qt>");
 		if (containFolders) 
 			error += i18n("<qt><b>Note</b>: you've selected directories, and probably have no recursive checksum tool installed."
@@ -323,45 +323,45 @@ MatchChecksumDlg::MatchChecksumDlg(const QStringList& files, bool containFolders
 		return;
 	}
 	
-	QGridLayout *layout = new QGridLayout( plainPage(), 1, 1,
+	TQGridLayout *tqlayout = new TQGridLayout( plainPage(), 1, 1,
 		KDialogBase::marginHint(), KDialogBase::spacingHint());
 	
 	int row=0;
 		
 	// title (icon+text)	
-	QHBoxLayout *hlayout = new QHBoxLayout(layout, KDialogBase::spacingHint());
-	QLabel *p = new QLabel(plainPage());
+	TQHBoxLayout *htqlayout = new TQHBoxLayout(tqlayout, KDialogBase::spacingHint());
+	TQLabel *p = new TQLabel(plainPage());
 	p->setPixmap(krLoader->loadIcon("binary", KIcon::Desktop, 32));
-	hlayout->addWidget(p);
-	QLabel *l1 = new QLabel(i18n("About to verify checksum for the following files") +
+	htqlayout->addWidget(p);
+	TQLabel *l1 = new TQLabel(i18n("About to verify checksum for the following files") +
 		(containFolders ? i18n(" and folders:") : ":"), plainPage());
-	hlayout->addWidget(l1);
-	layout->addMultiCellLayout(hlayout, row, row, 0, 1, Qt::AlignLeft); 
+	htqlayout->addWidget(l1);
+	tqlayout->addMultiCellLayout(htqlayout, row, row, 0, 1, TQt::AlignLeft); 
 	++row;
 	
 	// file list
 	KListBox *lb = new KListBox(plainPage());
 	lb->insertStringList(files);
-	layout->addMultiCellWidget(lb, row, row, 0, 1);
+	tqlayout->addMultiCellWidget(lb, row, row, 0, 1);
 	++row;
 
 	// checksum file
-	QHBoxLayout *hlayout2 = new QHBoxLayout(layout, KDialogBase::spacingHint());
-	QLabel *l2 = new QLabel(i18n("Checksum file:"), plainPage());
-	hlayout2->addWidget(l2);
+	TQHBoxLayout *htqlayout2 = new TQHBoxLayout(tqlayout, KDialogBase::spacingHint());
+	TQLabel *l2 = new TQLabel(i18n("Checksum file:"), plainPage());
+	htqlayout2->addWidget(l2);
 	KURLRequester *checksumFileReq = new KURLRequester( plainPage() );
 	if (!checksumFile.isEmpty())
 		checksumFileReq->setURL(checksumFile);
 	checksumFileReq->fileDialog()->setURL(path);
 	checksumFileReq->setFocus();
-	hlayout2->addWidget(checksumFileReq);
-	layout->addMultiCellLayout(hlayout2, row, row, 0, 1, Qt::AlignLeft);
+	htqlayout2->addWidget(checksumFileReq);
+	tqlayout->addMultiCellLayout(htqlayout2, row, row, 0, 1, TQt::AlignLeft);
 
 	if (exec() != Accepted) return;
-	QString file = checksumFileReq->url();
-	QString extension;
+	TQString file = checksumFileReq->url();
+	TQString extension;
 	if (!verifyChecksumFile(file, extension)) {
-		KMessageBox::error(0, i18n("<qt>Error reading checksum file <i>%1</i>.<br />Please specify a valid checksum file.</qt>").arg(file));
+		KMessageBox::error(0, i18n("<qt>Error reading checksum file <i>%1</i>.<br />Please specify a valid checksum file.</qt>").tqarg(file));
 		return;
 	}
 	
@@ -374,7 +374,7 @@ MatchChecksumDlg::MatchChecksumDlg(const QStringList& files, bool containFolders
 			break;
 		}
 	if (!mytool) {
-		KMessageBox::error(0, i18n("<qt>Krusader can't find a checksum tool that handles %1 on your system. Please check the <b>Dependencies</b> page in Krusader's settings.</qt>").arg(extension));
+		KMessageBox::error(0, i18n("<qt>Krusader can't find a checksum tool that handles %1 on your system. Please check the <b>Dependencies</b> page in Krusader's settings.</qt>").tqarg(extension));
 		return;
 	}
 	
@@ -384,25 +384,25 @@ MatchChecksumDlg::MatchChecksumDlg(const QStringList& files, bool containFolders
 	KProcess proc;
 	mytool->verify(proc, mytool, KrServices::quote(files), KrServices::quote(file), containFolders, tmpOut->name(), tmpErr->name(), extension);
 	krApp->startWaiting(i18n("Verifying checksums ..."), 0, true);	
-	QApplication::setOverrideCursor( KCursor::waitCursor() );
+	TQApplication::setOverrideCursor( KCursor::waitCursor() );
 	bool r = proc.start(KProcess::NotifyOnExit, KProcess::AllOutput);
 	if (r) while ( proc.isRunning() ) {
 		usleep( 500 );
-  		qApp->processEvents();
+  		tqApp->processEvents();
 		if (krApp->wasWaitingCancelled()) { // user cancelled
 			proc.kill();
-			QApplication::restoreOverrideCursor();
+			TQApplication::restoreOverrideCursor();
 			return;
 		}
    };
 	if (!r || !proc.normalExit()) {	
-		KMessageBox::error(0, i18n("<qt>There was an error while running <b>%1</b>.</qt>").arg(mytool->binary));
+		KMessageBox::error(0, i18n("<qt>There was an error while running <b>%1</b>.</qt>").tqarg(mytool->binary));
 		return;
 	}
-	QApplication::restoreOverrideCursor();
+	TQApplication::restoreOverrideCursor();
 	krApp->stopWait();
 	// send both stdout and stderr
-	QStringList stdOut,stdErr;
+	TQStringList stdOut,stdErr;
 	if (!KrServices::fileToStringList(tmpOut->textStream(), stdOut) || 
 			!KrServices::fileToStringList(tmpErr->textStream(), stdErr)) {
 		KMessageBox::error(krApp, i18n("Error reading stdout or stderr"));
@@ -413,11 +413,11 @@ MatchChecksumDlg::MatchChecksumDlg(const QStringList& files, bool containFolders
 	tmpErr->unlink(); delete tmpErr;
 }
 
-bool MatchChecksumDlg::verifyChecksumFile(QString path,  QString& extension) {
-	QFileInfo f(path);
+bool MatchChecksumDlg::verifyChecksumFile(TQString path,  TQString& extension) {
+	TQFileInfo f(path);
 	if (!f.exists() || f.isDir()) return false;
 	// find the extension
-	extension = path.mid(path.findRev(".")+1);
+	extension = path.mid(path.tqfindRev(".")+1);
 	
 	// TODO: do we know the extension? if not, ask the user for one
 	
@@ -426,33 +426,33 @@ bool MatchChecksumDlg::verifyChecksumFile(QString path,  QString& extension) {
 }
 
 // ------------- VerifyResultDlg
-VerifyResultDlg::VerifyResultDlg(const QStringList& failed):
+VerifyResultDlg::VerifyResultDlg(const TQStringList& failed):
 	KDialogBase(Plain, i18n("Verify Checksum"), Close, Close, krApp) {
-	QGridLayout *layout = new QGridLayout( plainPage(), 1, 1,
+	TQGridLayout *tqlayout = new TQGridLayout( plainPage(), 1, 1,
 		KDialogBase::marginHint(), KDialogBase::spacingHint());
 
 	bool errors = failed.size()>0;
 	int row = 0;
 	
 	// create the icon and title
-	QHBoxLayout *hlayout = new QHBoxLayout(layout, KDialogBase::spacingHint());
-	QLabel p(plainPage());
+	TQHBoxLayout *htqlayout = new TQHBoxLayout(tqlayout, KDialogBase::spacingHint());
+	TQLabel p(plainPage());
 	p.setPixmap(krLoader->loadIcon(errors ? "messagebox_critical" : "messagebox_info", KIcon::Desktop, 32));
-	hlayout->addWidget(&p);
+	htqlayout->addWidget(&p);
 	
-	QLabel *l1 = new QLabel((errors ? i18n("Errors were detected while verifying the checksums") :
+	TQLabel *l1 = new TQLabel((errors ? i18n("Errors were detected while verifying the checksums") :
 		i18n("Checksums were verified successfully")), plainPage());
-	hlayout->addWidget(l1);
-	layout->addMultiCellLayout(hlayout,row,row,0,1, Qt::AlignLeft);
+	htqlayout->addWidget(l1);
+	tqlayout->addMultiCellLayout(htqlayout,row,row,0,1, TQt::AlignLeft);
 	++row;
 
 	if (errors) { 
-		QLabel *l3 = new QLabel(i18n("The following files have failed:"), plainPage());
-		layout->addMultiCellWidget(l3, row, row, 0, 1);
+		TQLabel *l3 = new TQLabel(i18n("The following files have failed:"), plainPage());
+		tqlayout->addMultiCellWidget(l3, row, row, 0, 1);
 		++row;
 		KListBox *lb2 = new KListBox(plainPage());
 		lb2->insertStringList(failed);
-		layout->addMultiCellWidget(lb2, row, row, 0, 1);
+		tqlayout->addMultiCellWidget(lb2, row, row, 0, 1);
 		++row;
 	}
 		
@@ -461,10 +461,10 @@ VerifyResultDlg::VerifyResultDlg(const QStringList& failed):
 
 // ------------- ChecksumResultsDlg
 
-ChecksumResultsDlg::ChecksumResultsDlg(const QStringList& stdOut, const QStringList& stdErr,
-	const QString& suggestedFilename, const QString& binary, const QString& /* type */, bool standardFormat):
+ChecksumResultsDlg::ChecksumResultsDlg(const TQStringList& stdOut, const TQStringList& stdErr,
+	const TQString& suggestedFilename, const TQString& binary, const TQString& /* type */, bool standardFormat):
 	KDialogBase(Plain, i18n("Create Checksum"), Ok | Cancel, Ok, krApp), _binary(binary) {
-	QGridLayout *layout = new QGridLayout( plainPage(), 1, 1,
+	TQGridLayout *tqlayout = new TQGridLayout( plainPage(), 1, 1,
 		KDialogBase::marginHint(), KDialogBase::spacingHint());
 
 	// md5 tools display errors into stderr, so we'll use that to determine the result of the job
@@ -473,21 +473,21 @@ ChecksumResultsDlg::ChecksumResultsDlg(const QStringList& stdOut, const QStringL
 	int row = 0;
 	
 	// create the icon and title
-	QHBoxLayout *hlayout = new QHBoxLayout(layout, KDialogBase::spacingHint());
-	QLabel p(plainPage());
+	TQHBoxLayout *htqlayout = new TQHBoxLayout(tqlayout, KDialogBase::spacingHint());
+	TQLabel p(plainPage());
 	p.setPixmap(krLoader->loadIcon(errors ? "messagebox_critical" : "messagebox_info", KIcon::Desktop, 32));
-	hlayout->addWidget(&p);
+	htqlayout->addWidget(&p);
 	
-	QLabel *l1 = new QLabel((errors ? i18n("Errors were detected while creating the checksums") :
+	TQLabel *l1 = new TQLabel((errors ? i18n("Errors were detected while creating the checksums") :
 		i18n("Checksums were created successfully")), plainPage());
-	hlayout->addWidget(l1);
-	layout->addMultiCellLayout(hlayout,row,row,0,1, Qt::AlignLeft);
+	htqlayout->addWidget(l1);
+	tqlayout->addMultiCellLayout(htqlayout,row,row,0,1, TQt::AlignLeft);
 	++row;
 
 	if (successes) {
 		if (errors) {
-			QLabel *l2 = new QLabel(i18n("Here are the calculated checksums:"), plainPage());
-			layout->addMultiCellWidget(l2, row, row, 0, 1);
+			TQLabel *l2 = new TQLabel(i18n("Here are the calculated checksums:"), plainPage());
+			tqlayout->addMultiCellWidget(l2, row, row, 0, 1);
 			++row;
 		}
 		KListView *lv = new KListView(plainPage());
@@ -498,101 +498,101 @@ ChecksumResultsDlg::ChecksumResultsDlg(const QStringList& stdOut, const QStringL
 		} else {
 			lv->addColumn(i18n("File and hash"));
 		}
-		for ( QStringList::ConstIterator it = stdOut.begin(); it != stdOut.end(); ++it ) {
-			QString line = (*it);
+		for ( TQStringList::ConstIterator it = stdOut.begin(); it != stdOut.end(); ++it ) {
+			TQString line = (*it);
 			if(standardFormat) {
-				int space = line.find(' ');
+				int space = line.tqfind(' ');
 				new KListViewItem(lv, line.left(space), line.mid(space+2));
 			} else {
 				new KListViewItem(lv, line);
 			}	
 		}
-		layout->addMultiCellWidget(lv, row, row, 0, 1);
+		tqlayout->addMultiCellWidget(lv, row, row, 0, 1);
 		++row;
 	}
 
 	if (errors) {
-		QFrame *line1 = new QFrame( plainPage() );
-		line1->setGeometry( QRect( 60, 210, 501, 20 ) );
-		line1->setFrameShape( QFrame::HLine );
-		line1->setFrameShadow( QFrame::Sunken );
-		layout->addMultiCellWidget(line1, row, row, 0, 1);
+		TQFrame *line1 = new TQFrame( plainPage() );
+		line1->setGeometry( TQRect( 60, 210, 501, 20 ) );
+		line1->setFrameShape( TQFrame::HLine );
+		line1->setFrameShadow( TQFrame::Sunken );
+		tqlayout->addMultiCellWidget(line1, row, row, 0, 1);
 		++row;
     
-		QLabel *l3 = new QLabel(i18n("Here are the errors received:"), plainPage());
-		layout->addMultiCellWidget(l3, row, row, 0, 1);
+		TQLabel *l3 = new TQLabel(i18n("Here are the errors received:"), plainPage());
+		tqlayout->addMultiCellWidget(l3, row, row, 0, 1);
 		++row;
 		KListBox *lb = new KListBox(plainPage());
 		lb->insertStringList(stdErr);
-		layout->addMultiCellWidget(lb, row, row, 0, 1);
+		tqlayout->addMultiCellWidget(lb, row, row, 0, 1);
 		++row;
 	}
 
 	// save checksum to disk, if any hashes are found
 	KURLRequester *checksumFile=0;
-	QCheckBox *saveFileCb=0;
+	TQCheckBox *saveFileCb=0;
 	if (successes) {
-		QHBoxLayout *hlayout2 = new QHBoxLayout(layout, KDialogBase::spacingHint());
-		saveFileCb = new QCheckBox(i18n("Save checksum to file:"), plainPage());
+		TQHBoxLayout *htqlayout2 = new TQHBoxLayout(tqlayout, KDialogBase::spacingHint());
+		saveFileCb = new TQCheckBox(i18n("Save checksum to file:"), plainPage());
 		saveFileCb->setChecked(true);
-		hlayout2->addWidget(saveFileCb);
+		htqlayout2->addWidget(saveFileCb);
 
 		checksumFile = new KURLRequester( suggestedFilename, plainPage() );
-		hlayout2->addWidget(checksumFile, Qt::AlignLeft);
-		layout->addMultiCellLayout(hlayout2, row, row,0,1, Qt::AlignLeft);
+		htqlayout2->addWidget(checksumFile, TQt::AlignLeft);
+		tqlayout->addMultiCellLayout(htqlayout2, row, row,0,1, TQt::AlignLeft);
 		++row;
-		connect(saveFileCb, SIGNAL(toggled(bool)), checksumFile, SLOT(setEnabled(bool)));
+		connect(saveFileCb, TQT_SIGNAL(toggled(bool)), checksumFile, TQT_SLOT(setEnabled(bool)));
 		checksumFile->setFocus();
 	}
 	
-	QCheckBox *onePerFile=0;
+	TQCheckBox *onePerFile=0;
 	if (stdOut.size() > 1 && standardFormat) {
-		onePerFile = new QCheckBox(i18n("Checksum file for each source file"), plainPage());
+		onePerFile = new TQCheckBox(i18n("Checksum file for each source file"), plainPage());
 		onePerFile->setChecked(false);
 		// clicking this, disables the 'save as' part
-		connect(onePerFile, SIGNAL(toggled(bool)), saveFileCb, SLOT(toggle()));
-		connect(onePerFile, SIGNAL(toggled(bool)), saveFileCb, SLOT(setDisabled(bool)));
-		connect(onePerFile, SIGNAL(toggled(bool)), checksumFile, SLOT(setDisabled(bool)));
-		layout->addMultiCellWidget(onePerFile, row, row,0,1, Qt::AlignLeft);
+		connect(onePerFile, TQT_SIGNAL(toggled(bool)), saveFileCb, TQT_SLOT(toggle()));
+		connect(onePerFile, TQT_SIGNAL(toggled(bool)), saveFileCb, TQT_SLOT(setDisabled(bool)));
+		connect(onePerFile, TQT_SIGNAL(toggled(bool)), checksumFile, TQT_SLOT(setDisabled(bool)));
+		tqlayout->addMultiCellWidget(onePerFile, row, row,0,1, TQt::AlignLeft);
 		++row;
 	}
 	
 	if (exec() == Accepted && successes) {
 		if (stdOut.size()>1 && standardFormat && onePerFile->isChecked()) {
-			savePerFile(stdOut, suggestedFilename.mid(suggestedFilename.findRev('.')));
+			savePerFile(stdOut, suggestedFilename.mid(suggestedFilename.tqfindRev('.')));
 		} else if (saveFileCb->isEnabled() && saveFileCb->isChecked() && !checksumFile->url().simplifyWhiteSpace().isEmpty()) {
 			saveChecksum(stdOut, checksumFile->url());
 		}
 	}
 }
 
-bool ChecksumResultsDlg::saveChecksum(const QStringList& data, QString filename) {
-	if (QFile::exists(filename) &&
+bool ChecksumResultsDlg::saveChecksum(const TQStringList& data, TQString filename) {
+	if (TQFile::exists(filename) &&
 		KMessageBox::warningContinueCancel(this,
-		i18n("File %1 already exists.\nAre you sure you want to overwrite it?").arg(filename),
+		i18n("File %1 already exists.\nAre you sure you want to overwrite it?").tqarg(filename),
 		i18n("Warning"), i18n("Overwrite")) != KMessageBox::Continue) {
 		// find a better name to save to
-		filename = KFileDialog::getSaveFileName(QString::null, "*", 0, i18n("Select a file to save to"));
+		filename = KFileDialog::getSaveFileName(TQString(), "*", 0, i18n("Select a file to save to"));
 		if (filename.simplifyWhiteSpace().isEmpty()) return false;
 	} 
-	QFile file(filename);
+	TQFile file(filename);
 	if (!file.open(IO_WriteOnly)) {
-		KMessageBox::detailedError(0, i18n("Error saving file %1").arg(filename),
+		KMessageBox::detailedError(0, i18n("Error saving file %1").tqarg(filename),
 			file.errorString());
 		return false;
 	}
-	QTextStream stream(&file);
-	for ( QStringList::ConstIterator it = data.constBegin(); it != data.constEnd(); ++it)
+	TQTextStream stream(&file);
+	for ( TQStringList::ConstIterator it = data.constBegin(); it != data.constEnd(); ++it)
 		stream << *it << "\n";
 	file.close();
 	return true;
 }
 
-void ChecksumResultsDlg::savePerFile(const QStringList& data, const QString& type) {
+void ChecksumResultsDlg::savePerFile(const TQStringList& data, const TQString& type) {
 	krApp->startWaiting(i18n("Saving checksum files..."), 0);
-	for ( QStringList::ConstIterator it = data.begin(); it != data.end(); ++it ) {
-			QString line = (*it);
-			QString filename = line.mid(line.find(' ')+2)+type;
+	for ( TQStringList::ConstIterator it = data.begin(); it != data.end(); ++it ) {
+			TQString line = (*it);
+			TQString filename = line.mid(line.tqfind(' ')+2)+type;
 			if (!saveChecksum(*it, filename)) {
 				KMessageBox::error(0, i18n("Errors occured while saving multiple checksums. Stopping"));
 				krApp->stopWait();

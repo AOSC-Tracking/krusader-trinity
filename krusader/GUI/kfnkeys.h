@@ -32,23 +32,24 @@
 #ifndef KFNKEYS_H
 #define KFNKEYS_H
 
-#include <qwidget.h>
-#include <qlayout.h>
-#include <qpushbutton.h>
+#include <tqwidget.h>
+#include <tqlayout.h>
+#include <tqpushbutton.h>
 
 // Function Keys widget
 ///////////////////////
-class KFnKeys : public QWidget {
+class KFnKeys : public TQWidget {
 	Q_OBJECT
+  TQ_OBJECT
 
 public:
 	// constructor
-  KFnKeys(QWidget *parent, char *name=0);
+  KFnKeys(TQWidget *tqparent, char *name=0);
   void updateShortcuts();
 
 private:
-	QPushButton *F2 ,*F3,*F4,*F5,*F6,*F7,*F8,*F9,*F10;
-	QGridLayout *layout;
+	TQPushButton *F2 ,*F3,*F4,*F5,*F6,*F7,*F8,*F9,*F10;
+	TQGridLayout *tqlayout;
 };
 
 #endif

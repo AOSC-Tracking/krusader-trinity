@@ -36,12 +36,13 @@
 class KgGeneral : public KonfiguratorPage
 {
   Q_OBJECT
+  TQ_OBJECT
 
 public:
-  KgGeneral( bool first, QWidget* parent=0,  const char* name=0 );
+  KgGeneral( bool first, TQWidget* tqparent=0,  const char* name=0 );
 
 public slots:
-  void  applyTempDir(QObject *,QString, QString);
+  void  applyTempDir(TQObject *,TQString, TQString);
   void  slotFindTools();
   
   void  slotAddExtension();

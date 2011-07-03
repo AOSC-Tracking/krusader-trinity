@@ -32,16 +32,17 @@
 #define __KgProtocols_H__
 
 #include "konfiguratorpage.h"
-#include <qlistbox.h>
-#include <qpushbutton.h>
-#include <qlistview.h>
+#include <tqlistbox.h>
+#include <tqpushbutton.h>
+#include <tqlistview.h>
  
 class KgProtocols : public KonfiguratorPage
 {
   Q_OBJECT
+  TQ_OBJECT
 
 public:
-  KgProtocols( bool first, QWidget* parent=0,  const char* name=0 );
+  KgProtocols( bool first, TQWidget* tqparent=0,  const char* name=0 );
 
   virtual void loadInitialValues();
   virtual void setDefaults();
@@ -60,27 +61,27 @@ public slots:
 protected:
   void         loadListCapableProtocols();
   void         loadMimes();
-  QWidget*     addSpacer( QWidget *parent, const char *widgetName = 0);
+  TQWidget*     addSpacer( TQWidget *tqparent, const char *widgetName = 0);
   
-  void         addProtocol( QString name, bool changeCurrent = false );
-  void         removeProtocol( QString name );
-  void         addMime( QString name, QString protocol );
-  void         removeMime( QString name );
+  void         addProtocol( TQString name, bool changeCurrent = false );
+  void         removeProtocol( TQString name );
+  void         addMime( TQString name, TQString protocol );
+  void         removeMime( TQString name );
   
-  QListView   *linkList;
+  TQListView   *linkList;
   
-  QListBox    *protocolList;
-  QListBox    *mimeList;
+  TQListBox    *protocolList;
+  TQListBox    *mimeList;
   
-  QPushButton *btnAddProtocol;
-  QPushButton *btnRemoveProtocol;
-  QPushButton *btnAddMime;
-  QPushButton *btnRemoveMime;
+  TQPushButton *btnAddProtocol;
+  TQPushButton *btnRemoveProtocol;
+  TQPushButton *btnAddMime;
+  TQPushButton *btnRemoveMime;
   
-  static QString defaultProtocols;
-  static QString defaultIsoMimes;
-  static QString defaultKrarcMimes;
-  static QString defaultTarMimes;
+  static TQString defaultProtocols;
+  static TQString defaultIsoMimes;
+  static TQString defaultKrarcMimes;
+  static TQString defaultTarMimes;
 };
 
 #endif /* __KgProtocols_H__ */

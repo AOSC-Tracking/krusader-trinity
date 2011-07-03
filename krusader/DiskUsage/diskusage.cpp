@@ -29,20 +29,20 @@
  ***************************************************************************/
 
 #include <time.h>
-#include <qlayout.h>
+#include <tqlayout.h>
 #include <klocale.h>
 #include <kpopupmenu.h>
 #include <kmimetype.h>
 #include <kmessagebox.h>
 #include <kglobalsettings.h>
 #include <kio/job.h>
-#include <qpushbutton.h>
-#include <qhbox.h>
-#include <qapplication.h>
-#include <qcursor.h>
-#include <qpixmapcache.h>
-#include <qgroupbox.h>
-#include <qguardedptr.h>
+#include <tqpushbutton.h>
+#include <tqhbox.h>
+#include <tqapplication.h>
+#include <tqcursor.h>
+#include <tqpixmapcache.h>
+#include <tqgroupbox.h>
+#include <tqguardedptr.h>
 #include "diskusage.h"
 #include "../VFS/krpermhandler.h"
 #include "../VFS/krvfshandler.h"
@@ -76,82 +76,82 @@
 
 #define MAX_FILENUM         100
 
-LoaderWidget::LoaderWidget( QWidget *parent, const char *name ) : QScrollView( parent, name ), cancelled( false )
+LoaderWidget::LoaderWidget( TQWidget *tqparent, const char *name ) : TQScrollView( tqparent, name ), cancelled( false )
 {
-  viewport()->setEraseColor( Qt::white );
-  widget = new QWidget( parent );
+  viewport()->setEraseColor( TQt::white );
+  widget = new TQWidget( tqparent );
 
-  QGridLayout *loaderLayout = new QGridLayout( widget );
+  TQGridLayout *loaderLayout = new TQGridLayout( widget );
   loaderLayout->setSpacing( 0 );
   loaderLayout->setMargin( 0 );
 
-  QGroupBox *loaderBox = new QGroupBox( widget, "loaderGroupBox" );
-  loaderBox->setFrameShape( QGroupBox::Box );
-  loaderBox->setFrameShadow( QGroupBox::Sunken );
+  TQGroupBox *loaderBox = new TQGroupBox( widget, "loaderGroupBox" );
+  loaderBox->setFrameShape( TQGroupBox::Box );
+  loaderBox->setFrameShadow( TQGroupBox::Sunken );
   loaderBox->setColumnLayout(0, Qt::Vertical );
-  loaderBox->layout()->setSpacing( 0 );
-  loaderBox->layout()->setMargin( 0 );
-  loaderBox->setSizePolicy( QSizePolicy::Fixed, QSizePolicy::Fixed );
-  loaderBox->setFrameStyle( QFrame::Panel + QFrame::Raised );
+  loaderBox->tqlayout()->setSpacing( 0 );
+  loaderBox->tqlayout()->setMargin( 0 );
+  loaderBox->tqsetSizePolicy( TQSizePolicy::Fixed, TQSizePolicy::Fixed );
+  loaderBox->setFrameStyle( TQFrame::Panel + TQFrame::Raised );
   loaderBox->setLineWidth( 2 );
 
-  QGridLayout *synchGrid = new QGridLayout( loaderBox->layout() );
+  TQGridLayout *synchGrid = new TQGridLayout( loaderBox->tqlayout() );
   synchGrid->setSpacing( 6 );
   synchGrid->setMargin( 11 );
 
-  QLabel *titleLabel = new QLabel( i18n( "Loading Usage Information" ), loaderBox, "titleLabel" );
-  titleLabel->setAlignment( Qt::AlignHCenter );
+  TQLabel *titleLabel = new TQLabel( i18n( "Loading Usage Information" ), loaderBox, "titleLabel" );
+  titleLabel->tqsetAlignment( TQt::AlignHCenter );
   synchGrid->addMultiCellWidget( titleLabel, 0, 0, 0, 1 );
 
-  QLabel *filesLabel = new QLabel( i18n( "Files:" ), loaderBox, "filesLabel" );
-  filesLabel->setFrameShape( QLabel::StyledPanel );
-  filesLabel->setFrameShadow( QLabel::Sunken );
+  TQLabel *filesLabel = new TQLabel( i18n( "Files:" ), loaderBox, "filesLabel" );
+  filesLabel->setFrameShape( TQLabel::StyledPanel );
+  filesLabel->setFrameShadow( TQLabel::Sunken );
   synchGrid->addWidget( filesLabel, 1, 0 );
 
-  QLabel *directoriesLabel = new QLabel( i18n( "Directories:" ), loaderBox, "directoriesLabel" );
-  directoriesLabel->setFrameShape( QLabel::StyledPanel );
-  directoriesLabel->setFrameShadow( QLabel::Sunken );
+  TQLabel *directoriesLabel = new TQLabel( i18n( "Directories:" ), loaderBox, "directoriesLabel" );
+  directoriesLabel->setFrameShape( TQLabel::StyledPanel );
+  directoriesLabel->setFrameShadow( TQLabel::Sunken );
   synchGrid->addWidget( directoriesLabel, 2, 0 );
 
-  QLabel *totalSizeLabel = new QLabel( i18n( "Total Size:" ), loaderBox, "totalSizeLabel" );
-  totalSizeLabel->setFrameShape( QLabel::StyledPanel );
-  totalSizeLabel->setFrameShadow( QLabel::Sunken );
+  TQLabel *totalSizeLabel = new TQLabel( i18n( "Total Size:" ), loaderBox, "totalSizeLabel" );
+  totalSizeLabel->setFrameShape( TQLabel::StyledPanel );
+  totalSizeLabel->setFrameShadow( TQLabel::Sunken );
   synchGrid->addWidget( totalSizeLabel, 3, 0 );
 
-  files = new QLabel( loaderBox, "files" );
-  files->setFrameShape( QLabel::StyledPanel );
-  files->setFrameShadow( QLabel::Sunken );
-  files->setAlignment( Qt::AlignRight );
+  files = new TQLabel( loaderBox, "files" );
+  files->setFrameShape( TQLabel::StyledPanel );
+  files->setFrameShadow( TQLabel::Sunken );
+  files->tqsetAlignment( TQt::AlignRight );
   synchGrid->addWidget( files, 1, 1 );
 
-  directories = new QLabel( loaderBox, "directories" );
-  directories->setFrameShape( QLabel::StyledPanel );
-  directories->setFrameShadow( QLabel::Sunken );
-  directories->setAlignment( Qt::AlignRight );
+  directories = new TQLabel( loaderBox, "directories" );
+  directories->setFrameShape( TQLabel::StyledPanel );
+  directories->setFrameShadow( TQLabel::Sunken );
+  directories->tqsetAlignment( TQt::AlignRight );
   synchGrid->addWidget( directories, 2, 1 );
 
-  totalSize = new QLabel( loaderBox, "totalSize" );
-  totalSize->setFrameShape( QLabel::StyledPanel );
-  totalSize->setFrameShadow( QLabel::Sunken );
-  totalSize->setAlignment( Qt::AlignRight );
+  totalSize = new TQLabel( loaderBox, "totalSize" );
+  totalSize->setFrameShape( TQLabel::StyledPanel );
+  totalSize->setFrameShadow( TQLabel::Sunken );
+  totalSize->tqsetAlignment( TQt::AlignRight );
   synchGrid->addWidget( totalSize, 3, 1 );
 
   int width;
   searchedDirectory = new KSqueezedTextLabel( loaderBox, "searchedDirectory" );
-  searchedDirectory->setFrameShape( QLabel::StyledPanel );
-  searchedDirectory->setFrameShadow( QLabel::Sunken );
-  searchedDirectory->setMinimumWidth( width = QFontMetrics(searchedDirectory->font()).width("W") * 30 );
+  searchedDirectory->setFrameShape( TQLabel::StyledPanel );
+  searchedDirectory->setFrameShadow( TQLabel::Sunken );
+  searchedDirectory->setMinimumWidth( width = TQFontMetrics(searchedDirectory->font()).width("W") * 30 );
   searchedDirectory->setMaximumWidth( width );
   synchGrid->addMultiCellWidget( searchedDirectory, 4, 4, 0, 1 );
 
-  QFrame *line = new QFrame( loaderBox, "duLine" );
-  line->setFrameStyle( QFrame::HLine | QFrame::Sunken );
+  TQFrame *line = new TQFrame( loaderBox, "duLine" );
+  line->setFrameStyle( TQFrame::HLine | TQFrame::Sunken );
   synchGrid->addMultiCellWidget( line, 5, 5, 0, 1 );
 
-  QHBox *hbox = new QHBox( loaderBox, "hbox" );
-  QSpacerItem* spacer = new QSpacerItem( 0, 0, QSizePolicy::Minimum, QSizePolicy::Expanding );
-  hbox->layout()->addItem( spacer );
-  QPushButton *cancelButton = new QPushButton( hbox, "cancelButton" );
+  TQHBox *hbox = new TQHBox( loaderBox, "hbox" );
+  TQSpacerItem* spacer = new TQSpacerItem( 0, 0, TQSizePolicy::Minimum, TQSizePolicy::Expanding );
+  hbox->tqlayout()->addItem( spacer );
+  TQPushButton *cancelButton = new TQPushButton( hbox, "cancelButton" );
   cancelButton->setText( i18n( "Cancel"  ) );
   synchGrid->addWidget( hbox, 6, 1 );
 
@@ -159,12 +159,12 @@ LoaderWidget::LoaderWidget( QWidget *parent, const char *name ) : QScrollView( p
 
   addChild( widget );
 
-  connect( cancelButton, SIGNAL( clicked() ), this, SLOT( slotCancelled() ) );
+  connect( cancelButton, TQT_SIGNAL( clicked() ), this, TQT_SLOT( slotCancelled() ) );
 }
 
-void LoaderWidget::resizeEvent ( QResizeEvent *e )
+void LoaderWidget::resizeEvent ( TQResizeEvent *e )
 {
-  QScrollView::resizeEvent( e );
+  TQScrollView::resizeEvent( e );
 
   int x = ( viewport()->width() - widget->width() ) / 2;
   int y = ( viewport()->height() - widget->height() ) / 2;
@@ -186,9 +186,9 @@ void LoaderWidget::setCurrentURL( KURL url )
 
 void LoaderWidget::setValues( int fileNum, int dirNum, KIO::filesize_t total )
 {
-  files->setText( QString("%1").arg( fileNum ) );
-  directories->setText( QString("%1").arg( dirNum ) );
-  totalSize->setText( QString("%1").arg( KRpermHandler::parseSize( total ).stripWhiteSpace() ) );
+  files->setText( TQString("%1").tqarg( fileNum ) );
+  directories->setText( TQString("%1").tqarg( dirNum ) );
+  totalSize->setText( TQString("%1").tqarg( KRpermHandler::parseSize( total ).stripWhiteSpace() ) );
 }
 
 void LoaderWidget::slotCancelled()
@@ -196,7 +196,7 @@ void LoaderWidget::slotCancelled()
   cancelled = true;
 }
 
-DiskUsage::DiskUsage( QString confGroup, QWidget *parent, char *name ) : QWidgetStack( parent, name ),
+DiskUsage::DiskUsage( TQString confGroup, TQWidget *tqparent, char *name ) : TQWidgetStack( tqparent, name ),
                       currentDirectory( 0 ), root( 0 ), configGroup( confGroup ), loading( false ),
                       abortLoading( false ), clearAfterAbort( false ), deleting( false ), searchVfs( 0 )
 {
@@ -215,7 +215,7 @@ DiskUsage::DiskUsage( QString confGroup, QWidget *parent, char *name ) : QWidget
   Filelight::Config::read();
   propertyMap.setAutoDelete( true );
 
-  connect( &loadingTimer, SIGNAL( timeout() ), this, SLOT( slotLoadDirectory() ) );
+  connect( &loadingTimer, TQT_SIGNAL( timeout() ), this, TQT_SLOT( slotLoadDirectory() ) );
 }
 
 DiskUsage::~DiskUsage()
@@ -250,10 +250,10 @@ void DiskUsage::load( KURL baseDir )
   root = new Directory( baseURL.fileName(), vfs::pathOrURL( baseDir ) );
 
   directoryStack.clear();
-  parentStack.clear();
+  tqparentStack.clear();
 
   directoryStack.push( "" );
-  parentStack.push( root );
+  tqparentStack.push( root );
 
   if( searchVfs )
   {
@@ -323,7 +323,7 @@ void DiskUsage::slotLoadDirectory()
           break;
 
         dirToCheck = directoryStack.pop();
-        currentParent = parentStack.pop();
+        currentParent = tqparentStack.pop();
 
         contentMap.insert( dirToCheck, currentParent );
 
@@ -354,7 +354,7 @@ void DiskUsage::slotLoadDirectory()
         fileNum++;
         File *newItem = 0;
 
-        QString mime = currentVfile->vfile_getMime(true); // fast == not using mimetype magic
+        TQString mime = currentVfile->vfile_getMime(true); // fast == not using mimetype magic
 
         if( currentVfile->vfile_isDir() && !currentVfile->vfile_isSymLink() )
         {
@@ -363,7 +363,7 @@ void DiskUsage::slotLoadDirectory()
                                    currentVfile->vfile_getPerm(), currentVfile->vfile_getTime_t(), currentVfile->vfile_isSymLink(),
                                    mime );
           directoryStack.push( (dirToCheck.isEmpty() ? "" : dirToCheck + "/" )+ currentVfile->vfile_getName() );
-          parentStack.push( dynamic_cast<Directory *>( newItem ) );
+          tqparentStack.push( dynamic_cast<Directory *>( newItem ) );
         }
         else
         {
@@ -402,16 +402,16 @@ void DiskUsage::dirUp()
 {
   if( currentDirectory != 0 )
   {
-    if ( currentDirectory->parent() != 0 )
-      changeDirectory( (Directory *)(currentDirectory->parent()) );
+    if ( currentDirectory->tqparent() != 0 )
+      changeDirectory( (Directory *)(currentDirectory->tqparent()) );
     else
     {
       KURL up = baseURL.upURL();
 
-      if( KMessageBox::questionYesNo( this, i18n( "Stepping into the parent directory requires "
+      if( KMessageBox::questionYesNo( this, i18n( "Stepping into the tqparent directory requires "
                                                   "loading the content of the \"%1\" URL. Do you wish "
                                                   "to continue?" )
-                                            .arg( vfs::pathOrURL( up ) ),
+                                            .tqarg( vfs::pathOrURL( up ) ),
                                             i18n( "Krusader::DiskUsage" ), KStdGuiItem::yes(),
                                             KStdGuiItem::no(), "DiskUsageLoadParentDir"
                                             ) == KMessageBox::Yes )
@@ -420,7 +420,7 @@ void DiskUsage::dirUp()
   }
 }
 
-Directory * DiskUsage::getDirectory( QString dir )
+Directory * DiskUsage::getDirectory( TQString dir )
 {
   while( dir.endsWith( "/" ) )
     dir.truncate( dir.length() - 1 );
@@ -428,18 +428,18 @@ Directory * DiskUsage::getDirectory( QString dir )
   if( dir.isEmpty() )
     return root;
 
-  return contentMap.find( dir );
+  return contentMap.tqfind( dir );
 }
 
-File * DiskUsage::getFile( QString path )
+File * DiskUsage::getFile( TQString path )
 {
   if( path == "" )
     return root;
 
-  QString dir = path;
+  TQString dir = path;
 
-  int ndx = path.findRev( '/' );
-  QString file = path.mid( ndx + 1 );
+  int ndx = path.tqfindRev( '/' );
+  TQString file = path.mid( ndx + 1 );
 
   if( ndx == -1 )
     dir = "";
@@ -530,7 +530,7 @@ int DiskUsage::exclude( File *file, bool calcPercents, int depth )
   {
     calculateSizes( root, true );
     calculatePercents( true );
-    createStatus();
+    createtqStatus();
   }
 
   if( depth == 0 && changeNr != 0 )
@@ -572,7 +572,7 @@ void DiskUsage::includeAll()
   include( root );
   calculateSizes( root, true );
   calculatePercents( true );
-  createStatus();
+  createtqStatus();
 }
 
 int DiskUsage::del( File *file, bool calcPercents, int depth )
@@ -591,7 +591,7 @@ int DiskUsage::del( File *file, bool calcPercents, int depth )
     // now ask the user if he want to delete:
     krConfig->setGroup( "Advanced" );
     if ( krConfig->readBoolEntry( "Confirm Delete", _ConfirmDelete ) ) {
-      QString s, b;
+      TQString s, b;
       if ( trash && url.isLocalFile() ) {
         s = i18n( "Do you really want to move this item to the trash?" );
         b = i18n( "&Trash" );
@@ -600,7 +600,7 @@ int DiskUsage::del( File *file, bool calcPercents, int depth )
         b = i18n( "&Delete" );
       }
 
-      QStringList name;
+      TQStringList name;
       name.append( file->fullPath() );
       // show message
       // note: i'm using continue and not yes/no because the yes/no has cancel as default button
@@ -608,7 +608,7 @@ int DiskUsage::del( File *file, bool calcPercents, int depth )
         return 0;
     }
 
-    emit status( i18n( "Deleting %1..." ).arg( file->name() ) );
+    emit status( i18n( "Deleting %1..." ).tqarg( file->name() ) );
   }
 
   if( file == currentDirectory )
@@ -622,8 +622,8 @@ int DiskUsage::del( File *file, bool calcPercents, int depth )
     while( ( it = dir->iterator() ) != dir->end() )
       deleteNr += del( *it, false, depth + 1 );
 
-    QString path;
-    for( const Directory *d = (Directory*)file; d != root && d && d->parent() != 0; d = d->parent() )
+    TQString path;
+    for( const Directory *d = (Directory*)file; d != root && d && d->tqparent() != 0; d = d->tqparent() )
     {
       if( !path.isEmpty() )
         path = "/" + path;
@@ -637,7 +637,7 @@ int DiskUsage::del( File *file, bool calcPercents, int depth )
   emit deleted( file );
   deleteNr++;
 
-  QGuardedPtr<KIO::Job> job;
+  TQGuardedPtr<KIO::Job> job;
 
   if( trash )
   {
@@ -646,35 +646,35 @@ int DiskUsage::del( File *file, bool calcPercents, int depth )
 #else
     job = new KIO::CopyJob( url,KGlobalSettings::trashPath(),KIO::CopyJob::Move,false,true );
 #endif
-    connect(job,SIGNAL(result(KIO::Job*)),krApp,SLOT(changeTrashIcon()));
+    connect(job,TQT_SIGNAL(result(KIO::Job*)),krApp,TQT_SLOT(changeTrashIcon()));
   }
   else
   {
     job = new KIO::DeleteJob( vfs::fromPathOrURL( file->fullPath() ), false, false);
   }
 
-  deleting = true;    // during qApp->processEvent strange things can occur
+  deleting = true;    // during tqApp->processEvent strange things can occur
   grabMouse();        // that's why we disable the mouse and keyboard events
   grabKeyboard();
 
   while( !job.isNull() )
-    qApp->processEvents();
+    tqApp->processEvents();
 
   releaseMouse();
   releaseKeyboard(); 
   deleting = false;
 
-  ((Directory *)(file->parent()))->remove( file );
+  ((Directory *)(file->tqparent()))->remove( file );
   delete file;
 
   if( depth == 0 )
-    createStatus();
+    createtqStatus();
 
   if( calcPercents )
   {
     calculateSizes( root, true );
     calculatePercents( true );
-    createStatus();
+    createtqStatus();
     emit enteringDirectory( currentDirectory );
   }
 
@@ -684,17 +684,17 @@ int DiskUsage::del( File *file, bool calcPercents, int depth )
   return deleteNr;
 }
 
-void * DiskUsage::getProperty( File *item, QString key )
+void * DiskUsage::getProperty( File *item, TQString key )
 {
-  Properties * props = propertyMap.find( item );
+  Properties * props = propertyMap.tqfind( item );
   if( props == 0 )
     return 0;
-  return props->find( key );
+  return props->tqfind( key );
 }
 
-void DiskUsage::addProperty( File *item, QString key, void * prop )
+void DiskUsage::addProperty( File *item, TQString key, void * prop )
 {
-  Properties * props = propertyMap.find( item );
+  Properties * props = propertyMap.tqfind( item );
   if( props == 0 )
   {
     props = new Properties();
@@ -703,9 +703,9 @@ void DiskUsage::addProperty( File *item, QString key, void * prop )
   props->insert( key, prop );
 }
 
-void DiskUsage::removeProperty( File *item, QString key )
+void DiskUsage::removeProperty( File *item, TQString key )
 {
-  Properties * props = propertyMap.find( item );
+  Properties * props = propertyMap.tqfind( item );
   if( props == 0 )
     return;
   props->remove( key );
@@ -713,7 +713,7 @@ void DiskUsage::removeProperty( File *item, QString key )
     propertyMap.remove( item );
 }
 
-void DiskUsage::createStatus()
+void DiskUsage::createtqStatus()
 {
   Directory *dirEntry = currentDirectory;
 
@@ -725,9 +725,9 @@ void DiskUsage::createStatus()
       url.addPath( dirEntry->directory() );
 
   emit status( i18n( "Current directory:%1,  Total size:%2,  Own size:%3" )
-               .arg( vfs::pathOrURL( url, -1 ) )
-               .arg( " "+KRpermHandler::parseSize( dirEntry->size() ) )
-               .arg( " "+KRpermHandler::parseSize( dirEntry->ownSize() ) ) );
+               .tqarg( vfs::pathOrURL( url, -1 ) )
+               .tqarg( " "+KRpermHandler::parseSize( dirEntry->size() ) )
+               .tqarg( " "+KRpermHandler::parseSize( dirEntry->ownSize() ) ) );
 }
 
 void DiskUsage::changeDirectory( Directory *dir )
@@ -737,7 +737,7 @@ void DiskUsage::changeDirectory( Directory *dir )
   currentSize = dir->size();
   calculatePercents( true, dir );
 
-  createStatus();
+  createtqStatus();
   emit enteringDirectory( dir );
 }
 
@@ -746,7 +746,7 @@ Directory* DiskUsage::getCurrentDir()
   return currentDirectory;
 }
 
-void DiskUsage::rightClickMenu( File *fileItem, KPopupMenu *addPopup, QString addPopupName )
+void DiskUsage::rightClickMenu( File *fileItem, KPopupMenu *addPopup, TQString addPopupName )
 {
   KPopupMenu popup( this );
 
@@ -776,7 +776,7 @@ void DiskUsage::rightClickMenu( File *fileItem, KPopupMenu *addPopup, QString ad
 
   if( addPopup != 0 )
   {
-    popup.insertItem( QPixmap(), addPopup, ADDITIONAL_POPUP_ID );
+    popup.insertItem( TQPixmap(), addPopup, ADDITIONAL_POPUP_ID );
     popup.changeItem( ADDITIONAL_POPUP_ID, addPopupName );
   }
 
@@ -793,10 +793,10 @@ void DiskUsage::rightClickMenu( File *fileItem, KPopupMenu *addPopup, QString ad
   viewPopup.insertItem(i18n("Previous"),   PREVIOUS_VIEW_ID);
   viewPopup.setAccel( SHIFT + Key_Left, PREVIOUS_VIEW_ID );
 
-  popup.insertItem( QPixmap(), &viewPopup, VIEW_POPUP_ID );
+  popup.insertItem( TQPixmap(), &viewPopup, VIEW_POPUP_ID );
   popup.changeItem( VIEW_POPUP_ID, i18n( "View" ) );
 
-  int result=popup.exec(QCursor::pos());
+  int result=popup.exec(TQCursor::pos());
 
   executeAction( result, fileItem );
 }
@@ -828,7 +828,7 @@ void DiskUsage::executeAction( int action, File * fileItem )
     break;
   case STEP_INTO_ID:
     {
-      QString uri;
+      TQString uri;
       if( fileItem && fileItem->isDir() )
         uri = fileItem->fullPath();
       else
@@ -855,7 +855,7 @@ void DiskUsage::executeAction( int action, File * fileItem )
   visibleWidget()->setFocus();
 }
 
-void DiskUsage::keyPressEvent( QKeyEvent *e )
+void DiskUsage::keyPressEvent( TQKeyEvent *e )
 {
   if( activeView != VIEW_LOADER )
   {
@@ -956,23 +956,23 @@ void DiskUsage::keyPressEvent( QKeyEvent *e )
       break;
     }
   }
-  QWidgetStack::keyPressEvent( e );
+  TQWidgetStack::keyPressEvent( e );
 }
 
-QPixmap DiskUsage::getIcon( QString mime )
+TQPixmap DiskUsage::getIcon( TQString mime )
 {
-  QPixmap icon;
+  TQPixmap icon;
 
-  if ( !QPixmapCache::find( mime, icon ) )
+  if ( !TQPixmapCache::tqfind( mime, icon ) )
   {
     // get the icon.
     if ( mime == "Broken Link !" )
       icon = FL_LOADICON( "file_broken" );
     else
-      icon = FL_LOADICON( KMimeType::mimeType( mime ) ->icon( QString::null, true ) );
+      icon = FL_LOADICON( KMimeType::mimeType( mime ) ->icon( TQString(), true ) );
 
     // insert it into the cache
-    QPixmapCache::insert( mime, icon );
+    TQPixmapCache::insert( mime, icon );
   }
   return icon;
 }
@@ -1017,17 +1017,17 @@ int DiskUsage::calculatePercents( bool emitSig, Directory *dirEntry, int depth )
   return changeNr;
 }
 
-QString DiskUsage::getToolTip( File *item )
+TQString DiskUsage::getToolTip( File *item )
 {
   KMimeType::Ptr mimePtr = KMimeType::mimeType( item->mime() );
-  QString mime = mimePtr->comment();
+  TQString mime = mimePtr->comment();
 
   time_t tma = item->time();
   struct tm* t=localtime((time_t *)&tma);
-  QDateTime tmp(QDate(t->tm_year+1900, t->tm_mon+1, t->tm_mday), QTime(t->tm_hour, t->tm_min));
-  QString date = KGlobal::locale()->formatDateTime(tmp);
+  TQDateTime tmp(TQDate(t->tm_year+1900, t->tm_mon+1, t->tm_mday), TQTime(t->tm_hour, t->tm_min));
+  TQString date = KGlobal::locale()->formatDateTime(tmp);
 
-  QString str = "<qt><h5><table><tr><td>" + i18n( "Name:" ) +  "</td><td>" + item->name() + "</td></tr>"+
+  TQString str = "<qt><h5><table><tr><td>" + i18n( "Name:" ) +  "</td><td>" + item->name() + "</td></tr>"+
                 "<tr><td>" + i18n( "Type:" ) +  "</td><td>" + mime + "</td></tr>"+
                 "<tr><td>" + i18n( "Size:" ) +  "</td><td>" + KRpermHandler::parseSize( item->size() ) + "</td></tr>";
 
@@ -1038,7 +1038,7 @@ QString DiskUsage::getToolTip( File *item )
                 "<tr><td>" + i18n( "Permissions:" ) +  "</td><td>" + item->perm() + "</td></tr>"+
                 "<tr><td>" + i18n( "Owner:" ) +  "</td><td>" + item->owner() + " - " + item->group() + "</td></tr>"+
                 "</table></h5></qt>";
-  str.replace( " ", "&nbsp;" );
+  str.tqreplace( " ", "&nbsp;" );
   return str;
 }
 
@@ -1084,27 +1084,27 @@ File * DiskUsage::getCurrentFile()
   return file;
 }
 
-bool DiskUsage::event( QEvent * e )
+bool DiskUsage::event( TQEvent * e )
 {
   if( deleting ) {                       // if we are deleting, disable the mouse and
     switch( e->type() ) {                // keyboard events
-    case QEvent::MouseButtonPress:
-    case QEvent::MouseButtonRelease:
-    case QEvent::MouseButtonDblClick:
-    case QEvent::MouseMove:
-    case QEvent::KeyPress:
-    case QEvent::KeyRelease:
+    case TQEvent::MouseButtonPress:
+    case TQEvent::MouseButtonRelease:
+    case TQEvent::MouseButtonDblClick:
+    case TQEvent::MouseMove:
+    case TQEvent::KeyPress:
+    case TQEvent::KeyRelease:
       return true;
     default:
       break;
     }
   }
 
-  if ( e->type() == QEvent::AccelOverride )
+  if ( e->type() == TQEvent::AccelOverride )
   {
-    QKeyEvent* ke = (QKeyEvent*) e;
+    TQKeyEvent* ke = (TQKeyEvent*) e;
 
-    if ( ke->state() == NoButton || ke->state() == Keypad )
+    if ( ke->state() == Qt::NoButton || ke->state() == Keypad )
     {
       switch ( ke->key() )
       {
@@ -1141,7 +1141,7 @@ bool DiskUsage::event( QEvent * e )
       }
     }
   }
-  return QWidgetStack::event( e );
+  return TQWidgetStack::event( e );
 }
 
 #include "diskusage.moc"

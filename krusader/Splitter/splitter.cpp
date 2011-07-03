@@ -30,15 +30,15 @@
 
 #include "splitter.h"
 #include "../VFS/vfs.h"
-#include <qlayout.h>
+#include <tqlayout.h>
 #include <klocale.h>
 #include <kmessagebox.h>
 #include <kio/job.h>
 #include <kfileitem.h>
-#include <qfileinfo.h>
+#include <tqfileinfo.h>
     
-Splitter::Splitter( QWidget* parent,  KURL fileNameIn, KURL destinationDirIn ) :
-  QProgressDialog( parent, "Krusader::Splitter", true, 0 ), splitSize( 0 )
+Splitter::Splitter( TQWidget* tqparent,  KURL fileNameIn, KURL destinationDirIn ) :
+  TQProgressDialog( tqparent, "Krusader::Splitter", true, 0 ), splitSize( 0 )
 {
   fileName = fileNameIn;
 
@@ -62,12 +62,12 @@ void Splitter::split( KIO::filesize_t splitSizeIn )
   KFileItem file(KFileItem::Unknown, KFileItem::Unknown, fileName );
   file.refresh();
 
-  permissions = file.permissions() | QFileInfo::WriteUser;
+  permissions = file.permissions() | TQFileInfo::WriteUser;
   
   splitSize = splitSizeIn;
 
   setCaption( i18n("Krusader::Splitting...") );
-  setLabelText( i18n("Splitting the file %1...").arg( vfs::pathOrURL( fileName ) ) );
+  setLabelText( i18n("Splitting the file %1...").tqarg( vfs::pathOrURL( fileName ) ) );
 
   if( file.isDir() )
   {
@@ -80,12 +80,12 @@ void Splitter::split( KIO::filesize_t splitSizeIn )
 
   splitReadJob = KIO::get( fileName, false, false );
     
-  connect(splitReadJob, SIGNAL(data(KIO::Job *, const QByteArray &)),
-                        this, SLOT(splitDataReceived(KIO::Job *, const QByteArray &)));
-  connect(splitReadJob, SIGNAL(result(KIO::Job*)),
-                        this, SLOT(splitReceiveFinished(KIO::Job *)));
-  connect(splitReadJob, SIGNAL(percent (KIO::Job *, unsigned long)),
-                        this, SLOT(splitReceivePercent(KIO::Job *, unsigned long)));
+  connect(splitReadJob, TQT_SIGNAL(data(KIO::Job *, const TQByteArray &)),
+                        this, TQT_SLOT(splitDataReceived(KIO::Job *, const TQByteArray &)));
+  connect(splitReadJob, TQT_SIGNAL(result(KIO::Job*)),
+                        this, TQT_SLOT(splitReceiveFinished(KIO::Job *)));
+  connect(splitReadJob, TQT_SIGNAL(percent (KIO::Job *, unsigned long)),
+                        this, TQT_SLOT(splitReceivePercent(KIO::Job *, unsigned long)));
 
   splitWriteJob = 0;
   noValidWriteJob = true;
@@ -93,7 +93,7 @@ void Splitter::split( KIO::filesize_t splitSizeIn )
   exec();
 }
 
-void Splitter::splitDataReceived(KIO::Job *, const QByteArray &byteArray)
+void Splitter::splitDataReceived(KIO::Job *, const TQByteArray &byteArray)
 {
   if( byteArray.size() == 0 )
     return;
@@ -122,17 +122,17 @@ void Splitter::splitReceiveFinished(KIO::Job *job)
   if( job->error() )    /* any error occurred? */
   {
     splitAbortJobs();
-    KMessageBox::error(0, i18n("Error reading file %1!").arg( vfs::pathOrURL( fileName ) ) );
+    KMessageBox::error(0, i18n("Error reading file %1!").tqarg( vfs::pathOrURL( fileName ) ) );
     emit reject();
     return;
   }
 
-  QString crcResult = QString( "%1" ).arg( crcContext->result(), 0, 16 ).upper().stripWhiteSpace()
+  TQString crcResult = TQString( "%1" ).tqarg( crcContext->result(), 0, 16 ).upper().stripWhiteSpace()
                                      .rightJustify(8, '0');
 
-  splitFile = QString( "filename=%1\n" ).arg( fileName.fileName()     )+
-              QString( "size=%1\n" )    .arg( KIO::number( fileSize ) )+
-              QString( "crc32=%1\n" )   .arg( crcResult );
+  splitFile = TQString( "filename=%1\n" ).tqarg( fileName.fileName()     )+
+              TQString( "size=%1\n" )    .tqarg( KIO::number( fileSize ) )+
+              TQString( "crc32=%1\n" )   .tqarg( crcResult );
 }
 
 void Splitter::splitReceivePercent (KIO::Job *, unsigned long percent)
@@ -142,9 +142,9 @@ void Splitter::splitReceivePercent (KIO::Job *, unsigned long percent)
 
 void Splitter::splitCreateWriteJob()
 {
-  QString index( "%1" );                   /* making the splitted filename */
-  index = index.arg(++fileNumber).rightJustify( 3, '0' );
-  QString outFileName = fileName.fileName() + "." + index;
+  TQString index( "%1" );                   /* making the splitted filename */
+  index = index.tqarg(++fileNumber).rightJustify( 3, '0' );
+  TQString outFileName = fileName.fileName() + "." + index;
   
   writeURL = destinationDir;
   writeURL.addPath( outFileName );
@@ -152,20 +152,20 @@ void Splitter::splitCreateWriteJob()
       /* creating a write job */
   splitWriteJob = KIO::put( writeURL, permissions, true, false, false );
   outputFileSize = 0;
-  connect(splitWriteJob, SIGNAL(dataReq(KIO::Job *, QByteArray &)),
-                         this, SLOT(splitDataSend(KIO::Job *, QByteArray &)));
-  connect(splitWriteJob, SIGNAL(result(KIO::Job*)),
-                         this, SLOT(splitSendFinished(KIO::Job *)));
+  connect(splitWriteJob, TQT_SIGNAL(dataReq(KIO::Job *, TQByteArray &)),
+                         this, TQT_SLOT(splitDataSend(KIO::Job *, TQByteArray &)));
+  connect(splitWriteJob, TQT_SIGNAL(result(KIO::Job*)),
+                         this, TQT_SLOT(splitSendFinished(KIO::Job *)));
   noValidWriteJob = false;
 }
 
-void Splitter::splitDataSend(KIO::Job *, QByteArray &byteArray)
+void Splitter::splitDataSend(KIO::Job *, TQByteArray &byteArray)
 {
   int bufferLen = transferArray.size();
 
   if( noValidWriteJob )      /* splitted file should be closed ? */
   {
-    byteArray = QByteArray();  /* giving empty buffer which indicates closing */
+    byteArray = TQByteArray();  /* giving empty buffer which indicates closing */
   }
   else if( outputFileSize + bufferLen > splitSize ) /* maximum length reached? */
   {
@@ -181,7 +181,7 @@ void Splitter::splitDataSend(KIO::Job *, QByteArray &byteArray)
     outputFileSize += bufferLen;  /* write the whole buffer out to the split file */
 
     byteArray = transferArray;
-    transferArray = QByteArray();
+    transferArray = TQByteArray();
   
     if(splitReadJob)
     {
@@ -198,7 +198,7 @@ void Splitter::splitSendFinished(KIO::Job *job)
   if( job->error() )    /* any error occurred? */
   {
     splitAbortJobs();
-    KMessageBox::error(0, i18n("Error writing file %1!").arg( vfs::pathOrURL( writeURL ) ) );
+    KMessageBox::error(0, i18n("Error writing file %1!").tqarg( vfs::pathOrURL( writeURL ) ) );
     emit reject();
     return;
   }
@@ -211,10 +211,10 @@ void Splitter::splitSendFinished(KIO::Job *job)
     writeURL      = destinationDir;
     writeURL.addPath( fileName.fileName() + ".crc" );
     splitWriteJob = KIO::put( writeURL, permissions, true, false, false );
-    connect(splitWriteJob, SIGNAL(dataReq(KIO::Job *, QByteArray &)),
-                           this, SLOT(splitFileSend(KIO::Job *, QByteArray &)));
-    connect(splitWriteJob, SIGNAL(result(KIO::Job*)),
-                           this, SLOT(splitFileFinished(KIO::Job *)));
+    connect(splitWriteJob, TQT_SIGNAL(dataReq(KIO::Job *, TQByteArray &)),
+                           this, TQT_SLOT(splitFileSend(KIO::Job *, TQByteArray &)));
+    connect(splitWriteJob, TQT_SIGNAL(result(KIO::Job*)),
+                           this, TQT_SLOT(splitFileFinished(KIO::Job *)));
   }
 }
 
@@ -228,7 +228,7 @@ void Splitter::splitAbortJobs()
   splitReadJob = splitWriteJob = 0;
 }
 
-void Splitter::splitFileSend(KIO::Job *, QByteArray &byteArray)
+void Splitter::splitFileSend(KIO::Job *, TQByteArray &byteArray)
 {
   const char *content = splitFile.ascii();
   byteArray.duplicate( content, strlen ( content ) );
@@ -241,7 +241,7 @@ void Splitter::splitFileFinished(KIO::Job *job)
 
   if( job->error() )    /* any error occurred? */
   {
-    KMessageBox::error(0, i18n("Error at writing file %1!").arg( vfs::pathOrURL( writeURL ) ) );
+    KMessageBox::error(0, i18n("Error at writing file %1!").tqarg( vfs::pathOrURL( writeURL ) ) );
     emit reject();
     return;
   }

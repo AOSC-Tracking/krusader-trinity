@@ -13,12 +13,12 @@
 #ifndef USERACTION_H
 #define USERACTION_H
 
-#include <qptrlist.h>
+#include <tqptrlist.h>
 
-class QDomDocument;
-class QDomElement;
-class QString;
-class QStringList;
+class TQDomDocument;
+class TQDomElement;
+class TQString;
+class TQStringList;
 class KrAction;
 class KURL;
 class KPopupMenu;
@@ -42,7 +42,7 @@ class KPopupMenu;
 class UserAction {
 public:
 
-  typedef QPtrList<KrAction> KrActionList;
+  typedef TQPtrList<KrAction> KrActionList;
 
   enum ReadMode { renameDoublicated, ignoreDoublicated };
 
@@ -91,8 +91,8 @@ public:
    */
   void populateMenu(KPopupMenu* menu);
 
-   QStringList allCategories();
-   QStringList allNames();
+   TQStringList allCategories();
+   TQStringList allNames();
 
    /**
     * reads all predefined useractionfiles. 
@@ -106,26 +106,26 @@ public:
     * Reads UserActions from a xml-file.
     * @param list If provided, all new actions will also be added to this list
     */
-   void readFromFile( const QString& filename, ReadMode mode = renameDoublicated, KrActionList* list = 0 );
+   void readFromFile( const TQString& filename, ReadMode mode = renameDoublicated, KrActionList* list = 0 );
    /**
     * Reads UserActions from a XML-Element.
     * @param element a container with action-elements
     * @param list If provided, all new actions will also be added to this list
     */
-   void readFromElement( const QDomElement& element, ReadMode mode = renameDoublicated, KrActionList* list = 0 );
+   void readFromElement( const TQDomElement& element, ReadMode mode = renameDoublicated, KrActionList* list = 0 );
 
    /**
-    * creates an empty QDomDocument for the UserActions
+    * creates an empty TQDomDocument for the UserActions
     */
-   static QDomDocument createEmptyDoc();
+   static TQDomDocument createEmptyDoc();
    /**
-    * Writes a QDomDocument to an UTF-8 encodes text-file
+    * Writes a TQDomDocument to an UTF-8 encodes text-file
     * @param doc the XML-Tree
     * @param filename the filename where to save
     * @return true on success, false otherwise
     * @warning any existing file will get overwritten!
     */
-   static bool writeToFile( const QDomDocument& doc, const QString& filename );
+   static bool writeToFile( const TQDomDocument& doc, const TQString& filename );
 
 private:
   KrActionList _actions;

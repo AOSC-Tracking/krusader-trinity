@@ -23,7 +23,7 @@
 DirHistoryQueue::DirHistoryQueue( ListPanel* p ) {
 	panel = p;
 
-	connect( panel, SIGNAL( pathChanged( ListPanel* ) ), this, SLOT( slotPathChanged( ListPanel* ) ) );
+	connect( panel, TQT_SIGNAL( pathChanged( ListPanel* ) ), this, TQT_SLOT( slotPathChanged( ListPanel* ) ) );
 }
 DirHistoryQueue::~DirHistoryQueue() {}
 
@@ -31,7 +31,7 @@ DirHistoryQueue::~DirHistoryQueue() {}
 void DirHistoryQueue::slotPathChanged( ListPanel* p ) {
 	KURL url = p->virtualPath();
 	// already in the queue ?
-	if(  urlQueue.findIndex( url ) >= 0 ){
+	if(  urlQueue.tqfindIndex( url ) >= 0 ){
 		// remove it !
 		urlQueue.remove( url );
 	}
@@ -58,21 +58,21 @@ void DirHistoryQueue::addUrl(const KURL& url){
 	pathQueue.push_front( path );
 }
 
-void DirHistoryQueue::RemovePath( const QString& path ) {
-	QStringList::iterator it;
-	it = pathQueue.find( path );
+void DirHistoryQueue::RemovePath( const TQString& path ) {
+	TQStringList::iterator it;
+	it = pathQueue.tqfind( path );
 	if ( it != pathQueue.end() ) {
 		pathQueue.remove( it );
 	}
 }
 
-bool DirHistoryQueue::checkPath( const QString& path ) {
+bool DirHistoryQueue::checkPath( const TQString& path ) {
 	KURL url( path );
 
-	QString p = url.path();
+	TQString p = url.path();
 	//  kdDebug() << "url:" << p <<  ", file: " << url.fileName() << ", dir: " << url.directory() <<  endl;
 	if ( url.protocol() == "file" ) {
-		QDir dir( path );
+		TQDir dir( path );
 		if ( !dir.exists() ) {
 			RemovePath( path );
 			return false;

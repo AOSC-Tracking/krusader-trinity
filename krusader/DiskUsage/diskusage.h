@@ -34,25 +34,25 @@
 #include "../VFS/vfs.h"
 #include "filelightParts/fileTree.h"
 
-#include <qdialog.h>
-#include <qlabel.h>
-#include <qdict.h>
-#include <qptrlist.h>
-#include <qptrdict.h>
-#include <qvaluestack.h>
-#include <qptrstack.h>
+#include <tqdialog.h>
+#include <tqlabel.h>
+#include <tqdict.h>
+#include <tqptrlist.h>
+#include <tqptrdict.h>
+#include <tqvaluestack.h>
+#include <tqptrstack.h>
 #include <kurl.h>
 #include <ksqueezedtextlabel.h>
-#include <qwidgetstack.h>
-#include <qscrollview.h>
-#include <qtimer.h>
+#include <tqwidgetstack.h>
+#include <tqscrollview.h>
+#include <tqtimer.h>
 
 #define VIEW_LINES      0
 #define VIEW_DETAILED   1
 #define VIEW_FILELIGHT  2
 #define VIEW_LOADER     3
 
-typedef QDict<void> Properties;
+typedef TQDict<void> Properties;
 
 class DUListView;
 class DULines;
@@ -60,12 +60,13 @@ class DUFilelight;
 class KPopupMenu;
 class LoaderWidget;
 
-class DiskUsage : public QWidgetStack
+class DiskUsage : public TQWidgetStack
 {
   Q_OBJECT
+  TQ_OBJECT
   
 public:
-  DiskUsage( QString confGroup, QWidget *parent = 0, char *name = 0);
+  DiskUsage( TQString confGroup, TQWidget *tqparent = 0, char *name = 0);
   ~DiskUsage();
   
   void       load( KURL dirName );
@@ -76,30 +77,30 @@ public:
   void       setView( int view );
   int        getActiveView() { return activeView; }
   
-  Directory* getDirectory( QString path );
-  File *     getFile( QString path );
+  Directory* getDirectory( TQString path );
+  File *     getFile( TQString path );
   
-  QString    getConfigGroup() { return configGroup; }
+  TQString    getConfigGroup() { return configGroup; }
   
-  void *     getProperty( File *, QString );
-  void       addProperty( File *, QString, void * );
-  void       removeProperty( File *, QString );
+  void *     getProperty( File *, TQString );
+  void       addProperty( File *, TQString, void * );
+  void       removeProperty( File *, TQString );
   
   int        exclude( File *file, bool calcPercents = true, int depth = 0 );
   void       includeAll();
   
   int        del( File *file, bool calcPercents = true, int depth = 0 );
   
-  QString    getToolTip( File * );
+  TQString    getToolTip( File * );
   
-  void       rightClickMenu( File *, KPopupMenu * = 0, QString = QString::null );
+  void       rightClickMenu( File *, KPopupMenu * = 0, TQString = TQString() );
   
   void       changeDirectory( Directory *dir );
   
   Directory* getCurrentDir();
   File*      getCurrentFile();
   
-  QPixmap    getIcon( QString mime );
+  TQPixmap    getIcon( TQString mime );
   
   KURL       getBaseURL() { return baseURL; }
   
@@ -114,7 +115,7 @@ signals:
   void       changeFinished();
   void       deleted( File * );
   void       deleteFinished();
-  void       status( QString );
+  void       status( TQString );
   void       viewChanged( int );
   void       loadFinished( bool );
   void       newSearch();
@@ -123,19 +124,19 @@ protected slots:
   void       slotLoadDirectory();
 
 protected:
-  QDict< Directory > contentMap;
-  QPtrDict<Properties> propertyMap;
+  TQDict< Directory > contentMap;
+  TQPtrDict<Properties> propertyMap;
     
   Directory* currentDirectory;
   KIO::filesize_t currentSize;
  
-  virtual void keyPressEvent( QKeyEvent * );
-  virtual bool event( QEvent * );
+  virtual void keyPressEvent( TQKeyEvent * );
+  virtual bool event( TQEvent * );
   
   int        calculateSizes( Directory *dir = 0, bool emitSig = false, int depth = 0 );
   int        calculatePercents( bool emitSig = false, Directory *dir = 0 , int depth = 0 );
   int        include( Directory *dir, int depth = 0 );
-  void       createStatus();
+  void       createtqStatus();
   void       executeAction( int, File * = 0 );
   
   KURL       baseURL;             //< the base URL of loading
@@ -149,7 +150,7 @@ protected:
   
   int        activeView;
   
-  QString    configGroup;
+  TQString    configGroup;
   
   bool       first;
   bool       loading;
@@ -157,28 +158,29 @@ protected:
   bool       clearAfterAbort;
   bool       deleting;
 
-  QValueStack<QString> directoryStack;
-  QPtrStack<Directory> parentStack;
+  TQValueStack<TQString> directoryStack;
+  TQPtrStack<Directory> tqparentStack;
 
   vfs       * searchVfs;
   vfile     * currentVfile;
   Directory * currentParent;
-  QString     dirToCheck;
+  TQString     dirToCheck;
   
   int   fileNum; 
   int   dirNum;
   int   viewBeforeLoad;
 
-  QTimer loadingTimer;
+  TQTimer loadingTimer;
 };
 
 
-class LoaderWidget : public QScrollView
+class LoaderWidget : public TQScrollView
 {
   Q_OBJECT
+  TQ_OBJECT
   
 public:
-  LoaderWidget( QWidget *parent = 0, const char *name = 0 );
+  LoaderWidget( TQWidget *tqparent = 0, const char *name = 0 );
   
   void init();
   void setCurrentURL( KURL url );
@@ -189,14 +191,14 @@ public slots:
   void slotCancelled();
   
 protected:
-  virtual void resizeEvent ( QResizeEvent *e );
+  virtual void resizeEvent ( TQResizeEvent *e );
   
-  QLabel *totalSize;
-  QLabel *files;
-  QLabel *directories;
+  TQLabel *totalSize;
+  TQLabel *files;
+  TQLabel *directories;
   
   KSqueezedTextLabel *searchedDirectory;
-  QWidget *widget;
+  TQWidget *widget;
     
   bool   cancelled;
 };

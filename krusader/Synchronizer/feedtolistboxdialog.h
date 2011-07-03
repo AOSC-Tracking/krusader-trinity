@@ -34,16 +34,17 @@
 #include <kdialogbase.h>
 
 class Synchronizer;
-class QCheckBox;
-class QLineEdit;
-class QComboBox;
-class QListView;
+class TQCheckBox;
+class TQLineEdit;
+class TQComboBox;
+class TQListView;
 
 class FeedToListBoxDialog : public KDialogBase {
   Q_OBJECT
+  TQ_OBJECT
   
   public:
-    FeedToListBoxDialog( QWidget*,  const char*, Synchronizer *, QListView *, bool);
+    FeedToListBoxDialog( TQWidget*,  const char*, Synchronizer *, TQListView *, bool);
     virtual ~FeedToListBoxDialog() {};
 
     bool isAccepted() {return accepted;};
@@ -54,10 +55,10 @@ class FeedToListBoxDialog : public KDialogBase {
 
   private:
     Synchronizer * synchronizer;
-    QListView    * syncList;
-    QCheckBox    * cbSelected;
-    QLineEdit    * lineEdit;
-    QComboBox    * sideCombo;
+    TQListView    * syncList;
+    TQCheckBox    * cbSelected;
+    TQLineEdit    * lineEdit;
+    TQComboBox    * sideCombo;
     bool           equalAllowed;
     bool           accepted;
 };

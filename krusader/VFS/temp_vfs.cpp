@@ -27,8 +27,8 @@
  *   (at your option) any later version.                                   *
  *                                                                         *
  ***************************************************************************/
-// Qt includes
-#include <qdir.h>
+// TQt includes
+#include <tqdir.h>
 // KDE includes
 #include <kmessagebox.h>
 #include <kprocess.h>
@@ -40,8 +40,8 @@
 #include "../resources.h"
 #include "../krservices.h"
 
-temp_vfs::temp_vfs( QString origin, QString type, QWidget* panel, bool ):
-          normal_vfs(panel){
+temp_vfs::temp_vfs( TQString origin, TQString type, TQWidget* panel, bool ):
+          normal_vfs(TQT_TQOBJECT(panel)){
   vfs_type=TEMP;
    // first we need to create a temp diretory
   tmpDir = krApp->getTempDir();
@@ -69,12 +69,12 @@ temp_vfs::~temp_vfs(){
 }
 
 // return the working dir
-QString temp_vfs::vfs_workingDir(){
+TQString temp_vfs::vfs_workingDir(){
   // get the path inside the archive
-  QString path = vfs_origin.path(-1);
-  path = path.mid(path.findRev('\\')+1);
+  TQString path = vfs_origin.path(-1);
+  path = path.mid(path.tqfindRev('\\')+1);
   if(path.left(1) != "/") path = "/"+path;
-  QDir().mkdir(tmpDir+path);
+  TQDir().mkdir(tmpDir+path);
   return tmpDir+path;
 }
 
@@ -83,7 +83,7 @@ bool temp_vfs::vfs_refresh(const KURL& origin){
   vfs_origin = origin;
   vfs_origin.adjustPath(-1);
   // get the directory...
-  QString path = origin.path(-1).mid(origin.path(-1).findRev('\\')+1);
+  TQString path = origin.path(-1).mid(origin.path(-1).tqfindRev('\\')+1);
   if(path.left(1) =="/") path.remove(0,1);
   if ( !normal_vfs::vfs_refresh(tmpDir+"/"+path) ){
     vfs_origin = backup;
@@ -93,18 +93,18 @@ bool temp_vfs::vfs_refresh(const KURL& origin){
   return true;
 }
 
-void temp_vfs::handleAceArj(QString origin, QString type){
+void temp_vfs::handleAceArj(TQString origin, TQString type){
 	// for ace and arj we just unpack to the tmpDir
 	if( !KRarcHandler::arcHandled(type) ){
   	if (!quietMode) KMessageBox::error(krApp,"This archive type is NOT supported");
     return;
   }
-  else if( !KRarcHandler::unpack(origin,type, QString::null, tmpDir) ){
+  else if( !KRarcHandler::unpack(origin,type, TQString(), tmpDir) ){
     return;
   }
 }
 
-void temp_vfs::handleRpm(QString origin){
+void temp_vfs::handleRpm(TQString origin){
 	// then extract the cpio archive from the rpm
 	KShellProcess rpm;
   rpm << "rpm2cpio"<<"\""+origin+"\""+" > "+tmpDir+"/contents.cpio";
@@ -119,7 +119,7 @@ void temp_vfs::handleRpm(QString origin){
 	rpm.start(KProcess::Block);
 }
 
-void temp_vfs::handleIso(QString origin){
+void temp_vfs::handleIso(TQString origin){
 	// mount the ISO image
 	KShellProcess mount;
 	mount << KrServices::fullPathName( "mount" ) << "-o loop" << origin << tmpDir;

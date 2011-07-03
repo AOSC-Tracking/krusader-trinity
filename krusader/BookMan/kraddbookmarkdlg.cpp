@@ -2,52 +2,52 @@
 #include "../krusader.h"
 #include "krbookmarkhandler.h"
 #include <klocale.h>
-#include <qheader.h>
-#include <qlayout.h>
-#include <qlabel.h>
+#include <tqheader.h>
+#include <tqlayout.h>
+#include <tqlabel.h>
 #include <kinputdialog.h>
 #include <kiconloader.h>
 #include <kdebug.h>
 
-KrAddBookmarkDlg::KrAddBookmarkDlg(QWidget *parent, KURL url):
+KrAddBookmarkDlg::KrAddBookmarkDlg(TQWidget *tqparent, KURL url):
 	KDialogBase(KDialogBase::Swallow, i18n("Add Bookmark"),
-				 KDialogBase::User1 | KDialogBase::Ok | KDialogBase::Cancel, KDialogBase::Ok, parent) {
+				 KDialogBase::User1 | KDialogBase::Ok | KDialogBase::Cancel, KDialogBase::Ok, tqparent) {
 	// create the 'new folder' button
 	setButtonText(KDialogBase::User1, i18n("New Folder"));
 	showButton(KDialogBase::User1, false); // hide it until _createIn is shown
-	connect(this, SIGNAL(user1Clicked()), this, SLOT(newFolder()));
+	connect(this, TQT_SIGNAL(user1Clicked()), this, TQT_SLOT(newFolder()));
 
 	// create the main widget
-	QWidget *page = new QWidget(this);
+	TQWidget *page = new TQWidget(this);
 	setMainWidget(page);
 
-	QGridLayout *layout = new QGridLayout(page, 1, 1, 0, spacingHint()); // expanding
+	TQGridLayout *tqlayout = new TQGridLayout(page, 1, 1, 0, spacingHint()); // expanding
 	// name and url
-	QLabel *lb1 = new QLabel(i18n("Name:"), page);
+	TQLabel *lb1 = new TQLabel(i18n("Name:"), page);
 	_name = new KLineEdit(page);
 	_name->setText(url.prettyURL()); // default name is the url
 	_name->selectAll(); // make the text selected
-	layout->addWidget(lb1, 0, 0);	
-	layout->addWidget(_name, 0, 1);
+	tqlayout->addWidget(lb1, 0, 0);	
+	tqlayout->addWidget(_name, 0, 1);
 	
-	QLabel *lb2 = new QLabel(i18n("URL:"), page);
+	TQLabel *lb2 = new TQLabel(i18n("URL:"), page);
 	_url = new KLineEdit(page);
-	layout->addWidget(lb2, 1, 0);	
-	layout->addWidget(_url, 1, 1);
+	tqlayout->addWidget(lb2, 1, 0);	
+	tqlayout->addWidget(_url, 1, 1);
 	_url->setText(url.prettyURL()); // set the url in the field
 
 	// create in linedit and button
-	QLabel *lb3 = new QLabel(i18n("Create in:"), page);
+	TQLabel *lb3 = new TQLabel(i18n("Create in:"), page);
 	_folder = new KLineEdit(page);
-	layout->addWidget(lb3, 2, 0);
-	layout->addWidget(_folder, 2, 1);
+	tqlayout->addWidget(lb3, 2, 0);
+	tqlayout->addWidget(_folder, 2, 1);
 	_folder->setReadOnly(true);
 
-	_createInBtn = new QToolButton(page);
+	_createInBtn = new TQToolButton(page);
 	_createInBtn->setPixmap(krLoader->loadIcon("down", KIcon::Small));
 	_createInBtn->setToggleButton(true);
-	connect(_createInBtn, SIGNAL(toggled(bool)), this, SLOT(toggleCreateIn(bool )));
-	layout->addWidget(_createInBtn, 2, 2);
+	connect(_createInBtn, TQT_SIGNAL(toggled(bool)), this, TQT_SLOT(toggleCreateIn(bool )));
+	tqlayout->addWidget(_createInBtn, 2, 2);
 
 	setDetailsWidget(createInWidget());
 	
@@ -61,12 +61,12 @@ void KrAddBookmarkDlg::toggleCreateIn(bool show) {
 }
 
 // creates the widget that lets you decide where to put the new bookmark
-QWidget *KrAddBookmarkDlg::createInWidget() {
+TQWidget *KrAddBookmarkDlg::createInWidget() {
 	_createIn = new KListView(this);
 	_createIn->addColumn("Folders");
 	_createIn->header()->hide();
 	_createIn->setRootIsDecorated(true);
-	_createIn->setAlternateBackground(QColor()); // disable alternate coloring 
+	_createIn->setAlternateBackground(TQColor()); // disable alternate coloring 
 	
 	KListViewItem *item = new KListViewItem(_createIn, i18n("Bookmarks"));
 	item->setOpen(true);
@@ -76,21 +76,21 @@ QWidget *KrAddBookmarkDlg::createInWidget() {
 	populateCreateInWidget(krBookMan->_root, item);
 	_createIn->setCurrentItem(item);
 	createInSelection(item);
-	connect(_createIn, SIGNAL(selectionChanged(QListViewItem*)), this, SLOT(createInSelection(QListViewItem*)));
+	connect(_createIn, TQT_SIGNAL(selectionChanged(TQListViewItem*)), this, TQT_SLOT(createInSelection(TQListViewItem*)));
 	
 	return _createIn;
 }
 
-void KrAddBookmarkDlg::createInSelection(QListViewItem *item) {
+void KrAddBookmarkDlg::createInSelection(TQListViewItem *item) {
 	if (item) {
 		_folder->setText(_xr[static_cast<KListViewItem*>(item)]->text());
 	}
 }
 
-void KrAddBookmarkDlg::populateCreateInWidget(KrBookmark *root, KListViewItem *parent) {
-	for (KrBookmark *bm = root->children().first(); bm; bm = root->children().next()) {
+void KrAddBookmarkDlg::populateCreateInWidget(KrBookmark *root, KListViewItem *tqparent) {
+	for (KrBookmark *bm = root->tqchildren().first(); bm; bm = root->tqchildren().next()) {
 		if (bm->isFolder()) {
-			KListViewItem *item = new KListViewItem(parent, bm->text());
+			KListViewItem *item = new KListViewItem(tqparent, bm->text());
 			item->setOpen(true);
 			_xr[item] = bm;
 			populateCreateInWidget(bm, item);
@@ -100,8 +100,8 @@ void KrAddBookmarkDlg::populateCreateInWidget(KrBookmark *root, KListViewItem *p
 
 void KrAddBookmarkDlg::newFolder() {
 	// get the name
-	QString newFolder = KInputDialog::getText(i18n("New Folder"), i18n("Folder name:"), QString::null, 0, this);
-	if (newFolder == QString::null)
+	TQString newFolder = KInputDialog::getText(i18n("New Folder"), i18n("Folder name:"), TQString(), 0, this);
+	if (newFolder == TQString())
 		return;
 	// add to the list in bookman
 	KrBookmark *bm = new KrBookmark(newFolder);

@@ -32,11 +32,11 @@
 
 #include <kdebug.h>
 
-KCMDModeButton::KCMDModeButton( QWidget *parent, const char *name ) : QToolButton( parent, name ) {
+KCMDModeButton::KCMDModeButton( TQWidget *tqparent, const char *name ) : TQToolButton( tqparent, name ) {
   setFixedSize( 22, 20 );
 /* // from the old terminal-button:
   setTextLabel( i18n( "If pressed, Krusader executes command line in a terminal." ) );
-  QWhatsThis::add( terminal, i18n(
+  TQWhatsThis::add( terminal, i18n(
                         "The 'run in terminal' button allows Krusader "
                         "to run console (or otherwise non-graphical) "
                         "programs in a terminal of your choice. If it's "
@@ -50,7 +50,7 @@ KCMDModeButton::KCMDModeButton( QWidget *parent, const char *name ) : QToolButto
   {
     action->insert( *Krusader::execTypeArray[i] );
   }
-  QPopupMenu *pP = action->popupMenu();
+  TQPopupMenu *pP = action->popupMenu();
   Q_CHECK_PTR( pP );
   setPopup( pP );
   setPopupDelay( 10 );
@@ -63,9 +63,9 @@ KCMDModeButton::~KCMDModeButton() {
 
 /** called when clicked to the button */
 void KCMDModeButton::openPopup() {
-  QPopupMenu * pP = popup();
+  TQPopupMenu * pP = popup();
   if ( pP ) {
-    popup() ->exec( mapToGlobal( QPoint( 0, 0 ) ) );
+    popup() ->exec( mapToGlobal( TQPoint( 0, 0 ) ) );
   }
 }
 

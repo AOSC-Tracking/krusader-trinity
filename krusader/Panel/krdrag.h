@@ -31,32 +31,33 @@ YP   YD 88   YD ~Y8888P' `8888Y' YP   YP Y8888D' Y88888P 88   YD
 #ifndef KRDRAG_H
 #define KRDRAG_H
 
-#include <qdragobject.h> 
+#include <tqdragobject.h> 
 #include <kurl.h>
 
-class KRDrag : public QUriDrag
+class KRDrag : public TQUriDrag
 {
     Q_OBJECT
+  TQ_OBJECT
 public:
-    static KRDrag * newDrag( const KURL::List & urls, bool move, QWidget * dragSource = 0, const char* name = 0 );
+    static KRDrag * newDrag( const KURL::List & urls, bool move, TQWidget * dragSource = 0, const char* name = 0 );
 
 protected:
-    KRDrag( const QStrList & urls, bool move, QWidget * dragSource, const char* name );
+    KRDrag( const TQStrList & urls, bool move, TQWidget * dragSource, const char* name );
 
 public:
     virtual ~KRDrag() {}
 
     virtual const char* format( int i ) const;
-    virtual QByteArray encodedData( const char* mime ) const;
+    virtual TQByteArray tqencodedData( const char* mime ) const;
 
     void setMoveSelection( bool move ) { m_bCutSelection = move; }
 
     // Returns true if the data was cut (used for KonqIconDrag too)
-    static bool decodeIsCutSelection( const QMimeSource *e );
+    static bool decodeIsCutSelection( const TQMimeSource *e );
 
 protected:
     bool m_bCutSelection;
-    QStrList m_urls;
+    TQStrList m_urls;
 };
 
 #endif /* KRDRAG_H */

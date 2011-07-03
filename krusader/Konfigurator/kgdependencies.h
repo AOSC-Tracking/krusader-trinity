@@ -33,26 +33,27 @@
 
 #include "konfiguratorpage.h"
 
-class QTabWidget;
+class TQTabWidget;
 
 
 class KgDependencies : public KonfiguratorPage
 {
   Q_OBJECT
+  TQ_OBJECT
 
 public:
-  KgDependencies( bool first, QWidget* parent=0,  const char* name=0 );
+  KgDependencies( bool first, TQWidget* tqparent=0,  const char* name=0 );
 
   virtual int activeSubPage();
   
 private:
-  void addApplication( QString name, QGridLayout *grid, int row, QWidget *parent, int page, QString additionalList=QString::null );
+  void addApplication( TQString name, TQGridLayout *grid, int row, TQWidget *tqparent, int page, TQString additionalList=TQString() );
   
 public slots:
-  void slotApply( QObject *obj, QString cls, QString name );
+  void slotApply( TQObject *obj, TQString cls, TQString name );
   
 private:
-  QTabWidget *tabWidget;
+  TQTabWidget *tabWidget;
 };
 
 #endif /* __KGDEPENDENCIES_H__ */

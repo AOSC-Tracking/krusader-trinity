@@ -19,16 +19,16 @@
 #include "dirhistoryqueue.h"
 
 #include "../VFS/vfs.h"
-#include <qpopupmenu.h>
-#include <qdir.h>
+#include <tqpopupmenu.h>
+#include <tqdir.h>
 #include <klocale.h>
 #include <kiconloader.h>
 
 #include <kdebug.h>
 
-DirHistoryButton::DirHistoryButton( DirHistoryQueue* hQ, QWidget *parent, const char *name ) : QToolButton( parent, name ) {
+DirHistoryButton::DirHistoryButton( DirHistoryQueue* hQ, TQWidget *tqparent, const char *name ) : TQToolButton( tqparent, name ) {
 	KIconLoader * iconLoader = new KIconLoader();
-	QPixmap icon = iconLoader->loadIcon( "history", KIcon::Toolbar, 16 );
+	TQPixmap icon = iconLoader->loadIcon( "history", KIcon::Toolbar, 16 );
 
 	setFixedSize( icon.width() + 4, icon.height() + 4 );
 	setPixmap( icon );
@@ -36,7 +36,7 @@ DirHistoryButton::DirHistoryButton( DirHistoryQueue* hQ, QWidget *parent, const 
 	setPopupDelay( 10 ); // 0.01 seconds press
 	setAcceptDrops( false );
 
-	popupMenu = new QPopupMenu( this );
+	popupMenu = new TQPopupMenu( this );
 	Q_CHECK_PTR( popupMenu );
 
 	setPopup( popupMenu );
@@ -44,16 +44,16 @@ DirHistoryButton::DirHistoryButton( DirHistoryQueue* hQ, QWidget *parent, const 
 
 	historyQueue = hQ;
 
-	connect( popupMenu, SIGNAL( aboutToShow() ), this, SLOT( slotAboutToShow() ) );
-	connect( popupMenu, SIGNAL( activated( int ) ), this, SLOT( slotPopupActivated( int ) ) );
+	connect( popupMenu, TQT_SIGNAL( aboutToShow() ), this, TQT_SLOT( slotAboutToShow() ) );
+	connect( popupMenu, TQT_SIGNAL( activated( int ) ), this, TQT_SLOT( slotPopupActivated( int ) ) );
 }
 
 DirHistoryButton::~DirHistoryButton() {}
 
 void DirHistoryButton::openPopup() {
-	QPopupMenu * pP = popup();
+	TQPopupMenu * pP = popup();
 	if ( pP ) {
-		popup() ->exec( mapToGlobal( QPoint( 0, height() ) ) );
+		popup() ->exec( mapToGlobal( TQPoint( 0, height() ) ) );
 	}
 }
 /** No descriptions */

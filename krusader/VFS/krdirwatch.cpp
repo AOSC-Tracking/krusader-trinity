@@ -32,14 +32,14 @@
 #include <sys/types.h>
 #include <kdebug.h>
 #include "krpermhandler.h"
-#include "qstringlist.h"
-#include <qdir.h>
+#include "tqstringlist.h"
+#include <tqdir.h>
 
 KRdirWatch::KRdirWatch(int msec,bool dirOnly):
   delay(msec),t(this), changed(false) {
-  if(dirOnly) dir.setFilter( QDir::Dirs | QDir::Hidden | QDir::NoSymLinks );
+  if(dirOnly) dir.setFilter( TQDir::Dirs | TQDir::Hidden | TQDir::NoSymLinks );
   watched.setAutoDelete(true);
-  connect(&t,SIGNAL(timeout()),this, SLOT(checkDirs()));
+  connect(&t,TQT_SIGNAL(timeout()),this, TQT_SLOT(checkDirs()));
   startScan();
 }
 
@@ -48,7 +48,7 @@ KRdirWatch::~KRdirWatch(){
   stopScan();
 }
 
-void KRdirWatch::removeDir(QString path){
+void KRdirWatch::removeDir(TQString path){
   t.stop();
   for ( it = watched.first(); it != 0;  )
     if (it->path == path) watched.remove();
@@ -56,7 +56,7 @@ void KRdirWatch::removeDir(QString path){
   if (!stopped) startScan();
 }
 
-void KRdirWatch::addDir(QString path, bool checkPermissions){
+void KRdirWatch::addDir(TQString path, bool checkPermissions){
   t.stop();
 
   krDirEntry* temp = new krDirEntry;
@@ -78,7 +78,7 @@ void KRdirWatch::addDir(QString path, bool checkPermissions){
   qfi.setFile(path);
 
   temp->path = dir.path();
-  temp->count = dir.entryList(QDir::All | QDir::AccessMask).count();
+  temp->count = dir.entryList(TQDir::All | TQDir::AccessMask).count();
   temp->lastModified = qfi.lastModified();
 
   watched.append(temp);
@@ -89,9 +89,9 @@ void KRdirWatch::addDir(QString path, bool checkPermissions){
 void KRdirWatch::checkDirs(){
   t.stop();
 
-  QString path;
+  TQString path;
   unsigned long count;
-  QDateTime dt;
+  TQDateTime dt;
 
   for ( it = watched.first(); it != 0; it = watched.next() ){
     path = it->path;
@@ -102,7 +102,7 @@ void KRdirWatch::checkDirs(){
       return;
     }
     dt = qfi.lastModified();
-    count = dir.entryList(QDir::All | QDir::AccessMask).count();
+    count = dir.entryList(TQDir::All | TQDir::AccessMask).count();
     // check for changes
     if(it->lastModified!=dt || it->count!=count){
       changed = true;

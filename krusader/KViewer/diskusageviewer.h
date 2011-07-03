@@ -33,20 +33,21 @@
 
 #include "../DiskUsage/diskusage.h"
 #include <kurl.h>
-#include <qlayout.h>
-#include <qlabel.h>
+#include <tqlayout.h>
+#include <tqlabel.h>
 
-class DiskUsageViewer : public QWidget
+class DiskUsageViewer : public TQWidget
 {
   Q_OBJECT
+  TQ_OBJECT
   
 public:
-  DiskUsageViewer( QWidget *parent = 0, char *name = 0 );
+  DiskUsageViewer( TQWidget *tqparent = 0, char *name = 0 );
   ~DiskUsageViewer();
   
   void openURL( KURL url );
   void closeURL();
-  void setStatusLabel( QLabel *statLabel, QString pref );
+  void setStatusLabel( TQLabel *statLabel, TQString pref );
 
   inline DiskUsage * getWidget() { return diskUsage; }
   
@@ -54,15 +55,15 @@ signals:
   void openURLRequest(const KURL &);
   
 protected slots:
-  void slotUpdateStatus( QString status = QString() );
+  void slotUpdatetqStatus( TQString status = TQString() );
   void slotNewSearch();
 
 protected:  
   DiskUsage *diskUsage;
-  QGridLayout *layout;
+  TQGridLayout *tqlayout;
   
-  QLabel *statusLabel;
-  QString prefix;
+  TQLabel *statusLabel;
+  TQString prefix;
 };
 
 #endif /* DISKUSAGEVIEWER_H */

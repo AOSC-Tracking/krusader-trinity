@@ -40,9 +40,10 @@ class UserActionListView;
 class KgUserActions : public KonfiguratorPage
 {
   Q_OBJECT
+  TQ_OBJECT
 
 public:
-  KgUserActions( bool first, QWidget* parent=0,  const char* name=0 );
+  KgUserActions( bool first, TQWidget* tqparent=0,  const char* name=0 );
 
 public slots:
   void startActionMan();

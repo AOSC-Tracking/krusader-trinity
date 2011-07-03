@@ -32,10 +32,10 @@
 #include "kcmdline.h"
 #include "stdlib.h"
 #include <unistd.h>
-#include <qmessagebox.h>
+#include <tqmessagebox.h>
 #include <kprocess.h>
-#include <qiconset.h>
-#include <qwhatsthis.h>
+#include <tqiconset.h>
+#include <tqwhatsthis.h>
 #include <unistd.h>
 #include "../krusader.h"
 #include "../kicons.h"
@@ -47,30 +47,30 @@
 #include "../krservices.h"
 #include "../ActionMan/addplaceholderpopup.h"
 #include "kcmdmodebutton.h"
-#include <qdir.h>
+#include <tqdir.h>
 #include <kstandarddirs.h>
 #include <klocale.h>
 #include <kglobalsettings.h>
-#include <qfontmetrics.h>
-#include <qimage.h>
-#include <qstringlist.h>
-#include <qsizepolicy.h>
+#include <tqfontmetrics.h>
+#include <tqimage.h>
+#include <tqstringlist.h>
+#include <tqsizepolicy.h>
 #include <ktempfile.h> 
 
-KCMDLine::KCMDLine( QWidget *parent, const char *name ) : QWidget( parent, name ) {
-  QGridLayout * layout = new QGridLayout( this, 1, 4 );
-  path = new QLabel( this );
-  QWhatsThis::add
+KCMDLine::KCMDLine( TQWidget *tqparent, const char *name ) : TQWidget( tqparent, name ) {
+  TQGridLayout * tqlayout = new TQGridLayout( this, 1, 4 );
+  path = new TQLabel( this );
+  TQWhatsThis::add
     ( path, i18n( "Name of directory where command will be processed." ) );
-  path->setAlignment( Qt::AlignRight );
-  path->setFrameStyle( QFrame::Box | QFrame::Sunken );
+  path->tqsetAlignment( TQt::AlignRight );
+  path->setFrameStyle( TQFrame::Box | TQFrame::Sunken );
   path->setLineWidth( 1 );
   path->setFont( KGlobalSettings::generalFont() );
-  int height = QFontMetrics( KGlobalSettings::generalFont() ).height();
+  int height = TQFontMetrics( KGlobalSettings::generalFont() ).height();
   height =  height + 5*(height > 14) + 6;
   path->setMaximumHeight( height );
-  path->setSizePolicy(QSizePolicy(QSizePolicy::Maximum, QSizePolicy::Preferred));
-  layout->addWidget( path, 0, 0 );
+  path->tqsetSizePolicy(TQSizePolicy(TQSizePolicy::Maximum, TQSizePolicy::Preferred));
+  tqlayout->addWidget( path, 0, 0 );
 
   // and editable command line
   completion.setMode( KURLCompletion::FileCompletion );
@@ -80,48 +80,48 @@ KCMDLine::KCMDLine( QWidget *parent, const char *name ) : QWidget( parent, name 
   cmdLine->setFont( KGlobalSettings::generalFont() );
   cmdLine->setMaximumHeight( height );
   cmdLine->setCompletionObject( &completion );
-  cmdLine->setSizePolicy(QSizePolicy(QSizePolicy::Preferred, QSizePolicy::Fixed));
+  cmdLine->tqsetSizePolicy(TQSizePolicy(TQSizePolicy::Preferred, TQSizePolicy::Fixed));
   // load the history
   KConfigGroupSaver grpSvr( krConfig, "Private" );
-  QStringList list = krConfig->readListEntry( "cmdline history" );
+  TQStringList list = krConfig->readListEntry( "cmdline history" );
   cmdLine->setHistoryItems( list );
 
-  connect( cmdLine, SIGNAL( returnPressed(const QString &) ), this, SLOT( slotRun() ) );
-  connect( cmdLine, SIGNAL( returnPressed(const QString &) ), cmdLine, SLOT( clearEdit() ) );
-  connect( cmdLine, SIGNAL( returnToPanel() ), this, SLOT( slotReturnFocus() ));
+  connect( cmdLine, TQT_SIGNAL( returnPressed(const TQString &) ), this, TQT_SLOT( slotRun() ) );
+  connect( cmdLine, TQT_SIGNAL( returnPressed(const TQString &) ), cmdLine, TQT_SLOT( clearEdit() ) );
+  connect( cmdLine, TQT_SIGNAL( returnToPanel() ), this, TQT_SLOT( slotReturnFocus() ));
 
-  QWhatsThis::add
+  TQWhatsThis::add
     ( cmdLine, i18n( "<qt><p>Well, it's actually quite simple: You type your command here and Krusader obeys.</p><p><b>Tip</b>: Move within command line history with &lt;Up&gt; and &lt;Down&gt; arrows.</p></qt>" ) );
-  layout->addWidget( cmdLine, 0, 1 );
+  tqlayout->addWidget( cmdLine, 0, 1 );
 
-  buttonAddPlaceholder = new QToolButton( this, "ButtonAddPlaceholder" );
+  buttonAddPlaceholder = new TQToolButton( this, "ButtonAddPlaceholder" );
   buttonAddPlaceholder->setFixedSize(22,20);
   buttonAddPlaceholder->adjustSize();
   buttonAddPlaceholder->setPixmap( SmallIcon( "add" ) );
-  connect( buttonAddPlaceholder, SIGNAL( clicked() ), this, SLOT( addPlaceholder() ) );
-  QWhatsThis::add( buttonAddPlaceholder, i18n( "Add <b>Placeholders</b> for the selected files in the panel." ) );
+  connect( buttonAddPlaceholder, TQT_SIGNAL( clicked() ), this, TQT_SLOT( addPlaceholder() ) );
+  TQWhatsThis::add( buttonAddPlaceholder, i18n( "Add <b>Placeholders</b> for the selected files in the panel." ) );
 
-  layout->addWidget( buttonAddPlaceholder, 0, 2 );
+  tqlayout->addWidget( buttonAddPlaceholder, 0, 2 );
 
   // a run in terminal button
   terminal = new KCMDModeButton( this );
-  layout->addWidget( terminal, 0, 3 );
+  tqlayout->addWidget( terminal, 0, 3 );
 
-  layout->activate();
+  tqlayout->activate();
 }
 
 void KCMDLine::addPlaceholder() {
    AddPlaceholderPopup popup( this );
-   QString exp = popup.getPlaceholder(
-      buttonAddPlaceholder->mapToGlobal(  QPoint( 0, 0) )
+   TQString exp = popup.getPlaceholder(
+      buttonAddPlaceholder->mapToGlobal(  TQPoint( 0, 0) )
    );
    this->addText( exp );
 }
 
-void KCMDLine::setCurrent( const QString &p ) {
+void KCMDLine::setCurrent( const TQString &p ) {
 
-  QString pathName = p;
-  QFontMetrics fm(path->fontMetrics());
+  TQString pathName = p;
+  TQFontMetrics fm(path->fontMetrics());
   int textWidth = fm.width(pathName);
   int maxWidth = ( cmdLine->width() + path->width() ) * 2 / 5;
   int letters = p.length() / 2;
@@ -143,26 +143,26 @@ void KCMDLine::setCurrent( const QString &p ) {
 
 KCMDLine::~KCMDLine() {
    KConfigGroupSaver grpSvr( krConfig, "Private" );
-   QStringList list = cmdLine->historyItems();
+   TQStringList list = cmdLine->historyItems();
    //krOut << list[0] << endl;
    krConfig->writeEntry( "cmdline history", list );
    krConfig->sync();
 }
 
 void KCMDLine::slotRun() {
-  const QString command1(cmdLine->currentText());
+  const TQString command1(cmdLine->currentText());
   if ( command1.isEmpty() )
     return ;
-  QString panelPath = path->text().left( path->text().length() - 1 );
+  TQString panelPath = path->text().left( path->text().length() - 1 );
 
   cmdLine->addToHistory(command1);
 
   if ( command1.simplifyWhiteSpace().left( 3 ) == "cd " ) { // cd command effect the active panel
-    QString dir = command1.right( command1.length() - command1.find( " " ) ).stripWhiteSpace();
+    TQString dir = command1.right( command1.length() - command1.tqfind( " " ) ).stripWhiteSpace();
     if ( dir == "~" )
-      dir = QDir::homeDirPath();
+      dir = TQDir::homeDirPath();
     else
-      if ( dir.left( 1 ) != "/" && !dir.contains( ":/" ) )
+      if ( dir.left( 1 ) != "/" && !dir.tqcontains( ":/" ) )
         dir = panelPath + ( panelPath == "/" ? "" : "/" ) + dir;
     SLOTS->refresh( dir );
   } else {
@@ -184,7 +184,7 @@ static const KrActionBase::ExecType execModesMenu[] = {
  KrActionBase::RunInTE,
 };
 
-QString KCMDLine::command() const {
+TQString KCMDLine::command() const {
   return cmdLine->currentText();
 }
 
@@ -194,15 +194,15 @@ KrActionBase::ExecType KCMDLine::execType() const {
   return execModesMenu[i];
 }
 
-QString KCMDLine::startpath() const {
+TQString KCMDLine::startpath() const {
   return path->text().left( path->text().length() - 1 );
 }
 
-QString KCMDLine::user() const {
-  return QString();
+TQString KCMDLine::user() const {
+  return TQString();
 }
 
-QString KCMDLine::text() const {
+TQString KCMDLine::text() const {
   return cmdLine->currentText();
 }
 
@@ -218,11 +218,11 @@ bool KCMDLine::doSubstitution() const {
   return true;
 }
 
-void KCMDLine::setText(QString text) {
+void KCMDLine::setText(TQString text) {
 	cmdLine->setCurrentText( text );
 }
  
-void KrHistoryCombo::keyPressEvent( QKeyEvent *e ) {
+void KrHistoryCombo::keyPressEvent( TQKeyEvent *e ) {
    switch (e->key()) {
       case Key_Enter:
       case Key_Return:

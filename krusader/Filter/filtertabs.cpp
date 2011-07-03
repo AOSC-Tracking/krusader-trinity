@@ -35,8 +35,8 @@
 
 #include <klocale.h>
 
-FilterTabs::FilterTabs( int properties, QTabWidget *tabWidget, QObject *parent ) :
-    QObject( parent, 0 )
+FilterTabs::FilterTabs( int properties, TQTabWidget *tabWidget, TQObject *tqparent ) :
+    TQObject( tqparent, 0 )
 {
   this->tabWidget = tabWidget;
 
@@ -51,12 +51,12 @@ FilterTabs::FilterTabs( int properties, QTabWidget *tabWidget, QObject *parent )
   pageNumbers.append( tabWidget->indexOf( advancedFilter ) );
 }
 
-FilterTabs * FilterTabs::addTo( QTabWidget *tabWidget, int props )
+FilterTabs * FilterTabs::addTo( TQTabWidget *tabWidget, int props )
 {
-  return new FilterTabs( props, tabWidget, tabWidget );
+  return new FilterTabs( props, tabWidget, TQT_TQOBJECT(tabWidget) );
 }
 
-void FilterTabs::saveToProfile( QString name )
+void FilterTabs::saveToProfile( TQString name )
 {
   FilterBase *filter = filterList.first();
 
@@ -67,7 +67,7 @@ void FilterTabs::saveToProfile( QString name )
   }
 }
 
-void FilterTabs::loadFromProfile( QString name )
+void FilterTabs::loadFromProfile( TQString name )
 {
   FilterBase *filter = filterList.first();
 
@@ -108,7 +108,7 @@ bool FilterTabs::fillQuery( KRQuery *query )
   return true;
 }
 
-FilterBase * FilterTabs::get( QString name )
+FilterBase * FilterTabs::get( TQString name )
 {
   FilterBase *filter = filterList.first();
 
@@ -123,9 +123,9 @@ FilterBase * FilterTabs::get( QString name )
   return 0;
 }
 
-KRQuery FilterTabs::getQuery( QWidget *parent, const char *name )
+KRQuery FilterTabs::getQuery( TQWidget *tqparent, const char *name )
 {
-  FilterDialog dialog( parent, name );
+  FilterDialog dialog( tqparent, name );
   return dialog.getQuery();
 }
 

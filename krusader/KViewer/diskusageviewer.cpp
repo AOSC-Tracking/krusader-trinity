@@ -34,10 +34,10 @@
 #include "../Panel/panelfunc.h"
 #include "diskusageviewer.h"
 
-DiskUsageViewer::DiskUsageViewer( QWidget *parent, char *name ) 
-  : QWidget( parent, name ), diskUsage( 0 ), statusLabel( 0 )
+DiskUsageViewer::DiskUsageViewer( TQWidget *tqparent, char *name ) 
+  : TQWidget( tqparent, name ), diskUsage( 0 ), statusLabel( 0 )
 {
-  layout = new QGridLayout( this, 1, 1 );
+  tqlayout = new TQGridLayout( this, 1, 1 );
 }
 
 DiskUsageViewer::~ DiskUsageViewer()
@@ -56,10 +56,10 @@ void DiskUsageViewer::openURL( KURL url )
   {
     diskUsage = new DiskUsage( "DiskUsageViewer", this );
     
-    connect( diskUsage, SIGNAL( enteringDirectory( Directory * ) ), this, SLOT( slotUpdateStatus() ) );
-    connect( diskUsage, SIGNAL( status( QString ) ), this, SLOT( slotUpdateStatus( QString ) ) );
-    connect( diskUsage, SIGNAL( newSearch() ), this, SLOT( slotNewSearch() ) );
-    layout->addWidget( diskUsage, 0, 0 );
+    connect( diskUsage, TQT_SIGNAL( enteringDirectory( Directory * ) ), this, TQT_SLOT( slotUpdatetqStatus() ) );
+    connect( diskUsage, TQT_SIGNAL( status( TQString ) ), this, TQT_SLOT( slotUpdatetqStatus( TQString ) ) );
+    connect( diskUsage, TQT_SIGNAL( newSearch() ), this, TQT_SLOT( slotNewSearch() ) );
+    tqlayout->addWidget( diskUsage, 0, 0 );
     this->show();
     diskUsage->show();
     
@@ -77,11 +77,11 @@ void DiskUsageViewer::openURL( KURL url )
   {
     if( url.protocol() == baseURL.protocol() && ( !url.hasHost() || url.host() == baseURL.host() ) )
     {
-      QString baseStr = baseURL.path( 1 ), urlStr = url.path( 1 );
+      TQString baseStr = baseURL.path( 1 ), urlStr = url.path( 1 );
     
       if( urlStr.startsWith( baseStr ) )
       {
-        QString relURL = urlStr.mid( baseStr.length() );
+        TQString relURL = urlStr.mid( baseStr.length() );
         if( relURL.endsWith( "/" ) )
           relURL.truncate( relURL.length() -1 );
       
@@ -103,13 +103,13 @@ void DiskUsageViewer::closeURL()
     diskUsage->close();
 }
 
-void DiskUsageViewer::setStatusLabel( QLabel *statLabel, QString pref )
+void DiskUsageViewer::setStatusLabel( TQLabel *statLabel, TQString pref )
 {
   statusLabel = statLabel;
   prefix = pref;
 }
 
-void DiskUsageViewer::slotUpdateStatus( QString status )
+void DiskUsageViewer::slotUpdatetqStatus( TQString status )
 {
   if( statusLabel ) {
     if( status.isEmpty() ) {

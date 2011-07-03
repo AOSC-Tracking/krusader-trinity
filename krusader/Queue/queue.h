@@ -1,9 +1,9 @@
-#ifndef QUEUE_H
-#define QUEUE_H
+#ifndef TQUEUE_H
+#define TQUEUE_H
 
-#include <qobject.h>
+#include <tqobject.h>
 #include <kio/jobclasses.h>
-#include <qptrlist.h>
+#include <tqptrlist.h>
 
 /**
  * Queue can hold anything which inherits KIO::Job, and schedule it, start it, stop etc...
@@ -12,21 +12,22 @@
  * to start it, or queue it.
  *
  */
-class Queue: public QObject
+class Queue: public TQObject
 {
 	Q_OBJECT
+  TQ_OBJECT
 public:
-	Queue(const QString& name);
+	Queue(const TQString& name);
 	virtual ~Queue();
 	
-	inline const QString& name() const { return _name; }
+	inline const TQString& name() const { return _name; }
 	void enqueue(KIO::Job *job);
 
 protected:
 	void dumpQueue();
 
-	QString _name;
-	QPtrList<KIO::Job> _jobs;
+	TQString _name;
+	TQPtrList<KIO::Job> _jobs;
 };
 
-#endif // QUEUE_H
+#endif // TQUEUE_H

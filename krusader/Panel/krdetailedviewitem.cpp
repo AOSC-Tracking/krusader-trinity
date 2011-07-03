@@ -39,11 +39,11 @@
 #include "../VFS/krpermhandler.h"
 #include <sys/types.h>
 #include <time.h>
-#include <qpainter.h>
+#include <tqpainter.h>
 #include <pwd.h>
 #include <grp.h>
 #include <stdlib.h>
-#include <qpalette.h>
+#include <tqpalette.h>
 #include <kdebug.h>
 #include <kmimetype.h>
 
@@ -57,8 +57,8 @@
 int KrDetailedViewItem::expHeight = 0;
 #endif // FASTER
 
-KrDetailedViewItem::KrDetailedViewItem(KrDetailedView *parent, QListViewItem *after, vfile *vf):
-	KListViewItem(parent, after), KrViewItem(vf, parent->properties()) {
+KrDetailedViewItem::KrDetailedViewItem(KrDetailedView *tqparent, TQListViewItem *after, vfile *vf):
+	KListViewItem(tqparent, after), KrViewItem(vf, tqparent->properties()) {
 #ifdef FASTER
 	initiated = false;
 	// get the expected height of an item - should be done only once
@@ -72,7 +72,7 @@ KrDetailedViewItem::KrDetailedViewItem(KrDetailedView *parent, QListViewItem *af
 	// in that case, create a special vfile for that item, and delete it, if needed
 	if (!_vf) {
 		dummyVfile = true;
-		_vf = new vfile("..", 0, "drw-r--r--", 0, false, 0, 0, QString::null, QString::null, 0);
+		_vf = new vfile("..", 0, "drw-r--r--", 0, false, 0, 0, TQString(), TQString(), 0);
 		
 		setText(COLUMN(Name), "..");
 		setText(COLUMN(Size), i18n("<DIR>") );
@@ -84,7 +84,7 @@ KrDetailedViewItem::KrDetailedViewItem(KrDetailedView *parent, QListViewItem *af
 #endif
 	}
 	
-	repaintItem();
+	tqrepaintItem();
 }
 
 #ifdef FASTER
@@ -97,9 +97,9 @@ void KrDetailedViewItem::setup() {
 }
 #endif
 
-void KrDetailedViewItem::repaintItem() {
+void KrDetailedViewItem::tqrepaintItem() {
     if ( dummyVfile ) return;
-    QString tmp;
+    TQString tmp;
     // set text in columns, according to what columns are available
     int id = KrDetailedViewProperties::Unused;
     if ((id = COLUMN(Mime)) != -1) {
@@ -116,7 +116,7 @@ void KrDetailedViewItem::repaintItem() {
       setText(id, dateTime());
     if ((id = COLUMN(KrPermissions)) != -1) {
       // first, build the krusader permissions
-      tmp=QString::null;
+      tmp=TQString();
       switch (_vf->vfile_isReadable()){
         case ALLOWED_PERM: tmp+='r'; break;
         case UNKNOWN_PERM: tmp+='?'; break;
@@ -146,7 +146,7 @@ void KrDetailedViewItem::repaintItem() {
       setText(id, _vf->vfile_getGroup());
     }
     // if we've got an extention column, clip the name accordingly
-    QString name = this->name(), ext = "";
+    TQString name = this->name(), ext = "";
     if ((id = COLUMN(Extention)) != -1 && !_vf->vfile_isDir()) {
     	ext = this->extension();
 	name = this->name(false); // request name without extension
@@ -160,13 +160,13 @@ void KrDetailedViewItem::repaintItem() {
 #endif
 }
 
-QString num2qstring(KIO::filesize_t num){
-  QString buf;
+TQString num2qstring(KIO::filesize_t num){
+  TQString buf;
   buf.sprintf("%025llu",num);
   return buf;
 }
 
-void KrDetailedViewItem::paintCell(QPainter *p, const QColorGroup &cg, int column, int width, int align) {
+void KrDetailedViewItem::paintCell(TQPainter *p, const TQColorGroup &cg, int column, int width, int align) {
 #ifdef FASTER
 	if (!initiated && !dummyVfile) {
 		// display an icon if needed
@@ -177,26 +177,26 @@ void KrDetailedViewItem::paintCell(QPainter *p, const QColorGroup &cg, int colum
 	}
 #endif
   
-  QColorGroup _cg(cg);
+  TQColorGroup _cg(cg);
 
    // This is ugly! I had to dublicate KListViewItem::paintCell() code, as the
    // KListViewItem::paintCell() overwrites my color settings. So KrDetailedViewItem::paintCell
    // must dublicate the KListViewItem::paintCell() code, do the required color settings
-   // and call QListViewItem::paintCell() afterwards (the base class of KListViewItem).
+   // and call TQListViewItem::paintCell() afterwards (the base class of KListViewItem).
    // This tabooed in the object oriented heaven, but necessary here. Blame the KDE team for
    // this really poor paintCell implementation!
    
-   const QPixmap *pm = listView()->viewport()->backgroundPixmap();
+   const TQPixmap *pm = listView()->viewport()->backgroundPixmap();
    if (pm && !pm->isNull())
    {
-         _cg.setBrush(QColorGroup::Base, QBrush(backgroundColor(), *pm));
+         _cg.setBrush(TQColorGroup::Base, TQBrush(backgroundColor(), *pm));
          p->setBrushOrigin( -listView()->contentsX(), -listView()->contentsY() );
    }
    else if (isAlternate())
-        if (listView()->viewport()->backgroundMode()==Qt::FixedColor)
-             _cg.setColor(QColorGroup::Background, static_cast< KListView* >(listView())->alternateBackground());
+        if (listView()->viewport()->backgroundMode()==TQt::FixedColor)
+             _cg.setColor(TQColorGroup::Background, static_cast< KListView* >(listView())->alternateBackground());
        else
-             _cg.setColor(QColorGroup::Base, static_cast< KListView* >(listView())->alternateBackground());
+             _cg.setColor(TQColorGroup::Base, static_cast< KListView* >(listView())->alternateBackground());
 
   // end of uglyness
 
@@ -221,19 +221,19 @@ void KrDetailedViewItem::paintCell(QPainter *p, const QColorGroup &cg, int colum
   KrColorCache::getColorCache().getColors(_cg, colorItemType);
 	// center the <DIR> thing if needed
 	if(column != COLUMN(Size))
-		QListViewItem::paintCell(p, _cg, column, width, align);
+		TQListViewItem::paintCell(p, _cg, column, width, align);
 	else {
   		if (dummyVfile) {
-			QListViewItem::paintCell(p, _cg, column, width, Qt::AlignHCenter); // updir
+			TQListViewItem::paintCell(p, _cg, column, width, TQt::AlignHCenter); // updir
   		} else {
     		if (_vf->vfile_isDir() && _vf->vfile_getSize()<=0)
-      		QListViewItem::paintCell(p, _cg, column, width, Qt::AlignHCenter);
-    		else QListViewItem::paintCell(p, _cg, column, width, align); // size
+      		TQListViewItem::paintCell(p, _cg, column, width, TQt::AlignHCenter);
+    		else TQListViewItem::paintCell(p, _cg, column, width, align); // size
   		}
 	}
 }
 
-const QColor & KrDetailedViewItem::setColorIfContrastIsSufficient(const QColor & background, const QColor & color1, const QColor & color2)
+const TQColor & KrDetailedViewItem::setColorIfContrastIsSufficient(const TQColor & background, const TQColor & color1, const TQColor & color2)
 {
    #define sqr(x) ((x)*(x))
    int contrast = sqr(color1.red() - background.red()) + sqr(color1.green() - background.green()) + sqr(color1.blue() - background.blue());
@@ -244,7 +244,7 @@ const QColor & KrDetailedViewItem::setColorIfContrastIsSufficient(const QColor &
    return color1;
 }
 
-int KrDetailedViewItem::compare(QListViewItem *i,int col,bool ascending ) const {
+int KrDetailedViewItem::compare(TQListViewItem *i,int col,bool ascending ) const {
   bool ignoreCase = (PROPS->sortMode & KrViewProperties::IgnoreCase);
 	bool alwaysSortDirsByName = (PROPS->sortMode & KrViewProperties::AlwaysSortDirsByName);
   int asc = ( ascending ? -1 : 1 );
@@ -264,8 +264,8 @@ int KrDetailedViewItem::compare(QListViewItem *i,int col,bool ascending ) const 
   if (col == COLUMN(Name) ||
 			(alwaysSortDirsByName && thisDir && otherDir )) {
       // localeAwareCompare doesn't handle names that start with a dot
-		QString text0 = name();
-		QString itext0 = other->name();
+		TQString text0 = name();
+		TQString itext0 = other->name();
 
 		if( ignoreCase )
 		{
@@ -279,8 +279,8 @@ int KrDetailedViewItem::compare(QListViewItem *i,int col,bool ascending ) const 
 		if (!ignoreCase && !PROPS->localeAwareCompareIsCaseSensitive) {
 			// sometimes, localeAwareCompare is not case sensative. in that case,
 			// we need to fallback to a simple string compare (KDE bug #40131)
-			return QString::compare(text0, itext0);
-		} else return QString::localeAwareCompare(text0,itext0);
+			return TQString::compare(text0, itext0);
+		} else return TQString::localeAwareCompare(text0,itext0);
   } else if (col == COLUMN(Size) ) {
       if( VF->vfile_getSize() == other->VF->vfile_getSize() )
         return 0;
@@ -296,13 +296,13 @@ int KrDetailedViewItem::compare(QListViewItem *i,int col,bool ascending ) const 
 			return 0;
 		return ((thisPerm > otherPerm) ? 1 : -1);
   } else {
-      QString e1 = (!ignoreCase ? text(col) : text(col).lower());
-      QString e2 = (!ignoreCase ? i->text(col) : i->text(col).lower());
+      TQString e1 = (!ignoreCase ? text(col) : text(col).lower());
+      TQString e2 = (!ignoreCase ? i->text(col) : i->text(col).lower());
 		if (!ignoreCase && !PROPS->localeAwareCompareIsCaseSensitive) {
 			// sometimes, localeAwareCompare is not case sensative. in that case,
 			// we need to fallback to a simple string compare (KDE bug #40131)
-			return QString::compare(e1, e2);
-		} else return QString::localeAwareCompare(e1, e2);
+			return TQString::compare(e1, e2);
+		} else return TQString::localeAwareCompare(e1, e2);
   }
 }
 

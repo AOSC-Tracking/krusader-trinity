@@ -40,12 +40,12 @@
 #include <kparts/part.h>
 
 // QT includes
-#include <qlayout.h>
-#include <qsplitter.h>
-#include <qwidget.h>
-#include <qpushbutton.h>
-#include <qhbox.h>
-#include <qvaluelist.h>
+#include <tqlayout.h>
+#include <tqsplitter.h>
+#include <tqwidget.h>
+#include <tqpushbutton.h>
+#include <tqhbox.h>
+#include <tqvaluelist.h>
 
 class PanelManager;
 class ListPanel;
@@ -54,26 +54,27 @@ class ListPanel;
 class KFnKeys;
 class KCMDLine;
 
-class KrusaderView : public QWidget  {
+class KrusaderView : public TQWidget  {
    Q_OBJECT
+  TQ_OBJECT
 
 public:
-	KrusaderView(QWidget *parent=0);
+	KrusaderView(TQWidget *tqparent=0);
 	virtual ~KrusaderView(){}
-  void start(QStringList leftTabs, QStringList leftTypes, QValueList<int> leftProps, int leftActiveTab, 
-             QStringList rightTabs, QStringList rightTypes, QValueList<int> rightProps, int rightActiveTab,
+  void start(TQStringList leftTabs, TQStringList leftTypes, TQValueList<int> leftProps, int leftActiveTab, 
+             TQStringList rightTabs, TQStringList rightTypes, TQValueList<int> rightProps, int rightActiveTab,
              bool leftSideActive);
   void cmdLineFocus();  // command line receive's keyboard focus
   void cmdLineUnFocus();// return focus from command line to active panel
   inline PanelManager *activeManager() const { return (activePanel==left ? leftMng : rightMng); }
   inline PanelManager *inactiveManager() const { return (activePanel==left ? rightMng : leftMng); }
-  QValueList<int> getTerminalEmulatorSplitterSizes();
-  virtual bool eventFilter ( QObject * watched, QEvent * e );
+  TQValueList<int> getTerminalEmulatorSplitterSizes();
+  virtual bool eventFilter ( TQObject * watched, TQEvent * e );
   /** if the KonsolePart for the Terminal Emulator is not yet loaded, load it */
   void createTE();
   
 public slots:
-  void slotCurrentChanged(QString p);
+  void slotCurrentChanged(TQString p);
 	void slotSetActivePanel(ListPanel *p);
   void slotTerminalEmulator(bool);
 	// manage the function keys to the CURRENT vfs
@@ -85,9 +86,9 @@ public slots:
   void focusTerminalEmulator();
   void switchFullScreenTE();
   
-  void profiles( QString profileName = QString::null );  
-  void loadPanelProfiles( QString group );
-  void savePanelProfiles( QString group );
+  void profiles( TQString profileName = TQString() );  
+  void loadPanelProfiles( TQString group );
+  void savePanelProfiles( TQString group );
 
 protected slots:
   void killTerminalEmulator();
@@ -98,13 +99,13 @@ public:
   PanelManager *leftMng, *rightMng;       // saving them for panel swaps
   KFnKeys			*fnKeys;										// function keys
   KCMDLine    *cmdLine;                   // command line widget
-  QHBox       *terminal_dock;             // docking widget for terminal emulator
+  TQHBox       *terminal_dock;             // docking widget for terminal emulator
   KParts::ReadOnlyPart *konsole_part;     // the actual part pointer
-  QSplitter		*horiz_splitter, *vert_splitter;
-  QValueList<int> verticalSplitterSizes;
+  TQSplitter		*horiz_splitter, *vert_splitter;
+  TQValueList<int> verticalSplitterSizes;
 
 private:
-  QGridLayout *mainLayout, *terminal_layout;
+  TQGridLayout *mainLayout, *terminal_layout;
 };
 
 #endif

@@ -38,16 +38,16 @@
 #include <kdatepicker.h>
 #include <kdialogbase.h>
 // QT includes
-#include <qlineedit.h>
-#include <qlayout.h>
-#include <qlabel.h>
-#include <qpushbutton.h>
-#include <qdatetime.h>
-#include <qpixmap.h>
-#include <qprogressdialog.h>
-#include <qsemimodal.h>
-#include <qcheckbox.h>
-#include <qcombobox.h>
+#include <tqlineedit.h>
+#include <tqlayout.h>
+#include <tqlabel.h>
+#include <tqpushbutton.h>
+#include <tqdatetime.h>
+#include <tqpixmap.h>
+#include <tqprogressdialog.h>
+#include <tqsemimodal.h>
+#include <tqcheckbox.h>
+#include <tqcombobox.h>
 
 /** \class KChooseDir
  * Used for asking the user for a folder.
@@ -69,16 +69,17 @@ public:
 	 * \param cwd - a path which is the current working directory (usually ACTIVE_PANEL->virtualPath()).
 	 *              this is used for completion of partial urls
 	 */
-	static KURL getDir(QString text,const KURL& url, const KURL& cwd);
-	static KURL getDir(QString text,const KURL& url, const KURL& cwd, bool & preserveAttrs );
-	static KURL getDir(QString text,const KURL& url, const KURL& cwd, bool & preserveAttrs, KURL &baseURL );
+	static KURL getDir(TQString text,const KURL& url, const KURL& cwd);
+	static KURL getDir(TQString text,const KURL& url, const KURL& cwd, bool & preserveAttrs );
+	static KURL getDir(TQString text,const KURL& url, const KURL& cwd, bool & preserveAttrs, KURL &baseURL );
 };
 
 class KURLRequesterDlgForCopy : public KDialogBase {
   Q_OBJECT
+  TQ_OBJECT
 public:
-	KURLRequesterDlgForCopy( const QString& url, const QString& text, bool presAttrs,
-				QWidget *parent, const char *name, bool modal=true, KURL baseURL = KURL() );
+	KURLRequesterDlgForCopy( const TQString& url, const TQString& text, bool presAttrs,
+				TQWidget *tqparent, const char *name, bool modal=true, KURL baseURL = KURL() );
 	KURLRequesterDlgForCopy();
 
 	KURL selectedURL() const;
@@ -89,27 +90,28 @@ public:
 	KURLRequester *urlRequester();
 private slots:
 	void slotClear();
-	void slotTextChanged(const QString &);
+	void slotTextChanged(const TQString &);
 	void slotDirStructCBChanged();
 private:
 	KURLRequester *urlRequester_;
-	QComboBox *baseUrlCombo;
-	QCheckBox *preserveAttrsCB;
-	QCheckBox *copyDirStructureCB;
+	TQComboBox *baseUrlCombo;
+	TQCheckBox *preserveAttrsCB;
+	TQCheckBox *copyDirStructureCB;
 };
 
 class KRGetDate : public KDialog {
   Q_OBJECT
+  TQ_OBJECT
 public:
-  KRGetDate(QDate date=QDate::currentDate(), QWidget *parent = 0, const char *name = 0);
-  QDate getDate();
+  KRGetDate(TQDate date=TQDate::tqcurrentDate(), TQWidget *tqparent = 0, const char *name = 0);
+  TQDate getDate();
 
 private slots:
-  void setDate(QDate);
+  void setDate(TQDate);
 
 private:
   KDatePicker *dateWidget;
-  QDate chosenDate, originalDate;
+  TQDate chosenDate, originalDate;
 };
 
 #endif

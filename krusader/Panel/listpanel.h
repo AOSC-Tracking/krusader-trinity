@@ -36,21 +36,21 @@
 #include <kpropsdlg.h>
 #include <kfileitem.h>
 #include <kurl.h>
-#include <qwidget.h>
-#include <qlabel.h>
-#include <qlayout.h>
-#include <qstring.h>
-#include <qpixmap.h>
-#include <qtoolbutton.h>
-#include <qpopupmenu.h>
-#include <qdir.h>
-#include <qpixmapcache.h>
-#include <qiconset.h>
-#include <qptrstack.h>
-#include <qtextbrowser.h>
+#include <tqwidget.h>
+#include <tqlabel.h>
+#include <tqlayout.h>
+#include <tqstring.h>
+#include <tqpixmap.h>
+#include <tqtoolbutton.h>
+#include <tqpopupmenu.h>
+#include <tqdir.h>
+#include <tqpixmapcache.h>
+#include <tqiconset.h>
+#include <tqptrstack.h>
+#include <tqtextbrowser.h>
 #include <keditcl.h>
 #include <klineedit.h>
-#include <qguardedptr.h>
+#include <tqguardedptr.h>
 #include "krview.h"
 #include "../Dialogs/krsqueezedtextlabel.h"
 
@@ -74,26 +74,27 @@ class SyncBrowseButton;
 class KrBookmarkButton;
 class KPushButton;
 class ListPanelFunc;
-class QHeader;
+class TQHeader;
 
-class ListPanel : public QWidget {
+class ListPanel : public TQWidget {
    friend class ListPanelFunc;
    Q_OBJECT
+  TQ_OBJECT
 public:
 	#define ITEM2VFILE(PANEL_PTR, KRVIEWITEM)		PANEL_PTR->func->files()->vfs_search(KRVIEWITEM->name())
 	#define NAME2VFILE(PANEL_PTR, STRING_NAME)	PANEL_PTR->func->files()->vfs_search(STRING_NAME)
    // constructor create the panel, but DOESN'T fill it with data, use start()
-   ListPanel( QString panelType, QWidget *parent, bool &left, const char *name = 0 );
+   ListPanel( TQString panelType, TQWidget *tqparent, bool &left, const char *name = 0 );
    ~ListPanel();
    void start( KURL url = KURL(), bool immediate = false );
    
-   const QString & getType() { return panelType; }
-   void changeType( const QString & );
+   const TQString & getType() { return panelType; }
+   void changeType( const TQString & );
    
    KURL virtualPath() const;
-	QString realPath() const;
-   QString getCurrentName();
-   void getSelectedNames( QStringList* fileNames ) {
+	TQString realPath() const;
+   TQString getCurrentName();
+   void getSelectedNames( TQStringList* fileNames ) {
       view->getSelectedItems( fileNames );
    }
    void setPanelToolbar();
@@ -105,9 +106,9 @@ public:
    void setProperties( int );
 
 public slots:
-   void gotStats( const QString &mountPoint, unsigned long kBSize, unsigned long kBUsed, unsigned long kBAvail); // displays filesystem status
-   void popRightClickMenu( const QPoint& );
-   void popEmptyRightClickMenu( const QPoint & );
+   void gotStats( const TQString &mountPoint, unsigned long kBSize, unsigned long kBUsed, unsigned long kBAvail); // displays filesystem status
+   void popRightClickMenu( const TQPoint& );
+   void popEmptyRightClickMenu( const TQPoint & );
    void select( KRQuery query, bool select);
    void select( bool, bool );      // see doc in ListPanel
    void invertSelection();       // see doc in ListPanel
@@ -125,7 +126,7 @@ public slots:
 	void togglePanelPopup();
 	// for signals from vfs' dirwatch
 	void slotItemAdded(vfile *vf);
-	void slotItemDeleted(const QString& name);
+	void slotItemDeleted(const TQString& name);
 	void slotItemUpdated(vfile *vf);
 	void slotCleared();        
 	void panelActive(); // called when the panel becomes active
@@ -139,34 +140,34 @@ public slots:
    void prepareToDelete();                   // internal use only
 
 protected:
-   virtual void keyPressEvent( QKeyEvent *e );
-   virtual void showEvent( QShowEvent * );
-   virtual void hideEvent( QHideEvent * );
-   virtual bool eventFilter ( QObject * watched, QEvent * e );
+   virtual void keyPressEvent( TQKeyEvent *e );
+   virtual void showEvent( TQShowEvent * );
+   virtual void hideEvent( TQHideEvent * );
+   virtual bool eventFilter ( TQObject * watched, TQEvent * e );
    
    void createView();
 
 protected slots:
-   void handleDropOnView(QDropEvent *, QWidget *destWidget=0); // handles drops on the view only
-   void handleDropOnTotals( QDropEvent * );                   // handles drops on the totals line
-   void handleDropOnStatus( QDropEvent * );                   // handles drops on the status line
-   void startDragging( QStringList, QPixmap );
+   void handleDropOnView(TQDropEvent *, TQWidget *destWidget=0); // handles drops on the view only
+   void handleDropOnTotals( TQDropEvent * );                   // handles drops on the totals line
+   void handleDropOntqStatus( TQDropEvent * );                   // handles drops on the status line
+   void startDragging( TQStringList, TQPixmap );
 	// those handle the in-panel refresh notifications
 	void slotJobStarted(KIO::Job* job);
-	void inlineRefreshInfoMessage( KIO::Job* job, const QString &msg );
+	void inlineRefreshInfoMessage( KIO::Job* job, const TQString &msg );
 	void inlineRefreshListResult(KIO::Job* job);
 	void inlineRefreshPercent( KIO::Job*, unsigned long );
 	void inlineRefreshCancel();
 
 signals:
-   void signalStatus( QString msg );       // emmited when we need to update the status bar
-   void cmdLineUpdate( QString p );	      // emitted when we need to update the command line
+   void signaltqStatus( TQString msg );       // emmited when we need to update the status bar
+   void cmdLineUpdate( TQString p );	      // emitted when we need to update the command line
    void pathChanged( ListPanel *panel );
    void activePanelChanged( ListPanel *p ); // emitted when the user changes panels
    void finishedDragging();              // currently
 
 public:
-   QString panelType;
+   TQString panelType;
    ListPanelFunc	*func;
    KrView *view;
    ListPanel	*otherPanel;
@@ -174,19 +175,19 @@ public:
    bool compareMode;
    //FilterSpec	   filter;
    KRQuery filterMask;
-   QPixmap currDragPix;
-   QListViewItem *currDragItem;
+   TQPixmap currDragPix;
+   TQListViewItem *currDragItem;
    KDiskFreeSp* statsAgent;
    KrSqueezedTextLabel *status, *totals;
    KrQuickSearch *quickSearch;
    KURLRequester *origin;
-   QGridLayout *layout;
-   QToolButton *cdRootButton;
-   QToolButton *cdHomeButton;
-   QToolButton *cdUpButton;
-   QToolButton *cdOtherButton;
-	QToolButton *popupBtn;
-	QToolButton *clearOrigin;
+   TQGridLayout *tqlayout;
+   TQToolButton *cdRootButton;
+   TQToolButton *cdHomeButton;
+   TQToolButton *cdUpButton;
+   TQToolButton *cdOtherButton;
+	TQToolButton *popupBtn;
+	TQToolButton *clearOrigin;
 	PanelPopup *popup;
    KrBookmarkButton *bookmarksButton;
    DirHistoryQueue* dirHistoryQueue;
@@ -195,8 +196,8 @@ public:
    SyncBrowseButton *syncBrowseButton;
 	KPushButton *inlineRefreshCancelButton;
 	KIO::Job *inlineRefreshJob;
-	QSplitter *splt;
-   QHeader * header;
+	TQSplitter *splt;
+   TQHeader * header;
 
 protected:
    KURL _realPath; // named with _ to keep realPath() compatability
@@ -205,7 +206,7 @@ protected:
 	
 private:
    bool &_left;
-	QValueList<int> popupSizes;
+	TQValueList<int> popupSizes;
 };
 
 #endif

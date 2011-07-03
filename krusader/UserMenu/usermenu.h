@@ -20,12 +20,12 @@ email                :
 
 #include <kpopupmenu.h>
 
-class QWidget;
+class TQWidget;
 class UserMenu;
 
 class UserMenuGui: public KPopupMenu {
    public:
-      UserMenuGui( UserMenu* menu, QWidget *parent = 0 );
+      UserMenuGui( UserMenu* menu, TQWidget *tqparent = 0 );
       void run();
       void createMenu();
 
@@ -33,9 +33,9 @@ class UserMenuGui: public KPopupMenu {
       void readEntries();
 };
 
-class UserMenu : public QWidget {
+class UserMenu : public TQWidget {
    public:
-      UserMenu( QWidget *parent = 0, const char *name = 0 );
+      UserMenu( TQWidget *tqparent = 0, const char *name = 0 );
       void exec();
       void update();
    

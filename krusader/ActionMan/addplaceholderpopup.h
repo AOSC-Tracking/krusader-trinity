@@ -17,10 +17,10 @@
 #include <kdialogbase.h>
 #include "../UserAction/expander.h"
 
-class QString;
+class TQString;
 class KLineEdit;
-class QToolButton;
-class QCheckBox;
+class TQToolButton;
+class TQCheckBox;
 class KComboBox;
 class KrBookmarkButton;
 class KURL;
@@ -34,14 +34,14 @@ class KIntSpinBox;
 class AddPlaceholderPopup : public KPopupMenu {
 
 public:
-   AddPlaceholderPopup( QWidget *parent );
+   AddPlaceholderPopup( TQWidget *tqparent );
    
    /**
     * Use this to exec the popup. 
     * @param pos Position where the popup should appear
     * @return the expression which can be placed in the UserAction commandline
     */
-   QString getPlaceholder( const QPoint& pos );
+   TQString getPlaceholder( const TQPoint& pos );
 
 protected:
    /**
@@ -49,7 +49,7 @@ protected:
     * @param currentPlaceholder A pointer to the Placeholder the user has choosen
     * @return a parameter-string
     */
-   QString getParameter( exp_placeholder* currentPlaceholder );
+   TQString getParameter( exp_placeholder* currentPlaceholder );
    
 private:
    KPopupMenu *_activeSub, *_otherSub, *_leftSub, *_rightSub, *_independentSub;
@@ -64,17 +64,17 @@ private:
  *  abstract baseclass for all Parameter widgets
  * @author Jonas Bähr (http://www.jonas-baehr.de)
  */
-class ParameterBase : public QWidget {
+class ParameterBase : public TQWidget {
 public:
-   inline ParameterBase( const exp_parameter& parameter, QWidget* parent ) : QWidget( parent ) { _nessesary = parameter.nessesary(); }
+   inline ParameterBase( const exp_parameter& parameter, TQWidget* tqparent ) : TQWidget( tqparent ) { _nessesary = parameter.nessesary(); }
    /**
     * @return the text for the parameter
     */
-   virtual QString text() = 0;
+   virtual TQString text() = 0;
    /**
     * @return the default of the parameter
     */
-   virtual QString preset() = 0;
+   virtual TQString preset() = 0;
    /**
     * re-init the parameter with the default
     */
@@ -97,14 +97,14 @@ private:
  */
 class ParameterText : public ParameterBase {
 public:
-   ParameterText( const exp_parameter& parameter, QWidget* parent );
-   QString text();
-   QString preset();
+   ParameterText( const exp_parameter& parameter, TQWidget* tqparent );
+   TQString text();
+   TQString preset();
    void reset();
    bool valid();
 private:
    KLineEdit * _lineEdit;
-   QString _preset;
+   TQString _preset;
 };
 
 /**
@@ -113,15 +113,16 @@ private:
  */
 class ParameterPlaceholder : public ParameterBase {
 Q_OBJECT
+  TQ_OBJECT
 public:
-   ParameterPlaceholder( const exp_parameter& parameter, QWidget* parent );
-   QString text();
-   QString preset();
+   ParameterPlaceholder( const exp_parameter& parameter, TQWidget* tqparent );
+   TQString text();
+   TQString preset();
    void reset();
    bool valid();
 private:
    KLineEdit * _lineEdit;
-   QToolButton* _button;
+   TQToolButton* _button;
 private slots:
    void addPlaceholder();
 };
@@ -132,13 +133,13 @@ private slots:
  */
 class ParameterYes : public ParameterBase {
 public:
-   ParameterYes( const exp_parameter& parameter, QWidget* parent );
-   QString text();
-   QString preset();
+   ParameterYes( const exp_parameter& parameter, TQWidget* tqparent );
+   TQString text();
+   TQString preset();
    void reset();
    bool valid();
 private:
-   QCheckBox* _checkBox;
+   TQCheckBox* _checkBox;
 };
 
 /**
@@ -147,13 +148,13 @@ private:
  */
 class ParameterNo : public ParameterBase {
 public:
-   ParameterNo( const exp_parameter& parameter, QWidget* parent );
-   QString text();
-   QString preset();
+   ParameterNo( const exp_parameter& parameter, TQWidget* tqparent );
+   TQString text();
+   TQString preset();
    void reset();
    bool valid();
 private:
-   QCheckBox* _checkBox;
+   TQCheckBox* _checkBox;
 };
 
 /**
@@ -162,15 +163,16 @@ private:
  */
 class ParameterFile : public ParameterBase {
 Q_OBJECT
+  TQ_OBJECT
 public:
-   ParameterFile( const exp_parameter& parameter, QWidget* parent );
-   QString text();
-   QString preset();
+   ParameterFile( const exp_parameter& parameter, TQWidget* tqparent );
+   TQString text();
+   TQString preset();
    void reset();
    bool valid();
 private:
    KLineEdit * _lineEdit;
-   QToolButton* _button;
+   TQToolButton* _button;
 private slots:
    void addFile();
 };
@@ -181,9 +183,9 @@ private slots:
  */
 class ParameterChoose : public ParameterBase {
 public:
-   ParameterChoose( const exp_parameter& parameter, QWidget* parent );
-   QString text();
-   QString preset();
+   ParameterChoose( const exp_parameter& parameter, TQWidget* tqparent );
+   TQString text();
+   TQString preset();
    void reset();
    bool valid();
 private:
@@ -196,9 +198,9 @@ private:
  */
 class ParameterSelect : public ParameterBase {
 public:
-   ParameterSelect( const exp_parameter& parameter, QWidget* parent );
-   QString text();
-   QString preset();
+   ParameterSelect( const exp_parameter& parameter, TQWidget* tqparent );
+   TQString text();
+   TQString preset();
    void reset();
    bool valid();
 private:
@@ -211,15 +213,16 @@ private:
  */
 class ParameterGoto : public ParameterBase {
 Q_OBJECT
+  TQ_OBJECT
 public:
-   ParameterGoto( const exp_parameter& parameter, QWidget* parent );
-   QString text();
-   QString preset();
+   ParameterGoto( const exp_parameter& parameter, TQWidget* tqparent );
+   TQString text();
+   TQString preset();
    void reset();
    bool valid();
 private:
    KLineEdit * _lineEdit;
-   QToolButton* _dirButton, *_placeholderButton;
+   TQToolButton* _dirButton, *_placeholderButton;
 private slots:
    void setDir();
    void addPlaceholder();
@@ -231,9 +234,9 @@ private slots:
  */
 class ParameterSyncprofile : public ParameterBase {
 public:
-   ParameterSyncprofile( const exp_parameter& parameter, QWidget* parent );
-   QString text();
-   QString preset();
+   ParameterSyncprofile( const exp_parameter& parameter, TQWidget* tqparent );
+   TQString text();
+   TQString preset();
    void reset();
    bool valid();
 private:
@@ -246,9 +249,9 @@ private:
  */
 class ParameterPanelprofile : public ParameterBase {
 public:
-   ParameterPanelprofile( const exp_parameter& parameter, QWidget* parent );
-   QString text();
-   QString preset();
+   ParameterPanelprofile( const exp_parameter& parameter, TQWidget* tqparent );
+   TQString text();
+   TQString preset();
    void reset();
    bool valid();
 private:
@@ -261,9 +264,9 @@ private:
  */
 class ParameterSearch : public ParameterBase {
 public:
-   ParameterSearch( const exp_parameter& parameter, QWidget* parent );
-   QString text();
-   QString preset();
+   ParameterSearch( const exp_parameter& parameter, TQWidget* tqparent );
+   TQString text();
+   TQString preset();
    void reset();
    bool valid();
 private:
@@ -276,9 +279,9 @@ private:
  */
 class ParameterInt : public ParameterBase {
 public:
-   ParameterInt( const exp_parameter& parameter, QWidget* parent );
-   QString text();
-   QString preset();
+   ParameterInt( const exp_parameter& parameter, TQWidget* tqparent );
+   TQString text();
+   TQString preset();
    void reset();
    bool valid();
 private:
@@ -296,17 +299,18 @@ private:
  */
 class ParameterDialog : public KDialogBase {
 Q_OBJECT
+  TQ_OBJECT
 public:
-   ParameterDialog( const exp_placeholder* currentPlaceholder, QWidget *parent );
+   ParameterDialog( const exp_placeholder* currentPlaceholder, TQWidget *tqparent );
    
    /**
     * Use this to execute the dialog.
-    * @return a QString with all paremeters; ommiting the optional ones if they have the default-value.
+    * @return a TQString with all paremeters; ommiting the optional ones if they have the default-value.
     */
-   QString getParameter();
+   TQString getParameter();
 
 private:
-   typedef QValueList<ParameterBase*> ParameterList;
+   typedef TQValueList<ParameterBase*> ParameterList;
    ParameterList _parameter;
    int _parameterCount;
 private slots:

@@ -38,34 +38,34 @@
 #include <kdebug.h>
 
 
-KgUserActions::KgUserActions( bool first, QWidget* parent,  const char* name ) :
-  KonfiguratorPage( first, parent, name )
+KgUserActions::KgUserActions( bool first, TQWidget* tqparent,  const char* name ) :
+  KonfiguratorPage( first, tqparent, name )
 {
-   QGridLayout *kgUserActionLayout = new QGridLayout( parent, 2, 1,
+   TQGridLayout *kgUserActionLayout = new TQGridLayout( tqparent, 2, 1,
    		0 /* margin */, 6 /* spacing */, "kgUserActionLayout" );
 
    // ============= Info Group =============
-   QGroupBox *InfoGroup = createFrame( i18n( "Information" ), parent, "kgUserActionInfoGroup" );
-   QGridLayout *InfoGrid = createGridLayout( InfoGroup->layout() );
+   TQGroupBox *InfoGroup = createFrame( i18n( "Information" ), tqparent, "kgUserActionInfoGroup" );
+   TQGridLayout *InfoGrid = createGridLayout( InfoGroup->tqlayout() );
 
    // terminal for the UserActions
-   QLabel *labelInfo = new QLabel( i18n(
+   TQLabel *labelInfo = new TQLabel( i18n(
    		"Here you can configure settings about useractions.\n"
    		"To set up, configure and manage your useractions please use ActionMan."
    		), InfoGroup, "InformationLabel" );
    InfoGrid->addWidget( labelInfo, 0, 0 );
    KPushButton *actionmanButton = new KPushButton( i18n("Start ActionMan"), InfoGroup, "actionmanButton");
-   connect( actionmanButton, SIGNAL( clicked() ), SLOT( startActionMan() ) );
+   connect( actionmanButton, TQT_SIGNAL( clicked() ), TQT_SLOT( startActionMan() ) );
    InfoGrid->addWidget( actionmanButton, 1, 0 );
 
    kgUserActionLayout->addWidget( InfoGroup, 0 ,0 );
 
    // ============= Terminal Group =============
-   QGroupBox *terminalGroup = createFrame( i18n( "Terminal execution" ), parent, "kgUserActionTerminalGroup" );
-   QGridLayout *terminalGrid = createGridLayout( terminalGroup->layout() );
+   TQGroupBox *terminalGroup = createFrame( i18n( "Terminal execution" ), tqparent, "kgUserActionTerminalGroup" );
+   TQGridLayout *terminalGrid = createGridLayout( terminalGroup->tqlayout() );
 
    // terminal for the UserActions
-   QLabel *labelTerminal = new QLabel( i18n( "Terminal for UserActions:" ),
+   TQLabel *labelTerminal = new TQLabel( i18n( "Terminal for UserActions:" ),
    		terminalGroup, "TerminalLabel" );
    terminalGrid->addWidget( labelTerminal, 0, 0 );
    KonfiguratorURLRequester *urlReqUserActions = createURLRequester( "UserActions",
@@ -75,18 +75,18 @@ KgUserActions::KgUserActions( bool first, QWidget* parent,  const char* name ) :
    kgUserActionLayout->addWidget( terminalGroup, 1 ,0 );
 
    // ============= Outputcollection Group =============
-   QGroupBox *outputGroup = createFrame( i18n( "Output collection" ), parent, "kgUserActionOutputGroup" );
-   QGridLayout *outputGrid = createGridLayout( outputGroup->layout() );
+   TQGroupBox *outputGroup = createFrame( i18n( "Output collection" ), tqparent, "kgUserActionOutputGroup" );
+   TQGridLayout *outputGrid = createGridLayout( outputGroup->tqlayout() );
 
-   QHBox *hbox;
-   hbox = new QHBox( outputGroup, "HBoxNormalFont" );
-   new QLabel( i18n( "Normal font:" ), hbox, "NormalFontLabel" );
+   TQHBox *hbox;
+   hbox = new TQHBox( outputGroup, "HBoxNormalFont" );
+   new TQLabel( i18n( "Normal font:" ), hbox, "NormalFontLabel" );
    createFontChooser( "UserActions", "Normal Font", _UserActions_NormalFont, hbox );
    createSpacer ( hbox );
    outputGrid->addWidget( hbox, 2, 0 );
 
-   hbox = new QHBox( outputGroup, "HBoxFixedFont" );
-   new QLabel( i18n( "Font with fixed width:" ), hbox, "FixedFontLabel" );
+   hbox = new TQHBox( outputGroup, "HBoxFixedFont" );
+   new TQLabel( i18n( "Font with fixed width:" ), hbox, "FixedFontLabel" );
    createFontChooser( "UserActions", "Fixed Font", _UserActions_FixedFont, hbox );
    createSpacer ( hbox );
    outputGrid->addWidget( hbox, 3, 0 );
@@ -99,7 +99,7 @@ KgUserActions::KgUserActions( bool first, QWidget* parent,  const char* name ) :
 }
 
 void KgUserActions::startActionMan() {
-   ActionMan actionMan( static_cast<QWidget*>(parent()) );
+   ActionMan actionMan( TQT_TQWIDGET(tqparent()) );
 }
 
 

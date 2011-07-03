@@ -30,8 +30,8 @@
 #define VFILE_H
 
 // QT includes
-#include <qstring.h>
-#include <qobject.h>
+#include <tqstring.h>
+#include <tqobject.h>
 // System includes
 #include <sys/types.h>
 // KDE includes
@@ -46,8 +46,9 @@
  * contains the nessecery details about a file and member functions which
  *  allow the object to give out the needed details about the file.
  */
-class vfile : public QObject{
+class vfile : public TQObject{
   Q_OBJECT
+  TQ_OBJECT
   
 public:
 	vfile(){}
@@ -56,55 +57,55 @@ public:
 	 * Use this constructor when you know the following files properties: \n
 	 * file name, file size, file permissions,is the file a link,owner uid & group uid.
 	 */
-	vfile(const QString& name,
+	vfile(const TQString& name,
 	      const KIO::filesize_t size,
-	      const QString& perm,
+	      const TQString& perm,
 	      const time_t mtime,
 	      const bool symLink,
 	      const uid_t	owner,
 	      const gid_t group,
-	      const QString& mime,
-	      const QString& symDest,
+	      const TQString& mime,
+	      const TQString& symDest,
 	      const mode_t  mode,
 	      const int rwx = -1 );
 	
-	vfile(const QString& name,	
+	vfile(const TQString& name,	
 	      const KIO::filesize_t size,	
-	      const QString& perm,
+	      const TQString& perm,
 	      const time_t mtime,
 	      const bool symLink,
-	      const QString& owner,
-	      const QString& group,
-	      const QString& userName,
-	      const QString& mime,
-	      const QString& symDest,
+	      const TQString& owner,
+	      const TQString& group,
+	      const TQString& userName,
+	      const TQString& mime,
+	      const TQString& symDest,
 	      const mode_t  mode,
 	      const int rwx = -1,
-	      const QString& aclString = QString::null,
-	      const QString& aclDfltString = QString::null );
+	      const TQString& aclString = TQString(),
+	      const TQString& aclDfltString = TQString() );
 	
 	bool        operator==(const vfile& vf) const;
 	vfile&      operator= (const vfile& vf); 
 	inline bool operator!=(const vfile& vf){ return !((*this)==vf); }
 	
 	// following functions give-out file details
-	inline const QString&   vfile_getName()    const { return vfile_name;           }
+	inline const TQString&   vfile_getName()    const { return vfile_name;           }
 	inline KIO::filesize_t  vfile_getSize()    const { return vfile_size;           }
-	inline const QString&   vfile_getPerm()    const { return vfile_perm;           }
+	inline const TQString&   vfile_getPerm()    const { return vfile_perm;           }
 	inline bool             vfile_isDir()      const { return vfile_isdir;          }
 	inline bool             vfile_isSymLink()  const { return vfile_symLink;        }
-	inline const QString&   vfile_getSymDest() const { return vfile_symDest;        }
+	inline const TQString&   vfile_getSymDest() const { return vfile_symDest;        }
 	inline mode_t           vfile_getMode()    const { return vfile_mode;           }
 	inline uid_t            vfile_getUid()     const { return vfile_ownerId;        }
 	inline gid_t            vfile_getGid()     const { return vfile_groupId;        }
 	inline time_t           vfile_getTime_t()  const { return vfile_time_t;         }
 	inline const KURL&      vfile_getUrl()     const { return vfile_url;            }
   
-	const QString&          vfile_getMime(bool fast=false);
-	const QString&          vfile_getOwner();
-	const QString&          vfile_getGroup();
-	const QString&          vfile_getACL();
-	const QString&          vfile_getDefaultACL();
+	const TQString&          vfile_getMime(bool fast=false);
+	const TQString&          vfile_getOwner();
+	const TQString&          vfile_getGroup();
+	const TQString&          vfile_getACL();
+	const TQString&          vfile_getDefaultACL();
 	const KIO::UDSEntry     vfile_getEntry(); //< return the UDSEntry from the vfile
 	char                    vfile_isReadable()   const;
 	char                    vfile_isWriteable()  const;
@@ -117,8 +118,8 @@ public:
 	inline void             vfile_setSize(KIO::filesize_t size) {vfile_size = size;}
 	inline void             vfile_setUrl(const KURL& url)       {vfile_url = url;  }
 
-	inline void             vfile_setIcon(const QString& icn)   {vfile_icon = icn; }
-	inline QString          vfile_getIcon();
+	inline void             vfile_setIcon(const TQString& icn)   {vfile_icon = icn; }
+	inline TQString          vfile_getIcon();
 
 	virtual ~vfile(){}
 
@@ -127,37 +128,37 @@ private:
 
 protected:
 	// the file information list
-	QString          vfile_name;     //< file name
+	TQString          vfile_name;     //< file name
 	KIO::filesize_t  vfile_size;     //< file size
 	mode_t           vfile_mode;     //< file mode
 	uid_t            vfile_ownerId;  //< file owner id
 	gid_t            vfile_groupId;  //< file group id
-	QString          vfile_owner;    //< file owner name
-	QString          vfile_group;    //< file group name
-	QString          vfile_userName; //< the current username
-	QString          vfile_perm;     //< file permissions string
+	TQString          vfile_owner;    //< file owner name
+	TQString          vfile_group;    //< file group name
+	TQString          vfile_userName; //< the current username
+	TQString          vfile_perm;     //< file permissions string
 	time_t           vfile_time_t;   //< file modification in time_t format
 	bool             vfile_symLink;  //< true if the file is a symlink
-	QString          vfile_mimeType; //< file mimetype
-	QString          vfile_symDest;  //< if it's a sym link - its detination
+	TQString          vfile_mimeType; //< file mimetype
+	TQString          vfile_symDest;  //< if it's a sym link - its detination
 	KURL             vfile_url;      //< file URL - empty by default
-	QString          vfile_icon;     //< the name of the icon file
+	TQString          vfile_icon;     //< the name of the icon file
 	bool             vfile_isdir;    //< flag, if it's a directory
 	int              vfile_rwx;      //< flag, showing read, write, execute properties
 	bool             vfile_acl_loaded;//<flag, indicates that ACL permissions already loaded
 	bool             vfile_has_acl;  //< flag, indicates ACL permissions
-	QString          vfile_acl;      //< ACL permission string
-	QString          vfile_def_acl;  //< ACL default string
+	TQString          vfile_acl;      //< ACL permission string
+	TQString          vfile_def_acl;  //< ACL default string
 };
 
 	
-QString vfile::vfile_getIcon(){
+TQString vfile::vfile_getIcon(){
 	if( vfile_icon.isEmpty() ){
-		QString mime = this->vfile_getMime();
+		TQString mime = this->vfile_getMime();
       if ( mime == "Broken Link !" )
          vfile_icon = "file_broken";
       else {
-         vfile_icon = KMimeType::mimeType( mime ) ->icon( QString::null, true );
+         vfile_icon = KMimeType::mimeType( mime ) ->icon( TQString(), true );
       }		
 	}
 	return vfile_icon;

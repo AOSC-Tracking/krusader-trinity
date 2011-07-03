@@ -34,17 +34,18 @@
 #define KONFIGURATOR_H
 
 #include "konfiguratorpage.h"
-#include <qwidget.h>
+#include <tqwidget.h>
 #include <kdialogbase.h>
 #include <kjanuswidget.h>
-#include <qtimer.h>
+#include <tqtimer.h>
 
-class QLineEdit;
-class QString;
+class TQLineEdit;
+class TQString;
 
 class Konfigurator : public KDialogBase
 {
    Q_OBJECT
+  TQ_OBJECT
 
 public:
   Konfigurator( bool f=false, int startPage = 0 ); // true if Konfigurator is run for the first time
@@ -68,12 +69,12 @@ private:
   int  searchPage( int pageNum );
 
 private:
-  QPtrList<KonfiguratorPage>  kgFrames;
+  TQPtrList<KonfiguratorPage>  kgFrames;
   KJanusWidget               *widget;
   bool                        firstTime;
   int                         lastPage;
   bool                        internalCall;
-  QTimer                      restoreTimer;
+  TQTimer                      restoreTimer;
   bool                        restartGUI;
 };
 

@@ -35,13 +35,13 @@
 
 #include <sys/param.h>
 #include <kdialogbase.h>
-#include <qlistview.h>
+#include <tqlistview.h>
 #include <kjanuswidget.h>
-#include <qtimer.h>
+#include <tqtimer.h>
 #include <kurl.h>
-#include <qvaluelist.h>
+#include <tqvaluelist.h>
 #include <kmountpoint.h>
-#include <qdatetime.h>
+#include <tqdatetime.h>
 #include "kmountman.h"
 
 #define  WATCHER_DELAY    3000
@@ -55,6 +55,7 @@ class fsData;
 
 class KMountManGUI : public KDialogBase {
    Q_OBJECT
+  TQ_OBJECT
 
    enum Pages {
       Filesystems = 0
@@ -63,23 +64,23 @@ class KMountManGUI : public KDialogBase {
 public:
    KMountManGUI();
    ~KMountManGUI();
-   void createLayout();   // calls the various tab layout-creators
+   void createLayout();   // calls the various tab tqlayout-creators
    void createMainPage(); // creator of the main page - filesystems
 
 protected slots:
-   void doubleClicked( QListViewItem * );
-   void clicked( QListViewItem *, const QPoint& pos, int col );
-   void changeActive( QListViewItem * );
+   void doubleClicked( TQListViewItem * );
+   void clicked( TQListViewItem *, const TQPoint& pos, int col );
+   void changeActive( TQListViewItem * );
    void checkMountChange(); // check whether the mount table was changed
 
 	void updateList();     // fill-up the filesystems list
 	void getSpaceData();
 	void gettingSpaceData();
-	void gettingSpaceData(const QString &mountPoint, unsigned long kBSize, 
+	void gettingSpaceData(const TQString &mountPoint, unsigned long kBSize, 
 								unsigned long kBUsed, unsigned long kBAvail);
 
 protected:
-	void addItemToMountList( QListView *lst, fsData &fs );
+	void addItemToMountList( TQListView *lst, fsData &fs );
 		
 signals:
    void refreshPanel( const KURL & );
@@ -87,15 +88,15 @@ signals:
 
 private:
    KRFSDisplay *info;
-   QFrame *mainPage;
+   TQFrame *mainPage;
    KJanusWidget *widget;
-   QListView *mountList;
-   QTimer *watcher;
-   QDateTime lastMtab;
+   TQListView *mountList;
+   TQTimer *watcher;
+   TQDateTime lastMtab;
 	// used for the getSpace - gotSpace functions
 	KMountPoint::List possible, mounted;
-	QValueList<fsData> fileSystems;
-	QValueList<fsData> fileSystemsTemp;  // first collect to a temporary place
+	TQValueList<fsData> fileSystems;
+	TQValueList<fsData> fileSystemsTemp;  // first collect to a temporary place
 	int numOfMountPoints;
 };
 
@@ -110,16 +111,16 @@ public:
    FreeBlks( 0 ), Mounted( false ) {}
 
    // get information
-   inline QString name() {
+   inline TQString name() {
       return Name;
    }
-   inline QString shortName() {
-      return Name.right( Name.length() - Name.find( "/", 1 ) - 1 );
+   inline TQString shortName() {
+      return Name.right( Name.length() - Name.tqfind( "/", 1 ) - 1 );
    }
-   inline QString type() {
+   inline TQString type() {
       return Type;
    }
-   inline QString mntPoint() {
+   inline TQString mntPoint() {
       return MntPoint;
    }
    inline long totalBlks() {
@@ -149,13 +150,13 @@ public:
    }
 
    // set information
-   inline void setName( QString n_ ) {
+   inline void setName( TQString n_ ) {
       Name = n_;
    }
-   inline void setType( QString t_ ) {
+   inline void setType( TQString t_ ) {
       Type = t_;
    }
-   inline void setMntPoint( QString m_ ) {
+   inline void setMntPoint( TQString m_ ) {
       MntPoint = m_;
    }
    inline void setTotalBlks( long t_ ) {
@@ -169,23 +170,23 @@ public:
    }
 
 private:
-   QString Name;       // i.e: /dev/cdrom
-   QString Type;       // i.e: iso9600
-   QString MntPoint;   // i.e: /mnt/cdrom
+   TQString Name;       // i.e: /dev/cdrom
+   TQString Type;       // i.e: iso9600
+   TQString MntPoint;   // i.e: /mnt/cdrom
    long TotalBlks;  // measured in 1024bytes per block
    long FreeBlks;
    bool Mounted;    // true if filesystem is mounted
 
    // additional attributes of a filesystem, parsed from fstab
 public:
-   QString options;    // additional fstab options
+   TQString options;    // additional fstab options
 };
 
 class KrMountDetector {
 #if defined(BSD)
-   QString checksum;
+   TQString checksum;
 #else
-   QDateTime lastMtab;
+   TQDateTime lastMtab;
 #endif
 public:
   KrMountDetector();

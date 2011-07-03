@@ -1,8 +1,8 @@
 #ifndef KRCOLORCACHE_H
 #define KRCOLORCACHE_H
 
-#include <qobject.h>
-#include <qdict.h>
+#include <tqobject.h>
+#include <tqdict.h>
 
 /*
 Design goals: Color calculation is done on one place only. Configuration through krConfig OR through local settings.
@@ -17,7 +17,7 @@ KrColorCache: perfomes the color calculation and caches the result. Uses KrColor
 
 
 /*
-Copies all used color settings from krConfig into a local cache on creation. It contains 3 types of properties:
+Copies all used color settings from krConfig into a local cache on creation. It tqcontains 3 types of properties:
 color, numeric (int) and boolean. Color properties can have string or color values. Property values can be
 changed. These changes does not go into krConfig!
 
@@ -27,7 +27,7 @@ set*Value overwrites a property with a new value
 get*Value retunrs the current value
 
 For colors teh value can be returned as text or as color. If a text representation is not a valid color, 
-setColorValue(QColor()) should be called.
+setColorValue(TQColor()) should be called.
 */
 class KrColorSettings
 {
@@ -38,22 +38,22 @@ public:
 	~KrColorSettings();
 	const KrColorSettings & operator= (const KrColorSettings &);
 
-	static bool isColorNameValid(const QString & settingName);
-	static QValueList<QString> getColorNames();
-	bool setColorValue(const QString & settingName, const QColor & color);
-	QColor getColorValue(const QString & settingName) const;
-	bool setColorTextValue(const QString & settingName, const QString & colorText);
-	QString getColorTextValue(const QString & settingName) const;
+	static bool isColorNameValid(const TQString & settingName);
+	static TQValueList<TQString> getColorNames();
+	bool setColorValue(const TQString & settingName, const TQColor & color);
+	TQColor getColorValue(const TQString & settingName) const;
+	bool setColorTextValue(const TQString & settingName, const TQString & colorText);
+	TQString getColorTextValue(const TQString & settingName) const;
 
-	static bool isNumNameValid(const QString & settingName);
-	static QValueList<QString> getNumNames();
-	bool setNumValue(const QString & settingName, int value);
-	int getNumValue(const QString & settingName, int defaultValue = 0) const;
+	static bool isNumNameValid(const TQString & settingName);
+	static TQValueList<TQString> getNumNames();
+	bool setNumValue(const TQString & settingName, int value);
+	int getNumValue(const TQString & settingName, int defaultValue = 0) const;
 
-	static bool isBoolNameValid(const QString & settingName);
-	static QValueList<QString> getBoolNames();
-	bool setBoolValue(const QString & settingName, bool value);
-	int getBoolValue(const QString & settingName, bool defaultValue = false) const;
+	static bool isBoolNameValid(const TQString & settingName);
+	static TQValueList<TQString> getBoolNames();
+	bool setBoolValue(const TQString & settingName, bool value);
+	int getBoolValue(const TQString & settingName, bool defaultValue = false) const;
 };
 
 /*
@@ -78,9 +78,10 @@ All calculated values are cached. The cache is deleted on refreshColors and setC
 colorsRefreshed. getColorCache returns a statis color cached for painting the panels. On the color cache
 setColors should NEVER be called!
 */
-class KrColorCache : public QObject
+class KrColorCache : public TQObject
 {
 	Q_OBJECT
+  TQ_OBJECT
 	static KrColorCache * m_instance;
 	class KrColorCacheImpl * m_impl;
 	KrColorCache(const KrColorCache &);
@@ -89,8 +90,8 @@ public:
 	KrColorCache();
 	~KrColorCache();
 	static KrColorCache & getColorCache();
-	void getColors(QColorGroup & result, const KrColorItemType & type) const;
-	static QColor dimColor(const QColor & color, int dim, const QColor & targetColor);
+	void getColors(TQColorGroup & result, const KrColorItemType & type) const;
+	static TQColor dimColor(const TQColor & color, int dim, const TQColor & targetColor);
 public slots:
 	void refreshColors();
 	void setColors(const KrColorSettings &);

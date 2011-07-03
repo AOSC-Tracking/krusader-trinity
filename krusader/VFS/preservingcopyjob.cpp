@@ -36,7 +36,7 @@
 #include <kio/job.h>
 #include <kio/jobclasses.h>
 #include <kfileitem.h>
-#include <qfile.h>
+#include <tqfile.h>
 #include <pwd.h>
 #include <grp.h>
 
@@ -54,23 +54,23 @@ Attributes::Attributes()
   uid = (uid_t)-1;
   gid = (gid_t)-1;
   mode = (mode_t)-1;
-  acl = QString::null;
+  acl = TQString();
 }
 
-Attributes::Attributes( time_t tIn, uid_t uIn, gid_t gIn, mode_t modeIn, const QString & aclIn ) 
+Attributes::Attributes( time_t tIn, uid_t uIn, gid_t gIn, mode_t modeIn, const TQString & aclIn ) 
 {
   time = tIn, uid = uIn, gid = gIn, mode = modeIn, acl = aclIn;
 }
 
-Attributes::Attributes( time_t tIn, QString user, QString group, mode_t modeIn, const QString & aclIn ) 
+Attributes::Attributes( time_t tIn, TQString user, TQString group, mode_t modeIn, const TQString & aclIn ) 
 {
   time = tIn;
   uid = (uid_t)-1;
-  struct passwd* pw = getpwnam(QFile::encodeName( user ));
+  struct passwd* pw = getpwnam(TQFile::encodeName( user ));
   if ( pw != 0L )
     uid = pw->pw_uid;
   gid = (gid_t)-1;
-  struct group* g = getgrnam(QFile::encodeName( group ));
+  struct group* g = getgrnam(TQFile::encodeName( group ));
   if ( g != 0L )
     gid = g->gr_gid;
   mode = modeIn;
@@ -82,24 +82,24 @@ PreservingCopyJob::PreservingCopyJob( const KURL::List& src, const KURL& dest, C
 {
   if( dest.isLocalFile() )
   {
-    connect( this, SIGNAL( aboutToCreate (KIO::Job *, const QValueList< KIO::CopyInfo > &) ),
-             this, SLOT( slotAboutToCreate (KIO::Job *, const QValueList< KIO::CopyInfo > &) ) );
-    connect( this, SIGNAL( copyingDone( KIO::Job *, const KURL &, const KURL &, bool, bool) ),
-             this, SLOT( slotCopyingDone( KIO::Job *, const KURL &, const KURL &, bool, bool) ) );
-    connect( this, SIGNAL( result( KIO::Job * ) ),
-             this, SLOT( slotFinished() ) );
+    connect( this, TQT_SIGNAL( aboutToCreate (KIO::Job *, const TQValueList< KIO::CopyInfo > &) ),
+             this, TQT_SLOT( slotAboutToCreate (KIO::Job *, const TQValueList< KIO::CopyInfo > &) ) );
+    connect( this, TQT_SIGNAL( copyingDone( KIO::Job *, const KURL &, const KURL &, bool, bool) ),
+             this, TQT_SLOT( slotCopyingDone( KIO::Job *, const KURL &, const KURL &, bool, bool) ) );
+    connect( this, TQT_SIGNAL( result( KIO::Job * ) ),
+             this, TQT_SLOT( slotFinished() ) );
   }
 }
 
-void PreservingCopyJob::slotAboutToCreate( KIO::Job */*job*/, const QValueList< KIO::CopyInfo > &files )
+void PreservingCopyJob::slotAboutToCreate( KIO::Job */*job*/, const TQValueList< KIO::CopyInfo > &files )
 {
-  for ( QValueList< KIO::CopyInfo >::ConstIterator it = files.begin(); it != files.end(); ++it ) {
+  for ( TQValueList< KIO::CopyInfo >::ConstIterator it = files.begin(); it != files.end(); ++it ) {
   
     if( (*it).uSource.isLocalFile() ) {
       KDE_struct_stat stat_p;
       KDE_lstat( (*it).uSource.path(-1).local8Bit(),&stat_p);    /* getting the date information */
       
-      QString aclStr;
+      TQString aclStr;
 #if KDE_IS_VERSION(3,5,0) && defined( HAVE_POSIX_ACL )
       acl_t acl = acl_get_file( (*it).uSource.path(-1).local8Bit(), ACL_TYPE_ACCESS );
 
@@ -134,7 +134,7 @@ void PreservingCopyJob::slotAboutToCreate( KIO::Job */*job*/, const QValueList< 
       if( acl )
       {
         char *aclString = acl_to_text( acl, 0 );
-        aclStr = QString::fromLatin1( aclString );
+        aclStr = TQString::tqfromLatin1( aclString );
         acl_free( (void*)aclString );
         acl_free( acl );
       }
@@ -164,7 +164,7 @@ void PreservingCopyJob::slotResult( Job *job ) {
 #if KDE_IS_VERSION(3,5,0) && defined( HAVE_POSIX_ACL )
       fileAttributes[ url ] = Attributes( kfi.time( KIO::UDS_MODIFICATION_TIME ), kfi.user(), kfi.group(), kfi.mode(), kfi.ACL().asString() );
 #else
-      fileAttributes[ url ] = Attributes( kfi.time( KIO::UDS_MODIFICATION_TIME ), kfi.user(), kfi.group(), kfi.mode(), QString::null );
+      fileAttributes[ url ] = Attributes( kfi.time( KIO::UDS_MODIFICATION_TIME ), kfi.user(), kfi.group(), kfi.mode(), TQString() );
 #endif
     }
   }
@@ -173,10 +173,10 @@ void PreservingCopyJob::slotResult( Job *job ) {
   
   for( unsigned j=0; j != subjobs.count(); j++ ) {
     if( subjobs.at( j )->inherits( "KIO::ListJob" ) ) {
-      disconnect( subjobs.at( j ), SIGNAL( entries (KIO::Job *, const KIO::UDSEntryList &) ),
-                  this, SLOT( slotListEntries (KIO::Job *, const KIO::UDSEntryList &) ) );
-      connect( subjobs.at( j ), SIGNAL( entries (KIO::Job *, const KIO::UDSEntryList &) ),
-                  this, SLOT( slotListEntries (KIO::Job *, const KIO::UDSEntryList &) ) );
+      disconnect( subjobs.at( j ), TQT_SIGNAL( entries (KIO::Job *, const KIO::UDSEntryList &) ),
+                  this, TQT_SLOT( slotListEntries (KIO::Job *, const KIO::UDSEntryList &) ) );
+      connect( subjobs.at( j ), TQT_SIGNAL( entries (KIO::Job *, const KIO::UDSEntryList &) ),
+                  this, TQT_SLOT( slotListEntries (KIO::Job *, const KIO::UDSEntryList &) ) );
     }
   }
 }
@@ -186,10 +186,10 @@ void PreservingCopyJob::slotListEntries(KIO::Job *job, const KIO::UDSEntryList &
   KIO::UDSEntryListConstIterator end = list.end();
   for (; it != end; ++it) {
     KURL url = ((KIO::SimpleJob *)job)->url();
-    QString relName, user, group;
+    TQString relName, user, group;
     time_t mtime = (time_t)-1;
     mode_t mode = 0755;
-    QString acl;
+    TQString acl;
     
     KIO::UDSEntry::ConstIterator it2 = (*it).begin();
     for( ; it2 != (*it).end(); it2++ ) {
@@ -230,9 +230,9 @@ void PreservingCopyJob::slotCopyingDone( KIO::Job *, const KURL &from, const KUR
 {
   if( postpone ) { // the directories are stamped at the last step, so if it's a directory, we postpone
     unsigned i=0;
-    QString path = to.path( -1 );
+    TQString path = to.path( -1 );
 
-    for( ; i != directoriesToStamp.count(); i++ ) // sort the URL-s to avoid parent time stamp modification
+    for( ; i != directoriesToStamp.count(); i++ ) // sort the URL-s to avoid tqparent time stamp modification
       if( path >= directoriesToStamp[ i ].path( -1 ) )
         break;
 
@@ -301,7 +301,7 @@ KIO::CopyJob * PreservingCopyJob::createCopyJob( PreserveMode pmode, const KURL:
     return new PreservingCopyJob( src, dest, mode, asMethod, showProgressInfo );
   case PM_DEFAULT:
     {
-      QString group = krConfig->group();
+      TQString group = krConfig->group();
       krConfig->setGroup( "Advanced" );
       bool preserve = krConfig->readBoolEntry( "PreserveAttributes", _PreserveAttributes );
       krConfig->setGroup( group );

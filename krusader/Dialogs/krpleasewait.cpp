@@ -29,35 +29,35 @@
  ***************************************************************************/
 
 #include "krpleasewait.h"
-#include <qtimer.h>
-#include <qdatetime.h>
-#include <qapplication.h>
-#include <qpushbutton.h>
+#include <tqtimer.h>
+#include <tqdatetime.h>
+#include <tqapplication.h>
+#include <tqpushbutton.h>
 #include <unistd.h>
 #include "../krusader.h"
 #include "klocale.h"
 #include <kcursor.h>
 
-KRPleaseWait::KRPleaseWait( QString msg, int count, bool cancel ):
-	QProgressDialog( cancel ? 0 : krApp,0, !cancel) , inc(true) {
+KRPleaseWait::KRPleaseWait( TQString msg, int count, bool cancel ):
+	TQProgressDialog( cancel ? 0 : krApp,0, !cancel) , inc(true) {
 	
-	timer = new QTimer(this);
+	timer = new TQTimer(this);
 	setCaption( i18n( "Krusader::Wait" ) );
 
 	setMinimumDuration(500);
   setAutoClose(false);
 	setAutoReset(false);
 	
-	connect( timer,SIGNAL(timeout()), this, SLOT(cycleProgress()));
+	connect( timer,TQT_SIGNAL(timeout()), this, TQT_SLOT(cycleProgress()));
 
-  QProgressBar* progress = new QProgressBar(count,this);
+  TQProgressBar* progress = new TQProgressBar(count,this);
   progress->setCenterIndicator(true);
 	setBar(progress);
 
-	QLabel* label = new QLabel(this);
+	TQLabel* label = new TQLabel(this);
   setLabel(label);
 
-	QPushButton* btn = new QPushButton(i18n("&Cancel"),this);
+	TQPushButton* btn = new TQPushButton(i18n("&Cancel"),this);
   setCancelButton(btn);
 
 	btn->setEnabled(canClose = cancel);
@@ -66,7 +66,7 @@ KRPleaseWait::KRPleaseWait( QString msg, int count, bool cancel ):
 	show();
 }
 
-void KRPleaseWait::closeEvent ( QCloseEvent * e )
+void KRPleaseWait::closeEvent ( TQCloseEvent * e )
 {
   if( canClose ) {
     emit cancelled();
@@ -86,7 +86,7 @@ void KRPleaseWait::cycleProgress(){
   if ( progress() <= 0 ) inc = true;
 }
 
-KRPleaseWaitHandler::KRPleaseWaitHandler() : QObject(), job(), dlg( 0 ) {
+KRPleaseWaitHandler::KRPleaseWaitHandler() : TQObject(), job(), dlg( 0 ) {
 }
 
 void KRPleaseWaitHandler::stopWait(){
@@ -98,10 +98,10 @@ void KRPleaseWaitHandler::stopWait(){
 }
 
 
-void KRPleaseWaitHandler::startWaiting( QString msg, int count , bool cancel){
+void KRPleaseWaitHandler::startWaiting( TQString msg, int count , bool cancel){
   if ( dlg == 0 ){
     dlg = new KRPleaseWait( msg , count, cancel);
-		connect( dlg,SIGNAL(cancelled()),this,SLOT(killJob()) );
+		connect( dlg,TQT_SIGNAL(cancelled()),this,TQT_SLOT(killJob()) );
   }
   incMutex=cycleMutex=_wasCancelled=false;
   dlg->setProgress(0);
@@ -122,7 +122,7 @@ void KRPleaseWaitHandler::cycleProgress(){
   if (cycleMutex) return;
   cycleMutex=true;
   if (dlg) dlg->cycleProgress();
-  if (cycle) QTimer::singleShot(2000,this,SLOT(cycleProgress()));
+  if (cycle) TQTimer::singleShot(2000,this,TQT_SLOT(cycleProgress()));
   cycleMutex=false;
 }
 

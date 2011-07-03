@@ -6,7 +6,7 @@
 #include <klocale.h>
 #include <kdebug.h>
 
-#define BM_NAME(X)		(QString("Bookmark:")+X)
+#define BM_NAME(X)		(TQString("Bookmark:")+X)
 
 #if KDE_IS_VERSION(3,4,0)
 static const char* NAME_DEVICES = I18N_NOOP("Media");
@@ -16,10 +16,10 @@ static const char* NAME_DEVICES = I18N_NOOP("Devices");
 static const char* NAME_VIRTUAL = I18N_NOOP("Virtual Filesystem");
 static const char* NAME_LAN = I18N_NOOP("Local Network");
 
-KrBookmark::KrBookmark(QString name, KURL url, KActionCollection *parent, QString icon, QString actionName ):
-	KAction(name, 0, 0, 0, parent, actionName.isNull() ? BM_NAME(name).latin1() : BM_NAME(actionName).latin1()), 
+KrBookmark::KrBookmark(TQString name, KURL url, KActionCollection *tqparent, TQString icon, TQString actionName ):
+	KAction(name, 0, 0, 0, tqparent, actionName.isNull() ? BM_NAME(name).latin1() : BM_NAME(actionName).latin1()), 
 	_url(url), _folder(false), _separator(false) {
-	connect(this, SIGNAL(activated()), this, SLOT(activatedProxy()));
+	connect(this, TQT_SIGNAL(activated()), this, TQT_SLOT(activatedProxy()));
 	// do we have an icon?
 	if (!icon.isEmpty())
 		setIcon(icon);
@@ -34,15 +34,15 @@ KrBookmark::KrBookmark(QString name, KURL url, KActionCollection *parent, QStrin
 		}
 	}
 
-	_children.setAutoDelete(true);
+	_tqchildren.setAutoDelete(true);
 }
 
-KrBookmark::KrBookmark(QString name, QString icon):
+KrBookmark::KrBookmark(TQString name, TQString icon):
 	KAction(name, 0, 0, 0, 0), _folder(true), _separator(false) {
 	setIcon(icon=="" ? "folder" : icon);
 }
 
-KrBookmark* KrBookmark::getExistingBookmark(QString actionName, KActionCollection *collection) {
+KrBookmark* KrBookmark::getExistingBookmark(TQString actionName, KActionCollection *collection) {
 	return static_cast<KrBookmark*>(collection->action(BM_NAME(actionName).latin1()));
 }
 

@@ -38,20 +38,20 @@
 #include "../panelmanager.h"
 #include <klocale.h>
 #include <kmessagebox.h>
-#include <qcheckbox.h>
-#include <qlayout.h>
-#include <qlineedit.h>
-#include <qlabel.h>
-#include <qhbox.h>
-#include <qcombobox.h>
-#include <qframe.h>
+#include <tqcheckbox.h>
+#include <tqlayout.h>
+#include <tqlineedit.h>
+#include <tqlabel.h>
+#include <tqhbox.h>
+#include <tqcombobox.h>
+#include <tqframe.h>
 
 #define  S_LEFT        0
 #define  S_RIGHT       1
 #define  S_BOTH        2
 
-FeedToListBoxDialog::FeedToListBoxDialog(QWidget *parent,  const char *name, Synchronizer *sync,
-    QListView *syncL, bool equOK) : KDialogBase( parent, name, true, i18n( "Krusader::Feed to listbox" ),
+FeedToListBoxDialog::FeedToListBoxDialog(TQWidget *tqparent,  const char *name, Synchronizer *sync,
+    TQListView *syncL, bool equOK) : KDialogBase( tqparent, name, true, i18n( "Krusader::Feed to listbox" ),
     KDialogBase::Ok | KDialogBase::Cancel | KDialogBase::User1, Ok, true, KStdGuiItem::clear() ),
     synchronizer( sync ), syncList( syncL ), equalAllowed( equOK ), accepted( false ) {
   
@@ -62,7 +62,7 @@ FeedToListBoxDialog::FeedToListBoxDialog(QWidget *parent,  const char *name, Syn
   int leftExistingNum = 0;
   int rightExistingNum = 0;
 
-  QListViewItemIterator it( syncList );
+  TQListViewItemIterator it( syncList );
   while( it.current() ) {
     SynchronizerGUI::SyncViewItem *item = (SynchronizerGUI::SyncViewItem *) it.current();
     SynchronizerFileItem *syncItem = item->synchronizerItemRef();
@@ -84,7 +84,7 @@ FeedToListBoxDialog::FeedToListBoxDialog(QWidget *parent,  const char *name, Syn
 
   if( itemNum == 0 ) {
     hide();
-    KMessageBox::error( parent, i18n( "No elements to feed!" ) );
+    KMessageBox::error( tqparent, i18n( "No elements to feed!" ) );
     return;
   }
 
@@ -96,32 +96,32 @@ FeedToListBoxDialog::FeedToListBoxDialog(QWidget *parent,  const char *name, Syn
 
   krConfig->setGroup( "Synchronize" );
   int listBoxNum = krConfig->readNumEntry( "Feed To Listbox Counter", 1 );
-  QString queryName;
+  TQString queryName;
   do {
-    queryName = i18n("Synchronize results")+QString( " %1" ).arg( listBoxNum++ );
+    queryName = i18n("Synchronize results")+TQString( " %1" ).tqarg( listBoxNum++ );
   }while( v.vfs_search( queryName ) != 0 );
   krConfig->writeEntry( "Feed To Listbox Counter", listBoxNum );
 
   // creating the widget
 
-  QWidget *widget=new QWidget(this, "feedToListBoxMainWidget");
-  QVBoxLayout *layout = new QVBoxLayout( widget, 0, 10, "FeedToListBoxDialogLayout" );
+  TQWidget *widget=new TQWidget(this, "feedToListBoxMainWidget");
+  TQVBoxLayout *tqlayout = new TQVBoxLayout( widget, 0, 10, "FeedToListBoxDialogLayout" );
     
-  QLabel *label = new QLabel( i18n("Here you can name the file collection"), widget, "fbLabel" );
-  layout->addWidget( label );    
+  TQLabel *label = new TQLabel( i18n("Here you can name the file collection"), widget, "fbLabel" );
+  tqlayout->addWidget( label );    
   
-  lineEdit = new QLineEdit( widget, "fbLineEdit" );
+  lineEdit = new TQLineEdit( widget, "fbLineEdit" );
   lineEdit->setText( queryName );
   lineEdit->selectAll();
-  layout->addWidget( lineEdit );  
+  tqlayout->addWidget( lineEdit );  
   
-  QHBox *hbox = new QHBox( widget, "fbHBox" );
+  TQHBox *hbox = new TQHBox( widget, "fbHBox" );
   
-  QLabel *label2 = new QLabel( i18n( "Side to feed:" ), hbox, "fbSideLabel" );  
-  label2->setSizePolicy( QSizePolicy::Fixed, QSizePolicy::Fixed );
+  TQLabel *label2 = new TQLabel( i18n( "Side to feed:" ), hbox, "fbSideLabel" );  
+  label2->tqsetSizePolicy( TQSizePolicy::Fixed, TQSizePolicy::Fixed );
   
-  sideCombo = new QComboBox( hbox, "fbSideCombo" );
-  sideCombo->setSizePolicy( QSizePolicy::Fixed, QSizePolicy::Fixed );
+  sideCombo = new TQComboBox( hbox, "fbSideCombo" );
+  sideCombo->tqsetSizePolicy( TQSizePolicy::Fixed, TQSizePolicy::Fixed );
   sideCombo->insertItem( i18n( "Left" ) );
   sideCombo->insertItem( i18n( "Right" ) );
   sideCombo->insertItem( i18n( "Both" ) );
@@ -134,16 +134,16 @@ FeedToListBoxDialog::FeedToListBoxDialog(QWidget *parent,  const char *name, Syn
   } else
     sideCombo->setCurrentItem( 2 );
   
-  QFrame *line = new QFrame( hbox, "fbVLine" );
-  line->setFrameStyle( QFrame::VLine | QFrame::Sunken );
-  line->setSizePolicy( QSizePolicy::Expanding, QSizePolicy::Expanding );
+  TQFrame *line = new TQFrame( hbox, "fbVLine" );
+  line->setFrameStyle( TQFrame::VLine | TQFrame::Sunken );
+  line->tqsetSizePolicy( TQSizePolicy::Expanding, TQSizePolicy::Expanding );
   
-  cbSelected = new QCheckBox( i18n( "Selected files only" ), hbox, "cbSelected" );
-  cbSelected->setSizePolicy( QSizePolicy::Fixed, QSizePolicy::Fixed );
+  cbSelected = new TQCheckBox( i18n( "Selected files only" ), hbox, "cbSelected" );
+  cbSelected->tqsetSizePolicy( TQSizePolicy::Fixed, TQSizePolicy::Fixed );
   cbSelected->setEnabled( selectedNum != 0 );
   cbSelected->setChecked( selectedNum != 0 );
   
-  layout->addWidget( hbox );      
+  tqlayout->addWidget( hbox );      
     
   setMainWidget(widget);
   
@@ -157,10 +157,10 @@ void FeedToListBoxDialog::slotUser1() {
 void FeedToListBoxDialog::slotOk() {
   int side = sideCombo->currentItem();
   bool selected = cbSelected->isChecked();
-  QString name = lineEdit->text();
+  TQString name = lineEdit->text();
   KURL::List urlList;
 
-  QListViewItemIterator it( syncList );
+  TQListViewItemIterator it( syncList );
   for( ;it.current(); it++ ) {
     SynchronizerGUI::SyncViewItem *item = (SynchronizerGUI::SyncViewItem *) it.current();
     SynchronizerFileItem *syncItem = item->synchronizerItemRef();
@@ -173,22 +173,22 @@ void FeedToListBoxDialog::slotOk() {
       continue;
 
     if( ( side == S_BOTH || side == S_LEFT ) && syncItem->existsInLeft() ) {
-      QString leftDirName = syncItem->leftDirectory().isEmpty() ? "" : syncItem->leftDirectory() + "/";
+      TQString leftDirName = syncItem->leftDirectory().isEmpty() ? "" : syncItem->leftDirectory() + "/";
       KURL leftURL = vfs::fromPathOrURL( synchronizer->leftBaseDirectory() + leftDirName + syncItem->leftName() );
       urlList.push_back( leftURL );
     }
 
     if( ( side == S_BOTH || side == S_RIGHT ) && syncItem->existsInRight() ) {
-      QString rightDirName = syncItem->rightDirectory().isEmpty() ? "" : syncItem->rightDirectory() + "/";
+      TQString rightDirName = syncItem->rightDirectory().isEmpty() ? "" : syncItem->rightDirectory() + "/";
       KURL leftURL = vfs::fromPathOrURL( synchronizer->rightBaseDirectory() + rightDirName + syncItem->rightName() );
       urlList.push_back( leftURL );
     }
   }
 
-  KURL url = KURL::fromPathOrURL(QString("virt:/")+ name);
+  KURL url = KURL::fromPathOrURL(TQString("virt:/")+ name);
   virt_vfs v(0,true);
   if( !v.vfs_refresh( url ) ) {
-    KMessageBox::error( parentWidget(), i18n( "Cannot open %1!" ).arg( url.prettyURL() ) );
+    KMessageBox::error( tqparentWidget(), i18n( "Cannot open %1!" ).tqarg( url.prettyURL() ) );
     return;
   }
   v.vfs_addFiles( &urlList, KIO::CopyJob::Copy, 0 );

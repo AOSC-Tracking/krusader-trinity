@@ -31,44 +31,45 @@
 #ifndef __KURLLISTREQUESTER_H__
 #define __KURLLISTREQUESTER_H__
 
-#include <qwidget.h>
-#include <qlistbox.h>
-#include <qtoolbutton.h>
+#include <tqwidget.h>
+#include <tqlistbox.h>
+#include <tqtoolbutton.h>
 #include <klineedit.h>
 #include <kurl.h>
 #include <kurlcompletion.h>
 
-class KURLListRequester : public QWidget
+class KURLListRequester : public TQWidget
 {
   Q_OBJECT
+  TQ_OBJECT
   
 public:
-  KURLListRequester( QWidget *parent = 0, const char * name = 0 );  
+  KURLListRequester( TQWidget *tqparent = 0, const char * name = 0 );  
   
   KURL::List   urlList();
   void         setUrlList( KURL::List );
   
   KLineEdit   *lineEdit()    {return urlLineEdit;}
-  QListBox    *listBox()     {return urlListBox;}
+  TQListBox    *listBox()     {return urlListBox;}
   
-  void         setCompletionDir( QString dir ) { completion.setDir( dir ); }
+  void         setCompletionDir( TQString dir ) { completion.setDir( dir ); }
 
 signals:
-  void         checkValidity( QString &text, QString &error );
+  void         checkValidity( TQString &text, TQString &error );
   
 protected slots:
   void         slotAdd();
   void         slotBrowse();
-  void         slotRightClicked( QListBoxItem * );
+  void         slotRightClicked( TQListBoxItem * );
   
 protected:
-  virtual void keyPressEvent(QKeyEvent *e);
+  virtual void keyPressEvent(TQKeyEvent *e);
   void         deleteSelectedItems();
   
   KLineEdit    *urlLineEdit;
-  QListBox     *urlListBox;
-  QToolButton  *urlAddBtn;
-  QToolButton  *urlBrowseBtn;
+  TQListBox     *urlListBox;
+  TQToolButton  *urlAddBtn;
+  TQToolButton  *urlBrowseBtn;
   
   KURLCompletion completion;
 };

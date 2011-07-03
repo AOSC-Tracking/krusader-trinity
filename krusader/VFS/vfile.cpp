@@ -33,8 +33,8 @@
 #include <grp.h>
 #include <sys/types.h>
 #include <sys/stat.h>
-// Qt includes
-#include <qdatetime.h>
+// TQt includes
+#include <tqdatetime.h>
 // KDE includes
 #include <kmimetype.h>
 #include <kdeversion.h>
@@ -45,25 +45,25 @@
 
 #include <kdebug.h>
 
-vfile::vfile(const QString& name,	                  // useful construtor
+vfile::vfile(const TQString& name,	                  // useful construtor
              const KIO::filesize_t size,
-             const QString& perm,
+             const TQString& perm,
              const time_t mtime,
              const bool symLink,
              const uid_t	owner,
              const gid_t group,
-             const QString& mime,
-             const QString& symDest,
+             const TQString& mime,
+             const TQString& symDest,
              const mode_t mode,
              const int rwx)
 {
 	vfile_name=name;
 	vfile_size=size;
-	vfile_owner=QString::null;
+	vfile_owner=TQString();
 	vfile_ownerId=owner;  
-	vfile_group=QString::null;
+	vfile_group=TQString();
 	vfile_groupId=group;
-	vfile_userName=QString::null;
+	vfile_userName=TQString();
 	vfile_perm=perm;
 	vfile_time_t=mtime;
 	vfile_symLink=symLink;
@@ -77,20 +77,20 @@ vfile::vfile(const QString& name,	                  // useful construtor
 	vfile_acl_loaded = false;
 }
 
-vfile::vfile(const QString& name,	                  // useful construtor
+vfile::vfile(const TQString& name,	                  // useful construtor
              const KIO::filesize_t size,	
-             const QString& perm,
+             const TQString& perm,
              const time_t mtime,
              const bool symLink,
-             const QString& owner,
-             const QString& group,
-             const QString& userName,
-             const QString& mime,
-             const QString& symDest,
+             const TQString& owner,
+             const TQString& group,
+             const TQString& userName,
+             const TQString& mime,
+             const TQString& symDest,
              const mode_t mode,
              const int rwx,
-             const QString& aclString,
-             const QString& aclDfltString ){
+             const TQString& aclString,
+             const TQString& aclDfltString ){
 	vfile_name=name;
 	vfile_size=size;
 	vfile_owner=owner;
@@ -146,33 +146,33 @@ char vfile::vfile_isExecutable() const {
 		return KRpermHandler::ftpExecutable(vfile_owner, vfile_userName, vfile_perm);
 }
 
-const QString& vfile::vfile_getMime(bool fast){
-	if( vfile_mimeType == QString::null ){ // mimetype == "" is OK so don't check mimetype.empty() !
+const TQString& vfile::vfile_getMime(bool fast){
+	if( vfile_mimeType == TQString() ){ // mimetype == "" is OK so don't check mimetype.empty() !
 		vfile_mimeType = KMimeType::findByURL( vfile_getUrl(),vfile_getMode(),vfile_getUrl().isLocalFile(),fast)->name();
-		if( vfile_mimeType.contains("directory") ) vfile_perm[0] = 'd', vfile_isdir = true;
+		if( vfile_mimeType.tqcontains("directory") ) vfile_perm[0] = 'd', vfile_isdir = true;
 	}
 	return vfile_mimeType;
 }
 
-const QString& vfile::vfile_getOwner(){
+const TQString& vfile::vfile_getOwner(){
 	if( vfile_owner.isEmpty() )
 		vfile_owner=KRpermHandler::uid2user(vfile_getUid());
 	return vfile_owner;
 }
 
-const QString& vfile::vfile_getGroup(){
+const TQString& vfile::vfile_getGroup(){
 	if( vfile_group.isEmpty() )
 		vfile_group=KRpermHandler::gid2group(vfile_getGid());
 	return vfile_group;
 }
 
-const QString& vfile::vfile_getACL(){
+const TQString& vfile::vfile_getACL(){
 	if( !vfile_acl_loaded )
 		vfile_loadACL();
 	return vfile_acl;
 }
 
-const QString& vfile::vfile_getDefaultACL(){
+const TQString& vfile::vfile_getDefaultACL(){
 	if( !vfile_acl_loaded )
 		vfile_loadACL();
 	return vfile_def_acl;

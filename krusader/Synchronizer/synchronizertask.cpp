@@ -32,24 +32,24 @@
 #include "synchronizertask.h"
 #include "synchronizerfileitem.h"
 #include "synchronizerdirlist.h"
-#include <qtimer.h>
-#include <qfile.h>
+#include <tqtimer.h>
+#include <tqfile.h>
 #include <klocale.h>
 #include <kmessagebox.h>
 #include "../VFS/vfs.h"
 
-CompareTask::CompareTask( SynchronizerFileItem *parentIn, const QString &leftURL,
-                          const QString &rightURL, const QString &leftDir,
-                          const QString &rightDir, bool hidden ) : SynchronizerTask (),  m_parent( parentIn ),
+CompareTask::CompareTask( SynchronizerFileItem *tqparentIn, const TQString &leftURL,
+                          const TQString &rightURL, const TQString &leftDir,
+                          const TQString &rightDir, bool hidden ) : SynchronizerTask (),  m_parent( tqparentIn ),
                           m_url( leftURL ), m_dir( leftDir ), m_otherUrl( rightURL ),
                           m_otherDir( rightDir ), m_duplicate( true ),
                           m_dirList( 0 ), m_otherDirList( 0 ) {
   ignoreHidden = hidden;
 }
 
-CompareTask::CompareTask( SynchronizerFileItem *parentIn, const QString &urlIn,
-                          const QString &dirIn, bool isLeftIn, bool hidden ) : SynchronizerTask (),
-                          m_parent( parentIn ), m_url( urlIn ), m_dir( dirIn ),
+CompareTask::CompareTask( SynchronizerFileItem *tqparentIn, const TQString &urlIn,
+                          const TQString &dirIn, bool isLeftIn, bool hidden ) : SynchronizerTask (),
+                          m_parent( tqparentIn ), m_url( urlIn ), m_dir( dirIn ),
                           m_isLeft( isLeftIn ), m_duplicate( false ),
                           m_dirList( 0 ), m_otherDirList( 0 ) {
   ignoreHidden = hidden;
@@ -71,13 +71,13 @@ void CompareTask::start() {
     m_state = ST_STATE_PENDING;
     m_loadFinished = m_otherLoadFinished = false;
 
-    m_dirList = new SynchronizerDirList( parentWidget, ignoreHidden );
-    connect( m_dirList, SIGNAL( finished( bool ) ), this, SLOT( slotFinished( bool ) ));
+    m_dirList = new SynchronizerDirList( tqparentWidget, ignoreHidden );
+    connect( m_dirList, TQT_SIGNAL( finished( bool ) ), this, TQT_SLOT( slotFinished( bool ) ));
     m_dirList->load( m_url, false );
 
     if( m_duplicate ) {
-      m_otherDirList = new SynchronizerDirList( parentWidget, ignoreHidden );
-      connect( m_otherDirList, SIGNAL( finished( bool ) ), this, SLOT( slotOtherFinished( bool ) ));
+      m_otherDirList = new SynchronizerDirList( tqparentWidget, ignoreHidden );
+      connect( m_otherDirList, TQT_SIGNAL( finished( bool ) ), this, TQT_SLOT( slotOtherFinished( bool ) ));
       m_otherDirList->load( m_otherUrl, false );
     }
   }
@@ -129,22 +129,22 @@ void CompareContentTask::start() {
   m_state = ST_STATE_PENDING;
 
   if( leftURL.isLocalFile() && rightURL.isLocalFile() ) {
-    leftFile = new QFile( leftURL.path() );
+    leftFile = new TQFile( leftURL.path() );
     if( !leftFile->open( IO_ReadOnly ) ) {
-      KMessageBox::error(parentWidget, i18n("Error at opening %1!").arg( leftURL.path() ));
+      KMessageBox::error(tqparentWidget, i18n("Error at opening %1!").tqarg( leftURL.path() ));
       m_state = ST_STATE_ERROR;
       return;
     }
 
-    rightFile = new QFile( rightURL.path() );
+    rightFile = new TQFile( rightURL.path() );
     if( !rightFile->open( IO_ReadOnly ) ) {
-      KMessageBox::error(parentWidget, i18n("Error at opening %1!").arg( rightURL.path() ));
+      KMessageBox::error(tqparentWidget, i18n("Error at opening %1!").tqarg( rightURL.path() ));
       m_state = ST_STATE_ERROR;
       return;
     }
 
-    timer = new QTimer( this );
-    connect( timer, SIGNAL(timeout()), this, SLOT(sendStatusMessage()) );
+    timer = new TQTimer( this );
+    connect( timer, TQT_SIGNAL(timeout()), this, TQT_SLOT(sendStatusMessage()) );
     timer->start( 1000, true );
 
     localFileCompareCycle();
@@ -152,19 +152,19 @@ void CompareContentTask::start() {
     leftReadJob = KIO::get( leftURL, false, false );
     rightReadJob = KIO::get( rightURL, false, false );
 
-    connect(leftReadJob, SIGNAL(data(KIO::Job *, const QByteArray &)),
-            this, SLOT(slotDataReceived(KIO::Job *, const QByteArray &)));
-    connect(rightReadJob, SIGNAL(data(KIO::Job *, const QByteArray &)),
-            this, SLOT(slotDataReceived(KIO::Job *, const QByteArray &)));
-    connect(leftReadJob, SIGNAL(result(KIO::Job*)),
-            this, SLOT(slotFinished(KIO::Job *)));
-    connect(rightReadJob, SIGNAL(result(KIO::Job*)),
-            this, SLOT(slotFinished(KIO::Job *)));
+    connect(leftReadJob, TQT_SIGNAL(data(KIO::Job *, const TQByteArray &)),
+            this, TQT_SLOT(slotDataReceived(KIO::Job *, const TQByteArray &)));
+    connect(rightReadJob, TQT_SIGNAL(data(KIO::Job *, const TQByteArray &)),
+            this, TQT_SLOT(slotDataReceived(KIO::Job *, const TQByteArray &)));
+    connect(leftReadJob, TQT_SIGNAL(result(KIO::Job*)),
+            this, TQT_SLOT(slotFinished(KIO::Job *)));
+    connect(rightReadJob, TQT_SIGNAL(result(KIO::Job*)),
+            this, TQT_SLOT(slotFinished(KIO::Job *)));
 
     rightReadJob->suspend();
 
-    timer = new QTimer( this );
-    connect( timer, SIGNAL(timeout()), this, SLOT(sendStatusMessage()) );
+    timer = new TQTimer( this );
+    connect( timer, TQT_SIGNAL(timeout()), this, TQT_SLOT(sendStatusMessage()) );
     timer->start( 1000, true );
   }
 }
@@ -176,7 +176,7 @@ void CompareContentTask::localFileCompareCycle() {
   char leftBuffer[ 1440 ]; 
   char rightBuffer[ 1440 ];
 
-  QTime timer;
+  TQTime timer;
   timer.start();
 
   int cnt = 0;
@@ -217,11 +217,11 @@ void CompareContentTask::localFileCompareCycle() {
     return;
   }
 
-  QTimer::singleShot( 0, this, SLOT( localFileCompareCycle() ) );
+  TQTimer::singleShot( 0, this, TQT_SLOT( localFileCompareCycle() ) );
 }
 
 
-void CompareContentTask::slotDataReceived(KIO::Job *job, const QByteArray &data)
+void CompareContentTask::slotDataReceived(KIO::Job *job, const TQByteArray &data)
 {
   int bufferLen = compareArray.size();
   int dataLen   = data.size();
@@ -299,9 +299,9 @@ void CompareContentTask::slotFinished(KIO::Job *job)
   if( job->error() && job->error() != KIO::ERR_USER_CANCELED && !errorPrinted )
   {
     errorPrinted = true;
-    KMessageBox::error(parentWidget, i18n("IO error at comparing file %1 with %2!")
-                       .arg( vfs::pathOrURL( leftURL ) )
-                       .arg( vfs::pathOrURL( rightURL ) ) );
+    KMessageBox::error(tqparentWidget, i18n("IO error at comparing file %1 with %2!")
+                       .tqarg( vfs::pathOrURL( leftURL ) )
+                       .tqarg( vfs::pathOrURL( rightURL ) ) );
   }
 
   if( leftReadJob == 0 && rightReadJob == 0 )
@@ -335,8 +335,8 @@ void CompareContentTask::sendStatusMessage()
 {
   double perc = (size == 0) ? 1. : (double)received / (double)size;
   int percent = (int)(perc * 10000. + 0.5);
-  QString statstr = QString( "%1.%2%3" ).arg( percent / 100 ).arg( ( percent / 10 )%10 ).arg( percent % 10 ) + "%";
-  setStatusMessage( i18n( "Comparing file %1 (%2)..." ).arg( leftURL.fileName() ).arg( statstr ) );
+  TQString statstr = TQString( "%1.%2%3" ).tqarg( percent / 100 ).tqarg( ( percent / 10 )%10 ).tqarg( percent % 10 ) + "%";
+  setStatusMessage( i18n( "Comparing file %1 (%2)..." ).tqarg( leftURL.fileName() ).tqarg( statstr ) );
   timer->start( 500, true );
 }
 

@@ -37,14 +37,14 @@
 #include "../VFS/krarchandler.h"
 
 #include <klocale.h>
-#include <qdir.h>
+#include <tqdir.h>
 #include <sys/types.h>
 #include <dirent.h>
 #include <unistd.h>
 #include <sys/types.h>
 #include <sys/stat.h>
-#include <qtextstream.h>
-#include <qregexp.h>
+#include <tqtextstream.h>
+#include <tqregexp.h>
 #include <klargefile.h>
 #include <kurlrequesterdlg.h>
 
@@ -56,10 +56,10 @@ KRSearchMod::KRSearchMod( const KRQuery* q )
 {
   stopSearch = false; /// ===> added
   query = new KRQuery( *q );
-  connect( query, SIGNAL( status( const QString & ) ), 
-           this,  SIGNAL( searching(const QString&) ) );
-  connect( query, SIGNAL( processEvents( bool & ) ), 
-           this,  SLOT  ( slotProcessEvents( bool & ) ) );
+  connect( query, TQT_SIGNAL( status( const TQString & ) ), 
+           this,  TQT_SIGNAL( searching(const TQString&) ) );
+  connect( query, TQT_SIGNAL( processEvents( bool & ) ), 
+           this,  TQT_SLOT  ( slotProcessEvents( bool & ) ) );
 
   remote_vfs = 0;
   virtual_vfs = 0;
@@ -106,11 +106,11 @@ void KRSearchMod::scanURL( KURL url )
     if( stopSearch ) return;
 
     if( query->isExcluded( urlToCheck ) ) {
-      if( !query->searchInDirs().contains( urlToCheck ) )
+      if( !query->searchInDirs().tqcontains( urlToCheck ) )
         continue;
     }
 
-    if( scannedUrls.contains( urlToCheck ) )
+    if( scannedUrls.tqcontains( urlToCheck ) )
       continue;
     scannedUrls.push( urlToCheck );
 
@@ -125,7 +125,7 @@ void KRSearchMod::scanURL( KURL url )
 
 void KRSearchMod::scanLocalDir( KURL urlToScan )
 {
-  QString dir = urlToScan.path( 1 );
+  TQString dir = urlToScan.path( 1 );
 
   DIR* d = opendir( dir.local8Bit() );
   if ( !d ) return ;
@@ -134,7 +134,7 @@ void KRSearchMod::scanLocalDir( KURL urlToScan )
 
   while ( ( dirEnt = readdir( d ) ) != NULL )
   {
-    QString name = QString::fromLocal8Bit( dirEnt->d_name );
+    TQString name = TQString::fromLocal8Bit( dirEnt->d_name );
 
     // we dont scan the ".",".." enteries
     if ( name == "." || name == ".." ) continue;
@@ -144,12 +144,12 @@ void KRSearchMod::scanLocalDir( KURL urlToScan )
 
     KURL url = vfs::fromPathOrURL( dir + name );
 
-    QString mime = QString::null;
+    TQString mime = TQString();
     if ( query->searchInArchives() || !query->hasMimeType() )
       mime = KMimeType::findByURL( url, stat_p.st_mode, true, false ) ->name();
 
     // creating a vfile object for matching with krquery
-    vfile * vf = new vfile(name, (KIO::filesize_t)stat_p.st_size, KRpermHandler::mode2QString(stat_p.st_mode),
+    vfile * vf = new vfile(name, (KIO::filesize_t)stat_p.st_size, KRpermHandler::mode2TQString(stat_p.st_mode),
                            stat_p.st_mtime, S_ISLNK(stat_p.st_mode), stat_p.st_uid, stat_p.st_gid,
                            mime, "", stat_p.st_mode);
     vf->vfile_setUrl( url );
@@ -157,20 +157,20 @@ void KRSearchMod::scanLocalDir( KURL urlToScan )
     if ( query->isRecursive() )
     {
       if ( S_ISLNK( stat_p.st_mode ) && query->followLinks() )
-        unScannedUrls.push( vfs::fromPathOrURL( QDir( dir + name ).canonicalPath() ) );
+        unScannedUrls.push( vfs::fromPathOrURL( TQDir( dir + name ).canonicalPath() ) );
       else if ( S_ISDIR( stat_p.st_mode ) )
         unScannedUrls.push( url );
     }
     if ( query->searchInArchives() )
     {
-      QString type = mime.right( 4 );
-      if ( mime.contains( "-rar" ) ) type = "-rar";
+      TQString type = mime.right( 4 );
+      if ( mime.tqcontains( "-rar" ) ) type = "-rar";
 
       if ( KRarcHandler::arcSupported( type ) )
       {
         KURL archiveURL = url;
         bool encrypted;
-        QString realType = KRarcHandler::getType( encrypted, url.path(), mime );
+        TQString realType = KRarcHandler::getType( encrypted, url.path(), mime );
 
         if( !encrypted ) {
           if ( realType == "-tbz" || realType == "-tgz" || realType == "tarz" || realType == "-tar" )
@@ -187,12 +187,12 @@ void KRSearchMod::scanLocalDir( KURL urlToScan )
     {
       // if we got here - we got a winner
       results.append( dir + name );
-      emit found( name, dir, ( KIO::filesize_t ) stat_p.st_size, stat_p.st_mtime, KRpermHandler::mode2QString( stat_p.st_mode ), query->foundText() );
+      emit found( name, dir, ( KIO::filesize_t ) stat_p.st_size, stat_p.st_mtime, KRpermHandler::mode2TQString( stat_p.st_mode ), query->foundText() );
     }
     delete vf;
 
     if( timer.elapsed() >= EVENT_PROCESS_DELAY ) {
-      qApp->processEvents();
+      tqApp->processEvents();
       timer.start();
       if( stopSearch ) return;    
     }
@@ -223,7 +223,7 @@ void KRSearchMod::scanRemoteDir( KURL url )
 
   for ( vfile * vf = vfs_->vfs_getFirstFile(); vf != 0 ; vf = vfs_->vfs_getNextFile() )
   {
-    QString name = vf->vfile_getName();
+    TQString name = vf->vfile_getName();
     KURL fileURL = vfs_->vfs_getFile( name );
 
     if ( query->isRecursive() && (( vf->vfile_isSymLink() && query->followLinks() ) || vf->vfile_isDir() ) )
@@ -238,7 +238,7 @@ void KRSearchMod::scanRemoteDir( KURL url )
     }
 
     if( timer.elapsed() >= EVENT_PROCESS_DELAY ) {
-      qApp->processEvents();
+      tqApp->processEvents();
       timer.start();
       if( stopSearch ) return;    
     }
@@ -246,7 +246,7 @@ void KRSearchMod::scanRemoteDir( KURL url )
 }
 
 void KRSearchMod::slotProcessEvents( bool & stopped ) {
-  qApp->processEvents();
+  tqApp->processEvents();
   stopped = stopSearch;
 }
 

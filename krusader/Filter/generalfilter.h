@@ -36,28 +36,29 @@
 #include "../Dialogs/kurllistrequester.h"
 #include "../GUI/profilemanager.h"
 
-#include <qwidget.h>
-#include <qlayout.h>
-#include <qgroupbox.h>
-#include <qcheckbox.h>
-#include <qlabel.h>
-#include <qlistbox.h>
+#include <tqwidget.h>
+#include <tqlayout.h>
+#include <tqgroupbox.h>
+#include <tqcheckbox.h>
+#include <tqlabel.h>
+#include <tqlistbox.h>
 #include <kcombobox.h>
 #include <kshellcompletion.h>
 
-class GeneralFilter : public QWidget, public FilterBase
+class GeneralFilter : public TQWidget, public FilterBase
 {
   Q_OBJECT
+  TQ_OBJECT
 
 public:
-  GeneralFilter( FilterTabs *tabs, int properties, QWidget *parent = 0, const char *name = 0 );
+  GeneralFilter( FilterTabs *tabs, int properties, TQWidget *tqparent = 0, const char *name = 0 );
   ~GeneralFilter();
 
   virtual bool          fillQuery( KRQuery *query );
   virtual void          queryAccepted();
-  virtual void          loadFromProfile( QString name );
-  virtual void          saveToProfile( QString name );
-  virtual QString       name() { return "GeneralFilter";}
+  virtual void          loadFromProfile( TQString name );
+  virtual void          saveToProfile( TQString name );
+  virtual TQString       name() { return "GeneralFilter";}
   virtual FilterTabs *  filterTabs() { return fltTabs; }
 
 public slots:
@@ -65,21 +66,21 @@ public slots:
   void    slotLoadBtnClicked();
   void    slotOverwriteBtnClicked();
   void    slotRemoveBtnClicked();
-  void    slotProfileDoubleClicked( QListBoxItem * );
+  void    slotProfileDoubleClicked( TQListBoxItem * );
   void    refreshProfileListBox();
   
 public:
-  QCheckBox* searchForCase;
-  QCheckBox* remoteContentSearch;
-  QCheckBox* containsTextCase;
-  QCheckBox* containsWholeWord;
-  QCheckBox* searchInDirs;
-  QCheckBox* searchInArchives;
-  QCheckBox* followLinks;
+  TQCheckBox* searchForCase;
+  TQCheckBox* remoteContentSearch;
+  TQCheckBox* containsTextCase;
+  TQCheckBox* containsWholeWord;
+  TQCheckBox* searchInDirs;
+  TQCheckBox* searchInArchives;
+  TQCheckBox* followLinks;
 
   KURLListRequester *searchIn;
   KURLListRequester *dontSearchIn;
-  QHBoxLayout *middleLayout;
+  TQHBoxLayout *middleLayout;
 
   KHistoryCombo* searchFor;
   KHistoryCombo* containsText;
@@ -88,12 +89,12 @@ public:
 
   KShellCompletion completion;
 
-  QListBox* profileListBox;
+  TQListBox* profileListBox;
   
-  QPushButton *profileAddBtn;
-  QPushButton *profileLoadBtn;
-  QPushButton *profileOverwriteBtn;
-  QPushButton *profileRemoveBtn;
+  TQPushButton *profileAddBtn;
+  TQPushButton *profileLoadBtn;
+  TQPushButton *profileOverwriteBtn;
+  TQPushButton *profileRemoveBtn;
   
   ProfileManager *profileManager;
 

@@ -38,6 +38,7 @@
 class DUFilelight : public RadialMap::Widget
 {
   Q_OBJECT
+  TQ_OBJECT
   
 public:
   DUFilelight( DiskUsage *usage, const char *name );
@@ -51,7 +52,7 @@ public slots:
   void slotRefresh();
 
 protected slots:  
-  void slotAboutToShow( QWidget *widget );
+  void slotAboutToShow( TQWidget *widget );
     
   void schemeRainbow()        { setScheme( Filelight::Rainbow ); }
   void schemeHighContrast()   { setScheme( Filelight::HighContrast ); }
@@ -65,7 +66,7 @@ protected slots:
   void minFontSize();
   
 protected:
-  virtual void mousePressEvent( QMouseEvent* );
+  virtual void mousePressEvent( TQMouseEvent* );
   
   void setScheme( Filelight::MapScheme );
 

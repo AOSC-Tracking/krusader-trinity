@@ -34,10 +34,10 @@
 #include <kmessagebox.h>
 #include <kfileitem.h>
 #include <kio/job.h>
-#include <qfileinfo.h>
+#include <tqfileinfo.h>
 
-Combiner::Combiner( QWidget* parent,  KURL baseURLIn, KURL destinationURLIn, bool unixNamingIn ) :
-  QProgressDialog( parent, "Krusader::Combiner", true, 0 ), baseURL( baseURLIn ), destinationURL( destinationURLIn ), 
+Combiner::Combiner( TQWidget* tqparent,  KURL baseURLIn, KURL destinationURLIn, bool unixNamingIn ) :
+  TQProgressDialog( tqparent, "Krusader::Combiner", true, 0 ), baseURL( baseURLIn ), destinationURL( destinationURLIn ), 
   hasValidSplitFile( false ), fileCounter ( 0 ), permissions( -1 ), receivedSize( 0 ),
   combineReadJob( 0 ), combineWriteJob( 0 ), unixNaming( unixNamingIn )
 {
@@ -59,7 +59,7 @@ Combiner::~Combiner()
 void Combiner::combine()
 {
   setCaption( i18n("Krusader::Combining...") );
-  setLabelText( i18n("Combining the file %1...").arg( vfs::pathOrURL( baseURL ) ));
+  setLabelText( i18n("Combining the file %1...").tqarg( vfs::pathOrURL( baseURL ) ));
 
     /* check whether the .crc file exists */
   splURL = baseURL;
@@ -71,7 +71,7 @@ void Combiner::combine()
   {
     int ret = KMessageBox::questionYesNo(0, i18n("The CRC information file (%1) is missing!\n"
         "Validity checking is impossible without it. Continue combining?")
-        .arg( vfs::pathOrURL( splURL ) ) );
+        .tqarg( vfs::pathOrURL( splURL ) ) );
 
     if( ret == KMessageBox::No )
     {
@@ -83,45 +83,45 @@ void Combiner::combine()
   }
   else
   {
-    permissions = file.permissions() | QFileInfo::WriteUser;
+    permissions = file.permissions() | TQFileInfo::WriteUser;
     
     combineReadJob = KIO::get( splURL, false, false );
 
-    connect(combineReadJob, SIGNAL(data(KIO::Job *, const QByteArray &)),
-            this, SLOT(combineSplitFileDataReceived(KIO::Job *, const QByteArray &)));
-    connect(combineReadJob, SIGNAL(result(KIO::Job*)),
-            this, SLOT(combineSplitFileFinished(KIO::Job *)));
+    connect(combineReadJob, TQT_SIGNAL(data(KIO::Job *, const TQByteArray &)),
+            this, TQT_SLOT(combineSplitFileDataReceived(KIO::Job *, const TQByteArray &)));
+    connect(combineReadJob, TQT_SIGNAL(result(KIO::Job*)),
+            this, TQT_SLOT(combineSplitFileFinished(KIO::Job *)));
   }
 
   exec();
 }
 
-void Combiner::combineSplitFileDataReceived(KIO::Job *, const QByteArray &byteArray)
+void Combiner::combineSplitFileDataReceived(KIO::Job *, const TQByteArray &byteArray)
 {
-  splitFile += QString( byteArray );
+  splitFile += TQString( byteArray );
 }
 
 void Combiner::combineSplitFileFinished(KIO::Job *job)
 {
   combineReadJob = 0;
-  QString error;
+  TQString error;
   
   if( job->error() )
-    error = i18n("Error at reading the CRC file (%1)!").arg( vfs::pathOrURL( splURL ) );
+    error = i18n("Error at reading the CRC file (%1)!").tqarg( vfs::pathOrURL( splURL ) );
   else
   {
     splitFile.remove( '\r' ); // Windows compatibility
-    QStringList splitFileContent = QStringList::split( '\n', splitFile );
+    TQStringList splitFileContent = TQStringList::split( '\n', splitFile );
     
     bool hasFileName = false, hasSize = false, hasCrc = false;
     
     for(unsigned int i = 0; i != splitFileContent.count(); i++ )
     {
-      int ndx = splitFileContent[i].find( '=' );    
+      int ndx = splitFileContent[i].tqfind( '=' );    
       if( ndx == -1 )
         continue;      
-      QString token = splitFileContent[i].left( ndx ).stripWhiteSpace();
-      QString value = splitFileContent[i].mid( ndx + 1 );      
+      TQString token = splitFileContent[i].left( ndx ).stripWhiteSpace();
+      TQString value = splitFileContent[i].mid( ndx + 1 );      
     
       if( token == "filename" )
       {
@@ -168,28 +168,28 @@ void Combiner::openNextFile()
       readURL = baseURL;
     else
     {
-      QString name = readURL.fileName();
+      TQString name = readURL.fileName();
       int pos = name.length()-1;
-      QChar ch;
+      TQChar ch;
       
       do
       {
-        ch = name.at( pos ).latin1() + 1;
-        if( ch == QChar( 'Z' + 1 ) )
+        ch = name.tqat( pos ).latin1() + 1;
+        if( ch == TQChar( 'Z' + 1 ) )
           ch = 'A';
-        if( ch == QChar( 'z' + 1 ) )
+        if( ch == TQChar( 'z' + 1 ) )
           ch = 'a';
         name[ pos ] = ch;
         pos--;
-      } while( pos >=0 && ch.upper() == QChar( 'A' ) );
+      } while( pos >=0 && ch.upper() == TQChar( 'A' ) );
       
       readURL.setFileName( name );
     }    
   }
   else
   {
-    QString index( "%1" );      /* determining the filename */
-    index = index.arg(++fileCounter).rightJustify( 3, '0' );
+    TQString index( "%1" );      /* determining the filename */
+    index = index.tqarg(++fileCounter).rightJustify( 3, '0' );
     readURL = baseURL;
     readURL.setFileName( baseURL.fileName() + "." + index );
   }
@@ -197,17 +197,17 @@ void Combiner::openNextFile()
       /* creating a write job */
   combineReadJob = KIO::get( readURL, false, false );
 
-  connect(combineReadJob, SIGNAL(data(KIO::Job *, const QByteArray &)),
-          this, SLOT(combineDataReceived(KIO::Job *, const QByteArray &)));
-  connect(combineReadJob, SIGNAL(result(KIO::Job*)),
-          this, SLOT(combineReceiveFinished(KIO::Job *)));
+  connect(combineReadJob, TQT_SIGNAL(data(KIO::Job *, const TQByteArray &)),
+          this, TQT_SLOT(combineDataReceived(KIO::Job *, const TQByteArray &)));
+  connect(combineReadJob, TQT_SIGNAL(result(KIO::Job*)),
+          this, TQT_SLOT(combineReceiveFinished(KIO::Job *)));
   if( hasValidSplitFile )
-    connect(combineReadJob, SIGNAL(percent (KIO::Job *, unsigned long)),
-                            this, SLOT(combineWritePercent(KIO::Job *, unsigned long)));
+    connect(combineReadJob, TQT_SIGNAL(percent (KIO::Job *, unsigned long)),
+                            this, TQT_SLOT(combineWritePercent(KIO::Job *, unsigned long)));
   
 }
 
-void Combiner::combineDataReceived(KIO::Job *, const QByteArray &byteArray)
+void Combiner::combineDataReceived(KIO::Job *, const TQByteArray &byteArray)
 {
   if( byteArray.size() == 0 )
     return;
@@ -228,10 +228,10 @@ void Combiner::combineDataReceived(KIO::Job *, const QByteArray &byteArray)
     
     combineWriteJob = KIO::put( writeURL, permissions, true, false, false );    
 
-    connect(combineWriteJob, SIGNAL(dataReq(KIO::Job *, QByteArray &)),
-                             this, SLOT(combineDataSend(KIO::Job *, QByteArray &)));
-    connect(combineWriteJob, SIGNAL(result(KIO::Job*)),
-                             this, SLOT(combineSendFinished(KIO::Job *)));
+    connect(combineWriteJob, TQT_SIGNAL(dataReq(KIO::Job *, TQByteArray &)),
+                             this, TQT_SLOT(combineDataSend(KIO::Job *, TQByteArray &)));
+    connect(combineWriteJob, TQT_SIGNAL(result(KIO::Job*)),
+                             this, TQT_SLOT(combineSendFinished(KIO::Job *)));
   }  
 
   if( combineWriteJob )
@@ -254,14 +254,14 @@ void Combiner::combineReceiveFinished(KIO::Job *job)
     {
       combineAbortJobs();
       KMessageBox::questionYesNo(0, i18n("Can't open the first split file of %1!")
-                                 .arg( vfs::pathOrURL( baseURL ) ) );
+                                 .tqarg( vfs::pathOrURL( baseURL ) ) );
       emit reject();
       return;
     }    
 
     if( hasValidSplitFile )
     {
-      QString crcResult = QString( "%1" ).arg( crcContext->result(), 0, 16 ).upper().stripWhiteSpace()
+      TQString crcResult = TQString( "%1" ).tqarg( crcContext->result(), 0, 16 ).upper().stripWhiteSpace()
                                          .rightJustify(8, '0');
       
       if( receivedSize != expectedSize )
@@ -274,10 +274,10 @@ void Combiner::combineReceiveFinished(KIO::Job *job)
   openNextFile();
 }
 
-void Combiner::combineDataSend(KIO::Job *, QByteArray &byteArray)
+void Combiner::combineDataSend(KIO::Job *, TQByteArray &byteArray)
 {
   byteArray = transferArray;
-  transferArray = QByteArray();
+  transferArray = TQByteArray();
 
   if( combineReadJob )
   {
@@ -293,7 +293,7 @@ void Combiner::combineSendFinished(KIO::Job *job)
   if( job->error() )    /* any error occurred? */
   {
     combineAbortJobs();
-    KMessageBox::error(0, i18n("Error writing file %1!").arg( vfs::pathOrURL( writeURL ) ) );
+    KMessageBox::error(0, i18n("Error writing file %1!").tqarg( vfs::pathOrURL( writeURL ) ) );
     emit reject();
     return;
   }

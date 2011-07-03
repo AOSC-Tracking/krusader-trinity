@@ -44,8 +44,8 @@
 #include <kaction.h>
 #include <kconfig.h>
 #include <kaccel.h>
-#include <qstringlist.h>
-#include <qtextstream.h>
+#include <tqstringlist.h>
+#include <tqtextstream.h>
 #include <kdebug.h>
 #include <dcopobject.h>
 
@@ -53,7 +53,7 @@
 class KrJS;
 #endif
 
-class KrusaderStatus;
+class KrusadertqStatus;
 class KRPleaseWaitHandler;
 class KrusaderView;
 class KProcess;
@@ -68,11 +68,12 @@ class KrBookmarkHandler;
 class PopularUrls;
 class QueueManager;
 
-//static QTextOStream krOut(stdout);
+//static TQTextOStream krOut(stdout);
 #define krOut kdDebug(50010)
 
 class Krusader : public KParts::MainWindow, public DCOPObject {
     Q_OBJECT
+  TQ_OBJECT
   public:
     Krusader();
     virtual ~Krusader();
@@ -83,15 +84,15 @@ class Krusader : public KParts::MainWindow, public DCOPObject {
      * @return a character string with the specitif icon-name
      */
     static const char* privIcon();
-    static QStringList supportedTools(); // find supported tools
+    static TQStringList supportedTools(); // find supported tools
 
-    virtual bool process (const QCString &fun, const QByteArray &data, QCString &replyType, QByteArray &replyData);
+    virtual bool process (const TQCString &fun, const TQByteArray &data, TQCString &replyType, TQByteArray &replyData);
     void moveToTop();
 
   public slots:
     // increase the internal progress bar
     void incProgress( KProcess *, char *buffer, int buflen );
-    void statusBarUpdate( QString& mess );
+    void statusBarUpdate( TQString& mess );
     // in use by Krusader only
     void saveSettings();
     void savePosition();
@@ -108,10 +109,10 @@ class Krusader : public KParts::MainWindow, public DCOPObject {
     void setupActions();
     void setupAccels();
     bool versionControl();  // handle version differences in krusaderrc
-    void showEvent ( QShowEvent * );
-    void hideEvent ( QHideEvent * );
-    void moveEvent ( QMoveEvent * );
-    void resizeEvent ( QResizeEvent * );
+    void showEvent ( TQShowEvent * );
+    void hideEvent ( TQHideEvent * );
+    void moveEvent ( TQMoveEvent * );
+    void resizeEvent ( TQResizeEvent * );
 
   public:
     static Krusader *App;       // a kApp style pointer
@@ -149,16 +150,16 @@ class Krusader : public KParts::MainWindow, public DCOPObject {
     static KRadioAction **execTypeArray[];
 
     // return a path to a temp dir or file we can use.
-    QString getTempDir();
-    QString getTempFile();
+    TQString getTempDir();
+    TQString getTempFile();
 
     // the internal progress bar variales + functions
     KRPleaseWaitHandler* plzWait;
-    void startWaiting( QString msg = "Please Wait", int count = 0 , bool cancel = false );
+    void startWaiting( TQString msg = "Please Wait", int count = 0 , bool cancel = false );
     void stopWait();
 	 bool wasWaitingCancelled() const;
 
-    KrusaderStatus *status;
+    KrusadertqStatus *status;
     KRslots *slot;
     KAccel *accels; // global accelerators
     
@@ -173,12 +174,12 @@ class Krusader : public KParts::MainWindow, public DCOPObject {
     #endif
 
   signals:
-    void changeMessage( QString );
+    void changeMessage( TQString );
 
   private:
     KSystemTray *sysTray;
-    QPoint       oldPos;
-    QSize        oldSize;
+    TQPoint       oldPos;
+    TQSize        oldSize;
     bool         isStarting;
     bool         isExiting;
     bool         directExit;

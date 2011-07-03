@@ -31,15 +31,15 @@
 #include "kicons.h"
 #include "krusader.h"
 #include "defaults.h"
-#include <qstring.h>
+#include <tqstring.h>
 
-QPixmap FL_LOADICON(QString name) {
+TQPixmap FL_LOADICON(TQString name) {
   krConfig->setGroup("Look&Feel");
   int size = (krConfig->readEntry("Filelist Icon Size",_FilelistIconSize)).toInt();
   if (size!=22)
     return krLoader->loadIcon(name,KIcon::Desktop,size);
   // else implied
-  return QIconSet(krLoader->loadIcon(name,KIcon::Desktop,32)).pixmap(QIconSet::Small,true);
+  return TQIconSet(krLoader->loadIcon(name,KIcon::Desktop,32)).pixmap(TQIconSet::Small,true);
 }
 
 const char * no_xpm[] = {

@@ -4,9 +4,9 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-#include <qfile.h>
-#include <qfileinfo.h>
-#include <qptrqueue.h>
+#include <tqfile.h>
+#include <tqfileinfo.h>
+#include <tqptrqueue.h>
 #include <kurl.h>
 #include <kdebug.h>
 #include <kinstance.h>
@@ -46,7 +46,7 @@ int kdemain( int argc, char **argv ) {
 	return 0;
 }
 
-ArchiveProtocol::ArchiveProtocol( const QCString &pool, const QCString &app ) : SlaveBase( "tar", pool, app ) {
+ArchiveProtocol::ArchiveProtocol( const TQCString &pool, const TQCString &app ) : SlaveBase( "tar", pool, app ) {
 	kdDebug( 7109 ) << "ArchiveProtocol::ArchiveProtocol" << endl;
 	m_archiveFile = 0L;
 }
@@ -61,25 +61,25 @@ void ArchiveProtocol::put( const KURL& url, int, bool, bool resume ){
 		return;
 	}
 	
-	QByteArray  tempBuffer;
-	QPtrQueue<QByteArray> buffer;
+	TQByteArray  tempBuffer;
+	TQPtrQueue<TQByteArray> buffer;
 	buffer.setAutoDelete(true);
 	int readResult=0;
 	int size = 0;
-	QByteArray* temp;
+	TQByteArray* temp;
 	do{
 		dataReq();
-		temp = new QByteArray();
+		temp = new TQByteArray();
 		readResult = readData(*temp);
 		buffer.enqueue(temp);
 		size += temp->size();
  	} while( readResult > 0 );
 	
-	QString filename = url.path().mid(m_archiveName.length()+1);
+	TQString filename = url.path().mid(m_archiveName.length()+1);
 
 	if( !m_archiveFile->prepareWriting(filename,user,group,size) ){
 		error(ERR_UNSUPPORTED_ACTION,
-		      i18n("Writing to %1 is not supported").arg(filename) );
+		      i18n("Writing to %1 is not supported").tqarg(filename) );
 		return;
 	}
 	while( (temp=buffer.dequeue()) ){
@@ -91,13 +91,13 @@ void ArchiveProtocol::put( const KURL& url, int, bool, bool resume ){
 }
 
 void ArchiveProtocol::mkdir(const KURL& url,int){
-	QString filename = url.path().mid(m_archiveName.length()+1);
+	TQString filename = url.path().mid(m_archiveName.length()+1);
 	m_archiveFile->writeDir(filename,user,group);
 	finished();
 }
 
-bool ArchiveProtocol::checkNewFile( const KURL & url, QString & path ) {
-	QString fullPath = url.path();
+bool ArchiveProtocol::checkNewFile( const KURL & url, TQString & path ) {
+	TQString fullPath = url.path();
 	kdDebug( 7109 ) << "ArchiveProtocol::checkNewFile " << fullPath << endl;
 
 
@@ -105,7 +105,7 @@ bool ArchiveProtocol::checkNewFile( const KURL & url, QString & path ) {
 	if ( m_archiveFile && m_archiveName == fullPath.left( m_archiveName.length() ) ) {
 		// Has it changed ?
 		struct stat statbuf;
-		if ( ::stat( QFile::encodeName( m_archiveName ), &statbuf ) == 0 ) {
+		if ( ::stat( TQFile::encodeName( m_archiveName ), &statbuf ) == 0 ) {
 			if ( m_mtime == statbuf.st_mtime ) {
 				path = fullPath.mid( m_archiveName.length() );
 				kdDebug( 7109 ) << "ArchiveProtocol::checkNewFile returning " << path << endl;
@@ -124,23 +124,23 @@ bool ArchiveProtocol::checkNewFile( const KURL & url, QString & path ) {
 
 	// Find where the tar file is in the full path
 	int pos = 0;
-	QString archiveFile;
-	path = QString::null;
+	TQString archiveFile;
+	path = TQString();
 
 	int len = fullPath.length();
 	if ( len != 0 && fullPath[ len - 1 ] != '/' )
 		fullPath += '/';
 
 	kdDebug( 7109 ) << "the full path is " << fullPath << endl;
-	while ( ( pos = fullPath.find( '/', pos + 1 ) ) != -1 ) {
-		QString tryPath = fullPath.left( pos );
+	while ( ( pos = fullPath.tqfind( '/', pos + 1 ) ) != -1 ) {
+		TQString tryPath = fullPath.left( pos );
 		kdDebug( 7109 ) << fullPath << "  trying " << tryPath << endl;
 		struct stat statbuf;
-		if ( ::stat( QFile::encodeName( tryPath ), &statbuf ) == 0 && !S_ISDIR( statbuf.st_mode ) ) {
+		if ( ::stat( TQFile::encodeName( tryPath ), &statbuf ) == 0 && !S_ISDIR( statbuf.st_mode ) ) {
 			archiveFile = tryPath;
 			m_mtime = statbuf.st_mtime;
-			user = QFileInfo(archiveFile).owner();
-			group = QFileInfo(archiveFile).group();
+			user = TQFileInfo(archiveFile).owner();
+			group = TQFileInfo(archiveFile).group();
 			path = fullPath.mid( pos + 1 );
 			kdDebug( 7109 ) << "fullPath=" << fullPath << " path=" << path << endl;
 			len = path.length();
@@ -148,7 +148,7 @@ bool ArchiveProtocol::checkNewFile( const KURL & url, QString & path ) {
 				if ( path[ len - 1 ] == '/' )
 					path.truncate( len - 1 );
 			} else
-				path = QString::fromLatin1( "/" );
+				path = TQString::tqfromLatin1( "/" );
 			kdDebug( 7109 ) << "Found. archiveFile=" << archiveFile << " path=" << path << endl;
 			break;
 		}
@@ -224,9 +224,9 @@ void ArchiveProtocol::createUDSEntry( const KArchiveEntry * archiveEntry, UDSEnt
 void ArchiveProtocol::listDir( const KURL & url ) {
 	kdDebug( 7109 ) << "ArchiveProtocol::listDir " << url.url() << endl;
 
-	QString path;
+	TQString path;
 	if ( !checkNewFile( url, path ) ) {
-		QCString _path( QFile::encodeName( url.path() ) );
+		TQCString _path( TQFile::encodeName( url.path() ) );
 		kdDebug( 7109 ) << "Checking (stat) on " << _path << endl;
 		struct stat buff;
 		if ( ::stat( _path.data(), &buff ) == -1 || !S_ISDIR( buff.st_mode ) ) {
@@ -246,9 +246,9 @@ void ArchiveProtocol::listDir( const KURL & url ) {
 	}
 
 	if ( path.isEmpty() ) {
-		KURL redir( url.protocol() + QString::fromLatin1( ":/" ) );
+		KURL redir( url.protocol() + TQString::tqfromLatin1( ":/" ) );
 		kdDebug( 7109 ) << "url.path()==" << url.path() << endl;
-		redir.setPath( url.path() + QString::fromLatin1( "/" ) );
+		redir.setPath( url.path() + TQString::tqfromLatin1( "/" ) );
 		kdDebug( 7109 ) << "ArchiveProtocol::listDir: redirection " << redir.url() << endl;
 		redirection( redir );
 		finished();
@@ -259,7 +259,7 @@ void ArchiveProtocol::listDir( const KURL & url ) {
 	const KArchiveDirectory* root = m_archiveFile->directory();
 	const KArchiveDirectory* dir;
 	if ( !path.isEmpty() && path != "/" ) {
-		kdDebug( 7109 ) << QString( "Looking for entry %1" ).arg( path ) << endl;
+		kdDebug( 7109 ) << TQString( "Looking for entry %1" ).tqarg( path ) << endl;
 		const KArchiveEntry* e = root->entry( path );
 		if ( !e ) {
 			error( KIO::ERR_DOES_NOT_EXIST, url.prettyURL() );
@@ -274,11 +274,11 @@ void ArchiveProtocol::listDir( const KURL & url ) {
 		dir = root;
 	}
 
-	QStringList l = dir->entries();
+	TQStringList l = dir->entries();
 	totalSize( l.count() );
 
 	UDSEntry entry;
-	QStringList::Iterator it = l.begin();
+	TQStringList::Iterator it = l.begin();
 	for ( ; it != l.end(); ++it ) {
 		kdDebug( 7109 ) << ( *it ) << endl;
 		const KArchiveEntry* archiveEntry = dir->entry( ( *it ) );
@@ -296,12 +296,12 @@ void ArchiveProtocol::listDir( const KURL & url ) {
 }
 
 void ArchiveProtocol::stat( const KURL & url ) {
-	QString path;
+	TQString path;
 	UDSEntry entry;
 	if ( !checkNewFile( url, path ) ) {
 		// We may be looking at a real directory - this happens
 		// when pressing up after being in the root of an archive
-		QCString _path( QFile::encodeName( url.path() ) );
+		TQCString _path( TQFile::encodeName( url.path() ) );
 		kdDebug( 7109 ) << "ArchiveProtocol::stat (stat) on " << _path << endl;
 		struct stat buff;
 		if ( ::stat( _path.data(), &buff ) == -1 || !S_ISDIR( buff.st_mode ) ) {
@@ -333,7 +333,7 @@ void ArchiveProtocol::stat( const KURL & url ) {
 	const KArchiveDirectory* root = m_archiveFile->directory();
 	const KArchiveEntry* archiveEntry;
 	if ( path.isEmpty() ) {
-		path = QString::fromLatin1( "/" );
+		path = TQString::tqfromLatin1( "/" );
 		archiveEntry = root;
 	} else {
 		archiveEntry = root->entry( path );
@@ -352,7 +352,7 @@ void ArchiveProtocol::stat( const KURL & url ) {
 void ArchiveProtocol::get( const KURL & url ) {
 	kdDebug( 7109 ) << "ArchiveProtocol::get" << url.url() << endl;
 
-	QString path;
+	TQString path;
 	if ( !checkNewFile( url, path ) ) {
 		error( KIO::ERR_DOES_NOT_EXIST, url.prettyURL() );
 		return ;
@@ -381,7 +381,7 @@ void ArchiveProtocol::get( const KURL & url ) {
 
 	totalSize( archiveFileEntry->size() );
 
-	QByteArray completeData = archiveFileEntry->data();
+	TQByteArray completeData = archiveFileEntry->data();
 
 	KMimeMagicResult * result = KMimeMagic::self() ->findBufferFileType( completeData, path );
 	kdDebug( 7109 ) << "Emitting mimetype " << result->mimeType() << endl;
@@ -390,7 +390,7 @@ void ArchiveProtocol::get( const KURL & url ) {
 	data( completeData );
 
 	processedSize( archiveFileEntry->size() );
-	data( QByteArray() );
+	data( TQByteArray() );
 
 	finished();
 }

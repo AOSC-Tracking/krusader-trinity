@@ -5,7 +5,7 @@
 #define WIDGET_H
 
 #include <kurl.h>
-#include <qtimer.h>
+#include <tqtimer.h>
 #include "segmentTip.h"
 
 template <class T> class Chain;
@@ -25,10 +25,10 @@ namespace RadialMap
         ~Map();
 
         void make( const Directory *, bool = false );
-        bool resize( const QRect& );
+        bool resize( const TQRect& );
 
         bool isNull() const { return ( m_signature == 0 ); }
-        void invalidate( const bool );
+        void tqinvalidate( const bool );
 
         friend class Builder;
         friend class Widget;
@@ -41,23 +41,24 @@ namespace RadialMap
 
         Chain<Segment> *m_signature;
 
-        QRect   m_rect;
+        TQRect   m_rect;
         uint    m_ringBreadth;  ///ring breadth
         uint    m_innerRadius;  ///radius of inner circle
         uint    m_visibleDepth; ///visible level depth of system
-        QString m_centerText;
+        TQString m_centerText;
 
         uint MAP_2MARGIN;
     };
 
-    class Widget : public QWidget
+    class Widget : public TQWidget
     {
     Q_OBJECT
+  TQ_OBJECT
 
     public:
-        Widget( QWidget* = 0, const char* = 0 );
+        Widget( TQWidget* = 0, const char* = 0 );
 
-        QString path() const;
+        TQString path() const;
         KURL url( File const * const = 0 ) const;
 
         bool isValid() const { return m_tree != 0; }
@@ -68,7 +69,7 @@ namespace RadialMap
         void zoomIn();
         void zoomOut();
         void create( const Directory* );
-        void invalidate( const bool = true );
+        void tqinvalidate( const bool = true );
         void refresh( int );
 
     private slots:
@@ -79,28 +80,28 @@ namespace RadialMap
 
     signals:
         void activated( const KURL& );
-        void invalidated( const KURL& );
+        void tqinvalidated( const KURL& );
         void created( const Directory* );
-        void mouseHover( const QString& );
+        void mouseHover( const TQString& );
 
     protected:
-        virtual void paintEvent( QPaintEvent* );
-        virtual void resizeEvent( QResizeEvent* );
-        virtual void mouseMoveEvent( QMouseEvent* );
-        virtual void mousePressEvent( QMouseEvent* );
+        virtual void paintEvent( TQPaintEvent* );
+        virtual void resizeEvent( TQResizeEvent* );
+        virtual void mouseMoveEvent( TQMouseEvent* );
+        virtual void mousePressEvent( TQMouseEvent* );
 
     protected:
-        const Segment *segmentAt( QPoint& ) const; //FIXME const reference for a library others can use
+        const Segment *segmentAt( TQPoint& ) const; //FIXME const reference for a library others can use
         const Segment *rootSegment() const { return m_rootSegment; } ///never == 0
         const Segment *focusSegment() const { return m_focus; } ///0 == nothing in focus
 
     private:
-        void paintExplodedLabels( QPainter& ) const;
+        void paintExplodedLabels( TQPainter& ) const;
 
         const Directory *m_tree;
         const Segment   *m_focus;
-        QPoint           m_offset;
-        QTimer           m_timer;
+        TQPoint           m_offset;
+        TQTimer           m_timer;
         Map              m_map;
         SegmentTip       m_tip;
         Segment         *m_rootSegment;

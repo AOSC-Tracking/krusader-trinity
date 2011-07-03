@@ -29,25 +29,25 @@
  ***************************************************************************/
 
 #include "percentalsplitter.h"
-#include <qtooltip.h>
-#include <qpainter.h>
-#include <qapplication.h>
+#include <tqtooltip.h>
+#include <tqpainter.h>
+#include <tqapplication.h>
 
-class PercentalSplitterToolTip : public QToolTip {
+class PercentalSplitterToolTip : public TQToolTip {
 public:
-  PercentalSplitterToolTip( QWidget * parent ) : QToolTip( parent ) {
+  PercentalSplitterToolTip( TQWidget * tqparent ) : TQToolTip( tqparent ) {
   }
   
   virtual ~PercentalSplitterToolTip() {
-    remove( parentWidget() );
+    remove( tqparentWidget() );
   }
   
-  void maybeTip( const QPoint & point ) {
-    if( parentWidget()->inherits( "PercentalSplitter" ) ) {
-      PercentalSplitter *splitter = (PercentalSplitter *)parentWidget();
+  void maybeTip( const TQPoint & point ) {
+    if( tqparentWidget()->inherits( "PercentalSplitter" ) ) {
+      PercentalSplitter *splitter = (PercentalSplitter *)tqparentWidget();
       
-      QString tipString = splitter->toolTipString();
-      QRect rect = QRect( parentWidget()->rect() );
+      TQString tipString = splitter->toolTipString();
+      TQRect rect = TQRect( tqparentWidget()->rect() );
 
       if( splitter->orientation() == Qt::Vertical ) {
         rect.setY( splitter->sizes()[ 0 ] );
@@ -57,13 +57,13 @@ public:
         rect.setX( splitter->sizes()[ 0 ] );
         rect.setWidth( splitter->handleWidth() );
       }
-      if( rect.contains( point ) )
+      if( rect.tqcontains( point ) )
         tip( rect, tipString );
     }
   }
 };
 
-PercentalSplitter::PercentalSplitter( QWidget * parent, const char * name ) : QSplitter( parent, name ), label( 0 ), opaqueOldPos( -1 ) {
+PercentalSplitter::PercentalSplitter( TQWidget * tqparent, const char * name ) : TQSplitter( tqparent, name ), label( 0 ), opaqueOldPos( -1 ) {
   toolTip = new PercentalSplitterToolTip( this );
 }  
   
@@ -71,26 +71,26 @@ PercentalSplitter::~PercentalSplitter() {
   delete toolTip;
 }
   
-QString PercentalSplitter::toolTipString( int p ) {
-  QValueList<int> values = sizes();  
+TQString PercentalSplitter::toolTipString( int p ) {
+  TQValueList<int> values = sizes();  
   if( values.count() == 2 && ( values[ 0 ] + values[ 1 ]  != 0 ) ) {
     if( p < 0 )
       p = values[ 0 ];
     int percent = (int)(((double)p / (double)( values[ 0 ] + values[ 1 ] )) * 10000. + 0.5);
-    return QString( "%1.%2%3" ).arg( percent / 100 ).arg( ( percent / 10 )%10 ).arg( percent % 10 ) + "%";
+    return TQString( "%1.%2%3" ).tqarg( percent / 100 ).tqarg( ( percent / 10 )%10 ).tqarg( percent % 10 ) + "%";
   }
-  return QString::null;
+  return TQString();
 }
   
 void PercentalSplitter::setRubberband ( int p ) {  
   if( p == opaqueOldPos )
     return;
 
-  QPainter paint( this );
+  TQPainter paint( this );
   paint.setPen( gray );
   paint.setBrush( gray );
   paint.setRasterOp( XorROP );
-  QRect r = contentsRect();
+  TQRect r = contentsRect();
   const int rBord = 3; // customizable?
   int hw = handleWidth();
     
@@ -99,7 +99,7 @@ void PercentalSplitter::setRubberband ( int p ) {
       if( label == 0 )
         paint.drawRect( opaqueOldPos + hw / 2 - rBord, r.y(), 2 * rBord, r.height() );
       else {
-        QPoint labelLoc = mapFromGlobal( labelLocation );
+        TQPoint labelLoc = mapFromGlobal( labelLocation );
         if( labelLoc.y() > r.y() )
           paint.drawRect( opaqueOldPos + hw / 2 - rBord, r.y(), 2 * rBord, labelLoc.y() );
         if( labelLoc.y() + label->height() < r.height() )
@@ -111,7 +111,7 @@ void PercentalSplitter::setRubberband ( int p ) {
       if( label == 0 )
         paint.drawRect( r.x(), opaqueOldPos + hw / 2 - rBord, r.width(), 2 * rBord );
       else {
-        QPoint labelLoc = mapFromGlobal( labelLocation );
+        TQPoint labelLoc = mapFromGlobal( labelLocation );
         if( labelLoc.x() > r.x() )
           paint.drawRect( r.x(), opaqueOldPos + hw / 2 - rBord, labelLoc.x(), 2 * rBord );
         if( labelLoc.x() + label->width() < r.width() )
@@ -127,19 +127,19 @@ void PercentalSplitter::setRubberband ( int p ) {
     }
   }
   else {
-    int scr = QApplication::desktop()->screenNumber( this );
+    int scr = TQApplication::desktop()->screenNumber( this );
       
     if( label == 0 ) {
-      label = new QLabel( QApplication::desktop()->screen( scr ), "SplitterPercent", WStyle_StaysOnTop | 
+      label = new TQLabel( TQT_TQWIDGET(TQApplication::desktop()->screen( scr )), "SplitterPercent", WStyle_StaysOnTop | 
                           WStyle_Customize | WStyle_NoBorder | WStyle_Tool | WX11BypassWM );
       label->setMargin(1);
       label->setAutoMask( FALSE );
-      label->setFrameStyle( QFrame::Plain | QFrame::Box );
+      label->setFrameStyle( TQFrame::Plain | TQFrame::Box );
       label->setLineWidth( 1 );
-      label->setAlignment( AlignAuto | AlignTop );
+      label->tqsetAlignment( AlignAuto | AlignTop );
       label->setIndent(0);
 
-      QFontMetrics fm = label->fontMetrics();
+      TQFontMetrics fm = label->fontMetrics();
       label->setMinimumWidth( fm.width( "99.99%" ) + 5 );
 
       label->polish();
@@ -149,22 +149,22 @@ void PercentalSplitter::setRubberband ( int p ) {
     label->adjustSize();
 
     if( orientation() == Qt::Horizontal ) {
-      labelLocation = mapToGlobal( QPoint( p - label->width()/2, r.y() + r.height()/2 ) );
+      labelLocation = mapToGlobal( TQPoint( p - label->width()/2, r.y() + r.height()/2 ) );
       if( labelLocation.x() < 0 )
         labelLocation.setX( 0 );
     } else {
-      labelLocation = mapToGlobal( QPoint( r.x() + r.width()/2, p - label->height()/2 ) );
+      labelLocation = mapToGlobal( TQPoint( r.x() + r.width()/2, p - label->height()/2 ) );
       if( labelLocation.y() < 0 )
         labelLocation.setY( 0 );
     }
 
-#ifdef Q_WS_MAC
-    QRect screen = QApplication::desktop()->availableGeometry( scr );
+#ifdef TQ_WS_MAC
+    TQRect screen = TQApplication::desktop()->availableGeometry( scr );
 #else
-    QRect screen = QApplication::desktop()->screenGeometry( scr );
+    TQRect screen = TQApplication::desktop()->screenGeometry( scr );
 #endif
 
-    QPoint labelLoc = mapFromGlobal( labelLocation );
+    TQPoint labelLoc = mapFromGlobal( labelLocation );
     if( orientation() == Qt::Horizontal ) {
       if( labelLocation.x() + label->width() > screen.width() )
         labelLocation.setX( screen.width() - label->width() );

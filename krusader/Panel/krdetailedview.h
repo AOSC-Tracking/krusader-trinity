@@ -33,9 +33,9 @@ A
 #include <klistview.h>
 #include <ksqueezedtextlabel.h>
 #include <klocale.h>
-#include <qwidget.h>
-#include <qtimer.h>
-#include <qdatetime.h>
+#include <tqwidget.h>
+#include <tqtimer.h>
+#include <tqdatetime.h>
 #include "krview.h"
 #include "krviewitem.h"
 
@@ -57,24 +57,25 @@ public:
 };
 
 
-class QDragMoveEvent;
+class TQDragMoveEvent;
 class KrRenameTimerObject;
 class ListPanel;
 class KrDetailedViewItem;
 
 /**
  * KrDetailedView implements everthing and anything regarding a detailed view in a filemananger.
- * IT MUST USE KrViewItem as the children to it's *KListView. KrDetailedView and KrViewItem are
+ * IT MUST USE KrViewItem as the tqchildren to it's *KListView. KrDetailedView and KrViewItem are
  * tightly coupled and the view will not work with other kinds of items.
  * Apart from this, the view is self-reliant and you can use the vast interface to get whatever
  * information is necessery from it.
  */
 class KrDetailedView : public KListView, public KrView {
    Q_OBJECT
+  TQ_OBJECT
    friend class KrDetailedViewItem;
 
 public:
-   KrDetailedView( QWidget *parent, bool &left, KConfig *cfg = krConfig, const char *name = 0 );
+   KrDetailedView( TQWidget *tqparent, bool &left, KConfig *cfg = krConfig, const char *name = 0 );
    virtual ~KrDetailedView();
    virtual int column( KrDetailedViewProperties::ColumnType type );
    virtual inline KrViewItem *getFirst() { return dynamic_cast<KrViewItem*>( firstChild() ); }
@@ -82,12 +83,12 @@ public:
    virtual inline KrViewItem *getNext( KrViewItem *current ) { return dynamic_cast<KrViewItem*>( dynamic_cast<KListViewItem*>( current ) ->itemBelow() ); }
    virtual inline KrViewItem *getPrev( KrViewItem *current ) { return dynamic_cast<KrViewItem*>( dynamic_cast<KListViewItem*>( current ) ->itemAbove() ); }
    virtual inline KrViewItem *getCurrentKrViewItem() { return dynamic_cast<KrViewItem*>( currentItem() ); }
-   virtual KrViewItem *getKrViewItemAt( const QPoint &vp );
-   virtual inline KrViewItem *findItemByName( const QString &name ) { return dynamic_cast<KrViewItem*>( findItem( name, 0 ) ); }
+   virtual KrViewItem *getKrViewItemAt( const TQPoint &vp );
+   virtual inline KrViewItem *findItemByName( const TQString &name ) { return dynamic_cast<KrViewItem*>( tqfindItem( name, 0 ) ); }
    virtual void addItems( vfs *v, bool addUpDir = true );
- 	virtual QString getCurrentItem() const;
+ 	virtual TQString getCurrentItem() const;
    virtual void makeItemVisible( const KrViewItem *item );	
-   virtual void setCurrentItem( const QString& name );
+   virtual void setCurrentItem( const TQString& name );
    virtual void updateView();
    virtual void updateItem(KrViewItem* item);
    virtual void clear();
@@ -112,69 +113,69 @@ protected:
    void newColumn( KrDetailedViewProperties::ColumnType type );
    void selectColumns();
    
-   virtual void keyPressEvent( QKeyEvent *e );
-   virtual void imStartEvent( QIMEvent* e );
-   virtual void imEndEvent( QIMEvent *e );
-   virtual void imComposeEvent( QIMEvent *e );
-   virtual void contentsMousePressEvent( QMouseEvent *e );
-   virtual void contentsMouseReleaseEvent (QMouseEvent *e);
-   virtual void contentsMouseMoveEvent ( QMouseEvent * e );
-   virtual void contentsWheelEvent( QWheelEvent *e );
-   virtual bool acceptDrag( QDropEvent* e ) const;
-   virtual void contentsDropEvent( QDropEvent *e );
-   virtual void contentsDragMoveEvent( QDragMoveEvent *e );
-   virtual QRect drawItemHighlighter(QPainter *painter, QListViewItem *item);
+   virtual void keyPressEvent( TQKeyEvent *e );
+   virtual void imStartEvent( TQIMEvent* e );
+   virtual void imEndEvent( TQIMEvent *e );
+   virtual void imComposeEvent( TQIMEvent *e );
+   virtual void contentsMousePressEvent( TQMouseEvent *e );
+   virtual void contentsMouseReleaseEvent (TQMouseEvent *e);
+   virtual void contentsMouseMoveEvent ( TQMouseEvent * e );
+   virtual void contentsWheelEvent( TQWheelEvent *e );
+   virtual bool acceptDrag( TQDropEvent* e ) const;
+   virtual void contentsDropEvent( TQDropEvent *e );
+   virtual void contentsDragMoveEvent( TQDragMoveEvent *e );
+   virtual TQRect drawItemHighlighter(TQPainter *painter, TQListViewItem *item);
    virtual void startDrag() { op()->startDrag(); }
-   virtual bool event( QEvent *e );
-   virtual bool eventFilter( QObject * watched, QEvent * e );
+   virtual bool event( TQEvent *e );
+   virtual bool eventFilter( TQObject * watched, TQEvent * e );
 
 protected slots:
-   void rename( QListViewItem *item, int c );
-   void slotClicked( QListViewItem *item );
-   void slotDoubleClicked( QListViewItem *item );
-   void slotItemDescription( QListViewItem *item );
-   void slotCurrentChanged( QListViewItem *item );
-   void handleContextMenu( QListViewItem*, const QPoint&, int );
+   void rename( TQListViewItem *item, int c );
+   void slotClicked( TQListViewItem *item );
+   void slotDoubleClicked( TQListViewItem *item );
+   void slotItemDescription( TQListViewItem *item );
+   void slotCurrentChanged( TQListViewItem *item );
+   void handleContextMenu( TQListViewItem*, const TQPoint&, int );
    virtual void renameCurrentItem();
    virtual void showContextMenu( );
-   void inplaceRenameFinished( QListViewItem *it, int col );
-   void setNameToMakeCurrent( QListViewItem *it );
+   void inplaceRenameFinished( TQListViewItem *it, int col );
+   void setNameToMakeCurrent( TQListViewItem *it );
 	void sortOrderChanged(int);
-	void slotRightButtonPressed(QListViewItem*, const QPoint& point, int);
+	void slotRightButtonPressed(TQListViewItem*, const TQPoint& point, int);
 	void slotSortOrderChanged(int col);
-   void transformCurrentChanged( QListViewItem * item ) { emit currentChanged( dynamic_cast<KrViewItem *>(item ) ); }
+   void transformCurrentChanged( TQListViewItem * item ) { emit currentChanged( dynamic_cast<KrViewItem *>(item ) ); }
 
    /**
     * used internally to produce the signal middleButtonClicked()
     */
-   void slotMouseClicked( int button, QListViewItem * item, const QPoint & pos, int c );
-   inline void slotExecuted( QListViewItem* i ) {
-      QString tmp = dynamic_cast<KrViewItem*>( i ) ->name();
+   void slotMouseClicked( int button, TQListViewItem * item, const TQPoint & pos, int c );
+   inline void slotExecuted( TQListViewItem* i ) {
+      TQString tmp = dynamic_cast<KrViewItem*>( i ) ->name();
       op()->emitExecuted( tmp );
    }
 
 public slots:
    void refreshColors();
-   void quickSearch( const QString &, int = 0 );
-   void stopQuickSearch( QKeyEvent* );
-   void handleQuickSearchEvent( QKeyEvent* );
+   void quickSearch( const TQString &, int = 0 );
+   void stopQuickSearch( TQKeyEvent* );
+   void handleQuickSearchEvent( TQKeyEvent* );
 
 private:
-   static QString ColumnName[ KrDetailedViewProperties::MAX_COLUMNS ];
+   static TQString ColumnName[ KrDetailedViewProperties::MAX_COLUMNS ];
    bool swushSelects;
-   QPoint dragStartPos;
-   QListViewItem *lastSwushPosition;
+   TQPoint dragStartPos;
+   TQListViewItem *lastSwushPosition;
    bool caseSensitiveSort;
    KrViewItem *_currDragItem;
    bool singleClicked;
    bool modifierPressed;
-   QTime clickTime;
-   QListViewItem *clickedItem;
-   QTimer renameTimer;
-   QTimer contextMenuTimer;
-   QPoint contextMenuPoint;
-   QListViewItem *currentlyRenamedItem;
-   QListViewItem *pressedItem;
+   TQTime clickTime;
+   TQListViewItem *clickedItem;
+   TQTimer renameTimer;
+   TQTimer contextMenuTimer;
+   TQPoint contextMenuPoint;
+   TQListViewItem *currentlyRenamedItem;
+   TQListViewItem *pressedItem;
 };
 
 #endif /* KRDETAILEDVIEW_H */

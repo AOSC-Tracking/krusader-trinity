@@ -31,8 +31,8 @@
 #include "splittergui.h"
 #include "../VFS/vfs.h"
 #include <klocale.h>
-#include <qlayout.h>
-#include <qlabel.h>
+#include <tqlayout.h>
+#include <tqlabel.h>
 #include <kmessagebox.h>
 
 PredefinedDevice SplitterGUI::predefinedDevices[] = {
@@ -46,18 +46,18 @@ PredefinedDevice SplitterGUI::predefinedDevices[] = {
   {i18n( "700 MB (CD-R)" ), 700*0x100000}
   };
 
-SplitterGUI::SplitterGUI( QWidget* parent,  KURL fileURL, KURL defaultDir ) :
-    QDialog( parent, "Krusader::SplitterGUI", true, 0 ), 
-    userDefinedSize ( 0x100000 ), lastSelectedDevice( 0 ), resultCode( QDialog::Rejected )
+SplitterGUI::SplitterGUI( TQWidget* tqparent,  KURL fileURL, KURL defaultDir ) :
+    TQDialog( tqparent, "Krusader::SplitterGUI", true, 0 ), 
+    userDefinedSize ( 0x100000 ), lastSelectedDevice( 0 ), resultCode( TQDialog::Rejected )
 {
   predefinedDeviceNum = sizeof( predefinedDevices ) / sizeof( PredefinedDevice );
 
-  QGridLayout *grid = new QGridLayout( this );
+  TQGridLayout *grid = new TQGridLayout( this );
   grid->setSpacing( 6 );
   grid->setMargin( 11 );
 
-  QLabel *splitterLabel = new QLabel( this, "SplitterLabel" );
-  splitterLabel->setText( i18n( "Split the file %1 to directory:"  ).arg( vfs::pathOrURL( fileURL ) ) );
+  TQLabel *splitterLabel = new TQLabel( this, "SplitterLabel" );
+  splitterLabel->setText( i18n( "Split the file %1 to directory:"  ).tqarg( vfs::pathOrURL( fileURL ) ) );
   splitterLabel->setMinimumWidth( 400 );
   grid->addWidget( splitterLabel,0 ,0 );
 
@@ -66,25 +66,25 @@ SplitterGUI::SplitterGUI( QWidget* parent,  KURL fileURL, KURL defaultDir ) :
   urlReq->setMode( KFile::Directory );
   grid->addWidget( urlReq, 1 ,0 );
 
-  QHBox *splitSizeLine = new QHBox( this, "splitSizeLine" );
+  TQHBox *splitSizeLine = new TQHBox( this, "splitSizeLine" );
      
-  deviceCombo = new QComboBox( splitSizeLine, "deviceCombo" );
+  deviceCombo = new TQComboBox( splitSizeLine, "deviceCombo" );
   for( int i=0; i != predefinedDeviceNum; i++ )
     deviceCombo->insertItem( predefinedDevices[i].name );
   deviceCombo->insertItem( i18n( "User Defined" ) );
 
-  QLabel *spacer = new QLabel( splitSizeLine );
+  TQLabel *spacer = new TQLabel( splitSizeLine );
   spacer->setText( " "  );
-  spacer->setSizePolicy( QSizePolicy::Expanding, QSizePolicy::Minimum );
+  spacer->tqsetSizePolicy( TQSizePolicy::Expanding, TQSizePolicy::Minimum );
 
-  QLabel *bytesPerFile = new QLabel( splitSizeLine, "BytesPerFile" );
+  TQLabel *bytesPerFile = new TQLabel( splitSizeLine, "BytesPerFile" );
   bytesPerFile->setText( i18n( "Max file size:"  ) );
 
   spinBox = new SplitterSpinBox( splitSizeLine, "spinbox" );
   spinBox->setMinimumWidth( 85 );
   spinBox->setEnabled( false );
     
-  sizeCombo = new QComboBox( splitSizeLine, "sizeCombo" );
+  sizeCombo = new TQComboBox( splitSizeLine, "sizeCombo" );
   sizeCombo->insertItem( i18n( "Byte" ) );
   sizeCombo->insertItem( i18n( "kByte" ) );
   sizeCombo->insertItem( i18n( "MByte" ) );
@@ -92,24 +92,24 @@ SplitterGUI::SplitterGUI( QWidget* parent,  KURL fileURL, KURL defaultDir ) :
 
   grid->addWidget( splitSizeLine,2 ,0 );
 
-  QFrame *separator = new QFrame( this, "separatorLine" );
-  separator->setFrameStyle( QFrame::HLine | QFrame::Sunken );
-  separator->setFixedHeight( separator->sizeHint().height() );
+  TQFrame *separator = new TQFrame( this, "separatorLine" );
+  separator->setFrameStyle( TQFrame::HLine | TQFrame::Sunken );
+  separator->setFixedHeight( separator->tqsizeHint().height() );
 
   grid->addWidget( separator,3 ,0 );
   
-  QHBoxLayout *splitButtons = new QHBoxLayout;
+  TQHBoxLayout *splitButtons = new TQHBoxLayout;
   splitButtons->setSpacing( 6 );
   splitButtons->setMargin( 0 );
 
-  QSpacerItem* spacer2 = new QSpacerItem( 0, 0, QSizePolicy::Expanding, QSizePolicy::Minimum );
+  TQSpacerItem* spacer2 = new TQSpacerItem( 0, 0, TQSizePolicy::Expanding, TQSizePolicy::Minimum );
   splitButtons->addItem( spacer2 );
 
-  QPushButton *splitBtn = new QPushButton( this, "splitBtn" );
+  TQPushButton *splitBtn = new TQPushButton( this, "splitBtn" );
   splitBtn->setText( i18n("&Split") );
   splitButtons->addWidget( splitBtn );
   
-  QPushButton *cancelBtn = new QPushButton( this, "cancelBtn" );
+  TQPushButton *cancelBtn = new TQPushButton( this, "cancelBtn" );
   cancelBtn->setText( i18n("&Cancel") );
   splitButtons->addWidget( cancelBtn );
 
@@ -117,10 +117,10 @@ SplitterGUI::SplitterGUI( QWidget* parent,  KURL fileURL, KURL defaultDir ) :
         
   setCaption(i18n("Krusader::Splitter"));
 
-  connect( sizeCombo, SIGNAL( activated(int) ), this, SLOT( sizeComboActivated( int ) ) );
-  connect( deviceCombo, SIGNAL( activated(int) ), this, SLOT( predefinedComboActivated( int ) ) );
-  connect( cancelBtn, SIGNAL( clicked() ), this, SLOT( reject() ) );
-  connect( splitBtn , SIGNAL( clicked() ), this, SLOT( splitPressed() ) );
+  connect( sizeCombo, TQT_SIGNAL( activated(int) ), this, TQT_SLOT( sizeComboActivated( int ) ) );
+  connect( deviceCombo, TQT_SIGNAL( activated(int) ), this, TQT_SLOT( predefinedComboActivated( int ) ) );
+  connect( cancelBtn, TQT_SIGNAL( clicked() ), this, TQT_SLOT( reject() ) );
+  connect( splitBtn , TQT_SIGNAL( clicked() ), this, TQT_SLOT( splitPressed() ) );
   
   predefinedComboActivated( 0 );  
   resultCode = exec();
@@ -197,7 +197,7 @@ void SplitterGUI::splitPressed()
   emit accept();
 }
 
-void SplitterGUI::keyPressEvent( QKeyEvent *e )
+void SplitterGUI::keyPressEvent( TQKeyEvent *e )
 {
   switch ( e->key() )
   {
@@ -206,7 +206,7 @@ void SplitterGUI::keyPressEvent( QKeyEvent *e )
     emit splitPressed();
     return;
   default:
-    QDialog::keyPressEvent( e );
+    TQDialog::keyPressEvent( e );
   }
 }
 

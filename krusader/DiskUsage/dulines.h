@@ -31,15 +31,16 @@
 #ifndef __DU_LINES_H__
 #define __DU_LINES_H__
 
-#include <qlistview.h>
-#include <qpixmap.h>
+#include <tqlistview.h>
+#include <tqpixmap.h>
 #include "diskusage.h"
 
 class DULinesToolTip;
 
-class DULines : public QListView
+class DULines : public TQListView
 {
   Q_OBJECT
+  TQ_OBJECT
   
 public:
   DULines( DiskUsage *usage, const char *name );
@@ -50,7 +51,7 @@ public:
 public slots:
   void slotDirChanged( Directory *dirEntry );
   void sectionResized( int );
-  void slotRightClicked(QListViewItem *);
+  void slotRightClicked(TQListViewItem *);
   void slotChanged( File * );
   void slotDeleted( File * );
   void slotShowFileSizes();
@@ -59,13 +60,13 @@ public slots:
 protected:
   DiskUsage *diskUsage;  
   
-  virtual void contentsMouseDoubleClickEvent ( QMouseEvent * e );
-  virtual void keyPressEvent( QKeyEvent *e );
+  virtual void contentsMouseDoubleClickEvent ( TQMouseEvent * e );
+  virtual void keyPressEvent( TQKeyEvent *e );
   
 private:
-  QPixmap createPixmap( int percent, int maxPercent, int maxWidth );
+  TQPixmap createPixmap( int percent, int maxPercent, int maxWidth );
   
-  bool doubleClicked( QListViewItem * item );
+  bool doubleClicked( TQListViewItem * item );
   
   bool refreshNeeded;
   

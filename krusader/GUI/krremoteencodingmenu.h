@@ -32,7 +32,7 @@
 #ifndef REMOTEENCODING_MENU_H
 #define REMOTEENCODING_MENU_H
 
-#include <qstringlist.h>
+#include <tqstringlist.h>
 #include <kurl.h>
 #include <klibloader.h>
 #include <kaction.h>
@@ -40,10 +40,11 @@
 class KrRemoteEncodingMenu: public KActionMenu
 {
   Q_OBJECT
+  TQ_OBJECT
 public:
-  KrRemoteEncodingMenu (const QString &text, const QString &icon, QObject *parent=0, const char *name=0);
+  KrRemoteEncodingMenu (const TQString &text, const TQString &icon, TQObject *tqparent=0, const char *name=0);
 
-  virtual int plug( QWidget *widget, int index = -1);
+  virtual int plug( TQWidget *widget, int index = -1);
 
 protected slots:
 
@@ -59,7 +60,7 @@ private:
   void loadSettings();
   void updateKIOSlaves();
 
-  QStringList encodingNames;
+  TQStringList encodingNames;
   bool        settingsLoaded;
   int         defaultID;
 };

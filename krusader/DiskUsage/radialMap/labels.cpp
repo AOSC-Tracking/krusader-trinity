@@ -2,10 +2,10 @@
 //Copyright: See COPYING file that comes with this distribution
 
 #include <kstringhandler.h>
-#include <qfont.h>
-#include <qfontmetrics.h>
-#include <qpainter.h>
-#include <qptrlist.h>
+#include <tqfont.h>
+#include <tqfontmetrics.h>
+#include <tqpainter.h>
+#include <tqptrlist.h>
 
 #include "Config.h"
 #include "fileTree.h"
@@ -30,13 +30,13 @@ namespace RadialMap
         int x1, y1, x2, y2, x3;
         int tx, ty;
 
-        QString qs;
+        TQString qs;
     };
 
-    class LabelList : public QPtrList<Label>
+    class LabelList : public TQPtrList<Label>
     {
     protected:
-        int compareItems( QPtrCollection::Item item1, QPtrCollection::Item item2 )
+        int compareItems( TQPtrCollection::Item item1, TQPtrCollection::Item item2 )
         {
             //you add 1440 to work round the fact that later you want the circle split vertically
             //and as it is you start at 3 o' clock. It's to do with rightPrevY, stops annoying bug
@@ -60,12 +60,12 @@ namespace RadialMap
 
 
 void
-RadialMap::Widget::paintExplodedLabels( QPainter &paint ) const
+RadialMap::Widget::paintExplodedLabels( TQPainter &paint ) const
 {
   //we are a friend of RadialMap::Map
 
   LabelList list; list.setAutoDelete( true );
-  QPtrListIterator<Label> it( list );
+  TQPtrListIterator<Label> it( list );
   unsigned int startLevel = 0;
 
 
@@ -81,7 +81,7 @@ RadialMap::Widget::paintExplodedLabels( QPainter &paint ) const
          p != m_tree;
          ++startLevel ) //startLevel is the level above whatever m_focus is in
     {
-      p = p->parent();
+      p = p->tqparent();
     }
 
     //range=2 means 2 levels to draw labels for
@@ -126,7 +126,7 @@ RadialMap::Widget::paintExplodedLabels( QPainter &paint ) const
   //   if so, remove the least significant labels
 
   it.toFirst();
-  QPtrListIterator<Label> jt( it );
+  TQPtrListIterator<Label> jt( it );
   ++jt;
 
   while( jt ) //**** no need to check _it_ as jt will be NULL if _it_ was too
@@ -211,13 +211,13 @@ RadialMap::Widget::paintExplodedLabels( QPainter &paint ) const
 
     bool rightSide;
 
-    QFont font;
+    TQFont font;
 
     for( it.toFirst(); it != 0; ++it )
     {
-      //** bear in mind that text is drawn with QPoint param as BOTTOM left corner of text box
+      //** bear in mind that text is drawn with TQPoint param as BOTTOM left corner of text box
       if( varySizes ) font.setPointSize( sizes[(*it)->lvl] );
-      QFontMetrics fm( font );
+      TQFontMetrics fm( font );
       int fmh  = fm.height(); //used to ensure label texts don't overlap
       int fmhD4 = fmh / 4;
 
@@ -251,7 +251,7 @@ RadialMap::Widget::paintExplodedLabels( QPainter &paint ) const
       x2 = x1 - int(double(y2 - y1) / tan( ra ));
       ty = y2 + fmhD4;
 
-      QString qs;
+      TQString qs;
       if( rightSide ) {
 
         if( x2 > width() || ty < fmh || x2 < x1 )
@@ -319,15 +319,15 @@ RadialMap::Widget::paintExplodedLabels( QPainter &paint ) const
 
   //5. Render labels
 
-  paint.setPen( QPen( Qt::black, 1 ) );
+  paint.setPen( TQPen( TQt::black, 1 ) );
 
     for( it.toFirst(); it != 0; ++it )
     {
       if( varySizes )
       {
-        //**** how much overhead in making new QFont each time?
+        //**** how much overhead in making new TQFont each time?
         //     (implicate sharing remember)
-        QFont font = paint.font();
+        TQFont font = paint.font();
         font.setPointSize( sizes[(*it)->lvl] );
         paint.setFont( font );
       }

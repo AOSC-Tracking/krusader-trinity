@@ -18,13 +18,13 @@
 #ifndef KRVIEWER_H
 #define KRVIEWER_H
 
-#include <qwidget.h>
-#include <qptrlist.h>
+#include <tqwidget.h>
+#include <tqptrlist.h>
 #include <kparts/mainwindow.h>
 #include <ktempfile.h>
 #include <kparts/partmanager.h>
 #include <kparts/browserextension.h>
-#include <qguardedptr.h>
+#include <tqguardedptr.h>
 #include <ktabwidget.h>
 
 #include "../krusader.h"
@@ -34,25 +34,26 @@
   *@author Shie Erlich & Rafi Yanai
   */
 
-class QPopupMenu;
+class TQPopupMenu;
 class PanelViewerBase;
 
 class KrViewer : public KParts::MainWindow {
 	Q_OBJECT
+  TQ_OBJECT
 public:
 	virtual ~KrViewer();
 	
 	enum Mode{Generic,Text,Hex};
 
-	static void view( KURL url, QWidget * parent = krApp );
-	static void view( KURL url, Mode mode, bool new_window, QWidget * parent = krApp );
-	static void edit( KURL url, QWidget * parent );
-	static void edit( KURL url, Mode mode=Text, int new_window=-1, QWidget * parent = krApp );
+	static void view( KURL url, TQWidget * tqparent = krApp );
+	static void view( KURL url, Mode mode, bool new_window, TQWidget * tqparent = krApp );
+	static void edit( KURL url, TQWidget * tqparent );
+	static void edit( KURL url, Mode mode=Text, int new_window=-1, TQWidget * tqparent = krApp );
 	
-	virtual bool eventFilter ( QObject * watched, QEvent * e );
+	virtual bool eventFilter ( TQObject * watched, TQEvent * e );
 
 public slots:
-	void keyPressEvent( QKeyEvent *e );
+	void keyPressEvent( TQKeyEvent *e );
 	void createGUI( KParts::Part* );
 
 	void viewGeneric();
@@ -63,9 +64,9 @@ public slots:
 	void print();
 	void copy();
 
-	void tabChanged(QWidget* w);
+	void tabChanged(TQWidget* w);
 	void tabURLChanged( PanelViewerBase * pvb, const KURL &url );
-	void tabCloseRequest(QWidget *w);
+	void tabCloseRequest(TQWidget *w);
 	void tabCloseRequest();
 
 	void nextTab();
@@ -79,21 +80,21 @@ protected:
 	virtual bool queryExit();
 	virtual void windowActivationChange ( bool oldActive );
 
-	virtual void focusInEvent( QFocusEvent * ){ if( viewers.remove( this ) ) viewers.prepend( this ); } // move to first
+	virtual void focusInEvent( TQFocusEvent * ){ if( viewers.remove( this ) ) viewers.prepend( this ); } // move to first
 
 private:
-	KrViewer( QWidget *parent = 0, const char *name = 0 );
-	void addTab(PanelViewerBase* pvb, QString msg,QString iconName, KParts::Part* part);
+	KrViewer( TQWidget *tqparent = 0, const char *name = 0 );
+	void addTab(PanelViewerBase* pvb, TQString msg,TQString iconName, KParts::Part* part);
 	PanelViewerBase * getPanelViewerBase( KParts::Part* part);
 	void updateActions( PanelViewerBase * base );
 	
 	static KrViewer* getViewer(bool new_window);	
 
 	KParts::PartManager manager;
-	QPopupMenu* viewerMenu;
+	TQPopupMenu* viewerMenu;
 	KTempFile tmpFile;
 	KTabWidget tabBar;
-	QGuardedPtr<QWidget> returnFocusTo;
+	TQGuardedPtr<TQWidget> returnFocusTo;
 	PanelViewerBase * returnFocusTab;
 	
 	int detachActionIndex;
@@ -104,17 +105,18 @@ private:
 	int tabCloseID;
 	int closeID;
 
-	static QPtrList<KrViewer> viewers; // the first viewer is the active one
-	QValueList<int>    reservedKeys;   // the reserved key sequences
-	QValueList<int>    reservedKeyIDs; // the IDs of the reserved keys
+	static TQPtrList<KrViewer> viewers; // the first viewer is the active one
+	TQValueList<int>    reservedKeys;   // the reserved key sequences
+	TQValueList<int>    reservedKeyIDs; // the IDs of the reserved keys
 };
 
-class Invoker : public QObject {
+class Invoker : public TQObject {
 	Q_OBJECT
+  TQ_OBJECT
 	
 public:
-	Invoker( QObject *recv, const char * slot ) {
-		connect( this, SIGNAL( invokeSignal() ), recv, slot );
+	Invoker( TQObject *recv, const char * slot ) {
+		connect( this, TQT_SIGNAL( invokeSignal() ), recv, slot );
 	}
 	
 	void invoke() {

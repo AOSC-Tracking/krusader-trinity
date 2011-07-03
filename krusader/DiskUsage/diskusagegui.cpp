@@ -34,13 +34,13 @@
 #include "../VFS/vfs.h"
 #include "../Dialogs/krdialogs.h"
 
-#include <qtimer.h>
-#include <qhbox.h>
+#include <tqtimer.h>
+#include <tqhbox.h>
 #include <klocale.h>
-#include <qtooltip.h>
+#include <tqtooltip.h>
 
-DiskUsageGUI::DiskUsageGUI( KURL openDir, QWidget* parent, const char *name ) 
-  : QDialog( parent, name, false, 0 ), exitAtFailure( true )
+DiskUsageGUI::DiskUsageGUI( KURL openDir, TQWidget* tqparent, const char *name ) 
+  : TQDialog( tqparent, name, false, 0 ), exitAtFailure( true )
 {  
   setCaption( i18n("Krusader::Disk Usage") );
   
@@ -48,47 +48,47 @@ DiskUsageGUI::DiskUsageGUI( KURL openDir, QWidget* parent, const char *name )
   if( !newSearch() )
     return;
   
-  QGridLayout *duGrid = new QGridLayout( this );
+  TQGridLayout *duGrid = new TQGridLayout( this );
   duGrid->setSpacing( 6 );
   duGrid->setMargin( 11 );
   
-  QHBox *duTools = new QHBox( this, "duTools" );
-  duTools->setSizePolicy( QSizePolicy::Fixed, QSizePolicy::Fixed );
+  TQHBox *duTools = new TQHBox( this, "duTools" );
+  duTools->tqsetSizePolicy( TQSizePolicy::Fixed, TQSizePolicy::Fixed );
     
-  btnNewSearch = new QToolButton( duTools, "btnNewSearch" );
-  btnNewSearch->setIconSet( QIconSet(krLoader->loadIcon("fileopen",KIcon::Desktop)) );
-  QToolTip::add( btnNewSearch, i18n( "Start new disk usage search" ) );
+  btnNewSearch = new TQToolButton( duTools, "btnNewSearch" );
+  btnNewSearch->setIconSet( TQIconSet(krLoader->loadIcon("fileopen",KIcon::Desktop)) );
+  TQToolTip::add( btnNewSearch, i18n( "Start new disk usage search" ) );
   
-  btnRefresh = new QToolButton( duTools, "btnRefresh" );
-  btnRefresh->setIconSet( QIconSet(krLoader->loadIcon("reload",KIcon::Desktop)) );
-  QToolTip::add( btnRefresh, i18n( "Refresh" ) );
+  btnRefresh = new TQToolButton( duTools, "btnRefresh" );
+  btnRefresh->setIconSet( TQIconSet(krLoader->loadIcon("reload",KIcon::Desktop)) );
+  TQToolTip::add( btnRefresh, i18n( "Refresh" ) );
 
-  btnDirUp = new QToolButton( duTools, "btnDirUp" );
-  btnDirUp->setIconSet( QIconSet(krLoader->loadIcon("up",KIcon::Desktop)) );
-  QToolTip::add( btnDirUp, i18n( "Parent directory" ) );
+  btnDirUp = new TQToolButton( duTools, "btnDirUp" );
+  btnDirUp->setIconSet( TQIconSet(krLoader->loadIcon("up",KIcon::Desktop)) );
+  TQToolTip::add( btnDirUp, i18n( "Parent directory" ) );
   
-  QWidget * separatorWidget = new QWidget( duTools, "separatorWidget" );
+  TQWidget * separatorWidget = new TQWidget( duTools, "separatorWidget" );
   separatorWidget->setMinimumWidth( 10 );
   
-  btnLines = new QToolButton( duTools, "btnLines" );
-  btnLines->setIconSet( QIconSet(krLoader->loadIcon("leftjust",KIcon::Desktop)) );
+  btnLines = new TQToolButton( duTools, "btnLines" );
+  btnLines->setIconSet( TQIconSet(krLoader->loadIcon("leftjust",KIcon::Desktop)) );
   btnLines->setToggleButton( true );
-  QToolTip::add( btnLines, i18n( "Line view" ) );
+  TQToolTip::add( btnLines, i18n( "Line view" ) );
 
-  btnDetailed = new QToolButton( duTools, "btnDetailed" );
-  btnDetailed->setIconSet( QIconSet(krLoader->loadIcon("view_detailed",KIcon::Desktop)) );
+  btnDetailed = new TQToolButton( duTools, "btnDetailed" );
+  btnDetailed->setIconSet( TQIconSet(krLoader->loadIcon("view_detailed",KIcon::Desktop)) );
   btnDetailed->setToggleButton( true );
-  QToolTip::add( btnDetailed, i18n( "Detailed view" ) );
+  TQToolTip::add( btnDetailed, i18n( "Detailed view" ) );
 
-  btnFilelight = new QToolButton( duTools, "btnFilelight" );
-  btnFilelight->setIconSet( QIconSet(krLoader->loadIcon("kr_diskusage",KIcon::Desktop)) );
+  btnFilelight = new TQToolButton( duTools, "btnFilelight" );
+  btnFilelight->setIconSet( TQIconSet(krLoader->loadIcon("kr_diskusage",KIcon::Desktop)) );
   btnFilelight->setToggleButton( true );
-  QToolTip::add( btnFilelight, i18n( "Filelight view" ) );
+  TQToolTip::add( btnFilelight, i18n( "Filelight view" ) );
     
-  QWidget *spacerWidget = new QWidget( duTools, "spacerWidget" );
-  QHBoxLayout *hboxlayout = new QHBoxLayout( spacerWidget );
-  QSpacerItem* spacer = new QSpacerItem( 0, 0, QSizePolicy::Expanding, QSizePolicy::Fixed );
-  hboxlayout->addItem( spacer );
+  TQWidget *spacerWidget = new TQWidget( duTools, "spacerWidget" );
+  TQHBoxLayout *hboxtqlayout = new TQHBoxLayout( spacerWidget );
+  TQSpacerItem* spacer = new TQSpacerItem( 0, 0, TQSizePolicy::Expanding, TQSizePolicy::Fixed );
+  hboxtqlayout->addItem( spacer );
   
   duGrid->addWidget( duTools, 0, 0 );
   
@@ -96,20 +96,20 @@ DiskUsageGUI::DiskUsageGUI( KURL openDir, QWidget* parent, const char *name )
   duGrid->addWidget( diskUsage, 1, 0 );
   
   status = new KSqueezedTextLabel( this );
-  status->setFrameShape( QLabel::StyledPanel );
-  status->setFrameShadow( QLabel::Sunken );  
+  status->setFrameShape( TQLabel::StyledPanel );
+  status->setFrameShadow( TQLabel::Sunken );  
   duGrid->addWidget( status, 2, 0 );
   
-  connect( diskUsage, SIGNAL( status( QString ) ), this, SLOT( setStatus( QString ) ) );
-  connect( diskUsage, SIGNAL( viewChanged( int ) ), this, SLOT( slotViewChanged( int ) ) );
-  connect( diskUsage, SIGNAL( newSearch() ), this,  SLOT( newSearch() ) );
-  connect( diskUsage, SIGNAL( loadFinished( bool ) ), this,  SLOT( slotLoadFinished( bool ) ) );
-  connect( btnNewSearch, SIGNAL( clicked() ), this, SLOT( newSearch() ) );
-  connect( btnRefresh, SIGNAL( clicked() ), this, SLOT( loadUsageInfo() ) );
-  connect( btnDirUp, SIGNAL( clicked() ), diskUsage, SLOT( dirUp() ) );
-  connect( btnLines, SIGNAL( clicked() ), this, SLOT( selectLinesView() ) );
-  connect( btnDetailed, SIGNAL( clicked() ), this, SLOT( selectListView() ) );
-  connect( btnFilelight, SIGNAL( clicked() ), this, SLOT( selectFilelightView() ) );  
+  connect( diskUsage, TQT_SIGNAL( status( TQString ) ), this, TQT_SLOT( settqStatus( TQString ) ) );
+  connect( diskUsage, TQT_SIGNAL( viewChanged( int ) ), this, TQT_SLOT( slotViewChanged( int ) ) );
+  connect( diskUsage, TQT_SIGNAL( newSearch() ), this,  TQT_SLOT( newSearch() ) );
+  connect( diskUsage, TQT_SIGNAL( loadFinished( bool ) ), this,  TQT_SLOT( slotLoadFinished( bool ) ) );
+  connect( btnNewSearch, TQT_SIGNAL( clicked() ), this, TQT_SLOT( newSearch() ) );
+  connect( btnRefresh, TQT_SIGNAL( clicked() ), this, TQT_SLOT( loadUsageInfo() ) );
+  connect( btnDirUp, TQT_SIGNAL( clicked() ), diskUsage, TQT_SLOT( dirUp() ) );
+  connect( btnLines, TQT_SIGNAL( clicked() ), this, TQT_SLOT( selectLinesView() ) );
+  connect( btnDetailed, TQT_SIGNAL( clicked() ), this, TQT_SLOT( selectListView() ) );
+  connect( btnFilelight, TQT_SIGNAL( clicked() ), this, TQT_SLOT( selectFilelightView() ) );  
   
   krConfig->setGroup( "DiskUsage" ); 
   
@@ -118,8 +118,8 @@ DiskUsageGUI::DiskUsageGUI( KURL openDir, QWidget* parent, const char *name )
     view = VIEW_LINES;    
   diskUsage->setView( view );
   
-  sizeX = krConfig->readNumEntry( "Window Width",  QFontMetrics(font()).width("W") * 70 );
-  sizeY = krConfig->readNumEntry( "Window Height", QFontMetrics(font()).height() * 25 );    
+  sizeX = krConfig->readNumEntry( "Window Width",  TQFontMetrics(font()).width("W") * 70 );
+  sizeY = krConfig->readNumEntry( "Window Height", TQFontMetrics(font()).height() * 25 );    
   resize( sizeX, sizeY );
   
   if( krConfig->readBoolEntry( "Window Maximized",  false ) )
@@ -152,14 +152,14 @@ void DiskUsageGUI::enableButtons( bool isOn )
   btnFilelight->setEnabled( isOn );
 }
 
-void DiskUsageGUI::resizeEvent( QResizeEvent *e )
+void DiskUsageGUI::resizeEvent( TQResizeEvent *e )
 {   
   if( !isMaximized() )
   {
     sizeX = e->size().width();
     sizeY = e->size().height();
   }
-  QDialog::resizeEvent( e );
+  TQDialog::resizeEvent( e );
 }
 
 void DiskUsageGUI::reject()
@@ -170,7 +170,7 @@ void DiskUsageGUI::reject()
   krConfig->writeEntry("Window Maximized", isMaximized() );
   krConfig->writeEntry("View", diskUsage->getActiveView() );
   
-  QDialog::reject();
+  TQDialog::reject();
 }
 
 void DiskUsageGUI::loadUsageInfo()
@@ -178,7 +178,7 @@ void DiskUsageGUI::loadUsageInfo()
   diskUsage->load( baseDirectory );
 }
 
-void DiskUsageGUI::setStatus( QString stat )
+void DiskUsageGUI::settqStatus( TQString stat )
 {
   status->setText( stat );
 }
@@ -220,7 +220,7 @@ bool DiskUsageGUI::newSearch()
   if (tmp.isEmpty()) return false;
   baseDirectory = tmp;
   
-  QTimer::singleShot( 0, this, SLOT( loadUsageInfo() ) );
+  TQTimer::singleShot( 0, this, TQT_SLOT( loadUsageInfo() ) );
   return true;
 }
 

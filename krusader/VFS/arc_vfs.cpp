@@ -34,16 +34,16 @@
 #include <dirent.h>
 #include <time.h>
 // QT includes
-#include <qregexp.h>
-#include <qdir.h>
-#include <qdatetime.h>
-#include <qfileinfo.h>
+#include <tqregexp.h>
+#include <tqdir.h>
+#include <tqdatetime.h>
+#include <tqfileinfo.h>
 // KDE includes
 #include <kmessagebox.h>
 #include <klocale.h>
 #include <kprocess.h>
 #include <kio/jobclasses.h>
-#include <qprogressdialog.h>
+#include <tqprogressdialog.h>
 #include <kglobalsettings.h>
 #include <kmimetype.h>
 #include <kcursor.h>
@@ -60,7 +60,7 @@
 #define MAX_FILES 500
 
 //constructor
-arc_vfs::arc_vfs(QString origin,QString type,QObject* panel,bool write):
+arc_vfs::arc_vfs(TQString origin,TQString type,TQObject* panel,bool write):
   vfs(panel),arcFile(origin),changed(false),prefix(""),ignoreLines(0){
 
 	if ( type == "tarz" ) type = "-tgz";
@@ -81,7 +81,7 @@ arc_vfs::arc_vfs(QString origin,QString type,QObject* panel,bool write):
 		return;
 	}
 
-	QString password = QString::null;
+	TQString password = TQString();
   krConfig->setGroup("Archives");
   // fill the command options
   if( type == "gzip" ){
@@ -129,7 +129,7 @@ arc_vfs::arc_vfs(QString origin,QString type,QObject* panel,bool write):
     password = KRarcHandler::getPassword(arcFile,type);
 		cmd = KrServices::fullPathName( "unzip" );
     listCmd = "-ZTs ";
-    QString zipcmd = KrServices::fullPathName( "zip" );
+    TQString zipcmd = KrServices::fullPathName( "zip" );
     delCmd  = zipcmd+" -d";
     addCmd  = zipcmd+" -ry";
     getCmd  = " -o";
@@ -143,8 +143,8 @@ arc_vfs::arc_vfs(QString origin,QString type,QObject* panel,bool write):
   }
   // "-rpm" is used only to list the rpm - to extract files use "+rpm"
   if(type == "-rpm"){
-    //rpm can't handle files with " " in them so replace " " with "\ "
-    arcFile.replace(QRegExp(" "),"\\ ");
+    //rpm can't handle files with " " in them so tqreplace " " with "\ "
+    arcFile.tqreplace(TQRegExp(" "),"\\ ");
 
     cmd = KrServices::fullPathName( "rpm" );
     listCmd = " --dump -lpq ";
@@ -173,7 +173,7 @@ arc_vfs::arc_vfs(QString origin,QString type,QObject* panel,bool write):
     cmd = KrServices::fullPathName( "unrar" );
     listCmd = " -c- v ";
     delCmd  = "";
-    addCmd  = (doRar ? QString(KrServices::fullPathName( "rar" ) + " -r a ") : QString("")) ;
+    addCmd  = (doRar ? TQString(KrServices::fullPathName( "rar" ) + " -r a ") : TQString("")) ;
     getCmd  = " x -y ";
     ignoreLines = 8;
     isWritable    = (doRar && isWritable );
@@ -185,11 +185,11 @@ arc_vfs::arc_vfs(QString origin,QString type,QObject* panel,bool write):
 }
 
 // return the working dir
-QString arc_vfs::vfs_workingDir(){
+TQString arc_vfs::vfs_workingDir(){
   // get the path inside the archive
-  QString path = vfs_origin.right((vfs_origin.length()-vfs_origin.findRev('\\'))-1);
+  TQString path = vfs_origin.right((vfs_origin.length()-vfs_origin.tqfindRev('\\'))-1);
   if(path.left(1) != "/") path = "/"+path;
-  QDir().mkdir(tmpDir+path);
+  TQDir().mkdir(tmpDir+path);
   return tmpDir+path;
 }
 
@@ -215,7 +215,7 @@ bool arc_vfs::getDirs(){
     proc.start(KProcess::Block);
     if( !proc.normalExit() || !proc.exitStatus() == 0 ){
       if (!quietMode) KMessageBox::error(krApp, i18n("<qt>Can't read <b>%1</b>. Archive "
-                      "might be corrupted!</qt>").arg(arcFile.mid(arcFile.findRev('/')+1)));
+                      "might be corrupted!</qt>").tqarg(arcFile.mid(arcFile.tqfindRev('/')+1)));
      error = true;
 		 return false;
     }
@@ -229,24 +229,24 @@ bool arc_vfs::getDirs(){
   	dirList.append(tempdir);
 
     // parse the temp file
-    QFile temp(tmpDir+"/tempfilelist");
+    TQFile temp(tmpDir+"/tempfilelist");
     temp.open(IO_ReadOnly);
     char buf[1000];
-    QString line;
+    TQString line;
     if(vfs_type == "gzip" || vfs_type == "-zip" )
       temp.readLine(line,10000);  // skip the first line - it's garbage
     if( vfs_type == "-rar" ){
       while(temp.readLine(line,10000) != -1)
-        if ( line.contains("----------") ) break;
+        if ( line.tqcontains("----------") ) break;
     }
     while(temp.readLine(buf,1000) != -1){
-      line = QString::fromLocal8Bit(buf);
-      if ( line.contains("----------") ) break;
+      line = TQString::fromLocal8Bit(buf);
+      if ( line.tqcontains("----------") ) break;
       parseLine(line.stripWhiteSpace(),&temp);
 
     }
     temp.close();
-    QDir().remove(tmpDir+"/tempfilelist");
+    TQDir().remove(tmpDir+"/tempfilelist");
   }
   else { // bzip2
 		// clear the dir list
@@ -264,18 +264,18 @@ bool arc_vfs::getDirs(){
 
 
 // copy a file to the vfs (physical)
-void arc_vfs::vfs_addFiles(KURL::List *fileUrls,KIO::CopyJob::CopyMode mode,QObject* toNotify,QString dir, PreserveMode /*pmode*/ ){
+void arc_vfs::vfs_addFiles(KURL::List *fileUrls,KIO::CopyJob::CopyMode mode,TQObject* toNotify,TQString dir, PreserveMode /*pmode*/ ){
   if ( addCmd.isEmpty() ) return;
 
   // get the path inside the archive
-  QString path = vfs_origin.right((vfs_origin.length()-vfs_origin.findRev('\\'))-1);
+  TQString path = vfs_origin.right((vfs_origin.length()-vfs_origin.tqfindRev('\\'))-1);
   path = path+"/";
   if(dir != "" ) dir = "/"+dir;
   if(path.left(1) != "/") path = "/"+path;
 
   // make sure the destination exist
-  for( int i=0; i >= 0 ; i= QString(tmpDir+path+dir).find('/',i+1) ){
-    QDir().mkdir(QString(tmpDir+path+dir).left(i));
+  for( int i=0; i >= 0 ; i= TQString(tmpDir+path+dir).tqfind('/',i+1) ){
+    TQDir().mkdir(TQString(tmpDir+path+dir).left(i));
   }
 
   changed = true; //rescan the archive
@@ -284,14 +284,14 @@ void arc_vfs::vfs_addFiles(KURL::List *fileUrls,KIO::CopyJob::CopyMode mode,QObj
 	dest.setPath(tmpDir+path+dir);
 
   KIO::Job* job = new KIO::CopyJob(*fileUrls,dest,mode,false,true);
-  connect(job,SIGNAL(result(KIO::Job*)),this,SLOT(vfs_refresh(KIO::Job*)) );
+  connect(job,TQT_SIGNAL(result(KIO::Job*)),this,TQT_SLOT(vfs_refresh(KIO::Job*)) );
   if(mode == KIO::CopyJob::Move) // notify the other panel
-   connect(job,SIGNAL(result(KIO::Job*)),toNotify,SLOT(vfs_refresh(KIO::Job*)) );
+   connect(job,TQT_SIGNAL(result(KIO::Job*)),toNotify,TQT_SLOT(vfs_refresh(KIO::Job*)) );
 }
 	
 
 // remove a file from the vfs (physical)
-void arc_vfs::vfs_delFiles(QStringList *fileNames){
+void arc_vfs::vfs_delFiles(TQStringList *fileNames){
   if ( delCmd.isEmpty() ) return;
 	// if we move to trash - just extract files and move them to trash -
   // the repack() will delete them for us
@@ -301,27 +301,27 @@ void arc_vfs::vfs_delFiles(QStringList *fileNames){
 	  changed = true;
 	
 	  KIO::Job *job = new KIO::CopyJob(*filesUrls,KGlobalSettings::trashPath(),KIO::CopyJob::Move,false,true );
-	  connect(job,SIGNAL(result(KIO::Job*)),this,SLOT(vfs_refresh(KIO::Job*)));
+	  connect(job,TQT_SIGNAL(result(KIO::Job*)),this,TQT_SLOT(vfs_refresh(KIO::Job*)));
 	}
 	// else we have to delete the files from both the archive and the temp dir
 	else {
 	  // change dir to the temp dir
-    QString save = getcwd(0,0);
+    TQString save = getcwd(0,0);
     chdir(tmpDir.local8Bit());
 
-    QStringList files;
+    TQStringList files;
     KIO::filesize_t totalSizeVal = 0;
     unsigned long totalFilesVal =  0;
     	
 	  // names -> urls
-    for(QStringList::Iterator name = fileNames->begin(); name != fileNames->end(); ++name )
+    for(TQStringList::Iterator name = fileNames->begin(); name != fileNames->end(); ++name )
       processName(*name,&files,&totalSizeVal,&totalFilesVal);
 
 
 		KShellProcess proc1 , proc2;
 		krApp->startWaiting(i18n("Deleting Files..."),files.count()+ignoreLines);
-	  connect(&proc1,SIGNAL(receivedStdout(KProcess*,char*,int)),
-            krApp, SLOT(incProgress(KProcess*,char*,int)) );
+	  connect(&proc1,TQT_SIGNAL(receivedStdout(KProcess*,char*,int)),
+            krApp, TQT_SLOT(incProgress(KProcess*,char*,int)) );
 
     proc1 <<  delCmd << "\""+arcFile+"\"";
     proc2 << "rm -rf";
@@ -332,7 +332,7 @@ void arc_vfs::vfs_delFiles(QStringList *fileNames){
 			if ( i%MAX_FILES==0 || i==files.count() ){
 				proc1.start(KProcess::NotifyOnExit,KProcess::AllOutput);
     		proc2.start();
-        while( proc1.isRunning() || proc2.isRunning() ) qApp->processEvents(); // busy wait - need to find something better...
+        while( proc1.isRunning() || proc2.isRunning() ) tqApp->processEvents(); // busy wait - need to find something better...
         proc1.clearArguments() ; proc2.clearArguments();
 				proc1 <<  delCmd << "\""+arcFile+"\"";
     		proc2 << "rm -rf";
@@ -347,47 +347,47 @@ void arc_vfs::vfs_delFiles(QStringList *fileNames){
 }	
 
 // return a path to the file
-QString arc_vfs::vfs_getFile(QString name){
+TQString arc_vfs::vfs_getFile(TQString name){
   // get the current file path
-  QString path = vfs_origin.right((vfs_origin.length()-vfs_origin.findRev('\\'))-1);
+  TQString path = vfs_origin.right((vfs_origin.length()-vfs_origin.tqfindRev('\\'))-1);
   if(path.left(1)=="/") path.remove(0,1);
   if(path != "") path = path+"/";
 
-  QStringList temp(name);
+  TQStringList temp(name);
   vfs_getFiles(&temp);
 
   return tmpDir+"/"+path+name;
 }
 
-KURL::List* arc_vfs::vfs_getFiles(QStringList* names){
+KURL::List* arc_vfs::vfs_getFiles(TQStringList* names){
   KURL url;
   KURL::List* urls = new KURL::List();
 
   // get the current file path
-  QString path = vfs_origin.right((vfs_origin.length()-vfs_origin.findRev('\\'))-1);
+  TQString path = vfs_origin.right((vfs_origin.length()-vfs_origin.tqfindRev('\\'))-1);
   if(path.left(1)=="/") path.remove(0,1);
   if(path != "") path = path+"/";
 
   // change dir to the temp dir
-  QString save = getcwd(0,0);
+  TQString save = getcwd(0,0);
 	chdir(tmpDir.local8Bit());
 	// names -> urls
-  QStringList files;
+  TQStringList files;
   KIO::filesize_t totalSize = 0;
   unsigned long totalFiles = 0;
-  for(QStringList::Iterator name = names->begin(); name != names->end(); ++name ){
+  for(TQStringList::Iterator name = names->begin(); name != names->end(); ++name ){
     processName(*name,&files,&totalSize,&totalFiles);
     url.setPath(tmpDir+"/"+path+(*name));
     urls->append(url);
   }
   // check the urls for unpacked files and directories
-	for(QStringList::Iterator file = files.begin(); file != files.end(); ++file ){
+	for(TQStringList::Iterator file = files.begin(); file != files.end(); ++file ){
   	if ( (*file).right(1)=="/" ){
-			QDir(tmpDir).mkdir(*file);
+			TQDir(tmpDir).mkdir(*file);
       if( vfs_type == "-rar" ) file = files.remove(file--);
 		}
 		// don't unpack the same file twice
-		else if( extFiles.contains(*file) ){
+		else if( extFiles.tqcontains(*file) ){
       file = files.remove(file--);
 		}
   }
@@ -395,8 +395,8 @@ KURL::List* arc_vfs::vfs_getFiles(QStringList* names){
 	if ( files.count() > 0 ){
 		krApp->startWaiting(i18n("Unpacking Files"),files.count()+ignoreLines);
     KShellProcess proc;
-	  connect(&proc,SIGNAL(receivedStdout(KProcess*,char*,int)),
-            krApp, SLOT(incProgress(KProcess*,char*,int)) );
+	  connect(&proc,TQT_SIGNAL(receivedStdout(KProcess*,char*,int)),
+            krApp, TQT_SLOT(incProgress(KProcess*,char*,int)) );
 		
 		proc << cmd << getCmd << "\""+arcFile+"\"";
   	if( vfs_type == "gzip" || vfs_type == "zip2" ) proc << ">";
@@ -404,7 +404,7 @@ KURL::List* arc_vfs::vfs_getFiles(QStringList* names){
   		proc << (prefix+*files.at(i++));
 			if ( i%MAX_FILES==0 || i==files.count() ){
 				proc.start(KProcess::NotifyOnExit,KProcess::AllOutput);
-        while( proc.isRunning() ) qApp->processEvents();
+        while( proc.isRunning() ) tqApp->processEvents();
 				proc.clearArguments();
 				proc << cmd << getCmd << "\""+arcFile+"\"";
   		}
@@ -419,35 +419,35 @@ KURL::List* arc_vfs::vfs_getFiles(QStringList* names){
 }
 
 // make dir
-void arc_vfs::vfs_mkdir(QString name){
-  QString path = vfs_origin.right((vfs_origin.length()-vfs_origin.findRev('\\'))-1);
+void arc_vfs::vfs_mkdir(TQString name){
+  TQString path = vfs_origin.right((vfs_origin.length()-vfs_origin.tqfindRev('\\'))-1);
   if(path.left(1)=="/") path.remove(0,1);
   if(path != "") path = path+"/";
 
-  QDir(tmpDir).mkdir(path+name);
+  TQDir(tmpDir).mkdir(path+name);
   changed = true; //rescan the archive
   vfs_refresh(vfs_origin);
 }
 	
 // rename file
-void arc_vfs::vfs_rename(QString fileName,QString newName){
+void arc_vfs::vfs_rename(TQString fileName,TQString newName){
 	KURL::List temp;
 	temp.append(vfs_getFile(fileName));
-  QString path = vfs_origin.right((vfs_origin.length()-vfs_origin.findRev('\\'))-1);
+  TQString path = vfs_origin.right((vfs_origin.length()-vfs_origin.tqfindRev('\\'))-1);
   if(path.left(1)=="/") path.remove(0,1);
   if(path != "") path = path+"/";
 
-  QDir(tmpDir).mkdir(path);
+  TQDir(tmpDir).mkdir(path);
   changed = true; //rescan the archive
 
 	KURL dest;
 	dest.setPath(tmpDir+path+"/"+newName);
 
   KIO::Job* job = new KIO::CopyJob(temp,dest,KIO::CopyJob::Move,false,false);
-  connect(job,SIGNAL(result(KIO::Job*)),this,SLOT(vfs_refresh(KIO::Job*)) );
+  connect(job,TQT_SIGNAL(result(KIO::Job*)),this,TQT_SLOT(vfs_refresh(KIO::Job*)) );
 }
 
-bool arc_vfs::vfs_refresh(QString origin){
+bool arc_vfs::vfs_refresh(TQString origin){
 	if ( error ) return false;
 	
   if ( changed || origin == vfs_origin ){
@@ -461,7 +461,7 @@ bool arc_vfs::vfs_refresh(QString origin){
 
   vfs_origin = origin;
   // get the directory...
-  QString path = origin.right((origin.length()-origin.findRev('\\'))-1);
+  TQString path = origin.right((origin.length()-origin.tqfindRev('\\'))-1);
   if(path.left(1) =="/") path.remove(0,1);
 
   vfs_filesP = findDir(path);
@@ -471,15 +471,15 @@ bool arc_vfs::vfs_refresh(QString origin){
 }
 
 // service functions
-QString arc_vfs::nextWord(QString &s,char d) {
+TQString arc_vfs::nextWord(TQString &s,char d) {
   s=s.stripWhiteSpace();
-  int j=s.find(d,0);
-  QString temp=s.left(j); // find the leftmost word.
+  int j=s.tqfind(d,0);
+  TQString temp=s.left(j); // find the leftmost word.
   s.remove(0,j);
   return temp;
 }
 
-void arc_vfs::getFilesToPack(QStringList* filesToPack,QString dir_name){
+void arc_vfs::getFilesToPack(TQStringList* filesToPack,TQString dir_name){
   bool newDir = false;
   vfileDict *vfs_filesP_backup = vfs_filesP; // save vfs_filesP
 
@@ -492,7 +492,7 @@ void arc_vfs::getFilesToPack(QStringList* filesToPack,QString dir_name){
   if(!dir) return ;
 
 	register struct dirent* dirEnt;
-  QString name;
+  TQString name;
 	KDE_struct_stat stat_p;
 	while( (dirEnt=readdir(dir)) != NULL ){
     name = dirEnt->d_name;
@@ -503,7 +503,7 @@ void arc_vfs::getFilesToPack(QStringList* filesToPack,QString dir_name){
     if( S_ISDIR(stat_p.st_mode) ){ // recurse on all sub dirs
       if( !findDir(dir_name+name) ){
       	// add to the list only new && empty dirs
-				if( newDir && QDir(dir_name+name).entryList(QDir::All | QDir::AccessMask).count() <= 2 )
+				if( newDir && TQDir(dir_name+name).entryList(TQDir::All | TQDir::AccessMask).count() <= 2 )
 					filesToPack->append( dir_name+name);
       }
 			getFilesToPack(filesToPack,dir_name+name);
@@ -511,11 +511,11 @@ void arc_vfs::getFilesToPack(QStringList* filesToPack,QString dir_name){
 		}
 
 		// if the file don't exist add it to the archive and to the extFiles
-    if( newDir || !extFiles.contains( dir_name+name ) ){
+    if( newDir || !extFiles.tqcontains( dir_name+name ) ){
     	filesToPack->append( dir_name+name );
 			extFiles.append( temp );
     } // else if the file exist but was modified - repack it;
-    else if( !extFiles.contains( temp ) ){
+    else if( !extFiles.tqcontains( temp ) ){
 			filesToPack->append( dir_name+name );
 			extFiles.remove( dir_name+name );
 			extFiles.append( temp );
@@ -524,9 +524,9 @@ void arc_vfs::getFilesToPack(QStringList* filesToPack,QString dir_name){
   vfs_filesP = vfs_filesP_backup; // restore  vfs_filesP
 }
 
-void arc_vfs::getFilesToDelete(QStringList* filesToDelete,QString){
+void arc_vfs::getFilesToDelete(TQStringList* filesToDelete,TQString){
 	// sync the extFiles - and find out which files were deleted
-	QString file;
+	TQString file;
 	for(unsigned int i=0 ; i<extFiles.count(); ){
 		file = tmpDir+"/"+(*extFiles.at(i)).url;
 		if( !KRpermHandler::fileExist(file) ){
@@ -537,7 +537,7 @@ void arc_vfs::getFilesToDelete(QStringList* filesToDelete,QString){
   }
 }
 
-void arc_vfs::getExtFiles(QString dir_name){
+void arc_vfs::getExtFiles(TQString dir_name){
 	register DIR* dir = opendir(tmpDir.local8Bit()+"/"+dir_name.local8Bit());
   if(!dir){
     kdWarning() << "faild to opendir(): " << tmpDir.local8Bit()+"/"+dir_name.local8Bit() << endl;
@@ -547,7 +547,7 @@ void arc_vfs::getExtFiles(QString dir_name){
 	if( dir_name != "") dir_name = dir_name+"/";
 	
 	register struct dirent* dirEnt;
-  QString name;
+  TQString name;
 	KDE_struct_stat stat_p;
 	while( (dirEnt=readdir(dir)) != NULL ){
     name = dirEnt->d_name;
@@ -560,32 +560,32 @@ void arc_vfs::getExtFiles(QString dir_name){
 		}
     // if the file is not in extFiles - it is newly extracted.
     // note: getFilesToPack() updates time + size !
-		else if( !extFiles.contains( dir_name+name ) ){
+		else if( !extFiles.tqcontains( dir_name+name ) ){
 			extFiles.append( temp );
     }
   }	
 }
 
 void arc_vfs::repack(){
-  QString save = getcwd(0,0);
+  TQString save = getcwd(0,0);
   chdir(tmpDir.local8Bit());
 	
   // delete from the archive files that were unpacked and deleted
 	if( vfs_isWritable() ){
-		QStringList filesToDelete;
+		TQStringList filesToDelete;
 		getFilesToDelete(&filesToDelete);
 		if( !filesToDelete.isEmpty() ){
 			KShellProcess delProc;
   		krApp->startWaiting(i18n("Deleting Files..."),filesToDelete.count()+ignoreLines);
-	 		connect(&delProc,SIGNAL(receivedStdout(KProcess*,char*,int)),
-               krApp, SLOT(incProgress(KProcess*,char*,int)) );
+	 		connect(&delProc,TQT_SIGNAL(receivedStdout(KProcess*,char*,int)),
+               krApp, TQT_SLOT(incProgress(KProcess*,char*,int)) );
 
 			delProc << delCmd << "\""+arcFile+"\"";
 			for( unsigned int i=0 ; i < filesToDelete.count() ;){
 				delProc << (*filesToDelete.at(i++));
 				if( i%MAX_FILES==0 || i==filesToDelete.count() ){
   	  		delProc.start(KProcess::NotifyOnExit,KProcess::AllOutput);
-    			while( delProc.isRunning() )  qApp->processEvents();
+    			while( delProc.isRunning() )  tqApp->processEvents();
 					delProc.clearArguments();
 		    	delProc << delCmd << "\""+arcFile+"\"";
   			}
@@ -596,18 +596,18 @@ void arc_vfs::repack(){
 
   // finaly repack tmpDir
   if( vfs_isWritable() || vfs_type=="gzip" || vfs_type=="zip2" ){
-    QStringList filesToPack;
+    TQStringList filesToPack;
 		getFilesToPack(&filesToPack);
 		if( !filesToPack.isEmpty() ){
 			KShellProcess addProc;
 			krApp->startWaiting(i18n("Repacking..."),filesToPack.count()+ignoreLines);
-    	connect(&addProc,SIGNAL(receivedStdout(KProcess*,char*,int)),
-            krApp, SLOT(incProgress(KProcess*,char*,int)) );
+    	connect(&addProc,TQT_SIGNAL(receivedStdout(KProcess*,char*,int)),
+            krApp, TQT_SLOT(incProgress(KProcess*,char*,int)) );
 
 			if( vfs_type=="gzip" || vfs_type=="zip2" ){
       	addProc << addCmd << *filesToPack.at(0)<< ">" << "\""+arcFile+"\"";
 				addProc.start(KProcess::NotifyOnExit);
-      	while( addProc.isRunning() ) qApp->processEvents();
+      	while( addProc.isRunning() ) tqApp->processEvents();
      	}
     	else {
 				addProc << addCmd << "\""+arcFile+"\"";
@@ -615,7 +615,7 @@ void arc_vfs::repack(){
       		addProc << "\""+prefix+(*filesToPack.at(i++))+"\"";
 					if( i%MAX_FILES==0 || i==filesToPack.count() ){
       			addProc.start(KProcess::NotifyOnExit,KProcess::AllOutput);
-      			while( addProc.isRunning() ) qApp->processEvents(); // busy wait - need to find something better...
+      			while( addProc.isRunning() ) tqApp->processEvents(); // busy wait - need to find something better...
         		addProc.clearArguments();
 		    		addProc << addCmd << "\""+arcFile+"\"";
 					}
@@ -627,40 +627,40 @@ void arc_vfs::repack(){
   chdir(save.local8Bit());
 }
 
-vfileDict* arc_vfs::findDir(QString name){
+vfileDict* arc_vfs::findDir(TQString name){
   for(arc_dir* temp = dirList.first();temp != 0 ; temp = dirList.next()){
     if(temp->name == name) return &(temp->entries);
   }
   return 0;
 }
 
-arc_vfs::arc_dir* arc_vfs::findArcDir(QString name){
+arc_vfs::arc_dir* arc_vfs::findArcDir(TQString name){
 for(arc_dir* temp = dirList.first();temp != 0 ; temp = dirList.next()){
     if(temp->name == name) return temp;
   }
   return 0;
 }
 
-QString arc_vfs::changeDir(QString name){
+TQString arc_vfs::changeDir(TQString name){
   if(name.left(2) == "./") {
     prefix = "./";
     name.remove(0,2);
   }
 
-  if(!name.contains('/')){
+  if(!name.tqcontains('/')){
     vfs_filesP = findDir("");
     return name;
   }
   // seperate the path from the name
-  QString path = name.left(name.findRev('/'));
-  name = name.mid(name.findRev('/')+1);
+  TQString path = name.left(name.tqfindRev('/'));
+  name = name.mid(name.tqfindRev('/')+1);
   // see if the path exists
   if ((vfs_filesP=findDir(path)) == 0){
    //create a new dir entry
-   QString Pname = path.mid(path.findRev('/')+1);
+   TQString Pname = path.mid(path.tqfindRev('/')+1);
    if(Pname.isEmpty()) return name;
-   QString tempName = arcFile;
-   QFileInfo qfi(tempName.replace(QRegExp("\\"),""));
+   TQString tempName = arcFile;
+   TQFileInfo qfi(tempName.tqreplace(TQRegExp("\\"),""));
    vfile* vf=new vfile(Pname,0,"drwxr-xr-x",qfi.lastModified().toTime_t(),false,
                  qfi.owner(),qfi.group(),"inode/directory","",0 );
    // add  dirs if needed
@@ -678,12 +678,12 @@ QString arc_vfs::changeDir(QString name){
 }
 
 // calculate space
-void arc_vfs::vfs_calcSpace(QString name ,KIO::filesize_t *totalSize,unsigned long *totalFiles,unsigned long *totalDirs,bool* stop){
+void arc_vfs::vfs_calcSpace(TQString name ,KIO::filesize_t *totalSize,unsigned long *totalFiles,unsigned long *totalDirs,bool* stop){
   if ( *stop ) return;
   vfile* vf = vfs_search(name);
 
   // get the path inside the archive
-  QString path = vfs_origin.right((vfs_origin.length()-vfs_origin.findRev('\\'))-1);
+  TQString path = vfs_origin.right((vfs_origin.length()-vfs_origin.tqfindRev('\\'))-1);
   path = path+"/";
   if(path.left(1) == "/") path.remove(0,1);
 
@@ -694,7 +694,7 @@ void arc_vfs::vfs_calcSpace(QString name ,KIO::filesize_t *totalSize,unsigned lo
   else { // handle directories : (
     ++(*totalDirs);
 
-    QString origin_backup = vfs_origin; // backup the vfs origin
+    TQString origin_backup = vfs_origin; // backup the vfs origin
     vfs_origin = vfs_origin+"/"+name;
     vfileDict* vfs_filesP_backup = vfs_filesP; // backup the vfs_filesP
     vfs_filesP = findDir(path+name);
@@ -710,12 +710,12 @@ void arc_vfs::vfs_calcSpace(QString name ,KIO::filesize_t *totalSize,unsigned lo
   }
 }
 
-void arc_vfs::processName(const QString& name, QStringList *urls,KIO::filesize_t *totalSize,unsigned long *totalFiles ){
+void arc_vfs::processName(const TQString& name, TQStringList *urls,KIO::filesize_t *totalSize,unsigned long *totalFiles ){
   vfile* vf = vfs_search(name);
 	if ( vf == 0 ) return;
 
   // get the path inside the archive
-  QString path = vfs_origin.right((vfs_origin.length()-vfs_origin.findRev('\\'))-1);
+  TQString path = vfs_origin.right((vfs_origin.length()-vfs_origin.tqfindRev('\\'))-1);
   path = path+"/";
   if(path.left(1) == "/") path.remove(0,1);
 
@@ -725,7 +725,7 @@ void arc_vfs::processName(const QString& name, QStringList *urls,KIO::filesize_t
     urls->append(path+name);
   } else { // handle directories : (
     urls->append(path+name+"/");
-    QString origin_backup = vfs_origin; // backup the vfs origin
+    TQString origin_backup = vfs_origin; // backup the vfs origin
     vfs_origin = vfs_origin+"/"+name;
     vfileDict* vfs_filesP_backup = vfs_filesP; // backup the vfs_filesP
     vfs_filesP = findDir(path+name);
@@ -739,16 +739,16 @@ void arc_vfs::processName(const QString& name, QStringList *urls,KIO::filesize_t
   }
 }
 
-void arc_vfs::parseLine(QString line, QFile* temp){
-  QString name;
+void arc_vfs::parseLine(TQString line, TQFile* temp){
+  TQString name;
   KIO::filesize_t size = 0;
-  QString perm;
-  QFileInfo qfi(arcFile);
+  TQString perm;
+  TQFileInfo qfi(arcFile);
   time_t mtime = qfi.lastModified().toTime_t();
   bool link = false;
   uid_t owner = getuid();
   gid_t group = getgid();
-  QString dest = "";
+  TQString dest = "";
   mode_t mode = 0;
 
 
@@ -761,8 +761,8 @@ void arc_vfs::parseLine(QString line, QFile* temp){
     size = nextWord(line).toLong();
     nextWord(line);
     name = nextWord(line,'\n');
-    if(name.contains('/')) name = name.mid(name.findRev('/')+1,name.length());
-    perm  = KRpermHandler::mode2QString(stat_p.st_mode) ;
+    if(name.tqcontains('/')) name = name.mid(name.tqfindRev('/')+1,name.length());
+    perm  = KRpermHandler::mode2TQString(stat_p.st_mode) ;
     owner = KRpermHandler::user2uid(qfi.owner());
     group = KRpermHandler::group2gid(qfi.group());
     mode  = stat_p.st_mode;
@@ -774,9 +774,9 @@ void arc_vfs::parseLine(QString line, QFile* temp){
     KDE_stat(arcFile.local8Bit(),&stat_p);
 
     name = qfi.fileName();
-    name = name.left(name.findRev('.'));
+    name = name.left(name.tqfindRev('.'));
     //long size = qfi.size();
-    perm  = KRpermHandler::mode2QString(stat_p.st_mode) ;
+    perm  = KRpermHandler::mode2TQString(stat_p.st_mode) ;
     owner = KRpermHandler::user2uid(qfi.owner());
     group = KRpermHandler::group2gid(qfi.group());
     mode  = stat_p.st_mode;
@@ -785,18 +785,18 @@ void arc_vfs::parseLine(QString line, QFile* temp){
   // parse tar files
   if(vfs_type == "-tar" || vfs_type == "-tbz" || vfs_type == "-tgz" ){
     perm = nextWord(line);
-    QString temp = nextWord(line);
-    owner = temp.left(temp.findRev('/')).toInt();
-    group = temp.mid(temp.find('/')+1,temp.length()).toInt();
+    TQString temp = nextWord(line);
+    owner = temp.left(temp.tqfindRev('/')).toInt();
+    group = temp.mid(temp.tqfind('/')+1,temp.length()).toInt();
     size = nextWord(line).toLong();
     temp = nextWord(line);
     name = nextWord(line,'\n');
     if (name.startsWith("/"))  // fix full-paths problem in tar (thanks to Heiner!)
       name.remove(0, 1);
-    if( name.contains(" -> ") ){
+    if( name.tqcontains(" -> ") ){
       link = true;
-			dest = name.mid(name.find(" -> ")+4);
-			name = name.left(name.find(" -> "));
+			dest = name.mid(name.tqfind(" -> ")+4);
+			name = name.left(name.tqfind(" -> "));
     }
   }
 
@@ -805,11 +805,11 @@ void arc_vfs::parseLine(QString line, QFile* temp){
     perm = nextWord(line);
     if(perm.length() != 10)
       perm = (perm.at(0)=='d')? "drwxr-xr-x" : "-rw-r--r--" ;
-    if (nextWord(line).contains("file")) return;
+    if (nextWord(line).tqcontains("file")) return;
     nextWord(line);
     size = nextWord(line).toLong();
     nextWord(line);nextWord(line);
-    QString temp = nextWord(line);
+    TQString temp = nextWord(line);
     name = nextWord(line,'\n');
   }
 
@@ -819,14 +819,14 @@ void arc_vfs::parseLine(QString line, QFile* temp){
     nextWord(line);nextWord(line);nextWord(line);
 		size = nextWord(line).toLong();
 		nextWord(line);nextWord(line);nextWord(line);
-		QString tempName = arcFile;
-    QFileInfo qfi(tempName.replace(QRegExp("\\"),""));
+		TQString tempName = arcFile;
+    TQFileInfo qfi(tempName.tqreplace(TQRegExp("\\"),""));
 		name = nextWord(line,'\n');
     if ( name.left(1) == "/" ) name.remove(0,1);
-    if( name.contains(" -> ") ){
+    if( name.tqcontains(" -> ") ){
       link = true;
-      dest = name.mid(name.find(" -> ")+4);
-			name = name.left(name.find(" -> "));
+      dest = name.mid(name.tqfind(" -> ")+4);
+			name = name.left(name.tqfind(" -> "));
     }
   }
   // parse rared files
@@ -847,7 +847,7 @@ void arc_vfs::parseLine(QString line, QFile* temp){
     size = nextWord(line).toLong();
     mtime = nextWord(line).toLong();
     nextWord(line);
-    perm = KRpermHandler::mode2QString(nextWord(line).toLong());
+    perm = KRpermHandler::mode2TQString(nextWord(line).toLong());
     perm = (perm.at(0)=='d')? "drwxr-xr-x" : "-rw-r--r--" ;
   }
 
@@ -856,7 +856,7 @@ void arc_vfs::parseLine(QString line, QFile* temp){
   if(name.length() < 1) return;
 
 
-  QString mime = KMimeType::findByURL( "/"+name,0,true,true)->name();
+  TQString mime = KMimeType::findByURL( "/"+name,0,true,true)->name();
   vfile* vf=new vfile(name,size,perm,mtime,link,owner,group,mime,dest,mode);
   vfile* vf2 = vfs_search(name);
   if(vf2 != 0) vfs_removeFromList(vf2);

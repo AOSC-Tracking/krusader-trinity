@@ -6,23 +6,23 @@
 #include "../VFS/vfs.h"
 #include <kiconloader.h>
 #include <kmessagebox.h>
-#include <qptrlist.h>
+#include <tqptrlist.h>
 #include <kactioncollection.h>
 #include <klocale.h>
 #include <kdebug.h>
 #include <kbookmarkmanager.h>
 #include <kstandarddirs.h>
-#include <qfile.h>
-#include <qcursor.h>
+#include <tqfile.h>
+#include <tqcursor.h>
 
 #define SPECIAL_BOOKMARKS	true
 
 // ------------------------ for internal use
 #define BOOKMARKS_FILE	"krusader/krbookmarks.xml"
-#define CONNECT_BM(X)	{ disconnect(X, SIGNAL(activated(const KURL&)), 0, 0); connect(X, SIGNAL(activated(const KURL&)), this, SLOT(slotActivated(const KURL&))); }
+#define CONNECT_BM(X)	{ disconnect(X, TQT_SIGNAL(activated(const KURL&)), 0, 0); connect(X, TQT_SIGNAL(activated(const KURL&)), this, TQT_SLOT(slotActivated(const KURL&))); }
 											
-KrBookmarkHandler::KrBookmarkHandler(): QObject(0), _middleClick(false), _mainBookmarkPopup( 0 ), _specialBookmarkIDs(), _bookmarkIDTable() {
-	// create our own action collection and make the shortcuts apply only to parent
+KrBookmarkHandler::KrBookmarkHandler(): TQObject(0), _middleClick(false), _mainBookmarkPopup( 0 ), _specialBookmarkIDs(), _bookmarkIDTable() {
+	// create our own action collection and make the shortcuts apply only to tqparent
 	_privateCollection = new KActionCollection(krApp, "private collection");
 	_collection = krApp->actionCollection();
 
@@ -36,7 +36,7 @@ KrBookmarkHandler::KrBookmarkHandler(): QObject(0), _middleClick(false), _mainBo
 
 	// hack
 	manager = KBookmarkManager::managerForFile(locateLocal( "data", BOOKMARKS_FILE ), false);
-	connect(manager, SIGNAL(changed(const QString&, const QString& )), this, SLOT(bookmarksChanged(const QString&, const QString& )));
+	connect(manager, TQT_SIGNAL(changed(const TQString&, const TQString& )), this, TQT_SLOT(bookmarksChanged(const TQString&, const TQString& )));
 }
 
 KrBookmarkHandler::~KrBookmarkHandler() {
@@ -68,7 +68,7 @@ void KrBookmarkHandler::addBookmark(KrBookmark *bm, KrBookmark *folder) {
 		folder = _root;
 		
 	// add to the list (bottom)
-	folder->children().append(bm);
+	folder->tqchildren().append(bm);
 
 	exportToFile();
 }
@@ -84,31 +84,31 @@ void KrBookmarkHandler::deleteBookmark(KrBookmark *bm) {
 }
 
 void KrBookmarkHandler::removeReferences( KrBookmark *root, KrBookmark *bmToRemove ) {
-	int index = root->children().find( bmToRemove );
+	int index = root->tqchildren().tqfind( bmToRemove );
 	if( index >= 0 )
-		root->children().take( index );
+		root->tqchildren().take( index );
 	
-	KrBookmark *bm = root->children().first();
+	KrBookmark *bm = root->tqchildren().first();
 	while (bm) {
 		if (bm->isFolder())
 			removeReferences(bm, bmToRemove);
-		bm = root->children().next();
+		bm = root->tqchildren().next();
 	}
 }
 
-void KrBookmarkHandler::exportToFileBookmark(QDomDocument &doc, QDomElement &where, KrBookmark *bm) {
+void KrBookmarkHandler::exportToFileBookmark(TQDomDocument &doc, TQDomElement &where, KrBookmark *bm) {
 	if( bm->isSeparator() ) {
-		QDomElement bookmark = doc.createElement("separator");
+		TQDomElement bookmark = doc.createElement("separator");
 		where.appendChild(bookmark);
 	}
 	else {
-		QDomElement bookmark = doc.createElement("bookmark");
+		TQDomElement bookmark = doc.createElement("bookmark");
 		// url
 		bookmark.setAttribute("href", bm->url().prettyURL());
 		// icon
 		bookmark.setAttribute("icon", bm->icon());
 		// title
-		QDomElement title = doc.createElement("title");	
+		TQDomElement title = doc.createElement("title");	
 		title.appendChild(doc.createTextNode(bm->text()));
 		bookmark.appendChild(title);
 		
@@ -116,18 +116,18 @@ void KrBookmarkHandler::exportToFileBookmark(QDomDocument &doc, QDomElement &whe
 	}
 }
 
-void KrBookmarkHandler::exportToFileFolder(QDomDocument &doc, QDomElement &parent, KrBookmark *folder) {
-	for (KrBookmark *bm = folder->children().first(); bm; bm = folder->children().next()) {
+void KrBookmarkHandler::exportToFileFolder(TQDomDocument &doc, TQDomElement &tqparent, KrBookmark *folder) {
+	for (KrBookmark *bm = folder->tqchildren().first(); bm; bm = folder->tqchildren().next()) {
 		if (bm->isFolder()) {
-			QDomElement newFolder = doc.createElement("folder");
+			TQDomElement newFolder = doc.createElement("folder");
 			newFolder.setAttribute("icon", bm->icon());
-			parent.appendChild(newFolder);
-			QDomElement title = doc.createElement("title");
+			tqparent.appendChild(newFolder);
+			TQDomElement title = doc.createElement("title");
 			title.appendChild(doc.createTextNode(bm->text()));
 			newFolder.appendChild(title);
 			exportToFileFolder(doc, newFolder, bm);
 		} else {
-			exportToFileBookmark(doc, parent, bm);
+			exportToFileBookmark(doc, tqparent, bm);
 		}
 	}
 }
@@ -148,33 +148,33 @@ void KrBookmarkHandler::exportToFileFolder(QDomDocument &doc, QDomElement &paren
 //    </folder>
 //  </xbel>
 void KrBookmarkHandler::exportToFile() {
-	QDomDocument doc( "xbel" );
-   QDomElement root = doc.createElement( "xbel" );
+	TQDomDocument doc( "xbel" );
+   TQDomElement root = doc.createElement( "xbel" );
    doc.appendChild( root );
 
 	exportToFileFolder(doc, root, _root);
 	if (!doc.firstChild().isProcessingInstruction()) {
 		// adding: <?xml version="1.0" encoding="UTF-8" ?> if not already present 
-		QDomProcessingInstruction instr = doc.createProcessingInstruction( "xml", 
+		TQDomProcessingInstruction instr = doc.createProcessingInstruction( "xml", 
 				"version=\"1.0\" encoding=\"UTF-8\" ");
 		doc.insertBefore( instr, doc.firstChild() ); 
 	}
 
 	
-	QString filename = locateLocal( "data", BOOKMARKS_FILE );
-	QFile file(filename);
+	TQString filename = locateLocal( "data", BOOKMARKS_FILE );
+	TQFile file(filename);
 	if ( file.open( IO_WriteOnly ) ) {
-		QTextStream stream( &file );
+		TQTextStream stream( &file );
 		stream.setEncoding(stream.UnicodeUTF8);
 		stream << doc.toString();
 		file.close();
 	} else {
-		KMessageBox::error(krApp, i18n("Unable to write to %1").arg(filename), i18n("Error"));
+		KMessageBox::error(krApp, i18n("Unable to write to %1").tqarg(filename), i18n("Error"));
 	}
 }
 
-bool KrBookmarkHandler::importFromFileBookmark(QDomElement &e, KrBookmark *parent, QString path, QString *errorMsg) {
-	QString url, name, icon;
+bool KrBookmarkHandler::importFromFileBookmark(TQDomElement &e, KrBookmark *tqparent, TQString path, TQString *errorMsg) {
+	TQString url, name, icon;
 	// verify tag
 	if (e.tagName() != "bookmark") {
 		*errorMsg = e.tagName() + i18n(" instead of ")+"bookmark";
@@ -186,7 +186,7 @@ bool KrBookmarkHandler::importFromFileBookmark(QDomElement &e, KrBookmark *paren
 		return false;
 	} else url = e.attribute("href");
 	// verify title
-	QDomElement te = e.firstChild().toElement();
+	TQDomElement te = e.firstChild().toElement();
 	if (te.tagName() != "title") {
 		*errorMsg = i18n("missing tag ")+"title";
 		return false;
@@ -199,37 +199,37 @@ bool KrBookmarkHandler::importFromFileBookmark(QDomElement &e, KrBookmark *paren
 	KrBookmark *bm = KrBookmark::getExistingBookmark(path+name, _collection);
 	if (!bm) {
 		bm = new KrBookmark(name, vfs::fromPathOrURL( url ), _collection, icon, path+name);
-	parent->children().append(bm);
+	tqparent->tqchildren().append(bm);
 	}
 
 	return true;
 }
 
-bool KrBookmarkHandler::importFromFileFolder(QDomNode &first, KrBookmark *parent, QString path, QString *errorMsg) {
-	QString name;
-	QDomNode n = first;
+bool KrBookmarkHandler::importFromFileFolder(TQDomNode &first, KrBookmark *tqparent, TQString path, TQString *errorMsg) {
+	TQString name;
+	TQDomNode n = first;
 	while (!n.isNull()) {
-		QDomElement e = n.toElement();
+		TQDomElement e = n.toElement();
 		if (e.tagName() == "bookmark") {
-			if (!importFromFileBookmark(e, parent, path, errorMsg))
+			if (!importFromFileBookmark(e, tqparent, path, errorMsg))
 				return false;
 		} else if (e.tagName() == "folder") {
-			QString iconName = "";
+			TQString iconName = "";
 			if (e.hasAttribute("icon")) iconName=e.attribute("icon");
 			// the title is the first child of the folder
-			QDomElement tmp = e.firstChild().toElement();
+			TQDomElement tmp = e.firstChild().toElement();
 			if (tmp.tagName() != "title") {
 				*errorMsg = i18n("missing tag ")+"title";
 				return false;
 			} else name = tmp.text();
 			KrBookmark *folder = new KrBookmark(name, iconName);
-			parent->children().append(folder);
+			tqparent->tqchildren().append(folder);
 
-			QDomNode nextOne = tmp.nextSibling();
+			TQDomNode nextOne = tmp.nextSibling();
 			if (!importFromFileFolder(nextOne, folder, path + name + "/", errorMsg))
 				return false;
 		} else if (e.tagName() == "separator") {
-			parent->children().append(KrBookmark::separator());
+			tqparent->tqchildren().append(KrBookmark::separator());
 		}
 		n = n.nextSibling();
 	}
@@ -240,15 +240,15 @@ bool KrBookmarkHandler::importFromFileFolder(QDomNode &first, KrBookmark *parent
 void KrBookmarkHandler::importFromFile() {
 	clearBookmarks(_root);
 	
-	QString filename = locateLocal( "data", BOOKMARKS_FILE );
-	QFile file( filename );
+	TQString filename = locateLocal( "data", BOOKMARKS_FILE );
+	TQFile file( filename );
 	if ( !file.open(IO_ReadOnly))
 		return; // no bookmarks file
 
-	QString errorMsg;
-	QDomNode n;
-	QDomElement e;
-	QDomDocument doc( "xbel" );
+	TQString errorMsg;
+	TQDomNode n;
+	TQDomElement e;
+	TQDomDocument doc( "xbel" );
 	if ( !doc.setContent( &file, &errorMsg ) ) {
 		goto ERROR;
 	}
@@ -258,14 +258,14 @@ void KrBookmarkHandler::importFromFile() {
 		n = n.nextSibling();
 
 	if (n.isNull() || n.toElement().tagName()!="xbel") {
-		errorMsg = i18n("%1 doesn't seem to be a valid Bookmarks file").arg(filename);
+		errorMsg = i18n("%1 doesn't seem to be a valid Bookmarks file").tqarg(filename);
 		goto ERROR;
 	} else n = n.firstChild(); // skip the xbel part
 	importFromFileFolder(n, _root, "", &errorMsg);
 	goto SUCCESS;
 	
 ERROR:
-	KMessageBox::error(krApp, i18n("Error reading bookmarks file: %1").arg(errorMsg), i18n( "Error" ));
+	KMessageBox::error(krApp, i18n("Error reading bookmarks file: %1").tqarg(errorMsg), i18n( "Error" ));
 
 SUCCESS:
 	file.close();
@@ -279,26 +279,26 @@ void KrBookmarkHandler::populate(KPopupMenu *menu) {
 	buildMenu(_root, menu);
 }
 
-void KrBookmarkHandler::buildMenu(KrBookmark *parent, KPopupMenu *menu) {
+void KrBookmarkHandler::buildMenu(KrBookmark *tqparent, KPopupMenu *menu) {
 	static int inSecondaryMenu = 0; // used to know if we're on the top menu
 
 	// run the loop twice, in order to put the folders on top. stupid but easy :-)
 	// note: this code drops the separators put there by the user
-	for (KrBookmark *bm = parent->children().first(); bm; bm = parent->children().next()) {
+	for (KrBookmark *bm = tqparent->tqchildren().first(); bm; bm = tqparent->tqchildren().next()) {
 		if (!bm->isFolder()) continue;
 		KPopupMenu *newMenu = new KPopupMenu(menu);
-		int id = menu->insertItem(QIconSet(krLoader->loadIcon(bm->icon(), KIcon::Small)),
+		int id = menu->insertItem(TQIconSet(krLoader->loadIcon(bm->icon(), KIcon::Small)),
 									bm->text(), newMenu, -1 /* dummy id */, -1 /* end of list */);
 		
-		if( !_bookmarkIDTable.find( menu ) )
-			_bookmarkIDTable.insert( menu, new QMap<int, KrBookmark *> );
+		if( !_bookmarkIDTable.tqfind( menu ) )
+			_bookmarkIDTable.insert( menu, new TQMap<int, KrBookmark *> );
 		(*_bookmarkIDTable[ menu ])[ id ] = bm;
 		
 		++inSecondaryMenu;
 		buildMenu(bm, newMenu);
 		--inSecondaryMenu;
 	}
-	for (KrBookmark *bm = parent->children().first(); bm; bm = parent->children().next()) {
+	for (KrBookmark *bm = tqparent->tqchildren().first(); bm; bm = tqparent->tqchildren().next()) {
 		if (bm->isFolder()) continue;
 		if (bm->isSeparator() ) {
 			menu->insertSeparator();
@@ -308,8 +308,8 @@ void KrBookmarkHandler::buildMenu(KrBookmark *parent, KPopupMenu *menu) {
 		CONNECT_BM(bm);
 		
 		int id = bm->itemId( itemIndex );
-		if( !_bookmarkIDTable.find( menu ) )
-			_bookmarkIDTable.insert( menu, new QMap<int, KrBookmark *> );
+		if( !_bookmarkIDTable.tqfind( menu ) )
+			_bookmarkIDTable.insert( menu, new TQMap<int, KrBookmark *> );
 		(*_bookmarkIDTable[ menu ])[ id ] = bm;
 	}
 
@@ -328,7 +328,7 @@ void KrBookmarkHandler::buildMenu(KrBookmark *parent, KPopupMenu *menu) {
 			
 			// add the popular links submenu
 			KPopupMenu *newMenu = new KPopupMenu(menu);
-			itemIndex = menu->insertItem(QIconSet(krLoader->loadIcon("bookmark_folder", KIcon::Small)),
+			itemIndex = menu->insertItem(TQIconSet(krLoader->loadIcon("bookmark_folder", KIcon::Small)),
 										i18n("Popular URLs"), newMenu, -1 /* dummy id */, -1 /* end of list */);
 			_specialBookmarkIDs.append( itemIndex );
 			// add the top 15 urls
@@ -336,7 +336,7 @@ void KrBookmarkHandler::buildMenu(KrBookmark *parent, KPopupMenu *menu) {
 			KURL::List list = krApp->popularUrls->getMostPopularUrls(MAX);
 			KURL::List::Iterator it;
 			for (it = list.begin(); it != list.end(); ++it) {
-				QString name;
+				TQString name;
 				if ((*it).isLocalFile()) name = (*it).path();
 				else name = (*it).prettyURL();
 				// note: these bookmark are put into the private collection
@@ -403,15 +403,15 @@ void KrBookmarkHandler::buildMenu(KrBookmark *parent, KPopupMenu *menu) {
 		_specialBookmarkIDs.append( itemIndex );
 	
 		// make sure the menu is connected to us
-		disconnect(menu, SIGNAL(activated(int)), 0, 0);
-		connect(menu, SIGNAL(activated(int)), this, SLOT(menuOperation(int)));
+		disconnect(menu, TQT_SIGNAL(activated(int)), 0, 0);
+		connect(menu, TQT_SIGNAL(activated(int)), this, TQT_SLOT(menuOperation(int)));
 	}
 
 	menu->installEventFilter(this);
 }
 
 void KrBookmarkHandler::clearBookmarks(KrBookmark *root) {
-	KrBookmark *bm = root->children().first();
+	KrBookmark *bm = root->tqchildren().first();
 	while (bm) {	
 		if (bm->isFolder())
 			clearBookmarks(bm);
@@ -420,48 +420,48 @@ void KrBookmarkHandler::clearBookmarks(KrBookmark *root) {
 			delete bm;
 		}
 
-		bm = root->children().next();
+		bm = root->tqchildren().next();
 	}
-	root->children().clear();
+	root->tqchildren().clear();
 }
 
-void KrBookmarkHandler::bookmarksChanged(const QString&, const QString&) {
+void KrBookmarkHandler::bookmarksChanged(const TQString&, const TQString&) {
 	importFromFile();
 }
 
-bool KrBookmarkHandler::eventFilter( QObject *obj, QEvent *ev ) {
-	if (ev->type() == QEvent::MouseButtonRelease) {
-		switch (static_cast<QMouseEvent*>(ev)->button()) {
-			case RightButton:
+bool KrBookmarkHandler::eventFilter( TQObject *obj, TQEvent *ev ) {
+	if (ev->type() == TQEvent::MouseButtonRelease) {
+		switch (TQT_TQMOUSEEVENT(ev)->button()) {
+			case Qt::RightButton:
 				_middleClick = false;
-				if( obj->inherits( "QPopupMenu" ) ) {
-					int id = static_cast<QPopupMenu*>(obj)->idAt( static_cast<QMouseEvent*>(ev)->pos() );
+				if( obj->inherits( TQPOPUPMENU_OBJECT_NAME_STRING ) ) {
+					int id = static_cast<TQPopupMenu*>(TQT_TQWIDGET(obj))->idAt( TQT_TQMOUSEEVENT(ev)->pos() );
 					
-					if( obj == _mainBookmarkPopup && _specialBookmarkIDs.contains( id ) ) {
+					if( TQT_BASE_OBJECT(obj) == TQT_BASE_OBJECT(_mainBookmarkPopup) && _specialBookmarkIDs.tqcontains( id ) ) {
 						rightClickOnSpecialBookmark();
 						return true;
 					}
 					
-					if( _bookmarkIDTable.find( obj ) ) {
-						QMap<int, KrBookmark*> * table = _bookmarkIDTable[ obj ];
+					if( _bookmarkIDTable.tqfind( obj ) ) {
+						TQMap<int, KrBookmark*> * table = _bookmarkIDTable[ obj ];
 						if( table && table->count( id ) ) {
 							KrBookmark *bm = (*table)[ id ];
-							rightClicked( static_cast<QPopupMenu*>(obj), id, bm );
+							rightClicked( static_cast<TQPopupMenu*>(TQT_TQWIDGET(obj)), id, bm );
 							return true;
 						}
 					}
 				}
-			case LeftButton:
+			case Qt::LeftButton:
 				_middleClick = false;
 				break;
-			case MidButton:
+			case Qt::MidButton:
 				_middleClick = true;
 				break;
 			default:
 				break;
 		}
 	}
-	return QObject::eventFilter(obj, ev);
+	return TQObject::eventFilter(obj, ev);
 }
 
 #define POPULAR_URLS_ID        100100
@@ -478,7 +478,7 @@ void KrBookmarkHandler::rightClickOnSpecialBookmark() {
 	bool hasVirtualFS   = krConfig->readBoolEntry( "BM Virtual FS",   true );
 	bool hasJumpback    = krConfig->readBoolEntry( "BM Jumpback",     true );
 	
-	QPopupMenu menu( _mainBookmarkPopup );
+	TQPopupMenu menu( _mainBookmarkPopup );
 	menu.setCaption( i18n( "Enable special bookmarks" ) );
 	menu.setCheckable( true );
 	
@@ -493,10 +493,10 @@ void KrBookmarkHandler::rightClickOnSpecialBookmark() {
 	menu.insertItem( i18n( "Jump back" ), JUMP_BACK_ID );
 	menu.setItemChecked( JUMP_BACK_ID, hasJumpback );
 	
-	connect( _mainBookmarkPopup, SIGNAL( highlighted( int ) ), &menu, SLOT( close() ) );
-	connect( _mainBookmarkPopup, SIGNAL( activated( int ) ), &menu, SLOT( close() ) );
+	connect( _mainBookmarkPopup, TQT_SIGNAL( highlighted( int ) ), &menu, TQT_SLOT( close() ) );
+	connect( _mainBookmarkPopup, TQT_SIGNAL( activated( int ) ), &menu, TQT_SLOT( close() ) );
 	
-	int result = menu.exec( QCursor::pos() );
+	int result = menu.exec( TQCursor::pos() );
 	bool doCloseMain = true;
 	
 	krConfig->setGroup( "Private" );
@@ -532,18 +532,18 @@ void KrBookmarkHandler::rightClickOnSpecialBookmark() {
 #define OPEN_NEW_TAB_ID   100201
 #define DELETE_ID         100202
 
-void KrBookmarkHandler::rightClicked( QPopupMenu *menu, int /*id*/, KrBookmark * bm ) {
-	QPopupMenu popup( _mainBookmarkPopup );
+void KrBookmarkHandler::rightClicked( TQPopupMenu *menu, int /*id*/, KrBookmark * bm ) {
+	TQPopupMenu popup( _mainBookmarkPopup );
 	
 	popup.insertItem( krLoader->loadIcon( "fileopen", KIcon::Panel ), i18n( "Open" ), OPEN_ID );
 	popup.insertItem( krLoader->loadIcon( "tab_new", KIcon::Panel ), i18n( "Open in a new tab" ), OPEN_NEW_TAB_ID );
 	popup.insertSeparator();
 	popup.insertItem( krLoader->loadIcon( "editdelete", KIcon::Panel ), i18n( "Delete" ), DELETE_ID );
 	
-	connect( menu, SIGNAL( highlighted( int ) ), &popup, SLOT( close() ) );
-	connect( menu, SIGNAL( activated( int ) ), &popup, SLOT( close() ) );
+	connect( menu, TQT_SIGNAL( highlighted( int ) ), &popup, TQT_SLOT( close() ) );
+	connect( menu, TQT_SIGNAL( activated( int ) ), &popup, TQT_SLOT( close() ) );
 	
-	int result = popup.exec( QCursor::pos() );
+	int result = popup.exec( TQCursor::pos() );
 	
 	popup.close();
 	if( _mainBookmarkPopup && result >= OPEN_ID && result <= DELETE_ID ) {

@@ -23,16 +23,16 @@
 #include <kaction.h>
 #include <klocale.h>
 #include <kshortcut.h>
-#include <qevent.h>
-#include <qwidgetstack.h>
-#include <qfontmetrics.h>
-#include <qtooltip.h>
+#include <tqevent.h>
+#include <tqwidgetstack.h>
+#include <tqfontmetrics.h>
+#include <tqtooltip.h>
 #include <kdebug.h>
 
 #define DISPLAY(X)	(X.isLocalFile() ? X.path() : X.prettyURL())
 
-PanelTabBar::PanelTabBar(QWidget *parent): QTabBar(parent), _maxTabLength(0) {
-  _panelActionMenu = new KActionMenu( i18n("Panel"), this );
+PanelTabBar::PanelTabBar(TQWidget *tqparent): TQTabBar(tqparent), _maxTabLength(0) {
+  _panelActionMenu = new KActionMenu( i18n("Panel"), TQT_TQOBJECT(this) );
 
   setAcceptDrops(true);  
   insertAction(krNewTab);
@@ -42,13 +42,13 @@ PanelTabBar::PanelTabBar(QWidget *parent): QTabBar(parent), _maxTabLength(0) {
   insertAction(krCloseTab);
   krCloseTab->setEnabled(false); //can't close a single tab
 
-  setShape(QTabBar::TriangularBelow);
+  setShape(TQTabBar::TriangularBelow);
 }
 
-void PanelTabBar::mousePressEvent( QMouseEvent* e ) {
-  QTab* clickedTab = selectTab( e->pos() );
+void PanelTabBar::mousePressEvent( TQMouseEvent* e ) {
+  TQTab* clickedTab = selectTab( e->pos() );
   if( !clickedTab ) { // clicked on nothing ...
-    QTabBar::mousePressEvent(e);
+    TQTabBar::mousePressEvent(e);
     return;
   }
   // else implied
@@ -68,7 +68,7 @@ void PanelTabBar::mousePressEvent( QMouseEvent* e ) {
   if (e->button() == Qt::MidButton) { // close the current tab
     emit closeCurrentTab();
   }
-  QTabBar::mousePressEvent(e);
+  TQTabBar::mousePressEvent(e);
 }
 
 void PanelTabBar::insertAction( KAction* action ) {
@@ -81,7 +81,7 @@ int PanelTabBar::addPanel(ListPanel *panel, bool setCurrent ) {
   // make sure all tabs lengths are correct
   for (int i=0; i<count(); i++)
     tabAt(i)->setText(squeeze(DISPLAY(dynamic_cast<PanelTab*>(tabAt(i))->panel->virtualPath()), i));
-  layoutTabs();
+  tqlayoutTabs();
   
   if( setCurrent )
     setCurrentTab(newId);
@@ -91,8 +91,8 @@ int PanelTabBar::addPanel(ListPanel *panel, bool setCurrent ) {
     krCloseTab->setEnabled(true);
   }
 
-  connect(dynamic_cast<PanelTab*>(tab(newId))->panel, SIGNAL(pathChanged(ListPanel*)),
-          this, SLOT(updateTab(ListPanel*)));
+  connect(dynamic_cast<PanelTab*>(tab(newId))->panel, TQT_SIGNAL(pathChanged(ListPanel*)),
+          this, TQT_SLOT(updateTab(ListPanel*)));
 
   return newId;
 }
@@ -105,7 +105,7 @@ ListPanel* PanelTabBar::removeCurrentPanel(ListPanel* &panelToDelete) {
 
   for (int i=0; i<count(); i++)
     tabAt(i)->setText(squeeze(DISPLAY(dynamic_cast<PanelTab*>(tabAt(i))->panel->virtualPath()), i));
-  layoutTabs();
+  tqlayoutTabs();
 
   // setup current one
   id = currentTab();
@@ -138,10 +138,10 @@ void PanelTabBar::closeTab() {
   emit closeCurrentTab();
 }
 
-QString PanelTabBar::squeeze(QString text, int index) {
-  QString originalText = text;
+TQString PanelTabBar::squeeze(TQString text, int index) {
+  TQString originalText = text;
   
-  QString lastGroup = krConfig->group();  
+  TQString lastGroup = krConfig->group();  
   krConfig->setGroup( "Look&Feel" );
   bool longNames = krConfig->readBoolEntry( "Fullpath Tab Names", _FullPathTabNames );
   krConfig->setGroup( lastGroup );
@@ -154,12 +154,12 @@ QString PanelTabBar::squeeze(QString text, int index) {
       text += "/";
     else
     {
-      QString shortName;
+      TQString shortName;
                     
-      if( text.contains( ":/" ) )
-        shortName = text.left( text.find( ":/" ) ) + ":";
+      if( text.tqcontains( ":/" ) )
+        shortName = text.left( text.tqfind( ":/" ) ) + ":";
     
-      shortName += text.mid( text.findRev( "/" ) + 1 );      
+      shortName += text.mid( text.tqfindRev( "/" ) + 1 );      
       text = shortName;
     }
     
@@ -169,10 +169,10 @@ QString PanelTabBar::squeeze(QString text, int index) {
     index = -1;
   }
   
-  QFontMetrics fm(fontMetrics());
+  TQFontMetrics fm(fontMetrics());
 
   // set the real max length
-  _maxTabLength = (static_cast<QWidget*>(parent())->width()-(6*fm.width("W")))/fm.width("W");
+  _maxTabLength = (TQT_TQWIDGET(tqparent())->width()-(6*fm.width("W")))/fm.width("W");
   // each tab gets a fair share of the max tab length
   int _effectiveTabLength = _maxTabLength / (count() == 0 ? 1 : count());
 
@@ -180,7 +180,7 @@ QString PanelTabBar::squeeze(QString text, int index) {
   int textWidth = fm.width(text);
   if (textWidth > labelWidth) {
     // start with the dots only
-    QString squeezedText = "...";
+    TQString squeezedText = "...";
     int squeezedWidth = fm.width(squeezedText);
 
     // estimate how many letters we can add to the dots on both sides
@@ -227,17 +227,17 @@ QString PanelTabBar::squeeze(QString text, int index) {
   };
 }
 
-void PanelTabBar::resizeEvent ( QResizeEvent *e ) {
-    QTabBar::resizeEvent( e );
+void PanelTabBar::resizeEvent ( TQResizeEvent *e ) {
+    TQTabBar::resizeEvent( e );
      
     for (int i=0; i<count(); i++)
       tabAt(i)->setText(squeeze(DISPLAY(dynamic_cast<PanelTab*>(tabAt(i))->panel->virtualPath()), i));
-    layoutTabs();
+    tqlayoutTabs();
 }
 
 
-void PanelTabBar::dragEnterEvent(QDragEnterEvent *e) {
-	QTab *t = selectTab(e->pos());
+void PanelTabBar::dragEnterEvent(TQDragEnterEvent *e) {
+	TQTab *t = selectTab(e->pos());
 	if (!t) return;
 	if (tab(currentTab()) != t) {
 		setCurrentTab(t);
@@ -245,8 +245,8 @@ void PanelTabBar::dragEnterEvent(QDragEnterEvent *e) {
 	}
 }
 
-void PanelTabBar::dragMoveEvent(QDragMoveEvent *e) {
-	QTab *t = selectTab(e->pos());
+void PanelTabBar::dragMoveEvent(TQDragMoveEvent *e) {
+	TQTab *t = selectTab(e->pos());
 	if (!t) return;
 	if (tab(currentTab()) != t) {
 		setCurrentTab(t);
@@ -256,7 +256,7 @@ void PanelTabBar::dragMoveEvent(QDragMoveEvent *e) {
 
 // -----------------------------> PanelTab <----------------------------
 
-PanelTab::PanelTab(const QString & text): QTab(text) {}
-PanelTab::PanelTab(const QString & text, ListPanel *p): QTab(text), panel(p) {}
+PanelTab::PanelTab(const TQString & text): TQTab(text) {}
+PanelTab::PanelTab(const TQString & text, ListPanel *p): TQTab(text), panel(p) {}
 
 #include "paneltabbar.moc"

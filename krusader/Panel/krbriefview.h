@@ -33,7 +33,7 @@ A
 #include "krview.h"
 #include "krviewitem.h"
 #include <kiconview.h>
-#include <qtimer.h>
+#include <tqtimer.h>
 
 // extends KrViewProperties to add detailedview-only properties
 class KrBriefViewProperties: public KrViewProperties {
@@ -42,13 +42,13 @@ public:
 };
 
 class KrBriefViewItem;
-class QDragMoveEvent;
-class QToolTip;
-class QHeader;
+class TQDragMoveEvent;
+class TQToolTip;
+class TQHeader;
 
 /**
  * KrBriefView implements everthing and anything regarding a brief view in a filemananger.
- * IT MUST USE KrViewItem as the children to it's *KIconView. KrBriefView and KrViewItem are
+ * IT MUST USE KrViewItem as the tqchildren to it's *KIconView. KrBriefView and KrViewItem are
  * tightly coupled and the view will not work with other kinds of items.
  * Apart from this, the view is self-reliant and you can use the vast interface to get whatever
  * information is necessery from it.
@@ -56,21 +56,22 @@ class QHeader;
 class KrBriefView: public KIconView, public KrView {
 	friend class KrBriefViewItem;
 	Q_OBJECT
+  TQ_OBJECT
 public:
-	KrBriefView( QHeader *header, QWidget *parent, bool &left, KConfig *cfg = krConfig, const char *name = 0 );
+	KrBriefView( TQHeader *header, TQWidget *tqparent, bool &left, KConfig *cfg = krConfig, const char *name = 0 );
 	virtual ~KrBriefView();
 	virtual inline KrViewItem *getFirst() { return dynamic_cast<KrViewItem*>( firstItem() ); }
 	virtual inline KrViewItem *getLast() { return dynamic_cast<KrViewItem*>( lastItem() ); }
-	virtual inline KrViewItem *getNext( KrViewItem *current ) { return dynamic_cast<KrViewItem*>( dynamic_cast<QIconViewItem*>( current ) ->nextItem() ); }
-	virtual inline KrViewItem *getPrev( KrViewItem *current ) { return dynamic_cast<KrViewItem*>( dynamic_cast<QIconViewItem*>( current ) ->prevItem() ); }
+	virtual inline KrViewItem *getNext( KrViewItem *current ) { return dynamic_cast<KrViewItem*>( dynamic_cast<TQIconViewItem*>( current ) ->nextItem() ); }
+	virtual inline KrViewItem *getPrev( KrViewItem *current ) { return dynamic_cast<KrViewItem*>( dynamic_cast<TQIconViewItem*>( current ) ->prevItem() ); }
 	virtual inline KrViewItem *getCurrentKrViewItem() { return dynamic_cast<KrViewItem*>( currentItem() ); }
-	virtual KrViewItem *getKrViewItemAt(const QPoint &vp);
-	virtual inline KrViewItem *findItemByName(const QString &name) { return dynamic_cast<KrViewItem*>( findItem( name, Qt::ExactMatch ) ); }
+	virtual KrViewItem *getKrViewItemAt(const TQPoint &vp);
+	virtual inline KrViewItem *findItemByName(const TQString &name) { return dynamic_cast<KrViewItem*>( tqfindItem( name, TQt::ExactMatch ) ); }
 	virtual void addItems(vfs* v, bool addUpDir = true);
-	virtual void delItem(const QString &);
-	virtual QString getCurrentItem() const;
+	virtual void delItem(const TQString &);
+	virtual TQString getCurrentItem() const;
 	virtual void makeItemVisible(const KrViewItem * item );
-	virtual void setCurrentItem(const QString& name );
+	virtual void setCurrentItem(const TQString& name );
 	virtual void updateView();
 	virtual void updateItem(KrViewItem* item );
 	virtual void clear();
@@ -80,8 +81,8 @@ public:
 	virtual void prepareForPassive();
 	virtual void saveSettings() {}
 	virtual void restoreSettings() {}
-	virtual QString nameInKConfig() {return _nameInKConfig;}
-	virtual void resizeEvent ( QResizeEvent * );
+	virtual TQString nameInKConfig() {return _nameInKConfig;}
+	virtual void resizeEvent ( TQResizeEvent * );
 
 signals:
 	void middleButtonClicked( KrViewItem *item );
@@ -97,76 +98,76 @@ protected:
 	void setColumnNr();
 	void redrawColumns();
 
-	virtual void keyPressEvent( QKeyEvent *e );
-	virtual void imStartEvent( QIMEvent* e );
-	virtual void imEndEvent( QIMEvent *e );
-	virtual void imComposeEvent( QIMEvent *e );
-	virtual void contentsMousePressEvent( QMouseEvent *e );
-	virtual void contentsMouseReleaseEvent (QMouseEvent *e);
-	virtual void contentsMouseMoveEvent ( QMouseEvent * e );
-	virtual void contentsMouseDoubleClickEvent ( QMouseEvent * e );
-	virtual bool acceptDrag( QDropEvent* e ) const;
-	virtual void contentsDropEvent( QDropEvent *e );
-	virtual void contentsDragMoveEvent( QDragMoveEvent *e );
-	virtual void contentsDragLeaveEvent ( QDragLeaveEvent * );
+	virtual void keyPressEvent( TQKeyEvent *e );
+	virtual void imStartEvent( TQIMEvent* e );
+	virtual void imEndEvent( TQIMEvent *e );
+	virtual void imComposeEvent( TQIMEvent *e );
+	virtual void contentsMousePressEvent( TQMouseEvent *e );
+	virtual void contentsMouseReleaseEvent (TQMouseEvent *e);
+	virtual void contentsMouseMoveEvent ( TQMouseEvent * e );
+	virtual void contentsMouseDoubleClickEvent ( TQMouseEvent * e );
+	virtual bool acceptDrag( TQDropEvent* e ) const;
+	virtual void contentsDropEvent( TQDropEvent *e );
+	virtual void contentsDragMoveEvent( TQDragMoveEvent *e );
+	virtual void contentsDragLeaveEvent ( TQDragLeaveEvent * );
 	virtual void startDrag() { op()->startDrag(); }
-	virtual bool event( QEvent *e );
-	virtual bool eventFilter( QObject * watched, QEvent * e );
-	QMouseEvent * transformMouseEvent( QMouseEvent * );
+	virtual bool event( TQEvent *e );
+	virtual bool eventFilter( TQObject * watched, TQEvent * e );
+	TQMouseEvent * transformMouseEvent( TQMouseEvent * );
 
 protected slots:
-	void rename( QIconViewItem *item );
-	void slotClicked( QIconViewItem *item );
-	void slotDoubleClicked( QIconViewItem *item );
-	void slotItemDescription( QIconViewItem * );
-	void slotCurrentChanged( QIconViewItem *item );
-	void handleContextMenu( QIconViewItem*, const QPoint& );
+	void rename( TQIconViewItem *item );
+	void slotClicked( TQIconViewItem *item );
+	void slotDoubleClicked( TQIconViewItem *item );
+	void slotItemDescription( TQIconViewItem * );
+	void slotCurrentChanged( TQIconViewItem *item );
+	void handleContextMenu( TQIconViewItem*, const TQPoint& );
 	virtual void renameCurrentItem();
 	virtual void showContextMenu( );
-	void inplaceRenameFinished( QIconViewItem *it );
-	void setNameToMakeCurrent( QIconViewItem *it );
+	void inplaceRenameFinished( TQIconViewItem *it );
+	void setNameToMakeCurrent( TQIconViewItem *it );
 	void sortOrderChanged();
-	void slotRightButtonPressed(QIconViewItem*, const QPoint& point);
-	void transformCurrentChanged( QIconViewItem * item ) { emit currentChanged( dynamic_cast<KrViewItem *>(item ) ); }
+	void slotRightButtonPressed(TQIconViewItem*, const TQPoint& point);
+	void transformCurrentChanged( TQIconViewItem * item ) { emit currentChanged( dynamic_cast<KrViewItem *>(item ) ); }
 
 	/**
 	  * used internally to produce the signal middleButtonClicked()
 	 */
-	void slotMouseClicked( int button, QIconViewItem * item, const QPoint & pos );
-	inline void slotExecuted( QIconViewItem* i ) {
-		QString tmp = dynamic_cast<KrViewItem*>( i ) ->name();
+	void slotMouseClicked( int button, TQIconViewItem * item, const TQPoint & pos );
+	inline void slotExecuted( TQIconViewItem* i ) {
+		TQString tmp = dynamic_cast<KrViewItem*>( i ) ->name();
 		op()->emitExecuted( tmp );
 	}
 
 public slots:
 	void refreshColors();
-	void quickSearch( const QString &, int = 0 );
-	void stopQuickSearch( QKeyEvent* );
-	void handleQuickSearchEvent( QKeyEvent* );
+	void quickSearch( const TQString &, int = 0 );
+	void stopQuickSearch( TQKeyEvent* );
+	void handleQuickSearchEvent( TQKeyEvent* );
 	void changeSortOrder();
 
   
 signals:
-	void letsDrag(QStringList items, QPixmap icon);
-	void gotDrop(QDropEvent *);
+	void letsDrag(TQStringList items, TQPixmap icon);
+	void gotDrop(TQDropEvent *);
 
 private:
-	QHeader * header;
+	TQHeader * header;
 	bool swushSelects;
-	QPoint dragStartPos;
-	QIconViewItem *lastSwushPosition;
+	TQPoint dragStartPos;
+	TQIconViewItem *lastSwushPosition;
 	KrViewItem *_currDragItem;
 	bool singleClicked;
 	bool modifierPressed;
-	QTime clickTime;
-	QIconViewItem *clickedItem;
-	QTimer renameTimer;
-	QTimer contextMenuTimer;
-	QPoint contextMenuPoint;
+	TQTime clickTime;
+	TQIconViewItem *clickedItem;
+	TQTimer renameTimer;
+	TQTimer contextMenuTimer;
+	TQPoint contextMenuPoint;
 	KrBriefViewItem *currentlyRenamedItem;
-	QIconViewItem *pressedItem;
-	QMouseEvent *mouseEvent;
-	QToolTip *toolTip;
+	TQIconViewItem *pressedItem;
+	TQMouseEvent *mouseEvent;
+	TQToolTip *toolTip;
 };
 
 #endif

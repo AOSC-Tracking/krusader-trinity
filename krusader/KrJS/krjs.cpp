@@ -22,7 +22,7 @@ KrJS::KrJS() : KJSEmbed::KJSEmbedPart() {
    addObject( ACTIVE_MNG, "PanelManager" );
 }
 
-bool KrJS::runFile(const QString & filename) {
+bool KrJS::runFile(const TQString & filename) {
 
    KJS::ExecState *exec = globalExec();
 
@@ -54,22 +54,22 @@ bool KrJS::runFile(const QString & filename) {
 #if KDE_IS_VERSION(3,4,0)
             KJS::Object exception = jsres.value().toObject(exec);
             int line = int( exception.get( exec, KJS::Identifier("line") ).toNumber(exec) );
-            QString type = exception.get( exec, KJS::Identifier("name") ).toString(exec).qstring();
-            QString message = exception.get( exec, KJS::Identifier("message") ).toString(exec).qstring();
+            TQString type = exception.get( exec, KJS::Identifier("name") ).toString(exec).qstring();
+            TQString message = exception.get( exec, KJS::Identifier("message") ).toString(exec).qstring();
 
             krOut << "JavaScript: Uncaught " << type << " exception at line " << line <<  " in " << filename << endl;
             krOut << message << endl;
 
-            KMessageBox::error ( 0,	//parent
+            KMessageBox::error ( 0,	//tqparent
 		( line < 0 ?
-		QString( i18n("In %1:\nUncaught JavaScript exception '%2'\n%3") ).arg(filename).arg(type).arg(message) :
-		QString( i18n("In %1:\nUncaught JavaScript exception '%2' at line %3\n%4") ).arg(filename).arg(type).arg(line).arg(message)
+		TQString( i18n("In %1:\nUncaught JavaScript exception '%2'\n%3") ).tqarg(filename).tqarg(type).tqarg(message) :
+		TQString( i18n("In %1:\nUncaught JavaScript exception '%2' at line %3\n%4") ).tqarg(filename).tqarg(type).tqarg(line).tqarg(message)
 		),	//text
 		i18n("JavaScript error"), 	//caption
 		KMessageBox::Dangerous) ;
 #else
-            KMessageBox::error ( 0,	//parent
-		QString(i18n("In %1:\nThere is an error in the JavaScript")).arg(filename),	//text
+            KMessageBox::error ( 0,	//tqparent
+		TQString(i18n("In %1:\nThere is an error in the JavaScript")).tqarg(filename),	//text
 		i18n("JavaScript error"), 	//caption
 		KMessageBox::Dangerous) ;
 #endif

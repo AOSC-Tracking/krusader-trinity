@@ -38,23 +38,23 @@
 #include <kurl.h>
 #include <kmessagebox.h>
 #include <klocale.h>
-#include <qapplication.h>
-#include <qregexp.h>
-#include <qdir.h>
-#include <qtimer.h>
+#include <tqapplication.h>
+#include <tqregexp.h>
+#include <tqdir.h>
+#include <tqtimer.h>
 #include <kio/job.h>
 #include <kdialogbase.h>
 #include <kio/observer.h>
 #include <kio/renamedlg.h>
 #include <kio/skipdlg.h>
 #include <unistd.h>
-#include <qeventloop.h>
-#include <qpushbutton.h>
-#include <qdatetime.h>
+#include <tqeventloop.h>
+#include <tqpushbutton.h>
+#include <tqdatetime.h>
 #include <kprocess.h>
 #include <kdialogbase.h>
 #include <kprogress.h>
-#include <qlayout.h>
+#include <tqlayout.h>
 #include <kurlcompletion.h>
 
 #include <sys/types.h>
@@ -62,7 +62,7 @@
 #include <utime.h>
 #include <pwd.h>
 #include <grp.h>
-#include <qlabel.h>
+#include <tqlabel.h>
 
 
 
@@ -78,7 +78,7 @@
 
 Synchronizer::Synchronizer() : displayUpdateCount( 0 ), markEquals( true ), 
         markDiffers ( true ), markCopyToLeft( true ), markCopyToRight( true ), markDeletable( true ),
-        stack(), jobMap(), receivedMap(), parentWidget( 0 )
+        stack(), jobMap(), receivedMap(), tqparentWidget( 0 )
 {
   resultList.setAutoDelete( true );
   stack.setAutoDelete( true );
@@ -95,15 +95,15 @@ void Synchronizer::reset()
   leftCopyNr = rightCopyNr = deleteNr = 0;
   leftCopySize = rightCopySize = deleteSize = 0;
   comparedDirs = fileCount = 0;
-  leftBaseDir = rightBaseDir = QString::null;
+  leftBaseDir = rightBaseDir = TQString();
   resultList.clear();
   temporaryList.clear();
   stack.clear();
 }
 
-int Synchronizer::compare( QString leftURL, QString rightURL, KRQuery *query, bool subDirs,
+int Synchronizer::compare( TQString leftURL, TQString rightURL, KRQuery *query, bool subDirs,
                             bool symLinks, bool igDate, bool asymm, bool cmpByCnt, bool igCase, 
-                            bool autoSc, QStringList &selFiles, int equThres, int timeOffs, int parThreads, bool hiddenFiles )
+                            bool autoSc, TQStringList &selFiles, int equThres, int timeOffs, int parThreads, bool hiddenFiles )
 {
   resultList.clear();
   temporaryList.clear();
@@ -154,7 +154,7 @@ int Synchronizer::compare( QString leftURL, QString rightURL, KRQuery *query, bo
   if( !autoScroll )
     refresh( true );
 
-  emit statusInfo( i18n( "Number of files: %1" ).arg( fileCount ) );
+  emit statusInfo( i18n( "Number of files: %1" ).tqarg( fileCount ) );
   return fileCount;
 }
 
@@ -164,16 +164,16 @@ void Synchronizer::compareLoop() {
       SynchronizerTask * entry = stack.at( thread );
 
       if( entry->state() == ST_STATE_NEW )
-        entry->start( parentWidget );
+        entry->start( tqparentWidget );
 
       if( entry->inherits("CompareTask") ) {
         if( entry->state() == ST_STATE_READY ) {
           CompareTask *ctentry = (CompareTask *) entry;
           if( ctentry->isDuplicate() )
-            compareDirectory( ctentry->parent(), ctentry->leftDirList(), ctentry->rightDirList(),
+            compareDirectory( ctentry->tqparent(), ctentry->leftDirList(), ctentry->rightDirList(),
                               ctentry->leftDir(), ctentry->rightDir() );
           else
-            addSingleDirectory( ctentry->parent(), ctentry->dirList(), ctentry->dir(),
+            addSingleDirectory( ctentry->tqparent(), ctentry->dirList(), ctentry->dir(),
                                 ctentry->isLeft() );
         }
         if( entry->state() == ST_STATE_READY || entry->state() == ST_STATE_ERROR )
@@ -185,7 +185,7 @@ void Synchronizer::compareLoop() {
         break;
       case ST_STATE_READY:
       case ST_STATE_ERROR:
-        emit statusInfo( i18n( "Number of compared directories: %1" ).arg( comparedDirs ) );
+        emit statusInfo( i18n( "Number of compared directories: %1" ).tqarg( comparedDirs ) );
         stack.removeRef( entry );
         continue;
       default:
@@ -193,21 +193,21 @@ void Synchronizer::compareLoop() {
       }
     }
     if( !stack.isEmpty() )
-      qApp->processEvents();
+      tqApp->processEvents();
   }
   stack.clear();
 }
 
-void Synchronizer::compareDirectory( SynchronizerFileItem *parent, SynchronizerDirList * left_directory,
-                                     SynchronizerDirList * right_directory, const QString &leftDir,
-                                     const QString &rightDir )
+void Synchronizer::compareDirectory( SynchronizerFileItem *tqparent, SynchronizerDirList * left_directory,
+                                     SynchronizerDirList * right_directory, const TQString &leftDir,
+                                     const TQString &rightDir )
 {
-  const QString &leftURL = left_directory->url();
-  const QString &rightURL = right_directory->url();
+  const TQString &leftURL = left_directory->url();
+  const TQString &rightURL = right_directory->url();
   vfile * left_file;
   vfile * right_file;
 
-  QString file_name;
+  TQString file_name;
   bool checkIfSelected = false;
 
   if( leftDir.isEmpty() && rightDir.isEmpty() && selectedFiles.count() )
@@ -222,14 +222,14 @@ void Synchronizer::compareDirectory( SynchronizerFileItem *parent, SynchronizerD
 
     file_name =  left_file->vfile_getName();
 
-    if( checkIfSelected && !selectedFiles.contains( file_name ) )
+    if( checkIfSelected && !selectedFiles.tqcontains( file_name ) )
       continue;
 
     if( !query->match( left_file ) )
       continue;
 
     if( (right_file = right_directory->search( file_name, ignoreCase )) == 0 )
-      addLeftOnlyItem( parent, file_name, leftDir, left_file->vfile_getSize(), left_file->vfile_getTime_t(),
+      addLeftOnlyItem( tqparent, file_name, leftDir, left_file->vfile_getSize(), left_file->vfile_getTime_t(),
                        readLink( left_file ), left_file->vfile_getOwner(), left_file->vfile_getGroup(),
                        left_file->vfile_getMode(), left_file->vfile_getACL() );
     else
@@ -237,7 +237,7 @@ void Synchronizer::compareDirectory( SynchronizerFileItem *parent, SynchronizerD
       if( isDir( right_file ) )
         continue;
 
-      addDuplicateItem( parent, file_name, right_file->vfile_getName(), leftDir, rightDir, left_file->vfile_getSize(), right_file->vfile_getSize(),
+      addDuplicateItem( tqparent, file_name, right_file->vfile_getName(), leftDir, rightDir, left_file->vfile_getSize(), right_file->vfile_getSize(),
                         left_file->vfile_getTime_t(), right_file->vfile_getTime_t(), readLink( left_file ),
                         readLink( right_file ), left_file->vfile_getOwner(), right_file->vfile_getOwner(), 
                         left_file->vfile_getGroup(), right_file->vfile_getGroup(),
@@ -255,14 +255,14 @@ void Synchronizer::compareDirectory( SynchronizerFileItem *parent, SynchronizerD
 
     file_name =  right_file->vfile_getName();
 
-    if( checkIfSelected && !selectedFiles.contains( file_name ) )
+    if( checkIfSelected && !selectedFiles.tqcontains( file_name ) )
       continue;
 
     if( !query->match( right_file ) )
       continue;
 
     if( left_directory->search( file_name, ignoreCase ) == 0 )
-      addRightOnlyItem( parent, file_name, rightDir, right_file->vfile_getSize(), right_file->vfile_getTime_t(),
+      addRightOnlyItem( tqparent, file_name, rightDir, right_file->vfile_getSize(), right_file->vfile_getTime_t(),
                         readLink( right_file ), right_file->vfile_getOwner(), right_file->vfile_getGroup(),
                         right_file->vfile_getMode(), right_file->vfile_getACL() );
   }
@@ -275,12 +275,12 @@ void Synchronizer::compareDirectory( SynchronizerFileItem *parent, SynchronizerD
     {
       if ( left_file->vfile_isDir() && ( followSymLinks || !left_file->vfile_isSymLink()) )
       {
-        QString left_file_name =  left_file->vfile_getName();
+        TQString left_file_name =  left_file->vfile_getName();
     
-        if( checkIfSelected && !selectedFiles.contains( left_file_name ) )
+        if( checkIfSelected && !selectedFiles.tqcontains( left_file_name ) )
           continue;
 
-        if( excludedPaths.contains( leftDir.isEmpty() ? left_file_name : leftDir+"/"+left_file_name ) )
+        if( excludedPaths.tqcontains( leftDir.isEmpty() ? left_file_name : leftDir+"/"+left_file_name ) )
           continue;
 
         if( !query->matchDirName( left_file_name ) )
@@ -288,7 +288,7 @@ void Synchronizer::compareDirectory( SynchronizerFileItem *parent, SynchronizerD
 
         if( (right_file = right_directory->search( left_file_name, ignoreCase )) == 0 ) 
         {
-          SynchronizerFileItem *me = addLeftOnlyItem( parent, left_file_name, leftDir, 0, 
+          SynchronizerFileItem *me = addLeftOnlyItem( tqparent, left_file_name, leftDir, 0, 
                                                       left_file->vfile_getTime_t(), readLink( left_file ),
                                                       left_file->vfile_getOwner(), left_file->vfile_getGroup(),
                                                       left_file->vfile_getMode(), left_file->vfile_getACL(),
@@ -296,8 +296,8 @@ void Synchronizer::compareDirectory( SynchronizerFileItem *parent, SynchronizerD
           stack.append( new CompareTask( me, leftURL+left_file_name+"/", 
                               leftDir.isEmpty() ? left_file_name : leftDir+"/"+left_file_name, true, ignoreHidden ) );
         } else {
-          QString right_file_name =  right_file->vfile_getName();
-          SynchronizerFileItem *me = addDuplicateItem( parent, left_file_name, right_file_name, 
+          TQString right_file_name =  right_file->vfile_getName();
+          SynchronizerFileItem *me = addDuplicateItem( tqparent, left_file_name, right_file_name, 
                                                        leftDir, rightDir, 0, 0, 
                                                        left_file->vfile_getTime_t(), right_file->vfile_getTime_t(),
                                                        readLink( left_file ), readLink( right_file ), 
@@ -321,10 +321,10 @@ void Synchronizer::compareDirectory( SynchronizerFileItem *parent, SynchronizerD
       {
         file_name =  right_file->vfile_getName();
 
-        if( checkIfSelected && !selectedFiles.contains( file_name ) )
+        if( checkIfSelected && !selectedFiles.tqcontains( file_name ) )
           continue;
           
-        if( excludedPaths.contains( rightDir.isEmpty() ? file_name : rightDir+"/"+file_name ) )
+        if( excludedPaths.tqcontains( rightDir.isEmpty() ? file_name : rightDir+"/"+file_name ) )
           continue;
 
         if( !query->matchDirName( file_name ) )
@@ -332,7 +332,7 @@ void Synchronizer::compareDirectory( SynchronizerFileItem *parent, SynchronizerD
 
         if( left_directory->search( file_name, ignoreCase ) == 0 )
         {
-          SynchronizerFileItem *me = addRightOnlyItem( parent, file_name, rightDir, 0, 
+          SynchronizerFileItem *me = addRightOnlyItem( tqparent, file_name, rightDir, 0, 
                                                       right_file->vfile_getTime_t(), readLink( right_file ),
                                                       right_file->vfile_getOwner(), right_file->vfile_getGroup(),
                                                       right_file->vfile_getMode(), right_file->vfile_getACL(),
@@ -345,34 +345,34 @@ void Synchronizer::compareDirectory( SynchronizerFileItem *parent, SynchronizerD
   }
 }
 
-QString Synchronizer::getTaskTypeName( TaskType taskType )
+TQString Synchronizer::getTaskTypeName( TaskType taskType )
 {
-  static QString names[] = {"=","!=","<-","->","DEL","?","?","?","?","?"};
+  static TQString names[] = {"=","!=","<-","->","DEL","?","?","?","?","?"};
 
   return names[taskType];
 }
 
-SynchronizerFileItem * Synchronizer::addItem( SynchronizerFileItem *parent, const QString &leftFile, 
-                                  const QString &rightFile, const QString &leftDir,
-                                  const QString &rightDir, bool existsLeft, bool existsRight,
+SynchronizerFileItem * Synchronizer::addItem( SynchronizerFileItem *tqparent, const TQString &leftFile, 
+                                  const TQString &rightFile, const TQString &leftDir,
+                                  const TQString &rightDir, bool existsLeft, bool existsRight,
                                   KIO::filesize_t leftSize, KIO::filesize_t rightSize,
-                                  time_t leftDate, time_t rightDate, const QString &leftLink,
-                                  const QString &rightLink, const QString &leftOwner,
-                                  const QString &rightOwner, const QString &leftGroup,
-                                  const QString &rightGroup, mode_t leftMode, mode_t rightMode, 
-                                  const QString &leftACL, const QString &rightACL, TaskType tsk, 
+                                  time_t leftDate, time_t rightDate, const TQString &leftLink,
+                                  const TQString &rightLink, const TQString &leftOwner,
+                                  const TQString &rightOwner, const TQString &leftGroup,
+                                  const TQString &rightGroup, mode_t leftMode, mode_t rightMode, 
+                                  const TQString &leftACL, const TQString &rightACL, TaskType tsk, 
                                   bool isDir, bool isTemp )
 {
   bool marked = autoScroll ? !isTemp && isMarked( tsk, existsLeft && existsRight ) : false;
   SynchronizerFileItem *item = new SynchronizerFileItem( leftFile, rightFile, leftDir, rightDir, marked,
     existsLeft, existsRight, leftSize, rightSize, leftDate, rightDate, leftLink, rightLink,
     leftOwner, rightOwner, leftGroup, rightGroup, leftMode, rightMode, leftACL, rightACL, tsk, isDir,
-    isTemp, parent );
+    isTemp, tqparent );
 
   if( !isTemp )
   {
-    while( parent && parent->isTemporary() )
-       setPermanent( parent );
+    while( tqparent && tqparent->isTemporary() )
+       setPermanent( tqparent );
 
     bool doRefresh = false;
 
@@ -390,7 +390,7 @@ SynchronizerFileItem * Synchronizer::addItem( SynchronizerFileItem *parent, cons
       refresh( true );
 
     if( marked && (displayUpdateCount++ % DISPLAY_UPDATE_PERIOD == (DISPLAY_UPDATE_PERIOD-1) ) )
-      qApp->processEvents();
+      tqApp->processEvents();
   }
   else
     temporaryList.append( item );
@@ -411,45 +411,45 @@ void Synchronizer::compareContentResult( SynchronizerFileItem * item, bool res )
 
 void Synchronizer::setPermanent( SynchronizerFileItem *item )
 {
-  if( item->parent() && item->parent()->isTemporary() )
-    setPermanent( item->parent() );
+  if( item->tqparent() && item->tqparent()->isTemporary() )
+    setPermanent( item->tqparent() );
 
   item->setPermanent();
   resultList.append( item );
   emit comparedFileData( item );
 }
 
-SynchronizerFileItem * Synchronizer::addLeftOnlyItem( SynchronizerFileItem *parent,
-                                    const QString &file_name, const QString &dir, KIO::filesize_t size, 
-                                    time_t date, const QString &link, const QString &owner,
-                                    const QString &group, mode_t mode, const QString &acl, bool isDir, 
+SynchronizerFileItem * Synchronizer::addLeftOnlyItem( SynchronizerFileItem *tqparent,
+                                    const TQString &file_name, const TQString &dir, KIO::filesize_t size, 
+                                    time_t date, const TQString &link, const TQString &owner,
+                                    const TQString &group, mode_t mode, const TQString &acl, bool isDir, 
                                     bool isTemp )
 {
-  return addItem( parent, file_name, file_name, dir, dir, true, false, size, 0, date, 0, link, QString::null,
-                  owner, QString::null, group, QString::null, mode, (mode_t)-1, acl, QString::null,
+  return addItem( tqparent, file_name, file_name, dir, dir, true, false, size, 0, date, 0, link, TQString(),
+                  owner, TQString(), group, TQString(), mode, (mode_t)-1, acl, TQString(),
                   asymmetric ? TT_DELETE : TT_COPY_TO_RIGHT, isDir, isTemp );
 }
 
-SynchronizerFileItem * Synchronizer::addRightOnlyItem( SynchronizerFileItem *parent,
-                                    const QString &file_name, const QString &dir, KIO::filesize_t size,
-                                    time_t date, const QString &link, const QString &owner,
-                                    const QString &group, mode_t mode, const QString &acl, bool isDir,
+SynchronizerFileItem * Synchronizer::addRightOnlyItem( SynchronizerFileItem *tqparent,
+                                    const TQString &file_name, const TQString &dir, KIO::filesize_t size,
+                                    time_t date, const TQString &link, const TQString &owner,
+                                    const TQString &group, mode_t mode, const TQString &acl, bool isDir,
                                     bool isTemp )
 {
-  return addItem( parent, file_name, file_name, dir, dir, false, true, 0, size, 0, date, QString::null, link,
-                  QString::null, owner, QString::null, group, (mode_t)-1, mode, QString::null, acl,
+  return addItem( tqparent, file_name, file_name, dir, dir, false, true, 0, size, 0, date, TQString(), link,
+                  TQString(), owner, TQString(), group, (mode_t)-1, mode, TQString(), acl,
                   TT_COPY_TO_LEFT, isDir, isTemp );
 }
 
-SynchronizerFileItem * Synchronizer::addDuplicateItem( SynchronizerFileItem *parent,
-                                     const QString &leftName, const QString &rightName,
-                                     const QString &leftDir, const QString &rightDir,
+SynchronizerFileItem * Synchronizer::addDuplicateItem( SynchronizerFileItem *tqparent,
+                                     const TQString &leftName, const TQString &rightName,
+                                     const TQString &leftDir, const TQString &rightDir,
                                      KIO::filesize_t leftSize, KIO::filesize_t rightSize, time_t leftDate, time_t rightDate,
-                                     const QString &leftLink, const QString &rightLink,
-                                     const QString &leftOwner, const QString &rightOwner,
-                                     const QString &leftGroup, const QString &rightGroup,
+                                     const TQString &leftLink, const TQString &rightLink,
+                                     const TQString &leftOwner, const TQString &rightOwner,
+                                     const TQString &leftGroup, const TQString &rightGroup,
                                      mode_t leftMode, mode_t rightMode,
-                                     const QString &leftACL, const QString &rightACL,
+                                     const TQString &leftACL, const TQString &rightACL,
                                      bool isDir, bool isTemp )
 {
   TaskType        task;
@@ -499,7 +499,7 @@ SynchronizerFileItem * Synchronizer::addDuplicateItem( SynchronizerFileItem *par
 
   }while( false );
 
-  SynchronizerFileItem * item = addItem( parent, leftName, rightName, leftDir, rightDir, true, true,
+  SynchronizerFileItem * item = addItem( tqparent, leftName, rightName, leftDir, rightDir, true, true,
                                          leftSize, rightSize, leftDate, rightDate, leftLink, rightLink,
                                          leftOwner, rightOwner, leftGroup, rightGroup,
                                          leftMode, rightMode, leftACL, rightACL,
@@ -514,12 +514,12 @@ SynchronizerFileItem * Synchronizer::addDuplicateItem( SynchronizerFileItem *par
   return item;
 }
 
-void Synchronizer::addSingleDirectory( SynchronizerFileItem *parent, SynchronizerDirList *directory,
-                                       const QString &dirName, bool isLeft )
+void Synchronizer::addSingleDirectory( SynchronizerFileItem *tqparent, SynchronizerDirList *directory,
+                                       const TQString &dirName, bool isLeft )
 {
-  const QString &url = directory->url();
+  const TQString &url = directory->url();
   vfile               * file;
-  QString file_name;
+  TQString file_name;
 
   /* walking through the directory files */
   for( file=directory->first(); file != 0 && !stopped; file = directory->next() )
@@ -533,10 +533,10 @@ void Synchronizer::addSingleDirectory( SynchronizerFileItem *parent, Synchronize
       continue;
 
     if( isLeft )
-      addLeftOnlyItem( parent, file_name, dirName, file->vfile_getSize(), file->vfile_getTime_t(), readLink( file ),
+      addLeftOnlyItem( tqparent, file_name, dirName, file->vfile_getSize(), file->vfile_getTime_t(), readLink( file ),
                        file->vfile_getOwner(), file->vfile_getGroup(), file->vfile_getMode(), file->vfile_getACL() );
     else
-      addRightOnlyItem( parent, file_name, dirName, file->vfile_getSize(), file->vfile_getTime_t(), readLink( file ),
+      addRightOnlyItem( tqparent, file_name, dirName, file->vfile_getSize(), file->vfile_getTime_t(), readLink( file ),
                         file->vfile_getOwner(), file->vfile_getGroup(), file->vfile_getMode(), file->vfile_getACL() );
   }
 
@@ -547,7 +547,7 @@ void Synchronizer::addSingleDirectory( SynchronizerFileItem *parent, Synchronize
     {
         file_name =  file->vfile_getName();
 
-        if( excludedPaths.contains( dirName.isEmpty() ? file_name : dirName+"/"+file_name ) )
+        if( excludedPaths.tqcontains( dirName.isEmpty() ? file_name : dirName+"/"+file_name ) )
           continue;
 
         if( !query->matchDirName( file_name ) )
@@ -556,11 +556,11 @@ void Synchronizer::addSingleDirectory( SynchronizerFileItem *parent, Synchronize
         SynchronizerFileItem *me;
 
         if( isLeft )
-          me = addLeftOnlyItem( parent, file_name, dirName, 0, file->vfile_getTime_t(), readLink( file ),
+          me = addLeftOnlyItem( tqparent, file_name, dirName, 0, file->vfile_getTime_t(), readLink( file ),
                                 file->vfile_getOwner(), file->vfile_getGroup(), file->vfile_getMode(),
                                 file->vfile_getACL(), true, !query->match( file ) );
         else
-          me = addRightOnlyItem( parent, file_name, dirName, 0, file->vfile_getTime_t(), readLink( file ),
+          me = addRightOnlyItem( tqparent, file_name, dirName, 0, file->vfile_getTime_t(), readLink( file ),
                                  file->vfile_getOwner(), file->vfile_getGroup(), file->vfile_getMode(),
                                  file->vfile_getACL(), true, !query->match( file ) );
         stack.append( new CompareTask( me, url+file_name+"/", 
@@ -605,15 +605,15 @@ bool Synchronizer::isMarked( TaskType task, bool isDuplicate )
 
 bool Synchronizer::markParentDirectories( SynchronizerFileItem *item )
 {
-  if( item->parent() == 0 || item->parent()->isMarked() )
+  if( item->tqparent() == 0 || item->tqparent()->isMarked() )
     return false;
 
-  markParentDirectories( item->parent() );
+  markParentDirectories( item->tqparent() );
 
-  item->parent()->setMarked( true );
+  item->tqparent()->setMarked( true );
 
   fileCount++;
-  emit markChanged( item->parent(), false );
+  emit markChanged( item->tqparent(), false );
   return true;
 }
 
@@ -645,7 +645,7 @@ int Synchronizer::refresh(bool nostatus)
   }
 
   if( !nostatus )
-    emit statusInfo( i18n( "Number of files: %1" ).arg( fileCount ) );
+    emit statusInfo( i18n( "Number of files: %1" ).tqarg( fileCount ) );
 
   return fileCount;
 }
@@ -657,9 +657,9 @@ void Synchronizer::operate( SynchronizerFileItem *item,
 
   if( item->isDir() )
   {
-    QString leftDirName = ( item->leftDirectory() == "" ) ?
+    TQString leftDirName = ( item->leftDirectory() == "" ) ?
                         item->leftName() : item->leftDirectory() + "/" + item->leftName() ;
-    QString rightDirName = ( item->rightDirectory() == "" ) ?
+    TQString rightDirName = ( item->rightDirectory() == "" ) ?
                         item->rightName() : item->rightDirectory() + "/" + item->rightName() ;
 
     item = resultList.first();
@@ -681,8 +681,8 @@ void Synchronizer::excludeOperation( SynchronizerFileItem *item )
 
 void Synchronizer::exclude( SynchronizerFileItem *item )
 {
-  if( !item->parent() || item->parent()->task() != TT_DELETE )
-    operate( item, excludeOperation );  /* exclude only if the parent task is not DEL */
+  if( !item->tqparent() || item->tqparent()->task() != TT_DELETE )
+    operate( item, excludeOperation );  /* exclude only if the tqparent task is not DEL */
 }
 
 void Synchronizer::restoreOperation( SynchronizerFileItem *item )
@@ -694,12 +694,12 @@ void Synchronizer::restore( SynchronizerFileItem *item )
 {
   operate( item, restoreOperation );
 
-  while( ( item = item->parent() ) != 0 ) /* in case of restore, the parent directories */
+  while( ( item = item->tqparent() ) != 0 ) /* in case of restore, the tqparent directories */
   {                                          /* must be changed for being consistent */
     if( item->task() != TT_DIFFERS )
       break;
 
-    if( item->originalTask() == TT_DELETE ) /* if the parent original task is delete */
+    if( item->originalTask() == TT_DELETE ) /* if the tqparent original task is delete */
       break;                                    /* don't touch it */
 
     item->restoreOriginalTask();          /* restore */
@@ -753,7 +753,7 @@ void Synchronizer::copyToLeft( SynchronizerFileItem *item )
 {
   operate( item, copyToLeftOperation );
 
-  while( ( item = item->parent() ) != 0 )
+  while( ( item = item->tqparent() ) != 0 )
   {
     if( item->task() != TT_DIFFERS )
       break;
@@ -785,7 +785,7 @@ void Synchronizer::copyToRight( SynchronizerFileItem *item )
 {
   operate( item, copyToRightOperation );
 
-  while( ( item = item->parent() ) != 0 )
+  while( ( item = item->tqparent() ) != 0 )
   {
     if( item->task() != TT_DIFFERS && item->task() != TT_DELETE )
       break;
@@ -840,7 +840,7 @@ bool Synchronizer::totalSizes( int * leftCopyNr, KIO::filesize_t *leftCopySize, 
 
 void Synchronizer::swapSides()
 {
-  QString leftTmp = leftBaseDir;
+  TQString leftTmp = leftBaseDir;
   leftBaseDir = rightBaseDir;
   rightBaseDir = leftTmp;
 
@@ -863,7 +863,7 @@ void Synchronizer::setScrolling( bool scroll )
   }
 }
 
-void Synchronizer::synchronize( QWidget *syncWdg, bool leftCopyEnabled, bool rightCopyEnabled,
+void Synchronizer::synchronize( TQWidget *syncWdg, bool leftCopyEnabled, bool rightCopyEnabled,
                                 bool deleteEnabled, bool overWrite, int parThreads )
 {
     this->leftCopyEnabled   = leftCopyEnabled;
@@ -938,10 +938,10 @@ SynchronizerFileItem * Synchronizer::getNextTask() {
 
 void Synchronizer::executeTask( SynchronizerFileItem * task )
 {
-  QString leftDirName = task->leftDirectory();
+  TQString leftDirName = task->leftDirectory();
   if( !leftDirName.isEmpty() )
     leftDirName += "/";
-  QString rightDirName = task->rightDirectory();
+  TQString rightDirName = task->rightDirectory();
   if( !rightDirName.isEmpty() )
     rightDirName += "/";
 
@@ -954,7 +954,7 @@ void Synchronizer::executeTask( SynchronizerFileItem * task )
     if( task->isDir() )
     {
       KIO::SimpleJob *job = KIO::mkdir( leftURL );
-      connect(job,SIGNAL(result(KIO::Job*)),this,SLOT(slotTaskFinished(KIO::Job*)));
+      connect(job,TQT_SIGNAL(result(KIO::Job*)),this,TQT_SLOT(slotTaskFinished(KIO::Job*)));
       jobMap[ job ] = task;
       disableNewTasks = true;
     }
@@ -967,14 +967,14 @@ void Synchronizer::executeTask( SynchronizerFileItem * task )
       if( task->rightLink().isNull() ) {
         KIO::FileCopyJob *job = KIO::file_copy(rightURL, destURL, -1,
                                   overWrite || task->overWrite(), false, false );
-        connect(job,SIGNAL(processedSize (KIO::Job *, KIO::filesize_t )), this,
-                    SLOT  (slotProcessedSize (KIO::Job *, KIO::filesize_t )));
-        connect(job,SIGNAL(result(KIO::Job*)),this,SLOT(slotTaskFinished(KIO::Job*)));
+        connect(job,TQT_SIGNAL(processedSize (KIO::Job *, KIO::filesize_t )), this,
+                    TQT_SLOT  (slotProcessedSize (KIO::Job *, KIO::filesize_t )));
+        connect(job,TQT_SIGNAL(result(KIO::Job*)),this,TQT_SLOT(slotTaskFinished(KIO::Job*)));
         jobMap[ job ] = task;
       } else {
         KIO::SimpleJob *job = KIO::symlink( task->rightLink(), destURL,
                                             overWrite || task->overWrite(), false );
-        connect(job,SIGNAL(result(KIO::Job*)),this,SLOT(slotTaskFinished(KIO::Job*)));
+        connect(job,TQT_SIGNAL(result(KIO::Job*)),this,TQT_SLOT(slotTaskFinished(KIO::Job*)));
         jobMap[ job ] = task;
       }
     }
@@ -983,7 +983,7 @@ void Synchronizer::executeTask( SynchronizerFileItem * task )
     if( task->isDir() )
     {
       KIO::SimpleJob *job = KIO::mkdir( rightURL );
-      connect(job,SIGNAL(result(KIO::Job*)),this,SLOT(slotTaskFinished(KIO::Job*)));
+      connect(job,TQT_SIGNAL(result(KIO::Job*)),this,TQT_SLOT(slotTaskFinished(KIO::Job*)));
       jobMap[ job ] = task;
       disableNewTasks = true;
     }
@@ -996,14 +996,14 @@ void Synchronizer::executeTask( SynchronizerFileItem * task )
       if( task->leftLink().isNull() ) {
         KIO::FileCopyJob *job = KIO::file_copy(leftURL, destURL, -1,
                                   overWrite || task->overWrite(), false, false );
-        connect(job,SIGNAL(processedSize (KIO::Job *, KIO::filesize_t )), this,
-                    SLOT  (slotProcessedSize (KIO::Job *, KIO::filesize_t )));
-        connect(job,SIGNAL(result(KIO::Job*)),this,SLOT(slotTaskFinished(KIO::Job*)));
+        connect(job,TQT_SIGNAL(processedSize (KIO::Job *, KIO::filesize_t )), this,
+                    TQT_SLOT  (slotProcessedSize (KIO::Job *, KIO::filesize_t )));
+        connect(job,TQT_SIGNAL(result(KIO::Job*)),this,TQT_SLOT(slotTaskFinished(KIO::Job*)));
         jobMap[ job ] = task;
       } else {
         KIO::SimpleJob *job = KIO::symlink( task->leftLink(), destURL,
                                             overWrite || task->overWrite(), false );
-        connect(job,SIGNAL(result(KIO::Job*)),this,SLOT(slotTaskFinished(KIO::Job*)));
+        connect(job,TQT_SIGNAL(result(KIO::Job*)),this,TQT_SLOT(slotTaskFinished(KIO::Job*)));
         jobMap[ job ] = task;
       }
     }
@@ -1011,7 +1011,7 @@ void Synchronizer::executeTask( SynchronizerFileItem * task )
   case TT_DELETE:
     {
       KIO::DeleteJob *job = KIO::del( leftURL, false );
-      connect(job,SIGNAL(result(KIO::Job*)),this,SLOT(slotTaskFinished(KIO::Job*)));
+      connect(job,TQT_SIGNAL(result(KIO::Job*)),this,TQT_SLOT(slotTaskFinished(KIO::Job*)));
       jobMap[ job ] = task;
     }
     break;
@@ -1029,7 +1029,7 @@ void Synchronizer::slotTaskFinished(KIO::Job *job )
 
   KIO::filesize_t receivedSize = 0;
 
-  if( receivedMap.contains( job ) ) {
+  if( receivedMap.tqcontains( job ) ) {
     receivedSize = receivedMap[ job ];
     receivedMap.remove( job );
   }
@@ -1037,8 +1037,8 @@ void Synchronizer::slotTaskFinished(KIO::Job *job )
   if( disableNewTasks && item == lastTask )
     disableNewTasks = false; // the blocker task finished
 
-  QString leftDirName     = item->leftDirectory().isEmpty() ? "" : item->leftDirectory() + "/";
-  QString rightDirName     = item->rightDirectory().isEmpty() ? "" : item->rightDirectory() + "/";
+  TQString leftDirName     = item->leftDirectory().isEmpty() ? "" : item->leftDirectory() + "/";
+  TQString rightDirName     = item->rightDirectory().isEmpty() ? "" : item->rightDirectory() + "/";
   KURL leftURL  = vfs::fromPathOrURL( leftBaseDir + leftDirName + item->leftName() );
   KURL rightURL = vfs::fromPathOrURL( rightBaseDir + rightDirName + item->rightName() );
 
@@ -1060,14 +1060,14 @@ void Synchronizer::slotTaskFinished(KIO::Job *job )
           uid_t newOwnerID = (uid_t)-1; // chown(2) : -1 means no change
           if ( !item->rightOwner().isEmpty() )
           {
-            struct passwd* pw = getpwnam(QFile::encodeName(item->rightOwner()));
+            struct passwd* pw = getpwnam(TQFile::encodeName(item->rightOwner()));
             if ( pw != 0L )
               newOwnerID = pw->pw_uid;
           }
           gid_t newGroupID = (gid_t)-1; // chown(2) : -1 means no change
           if ( !item->rightGroup().isEmpty() )
           {
-            struct group* g = getgrnam(QFile::encodeName(item->rightGroup()));
+            struct group* g = getgrnam(TQFile::encodeName(item->rightGroup()));
             if ( g != 0L )
               newGroupID = g->gr_gid;
           }
@@ -1101,14 +1101,14 @@ void Synchronizer::slotTaskFinished(KIO::Job *job )
           uid_t newOwnerID = (uid_t)-1; // chown(2) : -1 means no change
           if ( !item->leftOwner().isEmpty() )
           {
-            struct passwd* pw = getpwnam(QFile::encodeName(item->leftOwner()));
+            struct passwd* pw = getpwnam(TQFile::encodeName(item->leftOwner()));
             if ( pw != 0L )
               newOwnerID = pw->pw_uid;
           }
           gid_t newGroupID = (gid_t)-1; // chown(2) : -1 means no change
           if ( !item->leftGroup().isEmpty() )
           {
-            struct group* g = getgrnam(QFile::encodeName(item->leftGroup()));
+            struct group* g = getgrnam(TQFile::encodeName(item->leftGroup()));
             if ( g != 0L )
               newGroupID = g->gr_gid;
           }
@@ -1138,15 +1138,15 @@ void Synchronizer::slotTaskFinished(KIO::Job *job )
       if( job->error() == KIO::ERR_FILE_ALREADY_EXIST && item->task() != TT_DELETE )
       {
         KIO::RenameDlg_Result result;
-        QString newDest;
+        TQString newDest;
 
         if( autoSkip )
           break;
 
         if ( item->task() == TT_COPY_TO_LEFT )
         {
-          QWidget *mainWidget = qApp->mainWidget(); // WORKAROUND, don't give focus to the main widget
-          qApp->setMainWidget( syncDlgWidget );
+          TQWidget *mainWidget = tqApp->mainWidget(); // WORKAROUND, don't give focus to the main widget
+          tqApp->setMainWidget( syncDlgWidget );
 
           result = Observer::self()->open_RenameDlg ( job, i18n("File Already Exists"),
             vfs::pathOrURL( rightURL ), vfs::pathOrURL( leftURL ),
@@ -1154,12 +1154,12 @@ void Synchronizer::slotTaskFinished(KIO::Job *job )
             item->rightSize(), item->leftSize(), (time_t)-1, (time_t)-1,
             item->rightDate(), item->leftDate());
 
-          qApp->setMainWidget( mainWidget );
+          tqApp->setMainWidget( mainWidget );
         }
         else
         {
-          QWidget *mainWidget = qApp->mainWidget(); // WORKAROUND, don't give focus to the main widget
-          qApp->setMainWidget( syncDlgWidget );
+          TQWidget *mainWidget = tqApp->mainWidget(); // WORKAROUND, don't give focus to the main widget
+          tqApp->setMainWidget( syncDlgWidget );
 
           result = Observer::self()->open_RenameDlg ( job, i18n("File Already Exists"),
             vfs::pathOrURL( leftURL ), vfs::pathOrURL( rightURL ),
@@ -1167,7 +1167,7 @@ void Synchronizer::slotTaskFinished(KIO::Job *job )
             item->leftSize(), item->rightSize(), (time_t)-1, (time_t)-1,
             item->leftDate(), item->rightDate());
 
-          qApp->setMainWidget( mainWidget );
+          tqApp->setMainWidget( mainWidget );
         }
 
         switch ( result )
@@ -1201,33 +1201,33 @@ void Synchronizer::slotTaskFinished(KIO::Job *job )
         if( autoSkip )
           break;
 
-        QString error;
+        TQString error;
 
         switch( item->task() )
         {
         case TT_COPY_TO_LEFT:
           error = i18n("Error at copying file %1 to %2!")
-                       .arg( vfs::pathOrURL( rightURL ) )
-                       .arg( vfs::pathOrURL( leftURL ) );
+                       .tqarg( vfs::pathOrURL( rightURL ) )
+                       .tqarg( vfs::pathOrURL( leftURL ) );
           break;
         case TT_COPY_TO_RIGHT:
           error = i18n("Error at copying file %1 to %2!")
-                       .arg( vfs::pathOrURL( leftURL ) )
-                       .arg( vfs::pathOrURL( rightURL ) );
+                       .tqarg( vfs::pathOrURL( leftURL ) )
+                       .tqarg( vfs::pathOrURL( rightURL ) );
           break;
         case TT_DELETE:
-          error = i18n("Error at deleting file %1!").arg( vfs::pathOrURL( leftURL ) );
+          error = i18n("Error at deleting file %1!").tqarg( vfs::pathOrURL( leftURL ) );
           break;
         default:
           break;
         }
 
-        QWidget *mainWidget = qApp->mainWidget(); // WORKAROUND, don't give focus to the main widget
-        qApp->setMainWidget( syncDlgWidget );
+        TQWidget *mainWidget = tqApp->mainWidget(); // WORKAROUND, don't give focus to the main widget
+        tqApp->setMainWidget( syncDlgWidget );
 
         KIO::SkipDlg_Result result = Observer::self()->open_SkipDlg( job, true, error );
 
-        qApp->setMainWidget( mainWidget );
+        tqApp->setMainWidget( mainWidget );
 
         switch( result )
         {
@@ -1278,7 +1278,7 @@ void Synchronizer::slotProcessedSize( KIO::Job * job , KIO::filesize_t size)
   SynchronizerFileItem * item = jobMap[ job ];
 
   KIO::filesize_t lastProcessedSize = 0;
-  if( receivedMap.contains( job ) )
+  if( receivedMap.tqcontains( job ) )
     lastProcessedSize = receivedMap[ job ];
 
   receivedMap[ job ] = size;
@@ -1312,12 +1312,12 @@ void Synchronizer::resume()
   synchronizeLoop();
 }
 
-QString Synchronizer::leftBaseDirectory()
+TQString Synchronizer::leftBaseDirectory()
 {
   return leftBaseDir;
 }
 
-QString Synchronizer::rightBaseDirectory()
+TQString Synchronizer::rightBaseDirectory()
 {
   return rightBaseDir;
 }
@@ -1325,20 +1325,20 @@ QString Synchronizer::rightBaseDirectory()
 class KgetProgressDialog : public KDialogBase
 {
 public:
-  KgetProgressDialog( QWidget *parent=0, const char *name=0, const QString &caption=QString::null,
-                    const QString &text=QString::null, bool modal=false) : KDialogBase( KDialogBase::Plain,
-                    caption, KDialogBase::User1 | KDialogBase::Cancel, KDialogBase::Cancel, parent, name, modal )
+  KgetProgressDialog( TQWidget *tqparent=0, const char *name=0, const TQString &caption=TQString(),
+                    const TQString &text=TQString(), bool modal=false) : KDialogBase( KDialogBase::Plain,
+                    caption, KDialogBase::User1 | KDialogBase::Cancel, KDialogBase::Cancel, tqparent, name, modal )
   {
     showButton(KDialogBase::Close, false);
 
-    QFrame* mainWidget = plainPage();
-    QVBoxLayout* layout = new QVBoxLayout(mainWidget, 10);
+    TQFrame* mainWidget = plainPage();
+    TQVBoxLayout* tqlayout = new TQVBoxLayout(mainWidget, 10);
 
-    QLabel *mLabel = new QLabel(text, mainWidget);
-    layout->addWidget(mLabel);
+    TQLabel *mLabel = new TQLabel(text, mainWidget);
+    tqlayout->addWidget(mLabel);
 
     mProgressBar = new KProgress(mainWidget);
-    layout->addWidget(mProgressBar);
+    tqlayout->addWidget(mProgressBar);
 
     setButtonText( KDialogBase::User1, i18n( "Pause" ) );
 
@@ -1389,9 +1389,9 @@ void Synchronizer::synchronizeWithKGet()
     if( item->isMarked() )
     {
       KURL downloadURL, destURL;
-      QString leftDirName     = item->leftDirectory().isEmpty() ? "" : item->leftDirectory() + "/";
-      QString rightDirName    = item->rightDirectory().isEmpty() ? "" : item->rightDirectory() + "/";
-      QString destDir;
+      TQString leftDirName     = item->leftDirectory().isEmpty() ? "" : item->leftDirectory() + "/";
+      TQString rightDirName    = item->rightDirectory().isEmpty() ? "" : item->rightDirectory() + "/";
+      TQString destDir;
 
       if( progDlg == 0 )
       {
@@ -1399,7 +1399,7 @@ void Synchronizer::synchronizeWithKGet()
                                           i18n( "Feeding the URLs to Kget" ), true );
         progDlg->progressBar()->setTotalSteps( totalCount );
         progDlg->show();
-        qApp->processEvents();
+        tqApp->processEvents();
       }
 
       if( item->task() == TT_COPY_TO_RIGHT && !isLeftLocal )
@@ -1422,22 +1422,22 @@ void Synchronizer::synchronizeWithKGet()
       }
 
       // creating the directory system
-      for( int i=0; i >= 0 ; i= destDir.find('/',i+1) )
-        if( !QDir( destDir.left(i) ).exists() )
-          QDir().mkdir( destDir.left(i) );
+      for( int i=0; i >= 0 ; i= destDir.tqfind('/',i+1) )
+        if( !TQDir( destDir.left(i) ).exists() )
+          TQDir().mkdir( destDir.left(i) );
 
       if( !item->isDir() && !downloadURL.isEmpty() )
       {
-        if( QFile( destURL.path() ).exists() )
-          QFile( destURL.path() ).remove();
+        if( TQFile( destURL.path() ).exists() )
+          TQFile( destURL.path() ).remove();
 
-        QString source = downloadURL.prettyURL();
-        if( source.contains( '@' ) >= 2 ) /* is this an ftp proxy URL? */
+        TQString source = downloadURL.prettyURL();
+        if( source.tqcontains( '@' ) >= 2 ) /* is this an ftp proxy URL? */
         {
-          int lastAt = source.findRev( '@' );
-          QString startString = source.left( lastAt );
-          QString endString = source.mid( lastAt );
-          startString.replace( "@", "%40" );
+          int lastAt = source.tqfindRev( '@' );
+          TQString startString = source.left( lastAt );
+          TQString endString = source.mid( lastAt );
+          startString.tqreplace( "@", "%40" );
           source = startString+endString;
         }
 
@@ -1445,7 +1445,7 @@ void Synchronizer::synchronizeWithKGet()
 
         p << KrServices::fullPathName( "kget" ) << source << destURL.path();
         if (!p.start(KProcess::Block))
-          KMessageBox::error(parentWidget,i18n("Error executing ")+KrServices::fullPathName( "kget" )+" !");
+          KMessageBox::error(tqparentWidget,i18n("Error executing ")+KrServices::fullPathName( "kget" )+" !");
         else
           p.detach();
       }
@@ -1454,7 +1454,7 @@ void Synchronizer::synchronizeWithKGet()
 
       do
       {
-        qApp->processEvents();
+        tqApp->processEvents();
 
         if( progDlg->wasCancelled() )
           break;
@@ -1483,11 +1483,11 @@ bool Synchronizer::isDir( const vfile * file ) {
   }
 }
 
-QString Synchronizer::readLink( const vfile * file ) {
+TQString Synchronizer::readLink( const vfile * file ) {
   if( file->vfile_isSymLink() )
     return file->vfile_getSymDest();
   else
-    return QString::null;
+    return TQString();
 }
 
 #include "synchronizer.moc"

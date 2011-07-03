@@ -32,46 +32,46 @@
 #include "advancedfilter.h"
 #include "../Dialogs/krdialogs.h"
 
-#include <qgroupbox.h>
+#include <tqgroupbox.h>
 #include <klocale.h>
-#include <qlayout.h>
-#include <qlabel.h>
-#include <qbuttongroup.h>
-#include <qfile.h>
+#include <tqlayout.h>
+#include <tqlabel.h>
+#include <tqbuttongroup.h>
+#include <tqfile.h>
 #include <kdebug.h>
 #include <kmessagebox.h>
 #include <time.h>
 #include <kiconloader.h>
 
-#define USERSFILE  QString("/etc/passwd")
-#define GROUPSFILE QString("/etc/group")
+#define USERSFILE  TQString("/etc/passwd")
+#define GROUPSFILE TQString("/etc/group")
 
-AdvancedFilter::AdvancedFilter( FilterTabs *tabs, QWidget *parent, const char *name ) : QWidget( parent, name ), fltTabs( tabs )
+AdvancedFilter::AdvancedFilter( FilterTabs *tabs, TQWidget *tqparent, const char *name ) : TQWidget( tqparent, name ), fltTabs( tabs )
 {
-  QGridLayout *filterLayout = new QGridLayout( this );
+  TQGridLayout *filterLayout = new TQGridLayout( this );
   filterLayout->setSpacing( 6 );
   filterLayout->setMargin( 11 );
 
   // Options for size
 
-  QGroupBox *sizeGroup = new QGroupBox( this, "sizeGroup" );
-  sizeGroup->setSizePolicy( QSizePolicy( (QSizePolicy::SizeType)5, (QSizePolicy::SizeType)1, sizeGroup->sizePolicy().hasHeightForWidth() ) );
+  TQGroupBox *sizeGroup = new TQGroupBox( this, "sizeGroup" );
+  sizeGroup->tqsetSizePolicy( TQSizePolicy( (TQSizePolicy::SizeType)5, (TQSizePolicy::SizeType)1, sizeGroup->sizePolicy().hasHeightForWidth() ) );
   sizeGroup->setTitle( i18n( "Size" ) );
   sizeGroup->setColumnLayout(0, Qt::Vertical );
-  sizeGroup->layout()->setSpacing( 0 );
-  sizeGroup->layout()->setMargin( 0 );
-  QGridLayout *sizeLayout = new QGridLayout( sizeGroup->layout() );
-  sizeLayout->setAlignment( Qt::AlignTop );
+  sizeGroup->tqlayout()->setSpacing( 0 );
+  sizeGroup->tqlayout()->setMargin( 0 );
+  TQGridLayout *sizeLayout = new TQGridLayout( sizeGroup->tqlayout() );
+  sizeLayout->tqsetAlignment( TQt::AlignTop );
   sizeLayout->setSpacing( 6 );
   sizeLayout->setMargin( 11 );
 
-  biggerThanEnabled = new QCheckBox( sizeGroup, "biggerThanEnabled" );
+  biggerThanEnabled = new TQCheckBox( sizeGroup, "biggerThanEnabled" );
   biggerThanEnabled->setText( i18n( "&Bigger than" ) );
   sizeLayout->addWidget( biggerThanEnabled, 0, 0 );
 
-  biggerThanAmount = new QLineEdit( sizeGroup, "biggerThanAmount" );
+  biggerThanAmount = new TQLineEdit( sizeGroup, "biggerThanAmount" );
   biggerThanAmount->setEnabled( false );
-  biggerThanAmount->setSizePolicy( QSizePolicy( QSizePolicy::Fixed, QSizePolicy::Fixed, biggerThanAmount->sizePolicy().hasHeightForWidth() ) );
+  biggerThanAmount->tqsetSizePolicy( TQSizePolicy( TQSizePolicy::Fixed, TQSizePolicy::Fixed, biggerThanAmount->sizePolicy().hasHeightForWidth() ) );
   sizeLayout->addWidget( biggerThanAmount, 0, 1 );
 
   biggerThanType = new KComboBox( false, sizeGroup, "biggerThanType" );
@@ -81,13 +81,13 @@ AdvancedFilter::AdvancedFilter( FilterTabs *tabs, QWidget *parent, const char *n
   biggerThanType->setEnabled( false );
   sizeLayout->addWidget( biggerThanType, 0, 2 );
 
-  smallerThanEnabled = new QCheckBox( sizeGroup, "smallerThanEnabled" );
+  smallerThanEnabled = new TQCheckBox( sizeGroup, "smallerThanEnabled" );
   smallerThanEnabled->setText( i18n( "&Smaller than" ) );
   sizeLayout->addWidget( smallerThanEnabled, 0, 3 );
 
-  smallerThanAmount = new QLineEdit( sizeGroup, "smallerThanAmount" );
+  smallerThanAmount = new TQLineEdit( sizeGroup, "smallerThanAmount" );
   smallerThanAmount->setEnabled( false );
-  smallerThanAmount->setSizePolicy( QSizePolicy( QSizePolicy::Fixed, QSizePolicy::Fixed, smallerThanAmount->sizePolicy().hasHeightForWidth() ) );
+  smallerThanAmount->tqsetSizePolicy( TQSizePolicy( TQSizePolicy::Fixed, TQSizePolicy::Fixed, smallerThanAmount->sizePolicy().hasHeightForWidth() ) );
   sizeLayout->addWidget( smallerThanAmount, 0, 4 );
 
   smallerThanType = new KComboBox( false, sizeGroup, "smallerThanType" );
@@ -99,7 +99,7 @@ AdvancedFilter::AdvancedFilter( FilterTabs *tabs, QWidget *parent, const char *n
 
   // set a tighter box around the type box
 
-  int height = QFontMetrics(biggerThanType->font()).height()+2;
+  int height = TQFontMetrics(biggerThanType->font()).height()+2;
   biggerThanType->setMaximumHeight(height);
   smallerThanType->setMaximumHeight(height);
 
@@ -107,79 +107,79 @@ AdvancedFilter::AdvancedFilter( FilterTabs *tabs, QWidget *parent, const char *n
 
   // Options for date
 
-  QPixmap iconDate = krLoader->loadIcon( "date", KIcon::Toolbar, 16 );
+  TQPixmap iconDate = krLoader->loadIcon( "date", KIcon::Toolbar, 16 );
 
-  QButtonGroup *dateGroup = new QButtonGroup( this, "dateGroup" );
+  TQButtonGroup *dateGroup = new TQButtonGroup( this, "dateGroup" );
   dateGroup->setTitle( i18n( "Date" ) );
   dateGroup->setExclusive( true );
   dateGroup->setColumnLayout(0, Qt::Vertical );
-  dateGroup->layout()->setSpacing( 0 );
-  dateGroup->layout()->setMargin( 0 );
-  QGridLayout *dateLayout = new QGridLayout( dateGroup->layout() );
-  dateLayout->setAlignment( Qt::AlignTop );
+  dateGroup->tqlayout()->setSpacing( 0 );
+  dateGroup->tqlayout()->setMargin( 0 );
+  TQGridLayout *dateLayout = new TQGridLayout( dateGroup->tqlayout() );
+  dateLayout->tqsetAlignment( TQt::AlignTop );
   dateLayout->setSpacing( 6 );
   dateLayout->setMargin( 11 );
 
-  modifiedBetweenEnabled = new QRadioButton( dateGroup, "modifiedBetweenEnabled" );
+  modifiedBetweenEnabled = new TQRadioButton( dateGroup, "modifiedBetweenEnabled" );
   modifiedBetweenEnabled->setText( i18n( "&Modified between" ) );
   dateGroup->insert( modifiedBetweenEnabled, 0 );
 
   dateLayout->addMultiCellWidget( modifiedBetweenEnabled, 0, 0, 0, 1 );
 
-  modifiedBetweenData1 = new QLineEdit( dateGroup, "modifiedBetweenData1" );
+  modifiedBetweenData1 = new TQLineEdit( dateGroup, "modifiedBetweenData1" );
   modifiedBetweenData1->setEnabled( false );
   modifiedBetweenData1->setText( "" );
   dateLayout->addMultiCellWidget( modifiedBetweenData1, 0, 0, 2, 3 );
 
-  modifiedBetweenBtn1 = new QToolButton( dateGroup, "modifiedBetweenBtn1" );
+  modifiedBetweenBtn1 = new TQToolButton( dateGroup, "modifiedBetweenBtn1" );
   modifiedBetweenBtn1->setEnabled( false );
   modifiedBetweenBtn1->setText( "" );
   modifiedBetweenBtn1->setPixmap( iconDate );
   dateLayout->addWidget( modifiedBetweenBtn1, 0, 4 );
 
-  QLabel *andLabel = new QLabel( dateGroup, "andLabel" );
+  TQLabel *andLabel = new TQLabel( dateGroup, "andLabel" );
   andLabel->setText( i18n( "an&d" ) );
   dateLayout->addWidget( andLabel, 0, 5 );
 
-  modifiedBetweenData2 = new QLineEdit( dateGroup, "modifiedBetweenData2" );
+  modifiedBetweenData2 = new TQLineEdit( dateGroup, "modifiedBetweenData2" );
   modifiedBetweenData2->setEnabled( false );
   modifiedBetweenData2->setText( "" );
   andLabel->setBuddy(modifiedBetweenData2);
   dateLayout->addWidget( modifiedBetweenData2, 0, 6 );
 
-  modifiedBetweenBtn2 = new QToolButton( dateGroup, "modifiedBetweenBtn2" );
+  modifiedBetweenBtn2 = new TQToolButton( dateGroup, "modifiedBetweenBtn2" );
   modifiedBetweenBtn2->setEnabled( false );
   modifiedBetweenBtn2->setText( "" );
   modifiedBetweenBtn2->setPixmap( iconDate );
   dateLayout->addWidget( modifiedBetweenBtn2, 0, 7 );
 
-  notModifiedAfterEnabled = new QRadioButton( dateGroup, "notModifiedAfterEnabled" );
+  notModifiedAfterEnabled = new TQRadioButton( dateGroup, "notModifiedAfterEnabled" );
   notModifiedAfterEnabled->setText( i18n( "&Not modified after" ) );
   dateGroup->insert( notModifiedAfterEnabled, 0 );
   dateLayout->addMultiCellWidget( notModifiedAfterEnabled, 1, 1, 0, 1 );
 
-  notModifiedAfterData = new QLineEdit( dateGroup, "notModifiedAfterData" );
+  notModifiedAfterData = new TQLineEdit( dateGroup, "notModifiedAfterData" );
   notModifiedAfterData->setEnabled( false );
   notModifiedAfterData->setText( "" );
   dateLayout->addMultiCellWidget( notModifiedAfterData, 1, 1, 2, 3 );
 
-  notModifiedAfterBtn = new QToolButton( dateGroup, "notModifiedAfterBtn" );
+  notModifiedAfterBtn = new TQToolButton( dateGroup, "notModifiedAfterBtn" );
   notModifiedAfterBtn->setEnabled( false );
   notModifiedAfterBtn->setText( "" );
   notModifiedAfterBtn->setPixmap( iconDate );
   dateLayout->addWidget( notModifiedAfterBtn, 1, 4 );
 
-  modifiedInTheLastEnabled = new QRadioButton( dateGroup, "modifiedInTheLastEnabled" );
+  modifiedInTheLastEnabled = new TQRadioButton( dateGroup, "modifiedInTheLastEnabled" );
   modifiedInTheLastEnabled->setText( i18n("Mod&ified in the last") );
   dateGroup->insert( modifiedInTheLastEnabled, 0 );
   dateLayout->addWidget( modifiedInTheLastEnabled, 2, 0 );
 
-  modifiedInTheLastData = new QLineEdit( dateGroup, "modifiedInTheLastData" );
+  modifiedInTheLastData = new TQLineEdit( dateGroup, "modifiedInTheLastData" );
   modifiedInTheLastData->setEnabled( false );
   modifiedInTheLastData->setText( "" );
   dateLayout->addWidget( modifiedInTheLastData, 2, 2 );
 
-  modifiedInTheLastType = new QComboBox( false, dateGroup, "modifiedInTheLastType" );
+  modifiedInTheLastType = new TQComboBox( false, dateGroup, "modifiedInTheLastType" );
   modifiedInTheLastType->insertItem( i18n( "days" ) );
   modifiedInTheLastType->insertItem( i18n( "weeks" ) );
   modifiedInTheLastType->insertItem( i18n( "months" ) );
@@ -187,17 +187,17 @@ AdvancedFilter::AdvancedFilter( FilterTabs *tabs, QWidget *parent, const char *n
   modifiedInTheLastType->setEnabled( false );
   dateLayout->addMultiCellWidget( modifiedInTheLastType, 2, 2, 3, 4 );
 
-  notModifiedInTheLastData = new QLineEdit( dateGroup, "notModifiedInTheLastData" );
+  notModifiedInTheLastData = new TQLineEdit( dateGroup, "notModifiedInTheLastData" );
   notModifiedInTheLastData->setEnabled( false );
   notModifiedInTheLastData->setText( "" );
   dateLayout->addWidget( notModifiedInTheLastData, 3, 2 );
 
-  QLabel *notModifiedInTheLastLbl = new QLabel( dateGroup, "notModifiedInTheLastLbl" );
+  TQLabel *notModifiedInTheLastLbl = new TQLabel( dateGroup, "notModifiedInTheLastLbl" );
   notModifiedInTheLastLbl->setText( i18n( "No&t modified in the last" ) );
   notModifiedInTheLastLbl->setBuddy(notModifiedInTheLastData);
   dateLayout->addWidget( notModifiedInTheLastLbl, 3, 0 );
 
-  notModifiedInTheLastType = new QComboBox( false, dateGroup, "notModifiedInTheLastType" );
+  notModifiedInTheLastType = new TQComboBox( false, dateGroup, "notModifiedInTheLastType" );
   notModifiedInTheLastType->insertItem( i18n( "days" ) );
   notModifiedInTheLastType->insertItem( i18n( "weeks" ) );
   notModifiedInTheLastType->insertItem( i18n( "months" ) );
@@ -209,164 +209,164 @@ AdvancedFilter::AdvancedFilter( FilterTabs *tabs, QWidget *parent, const char *n
 
   // Options for ownership
 
-  QGroupBox *ownershipGroup = new QGroupBox( this, "ownershipGroup" );
+  TQGroupBox *ownershipGroup = new TQGroupBox( this, "ownershipGroup" );
   ownershipGroup->setTitle( i18n( "Ownership" ) );
   ownershipGroup->setColumnLayout(0, Qt::Vertical );
-  ownershipGroup->layout()->setSpacing( 0 );
-  ownershipGroup->layout()->setMargin( 0 );
-  QGridLayout *ownershipLayout = new QGridLayout( ownershipGroup->layout() );
-  ownershipLayout->setAlignment( Qt::AlignTop );
+  ownershipGroup->tqlayout()->setSpacing( 0 );
+  ownershipGroup->tqlayout()->setMargin( 0 );
+  TQGridLayout *ownershipLayout = new TQGridLayout( ownershipGroup->tqlayout() );
+  ownershipLayout->tqsetAlignment( TQt::AlignTop );
   ownershipLayout->setSpacing( 6 );
   ownershipLayout->setMargin( 11 );
 
-  QHBoxLayout *hboxLayout = new QHBoxLayout();
+  TQHBoxLayout *hboxLayout = new TQHBoxLayout();
   hboxLayout->setSpacing( 6 );
   hboxLayout->setMargin( 0 );
 
-  belongsToUserEnabled = new QCheckBox( ownershipGroup, "belongsToUserEnabled" );
+  belongsToUserEnabled = new TQCheckBox( ownershipGroup, "belongsToUserEnabled" );
   belongsToUserEnabled->setText( i18n( "Belongs to &user" ) );
   hboxLayout->addWidget( belongsToUserEnabled );
 
-  belongsToUserData = new QComboBox( false, ownershipGroup, "belongsToUserData" );
+  belongsToUserData = new TQComboBox( false, ownershipGroup, "belongsToUserData" );
   belongsToUserData->setEnabled( false );
   belongsToUserData->setEditable( false );
   hboxLayout->addWidget( belongsToUserData );
 
-  belongsToGroupEnabled = new QCheckBox( ownershipGroup, "belongsToGroupEnabled" );
+  belongsToGroupEnabled = new TQCheckBox( ownershipGroup, "belongsToGroupEnabled" );
   belongsToGroupEnabled->setText( i18n( "Belongs to gr&oup" ) );
   hboxLayout->addWidget( belongsToGroupEnabled );
 
-  belongsToGroupData = new QComboBox( false, ownershipGroup, "belongsToGroupData" );
+  belongsToGroupData = new TQComboBox( false, ownershipGroup, "belongsToGroupData" );
   belongsToGroupData->setEnabled( false );
   belongsToGroupData->setEditable( false );
   hboxLayout->addWidget( belongsToGroupData );
 
   ownershipLayout->addMultiCellLayout( hboxLayout, 0, 0, 0, 3 );
 
-  permissionsEnabled = new QCheckBox( ownershipGroup, "permissionsEnabled" );
+  permissionsEnabled = new TQCheckBox( ownershipGroup, "permissionsEnabled" );
   permissionsEnabled->setText( i18n( "P&ermissions" ) );
   ownershipLayout->addWidget( permissionsEnabled, 1, 0 );
 
-  QGroupBox *ownerGroup = new QGroupBox( ownershipGroup, "ownerGroup" );
+  TQGroupBox *ownerGroup = new TQGroupBox( ownershipGroup, "ownerGroup" );
   ownerGroup->setTitle( i18n( "O&wner" ) );
   int width = 2*height + height / 2;
 
-  ownerR = new QComboBox( false, ownerGroup, "ownerR" );
+  ownerR = new TQComboBox( false, ownerGroup, "ownerR" );
   ownerR->insertItem( i18n( "?" ) );
   ownerR->insertItem( i18n( "r" ) );
   ownerR->insertItem( i18n( "-" ) );
   ownerR->setEnabled( false );
-  ownerR->setGeometry( QRect( 10, 20, width, height+6 ) );
+  ownerR->setGeometry( TQRect( 10, 20, width, height+6 ) );
 
-  ownerW = new QComboBox( false, ownerGroup, "ownerW" );
+  ownerW = new TQComboBox( false, ownerGroup, "ownerW" );
   ownerW->insertItem( i18n( "?" ) );
   ownerW->insertItem( i18n( "w" ) );
   ownerW->insertItem( i18n( "-" ) );
   ownerW->setEnabled( false );
-  ownerW->setGeometry( QRect( 10 + width, 20, width, height+6 ) );
+  ownerW->setGeometry( TQRect( 10 + width, 20, width, height+6 ) );
 
-  ownerX = new QComboBox( false, ownerGroup, "ownerX" );
+  ownerX = new TQComboBox( false, ownerGroup, "ownerX" );
   ownerX->insertItem( i18n( "?" ) );
   ownerX->insertItem( i18n( "x" ) );
   ownerX->insertItem( i18n( "-" ) );
   ownerX->setEnabled( false );
-  ownerX->setGeometry( QRect( 10 + 2*width, 20, width, height+6 ) );
+  ownerX->setGeometry( TQRect( 10 + 2*width, 20, width, height+6 ) );
 
   ownershipLayout->addWidget( ownerGroup, 1, 1 );
 
-  QGroupBox *groupGroup = new QGroupBox( ownershipGroup, "groupGroup" );
+  TQGroupBox *groupGroup = new TQGroupBox( ownershipGroup, "groupGroup" );
   groupGroup->setTitle( i18n( "Grou&p" ) );
 
-  groupR = new QComboBox( false, groupGroup, "groupR" );
+  groupR = new TQComboBox( false, groupGroup, "groupR" );
   groupR->insertItem( i18n( "?" ) );
   groupR->insertItem( i18n( "r" ) );
   groupR->insertItem( i18n( "-" ) );
   groupR->setEnabled( false );
-  groupR->setGeometry( QRect( 10, 20, width, height+6 ) );
+  groupR->setGeometry( TQRect( 10, 20, width, height+6 ) );
 
-  groupW = new QComboBox( false, groupGroup, "groupW" );
+  groupW = new TQComboBox( false, groupGroup, "groupW" );
   groupW->insertItem( i18n( "?" ) );
   groupW->insertItem( i18n( "w" ) );
   groupW->insertItem( i18n( "-" ) );
   groupW->setEnabled( false );
-  groupW->setGeometry( QRect( 10 + width, 20, width, height+6 ) );
+  groupW->setGeometry( TQRect( 10 + width, 20, width, height+6 ) );
 
-  groupX = new QComboBox( false, groupGroup, "groupX" );
+  groupX = new TQComboBox( false, groupGroup, "groupX" );
   groupX->insertItem( i18n( "?" ) );
   groupX->insertItem( i18n( "x" ) );
   groupX->insertItem( i18n( "-" ) );
   groupX->setEnabled( false );
-  groupX->setGeometry( QRect( 10 + 2*width, 20, width, height+6 ) );
+  groupX->setGeometry( TQRect( 10 + 2*width, 20, width, height+6 ) );
 
   ownershipLayout->addWidget( groupGroup, 1, 2 );
 
-  QGroupBox *allGroup = new QGroupBox( ownershipGroup, "allGroup" );
+  TQGroupBox *allGroup = new TQGroupBox( ownershipGroup, "allGroup" );
   allGroup->setTitle( i18n( "A&ll" ) );
 
-  allR = new QComboBox( false, allGroup, "allR" );
+  allR = new TQComboBox( false, allGroup, "allR" );
   allR->insertItem( i18n( "?" ) );
   allR->insertItem( i18n( "r" ) );
   allR->insertItem( i18n( "-" ) );
   allR->setEnabled( false );
-  allR->setGeometry( QRect( 10, 20, width, height+6 ) );
+  allR->setGeometry( TQRect( 10, 20, width, height+6 ) );
 
-  allW = new QComboBox( false, allGroup, "allW" );
+  allW = new TQComboBox( false, allGroup, "allW" );
   allW->insertItem( i18n( "?" ) );
   allW->insertItem( i18n( "w" ) );
   allW->insertItem( i18n( "-" ) );
   allW->setEnabled( false );
-  allW->setGeometry( QRect( 10 + width, 20, width, height+6 ) );
+  allW->setGeometry( TQRect( 10 + width, 20, width, height+6 ) );
 
-  allX = new QComboBox( false, allGroup, "allX" );
+  allX = new TQComboBox( false, allGroup, "allX" );
   allX->insertItem( i18n( "?" ) );
   allX->insertItem( i18n( "x" ) );
   allX->insertItem( i18n( "-" ) );
   allX->setEnabled( false );
-  allX->setGeometry( QRect( 10 + 2*width, 20, width, height+6 ) );
+  allX->setGeometry( TQRect( 10 + 2*width, 20, width, height+6 ) );
 
   ownershipLayout->addWidget( allGroup, 1, 3 );
 
-  QLabel *infoLabel = new QLabel( ownershipGroup, "TextLabel4" );
-  QFont infoLabel_font( infoLabel->font() );
+  TQLabel *infoLabel = new TQLabel( ownershipGroup, "TextLabel4" );
+  TQFont infoLabel_font( infoLabel->font() );
   infoLabel_font.setFamily( "adobe-helvetica" );
   infoLabel_font.setItalic( true );
   infoLabel->setFont( infoLabel_font );
   infoLabel->setText( i18n( "Note: a '?' is a wildcard" ) );
 
-  ownershipLayout->addMultiCellWidget( infoLabel, 2, 2, 0, 3, Qt::AlignRight );
+  ownershipLayout->addMultiCellWidget( infoLabel, 2, 2, 0, 3, TQt::AlignRight );
 
   filterLayout->addWidget( ownershipGroup, 2, 0 );
 
   // Connection table
 
-  connect( biggerThanEnabled, SIGNAL( toggled(bool) ), biggerThanAmount, SLOT( setEnabled(bool) ) );
-  connect( biggerThanEnabled, SIGNAL( toggled(bool) ), biggerThanType, SLOT( setEnabled(bool) ) );
-  connect( smallerThanEnabled, SIGNAL( toggled(bool) ), smallerThanAmount, SLOT( setEnabled(bool) ) );
-  connect( smallerThanEnabled, SIGNAL( toggled(bool) ), smallerThanType, SLOT( setEnabled(bool) ) );
-  connect( modifiedBetweenEnabled, SIGNAL( toggled(bool) ), modifiedBetweenData1, SLOT( setEnabled(bool) ) );
-  connect( modifiedBetweenEnabled, SIGNAL( toggled(bool) ), modifiedBetweenBtn1, SLOT( setEnabled(bool) ) );
-  connect( modifiedBetweenEnabled, SIGNAL( toggled(bool) ), modifiedBetweenData2, SLOT( setEnabled(bool) ) );
-  connect( modifiedBetweenEnabled, SIGNAL( toggled(bool) ), modifiedBetweenBtn2, SLOT( setEnabled(bool) ) );
-  connect( notModifiedAfterEnabled, SIGNAL( toggled(bool) ), notModifiedAfterData, SLOT( setEnabled(bool) ) );
-  connect( notModifiedAfterEnabled, SIGNAL( toggled(bool) ), notModifiedAfterBtn, SLOT( setEnabled(bool) ) );
-  connect( modifiedInTheLastEnabled, SIGNAL( toggled(bool) ), modifiedInTheLastData, SLOT( setEnabled(bool) ) );
-  connect( modifiedInTheLastEnabled, SIGNAL( toggled(bool) ), modifiedInTheLastType, SLOT( setEnabled(bool) ) );
-  connect( modifiedInTheLastEnabled, SIGNAL( toggled(bool) ), notModifiedInTheLastData, SLOT( setEnabled(bool) ) );
-  connect( modifiedInTheLastEnabled, SIGNAL( toggled(bool) ), notModifiedInTheLastType, SLOT( setEnabled(bool) ) );
-  connect( belongsToUserEnabled, SIGNAL( toggled(bool) ), belongsToUserData, SLOT( setEnabled(bool) ) );
-  connect( belongsToGroupEnabled, SIGNAL( toggled(bool) ), belongsToGroupData, SLOT( setEnabled(bool) ) );
-  connect( permissionsEnabled, SIGNAL( toggled(bool) ), ownerR, SLOT( setEnabled(bool) ) );
-  connect( permissionsEnabled, SIGNAL( toggled(bool) ), ownerW, SLOT( setEnabled(bool) ) );
-  connect( permissionsEnabled, SIGNAL( toggled(bool) ), ownerX, SLOT( setEnabled(bool) ) );
-  connect( permissionsEnabled, SIGNAL( toggled(bool) ), groupR, SLOT( setEnabled(bool) ) );
-  connect( permissionsEnabled, SIGNAL( toggled(bool) ), groupW, SLOT( setEnabled(bool) ) );
-  connect( permissionsEnabled, SIGNAL( toggled(bool) ), groupX, SLOT( setEnabled(bool) ) );
-  connect( permissionsEnabled, SIGNAL( toggled(bool) ), allR, SLOT( setEnabled(bool) ) );
-  connect( permissionsEnabled, SIGNAL( toggled(bool) ), allW, SLOT( setEnabled(bool) ) );
-  connect( permissionsEnabled, SIGNAL( toggled(bool) ), allX, SLOT( setEnabled(bool) ) );
-  connect( modifiedBetweenBtn1, SIGNAL( clicked() ), this, SLOT( modifiedBetweenSetDate1() ) );
-  connect( modifiedBetweenBtn2, SIGNAL( clicked() ), this, SLOT( modifiedBetweenSetDate2() ) );
-  connect( notModifiedAfterBtn, SIGNAL( clicked() ), this, SLOT( notModifiedAfterSetDate() ) );
+  connect( biggerThanEnabled, TQT_SIGNAL( toggled(bool) ), biggerThanAmount, TQT_SLOT( setEnabled(bool) ) );
+  connect( biggerThanEnabled, TQT_SIGNAL( toggled(bool) ), biggerThanType, TQT_SLOT( setEnabled(bool) ) );
+  connect( smallerThanEnabled, TQT_SIGNAL( toggled(bool) ), smallerThanAmount, TQT_SLOT( setEnabled(bool) ) );
+  connect( smallerThanEnabled, TQT_SIGNAL( toggled(bool) ), smallerThanType, TQT_SLOT( setEnabled(bool) ) );
+  connect( modifiedBetweenEnabled, TQT_SIGNAL( toggled(bool) ), modifiedBetweenData1, TQT_SLOT( setEnabled(bool) ) );
+  connect( modifiedBetweenEnabled, TQT_SIGNAL( toggled(bool) ), modifiedBetweenBtn1, TQT_SLOT( setEnabled(bool) ) );
+  connect( modifiedBetweenEnabled, TQT_SIGNAL( toggled(bool) ), modifiedBetweenData2, TQT_SLOT( setEnabled(bool) ) );
+  connect( modifiedBetweenEnabled, TQT_SIGNAL( toggled(bool) ), modifiedBetweenBtn2, TQT_SLOT( setEnabled(bool) ) );
+  connect( notModifiedAfterEnabled, TQT_SIGNAL( toggled(bool) ), notModifiedAfterData, TQT_SLOT( setEnabled(bool) ) );
+  connect( notModifiedAfterEnabled, TQT_SIGNAL( toggled(bool) ), notModifiedAfterBtn, TQT_SLOT( setEnabled(bool) ) );
+  connect( modifiedInTheLastEnabled, TQT_SIGNAL( toggled(bool) ), modifiedInTheLastData, TQT_SLOT( setEnabled(bool) ) );
+  connect( modifiedInTheLastEnabled, TQT_SIGNAL( toggled(bool) ), modifiedInTheLastType, TQT_SLOT( setEnabled(bool) ) );
+  connect( modifiedInTheLastEnabled, TQT_SIGNAL( toggled(bool) ), notModifiedInTheLastData, TQT_SLOT( setEnabled(bool) ) );
+  connect( modifiedInTheLastEnabled, TQT_SIGNAL( toggled(bool) ), notModifiedInTheLastType, TQT_SLOT( setEnabled(bool) ) );
+  connect( belongsToUserEnabled, TQT_SIGNAL( toggled(bool) ), belongsToUserData, TQT_SLOT( setEnabled(bool) ) );
+  connect( belongsToGroupEnabled, TQT_SIGNAL( toggled(bool) ), belongsToGroupData, TQT_SLOT( setEnabled(bool) ) );
+  connect( permissionsEnabled, TQT_SIGNAL( toggled(bool) ), ownerR, TQT_SLOT( setEnabled(bool) ) );
+  connect( permissionsEnabled, TQT_SIGNAL( toggled(bool) ), ownerW, TQT_SLOT( setEnabled(bool) ) );
+  connect( permissionsEnabled, TQT_SIGNAL( toggled(bool) ), ownerX, TQT_SLOT( setEnabled(bool) ) );
+  connect( permissionsEnabled, TQT_SIGNAL( toggled(bool) ), groupR, TQT_SLOT( setEnabled(bool) ) );
+  connect( permissionsEnabled, TQT_SIGNAL( toggled(bool) ), groupW, TQT_SLOT( setEnabled(bool) ) );
+  connect( permissionsEnabled, TQT_SIGNAL( toggled(bool) ), groupX, TQT_SLOT( setEnabled(bool) ) );
+  connect( permissionsEnabled, TQT_SIGNAL( toggled(bool) ), allR, TQT_SLOT( setEnabled(bool) ) );
+  connect( permissionsEnabled, TQT_SIGNAL( toggled(bool) ), allW, TQT_SLOT( setEnabled(bool) ) );
+  connect( permissionsEnabled, TQT_SIGNAL( toggled(bool) ), allX, TQT_SLOT( setEnabled(bool) ) );
+  connect( modifiedBetweenBtn1, TQT_SIGNAL( clicked() ), this, TQT_SLOT( modifiedBetweenSetDate1() ) );
+  connect( modifiedBetweenBtn2, TQT_SIGNAL( clicked() ), this, TQT_SLOT( modifiedBetweenSetDate2() ) );
+  connect( notModifiedAfterBtn, TQT_SIGNAL( clicked() ), this, TQT_SLOT( notModifiedAfterSetDate() ) );
 
   // fill the users and groups list
 
@@ -420,10 +420,10 @@ void AdvancedFilter::notModifiedAfterSetDate()
   changeDate(notModifiedAfterData);
 }
 
-void AdvancedFilter::changeDate(QLineEdit *p) {
+void AdvancedFilter::changeDate(TQLineEdit *p) {
   // check if the current date is valid
-  QDate d = KGlobal::locale()->readDate(p->text());
-  if (!d.isValid()) d = QDate::currentDate();
+  TQDate d = KGlobal::locale()->readDate(p->text());
+  if (!d.isValid()) d = TQDate::tqcurrentDate();
 
   KRGetDate *gd = new KRGetDate(d, this);
   d = gd->getDate();
@@ -435,7 +435,7 @@ void AdvancedFilter::changeDate(QLineEdit *p) {
 
 // bool start: set it to true if this date is the beginning of the search,
 // if it's the end, set it to false
-void AdvancedFilter::qdate2time_t(time_t *dest, QDate d, bool start) {
+void AdvancedFilter::qdate2time_t(time_t *dest, TQDate d, bool start) {
   struct tm t;
   t.tm_sec   = (start ? 0 : 59);
   t.tm_min   = (start ? 0 : 59);
@@ -451,28 +451,28 @@ void AdvancedFilter::qdate2time_t(time_t *dest, QDate d, bool start) {
 }
 
 
-void AdvancedFilter::fillList(QComboBox *list, QString filename) {
-  QFile data(filename);
+void AdvancedFilter::fillList(TQComboBox *list, TQString filename) {
+  TQFile data(filename);
   if (!data.open(IO_ReadOnly))
   {
     krOut << "Search: Unable to read " << filename << " !!!" << endl;
     return;
   }
   // and read it into the temporary array
-  QTextStream t(&data);
+  TQTextStream t(&data);
   while (!data.atEnd())
   {
-    QString s = t.readLine();
-    QString name = s.left(s.find(':'));
+    TQString s = t.readLine();
+    TQString name = s.left(s.tqfind(':'));
     list->insertItem(name);
   }
 }
 
-void AdvancedFilter::invalidDateMessage(QLineEdit *p)
+void AdvancedFilter::invalidDateMessage(TQLineEdit *p)
 {
   // FIXME p->text() is empty sometimes (to reproduce, set date to "13.09.005")
   KMessageBox::detailedError(this, i18n("Invalid date entered."),
-                             i18n("The date %1 is not valid according to your locale. Please re-enter a valid date (use the date button for easy access).").arg(p->text()) );
+                             i18n("The date %1 is not valid according to your locale. Please re-enter a valid date (use the date button for easy access).").tqarg(p->text()) );
   p->setFocus();
 }
 
@@ -517,9 +517,9 @@ bool AdvancedFilter::fillQuery( KRQuery *query )
     if ( !(modifiedBetweenData1->text().simplifyWhiteSpace().isEmpty() &&
           modifiedBetweenData2->text().simplifyWhiteSpace().isEmpty()) ) {
       // check if date is valid
-      QDate d1 = KGlobal::locale()->readDate(modifiedBetweenData1->text());
+      TQDate d1 = KGlobal::locale()->readDate(modifiedBetweenData1->text());
       if (!d1.isValid()) { invalidDateMessage(modifiedBetweenData1); return false; }
-      QDate d2 = KGlobal::locale()->readDate(modifiedBetweenData2->text());
+      TQDate d2 = KGlobal::locale()->readDate(modifiedBetweenData2->text());
       if (!d2.isValid()) { invalidDateMessage(modifiedBetweenData2); return false; }
 
       if (d1 > d2) {
@@ -538,7 +538,7 @@ bool AdvancedFilter::fillQuery( KRQuery *query )
     }
   } else if (notModifiedAfterEnabled->isChecked()) {
     if ( !notModifiedAfterData->text().simplifyWhiteSpace().isEmpty() ) {
-      QDate d = KGlobal::locale()->readDate(notModifiedAfterData->text());
+      TQDate d = KGlobal::locale()->readDate(notModifiedAfterData->text());
       if (!d.isValid()) { invalidDateMessage(notModifiedAfterData); return false; }
       time_t olderTime;
       qdate2time_t(&olderTime, d, false);
@@ -547,7 +547,7 @@ bool AdvancedFilter::fillQuery( KRQuery *query )
   } else if (modifiedInTheLastEnabled->isChecked()) {
     if ( !(modifiedInTheLastData->text().simplifyWhiteSpace().isEmpty() &&
           notModifiedInTheLastData->text().simplifyWhiteSpace().isEmpty()) ) {
-      QDate d1 = QDate::currentDate(); QDate d2 = QDate::currentDate();
+      TQDate d1 = TQDate::tqcurrentDate(); TQDate d2 = TQDate::tqcurrentDate();
       if (!modifiedInTheLastData->text().simplifyWhiteSpace().isEmpty()) {
         int tmp1 = modifiedInTheLastData->text().simplifyWhiteSpace().toInt();
         switch (modifiedInTheLastType->currentItem()) {
@@ -591,7 +591,7 @@ bool AdvancedFilter::fillQuery( KRQuery *query )
   }
     // permissions and ownership /////////////////////////////////////
   if (permissionsEnabled->isChecked()) {
-    QString perm = ownerR->currentText() + ownerW->currentText() + ownerX->currentText() +
+    TQString perm = ownerR->currentText() + ownerW->currentText() + ownerX->currentText() +
                    groupR->currentText() + groupW->currentText() + groupX->currentText() +
                    allR->currentText()   + allW->currentText()   + allX->currentText();
     query->setPermissions( perm );
@@ -604,7 +604,7 @@ bool AdvancedFilter::fillQuery( KRQuery *query )
   return true;
 }
 
-void AdvancedFilter::loadFromProfile( QString name )
+void AdvancedFilter::loadFromProfile( TQString name )
 {
   krConfig->setGroup( name );
 
@@ -633,7 +633,7 @@ void AdvancedFilter::loadFromProfile( QString name )
   belongsToUserEnabled->setChecked( krConfig->readBoolEntry( "Belongs To User Enabled", false ) );
   belongsToGroupEnabled->setChecked( krConfig->readBoolEntry( "Belongs To Group Enabled", false ) );
 
-  QString user = krConfig->readEntry( "Belongs To User", "" );
+  TQString user = krConfig->readEntry( "Belongs To User", "" );
   for( int i = belongsToUserData->count(); i >= 0; i-- )
   {
     belongsToUserData->setCurrentItem( i );
@@ -641,7 +641,7 @@ void AdvancedFilter::loadFromProfile( QString name )
       break;
   }
 
-  QString group = krConfig->readEntry( "Belongs To Group", "" );
+  TQString group = krConfig->readEntry( "Belongs To Group", "" );
   for( int i = belongsToGroupData->count(); i >= 0; i-- )
   {
     belongsToGroupData->setCurrentItem( i );
@@ -662,7 +662,7 @@ void AdvancedFilter::loadFromProfile( QString name )
   allX->setCurrentItem( krConfig->readNumEntry( "All Execute", 0 ) );
 }
 
-void AdvancedFilter::saveToProfile( QString name )
+void AdvancedFilter::saveToProfile( TQString name )
 {
   krConfig->setGroup( name );
 

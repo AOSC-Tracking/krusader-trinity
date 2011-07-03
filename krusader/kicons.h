@@ -1,8 +1,8 @@
 #ifndef KICONS_H
 #define KICONS_H
 
-#include <qiconset.h>
-#include <qpixmap.h>
+#include <tqiconset.h>
+#include <tqpixmap.h>
 #include <kiconloader.h>
 #include <kicontheme.h>
 
@@ -11,10 +11,10 @@
 // the the icon is resized again to fit into the toolbutton or menu.
 // IMPORTANT: this SHOULD NOT BE USED for actions. If creating an action, just state the file-name
 // of the icon to allow automatic resizing when needed.
-#define LOADICON(X) QIconSet(krLoader->loadIcon(X,KIcon::Desktop)).pixmap(QIconSet::Small,true)
+#define LOADICON(X) TQIconSet(krLoader->loadIcon(X,KIcon::Desktop)).pixmap(TQIconSet::Small,true)
 
 // used only for calls within the kfilelist framework, handles icon sizes
-QPixmap FL_LOADICON(QString name);
+TQPixmap FL_LOADICON(TQString name);
 
 extern  const char * no_xpm[];
 extern  const char * yes_xpm[];

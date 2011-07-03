@@ -38,17 +38,17 @@ A
 #include "../defaults.h"
 #include "../VFS/vfs.h"
 #include <klocale.h>
-#include <qpixmap.h>
+#include <tqpixmap.h>
 #include <kpopupmenu.h>
-#include <qbitmap.h>
+#include <tqbitmap.h>
 #include <kmessagebox.h>
-#include <qlayout.h>
-#include <qgroupbox.h>
+#include <tqlayout.h>
+#include <tqgroupbox.h>
 #include <kprocess.h>
-#include <qcursor.h>
+#include <tqcursor.h>
 #include <kdebug.h>
 #include <kguiitem.h>
-#include <qfileinfo.h>
+#include <tqfileinfo.h>
 #include <sys/param.h>
 
 #if defined(BSD)
@@ -63,30 +63,30 @@ A
 
 KMountManGUI::KMountManGUI() : KDialogBase( krApp, 0, true, "Mount.Man" ),
 info( 0 ), mountList( 0 ) {
-	watcher = new QTimer( this );
-   connect( watcher, SIGNAL( timeout() ), this, SLOT( checkMountChange() ) );
+	watcher = new TQTimer( this );
+   connect( watcher, TQT_SIGNAL( timeout() ), this, TQT_SLOT( checkMountChange() ) );
 
-   connect( this, SIGNAL( finishedGettingSpaceData() ), this, SLOT( updateList() ) );
+   connect( this, TQT_SIGNAL( finishedGettingSpaceData() ), this, TQT_SLOT( updateList() ) );
    setButtonOK( i18n( "&Close" ) );
    showButtonApply( false ); showButtonCancel( false );
    setPlainCaption( i18n( "MountMan - Your Mount-Manager" ) );
    widget = new KJanusWidget( this, 0, KJanusWidget::Tabbed );
    createLayout();
    setMainWidget( widget );
-   widget->setMinimumSize( widget->sizeHint().width() + mountList->columnWidth( 5 ),
-                           widget->sizeHint().height() );
-   setMinimumSize( widget->minimumSize().width(), widget->minimumSize().height() );
-   resize( minimumSize() );
+   widget->setMinimumSize( widget->tqsizeHint().width() + mountList->columnWidth( 5 ),
+                           widget->tqsizeHint().height() );
+   setMinimumSize( widget->tqminimumSize().width(), widget->tqminimumSize().height() );
+   resize( tqminimumSize() );
 
    // connections
-   connect( mountList, SIGNAL( doubleClicked( QListViewItem * ) ), this,
-            SLOT( doubleClicked( QListViewItem* ) ) );
-   connect( mountList, SIGNAL( contextMenuRequested( QListViewItem *, const QPoint &, int ) ),
-            this, SLOT( clicked( QListViewItem*, const QPoint&, int ) ) );
-   connect( mountList, SIGNAL( clicked( QListViewItem * ) ), this,
-            SLOT( changeActive( QListViewItem * ) ) );
-   connect( mountList, SIGNAL( selectionChanged( QListViewItem * ) ), this,
-            SLOT( changeActive( QListViewItem * ) ) );
+   connect( mountList, TQT_SIGNAL( doubleClicked( TQListViewItem * ) ), this,
+            TQT_SLOT( doubleClicked( TQListViewItem* ) ) );
+   connect( mountList, TQT_SIGNAL( contextMenuRequested( TQListViewItem *, const TQPoint &, int ) ),
+            this, TQT_SLOT( clicked( TQListViewItem*, const TQPoint&, int ) ) );
+   connect( mountList, TQT_SIGNAL( clicked( TQListViewItem * ) ), this,
+            TQT_SLOT( changeActive( TQListViewItem * ) ) );
+   connect( mountList, TQT_SIGNAL( selectionChanged( TQListViewItem * ) ), this,
+            TQT_SLOT( changeActive( TQListViewItem * ) ) );
 
    getSpaceData();
    exec();
@@ -111,18 +111,18 @@ void KMountManGUI::createMainPage() {
       mountList = 0;
    }
    // clean up is finished...
-   QGridLayout *layout = new QGridLayout( mainPage, 1, 1 );
-   mountList = new QListView( mainPage );  // create the main container
+   TQGridLayout *tqlayout = new TQGridLayout( mainPage, 1, 1 );
+   mountList = new TQListView( mainPage );  // create the main container
    krConfig->setGroup( "Look&Feel" );
    mountList->setFont( krConfig->readFontEntry( "Filelist Font", _FilelistFont ) );
    mountList->setAllColumnsShowFocus( true );
    mountList->setMultiSelection( false );
-   mountList->setSelectionMode( QListView::Single );
-   mountList->setVScrollBarMode( QScrollView::AlwaysOn );
-   mountList->setHScrollBarMode( QScrollView::Auto );
+   mountList->setSelectionMode( TQListView::Single );
+   mountList->setVScrollBarMode( TQScrollView::AlwaysOn );
+   mountList->setHScrollBarMode( TQScrollView::Auto );
    mountList->setShowSortIndicator( true );
-   int i = QFontMetrics( mountList->font() ).width( "W" );
-   int j = QFontMetrics( mountList->font() ).width( "0" );
+   int i = TQFontMetrics( mountList->font() ).width( "W" );
+   int j = TQFontMetrics( mountList->font() ).width( "0" );
    j = ( i > j ? i : j );
    mountList->addColumn( i18n( "Name" ), j * 8 );
    mountList->addColumn( i18n( "Type" ), j * 4 );
@@ -130,20 +130,20 @@ void KMountManGUI::createMainPage() {
    mountList->addColumn( i18n( "Total Size" ), j * 6 );
    mountList->addColumn( i18n( "Free Size" ), j * 6 );
    mountList->addColumn( i18n( "Free %" ), j * 5 );
-   mountList->setColumnWidthMode( 0, QListView::Maximum );
-   mountList->setColumnWidthMode( 1, QListView::Maximum );
-   mountList->setColumnWidthMode( 2, QListView::Maximum );
-   mountList->setColumnWidthMode( 3, QListView::Maximum );
-   mountList->setColumnWidthMode( 4, QListView::Maximum );
-   mountList->setColumnWidthMode( 5, QListView::Maximum );
+   mountList->setColumnWidthMode( 0, TQListView::Maximum );
+   mountList->setColumnWidthMode( 1, TQListView::Maximum );
+   mountList->setColumnWidthMode( 2, TQListView::Maximum );
+   mountList->setColumnWidthMode( 3, TQListView::Maximum );
+   mountList->setColumnWidthMode( 4, TQListView::Maximum );
+   mountList->setColumnWidthMode( 5, TQListView::Maximum );
    // now the list is created, time to fill it with data.
    //=>krMtMan.forceUpdate();
-   QGroupBox *box = new QGroupBox( "MountMan.Info", mainPage );
-   box->setAlignment( Qt::AlignHCenter );
+   TQGroupBox *box = new TQGroupBox( "MountMan.Info", mainPage );
+   box->tqsetAlignment( TQt::AlignHCenter );
    info = new KRFSDisplay( box );
    info->resize( info->width(), height() );
-   layout->addWidget( box, 0, 0 );
-   layout->addWidget( mountList, 0, 1 );
+   tqlayout->addWidget( box, 0, 0 );
+   tqlayout->addWidget( mountList, 0, 1 );
 }
 
 void KMountManGUI::getSpaceData() {
@@ -165,9 +165,9 @@ void KMountManGUI::getSpaceData() {
 			continue;
 		}
       KDiskFreeSp *sp = KDiskFreeSp::findUsageInfo( ( *it ) ->mountPoint() );
-      connect( sp, SIGNAL( foundMountPoint( const QString &, unsigned long, unsigned long, unsigned long ) ),
-               this, SLOT( gettingSpaceData( const QString&, unsigned long, unsigned long, unsigned long ) ) );
-      connect( sp, SIGNAL( done() ), this, SLOT( gettingSpaceData() ) );
+      connect( sp, TQT_SIGNAL( foundMountPoint( const TQString &, unsigned long, unsigned long, unsigned long ) ),
+               this, TQT_SLOT( gettingSpaceData( const TQString&, unsigned long, unsigned long, unsigned long ) ) );
+      connect( sp, TQT_SIGNAL( done() ), this, TQT_SLOT( gettingSpaceData() ) );
    }
 }
 
@@ -180,7 +180,7 @@ void KMountManGUI::gettingSpaceData() {
    }
 }
 
-void KMountManGUI::gettingSpaceData( const QString &mountPoint, unsigned long kBSize,
+void KMountManGUI::gettingSpaceData( const TQString &mountPoint, unsigned long kBSize,
                                      unsigned long /*kBUsed*/, unsigned long kBAvail ) {
    KMountPoint *m = KMountMan::findInListByMntPoint( mounted, mountPoint );
    if ( !m ) { // this should never never never happen!
@@ -198,26 +198,26 @@ void KMountManGUI::gettingSpaceData( const QString &mountPoint, unsigned long kB
    fileSystemsTemp.append( data );
 }
 
-void KMountManGUI::addItemToMountList( QListView *lst, fsData &fs ) {
+void KMountManGUI::addItemToMountList( TQListView *lst, fsData &fs ) {
    bool mtd = fs.mounted();
 
-   QString tSize = QString( "%1" ).arg( KIO::convertSizeFromKB( fs.totalBlks() ) );
-   QString fSize = QString( "%1" ).arg( KIO::convertSizeFromKB( fs.freeBlks() ) );
-   QString sPrct = QString( "%1%" ).arg( 100 - ( fs.usedPerct() ) );
-   QListViewItem *item = new QListViewItem( lst, fs.name(),
+   TQString tSize = TQString( "%1" ).tqarg( KIO::convertSizeFromKB( fs.totalBlks() ) );
+   TQString fSize = TQString( "%1" ).tqarg( KIO::convertSizeFromKB( fs.freeBlks() ) );
+   TQString sPrct = TQString( "%1%" ).tqarg( 100 - ( fs.usedPerct() ) );
+   TQListViewItem *item = new TQListViewItem( lst, fs.name(),
                          fs.type(), fs.mntPoint(),
-                         ( mtd ? tSize : QString( "N/A" ) ), ( mtd ? fSize : QString( "N/A" ) ),
-                         ( mtd ? sPrct : QString( "N/A" ) ) );
+                         ( mtd ? tSize : TQString( "N/A" ) ), ( mtd ? fSize : TQString( "N/A" ) ),
+                         ( mtd ? sPrct : TQString( "N/A" ) ) );
    
-	QString id = fs.name().left(7); // only works assuming devices start with  "/dev/XX"
-   QPixmap *icon = 0;
+	TQString id = fs.name().left(7); // only works assuming devices start with  "/dev/XX"
+   TQPixmap *icon = 0;
    if ( id == "/dev/fd") {
-      icon = new QPixmap( LOADICON( mtd ? "3floppy_mount" : "3floppy_unmount" ) );
+      icon = new TQPixmap( LOADICON( mtd ? "3floppy_mount" : "3floppy_unmount" ) );
 	} else if ( id == "/dev/cd" || fs.type() == "iso9660" ) {
-		icon = new QPixmap( LOADICON( mtd ? "cdrom_mount" : "cdrom_unmount" ) );
+		icon = new TQPixmap( LOADICON( mtd ? "cdrom_mount" : "cdrom_unmount" ) );
    } else if ( fs.type() == "nfs" || fs.type() == "smbfs" ) {
-		icon = new QPixmap( LOADICON( mtd ? "nfs_mount" : "nfs_unmount" ) );
-	} else icon = new QPixmap( LOADICON( mtd ? "hdd_mount" : "hdd_unmount" ) );
+		icon = new TQPixmap( LOADICON( mtd ? "nfs_mount" : "nfs_unmount" ) );
+	} else icon = new TQPixmap( LOADICON( mtd ? "hdd_mount" : "hdd_unmount" ) );
 
    item->setPixmap( 0, *icon );
    delete icon;
@@ -226,7 +226,7 @@ void KMountManGUI::addItemToMountList( QListView *lst, fsData &fs ) {
 void KMountManGUI::updateList() {
    mountList->clear();
    // this handles the mounted ones
-	for ( QValueList<fsData>::iterator it = fileSystems.begin(); it != fileSystems.end() ; ++it ) {
+	for ( TQValueList<fsData>::iterator it = fileSystems.begin(); it != fileSystems.end() ; ++it ) {
 		if (krMtMan.invalidFilesystem((*it).type())) {
 			continue;
 		}
@@ -254,7 +254,7 @@ void KMountManGUI::updateList() {
    mountList->clearSelection();
    if ( info ) {
       info->setEmpty( true );
-      info->repaint();
+      info->tqrepaint();
    }
    watcher->start( WATCHER_DELAY, true );   // starting the watch timer ( single shot )
 }
@@ -265,24 +265,24 @@ void KMountManGUI::checkMountChange() {
    watcher->start( WATCHER_DELAY, true );   // starting the watch timer ( single shot )
 }
 
-void KMountManGUI::doubleClicked( QListViewItem *i ) {
+void KMountManGUI::doubleClicked( TQListViewItem *i ) {
    if ( !i )
 		return; // we don't want to refresh to swap, do we ?
 		 
    // change the active panel to this mountpoint
-   connect( ( QObject* ) this, SIGNAL( refreshPanel( const KURL & ) ), ( QObject* ) SLOTS,
-            SLOT( refresh( const KURL & ) ) );
+   connect( ( TQObject* ) this, TQT_SIGNAL( refreshPanel( const KURL & ) ), ( TQObject* ) SLOTS,
+            TQT_SLOT( refresh( const KURL & ) ) );
    emit refreshPanel( vfs::fromPathOrURL( i->text(2) ) ); // text(2) ? so ugly ... 
-   disconnect( this, SIGNAL( refreshPanel( const KURL & ) ), 0, 0 );
+   disconnect( this, TQT_SIGNAL( refreshPanel( const KURL & ) ), 0, 0 );
    slotClose();
 }
 
 // when user clicks on a filesystem, change information
-void KMountManGUI::changeActive( QListViewItem *i ) {
+void KMountManGUI::changeActive( TQListViewItem *i ) {
 	if ( !i ) return ;
    fsData *system = 0;
 	
-	for (QValueList<fsData>::Iterator it = fileSystems.begin(); it != fileSystems.end(); ++it) {
+	for (TQValueList<fsData>::Iterator it = fileSystems.begin(); it != fileSystems.end(); ++it) {
 		// the only thing which is unique is the mount point
 		if ((*it).mntPoint() == i->text(2)) { // text(2) ? ugly ugly ugly
 			system = &(*it);
@@ -300,11 +300,11 @@ void KMountManGUI::changeActive( QListViewItem *i ) {
    info->setEmpty( false );
 	info->setTotalSpace( system->totalBlks() );
    info->setFreeSpace( system->freeBlks() );
-   info->repaint();
+   info->tqrepaint();
 }
 
 // called when right-clicked on a filesystem
-void KMountManGUI::clicked( QListViewItem *item, const QPoint& pos, int /* col */ ) {
+void KMountManGUI::clicked( TQListViewItem *item, const TQPoint& pos, int /* col */ ) {
    // these are the values that will exist in the menu
 #define MOUNT_ID       90
 #define UNMOUNT_ID     91
@@ -314,7 +314,7 @@ void KMountManGUI::clicked( QListViewItem *item, const QPoint& pos, int /* col *
 	if ( !item ) return ;
 	
 	fsData *system = 0;
-   for (QValueList<fsData>::Iterator it = fileSystems.begin(); it != fileSystems.end(); ++it) {
+   for (TQValueList<fsData>::Iterator it = fileSystems.begin(); it != fileSystems.end(); ++it) {
 		// the only thing which is unique is the mount point
 		if ((*it).mntPoint() == item->text(2)) { // text(2) ? ugly ugly ugly
 			system = &(*it);
@@ -346,7 +346,7 @@ void KMountManGUI::clicked( QListViewItem *item, const QPoint& pos, int /* col *
       popup.setItemEnabled( FORMAT_ID, false );
    }
 
-   QString mountPoint = system->mntPoint();
+   TQString mountPoint = system->mntPoint();
 
    int result = popup.exec( pos );
    // check out the user's option
@@ -378,12 +378,12 @@ bool KrMountDetector::hasMountsChanged() {
       md5.update((*i)->mountPoint().utf8());
       md5.update((*i)->mountType().utf8());
    }
-   QString s = md5.hexDigest();
+   TQString s = md5.hexDigest();
    bool result = s != checksum;
    checksum = s;
 #else
-   bool result = QFileInfo(MTAB).lastModified() != lastMtab;
-   lastMtab = QFileInfo(MTAB).lastModified();
+   bool result = TQFileInfo(MTAB).lastModified() != lastMtab;
+   lastMtab = TQFileInfo(MTAB).lastModified();
 #endif
    return result;
 }

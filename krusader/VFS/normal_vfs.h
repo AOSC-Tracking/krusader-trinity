@@ -32,7 +32,7 @@
 #define NORMAL_VFS
 
 // QT includes
-#include <qstring.h>
+#include <tqstring.h>
 // KDE includes
 #include <kfileitem.h>
 #include <kdirwatch.h>
@@ -46,47 +46,48 @@
  */
 class normal_vfs : public vfs{
 	Q_OBJECT
+  TQ_OBJECT
 public:
 	// the constructor simply uses the inherited constructor
-	normal_vfs(QObject* panel);
+	normal_vfs(TQObject* panel);
  ~normal_vfs(){if( watcher ) delete watcher;}
 
 	/// Copy a file to the vfs (physical).
-	virtual void vfs_addFiles(KURL::List *fileUrls,KIO::CopyJob::CopyMode mode,QObject* toNotify,QString dir = "", PreserveMode pmode = PM_DEFAULT );
+	virtual void vfs_addFiles(KURL::List *fileUrls,KIO::CopyJob::CopyMode mode,TQObject* toNotify,TQString dir = "", PreserveMode pmode = PM_DEFAULT );
 	/// Remove a file from the vfs (physical)
-	virtual void vfs_delFiles(QStringList *fileNames);
+	virtual void vfs_delFiles(TQStringList *fileNames);
 	/// Return a list of URLs for multiple files
-	virtual KURL::List* vfs_getFiles(QStringList* names);
+	virtual KURL::List* vfs_getFiles(TQStringList* names);
 	/// Return a URL to a single file
-	virtual KURL vfs_getFile(const QString& name);
+	virtual KURL vfs_getFile(const TQString& name);
 	/// Create a new directory
-	virtual void vfs_mkdir(const QString& name);
+	virtual void vfs_mkdir(const TQString& name);
 	/// Rename file
-	virtual void vfs_rename(const QString& fileName,const QString& newName);
+	virtual void vfs_rename(const TQString& fileName,const TQString& newName);
 
 	/// return the VFS working dir
-	virtual QString vfs_workingDir() { return vfs_origin.path(-1); }
+	virtual TQString vfs_workingDir() { return vfs_origin.path(-1); }
 
 	/// Get ACL permissions
-	static void getACL( vfile *file, QString &acl, QString &defAcl );
+	static void getACL( vfile *file, TQString &acl, TQString &defAcl );
 
 public slots:
 	void vfs_slotRefresh();
-	void vfs_slotDirty(const QString& path);
-	void vfs_slotCreated(const QString& path);
-	void vfs_slotDeleted(const QString& path);
+	void vfs_slotDirty(const TQString& path);
+	void vfs_slotCreated(const TQString& path);
+	void vfs_slotDeleted(const TQString& path);
 
 protected:
 	/// Re-reads files and stats and fills the vfile list
 	virtual bool populateVfsList(const KURL& origin, bool showHidden);
 
-	QTimer refreshTimer;         //< Timer to exclude sudden refreshes
+	TQTimer refreshTimer;         //< Timer to exclude sudden refreshes
 	KDirWatch *watcher;          //< The internal dir watcher - use to detect changes in directories
-	vfile*   vfileFromName(const QString& name);
+	vfile*   vfileFromName(const TQString& name);
 
 private:
-	bool burstRefresh( const QString &path );
-	static QString getACL( const QString & path, int type );
+	bool burstRefresh( const TQString &path );
+	static TQString getACL( const TQString & path, int type );
 };
 
 #endif

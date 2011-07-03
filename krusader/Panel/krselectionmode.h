@@ -17,7 +17,7 @@ public:
 	static void resetSelectionHandler();
 	
 	virtual void init() = 0; // everyone must implement this in order to be a selection mode
-	inline bool useQTSelection() { return _useQTSelection; }
+	inline bool useTQTSelection() { return _useTQTSelection; }
    inline bool spaceMovesDown() { return _spaceMovesDown; }
    inline bool insertMovesDown() { return _insertMovesDown; }
    inline bool spaceCalculatesDiskSpace() { return _spaceCalculatesDiskSpace; }
@@ -32,7 +32,7 @@ public:
    virtual ~KrSelectionMode() {}
 
 protected:
-	bool _useQTSelection, _spaceMovesDown, _insertMovesDown, _spaceCalculatesDiskSpace;
+	bool _useTQTSelection, _spaceMovesDown, _insertMovesDown, _spaceCalculatesDiskSpace;
 	bool _rightButtonSelects, _leftButtonSelects, _rightButtonPreservesSelection;
 	bool _leftButtonPreservesSelection, _shiftCtrlRightButtonSelects, _shiftCtrlLeftButtonSelects;	
 	int _showContextMenu;
@@ -41,7 +41,7 @@ protected:
 class KonqSelectionMode : public KrSelectionMode {
 public:
    void init() {
-		_useQTSelection = true;
+		_useTQTSelection = true;
 		_spaceMovesDown = false;
 		_insertMovesDown = true;
 		_spaceCalculatesDiskSpace = false;
@@ -58,7 +58,7 @@ public:
 class OriginalSelectionMode : public KrSelectionMode {
 public:
 	void init() {
-		_useQTSelection = false;
+		_useTQTSelection = false;
 		_spaceMovesDown = true;
 		_insertMovesDown = true;
 		_spaceCalculatesDiskSpace = true;
@@ -75,7 +75,7 @@ public:
 class TCSelectionMode : public KrSelectionMode {
 public:
 	void init() {
-		_useQTSelection = false;
+		_useTQTSelection = false;
 		_spaceMovesDown = false;
 		_insertMovesDown = true;
 		_spaceCalculatesDiskSpace = true;

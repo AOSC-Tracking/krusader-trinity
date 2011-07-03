@@ -23,7 +23,7 @@
 #ifndef KCMDMODEBUTTON_H
 #define KCMDMODEBUTTON_H
 
-#include <qtoolbutton.h>
+#include <tqtoolbutton.h>
 
 class KActionMenu;
 
@@ -31,14 +31,15 @@ class KActionMenu;
   * @author Vaclav Juza
   *
   * represents a button for switching the command-line execution mode
-  * It extends QToolButton, set the icon etc., and creates a popup menu
+  * It extends TQToolButton, set the icon etc., and creates a popup menu
   * containing the actions to actually switch the mode.
   */
-class KCMDModeButton : public QToolButton  {
+class KCMDModeButton : public TQToolButton  {
   Q_OBJECT
+  TQ_OBJECT
 public: 
   /** Constructor. Sets up the menu, and the icon */
-  KCMDModeButton(QWidget *parent=0, const char *name=0);
+  KCMDModeButton(TQWidget *tqparent=0, const char *name=0);
   ~KCMDModeButton();
 
   /** Shows the popup menu. Called when clicked to the button */

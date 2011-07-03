@@ -12,19 +12,20 @@
 #ifndef USERACTIONPAGE_H
 #define USERACTIONPAGE_H
 
-#include <qwidget.h>
+#include <tqwidget.h>
 
 class UserActionListView;
 class ActionProperty;
-class QToolButton;
+class TQToolButton;
 
 /**
  * @author Jonas Bähr
 */
-class UserActionPage : public QWidget {
+class UserActionPage : public TQWidget {
 Q_OBJECT
+  TQ_OBJECT
 public:
-   UserActionPage( QWidget* parent );
+   UserActionPage( TQWidget* tqparent );
    ~UserActionPage();
 
    /**
@@ -55,9 +56,9 @@ private:
    //bool _modified; ///< true if the action-tree was changed (= changes were applied to an action)
    UserActionListView *actionTree;
    ActionProperty *actionProperties;
-   QToolButton *importButton, *exportButton;
-   QToolButton *copyButton, *pasteButton;
-   QToolButton *removeButton, *newButton;
+   TQToolButton *importButton, *exportButton;
+   TQToolButton *copyButton, *pasteButton;
+   TQToolButton *removeButton, *newButton;
 
 private slots:
    void slotChangeCurrent();	//loads a new action into the detail-view

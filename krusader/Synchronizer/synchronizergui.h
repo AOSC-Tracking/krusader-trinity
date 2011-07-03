@@ -35,47 +35,48 @@
 #include "../GUI/profilemanager.h"
 #include "../Filter/filtertabs.h"
 #include "../Filter/generalfilter.h"
-#include <qdialog.h>
-#include <qlistview.h>
+#include <tqdialog.h>
+#include <tqlistview.h>
 #include <kcombobox.h>
-#include <qpixmap.h>
-#include <qcheckbox.h>
-#include <qmap.h>
-#include <qlabel.h>
-#include <qtabwidget.h>
+#include <tqpixmap.h>
+#include <tqcheckbox.h>
+#include <tqmap.h>
+#include <tqlabel.h>
+#include <tqtabwidget.h>
 
-class QSpinBox;
+class TQSpinBox;
 
-class SynchronizerGUI : QDialog
+class SynchronizerGUI : TQDialog
 {
    Q_OBJECT
+  TQ_OBJECT
 
 public:
-  class SyncViewItem : public QListViewItem
+  class SyncViewItem : public TQListViewItem
   {
     private:
       SynchronizerFileItem *syncItemRef;
       SyncViewItem         *lastItemRef;
-      QColor                textColor;
-      QColor                baseColor;
+      TQColor                textColor;
+      TQColor                baseColor;
             
     public:
-      SyncViewItem( SynchronizerFileItem *item, QColor txt, QColor base, QListView * parent, QListViewItem *after, QString label1,
-                    QString label2 = QString::null, QString label3 = QString::null, QString label4 = QString::null,
-                    QString label5 = QString::null, QString label6 = QString::null,
-                    QString label7 = QString::null, QString label8 = QString::null ) :
-                      QListViewItem( parent, after, label1, label2, label3, label4, label5, label6,
+      SyncViewItem( SynchronizerFileItem *item, TQColor txt, TQColor base, TQListView * tqparent, TQListViewItem *after, TQString label1,
+                    TQString label2 = TQString(), TQString label3 = TQString(), TQString label4 = TQString(),
+                    TQString label5 = TQString(), TQString label6 = TQString(),
+                    TQString label7 = TQString(), TQString label8 = TQString() ) :
+                      TQListViewItem( tqparent, after, label1, label2, label3, label4, label5, label6,
                                      label7, label8 ), syncItemRef( item ), lastItemRef( 0 ), textColor( txt ), baseColor( base )
       {
         item->setUserData( (void *)this );
         setDragEnabled( true );
       }
       
-      SyncViewItem( SynchronizerFileItem *item, QColor txt, QColor base, QListViewItem * parent, QListViewItem *after, QString label1,
-                    QString label2 = QString::null, QString label3 = QString::null, QString label4 = QString::null,
-                    QString label5 = QString::null, QString label6 = QString::null,
-                    QString label7 = QString::null, QString label8 = QString::null ) :
-                      QListViewItem( parent, after, label1, label2, label3, label4, label5, label6,
+      SyncViewItem( SynchronizerFileItem *item, TQColor txt, TQColor base, TQListViewItem * tqparent, TQListViewItem *after, TQString label1,
+                    TQString label2 = TQString(), TQString label3 = TQString(), TQString label4 = TQString(),
+                    TQString label5 = TQString(), TQString label6 = TQString(),
+                    TQString label7 = TQString(), TQString label8 = TQString() ) :
+                      TQListViewItem( tqparent, after, label1, label2, label3, label4, label5, label6,
                                      label7, label8 ), syncItemRef( item ), lastItemRef( 0 ), textColor( txt ), baseColor( base )
       {
         item->setUserData( (void *)this );
@@ -91,33 +92,33 @@ public:
       inline SyncViewItem         * lastItem()                  {return lastItemRef;}
       inline void                   setLastItem(SyncViewItem*s) {lastItemRef = s;}
       
-      void setColors( QColor fore, QColor back ) {
+      void setColors( TQColor fore, TQColor back ) {
         textColor = fore;
         baseColor = back;
       }
       
-      void paintCell(QPainter *p, const QColorGroup &cg, int column, int width, int align)
+      void paintCell(TQPainter *p, const TQColorGroup &cg, int column, int width, int align)
       {
-        QColorGroup _cg = cg;
+        TQColorGroup _cg = cg;
         if( textColor.isValid() )
-          _cg.setColor(QColorGroup::Text, textColor );
+          _cg.setColor(TQColorGroup::Text, textColor );
         if( baseColor.isValid() )
-          _cg.setColor(QColorGroup::Base, baseColor );
-        QListViewItem::paintCell( p, _cg, column, width, align );
+          _cg.setColor(TQColorGroup::Base, baseColor );
+        TQListViewItem::paintCell( p, _cg, column, width, align );
       };
   };
    
 public:
   // if rightDirectory is null, leftDirectory is actually the profile name to load
-  SynchronizerGUI(QWidget* parent,  KURL leftDirectory, KURL rightDirectory = QString::null, QStringList selList = QStringList() );
-  SynchronizerGUI(QWidget* parent,  QString profile );
+  SynchronizerGUI(TQWidget* tqparent,  KURL leftDirectory, KURL rightDirectory = TQString(), TQStringList selList = TQStringList() );
+  SynchronizerGUI(TQWidget* tqparent,  TQString profile );
   ~SynchronizerGUI();
 
   inline bool wasSynchronization()    {return wasSync;}
 
 public slots:
-  void rightMouseClicked(QListViewItem *);
-  void doubleClicked(QListViewItem *);
+  void rightMouseClicked(TQListViewItem *);
+  void doubleClicked(TQListViewItem *);
   void compare();
   void synchronize();
   void stop();
@@ -125,25 +126,25 @@ public slots:
   void closeDialog();
   void refresh();
   void swapSides();
-  void loadFromProfile( QString );
-  void saveToProfile( QString );
+  void loadFromProfile( TQString );
+  void saveToProfile( TQString );
   
 protected slots:
   void reject();
   void addFile( SynchronizerFileItem * );
   void markChanged( SynchronizerFileItem *, bool );
   void setScrolling( bool );
-  void statusInfo( QString );
+  void statusInfo( TQString );
   void subdirsChecked( bool );
   void setPanelLabels();
   void setCompletion();
-  void checkExcludeURLValidity( QString &text, QString &error );
-  void connectFilters( const QString & );  
+  void checkExcludeURLValidity( TQString &text, TQString &error );
+  void connectFilters( const TQString & );  
 
 private:
-  void initGUI(QWidget* parent, QString profile, KURL leftURL, KURL rightURL, QStringList selList);
+  void initGUI(TQWidget* tqparent, TQString profile, KURL leftURL, KURL rightURL, TQStringList selList);
   
-  QString convertTime(time_t time) const;
+  TQString convertTime(time_t time) const;
   void    setMarkFlags();
   void    disableMarkButtons();
   void    enableMarkButtons();
@@ -153,60 +154,60 @@ private:
   void    convertFromSeconds( int &time, int &unit, int second );
 
 protected:
-  virtual void keyPressEvent( QKeyEvent * );
-  virtual void resizeEvent( QResizeEvent *e );
+  virtual void keyPressEvent( TQKeyEvent * );
+  virtual void resizeEvent( TQResizeEvent *e );
   
   ProfileManager *profileManager;
   FilterTabs     *filterTabs;
   GeneralFilter  *generalFilter;
   
-  QTabWidget    *synchronizerTabs;  
+  TQTabWidget    *synchronizerTabs;  
   
   KHistoryCombo *leftLocation;
   KHistoryCombo *rightLocation;
   KHistoryCombo *fileFilter;
   
-  QListView     *syncList;
+  TQListView     *syncList;
   Synchronizer   synchronizer;
   
-  QCheckBox     *cbSubdirs;
-  QCheckBox     *cbSymlinks;
-  QCheckBox     *cbByContent;
-  QCheckBox     *cbIgnoreDate;
-  QCheckBox     *cbAsymmetric;
-  QCheckBox     *cbIgnoreCase;
+  TQCheckBox     *cbSubdirs;
+  TQCheckBox     *cbSymlinks;
+  TQCheckBox     *cbByContent;
+  TQCheckBox     *cbIgnoreDate;
+  TQCheckBox     *cbAsymmetric;
+  TQCheckBox     *cbIgnoreCase;
   
-  QPushButton   *btnSwapSides;
-  QPushButton   *btnCompareDirs;
-  QPushButton   *btnStopComparing;
-  QPushButton   *btnSynchronize;
-  QPushButton   *btnFeedToListBox;
-  QPushButton   *btnScrollResults;
+  TQPushButton   *btnSwapSides;
+  TQPushButton   *btnCompareDirs;
+  TQPushButton   *btnStopComparing;
+  TQPushButton   *btnSynchronize;
+  TQPushButton   *btnFeedToListBox;
+  TQPushButton   *btnScrollResults;
   
-  QPushButton   *btnLeftToRight;
-  QPushButton   *btnEquals;
-  QPushButton   *btnDifferents;
-  QPushButton   *btnRightToLeft;
-  QPushButton   *btnDeletable;
-  QPushButton   *btnDuplicates;
-  QPushButton   *btnSingles;
+  TQPushButton   *btnLeftToRight;
+  TQPushButton   *btnEquals;
+  TQPushButton   *btnDifferents;
+  TQPushButton   *btnRightToLeft;
+  TQPushButton   *btnDeletable;
+  TQPushButton   *btnDuplicates;
+  TQPushButton   *btnSingles;
 
-  QLabel        *statusLabel;
-  QLabel        *leftDirLabel;
-  QLabel        *rightDirLabel;
+  TQLabel        *statusLabel;
+  TQLabel        *leftDirLabel;
+  TQLabel        *rightDirLabel;
   
-  QStringList    selectedFiles;
+  TQStringList    selectedFiles;
   
-  QSpinBox      *parallelThreadsSpinBox;
-  QSpinBox      *equalitySpinBox;
-  QComboBox     *equalityUnitCombo;
-  QSpinBox      *timeShiftSpinBox;
-  QComboBox     *timeShiftUnitCombo;
-  QCheckBox     *ignoreHiddenFilesCB;
+  TQSpinBox      *parallelThreadsSpinBox;
+  TQSpinBox      *equalitySpinBox;
+  TQComboBox     *equalityUnitCombo;
+  TQSpinBox      *timeShiftSpinBox;
+  TQComboBox     *timeShiftUnitCombo;
+  TQCheckBox     *ignoreHiddenFilesCB;
 
 private:
-  QPixmap        fileIcon;
-  QPixmap        folderIcon;
+  TQPixmap        fileIcon;
+  TQPixmap        folderIcon;
   bool           isComparing;
   bool           wasClosed;
   bool           wasSync;
@@ -217,8 +218,8 @@ private:
   int            sizeX;
   int            sizeY;
   
-  QColor         foreGrounds[ TT_MAX ];
-  QColor         backGrounds[ TT_MAX ];
+  TQColor         foreGrounds[ TT_MAX ];
+  TQColor         backGrounds[ TT_MAX ];
 };
 
 #endif /* __SYNCHRONIZERGUI_H__ */

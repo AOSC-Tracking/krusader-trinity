@@ -34,22 +34,23 @@
 #define KRUSADERSTATUS_H
 
 // QT includes
-#include <qlabel.h>
-#include <qwidget.h>
-#include <qframe.h>
+#include <tqlabel.h>
+#include <tqwidget.h>
+#include <tqframe.h>
 
 // KDE includes
 #include <kstatusbar.h>
 #include <klocale.h>
 
-class KrusaderStatus : public KStatusBar {
+class KrusadertqStatus : public KStatusBar {
    Q_OBJECT
+  TQ_OBJECT
 public: 
-	KrusaderStatus(QWidget *parent=0, const char *name=0);
-	~KrusaderStatus();
+	KrusadertqStatus(TQWidget *tqparent=0, const char *name=0);
+	~KrusadertqStatus();
 
 private:
-	QLabel *mess;
+	TQLabel *mess;
 
 };
 

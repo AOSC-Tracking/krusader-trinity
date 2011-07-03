@@ -36,9 +36,10 @@
 class KgWelcome : public KonfiguratorPage
 {
   Q_OBJECT
+  TQ_OBJECT
 
 public:
-  KgWelcome( bool first, QWidget* parent=0,  const char* name=0 );
+  KgWelcome( bool first, TQWidget* tqparent=0,  const char* name=0 );
 };
 
 #endif /* __KGWELCOME_H__ */

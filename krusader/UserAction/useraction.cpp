@@ -16,8 +16,8 @@
 #include <kstandarddirs.h>
 #include <kmessagebox.h>
 
-#include <qstring.h>
-#include <qdom.h>
+#include <tqstring.h>
+#include <tqdom.h>
 
 #include "useraction.h"
 #include "kraction.h"
@@ -56,18 +56,18 @@ void UserAction::populateMenu( KPopupMenu* menu ) {
          action->plug( menu );
 }
 
-QStringList UserAction::allCategories() {
-   QStringList actionCategories;
+TQStringList UserAction::allCategories() {
+   TQStringList actionCategories;
 
    for ( KrAction* action = _actions.first(); action; action = _actions.next() )
-      if ( actionCategories.find( action->category() ) == actionCategories.end() )
+      if ( actionCategories.tqfind( action->category() ) == actionCategories.end() )
          actionCategories.append( action->category() );
 
   return actionCategories;
 }
 
-QStringList UserAction::allNames() {
-   QStringList actionNames;
+TQStringList UserAction::allNames() {
+   TQStringList actionNames;
 
    for ( KrAction* action = _actions.first(); action; action = _actions.next() )
       actionNames.append( action->name() );
@@ -76,7 +76,7 @@ QStringList UserAction::allNames() {
 }
 
 void UserAction::readAllFiles() {
-   QString filename = locate( "data", ACTION_XML ); // locate returns the local file if it exists, else the global one is retrieved.
+   TQString filename = locate( "data", ACTION_XML ); // locate returns the local file if it exists, else the global one is retrieved.
    if ( ! filename.isEmpty() )
       readFromFile( locate( "data", ACTION_XML ), renameDoublicated );
 
@@ -85,9 +85,9 @@ void UserAction::readAllFiles() {
       readFromFile( locate( "data", ACTION_XML_EXAMPLES ), ignoreDoublicated ); // ignore samples which are already in the normal file
 }
 
-void UserAction::readFromFile( const QString& filename, ReadMode mode, KrActionList* list ) {
-  QDomDocument* doc = new QDomDocument( ACTION_DOCTYPE );
-  QFile file( filename );
+void UserAction::readFromFile( const TQString& filename, ReadMode mode, KrActionList* list ) {
+  TQDomDocument* doc = new TQDomDocument( ACTION_DOCTYPE );
+  TQFile file( filename );
   if( file.open( IO_ReadOnly ) ) {
     //kdDebug() << "UserAction::readFromFile - " << filename << "could be opened" << endl;
     if( ! doc->setContent( &file ) ) {
@@ -97,18 +97,18 @@ void UserAction::readFromFile( const QString& filename, ReadMode mode, KrActionL
       file.close();
       delete doc; doc = 0;
       KMessageBox::error( MAIN_VIEW,
-      		i18n( "The file %1 does not contain valid UserActions.\n" ).arg( filename ), // text
+      		i18n( "The file %1 does not contain valid UserActions.\n" ).tqarg( filename ), // text
       		i18n("UserActions - can't read from file!") // caption
       	);
     }
     file.close();
 
     if ( doc ) {
-      QDomElement root = doc->documentElement();
+      TQDomElement root = doc->documentElement();
       // check if the file got the right root-element (ACTION_ROOT) - this finds out if the xml-file read to the DOM is realy an krusader useraction-file
       if( root.tagName() != ACTION_ROOT ) {
         KMessageBox::error( MAIN_VIEW,
-        	i18n( "The actionfile's root-element isn't called "ACTION_ROOT", using %1").arg( filename ),
+        	i18n( "The actionfile's root-element isn't called "ACTION_ROOT", using %1").tqarg( filename ),
         	i18n( "UserActions - can't read from file!" )
         );
         delete doc; doc = 0;
@@ -120,21 +120,21 @@ void UserAction::readFromFile( const QString& filename, ReadMode mode, KrActionL
   } // if ( file.open( IO_ReadOnly ) )
   else {
       KMessageBox::error( MAIN_VIEW,
-      		i18n( "Unable to open actionfile %1").arg( filename ),
+      		i18n( "Unable to open actionfile %1").tqarg( filename ),
       		i18n( "UserActions - can't read from file!" )
       );
    }
 
 }
 
-void UserAction::readFromElement( const QDomElement& element, ReadMode mode, KrActionList* list ) {
-   for ( QDomNode node = element.firstChild(); ! node.isNull(); node = node.nextSibling() ) {
-      QDomElement e = node.toElement();
+void UserAction::readFromElement( const TQDomElement& element, ReadMode mode, KrActionList* list ) {
+   for ( TQDomNode node = element.firstChild(); ! node.isNull(); node = node.nextSibling() ) {
+      TQDomElement e = node.toElement();
       if ( e.isNull() )
          continue; // this should skip nodes which are not elements ( i.e. comments, <!-- -->, or text nodes)
 
       if ( e.tagName() == "action" ) {
-         QString name = e.attribute( "name" );
+         TQString name = e.attribute( "name" );
          if ( name.isEmpty() ) {
             KMessageBox::error( MAIN_VIEW,
            	i18n( "Action without name detected. This action will not be imported!\nThis is an error in the file, you may want to correct it." ),
@@ -146,11 +146,11 @@ void UserAction::readFromElement( const QDomElement& element, ReadMode mode, KrA
          if ( mode == ignoreDoublicated && krApp->actionCollection()->action( name.latin1() ) )
             continue;
 
-         QString basename = name + "_%1";
+         TQString basename = name + "_%1";
          int i = 0;
          // appent a counter till the name is unique... (this checks every action, not only useractions)
          while ( krApp->actionCollection()->action( name.latin1() ) )
-            name = basename.arg( ++i );
+            name = basename.tqarg( ++i );
 
          KrAction* act = new KrAction( krApp->actionCollection(), name.latin1() );
          if ( act->xmlRead( e ) ) {
@@ -164,8 +164,8 @@ void UserAction::readFromElement( const QDomElement& element, ReadMode mode, KrA
    } // for
 }
 
-QDomDocument UserAction::createEmptyDoc() {
-   QDomDocument doc = QDomDocument( ACTION_DOCTYPE );
+TQDomDocument UserAction::createEmptyDoc() {
+   TQDomDocument doc = TQDomDocument( ACTION_DOCTYPE );
    // adding: <?xml version="1.0" encoding="UTF-8" ?>
    doc.appendChild( doc.createProcessingInstruction( "xml", ACTION_PROCESSINSTR ) );
    //adding root-element
@@ -174,30 +174,30 @@ QDomDocument UserAction::createEmptyDoc() {
 }
 
 bool UserAction::writeActionFile() {
-   QString filename = locateLocal( "data", ACTION_XML );
+   TQString filename = locateLocal( "data", ACTION_XML );
 
-   QDomDocument doc = createEmptyDoc();
-   QDomElement root = doc.documentElement();
+   TQDomDocument doc = createEmptyDoc();
+   TQDomElement root = doc.documentElement();
    for ( KrAction* action = _actions.first(); action; action = _actions.next() )
       root.appendChild( action->xmlDump( doc ) );
 
    return writeToFile( doc, filename );
 }
 
-bool UserAction::writeToFile( const QDomDocument& doc, const QString& filename ) {
-   QFile file( filename );
+bool UserAction::writeToFile( const TQDomDocument& doc, const TQString& filename ) {
+   TQFile file( filename );
    if( ! file.open( IO_WriteOnly ) )
       return false;
 
 /* // This is not needed, because each DomDocument created with UserAction::createEmptyDoc already contains the processinstruction
    if ( ! doc.firstChild().isProcessingInstruction() ) {
       // adding: <?xml version="1.0" encoding="UTF-8" ?> if not already present
-      QDomProcessingInstruction instr = doc.createProcessingInstruction( "xml", ACTION_PROCESSINSTR );
+      TQDomProcessingInstruction instr = doc.createProcessingInstruction( "xml", ACTION_PROCESSINSTR );
       doc.insertBefore( instr, doc.firstChild() );
    }
 */
 
-   QTextStream ts( &file );
+   TQTextStream ts( &file );
    ts.setEncoding(ts.UnicodeUTF8);
    ts << doc.toString();
 

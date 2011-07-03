@@ -33,18 +33,19 @@
 
 #include "../VFS/vfs.h"
 #include "synchronizer.h"
-#include <qdialog.h>
-#include <qpushbutton.h>
-#include <qcheckbox.h>
-#include <qlabel.h>
-#include <qprogressbar.h>
+#include <tqdialog.h>
+#include <tqpushbutton.h>
+#include <tqcheckbox.h>
+#include <tqlabel.h>
+#include <tqprogressbar.h>
 
-class SynchronizeDialog : QDialog
+class SynchronizeDialog : TQDialog
 {
   Q_OBJECT
+  TQ_OBJECT
   
   public:
-    SynchronizeDialog(  QWidget*,  const char*, bool, WFlags, Synchronizer *sync,
+    SynchronizeDialog(  TQWidget*,  const char*, bool, WFlags, Synchronizer *sync,
                         int, KIO::filesize_t, int, KIO::filesize_t, int, KIO::filesize_t, int);
     ~SynchronizeDialog();
 
@@ -58,20 +59,20 @@ class SynchronizeDialog : QDialog
     void pauseAccepted();
 
   private:
-    QProgressBar  *progress;
+    TQProgressBar  *progress;
     
-    QCheckBox     *cbRightToLeft;
-    QCheckBox     *cbLeftToRight;
-    QCheckBox     *cbDeletable;
+    TQCheckBox     *cbRightToLeft;
+    TQCheckBox     *cbLeftToRight;
+    TQCheckBox     *cbDeletable;
 
-    QLabel        *lbRightToLeft;
-    QLabel        *lbLeftToRight;
-    QLabel        *lbDeletable;
+    TQLabel        *lbRightToLeft;
+    TQLabel        *lbLeftToRight;
+    TQLabel        *lbDeletable;
 
-    QCheckBox     *cbOverwrite;
+    TQCheckBox     *cbOverwrite;
     
-    QPushButton   *btnStart;
-    QPushButton   *btnPause;
+    TQPushButton   *btnStart;
+    TQPushButton   *btnPause;
     
     Synchronizer  *synchronizer;
 

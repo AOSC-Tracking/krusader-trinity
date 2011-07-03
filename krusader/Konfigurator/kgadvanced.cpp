@@ -31,22 +31,22 @@
 #include "kgadvanced.h"
 #include "../defaults.h"
 #include <klocale.h>
-#include <qhbox.h>
-#include <qwhatsthis.h>
+#include <tqhbox.h>
+#include <tqwhatsthis.h>
 #include <sys/param.h>
 #include <kdeversion.h>
 #include <kprotocolinfo.h>
 
-KgAdvanced::KgAdvanced( bool first, QWidget* parent,  const char* name ) :
-      KonfiguratorPage( first, parent, name )
+KgAdvanced::KgAdvanced( bool first, TQWidget* tqparent,  const char* name ) :
+      KonfiguratorPage( first, tqparent, name )
 {
-  QGridLayout *kgAdvancedLayout = new QGridLayout( parent );
+  TQGridLayout *kgAdvancedLayout = new TQGridLayout( tqparent );
   kgAdvancedLayout->setSpacing( 6 );
 
   //  -------------------------- GENERAL GROUPBOX ----------------------------------
   
-  QGroupBox *generalGrp = createFrame( i18n( "General" ), parent, "kgAdvGeneralGrp" );
-  QGridLayout *generalGrid = createGridLayout( generalGrp->layout() );
+  TQGroupBox *generalGrp = createFrame( i18n( "General" ), tqparent, "kgAdvGeneralGrp" );
+  TQGridLayout *generalGrid = createGridLayout( generalGrp->tqlayout() );
 
 #if KDE_IS_VERSION( 3,5,1 )
   bool dontUseMedia = false;
@@ -54,7 +54,7 @@ KgAdvanced::KgAdvanced( bool first, QWidget* parent,  const char* name ) :
   bool dontUseMedia = true;
 #endif
 
-  bool isMediaProtocolPresent = KProtocolInfo::isKnownProtocol( QString( "media" ) );
+  bool isMediaProtocolPresent = KProtocolInfo::isKnownProtocol( TQString( "media" ) );
   if( !isMediaProtocolPresent )
     dontUseMedia = true;
 
@@ -67,7 +67,7 @@ KgAdvanced::KgAdvanced( bool first, QWidget* parent,  const char* name ) :
   KonfiguratorCheckBoxGroup *generals = createCheckBoxGroup( 1, 0, generalSettings, 3, generalGrp );
 
   if( !isMediaProtocolPresent )
-    generals->find( "DontUseMediaProt" )->setEnabled( false );
+    generals->tqfind( "DontUseMediaProt" )->setEnabled( false );
 
   generalGrid->addWidget( generals, 1, 0 );
 
@@ -78,15 +78,15 @@ KgAdvanced::KgAdvanced( bool first, QWidget* parent,  const char* name ) :
  
   
 #ifdef BSD
-  generals->find( "AutoMount" )->setEnabled( false ); /* disable AutoMount on BSD */
+  generals->tqfind( "AutoMount" )->setEnabled( false ); /* disable AutoMount on BSD */
 #endif
     
   kgAdvancedLayout->addWidget( generalGrp, 0 ,0 );
 
   //  ----------------------- CONFIRMATIONS GROUPBOX -------------------------------
   
-  QGroupBox *confirmGrp = createFrame( i18n( "Confirmations" ), parent, "confirmGrp" );
-  QGridLayout *confirmGrid = createGridLayout( confirmGrp->layout() );
+  TQGroupBox *confirmGrp = createFrame( i18n( "Confirmations" ), tqparent, "confirmGrp" );
+  TQGridLayout *confirmGrid = createGridLayout( confirmGrp->tqlayout() );
 
   addLabel( confirmGrid, 0, 0, "\n"+i18n( "Request user confirmation for the following operations:" )+"\n",
             confirmGrp, "KgAdvLabel1" );
@@ -109,17 +109,17 @@ KgAdvanced::KgAdvanced( bool first, QWidget* parent,  const char* name ) :
 
   //  ------------------------ FINE-TUNING GROUPBOX --------------------------------
 
-  QGroupBox *fineTuneGrp = createFrame( i18n( "Fine-Tuning" ), parent, "kgFineTuneGrp" );
-  QGridLayout *fineTuneGrid = createGridLayout( fineTuneGrp->layout() );
-  fineTuneGrid->setAlignment( Qt::AlignLeft | Qt::AlignTop );
+  TQGroupBox *fineTuneGrp = createFrame( i18n( "Fine-Tuning" ), tqparent, "kgFineTuneGrp" );
+  TQGridLayout *fineTuneGrid = createGridLayout( fineTuneGrp->tqlayout() );
+  fineTuneGrid->tqsetAlignment( TQt::AlignLeft | TQt::AlignTop );
   
-  QLabel *label = new QLabel( i18n( "Icon cache size (KB):" ), fineTuneGrp, "iconCacheLabel" );
-  QWhatsThis::add( label, i18n( "The icon cache size influences how fast the contents of a panel can be displayed. However, too large a cache might consume your memory." ) );
+  TQLabel *label = new TQLabel( i18n( "Icon cache size (KB):" ), fineTuneGrp, "iconCacheLabel" );
+  TQWhatsThis::add( label, i18n( "The icon cache size influences how fast the contents of a panel can be displayed. However, too large a cache might consume your memory." ) );
   fineTuneGrid->addWidget( label, 0, 0 );
   KonfiguratorSpinBox *spinBox = createSpinBox( "Advanced", "Icon Cache Size", _IconCacheSize,
                                                 1, 8192, fineTuneGrp, false );
-  QWhatsThis::add( spinBox, i18n( "The icon cache size influences how fast the contents of a panel can be displayed. However, too large a cache might consume your memory." ) );
-  spinBox->setSizePolicy( QSizePolicy::Fixed, QSizePolicy::Fixed);
+  TQWhatsThis::add( spinBox, i18n( "The icon cache size influences how fast the contents of a panel can be displayed. However, too large a cache might consume your memory." ) );
+  spinBox->tqsetSizePolicy( TQSizePolicy::Fixed, TQSizePolicy::Fixed);
   fineTuneGrid->addWidget( spinBox, 0, 1 );
 
   addLabel( fineTuneGrid, 1, 0, i18n( "Arguments of updatedb:" ),

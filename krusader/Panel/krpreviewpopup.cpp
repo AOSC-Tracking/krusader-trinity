@@ -24,7 +24,7 @@
 #include "../krusader.h"
 
 KrPreviewPopup::KrPreviewPopup(): id(1),noPreview(true){
-	connect(this,SIGNAL(activated(int)),this,SLOT(view(int)));
+	connect(this,TQT_SIGNAL(activated(int)),this,TQT_SLOT(view(int)));
 }
 
 void KrPreviewPopup::setUrls(const KURL::List* urls){
@@ -32,7 +32,7 @@ void KrPreviewPopup::setUrls(const KURL::List* urls){
 	insertItem(i18n("Preview not available"),0);
 
 	KIO::PreviewJob* pjob;
-	QStringList plugins = KIO::PreviewJob::availablePlugins();
+	TQStringList plugins = KIO::PreviewJob::availablePlugins();
 
 	for( unsigned int i=0; i< urls->count(); ++i){
 		KFileItem* kfi = new KFileItem(KFileItem::Unknown,KFileItem::Unknown,*(urls->at(i)));
@@ -40,13 +40,13 @@ void KrPreviewPopup::setUrls(const KURL::List* urls){
 	}
 
 	pjob = new KIO::PreviewJob(files,200,200,200,1,true,true,0);
-	connect(pjob,SIGNAL(gotPreview(const KFileItem*,const QPixmap&)),
-          this,SLOT(addPreview(const KFileItem*,const QPixmap&)));
+	connect(pjob,TQT_SIGNAL(gotPreview(const KFileItem*,const TQPixmap&)),
+          this,TQT_SLOT(addPreview(const KFileItem*,const TQPixmap&)));
 }
 
 KrPreviewPopup::~KrPreviewPopup(){}
 
-void KrPreviewPopup::addPreview(const KFileItem* file,const QPixmap& preview){
+void KrPreviewPopup::addPreview(const KFileItem* file,const TQPixmap& preview){
 	if(noPreview){
 		removeItem(0);
 		noPreview = false;

@@ -27,11 +27,11 @@
  *   (at your option) any later version.                                   *
  *                                                                         *
  ***************************************************************************/
-#ifndef KRQUERY_H
-#define KRQUERY_H
+#ifndef KRTQUERY_H
+#define KRTQUERY_H
 
-#include <qstringlist.h>
-#include <qdatetime.h>
+#include <tqstringlist.h>
+#include <tqdatetime.h>
 #include <time.h>
 #include <kurl.h>
 #include <kio/jobclasses.h>
@@ -39,14 +39,15 @@
 
 class KFileItem;
 
-class KRQuery : public QObject {
+class KRQuery : public TQObject {
   Q_OBJECT
+  TQ_OBJECT
 
 public:
   // null query
   KRQuery();
   // query only with name filter
-  KRQuery( const QString &name, bool matchCase = true );
+  KRQuery( const TQString &name, bool matchCase = true );
   // copy constructor
   KRQuery( const KRQuery & );
   // let operator
@@ -59,14 +60,14 @@ public:
   // matching a KIO file with the query
   bool match( KFileItem *file ) const;// checks if the given vfile object matches the conditions
   // matching a name with the query
-  bool match( const QString &name ) const;// matching the filename only
+  bool match( const TQString &name ) const;// matching the filename only
   // matching the name of the directory
-  bool matchDirName( const QString &name ) const;
+  bool matchDirName( const TQString &name ) const;
 
   // sets the text for name filtering
-  void setNameFilter( const QString &text, bool cs=true );
-  // returns the current filter mask
-  const QString& nameFilter() const { return origFilter; }
+  void setNameFilter( const TQString &text, bool cs=true );
+  // returns the current filter tqmask
+  const TQString& nameFilter() const { return origFilter; }
   // returns whether the filter is case sensitive
   bool isCaseSensitive() { return matchesCaseSensitive; }
 
@@ -74,7 +75,7 @@ public:
   bool isNull() {return bNull;};
 
   // sets the content part of the query
-  void setContent( const QString &content, bool cs=true, bool wholeWord=false, bool remoteSearch=false );
+  void setContent( const TQString &content, bool cs=true, bool wholeWord=false, bool remoteSearch=false );
 
   // sets the minimum file size limit
   void setMinimumFileSize( KIO::filesize_t );
@@ -87,11 +88,11 @@ public:
   void setOlderThan( time_t time );
 
   // sets the owner
-  void setOwner( const QString &ownerIn );
+  void setOwner( const TQString &ownerIn );
   // sets the group
-  void setGroup( const QString &groupIn );
+  void setGroup( const TQString &groupIn );
   // sets the permissions
-  void setPermissions( const QString &permIn );
+  void setPermissions( const TQString &permIn );
 
   // sets the mimetype for the query
   // type, must be one of the following:
@@ -99,8 +100,8 @@ public:
   // 2. one of: i18n("Archives"),   i18n("Directories"), i18n("Image Files")
   //            i18n("Text Files"), i18n("Video Files"), i18n("Audio Files")
   // 3. i18n("Custom") in which case you must supply a list of valid mime-types
-  //    in the member QStringList customType
-  void setMimeType( const QString &typeIn, QStringList customList = QStringList() );
+  //    in the member TQStringList customType
+  void setMimeType( const TQString &typeIn, TQStringList customList = TQStringList() );
   // true if setMimeType was called
   bool hasMimeType()  { return type.isEmpty(); }
 
@@ -130,7 +131,7 @@ public:
   // gives whether we search for content
   bool isContentSearched() const { return !contain.isEmpty(); }
   
-  const QString& foundText() const { return lastSuccessfulGrep; }
+  const TQString& foundText() const { return lastSuccessfulGrep; }
 
 protected:
   // important to know whether the event processor is connected
@@ -139,15 +140,15 @@ protected:
   virtual void disconnectNotify ( const char * signal );
 
 protected:
-  QStringList matches;           // what to search
-  QStringList excludes;          // what to exclude
-  QStringList includedDirs;      // what dirs to include
-  QStringList excludedDirs;      // what dirs to exclude
+  TQStringList matches;           // what to search
+  TQStringList excludes;          // what to exclude
+  TQStringList includedDirs;      // what dirs to include
+  TQStringList excludedDirs;      // what dirs to exclude
   bool matchesCaseSensitive;
 
   bool bNull;                    // flag if the query is null
 
-  QString contain;               // file must contain this string
+  TQString contain;               // file must contain this string
   bool containCaseSensetive;
   bool containWholeWord;
   bool containOnRemote;
@@ -158,12 +159,12 @@ protected:
   time_t newerThen;
   time_t olderThen;
 
-  QString owner;
-  QString group;
-  QString perm;
+  TQString owner;
+  TQString group;
+  TQString perm;
 
-  QString type;
-  QStringList customType;
+  TQString type;
+  TQStringList customType;
 
   bool inArchive;                // if true- search in archive.
   bool recurse;                  // if true recurse ob sub-dirs...
@@ -173,36 +174,36 @@ protected:
   KURL::List whereNotToSearch;  // directorys NOT to search
 
 signals:
-  void status( const QString &name );
+  void status( const TQString &name );
   void processEvents( bool & stopped );
 
 private:
-  bool matchCommon( const QString &, const QStringList &, const QStringList & ) const;
-  bool checkPerm(QString perm) const;
-  bool checkType(QString mime) const;
-  bool containsContent( QString file ) const;
+  bool matchCommon( const TQString &, const TQStringList &, const TQStringList & ) const;
+  bool checkPerm(TQString perm) const;
+  bool checkType(TQString mime) const;
+  bool containsContent( TQString file ) const;
   bool containsContent( KURL url ) const;
   bool checkBuffer( const char *buffer, int len ) const;
   bool checkLines( const char *buffer, int len ) const;
   bool checkTimer() const;
-  QStringList split( QString );
+  TQStringList split( TQString );
 
 private slots:
-  void containsContentData(KIO::Job *, const QByteArray &);
+  void containsContentData(KIO::Job *, const TQByteArray &);
   void containsContentFinished(KIO::Job*);
 
 private:
-  QString                  origFilter;
+  TQString                  origFilter;
   mutable bool             busy;
   mutable bool             containsContentResult;
   mutable char *           receivedBuffer;
   mutable int              receivedBufferLen;
-  mutable QString          lastSuccessfulGrep;
-  mutable QString          fileName;
+  mutable TQString          lastSuccessfulGrep;
+  mutable TQString          fileName;
   mutable KIO::filesize_t  receivedBytes;
   mutable KIO::filesize_t  totalBytes;
   mutable int              processEventsConnected;
-  mutable QTime            timer;
+  mutable TQTime            timer;
 };
 
 #endif

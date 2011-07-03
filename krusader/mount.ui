@@ -1,6 +1,6 @@
 <!DOCTYPE UI><UI version="3.3" stdsetdef="1">
 <class>mountDlg</class>
-<widget class="QDialog">
+<widget class="TQDialog">
     <property name="name">
         <cstring>mountDlg</cstring>
     </property>
@@ -30,7 +30,7 @@
         <property name="name">
             <cstring>unnamed</cstring>
         </property>
-        <widget class="QLayoutWidget" row="5" column="0" rowspan="1" colspan="2">
+        <widget class="TQLayoutWidget" row="5" column="0" rowspan="1" colspan="2">
             <property name="name">
                 <cstring>Layout1</cstring>
             </property>
@@ -54,14 +54,14 @@
                     <property name="sizeType">
                         <enum>Expanding</enum>
                     </property>
-                    <property name="sizeHint">
+                    <property name="tqsizeHint">
                         <size>
                             <width>20</width>
                             <height>20</height>
                         </size>
                     </property>
                 </spacer>
-                <widget class="QPushButton">
+                <widget class="TQPushButton">
                     <property name="name">
                         <cstring>buttonOk</cstring>
                     </property>
@@ -78,7 +78,7 @@
                         <bool>true</bool>
                     </property>
                 </widget>
-                <widget class="QPushButton">
+                <widget class="TQPushButton">
                     <property name="name">
                         <cstring>buttonCancel</cstring>
                     </property>
@@ -94,7 +94,7 @@
                 </widget>
             </hbox>
         </widget>
-        <widget class="QLabel" row="0" column="0">
+        <widget class="TQLabel" row="0" column="0">
             <property name="name">
                 <cstring>labelDevice</cstring>
             </property>
@@ -145,7 +145,7 @@
                 <bool>true</bool>
             </property>
         </widget>
-        <widget class="QLabel" row="2" column="0">
+        <widget class="TQLabel" row="2" column="0">
             <property name="name">
                 <cstring>labelFilesystem</cstring>
             </property>
@@ -153,7 +153,7 @@
                 <string>Filesystem</string>
             </property>
         </widget>
-        <widget class="QLabel" row="1" column="0">
+        <widget class="TQLabel" row="1" column="0">
             <property name="name">
                 <cstring>labelMountpoint</cstring>
             </property>
@@ -161,7 +161,7 @@
                 <string>Mountpoint</string>
             </property>
         </widget>
-        <widget class="QLabel" row="3" column="0" rowspan="1" colspan="2">
+        <widget class="TQLabel" row="3" column="0" rowspan="1" colspan="2">
             <property name="name">
                 <cstring>labelOptions</cstring>
             </property>
@@ -193,7 +193,7 @@
 <includes>
     <include location="local" impldecl="in implementation">mount.ui.h</include>
 </includes>
-<layoutdefaults spacing="6" margin="11"/>
+<tqlayoutdefaults spacing="6" margin="11"/>
 <includehints>
     <includehint>kurlrequester.h</includehint>
     <includehint>klineedit.h</includehint>

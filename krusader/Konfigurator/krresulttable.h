@@ -31,14 +31,14 @@
 #ifndef KRRESULTTABLE_H
 #define KRRESULTTABLE_H
 
-#include <qstring.h>
-#include <qlabel.h>
-#include <qlayout.h>
-#include <qhbox.h>
-#include <qvbox.h>
-#include <qgrid.h>
-#include <qstringlist.h>
-#include <qvaluevector.h>
+#include <tqstring.h>
+#include <tqlabel.h>
+#include <tqlayout.h>
+#include <tqhbox.h>
+#include <tqvbox.h>
+#include <tqgrid.h>
+#include <tqstringlist.h>
+#include <tqvaluevector.h>
 
 #include <kiconloader.h>
 #include <kglobalsettings.h>
@@ -56,47 +56,47 @@
 /**
 @author Dirk Eschler <deschler@users.sourceforge.net>
 */
-class KrResultTable : public QWidget
+class KrResultTable : public TQWidget
 {
 public:
-  KrResultTable(QWidget* parent);
+  KrResultTable(TQWidget* tqparent);
   virtual ~KrResultTable();
 
   /**
-  * Adds a row of search results to the end of a QGridLayout
+  * Adds a row of search results to the end of a TQGridLayout
   * Each KrResultTable has to implement it
   *
   * @param const SearchObject* search  Name of the SearchObject
-  * @param const QGridLayout*  grid    The GridLayout where the row is inserted
+  * @param const TQGridLayout*  grid    The GridLayout where the row is inserted
   *
   * @return bool  True if row was added successfully to rows, else false
   */
-  virtual bool addRow(SearchObject* search, QGridLayout* grid) = 0;
+  virtual bool addRow(SearchObject* search, TQGridLayout* grid) = 0;
 
 protected:
-  QStringList _supported;
-  QStringList _tableHeaders;
+  TQStringList _supported;
+  TQStringList _tableHeaders;
   int _numColumns;
   int _numRows;
 
-  QGridLayout* _grid;
-  QHBox* _iconBox;
-  QLabel* _label; // generic label
+  TQGridLayout* _grid;
+  TQHBox* _iconBox;
+  TQLabel* _label; // generic label
 
   /**
-  * Creates the main grid layout and attaches the table header
+  * Creates the main grid tqlayout and attaches the table header
   *
-  * @return bool  Pointer to the main grid layout
+  * @return bool  Pointer to the main grid tqlayout
   */
-  QGridLayout* initTable();
+  TQGridLayout* initTable();
 
   /**
-  * Applies settings to each cell of the grid layout
+  * Applies settings to each cell of the grid tqlayout
   * Supposed to be run after a row was added
   *
-  * @param const QGridLayout* grid  The GridLayout
+  * @param const TQGridLayout* grid  The GridLayout
   */
-  void adjustRow(QGridLayout* grid);
+  void adjustRow(TQGridLayout* grid);
 };
 
 // -----------------------------------------------------------------------------
@@ -105,17 +105,18 @@ protected:
 class KrArchiverResultTable : public KrResultTable
 {
   Q_OBJECT
+  TQ_OBJECT
 public:
-  KrArchiverResultTable(QWidget* parent);
+  KrArchiverResultTable(TQWidget* tqparent);
   virtual ~KrArchiverResultTable();
 
-  bool addRow(SearchObject* search, QGridLayout* grid);
+  bool addRow(SearchObject* search, TQGridLayout* grid);
 
 protected:
   KURLLabel* _nameLabel;
 
 protected slots:
-  void website(const QString&);
+  void website(const TQString&);
 };
 
 // -----------------------------------------------------------------------------
@@ -124,17 +125,18 @@ protected slots:
 class KrToolResultTable : public KrResultTable
 {
   Q_OBJECT
+  TQ_OBJECT
 public:
-  KrToolResultTable(QWidget* parent);
+  KrToolResultTable(TQWidget* tqparent);
   virtual ~KrToolResultTable();
 
-  bool addRow(SearchObject* search, QGridLayout* grid);
+  bool addRow(SearchObject* search, TQGridLayout* grid);
 
 protected:
-  QValueVector<Application*> _apps;
+  TQValueVector<Application*> _apps;
 
 protected slots:
-  void website(const QString&);
+  void website(const TQString&);
 };
 
 #endif

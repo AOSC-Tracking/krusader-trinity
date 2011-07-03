@@ -38,8 +38,8 @@ YP   YD 88   YD ~Y8888P' `8888Y' YP   YP Y8888D' Y88888P 88   YD
 #include "../VFS/krarchandler.h"
 #include "../VFS/krquery.h"
 #include "../Dialogs/krspecialwidgets.h"
-#include <qheader.h>
-#include <qtooltip.h>
+#include <tqheader.h>
+#include <tqtooltip.h>
 
 #define CANCEL_TWO_CLICK_RENAME {singleClicked = false;renameTimer.stop();}
 #define PROPS	 static_cast<KrBriefViewProperties*>(_properties)	
@@ -47,43 +47,43 @@ YP   YD 88   YD ~Y8888P' `8888Y' YP   YP Y8888D' Y88888P 88   YD
 #define VF	 getVfile()
 
 
-class KrBriefViewToolTip : public QToolTip
+class KrBriefViewToolTip : public TQToolTip
 {
 public:
-    KrBriefViewToolTip( KrBriefView *view, QWidget *parent );
-    void maybeTip( const QPoint &pos );
+    KrBriefViewToolTip( KrBriefView *view, TQWidget *tqparent );
+    void maybeTip( const TQPoint &pos );
 
     virtual ~KrBriefViewToolTip() {}
 private:
     KrBriefView *view;
 };
 
-KrBriefViewToolTip::KrBriefViewToolTip( KrBriefView *lv, QWidget *parent )
-  : QToolTip( parent ), view( lv )
+KrBriefViewToolTip::KrBriefViewToolTip( KrBriefView *lv, TQWidget *tqparent )
+  : TQToolTip( tqparent ), view( lv )
 {
 }
 
-void KrBriefViewToolTip::maybeTip( const QPoint &pos )
+void KrBriefViewToolTip::maybeTip( const TQPoint &pos )
 {
-  QIconViewItem *item = view->findItem( view->viewportToContents( pos ) );
+  TQIconViewItem *item = view->tqfindItem( view->viewportToContents( pos ) );
 
   if ( !item )
     return;
     
-  int width = QFontMetrics( view->font() ).width( item->text() ) + 4;
+  int width = TQFontMetrics( view->font() ).width( item->text() ) + 4;
     
-  QRect r = item->rect();
+  TQRect r = item->rect();
   r.setTopLeft( view->contentsToViewport( r.topLeft() ) );
   if( width > item->textRect().width() )
     tip( r, item->text() );
 }
 
 
-KrBriefView::KrBriefView( QHeader * headerIn, QWidget *parent, bool &left, KConfig *cfg, const char *name ):
-	KIconView(parent, name), KrView( cfg ), header( headerIn ), _currDragItem( 0 ),
+KrBriefView::KrBriefView( TQHeader * headerIn, TQWidget *tqparent, bool &left, KConfig *cfg, const char *name ):
+	KIconView(tqparent, name), KrView( cfg ), header( headerIn ), _currDragItem( 0 ),
             currentlyRenamedItem( 0 ), pressedItem( 0 ), mouseEvent( 0 ) {
 	setWidget( this );
-	_nameInKConfig = QString( "KrBriefView" ) + QString( ( left ? "Left" : "Right" ) );
+	_nameInKConfig = TQString( "KrBriefView" ) + TQString( ( left ? "Left" : "Right" ) );
 	krConfig->setGroup("Private");
 	if (krConfig->readBoolEntry("Enable Input Method", true))
 		setInputMethodEnabled(true);
@@ -99,23 +99,23 @@ void KrBriefView::setup() {
    // decide on single click/double click selection
    if ( _config->readBoolEntry( "Single Click Selects", _SingleClickSelects ) &&
            KGlobalSettings::singleClick() ) {
-      connect( this, SIGNAL( executed( QIconViewItem* ) ), this, SLOT( slotExecuted( QIconViewItem* ) ) );
+      connect( this, TQT_SIGNAL( executed( TQIconViewItem* ) ), this, TQT_SLOT( slotExecuted( TQIconViewItem* ) ) );
    } else {
-      connect( this, SIGNAL( clicked( QIconViewItem* ) ), this, SLOT( slotClicked( QIconViewItem* ) ) );
-      connect( this, SIGNAL( doubleClicked( QIconViewItem* ) ), this, SLOT( slotDoubleClicked( QIconViewItem* ) ) );
+      connect( this, TQT_SIGNAL( clicked( TQIconViewItem* ) ), this, TQT_SLOT( slotClicked( TQIconViewItem* ) ) );
+      connect( this, TQT_SIGNAL( doubleClicked( TQIconViewItem* ) ), this, TQT_SLOT( slotDoubleClicked( TQIconViewItem* ) ) );
    }
 
    // a change in the selection needs to update totals
-   connect( this, SIGNAL( onItem( QIconViewItem* ) ), this, SLOT( slotItemDescription( QIconViewItem* ) ) );
-   connect( this, SIGNAL( contextMenuRequested( QIconViewItem*, const QPoint& ) ),
-            this, SLOT( handleContextMenu( QIconViewItem*, const QPoint& ) ) );
-	connect( this, SIGNAL( rightButtonPressed(QIconViewItem*, const QPoint&)),
-		this, SLOT(slotRightButtonPressed(QIconViewItem*, const QPoint&)));
-   connect( this, SIGNAL( currentChanged( QIconViewItem* ) ), this, SLOT( setNameToMakeCurrent( QIconViewItem* ) ) );
-   connect( this, SIGNAL( currentChanged( QIconViewItem* ) ), this, SLOT( transformCurrentChanged( QIconViewItem* ) ) );
-   connect( this, SIGNAL( mouseButtonClicked ( int, QIconViewItem *, const QPoint & ) ),
-            this, SLOT( slotMouseClicked ( int, QIconViewItem *, const QPoint & ) ) );
-   connect( &KrColorCache::getColorCache(), SIGNAL( colorsRefreshed() ), this, SLOT( refreshColors() ) );
+   connect( this, TQT_SIGNAL( onItem( TQIconViewItem* ) ), this, TQT_SLOT( slotItemDescription( TQIconViewItem* ) ) );
+   connect( this, TQT_SIGNAL( contextMenuRequested( TQIconViewItem*, const TQPoint& ) ),
+            this, TQT_SLOT( handleContextMenu( TQIconViewItem*, const TQPoint& ) ) );
+	connect( this, TQT_SIGNAL( rightButtonPressed(TQIconViewItem*, const TQPoint&)),
+		this, TQT_SLOT(slotRightButtonPressed(TQIconViewItem*, const TQPoint&)));
+   connect( this, TQT_SIGNAL( currentChanged( TQIconViewItem* ) ), this, TQT_SLOT( setNameToMakeCurrent( TQIconViewItem* ) ) );
+   connect( this, TQT_SIGNAL( currentChanged( TQIconViewItem* ) ), this, TQT_SLOT( transformCurrentChanged( TQIconViewItem* ) ) );
+   connect( this, TQT_SIGNAL( mouseButtonClicked ( int, TQIconViewItem *, const TQPoint & ) ),
+            this, TQT_SLOT( slotMouseClicked ( int, TQIconViewItem *, const TQPoint & ) ) );
+   connect( &KrColorCache::getColorCache(), TQT_SIGNAL( colorsRefreshed() ), this, TQT_SLOT( refreshColors() ) );
 
    // add whatever columns are needed to the listview
    krConfig->setGroup( nameInKConfig() );
@@ -123,22 +123,22 @@ void KrBriefView::setup() {
    // determine basic settings for the view
    setAcceptDrops( true );
    setItemsMovable( false );
-   setItemTextPos( QIconView::Right );
-   setArrangement( QIconView::TopToBottom );
+   setItemTextPos( TQIconView::Right );
+   setArrangement( TQIconView::TopToBottom );
    setWordWrapIconText( false );
    setSpacing( 0 );
    horizontalScrollBar()->installEventFilter( this );
 
    // allow in-place renaming
 
-   connect( this, SIGNAL( itemRenamed ( QIconViewItem * ) ), 
-            this, SLOT( inplaceRenameFinished( QIconViewItem * ) ) );
-   connect( &renameTimer, SIGNAL( timeout() ), this, SLOT( renameCurrentItem() ) );
-   connect( &contextMenuTimer, SIGNAL (timeout()), this, SLOT (showContextMenu()));
+   connect( this, TQT_SIGNAL( itemRenamed ( TQIconViewItem * ) ), 
+            this, TQT_SLOT( inplaceRenameFinished( TQIconViewItem * ) ) );
+   connect( &renameTimer, TQT_SIGNAL( timeout() ), this, TQT_SLOT( renameCurrentItem() ) );
+   connect( &contextMenuTimer, TQT_SIGNAL (timeout()), this, TQT_SLOT (showContextMenu()));
 
-   setSelectionMode( QIconView::Extended );
+   setSelectionMode( TQIconView::Extended );
 
-   setFocusPolicy( StrongFocus );
+   setFocusPolicy( TQ_StrongFocus );
    restoreSettings();
    refreshColors();
 
@@ -151,8 +151,8 @@ void KrBriefView::setup() {
    header->addLabel( i18n( "Name" ) );
    header->setStretchEnabled( true );
 
-   header->setSortIndicator( 0, sortDirection() ? Qt::Ascending : Qt::Descending );
-   connect( header, SIGNAL(clicked( int )), this, SLOT( changeSortOrder()));
+   header->setSortIndicator( 0, sortDirection() ? TQt::Ascending : TQt::Descending );
+   connect( header, TQT_SIGNAL(clicked( int )), this, TQT_SLOT( changeSortOrder()));
 
    header->installEventFilter( this );
    header->show();
@@ -167,13 +167,13 @@ KrBriefView::~KrBriefView() {
 	delete toolTip;
 }
 
-void KrBriefView::resizeEvent ( QResizeEvent * resEvent )
+void KrBriefView::resizeEvent ( TQResizeEvent * resEvent )
 {
-   QPoint pnt( contentsX(), contentsY() );
-   QRect viewportRect( pnt, resEvent->oldSize() );
+   TQPoint pnt( contentsX(), contentsY() );
+   TQRect viewportRect( pnt, resEvent->oldSize() );
    bool visible = false;
    if( currentItem() )
-     visible = viewportRect.contains( currentItem()->rect() );
+     visible = viewportRect.tqcontains( currentItem()->rect() );
 
    KIconView::resizeEvent( resEvent );
    redrawColumns();
@@ -190,9 +190,9 @@ void KrBriefView::redrawColumns()
    setGridX( width() / PROPS->numberOfColumns );
 
    // QT bug, it's important for recalculating the bounding rectangle
-   for( QIconViewItem * item = firstItem(); item; item = item->nextItem() )
+   for( TQIconViewItem * item = firstItem(); item; item = item->nextItem() )
    {
-      QString txt = item->text();
+      TQString txt = item->text();
       item->setText( "" );
       item->setText( txt );
    }
@@ -239,17 +239,17 @@ bool KrBriefView::preDelItem(KrViewItem *item) {
 }
 
 void KrBriefView::addItems( vfs *v, bool addUpDir ) {
-   QIconViewItem * item = firstItem();
-   QIconViewItem * currentItem = item;
+   TQIconViewItem * item = firstItem();
+   TQIconViewItem * currentItem = item;
 
    // add the up-dir arrow if needed
    if ( addUpDir ) {
-      new KrBriefViewItem( this, ( QIconViewItem* ) 0L, ( vfile* ) 0L );
+      new KrBriefViewItem( this, ( TQIconViewItem* ) 0L, ( vfile* ) 0L );
    }
 
 
    // text for updating the status bar
-   QString statusText = QString("%1/  ").arg( v->vfs_getOrigin().fileName() ) + i18n("Directory");
+   TQString statusText = TQString("%1/  ").tqarg( v->vfs_getOrigin().fileName() ) + i18n("Directory");
 
    bool as = sortDirection();
    setSorting( false, as ); // disable sorting
@@ -288,7 +288,7 @@ void KrBriefView::addItems( vfs *v, bool addUpDir ) {
       // if the item should be current - make it so
       if ( bvitem->name() == nameToMakeCurrent() )
       {
-         currentItem = static_cast<QIconViewItem*>(bvitem);
+         currentItem = static_cast<TQIconViewItem*>(bvitem);
          statusText = bvitem->description();
       }
    }
@@ -306,20 +306,20 @@ void KrBriefView::addItems( vfs *v, bool addUpDir ) {
    op()->emitItemDescription( statusText );
 }
 
-void KrBriefView::delItem( const QString &name ) {
+void KrBriefView::delItem( const TQString &name ) {
    KrView::delItem( name );
    arrangeItemsInGrid();
 }
 
-QString KrBriefView::getCurrentItem() const {
-   QIconViewItem * it = currentItem();
+TQString KrBriefView::getCurrentItem() const {
+   TQIconViewItem * it = currentItem();
    if ( !it )
-      return QString::null;
+      return TQString();
    else
       return dynamic_cast<KrViewItem*>( it ) ->name();
 }
 
-void KrBriefView::setCurrentItem( const QString& name ) {
+void KrBriefView::setCurrentItem( const TQString& name ) {
    KrBriefViewItem * it = dynamic_cast<KrBriefViewItem*>(_dict[ name ]);
    if ( it )
       KIconView::setCurrentItem( it );
@@ -336,7 +336,7 @@ void KrBriefView::clear() {
    KrView::clear();
 }
 
-void KrBriefView::slotClicked( QIconViewItem *item ) {
+void KrBriefView::slotClicked( TQIconViewItem *item ) {
    if ( !item ) return ;
 
    if ( !modifierPressed ) {
@@ -345,7 +345,7 @@ void KrBriefView::slotClicked( QIconViewItem *item ) {
          config->setGroup( "KDE" );
          int doubleClickInterval = config->readNumEntry( "DoubleClickInterval", 400 );
 
-         int msecsFromLastClick = clickTime.msecsTo( QTime::currentTime() );
+         int msecsFromLastClick = clickTime.msecsTo( TQTime::currentTime() );
 
          if ( msecsFromLastClick > doubleClickInterval && msecsFromLastClick < 5 * doubleClickInterval ) {
             singleClicked = false;
@@ -356,16 +356,16 @@ void KrBriefView::slotClicked( QIconViewItem *item ) {
 
       CANCEL_TWO_CLICK_RENAME;
       singleClicked = true;
-      clickTime = QTime::currentTime();
+      clickTime = TQTime::currentTime();
       clickedItem = item;
    }
 }
 
-void KrBriefView::slotDoubleClicked( QIconViewItem *item ) {
+void KrBriefView::slotDoubleClicked( TQIconViewItem *item ) {
    CANCEL_TWO_CLICK_RENAME;
    if ( !item )
       return ;
-   QString tmp = dynamic_cast<KrViewItem*>( item ) ->name();
+   TQString tmp = dynamic_cast<KrViewItem*>( item ) ->name();
    op()->emitExecuted(tmp);
 }
 
@@ -392,35 +392,35 @@ void KrBriefView::prepareForPassive() {
    }
 }
 
-void KrBriefView::slotItemDescription( QIconViewItem * item ) {
+void KrBriefView::slotItemDescription( TQIconViewItem * item ) {
    KrViewItem * it = static_cast<KrBriefViewItem*>( item );
    if ( !it )
       return ;
-   QString desc = it->description();
+   TQString desc = it->description();
    op()->emitItemDescription(desc);
 }
 
-void KrBriefView::handleQuickSearchEvent( QKeyEvent * e ) {
+void KrBriefView::handleQuickSearchEvent( TQKeyEvent * e ) {
    switch ( e->key() ) {
          case Key_Insert:
          {
-            QKeyEvent ev = QKeyEvent( QKeyEvent::KeyPress, Key_Space, 0, 0 );
+            TQKeyEvent ev = TQKeyEvent( TQKeyEvent::KeyPress, Key_Space, 0, 0 );
             KIconView::keyPressEvent( & ev );
-            ev = QKeyEvent( QKeyEvent::KeyPress, Key_Down, 0, 0 );
+            ev = TQKeyEvent( TQKeyEvent::KeyPress, Key_Down, 0, 0 );
             keyPressEvent( & ev );
             break;
          }
          case Key_Home:
          {
-            QIconView::setCurrentItem( firstItem() );
-            QKeyEvent ev = QKeyEvent( QKeyEvent::KeyPress, Key_Down, 0, 0 );
+            TQIconView::setCurrentItem( firstItem() );
+            TQKeyEvent ev = TQKeyEvent( TQKeyEvent::KeyPress, Key_Down, 0, 0 );
             keyPressEvent( & ev );
             break;
          }
          case Key_End:
          {
-            QIconView::setCurrentItem( firstItem() );
-            QKeyEvent ev = QKeyEvent( QKeyEvent::KeyPress, Key_Up, 0, 0 );
+            TQIconView::setCurrentItem( firstItem() );
+            TQKeyEvent ev = TQKeyEvent( TQKeyEvent::KeyPress, Key_Up, 0, 0 );
             keyPressEvent( & ev );
             break;
          }
@@ -428,22 +428,22 @@ void KrBriefView::handleQuickSearchEvent( QKeyEvent * e ) {
 }
 
 
-void KrBriefView::slotCurrentChanged( QIconViewItem * item ) {
+void KrBriefView::slotCurrentChanged( TQIconViewItem * item ) {
    CANCEL_TWO_CLICK_RENAME;
    if ( !item )
       return ;
    _nameToMakeCurrent = static_cast<KrBriefViewItem*>( item ) ->name();
 }
 
-void KrBriefView::contentsMousePressEvent( QMouseEvent * e ) {
+void KrBriefView::contentsMousePressEvent( TQMouseEvent * e ) {
    bool callDefaultHandler = true, processEvent = true, selectionChanged = false;
    pressedItem = 0;
 
    e = transformMouseEvent( e );
    
-   QIconViewItem * oldCurrent = currentItem();
-   QIconViewItem *newCurrent = findItem( e->pos() );
-   if (e->button() == RightButton)
+   TQIconViewItem * oldCurrent = currentItem();
+   TQIconViewItem *newCurrent = tqfindItem( e->pos() );
+   if (e->button() == Qt::RightButton)
    {
 	if (KrSelectionMode::getSelectionHandler()->rightButtonSelects() || 
 		(((e->state() & ShiftButton) || (e->state() & ControlButton))) && KrSelectionMode::getSelectionHandler()->shiftCtrlRightButtonSelects())
@@ -459,7 +459,7 @@ void KrBriefView::contentsMousePressEvent( QMouseEvent * e ) {
              lastSwushPosition = newCurrent;
            }
            newCurrent->setSelected(!newCurrent->isSelected(), true);
-           newCurrent->repaint();
+           newCurrent->tqrepaint();
 			  selectionChanged = true;
          }
          callDefaultHandler = false;
@@ -474,7 +474,7 @@ void KrBriefView::contentsMousePressEvent( QMouseEvent * e ) {
             if( newCurrent )
             {
                newCurrent->setSelected(!newCurrent->isSelected());
-               newCurrent->repaint();
+               newCurrent->tqrepaint();
                selectionChanged = true;
                callDefaultHandler = false;
                e->accept();
@@ -486,7 +486,7 @@ void KrBriefView::contentsMousePressEvent( QMouseEvent * e ) {
             if( newCurrent )
             {
                newCurrent->setSelected( true );
-               newCurrent->repaint();
+               newCurrent->tqrepaint();
             }
             selectionChanged = true;
             callDefaultHandler = false;
@@ -501,7 +501,7 @@ void KrBriefView::contentsMousePressEvent( QMouseEvent * e ) {
        e->accept();
      }
    }
-   if (e->button() == LeftButton)
+   if (e->button() == Qt::LeftButton)
    {
      dragStartPos = e->pos();
 	  if (KrSelectionMode::getSelectionHandler()->leftButtonSelects() || 
@@ -514,7 +514,7 @@ void KrBriefView::contentsMousePressEvent( QMouseEvent * e ) {
          if (newCurrent)
          {
            newCurrent->setSelected(!newCurrent->isSelected(), true);
-           newCurrent->repaint();
+           newCurrent->tqrepaint();
 			  selectionChanged = true;
          }
          callDefaultHandler = false;
@@ -554,11 +554,11 @@ void KrBriefView::contentsMousePressEvent( QMouseEvent * e ) {
    	op()->emitNeedFocus();
    setFocus();
 
-   if (processEvent && ( (e->state() & ShiftButton) || (e->state() & ControlButton) || (e->state() & AltButton) ) && !KrSelectionMode::getSelectionHandler()->useQTSelection()){
+   if (processEvent && ( (e->state() & ShiftButton) || (e->state() & ControlButton) || (e->state() & AltButton) ) && !KrSelectionMode::getSelectionHandler()->useTQTSelection()){
       if ( oldCurrent && newCurrent && oldCurrent != newCurrent && e->state() & ShiftButton ) {
          int oldPos = oldCurrent->index();
          int newPos = newCurrent->index();
-         QIconViewItem *top = 0, *bottom = 0;
+         TQIconViewItem *top = 0, *bottom = 0;
          if ( oldPos > newPos ) {
             top = newCurrent;
             bottom = oldCurrent;
@@ -576,7 +576,7 @@ void KrBriefView::contentsMousePressEvent( QMouseEvent * e ) {
                break;
             top = top->nextItem();
          }
-         QIconView::setCurrentItem( newCurrent );
+         TQIconView::setCurrentItem( newCurrent );
          callDefaultHandler = false;
       }
       if( e->state() & ShiftButton )
@@ -588,21 +588,21 @@ void KrBriefView::contentsMousePressEvent( QMouseEvent * e ) {
 	
    if (callDefaultHandler)
    {
-     dragStartPos = QPoint( -1, -1 );
+     dragStartPos = TQPoint( -1, -1 );
 
-     QString name = QString::null;    // will the file be deleted by the mouse event?
+     TQString name = TQString();    // will the file be deleted by the mouse event?
      if( newCurrent )                 // save the name of the file
        name = static_cast<KrBriefViewItem*>( newCurrent ) ->name();
 
      KIconView::contentsMousePressEvent( e );
 
-     if( name.isEmpty() || _dict.find( name ) == 0 ) // is the file still valid?
+     if( name.isEmpty() || _dict.tqfind( name ) == 0 ) // is the file still valid?
        newCurrent = 0;                // if not, don't do any crash...
    } else {
-     // emitting the missing signals from QIconView::contentsMousePressEvent();
+     // emitting the missing signals from TQIconView::contentsMousePressEvent();
      // the right click signal is not emitted as it is used for selection
 
-     QPoint vp = contentsToViewport( e->pos() );
+     TQPoint vp = contentsToViewport( e->pos() );
 
      if( !newCurrent ) {
        emit pressed( pressedItem = newCurrent );
@@ -614,7 +614,7 @@ void KrBriefView::contentsMousePressEvent( QMouseEvent * e ) {
 
    //   if (i != 0) // comment in, if click sould NOT select
    //     setSelected(i, FALSE);
-   if (newCurrent) QIconView::setCurrentItem(newCurrent);
+   if (newCurrent) TQIconView::setCurrentItem(newCurrent);
 
    if ( ACTIVE_PANEL->quickSearch->isShown() ) {
       ACTIVE_PANEL->quickSearch->hide();
@@ -628,8 +628,8 @@ void KrBriefView::contentsMousePressEvent( QMouseEvent * e ) {
    }
 }
 
-void KrBriefView::contentsMouseReleaseEvent( QMouseEvent * e ) {
-  if (e->button() == RightButton)
+void KrBriefView::contentsMouseReleaseEvent( TQMouseEvent * e ) {
+  if (e->button() == Qt::RightButton)
     contextMenuTimer.stop();
   
   e = transformMouseEvent( e );
@@ -637,11 +637,11 @@ void KrBriefView::contentsMouseReleaseEvent( QMouseEvent * e ) {
   KIconView::contentsMouseReleaseEvent( e );
    
   if( pressedItem ) {
-    QPoint vp = contentsToViewport( e->pos() );
-    QIconViewItem *newCurrent = findItem( e->pos() );
+    TQPoint vp = contentsToViewport( e->pos() );
+    TQIconViewItem *newCurrent = tqfindItem( e->pos() );
 
     if( pressedItem == newCurrent ) {
-      // emitting the missing signals from QIconView::contentsMouseReleaseEvent();
+      // emitting the missing signals from TQIconView::contentsMouseReleaseEvent();
       // the right click signal is not emitted as it is used for selection
 
       if( !newCurrent ) {
@@ -656,26 +656,26 @@ void KrBriefView::contentsMouseReleaseEvent( QMouseEvent * e ) {
   }
 }
 
-void KrBriefView::contentsMouseMoveEvent ( QMouseEvent * e ) {
+void KrBriefView::contentsMouseMoveEvent ( TQMouseEvent * e ) {
    e = transformMouseEvent( e );
 
-   if ( ( singleClicked || renameTimer.isActive() ) && findItem( e->pos() ) != clickedItem )
+   if ( ( singleClicked || renameTimer.isActive() ) && tqfindItem( e->pos() ) != clickedItem )
       CANCEL_TWO_CLICK_RENAME;
 
-   if ( dragStartPos != QPoint( -1, -1 ) &&
-        e->state() & LeftButton && ( dragStartPos - e->pos() ).manhattanLength() > QApplication::startDragDistance() )
+   if ( dragStartPos != TQPoint( -1, -1 ) &&
+        e->state() & Qt::LeftButton && ( dragStartPos - e->pos() ).manhattanLength() > TQApplication::startDragDistance() )
       startDrag();
    if (KrSelectionMode::getSelectionHandler()->rightButtonPreservesSelection() 
       && KrSelectionMode::getSelectionHandler()->rightButtonSelects() 
       && KrSelectionMode::getSelectionHandler()->showContextMenu() >= 0 && e->state() == Qt::RightButton)
       {
-         QIconViewItem *newItem = findItem( e->pos() );
+         TQIconViewItem *newItem = tqfindItem( e->pos() );
          e->accept();
          if (newItem != lastSwushPosition && newItem)
          {
            // is the new item above or below the previous one?
-           QIconViewItem * above = newItem;
-           QIconViewItem * below = newItem;
+           TQIconViewItem * above = newItem;
+           TQIconViewItem * below = newItem;
            for (;(above || below) && above != lastSwushPosition && below != lastSwushPosition;)
            {
              if (above)
@@ -701,7 +701,7 @@ void KrBriefView::contentsMouseMoveEvent ( QMouseEvent * e ) {
            }
            contextMenuTimer.stop();
          }
-         // emitting the missing signals from QIconView::contentsMouseMoveEvent();
+         // emitting the missing signals from TQIconView::contentsMouseMoveEvent();
          if( newItem )
            emit onItem( newItem );
          else
@@ -711,13 +711,13 @@ void KrBriefView::contentsMouseMoveEvent ( QMouseEvent * e ) {
          KIconView::contentsMouseMoveEvent( e );
 }
 
-void KrBriefView::contentsMouseDoubleClickEvent ( QMouseEvent * e )
+void KrBriefView::contentsMouseDoubleClickEvent ( TQMouseEvent * e )
 {
    e = transformMouseEvent ( e );
    KIconView::contentsMouseDoubleClickEvent( e );
 }
 
-void KrBriefView::handleContextMenu( QIconViewItem * it, const QPoint & pos ) {
+void KrBriefView::handleContextMenu( TQIconViewItem * it, const TQPoint & pos ) {
    if ( !_focused )
       op()->emitNeedFocus();
    setFocus();
@@ -728,7 +728,7 @@ void KrBriefView::handleContextMenu( QIconViewItem * it, const QPoint & pos ) {
          name() == ".." )
       return ;
    int i = KrSelectionMode::getSelectionHandler()->showContextMenu();
-   contextMenuPoint = QPoint( pos.x(), pos.y() );
+   contextMenuPoint = TQPoint( pos.x(), pos.y() );
    if (i < 0)
      showContextMenu();
    else if (i > 0)
@@ -742,22 +742,22 @@ void KrBriefView::showContextMenu()
 	op()->emitContextMenu( contextMenuPoint );
 }
 
-KrViewItem *KrBriefView::getKrViewItemAt( const QPoint & vp ) {
-   return dynamic_cast<KrViewItem*>( KIconView::findItem( vp ) );
+KrViewItem *KrBriefView::getKrViewItemAt( const TQPoint & vp ) {
+   return dynamic_cast<KrViewItem*>( KIconView::tqfindItem( vp ) );
 }
 
-bool KrBriefView::acceptDrag( QDropEvent* ) const {
+bool KrBriefView::acceptDrag( TQDropEvent* ) const {
    return true;
 }
 
-void KrBriefView::contentsDropEvent( QDropEvent * e ) {
+void KrBriefView::contentsDropEvent( TQDropEvent * e ) {
    _currDragItem = 0;
    op()->emitGotDrop(e);
    e->ignore();
    KIconView::contentsDropEvent( e );                   
 }
 
-void KrBriefView::contentsDragMoveEvent( QDragMoveEvent * e ) {
+void KrBriefView::contentsDragMoveEvent( TQDragMoveEvent * e ) {
    KrViewItem *oldDragItem = _currDragItem;
 
    _currDragItem = getKrViewItemAt( e->pos() );
@@ -769,13 +769,13 @@ void KrBriefView::contentsDragMoveEvent( QDragMoveEvent * e ) {
    if( _currDragItem != oldDragItem )
    {
      if( oldDragItem )
-        dynamic_cast<KrBriefViewItem *>( oldDragItem )->repaint();
+        dynamic_cast<KrBriefViewItem *>( oldDragItem )->tqrepaint();
      if( _currDragItem )
-        dynamic_cast<KrBriefViewItem *>( _currDragItem )->repaint();
+        dynamic_cast<KrBriefViewItem *>( _currDragItem )->tqrepaint();
    }
 }
 
-void KrBriefView::contentsDragLeaveEvent ( QDragLeaveEvent *e )
+void KrBriefView::contentsDragLeaveEvent ( TQDragLeaveEvent *e )
 {
    KrViewItem *oldDragItem = _currDragItem;
 
@@ -783,10 +783,10 @@ void KrBriefView::contentsDragLeaveEvent ( QDragLeaveEvent *e )
    KIconView::contentsDragLeaveEvent( e );
 
    if( oldDragItem )
-     dynamic_cast<KrBriefViewItem *>( oldDragItem )->repaint();
+     dynamic_cast<KrBriefViewItem *>( oldDragItem )->tqrepaint();
 }
 
-void KrBriefView::imStartEvent(QIMEvent* e)
+void KrBriefView::imStartEvent(TQIMEvent* e)
 {
   if ( ACTIVE_PANEL->quickSearch->isShown() ) {
     ACTIVE_PANEL->quickSearch->myIMStartEvent( e );
@@ -803,7 +803,7 @@ void KrBriefView::imStartEvent(QIMEvent* e)
 								// item is "below" the quick search window, as the icon view will
 								// realize its new size after the key processing. The following line
 								// will resize the icon view immediately.
-        ACTIVE_PANEL->layout->activate();
+        ACTIVE_PANEL->tqlayout->activate();
 								// second, we need to disable the dirup action - hack!
         krDirUp->setEnabled( false );
       }
@@ -813,7 +813,7 @@ void KrBriefView::imStartEvent(QIMEvent* e)
   }
 }
 
-void KrBriefView::imEndEvent(QIMEvent* e)
+void KrBriefView::imEndEvent(TQIMEvent* e)
 {
   if ( ACTIVE_PANEL->quickSearch->isShown() ) {
     ACTIVE_PANEL->quickSearch->myIMEndEvent( e );
@@ -821,7 +821,7 @@ void KrBriefView::imEndEvent(QIMEvent* e)
   }
 }
 
-void KrBriefView::imComposeEvent(QIMEvent* e)
+void KrBriefView::imComposeEvent(TQIMEvent* e)
 {
   if ( ACTIVE_PANEL->quickSearch->isShown() ) {
     ACTIVE_PANEL->quickSearch->myIMComposeEvent( e );
@@ -829,7 +829,7 @@ void KrBriefView::imComposeEvent(QIMEvent* e)
   }
 }
 
-void KrBriefView::keyPressEvent( QKeyEvent * e ) {
+void KrBriefView::keyPressEvent( TQKeyEvent * e ) {
    if ( !e || !firstItem() )
       return ; // subclass bug
    if ( ACTIVE_PANEL->quickSearch->isShown() ) {
@@ -841,14 +841,14 @@ void KrBriefView::keyPressEvent( QKeyEvent * e ) {
          if ( e->state() == ControlButton ) { // let the panel handle it - jump to the Location Bar
             e->ignore();
             break;
-         } else if (!KrSelectionMode::getSelectionHandler()->useQTSelection()) {
-            QIconViewItem * i = currentItem();
+         } else if (!KrSelectionMode::getSelectionHandler()->useTQTSelection()) {
+            TQIconViewItem * i = currentItem();
             if ( !i ) break;
             if ( e->state() == ShiftButton ) setSelected( i, !i->isSelected(), true );
             i = i->prevItem();
          	if ( i ) {
-					QIconView::setCurrentItem( i );
-					QIconView::ensureItemVisible( i );
+					TQIconView::setCurrentItem( i );
+					TQIconView::ensureItemVisible( i );
 				}
          } else KIconView::keyPressEvent(e);
          break;
@@ -856,35 +856,35 @@ void KrBriefView::keyPressEvent( QKeyEvent * e ) {
          if ( e->state() == ControlButton || e->state() == ( ControlButton | ShiftButton ) ) { // let the panel handle it - jump to command line
             e->ignore();
             break;
-         } else if (!KrSelectionMode::getSelectionHandler()->useQTSelection()){
-            QIconViewItem * i = currentItem();
+         } else if (!KrSelectionMode::getSelectionHandler()->useTQTSelection()){
+            TQIconViewItem * i = currentItem();
             if ( !i ) break;
             if ( e->state() == ShiftButton ) setSelected( i, !i->isSelected(), true );
             i = i->nextItem();
-         if ( i ) {QIconView::setCurrentItem( i ); QIconView::ensureItemVisible( i ); }
+         if ( i ) {TQIconView::setCurrentItem( i ); TQIconView::ensureItemVisible( i ); }
          } else KIconView::keyPressEvent(e);
          break;
-         case Key_Next:  if (!KrSelectionMode::getSelectionHandler()->useQTSelection()){
-            QIconViewItem * i = currentItem(), *j;
+         case Key_Next:  if (!KrSelectionMode::getSelectionHandler()->useTQTSelection()){
+            TQIconViewItem * i = currentItem(), *j;
             if ( !i ) break;
-            QRect r( i->rect() );
+            TQRect r( i->rect() );
             if ( !r.height() ) break;
             for ( int page = visibleHeight() / r.height() - 1; page > 0 && ( j = i->nextItem() ); --page )
                i = j;
-            if ( i ) {QIconView::setCurrentItem( i ); QIconView::ensureItemVisible( i ); }
+            if ( i ) {TQIconView::setCurrentItem( i ); TQIconView::ensureItemVisible( i ); }
          } else KIconView::keyPressEvent(e);
          break;
-         case Key_Prior:  if (!KrSelectionMode::getSelectionHandler()->useQTSelection()){
-            QIconViewItem * i = currentItem(), *j;
+         case Key_Prior:  if (!KrSelectionMode::getSelectionHandler()->useTQTSelection()){
+            TQIconViewItem * i = currentItem(), *j;
             if ( !i ) break;
-            QRect r( i->rect() );
+            TQRect r( i->rect() );
             if ( !r.height() ) break;
             for ( int page = visibleHeight() / r.height() - 1; page > 0 && ( j = i->prevItem() ); --page )
                i = j;
-            if ( i ) {QIconView::setCurrentItem( i ); QIconView::ensureItemVisible( i ); }
+            if ( i ) {TQIconView::setCurrentItem( i ); TQIconView::ensureItemVisible( i ); }
          } else KIconView::keyPressEvent(e);
          break;
-         case Key_Home:  if (!KrSelectionMode::getSelectionHandler()->useQTSelection()){
+         case Key_Home:  if (!KrSelectionMode::getSelectionHandler()->useTQTSelection()){
             if ( e->state() & ShiftButton )  /* Shift+Home */
             {
                clearSelection();
@@ -893,12 +893,12 @@ void KrBriefView::keyPressEvent( QKeyEvent * e ) {
                arrangeItemsInGrid();
                break;
             } else {
-               QIconViewItem * i = firstItem();
-               if ( i ) {QIconView::setCurrentItem( i ); QIconView::ensureItemVisible( i ); }
+               TQIconViewItem * i = firstItem();
+               if ( i ) {TQIconView::setCurrentItem( i ); TQIconView::ensureItemVisible( i ); }
             }
          } else KIconView::keyPressEvent(e);
          break;
-         case Key_End:  if (!KrSelectionMode::getSelectionHandler()->useQTSelection()){
+         case Key_End:  if (!KrSelectionMode::getSelectionHandler()->useTQTSelection()){
             if ( e->state() & ShiftButton )  /* Shift+End */
             {
                clearSelection();
@@ -907,12 +907,12 @@ void KrBriefView::keyPressEvent( QKeyEvent * e ) {
                arrangeItemsInGrid();
                break;
             } else {
-               QIconViewItem *i = firstItem(), *j;
+               TQIconViewItem *i = firstItem(), *j;
                while ( ( j = i->nextItem() ) )
                   i = j;
                while ( ( j = i->nextItem() ) )
                   i = j;
-            if ( i ) {QIconView::setCurrentItem( i ); QIconView::ensureItemVisible( i ); }
+            if ( i ) {TQIconView::setCurrentItem( i ); TQIconView::ensureItemVisible( i ); }
                break;
             }
          } else KIconView::keyPressEvent(e);
@@ -923,7 +923,7 @@ void KrBriefView::keyPressEvent( QKeyEvent * e ) {
                e->ignore();
             else {
                KrViewItem * i = getCurrentKrViewItem();
-               QString tmp = i->name();
+               TQString tmp = i->name();
                op()->emitExecuted(tmp);
             }
             break;
@@ -941,9 +941,9 @@ void KrBriefView::keyPressEvent( QKeyEvent * e ) {
          if ( e->state() == ControlButton ) { // let the panel handle it
             e->ignore();
             break;
-         } else if (!KrSelectionMode::getSelectionHandler()->useQTSelection()) {
-            QIconViewItem *i = currentItem();
-            QIconViewItem *newCurrent = 0;
+         } else if (!KrSelectionMode::getSelectionHandler()->useTQTSelection()) {
+            TQIconViewItem *i = currentItem();
+            TQIconViewItem *newCurrent = 0;
 
             if ( !i ) break;
 
@@ -974,8 +974,8 @@ void KrBriefView::keyPressEvent( QKeyEvent * e ) {
 
             if( newCurrent )
             {
-              QIconView::setCurrentItem( newCurrent );
-              QIconView::ensureItemVisible( newCurrent );
+              TQIconView::setCurrentItem( newCurrent );
+              TQIconView::ensureItemVisible( newCurrent );
             }
          } else KIconView::keyPressEvent(e);
          break;
@@ -991,9 +991,9 @@ void KrBriefView::keyPressEvent( QKeyEvent * e ) {
          if ( e->state() == ControlButton ) { // let the panel handle it
             e->ignore();
             break;
-         } else if (!KrSelectionMode::getSelectionHandler()->useQTSelection()) {
-            QIconViewItem *i = currentItem();
-            QIconViewItem *newCurrent = 0;
+         } else if (!KrSelectionMode::getSelectionHandler()->useTQTSelection()) {
+            TQIconViewItem *i = currentItem();
+            TQIconViewItem *newCurrent = 0;
 
             if ( !i ) break;
 
@@ -1023,8 +1023,8 @@ void KrBriefView::keyPressEvent( QKeyEvent * e ) {
 
             if( newCurrent )
             {
-              QIconView::setCurrentItem( newCurrent );
-              QIconView::ensureItemVisible( newCurrent );
+              TQIconView::setCurrentItem( newCurrent );
+              TQIconView::ensureItemVisible( newCurrent );
             }
          } else KIconView::keyPressEvent(e);
          break;
@@ -1035,7 +1035,7 @@ void KrBriefView::keyPressEvent( QKeyEvent * e ) {
          break ;
          case Key_Insert : {
             {
-               QIconViewItem *i = currentItem();
+               TQIconViewItem *i = currentItem();
                if( !i )
                   break;
 
@@ -1044,8 +1044,8 @@ void KrBriefView::keyPressEvent( QKeyEvent * e ) {
                   setSelected( i, !i->isSelected(), true );
                   if( i->nextItem() )
                   {
-                     QIconView::setCurrentItem( i->nextItem() );
-                     QIconView::ensureItemVisible( i->nextItem() );
+                     TQIconView::setCurrentItem( i->nextItem() );
+                     TQIconView::ensureItemVisible( i->nextItem() );
                   }
                }
                else
@@ -1057,7 +1057,7 @@ void KrBriefView::keyPressEvent( QKeyEvent * e ) {
          }
          case Key_Space : {
             {
-               QIconViewItem *i = currentItem();
+               TQIconViewItem *i = currentItem();
                if( !i )
                   break;
 
@@ -1066,8 +1066,8 @@ void KrBriefView::keyPressEvent( QKeyEvent * e ) {
                   setSelected( i, !i->isSelected(), true );
                   if( i->nextItem() )
                   {
-                     QIconView::setCurrentItem( i->nextItem() );
-                     QIconView::ensureItemVisible( i->nextItem() );
+                     TQIconView::setCurrentItem( i->nextItem() );
+                     TQIconView::ensureItemVisible( i->nextItem() );
                   }
                }
                else
@@ -1085,7 +1085,7 @@ void KrBriefView::keyPressEvent( QKeyEvent * e ) {
          }
          default:
          if ( e->key() == Key_Escape ) {
-            QIconView::keyPressEvent( e ); return ; // otherwise the selection gets lost??!??
+            TQIconView::keyPressEvent( e ); return ; // otherwise the selection gets lost??!??
          }
          // if the key is A..Z or 1..0 do quick search otherwise...
          if ( e->text().length() > 0 && e->text() [ 0 ].isPrint() )       // better choice. Otherwise non-ascii characters like  can not be the first character of a filename
@@ -1109,7 +1109,7 @@ void KrBriefView::keyPressEvent( QKeyEvent * e ) {
 								// item is "below" the quick search window, as the icon view will
 								// realize its new size after the key processing. The following line
 								// will resize the icon view immediately.
-								ACTIVE_PANEL->layout->activate();
+								ACTIVE_PANEL->tqlayout->activate();
 								// second, we need to disable the dirup action - hack!
 								krDirUp->setEnabled( false );
 							}
@@ -1129,17 +1129,17 @@ void KrBriefView::keyPressEvent( QKeyEvent * e ) {
          }
    }
    // emit the new item description
-   slotItemDescription( currentItem() ); // actually send the QIconViewItem
+   slotItemDescription( currentItem() ); // actually send the TQIconViewItem
 }
 // overridden to make sure EXTENTION won't be lost during rename
-void KrBriefView::rename( QIconViewItem * item ) {
+void KrBriefView::rename( TQIconViewItem * item ) {
    currentlyRenamedItem = dynamic_cast< KrBriefViewItem * >( item );
    currentlyRenamedItem->rename();
    //TODO: renameLineEdit() ->selectAll();
 }
 
 void KrBriefView::renameCurrentItem() {
-   QString newName, fileName;
+   TQString newName, fileName;
 
 	// handle inplace renaming, if possible
 	
@@ -1152,17 +1152,17 @@ void KrBriefView::renameCurrentItem() {
    if ( fileName == ".." )
       return ;
 
-   rename( static_cast<QIconViewItem*>( it ) );
+   rename( static_cast<TQIconViewItem*>( it ) );
    // if applicable, select only the name without extension
 /* TODO:
    KConfigGroupSaver svr(krConfig,"Look&Feel");
    if (!krConfig->readBoolEntry("Rename Selects Extension", true)) {
      if (it->hasExtension() && !it->VF->vfile_isDir() ) 
-       renameLineEdit()->setSelection(0, it->name().findRev(it->extension())-1);
+       renameLineEdit()->setSelection(0, it->name().tqfindRev(it->extension())-1);
    }*/
 }
 
-void KrBriefView::inplaceRenameFinished( QIconViewItem * it ) {
+void KrBriefView::inplaceRenameFinished( TQIconViewItem * it ) {
    if ( !it ) { // major failure - call developers
       krOut << "Major failure at inplaceRenameFinished(): item is null" << endl;
       return;
@@ -1177,7 +1177,7 @@ void KrBriefView::inplaceRenameFinished( QIconViewItem * it ) {
 }
 
 // TODO: move the whole quicksearch mess out of here and into krview
-void KrBriefView::quickSearch( const QString & str, int direction ) {
+void KrBriefView::quickSearch( const TQString & str, int direction ) {
    KrViewItem * item = getCurrentKrViewItem();
    if (!item)
       return;
@@ -1203,7 +1203,7 @@ void KrBriefView::quickSearch( const QString & str, int direction ) {
    }
 }
 
-void KrBriefView::stopQuickSearch( QKeyEvent * e ) {
+void KrBriefView::stopQuickSearch( TQKeyEvent * e ) {
    if( ACTIVE_PANEL && ACTIVE_PANEL->quickSearch ) {
      ACTIVE_PANEL->quickSearch->hide();
      ACTIVE_PANEL->quickSearch->clear();
@@ -1213,12 +1213,12 @@ void KrBriefView::stopQuickSearch( QKeyEvent * e ) {
    }
 }
 
-void KrBriefView::setNameToMakeCurrent( QIconViewItem * it ) {
+void KrBriefView::setNameToMakeCurrent( TQIconViewItem * it ) {
 	if (!it) return;
    KrView::setNameToMakeCurrent( static_cast<KrBriefViewItem*>( it ) ->name() );
 }
 
-void KrBriefView::slotMouseClicked( int button, QIconViewItem * item, const QPoint& ) {
+void KrBriefView::slotMouseClicked( int button, TQIconViewItem * item, const TQPoint& ) {
    pressedItem = 0; // if the signals are emitted, don't emit twice at contentsMouseReleaseEvent
    if ( button == Qt::MidButton )
       emit middleButtonClicked( dynamic_cast<KrViewItem *>( item ) );
@@ -1232,7 +1232,7 @@ void KrBriefView::refreshColors() {
       bool isActive = hasFocus();
       if ( MAIN_VIEW && ACTIVE_PANEL && ACTIVE_PANEL->view )
          isActive = ( static_cast<KrView *>( this ) == ACTIVE_PANEL->view );
-      QColorGroup cg;
+      TQColorGroup cg;
       KrColorCache::getColorCache().getColors(cg, KrColorItemType(KrColorItemType::File, false, isActive, false, false));
       setPaletteBackgroundColor( cg.background() );
    } else {
@@ -1242,19 +1242,19 @@ void KrBriefView::refreshColors() {
    slotUpdate();
 }
 
-bool KrBriefView::event( QEvent *e ) {
+bool KrBriefView::event( TQEvent *e ) {
    modifierPressed = false;
 
    switch ( e->type() ) {
-         case QEvent::Timer:
-         case QEvent::MouseMove:
-         case QEvent::MouseButtonPress:
-         case QEvent::MouseButtonRelease:
+         case TQEvent::Timer:
+         case TQEvent::MouseMove:
+         case TQEvent::MouseButtonPress:
+         case TQEvent::MouseButtonRelease:
          break;
          default:
          CANCEL_TWO_CLICK_RENAME;
    }
-   if( e->type() == QEvent::Wheel )
+   if( e->type() == TQEvent::Wheel )
    {
       if ( !_focused )
          op()->emitNeedFocus();
@@ -1264,20 +1264,20 @@ bool KrBriefView::event( QEvent *e ) {
 }
 
 
-bool KrBriefView::eventFilter( QObject * watched, QEvent * e )
+bool KrBriefView::eventFilter( TQObject * watched, TQEvent * e )
 {
-  if( watched == horizontalScrollBar() )
+  if( TQT_BASE_OBJECT(watched) == TQT_BASE_OBJECT(horizontalScrollBar()) )
   {
-    if( e->type() == QEvent::Hide || e->type() == QEvent::Show )
+    if( e->type() == TQEvent::Hide || e->type() == TQEvent::Show )
     {
       bool res = KIconView::eventFilter( watched, e );
       arrangeItemsInGrid();
       return res;
     }
   }
-  else if( watched == header )
+  else if( TQT_BASE_OBJECT(watched) == TQT_BASE_OBJECT(header) )
   {
-    if( e->type() == QEvent::MouseButtonPress && ((QMouseEvent *)e )->button() == Qt::RightButton )
+    if( e->type() == TQEvent::MouseButtonPress && ((TQMouseEvent *)e )->button() == Qt::RightButton )
     {
       setColumnNr();
       return TRUE;
@@ -1288,14 +1288,14 @@ bool KrBriefView::eventFilter( QObject * watched, QEvent * e )
 }
 
 void KrBriefView::makeItemVisible( const KrViewItem *item ) {
-//	qApp->processEvents();  // Please don't remove the comment. Causes crash if it is inserted!
-	ensureItemVisible( (QIconViewItem *)( static_cast<const KrBriefViewItem*>( item ) ) ); 
+//	tqApp->processEvents();  // Please don't remove the comment. Causes crash if it is inserted!
+	ensureItemVisible( (TQIconViewItem *)( static_cast<const KrBriefViewItem*>( item ) ) ); 
 }
 
 void KrBriefView::initOperator() {
 	_operator = new KrViewOperator(this, this);
-	// QIconView emits selection changed, so chain them to operator
-	connect(this, SIGNAL(selectionChanged()), _operator, SIGNAL(selectionChanged()));
+	// TQIconView emits selection changed, so chain them to operator
+	connect(this, TQT_SIGNAL(selectionChanged()), _operator, TQT_SIGNAL(selectionChanged()));
 }
 
 void KrBriefView::initProperties() {
@@ -1313,16 +1313,16 @@ void KrBriefView::initProperties() {
       	_properties->sortMode = static_cast<KrViewProperties::SortSpec>( _properties->sortMode |
 				 KrViewProperties::IgnoreCase );
 	_properties->humanReadableSize = krConfig->readBoolEntry("Human Readable Size", _HumanReadableSize);
-	_properties->localeAwareCompareIsCaseSensitive = QString( "a" ).localeAwareCompare( "B" ) > 0; // see KDE bug #40131
+	_properties->localeAwareCompareIsCaseSensitive = TQString( "a" ).localeAwareCompare( "B" ) > 0; // see KDE bug #40131
 	
-	QStringList defaultAtomicExtensions;
+	TQStringList defaultAtomicExtensions;
 	defaultAtomicExtensions += ".tar.gz";
 	defaultAtomicExtensions += ".tar.bz2";
-	defaultAtomicExtensions += ".moc.cpp";
-	QStringList atomicExtensions = krConfig->readListEntry("Atomic Extensions", defaultAtomicExtensions);
-	for (QStringList::iterator i = atomicExtensions.begin(); i != atomicExtensions.end(); )
+	defaultAtomicExtensions += ".tqmoc.cpp";
+	TQStringList atomicExtensions = krConfig->readListEntry("Atomic Extensions", defaultAtomicExtensions);
+	for (TQStringList::iterator i = atomicExtensions.begin(); i != atomicExtensions.end(); )
 	{
-		QString & ext = *i;
+		TQString & ext = *i;
 		ext = ext.stripWhiteSpace();
 		if (!ext.length())
 		{
@@ -1352,11 +1352,11 @@ void KrBriefView::setColumnNr()
 
   for( int i=1; i <= MAX_COLS; i++ )
   {
-    popup.insertItem( QString( "%1" ).arg( i ), COL_ID + i );
+    popup.insertItem( TQString( "%1" ).tqarg( i ), COL_ID + i );
     popup.setItemChecked( COL_ID + i, PROPS->numberOfColumns == i );
   }
   
-  int result=popup.exec(QCursor::pos());
+  int result=popup.exec(TQCursor::pos());
 
   krConfig->setGroup( nameInKConfig() );
   
@@ -1382,33 +1382,33 @@ void KrBriefView::updateView() {
 }
 
 void KrBriefView::updateItem(KrViewItem* item) {
-	dynamic_cast<KrBriefViewItem*>(item)->repaintItem();
+	dynamic_cast<KrBriefViewItem*>(item)->tqrepaintItem();
 }
 
-void KrBriefView::slotRightButtonPressed(QIconViewItem*, const QPoint& point) {
+void KrBriefView::slotRightButtonPressed(TQIconViewItem*, const TQPoint& point) {
 	op()->emitEmptyContextMenu(point);
 }
 
 void KrBriefView::changeSortOrder()
 {
 	bool asc = !sortDirection();
-	header->setSortIndicator( 0, asc ? Qt::Ascending : Qt::Descending );
+	header->setSortIndicator( 0, asc ? TQt::Ascending : TQt::Descending );
 	sort( asc );
 }
 
-QMouseEvent * KrBriefView::transformMouseEvent( QMouseEvent * e )
+TQMouseEvent * KrBriefView::transformMouseEvent( TQMouseEvent * e )
 {
-	if( findItem( e->pos() ) != 0 )
+	if( tqfindItem( e->pos() ) != 0 )
 		return e;
 	
-	QIconViewItem *closestItem = 0;
+	TQIconViewItem *closestItem = 0;
 	int mouseX = e->pos().x(), mouseY = e->pos().y();
 	int closestDelta = 0x7FFFFFFF;
 	
 	int minX = ( mouseX / gridX() ) * gridX();
 	int maxX = minX + gridX();
 	
-	QIconViewItem *current = firstItem();
+	TQIconViewItem *current = firstItem();
 	while( current )
 	{
 		if( current->x() >= minX && current->x() < maxX )
@@ -1433,7 +1433,7 @@ QMouseEvent * KrBriefView::transformMouseEvent( QMouseEvent * e )
 	
 	if( closestItem != 0 )
 	{
-		QRect rec = closestItem->textRect( false );
+		TQRect rec = closestItem->textRect( false );
 		if( mouseX < rec.x() )
 			mouseX = rec.x();
 		if( mouseY < rec.y() )
@@ -1442,17 +1442,17 @@ QMouseEvent * KrBriefView::transformMouseEvent( QMouseEvent * e )
 			mouseX = rec.x() + rec.width() -1;
 		if( mouseY > rec.y() + rec.height() -1 )
 			mouseY = rec.y() + rec.height() -1;
-		QPoint newPos( mouseX, mouseY );
-		QPoint glPos;
+		TQPoint newPos( mouseX, mouseY );
+		TQPoint glPos;
 		if( !e->globalPos().isNull() )
 		{
-			glPos = QPoint( mouseX - e->pos().x() + e->globalPos().x(),
+			glPos = TQPoint( mouseX - e->pos().x() + e->globalPos().x(),
 			                mouseY - e->pos().y() + e->globalPos().y() );
 		}
 		
 		if( mouseEvent )
 			delete mouseEvent;
-		return mouseEvent = new QMouseEvent( e->type(), newPos, glPos, e->button(), e->state() );
+		return mouseEvent = new TQMouseEvent( e->type(), newPos, glPos, e->button(), e->state() );
 	}
 	
 	return e;

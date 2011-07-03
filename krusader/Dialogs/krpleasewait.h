@@ -31,23 +31,24 @@
 #ifndef KRPLEASEWAIT_H
 #define KRPLEASEWAIT_H
 
-#include <qprogressdialog.h>
-#include <qtimer.h>
-#include <qguardedptr.h>
+#include <tqprogressdialog.h>
+#include <tqtimer.h>
+#include <tqguardedptr.h>
 #include <kio/jobclasses.h>
 
 class KProcess;
 class KRPleaseWait;
 
-class KRPleaseWaitHandler : public QObject {
+class KRPleaseWaitHandler : public TQObject {
   Q_OBJECT
+  TQ_OBJECT
 
 public:
   KRPleaseWaitHandler();
 
 public slots:
 
-  void startWaiting(QString msg, int count = 0, bool cancel = false);
+  void startWaiting(TQString msg, int count = 0, bool cancel = false);
   void stopWait();
   void cycleProgress();
   void incProgress(int i);
@@ -57,16 +58,17 @@ public slots:
   bool wasCancelled() const { return _wasCancelled; }
 
 private:
-  QGuardedPtr<KIO::Job> job;
+  TQGuardedPtr<KIO::Job> job;
   KRPleaseWait * dlg;
   bool cycle, cycleMutex, incMutex, _wasCancelled;
 };
 
 
-class KRPleaseWait : public QProgressDialog {
+class KRPleaseWait : public TQProgressDialog {
   Q_OBJECT
+  TQ_OBJECT
 public:
-	KRPleaseWait( QString msg, int count = 0 ,bool cancel = false );
+	KRPleaseWait( TQString msg, int count = 0 ,bool cancel = false );
 	
 public slots:
 	void incProgress(int howMuch);
@@ -74,8 +76,8 @@ public slots:
 
 protected:
 	bool inc;
-  QTimer* timer;
-  virtual void closeEvent ( QCloseEvent * e );
+  TQTimer* timer;
+  virtual void closeEvent ( TQCloseEvent * e );
   bool canClose;
 };
 

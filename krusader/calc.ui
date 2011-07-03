@@ -1,6 +1,6 @@
 <!DOCTYPE UI><UI version="3.3" stdsetdef="1">
 <class>calc</class>
-<widget class="QWidget">
+<widget class="TQWidget">
     <property name="name">
         <cstring>calc</cstring>
     </property>
@@ -19,7 +19,7 @@
         <property name="name">
             <cstring>unnamed</cstring>
         </property>
-        <widget class="QLCDNumber" row="0" column="0">
+        <widget class="TQLCDNumber" row="0" column="0">
             <property name="name">
                 <cstring>display</cstring>
             </property>
@@ -27,15 +27,15 @@
                 <number>18</number>
             </property>
         </widget>
-        <widget class="QLayoutWidget" row="1" column="0">
+        <widget class="TQLayoutWidget" row="1" column="0">
             <property name="name">
-                <cstring>layout2</cstring>
+                <cstring>tqlayout2</cstring>
             </property>
             <grid>
                 <property name="name">
                     <cstring>unnamed</cstring>
                 </property>
-                <widget class="QPushButton" row="1" column="3">
+                <widget class="TQPushButton" row="1" column="3">
                     <property name="name">
                         <cstring>plus</cstring>
                     </property>
@@ -43,7 +43,7 @@
                         <string>+</string>
                     </property>
                 </widget>
-                <widget class="QPushButton" row="0" column="4">
+                <widget class="TQPushButton" row="0" column="4">
                     <property name="name">
                         <cstring>all_clear</cstring>
                     </property>
@@ -51,7 +51,7 @@
                         <string>AC</string>
                     </property>
                 </widget>
-                <widget class="QPushButton" row="2" column="3">
+                <widget class="TQPushButton" row="2" column="3">
                     <property name="name">
                         <cstring>minus</cstring>
                     </property>
@@ -59,7 +59,7 @@
                         <string>-</string>
                     </property>
                 </widget>
-                <widget class="QPushButton" row="3" column="2" rowspan="1" colspan="2">
+                <widget class="TQPushButton" row="3" column="2" rowspan="1" colspan="2">
                     <property name="name">
                         <cstring>equals</cstring>
                     </property>
@@ -67,7 +67,7 @@
                         <string>=</string>
                     </property>
                 </widget>
-                <widget class="QPushButton" row="1" column="4">
+                <widget class="TQPushButton" row="1" column="4">
                     <property name="name">
                         <cstring>clear</cstring>
                     </property>
@@ -75,7 +75,7 @@
                         <string>CL</string>
                     </property>
                 </widget>
-                <widget class="QPushButton" row="3" column="1">
+                <widget class="TQPushButton" row="3" column="1">
                     <property name="name">
                         <cstring>zero</cstring>
                     </property>
@@ -83,7 +83,7 @@
                         <string>0</string>
                     </property>
                 </widget>
-                <widget class="QPushButton" row="1" column="0">
+                <widget class="TQPushButton" row="1" column="0">
                     <property name="name">
                         <cstring>four</cstring>
                     </property>
@@ -91,7 +91,7 @@
                         <string>4</string>
                     </property>
                 </widget>
-                <widget class="QPushButton" row="0" column="1">
+                <widget class="TQPushButton" row="0" column="1">
                     <property name="name">
                         <cstring>two</cstring>
                     </property>
@@ -99,7 +99,7 @@
                         <string>2</string>
                     </property>
                 </widget>
-                <widget class="QPushButton" row="1" column="1">
+                <widget class="TQPushButton" row="1" column="1">
                     <property name="name">
                         <cstring>five</cstring>
                     </property>
@@ -107,7 +107,7 @@
                         <string>5</string>
                     </property>
                 </widget>
-                <widget class="QPushButton" row="0" column="2">
+                <widget class="TQPushButton" row="0" column="2">
                     <property name="name">
                         <cstring>three</cstring>
                     </property>
@@ -115,7 +115,7 @@
                         <string>3</string>
                     </property>
                 </widget>
-                <widget class="QPushButton" row="2" column="0">
+                <widget class="TQPushButton" row="2" column="0">
                     <property name="name">
                         <cstring>seven</cstring>
                     </property>
@@ -123,7 +123,7 @@
                         <string>7</string>
                     </property>
                 </widget>
-                <widget class="QPushButton" row="1" column="2">
+                <widget class="TQPushButton" row="1" column="2">
                     <property name="name">
                         <cstring>six</cstring>
                     </property>
@@ -131,7 +131,7 @@
                         <string>6</string>
                     </property>
                 </widget>
-                <widget class="QPushButton" row="2" column="1">
+                <widget class="TQPushButton" row="2" column="1">
                     <property name="name">
                         <cstring>eight</cstring>
                     </property>
@@ -139,7 +139,7 @@
                         <string>8</string>
                     </property>
                 </widget>
-                <widget class="QPushButton" row="2" column="2">
+                <widget class="TQPushButton" row="2" column="2">
                     <property name="name">
                         <cstring>nine</cstring>
                     </property>
@@ -147,7 +147,7 @@
                         <string>9</string>
                     </property>
                 </widget>
-                <widget class="QPushButton" row="0" column="0">
+                <widget class="TQPushButton" row="0" column="0">
                     <property name="name">
                         <cstring>one</cstring>
                     </property>
@@ -157,7 +157,7 @@
                 </widget>
             </grid>
         </widget>
-        <widget class="QPushButton" row="2" column="0">
+        <widget class="TQPushButton" row="2" column="0">
             <property name="name">
                 <cstring>setCap</cstring>
             </property>
@@ -247,7 +247,7 @@
         <slot>one()</slot>
     </connection>
 </connections>
-<slots>
+<Q_SLOTS>
     <slot>one()</slot>
     <slot>two()</slot>
     <slot>three()</slot>
@@ -262,6 +262,6 @@
     <slot>minus()</slot>
     <slot>equals()</slot>
     <slot>setCap()</slot>
-</slots>
-<layoutdefaults spacing="6" margin="11"/>
+</Q_SLOTS>
+<tqlayoutdefaults spacing="6" margin="11"/>
 </UI>

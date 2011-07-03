@@ -1,21 +1,21 @@
 #ifndef _PANELPOPUP_H
 #define _PANELPOPUP_H
 
-#include <qwidget.h>
-#include <qwidgetstack.h>
-#include <qpixmap.h>
-#include <qvaluelist.h>
+#include <tqwidget.h>
+#include <tqwidgetstack.h>
+#include <tqpixmap.h>
+#include <tqvaluelist.h>
 #include <kfileitem.h>
-#include <qguardedptr.h>
+#include <tqguardedptr.h>
 #include <kio/previewjob.h>
 #include <kurl.h>
 
-class QButtonGroup;
-class QLabel;
-class QListViewItem;
-class QSplitter;
+class TQButtonGroup;
+class TQLabel;
+class TQListViewItem;
+class TQSplitter;
 class KFileTreeView;
-class QToolButton;
+class TQToolButton;
 class KrSqueezedTextLabel;
 class KLineEdit;
 class KComboBox;
@@ -23,11 +23,12 @@ class KrusaderImageFilePreview;
 class PanelViewer;
 class DiskUsageViewer;
 
-class PanelPopup: public QWidget {
+class PanelPopup: public TQWidget {
    Q_OBJECT
+  TQ_OBJECT
    enum Parts { Tree, Preview, QuickPanel, View, DskUsage, Last=0xFF };
 public:
-   PanelPopup( QSplitter *splitter, bool left );
+   PanelPopup( TQSplitter *splitter, bool left );
    ~PanelPopup();
 	inline int currentPage() const { return stack->id(stack->visibleWidget()); }
 
@@ -45,29 +46,29 @@ signals:
 protected slots:	
 	virtual void setFocus();
 	void tabSelected(int id);
-	void treeSelection(QListViewItem*);
-	void slotDroppedOnTree(QWidget *widget, QDropEvent *e, KURL::List &lst, KURL &);
+	void treeSelection(TQListViewItem*);
+	void slotDroppedOnTree(TQWidget *widget, TQDropEvent *e, KURL::List &lst, KURL &);
 	void handleOpenURLRequest(const KURL &url);
 	void quickSelect();
-	void quickSelect(const QString &);
+	void quickSelect(const TQString &);
         void quickSelectStore();
 
 protected:
 	bool _left;
 	bool _hidden;
-	QWidgetStack *stack;
+	TQWidgetStack *stack;
 	KrusaderImageFilePreview *viewer;
 	KrSqueezedTextLabel *dataLine;
-	QGuardedPtr<KIO::PreviewJob> pjob;
+	TQGuardedPtr<KIO::PreviewJob> pjob;
 	KFileTreeView *tree;
-	QToolButton *treeBtn, *previewBtn, *quickBtn, *viewerBtn, *duBtn;
-	QButtonGroup *btns;
+	TQToolButton *treeBtn, *previewBtn, *quickBtn, *viewerBtn, *duBtn;
+	TQButtonGroup *btns;
 	KLineEdit *quickFilter;
 	KComboBox *quickSelectCombo;
 	PanelViewer *panelviewer;
 	DiskUsageViewer *diskusage;
-	QValueList<int> splitterSizes;
-	QSplitter *splitter;
+	TQValueList<int> splitterSizes;
+	TQSplitter *splitter;
 };
 
 #endif // _PANELPOPUP_H

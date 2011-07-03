@@ -2,50 +2,51 @@
 #define KRBOOKMARK_HANDLER_H
 
 #include "krbookmark.h"
-#include <qobject.h>
-#include <qguardedptr.h>
+#include <tqobject.h>
+#include <tqguardedptr.h>
 #include <kpopupmenu.h>
 #include <kurl.h>
-#include <qptrdict.h>
-#include <qvaluelist.h>
-#include <qdom.h>
-#include <qmap.h>
+#include <tqptrdict.h>
+#include <tqvaluelist.h>
+#include <tqdom.h>
+#include <tqmap.h>
 
 class KActionCollection;
 class KBookmarkManager;
 
-class KrBookmarkHandler: public QObject {
+class KrBookmarkHandler: public TQObject {
 	Q_OBJECT
+  TQ_OBJECT
 	friend class KrAddBookmarkDlg;
 	enum Actions { BookmarkCurrent=0, ManageBookmarks };
 public:
 	KrBookmarkHandler();
 	~KrBookmarkHandler();
 	void populate(KPopupMenu *menu);
-	void addBookmark(KrBookmark *bm, KrBookmark *parent = 0);
+	void addBookmark(KrBookmark *bm, KrBookmark *tqparent = 0);
 	void bookmarkCurrent(KURL url);
 
 protected:
 	void deleteBookmark(KrBookmark *bm);
 	void importFromFile();
-	bool importFromFileBookmark(QDomElement &e, KrBookmark *parent, QString path, QString *errorMsg);
-	bool importFromFileFolder(QDomNode &first, KrBookmark *parent, QString path, QString *errorMsg);
+	bool importFromFileBookmark(TQDomElement &e, KrBookmark *tqparent, TQString path, TQString *errorMsg);
+	bool importFromFileFolder(TQDomNode &first, KrBookmark *tqparent, TQString path, TQString *errorMsg);
 	void exportToFile();
-	void exportToFileFolder(QDomDocument &doc, QDomElement &parent, KrBookmark *folder);
-	void exportToFileBookmark(QDomDocument &doc, QDomElement &where, KrBookmark *bm);
+	void exportToFileFolder(TQDomDocument &doc, TQDomElement &tqparent, KrBookmark *folder);
+	void exportToFileBookmark(TQDomDocument &doc, TQDomElement &where, KrBookmark *bm);
 	void clearBookmarks(KrBookmark *root);
-	void buildMenu(KrBookmark *parent, KPopupMenu *menu);
+	void buildMenu(KrBookmark *tqparent, KPopupMenu *menu);
 
-	bool eventFilter( QObject *obj, QEvent *ev );
+	bool eventFilter( TQObject *obj, TQEvent *ev );
 	
-	void rightClicked( QPopupMenu *menu, int id, KrBookmark *bm );
+	void rightClicked( TQPopupMenu *menu, int id, KrBookmark *bm );
 	void rightClickOnSpecialBookmark();
 	
 	void removeReferences( KrBookmark *root, KrBookmark *bmToRemove );
 	
 protected slots:
 	void menuOperation(int id);
-	void bookmarksChanged(const QString&, const QString&);
+	void bookmarksChanged(const TQString&, const TQString&);
 	void slotActivated(const KURL& url);
 
 private:
@@ -55,9 +56,9 @@ private:
 	KBookmarkManager *manager;
 	bool _middleClick; // if true, the user clicked the middle button to open the bookmark
 	
-	QGuardedPtr<KPopupMenu>            _mainBookmarkPopup; // main bookmark popup menu
-	QValueList<int>                    _specialBookmarkIDs; // the ID list of the special bookmarks
-	QPtrDict<QMap<int,KrBookmark*> >   _bookmarkIDTable;    // the IDs of the bookmarks
+	TQGuardedPtr<KPopupMenu>            _mainBookmarkPopup; // main bookmark popup menu
+	TQValueList<int>                    _specialBookmarkIDs; // the ID list of the special bookmarks
+	TQPtrDict<TQMap<int,KrBookmark*> >   _bookmarkIDTable;    // the IDs of the bookmarks
 };
 
 #endif // KRBOOKMARK_HANDLER_H

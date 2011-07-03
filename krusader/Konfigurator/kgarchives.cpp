@@ -28,8 +28,8 @@
  *                                                                         *
  ***************************************************************************/
 
-#include <qhbox.h>
-#include <qpushbutton.h>
+#include <tqhbox.h>
+#include <tqpushbutton.h>
 
 #include "kgarchives.h"
 #include "krresulttable.h"
@@ -40,16 +40,16 @@
 #include "../krusader.h"
 #include "../VFS/krarchandler.h"
 
-KgArchives::KgArchives( bool first, QWidget* parent,  const char* name ) :
-      KonfiguratorPage( first, parent, name )
+KgArchives::KgArchives( bool first, TQWidget* tqparent,  const char* name ) :
+      KonfiguratorPage( first, tqparent, name )
 {
-  QGridLayout *kgArchivesLayout = new QGridLayout( parent );
+  TQGridLayout *kgArchivesLayout = new TQGridLayout( tqparent );
   kgArchivesLayout->setSpacing( 6 );
 
   //  -------------------------- GENERAL GROUPBOX ----------------------------------
 
-  QGroupBox *generalGrp = createFrame( i18n( "General" ), parent, "generalGrp" );
-  QGridLayout *generalGrid = createGridLayout( generalGrp->layout() );
+  TQGroupBox *generalGrp = createFrame( i18n( "General" ), tqparent, "generalGrp" );
+  TQGridLayout *generalGrid = createGridLayout( generalGrp->tqlayout() );
 
   addLabel( generalGrid, 0, 0, i18n( "Krusader transparently handles the following types of archives:" ),
             generalGrp, "KgLabel1" );
@@ -75,19 +75,19 @@ KgArchives::KgArchives( bool first, QWidget* parent,  const char* name ) :
   addLabel( generalGrid, 2, 0, i18n( "The archives that are \"greyed-out\" were unavailable on your\nsystem last time Krusader checked. If you wish Krusader to\nsearch again, click the 'Auto Configure' button." ),
             generalGrp, "KgLabel2" );
 
-  QHBox *hbox = new QHBox( generalGrp );
+  TQHBox *hbox = new TQHBox( generalGrp );
   createSpacer( hbox, "spacer1" );
-  QPushButton *btnAutoConfigure = new QPushButton( i18n( "Auto Configure" ), hbox, "kgAutoConfigure" );
+  TQPushButton *btnAutoConfigure = new TQPushButton( i18n( "Auto Configure" ), hbox, "kgAutoConfigure" );
   createSpacer( hbox, "spacer2" );
   generalGrid->addWidget( hbox, 3, 0 );
-  connect( btnAutoConfigure, SIGNAL( clicked() ), this, SLOT( slotAutoConfigure() ) );
+  connect( btnAutoConfigure, TQT_SIGNAL( clicked() ), this, TQT_SLOT( slotAutoConfigure() ) );
  
   kgArchivesLayout->addWidget( generalGrp, 0 ,0 );
 
   //  ------------------------ FINE-TUNING GROUPBOX --------------------------------
 
-  QGroupBox *fineTuneGrp = createFrame( i18n( "Fine-Tuning" ), parent, "fineTuneGrp" );
-  QGridLayout *fineTuneGrid = createGridLayout( fineTuneGrp->layout() );
+  TQGroupBox *fineTuneGrp = createFrame( i18n( "Fine-Tuning" ), tqparent, "fineTuneGrp" );
+  TQGridLayout *fineTuneGrid = createGridLayout( fineTuneGrp->tqlayout() );
 
   KONFIGURATOR_CHECKBOX_PARAM finetuners[] =
   //   cfg_class  cfg_name                  default           text                                          restart ToolTip
@@ -119,20 +119,20 @@ void KgArchives::slotAutoConfigure()
 
 void KgArchives::disableNonExistingPackers()
 {
-  #define PS(x) lst.contains(x)>0
+  #define PS(x) lst.tqcontains(x)>0
 
-  QStringList lst=KRarcHandler::supportedPackers(); // get list of availble packers
-  cbs->find( "Do Tar" )->setEnabled(PS("tar"));
-  cbs->find( "Do GZip" )->setEnabled(PS("gzip"));
-  cbs->find( "Do BZip2" )->setEnabled(PS("bzip2"));
-  cbs->find( "Do UnZip" )->setEnabled(PS("unzip"));
-  cbs->find( "Do Lha" )->setEnabled(PS("lha"));
-  cbs->find( "Do RPM" )->setEnabled(PS("rpm") || PS("cpio"));
-  cbs->find( "Do UnRar" )->setEnabled(PS("unrar") || PS("rar") );
-  cbs->find( "Do UnAce" )->setEnabled(PS("unace"));
-  cbs->find( "Do Unarj" )->setEnabled(PS("unarj") || PS("arj") );
-  cbs->find( "Do DEB" )->setEnabled(PS("dpkg") && PS("tar") );
-  cbs->find( "Do 7z" )->setEnabled( PS("7z") );
+  TQStringList lst=KRarcHandler::supportedPackers(); // get list of availble packers
+  cbs->tqfind( "Do Tar" )->setEnabled(PS("tar"));
+  cbs->tqfind( "Do GZip" )->setEnabled(PS("gzip"));
+  cbs->tqfind( "Do BZip2" )->setEnabled(PS("bzip2"));
+  cbs->tqfind( "Do UnZip" )->setEnabled(PS("unzip"));
+  cbs->tqfind( "Do Lha" )->setEnabled(PS("lha"));
+  cbs->tqfind( "Do RPM" )->setEnabled(PS("rpm") || PS("cpio"));
+  cbs->tqfind( "Do UnRar" )->setEnabled(PS("unrar") || PS("rar") );
+  cbs->tqfind( "Do UnAce" )->setEnabled(PS("unace"));
+  cbs->tqfind( "Do Unarj" )->setEnabled(PS("unarj") || PS("arj") );
+  cbs->tqfind( "Do DEB" )->setEnabled(PS("dpkg") && PS("tar") );
+  cbs->tqfind( "Do 7z" )->setEnabled( PS("7z") );
 
   krConfig->setGroup( "Archives" );
   krConfig->writeEntry( "Supported Packers", lst );

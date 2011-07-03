@@ -31,15 +31,15 @@
 #ifndef __SYNCHRONIZER_TASK_H__
 #define __SYNCHRONIZER_TASK_H__
 
-#include <qobject.h>
+#include <tqobject.h>
 #include <kio/job.h>
 
 class Synchronizer;
 class SynchronizerDirList;
 class SynchronizerFileItem;
-class QProgressDialog;
-class QTimer;
-class QFile;
+class TQProgressDialog;
+class TQTimer;
+class TQFile;
 
 #define ST_STATE_NEW      0
 #define ST_STATE_PENDING  1
@@ -47,59 +47,61 @@ class QFile;
 #define ST_STATE_READY    3
 #define ST_STATE_ERROR    4
 
-class SynchronizerTask : public QObject {
+class SynchronizerTask : public TQObject {
   Q_OBJECT
+  TQ_OBJECT
 
 public:
-  SynchronizerTask() : QObject(), m_state( ST_STATE_NEW ), m_statusMessage( QString::null ) {}
+  SynchronizerTask() : TQObject(), m_state( ST_STATE_NEW ), m_statusMessage( TQString() ) {}
   virtual ~SynchronizerTask() {};
 
-  inline int start( QWidget *parentWidget ) { this->parentWidget = parentWidget; start(); return state(); }
+  inline int start( TQWidget *tqparentWidget ) { this->tqparentWidget = tqparentWidget; start(); return state(); }
 
   inline int  state() { return m_state; }
 
-  void setStatusMessage( const QString & statMsg ) { 
+  void setStatusMessage( const TQString & statMsg ) { 
     if( m_state == ST_STATE_PENDING || m_state == ST_STATE_STATUS )
       m_state = ST_STATE_STATUS;
       m_statusMessage = statMsg;
   }
 
-  QString status() {
+  TQString status() {
     if( m_state == ST_STATE_STATUS ) {
       m_state = ST_STATE_PENDING;
       return m_statusMessage; 
     }
-    return QString::null;
+    return TQString();
   }
 
 protected:
   virtual void start() {};
   int m_state;
-  QString m_statusMessage;
-  QWidget *parentWidget;
+  TQString m_statusMessage;
+  TQWidget *tqparentWidget;
 };
 
 
 class CompareTask : public SynchronizerTask {
   Q_OBJECT
+  TQ_OBJECT
 
 public:
-  CompareTask( SynchronizerFileItem *parentIn, const QString &leftURL,
-                const QString &rightURL, const QString &leftDir,
-                const QString &rightDir, bool ignoreHidden );
-  CompareTask( SynchronizerFileItem *parentIn, const QString &urlIn,
-                const QString &dirIn, bool isLeftIn, bool ignoreHidden );
+  CompareTask( SynchronizerFileItem *tqparentIn, const TQString &leftURL,
+                const TQString &rightURL, const TQString &leftDir,
+                const TQString &rightDir, bool ignoreHidden );
+  CompareTask( SynchronizerFileItem *tqparentIn, const TQString &urlIn,
+                const TQString &dirIn, bool isLeftIn, bool ignoreHidden );
   virtual ~CompareTask();
 
   inline bool isDuplicate()                      { return m_duplicate; }
   inline bool isLeft()                           { return !m_duplicate && m_isLeft; }
-  inline const QString & leftURL()               { return m_url; }
-  inline const QString & rightURL()              { return m_otherUrl; }
-  inline const QString & leftDir()               { return m_dir; }
-  inline const QString & rightDir()              { return m_otherDir; }
-  inline const QString & url()                   { return m_url; }
-  inline const QString & dir()                   { return m_dir; }
-  inline SynchronizerFileItem * parent()         { return m_parent; }
+  inline const TQString & leftURL()               { return m_url; }
+  inline const TQString & rightURL()              { return m_otherUrl; }
+  inline const TQString & leftDir()               { return m_dir; }
+  inline const TQString & rightDir()              { return m_otherDir; }
+  inline const TQString & url()                   { return m_url; }
+  inline const TQString & dir()                   { return m_dir; }
+  inline SynchronizerFileItem * tqparent()         { return m_parent; }
   inline SynchronizerDirList * leftDirList()     { return m_dirList; }
   inline SynchronizerDirList * rightDirList()    { return m_otherDirList; }
   inline SynchronizerDirList * dirList()         { return m_dirList; }
@@ -111,10 +113,10 @@ protected slots:
 
 private:
   SynchronizerFileItem * m_parent;
-  QString m_url;
-  QString m_dir;
-  QString m_otherUrl;
-  QString m_otherDir;
+  TQString m_url;
+  TQString m_dir;
+  TQString m_otherUrl;
+  TQString m_otherDir;
   bool m_isLeft;
   bool m_duplicate;
   SynchronizerDirList * m_dirList;
@@ -127,13 +129,14 @@ private:
 
 class CompareContentTask : public SynchronizerTask {
   Q_OBJECT
+  TQ_OBJECT
 
 public:
   CompareContentTask( Synchronizer *, SynchronizerFileItem *, const KURL &, const KURL &, KIO::filesize_t );
   virtual ~CompareContentTask();
 
 public slots:
-  void    slotDataReceived(KIO::Job *job, const QByteArray &data);
+  void    slotDataReceived(KIO::Job *job, const TQByteArray &data);
   void    slotFinished(KIO::Job *job);
   void    sendStatusMessage();
 
@@ -153,12 +156,12 @@ private:
   bool                   errorPrinted;   // flag indicates error
   KIO::TransferJob      *leftReadJob;    // compare left read job
   KIO::TransferJob      *rightReadJob;   // compare right read job
-  QByteArray             compareArray;   // the array for comparing
+  TQByteArray             compareArray;   // the array for comparing
   SynchronizerFileItem  *item;           // the item for content compare
-  QTimer                *timer;          // timer to show the process dialog at compare by content
+  TQTimer                *timer;          // timer to show the process dialog at compare by content
 
-  QFile                 *leftFile;       // the left side local file
-  QFile                 *rightFile;      // the right side local file
+  TQFile                 *leftFile;       // the left side local file
+  TQFile                 *rightFile;      // the right side local file
 
   KIO::filesize_t        received;       // the received size
   Synchronizer          *sync;

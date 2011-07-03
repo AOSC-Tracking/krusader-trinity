@@ -1,5 +1,5 @@
 /***************************************************************************
-                                 krmaskchoice.h
+                                 krtqmaskchoice.h
                              -------------------
     copyright            : (C) 2000 by Shie Erlich & Rafi Yanai
     email                : krusader@users.sourceforge.net
@@ -30,47 +30,48 @@
 #ifndef KRMASKCHOICE_H
 #define KRMASKCHOICE_H
 
-#include <qdialog.h>
-class QVBoxLayout; 
-class QHBoxLayout; 
-class QGridLayout; 
-class QComboBox;
-class QGroupBox;
-class QLabel;
-class QListBox;
-class QListBoxItem;
-class QPushButton;
+#include <tqdialog.h>
+class TQVBoxLayout; 
+class TQHBoxLayout; 
+class TQGridLayout; 
+class TQComboBox;
+class TQGroupBox;
+class TQLabel;
+class TQListBox;
+class TQListBoxItem;
+class TQPushButton;
 
-class KRMaskChoice : public QDialog
+class KRMaskChoice : public TQDialog
 { 
     Q_OBJECT
+  TQ_OBJECT
 
 public:
-    KRMaskChoice( QWidget* parent = 0, const char* name = 0, bool modal = FALSE, WFlags fl = 0 );
+    KRMaskChoice( TQWidget* tqparent = 0, const char* name = 0, bool modal = FALSE, WFlags fl = 0 );
     ~KRMaskChoice();
 
-    QComboBox* selection;
-    QLabel* PixmapLabel1;
-    QLabel* label;
-    QGroupBox* GroupBox1;
-    QListBox* preSelections;
-    QPushButton* PushButton7;
-    QPushButton* PushButton7_2;
-    QPushButton* PushButton7_3;
-    QPushButton* PushButton3;
-    QPushButton* PushButton3_2;
+    TQComboBox* selection;
+    TQLabel* PixmapLabel1;
+    TQLabel* label;
+    TQGroupBox* GroupBox1;
+    TQListBox* preSelections;
+    TQPushButton* PushButton7;
+    TQPushButton* PushButton7_2;
+    TQPushButton* PushButton7_3;
+    TQPushButton* PushButton3;
+    TQPushButton* PushButton3_2;
 
 public slots:
     virtual void addSelection();
     virtual void clearSelections();
     virtual void deleteSelection();
-    virtual void acceptFromList(QListBoxItem *);
+    virtual void acceptFromList(TQListBoxItem *);
 
 protected:
-    QHBoxLayout* hbox;
-    QHBoxLayout* hbox_2;
-    QHBoxLayout* hbox_3;
-    QVBoxLayout* vbox;
+    TQHBoxLayout* hbox;
+    TQHBoxLayout* hbox_2;
+    TQHBoxLayout* hbox_3;
+    TQVBoxLayout* vbox;
 };
 
 #endif // KRMASKCHOICE_H

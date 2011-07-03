@@ -16,7 +16,7 @@ KrSelectionMode* KrSelectionMode::getSelectionHandler()
 		return __currentSelectionMode;
 	} else { // nothing yet, set the correct one
 		krConfig->setGroup( "Look&Feel" );
-   	QString mode = krConfig->readEntry("Mouse Selection", "");
+   	TQString mode = krConfig->readEntry("Mouse Selection", "");
 		switch (mode.toInt()) {
 			case 0:
 				__currentSelectionMode = &originalSelectionMode;
@@ -46,7 +46,7 @@ void KrSelectionMode::resetSelectionHandler() {
 
 void UserSelectionMode::init() {
 	krConfig->setGroup("Custom Selection Mode");
-	_useQTSelection = krConfig->readBoolEntry("QT Selection", _QtSelection);
+	_useTQTSelection = krConfig->readBoolEntry("QT Selection", _TQtSelection);
 	_leftButtonSelects = krConfig->readBoolEntry("Left Selects", _LeftSelects);
 	_leftButtonPreservesSelection = krConfig->readBoolEntry("Left Preserves", _LeftPreserves);
 	_shiftCtrlLeftButtonSelects = krConfig->readBoolEntry("ShiftCtrl Left Selects", _ShiftCtrlLeft);

@@ -33,10 +33,10 @@
 #ifndef KRSEARCHMOD_H
 #define KRSEARCHMOD_H
 
-#include <qobject.h>
-#include <qvaluestack.h>
-#include <qstringlist.h>
-#include <qdatetime.h>
+#include <tqobject.h>
+#include <tqvaluestack.h>
+#include <tqstringlist.h>
+#include <tqdatetime.h>
 #include <time.h>
 #include <kio/global.h>
 #include <kurl.h>
@@ -47,8 +47,9 @@
 class KRQuery;
 class ftp_vfs;
 
-class KRSearchMod : public QObject  {
+class KRSearchMod : public TQObject  {
   Q_OBJECT
+  TQ_OBJECT
 public: 
   KRSearchMod(const KRQuery *q);
   ~KRSearchMod();
@@ -63,23 +64,23 @@ private:
 
 signals:
   void finished();
-  void searching(const QString&);
-  void found(QString what, QString where, KIO::filesize_t size, time_t mtime, QString perm, QString textFound);
+  void searching(const TQString&);
+  void found(TQString what, TQString where, KIO::filesize_t size, time_t mtime, TQString perm, TQString textFound);
 
 private slots:
   void slotProcessEvents( bool & stopped );
 
 private:
   bool stopSearch;
-  QValueStack<KURL> scannedUrls;
-  QValueStack<KURL> unScannedUrls;
+  TQValueStack<KURL> scannedUrls;
+  TQValueStack<KURL> unScannedUrls;
   KRQuery *query;
-  QStringList results;
+  TQStringList results;
   
   ftp_vfs *remote_vfs;
   virt_vfs *virtual_vfs;
   
-  QTime timer;
+  TQTime timer;
 };
 
 #endif

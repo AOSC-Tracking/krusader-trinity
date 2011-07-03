@@ -33,10 +33,10 @@
 
 #include <kio/job.h>
 #include "preservingcopyjob.h"
-#include <qvaluelist.h>
-#include <qtimer.h>
-#include <qdict.h>
-#include <qmap.h>
+#include <tqvaluelist.h>
+#include <tqtimer.h>
+#include <tqdict.h>
+#include <tqmap.h>
 
 class vfs;
 
@@ -50,16 +50,17 @@ typedef enum {
 class VirtualCopyJob : public KIO::Job
 {
   Q_OBJECT
+  TQ_OBJECT
 
 public:
-  VirtualCopyJob( const QStringList *names, vfs * vfs, const KURL& dest, const KURL& baseURL,
+  VirtualCopyJob( const TQStringList *names, vfs * vfs, const KURL& dest, const KURL& baseURL,
                   PreserveMode pmode, KIO::CopyJob::CopyMode mode, bool asMethod, bool showProgressInfo );
 
 protected:
   void statNextDir();
   void createNextDir();
   void copyCurrentDir();
-  void directoryFinished( const QString & );
+  void directoryFinished( const TQString & );
   
 protected slots:
   void slotStart();
@@ -97,13 +98,13 @@ private:
   unsigned long            m_tempFiles;
   unsigned long            m_tempSubdirs;  
     
-  QValueList<KURL>         m_dirsToGetSize;
+  TQValueList<KURL>         m_dirsToGetSize;
   
-  QDict<KURL::List>        m_filesToCopy;
+  TQDict<KURL::List>        m_filesToCopy;
   
-  QMap<QString,int>        m_size;
-  QMap<QString,int>        m_filenum;
-  QMap<QString,int>        m_subdirs;
+  TQMap<TQString,int>        m_size;
+  TQMap<TQString,int>        m_filenum;
+  TQMap<TQString,int>        m_subdirs;
   
   KURL                     m_baseURL;
   KURL                     m_dest;
@@ -114,12 +115,12 @@ private:
   
   State                    m_state;
   
-  QTimer                   m_reportTimer;
+  TQTimer                   m_reportTimer;
   
   KURL                     m_current;
-  QString                  m_currentDir;
+  TQString                  m_currentDir;
   
-  QStringList              m_dirStack;
+  TQStringList              m_dirStack;
 };
 
 #endif /* __VIRTUAL_COPY_JOB_H__ */

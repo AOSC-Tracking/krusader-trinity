@@ -33,24 +33,24 @@
 
 #include <unistd.h>
 #include <time.h>
-#include <qeventloop.h>
+#include <tqeventloop.h>
 #include <kapplication.h>
 #include <klargefile.h>
-#include <qdir.h>
+#include <tqdir.h>
 #include "vfs.h"
 #include "../krusader.h"
 #include "../defaults.h"
 
-vfs::vfs(QObject* panel, bool quiet): vfs_busy(false), quietMode(quiet),disableRefresh(false),postponedRefreshURL(),
-                                      invalidated(true),panelConnected(false),vfs_tempFilesP(0),vfileIterator(0),deletePossible( true ),
+vfs::vfs(TQObject* panel, bool quiet): vfs_busy(false), quietMode(quiet),disableRefresh(false),postponedRefreshURL(),
+                                      tqinvalidated(true),panelConnected(false),vfs_tempFilesP(0),vfileIterator(0),deletePossible( true ),
                                       deleteRequested( false ) {
 		
 
 	setVfsFilesP( new vfileDict() );
 	if ( panel ){
 		panelConnected = true;
-		connect(this,SIGNAL(startUpdate()),panel,SLOT(slotStartUpdate()));
-		connect(this,SIGNAL(incrementalRefreshFinished( const KURL& )),panel,SLOT(slotGetStats( const KURL& )));
+		connect(this,TQT_SIGNAL(startUpdate()),panel,TQT_SLOT(slotStartUpdate()));
+		connect(this,TQT_SIGNAL(incrementalRefreshFinished( const KURL& )),panel,TQT_SLOT(slotGetStats( const KURL& )));
 	}
 	else quietMode = true;
 }
@@ -82,28 +82,28 @@ bool vfs::vfs_refresh(KIO::Job* job){
 	return vfs_refresh(vfs_origin);
 }
 
-KURL vfs::fromPathOrURL( const QString &originIn )
+KURL vfs::fromPathOrURL( const TQString &originIn )
 {
-  QString password, loginName, origin = originIn;
+  TQString password, loginName, origin = originIn;
   bool bugfix = false;
   
-  if ( originIn.contains( ":/" ) && !originIn.startsWith( "/" ) )
+  if ( originIn.tqcontains( ":/" ) && !originIn.startsWith( "/" ) )
   {
     // breakdown the url;
     /* FIXME: untill KDE fixes the bug we have to check for
        passwords and users with @ in them... */
-    bugfix = origin.find("@") != origin.findRev("@");
+    bugfix = origin.tqfind("@") != origin.tqfindRev("@");
     if(bugfix){
-      if(origin.find(":") != origin.findRev(":", origin.findRev("@") )){
-        int passStart = origin.find( ":",origin.find(":")+1 )+1;
-        int passLen = origin.findRev("@")-passStart;
+      if(origin.tqfind(":") != origin.tqfindRev(":", origin.tqfindRev("@") )){
+        int passStart = origin.tqfind( ":",origin.tqfind(":")+1 )+1;
+        int passLen = origin.tqfindRev("@")-passStart;
         password = origin.mid(passStart,passLen);
         origin = origin.remove(passStart-1,passLen+1);
       }
-      if(origin.find("@") != origin.findRev("@")){
-        int usrStart = origin.find( "/" )+1;
+      if(origin.tqfind("@") != origin.tqfindRev("@")){
+        int usrStart = origin.tqfind( "/" )+1;
         if(origin.at(usrStart) == '/') ++usrStart;
-        int usrLen = origin.findRev("@")-usrStart;
+        int usrLen = origin.tqfindRev("@")-usrStart;
         loginName = origin.mid(usrStart,usrLen);
         origin = origin.remove(usrStart,usrLen+1);
       }
@@ -120,7 +120,7 @@ KURL vfs::fromPathOrURL( const QString &originIn )
   return url;
 }
 
-QString vfs::pathOrURL( const KURL &originIn, int trailingSlash )
+TQString vfs::pathOrURL( const KURL &originIn, int trailingSlash )
 {
   if( originIn.isLocalFile() )
     return originIn.path( trailingSlash );
@@ -133,14 +133,14 @@ void vfs::setVfsFilesP(vfileDict* dict){
 	vfs_tempFilesP->setAutoDelete( true );
 	dict->setAutoDelete(true);
 	if( vfileIterator ) delete vfileIterator;
-	vfileIterator = new QDictIterator<vfile>(*dict);
+	vfileIterator = new TQDictIterator<vfile>(*dict);
 }
 
 bool vfs::vfs_refresh(){ 
 	if( vfs_busy )
 		return false;
 	
-	if( invalidated ) // invalidated fs requires total refresh
+	if( tqinvalidated ) // tqinvalidated fs requires total refresh
 		return vfs_refresh( vfs_getOrigin() );
 	
 	if( disableRefresh )
@@ -157,7 +157,7 @@ bool vfs::vfs_refresh(){
 	bool showHidden = krConfig->readBoolEntry("Show Hidden",_ShowHidden);
 	bool res = populateVfsList(vfs_getOrigin(),showHidden);
 
-	QString name;
+	TQString name;
 	if( res ){
 		// check if the maximum incremental refresh number is achieved
 		int diff = vfs_filesP->count() - vfs_tempFilesP->count();
@@ -196,7 +196,7 @@ bool vfs::vfs_refresh(){
 			vfs_tempFilesP->remove(name);
 		} 
 		// everything thats left is a new file
-		QDictIterator<vfile> it(*vfs_tempFilesP);
+		TQDictIterator<vfile> it(*vfs_tempFilesP);
 		for(vfile* vf=it.toFirst(); vf; vf=(++it)){
 			// sanity checking
 			if( !vf || (*vfs_filesP)[vf->vfile_getName()] ) continue;
@@ -227,7 +227,7 @@ bool vfs::vfs_refresh(const KURL& origin){
 		return true;
 	}
 
-	if( !invalidated && origin.equals(vfs_getOrigin(),true) ) return vfs_refresh();
+	if( !tqinvalidated && origin.equals(vfs_getOrigin(),true) ) return vfs_refresh();
 	
 	vfs_busy = true;
 	
@@ -249,7 +249,7 @@ bool vfs::vfs_refresh(const KURL& origin){
 	
 	emit startUpdate();
 	
-	invalidated = false;
+	tqinvalidated = false;
 	return true;
 }
 
@@ -271,7 +271,7 @@ bool vfs::vfs_processEvents() {
 	if( deleteRequested )
 		return false;        
 	deletePossible = false;
-	qApp->eventLoop() ->processEvents( QEventLoop::AllEvents | QEventLoop::WaitForMore );
+	tqApp->eventLoop() ->processEvents( TQEventLoop::AllEvents | TQEventLoop::WaitForMore );
 	deletePossible = true;        
 	if( deleteRequested ) {
 		emit deleteAllowed();
@@ -299,7 +299,7 @@ void vfs::slotKdsResult( KIO::Job* job){
 	*kds_busy = true;
 }
 
-void vfs::vfs_calcSpace( QString name , KIO::filesize_t* totalSize, unsigned long* totalFiles, unsigned long* totalDirs, bool* stop ) {
+void vfs::vfs_calcSpace( TQString name , KIO::filesize_t* totalSize, unsigned long* totalFiles, unsigned long* totalDirs, bool* stop ) {
 	calculateURLSize( vfs_getFile( name ), totalSize, totalFiles, totalDirs, stop );
 }        
         
@@ -316,7 +316,7 @@ void vfs::calculateURLSize( KURL url,  KIO::filesize_t* totalSize, unsigned long
 	} else {
 		stat_busy = true;
 		KIO::StatJob* statJob = KIO::stat( url, false );
-		connect( statJob, SIGNAL( result( KIO::Job* ) ), this, SLOT( slotStatResultArrived( KIO::Job* ) ) );
+		connect( statJob, TQT_SIGNAL( result( KIO::Job* ) ), this, TQT_SLOT( slotStatResultArrived( KIO::Job* ) ) );
 		while ( !(*stop) && stat_busy ) {usleep(1000);}
 		if( entry.isEmpty()  ) return; // statJob failed
 		KFileItem kfi(entry, url, true );        
@@ -328,19 +328,19 @@ void vfs::calculateURLSize( KURL url,  KIO::filesize_t* totalSize, unsigned long
 	}
 	
 	KDirSize* kds  = KDirSize::dirSizeJob( url );
-	connect( kds, SIGNAL( result( KIO::Job* ) ), this, SLOT( slotKdsResult( KIO::Job* ) ) );
+	connect( kds, TQT_SIGNAL( result( KIO::Job* ) ), this, TQT_SLOT( slotKdsResult( KIO::Job* ) ) );
 	while ( !(*stop) ){ 
 		// we are in a sepetate thread - so sleeping is OK
 		usleep(1000);
 	}
 }
 
-void vfs::vfs_calcSpaceLocal(QString name ,KIO::filesize_t *totalSize,unsigned long *totalFiles,unsigned long *totalDirs, bool* stop){
+void vfs::vfs_calcSpaceLocal(TQString name ,KIO::filesize_t *totalSize,unsigned long *totalFiles,unsigned long *totalDirs, bool* stop){
   if ( *stop ) return;
-  if (!name.contains("/")) name = vfs_workingDir()+"/"+name;
+  if (!name.tqcontains("/")) name = vfs_workingDir()+"/"+name;
   if (name == "/proc") return;
 
-  KDE_struct_stat stat_p;                // KDE lstat is necessary as QFileInfo and KFileItem 
+  KDE_struct_stat stat_p;                // KDE lstat is necessary as TQFileInfo and KFileItem 
   KDE_lstat(name.local8Bit(),&stat_p);   //         reports wrong size for a symbolic link
   
   if( S_ISLNK(stat_p.st_mode) || !S_ISDIR(stat_p.st_mode) ) { // single files are easy : )
@@ -353,16 +353,16 @@ void vfs::vfs_calcSpaceLocal(QString name ,KIO::filesize_t *totalSize,unsigned l
     if( !readable )
       return;
       
-    QDir dir(name);    
+    TQDir dir(name);    
     if ( !dir.exists() ) return;
     
     ++(*totalDirs);
-    dir.setFilter(QDir::All | QDir::System | QDir::Hidden);
-    dir.setSorting(QDir::Name | QDir::DirsFirst);
+    dir.setFilter(TQDir::All | TQDir::System | TQDir::Hidden);
+    dir.setSorting(TQDir::Name | TQDir::DirsFirst);
 
     // recurse on all the files in the directory
-    QFileInfoList* fileList = const_cast<QFileInfoList*>(dir.entryInfoList());
-    for (QFileInfo* qfiP = fileList->first(); qfiP != 0; qfiP = fileList->next()){
+    TQFileInfoList* fileList = const_cast<TQFileInfoList*>(dir.entryInfoList());
+    for (TQFileInfo* qfiP = fileList->first(); qfiP != 0; qfiP = fileList->next()){
       if ( *stop ) return;
       if (qfiP->fileName() != "." && qfiP->fileName() != "..")
         vfs_calcSpaceLocal(name+"/"+qfiP->fileName(),totalSize,totalFiles,totalDirs,stop);
@@ -379,11 +379,11 @@ void vfs::slotStatResultArrived( KIO::Job* job ) {
         
 #else
 void vfs::slotKdsResult(KIO::Job *job){/* empty */}
-void vfs::vfs_calcSpace( QString /*name*/ , KIO::filesize_t* /*totalSize*/, unsigned long* /*totalFiles*/, unsigned long* /*totalDirs*/, bool* /*stop*/ ) {/* empty*/}
+void vfs::vfs_calcSpace( TQString /*name*/ , KIO::filesize_t* /*totalSize*/, unsigned long* /*totalFiles*/, unsigned long* /*totalDirs*/, bool* /*stop*/ ) {/* empty*/}
 #endif
 
-QValueList<vfile*> vfs::vfs_search(const KRQuery& filter) {
-	QValueList<vfile*> result;
+TQValueList<vfile*> vfs::vfs_search(const KRQuery& filter) {
+	TQValueList<vfile*> result;
 	for ( vfile *vf = vfs_getFirstFile(); vf != 0 ; vf = vfs_getNextFile() )
 		if (filter.match(vf)) 
 			result.append(vf);

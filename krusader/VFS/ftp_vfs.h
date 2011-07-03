@@ -39,25 +39,26 @@
 
 class ftp_vfs : public vfs{
 	Q_OBJECT
+  TQ_OBJECT
 public:
 	// the constructor simply uses the inherited constructor
-	ftp_vfs(QObject* panel);
+	ftp_vfs(TQObject* panel);
 	~ftp_vfs();
 
 	/// Copy a file to the vfs (physical).
-	virtual void vfs_addFiles(KURL::List *fileUrls,KIO::CopyJob::CopyMode mode,QObject* toNotify,QString dir = "", PreserveMode pmode = PM_DEFAULT );
+	virtual void vfs_addFiles(KURL::List *fileUrls,KIO::CopyJob::CopyMode mode,TQObject* toNotify,TQString dir = "", PreserveMode pmode = PM_DEFAULT );
 	/// Remove a file from the vfs (physical)
-	virtual void vfs_delFiles(QStringList *fileNames);
+	virtual void vfs_delFiles(TQStringList *fileNames);
 	/// Return a list of URLs for multiple files
-	virtual KURL::List* vfs_getFiles(QStringList* names);
+	virtual KURL::List* vfs_getFiles(TQStringList* names);
 	/// Return a URL to a single file
-	virtual KURL vfs_getFile(const QString& name);
+	virtual KURL vfs_getFile(const TQString& name);
 	/// Create a new directory
-	virtual void vfs_mkdir(const QString& name);
+	virtual void vfs_mkdir(const TQString& name);
 	/// Rename file
-	virtual void vfs_rename(const QString& fileName,const QString& newName);
+	virtual void vfs_rename(const TQString& fileName,const TQString& newName);
 	/// Return the VFS working dir	
-	QString vfs_workingDir();
+	TQString vfs_workingDir();
 	
 public slots:
 	/// Handles new files from the dir lister

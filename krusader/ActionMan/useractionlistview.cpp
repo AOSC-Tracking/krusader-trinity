@@ -13,8 +13,8 @@
 
 #include <klocale.h>
 #include <kiconloader.h>
-#include <qptrlist.h>
-#include <qdom.h>
+#include <tqptrlist.h>
+#include <tqdom.h>
 
 #include "../krusader.h"
 #include "../UserAction/kraction.h"
@@ -28,15 +28,15 @@
 /////////////////////////////     UserActionListView    /////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////
 
-UserActionListView::UserActionListView( QWidget * parent, const char * name )
- : KListView( parent, name )
+UserActionListView::UserActionListView( TQWidget * tqparent, const char * name )
+ : KListView( tqparent, name )
 {
    addColumn( i18n("Title") );
    //addColumn( i18n("Identifier") );
-   setResizeMode( QListView::AllColumns );
+   setResizeMode( TQListView::AllColumns );
 
    setRootIsDecorated( true );
-   setSelectionMode( QListView::Extended ); // normaly select single items but one may use Ctrl or Shift to select multiple
+   setSelectionMode( TQListView::Extended ); // normaly select single items but one may use Ctrl or Shift to select multiple
    setSorting( COL_TITLE );
 
    update();
@@ -46,8 +46,8 @@ UserActionListView::~UserActionListView()
 {
 }
 
-QSize UserActionListView::sizeHint() const {
-   return QSize(200, 400);
+TQSize UserActionListView::tqsizeHint() const {
+   return TQSize(200, 400);
 }
 
 
@@ -83,7 +83,7 @@ UserActionListViewItem* UserActionListView::insertAction( KrAction* action ) {
    if ( action->category().isEmpty() )
       item = new UserActionListViewItem( this, action );
    else {
-      QListViewItem* categoryItem = findCategoryItem( action->category() );
+      TQListViewItem* categoryItem = findCategoryItem( action->category() );
       if ( ! categoryItem ) {
          categoryItem = new KListViewItem( this, action->category() ); // create the new category item it not already present
          categoryItem->setSelectable( false );
@@ -95,8 +95,8 @@ UserActionListViewItem* UserActionListView::insertAction( KrAction* action ) {
    return item;
 }
 
-QListViewItem* UserActionListView::findCategoryItem( const QString& category ) {
-   for ( QListViewItem* item = firstChild(); item; item = item->nextSibling() )
+TQListViewItem* UserActionListView::findCategoryItem( const TQString& category ) {
+   for ( TQListViewItem* item = firstChild(); item; item = item->nextSibling() )
       if ( item->text( COL_TITLE ) == category && item->text( COL_NAME ).isEmpty() ) // because actions must have a name, items without name haveto be categories
          return item;
 
@@ -104,7 +104,7 @@ QListViewItem* UserActionListView::findCategoryItem( const QString& category ) {
 }
 
 UserActionListViewItem* UserActionListView::findActionItem( const KrAction* action ) {
-   for ( QListViewItemIterator it( this ); it.current(); ++it ) {
+   for ( TQListViewItemIterator it( this ); it.current(); ++it ) {
       if ( UserActionListViewItem* item = dynamic_cast<UserActionListViewItem*>( it.current() ) ) {
          if ( item->action() == action )
             return item;
@@ -125,12 +125,12 @@ void UserActionListView::setCurrentAction( const KrAction* action) {
    if ( item ) {
       setCurrentItem( item );
 //       setSelected( item, true );
-//       repaintItem( item );
+//       tqrepaintItem( item );
    }
 }
 
 void UserActionListView::setFirstActionCurrent() {
-  for ( QListViewItemIterator it( this ); it.current(); ++it ) {
+  for ( TQListViewItemIterator it( this ); it.current(); ++it ) {
     if ( UserActionListViewItem* item = dynamic_cast<UserActionListViewItem*>( it.current() ) ) {
       setCurrentItem( item );
       break;
@@ -138,23 +138,23 @@ void UserActionListView::setFirstActionCurrent() {
   } //for
 }
 
-void UserActionListView::setCurrentItem( QListViewItem* item ) {
+void UserActionListView::setCurrentItem( TQListViewItem* item ) {
    if ( ! item )
       return;
    ensureItemVisible( item );
-   QListView::setCurrentItem( item );
+   TQListView::setCurrentItem( item );
 }
 
-QDomDocument UserActionListView::dumpSelectedActions( QDomDocument* mergeDoc ) const {
-   QPtrList<QListViewItem> list = selectedItems();
-   QDomDocument doc;
+TQDomDocument UserActionListView::dumpSelectedActions( TQDomDocument* mergeDoc ) const {
+   TQPtrList<TQListViewItem> list = selectedItems();
+   TQDomDocument doc;
    if ( mergeDoc )
       doc = *mergeDoc;
    else
       doc = UserAction::createEmptyDoc();
-   QDomElement root = doc.documentElement();
+   TQDomElement root = doc.documentElement();
 
-   for ( QListViewItem* item = list.first(); item; item = list.next() )
+   for ( TQListViewItem* item = list.first(); item; item = list.next() )
       if ( UserActionListViewItem* actionItem = dynamic_cast<UserActionListViewItem*>( item ) )
          root.appendChild( actionItem->action()->xmlDump( doc ) );
 
@@ -162,9 +162,9 @@ QDomDocument UserActionListView::dumpSelectedActions( QDomDocument* mergeDoc ) c
 }
 
 void UserActionListView::removeSelectedActions() {
-   QPtrList<QListViewItem> list = selectedItems();
+   TQPtrList<TQListViewItem> list = selectedItems();
 
-   for ( QListViewItem* item = list.first(); item; item = list.next() )
+   for ( TQListViewItem* item = list.first(); item; item = list.next() )
       if ( UserActionListViewItem* actionItem = dynamic_cast<UserActionListViewItem*>( item ) ) {
          delete actionItem->action(); // remove the action itself
          delete actionItem; // remove the action from the list
@@ -176,13 +176,13 @@ void UserActionListView::removeSelectedActions() {
 ////////////////////////////     UserActionListViewItem    ////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////
 
-UserActionListViewItem::UserActionListViewItem( QListView* view, KrAction* action )
+UserActionListViewItem::UserActionListViewItem( TQListView* view, KrAction* action )
  : KListViewItem( view )
 {
    setAction( action );
 }
 
-UserActionListViewItem::UserActionListViewItem( QListViewItem* item, KrAction * action )
+UserActionListViewItem::UserActionListViewItem( TQListViewItem* item, KrAction * action )
  : KListViewItem( item )
 {
    setAction( action );
@@ -190,9 +190,9 @@ UserActionListViewItem::UserActionListViewItem( QListViewItem* item, KrAction * 
 
 UserActionListViewItem::~UserActionListViewItem() {
 /*   // remove category-item if the last member ofthiscategory disappears
-   if ( QListViewItem* item = dynamic_cast<QListViewItem*>( parent() ) ) {
+   if ( TQListViewItem* item = dynamic_cast<TQListViewItem*>( tqparent() ) ) {
       if ( item->childCount() <= 1 )
-         item->deleteLater(); // not possible since not inherited from QObject
+         item->deleteLater(); // not possible since not inherited from TQObject
    }*/
 }
 
@@ -219,14 +219,14 @@ void UserActionListViewItem::update() {
    setText( COL_NAME, _action->name() );
 }
 
-int UserActionListViewItem::compare( QListViewItem* i, int col, bool ascending ) const {
+int UserActionListViewItem::compare( TQListViewItem* i, int col, bool ascending ) const {
 // FIXME some how this only produces bullshit :-/
 //   if ( i->text( COL_NAME ).isEmpty() ) { // categories only have titles
 //      //kdDebug() << "this->title: " << text(COL_TITLE) << " |=|   i->title: " << i->text(COL_TITLE)  << endl;
 //       return ( ascending ? -1 : 1 ); // <0 means this is smaller then i
 //    }
 //    else
-      return QListViewItem::compare( i, col, ascending );
+      return TQListViewItem::compare( i, col, ascending );
 }
 
 

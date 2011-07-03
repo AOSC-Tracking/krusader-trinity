@@ -1,13 +1,14 @@
 #ifndef KRBOOKMARK_BUTTON_H
 #define KRBOOKMARK_BUTTON_H
 
-#include <qtoolbutton.h>
+#include <tqtoolbutton.h>
 #include "krbookmarkhandler.h"
 
-class KrBookmarkButton: public QToolButton {
+class KrBookmarkButton: public TQToolButton {
 	Q_OBJECT
+  TQ_OBJECT
 public:
-	KrBookmarkButton(QWidget *parent);
+	KrBookmarkButton(TQWidget *tqparent);
 	void openPopup();
 
 signals:

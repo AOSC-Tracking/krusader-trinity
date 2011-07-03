@@ -32,11 +32,11 @@
 #include "../krusader.h"
 #include "../defaults.h"
 #include "../Dialogs/krdialogs.h"
-#include <qtabwidget.h>
+#include <tqtabwidget.h>
 #include <klocale.h>
-#include <qwhatsthis.h>
-#include <qvalidator.h>
-#include <qlistview.h>
+#include <tqwhatsthis.h>
+#include <tqvalidator.h>
+#include <tqlistview.h>
 #include <kmessagebox.h>
 #include <kfiledialog.h>
 #include <kglobal.h>
@@ -49,13 +49,13 @@
 #define PAGE_PANELTOOLBAR  2
 #define PAGE_MOUSE  3
 
-KgLookFeel::KgLookFeel( bool first, QWidget* parent,  const char* name ) :
-      KonfiguratorPage( first, parent, name )
+KgLookFeel::KgLookFeel( bool first, TQWidget* tqparent,  const char* name ) :
+      KonfiguratorPage( first, tqparent, name )
 {
-  QGridLayout *kgLookAndFeelLayout = new QGridLayout( parent );
+  TQGridLayout *kgLookAndFeelLayout = new TQGridLayout( tqparent );
   kgLookAndFeelLayout->setSpacing( 6 );
 
-  tabWidget = new QTabWidget( parent, "tabWidget" );
+  tabWidget = new TQTabWidget( tqparent, "tabWidget" );
 
   setupOperationTab();
   setupPanelTab();
@@ -69,16 +69,16 @@ KgLookFeel::KgLookFeel( bool first, QWidget* parent,  const char* name ) :
 //  ---------------------------- OPERATION TAB -------------------------------------
 // ---------------------------------------------------------------------------------------
 void KgLookFeel::setupOperationTab() {
-  QWidget *tab = new QWidget( tabWidget, "tab_operation" );
+  TQWidget *tab = new TQWidget( tabWidget, "tab_operation" );
   tabWidget->insertTab( tab, i18n( "Operation" ) );
 
-  QGridLayout *lookAndFeelLayout = new QGridLayout( tab );
+  TQGridLayout *lookAndFeelLayout = new TQGridLayout( tab );
   lookAndFeelLayout->setSpacing( 6 );
   lookAndFeelLayout->setMargin( 11 );
 
   // -------------- General -----------------
-  QGroupBox *lookFeelGrp = createFrame( i18n( "Look && Feel" ), tab, "kgLookAndFeelGrp" );
-  QGridLayout *lookFeelGrid = createGridLayout( lookFeelGrp->layout() );
+  TQGroupBox *lookFeelGrp = createFrame( i18n( "Look && Feel" ), tab, "kgLookAndFeelGrp" );
+  TQGridLayout *lookFeelGrid = createGridLayout( lookFeelGrp->tqlayout() );
 
   KONFIGURATOR_CHECKBOX_PARAM settings[] =
     { //   cfg_class  cfg_name                default             text                              restart tooltip
@@ -96,8 +96,8 @@ void KgLookFeel::setupOperationTab() {
   lookAndFeelLayout->addWidget( lookFeelGrp, 0, 0 );
 
   // -------------- Quicksearch -----------------
-  QGroupBox *quicksearchGroup = createFrame( i18n( "Quicksearch" ), tab, "kgQuicksearchGrp" );
-  QGridLayout *quicksearchGrid = createGridLayout( quicksearchGroup->layout() );
+  TQGroupBox *quicksearchGroup = createFrame( i18n( "Quicksearch" ), tab, "kgQuicksearchGrp" );
+  TQGridLayout *quicksearchGrid = createGridLayout( quicksearchGroup->tqlayout() );
 
   KONFIGURATOR_CHECKBOX_PARAM quicksearch[] =
    { //   cfg_class  cfg_name                default             text                              restart tooltip
@@ -107,7 +107,7 @@ void KgLookFeel::setupOperationTab() {
 
   quicksearchCheckboxes = createCheckBoxGroup( 2, 0, quicksearch, 2 /*count*/, quicksearchGroup, 0, PAGE_OPERATION );
   quicksearchGrid->addWidget( quicksearchCheckboxes, 0, 0 );
-  connect( quicksearchCheckboxes->find( "New Style Quicksearch" ), SIGNAL( stateChanged( int ) ), this, SLOT( slotDisable() ) );
+  connect( quicksearchCheckboxes->tqfind( "New Style Quicksearch" ), TQT_SIGNAL( stateChanged( int ) ), this, TQT_SLOT( slotDisable() ) );
   slotDisable();
 
   lookAndFeelLayout->addWidget( quicksearchGroup, 1, 0 );
@@ -117,23 +117,23 @@ void KgLookFeel::setupOperationTab() {
 //  ---------------------------- PANEL TAB -------------------------------------
 // ----------------------------------------------------------------------------------
 void KgLookFeel::setupPanelTab() {
-  QWidget* tab_panel = new QWidget( tabWidget, "tab_panel" );
+  TQWidget* tab_panel = new TQWidget( tabWidget, "tab_panel" );
   tabWidget->insertTab( tab_panel, i18n( "Panel" ) );
 
-  QGridLayout *panelLayout = new QGridLayout( tab_panel );
+  TQGridLayout *panelLayout = new TQGridLayout( tab_panel );
   panelLayout->setSpacing( 6 );
   panelLayout->setMargin( 11 );
-  QGroupBox *panelGrp = createFrame( i18n( "Panel settings" ), tab_panel, "kgPanelGrp" );
-  QGridLayout *panelGrid = createGridLayout( panelGrp->layout() );
+  TQGroupBox *panelGrp = createFrame( i18n( "Panel settings" ), tab_panel, "kgPanelGrp" );
+  TQGridLayout *panelGrid = createGridLayout( panelGrp->tqlayout() );
 
-  QHBox *hbox = new QHBox( panelGrp, "lookAndFeelHBox1" );
-  new QLabel( i18n( "Panel font:" ), hbox, "lookAndFeelLabel" );
+  TQHBox *hbox = new TQHBox( panelGrp, "lookAndFeelHBox1" );
+  new TQLabel( i18n( "Panel font:" ), hbox, "lookAndFeelLabel" );
   createFontChooser( "Look&Feel", "Filelist Font", _FilelistFont, hbox, true, PAGE_PANEL );
   createSpacer ( hbox );
   panelGrid->addWidget( hbox, 0, 0 );
 
-  QHBox *hbox2 = new QHBox( panelGrp, "lookAndFeelHBox2" );
-  QLabel *lbl1 = new QLabel( i18n( "Filelist icon size:" ), hbox2, "lookAndFeelLabel2" );
+  TQHBox *hbox2 = new TQHBox( panelGrp, "lookAndFeelHBox2" );
+  TQLabel *lbl1 = new TQLabel( i18n( "Filelist icon size:" ), hbox2, "lookAndFeelLabel2" );
   lbl1->setMinimumWidth( 230 );
   KONFIGURATOR_NAME_VALUE_PAIR iconSizes[] =
     {{ i18n( "16" ),  "16" },
@@ -141,7 +141,7 @@ void KgLookFeel::setupPanelTab() {
      { i18n( "32" ),  "32" },
      { i18n( "48" ),  "48" }};
   KonfiguratorComboBox *iconCombo = createComboBox( "Look&Feel", "Filelist Icon Size", _FilelistIconSize, iconSizes, 4, hbox2, true, true, PAGE_PANEL );
-  iconCombo->lineEdit()->setValidator( new QRegExpValidator( QRegExp( "[1-9]\\d{0,1}" ), iconCombo ) );
+  iconCombo->lineEdit()->setValidator( new TQRegExpValidator( TQRegExp( "[1-9]\\d{0,1}" ), TQT_TQOBJECT(iconCombo) ) );
   createSpacer ( hbox2 );
   panelGrid->addWidget( hbox2, 1, 0 );
 
@@ -168,8 +168,8 @@ void KgLookFeel::setupPanelTab() {
   
   panelGrid->addWidget( createLine( panelGrp, "lookSep4" ), 4, 0 );
   
-  QHBox *hbox3 = new QHBox( panelGrp, "lookAndFeelHBox3" );
-  QLabel *lbl2 = new QLabel( i18n( "Default panel type:" ), hbox3, "lookAndFeelLabel3" );
+  TQHBox *hbox3 = new TQHBox( panelGrp, "lookAndFeelHBox3" );
+  TQLabel *lbl2 = new TQLabel( i18n( "Default panel type:" ), hbox3, "lookAndFeelLabel3" );
   KONFIGURATOR_NAME_VALUE_PAIR panelTypes[] =
     {{ i18n( "Detailed" ),  "Detailed" },
      { i18n( "Brief" ),     "Brief" }};
@@ -184,10 +184,10 @@ void KgLookFeel::setupPanelTab() {
 //  -------------------------- Panel Toolbar TAB ----------------------------------
 // -----------------------------------------------------------------------------------
 void KgLookFeel::setupPanelToolbarTab() {
-  QWidget     *tab_4 = new QWidget( tabWidget, "tab_4" );
+  TQWidget     *tab_4 = new TQWidget( tabWidget, "tab_4" );
   tabWidget->insertTab( tab_4, i18n( "Panel Toolbar" ) );
 
-  QBoxLayout * panelToolbarVLayout = new QVBoxLayout( tab_4 );
+  TQBoxLayout * panelToolbarVLayout = new TQVBoxLayout( tab_4 );
   panelToolbarVLayout->setSpacing( 6 );
   panelToolbarVLayout->setMargin( 11 );
 
@@ -197,10 +197,10 @@ void KgLookFeel::setupPanelToolbarTab() {
   };
 
   panelToolbarActive = createCheckBoxGroup( 1, 0, panelToolbarActiveCheckbox, 1, tab_4, "panelToolbarActive", PAGE_PANELTOOLBAR);
-  connect( panelToolbarActive->find( "Panel Toolbar visible" ), SIGNAL( stateChanged( int ) ), this, SLOT( slotEnablePanelToolbar() ) );
+  connect( panelToolbarActive->tqfind( "Panel Toolbar visible" ), TQT_SIGNAL( stateChanged( int ) ), this, TQT_SLOT( slotEnablePanelToolbar() ) );
     
-  QGroupBox * panelToolbarGrp = createFrame( i18n( "Visible Panel Toolbar buttons" ), tab_4, "panelToolbarGrp");
-  QGridLayout * panelToolbarGrid = createGridLayout( panelToolbarGrp->layout() );
+  TQGroupBox * panelToolbarGrp = createFrame( i18n( "Visible Panel Toolbar buttons" ), tab_4, "panelToolbarGrp");
+  TQGridLayout * panelToolbarGrid = createGridLayout( panelToolbarGrp->tqlayout() );
 
   KONFIGURATOR_CHECKBOX_PARAM panelToolbarCheckboxes[] = 
     {
@@ -208,7 +208,7 @@ void KgLookFeel::setupPanelToolbarTab() {
      {"Look&Feel",  "Clear Location Bar Visible",  _ClearLocation,      i18n( "Clear location bar button" ),    true ,  i18n( "Clears the location bar" ) },
      {"Look&Feel",  "Open Button Visible",  _Open,      i18n( "Open button" ),     true ,  i18n( "Opens the directory browser." ) },
      {"Look&Feel",  "Equal Button Visible", _cdOther,   i18n( "Equal button (=)" ),true ,  i18n( "Changes the panel directory to the other panel directory." ) },
-     {"Look&Feel",  "Up Button Visible",    _cdUp,      i18n( "Up button (..)" ),  true ,  i18n( "Changes the panel directory to the parent directory." ) },
+     {"Look&Feel",  "Up Button Visible",    _cdUp,      i18n( "Up button (..)" ),  true ,  i18n( "Changes the panel directory to the tqparent directory." ) },
      {"Look&Feel",  "Home Button Visible",  _cdHome,    i18n( "Home button (~)" ), true ,  i18n( "Changes the panel directory to the home directory." ) },
      {"Look&Feel",  "Root Button Visible",  _cdRoot,    i18n( "Root button (/)" ), true ,  i18n( "Changes the panel directory to the root directory." ) },
      {"Look&Feel",  "SyncBrowse Button Visible",  _syncBrowseButton,    i18n( "Toggle-button for sync-browsing" ), true ,  i18n( "Each directory change in the panel is also performed in the other panel." ) },
@@ -230,15 +230,15 @@ void KgLookFeel::setupPanelToolbarTab() {
 //  -------------------------- Mouse TAB ----------------------------------
 // ---------------------------------------------------------------------------
 void KgLookFeel::setupMouseModeTab() {
-  QWidget *tab_mouse = new QWidget( tabWidget, "tab_mouse" );
+  TQWidget *tab_mouse = new TQWidget( tabWidget, "tab_mouse" );
   tabWidget->insertTab( tab_mouse, i18n( "Selection Mode" ) );
-  QGridLayout *mouseLayout = new QGridLayout( tab_mouse );
+  TQGridLayout *mouseLayout = new TQGridLayout( tab_mouse );
   mouseLayout->setSpacing( 6 );
   mouseLayout->setMargin( 11 );
 
   // -------------- General -----------------
-  QGroupBox *mouseGeneralGroup = createFrame( i18n( "General" ), tab_mouse, "mouseGeneralGroup" );
-  QGridLayout *mouseGeneralGrid = createGridLayout( mouseGeneralGroup->layout() );
+  TQGroupBox *mouseGeneralGroup = createFrame( i18n( "General" ), tab_mouse, "mouseGeneralGroup" );
+  TQGridLayout *mouseGeneralGrid = createGridLayout( mouseGeneralGroup->tqlayout() );
   mouseGeneralGrid->setSpacing( 0 );
   mouseGeneralGrid->setMargin( 5 );
 
@@ -251,15 +251,15 @@ void KgLookFeel::setupMouseModeTab() {
      	{ i18n( "Custom Selection Mode" ), "3", i18n( "Design your own selection mode!" ) }
      };
   mouseRadio = createRadioButtonGroup( "Look&Feel", "Mouse Selection", "0", 2, 2, mouseSelection, 4, mouseGeneralGroup, "myLook&FeelRadio", true, PAGE_MOUSE );
-  mouseRadio->layout()->setMargin( 0 );
+  mouseRadio->tqlayout()->setMargin( 0 );
   mouseGeneralGrid->addWidget( mouseRadio, 0, 0 );
-  connect( mouseRadio, SIGNAL( clicked(int) ), SLOT( slotSelectionModeChanged() ) );
+  connect( mouseRadio, TQT_SIGNAL( clicked(int) ), TQT_SLOT( slotSelectionModeChanged() ) );
 
   mouseLayout->addMultiCellWidget( mouseGeneralGroup, 0,0, 0,1 );
 
   // -------------- Details -----------------
-  QGroupBox *mouseDetailGroup = createFrame( i18n( "Details" ), tab_mouse, "mouseDetailGroup" );
-  QGridLayout *mouseDetailGrid = createGridLayout( mouseDetailGroup->layout() );
+  TQGroupBox *mouseDetailGroup = createFrame( i18n( "Details" ), tab_mouse, "mouseDetailGroup" );
+  TQGridLayout *mouseDetailGrid = createGridLayout( mouseDetailGroup->tqlayout() );
   mouseDetailGrid->setSpacing( 0 );
   mouseDetailGrid->setMargin( 5 );
 
@@ -270,7 +270,7 @@ void KgLookFeel::setupMouseModeTab() {
     	{ i18n( "Obey KDE's global selection policy" ), "1", i18n( "<p>Use KDE's global setting:</p><p><i>KDE Control Center -> Peripherals -> Mouse</i></p>" ) }
     };
   KonfiguratorRadioButtons *clickRadio = createRadioButtonGroup( "Look&Feel", "Single Click Selects", "0", 1, 0, singleOrDoubleClick, 2, mouseDetailGroup, "myLook&FeelRadio0", true, PAGE_MOUSE );
-  clickRadio->layout()->setMargin( 0 );
+  clickRadio->tqlayout()->setMargin( 0 );
   mouseDetailGrid->addWidget( clickRadio, 0, 0 );
   
   KONFIGURATOR_CHECKBOX_PARAM mouseCheckboxesParam[] = 
@@ -278,7 +278,7 @@ void KgLookFeel::setupMouseModeTab() {
      // {cfg_class,   cfg_name,   default
      // 	text,  restart,
      // 	tooltip }
-     {"Custom Selection Mode",  "QT Selection",  _QtSelection,
+     {"Custom Selection Mode",  "QT Selection",  _TQtSelection,
      	i18n( "Based on KDE's selection mode" ), true,
      	i18n( "If checked, use a mode based on KDE's style." ) },
      {"Custom Selection Mode",  "Left Selects",  _LeftSelects,
@@ -323,10 +323,10 @@ void KgLookFeel::setupMouseModeTab() {
   slotSelectionModeChanged();
 
   // -------------- Preview -----------------
-  QGroupBox *mousePreviewGroup = createFrame( i18n( "Preview" ), tab_mouse, "mousePreviewGroup" );
-  QGridLayout *mousePreviewGrid = createGridLayout( mousePreviewGroup->layout() );
+  TQGroupBox *mousePreviewGroup = createFrame( i18n( "Preview" ), tab_mouse, "mousePreviewGroup" );
+  TQGridLayout *mousePreviewGrid = createGridLayout( mousePreviewGroup->tqlayout() );
   // TODO preview
-  mousePreview = new QListView( mousePreviewGroup, "mousePreview" );
+  mousePreview = new TQListView( mousePreviewGroup, "mousePreview" );
   mousePreviewGrid->addWidget( mousePreview, 0 ,0 );
   mousePreviewGroup->setEnabled(false); // TODO re-enable once the preview is implemented
   // ------------------------------------------
@@ -335,34 +335,34 @@ void KgLookFeel::setupMouseModeTab() {
 
 void KgLookFeel::slotDisable()
 {
-  bool isNewStyleQuickSearch = quicksearchCheckboxes->find( "New Style Quicksearch" )->isChecked();
-  quicksearchCheckboxes->find( "Case Sensitive Quicksearch" )->setEnabled( isNewStyleQuickSearch );
+  bool isNewStyleQuickSearch = quicksearchCheckboxes->tqfind( "New Style Quicksearch" )->isChecked();
+  quicksearchCheckboxes->tqfind( "Case Sensitive Quicksearch" )->setEnabled( isNewStyleQuickSearch );
 }
 
 void KgLookFeel::slotEnablePanelToolbar()
 {
-  bool enableTB = panelToolbarActive->find("Panel Toolbar visible")->isChecked();
-  pnlcbs->find( "Root Button Visible"     )->setEnabled(enableTB);
-  pnlcbs->find( "Home Button Visible"     )->setEnabled(enableTB);
-  pnlcbs->find( "Up Button Visible"       )->setEnabled(enableTB);
-  pnlcbs->find( "Equal Button Visible"    )->setEnabled(enableTB);
-  pnlcbs->find( "Open Button Visible"     )->setEnabled(enableTB);  
-  pnlcbs->find("SyncBrowse Button Visible")->setEnabled(enableTB);  
+  bool enableTB = panelToolbarActive->tqfind("Panel Toolbar visible")->isChecked();
+  pnlcbs->tqfind( "Root Button Visible"     )->setEnabled(enableTB);
+  pnlcbs->tqfind( "Home Button Visible"     )->setEnabled(enableTB);
+  pnlcbs->tqfind( "Up Button Visible"       )->setEnabled(enableTB);
+  pnlcbs->tqfind( "Equal Button Visible"    )->setEnabled(enableTB);
+  pnlcbs->tqfind( "Open Button Visible"     )->setEnabled(enableTB);  
+  pnlcbs->tqfind("SyncBrowse Button Visible")->setEnabled(enableTB);  
 }
 
 void KgLookFeel::slotSelectionModeChanged() {
-  bool enable = mouseRadio->find( i18n("Custom Selection Mode") )->isChecked();
-  mouseCheckboxes->find( "QT Selection" )->setEnabled( enable );
-  mouseCheckboxes->find( "Left Selects" )->setEnabled( enable );
-  mouseCheckboxes->find( "Left Preserves" )->setEnabled( enable );
-  mouseCheckboxes->find( "ShiftCtrl Left Selects" )->setEnabled( enable );
-  mouseCheckboxes->find( "Right Selects" )->setEnabled( enable );
-  mouseCheckboxes->find( "Right Preserves" )->setEnabled( enable );
-  mouseCheckboxes->find( "ShiftCtrl Right Selects" )->setEnabled( enable );
-  mouseCheckboxes->find( "Space Moves Down" )->setEnabled( enable );
-  mouseCheckboxes->find( "Space Calc Space" )->setEnabled( enable );
-  mouseCheckboxes->find( "Insert Moves Down" )->setEnabled( enable );
-  mouseCheckboxes->find( "Immediate Context Menu" )->setEnabled( enable );
+  bool enable = mouseRadio->tqfind( i18n("Custom Selection Mode") )->isChecked();
+  mouseCheckboxes->tqfind( "QT Selection" )->setEnabled( enable );
+  mouseCheckboxes->tqfind( "Left Selects" )->setEnabled( enable );
+  mouseCheckboxes->tqfind( "Left Preserves" )->setEnabled( enable );
+  mouseCheckboxes->tqfind( "ShiftCtrl Left Selects" )->setEnabled( enable );
+  mouseCheckboxes->tqfind( "Right Selects" )->setEnabled( enable );
+  mouseCheckboxes->tqfind( "Right Preserves" )->setEnabled( enable );
+  mouseCheckboxes->tqfind( "ShiftCtrl Right Selects" )->setEnabled( enable );
+  mouseCheckboxes->tqfind( "Space Moves Down" )->setEnabled( enable );
+  mouseCheckboxes->tqfind( "Space Calc Space" )->setEnabled( enable );
+  mouseCheckboxes->tqfind( "Insert Moves Down" )->setEnabled( enable );
+  mouseCheckboxes->tqfind( "Immediate Context Menu" )->setEnabled( enable );
 }
 
 int KgLookFeel::activeSubPage() {

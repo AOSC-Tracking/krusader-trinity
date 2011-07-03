@@ -34,10 +34,10 @@
 #define KCMDLINE_H
 
 // QT includes
-#include <qwidget.h>
-#include <qlabel.h>
-#include <qlayout.h>
-#include <qtoolbutton.h>
+#include <tqwidget.h>
+#include <tqlabel.h>
+#include <tqlayout.h>
+#include <tqtoolbutton.h>
 
 // KDE includes
 #include <klineedit.h>
@@ -50,30 +50,32 @@ class KCMDModeButton;
 
 class KrHistoryCombo: public KHistoryCombo {
   Q_OBJECT
+  TQ_OBJECT
 
   public:
-    KrHistoryCombo(QWidget *parent): KHistoryCombo(parent) {}
+    KrHistoryCombo(TQWidget *tqparent): KHistoryCombo(tqparent) {}
 
   protected:
-    void keyPressEvent( QKeyEvent *e );
+    void keyPressEvent( TQKeyEvent *e );
 
   signals:
     void returnToPanel();
 };
 
-class KCMDLine : public QWidget, KrActionBase {
+class KCMDLine : public TQWidget, KrActionBase {
     Q_OBJECT
+  TQ_OBJECT
   public:
-    KCMDLine( QWidget *parent = 0, const char *name = 0 );
+    KCMDLine( TQWidget *tqparent = 0, const char *name = 0 );
     ~KCMDLine();
-    void setCurrent( const QString & );
+    void setCurrent( const TQString & );
     //virtual methods from KrActionBase
-    void setText(QString text);
-    QString command() const;
+    void setText(TQString text);
+    TQString command() const;
     ExecType execType() const;
-    QString startpath() const;
-    QString user() const;
-    QString text() const;
+    TQString startpath() const;
+    TQString user() const;
+    TQString text() const;
     bool acceptURLs() const;
     bool confirmExecution() const;
     bool doSubstitution() const;
@@ -84,15 +86,15 @@ class KCMDLine : public QWidget, KrActionBase {
     void slotReturnFocus(); // returns keyboard focus to panel
     void slotRun();
     void addPlaceholder();
-    void addText( QString text ) { cmdLine->setCurrentText( cmdLine->currentText() + text ); }
+    void addText( TQString text ) { cmdLine->setCurrentText( cmdLine->currentText() + text ); }
     void popup() { cmdLine->popup(); }
 
 
   private:
-    QLabel *path;
+    TQLabel *path;
     KrHistoryCombo *cmdLine;
     KCMDModeButton *terminal;
-    QToolButton *buttonAddPlaceholder;
+    TQToolButton *buttonAddPlaceholder;
     KShellCompletion completion;
 };
 

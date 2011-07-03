@@ -4,10 +4,10 @@
 #include <kcursor.h>        //ctor
 #include <klocale.h>
 #include <kurl.h>
-#include <qapplication.h>   //sendEvent
-#include <qbitmap.h>        //ctor - finding cursor size
-#include <qcursor.h>        //slotPostMouseEvent()
-#include <qtimer.h>         //member
+#include <tqapplication.h>   //sendEvent
+#include <tqbitmap.h>        //ctor - finding cursor size
+#include <tqcursor.h>        //slotPostMouseEvent()
+#include <tqtimer.h>         //member
 
 #include "Config.h"
 #include "debug.h"
@@ -17,25 +17,25 @@
 
 
 
-RadialMap::Widget::Widget( QWidget *parent, const char *name )
-   : QWidget( parent, name, Qt::WNoAutoErase )
+RadialMap::Widget::Widget( TQWidget *tqparent, const char *name )
+   : TQWidget( tqparent, name, TQt::WNoAutoErase )
    , m_tree( 0 )
    , m_focus( 0 )
    , m_tip( KCursor::handCursor().bitmap()->height() ) //needs to know cursor height
    , m_rootSegment( 0 ) //TODO we don't delete it, *shrug*
 {
-   setBackgroundColor( Qt::white );
+   setBackgroundColor( TQt::white );
 
-   connect( this, SIGNAL(created( const Directory* )), SLOT(sendFakeMouseEvent()) );
-   connect( this, SIGNAL(created( const Directory* )), SLOT(update()) );
-   connect( &m_timer, SIGNAL(timeout()), SLOT(resizeTimeout()) );
+   connect( this, TQT_SIGNAL(created( const Directory* )), TQT_SLOT(sendFakeMouseEvent()) );
+   connect( this, TQT_SIGNAL(created( const Directory* )), TQT_SLOT(update()) );
+   connect( &m_timer, TQT_SIGNAL(timeout()), TQT_SLOT(resizeTimeout()) );
 }
 
-QString
+TQString
 RadialMap::Widget::path() const
 {
    if( m_tree == 0 )
-      return QString::null;
+      return TQString();
    return m_tree->fullPath();
 }
 
@@ -49,11 +49,11 @@ RadialMap::Widget::url( File const * const file ) const
 }
 
 void
-RadialMap::Widget::invalidate( const bool b )
+RadialMap::Widget::tqinvalidate( const bool b )
 {
    if( isValid() )
    {
-      //**** have to check that only way to invalidate is this function frankly
+      //**** have to check that only way to tqinvalidate is this function frankly
       //**** otherwise you may get bugs..
 
       //disable mouse tracking
@@ -70,22 +70,22 @@ RadialMap::Widget::invalidate( const bool b )
 
       //FIXME move this disablement thing no?
       //      it is confusing in other areas, like the whole createFromCache() thing
-      m_map.invalidate( b ); //b signifies whether the pixmap is made to look disabled or not
+      m_map.tqinvalidate( b ); //b signifies whether the pixmap is made to look disabled or not
       if( b )
          update();
 
       //tell rest of Filelight
-      emit invalidated( urlInv );
+      emit tqinvalidated( urlInv );
    }
 }
 
 void
 RadialMap::Widget::create( const Directory *tree )
 {
-   //it is not the responsibility of create() to invalidate first
+   //it is not the responsibility of create() to tqinvalidate first
    //skip invalidation at your own risk
 
-   //FIXME make it the responsibility of create to invalidate first
+   //FIXME make it the responsibility of create to tqinvalidate first
 
    if( tree )
    {
@@ -108,16 +108,16 @@ RadialMap::Widget::create( const Directory *tree )
 void
 RadialMap::Widget::createFromCache( const Directory *tree )
 {
-    //no scan was necessary, use cached tree, however we MUST still emit invalidate
-    invalidate( false );
+    //no scan was necessary, use cached tree, however we MUST still emit tqinvalidate
+    tqinvalidate( false );
     create( tree );
 }
 
 void
 RadialMap::Widget::sendFakeMouseEvent() //slot
 {
-   QMouseEvent me( QEvent::MouseMove, mapFromGlobal( QCursor::pos() ), Qt::NoButton, Qt::NoButton );
-   QApplication::sendEvent( this, &me );
+   TQMouseEvent me( TQEvent::MouseMove, mapFromGlobal( TQCursor::pos() ), Qt::NoButton, Qt::NoButton );
+   TQApplication::sendEvent( this, &me );
 }
 
 void

@@ -9,46 +9,47 @@
 #ifndef NEWFTPGUI_H
 #define NEWFTPGUI_H
 
-#include <qvariant.h>
-#include <qdialog.h>
-class QVBoxLayout; 
-class QHBoxLayout; 
-class QGridLayout; 
-class QLabel;
-class QLineEdit;
-class QPushButton;
-class QSpinBox;
+#include <tqvariant.h>
+#include <tqdialog.h>
+class TQVBoxLayout; 
+class TQHBoxLayout; 
+class TQGridLayout; 
+class TQLabel;
+class TQLineEdit;
+class TQPushButton;
+class TQSpinBox;
 class KComboBox;
 class KHistoryCombo;
 
-class newFTPGUI : public QDialog {
+class newFTPGUI : public TQDialog {
     Q_OBJECT
+  TQ_OBJECT
 public:
-    newFTPGUI( QWidget* parent = 0, const char* name = 0, bool modal = FALSE, WFlags fl = 0 );
+    newFTPGUI( TQWidget* tqparent = 0, const char* name = 0, bool modal = FALSE, WFlags fl = 0 );
     ~newFTPGUI();
 
-    QLabel* TextLabel1;
+    TQLabel* TextLabel1;
     KComboBox* prefix;
-    QLabel* TextLabel1_2_2;
-	 QLabel* TextLabel1_22;
-    QLabel* TextLabel1_2;
-    QLabel* TextLabel1_3;
-    QSpinBox* port;
-    QLineEdit* password;
-    QPushButton* connectBtn;
-    QPushButton* saveBtn;
-    QPushButton* cancelBtn;
-    QLabel* PixmapLabel1;
-    QLabel* TextLabel3;
-    QLineEdit* username;
+    TQLabel* TextLabel1_2_2;
+	 TQLabel* TextLabel1_22;
+    TQLabel* TextLabel1_2;
+    TQLabel* TextLabel1_3;
+    TQSpinBox* port;
+    TQLineEdit* password;
+    TQPushButton* connectBtn;
+    TQPushButton* saveBtn;
+    TQPushButton* cancelBtn;
+    TQLabel* PixmapLabel1;
+    TQLabel* TextLabel3;
+    TQLineEdit* username;
     KHistoryCombo* url;
 
 public slots:
-    void slotTextChanged(const QString& string);
+    void slotTextChanged(const TQString& string);
 
 protected:
-    QHBoxLayout* hbox;
-    bool event( QEvent* );
+    TQHBoxLayout* hbox;
+    bool event( TQEvent* );
 };
 
 #endif // NEWFTPGUI_H

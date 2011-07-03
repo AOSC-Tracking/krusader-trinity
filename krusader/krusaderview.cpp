@@ -28,8 +28,8 @@
 *                                                                         *
 ***************************************************************************/
 
-// Qt includes
-#include <qwhatsthis.h> 
+// TQt includes
+#include <tqwhatsthis.h> 
 #include <kstatusbar.h>
 #include <kmenubar.h>
 #include <kshortcut.h>
@@ -48,23 +48,23 @@
 #include "GUI/profilemanager.h"
 #include "Dialogs/percentalsplitter.h"
 #include "krservices.h"
-#include <qclipboard.h>
+#include <tqclipboard.h>
 
-KrusaderView::KrusaderView( QWidget *parent ) : QWidget( parent, "KrusaderView" ), activePanel(0), 
+KrusaderView::KrusaderView( TQWidget *tqparent ) : TQWidget( tqparent, "KrusaderView" ), activePanel(0), 
 								konsole_part( 0L ) {}
 
-void KrusaderView::start( QStringList leftTabs, QStringList leftTypes, QValueList<int> leftProps, int leftActiveTab,
-                          QStringList rightTabs, QStringList rightTypes, QValueList<int> rightProps, int rightActiveTab, 
+void KrusaderView::start( TQStringList leftTabs, TQStringList leftTypes, TQValueList<int> leftProps, int leftActiveTab,
+                          TQStringList rightTabs, TQStringList rightTypes, TQValueList<int> rightProps, int rightActiveTab, 
                           bool leftSideActive ) {
   ////////////////////////////////
   // make a 1x1 mainLayout, it will auto-expand:
-  mainLayout = new QGridLayout( this, 1, 1 );
+  mainLayout = new TQGridLayout( this, 1, 1 );
   // vertical splitter
-  vert_splitter = new QSplitter( this ); // splits between panels and terminal/cmdline
-  vert_splitter->setOrientation( QObject::Vertical );
+  vert_splitter = new TQSplitter( this ); // splits between panels and terminal/cmdline
+  vert_splitter->setOrientation( Qt::Vertical );
   // horizontal splitter
   horiz_splitter = new PercentalSplitter( vert_splitter );
-  ( terminal_dock = new QHBox( vert_splitter ) ) ->hide(); // create it hidden
+  ( terminal_dock = new TQHBox( vert_splitter ) ) ->hide(); // create it hidden
   // create a command line thing
   cmdLine = new KCMDLine( this );
 
@@ -84,11 +84,11 @@ void KrusaderView::start( QStringList leftTabs, QStringList leftTypes, QValueLis
   // create the function keys widget
   fnKeys = new KFnKeys( this );
   fnKeys->hide();
-  QWhatsThis::add
+  TQWhatsThis::add
     ( fnKeys, i18n( "Function keys allow performing fast "
                     "operations on files." ) );
 
-  // and insert the whole thing into the main layout... at last
+  // and insert the whole thing into the main tqlayout... at last
   mainLayout->addWidget( vert_splitter, 0, 0 );  //<>
   mainLayout->addWidget( cmdLine, 1, 0 );
   mainLayout->addWidget( fnKeys, 2, 0 );
@@ -96,7 +96,7 @@ void KrusaderView::start( QStringList leftTabs, QStringList leftTypes, QValueLis
 
   // get the last saved sizes of the splitter
   krConfig->setGroup( "Private" );
-  QValueList<int> lst = krConfig->readIntListEntry( "Splitter Sizes" );
+  TQValueList<int> lst = krConfig->readIntListEntry( "Splitter Sizes" );
   if ( lst.isEmpty() )
   {
     lst = horiz_splitter->sizes();
@@ -109,7 +109,7 @@ void KrusaderView::start( QStringList leftTabs, QStringList leftTypes, QValueLis
     
   show();
 
-  qApp->processEvents();
+  tqApp->processEvents();
   
   // make the left panel focused at program start
   rightMng->startPanel( right, rightTabs[ 0 ] );
@@ -136,7 +136,7 @@ void KrusaderView::start( QStringList leftTabs, QStringList leftTypes, QValueLis
 
 // updates the command line whenever current panel changes
 //////////////////////////////////////////////////////////
-void KrusaderView::slotCurrentChanged( QString p ) {
+void KrusaderView::slotCurrentChanged( TQString p ) {
   cmdLine->setCurrent( p );
   if ( konsole_part != 0L && konsole_part->widget() != 0L ) {
 	 KConfigGroupSaver grp(krConfig, "General");
@@ -159,17 +159,17 @@ void KrusaderView::createTE() {
   if ( konsole_part == 0L ) {  // konsole part is not yet loaded
     KLibFactory * factory = KLibLoader::self() ->factory( "libkonsolepart" );
     if ( factory ) {
-      QWidget *focusW = qApp->focusWidget();
+      TQWidget *focusW = tqApp->tqfocusWidget();
       // Create the part
       konsole_part = ( KParts::ReadOnlyPart * )
-                          factory->create( terminal_dock, "konsolepart",
+                          factory->create( TQT_TQOBJECT(terminal_dock), "konsolepart",
                                            "KParts::ReadOnlyPart" );
       if( konsole_part ) { //loaded successfully
-        connect( konsole_part, SIGNAL( destroyed() ),
-                 this, SLOT( killTerminalEmulator() ) );
-        qApp->installEventFilter( this );
+        connect( konsole_part, TQT_SIGNAL( destroyed() ),
+                 this, TQT_SLOT( killTerminalEmulator() ) );
+        tqApp->installEventFilter( this );
       } else {
-        qApp->removeEventFilter( this );
+        tqApp->removeEventFilter( this );
       }
       /*the Terminal Emulator may be hidden (if we are creating it only
         to send command there and see the results later */
@@ -203,7 +203,7 @@ void KrusaderView::slotTerminalEmulator( bool show ) {
       verticalSplitterSizes = vert_splitter->sizes();
 
     // BUGFIX: when the terminal emulator is toggled on, first it is shown in minimum size
-    //         then QSplitter resizes it to the desired size.
+    //         then TQSplitter resizes it to the desired size.
     //         this minimum resize scrolls up the content of the konsole widget
     // SOLUTION:
     //         we hide the console widget while the resize ceremony happens, then reenable it
@@ -211,7 +211,7 @@ void KrusaderView::slotTerminalEmulator( bool show ) {
       konsole_part->widget()->hide(); // hide the widget to prevent from resize
 
     terminal_dock->hide();
-    QValueList<int> newSizes;
+    TQValueList<int> newSizes;
     newSizes.push_back( vert_splitter->height() );
     newSizes.push_back( 0 );
     vert_splitter->setSizes( newSizes );
@@ -241,7 +241,7 @@ void KrusaderView::slotTerminalEmulator( bool show ) {
 
     // BUGFIX: TE scrolling bug (see upper)
     //         show the Konsole part delayed
-    QTimer::singleShot( 0, konsole_part->widget(), SLOT( show() ) );
+    TQTimer::singleShot( 0, konsole_part->widget(), TQT_SLOT( show() ) );
 
     if( konsole_part->widget() ) {
       konsole_part->widget()->setFocus();
@@ -288,9 +288,9 @@ void KrusaderView::switchFullScreenTE()
 }
 
 
-bool KrusaderView::eventFilter ( QObject * watched, QEvent * e ) {
-  if( e->type() == QEvent::AccelOverride && konsole_part && konsole_part->widget() == watched ) {
-    QKeyEvent *ke = (QKeyEvent *)e;
+bool KrusaderView::eventFilter ( TQObject * watched, TQEvent * e ) {
+  if( e->type() == TQEvent::AccelOverride && konsole_part && TQT_BASE_OBJECT(konsole_part->widget()) == TQT_BASE_OBJECT(watched) ) {
+    TQKeyEvent *ke = (TQKeyEvent *)e;
     if( ( ke->key() ==  Key_Insert ) && ( ke->state()  == ShiftButton ) ) {
       ke->accept();
       return true;
@@ -301,8 +301,8 @@ bool KrusaderView::eventFilter ( QObject * watched, QEvent * e ) {
       return true;
     }
   }
-  else if( e->type() == QEvent::KeyPress && konsole_part && konsole_part->widget() == watched ) {
-    QKeyEvent *ke = (QKeyEvent *)e;
+  else if( e->type() == TQEvent::KeyPress && konsole_part && TQT_BASE_OBJECT(konsole_part->widget()) == TQT_BASE_OBJECT(watched) ) {
+    TQKeyEvent *ke = (TQKeyEvent *)e;
     KKey pressedKey( ke );
 
     if( Krusader::actToggleTerminal->shortcut().contains( pressedKey ) ) {
@@ -317,18 +317,18 @@ bool KrusaderView::eventFilter ( QObject * watched, QEvent * e ) {
 
     if( ( ke->key() == Key_Enter || ke->key() == Key_Return ) && ( ( ke->state() & ~ShiftButton ) == ControlButton ) ) {
 
-      QString filename = ACTIVE_PANEL->view->getCurrentItem();
-      if( filename == QString::null || filename == ".." )
+      TQString filename = ACTIVE_PANEL->view->getCurrentItem();
+      if( filename == TQString() || filename == ".." )
         return true;
       if( ke->state() & ShiftButton ) {
-        QString path=vfs::pathOrURL( ACTIVE_FUNC->files()->vfs_getOrigin(), 1 );
+        TQString path=vfs::pathOrURL( ACTIVE_FUNC->files()->vfs_getOrigin(), 1 );
         filename = path+filename;
       }
 
       filename = KrServices::quote( filename );
 
-      QKeyEvent keyEvent( QEvent::KeyPress, 0, -1, 0, QString( " " ) + filename + QString( " " ));
-      QApplication::sendEvent( konsole_part->widget(), &keyEvent );
+      TQKeyEvent keyEvent( TQEvent::KeyPress, 0, -1, 0, TQString( " " ) + filename + TQString( " " ));
+      TQApplication::sendEvent( konsole_part->widget(), &keyEvent );
       return true;
     } else if( ( ke->key() ==  Key_Down ) && ( ke->state() == ControlButton ) ) {
       if( cmdLine->isVisible() )
@@ -339,12 +339,12 @@ bool KrusaderView::eventFilter ( QObject * watched, QEvent * e ) {
       ACTIVE_PANEL->slotFocusOnMe();
       return true;
     } else if( Krusader::actPaste->shortcut().contains( pressedKey ) ) {
-      QString text = QApplication::clipboard()->text();
+      TQString text = TQApplication::tqclipboard()->text();
       if ( ! text.isEmpty() )
       {
-        text.replace("\n", "\r");
-        QKeyEvent keyEvent(QEvent::KeyPress, 0,-1,0, text);
-        QApplication::sendEvent( konsole_part->widget(), &keyEvent );
+        text.tqreplace("\n", "\r");
+        TQKeyEvent keyEvent(TQEvent::KeyPress, 0,-1,0, text);
+        TQApplication::sendEvent( konsole_part->widget(), &keyEvent );
       }
       return true;
     }
@@ -352,7 +352,7 @@ bool KrusaderView::eventFilter ( QObject * watched, QEvent * e ) {
   return false;
 }
 
-QValueList<int> KrusaderView::getTerminalEmulatorSplitterSizes() {
+TQValueList<int> KrusaderView::getTerminalEmulatorSplitterSizes() {
   if( terminal_dock->isVisible() )
     return vert_splitter->sizes();
   else
@@ -366,19 +366,19 @@ void KrusaderView::killTerminalEmulator() {
 }
 
 
-void KrusaderView::profiles( QString profileName )
+void KrusaderView::profiles( TQString profileName )
 {
   ProfileManager profileManager( "Panel" );
   profileManager.hide();
-  connect( &profileManager, SIGNAL( saveToProfile( QString ) ), this, SLOT( savePanelProfiles( QString ) ) );
-  connect( &profileManager, SIGNAL( loadFromProfile( QString ) ), this, SLOT( loadPanelProfiles( QString ) ) );
+  connect( &profileManager, TQT_SIGNAL( saveToProfile( TQString ) ), this, TQT_SLOT( savePanelProfiles( TQString ) ) );
+  connect( &profileManager, TQT_SIGNAL( loadFromProfile( TQString ) ), this, TQT_SLOT( loadPanelProfiles( TQString ) ) );
   if( profileName.isEmpty() )
     profileManager.profilePopup();
   else
     profileManager.loadProfile( profileName );
 }
 
-void KrusaderView::loadPanelProfiles( QString group )
+void KrusaderView::loadPanelProfiles( TQString group )
 {
   krConfig->setGroup( group );
   MAIN_VIEW->leftMng->loadSettings( krConfig, "Left Tabs" );
@@ -395,7 +395,7 @@ void KrusaderView::loadPanelProfiles( QString group )
     MAIN_VIEW->right->slotFocusOnMe();
 }
 
-void KrusaderView::savePanelProfiles( QString group )
+void KrusaderView::savePanelProfiles( TQString group )
 {
   krConfig->setGroup( group );
   
@@ -407,9 +407,9 @@ void KrusaderView::savePanelProfiles( QString group )
 }
 
 void KrusaderView::toggleVerticalMode() {
-	if (horiz_splitter->orientation() == QSplitter::Vertical)
-		horiz_splitter->setOrientation(QSplitter::Horizontal);
-	else horiz_splitter->setOrientation(QSplitter::Vertical);
+	if (horiz_splitter->orientation() == Qt::Vertical)
+		horiz_splitter->setOrientation(Qt::Horizontal);
+	else horiz_splitter->setOrientation(Qt::Vertical);
 }
 
 #include "krusaderview.moc"

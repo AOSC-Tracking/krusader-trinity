@@ -23,9 +23,10 @@ class KShortcut;
  * @author Jonas Bähr (http://www.jonas-baehr.de)
  */
 class ActionProperty : public ActionPropertyBase {
-	Q_OBJECT 
+	Q_OBJECT
+	TQ_OBJECT
 public:
-	ActionProperty( QWidget *parent=0, const char *name=0, KrAction *action=0 );
+	ActionProperty( TQWidget *tqparent=0, const char *name=0, KrAction *action=0 );
 	~ActionProperty();
 	
 	/**

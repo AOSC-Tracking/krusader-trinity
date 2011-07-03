@@ -34,8 +34,8 @@
 #include "config.h"
 #include <time.h>
 #include <kio/jobclasses.h>
-#include <qmap.h>
-#include <qvaluelist.h>
+#include <tqmap.h>
+#include <tqvaluelist.h>
 
 typedef enum {
   PM_NONE          = 0,
@@ -47,19 +47,20 @@ typedef enum {
 class Attributes {
 public:
 	Attributes();
-	Attributes( time_t tIn, uid_t uIn, gid_t gIn, mode_t modeIn, const QString & aclIn );
-	Attributes( time_t tIn, QString user, QString group, mode_t modeIn, const QString & aclIn );
+	Attributes( time_t tIn, uid_t uIn, gid_t gIn, mode_t modeIn, const TQString & aclIn );
+	Attributes( time_t tIn, TQString user, TQString group, mode_t modeIn, const TQString & aclIn );
 
 	time_t   time;
 	uid_t    uid;
 	gid_t    gid;
 	mode_t   mode;
-	QString  acl;
+	TQString  acl;
 };
 
 class PreservingCopyJob : public KIO::CopyJob
 {
   Q_OBJECT
+  TQ_OBJECT
 
 public:
 
@@ -68,17 +69,17 @@ public:
   static KIO::CopyJob *createCopyJob( PreserveMode pmode, const KURL::List& src, const KURL& dest, CopyMode mode, bool asMethod, bool showProgressInfo );
 
 public slots:
-  void slotAboutToCreate (KIO::Job *, const QValueList< KIO::CopyInfo > &);
+  void slotAboutToCreate (KIO::Job *, const TQValueList< KIO::CopyInfo > &);
   void slotCopyingDone( KIO::Job *, const KURL &, const KURL &, bool, bool);
   void slotFinished();
   virtual void slotResult( Job *job );
   void slotListEntries(KIO::Job *job, const KIO::UDSEntryList &list);
   
 private:
-  QMap<KURL, Attributes> fileAttributes;
-  QMap<KIO::Job *, KURL> pendingJobs;
-  QValueList<KURL>       directoriesToStamp;
-  QValueList<KURL>       originalDirectories;
+  TQMap<KURL, Attributes> fileAttributes;
+  TQMap<KIO::Job *, KURL> pendingJobs;
+  TQValueList<KURL>       directoriesToStamp;
+  TQValueList<KURL>       originalDirectories;
 };
 
 #endif /* __PRESERVING_COPY_JOB_H__ */

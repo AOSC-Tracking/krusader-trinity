@@ -31,14 +31,15 @@
 #ifndef FILTERTABS_H
 #define FILTERTABS_H
 
-#include <qtabwidget.h>
-#include <qptrlist.h>
+#include <tqtabwidget.h>
+#include <tqptrlist.h>
 
 #include "filterbase.h"
 
-class FilterTabs : public QObject
+class FilterTabs : public TQObject
 {
   Q_OBJECT
+  TQ_OBJECT
 
   public:
 
@@ -53,14 +54,14 @@ class FilterTabs : public QObject
       Default                 =   0xe000
     };
 
-    static FilterTabs * addTo( QTabWidget *tabWidget, int props = FilterTabs::Default );
-    static KRQuery      getQuery( QWidget *parent = 0, const char *name = 0 );
+    static FilterTabs * addTo( TQTabWidget *tabWidget, int props = FilterTabs::Default );
+    static KRQuery      getQuery( TQWidget *tqparent = 0, const char *name = 0 );
 
-    FilterBase *get( QString name );
+    FilterBase *get( TQString name );
 
   public slots:
-    void  loadFromProfile( QString );
-    void  saveToProfile( QString );
+    void  loadFromProfile( TQString );
+    void  saveToProfile( TQString );
     bool  fillQuery( KRQuery *query );
     void  close( bool accept = true ) { emit closeRequest( accept ); }
 
@@ -68,13 +69,13 @@ class FilterTabs : public QObject
     void  closeRequest( bool accept = true );
     
   private:
-    FilterTabs( int properties, QTabWidget *tabWidget, QObject *parent );
+    FilterTabs( int properties, TQTabWidget *tabWidget, TQObject *tqparent );
     void  acceptQuery();
 
-    QPtrList<FilterBase> filterList;
-    QValueList<int>      pageNumbers;
+    TQPtrList<FilterBase> filterList;
+    TQValueList<int>      pageNumbers;
 
-    QTabWidget * tabWidget;
+    TQTabWidget * tabWidget;
 };
 
 #endif /* FILTERTABS_H */

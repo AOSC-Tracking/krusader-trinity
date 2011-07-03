@@ -7,12 +7,12 @@
 * License. See the file "COPYING" for the exact licensing terms.
 */
 
-#include <qlayout.h>
-#include <qlabel.h>
-#include <qcombobox.h>
-#include <qcheckbox.h>
-#include <qwhatsthis.h>
-#include <qtimer.h>
+#include <tqlayout.h>
+#include <tqlabel.h>
+#include <tqcombobox.h>
+#include <tqcheckbox.h>
+#include <tqwhatsthis.h>
+#include <tqtimer.h>
 
 #include <kapplication.h>
 #include <kglobal.h>
@@ -29,19 +29,19 @@
 
 /**** KrusaderImageFilePreview ****/
 
-KrusaderImageFilePreview::KrusaderImageFilePreview( QWidget *parent )
-		: KPreviewWidgetBase( parent ),
+KrusaderImageFilePreview::KrusaderImageFilePreview( TQWidget *tqparent )
+		: KPreviewWidgetBase( tqparent ),
 m_job( 0L ) {
-	QVBoxLayout *vb = new QVBoxLayout( this, KDialog::marginHint() );
+	TQVBoxLayout *vb = new TQVBoxLayout( this, KDialog::marginHint() );
 
-	imageLabel = new QLabel( this );
-	imageLabel->setFrameStyle( QFrame::Panel | QFrame::Sunken );
-	imageLabel->setAlignment( Qt::AlignHCenter | Qt::AlignVCenter );
-	imageLabel->setSizePolicy( QSizePolicy( QSizePolicy::Preferred, QSizePolicy::Ignored ) );
+	imageLabel = new TQLabel( this );
+	imageLabel->setFrameStyle( TQFrame::Panel | TQFrame::Sunken );
+	imageLabel->tqsetAlignment( TQt::AlignHCenter | TQt::AlignVCenter );
+	imageLabel->tqsetSizePolicy( TQSizePolicy( TQSizePolicy::Preferred, TQSizePolicy::Ignored ) );
 	vb->addWidget( imageLabel, 1 );
 
-	timer = new QTimer( this );
-	connect( timer, SIGNAL( timeout() ), SLOT( showPreview() ) );
+	timer = new TQTimer( this );
+	connect( timer, TQT_SIGNAL( timeout() ), TQT_SLOT( showPreview() ) );
 
 	setSupportedMimeTypes( KIO::PreviewJob::supportedMimeTypes() );
 }
@@ -76,23 +76,23 @@ void KrusaderImageFilePreview::showPreview( const KURL &url, bool force ) {
 		int h = imageLabel->contentsRect().height() - 4;
 
 		m_job = createJob( url, w, h );
-		connect( m_job, SIGNAL( result( KIO::Job * ) ),
-		         this, SLOT( slotResult( KIO::Job * ) ) );
-		connect( m_job, SIGNAL( gotPreview( const KFileItem*,
-		                                    const QPixmap& ) ),
-		         SLOT( gotPreview( const KFileItem*, const QPixmap& ) ) );
+		connect( m_job, TQT_SIGNAL( result( KIO::Job * ) ),
+		         this, TQT_SLOT( slotResult( KIO::Job * ) ) );
+		connect( m_job, TQT_SIGNAL( gotPreview( const KFileItem*,
+		                                    const TQPixmap& ) ),
+		         TQT_SLOT( gotPreview( const KFileItem*, const TQPixmap& ) ) );
 
-		connect( m_job, SIGNAL( failed( const KFileItem* ) ),
-		         this, SLOT( slotFailed( const KFileItem* ) ) );
+		connect( m_job, TQT_SIGNAL( failed( const KFileItem* ) ),
+		         this, TQT_SLOT( slotFailed( const KFileItem* ) ) );
 	}
 }
 
-void KrusaderImageFilePreview::resizeEvent( QResizeEvent * ) {
+void KrusaderImageFilePreview::resizeEvent( TQResizeEvent * ) {
 	timer->start( 100, true ); // forces a new preview
 }
 
-QSize KrusaderImageFilePreview::sizeHint() const {
-	return QSize( 20, 200 ); // otherwise it ends up huge???
+TQSize KrusaderImageFilePreview::tqsizeHint() const {
+	return TQSize( 20, 200 ); // otherwise it ends up huge???
 }
 
 KIO::PreviewJob * KrusaderImageFilePreview::createJob( const KURL& url, int w, int h ) {
@@ -101,7 +101,7 @@ KIO::PreviewJob * KrusaderImageFilePreview::createJob( const KURL& url, int w, i
 	return KIO::filePreview( urls, w, h, 0, 0, true, false );
 }
 
-void KrusaderImageFilePreview::gotPreview( const KFileItem* item, const QPixmap& pm ) {
+void KrusaderImageFilePreview::gotPreview( const KFileItem* item, const TQPixmap& pm ) {
 	if ( item->url() == currentURL )   // should always be the case
 		imageLabel->setPixmap( pm );
 }

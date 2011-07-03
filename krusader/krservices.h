@@ -18,9 +18,9 @@
 #ifndef KRSERVICES_H
 #define KRSERVICES_H
 
-#include <qstring.h>
-#include <qstringlist.h>
-#include <qmap.h>
+#include <tqstring.h>
+#include <tqstringlist.h>
+#include <tqmap.h>
 #include <kprocess.h>
 
 /**
@@ -32,21 +32,21 @@ public:
 	KrServices(){}
 	~KrServices(){}
 
-	static bool         cmdExist(QString cmdName);
-	static QString      detectFullPathName( QString name );
-	static QString      fullPathName( QString name, QString confName = QString::null );
-	static QStringList  separateArgs( QString args );
-	static QString      registerdProtocol(QString mimetype);
+	static bool         cmdExist(TQString cmdName);
+	static TQString      detectFullPathName( TQString name );
+	static TQString      fullPathName( TQString name, TQString confName = TQString() );
+	static TQStringList  separateArgs( TQString args );
+	static TQString      registerdProtocol(TQString mimetype);
 	static void         clearProtocolCache();
-	static bool         fileToStringList(QTextStream *stream, QStringList& target, bool keepEmptyLines=false);
-	static QString		  quote( QString name );
-	static QStringList  quote( const QStringList& names );
+	static bool         fileToStringList(TQTextStream *stream, TQStringList& target, bool keepEmptyLines=false);
+	static TQString		  quote( TQString name );
+	static TQStringList  quote( const TQStringList& names );
 
 protected:
-	static QString 	  escape( QString name );
+	static TQString 	  escape( TQString name );
 
 private:
-	static QMap<QString,QString>* slaveMap;
+	static TQMap<TQString,TQString>* slaveMap;
 
 };
 
@@ -58,13 +58,14 @@ private:
 // to happen (ie: start(KEasyProcess::Block, KEasyProcess::AllOutput);)
 class KEasyProcess: public KProcess {
 	Q_OBJECT
+  TQ_OBJECT
 public:
-	KEasyProcess(QObject *parent, const char *name=0);
+	KEasyProcess(TQObject *tqparent, const char *name=0);
 	KEasyProcess();
 	virtual ~KEasyProcess() {}
 
-	const QString& getStdout() const { return _stdout; }
-	const QString& getStderr() const { return _stderr; }
+	const TQString& getStdout() const { return _stdout; }
+	const TQString& getStderr() const { return _stderr; }
 
 protected slots:
 	void receivedStdout (KProcess *proc, char *buffer, int buflen);
@@ -72,7 +73,7 @@ protected slots:
 	void init();
 
 private:
-	QString _stdout, _stderr;
+	TQString _stdout, _stderr;
 };
 
 #endif

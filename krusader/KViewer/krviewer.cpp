@@ -14,11 +14,11 @@
  *   (at your option) any later version.                                   *
  *                                                                         *
  ***************************************************************************/ 
-// Qt includes
-#include <qdatastream.h>
-#include <qfile.h>
-#include <qpopupmenu.h> 
-#include <qtimer.h>
+// TQt includes
+#include <tqdatastream.h>
+#include <tqfile.h>
+#include <tqpopupmenu.h> 
+#include <tqtimer.h>
 // KDE includes
 #include <kmenubar.h>
 #include <kmimetype.h>
@@ -50,10 +50,10 @@
 #define MODIFIED_ICON "filesaveas"
 
 
-QPtrList<KrViewer> KrViewer::viewers;
+TQPtrList<KrViewer> KrViewer::viewers;
 
-KrViewer::KrViewer( QWidget *parent, const char *name ) :
-KParts::MainWindow( parent, name ), manager( this, this ), tabBar( this ), returnFocusTo( 0 ), returnFocusTab( 0 ),
+KrViewer::KrViewer( TQWidget *tqparent, const char *name ) :
+KParts::MainWindow( tqparent, name ), manager( this, TQT_TQOBJECT(this) ), tabBar( this ), returnFocusTo( 0 ), returnFocusTab( 0 ),
                                     reservedKeys(), reservedKeyIDs() {
 
 	//setWFlags(WType_TopLevel | WDestructiveClose);
@@ -63,12 +63,12 @@ KParts::MainWindow( parent, name ), manager( this, this ), tabBar( this ), retur
 	setAutoSaveSettings( "KrViewerWindow", true );
 	tmpFile.setAutoDelete( true );
 
-	connect( &manager, SIGNAL( activePartChanged( KParts::Part* ) ),
-	         this, SLOT( createGUI( KParts::Part* ) ) );
-	connect( &tabBar, SIGNAL( currentChanged( QWidget *) ),
-	         this, SLOT( tabChanged(QWidget*) ) );
-	connect( &tabBar, SIGNAL( closeRequest( QWidget *) ),
-	         this, SLOT( tabCloseRequest(QWidget*) ) );
+	connect( &manager, TQT_SIGNAL( activePartChanged( KParts::Part* ) ),
+	         TQT_TQOBJECT(this), TQT_SLOT( createGUI( KParts::Part* ) ) );
+	connect( &tabBar, TQT_SIGNAL( currentChanged( TQWidget *) ),
+	         TQT_TQOBJECT(this), TQT_SLOT( tabChanged(TQWidget*) ) );
+	connect( &tabBar, TQT_SIGNAL( closeRequest( TQWidget *) ),
+	         TQT_TQOBJECT(this), TQT_SLOT( tabCloseRequest(TQWidget*) ) );
 
 	tabBar.setTabReorderingEnabled(false);
 #if KDE_IS_VERSION(3,4,0)
@@ -78,28 +78,28 @@ KParts::MainWindow( parent, name ), manager( this, this ), tabBar( this ), retur
 //	"filesaveas"
 	setCentralWidget( &tabBar );
 
-	printAction = KStdAction::print( this, SLOT( print() ), 0, 0 );
-	copyAction = KStdAction::copy( this, SLOT( copy() ), 0, 0 );
+	printAction = KStdAction::print( TQT_TQOBJECT(this), TQT_SLOT( print() ), 0, 0 );
+	copyAction = KStdAction::copy( TQT_TQOBJECT(this), TQT_SLOT( copy() ), 0, 0 );
 
-	viewerMenu = new QPopupMenu( this );
-	viewerMenu->insertItem( i18n( "&Generic viewer" ), this, SLOT( viewGeneric() ), CTRL + SHIFT + Key_G, 1 );
-	viewerMenu->insertItem( i18n( "&Text viewer" ), this, SLOT( viewText() ), CTRL + SHIFT + Key_T, 2 );
-	viewerMenu->insertItem( i18n( "&Hex viewer" ), this, SLOT( viewHex() ), CTRL + SHIFT + Key_H, 3 );
+	viewerMenu = new TQPopupMenu( this );
+	viewerMenu->insertItem( i18n( "&Generic viewer" ), TQT_TQOBJECT(this), TQT_SLOT( viewGeneric() ), CTRL + SHIFT + Key_G, 1 );
+	viewerMenu->insertItem( i18n( "&Text viewer" ), TQT_TQOBJECT(this), TQT_SLOT( viewText() ), CTRL + SHIFT + Key_T, 2 );
+	viewerMenu->insertItem( i18n( "&Hex viewer" ), TQT_TQOBJECT(this), TQT_SLOT( viewHex() ), CTRL + SHIFT + Key_H, 3 );
 	viewerMenu->insertSeparator();
-	viewerMenu->insertItem( i18n( "Text &editor" ), this, SLOT( editText() ), CTRL + SHIFT + Key_E, 4 );
+	viewerMenu->insertItem( i18n( "Text &editor" ), TQT_TQOBJECT(this), TQT_SLOT( editText() ), CTRL + SHIFT + Key_E, 4 );
 	viewerMenu->insertSeparator();
-	viewerMenu->insertItem( i18n( "&Next tab" ), this, SLOT( nextTab() ), ALT+Key_Right );
-	viewerMenu->insertItem( i18n( "&Previous tab" ), this, SLOT( prevTab() ), ALT+Key_Left );
+	viewerMenu->insertItem( i18n( "&Next tab" ), TQT_TQOBJECT(this), TQT_SLOT( nextTab() ), ALT+Key_Right );
+	viewerMenu->insertItem( i18n( "&Previous tab" ), TQT_TQOBJECT(this), TQT_SLOT( prevTab() ), ALT+Key_Left );
 
-	detachActionIndex = viewerMenu->insertItem( i18n( "&Detach tab" ), this, SLOT( detachTab() ), CTRL + SHIFT + Key_D );
+	detachActionIndex = viewerMenu->insertItem( i18n( "&Detach tab" ), TQT_TQOBJECT(this), TQT_SLOT( detachTab() ), CTRL + SHIFT + Key_D );
 	//no point in detaching only one tab..
 	viewerMenu->setItemEnabled(detachActionIndex,false);	
 	viewerMenu->insertSeparator();
-	viewerMenu->insertItem( printAction->text(), this, SLOT( print() ), printAction->shortcut() );
-	viewerMenu->insertItem( copyAction->text(), this, SLOT( copy() ), copyAction->shortcut() );
+	viewerMenu->insertItem( printAction->text(), TQT_TQOBJECT(this), TQT_SLOT( print() ), printAction->shortcut() );
+	viewerMenu->insertItem( copyAction->text(), TQT_TQOBJECT(this), TQT_SLOT( copy() ), copyAction->shortcut() );
 	viewerMenu->insertSeparator();
-	tabCloseID = viewerMenu->insertItem( i18n( "&Close current tab" ), this, SLOT( tabCloseRequest() ), Key_Escape );
-	closeID = viewerMenu->insertItem( i18n( "&Quit" ), this, SLOT( close() ), CTRL + Key_Q );
+	tabCloseID = viewerMenu->insertItem( i18n( "&Close current tab" ), TQT_TQOBJECT(this), TQT_SLOT( tabCloseRequest() ), Key_Escape );
+	closeID = viewerMenu->insertItem( i18n( "&Quit" ), TQT_TQOBJECT(this), TQT_SLOT( close() ), CTRL + Key_Q );
 
 	//toolBar() ->insertLined("Edit:",1,"",this,"",true ,i18n("Enter an URL to edit and press enter"));
 	
@@ -110,8 +110,8 @@ KParts::MainWindow( parent, name ), manager( this, this ), tabBar( this ), retur
 
 KrViewer::~KrViewer() {
 
-	disconnect( &manager, SIGNAL( activePartChanged( KParts::Part* ) ),
-	            this, SLOT( createGUI( KParts::Part* ) ) );
+	disconnect( &manager, TQT_SIGNAL( activePartChanged( KParts::Part* ) ),
+	            TQT_TQOBJECT(this), TQT_SLOT( createGUI( KParts::Part* ) ) );
 
 	viewers.remove( this );
 	delete printAction;
@@ -124,8 +124,8 @@ void KrViewer::createGUI( KParts::Part* part ) {
 
 	
 	// and show the new part widget
-	connect( part, SIGNAL( setStatusBarText( const QString& ) ),
-	         this, SLOT( slotSetStatusBarText( const QString& ) ) );
+	connect( part, TQT_SIGNAL( setStatusBarText( const TQString& ) ),
+	         TQT_TQOBJECT(this), TQT_SLOT( slotSetStatusBarText( const TQString& ) ) );
 
 	KParts::MainWindow::createGUI( part );
 	toolBar() ->insertLineSeparator(0);
@@ -146,7 +146,7 @@ void KrViewer::createGUI( KParts::Part* part ) {
 	for( unsigned w=0; w != viewerMenu->count(); w++ )
 	{
 		int id = viewerMenu->idAt( w );
-		QKeySequence sequence = viewerMenu->accel( id );
+		TQKeySequence sequence = viewerMenu->accel( id );
 		if( sequence.count() > 0 )
 		{
 			reservedKeys.push_back( sequence[ 0 ] );
@@ -164,24 +164,24 @@ void KrViewer::createGUI( KParts::Part* part ) {
 	part->installEventFilter( this );
 }
 
-bool KrViewer::eventFilter (  QObject * /* watched */, QEvent * e )
+bool KrViewer::eventFilter (  TQObject * /* watched */, TQEvent * e )
 {
-	if( e->type() == QEvent::AccelOverride )
+	if( e->type() == TQEvent::AccelOverride )
 	{
-		QKeyEvent* ke = (QKeyEvent*) e;
-		if( reservedKeys.contains( ke->key() ) )
+		TQKeyEvent* ke = (TQKeyEvent*) e;
+		if( reservedKeys.tqcontains( ke->key() ) )
 		{
 			ke->accept();
 			
-			int id = reservedKeyIDs[ reservedKeys.findIndex( ke->key() ) ];
+			int id = reservedKeyIDs[ reservedKeys.tqfindIndex( ke->key() ) ];
 			if( id != -1 )
 			{
 				// don't activate the close functions immediately!
 				// it can cause crash
 				if( id == tabCloseID )
-					QTimer::singleShot( 0, this, SLOT( tabCloseRequest() ) );
+					TQTimer::singleShot( 0, TQT_TQOBJECT(this), TQT_SLOT( tabCloseRequest() ) );
 				else if( id == closeID )
-					QTimer::singleShot( 0, this, SLOT( close() ) );
+					TQTimer::singleShot( 0, TQT_TQOBJECT(this), TQT_SLOT( close() ) );
 				else {
 					int index = viewerMenu->indexOf( id );
 					viewerMenu->activateItemAt( index );
@@ -190,10 +190,10 @@ bool KrViewer::eventFilter (  QObject * /* watched */, QEvent * e )
 			return true;
 		}
 	}
-	else if( e->type() == QEvent::KeyPress )
+	else if( e->type() == TQEvent::KeyPress )
 	{
-		QKeyEvent* ke = (QKeyEvent*) e;
-		if( reservedKeys.contains( ke->key() ) )
+		TQKeyEvent* ke = (TQKeyEvent*) e;
+		if( reservedKeys.tqcontains( ke->key() ) )
 		{
 			ke->accept();
 			return true;
@@ -201,7 +201,7 @@ bool KrViewer::eventFilter (  QObject * /* watched */, QEvent * e )
 	}
 	return false;
 }
-void KrViewer::keyPressEvent( QKeyEvent *e ) {
+void KrViewer::keyPressEvent( TQKeyEvent *e ) {
 	switch ( e->key() ) {
 		case Key_F10:
 			close();
@@ -235,40 +235,40 @@ KrViewer* KrViewer::getViewer(bool new_window){
 	}
 }	
 
-void KrViewer::view( KURL url, QWidget * parent ) {
+void KrViewer::view( KURL url, TQWidget * tqparent ) {
 	Mode defaultMode = Generic;
 	bool defaultWindow = false;
 
 	krConfig->setGroup( "General" );
 	defaultWindow = krConfig->readBoolEntry( "View In Separate Window",_ViewInSeparateWindow );
 
-	QString modeString = krConfig->readEntry( "Default Viewer Mode","generic" );
+	TQString modeString = krConfig->readEntry( "Default Viewer Mode","generic" );
 
 	if( modeString == "generic" ) defaultMode = Generic;
 	else if( modeString == "text" ) defaultMode = Text;
 	else if( modeString == "hex" ) defaultMode = Hex;
 
-	view(url,defaultMode,defaultWindow, parent );
+	view(url,defaultMode,defaultWindow, tqparent );
 }
 
-void KrViewer::view( KURL url, Mode mode,  bool new_window, QWidget * parent ) {
+void KrViewer::view( KURL url, Mode mode,  bool new_window, TQWidget * tqparent ) {
 	KrViewer* viewer = getViewer(new_window);
 
 	PanelViewerBase* viewWidget = new PanelViewer(&viewer->tabBar);
 	KParts::Part* part = viewWidget->openURL(url,mode);
 	viewer->addTab(viewWidget,i18n( "Viewing" ),VIEW_ICON,part);
 
-	viewer->returnFocusTo = parent;
+	viewer->returnFocusTo = tqparent;
 	viewer->returnFocusTab = viewWidget;
 }
 
-void KrViewer::edit( KURL url, QWidget * parent ) {
-	edit( url, Text, -1, parent );
+void KrViewer::edit( KURL url, TQWidget * tqparent ) {
+	edit( url, Text, -1, tqparent );
 }
 
-void KrViewer::edit( KURL url, Mode mode, int new_window, QWidget * parent ) {
+void KrViewer::edit( KURL url, Mode mode, int new_window, TQWidget * tqparent ) {
 	krConfig->setGroup( "General" );
-	QString edit = krConfig->readEntry( "Editor", _Editor );
+	TQString edit = krConfig->readEntry( "Editor", _Editor );
 	
 	if( new_window == -1 )
 		new_window = krConfig->readBoolEntry( "View In Separate Window",_ViewInSeparateWindow );
@@ -278,8 +278,8 @@ void KrViewer::edit( KURL url, Mode mode, int new_window, QWidget * parent ) {
 		// if the file is local, pass a normal path and not a url. this solves
 		// the problem for editors that aren't url-aware
 		if ( url.isLocalFile() )
-			proc << QStringList::split( ' ', edit ) << url.path();
-		else proc << QStringList::split( ' ', edit ) << url.prettyURL();
+			proc << TQStringList::split( ' ', edit ) << url.path();
+		else proc << TQStringList::split( ' ', edit ) << url.prettyURL();
 		if ( !proc.start( KProcess::DontCare ) )
 			KMessageBox::sorry( krApp, i18n( "Can't open " ) + "\"" + edit + "\"" );
 		return ;
@@ -291,17 +291,17 @@ void KrViewer::edit( KURL url, Mode mode, int new_window, QWidget * parent ) {
 	KParts::Part* part = editWidget->openURL(url,mode);
 	viewer->addTab(editWidget,i18n("Editing"),EDIT_ICON,part);
 	
-	viewer->returnFocusTo = parent;
+	viewer->returnFocusTo = tqparent;
 	viewer->returnFocusTab = editWidget;
 }
 
-void KrViewer::addTab(PanelViewerBase* pvb, QString msg, QString iconName ,KParts::Part* part){
+void KrViewer::addTab(PanelViewerBase* pvb, TQString msg, TQString iconName ,KParts::Part* part){
 	if( !part ) return;
 
 	KURL url = pvb->url();
 	setCaption( msg+": " + url.prettyURL() );
 
-	QIconSet icon = QIconSet(krLoader->loadIcon(iconName,KIcon::Small));
+	TQIconSet icon = TQIconSet(krLoader->loadIcon(iconName,KIcon::Small));
 
 	manager.addPart( part, this );
 	manager.setActivePart( part );
@@ -319,17 +319,17 @@ void KrViewer::addTab(PanelViewerBase* pvb, QString msg, QString iconName ,KPart
 	show();
 	tabBar.show();
 	
-	connect( pvb, SIGNAL( urlChanged( PanelViewerBase *, const KURL & ) ), 
-	         this,  SLOT( tabURLChanged(PanelViewerBase *, const KURL & ) ) );
+	connect( pvb, TQT_SIGNAL( urlChanged( PanelViewerBase *, const KURL & ) ), 
+	         this,  TQT_SLOT( tabURLChanged(PanelViewerBase *, const KURL & ) ) );
 }
 
 void KrViewer::tabURLChanged( PanelViewerBase *pvb, const KURL & url ) {
-	QString msg = pvb->isEditor() ? i18n( "Editing" ) : i18n( "Viewing" );
+	TQString msg = pvb->isEditor() ? i18n( "Editing" ) : i18n( "Viewing" );
 	tabBar.setTabLabel( pvb, url.fileName()+"("+msg+")" );
 	tabBar.setTabToolTip(pvb,msg+": " + url.prettyURL());
 }
 
-void KrViewer::tabChanged(QWidget* w){
+void KrViewer::tabChanged(TQWidget* w){
 	manager.setActivePart( static_cast<PanelViewerBase*>(w)->part() );
 	
 	if( static_cast<PanelViewerBase*>(w) != returnFocusTab ) {
@@ -341,11 +341,11 @@ void KrViewer::tabChanged(QWidget* w){
 	if( viewers.remove( this ) ) viewers.prepend( this ); // move to first
 }
 
-void KrViewer::tabCloseRequest(QWidget *w){
+void KrViewer::tabCloseRequest(TQWidget *w){
 	if( !w ) return;
 	
 	// important to save as returnFocusTo will be cleared at removePart
-	QWidget * returnFocusToThisWidget = returnFocusTo;
+	TQWidget * returnFocusToThisWidget = returnFocusTo;
 	
 	PanelViewerBase* pvb = static_cast<PanelViewerBase*>(w);
 	
@@ -439,7 +439,7 @@ void KrViewer::editText(){
 }
 
 void KrViewer::checkModified(){
-	QTimer::singleShot( 1000, this, SLOT(checkModified()) );
+	TQTimer::singleShot( 1000, TQT_TQOBJECT(this), TQT_SLOT(checkModified()) );
 
 	PanelViewerBase* pvb = static_cast<PanelViewerBase*>( tabBar.currentPage() );
 	if( !pvb ) return;
@@ -450,20 +450,20 @@ void KrViewer::checkModified(){
 
 	// add a * to modified files.
 	if( pvb->isModified() ){
-		QString label = tabBar.tabLabel(pvb);
+		TQString label = tabBar.tabLabel(pvb);
 		if( !label.startsWith("*" + pvb->part()->url().fileName() ) ){
 			label.prepend("*");
-			QIconSet icon = QIconSet(krLoader->loadIcon(MODIFIED_ICON,KIcon::Small));
+			TQIconSet icon = TQIconSet(krLoader->loadIcon(MODIFIED_ICON,KIcon::Small));
 
 			tabBar.changeTab(pvb,icon,label);
 		}
 	}
 	// remove the * from previously modified files.
 	else {
-		QString label = tabBar.tabLabel(pvb);
+		TQString label = tabBar.tabLabel(pvb);
 		if( label.startsWith("*" + pvb->part()->url().fileName() ) ){
 			label = label.mid( 1 );
-			QIconSet icon = QIconSet(krLoader->loadIcon(EDIT_ICON,KIcon::Small));
+			TQIconSet icon = TQIconSet(krLoader->loadIcon(EDIT_ICON,KIcon::Small));
 
 			tabBar.changeTab(pvb,icon,label);
 		}		
@@ -495,7 +495,7 @@ void KrViewer::detachTab(){
 		viewerMenu->setItemEnabled(detachActionIndex,false);
 	}
 	
-	pvb->reparent(&viewer->tabBar,QPoint(0,0));
+	pvb->reparent(&viewer->tabBar,TQPoint(0,0));
 
 	if( pvb->isEditor() )
 		viewer->addTab(pvb,i18n( "Editing" ),EDIT_ICON,pvb->part());
@@ -514,7 +514,7 @@ void KrViewer::print() {
 	
 	KParts::BrowserExtension * ext = KParts::BrowserExtension::childObject( pvb->part() );
 	if( ext && ext->isActionEnabled( "print" ) )
-		Invoker( ext, SLOT( print() ) ).invoke();
+		Invoker( ext, TQT_SLOT( print() ) ).invoke();
 }
 
 void KrViewer::copy() {
@@ -523,7 +523,7 @@ void KrViewer::copy() {
 	
 	KParts::BrowserExtension * ext = KParts::BrowserExtension::childObject( pvb->part() );
 	if( ext && ext->isActionEnabled( "copy" ) )
-		Invoker( ext, SLOT( copy() ) ).invoke();
+		Invoker( ext, TQT_SLOT( copy() ) ).invoke();
 }
 
 PanelViewerBase * KrViewer::getPanelViewerBase( KParts::Part * part ) {
@@ -549,7 +549,7 @@ void KrViewer::updateActions( PanelViewerBase * pvb ) {
 }
 
 #if 0
-bool KrViewer::editGeneric( QString mimetype, KURL _url ) {
+bool KrViewer::editGeneric( TQString mimetype, KURL _url ) {
 	KParts::ReadWritePart * kedit_part = 0L;
 	KLibFactory *factory = 0;
 	KTrader::OfferList offers = KTrader::self() ->query( mimetype );
@@ -598,7 +598,7 @@ bool KrViewer::editText( bool create ) {
 }
 
 bool KrViewer::viewGeneric() {
-	QString mimetype = KMimeType::findByURL( url ) ->name();
+	TQString mimetype = KMimeType::findByURL( url ) ->name();
 	// ugly hack: don't try to get a part for an XML file, it usually don't work
 	if ( mimetype == "text/xml" ) return false;
 	if ( url.prettyURL().startsWith( "man:" ) ) mimetype = "text/html";
@@ -606,13 +606,13 @@ bool KrViewer::viewGeneric() {
 		viewerMenu->setItemEnabled( 1, false );
 
 	if ( !generic_part ) {
-		if ( mimetype.contains( "html" ) ) {
+		if ( mimetype.tqcontains( "html" ) ) {
 			KHTMLPart * p = new KHTMLPart( this, 0, 0, 0, KHTMLPart::BrowserViewGUI );
-			connect( p->browserExtension(), SIGNAL( openURLRequest( const KURL &, const KParts::URLArgs & ) ),
-			         this, SLOT( handleOpenURLRequest( const KURL &, const KParts::URLArgs & ) ) );
+			connect( p->browserExtension(), TQT_SIGNAL( openURLRequest( const KURL &, const KParts::URLArgs & ) ),
+			         TQT_TQOBJECT(this), TQT_SLOT( handleOpenURLRequest( const KURL &, const KParts::URLArgs & ) ) );
 			/* At JavaScript self.close() the KHTMLPart destroys itself.  */
 			/* After destruction, just close the window */
-			connect( p, SIGNAL( destroyed() ), this, SLOT( close() ) );
+			connect( p, TQT_SIGNAL( destroyed() ), TQT_TQOBJECT(this), TQT_SLOT( close() ) );
 
 			p-> openURL( url );
 			generic_part = p;
@@ -642,7 +642,7 @@ bool KrViewer::viewText() {
 
 void KrViewer::viewHex() {
 	if ( !hex_part ) {
-		QString file;
+		TQString file;
 		// files that are not local must first be downloaded
 		if ( !url.isLocalFile() ) {
 			if ( !KIO::NetAccess::download( url, file ) ) {
@@ -653,9 +653,9 @@ void KrViewer::viewHex() {
 
 
 		// create a hex file
-		QFile f_in( file );
+		TQFile f_in( file );
 		f_in.open( IO_ReadOnly );
-		QDataStream in( &f_in );
+		TQDataStream in( &f_in );
 
 		FILE *out = KDE_fopen( tmpFile.name().local8Bit(), "w" );
 

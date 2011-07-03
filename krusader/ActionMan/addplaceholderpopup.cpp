@@ -23,12 +23,12 @@
 #include "../BookMan/krbookmarkbutton.h"
 #include "../GUI/profilemanager.h"
 
-#include <qlayout.h>
-#include <qhbox.h>
-#include <qlabel.h>
-#include <qtoolbutton.h>
+#include <tqlayout.h>
+#include <tqhbox.h>
+#include <tqlabel.h>
+#include <tqtoolbutton.h>
 #include <klineedit.h>
-#include <qcheckbox.h>
+#include <tqcheckbox.h>
 #include <kiconloader.h>
 #include <kcombobox.h>
 #include <kurlcompletion.h> 
@@ -44,7 +44,7 @@
 #define EXECUTABLE_ID		0xFFFF
 
 
-AddPlaceholderPopup::AddPlaceholderPopup( QWidget *parent ) : KPopupMenu( parent ) {
+AddPlaceholderPopup::AddPlaceholderPopup( TQWidget *tqparent ) : KPopupMenu( tqparent ) {
 
    _activeSub = new KPopupMenu( this );
    _otherSub = new KPopupMenu( this );
@@ -88,16 +88,16 @@ AddPlaceholderPopup::AddPlaceholderPopup( QWidget *parent ) : KPopupMenu( parent
 }
 
 
-QString AddPlaceholderPopup::getPlaceholder( const QPoint& pos ) {
+TQString AddPlaceholderPopup::getPlaceholder( const TQPoint& pos ) {
    int res = exec( pos );
    if ( res == -1 )
-      return QString::null;
+      return TQString();
 
    // add the selected flag to the command line
    if ( res == EXECUTABLE_ID ) { // did the user need an executable ?
       // select an executable
-      QString filename = KFileDialog::getOpenFileName(QString::null, QString::null, this);
-      if (filename != QString::null)
+      TQString filename = KFileDialog::getOpenFileName(TQString(), TQString(), this);
+      if (filename != TQString())
          return filename + " "; // with extra space
          //return filename; // without extra space
    } else { // user selected something from the menus
@@ -105,10 +105,10 @@ QString AddPlaceholderPopup::getPlaceholder( const QPoint& pos ) {
       const exp_placeholder* currentPlaceholder = expander.placeholder( res & ~( ACTIVE_MASK | OTHER_MASK | LEFT_MASK | RIGHT_MASK | INDEPENDENT_MASK ) );
 //       if ( &currentPlaceholder->expFunc == 0 ) {
 //          KMessageBox::sorry( this, "BOFH Excuse #93:\nFeature not yet implemented" );
-//          return QString::null;
+//          return TQString();
 //       } 
       ParameterDialog* parameterDialog = new ParameterDialog( currentPlaceholder, this );
-      QString panel, parameter = parameterDialog->getParameter();
+      TQString panel, parameter = parameterDialog->getParameter();
       delete parameterDialog;
       // indicate the panel with 'a' 'o', 'l', 'r' or '_'.
       if ( res & ACTIVE_MASK )
@@ -124,7 +124,7 @@ QString AddPlaceholderPopup::getPlaceholder( const QPoint& pos ) {
       //return "%" + panel + currentPlaceholder->expression() + parameter + "% "; // with extra space
       return "%" + panel + currentPlaceholder->expression() + parameter + "%"; // without extra space
    }
-	return QString::null;
+	return TQString();
 }
 
 
@@ -132,15 +132,15 @@ QString AddPlaceholderPopup::getPlaceholder( const QPoint& pos ) {
 /////////////////////////////// ParameterDialog ////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////
 
-ParameterDialog::ParameterDialog( const exp_placeholder* currentPlaceholder, QWidget *parent ) : KDialogBase( Plain, i18n("User Action Parameter Dialog"), Default | Ok, Ok, parent ) {
+ParameterDialog::ParameterDialog( const exp_placeholder* currentPlaceholder, TQWidget *tqparent ) : KDialogBase( Plain, i18n("User Action Parameter Dialog"), Default | Ok, Ok, tqparent ) {
    _parameter.clear();
    _parameterCount = currentPlaceholder->parameterCount();
    
-   QVBoxLayout* layout = new QVBoxLayout( plainPage() );
-   layout->setAutoAdd( true );
-   layout->setSpacing( 11 );
+   TQVBoxLayout* tqlayout = new TQVBoxLayout( plainPage() );
+   tqlayout->setAutoAdd( true );
+   tqlayout->setSpacing( 11 );
    
-   new QLabel( i18n("This placeholder allows some parameter:"), plainPage(), "intro" );
+   new TQLabel( i18n("This placeholder allows some parameter:"), plainPage(), "intro" );
    
    for (int i = 0; i < _parameterCount; ++i ) {
       if ( currentPlaceholder->parameter( i ).preset() == "__placeholder" )
@@ -151,7 +151,7 @@ ParameterDialog::ParameterDialog( const exp_placeholder* currentPlaceholder, QWi
          _parameter.append( new ParameterNo( currentPlaceholder->parameter( i ), plainPage() ) );
       else if ( currentPlaceholder->parameter( i ).preset() == "__file" )
          _parameter.append( new ParameterFile( currentPlaceholder->parameter( i ), plainPage() ) );
-      else if ( currentPlaceholder->parameter( i ).preset().find( "__choose" ) != -1 )
+      else if ( currentPlaceholder->parameter( i ).preset().tqfind( "__choose" ) != -1 )
          _parameter.append( new ParameterChoose( currentPlaceholder->parameter( i ), plainPage() ) );
       else if ( currentPlaceholder->parameter( i ).preset() == "__select" )
          _parameter.append( new ParameterSelect( currentPlaceholder->parameter( i ), plainPage() ) );
@@ -163,25 +163,25 @@ ParameterDialog::ParameterDialog( const exp_placeholder* currentPlaceholder, QWi
          _parameter.append( new ParameterSearch( currentPlaceholder->parameter( i ), plainPage() ) );
       else if ( currentPlaceholder->parameter( i ).preset() == "__panelprofile" )
          _parameter.append( new ParameterPanelprofile( currentPlaceholder->parameter( i ), plainPage() ) );
-      else if ( currentPlaceholder->parameter( i ).preset().find( "__int" ) != -1 )
+      else if ( currentPlaceholder->parameter( i ).preset().tqfind( "__int" ) != -1 )
          _parameter.append( new ParameterInt( currentPlaceholder->parameter( i ), plainPage() ) );
       else
          _parameter.append( new ParameterText( currentPlaceholder->parameter( i ), plainPage() ) );
    }
    
-   QFrame * line = new QFrame( plainPage() );
-   line->setFrameShape( QFrame::HLine );
-   line->setFrameShadow( QFrame::Sunken );
+   TQFrame * line = new TQFrame( plainPage() );
+   line->setFrameShape( TQFrame::HLine );
+   line->setFrameShadow( TQFrame::Sunken );
 
-   connect( this, SIGNAL(defaultClicked()), this, SLOT(reset()) );
+   connect( this, TQT_SIGNAL(defaultClicked()), this, TQT_SLOT(reset()) );
 }
 
-QString ParameterDialog::getParameter() {
+TQString ParameterDialog::getParameter() {
    if ( _parameterCount == 0 ) // meaning no parameters
-      return QString::null;
+      return TQString();
 
   if ( exec() == -1 )
-     return QString::null;
+     return TQString();
 
   int lastParameter = _parameterCount;
   while ( --lastParameter > -1 ) {
@@ -190,13 +190,13 @@ QString ParameterDialog::getParameter() {
   }
 
   if ( lastParameter < 0) // all parameters have default-values
-     return QString::null;
+     return TQString();
 
-  QString parameter = "(";
+  TQString parameter = "(";
   for ( int i = 0; i <= lastParameter; ++i ) {
      if ( i > 0 )
         parameter += ", ";
-     parameter += "\"" + _parameter[ i ]->text().replace( "\"", "\\\"" ) + "\"";
+     parameter += "\"" + _parameter[ i ]->text().tqreplace( "\"", "\\\"" ) + "\"";
   }
   parameter += ")";
   return parameter;
@@ -219,20 +219,20 @@ void ParameterDialog::slotOk() {
 }
 
 ///////////// ParameterText
-ParameterText::ParameterText( const exp_parameter& parameter, QWidget* parent ) : ParameterBase( parameter, parent ) {
-   QVBoxLayout* layout = new QVBoxLayout( this );
-   layout->setAutoAdd( true );
-   layout->setSpacing( 6 );
+ParameterText::ParameterText( const exp_parameter& parameter, TQWidget* tqparent ) : ParameterBase( parameter, tqparent ) {
+   TQVBoxLayout* tqlayout = new TQVBoxLayout( this );
+   tqlayout->setAutoAdd( true );
+   tqlayout->setSpacing( 6 );
    
-   new QLabel( i18n( parameter.description().utf8() ), this );
+   new TQLabel( i18n( parameter.description().utf8() ), this );
    _lineEdit = new KLineEdit( parameter.preset(), this );
    _preset = parameter.preset();
 }
 
-QString ParameterText::text() {
+TQString ParameterText::text() {
    return _lineEdit->text();
 } 
-QString ParameterText::preset() {
+TQString ParameterText::preset() {
    return _preset;
 } 
 void ParameterText::reset() {
@@ -246,28 +246,28 @@ bool ParameterText::valid() {
 } 
 
 ///////////// ParameterPlaceholder
-ParameterPlaceholder::ParameterPlaceholder( const exp_parameter& parameter, QWidget* parent ) : ParameterBase( parameter, parent ) {
-   QVBoxLayout* layout = new QVBoxLayout( this );
-   layout->setAutoAdd( true );
-   layout->setSpacing( 6 );
+ParameterPlaceholder::ParameterPlaceholder( const exp_parameter& parameter, TQWidget* tqparent ) : ParameterBase( parameter, tqparent ) {
+   TQVBoxLayout* tqlayout = new TQVBoxLayout( this );
+   tqlayout->setAutoAdd( true );
+   tqlayout->setSpacing( 6 );
    
-   new QLabel( i18n( parameter.description().utf8() ), this );
-   QHBox * hbox = new QHBox( this );
+   new TQLabel( i18n( parameter.description().utf8() ), this );
+   TQHBox * hbox = new TQHBox( this );
    hbox->setSpacing( 6 );
    _lineEdit = new KLineEdit( hbox );
-   _button = new QToolButton( hbox);
+   _button = new TQToolButton( hbox);
    _button->setText( i18n("add") );
-   connect( _button, SIGNAL(clicked()), this, SLOT(addPlaceholder()) );
+   connect( _button, TQT_SIGNAL(clicked()), this, TQT_SLOT(addPlaceholder()) );
 }
 
-QString ParameterPlaceholder::text() {
+TQString ParameterPlaceholder::text() {
    return _lineEdit->text();
 }
-QString ParameterPlaceholder::preset() {
-   return QString::null;
+TQString ParameterPlaceholder::preset() {
+   return TQString();
 } 
 void ParameterPlaceholder::reset() {
-   _lineEdit->setText( QString::null );
+   _lineEdit->setText( TQString() );
 } 
 bool ParameterPlaceholder::valid() {
    if ( _lineEdit->text().isEmpty() )
@@ -277,29 +277,29 @@ bool ParameterPlaceholder::valid() {
 } 
 void ParameterPlaceholder::addPlaceholder() {
    AddPlaceholderPopup* popup = new AddPlaceholderPopup( this );
-   QString exp = popup->getPlaceholder( mapToGlobal( QPoint( _button->pos().x() + _button->width() + 6, _button->pos().y() + _button->height() / 2 ) ) );
+   TQString exp = popup->getPlaceholder( mapToGlobal( TQPoint( _button->pos().x() + _button->width() + 6, _button->pos().y() + _button->height() / 2 ) ) );
    _lineEdit->insert( exp );
    delete popup;
 }
 
 ///////////// ParameterYes
-ParameterYes::ParameterYes( const exp_parameter& parameter, QWidget* parent ) : ParameterBase( parameter, parent ) {
-   QVBoxLayout* layout = new QVBoxLayout( this );
-   layout->setAutoAdd( true );
-   layout->setSpacing( 6 );
+ParameterYes::ParameterYes( const exp_parameter& parameter, TQWidget* tqparent ) : ParameterBase( parameter, tqparent ) {
+   TQVBoxLayout* tqlayout = new TQVBoxLayout( this );
+   tqlayout->setAutoAdd( true );
+   tqlayout->setSpacing( 6 );
    
-   _checkBox = new QCheckBox( i18n( parameter.description().utf8() ), this );
+   _checkBox = new TQCheckBox( i18n( parameter.description().utf8() ), this );
    _checkBox->setChecked( true );
 }
 
-QString ParameterYes::text() {
+TQString ParameterYes::text() {
    if ( _checkBox->isChecked() )
-      return QString::null;
+      return TQString();
    else
       return "No";
 } 
-QString ParameterYes::preset() {
-   return QString::null;
+TQString ParameterYes::preset() {
+   return TQString();
 } 
 void ParameterYes::reset() {
    _checkBox->setChecked( true );
@@ -309,23 +309,23 @@ bool ParameterYes::valid() {
 } 
 
 ///////////// ParameterNo
-ParameterNo::ParameterNo( const exp_parameter& parameter, QWidget* parent ) : ParameterBase( parameter, parent ) {
-   QVBoxLayout* layout = new QVBoxLayout( this );
-   layout->setAutoAdd( true );
-   layout->setSpacing( 6 );
+ParameterNo::ParameterNo( const exp_parameter& parameter, TQWidget* tqparent ) : ParameterBase( parameter, tqparent ) {
+   TQVBoxLayout* tqlayout = new TQVBoxLayout( this );
+   tqlayout->setAutoAdd( true );
+   tqlayout->setSpacing( 6 );
    
-   _checkBox = new QCheckBox( i18n( parameter.description().utf8() ), this );
+   _checkBox = new TQCheckBox( i18n( parameter.description().utf8() ), this );
    _checkBox->setChecked( false );
 }
 
-QString ParameterNo::text() {
+TQString ParameterNo::text() {
    if ( _checkBox->isChecked() )
       return "Yes";
    else
-      return QString::null;
+      return TQString();
 } 
-QString ParameterNo::preset() {
-   return QString::null;
+TQString ParameterNo::preset() {
+   return TQString();
 } 
 void ParameterNo::reset() {
    _checkBox->setChecked( false );
@@ -335,29 +335,29 @@ bool ParameterNo::valid() {
 } 
 
 ///////////// ParameterFile
-ParameterFile::ParameterFile( const exp_parameter& parameter, QWidget* parent ) : ParameterBase( parameter, parent ) {
-   QVBoxLayout* layout = new QVBoxLayout( this );
-   layout->setAutoAdd( true );
-   layout->setSpacing( 6 );
+ParameterFile::ParameterFile( const exp_parameter& parameter, TQWidget* tqparent ) : ParameterBase( parameter, tqparent ) {
+   TQVBoxLayout* tqlayout = new TQVBoxLayout( this );
+   tqlayout->setAutoAdd( true );
+   tqlayout->setSpacing( 6 );
    
-   new QLabel( i18n( parameter.description().utf8() ), this );
-   QHBox * hbox = new QHBox( this );
+   new TQLabel( i18n( parameter.description().utf8() ), this );
+   TQHBox * hbox = new TQHBox( this );
    hbox->setSpacing( 6 );
    _lineEdit = new KLineEdit( hbox );
-   _button = new QToolButton( hbox);
+   _button = new TQToolButton( hbox);
    KIconLoader *iconLoader = new KIconLoader();
   _button->setPixmap( iconLoader->loadIcon( "fileopen", KIcon::Toolbar, 16 ) );
-   connect( _button, SIGNAL(clicked()), this, SLOT(addFile()) );
+   connect( _button, TQT_SIGNAL(clicked()), this, TQT_SLOT(addFile()) );
 }
 
-QString ParameterFile::text() {
+TQString ParameterFile::text() {
    return _lineEdit->text();
 }
-QString ParameterFile::preset() {
-   return QString::null;
+TQString ParameterFile::preset() {
+   return TQString();
 } 
 void ParameterFile::reset() {
-   _lineEdit->setText( QString::null );
+   _lineEdit->setText( TQString() );
 } 
 bool ParameterFile::valid() {
    if ( _lineEdit->text().isEmpty() )
@@ -366,25 +366,25 @@ bool ParameterFile::valid() {
       return true;
 } 
 void ParameterFile::addFile() {
-   QString filename = KFileDialog::getOpenFileName(QString::null, QString::null, this);
+   TQString filename = KFileDialog::getOpenFileName(TQString(), TQString(), this);
    _lineEdit->insert( filename );
 }
 
 ///////////// ParameterChoose
-ParameterChoose::ParameterChoose( const exp_parameter& parameter, QWidget* parent ) : ParameterBase( parameter, parent ) {
-   QVBoxLayout* layout = new QVBoxLayout( this );
-   layout->setAutoAdd( true );
-   layout->setSpacing( 6 );
+ParameterChoose::ParameterChoose( const exp_parameter& parameter, TQWidget* tqparent ) : ParameterBase( parameter, tqparent ) {
+   TQVBoxLayout* tqlayout = new TQVBoxLayout( this );
+   tqlayout->setAutoAdd( true );
+   tqlayout->setSpacing( 6 );
    
-   new QLabel( i18n( parameter.description().utf8() ), this );
+   new TQLabel( i18n( parameter.description().utf8() ), this );
    _combobox = new KComboBox( this );
-   _combobox->insertStringList( QStringList::split( ";", parameter.preset().section(":", 1) ) );
+   _combobox->insertStringList( TQStringList::split( ";", parameter.preset().section(":", 1) ) );
 }
 
-QString ParameterChoose::text() {
+TQString ParameterChoose::text() {
    return _combobox->currentText();
 } 
-QString ParameterChoose::preset() {
+TQString ParameterChoose::preset() {
    return _combobox->text( 0 );
 } 
 void ParameterChoose::reset() {
@@ -395,17 +395,17 @@ bool ParameterChoose::valid() {
 } 
 
 ///////////// ParameterSelect
-ParameterSelect::ParameterSelect( const exp_parameter& parameter, QWidget* parent ) : ParameterBase( parameter, parent ) {
-   QVBoxLayout* layout = new QVBoxLayout( this );
-   layout->setAutoAdd( true );
-   layout->setSpacing( 6 );
+ParameterSelect::ParameterSelect( const exp_parameter& parameter, TQWidget* tqparent ) : ParameterBase( parameter, tqparent ) {
+   TQVBoxLayout* tqlayout = new TQVBoxLayout( this );
+   tqlayout->setAutoAdd( true );
+   tqlayout->setSpacing( 6 );
    
-   new QLabel( i18n( parameter.description().utf8() ), this );
+   new TQLabel( i18n( parameter.description().utf8() ), this );
    _combobox = new KComboBox( this );
    _combobox->setEditable( true );
    
    krConfig->setGroup( "Private" );
-   QStrList lst;
+   TQStrList lst;
    int i = krConfig->readListEntry( "Predefined Selections", lst );
    if ( i > 0 )
       _combobox->insertStrList( lst );
@@ -413,10 +413,10 @@ ParameterSelect::ParameterSelect( const exp_parameter& parameter, QWidget* paren
    _combobox->setCurrentText( "*" );
 }
 
-QString ParameterSelect::text() {
+TQString ParameterSelect::text() {
    return _combobox->currentText();
 } 
-QString ParameterSelect::preset() {
+TQString ParameterSelect::preset() {
    return "*";
 } 
 void ParameterSelect::reset() {
@@ -427,33 +427,33 @@ bool ParameterSelect::valid() {
 } 
 
 ///////////// ParameterGoto
-ParameterGoto::ParameterGoto( const exp_parameter& parameter, QWidget* parent ) : ParameterBase( parameter, parent ) {
-   QVBoxLayout* layout = new QVBoxLayout( this );
-   layout->setAutoAdd( true );
-   layout->setSpacing( 6 );
+ParameterGoto::ParameterGoto( const exp_parameter& parameter, TQWidget* tqparent ) : ParameterBase( parameter, tqparent ) {
+   TQVBoxLayout* tqlayout = new TQVBoxLayout( this );
+   tqlayout->setAutoAdd( true );
+   tqlayout->setSpacing( 6 );
    
-   new QLabel( i18n( parameter.description().utf8() ), this );
-   QHBox * hbox = new QHBox( this );
+   new TQLabel( i18n( parameter.description().utf8() ), this );
+   TQHBox * hbox = new TQHBox( this );
    hbox->setSpacing( 6 );
    _lineEdit = new KLineEdit( hbox );
    _lineEdit->setCompletionObject( new KURLCompletion( KURLCompletion::DirCompletion ) );
-   _dirButton = new QToolButton( hbox );
+   _dirButton = new TQToolButton( hbox );
    KIconLoader *iconLoader = new KIconLoader();
   _dirButton->setPixmap( iconLoader->loadIcon( "fileopen", KIcon::Toolbar, 16 ) );
-   connect( _dirButton, SIGNAL(clicked()), this, SLOT(setDir()) );
-   _placeholderButton = new QToolButton( hbox);
+   connect( _dirButton, TQT_SIGNAL(clicked()), this, TQT_SLOT(setDir()) );
+   _placeholderButton = new TQToolButton( hbox);
    _placeholderButton->setText( i18n("add") );
-   connect( _placeholderButton, SIGNAL(clicked()), this, SLOT(addPlaceholder()) );
+   connect( _placeholderButton, TQT_SIGNAL(clicked()), this, TQT_SLOT(addPlaceholder()) );
 }
 
-QString ParameterGoto::text() {
+TQString ParameterGoto::text() {
    return _lineEdit->text();
 }
-QString ParameterGoto::preset() {
-   return QString::null;
+TQString ParameterGoto::preset() {
+   return TQString();
 } 
 void ParameterGoto::reset() {
-   _lineEdit->setText( QString::null );
+   _lineEdit->setText( TQString() );
 } 
 bool ParameterGoto::valid() {
    if ( _lineEdit->text().isEmpty() )
@@ -462,32 +462,32 @@ bool ParameterGoto::valid() {
       return true;
 } 
 void ParameterGoto::setDir() {
-   QString folder = KFileDialog::getExistingDirectory(QString::null, this);
+   TQString folder = KFileDialog::getExistingDirectory(TQString(), this);
    _lineEdit->setText( folder );
 }
 void ParameterGoto::addPlaceholder() {
    AddPlaceholderPopup* popup = new AddPlaceholderPopup( this );
-   QString exp = popup->getPlaceholder( mapToGlobal( QPoint( _placeholderButton->pos().x() + _placeholderButton->width() + 6, _placeholderButton->pos().y() + _placeholderButton->height() / 2 ) ) );
+   TQString exp = popup->getPlaceholder( mapToGlobal( TQPoint( _placeholderButton->pos().x() + _placeholderButton->width() + 6, _placeholderButton->pos().y() + _placeholderButton->height() / 2 ) ) );
    _lineEdit->insert( exp );
    delete popup;
 }
 
 ///////////// ParameterSyncprofile
-ParameterSyncprofile::ParameterSyncprofile( const exp_parameter& parameter, QWidget* parent ) : ParameterBase( parameter, parent ) {
-   QVBoxLayout* layout = new QVBoxLayout( this );
-   layout->setAutoAdd( true );
-   layout->setSpacing( 6 );
+ParameterSyncprofile::ParameterSyncprofile( const exp_parameter& parameter, TQWidget* tqparent ) : ParameterBase( parameter, tqparent ) {
+   TQVBoxLayout* tqlayout = new TQVBoxLayout( this );
+   tqlayout->setAutoAdd( true );
+   tqlayout->setSpacing( 6 );
    
-   new QLabel( i18n( parameter.description().utf8() ), this );
+   new TQLabel( i18n( parameter.description().utf8() ), this );
    _combobox = new KComboBox( this );
    
    _combobox->insertStringList( ProfileManager::availableProfiles("SynchronizerProfile") );
 }
 
-QString ParameterSyncprofile::text() {
+TQString ParameterSyncprofile::text() {
    return _combobox->currentText();
 } 
-QString ParameterSyncprofile::preset() {
+TQString ParameterSyncprofile::preset() {
    return _combobox->text( 0 );
 } 
 void ParameterSyncprofile::reset() {
@@ -498,21 +498,21 @@ bool ParameterSyncprofile::valid() {
 } 
 
 ///////////// ParameterSearch
-ParameterSearch::ParameterSearch( const exp_parameter& parameter, QWidget* parent ) : ParameterBase( parameter, parent ) {
-   QVBoxLayout* layout = new QVBoxLayout( this );
-   layout->setAutoAdd( true );
-   layout->setSpacing( 6 );
+ParameterSearch::ParameterSearch( const exp_parameter& parameter, TQWidget* tqparent ) : ParameterBase( parameter, tqparent ) {
+   TQVBoxLayout* tqlayout = new TQVBoxLayout( this );
+   tqlayout->setAutoAdd( true );
+   tqlayout->setSpacing( 6 );
    
-   new QLabel( i18n( parameter.description().utf8() ), this );
+   new TQLabel( i18n( parameter.description().utf8() ), this );
    _combobox = new KComboBox( this );
    
    _combobox->insertStringList( ProfileManager::availableProfiles("SearcherProfile") );
 }
 
-QString ParameterSearch::text() {
+TQString ParameterSearch::text() {
    return _combobox->currentText();
 } 
-QString ParameterSearch::preset() {
+TQString ParameterSearch::preset() {
    return _combobox->text( 0 );
 } 
 void ParameterSearch::reset() {
@@ -523,21 +523,21 @@ bool ParameterSearch::valid() {
 } 
 
 ///////////// ParameterPanelprofile
-ParameterPanelprofile::ParameterPanelprofile( const exp_parameter& parameter, QWidget* parent ) : ParameterBase( parameter, parent ) {
-   QVBoxLayout* layout = new QVBoxLayout( this );
-   layout->setAutoAdd( true );
-   layout->setSpacing( 6 );
+ParameterPanelprofile::ParameterPanelprofile( const exp_parameter& parameter, TQWidget* tqparent ) : ParameterBase( parameter, tqparent ) {
+   TQVBoxLayout* tqlayout = new TQVBoxLayout( this );
+   tqlayout->setAutoAdd( true );
+   tqlayout->setSpacing( 6 );
    
-   new QLabel( i18n( parameter.description().utf8() ), this );
+   new TQLabel( i18n( parameter.description().utf8() ), this );
    _combobox = new KComboBox( this );
    
    _combobox->insertStringList( ProfileManager::availableProfiles("Panel") );
 }
 
-QString ParameterPanelprofile::text() {
+TQString ParameterPanelprofile::text() {
    return _combobox->currentText();
 } 
-QString ParameterPanelprofile::preset() {
+TQString ParameterPanelprofile::preset() {
    return _combobox->text( 0 );
 } 
 void ParameterPanelprofile::reset() {
@@ -548,14 +548,14 @@ bool ParameterPanelprofile::valid() {
 } 
 
 ///////////// ParameterInt
-ParameterInt::ParameterInt( const exp_parameter& parameter, QWidget* parent ) : ParameterBase( parameter, parent ) {
-   QHBoxLayout* layout = new QHBoxLayout( this );
-   layout->setAutoAdd( true );
-   layout->setSpacing( 6 );
+ParameterInt::ParameterInt( const exp_parameter& parameter, TQWidget* tqparent ) : ParameterBase( parameter, tqparent ) {
+   TQHBoxLayout* tqlayout = new TQHBoxLayout( this );
+   tqlayout->setAutoAdd( true );
+   tqlayout->setSpacing( 6 );
    
-   new QLabel( i18n( parameter.description().utf8() ), this );
+   new TQLabel( i18n( parameter.description().utf8() ), this );
    _spinbox = new KIntSpinBox( this );
-   QStringList para = QStringList::split( ";", parameter.preset().section(":", 1) );
+   TQStringList para = TQStringList::split( ";", parameter.preset().section(":", 1) );
    
    _spinbox->setMinValue( para[0].toInt() );
    _spinbox->setMaxValue( para[1].toInt() );
@@ -565,11 +565,11 @@ ParameterInt::ParameterInt( const exp_parameter& parameter, QWidget* parent ) : 
    _default = _spinbox->value();
 }
 
-QString ParameterInt::text() {
+TQString ParameterInt::text() {
    return _spinbox->text();
 } 
-QString ParameterInt::preset() {
-   return QString( "%1" ).arg( _default );
+TQString ParameterInt::preset() {
+   return TQString( "%1" ).tqarg( _default );
 } 
 void ParameterInt::reset() {
    return _spinbox->setValue( _default );

@@ -32,69 +32,69 @@
 #include "../krusader.h"
 #include "../kicons.h"
 #include "../VFS/krpermhandler.h"
-#include <qfontmetrics.h>
+#include <tqfontmetrics.h>
 #include <klocale.h>
 #include <kmimetype.h>
 #include <kglobal.h>
-#include <qheader.h>
+#include <tqheader.h>
 #include <time.h>
 
 DUListView::DUListView( DiskUsage *usage, const char *name ) 
-    : QListView( usage, name ), diskUsage( usage )
+    : TQListView( usage, name ), diskUsage( usage )
 {  
   setAllColumnsShowFocus(true);
-  setVScrollBarMode(QScrollView::Auto);
-  setHScrollBarMode(QScrollView::Auto);
+  setVScrollBarMode(TQScrollView::Auto);
+  setHScrollBarMode(TQScrollView::Auto);
   setShowSortIndicator(true);
   setRootIsDecorated( true );
   setTreeStepSize( 10 );
 
-  int defaultSize = QFontMetrics(font()).width("W");
+  int defaultSize = TQFontMetrics(font()).width("W");
   
   krConfig->setGroup( diskUsage->getConfigGroup() ); 
   int nameWidth  = krConfig->readNumEntry("D Name Width",  defaultSize * 20 );    
   addColumn( i18n("Name"), nameWidth );
-  setColumnWidthMode(0,QListView::Manual);
+  setColumnWidthMode(0,TQListView::Manual);
   int percentWidth  = krConfig->readNumEntry("D Percent Width",  defaultSize * 5 );    
   addColumn( i18n("Percent"), percentWidth );
-  setColumnWidthMode(1,QListView::Manual);
+  setColumnWidthMode(1,TQListView::Manual);
   int totalSizeWidth  = krConfig->readNumEntry("D Total Size Width",  defaultSize * 10 );    
   addColumn( i18n("Total size"), totalSizeWidth );
-  setColumnWidthMode(1,QListView::Manual);
+  setColumnWidthMode(1,TQListView::Manual);
   int ownSizeWidth  = krConfig->readNumEntry("D Own Size Width",  defaultSize * 10 );    
   addColumn( i18n("Own size"), ownSizeWidth );
-  setColumnWidthMode(2,QListView::Manual);
+  setColumnWidthMode(2,TQListView::Manual);
   int typeWidth  = krConfig->readNumEntry("D Type Width",  defaultSize * 10 );
   addColumn( i18n("Type"), typeWidth );
-  setColumnWidthMode(3,QListView::Manual);
+  setColumnWidthMode(3,TQListView::Manual);
   int dateWidth  = krConfig->readNumEntry("D Date Width",  defaultSize * 10 );
   addColumn( i18n("Date"), dateWidth );
-  setColumnWidthMode(4,QListView::Manual);
+  setColumnWidthMode(4,TQListView::Manual);
   int permissionsWidth  = krConfig->readNumEntry("D Permissions Width",  defaultSize * 6 );
   addColumn( i18n("Permissions"), permissionsWidth );
-  setColumnWidthMode(5,QListView::Manual);
+  setColumnWidthMode(5,TQListView::Manual);
   int ownerWidth  = krConfig->readNumEntry("D Owner Width",  defaultSize * 5 );    
   addColumn( i18n("Owner"), ownerWidth );
-  setColumnWidthMode(6,QListView::Manual);
+  setColumnWidthMode(6,TQListView::Manual);
   int groupWidth  = krConfig->readNumEntry("D Group Width",  defaultSize * 5 );    
   addColumn( i18n("Group"), groupWidth );
-  setColumnWidthMode(7,QListView::Manual);
+  setColumnWidthMode(7,TQListView::Manual);
   
-  setColumnAlignment( 1, Qt::AlignRight );
-  setColumnAlignment( 2, Qt::AlignRight );
-  setColumnAlignment( 3, Qt::AlignRight );
+  setColumnAlignment( 1, TQt::AlignRight );
+  setColumnAlignment( 2, TQt::AlignRight );
+  setColumnAlignment( 3, TQt::AlignRight );
   
   setSorting( 2 );
 
-  connect( diskUsage, SIGNAL( enteringDirectory( Directory * ) ), this, SLOT( slotDirChanged( Directory * ) ) );
-  connect( diskUsage, SIGNAL( clearing() ), this, SLOT( clear() ) );
-  connect( diskUsage, SIGNAL( changed( File * ) ), this, SLOT( slotChanged( File * ) ) );
-  connect( diskUsage, SIGNAL( deleted( File * ) ), this, SLOT( slotDeleted( File * ) ) );
+  connect( diskUsage, TQT_SIGNAL( enteringDirectory( Directory * ) ), this, TQT_SLOT( slotDirChanged( Directory * ) ) );
+  connect( diskUsage, TQT_SIGNAL( clearing() ), this, TQT_SLOT( clear() ) );
+  connect( diskUsage, TQT_SIGNAL( changed( File * ) ), this, TQT_SLOT( slotChanged( File * ) ) );
+  connect( diskUsage, TQT_SIGNAL( deleted( File * ) ), this, TQT_SLOT( slotDeleted( File * ) ) );
 
-  connect( this, SIGNAL(rightButtonPressed(QListViewItem *, const QPoint &, int)),
-           this, SLOT( slotRightClicked(QListViewItem *) ) );
-  connect( this, SIGNAL( expanded ( QListViewItem * ) ), 
-           this, SLOT( slotExpanded( QListViewItem * ) ) ); 
+  connect( this, TQT_SIGNAL(rightButtonPressed(TQListViewItem *, const TQPoint &, int)),
+           this, TQT_SLOT( slotRightClicked(TQListViewItem *) ) );
+  connect( this, TQT_SIGNAL( expanded ( TQListViewItem * ) ), 
+           this, TQT_SLOT( slotExpanded( TQListViewItem * ) ) ); 
 }
 
 DUListView::~ DUListView()
@@ -111,13 +111,13 @@ DUListView::~ DUListView()
   krConfig->writeEntry("D Group Width",       columnWidth( 8 ) );
 }
 
-void DUListView::addDirectory( Directory *dirEntry, QListViewItem *parent )
+void DUListView::addDirectory( Directory *dirEntry, TQListViewItem *tqparent )
 {
-  QListViewItem * lastItem = 0;
+  TQListViewItem * lastItem = 0;
     
-  if( parent == 0 && ! ( dirEntry->parent() == 0 ) )
+  if( tqparent == 0 && ! ( dirEntry->tqparent() == 0 ) )
   {
-    lastItem = new QListViewItem( this, ".." );
+    lastItem = new TQListViewItem( this, ".." );
     lastItem->setPixmap( 0, FL_LOADICON( "up" ) );
     lastItem->setSelectable( false );
   }
@@ -127,28 +127,28 @@ void DUListView::addDirectory( Directory *dirEntry, QListViewItem *parent )
     File *item = *it;
     
     KMimeType::Ptr mimePtr = KMimeType::mimeType( item->mime() );
-    QString mime = mimePtr->comment();
+    TQString mime = mimePtr->comment();
        
     time_t tma = item->time();
     struct tm* t=localtime((time_t *)&tma);
-    QDateTime tmp(QDate(t->tm_year+1900, t->tm_mon+1, t->tm_mday), QTime(t->tm_hour, t->tm_min));
-    QString date = KGlobal::locale()->formatDateTime(tmp);    
+    TQDateTime tmp(TQDate(t->tm_year+1900, t->tm_mon+1, t->tm_mday), TQTime(t->tm_hour, t->tm_min));
+    TQString date = KGlobal::locale()->formatDateTime(tmp);    
     
-    QString totalSize = KRpermHandler::parseSize( item->size() ) + " ";
-    QString ownSize = KRpermHandler::parseSize( item->ownSize() ) + " ";
-    QString percent = item->percent();
+    TQString totalSize = KRpermHandler::parseSize( item->size() ) + " ";
+    TQString ownSize = KRpermHandler::parseSize( item->ownSize() ) + " ";
+    TQString percent = item->percent();
     
-    if( lastItem == 0 && parent == 0 )
+    if( lastItem == 0 && tqparent == 0 )
       lastItem = new DUListViewItem( diskUsage, item, this, item->name(), percent, totalSize, ownSize, 
                                      mime, date, item->perm(), item->owner(), item->group() );
     else if ( lastItem == 0 )
-      lastItem = new DUListViewItem( diskUsage, item, parent, item->name(), percent, totalSize, ownSize, 
+      lastItem = new DUListViewItem( diskUsage, item, tqparent, item->name(), percent, totalSize, ownSize, 
                                      mime, date, item->perm(), item->owner(), item->group() );
-    else if ( parent == 0 )
+    else if ( tqparent == 0 )
       lastItem = new DUListViewItem( diskUsage, item, this, lastItem, item->name(), percent, totalSize,
                                      ownSize, mime, date, item->perm(), item->owner(), item->group() );
     else
-      lastItem = new DUListViewItem( diskUsage, item, parent, lastItem, item->name(), percent, totalSize, 
+      lastItem = new DUListViewItem( diskUsage, item, tqparent, lastItem, item->name(), percent, totalSize, 
                                      ownSize, mime, date, item->perm(), item->owner(), item->group() );
    
     if( item->isExcluded() )
@@ -160,7 +160,7 @@ void DUListView::addDirectory( Directory *dirEntry, QListViewItem *parent )
       lastItem->setExpandable( true );
   }
   
-  QListViewItem *first = firstChild();
+  TQListViewItem *first = firstChild();
   if( first )
     setCurrentItem( first );
 }
@@ -173,7 +173,7 @@ void DUListView::slotDirChanged( Directory *dirEntry )
 
 File * DUListView::getCurrentFile()
 {
-  QListViewItem *item = currentItem();
+  TQListViewItem *item = currentItem();
   
   if( item == 0 || item->text( 0 ) == ".." )
     return 0;
@@ -204,7 +204,7 @@ void DUListView::slotDeleted( File * item )
   delete duItem;
 }
   
-void DUListView::slotRightClicked( QListViewItem *item )
+void DUListView::slotRightClicked( TQListViewItem *item )
 {
   File * file = 0;
   
@@ -214,7 +214,7 @@ void DUListView::slotRightClicked( QListViewItem *item )
   diskUsage->rightClickMenu( file );
 }
 
-bool DUListView::doubleClicked( QListViewItem * item )
+bool DUListView::doubleClicked( TQListViewItem * item )
 {
   if( item )
   {
@@ -227,7 +227,7 @@ bool DUListView::doubleClicked( QListViewItem * item )
     }
     else
     {
-      Directory *upDir = (Directory *)diskUsage->getCurrentDir()->parent();
+      Directory *upDir = (Directory *)diskUsage->getCurrentDir()->tqparent();
     
       if( upDir )
         diskUsage->changeDirectory( upDir );
@@ -237,21 +237,21 @@ bool DUListView::doubleClicked( QListViewItem * item )
   return false;
 }
 
-void DUListView::contentsMouseDoubleClickEvent ( QMouseEvent * e )
+void DUListView::contentsMouseDoubleClickEvent ( TQMouseEvent * e )
 {
-  if ( e || e->button() == LeftButton )
+  if ( e || e->button() == Qt::LeftButton )
   {
-    QPoint vp = contentsToViewport(e->pos());
-    QListViewItem * item = itemAt( vp );
+    TQPoint vp = contentsToViewport(e->pos());
+    TQListViewItem * item = itemAt( vp );
 
     if( doubleClicked( item ) )
       return;
     
   }
-  QListView::contentsMouseDoubleClickEvent( e );
+  TQListView::contentsMouseDoubleClickEvent( e );
 }
 
-void DUListView::keyPressEvent( QKeyEvent *e )
+void DUListView::keyPressEvent( TQKeyEvent *e )
 {
   switch ( e->key() )
   {
@@ -274,10 +274,10 @@ void DUListView::keyPressEvent( QKeyEvent *e )
     e->ignore();
     return;
   }
-  QListView::keyPressEvent( e );
+  TQListView::keyPressEvent( e );
 }
 
-void DUListView::slotExpanded( QListViewItem *item )
+void DUListView::slotExpanded( TQListViewItem *item )
 {
   if( item == 0 || item->text( 0 ) == ".." )
     return;

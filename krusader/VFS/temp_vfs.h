@@ -37,9 +37,9 @@
 
 class temp_vfs : public normal_vfs  {
 public: 
-	temp_vfs( QString origin, QString type, QWidget* panel, bool writeable);
+	temp_vfs( TQString origin, TQString type, TQWidget* panel, bool writeable);
 	~temp_vfs();
-	QString vfs_workingDir();
+	TQString vfs_workingDir();
   bool vfs_isWritable() { return false; } // temp vfs is not writable !
 
 public slots:
@@ -47,10 +47,10 @@ public slots:
 	bool vfs_refresh(const KURL& origin);
 
 protected:
-	void handleAceArj(QString origin, QString type);
-	void handleRpm(QString origin);
-	void handleIso(QString origin);
-  QString tmpDir;
+	void handleAceArj(TQString origin, TQString type);
+	void handleRpm(TQString origin);
+	void handleIso(TQString origin);
+  TQString tmpDir;
 
 };
 

@@ -39,7 +39,7 @@
 
 #define REPORT_TIMEOUT 200
 
-VirtualCopyJob::VirtualCopyJob( const QStringList *names, vfs * vfs, const KURL& dest, const KURL& baseURL, 
+VirtualCopyJob::VirtualCopyJob( const TQStringList *names, vfs * vfs, const KURL& dest, const KURL& baseURL, 
 	PreserveMode pmode, KIO::CopyJob::CopyMode mode, bool asMethod, bool showProgressInfo ) :
 		KIO::Job( showProgressInfo ), m_totalSize( 0 ), m_totalFiles( 0 ), m_totalSubdirs( 0 ),
 		m_processedSize( 0 ), m_processedFiles( 0 ), m_processedSubdirs( 0 ), m_tempSize( 0 ), m_tempFiles( 0 ),
@@ -52,10 +52,10 @@ VirtualCopyJob::VirtualCopyJob( const QStringList *names, vfs * vfs, const KURL&
 	
 	vfile * file = vfs->vfs_getFirstFile();
 	while( file ) {
-		if( names->contains( file->vfile_getName() ) ) {
-			QString relativeDir = KURL::relativeURL( baseURL, file->vfile_getUrl().upURL() );
+		if( names->tqcontains( file->vfile_getName() ) ) {
+			TQString relativeDir = KURL::relativeURL( baseURL, file->vfile_getUrl().upURL() );
 			
-			KURL::List *list = m_filesToCopy.find( relativeDir );
+			KURL::List *list = m_filesToCopy.tqfind( relativeDir );
 			if( list == 0 ) {
 				list = new KURL::List();
 				m_filesToCopy.insert( relativeDir, list );
@@ -65,7 +65,7 @@ VirtualCopyJob::VirtualCopyJob( const QStringList *names, vfs * vfs, const KURL&
 				m_subdirs[ relativeDir ] = 0;
 			}
 			
-			if( !list->contains( file->vfile_getUrl() ) ) {
+			if( !list->tqcontains( file->vfile_getUrl() ) ) {
 				if( file->vfile_isDir() ) {
 					m_dirsToGetSize.append( file->vfile_getUrl() );
 					m_totalSubdirs++;
@@ -83,19 +83,19 @@ VirtualCopyJob::VirtualCopyJob( const QStringList *names, vfs * vfs, const KURL&
 	}
 	
 	if ( showProgressInfo ) {
-		connect( this, SIGNAL( totalFiles( KIO::Job*, unsigned long ) ),
-			Observer::self(), SLOT( slotTotalFiles( KIO::Job*, unsigned long ) ) );
-		connect( this, SIGNAL( totalDirs( KIO::Job*, unsigned long ) ),
-			Observer::self(), SLOT( slotTotalDirs( KIO::Job*, unsigned long ) ) );
-		connect( this, SIGNAL( processedFiles( KIO::Job*, unsigned long ) ),
-			Observer::self(), SLOT( slotProcessedFiles( KIO::Job*, unsigned long ) ) );
-		connect( this, SIGNAL( processedDirs( KIO::Job*, unsigned long ) ),
-			Observer::self(), SLOT( slotProcessedDirs( KIO::Job*, unsigned long ) ) );
-		connect( this, SIGNAL( percent( KIO::Job*, unsigned long ) ),
-			Observer::self(), SLOT( slotPercent( KIO::Job*, unsigned long ) ) );
+		connect( this, TQT_SIGNAL( totalFiles( KIO::Job*, unsigned long ) ),
+			Observer::self(), TQT_SLOT( slotTotalFiles( KIO::Job*, unsigned long ) ) );
+		connect( this, TQT_SIGNAL( totalDirs( KIO::Job*, unsigned long ) ),
+			Observer::self(), TQT_SLOT( slotTotalDirs( KIO::Job*, unsigned long ) ) );
+		connect( this, TQT_SIGNAL( processedFiles( KIO::Job*, unsigned long ) ),
+			Observer::self(), TQT_SLOT( slotProcessedFiles( KIO::Job*, unsigned long ) ) );
+		connect( this, TQT_SIGNAL( processedDirs( KIO::Job*, unsigned long ) ),
+			Observer::self(), TQT_SLOT( slotProcessedDirs( KIO::Job*, unsigned long ) ) );
+		connect( this, TQT_SIGNAL( percent( KIO::Job*, unsigned long ) ),
+			Observer::self(), TQT_SLOT( slotPercent( KIO::Job*, unsigned long ) ) );
 	}
 	
-	QTimer::singleShot( 0, this, SLOT( slotStart() ) );
+	TQTimer::singleShot( 0, this, TQT_SLOT( slotStart() ) );
 }
 
 void VirtualCopyJob::slotStart() {
@@ -106,7 +106,7 @@ void VirtualCopyJob::slotStart() {
 			Observer::self()->slotCopying( this, m_baseURL, m_dest );
 	}
 	
-	connect(&m_reportTimer,SIGNAL(timeout()),this,SLOT(slotReport()));
+	connect(&m_reportTimer,TQT_SIGNAL(timeout()),this,TQT_SLOT(slotReport()));
 	m_reportTimer.start(REPORT_TIMEOUT,false);
 	
 	statNextDir();
@@ -158,7 +158,7 @@ void VirtualCopyJob::statNextDir() {
 	m_currentDir = KURL::relativeURL( m_baseURL, dirToCheck.upURL() );
 	
 	KDirSize* kds  = KDirSize::dirSizeJob( dirToCheck );
-	connect( kds, SIGNAL( result( KIO::Job* ) ), this, SLOT( slotKdsResult( KIO::Job* ) ) );
+	connect( kds, TQT_SIGNAL( result( KIO::Job* ) ), this, TQT_SLOT( slotKdsResult( KIO::Job* ) ) );
 }
 
 void VirtualCopyJob::slotKdsResult( KIO::Job * job ) {
@@ -181,7 +181,7 @@ void VirtualCopyJob::createNextDir() {
 		return;
 	}
 	
-	QDictIterator<KURL::List> diter( m_filesToCopy );
+	TQDictIterator<KURL::List> diter( m_filesToCopy );
 	
 	m_currentDir = diter.currentKey();
 	m_current = m_dest;
@@ -189,7 +189,7 @@ void VirtualCopyJob::createNextDir() {
 		m_current.addPath( m_currentDir );
 	
 	KIO::Job *job = KIO::stat( m_current );
-	connect( job, SIGNAL( result( KIO::Job* ) ), this, SLOT( slotStatResult( KIO::Job* ) ) );
+	connect( job, TQT_SIGNAL( result( KIO::Job* ) ), this, TQT_SLOT( slotStatResult( KIO::Job* ) ) );
 }
 
 void VirtualCopyJob::slotStatResult( KIO::Job *job ) {
@@ -199,7 +199,7 @@ void VirtualCopyJob::slotStatResult( KIO::Job *job ) {
 		if( job->error() == KIO::ERR_DOES_NOT_EXIST && !url.equals( url.upURL(),true ) ) {
 			m_dirStack.push_back( url.fileName() );
 			KIO::Job *job = KIO::stat( url.upURL() );
-			connect( job, SIGNAL( result( KIO::Job* ) ), this, SLOT( slotStatResult( KIO::Job* ) ) );
+			connect( job, TQT_SIGNAL( result( KIO::Job* ) ), this, TQT_SLOT( slotStatResult( KIO::Job* ) ) );
 			return;
 		}
 		job->showErrorDialog( krApp );
@@ -214,7 +214,7 @@ void VirtualCopyJob::slotStatResult( KIO::Job *job ) {
 		m_dirStack.pop_back();
 		
 		KIO::Job *mkdir_job = KIO::mkdir( url );
-		connect( mkdir_job, SIGNAL( result( KIO::Job* ) ), this, SLOT( slotMkdirResult( KIO::Job* ) ) );
+		connect( mkdir_job, TQT_SIGNAL( result( KIO::Job* ) ), this, TQT_SLOT( slotMkdirResult( KIO::Job* ) ) );
 	}
 	else
 		copyCurrentDir();
@@ -236,7 +236,7 @@ void VirtualCopyJob::slotMkdirResult( KIO::Job *job ) {
 		m_dirStack.pop_back();
 	
 		KIO::Job *mkdir_job = KIO::mkdir( url );
-		connect( mkdir_job, SIGNAL( result( KIO::Job* ) ), this, SLOT( slotMkdirResult( KIO::Job* ) ) );
+		connect( mkdir_job, TQT_SIGNAL( result( KIO::Job* ) ), this, TQT_SLOT( slotMkdirResult( KIO::Job* ) ) );
 	}
 	else
 		copyCurrentDir();
@@ -248,19 +248,19 @@ void VirtualCopyJob::copyCurrentDir() {
 	KIO::CopyJob * copy_job = PreservingCopyJob::createCopyJob( m_pmode, *m_filesToCopy[ m_currentDir ], m_current,
 		m_mode, m_asMethod, false );
 	
-	connect( copy_job, SIGNAL( copying(KIO::Job *, const KURL &, const KURL &) ),
-		this, SLOT( slotCopying(KIO::Job *, const KURL &, const KURL &) ) );
-	connect( copy_job, SIGNAL( moving(KIO::Job *, const KURL &, const KURL &) ),
-		this, SLOT( slotMoving(KIO::Job *, const KURL &, const KURL &) ) );
-	connect( copy_job, SIGNAL( creatingDir(KIO::Job *, const KURL &) ),
-		this, SLOT( slotCreatingDir(KIO::Job *, const KURL &) ) );
-	connect( copy_job, SIGNAL( processedFiles (KIO::Job *, unsigned long) ),
-		this, SLOT( slotProcessedFiles (KIO::Job *, unsigned long) ) );
-	connect( copy_job, SIGNAL( processedDirs (KIO::Job *, unsigned long) ),
-		this, SLOT( slotProcessedDirs (KIO::Job *, unsigned long) ) );
-	connect( copy_job, SIGNAL( processedSize (KIO::Job *, KIO::filesize_t) ),
-		this, SLOT( slotProcessedSize (KIO::Job *, KIO::filesize_t) ) );
-	connect( copy_job, SIGNAL( result( KIO::Job* ) ), this, SLOT( slotCopyResult( KIO::Job* ) ) );
+	connect( copy_job, TQT_SIGNAL( copying(KIO::Job *, const KURL &, const KURL &) ),
+		this, TQT_SLOT( slotCopying(KIO::Job *, const KURL &, const KURL &) ) );
+	connect( copy_job, TQT_SIGNAL( moving(KIO::Job *, const KURL &, const KURL &) ),
+		this, TQT_SLOT( slotMoving(KIO::Job *, const KURL &, const KURL &) ) );
+	connect( copy_job, TQT_SIGNAL( creatingDir(KIO::Job *, const KURL &) ),
+		this, TQT_SLOT( slotCreatingDir(KIO::Job *, const KURL &) ) );
+	connect( copy_job, TQT_SIGNAL( processedFiles (KIO::Job *, unsigned long) ),
+		this, TQT_SLOT( slotProcessedFiles (KIO::Job *, unsigned long) ) );
+	connect( copy_job, TQT_SIGNAL( processedDirs (KIO::Job *, unsigned long) ),
+		this, TQT_SLOT( slotProcessedDirs (KIO::Job *, unsigned long) ) );
+	connect( copy_job, TQT_SIGNAL( processedSize (KIO::Job *, KIO::filesize_t) ),
+		this, TQT_SLOT( slotProcessedSize (KIO::Job *, KIO::filesize_t) ) );
+	connect( copy_job, TQT_SIGNAL( result( KIO::Job* ) ), this, TQT_SLOT( slotCopyResult( KIO::Job* ) ) );
 }
 
 void VirtualCopyJob::slotCopyResult( KIO::Job *job ) {
@@ -272,7 +272,7 @@ void VirtualCopyJob::slotCopyResult( KIO::Job *job ) {
 	createNextDir();
 }
 
-void VirtualCopyJob::directoryFinished( const QString &name ) {
+void VirtualCopyJob::directoryFinished( const TQString &name ) {
 	m_filesToCopy.remove( name );
 	
 	m_processedSize += m_size[ name ];

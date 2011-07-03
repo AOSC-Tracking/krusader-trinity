@@ -28,29 +28,30 @@
 
 class virt_vfs : public vfs  {
 Q_OBJECT
+  TQ_OBJECT
 public: 
-	virt_vfs(QObject* panel, bool quiet=false);
+	virt_vfs(TQObject* panel, bool quiet=false);
 	~virt_vfs();
 	
 	/// Copy a file to the vfs (physical).
-	void vfs_addFiles(KURL::List *fileUrls,KIO::CopyJob::CopyMode mode,QObject* toNotify,QString dir = "",  PreserveMode pmode = PM_DEFAULT );	
+	void vfs_addFiles(KURL::List *fileUrls,KIO::CopyJob::CopyMode mode,TQObject* toNotify,TQString dir = "",  PreserveMode pmode = PM_DEFAULT );	
 	/// Remove a file from the vfs (physical)
-	void vfs_delFiles(QStringList *fileNames);	
+	void vfs_delFiles(TQStringList *fileNames);	
 	/// Remove a file from the collection (only its link, not the file)
-	void vfs_removeFiles(QStringList *fileNames);	
+	void vfs_removeFiles(TQStringList *fileNames);	
 	/// Return a list of URLs for multiple files	
-	KURL::List* vfs_getFiles(QStringList* names);
+	KURL::List* vfs_getFiles(TQStringList* names);
 	/// Return a URL to a single file	
-	KURL vfs_getFile(const QString& name);
+	KURL vfs_getFile(const TQString& name);
 	/// Create a new directory
-	void vfs_mkdir(const QString& name);
+	void vfs_mkdir(const TQString& name);
 	/// Rename file
-	void vfs_rename(const QString& fileName,const QString& newName);
+	void vfs_rename(const TQString& fileName,const TQString& newName);
 	/// Calculate the amount of space occupied by a file or directory (recursive).
-	virtual void vfs_calcSpace(QString name ,KIO::filesize_t *totalSize,unsigned long *totalFiles,unsigned long *totalDirs, bool * stop);
+	virtual void vfs_calcSpace(TQString name ,KIO::filesize_t *totalSize,unsigned long *totalFiles,unsigned long *totalDirs, bool * stop);
 	
 	/// Return the VFS working dir
-	QString vfs_workingDir(){ return QString::null; }
+	TQString vfs_workingDir(){ return TQString(); }
 	
 protected slots:
 	void slotStatResult(KIO::Job *job);
@@ -66,10 +67,10 @@ protected:
 	bool populateVfsList(const KURL& origin, bool showHidden);
 	vfile* stat(const KURL& url);
 	
-	static QDict<KURL::List> virtVfsDict;
+	static TQDict<KURL::List> virtVfsDict;
 	static KConfig* virt_vfs_db;
 	bool busy;
-	QString path;
+	TQString path;
 	KIO::UDSEntry entry;
 };
 

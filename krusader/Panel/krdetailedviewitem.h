@@ -35,23 +35,23 @@
 #include <sys/types.h>
 #include "../VFS/vfile.h"
 #include <klistview.h>
-#include <qguardedptr.h>
+#include <tqguardedptr.h>
 
 #define FASTER
 
-class QPixmap;
+class TQPixmap;
 class KrDetailedView;
 
 class KrDetailedViewItem : public KListViewItem, public KrViewItem {
 friend class KrDetailedView;
 friend class KrCalcSpaceDialog;
 public:
-	KrDetailedViewItem(KrDetailedView *parent, QListViewItem *after, vfile *vf);
+	KrDetailedViewItem(KrDetailedView *tqparent, TQListViewItem *after, vfile *vf);
 	inline bool isSelected() const { return KListViewItem::isSelected(); }
 	inline void setSelected(bool s) { KListViewItem::setSelected(s); }
-	int compare(QListViewItem *i,int col,bool ascending ) const;
-	void paintCell(QPainter *p, const QColorGroup &cg, int column, int width, int align);
-	void repaintItem();
+	int compare(TQListViewItem *i,int col,bool ascending ) const;
+	void paintCell(TQPainter *p, const TQColorGroup &cg, int column, int width, int align);
+	void tqrepaintItem();
 	static void itemHeightChanged(); // force the items to resize when icon/font size change
 #ifdef FASTER		
 	virtual void setup(); // called when listview needs to know the height of the item
@@ -60,10 +60,10 @@ public:
 protected:
 	// text() was made protected in order to catch every place where text(x) is used
 	// to gain unlawful information on the object
-	virtual inline QString text(int column) const { return KListViewItem::text(column); }
+	virtual inline TQString text(int column) const { return KListViewItem::text(column); }
 
 private:
-	static const QColor & setColorIfContrastIsSufficient(const QColor & background, const QColor & color1, const QColor & color2);
+	static const TQColor & setColorIfContrastIsSufficient(const TQColor & background, const TQColor & color1, const TQColor & color2);
 #ifdef FASTER	
 	bool initiated;
 	static int expHeight;

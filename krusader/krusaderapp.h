@@ -7,6 +7,7 @@
 // declare a dummy kapplication, just to get the X focusin focusout events
 class KrusaderApp: public KApplication {
 	Q_OBJECT
+  TQ_OBJECT
 public:
 	KrusaderApp(): KApplication() {}
 	bool x11EventFilter ( XEvent *e ) {

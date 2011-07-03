@@ -19,8 +19,9 @@ class UserActionPage;
 
 class ActionMan : public KDialogBase {
 Q_OBJECT
+  TQ_OBJECT
 public:
-   ActionMan( QWidget* parent=0 );
+   ActionMan( TQWidget* tqparent=0 );
    ~ActionMan();
 
 protected slots:

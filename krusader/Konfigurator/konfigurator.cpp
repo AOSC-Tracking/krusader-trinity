@@ -36,7 +36,7 @@
 #include "../kicons.h"
 
 #include <kfiledialog.h>
-#include <qwidget.h>
+#include <tqwidget.h>
 #include <klocale.h>
 #include <kglobal.h>
 #include <kstandarddirs.h>
@@ -70,8 +70,8 @@ Konfigurator::Konfigurator( bool f, int startPage ) : KDialogBase(0,0,true,"Konf
 
   setHelp("konfigurator");
   
-  connect( widget, SIGNAL( aboutToShowPage(QWidget *) ), this, SLOT( slotPageSwitch() ) );
-  connect( &restoreTimer, SIGNAL(timeout()), this, SLOT(slotRestorePage()));
+  connect( widget, TQT_SIGNAL( aboutToShowPage(TQWidget *) ), this, TQT_SLOT( slotPageSwitch() ) );
+  connect( &restoreTimer, TQT_SIGNAL(timeout()), this, TQT_SLOT(slotRestorePage()));
   
   createLayout( startPage );
   setMainWidget(widget);
@@ -81,42 +81,42 @@ Konfigurator::Konfigurator( bool f, int startPage ) : KDialogBase(0,0,true,"Konf
 void Konfigurator::newContent(KonfiguratorPage *page)
 {
   kgFrames.append(page);
-  connect( page, SIGNAL( sigChanged() ), this, SLOT( slotApplyEnable() ) );
+  connect( page, TQT_SIGNAL( sigChanged() ), this, TQT_SLOT( slotApplyEnable() ) );
 }
 
 void Konfigurator::createLayout( int startPage )
 {
   // startup
   newContent(new KgStartup(firstTime, widget->addPage(i18n("Startup"),
-    i18n("Krusader's settings upon startup"),QPixmap(krLoader->loadIcon("kfm_home",
+    i18n("Krusader's settings upon startup"),TQPixmap(krLoader->loadIcon("kfm_home",
       KIcon::Desktop,32)))));
   // look n' feel
   newContent(new KgLookFeel(firstTime, widget->addPage(i18n("Look & Feel"),
-    i18n("Look & Feel"),QPixmap(krLoader->loadIcon("looknfeel",KIcon::Desktop,32)))));
+    i18n("Look & Feel"),TQPixmap(krLoader->loadIcon("looknfeel",KIcon::Desktop,32)))));
   // colors
   newContent(new KgColors(firstTime, widget->addPage(i18n("Colors"),
-    i18n("Colors"),QPixmap(krLoader->loadIcon("colors",KIcon::Desktop,32)))));
+    i18n("Colors"),TQPixmap(krLoader->loadIcon("colors",KIcon::Desktop,32)))));
   // general
   newContent(new KgGeneral(firstTime, widget->addPage(i18n("General"),
-    i18n("Basic Operations"),QPixmap(krLoader->loadIcon("configure",KIcon::Desktop,32)))));
+    i18n("Basic Operations"),TQPixmap(krLoader->loadIcon("configure",KIcon::Desktop,32)))));
   // advanced
   newContent(new KgAdvanced(firstTime, widget->addPage(i18n("Advanced"),
     i18n("Be sure you know what you're doing!"),
-    QPixmap(krLoader->loadIcon("messagebox_warning",KIcon::Desktop,32)))));
+    TQPixmap(krLoader->loadIcon("messagebox_warning",KIcon::Desktop,32)))));
   // archives
   newContent(new KgArchives(firstTime, widget->addPage(i18n("Archives"),i18n("Customize the way Krusader deals with archives"),
-    QPixmap(krLoader->loadIcon("tgz",KIcon::Desktop,32)))));
+    TQPixmap(krLoader->loadIcon("tgz",KIcon::Desktop,32)))));
   // dependencies
   newContent(new KgDependencies(firstTime, widget->addPage(i18n("Dependencies"),i18n("Set the full path of the external applications"),
-    QPixmap(krLoader->loadIcon("kr_dependencies",KIcon::Desktop,32)))));
+    TQPixmap(krLoader->loadIcon("kr_dependencies",KIcon::Desktop,32)))));
   // useractions
   newContent(new KgUserActions(firstTime, widget->addPage(i18n("User Actions"),i18n("Configure your personal actions"),
-    QPixmap(krLoader->loadIcon("kr_useractions",KIcon::Desktop,32)))));
+    TQPixmap(krLoader->loadIcon("kr_useractions",KIcon::Desktop,32)))));
   // protocols
   newContent(new KgProtocols(firstTime, widget->addPage(i18n("Protocols"),
-    i18n("Link mimes to protocols"), QPixmap(krLoader->loadIcon("about_kde",KIcon::Desktop,32)))));
+    i18n("Link mimes to protocols"), TQPixmap(krLoader->loadIcon("about_kde",KIcon::Desktop,32)))));
         
-  widget->showPage( widget->pageIndex( kgFrames.at( startPage )->parentWidget() ) );
+  widget->showPage( widget->pageIndex( kgFrames.at( startPage )->tqparentWidget() ) );
   slotApplyEnable();
 }
 
@@ -133,7 +133,7 @@ void Konfigurator::slotApply()
   {
     restartGUI = true;
 //    KMessageBox::information(this,i18n("Changes to the GUI will be updated next time you run Krusader."),
-//     QString::null,"konfigGUInotify");
+//     TQString(),"konfigGUInotify");
   }
 
    // really ugly, but reload the Fn keys just in case - csaba: any better idea?
@@ -154,7 +154,7 @@ int Konfigurator::searchPage( int pageNum )
 
   while( ( page = kgFrames.at( i ) ) )
   {
-    if( pageNum == widget->pageIndex( page->parentWidget() ) )
+    if( pageNum == widget->pageIndex( page->tqparentWidget() ) )
       return i;
 
     i++;
@@ -194,7 +194,7 @@ bool Konfigurator::slotPageSwitch()
       {
         restartGUI = true;
 //        KMessageBox::information(this,i18n("Changes to the GUI will be updated next time you run Krusader."),
-//          QString::null,"konfigGUInotify");
+//          TQString(),"konfigGUInotify");
       }
       break;
     default:

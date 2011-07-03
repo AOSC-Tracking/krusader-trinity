@@ -6,25 +6,26 @@
 #include <kdialogbase.h>
 #include <kurl.h>
 #include <klineedit.h>
-#include <qmap.h>
+#include <tqmap.h>
 #include <klistview.h>
-#include <qtoolbutton.h>
+#include <tqtoolbutton.h>
 
 class KrAddBookmarkDlg: public KDialogBase {
 	Q_OBJECT
+  TQ_OBJECT
 public:
-	KrAddBookmarkDlg(QWidget *parent, KURL url = 0);
+	KrAddBookmarkDlg(TQWidget *tqparent, KURL url = 0);
 	KURL url() const { return vfs::fromPathOrURL(_url->text()); }
-	QString name() const { return _name->text(); }
+	TQString name() const { return _name->text(); }
 	KrBookmark *folder() const { return _xr[static_cast<KListViewItem*>(_createIn->selectedItem())]; }
 
 protected:
-	QWidget *createInWidget();
-	void populateCreateInWidget(KrBookmark *root, KListViewItem *parent);
+	TQWidget *createInWidget();
+	void populateCreateInWidget(KrBookmark *root, KListViewItem *tqparent);
 
 protected slots:
 	void toggleCreateIn(bool show);
-	void createInSelection(QListViewItem *item);
+	void createInSelection(TQListViewItem *item);
 	void newFolder();
 	
 private:
@@ -32,8 +33,8 @@ private:
 	KLineEdit *_url;
 	KLineEdit *_folder;
 	KListView *_createIn;
-	QMap<KListViewItem*, KrBookmark*> _xr;
-	QToolButton *_createInBtn;
+	TQMap<KListViewItem*, KrBookmark*> _xr;
+	TQToolButton *_createInBtn;
 };
 
 #endif // KRADDBOOKMARKDLG_H

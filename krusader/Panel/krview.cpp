@@ -32,10 +32,10 @@
 #include "../defaults.h"
 #include "../VFS/krpermhandler.h"
 #include "krviewitem.h"
-#include <qnamespace.h>
-#include <qpixmapcache.h>
-#include <qdir.h>
-#include <qbitmap.h>
+#include <tqnamespace.h>
+#include <tqpixmapcache.h>
+#include <tqdir.h>
+#include <tqbitmap.h>
 #include <kmimetype.h>
 #include <klocale.h>
 #include <kinputdialog.h>
@@ -45,18 +45,18 @@
 
 
 // ----------------------------- operator
-KrViewOperator::KrViewOperator(KrView *view, QWidget *widget): _view(view), _widget(widget) {
+KrViewOperator::KrViewOperator(KrView *view, TQWidget *widget): _view(view), _widget(widget) {
 }
 
 KrViewOperator::~KrViewOperator() {
 }
 
 void KrViewOperator::startDrag() {
-   QStringList items;
+   TQStringList items;
    _view->getSelectedItems( &items );
    if ( items.empty() )
       return ; // don't drag an empty thing
-   QPixmap px;
+   TQPixmap px;
    if ( items.count() > 1 )
       px = FL_LOADICON( "queue" ); // how much are we dragging
    else
@@ -66,8 +66,8 @@ void KrViewOperator::startDrag() {
 
 // ----------------------------- krview
 
-KrView::KrView( KConfig *cfg ) : _config( cfg ), _widget(0), _nameToMakeCurrent( QString::null ), _nameToMakeCurrentIfAdded( QString::null ),
-_numSelected( 0 ), _count( 0 ), _numDirs( 0 ), _countSize( 0 ), _selectedSize( 0 ), _properties(0), _focused( false ), _nameInKConfig(QString::null) {
+KrView::KrView( KConfig *cfg ) : _config( cfg ), _widget(0), _nameToMakeCurrent( TQString() ), _nameToMakeCurrentIfAdded( TQString() ),
+_numSelected( 0 ), _count( 0 ), _numDirs( 0 ), _countSize( 0 ), _selectedSize( 0 ), _properties(0), _focused( false ), _nameInKConfig(TQString()) {
 }
 
 KrView::~KrView() {
@@ -89,26 +89,26 @@ void KrView::init() {
 	setup();
 }
 
-QPixmap KrView::getIcon( vfile *vf /*, KRListItem::cmpColor color*/ ) {
+TQPixmap KrView::getIcon( vfile *vf /*, KRListItem::cmpColor color*/ ) {
    //krConfig->setGroup("Advanced");
    //////////////////////////////
-   QPixmap icon;
-   QString icon_name = vf->vfile_getIcon();
-   //QPixmapCache::setCacheLimit( krConfig->readNumEntry("Icon Cache Size",_IconCacheSize) );
+   TQPixmap icon;
+   TQString icon_name = vf->vfile_getIcon();
+   //TQPixmapCache::setCacheLimit( krConfig->readNumEntry("Icon Cache Size",_IconCacheSize) );
 
    if( icon_name.isNull() )
      icon_name="";
    
    // first try the cache
-   if ( !QPixmapCache::find( icon_name, icon ) ) {
+   if ( !TQPixmapCache::tqfind( icon_name, icon ) ) {
       icon = FL_LOADICON( icon_name );
       // insert it into the cache
-      QPixmapCache::insert( icon_name, icon );
+      TQPixmapCache::insert( icon_name, icon );
    }
    // if it's a symlink - add an arrow overlay
    if ( vf->vfile_isSymLink() ) {
-      QPixmap link( link_xpm );
-      bitBlt ( &icon, 0, icon.height() - 11, &link, 0, 21, 10, 11, Qt::CopyROP, false );
+      TQPixmap link( link_xpm );
+      bitBlt ( TQT_TQPAINTDEVICE(&icon), 0, icon.height() - 11, TQT_TQPAINTDEVICE(&link), 0, 21, 10, 11, TQt::CopyROP, false );
       icon.setMask( icon.createHeuristicMask( false ) );
    }
 
@@ -119,10 +119,10 @@ QPixmap KrView::getIcon( vfile *vf /*, KRListItem::cmpColor color*/ ) {
  * this function ADDs a list of selected item names into 'names'.
  * it assumes the list is ready and doesn't initialize it, or clears it
  */
-void KrView::getItemsByMask( QString mask, QStringList* names, bool dirs, bool files ) {
+void KrView::getItemsByMask( TQString tqmask, TQStringList* names, bool dirs, bool files ) {
    for ( KrViewItem * it = getFirst(); it != 0; it = getNext( it ) ) {
-      if ( ( it->name() == ".." ) || !QDir::match( mask, it->name() ) ) continue;
-      // if we got here, than the item fits the mask
+      if ( ( it->name() == ".." ) || !TQDir::match( tqmask, it->name() ) ) continue;
+      // if we got here, than the item fits the tqmask
       if ( it->getVfile()->vfile_isDir() && !dirs ) continue; // do we need to skip folders?
       if ( !it->getVfile()->vfile_isDir() && !files ) continue; // do we need to skip files
       names->append( it->name() );
@@ -133,13 +133,13 @@ void KrView::getItemsByMask( QString mask, QStringList* names, bool dirs, bool f
  * this function ADDs a list of selected item names into 'names'.
  * it assumes the list is ready and doesn't initialize it, or clears it
  */
-void KrView::getSelectedItems( QStringList *names ) {
+void KrView::getSelectedItems( TQStringList *names ) {
    for ( KrViewItem * it = getFirst(); it != 0; it = getNext( it ) )
       if ( it->isSelected() && ( it->name() != ".." ) ) names->append( it->name() );
 
    // if all else fails, take the current item
-	QString item = getCurrentItem();
-   if ( names->empty() && item!=QString::null && item!=".." ) names->append( item );
+	TQString item = getCurrentItem();
+   if ( names->empty() && item!=TQString() && item!=".." ) names->append( item );
 }
 
 void KrView::getSelectedKrViewItems( KrViewItemList *items ) {
@@ -147,11 +147,11 @@ void KrView::getSelectedKrViewItems( KrViewItemList *items ) {
       if ( it->isSelected() && ( it->name() != ".." ) ) items->append( it );
 
    // if all else fails, take the current item
-	QString item = getCurrentItem();
-   if ( items->empty() && item!=QString::null && item!=".." ) items->append( getCurrentKrViewItem() );
+	TQString item = getCurrentItem();
+   if ( items->empty() && item!=TQString() && item!=".." ) items->append( getCurrentKrViewItem() );
 }
 
-QString KrView::statistics() {
+TQString KrView::statistics() {
     _countSize = _numSelected = _selectedSize = 0;
 
     for ( KrViewItem * it = getFirst(); it != 0; it = getNext( it ) ){
@@ -162,10 +162,10 @@ QString KrView::statistics() {
     if (it->getVfile()->vfile_getSize() > 0)
        _countSize += it->getVfile()->vfile_getSize();
    }
-   QString tmp = QString(i18n("%1 out of %2, %3 (%4) out of %5 (%6)"))
-                 .arg( _numSelected ).arg( _count ).arg( KIO::convertSize( _selectedSize ) )
-                 .arg( KRpermHandler::parseSize(_selectedSize) )
-					  .arg( KIO::convertSize( _countSize ) ).arg( KRpermHandler::parseSize(_countSize) );
+   TQString tmp = TQString(i18n("%1 out of %2, %3 (%4) out of %5 (%6)"))
+                 .tqarg( _numSelected ).tqarg( _count ).tqarg( KIO::convertSize( _selectedSize ) )
+                 .tqarg( KRpermHandler::parseSize(_selectedSize) )
+					  .tqarg( KIO::convertSize( _countSize ) ).tqarg( KRpermHandler::parseSize(_countSize) );
 	// notify if we're running a filtered view
 	if (filter() != KrViewProperties::All)
 		tmp = ">> [ " + filterMask().nameFilter() + " ]  "+tmp;
@@ -225,7 +225,7 @@ void KrView::invertSelection() {
    makeItemVisible( temp );
 }
 
-QString KrView::firstUnmarkedBelowCurrent() {
+TQString KrView::firstUnmarkedBelowCurrent() {
    KrViewItem * iterator = getNext( getCurrentKrViewItem() );
    while ( iterator && iterator->isSelected() )
       iterator = getNext( iterator );
@@ -234,11 +234,11 @@ QString KrView::firstUnmarkedBelowCurrent() {
       while ( iterator && iterator->isSelected() )
          iterator = getPrev( iterator );
    }
-   if ( !iterator ) return QString::null;
+   if ( !iterator ) return TQString();
    return iterator->name();
 }
 
-void KrView::delItem(const QString &name) {
+void KrView::delItem(const TQString &name) {
 	KrViewItem * it = _dict[ name ];
    if ( !it ) {
       krOut << "got signal deletedVfile(" << name << ") but can't find KrViewItem" << endl;
@@ -275,7 +275,7 @@ KrViewItem *KrView::addItem( vfile *vf ) {
 	}
    if (item->name() == nameToMakeCurrentIfAdded() ) {
 		setCurrentItem(item->name());
-		setNameToMakeCurrentIfAdded(QString::null);
+		setNameToMakeCurrentIfAdded(TQString());
 		makeItemVisible( item );
 	}
 	
@@ -312,7 +312,7 @@ void KrView::clear() {
 
 // good old dialog box
 void KrView::renameCurrentItem() {
-   QString newName, fileName;
+   TQString newName, fileName;
 
    KrViewItem *it = getCurrentKrViewItem();
    if ( it ) fileName = it->name();

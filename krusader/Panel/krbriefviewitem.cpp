@@ -7,8 +7,8 @@
 #include <kconfig.h>
 #include "krcolorcache.h"
 
-#include <qpainter.h>
-#include <qpointarray.h>
+#include <tqpainter.h>
+#include <tqpointarray.h>
 
 #define PROPS	_viewProperties
 #define VF	getVfile()
@@ -17,8 +17,8 @@
 int KrBriefViewItem::expHeight = 0;
 #endif // FASTER
 
-KrBriefViewItem::KrBriefViewItem(KrBriefView *parent, QIconViewItem *after, vfile *vf):
-	KIconViewItem(parent, after), KrViewItem(vf, parent->properties()) {
+KrBriefViewItem::KrBriefViewItem(KrBriefView *tqparent, TQIconViewItem *after, vfile *vf):
+	KIconViewItem(tqparent, after), KrViewItem(vf, tqparent->properties()) {
 #ifdef FASTER
 	initiated = false;
 	// get the expected height of an item - should be done only once
@@ -27,14 +27,14 @@ KrBriefViewItem::KrBriefViewItem(KrBriefView *parent, QIconViewItem *after, vfil
   		expHeight = 2 + (krConfig->readEntry("Filelist Icon Size",_FilelistIconSize)).toInt();
 	}
 	if( PROPS->displayIcons )
-		itemIcon = QPixmap( expHeight, expHeight );
+		itemIcon = TQPixmap( expHeight, expHeight );
 #endif // FASTER
 
 	// there's a special case, where if _vf is null, then we've got the ".." (updir) item
 	// in that case, create a special vfile for that item, and delete it, if needed
 	if (!_vf) {
 		dummyVfile = true;
-		_vf = new vfile("..", 0, "drw-r--r--", 0, false, 0, 0, QString::null, QString::null, 0);
+		_vf = new vfile("..", 0, "drw-r--r--", 0, false, 0, 0, TQString(), TQString(), 0);
 		
 		setText("..");
 		if ( PROPS->displayIcons )
@@ -50,11 +50,11 @@ KrBriefViewItem::KrBriefViewItem(KrBriefView *parent, QIconViewItem *after, vfil
 	setRenameEnabled( false );
 	setDragEnabled( true );
 	setDropEnabled( true );
-	repaintItem();
+	tqrepaintItem();
 }
 
 
-int KrBriefViewItem::compare(QIconViewItem *i ) const {
+int KrBriefViewItem::compare(TQIconViewItem *i ) const {
   bool ignoreCase = (PROPS->sortMode & KrViewProperties::IgnoreCase);
 
   KrBriefViewItem *other = (KrBriefViewItem *)i;
@@ -71,10 +71,10 @@ int KrBriefViewItem::compare(QIconViewItem *i ) const {
   if ( isDummy() ) return 1*asc;
   if ( other->isDummy() ) return -1*asc;
 
-  QString text0 = name();
+  TQString text0 = name();
   if (text0 == "..") return 1*asc;
   
-  QString itext0 = other->name();
+  TQString itext0 = other->name();
   if (itext0 == "..") return -1*asc;
 
   if( ignoreCase )
@@ -90,11 +90,11 @@ int KrBriefViewItem::compare(QIconViewItem *i ) const {
   if (!ignoreCase && !PROPS->localeAwareCompareIsCaseSensitive) {
     // sometimes, localeAwareCompare is not case sensative. in that case,
     // we need to fallback to a simple string compare (KDE bug #40131)
-    return QString::compare(text0, itext0);
-  } else return QString::localeAwareCompare(text0,itext0);
+    return TQString::compare(text0, itext0);
+  } else return TQString::localeAwareCompare(text0,itext0);
 }
 
-void KrBriefViewItem::paintItem(QPainter *p, const QColorGroup &cg) {
+void KrBriefViewItem::paintItem(TQPainter *p, const TQColorGroup &cg) {
 #ifdef FASTER
   if (!initiated && !dummyVfile) {
      // display an icon if needed
@@ -104,7 +104,7 @@ void KrBriefViewItem::paintItem(QPainter *p, const QColorGroup &cg) {
   }
 #endif
 
-  QColorGroup _cg(cg);
+  TQColorGroup _cg(cg);
 
   KrColorItemType colorItemType;
   colorItemType.m_activePanel = (dynamic_cast<KrView *>(iconView()) == ACTIVE_PANEL->view);
@@ -134,28 +134,28 @@ void KrBriefViewItem::paintItem(QPainter *p, const QColorGroup &cg) {
   if( _cg.background() != iconView()->paletteBackgroundColor() )
   {
      p->save();
-     p->setPen( Qt::NoPen );
-     p->setBrush( QBrush( _cg.background() ) );
+     p->setPen( TQt::NoPen );
+     p->setBrush( TQBrush( _cg.background() ) );
      p->drawRect( rect() );
      p->restore();
   }
 
-  QIconViewItem::paintItem(p, _cg);
+  TQIconViewItem::paintItem(p, _cg);
 
   paintFocus( p, cg );
 }
 
-void KrBriefViewItem::paintFocus(QPainter *p, const QColorGroup &cg) {
+void KrBriefViewItem::paintFocus(TQPainter *p, const TQColorGroup &cg) {
   if ( ( iconView()->hasFocus() && this == iconView()->currentItem() ) || 
      ((KrBriefView *)iconView())->_currDragItem == this )
   {
       p->save();
-      QPen pen( cg.shadow(), 0, Qt::DotLine );
+      TQPen pen( cg.shadow(), 0, TQt::DotLine );
       p->setPen( pen );
 
       // we manually draw the focus rect by points
-      QRect rec = rect();
-      QPointArray points( rec.right() - rec.left() + rec.bottom() - rec.top() + 4 );
+      TQRect rec = rect();
+      TQPointArray points( rec.right() - rec.left() + rec.bottom() - rec.top() + 4 );
       
       int ndx = 0;
       for( int x=rec.left(); x <= rec.right(); x+=2 )
@@ -173,9 +173,9 @@ void KrBriefViewItem::paintFocus(QPainter *p, const QColorGroup &cg) {
       p->restore();
 
 //    --- That didn't work with all themes
-//    iconView()->style().drawPrimitive(QStyle::PE_FocusRect, p,
-//       QRect( rect().x(), rect().y(), rect().width(), rect().height() ), cg,
-//              QStyle::Style_Default, cg.base() );
+//    iconView()->style().drawPrimitive(TQStyle::PE_FocusRect, p,
+//       TQRect( rect().x(), rect().y(), rect().width(), rect().height() ), cg,
+//              TQStyle::Style_Default, cg.base() );
   }
 }
 
@@ -185,7 +185,7 @@ void KrBriefViewItem::itemHeightChanged() {
 #endif // FASTER
 }
 
-void KrBriefViewItem::repaintItem()
+void KrBriefViewItem::tqrepaintItem()
 {
    if ( dummyVfile ) return;
 
@@ -197,10 +197,10 @@ void KrBriefViewItem::repaintItem()
 }
 
 // for keeping the exact item heights...
-void KrBriefViewItem::calcRect ( const QString & text_ )
+void KrBriefViewItem::calcRect ( const TQString & text_ )
 {
    KIconViewItem::calcRect( text_ );
-   QRect rec = rect();
+   TQRect rec = rect();
    
    int gridX = iconView()->gridX();
    int minX  = ( rec.x() / gridX ) * gridX;

@@ -20,16 +20,16 @@
 #include "../UserAction/useraction.h"
 
 
-ActionMan::ActionMan( QWidget * parent )
- : KDialogBase( parent, "ActionMan", true /*modal*/, "ActionMan - Manage your useractions",  KDialogBase::Apply | KDialogBase::Close )
+ActionMan::ActionMan( TQWidget * tqparent )
+ : KDialogBase( tqparent, "ActionMan", true /*modal*/, "ActionMan - Manage your useractions",  KDialogBase::Apply | KDialogBase::Close )
 {
    setPlainCaption(i18n("ActionMan - Manage Your Useractions"));
 
    userActionPage = new UserActionPage( this );
    setMainWidget( userActionPage );
 
-   connect( userActionPage, SIGNAL( changed() ), SLOT( slotEnableApplyButton() ) );
-   connect( userActionPage, SIGNAL( applied() ), SLOT( slotDisableApplyButton() ) );
+   connect( userActionPage, TQT_SIGNAL( changed() ), TQT_SLOT( slotEnableApplyButton() ) );
+   connect( userActionPage, TQT_SIGNAL( applied() ), TQT_SLOT( slotDisableApplyButton() ) );
    enableButtonApply( false );
 
    exec();

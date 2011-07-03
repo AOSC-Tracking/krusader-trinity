@@ -5,28 +5,28 @@
 #define SEGMENTTIP_H
 
 #include <kpixmap.h>
-#include <qwidget.h>
+#include <tqwidget.h>
 
 class File;
 class Directory;
 
 namespace RadialMap
 {
-    class SegmentTip : public QWidget
+    class SegmentTip : public TQWidget
     {
     public:
         SegmentTip( uint );
 
         void updateTip( const File*, const Directory* );
-        void moveto( QPoint, const QWidget&, bool );
+        void moveto( TQPoint, const TQWidget&, bool );
 
     private:
-        virtual bool eventFilter( QObject*, QEvent* );
-        virtual bool event( QEvent* );
+        virtual bool eventFilter( TQObject*, TQEvent* );
+        virtual bool event( TQEvent* );
 
         uint    m_cursorHeight;
         KPixmap m_pixmap;
-        QString m_text;
+        TQString m_text;
     };
 }
 

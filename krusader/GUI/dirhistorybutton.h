@@ -18,27 +18,28 @@
 #ifndef DIRHISTORYBUTTON_H
 #define DIRHISTORYBUTTON_H
 
-#include <qwidget.h>
-#include <qtoolbutton.h>
+#include <tqwidget.h>
+#include <tqtoolbutton.h>
 #include <kurl.h>
 
-class QPopupMenu;
+class TQPopupMenu;
 class DirHistoryQueue;
 
 /**
   *@author Shie Erlich & Rafi Yanai
   */
 
-class DirHistoryButton : public QToolButton  {
+class DirHistoryButton : public TQToolButton  {
    Q_OBJECT
+  TQ_OBJECT
 public: 
-  DirHistoryButton(DirHistoryQueue* hQ, QWidget *parent=0, const char *name=0);
+  DirHistoryButton(DirHistoryQueue* hQ, TQWidget *tqparent=0, const char *name=0);
   ~DirHistoryButton();
 
   void openPopup();
 
 private:
-  QPopupMenu* popupMenu;
+  TQPopupMenu* popupMenu;
   DirHistoryQueue* historyQueue;
   
 public slots: // Public slots

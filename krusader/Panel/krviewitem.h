@@ -35,21 +35,21 @@
 #include "../VFS/vfile.h"
 #include "krview.h"
 
-class QString;
-class QPixmap;
+class TQString;
+class TQPixmap;
 
 class KrViewItem {
 	friend class KrView;
 
 public:
-	virtual const QString& name(bool withExtension=true) const;
+	virtual const TQString& name(bool withExtension=true) const;
 	virtual inline bool hasExtension() const { return _hasExtension; }
-	virtual inline const QString& extension() const { return _extension; }
-	virtual QString dateTime() const;
-	virtual QString description() const;
+	virtual inline const TQString& extension() const { return _extension; }
+	virtual TQString dateTime() const;
+	virtual TQString description() const;
 	virtual bool isSelected() const = 0;
 	virtual void setSelected( bool s ) = 0;
-	virtual QPixmap icon();
+	virtual TQPixmap icon();
 	
 	KrViewItem(vfile *vf, const KrViewProperties* properties);
 	virtual ~KrViewItem() { if (dummyVfile) delete _vf; }
@@ -69,8 +69,8 @@ protected:
 	const KrViewProperties* _viewProperties;
 	bool _hasExtension;
 	bool _hidden;
-	QString _name;
-	QString _extension;
+	TQString _name;
+	TQString _extension;
 };
 
 #endif

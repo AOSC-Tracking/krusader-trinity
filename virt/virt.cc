@@ -20,7 +20,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-#include <qfile.h>
+#include <tqfile.h>
 #include <kurl.h>
 #include <kdebug.h>
 #include <klocale.h>
@@ -47,7 +47,7 @@ extern "C" { int kdemain( int argc, char **argv ); }
 	fclose(f);\
 }
 
-QDict<KURL::List> VirtProtocol::kioVirtDict;
+TQDict<KURL::List> VirtProtocol::kioVirtDict;
 KConfig* VirtProtocol::kio_virt_db;
 
 int kdemain( int argc, char **argv ) {
@@ -64,7 +64,7 @@ int kdemain( int argc, char **argv ) {
 	return 0;
 }
 
-VirtProtocol::VirtProtocol( const QCString &pool, const QCString &app ) : SlaveBase( "virt", pool, app ) {
+VirtProtocol::VirtProtocol( const TQCString &pool, const TQCString &app ) : SlaveBase( "virt", pool, app ) {
 	kio_virt_db = new KConfig(VIRT_VFS_DB,false,"data");
 }
 
@@ -86,8 +86,8 @@ void VirtProtocol::del(KURL const & /*url */, bool /* isFile */ ){
 }
 
 void VirtProtocol::copy( const KURL &src, const KURL &dest, int /* permissions */, bool /* overwrite */ ){
-	QString path = dest.path( -1 ).mid( 1 );
-	path = path.left(path.findRev("/"));
+	TQString path = dest.path( -1 ).mid( 1 );
+	path = path.left(path.tqfindRev("/"));
 	if ( path.isEmpty() ) path = "/";
 
 	if( addDir(path) ){
@@ -98,23 +98,23 @@ void VirtProtocol::copy( const KURL &src, const KURL &dest, int /* permissions *
 	finished();
 }
 
-bool VirtProtocol::addDir(QString& path){
+bool VirtProtocol::addDir(TQString& path){
 
 	if( kioVirtDict[ path ] ) return true;
 
-	QString updir;
-	if( !path.contains("/") ) updir = "/";
-	else updir = path.left(path.findRev("/"));
-	QString name = path.mid(path.findRev("/")+1);
+	TQString updir;
+	if( !path.tqcontains("/") ) updir = "/";
+	else updir = path.left(path.tqfindRev("/"));
+	TQString name = path.mid(path.tqfindRev("/")+1);
 
 	if( addDir(updir) ){ 
 		KURL url;
-		if( updir == "/" ) url = QString("virt:/")+name;
-		else url = QString("virt:/")+updir+"/"+name;
+		if( updir == "/" ) url = TQString("virt:/")+name;
+		else url = TQString("virt:/")+updir+"/"+name;
 		kioVirtDict[ updir ]->append( url );
 
 		KURL::List* temp = new KURL::List();
-		kioVirtDict.replace( path, temp );
+		kioVirtDict.tqreplace( path, temp );
 
 		return true;
 	}
@@ -128,7 +128,7 @@ void VirtProtocol::mkdir(const KURL& url,int){
 		return;
 	}
 
-	QString path = url.path( -1 ).mid( 1 );
+	TQString path = url.path( -1 ).mid( 1 );
 	if ( path.isEmpty() ) path = "/";
 
 	if( kioVirtDict[ path ] ){
@@ -152,7 +152,7 @@ void VirtProtocol::listDir( const KURL & url ) {
 
 	load();	
 
-	QString path = url.path( -1 ).mid( 1 );
+	TQString path = url.path( -1 ).mid( 1 );
 	if ( path.isEmpty() ) path = "/";
 
 	KURL::List* urlList = kioVirtDict[ path ];
@@ -225,10 +225,10 @@ bool VirtProtocol::save(){
 	KConfig* db = new KConfig(VIRT_VFS_DB,false,"data");;
 	
 	db->setGroup("virt_db");
-	QDictIterator<KURL::List> it( kioVirtDict ); // See QDictIterator
+	TQDictIterator<KURL::List> it( kioVirtDict ); // See TQDictIterator
 	for( ; it.current(); ++it ){
 		KURL::List::iterator url;
-		QStringList entry;
+		TQStringList entry;
 		for ( url = it.current()->begin() ; url != it.current()->end() ; ++url ) {
 			entry.append( (*url).url() );
 		}
@@ -249,17 +249,17 @@ bool VirtProtocol::load(){
 	KConfig* db = new KConfig(VIRT_VFS_DB,false,"data");
 	db->setGroup("virt_db");
 	
-	QMap<QString, QString> map = db->entryMap("virt_db");
-	QMap<QString, QString>::Iterator it;
+	TQMap<TQString, TQString> map = db->entryMap("virt_db");
+	TQMap<TQString, TQString>::Iterator it;
 	KURL::List* urlList;
 	for ( it = map.begin(); it != map.end(); ++it ) {
 		urlList = new KURL::List( db->readListEntry(it.key()) );
-		kioVirtDict.replace( it.key(),urlList );
+		kioVirtDict.tqreplace( it.key(),urlList );
 	}
 
 	if( !kioVirtDict["/" ]){
 		urlList = new KURL::List();
-		kioVirtDict.replace( "/", urlList );	
+		kioVirtDict.tqreplace( "/", urlList );	
 	}
 
 	unlock();
@@ -270,7 +270,7 @@ bool VirtProtocol::load(){
 }
 
 void VirtProtocol::local_entry(const KURL& url,UDSEntry& entry){
-	QString path = url.path( -1 ).mid( 1 );
+	TQString path = url.path( -1 ).mid( 1 );
 	if ( path.isEmpty() ) path = "/";
 
 	UDSAtom atom;

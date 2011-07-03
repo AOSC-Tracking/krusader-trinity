@@ -28,7 +28,7 @@ The current version only manages sync-browse and got no mode-switch options.
 #ifndef SYNCBROWSEBUTTON_H
 #define SYNCBROWSEBUTTON_H
 
-#include <qtoolbutton.h>
+#include <tqtoolbutton.h>
 
 // No synchrone browsing
 #define SYNCBROWSE_OFF		0
@@ -46,18 +46,19 @@ The current version only manages sync-browse and got no mode-switch options.
 #define SYNCBROWSE_COPY		2048
 */
 
-class SyncBrowseButton : public QToolButton  {
+class SyncBrowseButton : public TQToolButton  {
    Q_OBJECT
+  TQ_OBJECT
 public: 
-  SyncBrowseButton(QWidget *parent=0, const char *name=0);
+  SyncBrowseButton(TQWidget *tqparent=0, const char *name=0);
   ~SyncBrowseButton();
   
   int state();
 
 protected:
   int _state;
-  QPixmap _icon_on;
-  QPixmap _icon_off;
+  TQPixmap _icon_on;
+  TQPixmap _icon_off;
   
 private slots:
   void slotToggled(bool on);

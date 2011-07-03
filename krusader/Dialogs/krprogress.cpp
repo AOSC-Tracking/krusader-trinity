@@ -16,10 +16,10 @@
    Boston, MA 02110-1301, USA.
 */
 
-#include <qtimer.h>
-#include <qlayout.h>
-#include <qtooltip.h>
-#include <qdatetime.h>
+#include <tqtimer.h>
+#include <tqlayout.h>
+#include <tqtooltip.h>
+#include <tqdatetime.h>
 
 #include <kapplication.h>
 #include <kdialog.h>
@@ -41,27 +41,27 @@ KrProgress::KrProgress( KIO::Job* job )
   m_iTotalSize(0), m_iTotalFiles(0), m_iTotalDirs(0),
   m_iProcessedSize(0), m_iProcessedDirs(0), m_iProcessedFiles(0){
 
-#ifdef Q_WS_X11 //FIXME(E): Remove once all the KWin::foo calls have been ported to QWS
+#ifdef TQ_WS_X11 //FIXME(E): Remove once all the KWin::foo calls have been ported to TQWS
   // Set a useful icon for this window!
   KWin::setIcons( winId(),
           KGlobal::iconLoader()->loadIcon( "filesave", KIcon::NoGroup, 32 ),
           KGlobal::iconLoader()->loadIcon( "filesave", KIcon::NoGroup, 16 ) );
 #endif
 
-  QVBoxLayout *topLayout = new QVBoxLayout( this, KDialog::marginHint(),
+  TQVBoxLayout *topLayout = new TQVBoxLayout( this, KDialog::marginHint(),
                                             KDialog::spacingHint() );
   topLayout->addStrut( 360 );   // makes dlg at least that wide
 
-  QGridLayout *grid = new QGridLayout( 2, 3 );
+  TQGridLayout *grid = new TQGridLayout( 2, 3 );
   topLayout->addLayout(grid);
   grid->addColSpacing(1, KDialog::spacingHint());
   // filenames or action name
-  grid->addWidget(new QLabel(i18n("Source:"), this), 0, 0);
+  grid->addWidget(new TQLabel(i18n("Source:"), this), 0, 0);
 
   sourceLabel = new KSqueezedTextLabel(this);
   grid->addWidget(sourceLabel, 0, 2);
 
-  destInvite = new QLabel(i18n("Destination:"), this);
+  destInvite = new TQLabel(i18n("Destination:"), this);
   grid->addWidget(destInvite, 1, 0);
 
   destLabel = new KSqueezedTextLabel(this);
@@ -71,43 +71,43 @@ KrProgress::KrProgress( KIO::Job* job )
   topLayout->addWidget( m_pProgressBar );
 
   // processed info
-  QHBoxLayout *hBox = new QHBoxLayout();
+  TQHBoxLayout *hBox = new TQHBoxLayout();
   topLayout->addLayout(hBox);
 
-  sizeLabel = new QLabel(this);
+  sizeLabel = new TQLabel(this);
   hBox->addWidget(sizeLabel);
 
-  resumeLabel = new QLabel(this);
+  resumeLabel = new TQLabel(this);
   hBox->addWidget(resumeLabel);
 
-  progressLabel = new QLabel( this );
-/*  progressLabel->setSizePolicy( QSizePolicy( QSizePolicy::MinimumExpanding,
-                                             QSizePolicy::Preferred ) );*/
-  progressLabel->setAlignment( QLabel::AlignRight );
+  progressLabel = new TQLabel( this );
+/*  progressLabel->tqsetSizePolicy( TQSizePolicy( TQSizePolicy::MinimumExpanding,
+                                             TQSizePolicy::Preferred ) );*/
+  progressLabel->tqsetAlignment( TQLabel::AlignRight );
   hBox->addWidget( progressLabel );
 
-  hBox = new QHBoxLayout();
+  hBox = new TQHBoxLayout();
   topLayout->addLayout(hBox);
 
-  speedLabel = new QLabel(this);
+  speedLabel = new TQLabel(this);
   hBox->addWidget(speedLabel, 1);
 
-  QFrame *line = new QFrame( this );
-  line->setFrameShape( QFrame::HLine );
-  line->setFrameShadow( QFrame::Sunken );
+  TQFrame *line = new TQFrame( this );
+  line->setFrameShape( TQFrame::HLine );
+  line->setFrameShadow( TQFrame::Sunken );
   topLayout->addWidget( line );
 
-  hBox = new QHBoxLayout();
+  hBox = new TQHBoxLayout();
   topLayout->addLayout(hBox);
 
   hBox->addStretch(1);
 
   KPushButton *pb = new KPushButton( KStdGuiItem::cancel(), this );
-  connect( pb, SIGNAL( clicked() ), SLOT( slotStop() ) );
+  connect( pb, TQT_SIGNAL( clicked() ), TQT_SLOT( slotStop() ) );
   hBox->addWidget( pb );
 
-  resize( sizeHint() );
-  setMaximumHeight(sizeHint().height());
+  resize( tqsizeHint() );
+  setMaximumHeight(tqsizeHint().height());
 
   setCaption(i18n("Krusader Progress")); // show something better than kio_uiserver
 
@@ -115,19 +115,19 @@ KrProgress::KrProgress( KIO::Job* job )
   setOnlyClean(false);
   setStopOnClose(true);
   // Connect global progress info signals
-  connect( job, SIGNAL( percent( KIO::Job*, unsigned long ) ),
-                SLOT( slotPercent( KIO::Job*, unsigned long ) ) );
-  connect( job, SIGNAL( infoMessage( KIO::Job*, const QString & ) ),
-                SLOT( slotInfoMessage( KIO::Job*, const QString & ) ) );
-  connect( job, SIGNAL( totalSize( KIO::Job*, KIO::filesize_t ) ),
-                SLOT( slotTotalSize( KIO::Job*, KIO::filesize_t ) ) );
-  connect( job, SIGNAL( processedSize( KIO::Job*, KIO::filesize_t ) ),
-                SLOT( slotProcessedSize( KIO::Job*, KIO::filesize_t ) ) );
-  connect( job, SIGNAL( speed( KIO::Job*, unsigned long ) ),
-                SLOT( slotSpeed( KIO::Job*, unsigned long ) ) );
+  connect( job, TQT_SIGNAL( percent( KIO::Job*, unsigned long ) ),
+                TQT_SLOT( slotPercent( KIO::Job*, unsigned long ) ) );
+  connect( job, TQT_SIGNAL( infoMessage( KIO::Job*, const TQString & ) ),
+                TQT_SLOT( slotInfoMessage( KIO::Job*, const TQString & ) ) );
+  connect( job, TQT_SIGNAL( totalSize( KIO::Job*, KIO::filesize_t ) ),
+                TQT_SLOT( slotTotalSize( KIO::Job*, KIO::filesize_t ) ) );
+  connect( job, TQT_SIGNAL( processedSize( KIO::Job*, KIO::filesize_t ) ),
+                TQT_SLOT( slotProcessedSize( KIO::Job*, KIO::filesize_t ) ) );
+  connect( job, TQT_SIGNAL( speed( KIO::Job*, unsigned long ) ),
+                TQT_SLOT( slotSpeed( KIO::Job*, unsigned long ) ) );
 
   // change to modal & move to Krusader's center
-    QPoint center((krApp->width()-width())/2,(krApp->height()-height())/2);
+    TQPoint center((krApp->width()-width())/2,(krApp->height()-height())/2);
   center = center+(krApp->pos());
   reparent(krApp,WType_Modal,center);
   //setWFlags(WType_Modal);
@@ -159,7 +159,7 @@ void KrProgress::showTotals(){
   // of CopyJob takes a long time (e.g. over networks).
   if ( m_iProcessedFiles == 0 && m_iProcessedDirs == 0 )
   {
-    QString tmps;
+    TQString tmps;
     if ( m_iTotalDirs > 1 )
       // that we have a singular to translate looks weired but is only logical
       tmps = i18n("%n directory", "%n directories", m_iTotalDirs) + "   ";
@@ -169,7 +169,7 @@ void KrProgress::showTotals(){
 }
 
 void KrProgress::slotPercent( KIO::Job*, unsigned long percent ){
-  QString tmp(i18n( "%1% of %2 ").arg( percent ).arg( KIO::convertSize(m_iTotalSize)));
+  TQString tmp(i18n( "%1% of %2 ").tqarg( percent ).tqarg( KIO::convertSize(m_iTotalSize)));
   m_pProgressBar->setValue( percent );
   tmp.append(i18n(" (Reading)"));
 
@@ -177,18 +177,18 @@ void KrProgress::slotPercent( KIO::Job*, unsigned long percent ){
 }
 
 
-void KrProgress::slotInfoMessage( KIO::Job*, const QString & msg )
+void KrProgress::slotInfoMessage( KIO::Job*, const TQString & msg )
 {
   speedLabel->setText( msg );
-  speedLabel->setAlignment( speedLabel->alignment() & ~Qt::WordBreak );
+  speedLabel->tqsetAlignment( speedLabel->tqalignment() & ~TQt::WordBreak );
 }
 
 
 void KrProgress::slotProcessedSize( KIO::Job*, KIO::filesize_t bytes ) {
   m_iProcessedSize = bytes;
 
-  QString tmp;
-  tmp = i18n( "%1 of %2 complete").arg( KIO::convertSize(bytes) ).arg( KIO::convertSize(m_iTotalSize));
+  TQString tmp;
+  tmp = i18n( "%1 of %2 complete").tqarg( KIO::convertSize(bytes) ).tqarg( KIO::convertSize(m_iTotalSize));
   sizeLabel->setText( tmp );
 }
 
@@ -197,10 +197,10 @@ void KrProgress::slotProcessedDirs( KIO::Job*, unsigned long dirs )
 {
   m_iProcessedDirs = dirs;
 
-  QString tmps;
-  tmps = i18n("%1 / %n directory", "%1 / %n directories", m_iTotalDirs).arg( m_iProcessedDirs );
+  TQString tmps;
+  tmps = i18n("%1 / %n directory", "%1 / %n directories", m_iTotalDirs).tqarg( m_iProcessedDirs );
   tmps += "   ";
-  tmps += i18n("%1 / %n file", "%1 / %n files", m_iTotalFiles).arg( m_iProcessedFiles );
+  tmps += i18n("%1 / %n file", "%1 / %n files", m_iTotalFiles).tqarg( m_iProcessedFiles );
   progressLabel->setText( tmps );
 }
 
@@ -209,12 +209,12 @@ void KrProgress::slotProcessedFiles( KIO::Job*, unsigned long files )
 {
   m_iProcessedFiles = files;
 
-  QString tmps;
+  TQString tmps;
   if ( m_iTotalDirs > 1 ) {
-    tmps = i18n("%1 / %n directory", "%1 / %n directories", m_iTotalDirs).arg( m_iProcessedDirs );
+    tmps = i18n("%1 / %n directory", "%1 / %n directories", m_iTotalDirs).tqarg( m_iProcessedDirs );
     tmps += "   ";
   }
-  tmps += i18n("%1 / %n file", "%1 / %n files", m_iTotalFiles).arg( m_iProcessedFiles );
+  tmps += i18n("%1 / %n file", "%1 / %n files", m_iTotalFiles).tqarg( m_iProcessedFiles );
   progressLabel->setText( tmps );
 }
 
@@ -226,11 +226,11 @@ void KrProgress::slotSpeed( KIO::Job*, unsigned long bytes_per_second )
   } else {
 #if KDE_IS_VERSION(3,4,0)
     unsigned int seconds = KIO::calculateRemainingSeconds( m_iTotalSize, m_iProcessedSize, bytes_per_second );
-	 QString remaining = KIO::convertSeconds(seconds);
+	 TQString remaining = KIO::convertSeconds(seconds);
 #else
-    QString remaining = KIO::calculateRemaining( m_iTotalSize, m_iProcessedSize, bytes_per_second ).toString();
+    TQString remaining = KIO::calculateRemaining( m_iTotalSize, m_iProcessedSize, bytes_per_second ).toString();
 #endif
-    speedLabel->setText( i18n( "%1/s ( %2 remaining )").arg( KIO::convertSize( bytes_per_second )).arg( remaining ) );
+    speedLabel->setText( i18n( "%1/s ( %2 remaining )").tqarg( KIO::convertSize( bytes_per_second )).tqarg( remaining ) );
   }
 }
 
@@ -238,15 +238,15 @@ void KrProgress::slotSpeed( KIO::Job*, unsigned long bytes_per_second )
 void KrProgress::setDestVisible( bool visible )
 {
   // We can't hide the destInvite/destLabel labels,
-  // because it screws up the QGridLayout.
+  // because it screws up the TQGridLayout.
   if (visible)
   {
     destInvite->setText( i18n("Destination:") );
   }
   else
   {
-    destInvite->setText( QString::null );
-    destLabel->setText( QString::null );
+    destInvite->setText( TQString() );
+    destLabel->setText( TQString() );
   }
 }
 
@@ -265,6 +265,6 @@ void KrProgress::slotStop(){
   emit stopped();
 }
 
-void KrProgress::closeEvent( QCloseEvent* ) { hide(); slotStop(); }
+void KrProgress::closeEvent( TQCloseEvent* ) { hide(); slotStop(); }
 
 #include "krprogress.moc"

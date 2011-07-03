@@ -32,11 +32,11 @@
 #ifndef KRPERMHANDLER_H
 #define KRPERMHANDLER_H
 
-#include <qstring.h>
-#include <qfileinfo.h>
+#include <tqstring.h>
+#include <tqfileinfo.h>
 #include <sys/types.h>
-#include <qdict.h>
-#include <qintdict.h>
+#include <tqdict.h>
+#include <tqintdict.h>
 #include <kio/global.h>
 
 #define NO_PERM      0
@@ -50,40 +50,40 @@ public:
 	
 	static void init();
 	
-	static gid_t group2gid(QString group);
-	static uid_t user2uid (QString user);
+	static gid_t group2gid(TQString group);
+	static uid_t user2uid (TQString user);
 
-	static QString gid2group(gid_t groupId);
-	static QString uid2user (uid_t userId);
+	static TQString gid2group(gid_t groupId);
+	static TQString uid2user (uid_t userId);
 
-	static char writeable (QString perm, gid_t gid, uid_t uid, int rwx=-1);
-	static char readable  (QString perm, gid_t gid, uid_t uid, int rwx=-1);
-	static char executable(QString perm, gid_t gid, uid_t uid, int rwx=-1);
+	static char writeable (TQString perm, gid_t gid, uid_t uid, int rwx=-1);
+	static char readable  (TQString perm, gid_t gid, uid_t uid, int rwx=-1);
+	static char executable(TQString perm, gid_t gid, uid_t uid, int rwx=-1);
 	
-  static bool fileWriteable (QString localFile);
-	static bool fileReadable  (QString localFile);
-	static bool fileExecutable(QString localFile);
+  static bool fileWriteable (TQString localFile);
+	static bool fileReadable  (TQString localFile);
+	static bool fileExecutable(TQString localFile);
 	
-	static char ftpWriteable ( QString fileOwner, QString userName, QString perm );
-	static char ftpReadable ( QString fileOwner, QString userName, QString perm );
-	static char ftpExecutable( QString fileOwner, QString userName, QString perm );
+	static char ftpWriteable ( TQString fileOwner, TQString userName, TQString perm );
+	static char ftpReadable ( TQString fileOwner, TQString userName, TQString perm );
+	static char ftpExecutable( TQString fileOwner, TQString userName, TQString perm );
 
-	static bool dirExist (QString path);
-	static bool fileExist(QString fullPath);
-  static bool fileExist(QString Path, QString name);
+	static bool dirExist (TQString path);
+	static bool fileExist(TQString fullPath);
+  static bool fileExist(TQString Path, TQString name);
 
-	static QString mode2QString(mode_t m);
-  static QString parseSize(KIO::filesize_t val);
-	static QString date2qstring(QString date);
-	static time_t  QString2time(QString date);
+	static TQString mode2TQString(mode_t m);
+  static TQString parseSize(KIO::filesize_t val);
+	static TQString date2qstring(TQString date);
+	static time_t  TQString2time(TQString date);
 
 private:
 	// cache for passwd and group entries
-	static QDict<uid_t> 	    *passwdCache;
-  static QDict<gid_t> 	    *groupCache;
-	static QIntDict<char>     *currentGroups;
-  static QIntDict<QString>  *uidCache;
-  static QIntDict<QString>  *gidCache;
+	static TQDict<uid_t> 	    *passwdCache;
+  static TQDict<gid_t> 	    *groupCache;
+	static TQIntDict<char>     *currentGroups;
+  static TQIntDict<TQString>  *uidCache;
+  static TQIntDict<TQString>  *gidCache;
 };
 
 #endif

@@ -33,27 +33,28 @@
 #ifndef KRDIRWATCH_H
 #define KRDIRWATCH_H
 
-#include <qobject.h>
-#include <qstring.h>
-#include <qptrlist.h>
-#include <qtimer.h>
-#include <qdatetime.h>
-#include <qdir.h>
+#include <tqobject.h>
+#include <tqstring.h>
+#include <tqptrlist.h>
+#include <tqtimer.h>
+#include <tqdatetime.h>
+#include <tqdir.h>
 
 
 typedef struct krDirEntry_s{
-  QString path;
+  TQString path;
   unsigned long count; // number of files
-  QDateTime lastModified;
+  TQDateTime lastModified;
 } krDirEntry ;
 
-class KRdirWatch : public QObject  {
+class KRdirWatch : public TQObject  {
   Q_OBJECT
+  TQ_OBJECT
 public:
 	KRdirWatch(int msec = 250 , bool dirOnly = false );
 	~KRdirWatch();
-	void addDir(QString path,bool checkPermissions = true );
-	void removeDir(QString path);
+	void addDir(TQString path,bool checkPermissions = true );
+	void removeDir(TQString path);
 	
 	inline void clearList(){watched.clear();}
 	inline void startScan(){t.start(delay);stopped=false;}
@@ -67,10 +68,10 @@ signals:
     	
 protected:
   int delay;      // time in msec between updates
-  QList<krDirEntry> watched;
-  QTimer t;
-  QDir dir;
-  QFileInfo qfi;
+  TQList<krDirEntry> watched;
+  TQTimer t;
+  TQDir dir;
+  TQFileInfo qfi;
   krDirEntry* it;
   bool changed; // true if something happend to the watched dirs
   bool stopped; // true if the watcher is stopped

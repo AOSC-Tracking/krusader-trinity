@@ -26,7 +26,7 @@ public:
     *
     * @par filename The file to run
     */
-   bool runFile(const QString & filename);
+   bool runFile(const TQString & filename);
 };
 
 #endif //KRJS_H

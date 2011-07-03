@@ -40,19 +40,19 @@
 #include "../KViewer/krviewer.h"
 #include "../panelmanager.h"
 #include <klocale.h>
-#include <qhbox.h>
-#include <qlabel.h>
-#include <qlayout.h>
-#include <qfontmetrics.h>
+#include <tqhbox.h>
+#include <tqlabel.h>
+#include <tqlayout.h>
+#include <tqfontmetrics.h>
 #include <kmessagebox.h>
 #include <kpopupmenu.h>
-#include <qcursor.h>
-#include <qeventloop.h>
+#include <tqcursor.h>
+#include <tqeventloop.h>
 #include <kfinddialog.h>
 #include <kinputdialog.h>
-#include <qregexp.h>
-#include <qdir.h>
-#include <qclipboard.h>
+#include <tqregexp.h>
+#include <tqdir.h>
+#include <tqclipboard.h>
 #include <kurldrag.h>
 #include <../kicons.h>
 
@@ -68,7 +68,7 @@
 class LocateListView : public KListView
 {
 public:
-  LocateListView( QWidget * parent, const char * name = 0 ) : KListView( parent, name )
+  LocateListView( TQWidget * tqparent, const char * name = 0 ) : KListView( tqparent, name )
   {
   }
 
@@ -76,7 +76,7 @@ public:
   {
     KURL::List urls;
 
-    QListViewItem * item = firstChild();
+    TQListViewItem * item = firstChild();
     while( item )
     {
       if( item->isSelected() )
@@ -89,7 +89,7 @@ public:
       return;
 
     KURLDrag *d = new KURLDrag(urls, this);
-    d->setPixmap( FL_LOADICON( "file" ), QPoint( -7, 0 ) );
+    d->setPixmap( FL_LOADICON( "file" ), TQPoint( -7, 0 ) );
     d->dragCopy();
   }
 };
@@ -100,41 +100,41 @@ LocateDlg * LocateDlg::LocateDialog = 0;
 LocateDlg::LocateDlg() : KDialogBase(0,0,false,"Locate", KDialogBase::User1 | KDialogBase::User2 | KDialogBase::User3 | KDialogBase::Close,
       KDialogBase::User3, false, i18n("Stop"), i18n("Update DB"), i18n("Locate") ), isFeedToListBox( false )
 {
-  QWidget *widget=new QWidget(this, "locateMainWidget");
-  QGridLayout *grid = new QGridLayout( widget );
+  TQWidget *widget=new TQWidget(this, "locateMainWidget");
+  TQGridLayout *grid = new TQGridLayout( widget );
   grid->setSpacing( 6 );
   grid->setMargin( 11 );
 
   setPlainCaption( i18n( "Krusader::Locate" ) );
   
-  QHBox *hbox = new QHBox( widget, "locateHBox" );
-  QLabel *label = new QLabel( i18n( "Search for:" ), hbox, "locateLabel" );
+  TQHBox *hbox = new TQHBox( widget, "locateHBox" );
+  TQLabel *label = new TQLabel( i18n( "Search for:" ), hbox, "locateLabel" );
   locateSearchFor = new KHistoryCombo( false, hbox, "locateSearchFor" );
   label->setBuddy( locateSearchFor );
   krConfig->setGroup("Locate");
-  QStringList list = krConfig->readListEntry("Search For");
+  TQStringList list = krConfig->readListEntry("Search For");
   locateSearchFor->setMaxCount(25);  // remember 25 items
   locateSearchFor->setHistoryItems(list);
   locateSearchFor->setEditable( true );
   locateSearchFor->setDuplicatesEnabled( false );
-  locateSearchFor->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Fixed);
+  locateSearchFor->tqsetSizePolicy(TQSizePolicy::Expanding,TQSizePolicy::Fixed);
   locateSearchFor->lineEdit()->setFocus();
 
   grid->addWidget( hbox, 0, 0 );
 
-  QHBox *hbox2 = new QHBox( widget, "locateHBox" );
-  QSpacerItem* spacer = new QSpacerItem( 40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum );
-  hbox2->layout()->addItem( spacer );
-  dontSearchInPath = new QCheckBox( i18n( "Don't search in path" ), hbox2, "dontSearchInPath" );
+  TQHBox *hbox2 = new TQHBox( widget, "locateHBox" );
+  TQSpacerItem* spacer = new TQSpacerItem( 40, 20, TQSizePolicy::Expanding, TQSizePolicy::Minimum );
+  hbox2->tqlayout()->addItem( spacer );
+  dontSearchInPath = new TQCheckBox( i18n( "Don't search in path" ), hbox2, "dontSearchInPath" );
   dontSearchInPath->setChecked( krConfig->readBoolEntry("Dont Search In Path") );
-  existingFiles = new QCheckBox( i18n( "Show only the existing files" ), hbox2, "existingFiles" );
+  existingFiles = new TQCheckBox( i18n( "Show only the existing files" ), hbox2, "existingFiles" );
   existingFiles->setChecked( krConfig->readBoolEntry("Existing Files") );
-  caseSensitive = new QCheckBox( i18n( "Case Sensitive" ), hbox2, "caseSensitive" );
+  caseSensitive = new TQCheckBox( i18n( "Case Sensitive" ), hbox2, "caseSensitive" );
   caseSensitive->setChecked( krConfig->readBoolEntry("Case Sensitive") );
   grid->addWidget( hbox2, 1, 0 );
 
-  QFrame *line1 = new QFrame( widget, "locateLine1" );
-  line1->setFrameStyle( QFrame::HLine | QFrame::Sunken );
+  TQFrame *line1 = new TQFrame( widget, "locateLine1" );
+  line1->setFrameStyle( TQFrame::HLine | TQFrame::Sunken );
   grid->addWidget( line1, 2, 0 );
 
   resultList=new LocateListView( widget );  // create the main container
@@ -143,26 +143,26 @@ LocateDlg::LocateDlg() : KDialogBase(0,0,false,"Locate", KDialogBase::User1 | KD
   resultList->setFont(krConfig->readFontEntry("Filelist Font",_FilelistFont));
 
   resultList->setAllColumnsShowFocus(true);
-  resultList->setVScrollBarMode(QScrollView::Auto);
-  resultList->setHScrollBarMode(QScrollView::Auto);
+  resultList->setVScrollBarMode(TQScrollView::Auto);
+  resultList->setHScrollBarMode(TQScrollView::Auto);
   resultList->setShowSortIndicator(false);
   resultList->setSorting(-1);
-  resultList->setSelectionMode( QListView::Extended );
+  resultList->setSelectionMode( TQListView::Extended );
 
-  resultList->addColumn( i18n("Results"), QFontMetrics(resultList->font()).width("W") * 60 );
-  resultList->setColumnWidthMode(0,QListView::Maximum);
+  resultList->addColumn( i18n("Results"), TQFontMetrics(resultList->font()).width("W") * 60 );
+  resultList->setColumnWidthMode(0,TQListView::Maximum);
 
-  connect( resultList,SIGNAL(rightButtonPressed(QListViewItem *, const QPoint &, int)),
-           this, SLOT(slotRightClick(QListViewItem *)));
-  connect( resultList,SIGNAL(doubleClicked(QListViewItem *)),
-           this, SLOT(slotDoubleClick(QListViewItem *)));
-  connect( resultList,SIGNAL(returnPressed(QListViewItem *)),
-           this, SLOT(slotDoubleClick(QListViewItem *)));
+  connect( resultList,TQT_SIGNAL(rightButtonPressed(TQListViewItem *, const TQPoint &, int)),
+           this, TQT_SLOT(slotRightClick(TQListViewItem *)));
+  connect( resultList,TQT_SIGNAL(doubleClicked(TQListViewItem *)),
+           this, TQT_SLOT(slotDoubleClick(TQListViewItem *)));
+  connect( resultList,TQT_SIGNAL(returnPressed(TQListViewItem *)),
+           this, TQT_SLOT(slotDoubleClick(TQListViewItem *)));
            
   grid->addWidget( resultList, 3, 0 );
 
-  QFrame *line2 = new QFrame( widget, "locateLine2" );
-  line2->setFrameStyle( QFrame::HLine | QFrame::Sunken );
+  TQFrame *line2 = new TQFrame( widget, "locateLine2" );
+  line2->setFrameStyle( TQFrame::HLine | TQFrame::Sunken );
   grid->addWidget( line2, 4, 0 );
 
   enableButton( KDialogBase::User1, false );  /* disable the stop button */
@@ -171,7 +171,7 @@ LocateDlg::LocateDlg() : KDialogBase(0,0,false,"Locate", KDialogBase::User1 | KD
   {
     if( updateProcess->isRunning() )
     {
-      connect( updateProcess, SIGNAL(processExited(KProcess *)), this, SLOT(updateFinished()));
+      connect( updateProcess, TQT_SIGNAL(processExited(KProcess *)), this, TQT_SLOT(updateFinished()));
       enableButton( KDialogBase::User2, false );
     }
     else
@@ -202,7 +202,7 @@ void LocateDlg::slotUser2()   /* The Update DB button */
     *updateProcess << KrServices::fullPathName( "updatedb" );
     *updateProcess << KrServices::separateArgs( krConfig->readEntry( "UpdateDB Arguments", "" ) );
     
-    connect( updateProcess, SIGNAL(processExited(KProcess *)), this, SLOT(updateFinished()));
+    connect( updateProcess, TQT_SIGNAL(processExited(KProcess *)), this, TQT_SLOT(updateFinished()));
     updateProcess->start(KProcess::NotifyOnExit);
     enableButton( KDialogBase::User2, false );
   }
@@ -218,7 +218,7 @@ void LocateDlg::updateFinished()
 void LocateDlg::slotUser3()   /* The locate button */
 {
   locateSearchFor->addToHistory(locateSearchFor->currentText());
-  QStringList list = locateSearchFor->historyItems();
+  TQStringList list = locateSearchFor->historyItems();
   krConfig->setGroup("Locate");
   krConfig->writeEntry("Search For", list);
   krConfig->writeEntry("Dont Search In Path", dontSearchPath = dontSearchInPath->isChecked() );
@@ -242,15 +242,15 @@ void LocateDlg::slotUser3()   /* The locate button */
   isFeedToListBox = false;
   resultList->setFocus();
 
-  qApp->processEvents();
+  tqApp->processEvents();
 
   stopping = false;
   
   KProcess locateProc;
-  connect( &locateProc, SIGNAL( receivedStdout(KProcess *, char *, int) ),
-            this, SLOT( processStdout(KProcess *, char *, int) ) );
-  connect( &locateProc, SIGNAL( receivedStderr(KProcess *, char *, int) ),
-            this, SLOT( processStderr(KProcess *, char *, int) ) );
+  connect( &locateProc, TQT_SIGNAL( receivedStdout(KProcess *, char *, int) ),
+            this, TQT_SLOT( processStdout(KProcess *, char *, int) ) );
+  connect( &locateProc, TQT_SIGNAL( receivedStderr(KProcess *, char *, int) ),
+            this, TQT_SLOT( processStderr(KProcess *, char *, int) ) );
 
   locateProc << KrServices::fullPathName( "locate" );
   if( !isCs )
@@ -290,13 +290,13 @@ void LocateDlg::processStdout(KProcess *proc, char *buffer, int length)
   memcpy( buf, buffer, length );
   buf[ length ] = 0;
 
-  remaining += QString::fromLocal8Bit( buf );
+  remaining += TQString::fromLocal8Bit( buf );
   delete []buf;
 
-  QStringList list = QStringList::split("\n", remaining );
+  TQStringList list = TQStringList::split("\n", remaining );
   int items = list.size();
 
-  for ( QStringList::Iterator it = list.begin(); it != list.end(); ++it )
+  for ( TQStringList::Iterator it = list.begin(); it != list.end(); ++it )
   {
     if( --items == 0 && buffer[length-1] != '\n' )
       remaining = *it;
@@ -304,11 +304,11 @@ void LocateDlg::processStdout(KProcess *proc, char *buffer, int length)
     {
       if( dontSearchPath )
       {
-        QRegExp regExp( pattern, isCs, true );
-        QString fileName = (*it).stripWhiteSpace();
+        TQRegExp regExp( pattern, isCs, true );
+        TQString fileName = (*it).stripWhiteSpace();
         if( fileName.endsWith( "/" ) && fileName != "/" )
           fileName.truncate( fileName.length() -1 );
-        fileName = fileName.mid( fileName.findRev( '/' ) + 1 );
+        fileName = fileName.mid( fileName.tqfindRev( '/' ) + 1 );
         
         if( !regExp.exactMatch( fileName ) )
           continue;        
@@ -332,7 +332,7 @@ void LocateDlg::processStdout(KProcess *proc, char *buffer, int length)
   if( stopping )
     proc->kill( SIGKILL );
   
-  qApp->processEvents();
+  tqApp->processEvents();
 }
 
 void LocateDlg::processStderr(KProcess *, char *buffer, int length)
@@ -341,11 +341,11 @@ void LocateDlg::processStderr(KProcess *, char *buffer, int length)
   memcpy( buf, buffer, length );
   buf[ length ] = 0;
 
-  collectedErr += QString::fromLocal8Bit( buf );
+  collectedErr += TQString::fromLocal8Bit( buf );
   delete []buf;  
 }
 
-void LocateDlg::slotRightClick(QListViewItem *item)
+void LocateDlg::slotRightClick(TQListViewItem *item)
 {
   if ( !item )
     return;
@@ -368,7 +368,7 @@ void LocateDlg::slotRightClick(QListViewItem *item)
   popup.insertItem(i18n("Copy selected to clipboard"), COPY_SELECTED_TO_CLIPBOARD);
 
 
-  int result=popup.exec(QCursor::pos());
+  int result=popup.exec(TQCursor::pos());
 
   // check out the user's option
   switch (result)
@@ -384,25 +384,25 @@ void LocateDlg::slotRightClick(QListViewItem *item)
   }
 }
 
-void LocateDlg::slotDoubleClick(QListViewItem *item)
+void LocateDlg::slotDoubleClick(TQListViewItem *item)
 {
   if ( !item )
     return;
 
-  QString dirName = item->text(0);
-  QString fileName;
+  TQString dirName = item->text(0);
+  TQString fileName;
 
-  if( !QDir( dirName ).exists() )
+  if( !TQDir( dirName ).exists() )
   {
-    fileName = dirName.mid( dirName.findRev( '/' ) + 1 );
-    dirName.truncate( dirName.findRev( '/' ) );
+    fileName = dirName.mid( dirName.tqfindRev( '/' ) + 1 );
+    dirName.truncate( dirName.tqfindRev( '/' ) );
   }
     
   ACTIVE_FUNC->openUrl(vfs::fromPathOrURL( dirName ), fileName );
   KDialogBase::accept();
 }
 
-void LocateDlg::keyPressEvent( QKeyEvent *e )
+void LocateDlg::keyPressEvent( TQKeyEvent *e )
 {
   if( Krusader::actCopy->shortcut().contains( KKey( e ) ) )
   {
@@ -442,10 +442,10 @@ void LocateDlg::keyPressEvent( QKeyEvent *e )
     break;
   }
 
-  QDialog::keyPressEvent( e );
+  TQDialog::keyPressEvent( e );
 }
 
-void LocateDlg::operate( QListViewItem *item, int task )
+void LocateDlg::operate( TQListViewItem *item, int task )
 {
   KURL name;
   if( item != 0 )
@@ -463,10 +463,10 @@ void LocateDlg::operate( QListViewItem *item, int task )
     {
       krConfig->setGroup("Locate");
       long options = krConfig->readNumEntry("Find Options", 0);
-      QStringList list = krConfig->readListEntry("Find Patterns");
+      TQStringList list = krConfig->readListEntry("Find Patterns");
       
       KFindDialog dlg( this, "locateFindDialog", options, list );
-      if ( dlg.exec() != QDialog::Accepted )
+      if ( dlg.exec() != TQDialog::Accepted )
         return;
 
       if( list.first() != ( findPattern = dlg.pattern() ) )
@@ -481,7 +481,7 @@ void LocateDlg::operate( QListViewItem *item, int task )
 
       findCurrentItem = (KListViewItem *)resultList->currentItem();
       
-      if( find() && findCurrentItem )
+      if( tqfind() && findCurrentItem )
         resultList->setCurrentItem( findCurrentItem );
       else
         KMessageBox::information( 0, i18n( "Search string not found!" ) );
@@ -498,7 +498,7 @@ void LocateDlg::operate( QListViewItem *item, int task )
       findCurrentItem = (KListViewItem *)resultList->currentItem();
       nextLine();
 
-      if( find() && findCurrentItem )
+      if( tqfind() && findCurrentItem )
         resultList->setCurrentItem( findCurrentItem );
       else
         KMessageBox::information( 0, i18n( "Search string not found!" ) );
@@ -513,7 +513,7 @@ void LocateDlg::operate( QListViewItem *item, int task )
     {
       KURL::List urls;
 
-      QListViewItem * item = resultList->firstChild();
+      TQListViewItem * item = resultList->firstChild();
       while( item )
       {
         if( item->isSelected() )
@@ -526,8 +526,8 @@ void LocateDlg::operate( QListViewItem *item, int task )
         return;
 
       KURLDrag *d = new KURLDrag(urls, this);
-      d->setPixmap( FL_LOADICON( "file" ), QPoint( -7, 0 ) );
-      QApplication::clipboard()->setData( d );
+      d->setPixmap( FL_LOADICON( "file" ), TQPoint( -7, 0 ) );
+      TQApplication::tqclipboard()->setData( d );
     }
     break;
   }
@@ -541,20 +541,20 @@ void LocateDlg::nextLine()
     findCurrentItem = (KListViewItem *)findCurrentItem->itemBelow();
 }
 
-bool LocateDlg::find()
+bool LocateDlg::tqfind()
 {
   while( findCurrentItem )
   {
-    QString item = findCurrentItem->text( 0 );
+    TQString item = findCurrentItem->text( 0 );
 
     if( findOptions & KFindDialog::RegularExpression )
     {
-      if( item.contains( QRegExp( findPattern, findOptions & KFindDialog::CaseSensitive ) ) )
+      if( item.tqcontains( TQRegExp( findPattern, findOptions & KFindDialog::CaseSensitive ) ) )
         return true;
     }
     else
     {
-      if( item.contains( findPattern, findOptions & KFindDialog::CaseSensitive ) )
+      if( item.tqcontains( findPattern, findOptions & KFindDialog::CaseSensitive ) )
         return true;
     }
     
@@ -571,9 +571,9 @@ void LocateDlg::feedToListBox()
   
   krConfig->setGroup( "Locate" );  
   int listBoxNum = krConfig->readNumEntry( "Feed To Listbox Counter", 1 );  
-  QString queryName;
+  TQString queryName;
   do {
-    queryName = i18n("Locate results")+QString( " %1" ).arg( listBoxNum++ );
+    queryName = i18n("Locate results")+TQString( " %1" ).tqarg( listBoxNum++ );
   }while( v.vfs_search( queryName ) != 0 );
   krConfig->writeEntry( "Feed To Listbox Counter", listBoxNum );  
   
@@ -590,13 +590,13 @@ void LocateDlg::feedToListBox()
   }
     
   KURL::List urlList;
-  QListViewItem * item = resultList->firstChild();
+  TQListViewItem * item = resultList->firstChild();
   while( item )
   {
     urlList.push_back( vfs::fromPathOrURL( item->text( 0 ) ) );
     item = item->nextSibling();
   }
-  KURL url = KURL::fromPathOrURL(QString("virt:/")+ queryName);
+  KURL url = KURL::fromPathOrURL(TQString("virt:/")+ queryName);
   v.vfs_refresh( url );
   v.vfs_addFiles( &urlList, KIO::CopyJob::Copy, 0 );
   //ACTIVE_FUNC->openUrl(url);  

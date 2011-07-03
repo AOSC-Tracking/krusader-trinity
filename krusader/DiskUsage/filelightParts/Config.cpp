@@ -30,7 +30,7 @@ Filelight::Config::read()
     showSmallFiles     = config.readBoolEntry( "showSmallFiles", false );
     contrast           = config.readNumEntry( "contrast", 50 );
     antiAliasFactor    = config.readNumEntry( "antiAliasFactor", 2 );
-    minFontPitch       = config.readNumEntry( "minFontPitch", QFont().pointSize() - 3);
+    minFontPitch       = config.readNumEntry( "minFontPitch", TQFont().pointSize() - 3);
     scheme = (MapScheme) config.readNumEntry( "scheme", 0 );
 
     defaultRingDepth   = 4;

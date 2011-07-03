@@ -30,9 +30,9 @@
 #ifndef KRVIEW_H
 #define KRVIEW_H
 
-#include <qpixmap.h>
-#include <qvariant.h>
-#include <qdict.h>
+#include <tqpixmap.h>
+#include <tqvariant.h>
+#include <tqdict.h>
 #include "../krusader.h"
 #include "../VFS/vfile.h"
 #include "../VFS/vfs.h"
@@ -42,7 +42,7 @@
 
 class KrView;
 class KrViewItem;
-typedef QValueList<KrViewItem*> KrViewItemList;
+typedef TQValueList<KrViewItem*> KrViewItemList;
 
 // KrViewProperties
 // This class is an interface class between KrView and KrViewItem
@@ -65,7 +65,7 @@ public:
 	KRQuery filterMask;	// what items to show (*.cpp, *.h etc)
 	bool localeAwareCompareIsCaseSensitive; // mostly, it is not! depends on LC_COLLATE
 	bool humanReadableSize;		// display size as KB, MB or just as a long number
-	QStringList atomicExtensions;	// list of strings, which will be treated as one extension. Must start with a dot.
+	TQStringList atomicExtensions;	// list of strings, which will be treated as one extension. Must start with a dot.
 };
 
 // operator can handle two ways of doing things:
@@ -73,41 +73,42 @@ public:
 // 2. if the view HAS A widget (a krview-son has a member of klistview)
 // this is done by specifying the view and the widget in the constructor,
 // even if they are actually the same object (specify it twice in that case)
-class KrViewOperator: public QObject {
+class KrViewOperator: public TQObject {
 	Q_OBJECT
+  TQ_OBJECT
 public:
-	KrViewOperator(KrView *view, QWidget *widget);
+	KrViewOperator(KrView *view, TQWidget *widget);
 	~KrViewOperator();
 	KrView *view() const { return _view; }
-	QWidget *widget() const { return _widget; }
+	TQWidget *widget() const { return _widget; }
 	void startDrag();
 	
 	void emitSelectionChanged() { emit selectionChanged(); }
-	void emitGotDrop(QDropEvent *e) { emit gotDrop(e); }
-	void emitLetsDrag(QStringList items, QPixmap icon ) { emit letsDrag(items, icon); }
-	void emitItemDescription(QString &desc) { emit itemDescription(desc); }
-	void emitContextMenu(const QPoint &point) { emit contextMenu(point); }
-	void emitEmptyContextMenu(const QPoint &point) { emit emptyContextMenu(point); }
-   void emitRenameItem(const QString &oldName, const QString &newName) { emit renameItem(oldName, newName); }
-   void emitExecuted( QString &name ) { emit executed(name); }
+	void emitGotDrop(TQDropEvent *e) { emit gotDrop(e); }
+	void emitLetsDrag(TQStringList items, TQPixmap icon ) { emit letsDrag(items, icon); }
+	void emitItemDescription(TQString &desc) { emit itemDescription(desc); }
+	void emitContextMenu(const TQPoint &point) { emit contextMenu(point); }
+	void emitEmptyContextMenu(const TQPoint &point) { emit emptyContextMenu(point); }
+   void emitRenameItem(const TQString &oldName, const TQString &newName) { emit renameItem(oldName, newName); }
+   void emitExecuted( TQString &name ) { emit executed(name); }
    void emitNeedFocus() { emit needFocus(); }
 	
 signals:
 	void selectionChanged();
-	void gotDrop( QDropEvent *e );
-	void letsDrag( QStringList items, QPixmap icon );
-	void itemDescription( QString &desc );
-   void contextMenu( const QPoint &point );
-   void emptyContextMenu( const QPoint& point );
-   void renameItem( const QString &oldName, const QString &newName );
-   void executed( QString &name );
+	void gotDrop( TQDropEvent *e );
+	void letsDrag( TQStringList items, TQPixmap icon );
+	void itemDescription( TQString &desc );
+   void contextMenu( const TQPoint &point );
+   void emptyContextMenu( const TQPoint& point );
+   void renameItem( const TQString &oldName, const TQString &newName );
+   void executed( TQString &name );
    void needFocus();
 
 	
 protected:
 	// never delete those
 	KrView *_view;
-	QWidget *_widget;
+	TQWidget *_widget;
 };
 
 /****************************************************************************
@@ -121,13 +122,13 @@ protected:
  * The functions you'd usually want:
  * 1) getSelectedItems - returns all selected items, or (if none) the current item.
  *    it never returns anything which includes the "..", and thus can return an empty list!
- * 2) getSelectedKrViewItems - the same as (1), but returns a QValueList with KrViewItems
- * 3) getCurrentItem, setCurrentItem - work with QString
+ * 2) getSelectedKrViewItems - the same as (1), but returns a TQValueList with KrViewItems
+ * 3) getCurrentItem, setCurrentItem - work with TQString
  * 4) getFirst, getNext, getPrev, getCurrentKrViewItem - all work with KrViewItems, and
  *    used to iterate through a list of items. note that getNext and getPrev accept a pointer
  *    to the current item (used in detailedview for safe iterating), thus your loop should be:
  *       for (KrViewItem *it = view->getFirst(); it!=0; it = view->getNext(it)) { blah; }
- * 5) nameToMakeCurrent(), setNameToMakeCurrent() - work with QString
+ * 5) nameToMakeCurrent(), setNameToMakeCurrent() - work with TQString
  *
  * IMPORTANT NOTE: every one who subclasses this must call initProperties() in the constructor !!!
  */ 
@@ -155,11 +156,11 @@ public:
   virtual KrViewItem *getNext(KrViewItem *current) = 0;
   virtual KrViewItem *getPrev(KrViewItem *current) = 0;
   virtual KrViewItem *getCurrentKrViewItem() = 0;
-  virtual KrViewItem *getKrViewItemAt(const QPoint &vp) = 0;
-  virtual KrViewItem *findItemByName(const QString &name) = 0;
+  virtual KrViewItem *getKrViewItemAt(const TQPoint &vp) = 0;
+  virtual KrViewItem *findItemByName(const TQString &name) = 0;
   virtual void addItems(vfs* v, bool addUpDir = true) = 0; // kill me, kill me now
-  virtual QString getCurrentItem() const = 0;
-  virtual void setCurrentItem(const QString& name) = 0;
+  virtual TQString getCurrentItem() const = 0;
+  virtual void setCurrentItem(const TQString& name) = 0;
   virtual void makeItemVisible(const KrViewItem *item) = 0;
   virtual void clear();
   virtual void updateView() = 0;
@@ -170,7 +171,7 @@ public:
   virtual void prepareForActive() { _focused = true; }
   virtual void prepareForPassive() { _focused = false; }
   virtual void renameCurrentItem(); // Rename current item. returns immediatly
-  virtual QString nameInKConfig() const { return _nameInKConfig; }
+  virtual TQString nameInKConfig() const { return _nameInKConfig; }
 
 protected:
 	virtual KrViewItem *preAddItem(vfile *vf) = 0;
@@ -183,26 +184,26 @@ public:
   //////////////////////////////////////////////////////
   virtual KrViewItem *addItem(vfile *vf);
   virtual void updateItem(vfile *vf);
-  virtual void delItem(const QString &name);
+  virtual void delItem(const TQString &name);
   virtual uint numSelected() const { return _numSelected; }
   virtual KIO::filesize_t selectedSize() const { return _selectedSize; }
   virtual uint numFiles() const { return _count-_numDirs; }
   virtual uint numDirs() const { return _numDirs; }
   virtual uint count() const { return _count; }
   virtual KIO::filesize_t countSize() const { return _countSize; }
-  virtual void getSelectedItems(QStringList* names);
-  virtual void getItemsByMask(QString mask, QStringList* names, bool dirs = true, bool files = true);
+  virtual void getSelectedItems(TQStringList* names);
+  virtual void getItemsByMask(TQString tqmask, TQStringList* names, bool dirs = true, bool files = true);
   virtual void getSelectedKrViewItems(KrViewItemList *items);
   virtual void selectAllIncludingDirs() { changeSelection( KRQuery( "*" ), true, true); }
   virtual void select( const KRQuery& filter = KRQuery( "*" ) ) { changeSelection(filter, true); }
   virtual void unselect(const KRQuery& filter = KRQuery( "*" ) ) { changeSelection(filter, false); }
   virtual void invertSelection();
-  virtual QString nameToMakeCurrent() const { return _nameToMakeCurrent; }
-  virtual void setNameToMakeCurrent(const QString name) { _nameToMakeCurrent = name; }
-  virtual QString nameToMakeCurrentIfAdded() const { return _nameToMakeCurrentIfAdded; }
-  virtual void setNameToMakeCurrentIfAdded(const QString name) { _nameToMakeCurrentIfAdded = name; }  
-  virtual QString firstUnmarkedBelowCurrent();
-  virtual QString statistics();
+  virtual TQString nameToMakeCurrent() const { return _nameToMakeCurrent; }
+  virtual void setNameToMakeCurrent(const TQString name) { _nameToMakeCurrent = name; }
+  virtual TQString nameToMakeCurrentIfAdded() const { return _nameToMakeCurrentIfAdded; }
+  virtual void setNameToMakeCurrentIfAdded(const TQString name) { _nameToMakeCurrentIfAdded = name; }  
+  virtual TQString firstUnmarkedBelowCurrent();
+  virtual TQString statistics();
   virtual const KrViewProperties* properties() const { return _properties; }
   virtual KrViewOperator* op() const { return _operator; }
 
@@ -214,32 +215,32 @@ public:
   virtual KrViewProperties::SortSpec sortMode() const { return _properties->sortMode; }
   virtual void setFilter(KrViewProperties::FilterSpec filter) { _properties->filter = filter; }
   virtual KrViewProperties::FilterSpec filter() const { return _properties->filter; }
-  virtual void setFilterMask( KRQuery mask ) { _properties->filterMask = mask; }
+  virtual void setFilterMask( KRQuery tqmask ) { _properties->filterMask = tqmask; }
   virtual const KRQuery& filterMask() const { return _properties->filterMask; }
-  inline QWidget *widget() { return _widget; }
-  inline void setWidget(QWidget *w) { _widget = w; }
+  inline TQWidget *widget() { return _widget; }
+  inline void setWidget(TQWidget *w) { _widget = w; }
 
   // todo: what about selection modes ???
   virtual ~KrView();
 protected:
   KrView(KConfig *cfg = krConfig);
-  static QPixmap getIcon(vfile *vf);
+  static TQPixmap getIcon(vfile *vf);
   void changeSelection(const KRQuery& filter, bool select, bool includeDirs = false);
 
 
 protected:
   KConfig *_config;
-  QWidget *_widget;
-  QString _nameToMakeCurrent;
-  QString _nameToMakeCurrentIfAdded;
+  TQWidget *_widget;
+  TQString _nameToMakeCurrent;
+  TQString _nameToMakeCurrentIfAdded;
   uint _numSelected, _count, _numDirs;
   KIO::filesize_t _countSize, _selectedSize;
   bool _left;
   KrViewProperties *_properties;
   KrViewOperator *_operator;
-  QDict<KrViewItem> _dict;
+  TQDict<KrViewItem> _dict;
   bool _focused;
-  QString _nameInKConfig;
+  TQString _nameInKConfig;
 };
 
 #endif /* KRVIEW_H */

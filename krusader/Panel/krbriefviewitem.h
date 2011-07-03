@@ -35,43 +35,43 @@
 #include <sys/types.h>
 #include "../VFS/vfile.h"
 #include <kiconview.h>
-#include <qguardedptr.h>
+#include <tqguardedptr.h>
 
 #define FASTER
 
-class QPixmap;
+class TQPixmap;
 class KrBriefView;
 
 class KrBriefViewItem : public KIconViewItem, public KrViewItem {
 friend class KrBriefView;
 friend class KrCalcSpaceDialog;
 public:
-	KrBriefViewItem(KrBriefView *parent, QIconViewItem *after, vfile *vf);
+	KrBriefViewItem(KrBriefView *tqparent, TQIconViewItem *after, vfile *vf);
 	inline bool isSelected() const { return KIconViewItem::isSelected(); }
 	inline void setSelected(bool s) { KIconViewItem::setSelected(s); }
 	inline void cancelRename() { removeRenameBox(); }
-	int compare(QIconViewItem *i) const;
-	virtual void repaintItem();
+	int compare(TQIconViewItem *i) const;
+	virtual void tqrepaintItem();
 	static void itemHeightChanged(); // force the items to resize when icon/font size change
 	// TODO: virtual void setup(); // called when iconview needs to know the height of the item
 #ifdef FASTER
-	virtual QPixmap * pixmap() const {return const_cast<QPixmap *>(&itemIcon);}
-	virtual void setPixmap ( const QPixmap &icon ) { itemIcon = icon;}
+	virtual TQPixmap * pixmap() const {return const_cast<TQPixmap *>(&itemIcon);}
+	virtual void setPixmap ( const TQPixmap &icon ) { itemIcon = icon;}
 #endif
 
 protected:
-	virtual void paintItem(QPainter *p, const QColorGroup &cg);
-	virtual void paintFocus(QPainter *p, const QColorGroup &cg);
-	virtual void calcRect ( const QString & text_ = QString::null );
+	virtual void paintItem(TQPainter *p, const TQColorGroup &cg);
+	virtual void paintFocus(TQPainter *p, const TQColorGroup &cg);
+	virtual void calcRect ( const TQString & text_ = TQString() );
 
 private:
 #ifdef FASTER
 	bool initiated;
 	static int expHeight;
-	QPixmap itemIcon;
+	TQPixmap itemIcon;
 #endif // FASTER
 	// TODO:
-	static const QColor & setColorIfContrastIsSufficient(const QColor & /* background */, const QColor & /* color1 */, const QColor & /* color2 */ ) {static QColor col; return col;}
+	static const TQColor & setColorIfContrastIsSufficient(const TQColor & /* background */, const TQColor & /* color1 */, const TQColor & /* color2 */ ) {static TQColor col; return col;}
 	
 //	static int expHeight;
 };

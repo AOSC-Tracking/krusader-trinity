@@ -28,14 +28,14 @@
 *                                                                         *
 ***************************************************************************/ 
 // QT includes
-#include <qtextstream.h> 
+#include <tqtextstream.h> 
 // KDE includes
 #include <kprocess.h>
 #include <ktempfile.h>
 #include <klocale.h>
 #include <kmessagebox.h>
 #include <kio/passdlg.h> 
-#include <qfile.h>
+#include <tqfile.h>
 #include <kstandarddirs.h>
 #include <ktar.h>
 #include <kio/global.h>
@@ -46,12 +46,12 @@
 #include "../krservices.h"
 #include "../Dialogs/krpleasewait.h"
 
-static QStringList arcProtocols = QStringList::split(";", "tar;bzip;bzip2;gzip;krarc;zip");
+static TQStringList arcProtocols = TQStringList::split(";", "tar;bzip;bzip2;gzip;krarc;zip");
 
 KWallet::Wallet * KRarcHandler::wallet = 0;
 
-QStringList KRarcHandler::supportedPackers() {
-  QStringList packers;
+TQStringList KRarcHandler::supportedPackers() {
+  TQStringList packers;
 
   // we will simply try to find the packers here..
   if ( KrServices::cmdExist( "tar" ) ) packers.append( "tar" );
@@ -70,53 +70,53 @@ QStringList KRarcHandler::supportedPackers() {
   if ( KrServices::cmdExist( "7z"  ) || KrServices::cmdExist( "7za" ) ) packers.append( "7z"  );
   if ( KrServices::cmdExist( "rpm"   ) && KrServices::cmdExist( "rpm2cpio" ) ) packers.append( "rpm" );
   // kdDebug() << "Supported Packers:" << endl;
-  //QStringList::Iterator it;
+  //TQStringList::Iterator it;
   //for( it = packers.begin(); it != packers.end(); ++it )
   // kdDebug() << *it << endl;
 
   return packers;
   }
 
-bool KRarcHandler::arcSupported( QString type ) {
+bool KRarcHandler::arcSupported( TQString type ) {
   // lst will contain the supported unpacker list...
   krConfig->setGroup( "Archives" );
-  QStringList lst = krConfig->readListEntry( "Supported Packers" );
+  TQStringList lst = krConfig->readListEntry( "Supported Packers" );
 
-  if ( type == "-zip" && lst.contains( "unzip" ) )
+  if ( type == "-zip" && lst.tqcontains( "unzip" ) )
     return true;
-  else if ( type == "-tar" && lst.contains( "tar" ) )
+  else if ( type == "-tar" && lst.tqcontains( "tar" ) )
     return true;
-  else if ( type == "-tbz" && lst.contains( "tar" ) )
+  else if ( type == "-tbz" && lst.tqcontains( "tar" ) )
     return true;
-  else if ( type == "-tgz" && lst.contains( "tar" ) )
+  else if ( type == "-tgz" && lst.tqcontains( "tar" ) )
     return true;
-  else if ( type == "tarz" && lst.contains( "tar" ) )
+  else if ( type == "tarz" && lst.tqcontains( "tar" ) )
     return true;
-  else if ( type == "gzip" && lst.contains( "gzip" ) )
+  else if ( type == "gzip" && lst.tqcontains( "gzip" ) )
     return true;
-  else if ( type == "zip2" && lst.contains( "bzip2" ) )
+  else if ( type == "zip2" && lst.tqcontains( "bzip2" ) )
     return true;
-  else if ( type == "-lha" && lst.contains( "lha" ) )
+  else if ( type == "-lha" && lst.tqcontains( "lha" ) )
     return true;
-  else if ( type == "-ace" && lst.contains( "unace" ) )
+  else if ( type == "-ace" && lst.tqcontains( "unace" ) )
     return true;
-  else if ( type == "-rpm" && lst.contains( "cpio" ) )
+  else if ( type == "-rpm" && lst.tqcontains( "cpio" ) )
     return true;
-  else if ( type == "cpio" && lst.contains( "cpio" ) )
+  else if ( type == "cpio" && lst.tqcontains( "cpio" ) )
     return true;
-  else if ( type == "-rar" && ( lst.contains( "unrar" ) || lst.contains( "rar" ) ) )
+  else if ( type == "-rar" && ( lst.tqcontains( "unrar" ) || lst.tqcontains( "rar" ) ) )
     return true;
-  else if ( type == "-arj" && ( lst.contains( "unarj" ) || lst.contains( "arj" ) ) )
+  else if ( type == "-arj" && ( lst.tqcontains( "unarj" ) || lst.tqcontains( "arj" ) ) )
     return true;
-  else if ( type == "-deb" && ( lst.contains( "dpkg"  ) && lst.contains( "tar" ) ) )
+  else if ( type == "-deb" && ( lst.tqcontains( "dpkg"  ) && lst.tqcontains( "tar" ) ) )
     return true;
-  else if ( type == "-7z" && lst.contains( "7z"  ) )
+  else if ( type == "-7z" && lst.tqcontains( "7z"  ) )
     return true;
   // not supported : (
   return false;
   }
 
-bool KRarcHandler::arcHandled( QString type ) {
+bool KRarcHandler::arcHandled( TQString type ) {
   // first check if supported
   if ( !arcSupported( type ) ) return false;
 
@@ -142,7 +142,7 @@ bool KRarcHandler::arcHandled( QString type ) {
   }
 
 
-long KRarcHandler::arcFileCount( QString archive, QString type, QString password ) {
+long KRarcHandler::arcFileCount( TQString archive, TQString type, TQString password ) {
   int divideWith = 1;
 
   // first check if supported
@@ -152,7 +152,7 @@ long KRarcHandler::arcFileCount( QString archive, QString type, QString password
   if ( type == "zip2" || type == "gzip" ) return 1L;
 
   // set the right lister to do the job
-  QString lister;
+  TQString lister;
 
   if ( type == "-zip" ) lister = KrServices::fullPathName( "unzip" ) + " -ZTs";
   else if ( type == "-tar" ) lister = KrServices::fullPathName( "tar" ) + " -tvf";
@@ -185,15 +185,15 @@ long KRarcHandler::arcFileCount( QString archive, QString type, QString password
 
   // count the number of files in the archive
   long count = 1;
-  KTempFile tmpFile( /*"tmp"*/ QString::null, "krusader-unpack" ); // commented out as it created files in the current dir!
+  KTempFile tmpFile( /*"tmp"*/ TQString(), "krusader-unpack" ); // commented out as it created files in the current dir!
   KrShellProcess list;
   list << lister << KrServices::quote( archive ) << ">" << tmpFile.name() ;
-  if( type == "-ace" && QFile( "/dev/ptmx" ).exists() )  // Don't remove, unace crashes if missing!!!
+  if( type == "-ace" && TQFile( "/dev/ptmx" ).exists() )  // Don't remove, unace crashes if missing!!!
     list<< "<" << "/dev/ptmx";
   list.start( KProcess::NotifyOnExit, KProcess::AllOutput );
   while ( list.isRunning() ) {
     usleep( 1000 );
-    qApp->processEvents();
+    tqApp->processEvents();
     if( krApp->wasWaitingCancelled() )
       list.kill();
     }
@@ -201,14 +201,14 @@ long KRarcHandler::arcFileCount( QString archive, QString type, QString password
   
   krApp->stopWait();
   
-  if( !list.normalExit() || !checkStatus( type, list.exitStatus() ) ) {
-    KMessageBox::detailedError (krApp, i18n( "Failed to list the content of the archive (%1)!" ).arg( archive ), 
+  if( !list.normalExit() || !checktqStatus( type, list.exitStatus() ) ) {
+    KMessageBox::detailedError (krApp, i18n( "Failed to list the content of the archive (%1)!" ).tqarg( archive ), 
                                 list.getErrorMsg(), i18n("Error" ) );
     return 0;
   }
 
-  QTextStream *stream = tmpFile.textStream();
-  while ( stream && stream->readLine() != QString::null ) ++count;
+  TQTextStream *stream = tmpFile.textStream();
+  while ( stream && stream->readLine() != TQString() ) ++count;
   tmpFile.unlink();
 
   //make sure you call stopWait after this function return...
@@ -217,7 +217,7 @@ long KRarcHandler::arcFileCount( QString archive, QString type, QString password
   return count / divideWith;
   }
 
-bool KRarcHandler::unpack( QString archive, QString type, QString password, QString dest ) {
+bool KRarcHandler::unpack( TQString archive, TQString type, TQString password, TQString dest ) {
   krConfig->setGroup( "Archives" );
   if ( krConfig->readBoolEntry( "Test Before Unpack", _TestBeforeUnpack ) ) {
     // test first - or be sorry later...
@@ -233,7 +233,7 @@ bool KRarcHandler::unpack( QString archive, QString type, QString password, QStr
   if ( count == 1 ) count = 0 ;
 
   // choose the right packer for the job
-  QString packer, cpioName = QString::null;
+  TQString packer, cpioName = TQString();
 
   // set the right packer to do the job
   if ( type == "-zip" ) packer = KrServices::fullPathName( "unzip" ) + " -o" ;
@@ -251,15 +251,15 @@ bool KRarcHandler::unpack( QString archive, QString type, QString password, QStr
                                       KrServices::fullPathName( "unarj" ) + " x";
   else if ( type == "-7z" )  packer = KrServices::fullPathName( "7z" ) + " -y x";
   else if ( type == "-rpm" ) {
-    QString tempDir = locateLocal("tmp",QString::null);
+    TQString tempDir = locateLocal("tmp",TQString());
 
     cpioName = tempDir+"/contents.cpio";
 
     KrShellProcess cpio;
     cpio << KrServices::fullPathName( "rpm2cpio" ) << " " + KrServices::quote( archive ) << " > " << cpioName;
     cpio.start(KProcess::Block, KProcess::AllOutput );
-    if( !cpio.normalExit() || !checkStatus( "cpio", cpio.exitStatus() ) ) {
-      KMessageBox::detailedError (krApp, i18n( "Failed to convert rpm (%1) to cpio!" ).arg( archive ), 
+    if( !cpio.normalExit() || !checktqStatus( "cpio", cpio.exitStatus() ) ) {
+      KMessageBox::detailedError (krApp, i18n( "Failed to convert rpm (%1) to cpio!" ).tqarg( archive ), 
                                   cpio.getErrorMsg(), i18n("Error" ) );
       return 0;
     }
@@ -268,15 +268,15 @@ bool KRarcHandler::unpack( QString archive, QString type, QString password, QStr
     packer = KrServices::fullPathName( "cpio" ) + " --force-local --no-absolute-filenames -iuvdF";
   }
   else if ( type == "-deb" ) {
-    QString tempDir = locateLocal("tmp",QString::null);
+    TQString tempDir = locateLocal("tmp",TQString());
 
     cpioName = tempDir+"/contents.tar";
 
     KrShellProcess dpkg;
     dpkg << KrServices::fullPathName( "dpkg" ) << " --fsys-tarfile " + KrServices::quote( archive ) << " > " << cpioName;
     dpkg.start(KProcess::Block, KProcess::AllOutput );
-    if( !dpkg.normalExit() || !checkStatus( "-deb", dpkg.exitStatus() ) ) {
-      KMessageBox::detailedError (krApp, i18n( "Failed to convert deb (%1) to tar!" ).arg( archive ), 
+    if( !dpkg.normalExit() || !checktqStatus( "-deb", dpkg.exitStatus() ) ) {
+      KMessageBox::detailedError (krApp, i18n( "Failed to convert deb (%1) to tar!" ).tqarg( archive ), 
                                   dpkg.getErrorMsg(), i18n("Error" ) );
       return 0;
     }
@@ -299,31 +299,31 @@ bool KRarcHandler::unpack( QString archive, QString type, QString password, QStr
   KrShellProcess proc;
   proc << packer << " " + KrServices::quote( archive );
   if( type == "zip2" || type=="gzip" ){
-    QString arcname = archive.mid(archive.findRev("/")+1);
-    if( arcname.contains(".") ) arcname = arcname.left(arcname.findRev("."));
+    TQString arcname = archive.mid(archive.tqfindRev("/")+1);
+    if( arcname.tqcontains(".") ) arcname = arcname.left(arcname.tqfindRev("."));
     proc << ">" << KrServices::quote( dest+"/"+arcname );
   }
-  if( type == "-ace" && QFile( "/dev/ptmx" ).exists() ) // Don't remove, unace crashes if missing!!!
+  if( type == "-ace" && TQFile( "/dev/ptmx" ).exists() ) // Don't remove, unace crashes if missing!!!
     proc << "<" << "/dev/ptmx";
   
-  QString save = getcwd( 0, 0 );
+  TQString save = getcwd( 0, 0 );
   chdir( dest.local8Bit() );
 
   // tell the user to wait
   krApp->startWaiting( i18n( "Unpacking File(s)" ), count, true );
   if ( count != 0 ) {
-    connect( &proc, SIGNAL( receivedStdout( KProcess*, char*, int ) ),
-             krApp, SLOT( incProgress( KProcess*, char*, int ) ) );
+    connect( &proc, TQT_SIGNAL( receivedStdout( KProcess*, char*, int ) ),
+             krApp, TQT_SLOT( incProgress( KProcess*, char*, int ) ) );
     if( type == "-rpm" )
-      connect( &proc, SIGNAL( receivedStderr( KProcess*, char*, int ) ),
-               krApp, SLOT( incProgress( KProcess*, char*, int ) ) );
+      connect( &proc, TQT_SIGNAL( receivedStderr( KProcess*, char*, int ) ),
+               krApp, TQT_SLOT( incProgress( KProcess*, char*, int ) ) );
   }
 
   // start the unpacking process
   proc.start( KProcess::NotifyOnExit, KProcess::AllOutput );
   while ( proc.isRunning() ) {
     usleep( 1000 );
-    qApp->processEvents();
+    tqApp->processEvents();
     if( krApp->wasWaitingCancelled() )
       proc.kill();
     }
@@ -332,11 +332,11 @@ bool KRarcHandler::unpack( QString archive, QString type, QString password, QStr
   chdir( save.local8Bit() );
 
   if( !cpioName.isEmpty() )
-    QFile( cpioName ).remove();    /* remove the cpio file */
+    TQFile( cpioName ).remove();    /* remove the cpio file */
   
   // check the return value
-  if ( !proc.normalExit() || !checkStatus( type, proc.exitStatus() ) ) {
-    KMessageBox::detailedError (krApp, i18n( "Failed to unpack %1!" ).arg( archive ), 
+  if ( !proc.normalExit() || !checktqStatus( type, proc.exitStatus() ) ) {
+    KMessageBox::detailedError (krApp, i18n( "Failed to unpack %1!" ).tqarg( archive ), 
                                 krApp->wasWaitingCancelled() ? i18n( "User cancelled." ) : 
                                 proc.getErrorMsg(), i18n("Error" ) );
     return false;
@@ -344,9 +344,9 @@ bool KRarcHandler::unpack( QString archive, QString type, QString password, QStr
   return true; // SUCCESS
   }
 
-bool KRarcHandler::test( QString archive, QString type, QString password, long count ) {
+bool KRarcHandler::test( TQString archive, TQString type, TQString password, long count ) {
   // choose the right packer for the job
-  QString packer;
+  TQString packer;
 
   // set the right packer to do the job
   if ( type == "-zip" ) packer = KrServices::fullPathName( "unzip" ) + " -t";
@@ -377,19 +377,19 @@ bool KRarcHandler::test( QString archive, QString type, QString password, long c
   KrShellProcess proc;
   proc << packer << KrServices::quote( archive );
 
-  if( type == "-ace" && QFile( "/dev/ptmx" ).exists() ) // Don't remove, unace crashes if missing!!!
+  if( type == "-ace" && TQFile( "/dev/ptmx" ).exists() ) // Don't remove, unace crashes if missing!!!
     proc << "<" << "/dev/ptmx";
   
   // tell the user to wait
   krApp->startWaiting( i18n( "Testing Archive" ), count, true );
-  if ( count != 0 ) connect( &proc, SIGNAL( receivedStdout( KProcess*, char*, int ) ),
-                               krApp, SLOT( incProgress( KProcess*, char*, int ) ) );
+  if ( count != 0 ) connect( &proc, TQT_SIGNAL( receivedStdout( KProcess*, char*, int ) ),
+                               krApp, TQT_SLOT( incProgress( KProcess*, char*, int ) ) );
 
   // start the unpacking process
   proc.start( KProcess::NotifyOnExit, KProcess::AllOutput );
   while ( proc.isRunning() ) {
     usleep( 1000 );
-    qApp->processEvents();
+    tqApp->processEvents();
     if( krApp->wasWaitingCancelled() )
       proc.kill();
     }
@@ -397,15 +397,15 @@ bool KRarcHandler::test( QString archive, QString type, QString password, long c
   krApp->stopWait();
 
   // check the return value
-  if ( !proc.normalExit() || !checkStatus( type, proc.exitStatus() ) )
+  if ( !proc.normalExit() || !checktqStatus( type, proc.exitStatus() ) )
     return false;
 
   return true; // SUCCESS
   }
 
-bool KRarcHandler::pack( QStringList fileNames, QString type, QString dest, long count, QMap<QString,QString> extraProps ) {
+bool KRarcHandler::pack( TQStringList fileNames, TQString type, TQString dest, long count, TQMap<TQString,TQString> extraProps ) {
   // set the right packer to do the job
-  QString packer;
+  TQString packer;
 
   if      ( type == "zip" ) { packer = KrServices::fullPathName( "zip" ) + " -ry"; type = "-zip"; } 
   else if ( type == "tar" ) { packer = KrServices::fullPathName( "tar" ) + " -cvf"; type = "-tar"; } 
@@ -417,7 +417,7 @@ bool KRarcHandler::pack( QStringList fileNames, QString type, QString dest, long
   else if ( type == "7z" ) {  packer = KrServices::fullPathName( "7z" ) + " -y a"; type = "-7z"; } 
   else return false;
 
-  QString password = QString::null;
+  TQString password = TQString();
   
   if( extraProps.count( "Password" ) > 0 ) {
     password = extraProps[ "Password" ];
@@ -436,17 +436,17 @@ bool KRarcHandler::pack( QStringList fileNames, QString type, QString dest, long
           packer += " -p'" + password + "'";
       }
       else
-        password = QString::null;
+        password = TQString();
     }
   }
 
   if( extraProps.count( "VolumeSize" ) > 0 ) {
-     QString sizeStr = extraProps[ "VolumeSize" ];
+     TQString sizeStr = extraProps[ "VolumeSize" ];
      KIO::filesize_t size = sizeStr.toLongLong();
 
      if( size >= 10000 ) {
        if( type == "-arj" || type == "-rar" )
-           packer += QString( " -v%1b" ).arg( sizeStr );
+           packer += TQString( " -v%1b" ).tqarg( sizeStr );
      }
   }
 
@@ -459,44 +459,44 @@ bool KRarcHandler::pack( QStringList fileNames, QString type, QString dest, long
 
      if( type == "-rar" ) {
        static const int rarLevels[] = { 0, 1, 2, 2, 3, 3, 4, 4, 5 };
-       packer += QString( " -m%1" ).arg( rarLevels[ level ] );
+       packer += TQString( " -m%1" ).tqarg( rarLevels[ level ] );
      }
      else if( type == "-arj" ) {
        static const int arjLevels[] = { 0, 4, 4, 3, 3, 2, 2, 1, 1 };
-       packer += QString( " -m%1" ).arg( arjLevels[ level ] );
+       packer += TQString( " -m%1" ).tqarg( arjLevels[ level ] );
      }
      else if( type == "-zip" ) {
        static const int zipLevels[] = { 0, 1, 2, 4, 5, 6, 7, 8, 9 };
-       packer += QString( " -%1" ).arg( zipLevels[ level ] );
+       packer += TQString( " -%1" ).tqarg( zipLevels[ level ] );
      }
      else if( type == "-7z" ) {
        static const int sevenZipLevels[] = { 0, 1, 2, 4, 5, 6, 7, 8, 9 };
-       packer += QString( " -mx%1" ).arg( sevenZipLevels[ level ] );
+       packer += TQString( " -mx%1" ).tqarg( sevenZipLevels[ level ] );
      }
   }
 
   if( extraProps.count( "CommandLineSwitches" ) > 0 )
-     packer += QString( " %1" ).arg( extraProps[ "CommandLineSwitches" ] );
+     packer += TQString( " %1" ).tqarg( extraProps[ "CommandLineSwitches" ] );
   
   // prepare to pack
   KrShellProcess proc;
   proc << packer << KrServices::quote( dest );
 
-  for ( QStringList::Iterator file = fileNames.begin(); file != fileNames.end(); ++file ) {
+  for ( TQStringList::Iterator file = fileNames.begin(); file != fileNames.end(); ++file ) {
     proc << KrServices::quote( *file );
     }
 
   // tell the user to wait
   krApp->startWaiting( i18n( "Packing File(s)" ), count, true );
   if ( count != 0 )
-    connect( &proc, SIGNAL( receivedStdout( KProcess*, char*, int ) ),
-             krApp, SLOT( incProgress( KProcess*, char*, int ) ) );
+    connect( &proc, TQT_SIGNAL( receivedStdout( KProcess*, char*, int ) ),
+             krApp, TQT_SLOT( incProgress( KProcess*, char*, int ) ) );
 
   // start the packing process
   proc.start( KProcess::NotifyOnExit, KProcess::AllOutput );
   while ( proc.isRunning() ) {
     usleep( 1000 );
-    qApp->processEvents();
+    tqApp->processEvents();
     if( krApp->wasWaitingCancelled() )
       proc.kill();
     }
@@ -504,8 +504,8 @@ bool KRarcHandler::pack( QStringList fileNames, QString type, QString dest, long
   krApp->stopWait();
 
   // check the return value
-  if ( !proc.normalExit() || !checkStatus( type, proc.exitStatus() ) ) {
-    KMessageBox::detailedError (krApp, i18n( "Failed to pack %1!" ).arg( dest ), 
+  if ( !proc.normalExit() || !checktqStatus( type, proc.exitStatus() ) ) {
+    KMessageBox::detailedError (krApp, i18n( "Failed to pack %1!" ).tqarg( dest ), 
                                 krApp->wasWaitingCancelled() ? i18n( "User cancelled." ) : proc.getErrorMsg(), 
                                 i18n("Error" ) );
     return false;
@@ -520,10 +520,10 @@ bool KRarcHandler::pack( QStringList fileNames, QString type, QString dest, long
   return true; // SUCCESS
   }
 
-QString KRarcHandler::getPassword( QString path ) {
-	QString password;
+TQString KRarcHandler::getPassword( TQString path ) {
+	TQString password;
 	
-	QString key = "krarc-" + path;
+	TQString key = "krarc-" + path;
 	
 	if( !KWallet::Wallet::keyDoesNotExist(KWallet::Wallet::NetworkWallet(), KWallet::Wallet::PasswordFolder(), key ) ) {
 		if( !KWallet::Wallet::isOpen( KWallet::Wallet::NetworkWallet() )  && wallet != 0 ) {
@@ -534,9 +534,9 @@ QString KRarcHandler::getPassword( QString path ) {
 			wallet = KWallet::Wallet::openWallet( KWallet::Wallet::NetworkWallet() );
 		if ( wallet && wallet->hasFolder( KWallet::Wallet::PasswordFolder() ) ) {
 			wallet->setFolder( KWallet::Wallet::PasswordFolder() );
-			QMap<QString,QString> map;
+			TQMap<TQString,TQString> map;
 			if ( wallet->readMap( key, map ) == 0 ) {
-				QMap<QString, QString>::ConstIterator it = map.find( "password" );
+				TQMap<TQString, TQString>::ConstIterator it = map.tqfind( "password" );
 				if ( it != map.end() )
 					password = it.data();
 			}
@@ -544,7 +544,7 @@ QString KRarcHandler::getPassword( QString path ) {
 	}
 	
 	bool keep = true;
-	QString user = "archive";
+	TQString user = "archive";
 	KIO::PasswordDialog passDlg( i18n("This archive is encrypted, please supply the password:"),
 	                             user, true );
 	passDlg.setPassword( password );
@@ -563,7 +563,7 @@ QString KRarcHandler::getPassword( QString path ) {
 					ok = wallet->createFolder( KWallet::Wallet::PasswordFolder() );
 				if ( ok ) {
 					wallet->setFolder( KWallet::Wallet::PasswordFolder() );
-					QMap<QString,QString> map;
+					TQMap<TQString,TQString> map;
 					map.insert( "login", "archive" );
 					map.insert( "password", password );
 					wallet->writeMap( key, map );
@@ -577,14 +577,14 @@ QString KRarcHandler::getPassword( QString path ) {
 }
 
 bool KRarcHandler::isArchive(const KURL& url) {
-	QString protocol = url.protocol();
-	if (arcProtocols.find(protocol) != arcProtocols.end())
+	TQString protocol = url.protocol();
+	if (arcProtocols.tqfind(protocol) != arcProtocols.end())
 		return true;
 	else return false;	
 }
 
-QString KRarcHandler::getType( bool &encrypted, QString fileName, QString mime, bool checkEncrypted ) {
-	QString result = detectArchive( encrypted, fileName, checkEncrypted );
+TQString KRarcHandler::getType( bool &encrypted, TQString fileName, TQString mime, bool checkEncrypted ) {
+	TQString result = detectArchive( encrypted, fileName, checkEncrypted );
 	if( result.isNull() )
 		result = mime;
 	else
@@ -597,7 +597,7 @@ QString KRarcHandler::getType( bool &encrypted, QString fileName, QString mime, 
 }
 
 
-bool KRarcHandler::checkStatus( QString type, int exitCode ) {
+bool KRarcHandler::checktqStatus( TQString type, int exitCode ) {
 	if( type == "-zip" || type == "-rar" || type == "-7z" )
 		return exitCode == 0 || exitCode == 1;
 	else if( type == "-ace" || type == "zip2" || type == "-lha" || type == "-rpm" || type == "cpio" ||
@@ -611,12 +611,12 @@ bool KRarcHandler::checkStatus( QString type, int exitCode ) {
 }
 
 struct AutoDetectParams {
-	QString type;
+	TQString type;
 	int location;
-	QString detectionString;
+	TQString detectionString;
 };
 
-QString KRarcHandler::detectArchive( bool &encrypted, QString fileName, bool checkEncrypted ) {
+TQString KRarcHandler::detectArchive( bool &encrypted, TQString fileName, bool checkEncrypted ) {
 	static AutoDetectParams autoDetectParams[] = {{"zip",  0, "PK\x03\x04"},
 	                                              {"rar",  0, "Rar!\x1a" },
 	                                              {"arj",  0, "\x60\xea" },
@@ -630,14 +630,14 @@ QString KRarcHandler::detectArchive( bool &encrypted, QString fileName, bool che
 	
 	encrypted = false;
 	
-	QFile arcFile( fileName );
+	TQFile arcFile( fileName );
 	if ( arcFile.open( IO_ReadOnly ) ) {
 		char buffer[ 1024 ];
 		long sizeMax = arcFile.readBlock( buffer, sizeof( buffer ) );
 		arcFile.close();
 		
 		for( int i=0; i < autoDetectElems; i++ ) {
-			QString detectionString = autoDetectParams[ i ].detectionString;
+			TQString detectionString = autoDetectParams[ i ].detectionString;
 			int location = autoDetectParams[ i ].location;
 			
 			int endPtr = detectionString.length() + location;
@@ -653,7 +653,7 @@ QString KRarcHandler::detectArchive( bool &encrypted, QString fileName, bool che
 			}
 			
 			if( j == detectionString.length() ) {
-				QString type = autoDetectParams[ i ].type;
+				TQString type = autoDetectParams[ i ].type;
 				if( type == "bzip2" || type == "gzip" ) {
 					KTar tapeArchive( fileName );
 					if( tapeArchive.open( IO_ReadOnly ) ) {
@@ -749,7 +749,7 @@ QString KRarcHandler::detectArchive( bool &encrypted, QString fileName, bool che
 			}
 		}
 	}
-	return QString::null;
+	return TQString();
 }
 
 #include "krarchandler.moc"

@@ -30,7 +30,7 @@
 #ifndef KRSPWIDGETS_H
 #define KRSPWIDGETS_H
 
-#include <qstrlist.h>
+#include <tqstrlist.h>
 #include <kurl.h>
 #include "krmaskchoice.h"
 #include "newftpgui.h"
@@ -48,11 +48,11 @@ class KRSpWidgets {
 public: 
 	KRSpWidgets();
 
-  static KRQuery getMask( QString caption, bool nameOnly=false ); // get file-mask for (un)selecting files
+  static KRQuery getMask( TQString caption, bool nameOnly=false ); // get file-tqmask for (un)selecting files
   static KURL newFTP();
 
 private:
-  static QStrList maskList;  // used by KRMaskChoiceSub 
+  static TQStrList tqmaskList;  // used by KRMaskChoiceSub 
 };
 
 /////////////////////////// newFTPSub ///////////////////////////////////////
@@ -76,7 +76,7 @@ public slots:
   void addSelection();
   void deleteSelection();
   void clearSelections();
-  void acceptFromList(QListBoxItem *i);
+  void acceptFromList(TQListBoxItem *i);
     
 protected:
   void reject();
@@ -89,22 +89,22 @@ protected:
 
 class QuickNavLineEdit: public KLineEdit {
 public:
-	QuickNavLineEdit(const QString &string, QWidget *parent, const char *name=0);
- 	QuickNavLineEdit(QWidget *parent=0, const char *name=0);
+	QuickNavLineEdit(const TQString &string, TQWidget *tqparent, const char *name=0);
+ 	QuickNavLineEdit(TQWidget *tqparent=0, const char *name=0);
  	virtual ~QuickNavLineEdit() {}
-	static int findCharFromPos(const QString &, const QFontMetrics &, int pos);
+	static int findCharFromPos(const TQString &, const TQFontMetrics &, int pos);
 protected:
-	void mouseMoveEvent( QMouseEvent *m);
-	void leaveEvent( QEvent * );
-	void mousePressEvent( QMouseEvent *m );
+	void mouseMoveEvent( TQMouseEvent *m);
+	void leaveEvent( TQEvent * );
+	void mousePressEvent( TQMouseEvent *m );
 	inline void clearAll() { _numOfSelectedChars = 0; if (_pop) delete _pop; _dummyDisplayed=false; }
 	void init();
 	
 private:
-	int charCount(const QMouseEvent * const , QString* const =0) ;
+	int charCount(const TQMouseEvent * const , TQString* const =0) ;
 	int _numOfSelectedChars;
 	bool _dummyDisplayed;
-	QGuardedPtr<KPassivePopup> _pop;
+	TQGuardedPtr<KPassivePopup> _pop;
 };
 
 #endif

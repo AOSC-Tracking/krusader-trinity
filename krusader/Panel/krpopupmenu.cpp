@@ -32,15 +32,15 @@
 #include "../krusaderview.h"
 #include "../panelmanager.h"
 
-void KrPopupMenu::run(const QPoint &pos, ListPanel *panel) {
+void KrPopupMenu::run(const TQPoint &pos, ListPanel *panel) {
 	KrPopupMenu menu(panel);
 	int result = menu.exec(pos);
 	menu.performAction(result);
 }
 
-KrPopupMenu::KrPopupMenu(ListPanel *thePanel, QWidget *parent) : KPopupMenu(parent), panel(thePanel), empty(false), 
+KrPopupMenu::KrPopupMenu(ListPanel *thePanel, TQWidget *tqparent) : KPopupMenu(tqparent), panel(thePanel), empty(false), 
 	multipleSelections(false),actions(0) {
-#ifdef __LIBKONQ__
+#ifdef __LIBKONTQ__
 	konqMenu = 0;
 #endif
 	
@@ -70,20 +70,20 @@ KrPopupMenu::KrPopupMenu(ListPanel *thePanel, QWidget *parent) : KPopupMenu(pare
    // ------------- Preview - normal vfs only ?
    if ( panel->func->files()->vfs_getType() == vfs::NORMAL ) {
       // create the preview popup
-      QStringList names;
+      TQStringList names;
       panel->getSelectedNames( &names );
       preview.setUrls( panel->func->files() ->vfs_getFiles( &names ) );
       insertItem( i18n("Preview"), &preview, PREVIEW_ID );
    }
 
-   // -------------- Open with: try to find-out which apps can open the file
+   // -------------- Open with: try to tqfind-out which apps can open the file
    // this too, is meaningful only if one file is selected or if all the files
    // have the same mimetype !
-   QString mime = panel->func->getVFile(item)->vfile_getMime();
+   TQString mime = panel->func->getVFile(item)->vfile_getMime();
    // check if all the list have the same mimetype
    for ( unsigned int i = 1; i < items.size(); ++i ) {
       if ( panel->func->getVFile(( *items.at( i ) )) ->vfile_getMime() != mime ) {
-         mime = QString::null;
+         mime = TQString();
          break;
       }
    }
@@ -100,7 +100,7 @@ KrPopupMenu::KrPopupMenu(ListPanel *thePanel, QWidget *parent) : KPopupMenu(pare
       if ( vf->vfile_isDir() )
          openWith.insertItem( krLoader->loadIcon( "konsole", KIcon::Small ), i18n( "Terminal" ), OPEN_TERM_ID );
       openWith.insertItem( i18n( "Other..." ), CHOOSE_ID );
-      insertItem( QPixmap(), &openWith, OPEN_WITH_ID );
+      insertItem( TQPixmap(), &openWith, OPEN_WITH_ID );
       changeItem( OPEN_WITH_ID, i18n( "Open With" ) );
       insertSeparator();
    }
@@ -114,13 +114,13 @@ KrPopupMenu::KrPopupMenu(ListPanel *thePanel, QWidget *parent) : KPopupMenu(pare
 		_items.append( new KFileItem( url,  file->vfile_getMime(), file->vfile_getMode() ) );
    }
    
-#ifdef __LIBKONQ__
+#ifdef __LIBKONTQ__
 	// -------------- konqueror menu
    actions = new KActionCollection(this);
 	konqMenu = new KonqPopupMenu( KonqBookmarkManager::self(), _items, panel->func->files()->vfs_getOrigin(), *actions, 0, this, 
                            KonqPopupMenu::NoFlags, KParts::BrowserExtension::DefaultPopupItems );
-   insertItem( QPixmap(), konqMenu, KONQ_MENU_ID );
-   changeItem( KONQ_MENU_ID, i18n( "Konqueror Menu" ) );
+   insertItem( TQPixmap(), konqMenu, KONTQ_MENU_ID );
+   changeItem( KONTQ_MENU_ID, i18n( "Konqueror Menu" ) );
 #endif
    
 	// ------------- 'create new' submenu
@@ -157,7 +157,7 @@ KrPopupMenu::KrPopupMenu(ListPanel *thePanel, QWidget *parent) : KPopupMenu(pare
       linkPopup.insertItem( i18n( "New Hardlink..." ), NEW_LINK_ID );
       if ( panel->func->getVFile(item)->vfile_isSymLink() )
          linkPopup.insertItem( i18n( "Redirect Link..." ), REDIRECT_LINK_ID);
-      insertItem( QPixmap(), &linkPopup, LINK_HANDLING_ID );
+      insertItem( TQPixmap(), &linkPopup, LINK_HANDLING_ID );
       changeItem( LINK_HANDLING_ID, i18n( "Link Handling" ) );
    }
    insertSeparator();
@@ -168,16 +168,16 @@ KrPopupMenu::KrPopupMenu(ListPanel *thePanel, QWidget *parent) : KPopupMenu(pare
 	
 	// ---------- mount/umount/eject
    if ( panel->func->files() ->vfs_getType() == vfs::NORMAL && vf->vfile_isDir() && !multipleSelections ) {
-      if ( krMtMan.getStatus( panel->func->files() ->vfs_getFile( item->name() ).path( -1 ) ) == KMountMan::MOUNTED )
+      if ( krMtMan.gettqStatus( panel->func->files() ->vfs_getFile( item->name() ).path( -1 ) ) == KMountMan::MOUNTED )
          insertItem( i18n( "Unmount" ), UNMOUNT_ID );
-      else if ( krMtMan.getStatus( panel->func->files() ->vfs_getFile( item->name() ).path( -1 ) ) == KMountMan::NOT_MOUNTED )
+      else if ( krMtMan.gettqStatus( panel->func->files() ->vfs_getFile( item->name() ).path( -1 ) ) == KMountMan::NOT_MOUNTED )
          insertItem( i18n( "Mount" ), MOUNT_ID );
       if ( krMtMan.ejectable( panel->func->files() ->vfs_getFile( item->name() ).path( -1 ) ) )
          insertItem( i18n( "Eject" ), EJECT_ID );
    }
    
    // --------- send by mail
-   if ( Krusader::supportedTools().contains( "MAIL" ) && !vf->vfile_isDir() ) {
+   if ( Krusader::supportedTools().tqcontains( "MAIL" ) && !vf->vfile_isDir() ) {
       insertItem( i18n( "Send by Email" ), SEND_BY_EMAIL_ID );
    }
    
@@ -202,7 +202,7 @@ KrPopupMenu::KrPopupMenu(ListPanel *thePanel, QWidget *parent) : KPopupMenu(pare
 
 KrPopupMenu::~KrPopupMenu() {
 	if (actions) delete actions;
-#ifdef __LIBKONQ__
+#ifdef __LIBKONTQ__
 	if (konqMenu) delete konqMenu;
 #endif	
 }
@@ -215,7 +215,7 @@ void KrPopupMenu::addCreateNewMenu() {
 	createNewPopup.insertItem( krLoader->loadIcon( "folder", KIcon::Small ), i18n("Folder..."), MKDIR_ID);
 	createNewPopup.insertItem( krLoader->loadIcon( "txt", KIcon::Small ), i18n("Text File..."), NEW_TEXT_FILE_ID);
 	
-	insertItem( QPixmap(), &createNewPopup, CREATE_NEW_ID);
+	insertItem( TQPixmap(), &createNewPopup, CREATE_NEW_ID);
 	changeItem( CREATE_NEW_ID, i18n( "Create New" ) );
 	
 }
@@ -258,11 +258,11 @@ void KrPopupMenu::performAction(int id) {
          	break;
          case SHRED_ID :
             if ( KMessageBox::warningContinueCancel( krApp,
-                 i18n("<qt>Do you really want to shred <b>%1</b>? Once shred, the file is gone forever!</qt>").arg(item->name()),
-                 QString::null, KStdGuiItem::cont(), "Shred" ) == KMessageBox::Continue )
+                 i18n("<qt>Do you really want to shred <b>%1</b>? Once shred, the file is gone forever!</qt>").tqarg(item->name()),
+                 TQString(), KStdGuiItem::cont(), "Shred" ) == KMessageBox::Continue )
                KShred::shred( panel->func->files() ->vfs_getFile( item->name() ).path( -1 ) );
          	break;
-         case OPEN_KONQ_ID :
+         case OPEN_KONTQ_ID :
          	kapp->startServiceByDesktopName( "konqueror", panel->func->files() ->vfs_getFile( item->name() ).url() );
          	break;
          case CHOOSE_ID : // open-with dialog
@@ -305,7 +305,7 @@ void KrPopupMenu::performAction(int id) {
 				break;
          case SYNC_SELECTED_ID :
          	{
-				QStringList selectedNames;
+				TQStringList selectedNames;
             for ( KrViewItemList::Iterator it = items.begin(); it != items.end(); ++it )
                selectedNames.append( ( *it ) ->name() );
             if( panel->otherPanel->view->numSelected() ) {
@@ -313,8 +313,8 @@ void KrPopupMenu::performAction(int id) {
                panel->otherPanel->view->getSelectedKrViewItems( &otherItems );
                
                for ( KrViewItemList::Iterator it2 = otherItems.begin(); it2 != otherItems.end(); ++it2 ) {
-                  QString name = ( *it2 ) ->name();
-                  if( !selectedNames.contains( name ) )
+                  TQString name = ( *it2 ) ->name();
+                  if( !selectedNames.tqcontains( name ) )
                     selectedNames.append( name );
                }
             }
@@ -322,21 +322,21 @@ void KrPopupMenu::performAction(int id) {
          	}
          	break;
          case OPEN_TERM_ID :
-         	QString save = getcwd( 0, 0 );
+         	TQString save = getcwd( 0, 0 );
          	chdir( panel->func->files() ->vfs_getFile( item->name() ).path( -1 ).local8Bit() );
 				KProcess proc;
 				{
 				KConfigGroupSaver saver(krConfig, "General");
-         	QString term = krConfig->readEntry( "Terminal", _Terminal );
+         	TQString term = krConfig->readEntry( "Terminal", _Terminal );
          	proc << KrServices::separateArgs( term );
          	if ( !panel->func->getVFile(item)->vfile_isDir() ) proc << "-e" << item->name();
-         	if ( term.contains( "konsole" ) ) {   /* KDE 3.2 bug (konsole is killed by pressing Ctrl+C) */
+         	if ( term.tqcontains( "konsole" ) ) {   /* KDE 3.2 bug (konsole is killed by pressing Ctrl+C) */
          	                                      /* Please remove the patch if the bug is corrected */
 					proc << "&";
             	proc.setUseShell( true );
          	}
          	if ( !proc.start( KProcess::DontCare ) )
-               KMessageBox::sorry( krApp, i18n( "Can't open \"%1\"" ).arg(term) );
+               KMessageBox::sorry( krApp, i18n( "Can't open \"%1\"" ).tqarg(term) );
 				} // group-saver is blown out of scope here
          	chdir( save.local8Bit() );
          	break;
@@ -344,7 +344,7 @@ void KrPopupMenu::performAction(int id) {
    
    // check if something from the open-with-offered-services was selected
    if ( id >= SERVICE_LIST_ID ) {
-      QStringList names;
+      TQStringList names;
       panel->getSelectedNames( &names );
       KRun::run( *( offers[ id - SERVICE_LIST_ID ].service() ),
                  *( panel->func->files() ->vfs_getFiles( &names ) ) );

@@ -33,7 +33,7 @@
 #ifndef KRSLOTS_H
 #define KRSLOTS_H
 
-#include <qobject.h>
+#include <tqobject.h>
 // the 2 following #includes should go away with the ugly stubs on the bottom
 #include "krusader.h"
 #include "krusaderview.h"
@@ -47,19 +47,20 @@
 class ListPanel;
 class KURL;
 
-class KRslots : public QObject {
+class KRslots : public TQObject {
     Q_OBJECT
+  TQ_OBJECT
 
   public:
     enum compareMode { full } ;
 
-    KRslots(QObject *parent): QObject(parent, "KRslots") {}
+    KRslots(TQObject *tqparent): TQObject(tqparent, "KRslots") {}
     ~KRslots() {}
 
   public slots:
     void createChecksum();
     void matchChecksum();
-    void sendFileByEmail( QString filename );
+    void sendFileByEmail( TQString filename );
     void compareContent();
     void compareContent( KURL, KURL );
     void rightclickMenu();
@@ -83,7 +84,7 @@ class KRslots : public QObject {
     void markAll();
     void unmarkAll();
     void markGroup();
-	 void markGroup(const QString &, bool select);
+	 void markGroup(const TQString &, bool select);
     void unmarkGroup();
     void invert();
     void compareDirs();
@@ -145,7 +146,7 @@ class KRslots : public QObject {
     void slotCombine();
     void userMenu();
     void manageUseractions();
-    void slotSynchronizeDirs( QStringList selected = QStringList() );
+    void slotSynchronizeDirs( TQStringList selected = TQStringList() );
     void slotSyncBrowse();
     void slotDiskUsage();
     void slotLocationBar();
@@ -177,7 +178,7 @@ class KRslots : public QObject {
     void rename();
 
     // ugly stubs, remove later ?
-    void slotCurrentChanged( QString p ) { MAIN_VIEW->slotCurrentChanged( p ); }
+    void slotCurrentChanged( TQString p ) { MAIN_VIEW->slotCurrentChanged( p ); }
     void slotSetActivePanel( ListPanel *p ) { MAIN_VIEW->slotSetActivePanel( p ); }
 
     

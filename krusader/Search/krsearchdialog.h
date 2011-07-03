@@ -40,22 +40,23 @@
 #include "krsearchmod.h"
 #include "../GUI/profilemanager.h"
 
-#include <qwidget.h>
+#include <tqwidget.h>
 #include <ksqueezedtextlabel.h>
-#include <qstringlist.h>
+#include <tqstringlist.h>
 #include <sys/types.h>
 #include <time.h>
-#include <qstring.h>
-#include <qtabwidget.h>
-#include <qlistview.h>
-#include <qstringlist.h>
+#include <tqstring.h>
+#include <tqtabwidget.h>
+#include <tqlistview.h>
+#include <tqstringlist.h>
 #include <kglobal.h>
 #include <klocale.h>
 
-class KrSearchDialog : public QDialog  {
+class KrSearchDialog : public TQDialog  {
    Q_OBJECT
+  TQ_OBJECT
 public: 
-  KrSearchDialog(QString profile = 0, QWidget* parent = 0, const char* name = 0, bool modal = false, WFlags fl = 0 );
+  KrSearchDialog(TQString profile = 0, TQWidget* tqparent = 0, const char* name = 0, bool modal = false, WFlags fl = 0 );
 
   void prepareGUI();
     
@@ -66,15 +67,15 @@ public slots:
   void stopSearch();
   void feedToListBox();
   void copyToClipBoard();
-  void found(QString what, QString where, KIO::filesize_t size, time_t mtime, QString perm, QString foundText);
+  void found(TQString what, TQString where, KIO::filesize_t size, time_t mtime, TQString perm, TQString foundText);
   void closeDialog( bool isAccept = true );
-  void resultDoubleClicked(QListViewItem*);
-  void resultClicked(QListViewItem*);
+  void resultDoubleClicked(TQListViewItem*);
+  void resultClicked(TQListViewItem*);
 
-  virtual void keyPressEvent(QKeyEvent *e);
-  virtual void closeEvent(QCloseEvent *e);
-  virtual void rightClickMenu(QListViewItem*, const QPoint&, int);
-  virtual void resizeEvent( QResizeEvent *e );
+  virtual void keyPressEvent(TQKeyEvent *e);
+  virtual void closeEvent(TQCloseEvent *e);
+  virtual void rightClickMenu(TQListViewItem*, const TQPoint&, int);
+  virtual void resizeEvent( TQResizeEvent *e );
 
 protected slots:
   void reject();
@@ -90,28 +91,28 @@ private:
   FilterTabs * filterTabs;
   GeneralFilter * generalFilter;
       
-  QPushButton* mainHelpBtn;
-  QPushButton* mainSearchBtn;
-  QPushButton* mainStopBtn;
-  QPushButton* mainCloseBtn;
-  QPushButton* mainFeedToListBoxBtn;
+  TQPushButton* mainHelpBtn;
+  TQPushButton* mainSearchBtn;
+  TQPushButton* mainStopBtn;
+  TQPushButton* mainCloseBtn;
+  TQPushButton* mainFeedToListBoxBtn;
   
-  QTabWidget* searcherTabs;  
-  QWidget* resultTab;
-  QGridLayout* resultLayout;
-  QLabel* foundLabel;
+  TQTabWidget* searcherTabs;  
+  TQWidget* resultTab;
+  TQGridLayout* resultLayout;
+  TQLabel* foundLabel;
   KrSqueezedTextLabel *foundTextLabel;
   KSqueezedTextLabel *searchingLabel;
   
-  QListView* resultsList;
+  TQListView* resultsList;
 
   KRQuery *query;
   KRSearchMod *searcher;
-  QStringList savedSearches;
+  TQStringList savedSearches;
   bool isSearching;
   bool closed;
   
-  static QString lastSearchText;
+  static TQString lastSearchText;
   static int     lastSearchType;
   static bool    lastSearchForCase;
   static bool    lastRemoteContentSearch;
@@ -125,11 +126,11 @@ private:
   int            sizeY;
 };
 
-class ResultListViewItem : public QListViewItem
+class ResultListViewItem : public TQListViewItem
 {
 public:
-  ResultListViewItem( QListView *resultsList, QString name, QString where, KIO::filesize_t size, 
-                      QDateTime date, QString perm ) : QListViewItem( resultsList, name, where, 
+  ResultListViewItem( TQListView *resultsList, TQString name, TQString where, KIO::filesize_t size, 
+                      TQDateTime date, TQString perm ) : TQListViewItem( resultsList, name, where, 
                       KRpermHandler::parseSize(size), 
                       KGlobal::locale()->formatDateTime( date ), perm )
   {
@@ -138,10 +139,10 @@ public:
     setDragEnabled( true );
   }  
 
-  void setFoundText(QString text) { _foundText=text; }
-  const QString& foundText() const { return _foundText; }
+  void setFoundText(TQString text) { _foundText=text; }
+  const TQString& foundText() const { return _foundText; }
   
-  virtual int compare(QListViewItem *i,int col,bool ascending ) const
+  virtual int compare(TQListViewItem *i,int col,bool ascending ) const
   {
     if( col == 2 ) {
       ResultListViewItem *other = (ResultListViewItem *)i;
@@ -155,7 +156,7 @@ public:
     }
     if( col == 3 ) {
       ResultListViewItem *other = (ResultListViewItem *)i;
-      QDateTime otherDate = other->getDate();
+      TQDateTime otherDate = other->getDate();
       
       if( fileDate == otherDate )
         return 0;
@@ -163,21 +164,21 @@ public:
         return 1;
       return -1;
     }
-    return QListViewItem::compare( i, col, ascending );
+    return TQListViewItem::compare( i, col, ascending );
   }
 
   KIO::filesize_t getSize() {
     return fileSize;
   }
 
-  QDateTime getDate() {
+  TQDateTime getDate() {
     return fileDate;
   }
   
 private:
   KIO::filesize_t fileSize;
-  QDateTime       fileDate;
-  QString _foundText;
+  TQDateTime       fileDate;
+  TQString _foundText;
 };
 
 #endif

@@ -32,10 +32,10 @@
 #include <iostream>
 using namespace std;
 
-#define PS(x) _supported.contains(x)>0
+#define PS(x) _supported.tqcontains(x)>0
 
-KrResultTable::KrResultTable(QWidget* parent)
-  : QWidget(parent),
+KrResultTable::KrResultTable(TQWidget* tqparent)
+  : TQWidget(tqparent),
     _numRows(1)
 {
 }
@@ -45,21 +45,21 @@ KrResultTable::~KrResultTable()
 }
 
 
-QGridLayout* KrResultTable::initTable()
+TQGridLayout* KrResultTable::initTable()
 {
-  _grid = new QGridLayout(this, _numRows, _numColumns);
+  _grid = new TQGridLayout(this, _numRows, _numColumns);
   _grid->setColStretch(_numColumns-1, 1); // stretch last column
 
   // +++ Build and add table header +++
   int column = 0;
-  for( QStringList::Iterator it=_tableHeaders.begin(); it!=_tableHeaders.end(); ++it )
+  for( TQStringList::Iterator it=_tableHeaders.begin(); it!=_tableHeaders.end(); ++it )
   {
-    _label = new QLabel(*it, this);
+    _label = new TQLabel(*it, this);
     _label->setMargin(5);
     _grid->addWidget(_label, 0, column);
 
     // Set font
-    QFont defFont = KGlobalSettings::generalFont();
+    TQFont defFont = KGlobalSettings::generalFont();
     defFont.setPointSize(defFont.pointSize()-1);
     defFont.setBold(true);
     _label->setFont(defFont);
@@ -71,16 +71,16 @@ QGridLayout* KrResultTable::initTable()
 }
 
 
-void KrResultTable::adjustRow(QGridLayout* grid)
+void KrResultTable::adjustRow(TQGridLayout* grid)
 {
-  QLayoutIterator it = grid->iterator();
-  QLayoutItem *child;
+  TQLayoutIterator it = grid->iterator();
+  TQLayoutItem *child;
   int col = 0;
 
   while( (child = it.current()) != 0 )
   {
     // Add some space between columns
-    child->widget()->setMinimumWidth( child->widget()->sizeHint().width() + 15 );
+    child->widget()->setMinimumWidth( child->widget()->tqsizeHint().width() + 15 );
 
     // Paint uneven rows in alternate color
     if( ((col/_numColumns)%2) )
@@ -94,8 +94,8 @@ void KrResultTable::adjustRow(QGridLayout* grid)
 // -----------------------------------------------------------------------------
 // -----------------------------------------------------------------------------
 
-KrArchiverResultTable::KrArchiverResultTable(QWidget* parent)
- : KrResultTable(parent)
+KrArchiverResultTable::KrArchiverResultTable(TQWidget* tqparent)
+ : KrResultTable(tqparent)
 {
   _supported = KRarcHandler::supportedPackers(); // get list of available packers
 
@@ -171,27 +171,27 @@ KrArchiverResultTable::~KrArchiverResultTable()
 }
 
 
-bool KrArchiverResultTable::addRow(SearchObject* search, QGridLayout* grid)
+bool KrArchiverResultTable::addRow(SearchObject* search, TQGridLayout* grid)
 {
   Archiver* arch = dynamic_cast<Archiver*>(search);
 
   // Name column
   _label = new KURLLabel(arch->getWebsite(), arch->getSearchName(), this);
   _label->setMargin(5);
-  _label->setAlignment(Qt::AlignTop);
+  _label->tqsetAlignment(TQt::AlignTop);
   grid->addWidget(_label, _numRows, 0);
-  connect(_label, SIGNAL(leftClickedURL(const QString&)),
-                      SLOT(website(const QString&)));
+  connect(_label, TQT_SIGNAL(leftClickedURL(const TQString&)),
+                      TQT_SLOT(website(const TQString&)));
 
   // Found column
-  _label = new QLabel( arch->getPath(), this );
+  _label = new TQLabel( arch->getPath(), this );
   _label->setMargin(5);
   grid->addWidget(_label, _numRows, 1);
 
   // Packing column
-  _label = new QLabel(this);
+  _label = new TQLabel(this);
   _label->setMargin(5);
-  _label->setAlignment( Qt::AlignTop );
+  _label->tqsetAlignment( TQt::AlignTop );
   if( arch->getIsPacker() && arch->getFound() ) {
     _label->setText( i18n("enabled") );
     _label->setPaletteForegroundColor("darkgreen");
@@ -203,9 +203,9 @@ bool KrArchiverResultTable::addRow(SearchObject* search, QGridLayout* grid)
   grid->addWidget(_label, _numRows, 2);
 
   // Unpacking column
-  _label = new QLabel(this);
+  _label = new TQLabel(this);
   _label->setMargin(5);
-  _label->setAlignment( Qt::AlignTop );
+  _label->tqsetAlignment( TQt::AlignTop );
   if( arch->getIsUnpacker() && arch->getFound() ) {
     _label->setText( i18n("enabled") );
     _label->setPaletteForegroundColor("darkgreen");
@@ -217,9 +217,9 @@ bool KrArchiverResultTable::addRow(SearchObject* search, QGridLayout* grid)
   grid->addWidget(_label, _numRows, 3);
 
   // Note column
-  _label = new QLabel(arch->getNote(), this);
+  _label = new TQLabel(arch->getNote(), this);
   _label->setMargin(5);
-  _label->setAlignment( Qt::AlignTop | Qt::WordBreak ); // wrap words
+  _label->tqsetAlignment( TQt::AlignTop | TQt::WordBreak ); // wrap words
   grid->addWidget(_label, _numRows, 4);
 
   // Apply shared design elements
@@ -233,7 +233,7 @@ bool KrArchiverResultTable::addRow(SearchObject* search, QGridLayout* grid)
 }
 
 
-void KrArchiverResultTable::website(const QString& url)
+void KrArchiverResultTable::website(const TQString& url)
 {
   (void) new KRun(url);
 }
@@ -241,12 +241,12 @@ void KrArchiverResultTable::website(const QString& url)
 // -----------------------------------------------------------------------------
 // -----------------------------------------------------------------------------
 
-KrToolResultTable::KrToolResultTable(QWidget* parent)
- : KrResultTable(parent)
+KrToolResultTable::KrToolResultTable(TQWidget* tqparent)
+ : KrResultTable(tqparent)
 {
   _supported = Krusader::supportedTools(); // get list of available tools
 
-  QValueVector<Application*> vecDiff, vecMail, vecRename, vecChecksum;
+  TQValueVector<Application*> vecDiff, vecMail, vecRename, vecChecksum;
   Application* kdiff3         = new Application("kdiff3",        "http://kdiff3.sourceforge.net/", KrServices::cmdExist("kdiff3"));
   Application* kompare        = new Application("kompare",       "http://www.caffeinated.me.uk/kompare/", KrServices::cmdExist("kompare"));
   Application* xxdiff         = new Application("xxdiff",        "http://xxdiff.sourceforge.net/", KrServices::cmdExist("xxdiff"));
@@ -281,7 +281,7 @@ KrToolResultTable::KrToolResultTable(QWidget* parent)
   _tableHeaders.append( i18n("Group") );
   _tableHeaders.append( i18n("Tool") );
   _tableHeaders.append( i18n("Found") );
-  _tableHeaders.append( i18n("Status") );
+  _tableHeaders.append( i18n("tqStatus") );
   _numColumns = _tableHeaders.size();
 
   _grid = initTable();
@@ -315,43 +315,43 @@ KrToolResultTable::~KrToolResultTable()
 }
 
 
-bool KrToolResultTable::addRow(SearchObject* search, QGridLayout* grid)
+bool KrToolResultTable::addRow(SearchObject* search, TQGridLayout* grid)
 {
   ApplicationGroup* appGroup = dynamic_cast<ApplicationGroup*>(search);
-  QValueVector<Application*> _apps = appGroup->getAppVec();
+  TQValueVector<Application*> _apps = appGroup->getAppVec();
 
   // Name column
-  _label = new QLabel(appGroup->getSearchName(), this);
+  _label = new TQLabel(appGroup->getSearchName(), this);
   _label->setMargin(5);
-  _label->setAlignment( Qt::AlignTop );
+  _label->tqsetAlignment( TQt::AlignTop );
   grid->addWidget(_label, _numRows, 0);
 
   // Tool column
-  QVBox* toolBox = new QVBox(this);
-  for( QValueVector<Application*>::Iterator it=_apps.begin(); it!=_apps.end(); it++ )
+  TQVBox* toolBox = new TQVBox(this);
+  for( TQValueVector<Application*>::Iterator it=_apps.begin(); it!=_apps.end(); it++ )
   {
     KURLLabel* l = new KURLLabel( (*it)->getWebsite(), (*it)->getAppName(), toolBox);
-    l->setAlignment(Qt::AlignLeft | Qt::AlignTop);
+    l->tqsetAlignment(TQt::AlignLeft | TQt::AlignTop);
     l->setMargin(5);
-    connect(l, SIGNAL(leftClickedURL(const QString&)),
-               SLOT(website(const QString&)));
+    connect(l, TQT_SIGNAL(leftClickedURL(const TQString&)),
+               TQT_SLOT(website(const TQString&)));
   }
   grid->addWidget(toolBox, _numRows, 1);
 
   // Found column
-  QVBox* vbox = new QVBox(this);
-  for( QValueVector<Application*>::Iterator it=_apps.begin(); it!=_apps.end(); it++ )
+  TQVBox* vbox = new TQVBox(this);
+  for( TQValueVector<Application*>::Iterator it=_apps.begin(); it!=_apps.end(); it++ )
   {
-    _label = new QLabel( (*it)->getPath(), vbox);
+    _label = new TQLabel( (*it)->getPath(), vbox);
     _label->setMargin(5);
-    _label->setAlignment( Qt::AlignTop );
+    _label->tqsetAlignment( TQt::AlignTop );
   }
   grid->addWidget(vbox, _numRows, 2);
 
-  // Status column
-  _label = new QLabel(this);
+  // tqStatus column
+  _label = new TQLabel(this);
   _label->setMargin(5);
-  _label->setAlignment( Qt::AlignTop );
+  _label->tqsetAlignment( TQt::AlignTop );
   if( appGroup->getFoundGroup() ) {
     _label->setText( i18n("enabled") );
     _label->setPaletteForegroundColor("darkgreen");
@@ -371,7 +371,7 @@ bool KrToolResultTable::addRow(SearchObject* search, QGridLayout* grid)
   return true;
 }
 
-void KrToolResultTable::website(const QString& url)
+void KrToolResultTable::website(const TQString& url)
 {
   (void) new KRun(url);
 }

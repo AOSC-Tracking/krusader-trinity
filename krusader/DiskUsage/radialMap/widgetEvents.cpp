@@ -14,14 +14,14 @@
 #include <kpopupmenu.h>  //::mousePressEvent()
 #include <krun.h>        //::mousePressEvent()
 #include <math.h>        //::segmentAt()
-#include <qapplication.h>//QApplication::setOverrideCursor()
-#include <qpainter.h>
-#include <qtimer.h>      //::resizeEvent()
+#include <tqapplication.h>//TQApplication::setOverrideCursor()
+#include <tqpainter.h>
+#include <tqtimer.h>      //::resizeEvent()
 
 
 
 void
-RadialMap::Widget::resizeEvent( QResizeEvent* )
+RadialMap::Widget::resizeEvent( TQResizeEvent* )
 {
     if( m_map.resize( rect() ) )
        m_timer.start( 500, true ); //will cause signature to rebuild for new size
@@ -32,13 +32,13 @@ RadialMap::Widget::resizeEvent( QResizeEvent* )
 }
 
 void
-RadialMap::Widget::paintEvent( QPaintEvent* )
+RadialMap::Widget::paintEvent( TQPaintEvent* )
 {
-    //bltBit for some Qt setups will bitBlt _after_ the labels are painted. Which buggers things up!
-    //shame as bitBlt is faster, possibly Qt bug? Should report the bug? - seems to be race condition
+    //bltBit for some TQt setups will bitBlt _after_ the labels are painted. Which buggers things up!
+    //shame as bitBlt is faster, possibly TQt bug? Should report the bug? - seems to be race condition
     //bitBlt( this, m_offset, &m_map );
 
-    QPainter paint( this );
+    TQPainter paint( this );
 
     paint.drawPixmap( m_offset, m_map );
 
@@ -61,9 +61,9 @@ RadialMap::Widget::paintEvent( QPaintEvent* )
 }
 
 const RadialMap::Segment*
-RadialMap::Widget::segmentAt( QPoint &e ) const
+RadialMap::Widget::segmentAt( TQPoint &e ) const
 {
-    //determine which segment QPoint e is above
+    //determine which segment TQPoint e is above
 
     e -= m_offset;
 
@@ -105,12 +105,12 @@ RadialMap::Widget::segmentAt( QPoint &e ) const
 }
 
 void
-RadialMap::Widget::mouseMoveEvent( QMouseEvent *e )
+RadialMap::Widget::mouseMoveEvent( TQMouseEvent *e )
 {
    //set m_focus to what we hover over, update UI if it's a new segment
 
    Segment const * const oldFocus = m_focus;
-   QPoint p = e->pos();
+   TQPoint p = e->pos();
 
    m_focus = segmentAt( p ); //NOTE p is passed by non-const reference
 
@@ -122,11 +122,11 @@ RadialMap::Widget::mouseMoveEvent( QMouseEvent *e )
          m_tip.updateTip( m_focus->file(), m_tree );
          emit mouseHover( m_focus->file()->fullPath() );
 
-         //repaint required to update labels now before transparency is generated
-         repaint( false );
+         //tqrepaint required to update labels now before transparency is generated
+         tqrepaint( false );
       }
 
-      m_tip.moveto( e->globalPos(), *this, ( p.y() < 0 ) ); //updates tooltip psuedo-tranparent background
+      m_tip.moveto( e->globalPos(), *this, ( p.y() < 0 ) ); //updates tooltip psuedo-trantqparent background
    }
    else if( oldFocus && oldFocus->file() != m_tree )
    {
@@ -134,12 +134,12 @@ RadialMap::Widget::mouseMoveEvent( QMouseEvent *e )
       m_tip.hide();
       update();
 
-      emit mouseHover( QString::null );
+      emit mouseHover( TQString() );
    }
 }
 
 void
-RadialMap::Widget::mousePressEvent( QMouseEvent *e )
+RadialMap::Widget::mousePressEvent( TQMouseEvent *e )
 {
    //m_tip is hidden already by event filter
    //m_focus is set correctly (I've been strict, I assure you it is correct!)
@@ -174,11 +174,11 @@ RadialMap::Widget::mousePressEvent( QMouseEvent *e )
          switch( popup.exec( e->globalPos(), 1 ) ) {
          case 0:
             //KRun::runCommand will show an error message if there was trouble
-            KRun::runCommand( QString( "kfmclient openURL '%1'" ).arg( url.url() ) );
+            KRun::runCommand( TQString( "kfmclient openURL '%1'" ).tqarg( url.url() ) );
             break;
 
          case 1:
-            KRun::runCommand( QString( "konsole --workdir '%1'" ).arg( url.url() ) );
+            KRun::runCommand( TQString( "konsole --workdir '%1'" ).tqarg( url.url() ) );
             break;
 
          case 2:
@@ -188,16 +188,16 @@ RadialMap::Widget::mousePressEvent( QMouseEvent *e )
          case 4:
          {
             const KURL url = Widget::url( m_focus->file() );
-            const QString message = ( m_focus->file()->isDir()
+            const TQString message = ( m_focus->file()->isDir()
                ? i18n( "<qt>The directory at <i>'%1'</i> will be <b>recursively</b> and <b>permanently</b> deleted!</qt>" )
-               : i18n( "<qt><i>'%1'</i> will be <b>permanently</b> deleted!</qt>" )).arg( url.prettyURL() );
-            const int userIntention = KMessageBox::warningContinueCancel( this, message, QString::null, KGuiItem( i18n("&Delete"), "editdelete" ) );
+               : i18n( "<qt><i>'%1'</i> will be <b>permanently</b> deleted!</qt>" )).tqarg( url.prettyURL() );
+            const int userIntention = KMessageBox::warningContinueCancel( this, message, TQString(), KGuiItem( i18n("&Delete"), "editdelete" ) );
 
             if( userIntention == KMessageBox::Continue ) {
                KIO::Job *job = KIO::del( url );
                job->setWindow( this );
-               connect( job, SIGNAL(result( KIO::Job* )), SLOT(deleteJobFinished( KIO::Job* )) );
-               QApplication::setOverrideCursor( KCursor::workingCursor() );
+               connect( job, TQT_SIGNAL(result( KIO::Job* )), TQT_SLOT(deleteJobFinished( KIO::Job* )) );
+               TQApplication::setOverrideCursor( KCursor::workingCursor() );
             }
          }
 
@@ -210,7 +210,7 @@ RadialMap::Widget::mousePressEvent( QMouseEvent *e )
 
       sectionTwo:
 
-         const QRect rect( e->x() - 20, e->y() - 20, 40, 40 );
+         const TQRect rect( e->x() - 20, e->y() - 20, 40, 40 );
          
          m_tip.hide(); //user expects this
 
@@ -233,9 +233,9 @@ RadialMap::Widget::mousePressEvent( QMouseEvent *e )
 void
 RadialMap::Widget::deleteJobFinished( KIO::Job *job )
 {
-   QApplication::restoreOverrideCursor();
+   TQApplication::restoreOverrideCursor();
    if( !job->error() )
-      invalidate();
+      tqinvalidate();
    else
       job->showErrorDialog( this );
 }

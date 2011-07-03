@@ -36,7 +36,7 @@
 #include <ksplashscreen.h>
 #include <unistd.h>
 #include <signal.h>
-#include <qeventloop.h>
+#include <tqeventloop.h>
 
 // Krusader includes
 #include "krusader.h"
@@ -64,7 +64,7 @@ static void sigterm_handler(int i)
 {
   fprintf(stderr,"Signal: %d\n",i);
 
-  QApplication::eventLoop()->wakeUp();
+  TQApplication::eventLoop()->wakeUp();
   KApplication::exit( - 15 );
 }
 
@@ -105,9 +105,9 @@ int main(int argc, char *argv[]) {
 
   // ABOUT data information
 #ifdef RELEASE_NAME
-  QString versionName = QString("%1 \"%2\"").arg(VERSION).arg(RELEASE_NAME);
+  TQString versionName = TQString("%1 \"%2\"").tqarg(VERSION).tqarg(RELEASE_NAME);
 #else
-  QString versionName = VERSION;
+  TQString versionName = VERSION;
 #endif
   KAboutData aboutData( "krusader", ( geteuid() ? I18N_NOOP("Krusader") :
                         I18N_NOOP("Krusader - ROOT PRIVILEGES")),
@@ -197,12 +197,12 @@ int main(int argc, char *argv[]) {
     DCOPClient* client = KApplication::kApplication() ->dcopClient();
     if ( !client->attach() )
        exit( 0 );
-    QCString regName = client->registerAs( KApplication::kApplication() ->name(), !singleInstanceMode );
+    TQCString regName = client->registerAs( KApplication::kApplication() ->name(), !singleInstanceMode );
     if( singleInstanceMode && regName != KApplication::kApplication()->name() ) {
       fprintf( stderr, i18n( "Application already running!\n" ).ascii() );
 
       DCOPClient::mainClient()->send( KApplication::kApplication() ->name(), "Krusader-Interface",
-                                    "moveToTop()", QByteArray() );
+                                    "moveToTop()", TQByteArray() );
       KStartupInfo::appStarted();
 
       return 1;
@@ -214,8 +214,8 @@ int main(int argc, char *argv[]) {
   { // don't remove bracket
   KConfigGroupSaver saver(app.config(), "Look&Feel");
   if (app.config()->readBoolEntry( "Show splashscreen", _ShowSplashScreen )) {
-  	QString splashFilename = locate( "data", "krusader/splash.png" );
-  	QPixmap pixmap( splashFilename );
+  	TQString splashFilename = locate( "data", "krusader/splash.png" );
+  	TQPixmap pixmap( splashFilename );
   	if (!pixmap.isNull()) {
     		splash = new KSplashScreen( pixmap );
     		splash->show();
@@ -231,8 +231,8 @@ int main(int argc, char *argv[]) {
   signal(SIGHUP,sigterm_handler);
 
   // make sure we receive X's focus in/out events
-  QObject::connect(&app, SIGNAL(windowActive()), krusader.slot, SLOT(windowActive()));
-  QObject::connect(&app, SIGNAL(windowInactive()), krusader.slot, SLOT(windowInactive()));
+  TQObject::connect(&app, TQT_SIGNAL(windowActive()), krusader.slot, TQT_SLOT(windowActive()));
+  TQObject::connect(&app, TQT_SIGNAL(windowInactive()), krusader.slot, TQT_SLOT(windowInactive()));
 
   // and set krusader to be the main widget in it
   app.setMainWidget(&krusader);

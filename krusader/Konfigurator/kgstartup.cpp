@@ -34,25 +34,25 @@
 #include "../krusader.h"
 #include <klocale.h>
 #include <klineedit.h>
-#include <qwhatsthis.h>
+#include <tqwhatsthis.h>
 
-KgStartup::KgStartup( bool first, QWidget* parent,  const char* name ) :
-  KonfiguratorPage( first, parent, name ), profileCombo( 0 )
+KgStartup::KgStartup( bool first, TQWidget* tqparent,  const char* name ) :
+  KonfiguratorPage( first, tqparent, name ), profileCombo( 0 )
 {
-  QGridLayout *kgStartupLayout = new QGridLayout( parent );
+  TQGridLayout *kgStartupLayout = new TQGridLayout( tqparent );
   kgStartupLayout->setSpacing( 6 );
 
   //  --------------------------- PANELS GROUPBOX ----------------------------------
 
-  QGroupBox *panelsGrp = createFrame( i18n( "General" ), parent, "panelsGrp" );
-  QGridLayout *panelsGrid = createGridLayout( panelsGrp->layout() );
+  TQGroupBox *panelsGrp = createFrame( i18n( "General" ), tqparent, "panelsGrp" );
+  TQGridLayout *panelsGrid = createGridLayout( panelsGrp->tqlayout() );
 
-  QString s = "<p><img src='toolbar|kr_profile'></p>" + i18n( "Defines the panel profile used at startup. A panel profile contains:<ul><li>all the tabs paths</li><li>the current tab</li><li>the active panel</li></ul><b>&lt;Last session&gt;</b> is a special panel profile which is saved automatically when Krusader is closed.");
-  QLabel *label = addLabel( panelsGrid, 0, 0, i18n( "Startup profile:" ), panelsGrp, "Startup session" );
-  QWhatsThis::add( label, s );
-  QWhatsThis::add( panelsGrp, s );
+  TQString s = "<p><img src='toolbar|kr_profile'></p>" + i18n( "Defines the panel profile used at startup. A panel profile tqcontains:<ul><li>all the tabs paths</li><li>the current tab</li><li>the active panel</li></ul><b>&lt;Last session&gt;</b> is a special panel profile which is saved automatically when Krusader is closed.");
+  TQLabel *label = addLabel( panelsGrid, 0, 0, i18n( "Startup profile:" ), panelsGrp, "Startup session" );
+  TQWhatsThis::add( label, s );
+  TQWhatsThis::add( panelsGrp, s );
 
-  QStringList profileList = ProfileManager::availableProfiles( "Panel" );
+  TQStringList profileList = ProfileManager::availableProfiles( "Panel" );
   profileList.push_front( "<" + i18n( "Last session" ) + ">" );
 
   KONFIGURATOR_NAME_VALUE_PAIR comboItems[ profileList.count() ];
@@ -61,7 +61,7 @@ KgStartup::KgStartup( bool first, QWidget* parent,  const char* name ) :
   comboItems[ 0 ].value = "";
 
   profileCombo = createComboBox( "Startup", "Starter Profile Name", comboItems[ 0 ].value, comboItems, profileList.count(), panelsGrp, false, false );
-  profileCombo->setSizePolicy(  QSizePolicy::Expanding, QSizePolicy::Fixed);
+  profileCombo->tqsetSizePolicy(  TQSizePolicy::Expanding, TQSizePolicy::Fixed);
   panelsGrid->addWidget( profileCombo, 0, 1 );
 
   //------------------------------------------------
@@ -80,8 +80,8 @@ KgStartup::KgStartup( bool first, QWidget* parent,  const char* name ) :
 
   //  ------------------------ USERINTERFACE GROUPBOX ------------------------------
 
-  QGroupBox *uiGrp = createFrame( i18n( "User Interface" ), parent, "uiGrp" );
-  QGridLayout *uiGrid = createGridLayout( uiGrp->layout() );
+  TQGroupBox *uiGrp = createFrame( i18n( "User Interface" ), tqparent, "uiGrp" );
+  TQGridLayout *uiGrid = createGridLayout( uiGrp->tqlayout() );
 
   KONFIGURATOR_CHECKBOX_PARAM uiCheckBoxes[] =
     { //   cfg_class  cfg_name                default               text                                   restart ToolTip
@@ -96,7 +96,7 @@ KgStartup::KgStartup( bool first, QWidget* parent,  const char* name ) :
     };
 
   uiCbGroup = createCheckBoxGroup( 2, 0, uiCheckBoxes, 8, uiGrp );
-  connect( uiCbGroup->find( "UI Save Settings" ), SIGNAL( stateChanged( int ) ), this, SLOT( slotDisable() ) );
+  connect( uiCbGroup->tqfind( "UI Save Settings" ), TQT_SIGNAL( stateChanged( int ) ), this, TQT_SLOT( slotDisable() ) );
 
   uiGrid->addWidget( uiCbGroup, 1, 0 );
 
@@ -107,11 +107,11 @@ KgStartup::KgStartup( bool first, QWidget* parent,  const char* name ) :
 
 void KgStartup::slotDisable()
 {
-  bool isUiSave   = !uiCbGroup->find( "UI Save Settings" )->isChecked();
+  bool isUiSave   = !uiCbGroup->tqfind( "UI Save Settings" )->isChecked();
 
   int i=1;
-  while( uiCbGroup->find( i ) )
-    uiCbGroup->find( i++ )->setEnabled( isUiSave );
+  while( uiCbGroup->tqfind( i ) )
+    uiCbGroup->tqfind( i++ )->setEnabled( isUiSave );
 }
 
 #include "kgstartup.moc"

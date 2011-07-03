@@ -4,7 +4,7 @@
 #ifndef RADIALMAP_H
 #define RADIALMAP_H
 
-#include <qcolor.h>
+#include <tqcolor.h>
 
 class File;
 
@@ -26,8 +26,8 @@ namespace RadialMap
         uint         length() const { return m_angleSegment; }
         uint            end() const { return m_angleStart + m_angleSegment; }
         const File    *file() const { return m_file; }
-        const QColor&   pen() const { return m_pen; }
-        const QColor& brush() const { return m_brush; }
+        const TQColor&   pen() const { return m_pen; }
+        const TQColor& brush() const { return m_brush; }
 
         bool isFake() const { return m_fake; }
         bool hasHiddenChildren() const { return m_hasHiddenChildren; }
@@ -38,11 +38,11 @@ namespace RadialMap
         friend class Builder;
 
     private:
-        void setPalette( const QColor &p, const QColor &b ) { m_pen = p; m_brush = b; }
+        void setPalette( const TQColor &p, const TQColor &b ) { m_pen = p; m_brush = b; }
 
         const uint m_angleStart, m_angleSegment;
         const File* const m_file;
-        QColor m_pen, m_brush;
+        TQColor m_pen, m_brush;
         bool m_hasHiddenChildren;
         const bool m_fake;
     };

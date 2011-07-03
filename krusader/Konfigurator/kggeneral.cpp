@@ -28,10 +28,10 @@
  *                                                                         *
  ***************************************************************************/
 
-#include <qlabel.h>
-#include <qhbox.h>
-#include <qvbox.h>
-#include <qfontmetrics.h>
+#include <tqlabel.h>
+#include <tqhbox.h>
+#include <tqvbox.h>
+#include <tqfontmetrics.h>
 #include <klocale.h>
 #include <kmessagebox.h>
 #include <kinputdialog.h>
@@ -41,19 +41,19 @@
 #include "../krusader.h"
 #include "../kicons.h"
 
-KgGeneral::KgGeneral( bool first, QWidget* parent,  const char* name ) :
-      KonfiguratorPage( first, parent, name )
+KgGeneral::KgGeneral( bool first, TQWidget* tqparent,  const char* name ) :
+      KonfiguratorPage( first, tqparent, name )
 {
 if( first )  
     slotFindTools();
 
-  QGridLayout *kgGeneralLayout = new QGridLayout( parent );
+  TQGridLayout *kgGeneralLayout = new TQGridLayout( tqparent );
   kgGeneralLayout->setSpacing( 6 );
 
   //  -------------------------- GENERAL GROUPBOX ----------------------------------
 
-  QGroupBox *generalGrp = createFrame( i18n( "General" ), parent, "kgGenGeneralGrp" );
-  QGridLayout *generalGrid = createGridLayout( generalGrp->layout() );
+  TQGroupBox *generalGrp = createFrame( i18n( "General" ), tqparent, "kgGenGeneralGrp" );
+  TQGridLayout *generalGrid = createGridLayout( generalGrp->tqlayout() );
 
   KONFIGURATOR_NAME_VALUE_TIP deleteMode[] =
   //            name            value    tooltip
@@ -69,28 +69,28 @@ if( first )
                      i18n( "Mimetype magic allows better distinction of file types, but is slower." ) );
   generalGrid->addMultiCellWidget( checkBox, 1, 1, 0, 1 );
 
-  QFrame *line1 = createLine( generalGrp, "line1" );
+  TQFrame *line1 = createLine( generalGrp, "line1" );
   generalGrid->addMultiCellWidget( line1, 2, 2, 0, 1 );
 
   // editor
-  QLabel *label1 = new QLabel( i18n( "Editor:" ), generalGrp, "EditorLabel" );
+  TQLabel *label1 = new TQLabel( i18n( "Editor:" ), generalGrp, "EditorLabel" );
   generalGrid->addWidget( label1, 3, 0 );
   KonfiguratorURLRequester *urlReq = createURLRequester( "General", "Editor", "internal editor",
                                       generalGrp, false );
   generalGrid->addWidget( urlReq, 3, 1 );
 
-  QLabel *label2 = new QLabel( i18n( "Hint: use 'internal editor' if you want to use Krusader's fast built-in editor" ), generalGrp, "EditorLabel" );
+  TQLabel *label2 = new TQLabel( i18n( "Hint: use 'internal editor' if you want to use Krusader's fast built-in editor" ), generalGrp, "EditorLabel" );
   generalGrid->addMultiCellWidget( label2, 4, 4, 0, 1 );
 
-QFrame *line2 = createLine( generalGrp, "line2" );
+TQFrame *line2 = createLine( generalGrp, "line2" );
   generalGrid->addMultiCellWidget( line2, 5, 5, 0, 1 );
 
   // viewer
 
-  QHBox * hbox2 = new QHBox( generalGrp );
-  QVBox * vbox = new QVBox( hbox2 );
+  TQHBox * hbox2 = new TQHBox( generalGrp );
+  TQVBox * vbox = new TQVBox( hbox2 );
 
-  new QLabel( i18n("Default viewer mode:"), vbox);
+  new TQLabel( i18n("Default viewer mode:"), vbox);
   
   KONFIGURATOR_NAME_VALUE_TIP viewMode[] =
   //            name            value    tooltip
@@ -107,40 +107,40 @@ QFrame *line2 = createLine( generalGrp, "line2" );
   generalGrid->addMultiCellWidget(hbox2, 6, 8, 0, 1);
 
   // atomic extensions
-  QFrame * frame21 = createLine( hbox2, "line2.1", true );
+  TQFrame * frame21 = createLine( hbox2, "line2.1", true );
   frame21->setMinimumWidth( 15 );
-  QVBox * vbox2 = new QVBox( hbox2 );
+  TQVBox * vbox2 = new TQVBox( hbox2 );
 
-  QHBox * hbox3 = new QHBox( vbox2 );
-  QLabel * atomLabel = new QLabel( i18n("Atomic extensions:"), hbox3);
+  TQHBox * hbox3 = new TQHBox( vbox2 );
+  TQLabel * atomLabel = new TQLabel( i18n("Atomic extensions:"), hbox3);
 
-  int size = QFontMetrics( atomLabel->font() ).height();
+  int size = TQFontMetrics( atomLabel->font() ).height();
 
-  QToolButton *addButton = new QToolButton( hbox3, "addBtnList" );
-  QPixmap icon = krLoader->loadIcon("add",KIcon::Desktop, size );
+  TQToolButton *addButton = new TQToolButton( hbox3, "addBtnList" );
+  TQPixmap icon = krLoader->loadIcon("add",KIcon::Desktop, size );
   addButton->setFixedSize( icon.width() + 4, icon.height() + 4 );
   addButton->setPixmap( icon );
-  connect( addButton, SIGNAL( clicked() ), this, SLOT( slotAddExtension() ) );
+  connect( addButton, TQT_SIGNAL( clicked() ), this, TQT_SLOT( slotAddExtension() ) );
 
-  QToolButton *removeButton = new QToolButton( hbox3, "removeBtnList" );
+  TQToolButton *removeButton = new TQToolButton( hbox3, "removeBtnList" );
   icon = krLoader->loadIcon("remove",KIcon::Desktop, size );
   removeButton->setFixedSize( icon.width() + 4, icon.height() + 4 );
   removeButton->setPixmap( icon );
-  connect( removeButton, SIGNAL( clicked() ), this, SLOT( slotRemoveExtension() ) );
+  connect( removeButton, TQT_SIGNAL( clicked() ), this, TQT_SLOT( slotRemoveExtension() ) );
 
-  QStringList defaultAtomicExtensions;
+  TQStringList defaultAtomicExtensions;
   defaultAtomicExtensions += ".tar.gz";
   defaultAtomicExtensions += ".tar.bz2";
-  defaultAtomicExtensions += ".moc.cpp";
+  defaultAtomicExtensions += ".tqmoc.cpp";
 
   listBox = createListBox( "Look&Feel", "Atomic Extensions", 
       defaultAtomicExtensions, vbox2, true, false );
 
-  QFrame *line3 = createLine( generalGrp, "line3" );
+  TQFrame *line3 = createLine( generalGrp, "line3" );
   generalGrid->addMultiCellWidget( line3, 9, 9, 0, 1 );
 
 	// terminal
-  QLabel *label3 = new QLabel( i18n( "Terminal:" ), generalGrp, "TerminalLabel" );
+  TQLabel *label3 = new TQLabel( i18n( "Terminal:" ), generalGrp, "TerminalLabel" );
   generalGrid->addWidget( label3, 10, 0 );
   KonfiguratorURLRequester *urlReq2 = createURLRequester( "General", "Terminal", "konsole",
                                       generalGrp, false );
@@ -151,20 +151,20 @@ QFrame *line2 = createLine( generalGrp, "line2" );
                      i18n( "When checked, whenever the panel is changed (for example, by pressing TAB), krusader changes the current directory in the terminal emulator." ) );
   generalGrid->addMultiCellWidget( checkBox1, 11, 11, 0, 1 );
 
-  QFrame *line31 = createLine( generalGrp, "line4" );
+  TQFrame *line31 = createLine( generalGrp, "line4" );
   generalGrid->addMultiCellWidget( line31, 12, 12, 0, 1 );
 
 	// temp dir
-  QHBox *hbox = new QHBox( generalGrp, "hbox" );
-  new QLabel( i18n( "Temp Directory:" ), hbox, "TempDirectory" );
+  TQHBox *hbox = new TQHBox( generalGrp, "hbox" );
+  new TQLabel( i18n( "Temp Directory:" ), hbox, "TempDirectory" );
   KonfiguratorURLRequester *urlReq3 = createURLRequester( "General", "Temp Directory", "/tmp/krusader.tmp",
                                       hbox, false );
   urlReq3->setMode( KFile::Directory );
-  connect( urlReq3->extension(), SIGNAL( applyManually(QObject *,QString, QString) ),
-           this, SLOT( applyTempDir(QObject *,QString, QString) ) );
+  connect( urlReq3->extension(), TQT_SIGNAL( applyManually(TQObject *,TQString, TQString) ),
+           this, TQT_SLOT( applyTempDir(TQObject *,TQString, TQString) ) );
   generalGrid->addMultiCellWidget( hbox, 13, 13, 0, 1 );
 
-  QLabel *label4 = new QLabel( i18n( "Note: you must have full permissions for the temporary directory!" ),
+  TQLabel *label4 = new TQLabel( i18n( "Note: you must have full permissions for the temporary directory!" ),
                                generalGrp, "NoteLabel"  );
   generalGrid->addMultiCellWidget( label4, 14, 14, 0, 1 );
 
@@ -172,10 +172,10 @@ QFrame *line2 = createLine( generalGrp, "line2" );
   kgGeneralLayout->addWidget( generalGrp, 0 ,0 );
 }
 
-void KgGeneral::applyTempDir(QObject *obj,QString cls, QString name)
+void KgGeneral::applyTempDir(TQObject *obj,TQString cls, TQString name)
 {
   KonfiguratorURLRequester *urlReq = (KonfiguratorURLRequester *)obj;
-  QString value = QDir(urlReq->url()).path();
+  TQString value = TQDir(urlReq->url()).path();
 
   krConfig->setGroup( cls );
   krConfig->writeEntry( name, value );
@@ -191,12 +191,12 @@ void KgGeneral::slotFindTools()
 void KgGeneral::slotAddExtension()
 {
   bool ok;
-  QString atomExt =
-    KInputDialog::getText( i18n( "Add new atomic extension" ), i18n( "Extension: " ), QString::null, &ok );
+  TQString atomExt =
+    KInputDialog::getText( i18n( "Add new atomic extension" ), i18n( "Extension: " ), TQString(), &ok );
 
   if( ok )
   {
-    if( !atomExt.startsWith( "." ) || atomExt.find( '.', 1 ) == -1 )
+    if( !atomExt.startsWith( "." ) || atomExt.tqfind( '.', 1 ) == -1 )
       KMessageBox::error(krApp, i18n("Atomic extensions must start with '.'\n and must contain at least one more '.' character"), i18n("Error"));
     else
       listBox->addItem( atomExt );
@@ -205,7 +205,7 @@ void KgGeneral::slotAddExtension()
 
 void KgGeneral::slotRemoveExtension()
 {
-  QListBoxItem * item = listBox->selectedItem();
+  TQListBoxItem * item = listBox->selectedItem();
   if( item )
     listBox->removeItem( item->text() );
 }

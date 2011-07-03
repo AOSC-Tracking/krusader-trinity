@@ -19,13 +19,13 @@
 #define _VIRT_H
 
 #include <sys/types.h>
-#include <qdict.h>
+#include <tqdict.h>
 #include <kconfig.h>
 #include <kio/slavebase.h>
 
 class VirtProtocol : public KIO::SlaveBase {
 public:
-	VirtProtocol( const QCString &pool, const QCString &app );
+	VirtProtocol( const TQCString &pool, const TQCString &app );
 	virtual ~VirtProtocol();
 
 	virtual void listDir ( const KURL & url );
@@ -42,10 +42,10 @@ protected:
 	bool load();
 
 	void local_entry(const KURL& url,KIO::UDSEntry& entry);
-	bool addDir(QString& path);
+	bool addDir(TQString& path);
 
 
-	static QDict<KURL::List> kioVirtDict;
+	static TQDict<KURL::List> kioVirtDict;
 	static KConfig* kio_virt_db;
 
 	bool rewriteURL(const KURL&, KURL&);

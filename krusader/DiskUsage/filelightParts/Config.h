@@ -2,7 +2,7 @@
 #ifndef Config_H
 #define Config_H
 
-#include <qstringlist.h>
+#include <tqstringlist.h>
 
 class KConfig;
 

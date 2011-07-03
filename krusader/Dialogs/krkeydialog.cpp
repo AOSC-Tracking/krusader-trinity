@@ -11,8 +11,8 @@
 //
 #include "krkeydialog.h"
 
-#include <qlayout.h>
-#include <qwhatsthis.h>
+#include <tqlayout.h>
+#include <tqwhatsthis.h>
 #include <klocale.h>
 #include <kpushbutton.h>
 #include <kmessagebox.h>
@@ -29,24 +29,24 @@
 static const char* FILE_FILTER = I18N_NOOP("*.keymap|Krusader keymaps\n*|all files");
 
 
-KrKeyDialog::KrKeyDialog( QWidget * parent ) : KKeyDialog( false /* allow letter shortcuts */, parent ) {
+KrKeyDialog::KrKeyDialog( TQWidget * tqparent ) : KKeyDialog( false /* allow letter shortcuts */, tqparent ) {
    insert( krApp->actionCollection() );
 
-   // HACK This fetches the layout of the buttonbox from KDialogBase, although it is not accessable with KDialogBase's API
+   // HACK This fetches the tqlayout of the buttonbox from KDialogBase, although it is not accessable with KDialogBase's API
    // None the less it's quite save to use since this implementation hasn't changed since KDE-3.3 (I haven't looked at earlier
    // versions since we don't support them) and now all work is done in KDE-4.
-   QWidget* buttonBox = static_cast<QWidget*>( actionButton(KDialogBase::Ok)->parent() );
-   QBoxLayout* buttonBoxLayout = static_cast<QBoxLayout*>( buttonBox->layout() );
+   TQWidget* buttonBox = TQT_TQWIDGET( actionButton(KDialogBase::Ok)->tqparent() );
+   TQBoxLayout* buttonBoxLayout = static_cast<TQBoxLayout*>( buttonBox->tqlayout() );
 
    KPushButton* importButton = new KPushButton( i18n("Import shortcuts"), buttonBox );
-   QWhatsThis::add( importButton, i18n( "Load a keybinding profile, e.g., total_commander.keymap" ) );
+   TQWhatsThis::add( importButton, i18n( "Load a keybinding profile, e.g., total_commander.keymap" ) );
    buttonBoxLayout->insertWidget( 1, importButton ); // the defaults-button should stay on position 0
-   connect( importButton, SIGNAL( clicked() ), SLOT( slotImportShortcuts() ) );
+   connect( importButton, TQT_SIGNAL( clicked() ), TQT_SLOT( slotImportShortcuts() ) );
 
    KPushButton* exportButton = new KPushButton( i18n("Export shortcuts"), buttonBox );
-   QWhatsThis::add( exportButton, i18n( "Save current keybindings in a keymap file." ) );
+   TQWhatsThis::add( exportButton, i18n( "Save current keybindings in a keymap file." ) );
    buttonBoxLayout->insertWidget( 2, exportButton );
-   connect( exportButton, SIGNAL( clicked() ), SLOT( slotExportShortcuts() ) );
+   connect( exportButton, TQT_SIGNAL( clicked() ), TQT_SLOT( slotExportShortcuts() ) );
 
    // Also quite HACK 'isch but unfortunately KKeyDialog don't giveus access to this widget
    _chooser = static_cast<KKeyChooser*>( mainWidget() );
@@ -58,16 +58,16 @@ KrKeyDialog::~KrKeyDialog() {
 }
 
 void KrKeyDialog::slotImportShortcuts() {
-   // find $KDEDIR/share/apps/krusader
-   QString basedir = KGlobal::dirs()->findResourceDir("appdata", "total_commander.keymap");
+   // tqfind $KDEDIR/share/apps/krusader
+   TQString basedir = KGlobal::dirs()->findResourceDir("appdata", "total_commander.keymap");
    // let the user select a file to load
-   QString filename = KFileDialog::getOpenFileName(basedir, i18n(FILE_FILTER), 0, i18n("Select a keymap file"));
+   TQString filename = KFileDialog::getOpenFileName(basedir, i18n(FILE_FILTER), 0, i18n("Select a keymap file"));
    if ( filename.isEmpty() )
       return;
 
    KConfig conf( filename, true /*read only*/, false /*no KDEGlobal*/ );
    if ( ! conf.hasGroup("Shortcuts") ) {
-      int answer = KMessageBox::warningContinueCancel( this,	//parent
+      int answer = KMessageBox::warningContinueCancel( this,	//tqparent
 		i18n("This file does not seem to be a valid keymap.\n"
 			"It may be a keymap using a legacy format. The import can't be undone!"),	//text
 		i18n("Try to import legacy format?"), 	//caption
@@ -83,27 +83,27 @@ void KrKeyDialog::slotImportShortcuts() {
       _chooser->syncToConfig( "Shortcuts", &conf, false /* don't delete shortcuts of actions not listed in conf */ );
 }
 
-void KrKeyDialog::importLegacyShortcuts( const QString& file ) {
+void KrKeyDialog::importLegacyShortcuts( const TQString& file ) {
 /*
  * This is basicaly Shie's code. It's copied from Kronfigurator's loog&feel page and adapted to the dialog
  */
 	// check if there's an info file with the keymap
-	QFile info(file+".info");
+	TQFile info(file+".info");
 	if (info.open(IO_ReadOnly)) {
-		QTextStream stream(&info);
-		QStringList infoText = QStringList::split("\n", stream.read());
+		TQTextStream stream(&info);
+		TQStringList infoText = TQStringList::split("\n", stream.read());
 		if (KMessageBox::questionYesNoList(krApp, i18n("The following information was attached to the keymap. Do you really want to import this keymap?"), infoText)!=KMessageBox::Yes)
 			return;
 	}
 
 	// ok, import away
-	QFile f(file);
+	TQFile f(file);
 	if (!f.open(IO_ReadOnly)) {
 		krOut << "Error opening " << file << endl;
 		return;
 	}
 	char *actionName;
-	QDataStream stream(&f);
+	TQDataStream stream(&f);
 	int key;
 	KAction *action;
 	while (!stream.atEnd()) {
@@ -118,20 +118,20 @@ void KrKeyDialog::importLegacyShortcuts( const QString& file ) {
 	}
 	f.close();
 
-	KMessageBox::information( this, // parent
+	KMessageBox::information( this, // tqparent
 		i18n("Please restart this dialog in order to see the changes"), // text
 		i18n("Legacy import completed") // caption
 		);
 }
 
 void KrKeyDialog::slotExportShortcuts() {
-   QString filename = KFileDialog::getSaveFileName( QString::null, i18n(FILE_FILTER), 0, i18n("Select a keymap file") );
+   TQString filename = KFileDialog::getSaveFileName( TQString(), i18n(FILE_FILTER), 0, i18n("Select a keymap file") );
    if ( filename.isEmpty() )
       return;
-   QFile f( filename );
+   TQFile f( filename );
    if ( f.exists() &&
    		KMessageBox::warningContinueCancel( this, 
-		i18n("<qt>File <b>%1</b> already exists. Do you really want to overwrite it?</qt>").arg(filename),
+		i18n("<qt>File <b>%1</b> already exists. Do you really want to overwrite it?</qt>").tqarg(filename),
 		i18n("Warning"), i18n("Overwrite") )
 	!= KMessageBox::Continue)
 	return;
@@ -140,7 +140,7 @@ void KrKeyDialog::slotExportShortcuts() {
       // Additionaly this prevents merging if the file already contains some shortcuts
       f.close();
    else {
-      KMessageBox::error( this, i18n("<qt>Can't open <b>%1</b> for writing!</qt>").arg(filename) );
+      KMessageBox::error( this, i18n("<qt>Can't open <b>%1</b> for writing!</qt>").tqarg(filename) );
       return;
    }
 

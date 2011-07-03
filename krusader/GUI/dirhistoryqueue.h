@@ -15,10 +15,10 @@
  *                                                                         *
  ***************************************************************************/
 
-#ifndef DIRHISTORYQUEUE_H
-#define DIRHISTORYQUEUE_H
+#ifndef DIRHISTORYTQUEUE_H
+#define DIRHISTORYTQUEUE_H
 
-#include <qobject.h>
+#include <tqobject.h>
 #include <kurl.h>
 
 class ListPanel;
@@ -27,14 +27,15 @@ class ListPanel;
   *@author Shie Erlich & Rafi Yanai
   */
 
-class DirHistoryQueue : public QObject  {
+class DirHistoryQueue : public TQObject  {
   Q_OBJECT
+  TQ_OBJECT
 public: 
 	DirHistoryQueue(ListPanel* p);
 	~DirHistoryQueue();
 	KURL::List urlQueue;
-//  bool checkPath(const QString& path);
-//  void RemovePath(const QString& path);
+//  bool checkPath(const TQString& path);
+//  void RemovePath(const TQString& path);
 
 public slots: // Public slots
   /** No descriptions */

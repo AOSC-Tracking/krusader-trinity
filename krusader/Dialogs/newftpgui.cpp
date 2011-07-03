@@ -8,18 +8,18 @@
 ****************************************************************************/
 #include "newftpgui.h"
 
-#include <qlabel.h>
-#include <qlineedit.h>
-#include <qpushbutton.h>
-#include <qspinbox.h>
-#include <qlayout.h>
-#include <qhbox.h>
-#include <qgrid.h>
-#include <qvariant.h>
-#include <qtooltip.h>
-#include <qwhatsthis.h>
-#include <qimage.h>
-#include <qpixmap.h>
+#include <tqlabel.h>
+#include <tqlineedit.h>
+#include <tqpushbutton.h>
+#include <tqspinbox.h>
+#include <tqlayout.h>
+#include <tqhbox.h>
+#include <tqgrid.h>
+#include <tqvariant.h>
+#include <tqtooltip.h>
+#include <tqwhatsthis.h>
+#include <tqimage.h>
+#include <tqpixmap.h>
 #include <klocale.h>
 #include <kprotocolinfo.h>
 #include <kcombobox.h>
@@ -28,118 +28,115 @@
 
 
 /* 
- *  Constructs a newFTPGUI which is a child of 'parent', with the 
+ *  Constructs a newFTPGUI which is a child of 'tqparent', with the 
  *  name 'name' and widget flags set to 'f' 
  *
  *  The dialog will by default be modeless, unless you set 'modal' to
  *  TRUE to construct a modal dialog.
  */
  
- #define SIZE_MINIMUM	QSizePolicy( (QSizePolicy::SizeType)0, (QSizePolicy::SizeType)0 )
+ #define SIZE_MINIMUM	TQSizePolicy( (TQSizePolicy::SizeType)0, (TQSizePolicy::SizeType)0 )
  
-newFTPGUI::newFTPGUI( QWidget* parent,  const char* name, bool modal, WFlags fl )
-    : QDialog( parent, name, modal, fl ){
+newFTPGUI::newFTPGUI( TQWidget* tqparent,  const char* name, bool modal, WFlags fl )
+    : TQDialog( tqparent, name, modal, fl ){
     
-    QVBoxLayout * layout = new QVBoxLayout( this, 11, 6, "newFTPGUI_layout" );
-    layout->setAutoAdd(true);
+    TQVBoxLayout * tqlayout = new TQVBoxLayout( this, 11, 6, "newFTPGUI_layout" );
+    tqlayout->setAutoAdd(true);
     
     if ( !name )
     setName( "newFTPGUI" );
     resize( 342, 261 );
     setCaption( i18n( "New Network Connection"  ) );
 //     setSizeGripEnabled( TRUE );
-    setSizePolicy( QSizePolicy( (QSizePolicy::SizeType)5, (QSizePolicy::SizeType)5, sizePolicy().hasHeightForWidth() ) );
-    setMinimumSize( QSize( 342, 261 ) );
+    tqsetSizePolicy( TQSizePolicy( (TQSizePolicy::SizeType)5, (TQSizePolicy::SizeType)5, sizePolicy().hasHeightForWidth() ) );
+    setMinimumSize( TQSize( 342, 261 ) );
 
     
-    QHBox* hbox_image = new QHBox( this, "hbox_image" );
+    TQHBox* hbox_image = new TQHBox( this, "hbox_image" );
     hbox_image->setSpacing( 6 );
     
-    PixmapLabel1 = new QLabel( hbox_image, "PixmapLabel1" );
+    PixmapLabel1 = new TQLabel( hbox_image, "PixmapLabel1" );
     PixmapLabel1->setPixmap( krLoader->loadIcon("network", KIcon::Desktop, 32) );
-    PixmapLabel1->setSizePolicy( SIZE_MINIMUM );
+    PixmapLabel1->tqsetSizePolicy( SIZE_MINIMUM );
 
-    TextLabel3 = new QLabel( i18n( "About to connect to..."  ), hbox_image, "TextLabel3" );
-    QFont TextLabel3_font(  TextLabel3->font() );
+    TextLabel3 = new TQLabel( i18n( "About to connect to..."  ), hbox_image, "TextLabel3" );
+    TQFont TextLabel3_font(  TextLabel3->font() );
     TextLabel3_font.setBold( TRUE );
     TextLabel3->setFont( TextLabel3_font );
 
     
-    QGrid* grid_host = new QGrid( 3, this, "grid_host" );
+    TQGrid* grid_host = new TQGrid( 3, this, "grid_host" );
     
-    TextLabel1 = new QLabel( i18n( "Protocol:"  ), grid_host, "TextLabel1" );
-    TextLabel1_22 = new QLabel( i18n( "Host:"), grid_host, "TextLabel_2" );
-    TextLabel1_3 = new QLabel( i18n( "Port:"  ), grid_host, "TextLabel1_3" );
+    TextLabel1 = new TQLabel( i18n( "Protocol:"  ), grid_host, "TextLabel1" );
+    TextLabel1_22 = new TQLabel( i18n( "Host:"), grid_host, "TextLabel_2" );
+    TextLabel1_3 = new TQLabel( i18n( "Port:"  ), grid_host, "TextLabel1_3" );
 
-    QStringList protocols = KProtocolInfo::protocols();
+    TQStringList protocols = KProtocolInfo::protocols();
 
     prefix = new KComboBox( FALSE, grid_host, "protocol" );
-    if( protocols.contains("ftp") )
+    if( protocols.tqcontains("ftp") )
       prefix->insertItem( i18n( "ftp://" ) );
-    if( protocols.contains("smb") )
+    if( protocols.tqcontains("smb") )
       prefix->insertItem( i18n( "smb://" ) );
-    if( protocols.contains("fish") )
+    if( protocols.tqcontains("fish") )
       prefix->insertItem( i18n( "fish://" ));
-    if( protocols.contains("sftp") )
+    if( protocols.tqcontains("sftp") )
       prefix->insertItem( i18n( "sftp://" ));
     prefix->setAcceptDrops( FALSE );
     prefix->setEnabled( TRUE );
-    prefix->setSizePolicy( SIZE_MINIMUM );
-    connect( prefix,SIGNAL(activated(const QString& )),
-               this,SLOT(slotTextChanged(const QString& )));
+    prefix->tqsetSizePolicy( SIZE_MINIMUM );
+    connect( prefix,TQT_SIGNAL(activated(const TQString& )),
+               this,TQT_SLOT(slotTextChanged(const TQString& )));
 
     url = new KHistoryCombo( grid_host, "url" );
     url->setMaximumHeight( 20 );
     url->setMaxCount( 25 );
     url->setDuplicatesEnabled( false );
-    connect( url, SIGNAL( activated( const QString& )),
-             url, SLOT( addToHistory( const QString& )));
+    connect( url, TQT_SIGNAL( activated( const TQString& )),
+             url, TQT_SLOT( addToHistory( const TQString& )));
     // load the history and completion list after creating the history combo
     krConfig->setGroup("Private");
-    QStringList list = krConfig->readListEntry( "newFTP Completion list" );
+    TQStringList list = krConfig->readListEntry( "newFTP Completion list" );
     url->completionObject()->setItems( list );
     list = krConfig->readListEntry( "newFTP History list" );
     url->setHistoryItems( list );
 
-    port = new QSpinBox( grid_host, "port" );
+    port = new TQSpinBox( grid_host, "port" );
     port->setMaxValue( 65535 );
-#if QT_VERSION < 300
-    port->setFrameShadow( QSpinBox::Sunken );
-#endif
     port->setValue( 21 );
-    port->setSizePolicy( SIZE_MINIMUM );
+    port->tqsetSizePolicy( SIZE_MINIMUM );
 
 
-    TextLabel1_2 = new QLabel( i18n( "Username:"  ), this, "TextLabel1_2" );
-    username = new QLineEdit( this, "username" );
-    TextLabel1_2_2 = new QLabel( i18n( "Password:"  ), this, "TextLabel1_2_2" );
-    password = new QLineEdit( this, "password" );
-    password->setEchoMode( QLineEdit::Password );
+    TextLabel1_2 = new TQLabel( i18n( "Username:"  ), this, "TextLabel1_2" );
+    username = new TQLineEdit( this, "username" );
+    TextLabel1_2_2 = new TQLabel( i18n( "Password:"  ), this, "TextLabel1_2_2" );
+    password = new TQLineEdit( this, "password" );
+    password->setEchoMode( TQLineEdit::Password );
 
     
-    QWidget* Layout6 = new QWidget( this, "Layout6" );
-    hbox = new QHBoxLayout( Layout6 );
+    TQWidget* Layout6 = new TQWidget( this, "Layout6" );
+    hbox = new TQHBoxLayout( Layout6 );
     hbox->setSpacing( 6 );
     hbox->setMargin( 0 );
 
-	 hbox->addItem(new QSpacerItem(1,1,QSizePolicy::Expanding));
+	 hbox->addItem(new TQSpacerItem(1,1,TQSizePolicy::Expanding));
 	 
-    connectBtn = new QPushButton( i18n( "&Connect"  ), Layout6, "connectBtn" );
+    connectBtn = new TQPushButton( i18n( "&Connect"  ), Layout6, "connectBtn" );
     connectBtn->setAutoDefault( TRUE );
     connectBtn->setDefault( TRUE );
     hbox->addWidget( connectBtn );
 
-    //saveBtn = new QPushButton( i18n( "&Save"  ), Layout6, "saveBtn" );
+    //saveBtn = new TQPushButton( i18n( "&Save"  ), Layout6, "saveBtn" );
     //saveBtn->setAutoDefault( TRUE );
     //hbox->addWidget( saveBtn );
 
-    cancelBtn = new QPushButton( i18n( "&Cancel"  ), Layout6, "cancelBtn" );
+    cancelBtn = new TQPushButton( i18n( "&Cancel"  ), Layout6, "cancelBtn" );
     cancelBtn->setAutoDefault( TRUE );
     hbox->addWidget( cancelBtn );
 
     // signals and slots connections
-    connect( connectBtn, SIGNAL( clicked() ), this, SLOT( accept() ) );
-    connect( cancelBtn, SIGNAL( clicked() ), this, SLOT( reject() ) );
+    connect( connectBtn, TQT_SIGNAL( clicked() ), this, TQT_SLOT( accept() ) );
+    connect( cancelBtn, TQT_SIGNAL( clicked() ), this, TQT_SLOT( reject() ) );
 
     // tab order
     setTabOrder( url, username );
@@ -154,10 +151,10 @@ newFTPGUI::newFTPGUI( QWidget* parent,  const char* name, bool modal, WFlags fl 
  *  Destroys the object and frees any allocated resources
  */
 newFTPGUI::~newFTPGUI(){
-    // no need to delete child widgets, Qt does it all for us
+    // no need to delete child widgets, TQt does it all for us
 }
 
-void newFTPGUI::slotTextChanged(const QString& string){
+void newFTPGUI::slotTextChanged(const TQString& string){
    if( string.startsWith("ftp") || string.startsWith("sftp") || string.startsWith("fish") )
    {
      if( port->value() == 21 || port->value() == 22 )
@@ -172,10 +169,10 @@ void newFTPGUI::slotTextChanged(const QString& string){
  *  Main event handler. Reimplemented to handle application
  *  font changes
  */
-bool newFTPGUI::event( QEvent* ev ) {
-    bool ret = QDialog::event( ev ); 
-    if ( ev->type() == QEvent::ApplicationFontChange ) {
-	QFont TextLabel3_font(  TextLabel3->font() );
+bool newFTPGUI::event( TQEvent* ev ) {
+    bool ret = TQDialog::event( ev ); 
+    if ( ev->type() == TQEvent::ApplicationFontChange ) {
+	TQFont TextLabel3_font(  TextLabel3->font() );
 	TextLabel3_font.setBold( TRUE );
 	TextLabel3->setFont( TextLabel3_font ); 
     }

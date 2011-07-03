@@ -15,23 +15,23 @@
  *                                                                         *
  ***************************************************************************/
 
-#ifndef QFILEHACK_H
-#define QFILEHACK_H
+#ifndef TQFILEHACK_H
+#define TQFILEHACK_H
 
-#include <qfile.h>
-#include <qstring.h>
+#include <tqfile.h>
+#include <tqstring.h>
 
 /**
   *@author Szombathelyi György
-  * Qt thinks if a file is not S_IFREG, you cannot seek in it. It's false (what about
+  * TQt thinks if a file is not S_IFREG, you cannot seek in it. It's false (what about
   * block devices for example?
   */
 
-class QFileHack : public QFile  {
+class TQFileHack : public TQFile  {
 public: 
-    QFileHack();
-    QFileHack( const QString & name );
-    ~QFileHack();
+    TQFileHack();
+    TQFileHack( const TQString & name );
+    ~TQFileHack();
     virtual bool open ( int m );
 };
 

@@ -15,24 +15,24 @@
  *                                                                         *
  ***************************************************************************/
 
-#include "qfilehack.h"
+#include "tqfilehack.h"
 
-QFileHack::QFileHack(){
+TQFileHack::TQFileHack(){
 }
 
-QFileHack::QFileHack( const QString & name ) : QFile(name) {
+TQFileHack::TQFileHack( const TQString & name ) : TQFile(name) {
 }
 
-QFileHack::~QFileHack(){
+TQFileHack::~TQFileHack(){
 }
 
-bool QFileHack::open ( int m ) {
+bool TQFileHack::open ( int m ) {
     bool ret;
 
 #ifdef __linux__
     m |= IO_Async; //On linux, set O_NONBLOCK, opens CD-ROMs faster
 #endif
-    ret=QFile::open(m);
+    ret=TQFile::open(m);
     if (ret && isSequentialAccess() ) {
         setType(IO_Direct);
     }

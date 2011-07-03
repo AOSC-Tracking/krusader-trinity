@@ -31,26 +31,27 @@
 #ifndef __SYNCHRONIZER_DIR_LIST_H__
 #define __SYNCHRONIZER_DIR_LIST_H__
 
-#include <qobject.h>
-#include <qdict.h>
+#include <tqobject.h>
+#include <tqdict.h>
 #include "../VFS/vfile.h"
 #include <kio/job.h>
 
 
-class SynchronizerDirList : public QObject, public QDict<vfile>
+class SynchronizerDirList : public TQObject, public TQDict<vfile>
 {
   Q_OBJECT
+  TQ_OBJECT
 
 public:
-  SynchronizerDirList( QWidget *w, bool ignoreHidden );
+  SynchronizerDirList( TQWidget *w, bool ignoreHidden );
   ~SynchronizerDirList();
 
-  vfile * search( const QString &name, bool ignoreCase = false );
+  vfile * search( const TQString &name, bool ignoreCase = false );
   vfile * first();
   vfile * next();
 
-  inline const QString & url() { return currentUrl; }
-  bool load( const QString &urlIn, bool wait=false );
+  inline const TQString & url() { return currentUrl; }
+  bool load( const TQString &urlIn, bool wait=false );
 
 public slots:
 
@@ -61,12 +62,12 @@ signals:
   void finished( bool err );
 
 private:
-  QDictIterator<vfile> *fileIterator; //< Point to a dictionary of virtual files (vfile).
-  QWidget *parentWidget;
+  TQDictIterator<vfile> *fileIterator; //< Point to a dictionary of virtual files (vfile).
+  TQWidget *tqparentWidget;
   bool     busy;
   bool     result;
   bool     ignoreHidden;
-  QString  currentUrl;
+  TQString  currentUrl;
 };
 
 #endif /* __SYNCHRONIZER_DIR_LIST_H__ */

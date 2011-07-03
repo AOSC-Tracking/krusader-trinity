@@ -29,10 +29,10 @@ A
 *                                                                         *
 ***************************************************************************/
 
-// Qt Includes
-#include <qtimer.h>
-#include <qlayout.h>
-#include <qlabel.h>
+// TQt Includes
+#include <tqtimer.h>
+#include <tqlayout.h>
+#include <tqlabel.h>
 // KDE Includes
 #include <klocale.h>
 #include <kcursor.h>
@@ -44,9 +44,9 @@ A
 #include "../VFS/krpermhandler.h"
 
 /* --=={ Patch by Heiner <h.eichmann@gmx.de> }==-- */
-KrCalcSpaceDialog::CalcThread::CalcThread(KrCalcSpaceDialog * parent, ListPanel * panel, const QStringList & items)
+KrCalcSpaceDialog::CalcThread::CalcThread(KrCalcSpaceDialog * tqparent, ListPanel * panel, const TQStringList & items)
 	: m_totalSize(0), m_currentSize(0), m_totalFiles(0), m_totalDirs(0), m_items(items), m_files(panel->func->files()),
-	  m_view(panel->view), m_parent(parent), m_threadInUse(true), m_stop(false) {}
+	  m_view(panel->view), m_parent(tqparent), m_threadInUse(true), m_stop(false) {}
 
 void KrCalcSpaceDialog::CalcThread::cleanUp(){
 	if (m_threadInUse || !finished())
@@ -67,7 +67,7 @@ void KrCalcSpaceDialog::CalcThread::deleteInstance(){
 
 void KrCalcSpaceDialog::CalcThread::run(){
 	if ( !m_items.isEmpty() ) // if something to do: do the calculation
-	for ( QStringList::ConstIterator it = m_items.begin(); it != m_items.end(); ++it )
+	for ( TQStringList::ConstIterator it = m_items.begin(); it != m_items.end(); ++it )
         {
                 m_currentSize = 0;
                 m_files->vfs_calcSpace( *it, &m_currentSize, &m_totalFiles, &m_totalDirs , & m_stop);
@@ -76,7 +76,7 @@ void KrCalcSpaceDialog::CalcThread::run(){
                 KrDetailedViewItem * viewItem = dynamic_cast<KrDetailedViewItem *>(m_view->findItemByName ( *it ) );
                 if (viewItem){
                      KrCalcSpaceDialog::setDirSize(viewItem, m_currentSize);
-                     //viewItem->repaintItem(); // crash in KrDetailedViewItem::repaintItem(): setPixmap(_view->column(KrDetailedView::Name),KrView::getIcon(_vf))
+                     //viewItem->tqrepaintItem(); // crash in KrDetailedViewItem::tqrepaintItem(): setPixmap(_view->column(KrDetailedView::Name),KrView::getIcon(_vf))
                 }
                 m_totalSize += m_currentSize;
                 m_currentSize = 0;
@@ -91,18 +91,18 @@ void KrCalcSpaceDialog::CalcThread::stop(){
 	m_stop = true;
 }
 
-KrCalcSpaceDialog::KrCalcSpaceDialog(QWidget *parent, ListPanel * files, const QStringList & items, bool autoclose) :
-	KDialogBase(parent, "KrCalcSpaceDialog", true, i18n("Calculate Occupied Space"), Ok|Cancel),
+KrCalcSpaceDialog::KrCalcSpaceDialog(TQWidget *tqparent, ListPanel * files, const TQStringList & items, bool autoclose) :
+	KDialogBase(tqparent, "KrCalcSpaceDialog", true, i18n("Calculate Occupied Space"), Ok|Cancel),
 	m_autoClose(autoclose), m_canceled(false), m_timerCounter(0){
 	// the dialog: The Ok button is hidden until it is needed
 	showButtonOK(false);
 	m_thread = new CalcThread(this, files, items);
-	m_pollTimer = new QTimer(this);
-	QWidget * mainWidget = new QWidget( this );
+	m_pollTimer = new TQTimer(this);
+	TQWidget * mainWidget = new TQWidget( this );
 	setMainWidget(mainWidget);
-	QVBoxLayout *topLayout = new QVBoxLayout( mainWidget, 0, spacingHint() );
+	TQVBoxLayout *topLayout = new TQVBoxLayout( mainWidget, 0, spacingHint() );
 
-	m_label = new QLabel( "", mainWidget, "caption" );
+	m_label = new TQLabel( "", mainWidget, "caption" );
 	showResult(); // fill m_label with something usefull
 	topLayout->addWidget( m_label );
 	topLayout->addStretch(10);
@@ -142,9 +142,9 @@ void KrCalcSpaceDialog::timer(){
 
 void KrCalcSpaceDialog::showResult(){
   if (!m_thread) return;
-  QString msg;
-  QString fileName = ( ( m_thread->getItems().count() == 1 ) ? ( i18n( "Name: " ) + m_thread->getItems().first() + "\n" ) : QString( "" ) );
-  msg = fileName + i18n( "Total occupied space: %1").arg( KIO::convertSize( m_thread->getTotalSize() ) );
+  TQString msg;
+  TQString fileName = ( ( m_thread->getItems().count() == 1 ) ? ( i18n( "Name: " ) + m_thread->getItems().first() + "\n" ) : TQString( "" ) );
+  msg = fileName + i18n( "Total occupied space: %1").tqarg( KIO::convertSize( m_thread->getTotalSize() ) );
   if (m_thread->getTotalSize() >= 1024)
      msg += " (" + KRpermHandler::parseSize( m_thread->getTotalSize() ) + "bytes)";
   msg += "\n";
@@ -177,7 +177,7 @@ void KrCalcSpaceDialog::exec(){
 		showResult(); // fill the invisible dialog with usefull data
 	}
 	// prepare and start the poll timer
-	connect(m_pollTimer, SIGNAL(timeout()), this, SLOT(timer()));
+	connect(m_pollTimer, TQT_SIGNAL(timeout()), this, TQT_SLOT(timer()));
 	m_pollTimer->start(100);
 	KDialogBase::exec(); // show the dialog
 }

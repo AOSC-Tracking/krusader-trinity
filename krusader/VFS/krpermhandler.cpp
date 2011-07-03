@@ -41,21 +41,21 @@
 #include <klocale.h>
 #include <kglobal.h>
 #include <klargefile.h> 
-// Qt includes
-#include <qdatetime.h>
-#include <qdir.h> 
+// TQt includes
+#include <tqdatetime.h>
+#include <tqdir.h> 
 // krusader includes
 #include <kdeversion.h>
 #include "krpermhandler.h"
 #include "../resources.h"
 
-QDict<uid_t> *KRpermHandler::passwdCache = 0L;
-QDict<gid_t> *KRpermHandler::groupCache = 0L;
-QIntDict<char> *KRpermHandler::currentGroups = 0L;
-QIntDict<QString> *KRpermHandler::uidCache = 0L;
-QIntDict<QString> *KRpermHandler::gidCache = 0L;
+TQDict<uid_t> *KRpermHandler::passwdCache = 0L;
+TQDict<gid_t> *KRpermHandler::groupCache = 0L;
+TQIntDict<char> *KRpermHandler::currentGroups = 0L;
+TQIntDict<TQString> *KRpermHandler::uidCache = 0L;
+TQIntDict<TQString> *KRpermHandler::gidCache = 0L;
 
-char KRpermHandler::writeable( QString perm, gid_t gid, uid_t uid, int rwx ) {
+char KRpermHandler::writeable( TQString perm, gid_t gid, uid_t uid, int rwx ) {
 	if( rwx != -1 )
 		return ( rwx & W_OK ) ? ALLOWED_PERM : NO_PERM;
 	// root override
@@ -64,7 +64,7 @@ char KRpermHandler::writeable( QString perm, gid_t gid, uid_t uid, int rwx ) {
 	// first check other permissions.
 	if ( perm[ 8 ] != '-' ) return ALLOWED_PERM;
 	// now check group permission
-	if ( ( perm[ 5 ] != '-' ) && ( currentGroups->find( gid ) ) )
+	if ( ( perm[ 5 ] != '-' ) && ( currentGroups->tqfind( gid ) ) )
 		return ALLOWED_PERM;
 	// the last chance - user permissions
 	if ( ( perm[ 2 ] != '-' ) && ( uid == getuid() ) )
@@ -73,7 +73,7 @@ char KRpermHandler::writeable( QString perm, gid_t gid, uid_t uid, int rwx ) {
 	return NO_PERM;
 }
 
-char KRpermHandler::readable( QString perm, gid_t gid, uid_t uid, int rwx ) {
+char KRpermHandler::readable( TQString perm, gid_t gid, uid_t uid, int rwx ) {
 	if( rwx != -1 )
 		return ( rwx & R_OK ) ? ALLOWED_PERM : NO_PERM;
 	// root override
@@ -82,7 +82,7 @@ char KRpermHandler::readable( QString perm, gid_t gid, uid_t uid, int rwx ) {
 	// first check other permissions.
 	if ( perm[ 7 ] != '-' ) return ALLOWED_PERM;
 	// now check group permission
-	if ( ( perm[ 4 ] != '-' ) && ( currentGroups->find( gid ) ) )
+	if ( ( perm[ 4 ] != '-' ) && ( currentGroups->tqfind( gid ) ) )
 		return ALLOWED_PERM;
 	// the last chance - user permissions
 	if ( ( perm[ 1 ] != '-' ) && ( uid == getuid() ) )
@@ -91,13 +91,13 @@ char KRpermHandler::readable( QString perm, gid_t gid, uid_t uid, int rwx ) {
 	return NO_PERM;
 }
 
-char KRpermHandler::executable( QString perm, gid_t gid, uid_t uid, int rwx ) {
+char KRpermHandler::executable( TQString perm, gid_t gid, uid_t uid, int rwx ) {
 	if( rwx != -1 )
 		return ( rwx & X_OK ) ? ALLOWED_PERM : NO_PERM;
 	// first check other permissions.
 	if ( perm[ 9 ] != '-' ) return ALLOWED_PERM;
 	// now check group permission
-	if ( ( perm[ 6 ] != '-' ) && ( currentGroups->find( gid ) ) )
+	if ( ( perm[ 6 ] != '-' ) && ( currentGroups->tqfind( gid ) ) )
 		return ALLOWED_PERM;
 	// the last chance - user permissions
 	if ( ( perm[ 3 ] != '-' ) && ( uid == getuid() ) )
@@ -106,31 +106,31 @@ char KRpermHandler::executable( QString perm, gid_t gid, uid_t uid, int rwx ) {
 	return NO_PERM;
 }
 
-bool KRpermHandler::fileWriteable( QString localFile ) {
+bool KRpermHandler::fileWriteable( TQString localFile ) {
 	KDE_struct_stat stat_p;
 	if ( KDE_stat( localFile.local8Bit(), &stat_p ) == -1 ) return false;
 	mode_t m = stat_p.st_mode;
-	QString perm = mode2QString( m );
+	TQString perm = mode2TQString( m );
 	return writeable( perm, stat_p.st_gid, stat_p.st_uid );
 }
 
-bool KRpermHandler::fileReadable( QString localFile ) {
+bool KRpermHandler::fileReadable( TQString localFile ) {
 	KDE_struct_stat stat_p;
 	if ( KDE_stat( localFile.local8Bit(), &stat_p ) == -1 ) return false;
 	mode_t m = stat_p.st_mode;
-	QString perm = mode2QString( m );
+	TQString perm = mode2TQString( m );
 	return readable( perm, stat_p.st_gid, stat_p.st_uid );
 }
 
-bool KRpermHandler::fileExecutable( QString localFile ) {
+bool KRpermHandler::fileExecutable( TQString localFile ) {
 	KDE_struct_stat stat_p;
 	if ( KDE_stat( localFile.local8Bit(), &stat_p ) == -1 ) return false;
 	mode_t m = stat_p.st_mode;
-	QString perm = mode2QString( m );
+	TQString perm = mode2TQString( m );
 	return executable( perm, stat_p.st_gid, stat_p.st_uid );
 }
 
-QString KRpermHandler::mode2QString( mode_t m ) {
+TQString KRpermHandler::mode2TQString( mode_t m ) {
 	char perm[ 11 ];
 	for( int i=0; i != 10; i++ )
 		perm[ i ] = '-';
@@ -155,7 +155,7 @@ QString KRpermHandler::mode2QString( mode_t m ) {
 	if ( m & 0001 ) perm[ 9 ] = 'x';
 	if ( m & 01000 ) perm[ 9 ] = 't';
 
-	return QString( perm );
+	return TQString( perm );
 }
 
 void KRpermHandler::init() {
@@ -167,11 +167,11 @@ void KRpermHandler::init() {
 	int groupNo = getgroups( 50, groupList );
 
 	// init the groups and user caches
-	passwdCache	= new QDict<uid_t>( 317 );
-	groupCache	= new QDict<gid_t>( 317 );
-	currentGroups = new QIntDict<char>( 317 );
-	uidCache = new QIntDict<QString>( 317 );
-	gidCache = new QIntDict<QString>( 317 );
+	passwdCache	= new TQDict<uid_t>( 317 );
+	groupCache	= new TQDict<gid_t>( 317 );
+	currentGroups = new TQIntDict<char>( 317 );
+	uidCache = new TQIntDict<TQString>( 317 );
+	gidCache = new TQIntDict<TQString>( 317 );
 
 
 	passwdCache->setAutoDelete( true );
@@ -186,7 +186,7 @@ void KRpermHandler::init() {
 	while ( ( pass = getpwent() ) != 0L ) {
 		uid_temp = new uid_t( pass->pw_uid );
 		passwdCache->insert( pass->pw_name, uid_temp );
-		uidCache->insert( pass->pw_uid, new QString( pass->pw_name ) );
+		uidCache->insert( pass->pw_uid, new TQString( pass->pw_name ) );
 	}
 	delete pass;
 	endpwent();
@@ -197,7 +197,7 @@ void KRpermHandler::init() {
 	while ( ( gr = getgrent() ) != 0L ) {
 		gid_temp = new gid_t( gr->gr_gid );
 		groupCache->insert( gr->gr_name, gid_temp );
-		gidCache->insert( gr->gr_gid, new QString( gr->gr_name ) );
+		gidCache->insert( gr->gr_gid, new TQString( gr->gr_name ) );
 	}
 	delete gr;
 	endgrent();
@@ -211,7 +211,7 @@ void KRpermHandler::init() {
 	currentGroups->insert( getegid(), t );
 }
 
-char KRpermHandler::ftpWriteable ( QString fileOwner, QString userName, QString perm ) {
+char KRpermHandler::ftpWriteable ( TQString fileOwner, TQString userName, TQString perm ) {
 	// first check other permissions.
 	if ( perm[ 8 ] != '-' ) return ALLOWED_PERM;
 	// can't check group permission !
@@ -224,7 +224,7 @@ char KRpermHandler::ftpWriteable ( QString fileOwner, QString userName, QString 
 	return NO_PERM;
 }
 
-char KRpermHandler::ftpReadable ( QString fileOwner, QString userName, QString perm ) {
+char KRpermHandler::ftpReadable ( TQString fileOwner, TQString userName, TQString perm ) {
 	// first check other permissions.
 	if ( perm[ 7 ] != '-' ) return ALLOWED_PERM;
 	// can't check group permission !
@@ -237,7 +237,7 @@ char KRpermHandler::ftpReadable ( QString fileOwner, QString userName, QString p
 	return NO_PERM;
 }
 
-char KRpermHandler::ftpExecutable( QString fileOwner, QString userName, QString perm ) {
+char KRpermHandler::ftpExecutable( TQString fileOwner, TQString userName, TQString perm ) {
 	// first check other permissions.
 	if ( perm[ 9 ] != '-' ) return ALLOWED_PERM;
 	// can't check group permission !
@@ -250,22 +250,22 @@ char KRpermHandler::ftpExecutable( QString fileOwner, QString userName, QString 
 	return NO_PERM;
 }
 
-bool KRpermHandler::dirExist( QString path ) {
+bool KRpermHandler::dirExist( TQString path ) {
 	DIR * dir = opendir( path.local8Bit() );
 	if ( !dir ) return false;
 	closedir( dir ); // bug fix Karai Csaba (ckarai)
 	return true;
 }
 
-bool KRpermHandler::fileExist( QString fullPath ) {
+bool KRpermHandler::fileExist( TQString fullPath ) {
 	if ( fullPath.right( 1 ) == "/" ) fullPath = fullPath.left( fullPath.length() - 1 ) ;
 	if ( fullPath.left( 1 ) != "/" ) return fileExist( "/", fullPath );
-	return fileExist( fullPath.left( fullPath.findRev( "/" ) ) ,
-	                  fullPath.mid( fullPath.findRev( "/" ) + 1 ) );
+	return fileExist( fullPath.left( fullPath.tqfindRev( "/" ) ) ,
+	                  fullPath.mid( fullPath.tqfindRev( "/" ) + 1 ) );
 }
 
-bool KRpermHandler::fileExist( QString path, QString name ) {
-	if ( QDir( path ).exists( name ) ) return true;
+bool KRpermHandler::fileExist( TQString path, TQString name ) {
+	if ( TQDir( path ).exists( name ) ) return true;
 	DIR* dir = opendir( path.local8Bit() );
 	if ( !dir ) return false;
 	struct dirent* dirEnt;
@@ -279,20 +279,20 @@ bool KRpermHandler::fileExist( QString path, QString name ) {
 	return false;
 }
 
-QString KRpermHandler::parseSize( KIO::filesize_t val ) {
+TQString KRpermHandler::parseSize( KIO::filesize_t val ) {
 #if (KDE_VERSION_MAJOR >= 3) && (KDE_VERSION_MINOR >= 5)
-	return KGlobal::locale()->formatNumber(QString::number(val), false, 0);
+	return KGlobal::locale()->formatNumber(TQString::number(val), false, 0);
 #else
 	return  KGlobal::locale()->formatNumber(val);
 #endif
 
 #if 0
-	QString temp;
+	TQString temp;
 	temp.sprintf( "%llu", val );
 	if ( temp.length() <= 3 ) return temp;
 	unsigned int i = temp.length() % 3;
 	if ( i == 0 ) i = 3;
-	QString size = temp.left( i ) + ",";
+	TQString size = temp.left( i ) + ",";
 	while ( i + 3 < temp.length() ) {
 		size = size + temp.mid( i, 3 ) + ",";
 		i += 3;
@@ -303,8 +303,8 @@ QString KRpermHandler::parseSize( KIO::filesize_t val ) {
 #endif
 }
 
-QString KRpermHandler::date2qstring( QString date ) {
-	QString temp;
+TQString KRpermHandler::date2qstring( TQString date ) {
+	TQString temp;
 	int year;
 
 	year = date[ 6 ].digitValue() * 10 + date[ 7 ].digitValue();
@@ -316,40 +316,40 @@ QString KRpermHandler::date2qstring( QString date ) {
 	return temp;
 }
 
-time_t KRpermHandler::QString2time( QString date ) {
+time_t KRpermHandler::TQString2time( TQString date ) {
 	struct tm t;
 	t.tm_sec = 0;
-	t.tm_min = ( QString( date[ 12 ] ) + QString( date[ 13 ] ) ).toInt();
-	t.tm_hour = ( QString( date[ 9 ] ) + QString( date[ 10 ] ) ).toInt();
-	t.tm_mday = ( QString( date[ 0 ] ) + QString( date[ 1 ] ) ).toInt();
-	t.tm_mon = ( QString( date[ 3 ] ) + QString( date[ 4 ] ) ).toInt() - 1;
-	t.tm_year = ( QString( date[ 6 ] ) + QString( date[ 7 ] ) ).toInt();
+	t.tm_min = ( TQString( date[ 12 ] ) + TQString( date[ 13 ] ) ).toInt();
+	t.tm_hour = ( TQString( date[ 9 ] ) + TQString( date[ 10 ] ) ).toInt();
+	t.tm_mday = ( TQString( date[ 0 ] ) + TQString( date[ 1 ] ) ).toInt();
+	t.tm_mon = ( TQString( date[ 3 ] ) + TQString( date[ 4 ] ) ).toInt() - 1;
+	t.tm_year = ( TQString( date[ 6 ] ) + TQString( date[ 7 ] ) ).toInt();
 	if ( t.tm_year < 70 ) t.tm_year += 100;
 	t.tm_isdst = -1; // daylight saving time information isn't availble
 
 	return mktime( &t );
 }
 
-gid_t KRpermHandler::group2gid( QString group ) {
-	gid_t * gid = groupCache->find( group );
+gid_t KRpermHandler::group2gid( TQString group ) {
+	gid_t * gid = groupCache->tqfind( group );
 	if ( gid ) return * gid;
 	return getgid();
 }
-uid_t KRpermHandler::user2uid ( QString user ) {
-	uid_t * uid = passwdCache->find( user );
+uid_t KRpermHandler::user2uid ( TQString user ) {
+	uid_t * uid = passwdCache->tqfind( user );
 	if ( uid ) return * uid;
 	return getuid();
 }
 
-QString KRpermHandler::gid2group( gid_t groupId ) {
-	QString * group = gidCache->find( groupId );
+TQString KRpermHandler::gid2group( gid_t groupId ) {
+	TQString * group = gidCache->tqfind( groupId );
 	if ( group ) return * group;
-	return QString( "???" );
+	return TQString( "???" );
 }
 
-QString KRpermHandler::uid2user ( uid_t userId ) {
-	QString * user = uidCache->find( userId );
+TQString KRpermHandler::uid2user ( uid_t userId ) {
+	TQString * user = uidCache->tqfind( userId );
 	if ( user ) return * user;
-	return QString( "???" );
+	return TQString( "???" );
 }
 

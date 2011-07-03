@@ -41,12 +41,12 @@
 
 #include "krremoteencodingmenu.h"
 
-#define DATA_KEY    QString::fromLatin1("Charset")
+#define DATA_KEY    TQString::tqfromLatin1("Charset")
 
-KrRemoteEncodingMenu::KrRemoteEncodingMenu(const QString &text, const QString &icon, QObject *parent, const char *name) :
-  KActionMenu( text, icon, parent, name ), settingsLoaded( false )
+KrRemoteEncodingMenu::KrRemoteEncodingMenu(const TQString &text, const TQString &icon, TQObject *tqparent, const char *name) :
+  KActionMenu( text, icon, tqparent, name ), settingsLoaded( false )
 {
-  connect(popupMenu(), SIGNAL(aboutToShow()), this, SLOT(slotAboutToShow()));
+  connect(popupMenu(), TQT_SIGNAL(aboutToShow()), this, TQT_SLOT(slotAboutToShow()));
 }
 
 void KrRemoteEncodingMenu::slotAboutToShow()
@@ -60,13 +60,13 @@ void KrRemoteEncodingMenu::slotAboutToShow()
 
   KURL currentURL = ACTIVE_PANEL->virtualPath();
 
-  QString charset = KIO::SlaveConfig::self()->configData(currentURL.protocol(), currentURL.host(), DATA_KEY);
+  TQString charset = KIO::SlaveConfig::self()->configData(currentURL.protocol(), currentURL.host(), DATA_KEY);
   if (!charset.isEmpty())
   {
     int id = 1;
-    QStringList::Iterator it;
+    TQStringList::Iterator it;
     for (it = encodingNames.begin(); it != encodingNames.end(); ++it, ++id)
-      if ((*it).find(charset) != -1)
+      if ((*it).tqfind(charset) != -1)
         break;
 
 //     kdDebug() << k_funcinfo << "URL=" << currentURL << " charset=" << charset << endl;
@@ -88,22 +88,22 @@ void KrRemoteEncodingMenu::loadSettings()
   KPopupMenu *menu = popupMenu();
   menu->clear();
 
-  QStringList::ConstIterator it;
+  TQStringList::ConstIterator it;
   int count = 0;
   for (it = encodingNames.begin(); it != encodingNames.end(); ++it)
-    menu->insertItem(*it, this, SLOT(slotItemSelected(int)), 0, ++count);
+    menu->insertItem(*it, this, TQT_SLOT(slotItemSelected(int)), 0, ++count);
   menu->insertSeparator();
 
-  menu->insertItem(i18n("Reload"), this, SLOT(slotReload()), 0, ++count);
-  menu->insertItem(i18n("Default"), this, SLOT(slotDefault()), 0, ++count);
+  menu->insertItem(i18n("Reload"), this, TQT_SLOT(slotReload()), 0, ++count);
+  menu->insertItem(i18n("Default"), this, TQT_SLOT(slotDefault()), 0, ++count);
   defaultID = count;
 }
 
-int KrRemoteEncodingMenu::plug( QWidget *widget, int index )
+int KrRemoteEncodingMenu::plug( TQWidget *widget, int index )
 {
-  if( widget->inherits( "QPopupMenu" ) )
+  if( widget->inherits( TQPOPUPMENU_OBJECT_NAME_STRING ) )
   {
-    connect( widget, SIGNAL(aboutToShow()), this, SLOT(slotCheckEnabled()));
+    connect( widget, TQT_SIGNAL(aboutToShow()), this, TQT_SLOT(slotCheckEnabled()));
     slotCheckEnabled();
   }
 
@@ -121,11 +121,11 @@ void KrRemoteEncodingMenu::slotItemSelected(int id)
   KURL currentURL = ACTIVE_PANEL->virtualPath();
 
   KConfig config(("kio_" + currentURL.protocol() + "rc").latin1());
-  QString host = currentURL.host();
+  TQString host = currentURL.host();
 
   if (!popupMenu()->isItemChecked(id))
   {
-    QString charset = KGlobal::charsets()->encodingForName( encodingNames[id - 1] );
+    TQString charset = KGlobal::charsets()->encodingForName( encodingNames[id - 1] );
 
     config.setGroup(host);
     config.writeEntry(DATA_KEY, charset);
@@ -149,12 +149,12 @@ void KrRemoteEncodingMenu::slotDefault()
   // settings here since it affects what will be matched.
   KConfig config(("kio_" + currentURL.protocol() + "rc").latin1());
 
-  QStringList partList = QStringList::split('.', currentURL.host(), false);
+  TQStringList partList = TQStringList::split('.', currentURL.host(), false);
   if (!partList.isEmpty())
   {
     partList.remove(partList.begin());
 
-    QStringList domains;
+    TQStringList domains;
     // Remove the exact name match...
     domains << currentURL.host();
 
@@ -171,7 +171,7 @@ void KrRemoteEncodingMenu::slotDefault()
       partList.remove(partList.begin());
     }
 
-    for (QStringList::Iterator it = domains.begin(); it != domains.end(); it++)
+    for (TQStringList::Iterator it = domains.begin(); it != domains.end(); it++)
     {
 //    kdDebug() << k_funcinfo << "Domain to remove: " << *it << endl;
       if (config.hasGroup(*it))
@@ -194,14 +194,14 @@ void KrRemoteEncodingMenu::updateKIOSlaves()
   if (!client->attach())
     kdDebug() << "Can't connect with DCOP server." << endl;
 
-  QByteArray data;
-  QDataStream stream(data, IO_WriteOnly);
-  stream << QString::null;
-  client->send("*", "KIO::Scheduler", "reparseSlaveConfiguration(QString)", data);
+  TQByteArray data;
+  TQDataStream stream(data, IO_WriteOnly);
+  stream << TQString();
+  client->send("*", "KIO::Scheduler", "reparseSlaveConfiguration(TQString)", data);
   delete client;
 
   // Reload the page with the new charset
-  QTimer::singleShot( 500, ACTIVE_FUNC, SLOT( refresh() ) );
+  TQTimer::singleShot( 500, ACTIVE_FUNC, TQT_SLOT( refresh() ) );
 }
 
 #include "krremoteencodingmenu.moc"

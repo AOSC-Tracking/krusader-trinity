@@ -31,16 +31,16 @@
 #include "kgwelcome.h"
 #include <kstandarddirs.h>
 
-KgWelcome::KgWelcome( bool first, QWidget* parent,  const char* name ) :
-  KonfiguratorPage( first, parent, name )
+KgWelcome::KgWelcome( bool first, TQWidget* tqparent,  const char* name ) :
+  KonfiguratorPage( first, tqparent, name )
 {
-  QGridLayout *kgWelcomeLayout = new QGridLayout( parent );
+  TQGridLayout *kgWelcomeLayout = new TQGridLayout( tqparent );
   kgWelcomeLayout->setSpacing( 6 );
 
-  QString pix=KGlobal::dirs()->findResource("appdata","konfig_small.jpg");
-  QPixmap image0( pix );
+  TQString pix=KGlobal::dirs()->findResource("appdata","konfig_small.jpg");
+  TQPixmap image0( pix );
   
-  QLabel *pixmapLabel = new QLabel( parent, "pixmapLabel" );
+  TQLabel *pixmapLabel = new TQLabel( tqparent, "pixmapLabel" );
   pixmapLabel->setPixmap( image0 );
   pixmapLabel->setScaledContents( TRUE );
 

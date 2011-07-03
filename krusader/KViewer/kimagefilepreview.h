@@ -13,27 +13,28 @@
 #ifndef KrusaderImageFilePreview_H
 #define KrusaderImageFilePreview_H
 
-#include <qpixmap.h>
+#include <tqpixmap.h>
 
 #include <kurl.h>
 #include <kpreviewwidgetbase.h>
 
-class QCheckBox;
-class QPushButton;
-class QLabel;
-class QTimer;
+class TQCheckBox;
+class TQPushButton;
+class TQLabel;
+class TQTimer;
 
 class KFileDialog;
 class KFileItem;
 
 class KrusaderImageFilePreview : public KPreviewWidgetBase {
 		Q_OBJECT
+  TQ_OBJECT
 
 	public:
-		KrusaderImageFilePreview( QWidget *parent );
+		KrusaderImageFilePreview( TQWidget *tqparent );
 		~KrusaderImageFilePreview();
 
-		virtual QSize sizeHint() const;
+		virtual TQSize tqsizeHint() const;
 
 	public slots:
 		virtual void showPreview( const KURL &url );
@@ -43,10 +44,10 @@ class KrusaderImageFilePreview : public KPreviewWidgetBase {
 		void showPreview();
 		void showPreview( const KURL& url, bool force );
 
-		virtual void gotPreview( const KFileItem*, const QPixmap& );
+		virtual void gotPreview( const KFileItem*, const TQPixmap& );
 
 	protected:
-		virtual void resizeEvent( QResizeEvent *e );
+		virtual void resizeEvent( TQResizeEvent *e );
 		virtual KIO::PreviewJob * createJob( const KURL& url,
 		                                     int w, int h );
 
@@ -56,9 +57,9 @@ class KrusaderImageFilePreview : public KPreviewWidgetBase {
 
 	private:
 		KURL currentURL;
-		QTimer *timer;
-		QLabel *imageLabel;
-		QLabel *infoLabel;
+		TQTimer *timer;
+		TQLabel *imageLabel;
+		TQLabel *infoLabel;
 		KIO::PreviewJob *m_job;
 	protected:
 		virtual void virtual_hook( int id, void* data );

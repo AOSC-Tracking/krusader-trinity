@@ -32,7 +32,7 @@
 #define FILTERBASE_H
 
 #include "../VFS/krquery.h"
-#include <qstring.h>
+#include <tqstring.h>
 
 class FilterTabs;
 
@@ -41,9 +41,9 @@ class FilterBase
 public:
   virtual bool            fillQuery( KRQuery *query ) = 0;
   virtual void            queryAccepted() = 0;
-  virtual void            loadFromProfile( QString name ) = 0;
-  virtual void            saveToProfile( QString name ) = 0;
-  virtual QString         name() = 0;
+  virtual void            loadFromProfile( TQString name ) = 0;
+  virtual void            saveToProfile( TQString name ) = 0;
+  virtual TQString         name() = 0;
   virtual FilterTabs *    filterTabs() = 0;
   virtual ~FilterBase()   {}
 };

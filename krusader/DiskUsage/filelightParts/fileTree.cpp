@@ -4,22 +4,22 @@
 #include "fileTree.h"
 #include <kglobal.h>
 #include <klocale.h>
-#include <qstring.h>
+#include <tqstring.h>
 
 //static definitions
 const FileSize File::DENOMINATOR[4] = { 1ull, 1ull<<10, 1ull<<20, 1ull<<30 };
 const char File::PREFIX[5][2]   = { "", "K", "M", "G", "T" };
 
-QString
+TQString
 File::fullPath( const Directory *root /*= 0*/ ) const
 {
-    QString path;
+    TQString path;
 
     if( root == this ) root = 0; //prevent returning empty string when there is something we could return
 
     const File *d;
     
-    for( d = this; d != root && d && d->parent() != 0; d = d->parent() )
+    for( d = this; d != root && d && d->tqparent() != 0; d = d->tqparent() )
     {
       if( !path.isEmpty() )
         path = "/" + path;
@@ -29,8 +29,8 @@ File::fullPath( const Directory *root /*= 0*/ ) const
     
     if( d )
     {
-      while( d->parent() )
-        d = d->parent();
+      while( d->tqparent() )
+        d = d->tqparent();
     
       if( d->directory().endsWith( "/" ) )  
         return d->directory() + path;
@@ -41,16 +41,16 @@ File::fullPath( const Directory *root /*= 0*/ ) const
       return path;
 }
 
-QString
+TQString
 File::humanReadableSize( UnitPrefix key /*= mega*/ ) const //FIXME inline
 {
     return humanReadableSize( m_size, key );
 }
 
-QString
+TQString
 File::humanReadableSize( FileSize size, UnitPrefix key /*= mega*/ ) //static
 {
-    QString s;
+    TQString s;
     double prettySize = (double)size / (double)DENOMINATOR[key];
     const KLocale &locale = *KGlobal::locale();
 

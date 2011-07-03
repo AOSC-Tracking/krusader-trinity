@@ -4,11 +4,11 @@
 #include <kcursor.h>         //make()
 #include <kglobalsettings.h> //kdeColours
 #include <kimageeffect.h>    //desaturate()
-#include <qapplication.h>    //make()
-#include <qimage.h>          //make() & paint()
-#include <qfont.h>           //ctor
-#include <qfontmetrics.h>    //ctor
-#include <qpainter.h>
+#include <tqapplication.h>    //make()
+#include <tqimage.h>          //make() & paint()
+#include <tqfont.h>           //ctor
+#include <tqfontmetrics.h>    //ctor
+#include <tqpainter.h>
 
 #include "builder.h"
 #include "Config.h"
@@ -16,7 +16,7 @@
 #include "sincos.h"
 #include "widget.h"
 
-#define COLOR_GREY QColor( 0, 0, 140, QColor::Hsv )
+#define COLOR_GREY TQColor( 0, 0, 140, TQColor::Hsv )
 
 
 RadialMap::Map::Map()
@@ -26,7 +26,7 @@ RadialMap::Map::Map()
   , m_visibleDepth( DEFAULT_RING_DEPTH )
 {
     //FIXME this is all broken. No longer is a maximum depth!
-    const int fmh   = QFontMetrics( QFont() ).height();
+    const int fmh   = TQFontMetrics( TQFont() ).height();
     const int fmhD4 = fmh / 4;
     MAP_2MARGIN = 2 * ( fmh - (fmhD4 - LABEL_MAP_SPACER) ); //margin is dependent on fitting in labels at top and bottom
 }
@@ -37,14 +37,14 @@ RadialMap::Map::~Map()
 }
 
 void
-RadialMap::Map::invalidate( const bool desaturateTheImage )
+RadialMap::Map::tqinvalidate( const bool desaturateTheImage )
 {
     delete [] m_signature;
     m_signature = 0;
 
     if( desaturateTheImage )
     {
-        QImage img = this->convertToImage();
+        TQImage img = this->convertToImage();
 
         KImageEffect::desaturate( img, 0.7 );
         KImageEffect::toGray( img, true );
@@ -63,7 +63,7 @@ RadialMap::Map::make( const Directory *tree, bool refresh )
     //   even if it makes it a lie?
 
     //slow operation so set the wait cursor
-    QApplication::setOverrideCursor( KCursor::waitCursor() );
+    TQApplication::setOverrideCursor( KCursor::waitCursor() );
 
     {
         //build a signature of visible components
@@ -89,7 +89,7 @@ RadialMap::Map::make( const Directory *tree, bool refresh )
     //paint the pixmap
     aaPaint();
 
-    QApplication::restoreOverrideCursor();
+    TQApplication::restoreOverrideCursor();
 }
 
 void
@@ -102,7 +102,7 @@ RadialMap::Map::setRingBreadth()
 }
 
 bool
-RadialMap::Map::resize( const QRect &rect )
+RadialMap::Map::resize( const TQRect &rect )
 {
     //there's a MAP_2MARGIN border
 
@@ -124,7 +124,7 @@ RadialMap::Map::resize( const QRect &rect )
 
             if( size < minSize ) size = minSize;
 
-            //this QRect is used by paint()
+            //this TQRect is used by paint()
             m_rect.setRect( mD2, mD2, size, size );
         }
 
@@ -153,12 +153,12 @@ RadialMap::Map::resize( const QRect &rect )
 void
 RadialMap::Map::colorise()
 {
-    QColor cp, cb;
+    TQColor cp, cb;
     double darkness = 1;
     double contrast = (double)Config::contrast / (double)100;
     int h, s1, s2, v1, v2;
 
-    QColor kdeColour[2] = { KGlobalSettings::inactiveTitleColor(), KGlobalSettings::activeTitleColor() };
+    TQColor kdeColour[2] = { KGlobalSettings::inactiveTitleColor(), KGlobalSettings::activeTitleColor() };
 
     double deltaRed   = (double)(kdeColour[0].red()   - kdeColour[1].red())   / 2880; //2880 for semicircle
     double deltaGreen = (double)(kdeColour[0].green() - kdeColour[1].green()) / 2880;
@@ -173,7 +173,7 @@ RadialMap::Map::colorise()
             case 2000: //HACK for summary view
 
                if( (*it)->file()->name() == "Used" ) {
-                  cb = QApplication::palette().active().color( QColorGroup::Highlight );
+                  cb = TQApplication::tqpalette().active().color( TQColorGroup::Highlight );
                   cb.hsv( &h, &s1, &v1 );
 
                   if( s1 > 80 )
@@ -186,8 +186,8 @@ RadialMap::Map::colorise()
                   cp.setHsv( h, s2, v2 );
                }
                else {
-                  cp = Qt::gray;
-                  cb = Qt::white;
+                  cp = TQt::gray;
+                  cb = TQt::white;
                }
 
                (*it)->setPalette( cp, cb );
@@ -251,7 +251,7 @@ RadialMap::Map::colorise()
             //**** may be better to store KDE colours as H and S and vary V as others
             //**** perhaps make saturation difference for s2 dependent on contrast too
             //**** fake segments don't work with highContrast
-            //**** may work better with cp = cb rather than Qt::white
+            //**** may work better with cp = cb rather than TQt::white
             //**** you have to ensure the grey of files is sufficient, currently it works only with rainbow (perhaps use contrast there too)
             //**** change v1,v2 to vp, vb etc.
             //**** using percentages is not strictly correct as the eye doesn't work like that
@@ -265,9 +265,9 @@ RadialMap::Map::aaPaint()
 {
     //paint() is called during continuous processes
     //aaPaint() is not and is slower so set overidecursor (make sets it too)
-    QApplication::setOverrideCursor( KCursor::waitCursor() );
+    TQApplication::setOverrideCursor( KCursor::waitCursor() );
     paint( Config::antiAliasFactor );
-    QApplication::restoreOverrideCursor();
+    TQApplication::restoreOverrideCursor();
 }
 
 void
@@ -276,8 +276,8 @@ RadialMap::Map::paint( unsigned int scaleFactor )
    if( scaleFactor == 0 ) //just in case
       scaleFactor = 1;
 
-   QPainter paint;
-   QRect rect = m_rect;
+   TQPainter paint;
+   TQRect rect = m_rect;
    int step = m_ringBreadth;
    int excess = -1;
 
@@ -324,8 +324,8 @@ RadialMap::Map::paint( unsigned int scaleFactor )
          if( (*it)->hasHiddenChildren() )
          {
             //draw arrow head to indicate undisplayed files/directories
-            QPointArray pts( 3 );
-            QPoint pos, cpos = rect.center();
+            TQPointArray pts( 3 );
+            TQPoint pos, cpos = rect.center();
             int a[3] = { (*it)->start(), (*it)->length(), 0 };
 
             a[2] = a[0] + (a[1] / 2); //assign to halfway between
@@ -363,11 +363,11 @@ RadialMap::Map::paint( unsigned int scaleFactor )
          {
             //**** code is bloated!
             paint.save();
-            QPen pen = paint.pen();
+            TQPen pen = paint.pen();
             int width = 2 * scaleFactor;
             pen.setWidth( width );
             paint.setPen( pen );
-            QRect rect2 = rect;
+            TQRect rect2 = rect;
             width /= 2;
             rect2.addCoords( width, width, -width, -width );
             paint.drawArc( rect2, (*it)->start(), (*it)->length() );
@@ -387,7 +387,7 @@ RadialMap::Map::paint( unsigned int scaleFactor )
    //  if( excess > 0 ) rect.addCoords( excess, excess, 0, 0 ); //ugly
 
    paint.setPen( COLOR_GREY );
-   paint.setBrush( Qt::white );
+   paint.setBrush( TQt::white );
    paint.drawEllipse( rect );
 
    if( scaleFactor > 1 )
@@ -403,16 +403,16 @@ RadialMap::Map::paint( unsigned int scaleFactor )
       y2 /= scaleFactor;
       rect.setCoords( x1, y1, x2, y2 );
 
-      QImage img = this->convertToImage();
+      TQImage img = this->convertToImage();
       img = img.smoothScale( this->size() / (int)scaleFactor );
       this->convertFromImage( img );
 
       paint.begin( this );
       paint.setPen( COLOR_GREY );
-      paint.setBrush( Qt::white );
+      paint.setBrush( TQt::white );
    }
 
-   paint.drawText( rect, Qt::AlignCenter, m_centerText );
+   paint.drawText( rect, TQt::AlignCenter, m_centerText );
 
    m_innerRadius = rect.width() / 2; //rect.width should be multiple of 2
 

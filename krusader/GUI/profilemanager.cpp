@@ -32,23 +32,23 @@
 #include "profilemanager.h"
 
 #include <klocale.h>
-#include <qtooltip.h>
+#include <tqtooltip.h>
 #include <kpopupmenu.h>
-#include <qcursor.h>
+#include <tqcursor.h>
 #include <kinputdialog.h>
 #include <kiconloader.h>
 
-ProfileManager::ProfileManager( QString profileType, QWidget * parent, const char * name ) 
-  : QPushButton( parent, name )
+ProfileManager::ProfileManager( TQString profileType, TQWidget * tqparent, const char * name ) 
+  : TQPushButton( tqparent, name )
 {
   setText( "" );
   KIconLoader *iconLoader = new KIconLoader();
   setPixmap( iconLoader->loadIcon( "kr_profile", KIcon::Toolbar, 16 ) );
-  QToolTip::add( this, i18n( "Profiles" ) );
+  TQToolTip::add( this, i18n( "Profiles" ) );
   
   this->profileType = profileType;
   
-  connect( this, SIGNAL( clicked() ), this, SLOT( profilePopup() ) );
+  connect( this, TQT_SIGNAL( clicked() ), this, TQT_SLOT( profilePopup() ) );
 
   krConfig->setGroup("Private");
   profileList = krConfig->readListEntry( profileType );
@@ -69,7 +69,7 @@ void ProfileManager::profilePopup()
   for( unsigned i=0; i != profileList.count() ; i++ )
   {
     krConfig->setGroup( profileType + " - " + profileList[i] ); 
-    QString name = krConfig->readEntry( "Name" );
+    TQString name = krConfig->readEntry( "Name" );
     popup.insertItem( name, LOAD_ENTRY_ID + i );
     removePopup.insertItem( name, REMOVE_ENTRY_ID + i );
     overwritePopup.insertItem( name, OVERWRITE_ENTRY_ID + i );
@@ -85,7 +85,7 @@ void ProfileManager::profilePopup()
   
   popup.insertItem(i18n("Add new entry"),ADD_NEW_ENTRY_ID);
 
-  unsigned result=popup.exec(QCursor::pos());
+  unsigned result=popup.exec(TQCursor::pos());
 
   // check out the user's selection
   if( result == ADD_NEW_ENTRY_ID )
@@ -107,19 +107,19 @@ void ProfileManager::profilePopup()
   }  
 }
 
-void ProfileManager::newProfile( QString defaultName )
+void ProfileManager::newProfile( TQString defaultName )
 {
-  QString profile = KInputDialog::getText( i18n( "Krusader::ProfileManager" ), i18n( "Enter the profile name:" ), 
+  TQString profile = KInputDialog::getText( i18n( "Krusader::ProfileManager" ), i18n( "Enter the profile name:" ), 
                                            defaultName, 0, this );  
   if( !profile.isEmpty() )
   {
     int profileNum = 1;
-    while( profileList.contains( QString( "%1" ).arg( profileNum ) ) )
+    while( profileList.tqcontains( TQString( "%1" ).tqarg( profileNum ) ) )
       profileNum++;
 
-    QString profileString = QString( "%1" ).arg( profileNum );
-    QString profileName = profileType + " - " + profileString;
-    profileList.append( QString( "%1" ).arg( profileString ) );
+    TQString profileString = TQString( "%1" ).tqarg( profileNum );
+    TQString profileName = profileType + " - " + profileString;
+    profileList.append( TQString( "%1" ).tqarg( profileString ) );
   
     krConfig->setGroup("Private");
     krConfig->writeEntry( profileType, profileList );
@@ -131,12 +131,12 @@ void ProfileManager::newProfile( QString defaultName )
   }
 }
   
-void ProfileManager::deleteProfile( QString name )
+void ProfileManager::deleteProfile( TQString name )
 {
   for( unsigned i=0; i != profileList.count() ; i++ )
   {
     krConfig->setGroup( profileType + " - " + profileList[ i ] ); 
-    QString currentName = krConfig->readEntry( "Name" );
+    TQString currentName = krConfig->readEntry( "Name" );
     
     if( name == currentName )
     {
@@ -151,12 +151,12 @@ void ProfileManager::deleteProfile( QString name )
   }
 }
   
-void ProfileManager::overwriteProfile( QString name )
+void ProfileManager::overwriteProfile( TQString name )
 {
   for( unsigned i=0; i != profileList.count() ; i++ )
   {
     krConfig->setGroup( profileType + " - " + profileList[ i ] ); 
-    QString currentName = krConfig->readEntry( "Name" );
+    TQString currentName = krConfig->readEntry( "Name" );
     
     if( name == currentName )
     {
@@ -166,12 +166,12 @@ void ProfileManager::overwriteProfile( QString name )
   }
 }
 
-bool ProfileManager::loadProfile( QString name )
+bool ProfileManager::loadProfile( TQString name )
 {
   for( unsigned i=0; i != profileList.count() ; i++ )
   {
     krConfig->setGroup( profileType + " - " + profileList[i] ); 
-    QString currentName = krConfig->readEntry( "Name" );
+    TQString currentName = krConfig->readEntry( "Name" );
     
     if( name == currentName )
     {
@@ -182,10 +182,10 @@ bool ProfileManager::loadProfile( QString name )
   return false;    
 }
 
-QStringList ProfileManager::availableProfiles( QString profileType ) {
+TQStringList ProfileManager::availableProfiles( TQString profileType ) {
   krConfig->setGroup("Private");
-  QStringList profiles = krConfig->readListEntry( profileType );
-  QStringList profileNames;
+  TQStringList profiles = krConfig->readListEntry( profileType );
+  TQStringList profileNames;
 
   for( unsigned i=0; i != profiles.count() ; i++ ) {
     krConfig->setGroup( profileType + " - " + profiles[ i ] ); 

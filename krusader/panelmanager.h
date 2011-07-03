@@ -1,20 +1,21 @@
 #ifndef _PANEL_MANAGER_H
 #define _PANEL_MANAGER_H
 
-#include <qwidget.h>
-#include <qlayout.h>
+#include <tqwidget.h>
+#include <tqlayout.h>
 #include "paneltabbar.h"
 
 class KConfig;
 class ListPanel;
-class QWidgetStack;
-class QToolButton;
+class TQWidgetStack;
+class TQToolButton;
 
 /**
  * Implements tabbed-browsing by managing a list of tabs and corrosponding panels.
  */
-class PanelManager: public QWidget {
+class PanelManager: public TQWidget {
     Q_OBJECT
+  TQ_OBJECT
 
   public:
     /**
@@ -22,12 +23,12 @@ class PanelManager: public QWidget {
      * (self, other, active), which enables it to manage pointers held by the panels transparently.
      * It also receives a bool (left) which is true if the manager is the left one, or false otherwise.
      */
-    PanelManager( QWidget *parent, bool left );
+    PanelManager( TQWidget *tqparent, bool left );
     /**
      * Called once by KrusaderView to create the first panel. Subsequent called are done internally
      * Note: only creates the panel, but doesn't start the VFS inside it. Use startPanel() for that.
      */
-    ListPanel* createPanel( QString type, bool setCurrent = true );
+    ListPanel* createPanel( TQString type, bool setCurrent = true );
     /**
      * Called once by KrusaderView to start the first panel. Subsequent called are done internally
      * Only starts the VFS inside the panel, you must first use createPanel() !
@@ -38,19 +39,19 @@ class PanelManager: public QWidget {
      */
     void swapPanels();
     
-    void saveSettings(KConfig *config, const QString& key, bool localOnly = true );
-    void loadSettings(KConfig *config, const QString& key);
+    void saveSettings(KConfig *config, const TQString& key, bool localOnly = true );
+    void loadSettings(KConfig *config, const TQString& key);
     int  activeTab();
     void setActiveTab( int );
     void setCurrentTab( int );
-    void refreshAllTabs( bool invalidate = false );
+    void refreshAllTabs( bool tqinvalidate = false );
 
   public slots:
     /**
      * Called externally to start a new tab. Example of usage would be the "open in a new tab"
      * action, from the context-menu.
      */
-    void slotNewTab(const KURL& url, bool setCurrent = true, QString type = QString::null, int props = 0 );
+    void slotNewTab(const KURL& url, bool setCurrent = true, TQString type = TQString(), int props = 0 );
     void slotNewTab();
     void slotNextTab();
     void slotPreviousTab();	 
@@ -65,12 +66,12 @@ class PanelManager: public QWidget {
   private:
     void deletePanel( ListPanel *p );
   
-    QGridLayout *_layout;
-    QHBoxLayout *_barLayout;
+    TQGridLayout *_layout;
+    TQHBoxLayout *_barLayout;
     bool _left;
     PanelTabBar *_tabbar;
-    QWidgetStack *_stack;
-    QToolButton *_newTab, *_closeTab;
+    TQWidgetStack *_stack;
+    TQToolButton *_newTab, *_closeTab;
     ListPanel **_selfPtr, **_otherPtr;
 };
 

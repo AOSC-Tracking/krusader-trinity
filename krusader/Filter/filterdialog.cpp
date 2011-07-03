@@ -34,14 +34,14 @@
 
 #include <klocale.h>
 
-FilterDialog::FilterDialog(  QWidget *parent, const char *name )
-    : KDialogBase( parent, name, true, i18n("Krusader::Choose Files"), Ok|Cancel )
+FilterDialog::FilterDialog(  TQWidget *tqparent, const char *name )
+    : KDialogBase( tqparent, name, true, i18n("Krusader::Choose Files"), Ok|Cancel )
 {
-  QGridLayout *filterGrid = new QGridLayout( this->layout() );
+  TQGridLayout *filterGrid = new TQGridLayout( this->tqlayout() );
   filterGrid->setSpacing( 6 );
   filterGrid->setMargin( 11 );
 
-  QTabWidget *filterWidget = new QTabWidget( this, "filterTabs" );
+  TQTabWidget *filterWidget = new TQTabWidget( this, "filterTabs" );
 
   filterTabs = FilterTabs::addTo( filterWidget, FilterTabs::HasProfileHandler );
   generalFilter = (GeneralFilter *)filterTabs->get( "GeneralFilter" );
@@ -52,7 +52,7 @@ FilterDialog::FilterDialog(  QWidget *parent, const char *name )
 
   generalFilter->searchFor->setFocus();
 
-  connect( filterTabs, SIGNAL( closeRequest(bool) ), this, SLOT( slotCloseRequest(bool) ) );
+  connect( filterTabs, TQT_SIGNAL( closeRequest(bool) ), this, TQT_SLOT( slotCloseRequest(bool) ) );
 
   exec();
 }

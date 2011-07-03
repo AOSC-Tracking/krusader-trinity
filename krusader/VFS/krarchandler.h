@@ -30,55 +30,57 @@
 #ifndef KRARCHANDLER_H
 #define KRARCHANDLER_H
 
-#include <qstringlist.h>
-#include <qobject.h>
+#include <tqstringlist.h>
+#include <tqobject.h>
 #include <kprocess.h>
 #include <kurl.h>
 #include <kwallet.h>
 
-class KRarcHandler: public QObject {
+class KRarcHandler: public TQObject {
   Q_OBJECT
+  TQ_OBJECT
 public:
   // return the number of files in the archive
-  static long arcFileCount(QString archive, QString type, QString password);
+  static long arcFileCount(TQString archive, TQString type, TQString password);
   // unpack an archive to destination directory
-  static bool unpack(QString archive, QString type, QString password, QString dest );
+  static bool unpack(TQString archive, TQString type, TQString password, TQString dest );
   // pack an archive to destination directory
-  static bool pack(QStringList fileNames, QString type, QString dest, long count, QMap<QString,QString> extraProps );
+  static bool pack(TQStringList fileNames, TQString type, TQString dest, long count, TQMap<TQString,TQString> extraProps );
   // test an archive
-  static bool test(QString archive, QString type, QString password, long count = 0L );
+  static bool test(TQString archive, TQString type, TQString password, long count = 0L );
   // true - if the right unpacker exist in the system
-  static bool arcSupported(QString type);
+  static bool arcSupported(TQString type);
   // true - if supported and the user want us to handle this kind of archive
-  static bool arcHandled(QString type);
+  static bool arcHandled(TQString type);
   // return the a list of supported packers
-  static QStringList supportedPackers();
+  static TQStringList supportedPackers();
   // true - if the url is an archive (ie: tar:/home/test/file.tar.bz2)
   static bool isArchive(const KURL& url);
   // used to determine the type of the archive
-  static QString getType( bool &encrypted, QString fileName, QString mime, bool checkEncrypted = true );
+  static TQString getType( bool &encrypted, TQString fileName, TQString mime, bool checkEncrypted = true );
   // queries the password from the user
-  static QString getPassword( QString path );
+  static TQString getPassword( TQString path );
   // detects the archive type
-  static QString detectArchive( bool &encrypted, QString fileName, bool checkEncrypted = true );
+  static TQString detectArchive( bool &encrypted, TQString fileName, bool checkEncrypted = true );
 private:
   // checks if the returned status is correct
-  static bool checkStatus( QString type, int exitCode );
+  static bool checktqStatus( TQString type, int exitCode );
 
   static KWallet::Wallet * wallet;
 };
 
 class KrShellProcess : public KShellProcess {
 	Q_OBJECT
+  TQ_OBJECT
 public:
-	KrShellProcess() : KShellProcess(), errorMsg( QString::null ), outputMsg( QString::null ) {
-		connect(this,SIGNAL(receivedStderr(KProcess*,char*,int)),
-				this,SLOT(receivedErrorMsg(KProcess*,char*,int)) );
-		connect(this,SIGNAL(receivedStdout(KProcess*,char*,int)),
-				this,SLOT(receivedOutputMsg(KProcess*,char*,int)) );
+	KrShellProcess() : KShellProcess(), errorMsg( TQString() ), outputMsg( TQString() ) {
+		connect(this,TQT_SIGNAL(receivedStderr(KProcess*,char*,int)),
+				this,TQT_SLOT(receivedErrorMsg(KProcess*,char*,int)) );
+		connect(this,TQT_SIGNAL(receivedStdout(KProcess*,char*,int)),
+				this,TQT_SLOT(receivedOutputMsg(KProcess*,char*,int)) );
 	}
 	
-	QString getErrorMsg() {
+	TQString getErrorMsg() {
 		if( errorMsg.stripWhiteSpace().isEmpty() )
 			return outputMsg.right( 500 );
 		else
@@ -87,52 +89,53 @@ public:
 	
 public slots:
 	void receivedErrorMsg(KProcess*, char *buf, int len) {
-		errorMsg += QString::fromLocal8Bit( buf, len );
+		errorMsg += TQString::fromLocal8Bit( buf, len );
 		if( errorMsg.length() > 500 )
 			errorMsg = errorMsg.right( 500 );
 		receivedOutputMsg( 0, buf, len );
 	}
 	
 	void receivedOutputMsg(KProcess*, char *buf, int len) {
-		outputMsg += QString::fromLocal8Bit( buf, len );
+		outputMsg += TQString::fromLocal8Bit( buf, len );
 		if( outputMsg.length() > 500 )
 			outputMsg = outputMsg.right( 500 );
 	}
 	
 private:
-	QString errorMsg;
-	QString outputMsg;
+	TQString errorMsg;
+	TQString outputMsg;
 };
 
 class Kr7zEncryptionChecker : public KrShellProcess {
 	Q_OBJECT
+  TQ_OBJECT
 	
 public:
 	Kr7zEncryptionChecker() : KrShellProcess(), encrypted( false ), lastData() {
-		connect(this,SIGNAL(receivedStdout(KProcess*,char*,int)),
-				this,SLOT(processStdout(KProcess*,char*,int)) );
+		connect(this,TQT_SIGNAL(receivedStdout(KProcess*,char*,int)),
+				this,TQT_SLOT(processStdout(KProcess*,char*,int)) );
 	}
 
 public slots:
 	void processStdout( KProcess *proc,char *buf,int len ) {
-		QByteArray d(len);
+		TQByteArray d(len);
 		d.setRawData(buf,len);
-		QString data =  QString( d );
+		TQString data =  TQString( d );
 		d.resetRawData(buf,len);
 		
-		QString checkable = lastData + data;
+		TQString checkable = lastData + data;
 		
-		QStringList lines = QStringList::split( '\n', checkable );
+		TQStringList lines = TQStringList::split( '\n', checkable );
 		lastData = lines[ lines.count() - 1 ];
 		for( unsigned i=0; i != lines.count(); i++ ) {
-			QString line = lines[ i ].stripWhiteSpace().lower();
-			int ndx = line.find( "testing" );
+			TQString line = lines[ i ].stripWhiteSpace().lower();
+			int ndx = line.tqfind( "testing" );
 			if( ndx >=0 )
 				line.truncate( ndx );
 			if( line.isEmpty() )
 				continue;
 			
-			if( line.contains( "password" ) && line.contains( "enter" ) ) {
+			if( line.tqcontains( "password" ) && line.tqcontains( "enter" ) ) {
 				encrypted = true;
 				proc->kill();
 			}
@@ -142,7 +145,7 @@ public slots:
 	bool isEncrypted() { return encrypted; }
 private:
 	bool encrypted;
-	QString lastData;
+	TQString lastData;
 };
 
 #endif

@@ -2,22 +2,23 @@
 #define _SUPERVIEW_H
 
 #include <kurl.h>
-#include <qstring.h>
-#include <qwidgetstack.h>
+#include <tqstring.h>
+#include <tqwidgetstack.h>
 #include <kparts/part.h>
 #include <kio/job.h>
 #include <ktempfile.h>
-#include <qdict.h>
-#include <qlabel.h>
+#include <tqdict.h>
+#include <tqlabel.h>
 
 #include "krviewer.h"
 
 
-class PanelViewerBase: public QWidgetStack {
+class PanelViewerBase: public TQWidgetStack {
 	Q_OBJECT
+  TQ_OBJECT
 
 public:
-	PanelViewerBase( QWidget *parent = 0 );
+	PanelViewerBase( TQWidget *tqparent = 0 );
 	virtual ~PanelViewerBase();
 	inline KURL url() const { return curl; }
 	inline void setUrl( KURL url ) { emit urlChanged( this, url ); curl = url; }
@@ -35,35 +36,37 @@ signals:
 	void urlChanged( PanelViewerBase *, const KURL & );
 
 protected:
-	QDict<KParts::ReadOnlyPart> *mimes;
+	TQDict<KParts::ReadOnlyPart> *mimes;
 	KParts::ReadOnlyPart *cpart;
 
-	QString cmimetype;
+	TQString cmimetype;
 	KURL curl;
-	QLabel *fallback;
+	TQLabel *fallback;
 
 };
 
 class PanelViewer: public PanelViewerBase {
 	Q_OBJECT
+  TQ_OBJECT
 public slots:
 	KParts::ReadOnlyPart* openURL( const KURL &url, KrViewer::Mode mode=KrViewer::Generic );
 	bool closeURL();
 
 public:
-	PanelViewer( QWidget *parent = 0 );
+	PanelViewer( TQWidget *tqparent = 0 );
 	~PanelViewer();
 
 	virtual bool isEditor() { return false; }
 
 protected:
-	KParts::ReadOnlyPart *getPart( QString mimetype );
+	KParts::ReadOnlyPart *getPart( TQString mimetype );
 	KParts::ReadOnlyPart*  getHexPart();
 	void oldHexViewer(KTempFile& tmpFile);
 };
 
 class PanelEditor: public PanelViewerBase {
 	Q_OBJECT
+  TQ_OBJECT
 public:
 	virtual bool isModified();
 	virtual bool isEditor() { return true; }
@@ -75,11 +78,11 @@ public slots:
 	void slotStatResult( KIO::Job* job );
 
 public:
-	PanelEditor( QWidget *parent = 0 );
+	PanelEditor( TQWidget *tqparent = 0 );
 	~PanelEditor();
 
 protected:
-	KParts::ReadWritePart* getPart( QString mimetype );
+	KParts::ReadWritePart* getPart( TQString mimetype );
 
 	bool busy;
 	KIO::UDSEntry entry;

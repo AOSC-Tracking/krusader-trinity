@@ -31,8 +31,8 @@
 #ifndef SEARCHOBJECT_H
 #define SEARCHOBJECT_H
 
-#include <qstring.h>
-#include <qvaluevector.h>
+#include <tqstring.h>
+#include <tqvaluevector.h>
 #include "../krservices.h"
 
 /**
@@ -42,20 +42,20 @@ class SearchObject
 {
 public:
   SearchObject();
-  SearchObject(const QString& name, bool found, const QString& note);
+  SearchObject(const TQString& name, bool found, const TQString& note);
   virtual ~SearchObject();
 
-  const QString& getSearchName() const { return _searchName; }
-  const QString& getNote() const { return _note; }
+  const TQString& getSearchName() const { return _searchName; }
+  const TQString& getNote() const { return _note; }
   const bool getFound() const { return _found; }
-  void setSearchName(const QString& s) { _searchName = s; }
-  void setNote(const QString& s) { _note = s; }
+  void setSearchName(const TQString& s) { _searchName = s; }
+  void setNote(const TQString& s) { _note = s; }
   void setFound(const bool& b) { _found = b; }
 
 protected:
-  QString _searchName;
+  TQString _searchName;
   bool _found;
-  QString _note;
+  TQString _note;
 };
 
 // -----------------------------------------------------------------------------
@@ -68,21 +68,21 @@ class Application : public SearchObject
 {
 public:
   Application();
-  Application(const QString& searchName, bool found, const QString& appName, const QString& website=QString::null, const QString& note=QString::null);
-  Application(const QString& searchName, const QString& website, bool found, const QString& note=QString::null);
+  Application(const TQString& searchName, bool found, const TQString& appName, const TQString& website=TQString(), const TQString& note=TQString());
+  Application(const TQString& searchName, const TQString& website, bool found, const TQString& note=TQString());
   virtual ~Application();
 
-  const QString& getWebsite() const { return _website; }
-  const QString& getAppName() const { return _appName; }
-  const QString& getPath() const { return _path; }
-  void setWebsite(const QString& s) { _website = s; }
-  void setAppName(const QString& s) { _appName = s; }
-  void setPath(const QString& s) { _path = s; }
+  const TQString& getWebsite() const { return _website; }
+  const TQString& getAppName() const { return _appName; }
+  const TQString& getPath() const { return _path; }
+  void setWebsite(const TQString& s) { _website = s; }
+  void setAppName(const TQString& s) { _appName = s; }
+  void setPath(const TQString& s) { _path = s; }
 
 protected:
-  QString _appName;
-  QString _website;
-  QString _path;
+  TQString _appName;
+  TQString _website;
+  TQString _path;
 };
 
 // -----------------------------------------------------------------------------
@@ -95,7 +95,7 @@ class Archiver : public Application
 {
 public:
   Archiver();
-  Archiver(const QString& searchName, const QString& website, bool found, bool isPacker, bool isUnpacker, const QString& note=QString::null);
+  Archiver(const TQString& searchName, const TQString& website, bool found, bool isPacker, bool isUnpacker, const TQString& note=TQString());
   ~Archiver();
 
   const bool getIsPacker() const { return _isPacker; }
@@ -117,14 +117,14 @@ protected:
 class ApplicationGroup : public SearchObject
 {
 public:
-  ApplicationGroup(const QString& searchName, bool foundGroup, const QValueVector<Application*>& apps, const QString& note=QString::null);
+  ApplicationGroup(const TQString& searchName, bool foundGroup, const TQValueVector<Application*>& apps, const TQString& note=TQString());
   ~ApplicationGroup();
 
-  const QValueVector<Application*>& getAppVec() const { return _apps; }
+  const TQValueVector<Application*>& getAppVec() const { return _apps; }
   const bool getFoundGroup() const { return _foundGroup; }
 
 protected:
-  QValueVector<Application*> _apps;
+  TQValueVector<Application*> _apps;
   bool _foundGroup;
 };
 

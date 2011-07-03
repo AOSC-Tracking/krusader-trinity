@@ -34,25 +34,26 @@
 #include "filterbase.h"
 #include "../VFS/krquery.h"
 
-#include <qwidget.h>
-#include <qcheckbox.h>
+#include <tqwidget.h>
+#include <tqcheckbox.h>
 #include <kcombobox.h>
 #include <klineedit.h>
-#include <qradiobutton.h>
-#include <qtoolbutton.h>
+#include <tqradiobutton.h>
+#include <tqtoolbutton.h>
 
-class AdvancedFilter : public QWidget, public FilterBase
+class AdvancedFilter : public TQWidget, public FilterBase
 {
   Q_OBJECT
+  TQ_OBJECT
 
 public:
-  AdvancedFilter( FilterTabs *tabs, QWidget *parent = 0, const char *name = 0 );
+  AdvancedFilter( FilterTabs *tabs, TQWidget *tqparent = 0, const char *name = 0 );
 
   virtual void          queryAccepted() {}
   virtual bool          fillQuery( KRQuery *query );
-  virtual void          loadFromProfile( QString name );
-  virtual void          saveToProfile( QString name );
-  virtual QString       name() { return "AdvancedFilter";}
+  virtual void          loadFromProfile( TQString name );
+  virtual void          saveToProfile( TQString name );
+  virtual TQString       name() { return "AdvancedFilter";}
   virtual FilterTabs *  filterTabs() { return fltTabs; }
 
 public slots:
@@ -61,55 +62,55 @@ public slots:
   void notModifiedAfterSetDate();
 
 public:
-  QCheckBox* smallerThanEnabled;
-  QLineEdit* smallerThanAmount;
+  TQCheckBox* smallerThanEnabled;
+  TQLineEdit* smallerThanAmount;
   KComboBox* smallerThanType;
 
-  QCheckBox* biggerThanEnabled;
+  TQCheckBox* biggerThanEnabled;
   KComboBox* biggerThanType;
-  QLineEdit* biggerThanAmount;
+  TQLineEdit* biggerThanAmount;
 
-  QRadioButton* modifiedBetweenEnabled;
-  QRadioButton* notModifiedAfterEnabled;
-  QRadioButton* modifiedInTheLastEnabled;
+  TQRadioButton* modifiedBetweenEnabled;
+  TQRadioButton* notModifiedAfterEnabled;
+  TQRadioButton* modifiedInTheLastEnabled;
 
-  QLineEdit* modifiedBetweenData1;
-  QLineEdit* modifiedBetweenData2;
+  TQLineEdit* modifiedBetweenData1;
+  TQLineEdit* modifiedBetweenData2;
 
-  QToolButton* modifiedBetweenBtn1;
-  QToolButton* modifiedBetweenBtn2;
-  QToolButton* notModifiedAfterBtn;
+  TQToolButton* modifiedBetweenBtn1;
+  TQToolButton* modifiedBetweenBtn2;
+  TQToolButton* notModifiedAfterBtn;
 
-  QLineEdit* notModifiedAfterData;
-  QLineEdit* modifiedInTheLastData;
-  QLineEdit* notModifiedInTheLastData;
-  QComboBox* modifiedInTheLastType;
-  QComboBox* notModifiedInTheLastType;
+  TQLineEdit* notModifiedAfterData;
+  TQLineEdit* modifiedInTheLastData;
+  TQLineEdit* notModifiedInTheLastData;
+  TQComboBox* modifiedInTheLastType;
+  TQComboBox* notModifiedInTheLastType;
 
-  QCheckBox* belongsToUserEnabled;
-  QComboBox* belongsToUserData;
-  QCheckBox* belongsToGroupEnabled;
-  QComboBox* belongsToGroupData;
+  TQCheckBox* belongsToUserEnabled;
+  TQComboBox* belongsToUserData;
+  TQCheckBox* belongsToGroupEnabled;
+  TQComboBox* belongsToGroupData;
 
-  QCheckBox* permissionsEnabled;
+  TQCheckBox* permissionsEnabled;
 
-  QComboBox* ownerW;
-  QComboBox* ownerR;
-  QComboBox* ownerX;
-  QComboBox* groupW;
-  QComboBox* groupR;
-  QComboBox* groupX;
-  QComboBox* allW;
-  QComboBox* allX;
-  QComboBox* allR;
+  TQComboBox* ownerW;
+  TQComboBox* ownerR;
+  TQComboBox* ownerX;
+  TQComboBox* groupW;
+  TQComboBox* groupR;
+  TQComboBox* groupX;
+  TQComboBox* allW;
+  TQComboBox* allX;
+  TQComboBox* allR;
 
   FilterTabs *fltTabs;
 
 private:
-  void changeDate(QLineEdit *p);
-  void fillList(QComboBox *list, QString filename);
-  void qdate2time_t(time_t *dest, QDate d, bool start);
-  void invalidDateMessage(QLineEdit *p);
+  void changeDate(TQLineEdit *p);
+  void fillList(TQComboBox *list, TQString filename);
+  void qdate2time_t(time_t *dest, TQDate d, bool start);
+  void invalidDateMessage(TQLineEdit *p);
 };
 
 #endif /* ADVANCEDFILTER_H */

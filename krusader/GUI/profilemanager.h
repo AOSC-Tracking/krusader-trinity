@@ -31,39 +31,40 @@
 #ifndef PROFILEMANAGER_H
 #define PROFILEMANAGER_H
 
-#include <qpushbutton.h>
-#include <qstring.h>
+#include <tqpushbutton.h>
+#include <tqstring.h>
 
-class ProfileManager : public QPushButton
+class ProfileManager : public TQPushButton
 {
   Q_OBJECT
+  TQ_OBJECT
   
 public: 
-  ProfileManager( QString profileType, QWidget * parent = 0, const char * name = 0 );
+  ProfileManager( TQString profileType, TQWidget * tqparent = 0, const char * name = 0 );
   
   /**
    * @param profileType Type of the profile (sync, search, ...)
    * @return A list of all available profile-names
    */
-  static QStringList availableProfiles( QString profileType );
+  static TQStringList availableProfiles( TQString profileType );
 
-  QStringList getNames();
+  TQStringList getNames();
     
 public slots:
   void profilePopup();
   
-  void newProfile( QString defaultName = QString::null );
-  void deleteProfile( QString name );
-  void overwriteProfile( QString name );
-  bool loadProfile( QString name );  
+  void newProfile( TQString defaultName = TQString() );
+  void deleteProfile( TQString name );
+  void overwriteProfile( TQString name );
+  bool loadProfile( TQString name );  
   
 signals:
-  void saveToProfile( QString profileName );
-  void loadFromProfile( QString profileName );
+  void saveToProfile( TQString profileName );
+  void loadFromProfile( TQString profileName );
   
 private:
-  QString profileType;
-  QStringList profileList;
+  TQString profileType;
+  TQStringList profileList;
 };
 
 #endif /* PROFILEMANAGER_H */

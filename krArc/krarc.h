@@ -17,10 +17,10 @@
 #ifndef __krarc_h__
 #define __krarc_h__
 
-#include <qstring.h>
-#include <qcstring.h>
-#include <qdict.h>
-#include <qfile.h>
+#include <tqstring.h>
+#include <tqcstring.h>
+#include <tqdict.h>
+#include <tqfile.h>
 #include <sys/types.h>
 
 #include <kurl.h>
@@ -30,12 +30,13 @@
 
 class KProcess;
 class KFileItem;
-class QCString;
+class TQCString;
 
-class kio_krarcProtocol : public QObject, public KIO::SlaveBase {
+class kio_krarcProtocol : public TQObject, public KIO::SlaveBase {
 Q_OBJECT
+  TQ_OBJECT
 public:
-	kio_krarcProtocol(const QCString &pool_socket, const QCString &app_socket);
+	kio_krarcProtocol(const TQCString &pool_socket, const TQCString &app_socket);
 	virtual ~kio_krarcProtocol();
 	virtual void stat( const KURL & url );
 	virtual void get(const KURL& url);
@@ -52,68 +53,69 @@ public slots:
 protected:
 	virtual bool   initDirDict(const KURL& url,bool forced = false);
 	virtual bool   initArcParameters();
-	QString detectArchive( bool &encrypted, QString fileName );
-	virtual void parseLine(int lineNo, QString line, QFile* temp);
+	TQString detectArchive( bool &encrypted, TQString fileName );
+	virtual void parseLine(int lineNo, TQString line, TQFile* temp);
 	virtual bool setArcFile(const KURL& url);
-	virtual QString getPassword();
-	virtual void invalidatePassword();
+	virtual TQString getPassword();
+	virtual void tqinvalidatePassword();
 
 	// archive specific commands
-	QString cmd;     ///< the archiver name.
-	QString listCmd; ///< list files. 
-	QString getCmd;  ///< unpack files command.
-	QString delCmd;  ///< delete files command.
-	QString putCmd;  ///< add file command.
-	QString copyCmd; ///< copy to file command.
+	TQString cmd;     ///< the archiver name.
+	TQString listCmd; ///< list files. 
+	TQString getCmd;  ///< unpack files command.
+	TQString delCmd;  ///< delete files command.
+	TQString putCmd;  ///< add file command.
+	TQString copyCmd; ///< copy to file command.
 
 private:
 	void get(const KURL& url, int tries);
 	/** checks if the exit code is OK. */
-	bool checkStatus( int exitCode );
+	bool checktqStatus( int exitCode );
 	/** service function for parseLine. */
-	QString nextWord(QString &s,char d=' ');
+	TQString nextWord(TQString &s,char d=' ');
 	/** translate permittion string to mode_t. */
-	mode_t parsePermString(QString perm);
+	mode_t parsePermString(TQString perm);
 	/** return the name of the directory inside the archive. */
-	QString findArcDirectory(const KURL& url);
+	TQString findArcDirectory(const KURL& url);
 	/** find the UDSEntry of a file in a directory. */
 	KIO::UDSEntry* findFileEntry(const KURL& url);
 	/** add a new directory (file list container). */
-	KIO::UDSEntryList* addNewDir(QString path);
-	QString fullPathName( QString name );
-	QString convertFileName( QString name );
-	static QString convertName( QString name );
-	static QString escape( QString name );
+	KIO::UDSEntryList* addNewDir(TQString path);
+	TQString fullPathName( TQString name );
+	TQString convertFileName( TQString name );
+	static TQString convertName( TQString name );
+	static TQString escape( TQString name );
 	
-	QDict<KIO::UDSEntryList> dirDict; //< the directoris data structure.
+	TQDict<KIO::UDSEntryList> dirDict; //< the directoris data structure.
 	bool encrypted;                   //< tells whether the archive is encrypted
 	bool archiveChanged;              //< true if the archive was changed.
 	bool archiveChanging;             //< true if the archive is currently changing.
 	bool newArchiveURL;               //< true if new archive was entered for the protocol
 	KIO::filesize_t decompressedLen;  //< the number of the decompressed bytes
 	KFileItem* arcFile;               //< the archive file item.
-	QString arcPath;                  //< the archive location
-	QString arcTempDir;               //< the currently used temp directory.
-	QString arcType;                  //< the archive type.
+	TQString arcPath;                  //< the archive location
+	TQString arcTempDir;               //< the currently used temp directory.
+	TQString arcType;                  //< the archive type.
 	bool extArcReady;                 //< Used for RPM & DEB files.
-	QString password;                 //< Password for the archives
+	TQString password;                 //< Password for the archives
 	KConfig *krConfig;                //< The configuration file for krusader
 	
-	QString lastData;
-	QString encryptedArchPath;
+	TQString lastData;
+	TQString encryptedArchPath;
 };
 
 class KrShellProcess : public KShellProcess {
 	Q_OBJECT
+  TQ_OBJECT
 public:
-	KrShellProcess() : KShellProcess(), errorMsg( QString::null ), outputMsg( QString::null ) {
-		connect(this,SIGNAL(receivedStderr(KProcess*,char*,int)),
-				this,SLOT(receivedErrorMsg(KProcess*,char*,int)) );
-		connect(this,SIGNAL(receivedStdout(KProcess*,char*,int)),
-				this,SLOT(receivedOutputMsg(KProcess*,char*,int)) );
+	KrShellProcess() : KShellProcess(), errorMsg( TQString() ), outputMsg( TQString() ) {
+		connect(this,TQT_SIGNAL(receivedStderr(KProcess*,char*,int)),
+				this,TQT_SLOT(receivedErrorMsg(KProcess*,char*,int)) );
+		connect(this,TQT_SIGNAL(receivedStdout(KProcess*,char*,int)),
+				this,TQT_SLOT(receivedOutputMsg(KProcess*,char*,int)) );
 	}
 	
-	QString getErrorMsg() {
+	TQString getErrorMsg() {
 		if( errorMsg.stripWhiteSpace().isEmpty() )
 			return outputMsg.right( 500 );
 		else
@@ -122,21 +124,21 @@ public:
 	
 public slots:
 	void receivedErrorMsg(KProcess*, char *buf, int len) {
-		errorMsg += QString::fromLocal8Bit( buf, len );
+		errorMsg += TQString::fromLocal8Bit( buf, len );
 		if( errorMsg.length() > 500 )
 			errorMsg = errorMsg.right( 500 );
 		receivedOutputMsg( 0, buf, len );
 	}
 	
 	void receivedOutputMsg(KProcess*, char *buf, int len) {
-		outputMsg += QString::fromLocal8Bit( buf, len );
+		outputMsg += TQString::fromLocal8Bit( buf, len );
 		if( outputMsg.length() > 500 )
 			outputMsg = outputMsg.right( 500 );
 	}
 	
 private:
-	QString errorMsg;
-	QString outputMsg;
+	TQString errorMsg;
+	TQString outputMsg;
 };
 
 #endif

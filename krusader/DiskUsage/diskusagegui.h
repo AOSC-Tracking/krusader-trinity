@@ -31,27 +31,28 @@
 #ifndef __DISK_USAGE_GUI_H__
 #define __DISK_USAGE_GUI_H__
 
-#include <qdialog.h>
-#include <qlayout.h>
-#include <qtoolbutton.h>
+#include <tqdialog.h>
+#include <tqlayout.h>
+#include <tqtoolbutton.h>
 #include <kurl.h>
 #include <ksqueezedtextlabel.h>
 
 #include "diskusage.h"
 
-class DiskUsageGUI : public QDialog
+class DiskUsageGUI : public TQDialog
 {
   Q_OBJECT
+  TQ_OBJECT
   
 public:
-  DiskUsageGUI( KURL openDir, QWidget* parent=0, const char *name = 0 );
+  DiskUsageGUI( KURL openDir, TQWidget* tqparent=0, const char *name = 0 );
   ~DiskUsageGUI();
   
 
 public slots:
   void                       loadUsageInfo();
   bool                       newSearch();
-  void                       setStatus( QString );
+  void                       settqStatus( TQString );
   
   void                       selectLinesView()     { diskUsage->setView( VIEW_LINES ); }
   void                       selectListView()      { diskUsage->setView( VIEW_DETAILED ); }
@@ -64,20 +65,20 @@ protected slots:
   void                       slotLoadFinished( bool );
   
 protected:
-  virtual void               resizeEvent( QResizeEvent *e );
+  virtual void               resizeEvent( TQResizeEvent *e );
   
   DiskUsage                 *diskUsage;
   KURL                       baseDirectory;
   
   KSqueezedTextLabel        *status;
   
-  QToolButton               *btnNewSearch;
-  QToolButton               *btnRefresh;
-  QToolButton               *btnDirUp;
+  TQToolButton               *btnNewSearch;
+  TQToolButton               *btnRefresh;
+  TQToolButton               *btnDirUp;
   
-  QToolButton               *btnLines;
-  QToolButton               *btnDetailed;
-  QToolButton               *btnFilelight;
+  TQToolButton               *btnLines;
+  TQToolButton               *btnDetailed;
+  TQToolButton               *btnFilelight;
   
   int                        sizeX;
   int                        sizeY;

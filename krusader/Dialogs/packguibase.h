@@ -31,76 +31,77 @@
 #define PACKGUIBASE_H
 
 #include <klocale.h>
-#include <qdialog.h>
-#include <qmap.h>
+#include <tqdialog.h>
+#include <tqmap.h>
 
 
-class QVBoxLayout; 
-class QHBoxLayout; 
-class QGridLayout; 
-class QCheckBox;
-class QComboBox;
-class QLabel;
-class QLineEdit;
-class QPushButton;
-class QToolButton;
-class QSpinBox;
-class QSlider;
+class TQVBoxLayout; 
+class TQHBoxLayout; 
+class TQGridLayout; 
+class TQCheckBox;
+class TQComboBox;
+class TQLabel;
+class TQLineEdit;
+class TQPushButton;
+class TQToolButton;
+class TQSpinBox;
+class TQSlider;
 class KHistoryCombo;
 
-class PackGUIBase : public QDialog
+class PackGUIBase : public TQDialog
 { 
     Q_OBJECT
+  TQ_OBJECT
 
 public:
-    PackGUIBase( QWidget* parent = 0, const char* name = 0, bool modal = FALSE, WFlags fl = 0 );
+    PackGUIBase( TQWidget* tqparent = 0, const char* name = 0, bool modal = FALSE, WFlags fl = 0 );
     ~PackGUIBase();
 
-    QLabel* TextLabel3;
-    QLineEdit* nameData;
-    QComboBox* typeData;
-    QLabel* TextLabel5;
-    QLineEdit* dirData;
-    QToolButton* browseButton;
-    QWidget* advancedWidget;
-    QLabel* PixmapLabel1;
-    QLabel* TextLabel1;
-    QLabel* TextLabel4;
-    QLabel* TextLabel6;
-    QLabel* TextLabel7;
-    QLabel* TextLabel8;
-    QLabel* minLabel;
-    QLabel* maxLabel;
-    QLineEdit* password;
-    QLineEdit* passwordAgain;
-    QLabel* passwordConsistencyLabel;
-    QPushButton* okButton;
-    QPushButton* cancelButton;
-    QPushButton* advancedButton;
-    QCheckBox* encryptHeaders;
-    QCheckBox* multipleVolume;
-    QSpinBox* volumeSpinBox;
-    QComboBox* volumeUnitCombo;
-    QCheckBox* setCompressionLevel;
-    QSlider*   compressionSlider;
+    TQLabel* TextLabel3;
+    TQLineEdit* nameData;
+    TQComboBox* typeData;
+    TQLabel* TextLabel5;
+    TQLineEdit* dirData;
+    TQToolButton* browseButton;
+    TQWidget* advancedWidget;
+    TQLabel* PixmapLabel1;
+    TQLabel* TextLabel1;
+    TQLabel* TextLabel4;
+    TQLabel* TextLabel6;
+    TQLabel* TextLabel7;
+    TQLabel* TextLabel8;
+    TQLabel* minLabel;
+    TQLabel* maxLabel;
+    TQLineEdit* password;
+    TQLineEdit* passwordAgain;
+    TQLabel* passwordConsistencyLabel;
+    TQPushButton* okButton;
+    TQPushButton* cancelButton;
+    TQPushButton* advancedButton;
+    TQCheckBox* encryptHeaders;
+    TQCheckBox* multipleVolume;
+    TQSpinBox* volumeSpinBox;
+    TQComboBox* volumeUnitCombo;
+    TQCheckBox* setCompressionLevel;
+    TQSlider*   compressionSlider;
     KHistoryCombo *commandLineSwitches;
 
 public slots:
     virtual void browse();
-    virtual bool extraProperties( QMap<QString,QString> & );
+    virtual bool extraProperties( TQMap<TQString,TQString> & );
 
     void expand();
     void checkConsistency();
 
 protected:
-    QHBoxLayout* hbox;
-    QHBoxLayout* hbox_2;
-    QHBoxLayout* hbox_3;
-    QHBoxLayout* hbox_4;
-    QGridLayout* hbox_5;
-    QHBoxLayout* hbox_6;
-    QHBoxLayout* hbox_7;
-    QGridLayout* grid;
+    TQHBoxLayout* hbox;
+    TQHBoxLayout* hbox_2;
+    TQHBoxLayout* hbox_3;
+    TQHBoxLayout* hbox_4;
+    TQGridLayout* hbox_5;
+    TQHBoxLayout* hbox_6;
+    TQHBoxLayout* hbox_7;
+    TQGridLayout* grid;
 
 private:
     bool expanded;

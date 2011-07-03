@@ -30,9 +30,9 @@
 
 #include "kurllistrequester.h"
 #include "../VFS/vfs.h"
-#include <qpixmap.h>
-#include <qcursor.h>
-#include <qlayout.h>
+#include <tqpixmap.h>
+#include <tqcursor.h>
+#include <tqlayout.h>
 #include <kfiledialog.h>
 #include <kpopupmenu.h>
 #include <kiconloader.h>
@@ -41,31 +41,31 @@
 
 #define DELETE_ITEM_ID    100
 
-KURLListRequester::KURLListRequester( QWidget *parent, const char * name ) : QWidget( parent, name )
+KURLListRequester::KURLListRequester( TQWidget *tqparent, const char * name ) : TQWidget( tqparent, name )
 {
   KIconLoader *iconLoader = new KIconLoader();
-  QPixmap imageAdd = iconLoader->loadIcon( "1downarrow", KIcon::Panel, 16 );
-  QPixmap imageFolder = iconLoader->loadIcon( "folder", KIcon::Panel, 16 );
+  TQPixmap imageAdd = iconLoader->loadIcon( "1downarrow", KIcon::Panel, 16 );
+  TQPixmap imageFolder = iconLoader->loadIcon( "folder", KIcon::Panel, 16 );
     
   // Creating the widget
   
-  QGridLayout *urlListRequesterGrid = new QGridLayout( this );
+  TQGridLayout *urlListRequesterGrid = new TQGridLayout( this );
   urlListRequesterGrid->setSpacing( 0 );
   urlListRequesterGrid->setMargin( 0 );
     
   urlLineEdit = new KLineEdit( this, "urlLineEdit" );
   urlListRequesterGrid->addWidget( urlLineEdit, 0, 0 );
       
-  urlListBox = new QListBox( this, "urlListBox" );
-  urlListBox->setSelectionMode( QListBox::Extended );
+  urlListBox = new TQListBox( this, "urlListBox" );
+  urlListBox->setSelectionMode( TQListBox::Extended );
   urlListRequesterGrid->addMultiCellWidget( urlListBox, 1, 1, 0, 2 );
 
-  urlAddBtn = new QToolButton( this, "urlAddBtn" );
+  urlAddBtn = new TQToolButton( this, "urlAddBtn" );
   urlAddBtn->setText( "" );
   urlAddBtn->setPixmap( imageAdd );
   urlListRequesterGrid->addWidget( urlAddBtn, 0, 1 );
     
-  urlBrowseBtn = new QToolButton( this, "urlBrowseBtn" );
+  urlBrowseBtn = new TQToolButton( this, "urlBrowseBtn" );
   urlBrowseBtn->setText( "" );
   urlBrowseBtn->setPixmap( imageFolder );
   urlListRequesterGrid->addWidget( urlBrowseBtn, 0, 2 );
@@ -77,19 +77,19 @@ KURLListRequester::KURLListRequester( QWidget *parent, const char * name ) : QWi
   
   // connection table
   
-  connect( urlAddBtn, SIGNAL( clicked() ), this, SLOT( slotAdd() ) );
-  connect( urlBrowseBtn, SIGNAL( clicked() ), this, SLOT( slotBrowse() ) );
-  connect( urlLineEdit, SIGNAL( returnPressed(const QString&) ), this, SLOT( slotAdd() ) );
-  connect( urlListBox, SIGNAL( rightButtonClicked ( QListBoxItem *, const QPoint & ) ), this,
-                       SLOT( slotRightClicked( QListBoxItem * ) ) );
+  connect( urlAddBtn, TQT_SIGNAL( clicked() ), this, TQT_SLOT( slotAdd() ) );
+  connect( urlBrowseBtn, TQT_SIGNAL( clicked() ), this, TQT_SLOT( slotBrowse() ) );
+  connect( urlLineEdit, TQT_SIGNAL( returnPressed(const TQString&) ), this, TQT_SLOT( slotAdd() ) );
+  connect( urlListBox, TQT_SIGNAL( rightButtonClicked ( TQListBoxItem *, const TQPoint & ) ), this,
+                       TQT_SLOT( slotRightClicked( TQListBoxItem * ) ) );
 }
 
 void KURLListRequester::slotAdd()
 {
-  QString text = urlLineEdit->text().simplifyWhiteSpace();
+  TQString text = urlLineEdit->text().simplifyWhiteSpace();
   if( text.length() )
   {  
-    QString error = QString::null;    
+    TQString error = TQString();    
     emit checkValidity( text, error );
     
     if( !error.isNull() )
@@ -104,13 +104,13 @@ void KURLListRequester::slotAdd()
 
 void KURLListRequester::slotBrowse()
 {
-  KURL url = KFileDialog::getExistingURL( QString::null, this );
+  KURL url = KFileDialog::getExistingURL( TQString(), this );
   if( !url.isEmpty())
     urlLineEdit->setText( vfs::pathOrURL( url ) );
   urlLineEdit->setFocus();
 }
 
-void KURLListRequester::keyPressEvent(QKeyEvent *e)
+void KURLListRequester::keyPressEvent(TQKeyEvent *e)
 {
   if( e->key() == Key_Delete )
   {
@@ -121,13 +121,13 @@ void KURLListRequester::keyPressEvent(QKeyEvent *e)
     }
   }
 
-  QWidget::keyPressEvent( e );
+  TQWidget::keyPressEvent( e );
 }
 
 void KURLListRequester::deleteSelectedItems()
 {
   int i=0;
-  QListBoxItem *item;
+  TQListBoxItem *item;
 
   while( (item = urlListBox->item(i)) )
   {
@@ -140,7 +140,7 @@ void KURLListRequester::deleteSelectedItems()
   }
 }
 
-void KURLListRequester::slotRightClicked( QListBoxItem *item )
+void KURLListRequester::slotRightClicked( TQListBoxItem *item )
 {
   if( item == 0 )
     return;
@@ -148,7 +148,7 @@ void KURLListRequester::slotRightClicked( QListBoxItem *item )
   KPopupMenu popupMenu( this );
   popupMenu.insertItem( i18n( "Delete" ), DELETE_ITEM_ID );
   
-  switch( popupMenu.exec( QCursor::pos() ) )
+  switch( popupMenu.exec( TQCursor::pos() ) )
   {
   case DELETE_ITEM_ID:
     if( item->isSelected() )
@@ -163,21 +163,21 @@ KURL::List KURLListRequester::urlList()
 {
   KURL::List urls;
   
-  QString text = urlLineEdit->text().simplifyWhiteSpace();
+  TQString text = urlLineEdit->text().simplifyWhiteSpace();
   if (!text.isEmpty())
   {
-    QString error = QString::null;
+    TQString error = TQString();
     emit checkValidity( text, error );
     if( error.isNull() )
       urls.append( vfs::fromPathOrURL( text ) );
   }
     
-  QListBoxItem *item = urlListBox->firstItem();
+  TQListBoxItem *item = urlListBox->firstItem();
   while ( item )
   {    
-    QString text = item->text().simplifyWhiteSpace();
+    TQString text = item->text().simplifyWhiteSpace();
     
-    QString error = QString::null;
+    TQString error = TQString();
     emit checkValidity( text, error );    
     if( error.isNull() )
       urls.append( vfs::fromPathOrURL( text ) );

@@ -40,9 +40,10 @@ class GeneralFilter;
 class FilterDialog : public KDialogBase
 {
   Q_OBJECT
+  TQ_OBJECT
 
 public:
-  FilterDialog(  QWidget *parent = 0, const char *name = 0 );
+  FilterDialog(  TQWidget *tqparent = 0, const char *name = 0 );
   KRQuery getQuery();
 
 public slots:
