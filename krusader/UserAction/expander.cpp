@@ -339,7 +339,7 @@ TQString bashquote( TQString s ) {
     static const TQString evilstuff = "\\\"'`()[]{}!?;$&<>| \t\r\n";		// stuff that should get escaped
      
     for ( unsigned int i = 0; i < evilstuff.length(); ++i )
-        s.tqreplace( evilstuff[ i ], (TQString('\\') + evilstuff[ i ]) );
+        s.tqreplace( evilstuff[ i ], (TQString("\\") + evilstuff[ i ]) );
 
     return s;
 }

@@ -185,7 +185,7 @@ TQString KrServices::escape( TQString name ) {
   const TQString evilstuff = "\\\"'`()[]{}!?;$&<>| \t\r\n";		// stuff that should get escaped
      
     for ( unsigned int i = 0; i < evilstuff.length(); ++i )
-        name.tqreplace( evilstuff[ i ], (TQString('\\') + evilstuff[ i ]) );
+        name.tqreplace( evilstuff[ i ], (TQString("\\") + evilstuff[ i ]) );
 
   return name;
 }
