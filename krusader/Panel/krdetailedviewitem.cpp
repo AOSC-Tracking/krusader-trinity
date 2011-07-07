@@ -84,7 +84,7 @@ KrDetailedViewItem::KrDetailedViewItem(KrDetailedView *tqparent, TQListViewItem 
 #endif
 	}
 	
-	tqrepaintItem();
+	repaintItem();
 }
 
 #ifdef FASTER
@@ -97,7 +97,7 @@ void KrDetailedViewItem::setup() {
 }
 #endif
 
-void KrDetailedViewItem::tqrepaintItem() {
+void KrDetailedViewItem::repaintItem() {
     if ( dummyVfile ) return;
     TQString tmp;
     // set text in columns, according to what columns are available

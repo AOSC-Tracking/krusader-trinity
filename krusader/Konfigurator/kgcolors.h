@@ -120,7 +120,7 @@ private:
     {
       defaultForeground = foregnd;
       defaultBackground = backgnd;
-      listView()->tqrepaintItem( this );
+      listView()->repaintItem( this );
     }
 
     TQString text()

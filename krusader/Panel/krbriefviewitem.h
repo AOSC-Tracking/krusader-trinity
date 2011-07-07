@@ -51,7 +51,7 @@ public:
 	inline void setSelected(bool s) { KIconViewItem::setSelected(s); }
 	inline void cancelRename() { removeRenameBox(); }
 	int compare(TQIconViewItem *i) const;
-	virtual void tqrepaintItem();
+	virtual void repaintItem();
 	static void itemHeightChanged(); // force the items to resize when icon/font size change
 	// TODO: virtual void setup(); // called when iconview needs to know the height of the item
 #ifdef FASTER

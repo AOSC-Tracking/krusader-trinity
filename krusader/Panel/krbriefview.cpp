@@ -1382,7 +1382,7 @@ void KrBriefView::updateView() {
 }
 
 void KrBriefView::updateItem(KrViewItem* item) {
-	dynamic_cast<KrBriefViewItem*>(item)->tqrepaintItem();
+	dynamic_cast<KrBriefViewItem*>(item)->repaintItem();
 }
 
 void KrBriefView::slotRightButtonPressed(TQIconViewItem*, const TQPoint& point) {

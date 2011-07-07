@@ -50,7 +50,7 @@ KrBriefViewItem::KrBriefViewItem(KrBriefView *tqparent, TQIconViewItem *after, v
 	setRenameEnabled( false );
 	setDragEnabled( true );
 	setDropEnabled( true );
-	tqrepaintItem();
+	repaintItem();
 }
 
 
@@ -185,7 +185,7 @@ void KrBriefViewItem::itemHeightChanged() {
 #endif // FASTER
 }
 
-void KrBriefViewItem::tqrepaintItem()
+void KrBriefViewItem::repaintItem()
 {
    if ( dummyVfile ) return;
 

@@ -125,7 +125,7 @@ void UserActionListView::setCurrentAction( const KrAction* action) {
    if ( item ) {
       setCurrentItem( item );
 //       setSelected( item, true );
-//       tqrepaintItem( item );
+//       repaintItem( item );
    }
 }
 

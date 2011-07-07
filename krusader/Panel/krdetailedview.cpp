@@ -1102,7 +1102,7 @@ void KrDetailedView::keyPressEvent( TQKeyEvent * e ) {
                      goto mark;
                   }
                   viewItem->setSize( totalSize );
-                  viewItem->tqrepaintItem();
+                  viewItem->repaintItem();
                }
             }
 mark:       if (KrSelectionMode::getSelectionHandler()->spaceMovesDown())
@@ -1176,7 +1176,7 @@ void KrDetailedView::rename( TQListViewItem * item, int c ) {
    if ( COLUMN( Extention ) != -1 ) {
       item->setText( COLUMN( Name ), static_cast<KrDetailedViewItem*>( item ) ->name() );
       item->setText( COLUMN( Extention ), TQString() );
-      tqrepaintItem( item );
+      repaintItem( item );
    }
 
    currentlyRenamedItem = item;
@@ -1257,7 +1257,7 @@ void KrDetailedView::inplaceRenameFinished( TQListViewItem * it, int ) {
       }
       it->setText( COLUMN( Name ), name );
       it->setText( COLUMN( Extention ), ext );
-      tqrepaintItem( it );
+      repaintItem( it );
 #if 0
    }
 #endif
@@ -1528,7 +1528,7 @@ void KrDetailedView::updateView() {
 }
 
 void KrDetailedView::updateItem(KrViewItem* item) {
-	dynamic_cast<KrDetailedViewItem*>(item)->tqrepaintItem();
+	dynamic_cast<KrDetailedViewItem*>(item)->repaintItem();
 }
 
 void KrDetailedView::slotRightButtonPressed(TQListViewItem*, const TQPoint& point, int) {

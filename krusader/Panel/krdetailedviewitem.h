@@ -51,7 +51,7 @@ public:
 	inline void setSelected(bool s) { KListViewItem::setSelected(s); }
 	int compare(TQListViewItem *i,int col,bool ascending ) const;
 	void paintCell(TQPainter *p, const TQColorGroup &cg, int column, int width, int align);
-	void tqrepaintItem();
+	void repaintItem();
 	static void itemHeightChanged(); // force the items to resize when icon/font size change
 #ifdef FASTER		
 	virtual void setup(); // called when listview needs to know the height of the item

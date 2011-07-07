@@ -76,7 +76,7 @@ void KrCalcSpaceDialog::CalcThread::run(){
                 KrDetailedViewItem * viewItem = dynamic_cast<KrDetailedViewItem *>(m_view->findItemByName ( *it ) );
                 if (viewItem){
                      KrCalcSpaceDialog::setDirSize(viewItem, m_currentSize);
-                     //viewItem->tqrepaintItem(); // crash in KrDetailedViewItem::tqrepaintItem(): setPixmap(_view->column(KrDetailedView::Name),KrView::getIcon(_vf))
+                     //viewItem->repaintItem(); // crash in KrDetailedViewItem::repaintItem(): setPixmap(_view->column(KrDetailedView::Name),KrView::getIcon(_vf))
                 }
                 m_totalSize += m_currentSize;
                 m_currentSize = 0;
