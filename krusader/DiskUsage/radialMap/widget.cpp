@@ -75,7 +75,7 @@ RadialMap::Widget::tqinvalidate( const bool b )
          update();
 
       //tell rest of Filelight
-      emit tqinvalidated( urlInv );
+      emit invalidated( urlInv );
    }
 }
 

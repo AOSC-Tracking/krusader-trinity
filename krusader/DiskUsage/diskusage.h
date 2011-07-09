@@ -159,7 +159,7 @@ protected:
   bool       deleting;
 
   TQValueStack<TQString> directoryStack;
-  TQPtrStack<Directory> tqparentStack;
+  TQPtrStack<Directory> parentStack;
 
   vfs       * searchVfs;
   vfile     * currentVfile;

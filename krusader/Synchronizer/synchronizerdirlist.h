@@ -63,7 +63,7 @@ signals:
 
 private:
   TQDictIterator<vfile> *fileIterator; //< Point to a dictionary of virtual files (vfile).
-  TQWidget *tqparentWidget;
+  TQWidget *parentWidget;
   bool     busy;
   bool     result;
   bool     ignoreHidden;

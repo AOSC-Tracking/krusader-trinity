@@ -48,7 +48,7 @@
 #include "../resources.h"
 
 ///////////////////// initiation of the static members ////////////////////////
-TQStrList KRSpWidgets::tqmaskList;
+TQStrList KRSpWidgets::maskList;
 
 ///////////////////////////////////////////////////////////////////////////////
 
@@ -156,7 +156,7 @@ KRMaskChoiceSub::KRMaskChoiceSub() : KRMaskChoice(0,0,true) {
   if (i>0) preSelections->insertStrList(lst);
   // the combo-box tweaks
   selection->setDuplicatesEnabled(false);
-  selection->insertStrList(KRSpWidgets::tqmaskList);
+  selection->insertStrList(KRSpWidgets::maskList);
   selection->lineEdit()->setText("*");
   selection->lineEdit()->selectAll();
   selection->setFocus();
@@ -171,7 +171,7 @@ void KRMaskChoiceSub::accept() {
   bool add = true;
   char *tmp;
   // make sure we don't have that already
-  for ( tmp = KRSpWidgets::tqmaskList.first(); tmp ; tmp = KRSpWidgets::tqmaskList.next() )
+  for ( tmp = KRSpWidgets::maskList.first(); tmp ; tmp = KRSpWidgets::maskList.next() )
     if (TQString(tmp).simplifyWhiteSpace() == selection->currentText().simplifyWhiteSpace()) {
       // break if we found one such as this
       add = false;
@@ -179,7 +179,7 @@ void KRMaskChoiceSub::accept() {
     }
 
   if (add)
-    KRSpWidgets::tqmaskList.insert(0,selection->currentText().local8Bit());
+    KRSpWidgets::maskList.insert(0,selection->currentText().local8Bit());
   // write down the predefined selections list
   TQStrList list;
   TQListBoxItem *i=preSelections->firstItem();

@@ -250,10 +250,10 @@ void DiskUsage::load( KURL baseDir )
   root = new Directory( baseURL.fileName(), vfs::pathOrURL( baseDir ) );
 
   directoryStack.clear();
-  tqparentStack.clear();
+  parentStack.clear();
 
   directoryStack.push( "" );
-  tqparentStack.push( root );
+  parentStack.push( root );
 
   if( searchVfs )
   {
@@ -323,7 +323,7 @@ void DiskUsage::slotLoadDirectory()
           break;
 
         dirToCheck = directoryStack.pop();
-        currentParent = tqparentStack.pop();
+        currentParent = parentStack.pop();
 
         contentMap.insert( dirToCheck, currentParent );
 
@@ -363,7 +363,7 @@ void DiskUsage::slotLoadDirectory()
                                    currentVfile->vfile_getPerm(), currentVfile->vfile_getTime_t(), currentVfile->vfile_isSymLink(),
                                    mime );
           directoryStack.push( (dirToCheck.isEmpty() ? "" : dirToCheck + "/" )+ currentVfile->vfile_getName() );
-          tqparentStack.push( dynamic_cast<Directory *>( newItem ) );
+          parentStack.push( dynamic_cast<Directory *>( newItem ) );
         }
         else
         {

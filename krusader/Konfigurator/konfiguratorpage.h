@@ -120,7 +120,7 @@ public:
     * <br>The checkbox widget's name is TQString(cls + "/" + name).ascii()<br>
     *
     * Sample:<br><br>
-    * KonfiguratorCheckBox *myCheckBox = createCheckBox( "class", "name", false, tqparentWidget );<br>
+    * KonfiguratorCheckBox *myCheckBox = createCheckBox( "class", "name", false, parentWidget );<br>
     * myLayout->addWidget( myCheckBox, 0, 0 );
     *
     * @param  cls         The class name used in KConfig (ex. "Archives")
@@ -143,7 +143,7 @@ public:
     * <br>The spinbox widget's name is TQString(cls + "/" + name).ascii()<br>
     *
     * Sample:<br><br>
-    * KonfiguratorSpinBox *mySpinBox = createSpinBox( "class", "name", 10, 1, 100, tqparentWidget );<br>
+    * KonfiguratorSpinBox *mySpinBox = createSpinBox( "class", "name", 10, 1, 100, parentWidget );<br>
     * myLayout->addWidget( mySpinBox, 0, 0 );
     *
     * @param  cls         The class name used in KConfig (ex. "Archives")
@@ -165,7 +165,7 @@ public:
     * <br>The editbox widget's name is TQString(cls + "/" + name).ascii()<br>
     *
     * Sample:<br><br>
-    * KonfiguratorEditBox *myEditBox = createEditBox( "class", "name", "default", tqparentWidget );<br>
+    * KonfiguratorEditBox *myEditBox = createEditBox( "class", "name", "default", parentWidget );<br>
     * myLayout->addWidget( myEditBox, 0, 0 );
     *
     * @param  cls         The class name used in KConfig (ex. "Archives")
@@ -187,7 +187,7 @@ public:
     * Sample:<br><br>
     * TQStringList valueList;<br>
     * valueList += "item";<br>
-    * KonfiguratorListBox *myListBox = createListBox( "class", "name", valueList, tqparentWidget );<br>
+    * KonfiguratorListBox *myListBox = createListBox( "class", "name", valueList, parentWidget );<br>
     * myLayout->addWidget( myListBox, 0, 0 );
     *
     * @param  cls         The class name used in KConfig (ex. "Archives")
@@ -207,7 +207,7 @@ public:
     * <br>The URL requester widget's name is TQString(cls + "/" + name).ascii()<br>
     *
     * Sample:<br><br>
-    * KonfiguratorURLRequester *myURLRequester = createURLRequester( "class", "name", "default", tqparentWidget );<br>
+    * KonfiguratorURLRequester *myURLRequester = createURLRequester( "class", "name", "default", parentWidget );<br>
     * myLayout->addWidget( myURLRequester, 0, 0 );
     *
     * @param  cls         The class name used in KConfig (ex. "Archives")
@@ -228,7 +228,7 @@ public:
     * <br>The font chooser widget's name is TQString(cls + "/" + name).ascii()<br>
     *
     * Sample:<br><br>
-    * KonfiguratorFontChooser *myFontChooser = createFontChooser( "class", "name", new TQFont(), tqparentWidget );<br>
+    * KonfiguratorFontChooser *myFontChooser = createFontChooser( "class", "name", new TQFont(), parentWidget );<br>
     * myLayout->addWidget( myFontChooser, 0, 0 );
     *
     * @param  cls         The class name used in KConfig (ex. "Archives")
@@ -252,7 +252,7 @@ public:
     * &nbsp;{{ i18n( "combo text1" ), "value1" },<br>
     * &nbsp;&nbsp;{ i18n( "combo text2" ), "value2" },<br>
     * &nbsp;&nbsp;{ i18n( "combo text3" ), "value3" }};<br><br>
-    * KonfiguratorComboBox *myComboBox = createComboBox( "class", "name", "value2", comboInfo, 3, tqparentWidget );<br>
+    * KonfiguratorComboBox *myComboBox = createComboBox( "class", "name", "value2", comboInfo, 3, parentWidget );<br>
     * myLayout->addWidget( myComboBox, 0, 0 );
     *
     * @param  cls         The class name used in KConfig (ex. "Archives")
@@ -276,7 +276,7 @@ public:
     * Creates a frame on the page.
     *
     * Sample:<br><br>
-    * TQGroupBox *myGroup = createFrame( i18n( "MyFrameName" ), tqparentWidget, "frameName" );<br>
+    * TQGroupBox *myGroup = createFrame( i18n( "MyFrameName" ), parentWidget, "frameName" );<br>
     * myLayout->addWidget( myGroup, 0, 0 );
     *
     * @param  text        The text written out onto the frame
@@ -292,7 +292,7 @@ public:
     * Creates a new TQGridLayout element and sets its margins.
     *
     * Sample:<br><br>
-    * TQGroupBox *myGroup = createFrame( i18n( "MyFrameName" ), tqparentWidget, "frameName" );<br>
+    * TQGroupBox *myGroup = createFrame( i18n( "MyFrameName" ), parentWidget, "frameName" );<br>
     * TQGridLayout *myLayout = createGridLayout( myGroup->tqlayout() );<br>
     * myLayout->addWidget( myGroup, 0, 0 );
     *
@@ -306,7 +306,7 @@ public:
     * Adds a new label to a grid tqlayout.
     *
     * Sample:<br><br>
-    * TQGroupBox *myGroup = createFrame( i18n( "MyFrameName" ), tqparentWidget, "frameName" );<br>
+    * TQGroupBox *myGroup = createFrame( i18n( "MyFrameName" ), parentWidget, "frameName" );<br>
     * TQGridLayout *myLayout = createGridLayout( myGroup->tqlayout() );<br>
     * addLabel( myLayout, 0, 0, i18n( "Hello world!" ), myGroup, "myLabel" );<br>
     * mainLayout->addWidget( myGroup, 0, 0 );
@@ -441,7 +441,7 @@ public:
     * This function is used to remove elements from KonfiguratorPage.
     *
     * Sample:<br><br>
-    * KonfiguratorEditBox *myEditBox = createEditBox( "class", "name", "default", tqparentWidget );<br>
+    * KonfiguratorEditBox *myEditBox = createEditBox( "class", "name", "default", parentWidget );<br>
     * myLayout->addWidget( myEditBox, 0, 0 );<br>
     * removeObject( myEditBox->extension() );
     *
@@ -457,7 +457,7 @@ public:
     * <br>The chooser's widget's name is TQString(cls + "/" + name).ascii()<br>
     *
     * Sample:<br><br>
-    * KonfiguratorColorChooser *myColorChooser = createColorChooser( "class", "name", TQColor( 255, 0, 255 ), tqparentWidget );<br>
+    * KonfiguratorColorChooser *myColorChooser = createColorChooser( "class", "name", TQColor( 255, 0, 255 ), parentWidget );<br>
     * myLayout->addWidget( myColorChooser, 0, 0 );
     *
     * @param  cls         The class name used in KConfig (ex. "Archives")

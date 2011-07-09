@@ -38,18 +38,18 @@
 #include <kmessagebox.h>
 #include "../VFS/vfs.h"
 
-CompareTask::CompareTask( SynchronizerFileItem *tqparentIn, const TQString &leftURL,
+CompareTask::CompareTask( SynchronizerFileItem *parentIn, const TQString &leftURL,
                           const TQString &rightURL, const TQString &leftDir,
-                          const TQString &rightDir, bool hidden ) : SynchronizerTask (),  m_parent( tqparentIn ),
+                          const TQString &rightDir, bool hidden ) : SynchronizerTask (),  m_parent( parentIn ),
                           m_url( leftURL ), m_dir( leftDir ), m_otherUrl( rightURL ),
                           m_otherDir( rightDir ), m_duplicate( true ),
                           m_dirList( 0 ), m_otherDirList( 0 ) {
   ignoreHidden = hidden;
 }
 
-CompareTask::CompareTask( SynchronizerFileItem *tqparentIn, const TQString &urlIn,
+CompareTask::CompareTask( SynchronizerFileItem *parentIn, const TQString &urlIn,
                           const TQString &dirIn, bool isLeftIn, bool hidden ) : SynchronizerTask (),
-                          m_parent( tqparentIn ), m_url( urlIn ), m_dir( dirIn ),
+                          m_parent( parentIn ), m_url( urlIn ), m_dir( dirIn ),
                           m_isLeft( isLeftIn ), m_duplicate( false ),
                           m_dirList( 0 ), m_otherDirList( 0 ) {
   ignoreHidden = hidden;
@@ -71,12 +71,12 @@ void CompareTask::start() {
     m_state = ST_STATE_PENDING;
     m_loadFinished = m_otherLoadFinished = false;
 
-    m_dirList = new SynchronizerDirList( tqparentWidget, ignoreHidden );
+    m_dirList = new SynchronizerDirList( parentWidget, ignoreHidden );
     connect( m_dirList, TQT_SIGNAL( finished( bool ) ), this, TQT_SLOT( slotFinished( bool ) ));
     m_dirList->load( m_url, false );
 
     if( m_duplicate ) {
-      m_otherDirList = new SynchronizerDirList( tqparentWidget, ignoreHidden );
+      m_otherDirList = new SynchronizerDirList( parentWidget, ignoreHidden );
       connect( m_otherDirList, TQT_SIGNAL( finished( bool ) ), this, TQT_SLOT( slotOtherFinished( bool ) ));
       m_otherDirList->load( m_otherUrl, false );
     }
@@ -131,14 +131,14 @@ void CompareContentTask::start() {
   if( leftURL.isLocalFile() && rightURL.isLocalFile() ) {
     leftFile = new TQFile( leftURL.path() );
     if( !leftFile->open( IO_ReadOnly ) ) {
-      KMessageBox::error(tqparentWidget, i18n("Error at opening %1!").tqarg( leftURL.path() ));
+      KMessageBox::error(parentWidget, i18n("Error at opening %1!").tqarg( leftURL.path() ));
       m_state = ST_STATE_ERROR;
       return;
     }
 
     rightFile = new TQFile( rightURL.path() );
     if( !rightFile->open( IO_ReadOnly ) ) {
-      KMessageBox::error(tqparentWidget, i18n("Error at opening %1!").tqarg( rightURL.path() ));
+      KMessageBox::error(parentWidget, i18n("Error at opening %1!").tqarg( rightURL.path() ));
       m_state = ST_STATE_ERROR;
       return;
     }
@@ -299,7 +299,7 @@ void CompareContentTask::slotFinished(KIO::Job *job)
   if( job->error() && job->error() != KIO::ERR_USER_CANCELED && !errorPrinted )
   {
     errorPrinted = true;
-    KMessageBox::error(tqparentWidget, i18n("IO error at comparing file %1 with %2!")
+    KMessageBox::error(parentWidget, i18n("IO error at comparing file %1 with %2!")
                        .tqarg( vfs::pathOrURL( leftURL ) )
                        .tqarg( vfs::pathOrURL( rightURL ) ) );
   }

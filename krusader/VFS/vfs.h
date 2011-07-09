@@ -124,7 +124,7 @@ public slots:
 	bool vfs_refresh();
 	void vfs_setQuiet(bool beQuiet){ quietMode=beQuiet; }
 	void vfs_enableRefresh(bool enable);        
-	void vfs_tqinvalidate() { tqinvalidated = true; }          
+	void vfs_tqinvalidate() { invalidated = true; }          
 
 signals:
 	void startUpdate(); //< emitted when the VFS starts to refresh its list of vfiles.
@@ -160,7 +160,7 @@ protected:
 	bool disableRefresh;        //< true if refresh is disabled
 	bool isWritable;            //< true if it's writable
 	KURL postponedRefreshURL;   //< true if vfs_refresh() was called when refresh is disabled.
-	bool tqinvalidated;           //< the content of the cache is tqinvalidated
+	bool invalidated;           //< the content of the cache is invalidated
 	bool panelConnected;        //< indicates that there's a panel connected. Important for disabling the dir watcher
 	
 protected slots:

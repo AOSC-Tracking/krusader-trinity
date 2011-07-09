@@ -1,5 +1,5 @@
 /***************************************************************************
-                                 krtqmaskchoice.cpp
+                                 krmaskchoice.cpp
                              -------------------
     copyright            : (C) 2000 by Shie Erlich & Rafi Yanai
     e-mail               : krusader@users.sourceforge.net
@@ -94,7 +94,7 @@ KRMaskChoice::KRMaskChoice( TQWidget* tqparent,  const char* name, bool modal, W
 
     preSelections = new TQListBox( Layout6, "preSelections" );
     preSelections->setVScrollBarMode( TQListBox::AlwaysOn );
-    TQWhatsThis::add(  preSelections, i18n( "A predefined selection is a file-tqmask which you use often.\nSome examples are: \"*.c, *.h\", \"*.c, *.o\", etc.\nYou can add these tqmasks to the list by typing them and pressing the Add button.\nDelete removes a predefined selection and Clear removes all of them.\nNotice that the line in which you edit the tqmask has it's own history, you can scroll it, if needed." ) );
+    TQWhatsThis::add(  preSelections, i18n( "A predefined selection is a file-tqmask which you use often.\nSome examples are: \"*.c, *.h\", \"*.c, *.o\", etc.\nYou can add these masks to the list by typing them and pressing the Add button.\nDelete removes a predefined selection and Clear removes all of them.\nNotice that the line in which you edit the tqmask has it's own history, you can scroll it, if needed." ) );
     hbox_2->addWidget( preSelections );
 
     vbox = new TQVBoxLayout; 

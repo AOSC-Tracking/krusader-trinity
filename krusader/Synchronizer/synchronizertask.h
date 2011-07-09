@@ -55,7 +55,7 @@ public:
   SynchronizerTask() : TQObject(), m_state( ST_STATE_NEW ), m_statusMessage( TQString() ) {}
   virtual ~SynchronizerTask() {};
 
-  inline int start( TQWidget *tqparentWidget ) { this->tqparentWidget = tqparentWidget; start(); return state(); }
+  inline int start( TQWidget *parentWidget ) { this->parentWidget = parentWidget; start(); return state(); }
 
   inline int  state() { return m_state; }
 
@@ -77,7 +77,7 @@ protected:
   virtual void start() {};
   int m_state;
   TQString m_statusMessage;
-  TQWidget *tqparentWidget;
+  TQWidget *parentWidget;
 };
 
 
@@ -86,10 +86,10 @@ class CompareTask : public SynchronizerTask {
   TQ_OBJECT
 
 public:
-  CompareTask( SynchronizerFileItem *tqparentIn, const TQString &leftURL,
+  CompareTask( SynchronizerFileItem *parentIn, const TQString &leftURL,
                 const TQString &rightURL, const TQString &leftDir,
                 const TQString &rightDir, bool ignoreHidden );
-  CompareTask( SynchronizerFileItem *tqparentIn, const TQString &urlIn,
+  CompareTask( SynchronizerFileItem *parentIn, const TQString &urlIn,
                 const TQString &dirIn, bool isLeftIn, bool ignoreHidden );
   virtual ~CompareTask();
 

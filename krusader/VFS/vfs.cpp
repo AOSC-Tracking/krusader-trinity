@@ -42,7 +42,7 @@
 #include "../defaults.h"
 
 vfs::vfs(TQObject* panel, bool quiet): vfs_busy(false), quietMode(quiet),disableRefresh(false),postponedRefreshURL(),
-                                      tqinvalidated(true),panelConnected(false),vfs_tempFilesP(0),vfileIterator(0),deletePossible( true ),
+                                      invalidated(true),panelConnected(false),vfs_tempFilesP(0),vfileIterator(0),deletePossible( true ),
                                       deleteRequested( false ) {
 		
 
@@ -140,7 +140,7 @@ bool vfs::vfs_refresh(){
 	if( vfs_busy )
 		return false;
 	
-	if( tqinvalidated ) // tqinvalidated fs requires total refresh
+	if( invalidated ) // invalidated fs requires total refresh
 		return vfs_refresh( vfs_getOrigin() );
 	
 	if( disableRefresh )
@@ -227,7 +227,7 @@ bool vfs::vfs_refresh(const KURL& origin){
 		return true;
 	}
 
-	if( !tqinvalidated && origin.equals(vfs_getOrigin(),true) ) return vfs_refresh();
+	if( !invalidated && origin.equals(vfs_getOrigin(),true) ) return vfs_refresh();
 	
 	vfs_busy = true;
 	
@@ -249,7 +249,7 @@ bool vfs::vfs_refresh(const KURL& origin){
 	
 	emit startUpdate();
 	
-	tqinvalidated = false;
+	invalidated = false;
 	return true;
 }
 

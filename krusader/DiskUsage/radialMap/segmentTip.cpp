@@ -33,7 +33,7 @@ SegmentTip::moveto( TQPoint p, const TQWidget &canvas, bool placeAbove )
   p.rx() -= rect().center().x();
   p.ry() -= (placeAbove ? 8 + height() : m_cursorHeight - 8);
 
-  const TQRect screen = KGlobalSettings::desktopGeometry( tqparentWidget() );
+  const TQRect screen = KGlobalSettings::desktopGeometry( parentWidget() );
 
   const int x  = p.x();
   const int y  = p.y();

@@ -57,7 +57,7 @@ protected:
 	virtual void parseLine(int lineNo, TQString line, TQFile* temp);
 	virtual bool setArcFile(const KURL& url);
 	virtual TQString getPassword();
-	virtual void tqinvalidatePassword();
+	virtual void invalidatePassword();
 
 	// archive specific commands
 	TQString cmd;     ///< the archiver name.

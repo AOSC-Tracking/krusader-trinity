@@ -175,10 +175,10 @@ protected:
   int               m_percent;  //< percent flag
 
 public:
-  File( Directory *tqparentIn, const TQString &nameIn, const TQString &dir, FileSize sizeIn, mode_t modeIn,
+  File( Directory *parentIn, const TQString &nameIn, const TQString &dir, FileSize sizeIn, mode_t modeIn,
         const TQString &ownerIn, const TQString &groupIn, const TQString &permIn, time_t timeIn, bool symLinkIn,
         const TQString &mimeTypeIn )
-  : m_parent( tqparentIn ), m_name( nameIn ), m_directory( dir ), m_size( sizeIn ), m_ownSize( sizeIn ), m_mode( modeIn ), 
+  : m_parent( parentIn ), m_name( nameIn ), m_directory( dir ), m_size( sizeIn ), m_ownSize( sizeIn ), m_mode( modeIn ), 
     m_owner( ownerIn ), m_group( groupIn ), m_perm( permIn ), m_time( timeIn ), m_symLink( symLinkIn ), 
     m_mimeType( mimeTypeIn ), m_excluded( false ), m_percent( -1 ) {}
     
@@ -238,10 +238,10 @@ public:
 class Directory : public Chain<File>, public File
 {
 public:
-  Directory( Directory *tqparentIn, const TQString &nameIn, const TQString &dir, FileSize sizeIn, mode_t modeIn,
+  Directory( Directory *parentIn, const TQString &nameIn, const TQString &dir, FileSize sizeIn, mode_t modeIn,
              const TQString &ownerIn, const TQString &groupIn, const TQString &permIn, time_t timeIn, bool symLinkIn, 
              const TQString &mimeTypeIn )
-  : File( tqparentIn, nameIn, dir, sizeIn, modeIn, ownerIn, groupIn, permIn, timeIn, symLinkIn, mimeTypeIn ),
+  : File( parentIn, nameIn, dir, sizeIn, modeIn, ownerIn, groupIn, permIn, timeIn, symLinkIn, mimeTypeIn ),
     m_fileCount( 0 ) 
   {}
  

@@ -78,7 +78,7 @@
 
 Synchronizer::Synchronizer() : displayUpdateCount( 0 ), markEquals( true ), 
         markDiffers ( true ), markCopyToLeft( true ), markCopyToRight( true ), markDeletable( true ),
-        stack(), jobMap(), receivedMap(), tqparentWidget( 0 )
+        stack(), jobMap(), receivedMap(), parentWidget( 0 )
 {
   resultList.setAutoDelete( true );
   stack.setAutoDelete( true );
@@ -164,7 +164,7 @@ void Synchronizer::compareLoop() {
       SynchronizerTask * entry = stack.at( thread );
 
       if( entry->state() == ST_STATE_NEW )
-        entry->start( tqparentWidget );
+        entry->start( parentWidget );
 
       if( entry->inherits("CompareTask") ) {
         if( entry->state() == ST_STATE_READY ) {
@@ -1445,7 +1445,7 @@ void Synchronizer::synchronizeWithKGet()
 
         p << KrServices::fullPathName( "kget" ) << source << destURL.path();
         if (!p.start(KProcess::Block))
-          KMessageBox::error(tqparentWidget,i18n("Error executing ")+KrServices::fullPathName( "kget" )+" !");
+          KMessageBox::error(parentWidget,i18n("Error executing ")+KrServices::fullPathName( "kget" )+" !");
         else
           p.detach();
       }

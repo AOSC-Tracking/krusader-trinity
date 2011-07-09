@@ -325,7 +325,7 @@ void kio_krarcProtocol::get(const KURL& url, int tries ){
 	if( !extArcReady && !decompressToFile ) {  
 		if( !proc.normalExit() || !checktqStatus( proc.exitStatus() ) || ( arcType != "bzip2" && expectedSize != decompressedLen ) ) {
 			if( encrypted && tries ) {
-				tqinvalidatePassword();
+				invalidatePassword();
 				get( url, tries - 1 );
 				return;
 			}
@@ -338,7 +338,7 @@ void kio_krarcProtocol::get(const KURL& url, int tries ){
 			if( decompressToFile )
 				TQFile(arcTempDir+file).remove();
 			if( encrypted && tries ) {
-				tqinvalidatePassword();
+				invalidatePassword();
 				get( url, tries - 1 );
 				return;
 			}
@@ -1574,7 +1574,7 @@ void kio_krarcProtocol::checkOutputForPassword( KProcess *proc,char *buf,int len
 	}
 }
 
-void kio_krarcProtocol::tqinvalidatePassword() {
+void kio_krarcProtocol::invalidatePassword() {
 	KRDEBUG( arcFile->url().path(-1) + "/" );
 	
 	if( !encrypted )

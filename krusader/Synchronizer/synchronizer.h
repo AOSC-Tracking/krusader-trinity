@@ -88,7 +88,7 @@ class Synchronizer : public TQObject
 
     SynchronizerFileItem *getItemAt( unsigned ndx ) {return resultList.at(ndx);}
 
-    void     setParentWidget( TQWidget * widget )    {tqparentWidget = widget;}
+    void     setParentWidget( TQWidget * widget )    {parentWidget = widget;}
     void     compareContentResult( SynchronizerFileItem * item, bool result );
 
   signals:
@@ -198,7 +198,7 @@ class Synchronizer : public TQObject
     int                               inTaskFinished; // counter of quasy 'threads' in slotTaskFinished
 
     TQStringList                       selectedFiles;  // the selected files to compare
-    TQWidget                          *tqparentWidget;   // the tqparent widget
+    TQWidget                          *parentWidget;   // the tqparent widget
     TQWidget                          *syncDlgWidget;  // the synchronizer dialog widget
 };
 

@@ -46,7 +46,7 @@ A
 /////////////////////////////////////////////////////////////////////////////
 // The pie-related widgets use hard-coded coordinates to create the look.
 // This is ok since the whole widget is fitted into an existing view and thus
-// no re-tqalignments are needed.
+// no re-alignments are needed.
 
 #define LEFT       10
 #define BOTTOM     150

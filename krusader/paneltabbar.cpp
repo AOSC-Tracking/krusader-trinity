@@ -81,7 +81,7 @@ int PanelTabBar::addPanel(ListPanel *panel, bool setCurrent ) {
   // make sure all tabs lengths are correct
   for (int i=0; i<count(); i++)
     tabAt(i)->setText(squeeze(DISPLAY(dynamic_cast<PanelTab*>(tabAt(i))->panel->virtualPath()), i));
-  tqlayoutTabs();
+  layoutTabs();
   
   if( setCurrent )
     setCurrentTab(newId);
@@ -105,7 +105,7 @@ ListPanel* PanelTabBar::removeCurrentPanel(ListPanel* &panelToDelete) {
 
   for (int i=0; i<count(); i++)
     tabAt(i)->setText(squeeze(DISPLAY(dynamic_cast<PanelTab*>(tabAt(i))->panel->virtualPath()), i));
-  tqlayoutTabs();
+  layoutTabs();
 
   // setup current one
   id = currentTab();
@@ -232,7 +232,7 @@ void PanelTabBar::resizeEvent ( TQResizeEvent *e ) {
      
     for (int i=0; i<count(); i++)
       tabAt(i)->setText(squeeze(DISPLAY(dynamic_cast<PanelTab*>(tabAt(i))->panel->virtualPath()), i));
-    tqlayoutTabs();
+    layoutTabs();
 }
 
 

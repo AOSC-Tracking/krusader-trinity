@@ -39,15 +39,15 @@ public:
   }
   
   virtual ~PercentalSplitterToolTip() {
-    remove( tqparentWidget() );
+    remove( parentWidget() );
   }
   
   void maybeTip( const TQPoint & point ) {
-    if( tqparentWidget()->inherits( "PercentalSplitter" ) ) {
-      PercentalSplitter *splitter = (PercentalSplitter *)tqparentWidget();
+    if( parentWidget()->inherits( "PercentalSplitter" ) ) {
+      PercentalSplitter *splitter = (PercentalSplitter *)parentWidget();
       
       TQString tipString = splitter->toolTipString();
-      TQRect rect = TQRect( tqparentWidget()->rect() );
+      TQRect rect = TQRect( parentWidget()->rect() );
 
       if( splitter->orientation() == Qt::Vertical ) {
         rect.setY( splitter->sizes()[ 0 ] );

@@ -80,7 +80,7 @@ namespace RadialMap
 
     signals:
         void activated( const KURL& );
-        void tqinvalidated( const KURL& );
+        void invalidated( const KURL& );
         void created( const Directory* );
         void mouseHover( const TQString& );
 

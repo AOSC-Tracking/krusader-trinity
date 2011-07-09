@@ -52,7 +52,7 @@ public:
   static KURL newFTP();
 
 private:
-  static TQStrList tqmaskList;  // used by KRMaskChoiceSub 
+  static TQStrList maskList;  // used by KRMaskChoiceSub 
 };
 
 /////////////////////////// newFTPSub ///////////////////////////////////////

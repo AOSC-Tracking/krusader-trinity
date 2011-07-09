@@ -1,5 +1,5 @@
 /***************************************************************************
-                                 krtqmaskchoice.h
+                                 krmaskchoice.h
                              -------------------
     copyright            : (C) 2000 by Shie Erlich & Rafi Yanai
     email                : krusader@users.sourceforge.net

@@ -49,7 +49,7 @@
 #endif
 
 SynchronizerDirList::SynchronizerDirList( TQWidget *w, bool hidden ) : TQObject(), TQDict<vfile>(), fileIterator( 0 ),
-                                   tqparentWidget( w ), busy( false ), result( false ), ignoreHidden( hidden ), currentUrl() {
+                                   parentWidget( w ), busy( false ), result( false ), ignoreHidden( hidden ), currentUrl() {
   setAutoDelete( true );
 }
 
@@ -98,7 +98,7 @@ bool SynchronizerDirList::load( const TQString &urlIn, bool wait ) {
     TQString path = url.path( -1 );
     DIR* dir = opendir(path.local8Bit());
     if(!dir)  {
-      KMessageBox::error(tqparentWidget, i18n("Can't open the %1 directory!").tqarg( path ), i18n("Error"));
+      KMessageBox::error(parentWidget, i18n("Can't open the %1 directory!").tqarg( path ), i18n("Error"));
       emit finished( result = false );
       return false;
     }
@@ -206,7 +206,7 @@ void SynchronizerDirList::slotEntries( KIO::Job * job, const KIO::UDSEntryList& 
 void SynchronizerDirList::slotListResult( KIO::Job *job ) {
   busy = false;
   if ( job && job->error() ) {
-    job->showErrorDialog( tqparentWidget );
+    job->showErrorDialog( parentWidget );
     emit finished( result = false );
     return;
   }

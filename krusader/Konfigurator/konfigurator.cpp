@@ -116,7 +116,7 @@ void Konfigurator::createLayout( int startPage )
   newContent(new KgProtocols(firstTime, widget->addPage(i18n("Protocols"),
     i18n("Link mimes to protocols"), TQPixmap(krLoader->loadIcon("about_kde",KIcon::Desktop,32)))));
         
-  widget->showPage( widget->pageIndex( kgFrames.at( startPage )->tqparentWidget() ) );
+  widget->showPage( widget->pageIndex( kgFrames.at( startPage )->parentWidget() ) );
   slotApplyEnable();
 }
 
@@ -154,7 +154,7 @@ int Konfigurator::searchPage( int pageNum )
 
   while( ( page = kgFrames.at( i ) ) )
   {
-    if( pageNum == widget->pageIndex( page->tqparentWidget() ) )
+    if( pageNum == widget->pageIndex( page->parentWidget() ) )
       return i;
 
     i++;

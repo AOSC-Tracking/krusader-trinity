@@ -1104,7 +1104,7 @@ Please consult the handbook to learn more about the syntax.</string>
         <slot>setEnabled(bool)</slot>
     </connection>
 </connections>
-<tqlayoutdefaults spacing="6" margin="11"/>
+<layoutdefaults spacing="6" margin="11"/>
 <includehints>
     <includehint>klineedit.h</includehint>
     <includehint>klineedit.h</includehint>
