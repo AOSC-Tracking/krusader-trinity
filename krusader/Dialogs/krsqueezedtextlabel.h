@@ -18,7 +18,7 @@ class KrSqueezedTextLabel : public KSqueezedTextLabel {
 Q_OBJECT
   TQ_OBJECT
   public:
-    KrSqueezedTextLabel(TQWidget *tqparent = 0, const char *name = 0);
+    KrSqueezedTextLabel(TQWidget *parent = 0, const char *name = 0);
     ~KrSqueezedTextLabel();
 
     void enableDrops( bool flag );

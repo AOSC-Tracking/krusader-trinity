@@ -54,7 +54,7 @@ public slots:
 	void rename(const TQString &oldname, const TQString &newname);
 
 public:
-	ListPanelFunc(class ListPanel *tqparent);
+	ListPanelFunc(class ListPanel *parent);
 	~ListPanelFunc();
 
 	vfs* files();  // return a pointer to the vfs

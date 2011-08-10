@@ -35,7 +35,7 @@
 
 class PercentalSplitterToolTip : public TQToolTip {
 public:
-  PercentalSplitterToolTip( TQWidget * tqparent ) : TQToolTip( tqparent ) {
+  PercentalSplitterToolTip( TQWidget * parent ) : TQToolTip( parent ) {
   }
   
   virtual ~PercentalSplitterToolTip() {
@@ -63,7 +63,7 @@ public:
   }
 };
 
-PercentalSplitter::PercentalSplitter( TQWidget * tqparent, const char * name ) : TQSplitter( tqparent, name ), label( 0 ), opaqueOldPos( -1 ) {
+PercentalSplitter::PercentalSplitter( TQWidget * parent, const char * name ) : TQSplitter( parent, name ), label( 0 ), opaqueOldPos( -1 ) {
   toolTip = new PercentalSplitterToolTip( this );
 }  
   

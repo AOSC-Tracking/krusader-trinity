@@ -87,7 +87,7 @@ class SynchronizerFileItem
     TQString               m_rightACL;     // ACL of the right file
     TaskType              m_task;         // the task with the file
     bool                  m_isDir;        // flag, indicates that the file is a directory
-    SynchronizerFileItem *m_parent;       // pointer to the tqparent directory item or 0
+    SynchronizerFileItem *m_parent;       // pointer to the parent directory item or 0
     void                 *m_userData;     // user data
     bool                  m_overWrite;    // overwrite flag
     TQString               m_destination;  // the destination URL at rename
@@ -101,14 +101,14 @@ class SynchronizerFileItem
                        const TQString &leftLink, const TQString &rightLink, const TQString &leftOwner,
                        const TQString &rightOwner, const TQString &leftGroup, const TQString &rightGroup,
                        mode_t leftMode, mode_t rightMode, const TQString &leftACL, const TQString &rightACL, 
-                       TaskType tsk, bool isDir, bool tmp, SynchronizerFileItem *tqparent ) :
+                       TaskType tsk, bool isDir, bool tmp, SynchronizerFileItem *parent ) :
                        m_leftName( leftNam ), m_rightName( rightNam ), m_leftDirectory( leftDir ),  m_rightDirectory( rightDir ),
                        m_marked( mark ),  m_existsLeft( exL ), m_existsRight( exR ), m_leftSize( leftSize ),
                        m_rightSize( rightSize ), m_leftDate( leftDate ), m_rightDate( rightDate ),
                        m_leftLink( leftLink ), m_rightLink( rightLink ), m_leftOwner( leftOwner ),
                        m_rightOwner( rightOwner ), m_leftGroup( leftGroup ), m_rightGroup( rightGroup ),
                        m_leftMode( leftMode ), m_rightMode( rightMode ), m_leftACL( leftACL ),
-                       m_rightACL( rightACL ), m_task( tsk ), m_isDir( isDir ), m_parent(tqparent),
+                       m_rightACL( rightACL ), m_task( tsk ), m_isDir( isDir ), m_parent(parent),
                        m_userData( 0 ), m_overWrite( false ), m_destination( TQString() ), 
                        m_temporary( tmp ), m_originalTask( tsk ) {}
 
@@ -143,7 +143,7 @@ class SynchronizerFileItem
                                                              m_task = m_originalTask = (TaskType)(m_originalTask - TT_UNKNOWN);
                                                           }
     inline bool                   isDir()                 {return m_isDir;}
-    inline SynchronizerFileItem * tqparent()                {return m_parent;}
+    inline SynchronizerFileItem * parent()                {return m_parent;}
     inline void *                 userData()              {return m_userData;}
     inline void                   setUserData( void *ud)  {m_userData = ud;}
     inline void                   setOverWrite()          {m_overWrite = true;}

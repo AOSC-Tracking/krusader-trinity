@@ -101,7 +101,7 @@ public:
   inline const TQString & rightDir()              { return m_otherDir; }
   inline const TQString & url()                   { return m_url; }
   inline const TQString & dir()                   { return m_dir; }
-  inline SynchronizerFileItem * tqparent()         { return m_parent; }
+  inline SynchronizerFileItem * parent()         { return m_parent; }
   inline SynchronizerDirList * leftDirList()     { return m_dirList; }
   inline SynchronizerDirList * rightDirList()    { return m_otherDirList; }
   inline SynchronizerDirList * dirList()         { return m_dirList; }

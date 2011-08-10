@@ -58,10 +58,10 @@ public:
   * The constructor of the KonfiguratorPage class.
   *
   * @param firstTime    this parameter is true if it is the first call of Konfigurator
-  * @param tqparent       reference to the tqparent widget
+  * @param parent       reference to the parent widget
   * @param name         name of the newly generated Konfigurator page widget
   */
-  KonfiguratorPage( bool firstTime, TQWidget* tqparent,  const char* name );
+  KonfiguratorPage( bool firstTime, TQWidget* parent,  const char* name );
 
   /**
     * Applies the changes in the Konfigurator page.
@@ -127,7 +127,7 @@ public:
     * @param  name        The item name used in KConfig (ex. "Do Tar")
     * @param  dflt        The default value of the checkbox
     * @param  text        The text field of the checkbox
-    * @param  tqparent      Reference to the tqparent widget
+    * @param  parent      Reference to the parent widget
     * @param  rst         The change of this parameter requires Krusader restart
     * @param  toolTip     Tooltip used for this checkbox
     * @param  pg          The subpage of a Konfigurator page (because of setDefaults)
@@ -135,7 +135,7 @@ public:
     * @return             reference to the newly created checkbox
     */
   KonfiguratorCheckBox    *createCheckBox( TQString cls, TQString name, bool dflt,
-                                           TQString text, TQWidget *tqparent=0, bool rst=false,
+                                           TQString text, TQWidget *parent=0, bool rst=false,
                                            TQString toolTip = TQString(), int pg=FIRST_PAGE );
 
   /**
@@ -151,14 +151,14 @@ public:
     * @param  dflt        The default value of the spinbox
     * @param  min         The minimum value of the spinbox
     * @param  max         The maximum value of the spinbox
-    * @param  tqparent      Reference to the tqparent widget
+    * @param  parent      Reference to the parent widget
     * @param  rst         The change of this parameter requires Krusader restart
     * @param  pg          The subpage of a Konfigurator page (because of setDefaults)
     *
     * @return             reference to the newly created spinbox
     */
   KonfiguratorSpinBox     *createSpinBox(  TQString cls, TQString name, int dflt, int min,
-                                           int max, TQWidget *tqparent = 0, bool rst = false, int pg=FIRST_PAGE );
+                                           int max, TQWidget *parent = 0, bool rst = false, int pg=FIRST_PAGE );
 
   /**
     * Adds a new editbox item to the page.
@@ -171,14 +171,14 @@ public:
     * @param  cls         The class name used in KConfig (ex. "Archives")
     * @param  name        The itemname used in KConfig (ex. "Do Tar")
     * @param  dflt        The default value of the editbox
-    * @param  tqparent      Reference to the tqparent widget
+    * @param  parent      Reference to the parent widget
     * @param  rst         The change of this parameter requires Krusader restart
     * @param  pg          The subpage of a Konfigurator page (because of setDefaults)
     *
     * @return             reference to the newly created editbox
     */
   KonfiguratorEditBox     *createEditBox(  TQString cls, TQString name, TQString dflt,
-                                           TQWidget *tqparent=0, bool rst=false, int pg=FIRST_PAGE );
+                                           TQWidget *parent=0, bool rst=false, int pg=FIRST_PAGE );
 
   /**
     * Adds a new listbox item to the page.
@@ -193,14 +193,14 @@ public:
     * @param  cls         The class name used in KConfig (ex. "Archives")
     * @param  name        The itemname used in KConfig (ex. "Do Tar")
     * @param  dflt        The default value of the listbox
-    * @param  tqparent      Reference to the tqparent widget
+    * @param  parent      Reference to the parent widget
     * @param  rst         The change of this parameter requires Krusader restart
     * @param  pg          The subpage of a Konfigurator page (because of setDefaults)
     *
     * @return             reference to the newly created editbox
     */
   KonfiguratorListBox     *createListBox(  TQString cls, TQString name, TQStringList dflt,
-                                           TQWidget *tqparent=0, bool rst=false, int pg=FIRST_PAGE );
+                                           TQWidget *parent=0, bool rst=false, int pg=FIRST_PAGE );
 
   /**
     * Adds a new URL requester item to the page.
@@ -214,14 +214,14 @@ public:
     * @param  name        The itemname used in KConfig (ex. "Do Tar")
     * @param  dflt        The default value of the URL requester
     * @param  text        The text field of the URL requester
-    * @param  tqparent      Reference to the tqparent widget
+    * @param  parent      Reference to the parent widget
     * @param  rst         The change of this parameter requires Krusader restart
     * @param  pg          The subpage of a Konfigurator page (because of setDefaults)
     *
     * @return             reference to the newly created URL requester
     */
   KonfiguratorURLRequester *createURLRequester(  TQString cls, TQString name,
-                                           TQString dflt, TQWidget *tqparent, bool rst, int pg=FIRST_PAGE );
+                                           TQString dflt, TQWidget *parent, bool rst, int pg=FIRST_PAGE );
 
   /**
     * Adds a new font chooser item to the page.
@@ -234,14 +234,14 @@ public:
     * @param  cls         The class name used in KConfig (ex. "Archives")
     * @param  name        The item name used in KConfig (ex. "Do Tar")
     * @param  dflt        The default value of the font chooser
-    * @param  tqparent      Reference to the tqparent widget
+    * @param  parent      Reference to the parent widget
     * @param  rst         The change of this parameter requires Krusader restart
     * @param  pg          The subpage of a Konfigurator page (because of setDefaults)
     *
     * @return             reference to the newly created font chooser
     */
   KonfiguratorFontChooser *createFontChooser(  TQString cls, TQString name, TQFont *dflt,
-                                           TQWidget *tqparent=0, bool rst=false, int pg=FIRST_PAGE );
+                                           TQWidget *parent=0, bool rst=false, int pg=FIRST_PAGE );
 
   /**
     * Adds a new combobox item to the page.
@@ -261,7 +261,7 @@ public:
     * @param  params      Pointer to the name-value pair array (combo elements)
     * @param  paramNum    Number of the combobox elements
     * @param  text        The text field of the combobox
-    * @param  tqparent      Reference to the tqparent widget
+    * @param  parent      Reference to the parent widget
     * @param  rst         The change of this parameter requires Krusader restart
     * @param  editable    Flag indicates that the combo can be edited
     * @param  pg          The subpage of a Konfigurator page (because of setDefaults)
@@ -270,7 +270,7 @@ public:
     */
   KonfiguratorComboBox    *createComboBox(  TQString cls, TQString name, TQString dflt,
                                            KONFIGURATOR_NAME_VALUE_PAIR *params, int paramNum,
-                                           TQWidget *tqparent=0, bool rst=false, bool editable=false, int pg=FIRST_PAGE );
+                                           TQWidget *parent=0, bool rst=false, bool editable=false, int pg=FIRST_PAGE );
 
   /**
     * Creates a frame on the page.
@@ -280,12 +280,12 @@ public:
     * myLayout->addWidget( myGroup, 0, 0 );
     *
     * @param  text        The text written out onto the frame
-    * @param  tqparent      Reference to the tqparent widget
+    * @param  parent      Reference to the parent widget
     * @param  widgetName  The name of the widget
     *
     * @return             reference to the newly created frame
     */
-  TQGroupBox               *createFrame( TQString text = TQString(), TQWidget *tqparent=0,
+  TQGroupBox               *createFrame( TQString text = TQString(), TQWidget *parent=0,
                                            const char *widgetName=0 );
 
   /**
@@ -296,11 +296,11 @@ public:
     * TQGridLayout *myLayout = createGridLayout( myGroup->tqlayout() );<br>
     * myLayout->addWidget( myGroup, 0, 0 );
     *
-    * @param  tqparent      Reference to the tqparent tqlayout
+    * @param  parent      Reference to the parent tqlayout
     *
     * @return             reference to the newly created TQGridLayout
     */
-  TQGridLayout             *createGridLayout( TQLayout *tqparent );
+  TQGridLayout             *createGridLayout( TQLayout *parent );
 
   /**
     * Adds a new label to a grid tqlayout.
@@ -315,13 +315,13 @@ public:
     * @param  x           the column to which the label will be placed
     * @param  y           the row to which the label will be placed
     * @param  label       the text of the label
-    * @param  tqparent      Reference to the tqparent widget
+    * @param  parent      Reference to the parent widget
     * @param  widgetName  The name of the newly generated label widget
     *
     * @return             reference to the newly created label
     */
   TQLabel                  *addLabel( TQGridLayout *tqlayout, int x, int y, TQString label,
-                                           TQWidget *tqparent=0, const char *widgetName=0 );
+                                           TQWidget *parent=0, const char *widgetName=0 );
 
   /**
     * Creates a spacer object (for justifying in TQHBox).
@@ -332,12 +332,12 @@ public:
     * createSpacer( hbox, "mySpacer" );<br>
     * myLayout->addWidget( hbox, 0, 0 );
     *
-    * @param  tqparent      Reference to the tqparent widget
+    * @param  parent      Reference to the parent widget
     * @param  widgetName  The name of the newly generated label widget
     *
     * @return             reference to the newly created spacer widget
     */
-  TQWidget                 *createSpacer( TQWidget *tqparent=0, const char *widgetName=0 );
+  TQWidget                 *createSpacer( TQWidget *parent=0, const char *widgetName=0 );
 
   /**
     * Creates a separator line.
@@ -346,13 +346,13 @@ public:
     * TQFrame *myLine = createLine( myParent, "myLine" );<br>
     * myLayout->addWidget( myLine, 1, 0 );<br>
     *
-    * @param  tqparent      Reference to the tqparent widget
+    * @param  parent      Reference to the parent widget
     * @param  widgetName  The name of the newly generated label widget
     * @param  vertical    Means vertical line
     *
     * @return             reference to the newly created spacer widget
     */
-  TQFrame                  *createLine( TQWidget *tqparent=0, const char *widgetName=0, bool vertical = false );
+  TQFrame                  *createLine( TQWidget *parent=0, const char *widgetName=0, bool vertical = false );
 
   /**
     * Creates a checkbox group. A checkbox group contains a lot of checkboxes.
@@ -378,7 +378,7 @@ public:
     * @param  sizey       the maximum row number at vertical placing
     * @param  params      pointer to the checkbox array
     * @param  paramNum    number of the checkbox elements
-    * @param  tqparent      Reference to the tqparent widget
+    * @param  parent      Reference to the parent widget
     * @param  widgetName  The name of the newly created checkbox group widget
     * @param  pg          The subpage of a Konfigurator page (because of setDefaults)
     *
@@ -386,7 +386,7 @@ public:
     */
   KonfiguratorCheckBoxGroup *createCheckBoxGroup( int sizex, int sizey,
                                            KONFIGURATOR_CHECKBOX_PARAM *params, int paramNum,
-                                           TQWidget *tqparent=0, const char *widgetName=0, int pg=FIRST_PAGE );
+                                           TQWidget *parent=0, const char *widgetName=0, int pg=FIRST_PAGE );
   /**
     * Creates a radio button group. A radio button group contains a lot of radio buttons.
     * The grouped buttons are embedded into one widget, which can be placed anywhere
@@ -414,7 +414,7 @@ public:
     * @param  sizey       the maximum row number at vertical placing
     * @param  params      pointer to the checkbox array
     * @param  paramNum    number of the checkbox elements
-    * @param  tqparent      Reference to the tqparent widget
+    * @param  parent      Reference to the parent widget
     * @param  widgetName  The name of the newly created button group widget
     * @param  rst         The change of this parameter requires Krusader restart
     * @param  pg          The subpage of a Konfigurator page (because of setDefaults)
@@ -424,7 +424,7 @@ public:
   KonfiguratorRadioButtons *createRadioButtonGroup( TQString cls, TQString name, 
                                            TQString dflt, int sizex, int sizey,
                                            KONFIGURATOR_NAME_VALUE_TIP *params, int paramNum,
-                                           TQWidget *tqparent=0, const char *widgetName=0, bool rst=false, int pg=FIRST_PAGE );
+                                           TQWidget *parent=0, const char *widgetName=0, bool rst=false, int pg=FIRST_PAGE );
 
   /**
     * This function is used to insert new, unknown items into KonfiguratorPage. The
@@ -463,7 +463,7 @@ public:
     * @param  cls         The class name used in KConfig (ex. "Archives")
     * @param  name        The item name used in KConfig (ex. "Do Tar")
     * @param  dflt        The default value of the color chooser
-    * @param  tqparent      Reference to the tqparent widget
+    * @param  parent      Reference to the parent widget
     * @param  rst         The change of this parameter requires Krusader restart
     * @param  addColPtr   The additional color values
     * @param  rst         Number of additional colors
@@ -472,7 +472,7 @@ public:
     * @return             reference to the newly created combobox
     */
   KonfiguratorColorChooser *createColorChooser(  TQString cls, TQString name, TQColor dflt,
-                                                 TQWidget *tqparent=0, bool rst=false,
+                                                 TQWidget *parent=0, bool rst=false,
                                                  ADDITIONAL_COLOR *addColPtr = 0, int addColNum = 0, int pg=FIRST_PAGE );
 signals:
   /**

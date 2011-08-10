@@ -58,7 +58,7 @@ class KrBriefView: public KIconView, public KrView {
 	Q_OBJECT
   TQ_OBJECT
 public:
-	KrBriefView( TQHeader *header, TQWidget *tqparent, bool &left, KConfig *cfg = krConfig, const char *name = 0 );
+	KrBriefView( TQHeader *header, TQWidget *parent, bool &left, KConfig *cfg = krConfig, const char *name = 0 );
 	virtual ~KrBriefView();
 	virtual inline KrViewItem *getFirst() { return dynamic_cast<KrViewItem*>( firstItem() ); }
 	virtual inline KrViewItem *getLast() { return dynamic_cast<KrViewItem*>( lastItem() ); }

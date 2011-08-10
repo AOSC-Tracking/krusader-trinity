@@ -44,9 +44,9 @@ A
 #include "../VFS/krpermhandler.h"
 
 /* --=={ Patch by Heiner <h.eichmann@gmx.de> }==-- */
-KrCalcSpaceDialog::CalcThread::CalcThread(KrCalcSpaceDialog * tqparent, ListPanel * panel, const TQStringList & items)
+KrCalcSpaceDialog::CalcThread::CalcThread(KrCalcSpaceDialog * parent, ListPanel * panel, const TQStringList & items)
 	: m_totalSize(0), m_currentSize(0), m_totalFiles(0), m_totalDirs(0), m_items(items), m_files(panel->func->files()),
-	  m_view(panel->view), m_parent(tqparent), m_threadInUse(true), m_stop(false) {}
+	  m_view(panel->view), m_parent(parent), m_threadInUse(true), m_stop(false) {}
 
 void KrCalcSpaceDialog::CalcThread::cleanUp(){
 	if (m_threadInUse || !finished())
@@ -91,8 +91,8 @@ void KrCalcSpaceDialog::CalcThread::stop(){
 	m_stop = true;
 }
 
-KrCalcSpaceDialog::KrCalcSpaceDialog(TQWidget *tqparent, ListPanel * files, const TQStringList & items, bool autoclose) :
-	KDialogBase(tqparent, "KrCalcSpaceDialog", true, i18n("Calculate Occupied Space"), Ok|Cancel),
+KrCalcSpaceDialog::KrCalcSpaceDialog(TQWidget *parent, ListPanel * files, const TQStringList & items, bool autoclose) :
+	KDialogBase(parent, "KrCalcSpaceDialog", true, i18n("Calculate Occupied Space"), Ok|Cancel),
 	m_autoClose(autoclose), m_canceled(false), m_timerCounter(0){
 	// the dialog: The Ok button is hidden until it is needed
 	showButtonOK(false);

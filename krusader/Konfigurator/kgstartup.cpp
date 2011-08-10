@@ -36,15 +36,15 @@
 #include <klineedit.h>
 #include <tqwhatsthis.h>
 
-KgStartup::KgStartup( bool first, TQWidget* tqparent,  const char* name ) :
-  KonfiguratorPage( first, tqparent, name ), profileCombo( 0 )
+KgStartup::KgStartup( bool first, TQWidget* parent,  const char* name ) :
+  KonfiguratorPage( first, parent, name ), profileCombo( 0 )
 {
-  TQGridLayout *kgStartupLayout = new TQGridLayout( tqparent );
+  TQGridLayout *kgStartupLayout = new TQGridLayout( parent );
   kgStartupLayout->setSpacing( 6 );
 
   //  --------------------------- PANELS GROUPBOX ----------------------------------
 
-  TQGroupBox *panelsGrp = createFrame( i18n( "General" ), tqparent, "panelsGrp" );
+  TQGroupBox *panelsGrp = createFrame( i18n( "General" ), parent, "panelsGrp" );
   TQGridLayout *panelsGrid = createGridLayout( panelsGrp->tqlayout() );
 
   TQString s = "<p><img src='toolbar|kr_profile'></p>" + i18n( "Defines the panel profile used at startup. A panel profile contains:<ul><li>all the tabs paths</li><li>the current tab</li><li>the active panel</li></ul><b>&lt;Last session&gt;</b> is a special panel profile which is saved automatically when Krusader is closed.");
@@ -80,7 +80,7 @@ KgStartup::KgStartup( bool first, TQWidget* tqparent,  const char* name ) :
 
   //  ------------------------ USERINTERFACE GROUPBOX ------------------------------
 
-  TQGroupBox *uiGrp = createFrame( i18n( "User Interface" ), tqparent, "uiGrp" );
+  TQGroupBox *uiGrp = createFrame( i18n( "User Interface" ), parent, "uiGrp" );
   TQGridLayout *uiGrid = createGridLayout( uiGrp->tqlayout() );
 
   KONFIGURATOR_CHECKBOX_PARAM uiCheckBoxes[] =

@@ -11,7 +11,7 @@ class KrBookmark: public KAction {
 	Q_OBJECT
   TQ_OBJECT
 public:
-	KrBookmark(TQString name, KURL url, KActionCollection *tqparent, TQString icon = "", TQString actionName = TQString() );
+	KrBookmark(TQString name, KURL url, KActionCollection *parent, TQString icon = "", TQString actionName = TQString() );
 	KrBookmark(TQString name, TQString icon = ""); // creates a folder
 	// text() and setText() to change the name of the bookmark
 	// icon() and setIcon() to change icons (by name)

@@ -45,10 +45,10 @@ public:
 	
 	enum Mode{Generic,Text,Hex};
 
-	static void view( KURL url, TQWidget * tqparent = krApp );
-	static void view( KURL url, Mode mode, bool new_window, TQWidget * tqparent = krApp );
-	static void edit( KURL url, TQWidget * tqparent );
-	static void edit( KURL url, Mode mode=Text, int new_window=-1, TQWidget * tqparent = krApp );
+	static void view( KURL url, TQWidget * parent = krApp );
+	static void view( KURL url, Mode mode, bool new_window, TQWidget * parent = krApp );
+	static void edit( KURL url, TQWidget * parent );
+	static void edit( KURL url, Mode mode=Text, int new_window=-1, TQWidget * parent = krApp );
 	
 	virtual bool eventFilter ( TQObject * watched, TQEvent * e );
 
@@ -83,7 +83,7 @@ protected:
 	virtual void focusInEvent( TQFocusEvent * ){ if( viewers.remove( this ) ) viewers.prepend( this ); } // move to first
 
 private:
-	KrViewer( TQWidget *tqparent = 0, const char *name = 0 );
+	KrViewer( TQWidget *parent = 0, const char *name = 0 );
 	void addTab(PanelViewerBase* pvb, TQString msg,TQString iconName, KParts::Part* part);
 	PanelViewerBase * getPanelViewerBase( KParts::Part* part);
 	void updateActions( PanelViewerBase * base );

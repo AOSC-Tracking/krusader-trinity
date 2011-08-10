@@ -59,7 +59,7 @@ class KrusaderView : public TQWidget  {
   TQ_OBJECT
 
 public:
-	KrusaderView(TQWidget *tqparent=0);
+	KrusaderView(TQWidget *parent=0);
 	virtual ~KrusaderView(){}
   void start(TQStringList leftTabs, TQStringList leftTypes, TQValueList<int> leftProps, int leftActiveTab, 
              TQStringList rightTabs, TQStringList rightTypes, TQValueList<int> rightProps, int rightActiveTab,

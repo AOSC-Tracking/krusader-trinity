@@ -888,10 +888,10 @@ UDSEntryList* kio_krarcProtocol::addNewDir(TQString path){
 	dir = dirDict.find(path);
 	if(dir != 0) return dir; // dir exists- return it !
 	
-	// set dir to the tqparent dir
+	// set dir to the parent dir
 	dir = addNewDir(path.left(path.findRev("/",-2)+1));
 	
-	// add a new entry in the tqparent dir
+	// add a new entry in the parent dir
 	TQString name = path.mid(path.findRev("/",-2)+1);
 	name = name.left(name.length()-1);
 	

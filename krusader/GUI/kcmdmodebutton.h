@@ -39,7 +39,7 @@ class KCMDModeButton : public TQToolButton  {
   TQ_OBJECT
 public: 
   /** Constructor. Sets up the menu, and the icon */
-  KCMDModeButton(TQWidget *tqparent=0, const char *name=0);
+  KCMDModeButton(TQWidget *parent=0, const char *name=0);
   ~KCMDModeButton();
 
   /** Shows the popup menu. Called when clicked to the button */

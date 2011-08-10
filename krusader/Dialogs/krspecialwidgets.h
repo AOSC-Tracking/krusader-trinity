@@ -46,7 +46,7 @@ class KRPie : public TQWidget {
     Q_OBJECT
   TQ_OBJECT
   public:
-    KRPie( KIO::filesize_t _totalSize, TQWidget *tqparent = 0 );
+    KRPie( KIO::filesize_t _totalSize, TQWidget *parent = 0 );
     void addSlice( KIO::filesize_t size, TQString label );
 
   protected:
@@ -63,12 +63,12 @@ class KRFSDisplay : public TQWidget {
   TQ_OBJECT
   public:
     // this constructor is used for a mounted filesystem
-    KRFSDisplay( TQWidget *tqparent, TQString _alias, TQString _realName,
+    KRFSDisplay( TQWidget *parent, TQString _alias, TQString _realName,
                  KIO::filesize_t _total, KIO::filesize_t _free );
     // this one is for an unmounted/supermount file system
-    KRFSDisplay( TQWidget *tqparent, TQString _alias, TQString _realName, bool sm = false );
+    KRFSDisplay( TQWidget *parent, TQString _alias, TQString _realName, bool sm = false );
     // the last one is used inside MountMan(R), when no filesystem is selected
-    KRFSDisplay( TQWidget *tqparent );
+    KRFSDisplay( TQWidget *parent );
     inline void setTotalSpace( KIO::filesize_t t ) { totalSpace = t; }
     inline void setFreeSpace( KIO::filesize_t t ) { freeSpace = t; }
     inline void setAlias( TQString a ) { alias = a; }
@@ -106,7 +106,7 @@ class KrQuickSearch: public KLineEdit {
       Q_OBJECT
   TQ_OBJECT
    public:
-      KrQuickSearch(TQWidget *tqparent, const char * name = 0);
+      KrQuickSearch(TQWidget *parent, const char * name = 0);
       void addText(const TQString &str) { setText(text()+str); }
       void myKeyPressEvent(TQKeyEvent *e);
       void myIMStartEvent(TQIMEvent* e) {

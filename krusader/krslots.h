@@ -54,7 +54,7 @@ class KRslots : public TQObject {
   public:
     enum compareMode { full } ;
 
-    KRslots(TQObject *tqparent): TQObject(tqparent, "KRslots") {}
+    KRslots(TQObject *parent): TQObject(parent, "KRslots") {}
     ~KRslots() {}
 
   public slots:

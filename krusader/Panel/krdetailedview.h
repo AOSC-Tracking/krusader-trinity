@@ -75,7 +75,7 @@ class KrDetailedView : public KListView, public KrView {
    friend class KrDetailedViewItem;
 
 public:
-   KrDetailedView( TQWidget *tqparent, bool &left, KConfig *cfg = krConfig, const char *name = 0 );
+   KrDetailedView( TQWidget *parent, bool &left, KConfig *cfg = krConfig, const char *name = 0 );
    virtual ~KrDetailedView();
    virtual int column( KrDetailedViewProperties::ColumnType type );
    virtual inline KrViewItem *getFirst() { return dynamic_cast<KrViewItem*>( firstChild() ); }

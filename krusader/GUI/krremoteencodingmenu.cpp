@@ -43,8 +43,8 @@
 
 #define DATA_KEY    TQString::tqfromLatin1("Charset")
 
-KrRemoteEncodingMenu::KrRemoteEncodingMenu(const TQString &text, const TQString &icon, TQObject *tqparent, const char *name) :
-  KActionMenu( text, icon, tqparent, name ), settingsLoaded( false )
+KrRemoteEncodingMenu::KrRemoteEncodingMenu(const TQString &text, const TQString &icon, TQObject *parent, const char *name) :
+  KActionMenu( text, icon, parent, name ), settingsLoaded( false )
 {
   connect(popupMenu(), TQT_SIGNAL(aboutToShow()), this, TQT_SLOT(slotAboutToShow()));
 }

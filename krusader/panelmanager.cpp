@@ -19,8 +19,8 @@
 #define _self   (*_selfPtr)
 #define _other  (*_otherPtr)
 
-PanelManager::PanelManager( TQWidget *tqparent, bool left ) :
-TQWidget( tqparent, "PanelManager" ), _layout( 0 ), _left( left ), 
+PanelManager::PanelManager( TQWidget *parent, bool left ) :
+TQWidget( parent, "PanelManager" ), _layout( 0 ), _left( left ), 
        _selfPtr( _left ? &MAIN_VIEW->left : &MAIN_VIEW->right ), 
        _otherPtr( _left ? &MAIN_VIEW->right : &MAIN_VIEW->left ) {   
    _layout = new TQGridLayout( this, 1, 1 );

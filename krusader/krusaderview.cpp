@@ -50,7 +50,7 @@
 #include "krservices.h"
 #include <tqclipboard.h>
 
-KrusaderView::KrusaderView( TQWidget *tqparent ) : TQWidget( tqparent, "KrusaderView" ), activePanel(0), 
+KrusaderView::KrusaderView( TQWidget *parent ) : TQWidget( parent, "KrusaderView" ), activePanel(0), 
 								konsole_part( 0L ) {}
 
 void KrusaderView::start( TQStringList leftTabs, TQStringList leftTypes, TQValueList<int> leftProps, int leftActiveTab,

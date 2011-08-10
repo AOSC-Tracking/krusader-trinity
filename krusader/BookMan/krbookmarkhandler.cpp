@@ -22,7 +22,7 @@
 #define CONNECT_BM(X)	{ disconnect(X, TQT_SIGNAL(activated(const KURL&)), 0, 0); connect(X, TQT_SIGNAL(activated(const KURL&)), this, TQT_SLOT(slotActivated(const KURL&))); }
 											
 KrBookmarkHandler::KrBookmarkHandler(): TQObject(0), _middleClick(false), _mainBookmarkPopup( 0 ), _specialBookmarkIDs(), _bookmarkIDTable() {
-	// create our own action collection and make the shortcuts apply only to tqparent
+	// create our own action collection and make the shortcuts apply only to parent
 	_privateCollection = new KActionCollection(krApp, "private collection");
 	_collection = krApp->actionCollection();
 
@@ -116,18 +116,18 @@ void KrBookmarkHandler::exportToFileBookmark(TQDomDocument &doc, TQDomElement &w
 	}
 }
 
-void KrBookmarkHandler::exportToFileFolder(TQDomDocument &doc, TQDomElement &tqparent, KrBookmark *folder) {
+void KrBookmarkHandler::exportToFileFolder(TQDomDocument &doc, TQDomElement &parent, KrBookmark *folder) {
 	for (KrBookmark *bm = folder->tqchildren().first(); bm; bm = folder->tqchildren().next()) {
 		if (bm->isFolder()) {
 			TQDomElement newFolder = doc.createElement("folder");
 			newFolder.setAttribute("icon", bm->icon());
-			tqparent.appendChild(newFolder);
+			parent.appendChild(newFolder);
 			TQDomElement title = doc.createElement("title");
 			title.appendChild(doc.createTextNode(bm->text()));
 			newFolder.appendChild(title);
 			exportToFileFolder(doc, newFolder, bm);
 		} else {
-			exportToFileBookmark(doc, tqparent, bm);
+			exportToFileBookmark(doc, parent, bm);
 		}
 	}
 }
@@ -173,7 +173,7 @@ void KrBookmarkHandler::exportToFile() {
 	}
 }
 
-bool KrBookmarkHandler::importFromFileBookmark(TQDomElement &e, KrBookmark *tqparent, TQString path, TQString *errorMsg) {
+bool KrBookmarkHandler::importFromFileBookmark(TQDomElement &e, KrBookmark *parent, TQString path, TQString *errorMsg) {
 	TQString url, name, icon;
 	// verify tag
 	if (e.tagName() != "bookmark") {
@@ -199,19 +199,19 @@ bool KrBookmarkHandler::importFromFileBookmark(TQDomElement &e, KrBookmark *tqpa
 	KrBookmark *bm = KrBookmark::getExistingBookmark(path+name, _collection);
 	if (!bm) {
 		bm = new KrBookmark(name, vfs::fromPathOrURL( url ), _collection, icon, path+name);
-	tqparent->tqchildren().append(bm);
+	parent->tqchildren().append(bm);
 	}
 
 	return true;
 }
 
-bool KrBookmarkHandler::importFromFileFolder(TQDomNode &first, KrBookmark *tqparent, TQString path, TQString *errorMsg) {
+bool KrBookmarkHandler::importFromFileFolder(TQDomNode &first, KrBookmark *parent, TQString path, TQString *errorMsg) {
 	TQString name;
 	TQDomNode n = first;
 	while (!n.isNull()) {
 		TQDomElement e = n.toElement();
 		if (e.tagName() == "bookmark") {
-			if (!importFromFileBookmark(e, tqparent, path, errorMsg))
+			if (!importFromFileBookmark(e, parent, path, errorMsg))
 				return false;
 		} else if (e.tagName() == "folder") {
 			TQString iconName = "";
@@ -223,13 +223,13 @@ bool KrBookmarkHandler::importFromFileFolder(TQDomNode &first, KrBookmark *tqpar
 				return false;
 			} else name = tmp.text();
 			KrBookmark *folder = new KrBookmark(name, iconName);
-			tqparent->tqchildren().append(folder);
+			parent->tqchildren().append(folder);
 
 			TQDomNode nextOne = tmp.nextSibling();
 			if (!importFromFileFolder(nextOne, folder, path + name + "/", errorMsg))
 				return false;
 		} else if (e.tagName() == "separator") {
-			tqparent->tqchildren().append(KrBookmark::separator());
+			parent->tqchildren().append(KrBookmark::separator());
 		}
 		n = n.nextSibling();
 	}
@@ -279,12 +279,12 @@ void KrBookmarkHandler::populate(KPopupMenu *menu) {
 	buildMenu(_root, menu);
 }
 
-void KrBookmarkHandler::buildMenu(KrBookmark *tqparent, KPopupMenu *menu) {
+void KrBookmarkHandler::buildMenu(KrBookmark *parent, KPopupMenu *menu) {
 	static int inSecondaryMenu = 0; // used to know if we're on the top menu
 
 	// run the loop twice, in order to put the folders on top. stupid but easy :-)
 	// note: this code drops the separators put there by the user
-	for (KrBookmark *bm = tqparent->tqchildren().first(); bm; bm = tqparent->tqchildren().next()) {
+	for (KrBookmark *bm = parent->tqchildren().first(); bm; bm = parent->tqchildren().next()) {
 		if (!bm->isFolder()) continue;
 		KPopupMenu *newMenu = new KPopupMenu(menu);
 		int id = menu->insertItem(TQIconSet(krLoader->loadIcon(bm->icon(), KIcon::Small)),
@@ -298,7 +298,7 @@ void KrBookmarkHandler::buildMenu(KrBookmark *tqparent, KPopupMenu *menu) {
 		buildMenu(bm, newMenu);
 		--inSecondaryMenu;
 	}
-	for (KrBookmark *bm = tqparent->tqchildren().first(); bm; bm = tqparent->tqchildren().next()) {
+	for (KrBookmark *bm = parent->tqchildren().first(); bm; bm = parent->tqchildren().next()) {
 		if (bm->isFolder()) continue;
 		if (bm->isSeparator() ) {
 			menu->insertSeparator();

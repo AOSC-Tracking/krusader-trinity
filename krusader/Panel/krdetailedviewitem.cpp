@@ -57,8 +57,8 @@
 int KrDetailedViewItem::expHeight = 0;
 #endif // FASTER
 
-KrDetailedViewItem::KrDetailedViewItem(KrDetailedView *tqparent, TQListViewItem *after, vfile *vf):
-	KListViewItem(tqparent, after), KrViewItem(vf, tqparent->properties()) {
+KrDetailedViewItem::KrDetailedViewItem(KrDetailedView *parent, TQListViewItem *after, vfile *vf):
+	KListViewItem(parent, after), KrViewItem(vf, parent->properties()) {
 #ifdef FASTER
 	initiated = false;
 	// get the expected height of an item - should be done only once

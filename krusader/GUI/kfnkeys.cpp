@@ -38,7 +38,7 @@
 #include "../defaults.h"
 #include "../krslots.h"
 
-KFnKeys::KFnKeys(TQWidget *tqparent, char *name): TQWidget(tqparent,name) {
+KFnKeys::KFnKeys(TQWidget *parent, char *name): TQWidget(parent,name) {
 		krConfig->setGroup("Look&Feel");
 		////////////////////////////////
 #define SETUP(TARGET) {\

@@ -25,7 +25,7 @@ class UserMenu;
 
 class UserMenuGui: public KPopupMenu {
    public:
-      UserMenuGui( UserMenu* menu, TQWidget *tqparent = 0 );
+      UserMenuGui( UserMenu* menu, TQWidget *parent = 0 );
       void run();
       void createMenu();
 
@@ -35,7 +35,7 @@ class UserMenuGui: public KPopupMenu {
 
 class UserMenu : public TQWidget {
    public:
-      UserMenu( TQWidget *tqparent = 0, const char *name = 0 );
+      UserMenu( TQWidget *parent = 0, const char *name = 0 );
       void exec();
       void update();
    

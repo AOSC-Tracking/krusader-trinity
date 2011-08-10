@@ -42,8 +42,8 @@
 //////////////////////////////////  KrActionProcDlg  /////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////
 #include <tqlayout.h>
-KrActionProcDlg::KrActionProcDlg( TQString caption, bool enableStderr, TQWidget *tqparent ) :
-KDialogBase( tqparent, 0, false, caption, KDialogBase::User1 | KDialogBase::Ok | KDialogBase::Cancel, KDialogBase::Cancel ),
+KrActionProcDlg::KrActionProcDlg( TQString caption, bool enableStderr, TQWidget *parent ) :
+KDialogBase( parent, 0, false, caption, KDialogBase::User1 | KDialogBase::Ok | KDialogBase::Cancel, KDialogBase::Cancel ),
 _stdout(0), _stderr(0), _currentTextEdit(0) {
 
    setButtonOK( i18n( "Close" ) );
@@ -93,7 +93,7 @@ _stdout(0), _stderr(0), _currentTextEdit(0) {
    // HACK This fetches the tqlayout of the buttonbox from KDialogBase, although it is not accessable with KDialogBase's API
    // None the less it's quite save to use since this implementation hasn't changed since KDE-3.3 (I haven't looked at earlier
    // versions since we don't support them) and now all work is done in KDE-4.
-   TQWidget* buttonBox = TQT_TQWIDGET( actionButton(KDialogBase::Ok)->tqparent() );
+   TQWidget* buttonBox = TQT_TQWIDGET( actionButton(KDialogBase::Ok)->parent() );
    TQBoxLayout* buttonBoxLayout = static_cast<TQBoxLayout*>( buttonBox->tqlayout() );
    TQCheckBox* useFixedFont = new TQCheckBox( i18n("Use font with fixed width"), buttonBox );
    buttonBoxLayout->insertWidget( 0, useFixedFont );
@@ -135,7 +135,7 @@ void KrActionProcDlg::slotUser1() {
    TQFile file( filename );
    int answer = KMessageBox::Yes;
    if ( file.exists() )
-      answer = KMessageBox::warningYesNoCancel( this,	//tqparent
+      answer = KMessageBox::warningYesNoCancel( this,	//parent
       		i18n("This file already exists.\nDo you want to overwrite it or append the output?"),	//text
       		i18n("Overwrite or append?"),	//caption
       		i18n("Overwrite"),	//label for Yes-Button
@@ -280,7 +280,7 @@ void KrActionProc::processExited( KProcess * ) {
 ///////////////////////////////////////  KrAction  ///////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////
 
-KrAction::KrAction( KActionCollection *tqparent, const char* name ) : KAction( tqparent, name ) {
+KrAction::KrAction( KActionCollection *parent, const char* name ) : KAction( parent, name ) {
    connect(this, TQT_SIGNAL(activated()), this, TQT_SLOT(exec()) );
 }
 

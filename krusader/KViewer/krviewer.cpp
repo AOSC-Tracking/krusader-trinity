@@ -52,8 +52,8 @@
 
 TQPtrList<KrViewer> KrViewer::viewers;
 
-KrViewer::KrViewer( TQWidget *tqparent, const char *name ) :
-KParts::MainWindow( tqparent, name ), manager( this, TQT_TQOBJECT(this) ), tabBar( this ), returnFocusTo( 0 ), returnFocusTab( 0 ),
+KrViewer::KrViewer( TQWidget *parent, const char *name ) :
+KParts::MainWindow( parent, name ), manager( this, TQT_TQOBJECT(this) ), tabBar( this ), returnFocusTo( 0 ), returnFocusTab( 0 ),
                                     reservedKeys(), reservedKeyIDs() {
 
 	//setWFlags(WType_TopLevel | WDestructiveClose);
@@ -235,7 +235,7 @@ KrViewer* KrViewer::getViewer(bool new_window){
 	}
 }	
 
-void KrViewer::view( KURL url, TQWidget * tqparent ) {
+void KrViewer::view( KURL url, TQWidget * parent ) {
 	Mode defaultMode = Generic;
 	bool defaultWindow = false;
 
@@ -248,25 +248,25 @@ void KrViewer::view( KURL url, TQWidget * tqparent ) {
 	else if( modeString == "text" ) defaultMode = Text;
 	else if( modeString == "hex" ) defaultMode = Hex;
 
-	view(url,defaultMode,defaultWindow, tqparent );
+	view(url,defaultMode,defaultWindow, parent );
 }
 
-void KrViewer::view( KURL url, Mode mode,  bool new_window, TQWidget * tqparent ) {
+void KrViewer::view( KURL url, Mode mode,  bool new_window, TQWidget * parent ) {
 	KrViewer* viewer = getViewer(new_window);
 
 	PanelViewerBase* viewWidget = new PanelViewer(&viewer->tabBar);
 	KParts::Part* part = viewWidget->openURL(url,mode);
 	viewer->addTab(viewWidget,i18n( "Viewing" ),VIEW_ICON,part);
 
-	viewer->returnFocusTo = tqparent;
+	viewer->returnFocusTo = parent;
 	viewer->returnFocusTab = viewWidget;
 }
 
-void KrViewer::edit( KURL url, TQWidget * tqparent ) {
-	edit( url, Text, -1, tqparent );
+void KrViewer::edit( KURL url, TQWidget * parent ) {
+	edit( url, Text, -1, parent );
 }
 
-void KrViewer::edit( KURL url, Mode mode, int new_window, TQWidget * tqparent ) {
+void KrViewer::edit( KURL url, Mode mode, int new_window, TQWidget * parent ) {
 	krConfig->setGroup( "General" );
 	TQString edit = krConfig->readEntry( "Editor", _Editor );
 	
@@ -291,7 +291,7 @@ void KrViewer::edit( KURL url, Mode mode, int new_window, TQWidget * tqparent ) 
 	KParts::Part* part = editWidget->openURL(url,mode);
 	viewer->addTab(editWidget,i18n("Editing"),EDIT_ICON,part);
 	
-	viewer->returnFocusTo = tqparent;
+	viewer->returnFocusTo = parent;
 	viewer->returnFocusTab = editWidget;
 }
 

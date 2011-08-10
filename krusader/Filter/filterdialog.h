@@ -43,7 +43,7 @@ class FilterDialog : public KDialogBase
   TQ_OBJECT
 
 public:
-  FilterDialog(  TQWidget *tqparent = 0, const char *name = 0 );
+  FilterDialog(  TQWidget *parent = 0, const char *name = 0 );
   KRQuery getQuery();
 
 public slots:

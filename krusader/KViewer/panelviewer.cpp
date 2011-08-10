@@ -23,8 +23,8 @@
 
 /* ----==={ PanelViewerBase }===---- */
 
-PanelViewerBase::PanelViewerBase( TQWidget *tqparent ) :
-TQWidgetStack( tqparent ), mimes( 0 ), cpart( 0 ) {
+PanelViewerBase::PanelViewerBase( TQWidget *parent ) :
+TQWidgetStack( parent ), mimes( 0 ), cpart( 0 ) {
 	tqsetSizePolicy( TQSizePolicy( TQSizePolicy::Preferred, TQSizePolicy::Ignored ) );
 
 	mimes = new TQDict<KParts::ReadOnlyPart>( DICTSIZE, false );
@@ -46,8 +46,8 @@ PanelViewerBase::~PanelViewerBase() {
 
 /* ----==={ PanelViewer }===---- */
 
-PanelViewer::PanelViewer( TQWidget *tqparent ) :
-PanelViewerBase( tqparent ) {
+PanelViewer::PanelViewer( TQWidget *parent ) :
+PanelViewerBase( parent ) {
 }
 
 PanelViewer::~PanelViewer() {
@@ -196,8 +196,8 @@ void PanelViewer::oldHexViewer(KTempFile& tmpFile) {
 
 /* ----==={ PanelEditor }===---- */
 
-PanelEditor::PanelEditor( TQWidget *tqparent ) :
-PanelViewerBase( tqparent ) {
+PanelEditor::PanelEditor( TQWidget *parent ) :
+PanelViewerBase( parent ) {
 }
 
 PanelEditor::~PanelEditor() {

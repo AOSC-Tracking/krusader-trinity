@@ -32,7 +32,7 @@
 
 #include <kdebug.h>
 
-KCMDModeButton::KCMDModeButton( TQWidget *tqparent, const char *name ) : TQToolButton( tqparent, name ) {
+KCMDModeButton::KCMDModeButton( TQWidget *parent, const char *name ) : TQToolButton( parent, name ) {
   setFixedSize( 22, 20 );
 /* // from the old terminal-button:
   setTextLabel( i18n( "If pressed, Krusader executes command line in a terminal." ) );

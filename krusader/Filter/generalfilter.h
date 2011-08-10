@@ -51,7 +51,7 @@ class GeneralFilter : public TQWidget, public FilterBase
   TQ_OBJECT
 
 public:
-  GeneralFilter( FilterTabs *tabs, int properties, TQWidget *tqparent = 0, const char *name = 0 );
+  GeneralFilter( FilterTabs *tabs, int properties, TQWidget *parent = 0, const char *name = 0 );
   ~GeneralFilter();
 
   virtual bool          fillQuery( KRQuery *query );

@@ -50,8 +50,8 @@
 #define  S_RIGHT       1
 #define  S_BOTH        2
 
-FeedToListBoxDialog::FeedToListBoxDialog(TQWidget *tqparent,  const char *name, Synchronizer *sync,
-    TQListView *syncL, bool equOK) : KDialogBase( tqparent, name, true, i18n( "Krusader::Feed to listbox" ),
+FeedToListBoxDialog::FeedToListBoxDialog(TQWidget *parent,  const char *name, Synchronizer *sync,
+    TQListView *syncL, bool equOK) : KDialogBase( parent, name, true, i18n( "Krusader::Feed to listbox" ),
     KDialogBase::Ok | KDialogBase::Cancel | KDialogBase::User1, Ok, true, KStdGuiItem::clear() ),
     synchronizer( sync ), syncList( syncL ), equalAllowed( equOK ), accepted( false ) {
   
@@ -84,7 +84,7 @@ FeedToListBoxDialog::FeedToListBoxDialog(TQWidget *tqparent,  const char *name, 
 
   if( itemNum == 0 ) {
     hide();
-    KMessageBox::error( tqparent, i18n( "No elements to feed!" ) );
+    KMessageBox::error( parent, i18n( "No elements to feed!" ) );
     return;
   }
 

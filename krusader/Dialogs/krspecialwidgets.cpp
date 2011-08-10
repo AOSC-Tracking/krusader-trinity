@@ -64,8 +64,8 @@ TQColor KRPie::colors[ 12 ] = {TQt::red, TQt::blue, TQt::green, TQt::cyan, TQt::
 /////////////// KRFSDisplay - Filesystem / Freespace Display /////////////////
 //////////////////////////////////////////////////////////////////////////////
 // This is the full constructor: use it for a mounted filesystem
-KRFSDisplay::KRFSDisplay( TQWidget *tqparent, TQString _alias, TQString _realName,
-                          KIO::filesize_t _total, KIO::filesize_t _free ) : TQWidget( tqparent ), totalSpace( _total ),
+KRFSDisplay::KRFSDisplay( TQWidget *parent, TQString _alias, TQString _realName,
+                          KIO::filesize_t _total, KIO::filesize_t _free ) : TQWidget( parent ), totalSpace( _total ),
       freeSpace( _free ), alias( _alias ), realName( _realName ), mounted( true ),
 empty( false ), supermount( false ) {
    resize( 150, 200 );
@@ -73,8 +73,8 @@ empty( false ), supermount( false ) {
 }
 
 // Use this one for an unmounted filesystem
-KRFSDisplay::KRFSDisplay( TQWidget *tqparent, TQString _alias, TQString _realName, bool sm ) :
-      TQWidget( tqparent ), alias( _alias ), realName( _realName ), mounted( false ),
+KRFSDisplay::KRFSDisplay( TQWidget *parent, TQString _alias, TQString _realName, bool sm ) :
+      TQWidget( parent ), alias( _alias ), realName( _realName ), mounted( false ),
 empty( false ), supermount( sm ) {
    resize( 150, 200 );
    show();
@@ -82,7 +82,7 @@ empty( false ), supermount( sm ) {
 
 // This is used only when an empty widget needs to be displayed (for example:
 // when filesystem statistics haven't been calculated yet)
-KRFSDisplay::KRFSDisplay( TQWidget *tqparent ) : TQWidget( tqparent ), empty( true ) {
+KRFSDisplay::KRFSDisplay( TQWidget *parent ) : TQWidget( parent ), empty( true ) {
    resize( 150, 200 );
    show();
 }
@@ -146,7 +146,7 @@ void KRFSDisplay::paintEvent( TQPaintEvent * ) {
 }
 
 ////////////////////////////////////////////////////////////////////////////////
-KRPie::KRPie( KIO::filesize_t _totalSize, TQWidget *tqparent ) : TQWidget( tqparent, 0 ), totalSize( _totalSize ) {
+KRPie::KRPie( KIO::filesize_t _totalSize, TQWidget *parent ) : TQWidget( parent, 0 ), totalSize( _totalSize ) {
    slices.setAutoDelete( true ); // kill items when they are removed
    slices.append( new KRPieSlice( 100, TQt::yellow, "DEFAULT" ) );
    sizeLeft = totalSize;
@@ -204,7 +204,7 @@ void KRPie::addSlice( KIO::filesize_t size, TQString label ) {
 ////////////////////////////////////////////////////
 /////////////////// KrQuickSearch  /////////////////
 ////////////////////////////////////////////////////
-KrQuickSearch::KrQuickSearch( TQWidget *tqparent, const char * name ) : KLineEdit( tqparent, name ) {}
+KrQuickSearch::KrQuickSearch( TQWidget *parent, const char * name ) : KLineEdit( parent, name ) {}
 
 void KrQuickSearch::myKeyPressEvent( TQKeyEvent *e ) {
    switch ( e->key() ) {

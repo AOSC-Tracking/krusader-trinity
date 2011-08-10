@@ -29,8 +29,8 @@
 
 /**** KrusaderImageFilePreview ****/
 
-KrusaderImageFilePreview::KrusaderImageFilePreview( TQWidget *tqparent )
-		: KPreviewWidgetBase( tqparent ),
+KrusaderImageFilePreview::KrusaderImageFilePreview( TQWidget *parent )
+		: KPreviewWidgetBase( parent ),
 m_job( 0L ) {
 	TQVBoxLayout *vb = new TQVBoxLayout( this, KDialog::marginHint() );
 

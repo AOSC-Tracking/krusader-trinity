@@ -42,7 +42,7 @@ class DiskUsageViewer : public TQWidget
   TQ_OBJECT
   
 public:
-  DiskUsageViewer( TQWidget *tqparent = 0, char *name = 0 );
+  DiskUsageViewer( TQWidget *parent = 0, char *name = 0 );
   ~DiskUsageViewer();
   
   void openURL( KURL url );

@@ -42,7 +42,7 @@ class KrRemoteEncodingMenu: public KActionMenu
   Q_OBJECT
   TQ_OBJECT
 public:
-  KrRemoteEncodingMenu (const TQString &text, const TQString &icon, TQObject *tqparent=0, const char *name=0);
+  KrRemoteEncodingMenu (const TQString &text, const TQString &icon, TQObject *parent=0, const char *name=0);
 
   virtual int plug( TQWidget *widget, int index = -1);
 

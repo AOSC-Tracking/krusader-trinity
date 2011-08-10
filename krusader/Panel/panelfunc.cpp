@@ -84,8 +84,8 @@ A
 //////          ----------      List Panel -------------                ////////
 //////////////////////////////////////////////////////////
 
-ListPanelFunc::ListPanelFunc( ListPanel *tqparent ) :
-panel( tqparent ), inRefresh( false ), vfsP( 0 ) {
+ListPanelFunc::ListPanelFunc( ListPanel *parent ) :
+panel( parent ), inRefresh( false ), vfsP( 0 ) {
 	urlStack.push( "file:/" );
 	connect( &delayTimer, TQT_SIGNAL( timeout() ), this, TQT_SLOT( doOpenUrl() ) );
 }

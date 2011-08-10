@@ -42,12 +42,12 @@ class KgDependencies : public KonfiguratorPage
   TQ_OBJECT
 
 public:
-  KgDependencies( bool first, TQWidget* tqparent=0,  const char* name=0 );
+  KgDependencies( bool first, TQWidget* parent=0,  const char* name=0 );
 
   virtual int activeSubPage();
   
 private:
-  void addApplication( TQString name, TQGridLayout *grid, int row, TQWidget *tqparent, int page, TQString additionalList=TQString() );
+  void addApplication( TQString name, TQGridLayout *grid, int row, TQWidget *parent, int page, TQString additionalList=TQString() );
   
 public slots:
   void slotApply( TQObject *obj, TQString cls, TQString name );

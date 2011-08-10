@@ -28,7 +28,7 @@
 
 
 /* 
- *  Constructs a newFTPGUI which is a child of 'tqparent', with the 
+ *  Constructs a newFTPGUI which is a child of 'parent', with the 
  *  name 'name' and widget flags set to 'f' 
  *
  *  The dialog will by default be modeless, unless you set 'modal' to
@@ -37,8 +37,8 @@
  
  #define SIZE_MINIMUM	TQSizePolicy( (TQSizePolicy::SizeType)0, (TQSizePolicy::SizeType)0 )
  
-newFTPGUI::newFTPGUI( TQWidget* tqparent,  const char* name, bool modal, WFlags fl )
-    : TQDialog( tqparent, name, modal, fl ){
+newFTPGUI::newFTPGUI( TQWidget* parent,  const char* name, bool modal, WFlags fl )
+    : TQDialog( parent, name, modal, fl ){
     
     TQVBoxLayout * tqlayout = new TQVBoxLayout( this, 11, 6, "newFTPGUI_layout" );
     tqlayout->setAutoAdd(true);

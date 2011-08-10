@@ -37,37 +37,37 @@
 class DUListViewItem : public TQListViewItem
 {
 public:
-  DUListViewItem( DiskUsage *diskUsageIn, File *fileIn, TQListView * tqparent, TQString label1, 
+  DUListViewItem( DiskUsage *diskUsageIn, File *fileIn, TQListView * parent, TQString label1, 
                   TQString label2, TQString label3, TQString label4, TQString label5, TQString label6, 
                   TQString label7, TQString label8, TQString label9 ) 
-                  : TQListViewItem( tqparent, label1, label2, label3, label4, label5, label6, label7, label8), 
+                  : TQListViewItem( parent, label1, label2, label3, label4, label5, label6, label7, label8), 
                   diskUsage( diskUsageIn ), file( fileIn ) 
                   {
                     setText( 8, label9 );
                     diskUsage->addProperty( file, "ListView-Ref", this );
                   }
-  DUListViewItem( DiskUsage *diskUsageIn, File *fileIn, TQListViewItem * tqparent, TQString label1, 
+  DUListViewItem( DiskUsage *diskUsageIn, File *fileIn, TQListViewItem * parent, TQString label1, 
                   TQString label2, TQString label3, TQString label4, TQString label5, TQString label6, 
                   TQString label7, TQString label8, TQString label9 ) 
-                  : TQListViewItem( tqparent, label1, label2, label3, label4, label5, label6, label7, label8), 
+                  : TQListViewItem( parent, label1, label2, label3, label4, label5, label6, label7, label8), 
                   diskUsage( diskUsageIn ), file( fileIn ) 
                   {
                     setText( 8, label9 );
                     diskUsage->addProperty( file, "ListView-Ref", this );
                   }
-  DUListViewItem( DiskUsage *diskUsageIn, File *fileIn, TQListView * tqparent, TQListViewItem * after, 
+  DUListViewItem( DiskUsage *diskUsageIn, File *fileIn, TQListView * parent, TQListViewItem * after, 
                   TQString label1, TQString label2, TQString label3, TQString label4, TQString label5, 
                   TQString label6, TQString label7, TQString label8, TQString label9 )   
-                  : TQListViewItem( tqparent, after, label1, label2, label3, label4, label5, label6, label7, label8), 
+                  : TQListViewItem( parent, after, label1, label2, label3, label4, label5, label6, label7, label8), 
                   diskUsage( diskUsageIn ), file( fileIn ) 
                   {
                     setText( 8, label9 );
                     diskUsage->addProperty( file, "ListView-Ref", this );
                   }
-  DUListViewItem( DiskUsage *diskUsageIn, File *fileIn, TQListViewItem * tqparent, TQListViewItem * after, 
+  DUListViewItem( DiskUsage *diskUsageIn, File *fileIn, TQListViewItem * parent, TQListViewItem * after, 
                   TQString label1, TQString label2, TQString label3, TQString label4, TQString label5, 
                   TQString label6, TQString label7, TQString label8, TQString label9 )   
-                  : TQListViewItem( tqparent, after, label1, label2, label3, label4, label5, label6, label7, label8), 
+                  : TQListViewItem( parent, after, label1, label2, label3, label4, label5, label6, label7, label8), 
                   diskUsage( diskUsageIn ), file( fileIn ) 
                   {
                     setText( 8, label9 );
@@ -137,7 +137,7 @@ protected:
   virtual void keyPressEvent( TQKeyEvent *e );
     
 private:
-  void addDirectory( Directory *dirEntry, TQListViewItem *tqparent );
+  void addDirectory( Directory *dirEntry, TQListViewItem *parent );
   bool doubleClicked( TQListViewItem * item );
 };
 

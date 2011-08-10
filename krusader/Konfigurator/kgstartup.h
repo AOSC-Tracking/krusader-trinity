@@ -39,7 +39,7 @@ class KgStartup : public KonfiguratorPage
   TQ_OBJECT
 
 public:
-  KgStartup( bool first, TQWidget* tqparent=0,  const char* name=0 );
+  KgStartup( bool first, TQWidget* parent=0,  const char* name=0 );
 
 public slots:
   void slotDisable();

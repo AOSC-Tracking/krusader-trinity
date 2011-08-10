@@ -40,14 +40,14 @@
 #define PAGE_PACKERS   1
 #define PAGE_CHECKSUM  2
 
-KgDependencies::KgDependencies( bool first, TQWidget* tqparent,  const char* name ) :
-      KonfiguratorPage( first, tqparent, name )
+KgDependencies::KgDependencies( bool first, TQWidget* parent,  const char* name ) :
+      KonfiguratorPage( first, parent, name )
 {
-  TQGridLayout *kgDependenciesLayout = new TQGridLayout( tqparent );
+  TQGridLayout *kgDependenciesLayout = new TQGridLayout( parent );
   kgDependenciesLayout->setSpacing( 6 );
 
   //  ---------------------------- GENERAL TAB -------------------------------------
-  tabWidget = new TQTabWidget( tqparent, "tabWidget" );
+  tabWidget = new TQTabWidget( parent, "tabWidget" );
 
   TQWidget *general_tab = new TQWidget( tabWidget, "tab" );
   tabWidget->insertTab( general_tab, i18n( "General" ) );
@@ -119,7 +119,7 @@ KgDependencies::KgDependencies( bool first, TQWidget* tqparent,  const char* nam
   kgDependenciesLayout->addWidget( tabWidget, 0, 0 );
 }
 
-void KgDependencies::addApplication( TQString name, TQGridLayout *grid, int row, TQWidget *tqparent, int page, TQString additionalList )
+void KgDependencies::addApplication( TQString name, TQGridLayout *grid, int row, TQWidget *parent, int page, TQString additionalList )
 {
   TQString dflt = KrServices::fullPathName( name ); /* try to autodetect the full path name */
 
@@ -132,9 +132,9 @@ void KgDependencies::addApplication( TQString name, TQGridLayout *grid, int row,
       }
   }
 
-  addLabel( grid, row, 0, name, tqparent, (TQString( "label:" )+name).ascii() );
+  addLabel( grid, row, 0, name, parent, (TQString( "label:" )+name).ascii() );
 
-  KonfiguratorURLRequester *fullPath = createURLRequester( "Dependencies", name, dflt, tqparent, false, page );
+  KonfiguratorURLRequester *fullPath = createURLRequester( "Dependencies", name, dflt, parent, false, page );
   connect( fullPath->extension(), TQT_SIGNAL( applyManually( TQObject *, TQString, TQString ) ),
            this, TQT_SLOT( slotApply( TQObject *, TQString, TQString ) ) );
   grid->addWidget( fullPath, row, 1 );

@@ -37,8 +37,8 @@
 #include <kfileitem.h>
 #include <tqfileinfo.h>
     
-Splitter::Splitter( TQWidget* tqparent,  KURL fileNameIn, KURL destinationDirIn ) :
-  TQProgressDialog( tqparent, "Krusader::Splitter", true, 0 ), splitSize( 0 )
+Splitter::Splitter( TQWidget* parent,  KURL fileNameIn, KURL destinationDirIn ) :
+  TQProgressDialog( parent, "Krusader::Splitter", true, 0 ), splitSize( 0 )
 {
   fileName = fileNameIn;
 

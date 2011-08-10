@@ -60,7 +60,7 @@ public:
     Tool = 2
   };
 
-  KrResultTableDialog(TQWidget *tqparent, DialogType type, const TQString& caption, const TQString& heading, const TQString& headerIcon=TQString(), const TQString& hint=TQString());
+  KrResultTableDialog(TQWidget *parent, DialogType type, const TQString& caption, const TQString& heading, const TQString& headerIcon=TQString(), const TQString& hint=TQString());
   virtual ~KrResultTableDialog();
 
   const TQString& getHeading() const { return _heading; }

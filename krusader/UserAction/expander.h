@@ -77,7 +77,7 @@ protected:
 	static void setError(Expander& exp,const Error& e) ;
 	static void panelMissingError(const TQString &s, Expander& exp);
 	static TQStringList splitEach(const TagString& s);
-	static TQStringList fileList(const ListPanel* const panel,const TQString& type,const TQString& tqmask,const bool ommitPath,const bool useUrl,Expander&,const TQString&);
+	static TQStringList fileList(const ListPanel* const panel,const TQString& type,const TQString& mask,const bool ommitPath,const bool useUrl,Expander&,const TQString&);
 	exp_placeholder();
 	exp_placeholder(const exp_placeholder& p);
 	~exp_placeholder() { }
@@ -120,7 +120,7 @@ protected:
  *    - @em Count is replaced by a nomber of
  *       -# Either "All", "Files", "Dirs", "Selected"
  *       .
- *    - @em Filter is preplaced by the panels filter-tqmask (ex: "*.cpp *.h")
+ *    - @em Filter is preplaced by the panels filter-mask (ex: "*.cpp *.h")
  *    - @em Current is replaced by the current item or, in case of onmultiple="call_each", by each selected item.
  *       -# If "yes", only the filename (without path) is returned
  *       .
@@ -128,12 +128,12 @@ protected:
  *       -# Either "All", "Files", "Dirs", "Selected"
  *       -# A seperator between the items (default: " " [one space])
  *       -# If "yes", only the filename (without path) is returned
- *       -# (for all but "Selected") a filter-tqmask (default: "*")
+ *       -# (for all but "Selected") a filter-mask (default: "*")
  *       .
  *   .
  * - Access to panel-dependent, krusader-internal, parameter-needed functions (panel-indicator has to be 'a', 'o', 'r' or 'l')
  *    - @em Select manipulates the selection of the panel
- *       -# A filter-tqmask (nessesary)
+ *       -# A filter-mask (nessesary)
  *       -# Either "Add", "Remove", "Set" (default)
   *       .
  *    - @em Bookmark manipulates the selection of the panel

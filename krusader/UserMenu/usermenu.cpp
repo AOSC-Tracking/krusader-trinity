@@ -29,7 +29,7 @@ void UserMenu::exec() {
    _popup->run();
 }
 
-UserMenu::UserMenu( TQWidget * tqparent, const char * name ) : TQWidget( tqparent, name ) {
+UserMenu::UserMenu( TQWidget * parent, const char * name ) : TQWidget( parent, name ) {
    _popup = new UserMenuGui(this);
 }
 
@@ -41,7 +41,7 @@ void UserMenu::update() {
 //////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////
 
-UserMenuGui::UserMenuGui( UserMenu *, TQWidget * tqparent ) : KPopupMenu( tqparent ) {
+UserMenuGui::UserMenuGui( UserMenu *, TQWidget * parent ) : KPopupMenu( parent ) {
    createMenu();
 }
 

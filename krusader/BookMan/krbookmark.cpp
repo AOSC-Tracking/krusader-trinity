@@ -16,8 +16,8 @@ static const char* NAME_DEVICES = I18N_NOOP("Devices");
 static const char* NAME_VIRTUAL = I18N_NOOP("Virtual Filesystem");
 static const char* NAME_LAN = I18N_NOOP("Local Network");
 
-KrBookmark::KrBookmark(TQString name, KURL url, KActionCollection *tqparent, TQString icon, TQString actionName ):
-	KAction(name, 0, 0, 0, tqparent, actionName.isNull() ? BM_NAME(name).latin1() : BM_NAME(actionName).latin1()), 
+KrBookmark::KrBookmark(TQString name, KURL url, KActionCollection *parent, TQString icon, TQString actionName ):
+	KAction(name, 0, 0, 0, parent, actionName.isNull() ? BM_NAME(name).latin1() : BM_NAME(actionName).latin1()), 
 	_url(url), _folder(false), _separator(false) {
 	connect(this, TQT_SIGNAL(activated()), this, TQT_SLOT(activatedProxy()));
 	// do we have an icon?

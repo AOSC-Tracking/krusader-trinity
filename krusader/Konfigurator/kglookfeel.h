@@ -41,7 +41,7 @@ class KgLookFeel : public KonfiguratorPage
   TQ_OBJECT
 
 public:
-  KgLookFeel( bool first, TQWidget* tqparent=0,  const char* name=0 );
+  KgLookFeel( bool first, TQWidget* parent=0,  const char* name=0 );
 
   virtual int activeSubPage();
 

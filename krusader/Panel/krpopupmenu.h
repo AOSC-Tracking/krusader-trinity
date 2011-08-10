@@ -20,7 +20,7 @@ public:
 	static void run(const TQPoint &pos, ListPanel *panel);
 
 protected:	
-	KrPopupMenu(ListPanel *thePanel, TQWidget *tqparent=0);
+	KrPopupMenu(ListPanel *thePanel, TQWidget *parent=0);
 	~KrPopupMenu();
 	void performAction(int id);
 	void addEmptyMenuEntries(); // adds the choices for a menu without selected items

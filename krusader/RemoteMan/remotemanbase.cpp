@@ -26,14 +26,14 @@
 
 
 /* 
- *  Constructs a remoteManBase which is a child of 'tqparent', with the 
+ *  Constructs a remoteManBase which is a child of 'parent', with the 
  *  name 'name' and widget flags set to 'f' 
  *
  *  The dialog will by default be modeless, unless you set 'modal' to
  *  TRUE to construct a modal dialog.
  */
-remoteManBase::remoteManBase( TQWidget* tqparent,  const char* name, bool modal, WFlags fl )
-    : TQDialog( tqparent, name, modal, fl )
+remoteManBase::remoteManBase( TQWidget* parent,  const char* name, bool modal, WFlags fl )
+    : TQDialog( parent, name, modal, fl )
 {
     if ( !name )
 	setName( "remoteManBase" );

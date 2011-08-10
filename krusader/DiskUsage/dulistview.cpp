@@ -111,11 +111,11 @@ DUListView::~ DUListView()
   krConfig->writeEntry("D Group Width",       columnWidth( 8 ) );
 }
 
-void DUListView::addDirectory( Directory *dirEntry, TQListViewItem *tqparent )
+void DUListView::addDirectory( Directory *dirEntry, TQListViewItem *parent )
 {
   TQListViewItem * lastItem = 0;
     
-  if( tqparent == 0 && ! ( dirEntry->tqparent() == 0 ) )
+  if( parent == 0 && ! ( dirEntry->parent() == 0 ) )
   {
     lastItem = new TQListViewItem( this, ".." );
     lastItem->setPixmap( 0, FL_LOADICON( "up" ) );
@@ -138,17 +138,17 @@ void DUListView::addDirectory( Directory *dirEntry, TQListViewItem *tqparent )
     TQString ownSize = KRpermHandler::parseSize( item->ownSize() ) + " ";
     TQString percent = item->percent();
     
-    if( lastItem == 0 && tqparent == 0 )
+    if( lastItem == 0 && parent == 0 )
       lastItem = new DUListViewItem( diskUsage, item, this, item->name(), percent, totalSize, ownSize, 
                                      mime, date, item->perm(), item->owner(), item->group() );
     else if ( lastItem == 0 )
-      lastItem = new DUListViewItem( diskUsage, item, tqparent, item->name(), percent, totalSize, ownSize, 
+      lastItem = new DUListViewItem( diskUsage, item, parent, item->name(), percent, totalSize, ownSize, 
                                      mime, date, item->perm(), item->owner(), item->group() );
-    else if ( tqparent == 0 )
+    else if ( parent == 0 )
       lastItem = new DUListViewItem( diskUsage, item, this, lastItem, item->name(), percent, totalSize,
                                      ownSize, mime, date, item->perm(), item->owner(), item->group() );
     else
-      lastItem = new DUListViewItem( diskUsage, item, tqparent, lastItem, item->name(), percent, totalSize, 
+      lastItem = new DUListViewItem( diskUsage, item, parent, lastItem, item->name(), percent, totalSize, 
                                      ownSize, mime, date, item->perm(), item->owner(), item->group() );
    
     if( item->isExcluded() )
@@ -227,7 +227,7 @@ bool DUListView::doubleClicked( TQListViewItem * item )
     }
     else
     {
-      Directory *upDir = (Directory *)diskUsage->getCurrentDir()->tqparent();
+      Directory *upDir = (Directory *)diskUsage->getCurrentDir()->parent();
     
       if( upDir )
         diskUsage->changeDirectory( upDir );

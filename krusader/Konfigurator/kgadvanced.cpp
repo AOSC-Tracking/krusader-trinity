@@ -37,15 +37,15 @@
 #include <kdeversion.h>
 #include <kprotocolinfo.h>
 
-KgAdvanced::KgAdvanced( bool first, TQWidget* tqparent,  const char* name ) :
-      KonfiguratorPage( first, tqparent, name )
+KgAdvanced::KgAdvanced( bool first, TQWidget* parent,  const char* name ) :
+      KonfiguratorPage( first, parent, name )
 {
-  TQGridLayout *kgAdvancedLayout = new TQGridLayout( tqparent );
+  TQGridLayout *kgAdvancedLayout = new TQGridLayout( parent );
   kgAdvancedLayout->setSpacing( 6 );
 
   //  -------------------------- GENERAL GROUPBOX ----------------------------------
   
-  TQGroupBox *generalGrp = createFrame( i18n( "General" ), tqparent, "kgAdvGeneralGrp" );
+  TQGroupBox *generalGrp = createFrame( i18n( "General" ), parent, "kgAdvGeneralGrp" );
   TQGridLayout *generalGrid = createGridLayout( generalGrp->tqlayout() );
 
 #if KDE_IS_VERSION( 3,5,1 )
@@ -85,7 +85,7 @@ KgAdvanced::KgAdvanced( bool first, TQWidget* tqparent,  const char* name ) :
 
   //  ----------------------- CONFIRMATIONS GROUPBOX -------------------------------
   
-  TQGroupBox *confirmGrp = createFrame( i18n( "Confirmations" ), tqparent, "confirmGrp" );
+  TQGroupBox *confirmGrp = createFrame( i18n( "Confirmations" ), parent, "confirmGrp" );
   TQGridLayout *confirmGrid = createGridLayout( confirmGrp->tqlayout() );
 
   addLabel( confirmGrid, 0, 0, "\n"+i18n( "Request user confirmation for the following operations:" )+"\n",
@@ -109,7 +109,7 @@ KgAdvanced::KgAdvanced( bool first, TQWidget* tqparent,  const char* name ) :
 
   //  ------------------------ FINE-TUNING GROUPBOX --------------------------------
 
-  TQGroupBox *fineTuneGrp = createFrame( i18n( "Fine-Tuning" ), tqparent, "kgFineTuneGrp" );
+  TQGroupBox *fineTuneGrp = createFrame( i18n( "Fine-Tuning" ), parent, "kgFineTuneGrp" );
   TQGridLayout *fineTuneGrid = createGridLayout( fineTuneGrp->tqlayout() );
   fineTuneGrid->tqsetAlignment( TQt::AlignLeft | TQt::AlignTop );
   

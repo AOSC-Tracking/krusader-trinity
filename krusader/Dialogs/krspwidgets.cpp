@@ -229,11 +229,11 @@ void KRMaskChoiceSub::acceptFromList(TQListBoxItem *i) {
 
 ////////////////////////// QuickNavLineEdit ////////////////////
 
-QuickNavLineEdit::QuickNavLineEdit(const TQString &string, TQWidget *tqparent, const char *name):
-	KLineEdit(string, tqparent, name) { init(); }
+QuickNavLineEdit::QuickNavLineEdit(const TQString &string, TQWidget *parent, const char *name):
+	KLineEdit(string, parent, name) { init(); }
 	
-QuickNavLineEdit::QuickNavLineEdit(TQWidget *tqparent, const char *name): 
-	KLineEdit(tqparent, name) { init(); }
+QuickNavLineEdit::QuickNavLineEdit(TQWidget *parent, const char *name): 
+	KLineEdit(parent, name) { init(); }
 
 int QuickNavLineEdit::findCharFromPos(const TQString & str, const TQFontMetrics & metrics, int pos)
 {

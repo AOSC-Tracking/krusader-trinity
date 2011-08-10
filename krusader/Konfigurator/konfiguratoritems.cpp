@@ -92,7 +92,7 @@ bool KonfiguratorExtension::isChanged()
 ///////////////////////////////
 
 KonfiguratorCheckBox::KonfiguratorCheckBox( TQString cls, TQString name, bool dflt, TQString text,
-    TQWidget *tqparent, const char *widgetName, bool rst, int pg ) : TQCheckBox( text, tqparent, widgetName ),
+    TQWidget *parent, const char *widgetName, bool rst, int pg ) : TQCheckBox( text, parent, widgetName ),
     defaultValue( dflt )
 {
   ext = new KonfiguratorExtension( TQT_TQOBJECT(this), cls, name, rst, pg );
@@ -132,7 +132,7 @@ void KonfiguratorCheckBox::slotSetDefaults(TQObject *)
 ///////////////////////////////
 
 KonfiguratorSpinBox::KonfiguratorSpinBox( TQString cls, TQString name, int dflt, int min, int max,
-    TQWidget *tqparent, const char *widgetName, bool rst, int pg ) : TQSpinBox( tqparent, widgetName ),
+    TQWidget *parent, const char *widgetName, bool rst, int pg ) : TQSpinBox( parent, widgetName ),
     defaultValue( dflt )
 {
   ext = new KonfiguratorExtension( TQT_TQOBJECT(this), cls, name, rst, pg );
@@ -204,8 +204,8 @@ KonfiguratorCheckBox * KonfiguratorCheckBoxGroup::find( TQString name )
 ///////////////////////////////
 
 KonfiguratorRadioButtons::KonfiguratorRadioButtons( TQString cls, TQString name,
-    TQString dflt, TQWidget *tqparent, const char *widgetName, bool rst, int pg ) :
-    TQButtonGroup( tqparent, widgetName ), defaultValue( dflt )
+    TQString dflt, TQWidget *parent, const char *widgetName, bool rst, int pg ) :
+    TQButtonGroup( parent, widgetName ), defaultValue( dflt )
 {
   ext = new KonfiguratorExtension( TQT_TQOBJECT(this), cls, name, rst, pg );
   connect( ext, TQT_SIGNAL( applyAuto(TQObject *,TQString, TQString) ), TQT_TQOBJECT(this), TQT_SLOT( slotApply(TQObject *,TQString, TQString) ) );
@@ -299,7 +299,7 @@ void KonfiguratorRadioButtons::slotSetDefaults(TQObject *)
 ///////////////////////////////
 
 KonfiguratorEditBox::KonfiguratorEditBox( TQString cls, TQString name, TQString dflt,
-    TQWidget *tqparent, const char *widgetName, bool rst, int pg ) : TQLineEdit( tqparent, widgetName ),
+    TQWidget *parent, const char *widgetName, bool rst, int pg ) : TQLineEdit( parent, widgetName ),
     defaultValue( dflt )
 {
   ext = new KonfiguratorExtension( TQT_TQOBJECT(this), cls, name, rst, pg );
@@ -341,7 +341,7 @@ void KonfiguratorEditBox::slotSetDefaults(TQObject *)
 ///////////////////////////////
 
 KonfiguratorURLRequester::KonfiguratorURLRequester( TQString cls, TQString name, TQString dflt,
-    TQWidget *tqparent, const char *widgetName, bool rst, int pg ) : KURLRequester( tqparent, widgetName ),
+    TQWidget *parent, const char *widgetName, bool rst, int pg ) : KURLRequester( parent, widgetName ),
     defaultValue( dflt )
 {
   ext = new KonfiguratorExtension( TQT_TQOBJECT(this), cls, name, rst, pg );
@@ -383,7 +383,7 @@ void KonfiguratorURLRequester::slotSetDefaults(TQObject *)
 ///////////////////////////////
 
 KonfiguratorFontChooser::KonfiguratorFontChooser( TQString cls, TQString name, TQFont *dflt,
-  TQWidget *tqparent, const char *widgetName, bool rst, int pg ) : TQHBox ( tqparent, widgetName ),
+  TQWidget *parent, const char *widgetName, bool rst, int pg ) : TQHBox ( parent, widgetName ),
     defaultValue( dflt )
 {
   ext = new KonfiguratorExtension( TQT_TQOBJECT(this), cls, name, rst, pg );
@@ -446,8 +446,8 @@ void KonfiguratorFontChooser::slotBrowseFont()
 ///////////////////////////////
 
 KonfiguratorComboBox::KonfiguratorComboBox( TQString cls, TQString name, TQString dflt,
-    KONFIGURATOR_NAME_VALUE_PAIR *listIn, int listInLen, TQWidget *tqparent,
-    const char *widgetName, bool rst, bool editable, int pg ) : TQComboBox ( tqparent, widgetName ),
+    KONFIGURATOR_NAME_VALUE_PAIR *listIn, int listInLen, TQWidget *parent,
+    const char *widgetName, bool rst, bool editable, int pg ) : TQComboBox ( parent, widgetName ),
     defaultValue( dflt ), listLen( listInLen )
 {
   list = new KONFIGURATOR_NAME_VALUE_PAIR[ listInLen ];
@@ -525,8 +525,8 @@ void KonfiguratorComboBox::slotSetDefaults(TQObject *)
 ///////////////////////////////
 
 KonfiguratorColorChooser::KonfiguratorColorChooser( TQString cls, TQString name, TQColor dflt,
-    TQWidget *tqparent, const char *widgetName, bool rst, ADDITIONAL_COLOR *addColPtr,
-    int addColNum, int pg ) : TQComboBox ( tqparent, widgetName ),
+    TQWidget *parent, const char *widgetName, bool rst, ADDITIONAL_COLOR *addColPtr,
+    int addColNum, int pg ) : TQComboBox ( parent, widgetName ),
     defaultValue( dflt ), disableColorChooser( true )
 {
   ext = new KonfiguratorExtension( TQT_TQOBJECT(this), cls, name, rst, pg );
@@ -739,7 +739,7 @@ TQColor KonfiguratorColorChooser::getColor()
 ///////////////////////////////
 
 KonfiguratorListBox::KonfiguratorListBox( TQString cls, TQString name, TQStringList dflt,
-    TQWidget *tqparent, const char *widgetName, bool rst, int pg ) : TQListBox( tqparent, widgetName ),
+    TQWidget *parent, const char *widgetName, bool rst, int pg ) : TQListBox( parent, widgetName ),
     defaultValue( dflt )
 {
   ext = new KonfiguratorExtension( TQT_TQOBJECT(this), cls, name, rst, pg );

@@ -61,22 +61,22 @@ public:
       TQColor                baseColor;
             
     public:
-      SyncViewItem( SynchronizerFileItem *item, TQColor txt, TQColor base, TQListView * tqparent, TQListViewItem *after, TQString label1,
+      SyncViewItem( SynchronizerFileItem *item, TQColor txt, TQColor base, TQListView * parent, TQListViewItem *after, TQString label1,
                     TQString label2 = TQString(), TQString label3 = TQString(), TQString label4 = TQString(),
                     TQString label5 = TQString(), TQString label6 = TQString(),
                     TQString label7 = TQString(), TQString label8 = TQString() ) :
-                      TQListViewItem( tqparent, after, label1, label2, label3, label4, label5, label6,
+                      TQListViewItem( parent, after, label1, label2, label3, label4, label5, label6,
                                      label7, label8 ), syncItemRef( item ), lastItemRef( 0 ), textColor( txt ), baseColor( base )
       {
         item->setUserData( (void *)this );
         setDragEnabled( true );
       }
       
-      SyncViewItem( SynchronizerFileItem *item, TQColor txt, TQColor base, TQListViewItem * tqparent, TQListViewItem *after, TQString label1,
+      SyncViewItem( SynchronizerFileItem *item, TQColor txt, TQColor base, TQListViewItem * parent, TQListViewItem *after, TQString label1,
                     TQString label2 = TQString(), TQString label3 = TQString(), TQString label4 = TQString(),
                     TQString label5 = TQString(), TQString label6 = TQString(),
                     TQString label7 = TQString(), TQString label8 = TQString() ) :
-                      TQListViewItem( tqparent, after, label1, label2, label3, label4, label5, label6,
+                      TQListViewItem( parent, after, label1, label2, label3, label4, label5, label6,
                                      label7, label8 ), syncItemRef( item ), lastItemRef( 0 ), textColor( txt ), baseColor( base )
       {
         item->setUserData( (void *)this );
@@ -110,8 +110,8 @@ public:
    
 public:
   // if rightDirectory is null, leftDirectory is actually the profile name to load
-  SynchronizerGUI(TQWidget* tqparent,  KURL leftDirectory, KURL rightDirectory = TQString(), TQStringList selList = TQStringList() );
-  SynchronizerGUI(TQWidget* tqparent,  TQString profile );
+  SynchronizerGUI(TQWidget* parent,  KURL leftDirectory, KURL rightDirectory = TQString(), TQStringList selList = TQStringList() );
+  SynchronizerGUI(TQWidget* parent,  TQString profile );
   ~SynchronizerGUI();
 
   inline bool wasSynchronization()    {return wasSync;}
@@ -142,7 +142,7 @@ protected slots:
   void connectFilters( const TQString & );  
 
 private:
-  void initGUI(TQWidget* tqparent, TQString profile, KURL leftURL, KURL rightURL, TQStringList selList);
+  void initGUI(TQWidget* parent, TQString profile, KURL leftURL, KURL rightURL, TQStringList selList);
   
   TQString convertTime(time_t time) const;
   void    setMarkFlags();

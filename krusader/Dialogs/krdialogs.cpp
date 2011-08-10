@@ -130,9 +130,9 @@ KURL KChooseDir::getDir(TQString text,const KURL& url, const KURL& cwd, bool &pr
 	return u;
 }
 
-KURLRequesterDlgForCopy::KURLRequesterDlgForCopy( const TQString& urlName, const TQString& _text, bool presAttrs, TQWidget *tqparent,
+KURLRequesterDlgForCopy::KURLRequesterDlgForCopy( const TQString& urlName, const TQString& _text, bool presAttrs, TQWidget *parent,
                                                   const char *name, bool modal, KURL baseURL )
-			:   KDialogBase( Plain, TQString(), Ok|Cancel|User1, Ok, tqparent, name, modal, true, KStdGuiItem::clear() ),
+			:   KDialogBase( Plain, TQString(), Ok|Cancel|User1, Ok, parent, name, modal, true, KStdGuiItem::clear() ),
 			baseUrlCombo( 0 ), copyDirStructureCB( 0 ) {
 	
 	TQVBoxLayout * topLayout = new TQVBoxLayout( plainPage(), 0, spacingHint() );
@@ -228,7 +228,7 @@ KURL KURLRequesterDlgForCopy::baseURL() const {
 	return vfs::fromPathOrURL( baseUrlCombo->currentText() );
 }
 
-KRGetDate::KRGetDate(TQDate date, TQWidget *tqparent, const char *name) : KDialog(tqparent, name,true,WStyle_DialogBorder) {
+KRGetDate::KRGetDate(TQDate date, TQWidget *parent, const char *name) : KDialog(parent, name,true,WStyle_DialogBorder) {
   dateWidget = new KDatePicker(this, date);
   dateWidget->resize(dateWidget->tqsizeHint());
   setMinimumSize(dateWidget->tqsizeHint());

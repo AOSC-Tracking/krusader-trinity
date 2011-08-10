@@ -43,7 +43,7 @@ class KgUserActions : public KonfiguratorPage
   TQ_OBJECT
 
 public:
-  KgUserActions( bool first, TQWidget* tqparent=0,  const char* name=0 );
+  KgUserActions( bool first, TQWidget* parent=0,  const char* name=0 );
 
 public slots:
   void startActionMan();

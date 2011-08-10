@@ -57,7 +57,7 @@
 #include <tqsizepolicy.h>
 #include <ktempfile.h> 
 
-KCMDLine::KCMDLine( TQWidget *tqparent, const char *name ) : TQWidget( tqparent, name ) {
+KCMDLine::KCMDLine( TQWidget *parent, const char *name ) : TQWidget( parent, name ) {
   TQGridLayout * tqlayout = new TQGridLayout( this, 1, 4 );
   path = new TQLabel( this );
   TQWhatsThis::add

@@ -68,7 +68,7 @@
 class LocateListView : public KListView
 {
 public:
-  LocateListView( TQWidget * tqparent, const char * name = 0 ) : KListView( tqparent, name )
+  LocateListView( TQWidget * parent, const char * name = 0 ) : KListView( parent, name )
   {
   }
 

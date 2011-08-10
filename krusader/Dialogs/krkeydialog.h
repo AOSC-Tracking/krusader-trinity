@@ -23,7 +23,7 @@ class KrKeyDialog : protected KKeyDialog
 Q_OBJECT
   TQ_OBJECT
 public:
-    KrKeyDialog( TQWidget* tqparent = 0 );
+    KrKeyDialog( TQWidget* parent = 0 );
     ~KrKeyDialog();
 
 private slots:

@@ -37,11 +37,11 @@
 #include "klistbox.h"
 
 /*
- *  Constructs a ActionPropertyBase as a child of 'tqparent', with the
+ *  Constructs a ActionPropertyBase as a child of 'parent', with the
  *  name 'name' and widget flags set to 'f'.
  */
-ActionPropertyBase::ActionPropertyBase( TQWidget* tqparent, const char* name, WFlags fl )
-    : TQWidget( tqparent, name, fl )
+ActionPropertyBase::ActionPropertyBase( TQWidget* parent, const char* name, WFlags fl )
+    : TQWidget( parent, name, fl )
 {
     if ( !name )
 	setName( "ActionPropertyBase" );

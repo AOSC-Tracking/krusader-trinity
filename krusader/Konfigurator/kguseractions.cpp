@@ -38,14 +38,14 @@
 #include <kdebug.h>
 
 
-KgUserActions::KgUserActions( bool first, TQWidget* tqparent,  const char* name ) :
-  KonfiguratorPage( first, tqparent, name )
+KgUserActions::KgUserActions( bool first, TQWidget* parent,  const char* name ) :
+  KonfiguratorPage( first, parent, name )
 {
-   TQGridLayout *kgUserActionLayout = new TQGridLayout( tqparent, 2, 1,
+   TQGridLayout *kgUserActionLayout = new TQGridLayout( parent, 2, 1,
    		0 /* margin */, 6 /* spacing */, "kgUserActionLayout" );
 
    // ============= Info Group =============
-   TQGroupBox *InfoGroup = createFrame( i18n( "Information" ), tqparent, "kgUserActionInfoGroup" );
+   TQGroupBox *InfoGroup = createFrame( i18n( "Information" ), parent, "kgUserActionInfoGroup" );
    TQGridLayout *InfoGrid = createGridLayout( InfoGroup->tqlayout() );
 
    // terminal for the UserActions
@@ -61,7 +61,7 @@ KgUserActions::KgUserActions( bool first, TQWidget* tqparent,  const char* name 
    kgUserActionLayout->addWidget( InfoGroup, 0 ,0 );
 
    // ============= Terminal Group =============
-   TQGroupBox *terminalGroup = createFrame( i18n( "Terminal execution" ), tqparent, "kgUserActionTerminalGroup" );
+   TQGroupBox *terminalGroup = createFrame( i18n( "Terminal execution" ), parent, "kgUserActionTerminalGroup" );
    TQGridLayout *terminalGrid = createGridLayout( terminalGroup->tqlayout() );
 
    // terminal for the UserActions
@@ -75,7 +75,7 @@ KgUserActions::KgUserActions( bool first, TQWidget* tqparent,  const char* name 
    kgUserActionLayout->addWidget( terminalGroup, 1 ,0 );
 
    // ============= Outputcollection Group =============
-   TQGroupBox *outputGroup = createFrame( i18n( "Output collection" ), tqparent, "kgUserActionOutputGroup" );
+   TQGroupBox *outputGroup = createFrame( i18n( "Output collection" ), parent, "kgUserActionOutputGroup" );
    TQGridLayout *outputGrid = createGridLayout( outputGroup->tqlayout() );
 
    TQHBox *hbox;
@@ -99,7 +99,7 @@ KgUserActions::KgUserActions( bool first, TQWidget* tqparent,  const char* name 
 }
 
 void KgUserActions::startActionMan() {
-   ActionMan actionMan( TQT_TQWIDGET(tqparent()) );
+   ActionMan actionMan( TQT_TQWIDGET(parent()) );
 }
 
 

@@ -22,9 +22,9 @@
 #include "../KViewer/panelviewer.h"
 #include "../KViewer/diskusageviewer.h"
 
-PanelPopup::PanelPopup( TQSplitter *tqparent, bool left ) : TQWidget( tqparent ), 
+PanelPopup::PanelPopup( TQSplitter *parent, bool left ) : TQWidget( parent ), 
 	_left( left ), _hidden(true), stack( 0 ), viewer( 0 ), pjob( 0 ), splitterSizes() {
-	splitter = tqparent;
+	splitter = parent;
 	TQGridLayout * tqlayout = new TQGridLayout(this, 1, 1);
 	
 	// loading the splitter sizes
@@ -353,8 +353,8 @@ void PanelPopup::quickSelect() {
 	SLOTS->markGroup(quickSelectCombo->currentText(), true);
 }
 
-void PanelPopup::quickSelect(const TQString &tqmask) {
-	SLOTS->markGroup(tqmask, true);
+void PanelPopup::quickSelect(const TQString &mask) {
+	SLOTS->markGroup(mask, true);
 }
 
 void PanelPopup::quickSelectStore() {
@@ -367,7 +367,7 @@ void PanelPopup::quickSelectStore() {
 
 void PanelPopup::slotDroppedOnTree(TQWidget *widget, TQDropEvent *e, KURL::List &lst, KURL &) {
 	// KFileTreeView is buggy: when dropped, it might not give us the correct
-	// destination, but actually, it's tqparent. workaround: don't use
+	// destination, but actually, it's parent. workaround: don't use
 	// the destination in the signal, but take the current item
 	KURL dest = tree->currentURL();
 	

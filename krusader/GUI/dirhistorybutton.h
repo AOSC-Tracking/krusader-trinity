@@ -33,7 +33,7 @@ class DirHistoryButton : public TQToolButton  {
    Q_OBJECT
   TQ_OBJECT
 public: 
-  DirHistoryButton(DirHistoryQueue* hQ, TQWidget *tqparent=0, const char *name=0);
+  DirHistoryButton(DirHistoryQueue* hQ, TQWidget *parent=0, const char *name=0);
   ~DirHistoryButton();
 
   void openPopup();

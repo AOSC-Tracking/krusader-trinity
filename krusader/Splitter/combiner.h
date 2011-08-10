@@ -71,7 +71,7 @@ private:
   bool            unixNaming;
   
 public:
-  Combiner( TQWidget* tqparent,  KURL baseURLIn, KURL destinationURLIn, bool unixNamingIn=false );
+  Combiner( TQWidget* parent,  KURL baseURLIn, KURL destinationURLIn, bool unixNamingIn=false );
   ~Combiner();
 
   void combine();

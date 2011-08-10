@@ -19,7 +19,7 @@ class KURL;
 
 class UserActionPopupMenu : public KPopupMenu {
 public:
-   UserActionPopupMenu( KURL currentURL, TQWidget *tqparent = 0 );
+   UserActionPopupMenu( KURL currentURL, TQWidget *parent = 0 );
 };
 
 #endif // ifndef USERACTIONPOPUPMENU_H

@@ -8,7 +8,7 @@
 #include <kpopupmenu.h>
 #include <kdebug.h>
 
-KrBookmarkButton::KrBookmarkButton(TQWidget *tqparent): TQToolButton(tqparent) {
+KrBookmarkButton::KrBookmarkButton(TQWidget *parent): TQToolButton(parent) {
 	TQPixmap icon = krLoader->loadIcon("bookmark", KIcon::Toolbar, 16);
 	setFixedSize(icon.width() + 4, icon.height() + 4);
 	setPixmap(icon);

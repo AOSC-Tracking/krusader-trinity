@@ -97,8 +97,8 @@ void remoteMan::addSession() {
   TQListViewItem *i=0,*current;
   current=sessions->currentItem();
   // if we are pointing to a session, then the new session will be
-  // created under the current session's tqparent group
-  if (current->text(1)=="SESSION") current=current->tqparent();
+  // created under the current session's parent group
+  if (current->text(1)=="SESSION") current=current->parent();
   // create a new item and give it the appropriate pixmap
   i=new TQListViewItem(current,i18n("New session"),"SESSION");
   i->setPixmap(0,LOADICON("kr_ftp_new"));
@@ -120,7 +120,7 @@ void remoteMan::refreshData() {
     // we have to check if there's another brother-session with
     // the same name, if so, we add a <2> to it
     TQListViewItem *i;
-    if (currentItem->tqparent()) i=currentItem->tqparent()->firstChild();
+    if (currentItem->parent()) i=currentItem->parent()->firstChild();
       else i=sessions->firstChild();
     while (i) {
       if (i->text(0)==currentItem->text(0) && i!=currentItem) {
@@ -133,7 +133,7 @@ void remoteMan::refreshData() {
           temp=currentItem->text(0).replace(currentItem->text(0).length()-4,4,temp);
           currentItem->setText(0,temp);
         } else currentItem->setText(0,currentItem->text(0)+"<02>");
-        i=currentItem->tqparent()->firstChild();
+        i=currentItem->parent()->firstChild();
       } else i=i->nextSibling();
     }
   }
@@ -204,7 +204,7 @@ void remoteMan::updateConnect(const TQString &) {
 // path of folders to the item, seperated by the ` character
 TQString item2connection(TQListViewItem *item) {
   TQString con=item->text(0);
-  TQListViewItem *iterator=item->tqparent();
+  TQListViewItem *iterator=item->parent();
   while (iterator!=0) {
     //////////////////////// explanation: ///////////////////////////
     // since the` char is special to us, we use it to seperate items
@@ -217,7 +217,7 @@ TQString item2connection(TQListViewItem *item) {
       i=temp.find('`');
     }
     con=temp+'`'+con;
-    iterator=iterator->tqparent();
+    iterator=iterator->parent();
   }
   return con;
 }

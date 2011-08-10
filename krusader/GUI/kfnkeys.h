@@ -44,7 +44,7 @@ class KFnKeys : public TQWidget {
 
 public:
 	// constructor
-  KFnKeys(TQWidget *tqparent, char *name=0);
+  KFnKeys(TQWidget *parent, char *name=0);
   void updateShortcuts();
 
 private:

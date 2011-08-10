@@ -55,7 +55,7 @@ class FilterTabs : public TQObject
     };
 
     static FilterTabs * addTo( TQTabWidget *tabWidget, int props = FilterTabs::Default );
-    static KRQuery      getQuery( TQWidget *tqparent = 0, const char *name = 0 );
+    static KRQuery      getQuery( TQWidget *parent = 0, const char *name = 0 );
 
     FilterBase *get( TQString name );
 
@@ -69,7 +69,7 @@ class FilterTabs : public TQObject
     void  closeRequest( bool accept = true );
     
   private:
-    FilterTabs( int properties, TQTabWidget *tabWidget, TQObject *tqparent );
+    FilterTabs( int properties, TQTabWidget *tabWidget, TQObject *parent );
     void  acceptQuery();
 
     TQPtrList<FilterBase> filterList;

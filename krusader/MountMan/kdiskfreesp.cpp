@@ -42,8 +42,8 @@
 /***************************************************************************
   * constructor
 **/
-KDiskFreeSp::KDiskFreeSp(TQObject *tqparent, const char *name)
-    : TQObject(tqparent,name)
+KDiskFreeSp::KDiskFreeSp(TQObject *parent, const char *name)
+    : TQObject(parent,name)
 {
     dfProc = new KProcess(); Q_CHECK_PTR(dfProc);
     dfProc->setEnvironment("LANGUAGE", "C");

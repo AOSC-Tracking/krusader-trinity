@@ -53,14 +53,14 @@
 #include "../krusader.h"
 
 /* 
- *  Constructs a PackGUIBase which is a child of 'tqparent', with the 
+ *  Constructs a PackGUIBase which is a child of 'parent', with the 
  *  name 'name' and widget flags set to 'f' 
  *
  *  The dialog will by default be modeless, unless you set 'modal' to
  *  TRUE to construct a modal dialog.
  */
-PackGUIBase::PackGUIBase( TQWidget* tqparent,  const char* name, bool modal, WFlags fl )
-    : TQDialog( tqparent, name, modal, fl ), expanded( false )
+PackGUIBase::PackGUIBase( TQWidget* parent,  const char* name, bool modal, WFlags fl )
+    : TQDialog( parent, name, modal, fl ), expanded( false )
 {
     if ( !name )
 	setName( "PackGUIBase" );

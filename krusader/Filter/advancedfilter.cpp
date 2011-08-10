@@ -46,7 +46,7 @@
 #define USERSFILE  TQString("/etc/passwd")
 #define GROUPSFILE TQString("/etc/group")
 
-AdvancedFilter::AdvancedFilter( FilterTabs *tabs, TQWidget *tqparent, const char *name ) : TQWidget( tqparent, name ), fltTabs( tabs )
+AdvancedFilter::AdvancedFilter( FilterTabs *tabs, TQWidget *parent, const char *name ) : TQWidget( parent, name ), fltTabs( tabs )
 {
   TQGridLayout *filterLayout = new TQGridLayout( this );
   filterLayout->setSpacing( 6 );

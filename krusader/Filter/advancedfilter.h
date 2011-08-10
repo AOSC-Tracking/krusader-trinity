@@ -47,7 +47,7 @@ class AdvancedFilter : public TQWidget, public FilterBase
   TQ_OBJECT
 
 public:
-  AdvancedFilter( FilterTabs *tabs, TQWidget *tqparent = 0, const char *name = 0 );
+  AdvancedFilter( FilterTabs *tabs, TQWidget *parent = 0, const char *name = 0 );
 
   virtual void          queryAccepted() {}
   virtual bool          fillQuery( KRQuery *query );

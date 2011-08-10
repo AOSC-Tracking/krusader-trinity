@@ -35,8 +35,8 @@
 
 #include <klocale.h>
 
-FilterTabs::FilterTabs( int properties, TQTabWidget *tabWidget, TQObject *tqparent ) :
-    TQObject( tqparent, 0 )
+FilterTabs::FilterTabs( int properties, TQTabWidget *tabWidget, TQObject *parent ) :
+    TQObject( parent, 0 )
 {
   this->tabWidget = tabWidget;
 
@@ -123,9 +123,9 @@ FilterBase * FilterTabs::get( TQString name )
   return 0;
 }
 
-KRQuery FilterTabs::getQuery( TQWidget *tqparent, const char *name )
+KRQuery FilterTabs::getQuery( TQWidget *parent, const char *name )
 {
-  FilterDialog dialog( tqparent, name );
+  FilterDialog dialog( parent, name );
   return dialog.getQuery();
 }
 

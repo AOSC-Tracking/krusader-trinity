@@ -34,8 +34,8 @@
 static const char* FILE_FILTER = I18N_NOOP("*.xml|xml-files\n*|all files");
 
 
-UserActionPage::UserActionPage( TQWidget* tqparent )
- : TQWidget( tqparent, "UserActionPage" )
+UserActionPage::UserActionPage( TQWidget* parent )
+ : TQWidget( parent, "UserActionPage" )
 {
    TQVBoxLayout* tqlayout = new TQVBoxLayout( this, 0, 6, "UserActionPageLayout" ); // 0px margin, 6px item-spacing
 
@@ -83,7 +83,7 @@ UserActionPage::UserActionPage( TQWidget* tqparent )
    // ======== pseudo-toolbar end ========
 /* This seems obsolete now!
    // Display some help
-   KMessageBox::information( this,	// tqparent
+   KMessageBox::information( this,	// parent
    		i18n( "When you apply changes to an action, the modifications "
    			"become available in the current session immediately.\n"
    			"When closing ActionMan, you will be asked to save the changes permanently."
@@ -199,7 +199,7 @@ void UserActionPage::slotRemoveAction() {
    if ( ! dynamic_cast<UserActionListViewItem*>( actionTree->currentItem() ) )
       return;
 
-   int messageDelete = KMessageBox::warningContinueCancel ( this,	//tqparent
+   int messageDelete = KMessageBox::warningContinueCancel ( this,	//parent
 		i18n("Are you sure that you want to remove all selected actions?"),	//text
 		i18n("Remove selected actions?"), 	//caption
 		i18n("Remove"),	//Label for the continue-button
@@ -242,7 +242,7 @@ void UserActionPage::slotExport() {
    int answer = 0;
    if( file.open( IO_ReadOnly ) ) { // getting here, means the file already exists an can be read
       if( doc.setContent( &file ) ) // getting here means the file exists and already contains an UserAction-XML-tree
-         answer = KMessageBox::warningYesNoCancel( this,	//tqparent
+         answer = KMessageBox::warningYesNoCancel( this,	//parent
          		i18n("This file already contains some useractions.\nDo you want to overwrite it or should it be merged with the selected actions?"),	//text
          		i18n("Overwrite or merge?"),	//caption
          		i18n("Overwrite"),	//label for Yes-Button
@@ -251,7 +251,7 @@ void UserActionPage::slotExport() {
       file.close();
    }
    if ( answer == 0 && file.exists() )
-      answer = KMessageBox::warningContinueCancel( this,	//tqparent
+      answer = KMessageBox::warningContinueCancel( this,	//parent
       		i18n("This file already exists. Do you want to overwrite it?"),	//text
       		i18n("Overwrite existing file?"),	//caption
       		i18n("Overwrite")	//label for Continue-Button

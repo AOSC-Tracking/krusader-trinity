@@ -46,8 +46,8 @@ PredefinedDevice SplitterGUI::predefinedDevices[] = {
   {i18n( "700 MB (CD-R)" ), 700*0x100000}
   };
 
-SplitterGUI::SplitterGUI( TQWidget* tqparent,  KURL fileURL, KURL defaultDir ) :
-    TQDialog( tqparent, "Krusader::SplitterGUI", true, 0 ), 
+SplitterGUI::SplitterGUI( TQWidget* parent,  KURL fileURL, KURL defaultDir ) :
+    TQDialog( parent, "Krusader::SplitterGUI", true, 0 ), 
     userDefinedSize ( 0x100000 ), lastSelectedDevice( 0 ), resultCode( TQDialog::Rejected )
 {
   predefinedDeviceNum = sizeof( predefinedDevices ) / sizeof( PredefinedDevice );

@@ -53,7 +53,7 @@ class KrHistoryCombo: public KHistoryCombo {
   TQ_OBJECT
 
   public:
-    KrHistoryCombo(TQWidget *tqparent): KHistoryCombo(tqparent) {}
+    KrHistoryCombo(TQWidget *parent): KHistoryCombo(parent) {}
 
   protected:
     void keyPressEvent( TQKeyEvent *e );
@@ -66,7 +66,7 @@ class KCMDLine : public TQWidget, KrActionBase {
     Q_OBJECT
   TQ_OBJECT
   public:
-    KCMDLine( TQWidget *tqparent = 0, const char *name = 0 );
+    KCMDLine( TQWidget *parent = 0, const char *name = 0 );
     ~KCMDLine();
     void setCurrent( const TQString & );
     //virtual methods from KrActionBase

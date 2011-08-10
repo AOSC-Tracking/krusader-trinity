@@ -43,14 +43,14 @@
 #include <tqlineedit.h>
 
 /*
- *  Constructs a KRMaskChoice which is a child of 'tqparent', with the 
+ *  Constructs a KRMaskChoice which is a child of 'parent', with the 
  *  name 'name' and widget flags set to 'f' 
  *
  *  The dialog will by default be modeless, unless you set 'modal' to
  *  TRUE to construct a modal dialog.
  */
-KRMaskChoice::KRMaskChoice( TQWidget* tqparent,  const char* name, bool modal, WFlags fl )
-    : TQDialog( tqparent, name, modal, fl )
+KRMaskChoice::KRMaskChoice( TQWidget* parent,  const char* name, bool modal, WFlags fl )
+    : TQDialog( parent, name, modal, fl )
 {
     if ( !name )
 	setName( "KRMaskChoice" );
@@ -94,7 +94,7 @@ KRMaskChoice::KRMaskChoice( TQWidget* tqparent,  const char* name, bool modal, W
 
     preSelections = new TQListBox( Layout6, "preSelections" );
     preSelections->setVScrollBarMode( TQListBox::AlwaysOn );
-    TQWhatsThis::add(  preSelections, i18n( "A predefined selection is a file-tqmask which you use often.\nSome examples are: \"*.c, *.h\", \"*.c, *.o\", etc.\nYou can add these masks to the list by typing them and pressing the Add button.\nDelete removes a predefined selection and Clear removes all of them.\nNotice that the line in which you edit the tqmask has it's own history, you can scroll it, if needed." ) );
+    TQWhatsThis::add(  preSelections, i18n( "A predefined selection is a file-mask which you use often.\nSome examples are: \"*.c, *.h\", \"*.c, *.o\", etc.\nYou can add these masks to the list by typing them and pressing the Add button.\nDelete removes a predefined selection and Clear removes all of them.\nNotice that the line in which you edit the mask has it's own history, you can scroll it, if needed." ) );
     hbox_2->addWidget( preSelections );
 
     vbox = new TQVBoxLayout; 

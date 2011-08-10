@@ -198,7 +198,7 @@ class Synchronizer : public TQObject
     int                               inTaskFinished; // counter of quasy 'threads' in slotTaskFinished
 
     TQStringList                       selectedFiles;  // the selected files to compare
-    TQWidget                          *parentWidget;   // the tqparent widget
+    TQWidget                          *parentWidget;   // the parent widget
     TQWidget                          *syncDlgWidget;  // the synchronizer dialog widget
 };
 

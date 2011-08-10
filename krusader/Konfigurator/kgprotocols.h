@@ -42,7 +42,7 @@ class KgProtocols : public KonfiguratorPage
   TQ_OBJECT
 
 public:
-  KgProtocols( bool first, TQWidget* tqparent=0,  const char* name=0 );
+  KgProtocols( bool first, TQWidget* parent=0,  const char* name=0 );
 
   virtual void loadInitialValues();
   virtual void setDefaults();
@@ -61,7 +61,7 @@ public slots:
 protected:
   void         loadListCapableProtocols();
   void         loadMimes();
-  TQWidget*     addSpacer( TQWidget *tqparent, const char *widgetName = 0);
+  TQWidget*     addSpacer( TQWidget *parent, const char *widgetName = 0);
   
   void         addProtocol( TQString name, bool changeCurrent = false );
   void         removeProtocol( TQString name );

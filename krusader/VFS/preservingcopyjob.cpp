@@ -232,7 +232,7 @@ void PreservingCopyJob::slotCopyingDone( KIO::Job *, const KURL &from, const KUR
     unsigned i=0;
     TQString path = to.path( -1 );
 
-    for( ; i != directoriesToStamp.count(); i++ ) // sort the URL-s to avoid tqparent time stamp modification
+    for( ; i != directoriesToStamp.count(); i++ ) // sort the URL-s to avoid parent time stamp modification
       if( path >= directoriesToStamp[ i ].path( -1 ) )
         break;
 

@@ -36,8 +36,8 @@
 #include <kio/job.h>
 #include <tqfileinfo.h>
 
-Combiner::Combiner( TQWidget* tqparent,  KURL baseURLIn, KURL destinationURLIn, bool unixNamingIn ) :
-  TQProgressDialog( tqparent, "Krusader::Combiner", true, 0 ), baseURL( baseURLIn ), destinationURL( destinationURLIn ), 
+Combiner::Combiner( TQWidget* parent,  KURL baseURLIn, KURL destinationURLIn, bool unixNamingIn ) :
+  TQProgressDialog( parent, "Krusader::Combiner", true, 0 ), baseURL( baseURLIn ), destinationURL( destinationURLIn ), 
   hasValidSplitFile( false ), fileCounter ( 0 ), permissions( -1 ), receivedSize( 0 ),
   combineReadJob( 0 ), combineWriteJob( 0 ), unixNaming( unixNamingIn )
 {

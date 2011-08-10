@@ -28,8 +28,8 @@
 /////////////////////////////     UserActionListView    /////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////
 
-UserActionListView::UserActionListView( TQWidget * tqparent, const char * name )
- : KListView( tqparent, name )
+UserActionListView::UserActionListView( TQWidget * parent, const char * name )
+ : KListView( parent, name )
 {
    addColumn( i18n("Title") );
    //addColumn( i18n("Identifier") );
@@ -190,7 +190,7 @@ UserActionListViewItem::UserActionListViewItem( TQListViewItem* item, KrAction *
 
 UserActionListViewItem::~UserActionListViewItem() {
 /*   // remove category-item if the last member ofthiscategory disappears
-   if ( TQListViewItem* item = dynamic_cast<TQListViewItem*>( tqparent() ) ) {
+   if ( TQListViewItem* item = dynamic_cast<TQListViewItem*>( parent() ) ) {
       if ( item->childCount() <= 1 )
          item->deleteLater(); // not possible since not inherited from TQObject
    }*/

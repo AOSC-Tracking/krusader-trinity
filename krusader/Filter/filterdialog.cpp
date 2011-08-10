@@ -34,8 +34,8 @@
 
 #include <klocale.h>
 
-FilterDialog::FilterDialog(  TQWidget *tqparent, const char *name )
-    : KDialogBase( tqparent, name, true, i18n("Krusader::Choose Files"), Ok|Cancel )
+FilterDialog::FilterDialog(  TQWidget *parent, const char *name )
+    : KDialogBase( parent, name, true, i18n("Krusader::Choose Files"), Ok|Cancel )
 {
   TQGridLayout *filterGrid = new TQGridLayout( this->tqlayout() );
   filterGrid->setSpacing( 6 );

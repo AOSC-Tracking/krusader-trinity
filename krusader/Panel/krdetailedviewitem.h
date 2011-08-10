@@ -46,7 +46,7 @@ class KrDetailedViewItem : public KListViewItem, public KrViewItem {
 friend class KrDetailedView;
 friend class KrCalcSpaceDialog;
 public:
-	KrDetailedViewItem(KrDetailedView *tqparent, TQListViewItem *after, vfile *vf);
+	KrDetailedViewItem(KrDetailedView *parent, TQListViewItem *after, vfile *vf);
 	inline bool isSelected() const { return KListViewItem::isSelected(); }
 	inline void setSelected(bool s) { KListViewItem::setSelected(s); }
 	int compare(TQListViewItem *i,int col,bool ascending ) const;

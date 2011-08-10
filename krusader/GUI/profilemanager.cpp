@@ -38,8 +38,8 @@
 #include <kinputdialog.h>
 #include <kiconloader.h>
 
-ProfileManager::ProfileManager( TQString profileType, TQWidget * tqparent, const char * name ) 
-  : TQPushButton( tqparent, name )
+ProfileManager::ProfileManager( TQString profileType, TQWidget * parent, const char * name ) 
+  : TQPushButton( parent, name )
 {
   setText( "" );
   KIconLoader *iconLoader = new KIconLoader();

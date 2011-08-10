@@ -40,15 +40,15 @@
 #include "../krusader.h"
 #include "../VFS/krarchandler.h"
 
-KgArchives::KgArchives( bool first, TQWidget* tqparent,  const char* name ) :
-      KonfiguratorPage( first, tqparent, name )
+KgArchives::KgArchives( bool first, TQWidget* parent,  const char* name ) :
+      KonfiguratorPage( first, parent, name )
 {
-  TQGridLayout *kgArchivesLayout = new TQGridLayout( tqparent );
+  TQGridLayout *kgArchivesLayout = new TQGridLayout( parent );
   kgArchivesLayout->setSpacing( 6 );
 
   //  -------------------------- GENERAL GROUPBOX ----------------------------------
 
-  TQGroupBox *generalGrp = createFrame( i18n( "General" ), tqparent, "generalGrp" );
+  TQGroupBox *generalGrp = createFrame( i18n( "General" ), parent, "generalGrp" );
   TQGridLayout *generalGrid = createGridLayout( generalGrp->tqlayout() );
 
   addLabel( generalGrid, 0, 0, i18n( "Krusader transparently handles the following types of archives:" ),
@@ -86,7 +86,7 @@ KgArchives::KgArchives( bool first, TQWidget* tqparent,  const char* name ) :
 
   //  ------------------------ FINE-TUNING GROUPBOX --------------------------------
 
-  TQGroupBox *fineTuneGrp = createFrame( i18n( "Fine-Tuning" ), tqparent, "fineTuneGrp" );
+  TQGroupBox *fineTuneGrp = createFrame( i18n( "Fine-Tuning" ), parent, "fineTuneGrp" );
   TQGridLayout *fineTuneGrid = createGridLayout( fineTuneGrp->tqlayout() );
 
   KONFIGURATOR_CHECKBOX_PARAM finetuners[] =

@@ -29,13 +29,13 @@
 static const char* FILE_FILTER = I18N_NOOP("*.keymap|Krusader keymaps\n*|all files");
 
 
-KrKeyDialog::KrKeyDialog( TQWidget * tqparent ) : KKeyDialog( false /* allow letter shortcuts */, tqparent ) {
+KrKeyDialog::KrKeyDialog( TQWidget * parent ) : KKeyDialog( false /* allow letter shortcuts */, parent ) {
    insert( krApp->actionCollection() );
 
    // HACK This fetches the tqlayout of the buttonbox from KDialogBase, although it is not accessable with KDialogBase's API
    // None the less it's quite save to use since this implementation hasn't changed since KDE-3.3 (I haven't looked at earlier
    // versions since we don't support them) and now all work is done in KDE-4.
-   TQWidget* buttonBox = TQT_TQWIDGET( actionButton(KDialogBase::Ok)->tqparent() );
+   TQWidget* buttonBox = TQT_TQWIDGET( actionButton(KDialogBase::Ok)->parent() );
    TQBoxLayout* buttonBoxLayout = static_cast<TQBoxLayout*>( buttonBox->tqlayout() );
 
    KPushButton* importButton = new KPushButton( i18n("Import shortcuts"), buttonBox );
@@ -67,7 +67,7 @@ void KrKeyDialog::slotImportShortcuts() {
 
    KConfig conf( filename, true /*read only*/, false /*no KDEGlobal*/ );
    if ( ! conf.hasGroup("Shortcuts") ) {
-      int answer = KMessageBox::warningContinueCancel( this,	//tqparent
+      int answer = KMessageBox::warningContinueCancel( this,	//parent
 		i18n("This file does not seem to be a valid keymap.\n"
 			"It may be a keymap using a legacy format. The import can't be undone!"),	//text
 		i18n("Try to import legacy format?"), 	//caption
@@ -118,7 +118,7 @@ void KrKeyDialog::importLegacyShortcuts( const TQString& file ) {
 	}
 	f.close();
 
-	KMessageBox::information( this, // tqparent
+	KMessageBox::information( this, // parent
 		i18n("Please restart this dialog in order to see the changes"), // text
 		i18n("Legacy import completed") // caption
 		);

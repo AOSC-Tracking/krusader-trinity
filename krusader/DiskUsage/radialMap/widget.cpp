@@ -17,8 +17,8 @@
 
 
 
-RadialMap::Widget::Widget( TQWidget *tqparent, const char *name )
-   : TQWidget( tqparent, name, TQt::WNoAutoErase )
+RadialMap::Widget::Widget( TQWidget *parent, const char *name )
+   : TQWidget( parent, name, TQt::WNoAutoErase )
    , m_tree( 0 )
    , m_focus( 0 )
    , m_tip( KCursor::handCursor().bitmap()->height() ) //needs to know cursor height

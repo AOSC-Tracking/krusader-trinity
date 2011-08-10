@@ -38,7 +38,7 @@ void KrPopupMenu::run(const TQPoint &pos, ListPanel *panel) {
 	menu.performAction(result);
 }
 
-KrPopupMenu::KrPopupMenu(ListPanel *thePanel, TQWidget *tqparent) : KPopupMenu(tqparent), panel(thePanel), empty(false), 
+KrPopupMenu::KrPopupMenu(ListPanel *thePanel, TQWidget *parent) : KPopupMenu(parent), panel(thePanel), empty(false), 
 	multipleSelections(false),actions(0) {
 #ifdef __LIBKONTQ__
 	konqMenu = 0;

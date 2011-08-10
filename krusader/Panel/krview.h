@@ -192,7 +192,7 @@ public:
   virtual uint count() const { return _count; }
   virtual KIO::filesize_t countSize() const { return _countSize; }
   virtual void getSelectedItems(TQStringList* names);
-  virtual void getItemsByMask(TQString tqmask, TQStringList* names, bool dirs = true, bool files = true);
+  virtual void getItemsByMask(TQString mask, TQStringList* names, bool dirs = true, bool files = true);
   virtual void getSelectedKrViewItems(KrViewItemList *items);
   virtual void selectAllIncludingDirs() { changeSelection( KRQuery( "*" ), true, true); }
   virtual void select( const KRQuery& filter = KRQuery( "*" ) ) { changeSelection(filter, true); }
@@ -215,7 +215,7 @@ public:
   virtual KrViewProperties::SortSpec sortMode() const { return _properties->sortMode; }
   virtual void setFilter(KrViewProperties::FilterSpec filter) { _properties->filter = filter; }
   virtual KrViewProperties::FilterSpec filter() const { return _properties->filter; }
-  virtual void setFilterMask( KRQuery tqmask ) { _properties->filterMask = tqmask; }
+  virtual void setFilterMask( KRQuery mask ) { _properties->filterMask = mask; }
   virtual const KRQuery& filterMask() const { return _properties->filterMask; }
   inline TQWidget *widget() { return _widget; }
   inline void setWidget(TQWidget *w) { _widget = w; }

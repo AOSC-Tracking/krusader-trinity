@@ -34,8 +34,8 @@ using namespace std;
 
 #define PS(x) _supported.contains(x)>0
 
-KrResultTable::KrResultTable(TQWidget* tqparent)
-  : TQWidget(tqparent),
+KrResultTable::KrResultTable(TQWidget* parent)
+  : TQWidget(parent),
     _numRows(1)
 {
 }
@@ -94,8 +94,8 @@ void KrResultTable::adjustRow(TQGridLayout* grid)
 // -----------------------------------------------------------------------------
 // -----------------------------------------------------------------------------
 
-KrArchiverResultTable::KrArchiverResultTable(TQWidget* tqparent)
- : KrResultTable(tqparent)
+KrArchiverResultTable::KrArchiverResultTable(TQWidget* parent)
+ : KrResultTable(parent)
 {
   _supported = KRarcHandler::supportedPackers(); // get list of available packers
 
@@ -241,8 +241,8 @@ void KrArchiverResultTable::website(const TQString& url)
 // -----------------------------------------------------------------------------
 // -----------------------------------------------------------------------------
 
-KrToolResultTable::KrToolResultTable(TQWidget* tqparent)
- : KrResultTable(tqparent)
+KrToolResultTable::KrToolResultTable(TQWidget* parent)
+ : KrResultTable(parent)
 {
   _supported = Krusader::supportedTools(); // get list of available tools
 

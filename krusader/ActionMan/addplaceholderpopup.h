@@ -34,7 +34,7 @@ class KIntSpinBox;
 class AddPlaceholderPopup : public KPopupMenu {
 
 public:
-   AddPlaceholderPopup( TQWidget *tqparent );
+   AddPlaceholderPopup( TQWidget *parent );
    
    /**
     * Use this to exec the popup. 
@@ -66,7 +66,7 @@ private:
  */
 class ParameterBase : public TQWidget {
 public:
-   inline ParameterBase( const exp_parameter& parameter, TQWidget* tqparent ) : TQWidget( tqparent ) { _nessesary = parameter.nessesary(); }
+   inline ParameterBase( const exp_parameter& parameter, TQWidget* parent ) : TQWidget( parent ) { _nessesary = parameter.nessesary(); }
    /**
     * @return the text for the parameter
     */
@@ -97,7 +97,7 @@ private:
  */
 class ParameterText : public ParameterBase {
 public:
-   ParameterText( const exp_parameter& parameter, TQWidget* tqparent );
+   ParameterText( const exp_parameter& parameter, TQWidget* parent );
    TQString text();
    TQString preset();
    void reset();
@@ -115,7 +115,7 @@ class ParameterPlaceholder : public ParameterBase {
 Q_OBJECT
   TQ_OBJECT
 public:
-   ParameterPlaceholder( const exp_parameter& parameter, TQWidget* tqparent );
+   ParameterPlaceholder( const exp_parameter& parameter, TQWidget* parent );
    TQString text();
    TQString preset();
    void reset();
@@ -133,7 +133,7 @@ private slots:
  */
 class ParameterYes : public ParameterBase {
 public:
-   ParameterYes( const exp_parameter& parameter, TQWidget* tqparent );
+   ParameterYes( const exp_parameter& parameter, TQWidget* parent );
    TQString text();
    TQString preset();
    void reset();
@@ -148,7 +148,7 @@ private:
  */
 class ParameterNo : public ParameterBase {
 public:
-   ParameterNo( const exp_parameter& parameter, TQWidget* tqparent );
+   ParameterNo( const exp_parameter& parameter, TQWidget* parent );
    TQString text();
    TQString preset();
    void reset();
@@ -165,7 +165,7 @@ class ParameterFile : public ParameterBase {
 Q_OBJECT
   TQ_OBJECT
 public:
-   ParameterFile( const exp_parameter& parameter, TQWidget* tqparent );
+   ParameterFile( const exp_parameter& parameter, TQWidget* parent );
    TQString text();
    TQString preset();
    void reset();
@@ -183,7 +183,7 @@ private slots:
  */
 class ParameterChoose : public ParameterBase {
 public:
-   ParameterChoose( const exp_parameter& parameter, TQWidget* tqparent );
+   ParameterChoose( const exp_parameter& parameter, TQWidget* parent );
    TQString text();
    TQString preset();
    void reset();
@@ -198,7 +198,7 @@ private:
  */
 class ParameterSelect : public ParameterBase {
 public:
-   ParameterSelect( const exp_parameter& parameter, TQWidget* tqparent );
+   ParameterSelect( const exp_parameter& parameter, TQWidget* parent );
    TQString text();
    TQString preset();
    void reset();
@@ -215,7 +215,7 @@ class ParameterGoto : public ParameterBase {
 Q_OBJECT
   TQ_OBJECT
 public:
-   ParameterGoto( const exp_parameter& parameter, TQWidget* tqparent );
+   ParameterGoto( const exp_parameter& parameter, TQWidget* parent );
    TQString text();
    TQString preset();
    void reset();
@@ -234,7 +234,7 @@ private slots:
  */
 class ParameterSyncprofile : public ParameterBase {
 public:
-   ParameterSyncprofile( const exp_parameter& parameter, TQWidget* tqparent );
+   ParameterSyncprofile( const exp_parameter& parameter, TQWidget* parent );
    TQString text();
    TQString preset();
    void reset();
@@ -249,7 +249,7 @@ private:
  */
 class ParameterPanelprofile : public ParameterBase {
 public:
-   ParameterPanelprofile( const exp_parameter& parameter, TQWidget* tqparent );
+   ParameterPanelprofile( const exp_parameter& parameter, TQWidget* parent );
    TQString text();
    TQString preset();
    void reset();
@@ -264,7 +264,7 @@ private:
  */
 class ParameterSearch : public ParameterBase {
 public:
-   ParameterSearch( const exp_parameter& parameter, TQWidget* tqparent );
+   ParameterSearch( const exp_parameter& parameter, TQWidget* parent );
    TQString text();
    TQString preset();
    void reset();
@@ -279,7 +279,7 @@ private:
  */
 class ParameterInt : public ParameterBase {
 public:
-   ParameterInt( const exp_parameter& parameter, TQWidget* tqparent );
+   ParameterInt( const exp_parameter& parameter, TQWidget* parent );
    TQString text();
    TQString preset();
    void reset();
@@ -301,7 +301,7 @@ class ParameterDialog : public KDialogBase {
 Q_OBJECT
   TQ_OBJECT
 public:
-   ParameterDialog( const exp_placeholder* currentPlaceholder, TQWidget *tqparent );
+   ParameterDialog( const exp_placeholder* currentPlaceholder, TQWidget *parent );
    
    /**
     * Use this to execute the dialog.

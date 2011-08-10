@@ -9,9 +9,9 @@
 #include <kiconloader.h>
 #include <kdebug.h>
 
-KrAddBookmarkDlg::KrAddBookmarkDlg(TQWidget *tqparent, KURL url):
+KrAddBookmarkDlg::KrAddBookmarkDlg(TQWidget *parent, KURL url):
 	KDialogBase(KDialogBase::Swallow, i18n("Add Bookmark"),
-				 KDialogBase::User1 | KDialogBase::Ok | KDialogBase::Cancel, KDialogBase::Ok, tqparent) {
+				 KDialogBase::User1 | KDialogBase::Ok | KDialogBase::Cancel, KDialogBase::Ok, parent) {
 	// create the 'new folder' button
 	setButtonText(KDialogBase::User1, i18n("New Folder"));
 	showButton(KDialogBase::User1, false); // hide it until _createIn is shown
@@ -87,10 +87,10 @@ void KrAddBookmarkDlg::createInSelection(TQListViewItem *item) {
 	}
 }
 
-void KrAddBookmarkDlg::populateCreateInWidget(KrBookmark *root, KListViewItem *tqparent) {
+void KrAddBookmarkDlg::populateCreateInWidget(KrBookmark *root, KListViewItem *parent) {
 	for (KrBookmark *bm = root->tqchildren().first(); bm; bm = root->tqchildren().next()) {
 		if (bm->isFolder()) {
-			KListViewItem *item = new KListViewItem(tqparent, bm->text());
+			KListViewItem *item = new KListViewItem(parent, bm->text());
 			item->setOpen(true);
 			_xr[item] = bm;
 			populateCreateInWidget(bm, item);

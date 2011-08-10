@@ -62,7 +62,7 @@ private:
   KIO::TransferJob *splitWriteJob;
     
 public:
-  Splitter( TQWidget* tqparent,  KURL fileNameIn, KURL destinationDirIn );
+  Splitter( TQWidget* parent,  KURL fileNameIn, KURL destinationDirIn );
   ~Splitter();
   
   void split( KIO::filesize_t splitSizeIn );

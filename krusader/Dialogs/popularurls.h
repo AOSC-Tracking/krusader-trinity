@@ -30,7 +30,7 @@ class PopularUrls : public TQObject {
 	Q_OBJECT
   TQ_OBJECT
 public:
-	PopularUrls(TQObject *tqparent = 0, const char *name = 0);
+	PopularUrls(TQObject *parent = 0, const char *name = 0);
 	~PopularUrls();
 	void save();
 	void load();

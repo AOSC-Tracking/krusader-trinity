@@ -46,7 +46,7 @@ class PanelTabBar : public TQTabBar {
   Q_OBJECT
   TQ_OBJECT
 public:
-  PanelTabBar( TQWidget *tqparent );
+  PanelTabBar( TQWidget *parent );
 
 public slots:
   /**

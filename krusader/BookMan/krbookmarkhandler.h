@@ -23,19 +23,19 @@ public:
 	KrBookmarkHandler();
 	~KrBookmarkHandler();
 	void populate(KPopupMenu *menu);
-	void addBookmark(KrBookmark *bm, KrBookmark *tqparent = 0);
+	void addBookmark(KrBookmark *bm, KrBookmark *parent = 0);
 	void bookmarkCurrent(KURL url);
 
 protected:
 	void deleteBookmark(KrBookmark *bm);
 	void importFromFile();
-	bool importFromFileBookmark(TQDomElement &e, KrBookmark *tqparent, TQString path, TQString *errorMsg);
-	bool importFromFileFolder(TQDomNode &first, KrBookmark *tqparent, TQString path, TQString *errorMsg);
+	bool importFromFileBookmark(TQDomElement &e, KrBookmark *parent, TQString path, TQString *errorMsg);
+	bool importFromFileFolder(TQDomNode &first, KrBookmark *parent, TQString path, TQString *errorMsg);
 	void exportToFile();
-	void exportToFileFolder(TQDomDocument &doc, TQDomElement &tqparent, KrBookmark *folder);
+	void exportToFileFolder(TQDomDocument &doc, TQDomElement &parent, KrBookmark *folder);
 	void exportToFileBookmark(TQDomDocument &doc, TQDomElement &where, KrBookmark *bm);
 	void clearBookmarks(KrBookmark *root);
-	void buildMenu(KrBookmark *tqparent, KPopupMenu *menu);
+	void buildMenu(KrBookmark *parent, KPopupMenu *menu);
 
 	bool eventFilter( TQObject *obj, TQEvent *ev );
 	

@@ -54,7 +54,7 @@ class PackGUIBase : public TQDialog
   TQ_OBJECT
 
 public:
-    PackGUIBase( TQWidget* tqparent = 0, const char* name = 0, bool modal = FALSE, WFlags fl = 0 );
+    PackGUIBase( TQWidget* parent = 0, const char* name = 0, bool modal = FALSE, WFlags fl = 0 );
     ~PackGUIBase();
 
     TQLabel* TextLabel3;

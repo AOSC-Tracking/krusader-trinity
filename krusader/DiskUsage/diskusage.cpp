@@ -76,10 +76,10 @@
 
 #define MAX_FILENUM         100
 
-LoaderWidget::LoaderWidget( TQWidget *tqparent, const char *name ) : TQScrollView( tqparent, name ), cancelled( false )
+LoaderWidget::LoaderWidget( TQWidget *parent, const char *name ) : TQScrollView( parent, name ), cancelled( false )
 {
   viewport()->setEraseColor( TQt::white );
-  widget = new TQWidget( tqparent );
+  widget = new TQWidget( parent );
 
   TQGridLayout *loaderLayout = new TQGridLayout( widget );
   loaderLayout->setSpacing( 0 );
@@ -196,7 +196,7 @@ void LoaderWidget::slotCancelled()
   cancelled = true;
 }
 
-DiskUsage::DiskUsage( TQString confGroup, TQWidget *tqparent, char *name ) : TQWidgetStack( tqparent, name ),
+DiskUsage::DiskUsage( TQString confGroup, TQWidget *parent, char *name ) : TQWidgetStack( parent, name ),
                       currentDirectory( 0 ), root( 0 ), configGroup( confGroup ), loading( false ),
                       abortLoading( false ), clearAfterAbort( false ), deleting( false ), searchVfs( 0 )
 {
@@ -402,13 +402,13 @@ void DiskUsage::dirUp()
 {
   if( currentDirectory != 0 )
   {
-    if ( currentDirectory->tqparent() != 0 )
-      changeDirectory( (Directory *)(currentDirectory->tqparent()) );
+    if ( currentDirectory->parent() != 0 )
+      changeDirectory( (Directory *)(currentDirectory->parent()) );
     else
     {
       KURL up = baseURL.upURL();
 
-      if( KMessageBox::questionYesNo( this, i18n( "Stepping into the tqparent directory requires "
+      if( KMessageBox::questionYesNo( this, i18n( "Stepping into the parent directory requires "
                                                   "loading the content of the \"%1\" URL. Do you wish "
                                                   "to continue?" )
                                             .tqarg( vfs::pathOrURL( up ) ),
@@ -623,7 +623,7 @@ int DiskUsage::del( File *file, bool calcPercents, int depth )
       deleteNr += del( *it, false, depth + 1 );
 
     TQString path;
-    for( const Directory *d = (Directory*)file; d != root && d && d->tqparent() != 0; d = d->tqparent() )
+    for( const Directory *d = (Directory*)file; d != root && d && d->parent() != 0; d = d->parent() )
     {
       if( !path.isEmpty() )
         path = "/" + path;
@@ -664,7 +664,7 @@ int DiskUsage::del( File *file, bool calcPercents, int depth )
   releaseKeyboard(); 
   deleting = false;
 
-  ((Directory *)(file->tqparent()))->remove( file );
+  ((Directory *)(file->parent()))->remove( file );
   delete file;
 
   if( depth == 0 )

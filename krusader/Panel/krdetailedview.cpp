@@ -87,8 +87,8 @@ YP   YD 88   YD ~Y8888P' `8888Y' YP   YP Y8888D' Y88888P 88   YD
 
 TQString KrDetailedView::ColumnName[ KrDetailedViewProperties::MAX_COLUMNS ];
 
-KrDetailedView::KrDetailedView( TQWidget *tqparent, bool &left, KConfig *cfg, const char *name ) :
-      KListView( tqparent, name ), KrView( cfg ), _currDragItem( 0L ), currentlyRenamedItem( 0 ),
+KrDetailedView::KrDetailedView( TQWidget *parent, bool &left, KConfig *cfg, const char *name ) :
+      KListView( parent, name ), KrView( cfg ), _currDragItem( 0L ), currentlyRenamedItem( 0 ),
       pressedItem( 0 ) {
 	setWidget( this );
 	_nameInKConfig=TQString( "KrDetailedView" ) + TQString( ( left ? "Left" : "Right" ) ) ;

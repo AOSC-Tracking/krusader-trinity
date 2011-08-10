@@ -34,8 +34,8 @@
 #include "../Panel/panelfunc.h"
 #include "diskusageviewer.h"
 
-DiskUsageViewer::DiskUsageViewer( TQWidget *tqparent, char *name ) 
-  : TQWidget( tqparent, name ), diskUsage( 0 ), statusLabel( 0 )
+DiskUsageViewer::DiskUsageViewer( TQWidget *parent, char *name ) 
+  : TQWidget( parent, name ), diskUsage( 0 ), statusLabel( 0 )
 {
   tqlayout = new TQGridLayout( this, 1, 1 );
 }

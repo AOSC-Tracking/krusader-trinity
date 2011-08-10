@@ -56,7 +56,7 @@ struct PredefinedDevice
     KIO::filesize_t value;
     
   public:
-    SplitterSpinBox ( TQWidget * tqparent = 0, const char * name = 0 ) : TQSpinBox( tqparent, name ), division( 1 ), value( 1 )
+    SplitterSpinBox ( TQWidget * parent = 0, const char * name = 0 ) : TQSpinBox( parent, name ), division( 1 ), value( 1 )
     {
       setMaxValue( 0x7FFFFFFF );     /* setting the minimum and maximum values */
       setMinValue( 1 );
@@ -159,7 +159,7 @@ private:
   KURLRequester   *urlReq;
   
 public:
-  SplitterGUI( TQWidget* tqparent,  KURL fileURL, KURL defaultDir );
+  SplitterGUI( TQWidget* parent,  KURL fileURL, KURL defaultDir );
 
   KURL    getDestinationDir()     {return vfs::fromPathOrURL( urlReq->url() );}
   KIO::filesize_t getSplitSize()  {return spinBox->longValue();}

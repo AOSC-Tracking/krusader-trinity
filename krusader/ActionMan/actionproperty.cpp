@@ -35,8 +35,8 @@
 
 #define ICON(N)		KGlobal::iconLoader()->loadIcon(N, KIcon::Small)
 
-ActionProperty::ActionProperty( TQWidget *tqparent, const char *name, KrAction *action )
- : ActionPropertyBase( tqparent, name ), _modified(false)
+ActionProperty::ActionProperty( TQWidget *parent, const char *name, KrAction *action )
+ : ActionPropertyBase( parent, name ), _modified(false)
  {
    if ( action ) {
       _action = action;

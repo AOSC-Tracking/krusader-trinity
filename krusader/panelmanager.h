@@ -23,7 +23,7 @@ class PanelManager: public TQWidget {
      * (self, other, active), which enables it to manage pointers held by the panels transparently.
      * It also receives a bool (left) which is true if the manager is the left one, or false otherwise.
      */
-    PanelManager( TQWidget *tqparent, bool left );
+    PanelManager( TQWidget *parent, bool left );
     /**
      * Called once by KrusaderView to create the first panel. Subsequent called are done internally
      * Note: only creates the panel, but doesn't start the VFS inside it. Use startPanel() for that.

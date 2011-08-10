@@ -31,7 +31,7 @@
 
 #define DISPLAY(X)	(X.isLocalFile() ? X.path() : X.prettyURL())
 
-PanelTabBar::PanelTabBar(TQWidget *tqparent): TQTabBar(tqparent), _maxTabLength(0) {
+PanelTabBar::PanelTabBar(TQWidget *parent): TQTabBar(parent), _maxTabLength(0) {
   _panelActionMenu = new KActionMenu( i18n("Panel"), TQT_TQOBJECT(this) );
 
   setAcceptDrops(true);  
@@ -172,7 +172,7 @@ TQString PanelTabBar::squeeze(TQString text, int index) {
   TQFontMetrics fm(fontMetrics());
 
   // set the real max length
-  _maxTabLength = (TQT_TQWIDGET(tqparent())->width()-(6*fm.width("W")))/fm.width("W");
+  _maxTabLength = (TQT_TQWIDGET(parent())->width()-(6*fm.width("W")))/fm.width("W");
   // each tab gets a fair share of the max tab length
   int _effectiveTabLength = _maxTabLength / (count() == 0 ? 1 : count());
 

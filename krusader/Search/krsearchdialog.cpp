@@ -55,7 +55,7 @@
 class SearchListView : public TQListView
 {
 public:
-  SearchListView( TQWidget * tqparent, const char * name ) : TQListView( tqparent, name )
+  SearchListView( TQWidget * parent, const char * name ) : TQListView( parent, name )
   {
   }
 
@@ -99,8 +99,8 @@ bool KrSearchDialog::lastSearchInArchives = false;
 bool KrSearchDialog::lastFollowSymLinks = false;
 
 // class starts here /////////////////////////////////////////
-KrSearchDialog::KrSearchDialog( TQString profile, TQWidget* tqparent,  const char* name, bool modal, WFlags fl )
-                : TQDialog( tqparent, name, modal, fl ), query(0), searcher(0)
+KrSearchDialog::KrSearchDialog( TQString profile, TQWidget* parent,  const char* name, bool modal, WFlags fl )
+                : TQDialog( parent, name, modal, fl ), query(0), searcher(0)
 {
   setCaption( i18n( "Krusader::Search" ) );
 

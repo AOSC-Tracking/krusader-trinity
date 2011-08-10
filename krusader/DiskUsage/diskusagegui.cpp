@@ -39,8 +39,8 @@
 #include <klocale.h>
 #include <tqtooltip.h>
 
-DiskUsageGUI::DiskUsageGUI( KURL openDir, TQWidget* tqparent, const char *name ) 
-  : TQDialog( tqparent, name, false, 0 ), exitAtFailure( true )
+DiskUsageGUI::DiskUsageGUI( KURL openDir, TQWidget* parent, const char *name ) 
+  : TQDialog( parent, name, false, 0 ), exitAtFailure( true )
 {  
   setCaption( i18n("Krusader::Disk Usage") );
   

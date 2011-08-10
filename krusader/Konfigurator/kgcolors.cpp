@@ -40,15 +40,15 @@
 #include <tqheader.h>
 #include <tqtabwidget.h>
 
-KgColors::KgColors( bool first, TQWidget* tqparent,  const char* name ) :
-      KonfiguratorPage( first, tqparent, name ), offset( 0 )
+KgColors::KgColors( bool first, TQWidget* parent,  const char* name ) :
+      KonfiguratorPage( first, parent, name ), offset( 0 )
 {
-  TQGridLayout *kgColorsLayout = new TQGridLayout( tqparent );
+  TQGridLayout *kgColorsLayout = new TQGridLayout( parent );
   kgColorsLayout->setSpacing( 6 );
 
   //  -------------------------- GENERAL GROUPBOX ----------------------------------
 
-  TQGroupBox *generalGrp = createFrame( i18n( "General" ), tqparent, "kgColorsGeneralGrp" );
+  TQGroupBox *generalGrp = createFrame( i18n( "General" ), parent, "kgColorsGeneralGrp" );
   TQGridLayout *generalGrid = createGridLayout( generalGrp->tqlayout() );
 
   generalGrid->setSpacing( 0 );
@@ -72,7 +72,7 @@ KgColors::KgColors( bool first, TQWidget* tqparent,  const char* name ) :
   connect( generals->find( "Dim Inactive Colors" ), TQT_SIGNAL( stateChanged( int ) ), this, TQT_SLOT( slotDisable() ) );
 
   kgColorsLayout->addMultiCellWidget( generalGrp, 0 ,0, 0, 2 );
-  TQHBox *hbox = new TQHBox( tqparent );
+  TQHBox *hbox = new TQHBox( parent );
 
   //  -------------------------- COLORS GROUPBOX ----------------------------------
 
@@ -225,11 +225,11 @@ KgColors::KgColors( bool first, TQWidget* tqparent,  const char* name ) :
 
   kgColorsLayout->addMultiCellWidget( hbox, 1 ,1, 0, 2 );
 
-  importBtn = new KPushButton(i18n("Import color-scheme"),tqparent);
+  importBtn = new KPushButton(i18n("Import color-scheme"),parent);
   kgColorsLayout->addWidget(importBtn,2,0);
-  exportBtn = new KPushButton(i18n("Export color-scheme"),tqparent);
+  exportBtn = new KPushButton(i18n("Export color-scheme"),parent);
   kgColorsLayout->addWidget(exportBtn,2,1);
-  kgColorsLayout->addWidget(createSpacer(tqparent, ""), 2,2);
+  kgColorsLayout->addWidget(createSpacer(parent, ""), 2,2);
   connect(importBtn, TQT_SIGNAL(clicked()), this, TQT_SLOT(slotImportColors()));
   connect(exportBtn, TQT_SIGNAL(clicked()), this, TQT_SLOT(slotExportColors()));
 

@@ -192,7 +192,7 @@ TQString KrServices::escape( TQString name ) {
 
 
 // ------- KEasyProcess
-KEasyProcess::KEasyProcess(TQObject *tqparent, const char *name): KProcess(tqparent, name) {
+KEasyProcess::KEasyProcess(TQObject *parent, const char *name): KProcess(parent, name) {
 	init();
 }
 

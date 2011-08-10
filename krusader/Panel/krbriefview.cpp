@@ -50,7 +50,7 @@ YP   YD 88   YD ~Y8888P' `8888Y' YP   YP Y8888D' Y88888P 88   YD
 class KrBriefViewToolTip : public TQToolTip
 {
 public:
-    KrBriefViewToolTip( KrBriefView *view, TQWidget *tqparent );
+    KrBriefViewToolTip( KrBriefView *view, TQWidget *parent );
     void maybeTip( const TQPoint &pos );
 
     virtual ~KrBriefViewToolTip() {}
@@ -58,8 +58,8 @@ private:
     KrBriefView *view;
 };
 
-KrBriefViewToolTip::KrBriefViewToolTip( KrBriefView *lv, TQWidget *tqparent )
-  : TQToolTip( tqparent ), view( lv )
+KrBriefViewToolTip::KrBriefViewToolTip( KrBriefView *lv, TQWidget *parent )
+  : TQToolTip( parent ), view( lv )
 {
 }
 
@@ -79,8 +79,8 @@ void KrBriefViewToolTip::maybeTip( const TQPoint &pos )
 }
 
 
-KrBriefView::KrBriefView( TQHeader * headerIn, TQWidget *tqparent, bool &left, KConfig *cfg, const char *name ):
-	KIconView(tqparent, name), KrView( cfg ), header( headerIn ), _currDragItem( 0 ),
+KrBriefView::KrBriefView( TQHeader * headerIn, TQWidget *parent, bool &left, KConfig *cfg, const char *name ):
+	KIconView(parent, name), KrView( cfg ), header( headerIn ), _currDragItem( 0 ),
             currentlyRenamedItem( 0 ), pressedItem( 0 ), mouseEvent( 0 ) {
 	setWidget( this );
 	_nameInKConfig = TQString( "KrBriefView" ) + TQString( ( left ? "Left" : "Right" ) );

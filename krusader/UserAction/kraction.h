@@ -32,7 +32,7 @@ class KrAction: public KAction, public KrActionBase {
    Q_OBJECT
   TQ_OBJECT
    public:
-      KrAction( KActionCollection *tqparent, const char* name );
+      KrAction( KActionCollection *parent, const char* name );
       ~KrAction();
 
       /**
@@ -124,7 +124,7 @@ class KrActionProcDlg: public KDialogBase {
       Q_OBJECT
   TQ_OBJECT
    public:
-      KrActionProcDlg( TQString caption, bool enableStderr = false, TQWidget *tqparent = 0 );
+      KrActionProcDlg( TQString caption, bool enableStderr = false, TQWidget *parent = 0 );
 
    protected slots:
       void addStderr( KProcess *proc, char *buffer, int buflen );

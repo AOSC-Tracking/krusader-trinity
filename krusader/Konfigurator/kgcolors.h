@@ -43,7 +43,7 @@ class KgColors : public KonfiguratorPage
   TQ_OBJECT
 
 public:
-  KgColors( bool first, TQWidget* tqparent=0,  const char* name=0 );
+  KgColors( bool first, TQWidget* parent=0,  const char* name=0 );
 
   bool apply();
 
@@ -109,7 +109,7 @@ private:
     TQString label;
 
   public:
-    PreviewItem( TQListView * tqparent, TQString name ) : TQListViewItem( tqparent, name )
+    PreviewItem( TQListView * parent, TQString name ) : TQListViewItem( parent, name )
     {
       defaultBackground = TQColor( 255, 255, 255 );
       defaultForeground = TQColor( 0, 0, 0 );

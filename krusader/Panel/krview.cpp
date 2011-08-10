@@ -119,10 +119,10 @@ TQPixmap KrView::getIcon( vfile *vf /*, KRListItem::cmpColor color*/ ) {
  * this function ADDs a list of selected item names into 'names'.
  * it assumes the list is ready and doesn't initialize it, or clears it
  */
-void KrView::getItemsByMask( TQString tqmask, TQStringList* names, bool dirs, bool files ) {
+void KrView::getItemsByMask( TQString mask, TQStringList* names, bool dirs, bool files ) {
    for ( KrViewItem * it = getFirst(); it != 0; it = getNext( it ) ) {
-      if ( ( it->name() == ".." ) || !TQDir::match( tqmask, it->name() ) ) continue;
-      // if we got here, than the item fits the tqmask
+      if ( ( it->name() == ".." ) || !TQDir::match( mask, it->name() ) ) continue;
+      // if we got here, than the item fits the mask
       if ( it->getVfile()->vfile_isDir() && !dirs ) continue; // do we need to skip folders?
       if ( !it->getVfile()->vfile_isDir() && !files ) continue; // do we need to skip files
       names->append( it->name() );

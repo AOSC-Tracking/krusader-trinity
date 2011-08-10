@@ -3,8 +3,8 @@
 #include <kurldrag.h>
 #include <tqtooltip.h>
 
-KrSqueezedTextLabel::KrSqueezedTextLabel(TQWidget *tqparent, const char *name):
-  KSqueezedTextLabel(tqparent, name), acceptDrops( false ), _index(-1), _length(-1) {
+KrSqueezedTextLabel::KrSqueezedTextLabel(TQWidget *parent, const char *name):
+  KSqueezedTextLabel(parent, name), acceptDrops( false ), _index(-1), _length(-1) {
 }
 
 

@@ -30,10 +30,10 @@
 
 #include "krresulttabledialog.h"
 
-KrResultTableDialog::KrResultTableDialog( TQWidget *tqparent, DialogType type,
+KrResultTableDialog::KrResultTableDialog( TQWidget *parent, DialogType type,
   const TQString& caption, const TQString& heading, const TQString& headerIcon,
   const TQString& hint)
-  : KDialogBase( tqparent, "KrSearchResultDialog", true, caption, KDialogBase::Help|KDialogBase::Ok,
+  : KDialogBase( parent, "KrSearchResultDialog", true, caption, KDialogBase::Help|KDialogBase::Ok,
                  KDialogBase::Ok, false )
 
 {

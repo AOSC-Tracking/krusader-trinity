@@ -36,10 +36,10 @@
 #include <tqhbox.h>
 #include <klocale.h>
 
-SynchronizeDialog::SynchronizeDialog( TQWidget* tqparent,  const char* name, bool modal, WFlags fl,
+SynchronizeDialog::SynchronizeDialog( TQWidget* parent,  const char* name, bool modal, WFlags fl,
                                       Synchronizer *sync, int pleftCopyNr, KIO::filesize_t pleftCopySize,
                                       int prightCopyNr, KIO::filesize_t prightCopySize, int pdeleteNr,
-                                      KIO::filesize_t pdeleteSize, int parThreads ) : TQDialog( tqparent, name, modal, fl ),
+                                      KIO::filesize_t pdeleteSize, int parThreads ) : TQDialog( parent, name, modal, fl ),
                                       synchronizer( sync ), leftCopyNr ( pleftCopyNr ),
                                       leftCopySize( pleftCopySize ), rightCopyNr ( prightCopyNr ),
                                       rightCopySize( prightCopySize ), deleteNr( pdeleteNr ),

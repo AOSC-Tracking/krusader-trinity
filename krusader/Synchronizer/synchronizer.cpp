@@ -170,10 +170,10 @@ void Synchronizer::compareLoop() {
         if( entry->state() == ST_STATE_READY ) {
           CompareTask *ctentry = (CompareTask *) entry;
           if( ctentry->isDuplicate() )
-            compareDirectory( ctentry->tqparent(), ctentry->leftDirList(), ctentry->rightDirList(),
+            compareDirectory( ctentry->parent(), ctentry->leftDirList(), ctentry->rightDirList(),
                               ctentry->leftDir(), ctentry->rightDir() );
           else
-            addSingleDirectory( ctentry->tqparent(), ctentry->dirList(), ctentry->dir(),
+            addSingleDirectory( ctentry->parent(), ctentry->dirList(), ctentry->dir(),
                                 ctentry->isLeft() );
         }
         if( entry->state() == ST_STATE_READY || entry->state() == ST_STATE_ERROR )
@@ -198,7 +198,7 @@ void Synchronizer::compareLoop() {
   stack.clear();
 }
 
-void Synchronizer::compareDirectory( SynchronizerFileItem *tqparent, SynchronizerDirList * left_directory,
+void Synchronizer::compareDirectory( SynchronizerFileItem *parent, SynchronizerDirList * left_directory,
                                      SynchronizerDirList * right_directory, const TQString &leftDir,
                                      const TQString &rightDir )
 {
@@ -229,7 +229,7 @@ void Synchronizer::compareDirectory( SynchronizerFileItem *tqparent, Synchronize
       continue;
 
     if( (right_file = right_directory->search( file_name, ignoreCase )) == 0 )
-      addLeftOnlyItem( tqparent, file_name, leftDir, left_file->vfile_getSize(), left_file->vfile_getTime_t(),
+      addLeftOnlyItem( parent, file_name, leftDir, left_file->vfile_getSize(), left_file->vfile_getTime_t(),
                        readLink( left_file ), left_file->vfile_getOwner(), left_file->vfile_getGroup(),
                        left_file->vfile_getMode(), left_file->vfile_getACL() );
     else
@@ -237,7 +237,7 @@ void Synchronizer::compareDirectory( SynchronizerFileItem *tqparent, Synchronize
       if( isDir( right_file ) )
         continue;
 
-      addDuplicateItem( tqparent, file_name, right_file->vfile_getName(), leftDir, rightDir, left_file->vfile_getSize(), right_file->vfile_getSize(),
+      addDuplicateItem( parent, file_name, right_file->vfile_getName(), leftDir, rightDir, left_file->vfile_getSize(), right_file->vfile_getSize(),
                         left_file->vfile_getTime_t(), right_file->vfile_getTime_t(), readLink( left_file ),
                         readLink( right_file ), left_file->vfile_getOwner(), right_file->vfile_getOwner(), 
                         left_file->vfile_getGroup(), right_file->vfile_getGroup(),
@@ -262,7 +262,7 @@ void Synchronizer::compareDirectory( SynchronizerFileItem *tqparent, Synchronize
       continue;
 
     if( left_directory->search( file_name, ignoreCase ) == 0 )
-      addRightOnlyItem( tqparent, file_name, rightDir, right_file->vfile_getSize(), right_file->vfile_getTime_t(),
+      addRightOnlyItem( parent, file_name, rightDir, right_file->vfile_getSize(), right_file->vfile_getTime_t(),
                         readLink( right_file ), right_file->vfile_getOwner(), right_file->vfile_getGroup(),
                         right_file->vfile_getMode(), right_file->vfile_getACL() );
   }
@@ -288,7 +288,7 @@ void Synchronizer::compareDirectory( SynchronizerFileItem *tqparent, Synchronize
 
         if( (right_file = right_directory->search( left_file_name, ignoreCase )) == 0 ) 
         {
-          SynchronizerFileItem *me = addLeftOnlyItem( tqparent, left_file_name, leftDir, 0, 
+          SynchronizerFileItem *me = addLeftOnlyItem( parent, left_file_name, leftDir, 0, 
                                                       left_file->vfile_getTime_t(), readLink( left_file ),
                                                       left_file->vfile_getOwner(), left_file->vfile_getGroup(),
                                                       left_file->vfile_getMode(), left_file->vfile_getACL(),
@@ -297,7 +297,7 @@ void Synchronizer::compareDirectory( SynchronizerFileItem *tqparent, Synchronize
                               leftDir.isEmpty() ? left_file_name : leftDir+"/"+left_file_name, true, ignoreHidden ) );
         } else {
           TQString right_file_name =  right_file->vfile_getName();
-          SynchronizerFileItem *me = addDuplicateItem( tqparent, left_file_name, right_file_name, 
+          SynchronizerFileItem *me = addDuplicateItem( parent, left_file_name, right_file_name, 
                                                        leftDir, rightDir, 0, 0, 
                                                        left_file->vfile_getTime_t(), right_file->vfile_getTime_t(),
                                                        readLink( left_file ), readLink( right_file ), 
@@ -332,7 +332,7 @@ void Synchronizer::compareDirectory( SynchronizerFileItem *tqparent, Synchronize
 
         if( left_directory->search( file_name, ignoreCase ) == 0 )
         {
-          SynchronizerFileItem *me = addRightOnlyItem( tqparent, file_name, rightDir, 0, 
+          SynchronizerFileItem *me = addRightOnlyItem( parent, file_name, rightDir, 0, 
                                                       right_file->vfile_getTime_t(), readLink( right_file ),
                                                       right_file->vfile_getOwner(), right_file->vfile_getGroup(),
                                                       right_file->vfile_getMode(), right_file->vfile_getACL(),
@@ -352,7 +352,7 @@ TQString Synchronizer::getTaskTypeName( TaskType taskType )
   return names[taskType];
 }
 
-SynchronizerFileItem * Synchronizer::addItem( SynchronizerFileItem *tqparent, const TQString &leftFile, 
+SynchronizerFileItem * Synchronizer::addItem( SynchronizerFileItem *parent, const TQString &leftFile, 
                                   const TQString &rightFile, const TQString &leftDir,
                                   const TQString &rightDir, bool existsLeft, bool existsRight,
                                   KIO::filesize_t leftSize, KIO::filesize_t rightSize,
@@ -367,12 +367,12 @@ SynchronizerFileItem * Synchronizer::addItem( SynchronizerFileItem *tqparent, co
   SynchronizerFileItem *item = new SynchronizerFileItem( leftFile, rightFile, leftDir, rightDir, marked,
     existsLeft, existsRight, leftSize, rightSize, leftDate, rightDate, leftLink, rightLink,
     leftOwner, rightOwner, leftGroup, rightGroup, leftMode, rightMode, leftACL, rightACL, tsk, isDir,
-    isTemp, tqparent );
+    isTemp, parent );
 
   if( !isTemp )
   {
-    while( tqparent && tqparent->isTemporary() )
-       setPermanent( tqparent );
+    while( parent && parent->isTemporary() )
+       setPermanent( parent );
 
     bool doRefresh = false;
 
@@ -411,37 +411,37 @@ void Synchronizer::compareContentResult( SynchronizerFileItem * item, bool res )
 
 void Synchronizer::setPermanent( SynchronizerFileItem *item )
 {
-  if( item->tqparent() && item->tqparent()->isTemporary() )
-    setPermanent( item->tqparent() );
+  if( item->parent() && item->parent()->isTemporary() )
+    setPermanent( item->parent() );
 
   item->setPermanent();
   resultList.append( item );
   emit comparedFileData( item );
 }
 
-SynchronizerFileItem * Synchronizer::addLeftOnlyItem( SynchronizerFileItem *tqparent,
+SynchronizerFileItem * Synchronizer::addLeftOnlyItem( SynchronizerFileItem *parent,
                                     const TQString &file_name, const TQString &dir, KIO::filesize_t size, 
                                     time_t date, const TQString &link, const TQString &owner,
                                     const TQString &group, mode_t mode, const TQString &acl, bool isDir, 
                                     bool isTemp )
 {
-  return addItem( tqparent, file_name, file_name, dir, dir, true, false, size, 0, date, 0, link, TQString(),
+  return addItem( parent, file_name, file_name, dir, dir, true, false, size, 0, date, 0, link, TQString(),
                   owner, TQString(), group, TQString(), mode, (mode_t)-1, acl, TQString(),
                   asymmetric ? TT_DELETE : TT_COPY_TO_RIGHT, isDir, isTemp );
 }
 
-SynchronizerFileItem * Synchronizer::addRightOnlyItem( SynchronizerFileItem *tqparent,
+SynchronizerFileItem * Synchronizer::addRightOnlyItem( SynchronizerFileItem *parent,
                                     const TQString &file_name, const TQString &dir, KIO::filesize_t size,
                                     time_t date, const TQString &link, const TQString &owner,
                                     const TQString &group, mode_t mode, const TQString &acl, bool isDir,
                                     bool isTemp )
 {
-  return addItem( tqparent, file_name, file_name, dir, dir, false, true, 0, size, 0, date, TQString(), link,
+  return addItem( parent, file_name, file_name, dir, dir, false, true, 0, size, 0, date, TQString(), link,
                   TQString(), owner, TQString(), group, (mode_t)-1, mode, TQString(), acl,
                   TT_COPY_TO_LEFT, isDir, isTemp );
 }
 
-SynchronizerFileItem * Synchronizer::addDuplicateItem( SynchronizerFileItem *tqparent,
+SynchronizerFileItem * Synchronizer::addDuplicateItem( SynchronizerFileItem *parent,
                                      const TQString &leftName, const TQString &rightName,
                                      const TQString &leftDir, const TQString &rightDir,
                                      KIO::filesize_t leftSize, KIO::filesize_t rightSize, time_t leftDate, time_t rightDate,
@@ -499,7 +499,7 @@ SynchronizerFileItem * Synchronizer::addDuplicateItem( SynchronizerFileItem *tqp
 
   }while( false );
 
-  SynchronizerFileItem * item = addItem( tqparent, leftName, rightName, leftDir, rightDir, true, true,
+  SynchronizerFileItem * item = addItem( parent, leftName, rightName, leftDir, rightDir, true, true,
                                          leftSize, rightSize, leftDate, rightDate, leftLink, rightLink,
                                          leftOwner, rightOwner, leftGroup, rightGroup,
                                          leftMode, rightMode, leftACL, rightACL,
@@ -514,7 +514,7 @@ SynchronizerFileItem * Synchronizer::addDuplicateItem( SynchronizerFileItem *tqp
   return item;
 }
 
-void Synchronizer::addSingleDirectory( SynchronizerFileItem *tqparent, SynchronizerDirList *directory,
+void Synchronizer::addSingleDirectory( SynchronizerFileItem *parent, SynchronizerDirList *directory,
                                        const TQString &dirName, bool isLeft )
 {
   const TQString &url = directory->url();
@@ -533,10 +533,10 @@ void Synchronizer::addSingleDirectory( SynchronizerFileItem *tqparent, Synchroni
       continue;
 
     if( isLeft )
-      addLeftOnlyItem( tqparent, file_name, dirName, file->vfile_getSize(), file->vfile_getTime_t(), readLink( file ),
+      addLeftOnlyItem( parent, file_name, dirName, file->vfile_getSize(), file->vfile_getTime_t(), readLink( file ),
                        file->vfile_getOwner(), file->vfile_getGroup(), file->vfile_getMode(), file->vfile_getACL() );
     else
-      addRightOnlyItem( tqparent, file_name, dirName, file->vfile_getSize(), file->vfile_getTime_t(), readLink( file ),
+      addRightOnlyItem( parent, file_name, dirName, file->vfile_getSize(), file->vfile_getTime_t(), readLink( file ),
                         file->vfile_getOwner(), file->vfile_getGroup(), file->vfile_getMode(), file->vfile_getACL() );
   }
 
@@ -556,11 +556,11 @@ void Synchronizer::addSingleDirectory( SynchronizerFileItem *tqparent, Synchroni
         SynchronizerFileItem *me;
 
         if( isLeft )
-          me = addLeftOnlyItem( tqparent, file_name, dirName, 0, file->vfile_getTime_t(), readLink( file ),
+          me = addLeftOnlyItem( parent, file_name, dirName, 0, file->vfile_getTime_t(), readLink( file ),
                                 file->vfile_getOwner(), file->vfile_getGroup(), file->vfile_getMode(),
                                 file->vfile_getACL(), true, !query->match( file ) );
         else
-          me = addRightOnlyItem( tqparent, file_name, dirName, 0, file->vfile_getTime_t(), readLink( file ),
+          me = addRightOnlyItem( parent, file_name, dirName, 0, file->vfile_getTime_t(), readLink( file ),
                                  file->vfile_getOwner(), file->vfile_getGroup(), file->vfile_getMode(),
                                  file->vfile_getACL(), true, !query->match( file ) );
         stack.append( new CompareTask( me, url+file_name+"/", 
@@ -605,15 +605,15 @@ bool Synchronizer::isMarked( TaskType task, bool isDuplicate )
 
 bool Synchronizer::markParentDirectories( SynchronizerFileItem *item )
 {
-  if( item->tqparent() == 0 || item->tqparent()->isMarked() )
+  if( item->parent() == 0 || item->parent()->isMarked() )
     return false;
 
-  markParentDirectories( item->tqparent() );
+  markParentDirectories( item->parent() );
 
-  item->tqparent()->setMarked( true );
+  item->parent()->setMarked( true );
 
   fileCount++;
-  emit markChanged( item->tqparent(), false );
+  emit markChanged( item->parent(), false );
   return true;
 }
 
@@ -681,8 +681,8 @@ void Synchronizer::excludeOperation( SynchronizerFileItem *item )
 
 void Synchronizer::exclude( SynchronizerFileItem *item )
 {
-  if( !item->tqparent() || item->tqparent()->task() != TT_DELETE )
-    operate( item, excludeOperation );  /* exclude only if the tqparent task is not DEL */
+  if( !item->parent() || item->parent()->task() != TT_DELETE )
+    operate( item, excludeOperation );  /* exclude only if the parent task is not DEL */
 }
 
 void Synchronizer::restoreOperation( SynchronizerFileItem *item )
@@ -694,12 +694,12 @@ void Synchronizer::restore( SynchronizerFileItem *item )
 {
   operate( item, restoreOperation );
 
-  while( ( item = item->tqparent() ) != 0 ) /* in case of restore, the tqparent directories */
+  while( ( item = item->parent() ) != 0 ) /* in case of restore, the parent directories */
   {                                          /* must be changed for being consistent */
     if( item->task() != TT_DIFFERS )
       break;
 
-    if( item->originalTask() == TT_DELETE ) /* if the tqparent original task is delete */
+    if( item->originalTask() == TT_DELETE ) /* if the parent original task is delete */
       break;                                    /* don't touch it */
 
     item->restoreOriginalTask();          /* restore */
@@ -753,7 +753,7 @@ void Synchronizer::copyToLeft( SynchronizerFileItem *item )
 {
   operate( item, copyToLeftOperation );
 
-  while( ( item = item->tqparent() ) != 0 )
+  while( ( item = item->parent() ) != 0 )
   {
     if( item->task() != TT_DIFFERS )
       break;
@@ -785,7 +785,7 @@ void Synchronizer::copyToRight( SynchronizerFileItem *item )
 {
   operate( item, copyToRightOperation );
 
-  while( ( item = item->tqparent() ) != 0 )
+  while( ( item = item->parent() ) != 0 )
   {
     if( item->task() != TT_DIFFERS && item->task() != TT_DELETE )
       break;
@@ -1325,9 +1325,9 @@ TQString Synchronizer::rightBaseDirectory()
 class KgetProgressDialog : public KDialogBase
 {
 public:
-  KgetProgressDialog( TQWidget *tqparent=0, const char *name=0, const TQString &caption=TQString(),
+  KgetProgressDialog( TQWidget *parent=0, const char *name=0, const TQString &caption=TQString(),
                     const TQString &text=TQString(), bool modal=false) : KDialogBase( KDialogBase::Plain,
-                    caption, KDialogBase::User1 | KDialogBase::Cancel, KDialogBase::Cancel, tqparent, name, modal )
+                    caption, KDialogBase::User1 | KDialogBase::Cancel, KDialogBase::Cancel, parent, name, modal )
   {
     showButton(KDialogBase::Close, false);
 

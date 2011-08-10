@@ -49,13 +49,13 @@
 #define PAGE_PANELTOOLBAR  2
 #define PAGE_MOUSE  3
 
-KgLookFeel::KgLookFeel( bool first, TQWidget* tqparent,  const char* name ) :
-      KonfiguratorPage( first, tqparent, name )
+KgLookFeel::KgLookFeel( bool first, TQWidget* parent,  const char* name ) :
+      KonfiguratorPage( first, parent, name )
 {
-  TQGridLayout *kgLookAndFeelLayout = new TQGridLayout( tqparent );
+  TQGridLayout *kgLookAndFeelLayout = new TQGridLayout( parent );
   kgLookAndFeelLayout->setSpacing( 6 );
 
-  tabWidget = new TQTabWidget( tqparent, "tabWidget" );
+  tabWidget = new TQTabWidget( parent, "tabWidget" );
 
   setupOperationTab();
   setupPanelTab();
@@ -208,7 +208,7 @@ void KgLookFeel::setupPanelToolbarTab() {
      {"Look&Feel",  "Clear Location Bar Visible",  _ClearLocation,      i18n( "Clear location bar button" ),    true ,  i18n( "Clears the location bar" ) },
      {"Look&Feel",  "Open Button Visible",  _Open,      i18n( "Open button" ),     true ,  i18n( "Opens the directory browser." ) },
      {"Look&Feel",  "Equal Button Visible", _cdOther,   i18n( "Equal button (=)" ),true ,  i18n( "Changes the panel directory to the other panel directory." ) },
-     {"Look&Feel",  "Up Button Visible",    _cdUp,      i18n( "Up button (..)" ),  true ,  i18n( "Changes the panel directory to the tqparent directory." ) },
+     {"Look&Feel",  "Up Button Visible",    _cdUp,      i18n( "Up button (..)" ),  true ,  i18n( "Changes the panel directory to the parent directory." ) },
      {"Look&Feel",  "Home Button Visible",  _cdHome,    i18n( "Home button (~)" ), true ,  i18n( "Changes the panel directory to the home directory." ) },
      {"Look&Feel",  "Root Button Visible",  _cdRoot,    i18n( "Root button (/)" ), true ,  i18n( "Changes the panel directory to the root directory." ) },
      {"Look&Feel",  "SyncBrowse Button Visible",  _syncBrowseButton,    i18n( "Toggle-button for sync-browsing" ), true ,  i18n( "Each directory change in the panel is also performed in the other panel." ) },

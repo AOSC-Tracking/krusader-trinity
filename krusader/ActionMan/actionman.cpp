@@ -20,8 +20,8 @@
 #include "../UserAction/useraction.h"
 
 
-ActionMan::ActionMan( TQWidget * tqparent )
- : KDialogBase( tqparent, "ActionMan", true /*modal*/, "ActionMan - Manage your useractions",  KDialogBase::Apply | KDialogBase::Close )
+ActionMan::ActionMan( TQWidget * parent )
+ : KDialogBase( parent, "ActionMan", true /*modal*/, "ActionMan - Manage your useractions",  KDialogBase::Apply | KDialogBase::Close )
 {
    setPlainCaption(i18n("ActionMan - Manage Your Useractions"));
 

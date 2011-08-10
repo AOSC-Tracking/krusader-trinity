@@ -48,7 +48,7 @@ class KRSpWidgets {
 public: 
 	KRSpWidgets();
 
-  static KRQuery getMask( TQString caption, bool nameOnly=false ); // get file-tqmask for (un)selecting files
+  static KRQuery getMask( TQString caption, bool nameOnly=false ); // get file-mask for (un)selecting files
   static KURL newFTP();
 
 private:
@@ -89,8 +89,8 @@ protected:
 
 class QuickNavLineEdit: public KLineEdit {
 public:
-	QuickNavLineEdit(const TQString &string, TQWidget *tqparent, const char *name=0);
- 	QuickNavLineEdit(TQWidget *tqparent=0, const char *name=0);
+	QuickNavLineEdit(const TQString &string, TQWidget *parent, const char *name=0);
+ 	QuickNavLineEdit(TQWidget *parent=0, const char *name=0);
  	virtual ~QuickNavLineEdit() {}
 	static int findCharFromPos(const TQString &, const TQFontMetrics &, int pos);
 protected:

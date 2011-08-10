@@ -24,7 +24,7 @@ class TQDomDocument;
  */
 class UserActionListView : public KListView {
 public:
-   UserActionListView( TQWidget* tqparent = 0, const char* name = 0 );
+   UserActionListView( TQWidget* parent = 0, const char* name = 0 );
    ~UserActionListView();
    virtual TQSize tqsizeHint() const;
 

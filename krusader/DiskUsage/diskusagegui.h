@@ -45,7 +45,7 @@ class DiskUsageGUI : public TQDialog
   TQ_OBJECT
   
 public:
-  DiskUsageGUI( KURL openDir, TQWidget* tqparent=0, const char *name = 0 );
+  DiskUsageGUI( KURL openDir, TQWidget* parent=0, const char *name = 0 );
   ~DiskUsageGUI();
   
 

@@ -16,7 +16,7 @@
 #define INCREASE			2
 #define DECREASE			1
 
-PopularUrls::PopularUrls(TQObject *tqparent, const char *name) : TQObject(tqparent, name), 
+PopularUrls::PopularUrls(TQObject *parent, const char *name) : TQObject(parent, name), 
 	head(0), tail(0), count(0) {
 	dlg = new PopularUrlsDlg();
 }

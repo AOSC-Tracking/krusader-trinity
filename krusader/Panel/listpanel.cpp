@@ -107,8 +107,8 @@ typedef TQValueList<KServiceOffer> OfferList;
 /////////////////////////////////////////////////////
 // 					The list panel constructor       //
 /////////////////////////////////////////////////////
-ListPanel::ListPanel( TQString typeIn, TQWidget *tqparent, bool &left, const char *name ) :
-      TQWidget( tqparent, name ), panelType( typeIn ), colorMask( 255 ), compareMode( false ), currDragItem( 0 ), statsAgent( 0 ), 
+ListPanel::ListPanel( TQString typeIn, TQWidget *parent, bool &left, const char *name ) :
+      TQWidget( parent, name ), panelType( typeIn ), colorMask( 255 ), compareMode( false ), currDragItem( 0 ), statsAgent( 0 ), 
 		quickSearch( 0 ), cdRootButton( 0 ), cdUpButton( 0 ), popupBtn(0), popup(0),inlineRefreshJob(0), _left( left ) {
 
    func = new ListPanelFunc( this );
@@ -405,11 +405,11 @@ bool ListPanel::eventFilter ( TQObject * watched, TQEvent * e ) {
 void ListPanel::togglePanelPopup() {
 	if (popup->isHidden()) {
 		if (popupSizes.count() > 0) {
-			dynamic_cast<TQSplitter*>(popup->tqparent())->setSizes(popupSizes);
+			dynamic_cast<TQSplitter*>(popup->parent())->setSizes(popupSizes);
 		} else { // on the first time, resize to 50%
 			TQValueList<int> lst;
 			lst << height()/2 << height()/2;
-			dynamic_cast<TQSplitter*>(popup->tqparent())->setSizes(lst);
+			dynamic_cast<TQSplitter*>(popup->parent())->setSizes(lst);
 		}
 		
 		popup->show();
@@ -417,14 +417,14 @@ void ListPanel::togglePanelPopup() {
 		TQToolTip::add(  popupBtn, i18n( "Close the popup panel" ) );
 	} else {
 		popupSizes.clear();
-		popupSizes = dynamic_cast<TQSplitter*>(popup->tqparent())->sizes();
+		popupSizes = dynamic_cast<TQSplitter*>(popup->parent())->sizes();
 		popup->hide();
 		popupBtn->setPixmap(krLoader->loadIcon("1uparrow", KIcon::Toolbar, 16));
 		TQToolTip::add(  popupBtn, i18n( "Open the popup panel" ) );
 		
 		TQValueList<int> lst;
 		lst << height() << 0;
-		dynamic_cast<TQSplitter*>(popup->tqparent())->setSizes(lst);
+		dynamic_cast<TQSplitter*>(popup->parent())->setSizes(lst);
 		if( ACTIVE_PANEL )
 			ACTIVE_PANEL->slotFocusOnMe();
 	}

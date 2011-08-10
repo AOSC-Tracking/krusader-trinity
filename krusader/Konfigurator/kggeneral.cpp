@@ -41,18 +41,18 @@
 #include "../krusader.h"
 #include "../kicons.h"
 
-KgGeneral::KgGeneral( bool first, TQWidget* tqparent,  const char* name ) :
-      KonfiguratorPage( first, tqparent, name )
+KgGeneral::KgGeneral( bool first, TQWidget* parent,  const char* name ) :
+      KonfiguratorPage( first, parent, name )
 {
 if( first )  
     slotFindTools();
 
-  TQGridLayout *kgGeneralLayout = new TQGridLayout( tqparent );
+  TQGridLayout *kgGeneralLayout = new TQGridLayout( parent );
   kgGeneralLayout->setSpacing( 6 );
 
   //  -------------------------- GENERAL GROUPBOX ----------------------------------
 
-  TQGroupBox *generalGrp = createFrame( i18n( "General" ), tqparent, "kgGenGeneralGrp" );
+  TQGroupBox *generalGrp = createFrame( i18n( "General" ), parent, "kgGenGeneralGrp" );
   TQGridLayout *generalGrid = createGridLayout( generalGrp->tqlayout() );
 
   KONFIGURATOR_NAME_VALUE_TIP deleteMode[] =

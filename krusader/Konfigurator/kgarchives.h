@@ -39,7 +39,7 @@ class KgArchives : public KonfiguratorPage
   TQ_OBJECT
 
 public:
-  KgArchives( bool first, TQWidget* tqparent=0,  const char* name=0 );
+  KgArchives( bool first, TQWidget* parent=0,  const char* name=0 );
   virtual bool apply();
   virtual void setDefaults();
 

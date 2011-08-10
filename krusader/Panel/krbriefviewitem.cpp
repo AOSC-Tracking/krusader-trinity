@@ -17,8 +17,8 @@
 int KrBriefViewItem::expHeight = 0;
 #endif // FASTER
 
-KrBriefViewItem::KrBriefViewItem(KrBriefView *tqparent, TQIconViewItem *after, vfile *vf):
-	KIconViewItem(tqparent, after), KrViewItem(vf, tqparent->properties()) {
+KrBriefViewItem::KrBriefViewItem(KrBriefView *parent, TQIconViewItem *after, vfile *vf):
+	KIconViewItem(parent, after), KrViewItem(vf, parent->properties()) {
 #ifdef FASTER
 	initiated = false;
 	// get the expected height of an item - should be done only once

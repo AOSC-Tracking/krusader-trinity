@@ -1017,7 +1017,7 @@ private:
   bool            isLeft;
   
 public:
-  SynchronizerListView( Synchronizer * sync, TQWidget * tqparent ) : TQListView( tqparent ), synchronizer( sync )
+  SynchronizerListView( Synchronizer * sync, TQWidget * parent ) : TQListView( parent ), synchronizer( sync )
   {
   }
 
@@ -1067,17 +1067,17 @@ public:
   }
 };
 
-SynchronizerGUI::SynchronizerGUI(TQWidget* tqparent,  KURL leftURL, KURL rightURL, TQStringList selList ) :
-    TQDialog( tqparent, "Krusader::SynchronizerGUI", false, 0 ) {
-   initGUI( tqparent, TQString(), leftURL, rightURL, selList );
+SynchronizerGUI::SynchronizerGUI(TQWidget* parent,  KURL leftURL, KURL rightURL, TQStringList selList ) :
+    TQDialog( parent, "Krusader::SynchronizerGUI", false, 0 ) {
+   initGUI( parent, TQString(), leftURL, rightURL, selList );
 }
 
-SynchronizerGUI::SynchronizerGUI(TQWidget* tqparent,  TQString profile ) :
-    TQDialog( tqparent, "Krusader::SynchronizerGUI", false, 0 ) {
-   initGUI( tqparent, profile, KURL(), KURL(), TQStringList() );
+SynchronizerGUI::SynchronizerGUI(TQWidget* parent,  TQString profile ) :
+    TQDialog( parent, "Krusader::SynchronizerGUI", false, 0 ) {
+   initGUI( parent, profile, KURL(), KURL(), TQStringList() );
 }
 
-void SynchronizerGUI::initGUI(TQWidget* /* tqparent */, TQString profileName, KURL leftURL, KURL rightURL, TQStringList selList) {
+void SynchronizerGUI::initGUI(TQWidget* /* parent */, TQString profileName, KURL leftURL, KURL rightURL, TQStringList selList) {
   selectedFiles = selList;
   isComparing = wasClosed = wasSync = false;
   firstResize = true;
@@ -1993,7 +1993,7 @@ void SynchronizerGUI::addFile( SynchronizerFileItem *item )
   SyncViewItem *listItem = 0;
   SyncViewItem *dirItem;
 
-  if( item->tqparent() == 0 )
+  if( item->parent() == 0 )
   {
     listItem = new SyncViewItem(item, textColor, baseColor, syncList, lastItem, leftName, leftSize,
                                 leftDate, Synchronizer::getTaskTypeName( item->task() ), rightDate,
@@ -2002,7 +2002,7 @@ void SynchronizerGUI::addFile( SynchronizerFileItem *item )
   }
   else
   {
-    dirItem = (SyncViewItem *)item->tqparent()->userData();
+    dirItem = (SyncViewItem *)item->parent()->userData();
     if( dirItem )
     {
       dirItem->setOpen( true );

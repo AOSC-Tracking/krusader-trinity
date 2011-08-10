@@ -41,7 +41,7 @@ class PercentalSplitter : public TQSplitter {
   TQ_OBJECT
   
 public:
-  PercentalSplitter( TQWidget * tqparent = 0, const char * name = 0 );  
+  PercentalSplitter( TQWidget * parent = 0, const char * name = 0 );  
   virtual ~PercentalSplitter();
   
   TQString toolTipString( int p = -1 );

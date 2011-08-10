@@ -50,7 +50,7 @@ class SyncBrowseButton : public TQToolButton  {
    Q_OBJECT
   TQ_OBJECT
 public: 
-  SyncBrowseButton(TQWidget *tqparent=0, const char *name=0);
+  SyncBrowseButton(TQWidget *parent=0, const char *name=0);
   ~SyncBrowseButton();
   
   int state();

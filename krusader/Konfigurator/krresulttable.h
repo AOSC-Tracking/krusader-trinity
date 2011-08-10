@@ -59,7 +59,7 @@
 class KrResultTable : public TQWidget
 {
 public:
-  KrResultTable(TQWidget* tqparent);
+  KrResultTable(TQWidget* parent);
   virtual ~KrResultTable();
 
   /**
@@ -107,7 +107,7 @@ class KrArchiverResultTable : public KrResultTable
   Q_OBJECT
   TQ_OBJECT
 public:
-  KrArchiverResultTable(TQWidget* tqparent);
+  KrArchiverResultTable(TQWidget* parent);
   virtual ~KrArchiverResultTable();
 
   bool addRow(SearchObject* search, TQGridLayout* grid);
@@ -127,7 +127,7 @@ class KrToolResultTable : public KrResultTable
   Q_OBJECT
   TQ_OBJECT
 public:
-  KrToolResultTable(TQWidget* tqparent);
+  KrToolResultTable(TQWidget* parent);
   virtual ~KrToolResultTable();
 
   bool addRow(SearchObject* search, TQGridLayout* grid);

@@ -57,15 +57,15 @@ void exp_placeholder::panelMissingError(const TQString &s, Expander& exp)
 	exp.setError( Error(Error::S_FATAL,Error::C_ARGUMENT,i18n("Needed panel specification missing in expander %1").tqarg(s)) );
 }
 
-TQStringList exp_placeholder::fileList(const ListPanel* const panel,const TQString& type,const TQString& tqmask,const bool ommitPath,const bool useUrl,Expander& exp,const TQString& error)
+TQStringList exp_placeholder::fileList(const ListPanel* const panel,const TQString& type,const TQString& mask,const bool ommitPath,const bool useUrl,Expander& exp,const TQString& error)
 {
    TQStringList items;
    if ( type.isEmpty() || type == "all" )
-      panel->view->getItemsByMask( tqmask, &items );
+      panel->view->getItemsByMask( mask, &items );
    else if ( type == "files" )
-      panel->view->getItemsByMask( tqmask, &items, false, true );
+      panel->view->getItemsByMask( mask, &items, false, true );
    else if ( type == "dirs" )
-      panel->view->getItemsByMask( tqmask, &items, true, false );
+      panel->view->getItemsByMask( mask, &items, true, false );
    else if ( type == "selected" )
       panel->view->getSelectedItems( &items );
    else {
@@ -176,7 +176,7 @@ public:
 };
   
 /**
-  * This selects all items by the tqmask given with the first Parameter
+  * This selects all items by the mask given with the first Parameter
   */
 class exp_Select : public exp_simpleplaceholder {
 	static const exp_Select instance;
@@ -462,17 +462,17 @@ TagString exp_List::expFunc( const ListPanel* panel, const TQStringList& paramet
 
    // get selected items from view
    TQStringList items;
-   TQString tqmask;
+   TQString mask;
    
    if ( parameter.count() <= 3 || parameter[3].isEmpty() )
-      tqmask = "*";
+      mask = "*";
    else
-      tqmask = parameter[3];
+      mask = parameter[3];
    
    return separateAndQuote(
    		fileList(panel,
    			parameter.empty() ? TQString() : parameter[0].lower(),
-   			tqmask, parameter.count() > 2 ? parameter[2].lower()=="yes" : false,
+   			mask, parameter.count() > 2 ? parameter[2].lower()=="yes" : false,
    			useUrl, exp, "List"),
    		parameter.count() > 1 ? parameter[1] : " ",
    		parameter.count() > 4 ? parameter[4].lower()=="yes" : true);
@@ -494,12 +494,12 @@ TagString exp_ListFile::expFunc( const ListPanel* panel, const TQStringList& par
 
    // get selected items from view
    TQStringList items;
-   TQString tqmask;
+   TQString mask;
    
    if ( parameter.count() <= 3 || parameter[3].isEmpty() )
-      tqmask = "*";
+      mask = "*";
    else
-      tqmask = parameter[3];
+      mask = parameter[3];
    KTempFile tmpFile( locateLocal("tmp", "krusader"), ".itemlist" );
    
     if ( tmpFile.status() != 0 ) {
@@ -511,7 +511,7 @@ TagString exp_ListFile::expFunc( const ListPanel* panel, const TQStringList& par
     stream << separateAndQuote(
     		fileList(panel,
     			parameter.empty() ? TQString() : parameter[0].lower(),
-    			tqmask, parameter.count()>2 ? parameter[2].lower()=="yes" : false,
+    			mask, parameter.count()>2 ? parameter[2].lower()=="yes" : false,
     			useUrl, exp, "ListFile"),
     		parameter.count() > 1 ? parameter[1] : "\n",
     		parameter.count() > 4 ? parameter[4].lower()=="yes" : true)
@@ -526,25 +526,25 @@ exp_Select::exp_Select() {
    _description = i18n("Manipulate the Selection...");
    _needPanel = true;
 
-   addParameter( exp_parameter( i18n("Selection tqmask:"), "__select", true ) );
+   addParameter( exp_parameter( i18n("Selection mask:"), "__select", true ) );
    addParameter( exp_parameter( i18n("Manipulate in which way:"), "__choose:Set;Add;Remove", false ) );
 }
 TagString exp_Select::expFunc( const ListPanel* panel, const TQStringList& parameter, const bool& , Expander& exp) const {
    NEED_PANEL
    
-   KRQuery tqmask;
+   KRQuery mask;
     if ( parameter.count() <= 0 || parameter[0].isEmpty() )
-       tqmask = KRQuery( "*" );
+       mask = KRQuery( "*" );
     else
-       tqmask = KRQuery( parameter[0] );
+       mask = KRQuery( parameter[0] );
 
     if ( parameter[1].lower() == "add")
-       panel->view->select( tqmask );
+       panel->view->select( mask );
     else if ( parameter[1].lower() == "remove")
-       panel->view->unselect( tqmask );
+       panel->view->unselect( mask );
     else { // parameter[1].lower() == "set" or isEmpty() or whatever
        panel->view->unselect( KRQuery( "*" ) );
-       panel->view->select( tqmask );
+       panel->view->select( mask );
     }
 
    return TQString();  // this doesn't return anything, that's normal!
@@ -779,16 +779,16 @@ exp_Each::exp_Each() {
 TagString exp_Each::expFunc( const ListPanel* panel, const TQStringList& parameter, const bool& useUrl, Expander& exp ) const {
    NEED_PANEL
    
-   TQString tqmask;
+   TQString mask;
    if ( parameter.count() <= 2 || parameter[2].isEmpty() )
-      tqmask = "*";
+      mask = "*";
    else
-      tqmask = parameter[2];
+      mask = parameter[2];
 
    TagString ret;
    TQStringList l = fileList(panel,
    		parameter.empty() ? TQString() : parameter[0].lower(),
-   		tqmask, parameter.count() > 1 && parameter[1].lower()=="yes",
+   		mask, parameter.count() > 1 && parameter[1].lower()=="yes",
    		useUrl, exp, "Each");
 
    if(!(parameter.count()<=3 || parameter[3].lower()!="yes"))

@@ -66,7 +66,7 @@ class DiskUsage : public TQWidgetStack
   TQ_OBJECT
   
 public:
-  DiskUsage( TQString confGroup, TQWidget *tqparent = 0, char *name = 0);
+  DiskUsage( TQString confGroup, TQWidget *parent = 0, char *name = 0);
   ~DiskUsage();
   
   void       load( KURL dirName );
@@ -180,7 +180,7 @@ class LoaderWidget : public TQScrollView
   TQ_OBJECT
   
 public:
-  LoaderWidget( TQWidget *tqparent = 0, const char *name = 0 );
+  LoaderWidget( TQWidget *parent = 0, const char *name = 0 );
   
   void init();
   void setCurrentURL( KURL url );

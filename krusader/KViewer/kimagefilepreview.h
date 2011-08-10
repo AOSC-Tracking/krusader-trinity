@@ -31,7 +31,7 @@ class KrusaderImageFilePreview : public KPreviewWidgetBase {
   TQ_OBJECT
 
 	public:
-		KrusaderImageFilePreview( TQWidget *tqparent );
+		KrusaderImageFilePreview( TQWidget *parent );
 		~KrusaderImageFilePreview();
 
 		virtual TQSize tqsizeHint() const;

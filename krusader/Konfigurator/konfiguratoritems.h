@@ -110,7 +110,7 @@ class KonfiguratorCheckBox : public TQCheckBox
 
 public:
   KonfiguratorCheckBox( TQString cls, TQString name, bool dflt, TQString text,
-                        TQWidget *tqparent=0, const char *widgetName=0, bool rst=false, int pg=FIRST_PAGE );
+                        TQWidget *parent=0, const char *widgetName=0, bool rst=false, int pg=FIRST_PAGE );
   ~KonfiguratorCheckBox();
 
   inline KonfiguratorExtension *extension()   {return ext;}
@@ -135,7 +135,7 @@ class KonfiguratorSpinBox : public TQSpinBox
 
 public:
   KonfiguratorSpinBox( TQString cls, TQString name, int dflt, int min, int max,
-                       TQWidget *tqparent=0, const char *widgetName=0, bool rst=false, int pg=FIRST_PAGE );
+                       TQWidget *parent=0, const char *widgetName=0, bool rst=false, int pg=FIRST_PAGE );
   ~KonfiguratorSpinBox();
 
   inline KonfiguratorExtension *extension()   {return ext;}
@@ -156,8 +156,8 @@ protected:
 class KonfiguratorCheckBoxGroup : public TQWidget
 {
 public:
-  KonfiguratorCheckBoxGroup( TQWidget * tqparent = 0, const char * name = 0 ) :
-    TQWidget( tqparent, name ) {};
+  KonfiguratorCheckBoxGroup( TQWidget * parent = 0, const char * name = 0 ) :
+    TQWidget( parent, name ) {};
 
   void                    add( KonfiguratorCheckBox * );
   KonfiguratorCheckBox *  find( int index );
@@ -176,7 +176,7 @@ class KonfiguratorRadioButtons : public TQButtonGroup
   TQ_OBJECT
 
 public:
-  KonfiguratorRadioButtons( TQString cls, TQString name, TQString dflt, TQWidget *tqparent=0,
+  KonfiguratorRadioButtons( TQString cls, TQString name, TQString dflt, TQWidget *parent=0,
                             const char *widgetName=0, bool rst=false, int pg=FIRST_PAGE );
   ~KonfiguratorRadioButtons();
 
@@ -214,7 +214,7 @@ class KonfiguratorEditBox : public TQLineEdit
   TQ_OBJECT
 
 public:
-  KonfiguratorEditBox( TQString cls, TQString name, TQString dflt, TQWidget *tqparent=0,
+  KonfiguratorEditBox( TQString cls, TQString name, TQString dflt, TQWidget *parent=0,
                        const char *widgetName=0, bool rst=false, int pg=FIRST_PAGE );
   ~KonfiguratorEditBox();
 
@@ -240,7 +240,7 @@ class KonfiguratorURLRequester : public KURLRequester
   TQ_OBJECT
 
 public:
-  KonfiguratorURLRequester( TQString cls, TQString name, TQString dflt, TQWidget *tqparent=0,
+  KonfiguratorURLRequester( TQString cls, TQString name, TQString dflt, TQWidget *parent=0,
                        const char *widgetName=0, bool rst=false, int pg=FIRST_PAGE );
   ~KonfiguratorURLRequester();
 
@@ -265,7 +265,7 @@ class KonfiguratorFontChooser : public TQHBox
   TQ_OBJECT
 
 public:
-  KonfiguratorFontChooser( TQString cls, TQString name, TQFont *dflt, TQWidget *tqparent=0,
+  KonfiguratorFontChooser( TQString cls, TQString name, TQFont *dflt, TQWidget *parent=0,
                             const char *widgetName=0, bool rst=false, int pg=FIRST_PAGE );
   ~KonfiguratorFontChooser();
 
@@ -318,7 +318,7 @@ class KonfiguratorComboBox : public TQComboBox
 public:
   KonfiguratorComboBox( TQString cls, TQString name, TQString dflt,
                         KONFIGURATOR_NAME_VALUE_PAIR *listIn, int listInLen,
-                        TQWidget *tqparent=0, const char *widgetName=0,
+                        TQWidget *parent=0, const char *widgetName=0,
                         bool rst=false,  bool editable=false, int pg=FIRST_PAGE );
   ~KonfiguratorComboBox();
 
@@ -356,7 +356,7 @@ class KonfiguratorColorChooser : public TQComboBox
 
 public:
   KonfiguratorColorChooser( TQString cls, TQString name, TQColor dflt,
-                            TQWidget *tqparent=0, const char *widgetName=0, bool rst=false,
+                            TQWidget *parent=0, const char *widgetName=0, bool rst=false,
                             ADDITIONAL_COLOR *addColPtr = 0, int addColNum = 0, int pg=FIRST_PAGE );
   ~KonfiguratorColorChooser();
 
@@ -402,7 +402,7 @@ class KonfiguratorListBox : public TQListBox
 
 public:
   KonfiguratorListBox( TQString cls, TQString name, TQStringList dflt,
-                        TQWidget *tqparent=0, const char *widgetName=0,
+                        TQWidget *parent=0, const char *widgetName=0,
                         bool rst=false,  int pg=FIRST_PAGE );
   ~KonfiguratorListBox();
 

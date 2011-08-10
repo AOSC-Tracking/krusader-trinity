@@ -46,7 +46,7 @@ class KrBriefViewItem : public KIconViewItem, public KrViewItem {
 friend class KrBriefView;
 friend class KrCalcSpaceDialog;
 public:
-	KrBriefViewItem(KrBriefView *tqparent, TQIconViewItem *after, vfile *vf);
+	KrBriefViewItem(KrBriefView *parent, TQIconViewItem *after, vfile *vf);
 	inline bool isSelected() const { return KIconViewItem::isSelected(); }
 	inline void setSelected(bool s) { KIconViewItem::setSelected(s); }
 	inline void cancelRename() { removeRenameBox(); }

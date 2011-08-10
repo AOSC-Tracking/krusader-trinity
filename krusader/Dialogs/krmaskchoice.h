@@ -47,7 +47,7 @@ class KRMaskChoice : public TQDialog
   TQ_OBJECT
 
 public:
-    KRMaskChoice( TQWidget* tqparent = 0, const char* name = 0, bool modal = FALSE, WFlags fl = 0 );
+    KRMaskChoice( TQWidget* parent = 0, const char* name = 0, bool modal = FALSE, WFlags fl = 0 );
     ~KRMaskChoice();
 
     TQComboBox* selection;

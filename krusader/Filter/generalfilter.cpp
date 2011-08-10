@@ -40,7 +40,7 @@
 #include <tqwhatsthis.h>
 #include <tqpushbutton.h>
 
-GeneralFilter::GeneralFilter( FilterTabs *tabs, int properties, TQWidget *tqparent, const char *name ) : TQWidget( tqparent, name ),
+GeneralFilter::GeneralFilter( FilterTabs *tabs, int properties, TQWidget *parent, const char *name ) : TQWidget( parent, name ),
     profileManager( 0 ), fltTabs( tabs )
 {
   TQGridLayout *filterLayout = new TQGridLayout( this );

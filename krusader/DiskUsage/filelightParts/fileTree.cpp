@@ -19,7 +19,7 @@ File::fullPath( const Directory *root /*= 0*/ ) const
 
     const File *d;
     
-    for( d = this; d != root && d && d->tqparent() != 0; d = d->tqparent() )
+    for( d = this; d != root && d && d->parent() != 0; d = d->parent() )
     {
       if( !path.isEmpty() )
         path = "/" + path;
@@ -29,8 +29,8 @@ File::fullPath( const Directory *root /*= 0*/ ) const
     
     if( d )
     {
-      while( d->tqparent() )
-        d = d->tqparent();
+      while( d->parent() )
+        d = d->parent();
     
       if( d->directory().endsWith( "/" ) )  
         return d->directory() + path;

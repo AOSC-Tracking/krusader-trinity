@@ -44,11 +44,11 @@
 class DULinesItem : public TQListViewItem
 {
 public:
-  DULinesItem( DiskUsage *diskUsageIn, File *fileItem, TQListView * tqparent, TQString label1, 
-               TQString label2, TQString label3, unsigned int italicPos ) : TQListViewItem( tqparent, label1, label2, label3 ), 
+  DULinesItem( DiskUsage *diskUsageIn, File *fileItem, TQListView * parent, TQString label1, 
+               TQString label2, TQString label3, unsigned int italicPos ) : TQListViewItem( parent, label1, label2, label3 ), 
                diskUsage( diskUsageIn ), file( fileItem ), isTruncated( false ), italicTextPos( italicPos ) {}
-  DULinesItem( DiskUsage *diskUsageIn, File *fileItem, TQListView * tqparent, TQListViewItem * after, 
-               TQString label1, TQString label2, TQString label3, unsigned int italicPos ) : TQListViewItem( tqparent, after, label1, 
+  DULinesItem( DiskUsage *diskUsageIn, File *fileItem, TQListView * parent, TQListViewItem * after, 
+               TQString label1, TQString label2, TQString label3, unsigned int italicPos ) : TQListViewItem( parent, after, label1, 
                label2, label3 ), diskUsage( diskUsageIn ), file( fileItem ), isTruncated( false ), italicTextPos( italicPos ) {}
   
   virtual int compare ( TQListViewItem * i, int col, bool ascending ) const 
@@ -176,7 +176,7 @@ private:
 class DULinesToolTip : public TQToolTip
 {
 public:
-    DULinesToolTip( DiskUsage *usage, TQWidget *tqparent, TQListView *lv );
+    DULinesToolTip( DiskUsage *usage, TQWidget *parent, TQListView *lv );
     void maybeTip( const TQPoint &pos );
 
     virtual ~DULinesToolTip() {}
@@ -185,8 +185,8 @@ private:
     DiskUsage *diskUsage;
 };
 
-DULinesToolTip::DULinesToolTip( DiskUsage *usage, TQWidget *tqparent, TQListView *lv )
-  : TQToolTip( tqparent ), view( lv ), diskUsage( usage )
+DULinesToolTip::DULinesToolTip( DiskUsage *usage, TQWidget *parent, TQListView *lv )
+  : TQToolTip( parent ), view( lv ), diskUsage( usage )
 {
 }
 
@@ -276,7 +276,7 @@ void DULines::slotDirChanged( Directory *dirEntry )
   
   TQListViewItem * lastItem = 0;
     
-  if( ! ( dirEntry->tqparent() == 0 ) )
+  if( ! ( dirEntry->parent() == 0 ) )
   {
     lastItem = new TQListViewItem( this, ".." );
     lastItem->setPixmap( 0, FL_LOADICON( "up" ) );
@@ -398,7 +398,7 @@ bool DULines::doubleClicked( TQListViewItem * item )
     }
     else
     {
-      Directory *upDir = (Directory *)diskUsage->getCurrentDir()->tqparent();
+      Directory *upDir = (Directory *)diskUsage->getCurrentDir()->parent();
     
       if( upDir )
         diskUsage->changeDirectory( upDir );

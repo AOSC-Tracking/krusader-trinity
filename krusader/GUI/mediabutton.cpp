@@ -70,7 +70,7 @@
 
 
 
-MediaButton::MediaButton( TQWidget *tqparent, const char *name ) : TQToolButton( tqparent, name ),
+MediaButton::MediaButton( TQWidget *parent, const char *name ) : TQToolButton( parent, name ),
 		popupMenu( 0 ), rightMenu( 0 ), hasMedia( false ), waitingForMount( -1 ), mountCheckerTimer()
 	 {
 	KIconLoader * iconLoader = new KIconLoader();

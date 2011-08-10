@@ -18,7 +18,7 @@ class PanelViewerBase: public TQWidgetStack {
   TQ_OBJECT
 
 public:
-	PanelViewerBase( TQWidget *tqparent = 0 );
+	PanelViewerBase( TQWidget *parent = 0 );
 	virtual ~PanelViewerBase();
 	inline KURL url() const { return curl; }
 	inline void setUrl( KURL url ) { emit urlChanged( this, url ); curl = url; }
@@ -53,7 +53,7 @@ public slots:
 	bool closeURL();
 
 public:
-	PanelViewer( TQWidget *tqparent = 0 );
+	PanelViewer( TQWidget *parent = 0 );
 	~PanelViewer();
 
 	virtual bool isEditor() { return false; }
@@ -78,7 +78,7 @@ public slots:
 	void slotStatResult( KIO::Job* job );
 
 public:
-	PanelEditor( TQWidget *tqparent = 0 );
+	PanelEditor( TQWidget *parent = 0 );
 	~PanelEditor();
 
 protected:

@@ -30,7 +30,7 @@ class remoteManBase : public TQDialog
   TQ_OBJECT
 
 public:
-    remoteManBase( TQWidget* tqparent = 0, const char* name = 0, bool modal = FALSE, WFlags fl = 0 );
+    remoteManBase( TQWidget* parent = 0, const char* name = 0, bool modal = FALSE, WFlags fl = 0 );
     ~remoteManBase();
 
     TQLabel* TextLabel1;

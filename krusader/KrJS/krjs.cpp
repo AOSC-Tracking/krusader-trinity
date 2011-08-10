@@ -60,7 +60,7 @@ bool KrJS::runFile(const TQString & filename) {
             krOut << "JavaScript: Uncaught " << type << " exception at line " << line <<  " in " << filename << endl;
             krOut << message << endl;
 
-            KMessageBox::error ( 0,	//tqparent
+            KMessageBox::error ( 0,	//parent
 		( line < 0 ?
 		TQString( i18n("In %1:\nUncaught JavaScript exception '%2'\n%3") ).tqarg(filename).tqarg(type).tqarg(message) :
 		TQString( i18n("In %1:\nUncaught JavaScript exception '%2' at line %3\n%4") ).tqarg(filename).tqarg(type).tqarg(line).tqarg(message)
@@ -68,7 +68,7 @@ bool KrJS::runFile(const TQString & filename) {
 		i18n("JavaScript error"), 	//caption
 		KMessageBox::Dangerous) ;
 #else
-            KMessageBox::error ( 0,	//tqparent
+            KMessageBox::error ( 0,	//parent
 		TQString(i18n("In %1:\nThere is an error in the JavaScript")).tqarg(filename),	//text
 		i18n("JavaScript error"), 	//caption
 		KMessageBox::Dangerous) ;

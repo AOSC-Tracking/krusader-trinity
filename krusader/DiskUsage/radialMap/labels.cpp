@@ -81,7 +81,7 @@ RadialMap::Widget::paintExplodedLabels( TQPainter &paint ) const
          p != m_tree;
          ++startLevel ) //startLevel is the level above whatever m_focus is in
     {
-      p = p->tqparent();
+      p = p->parent();
     }
 
     //range=2 means 2 levels to draw labels for

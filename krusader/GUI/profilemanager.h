@@ -40,7 +40,7 @@ class ProfileManager : public TQPushButton
   TQ_OBJECT
   
 public: 
-  ProfileManager( TQString profileType, TQWidget * tqparent = 0, const char * name = 0 );
+  ProfileManager( TQString profileType, TQWidget * parent = 0, const char * name = 0 );
   
   /**
    * @param profileType Type of the profile (sync, search, ...)

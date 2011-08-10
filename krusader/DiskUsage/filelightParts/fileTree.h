@@ -212,7 +212,7 @@ public:
                                                         buf.sprintf( "%d.%02d%%", m_percent / 100, m_percent % 100 );
                                                         return buf;}
   inline void             setPercent( int p )          {m_percent = p;}  
-  inline const Directory* tqparent()              const  {return m_parent;}
+  inline const Directory* parent()              const  {return m_parent;}
   
   inline void setSizes( KIO::filesize_t totalSize, KIO::filesize_t ownSize )
   {
@@ -257,11 +257,11 @@ public:
   {
      ++m_fileCount;
      
-     Directory *tqparent = m_parent;
-     while( tqparent )
+     Directory *parent = m_parent;
+     while( parent )
      {
-       tqparent->m_fileCount++;
-       tqparent = tqparent->m_parent;
+       parent->m_fileCount++;
+       parent = parent->m_parent;
      }
      
      Chain<File>::append( p );
@@ -275,11 +275,11 @@ public:
       {
         --m_fileCount;
         
-        Directory *tqparent = m_parent;
-        while( tqparent )
+        Directory *parent = m_parent;
+        while( parent )
         {
-          tqparent->m_fileCount--;
-          tqparent = tqparent->m_parent;
+          parent->m_fileCount--;
+          parent = parent->m_parent;
         }
         
         it.remove();

@@ -44,7 +44,7 @@
 #define EXECUTABLE_ID		0xFFFF
 
 
-AddPlaceholderPopup::AddPlaceholderPopup( TQWidget *tqparent ) : KPopupMenu( tqparent ) {
+AddPlaceholderPopup::AddPlaceholderPopup( TQWidget *parent ) : KPopupMenu( parent ) {
 
    _activeSub = new KPopupMenu( this );
    _otherSub = new KPopupMenu( this );
@@ -132,7 +132,7 @@ TQString AddPlaceholderPopup::getPlaceholder( const TQPoint& pos ) {
 /////////////////////////////// ParameterDialog ////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////
 
-ParameterDialog::ParameterDialog( const exp_placeholder* currentPlaceholder, TQWidget *tqparent ) : KDialogBase( Plain, i18n("User Action Parameter Dialog"), Default | Ok, Ok, tqparent ) {
+ParameterDialog::ParameterDialog( const exp_placeholder* currentPlaceholder, TQWidget *parent ) : KDialogBase( Plain, i18n("User Action Parameter Dialog"), Default | Ok, Ok, parent ) {
    _parameter.clear();
    _parameterCount = currentPlaceholder->parameterCount();
    
@@ -219,7 +219,7 @@ void ParameterDialog::slotOk() {
 }
 
 ///////////// ParameterText
-ParameterText::ParameterText( const exp_parameter& parameter, TQWidget* tqparent ) : ParameterBase( parameter, tqparent ) {
+ParameterText::ParameterText( const exp_parameter& parameter, TQWidget* parent ) : ParameterBase( parameter, parent ) {
    TQVBoxLayout* tqlayout = new TQVBoxLayout( this );
    tqlayout->setAutoAdd( true );
    tqlayout->setSpacing( 6 );
@@ -246,7 +246,7 @@ bool ParameterText::valid() {
 } 
 
 ///////////// ParameterPlaceholder
-ParameterPlaceholder::ParameterPlaceholder( const exp_parameter& parameter, TQWidget* tqparent ) : ParameterBase( parameter, tqparent ) {
+ParameterPlaceholder::ParameterPlaceholder( const exp_parameter& parameter, TQWidget* parent ) : ParameterBase( parameter, parent ) {
    TQVBoxLayout* tqlayout = new TQVBoxLayout( this );
    tqlayout->setAutoAdd( true );
    tqlayout->setSpacing( 6 );
@@ -283,7 +283,7 @@ void ParameterPlaceholder::addPlaceholder() {
 }
 
 ///////////// ParameterYes
-ParameterYes::ParameterYes( const exp_parameter& parameter, TQWidget* tqparent ) : ParameterBase( parameter, tqparent ) {
+ParameterYes::ParameterYes( const exp_parameter& parameter, TQWidget* parent ) : ParameterBase( parameter, parent ) {
    TQVBoxLayout* tqlayout = new TQVBoxLayout( this );
    tqlayout->setAutoAdd( true );
    tqlayout->setSpacing( 6 );
@@ -309,7 +309,7 @@ bool ParameterYes::valid() {
 } 
 
 ///////////// ParameterNo
-ParameterNo::ParameterNo( const exp_parameter& parameter, TQWidget* tqparent ) : ParameterBase( parameter, tqparent ) {
+ParameterNo::ParameterNo( const exp_parameter& parameter, TQWidget* parent ) : ParameterBase( parameter, parent ) {
    TQVBoxLayout* tqlayout = new TQVBoxLayout( this );
    tqlayout->setAutoAdd( true );
    tqlayout->setSpacing( 6 );
@@ -335,7 +335,7 @@ bool ParameterNo::valid() {
 } 
 
 ///////////// ParameterFile
-ParameterFile::ParameterFile( const exp_parameter& parameter, TQWidget* tqparent ) : ParameterBase( parameter, tqparent ) {
+ParameterFile::ParameterFile( const exp_parameter& parameter, TQWidget* parent ) : ParameterBase( parameter, parent ) {
    TQVBoxLayout* tqlayout = new TQVBoxLayout( this );
    tqlayout->setAutoAdd( true );
    tqlayout->setSpacing( 6 );
@@ -371,7 +371,7 @@ void ParameterFile::addFile() {
 }
 
 ///////////// ParameterChoose
-ParameterChoose::ParameterChoose( const exp_parameter& parameter, TQWidget* tqparent ) : ParameterBase( parameter, tqparent ) {
+ParameterChoose::ParameterChoose( const exp_parameter& parameter, TQWidget* parent ) : ParameterBase( parameter, parent ) {
    TQVBoxLayout* tqlayout = new TQVBoxLayout( this );
    tqlayout->setAutoAdd( true );
    tqlayout->setSpacing( 6 );
@@ -395,7 +395,7 @@ bool ParameterChoose::valid() {
 } 
 
 ///////////// ParameterSelect
-ParameterSelect::ParameterSelect( const exp_parameter& parameter, TQWidget* tqparent ) : ParameterBase( parameter, tqparent ) {
+ParameterSelect::ParameterSelect( const exp_parameter& parameter, TQWidget* parent ) : ParameterBase( parameter, parent ) {
    TQVBoxLayout* tqlayout = new TQVBoxLayout( this );
    tqlayout->setAutoAdd( true );
    tqlayout->setSpacing( 6 );
@@ -427,7 +427,7 @@ bool ParameterSelect::valid() {
 } 
 
 ///////////// ParameterGoto
-ParameterGoto::ParameterGoto( const exp_parameter& parameter, TQWidget* tqparent ) : ParameterBase( parameter, tqparent ) {
+ParameterGoto::ParameterGoto( const exp_parameter& parameter, TQWidget* parent ) : ParameterBase( parameter, parent ) {
    TQVBoxLayout* tqlayout = new TQVBoxLayout( this );
    tqlayout->setAutoAdd( true );
    tqlayout->setSpacing( 6 );
@@ -473,7 +473,7 @@ void ParameterGoto::addPlaceholder() {
 }
 
 ///////////// ParameterSyncprofile
-ParameterSyncprofile::ParameterSyncprofile( const exp_parameter& parameter, TQWidget* tqparent ) : ParameterBase( parameter, tqparent ) {
+ParameterSyncprofile::ParameterSyncprofile( const exp_parameter& parameter, TQWidget* parent ) : ParameterBase( parameter, parent ) {
    TQVBoxLayout* tqlayout = new TQVBoxLayout( this );
    tqlayout->setAutoAdd( true );
    tqlayout->setSpacing( 6 );
@@ -498,7 +498,7 @@ bool ParameterSyncprofile::valid() {
 } 
 
 ///////////// ParameterSearch
-ParameterSearch::ParameterSearch( const exp_parameter& parameter, TQWidget* tqparent ) : ParameterBase( parameter, tqparent ) {
+ParameterSearch::ParameterSearch( const exp_parameter& parameter, TQWidget* parent ) : ParameterBase( parameter, parent ) {
    TQVBoxLayout* tqlayout = new TQVBoxLayout( this );
    tqlayout->setAutoAdd( true );
    tqlayout->setSpacing( 6 );
@@ -523,7 +523,7 @@ bool ParameterSearch::valid() {
 } 
 
 ///////////// ParameterPanelprofile
-ParameterPanelprofile::ParameterPanelprofile( const exp_parameter& parameter, TQWidget* tqparent ) : ParameterBase( parameter, tqparent ) {
+ParameterPanelprofile::ParameterPanelprofile( const exp_parameter& parameter, TQWidget* parent ) : ParameterBase( parameter, parent ) {
    TQVBoxLayout* tqlayout = new TQVBoxLayout( this );
    tqlayout->setAutoAdd( true );
    tqlayout->setSpacing( 6 );
@@ -548,7 +548,7 @@ bool ParameterPanelprofile::valid() {
 } 
 
 ///////////// ParameterInt
-ParameterInt::ParameterInt( const exp_parameter& parameter, TQWidget* tqparent ) : ParameterBase( parameter, tqparent ) {
+ParameterInt::ParameterInt( const exp_parameter& parameter, TQWidget* parent ) : ParameterBase( parameter, parent ) {
    TQHBoxLayout* tqlayout = new TQHBoxLayout( this );
    tqlayout->setAutoAdd( true );
    tqlayout->setSpacing( 6 );

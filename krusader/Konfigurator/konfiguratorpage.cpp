@@ -33,8 +33,8 @@
 #include "../krusader.h"
 #include <tqwhatsthis.h>
 
-KonfiguratorPage::KonfiguratorPage( bool firstTime, TQWidget* tqparent,  const char* name ) :
-  TQFrame( tqparent, name ), firstCall( firstTime )
+KonfiguratorPage::KonfiguratorPage( bool firstTime, TQWidget* parent,  const char* name ) :
+  TQFrame( parent, name ), firstCall( firstTime )
 {
 }
 
@@ -96,10 +96,10 @@ bool KonfiguratorPage::isChanged()
 }
 
 KonfiguratorCheckBox* KonfiguratorPage::createCheckBox( TQString cls, TQString name,
-    bool dflt, TQString text, TQWidget *tqparent, bool rst, TQString toolTip, int pg )
+    bool dflt, TQString text, TQWidget *parent, bool rst, TQString toolTip, int pg )
 {
   KonfiguratorCheckBox *checkBox = new KonfiguratorCheckBox( cls, name, dflt, text,
-                                 tqparent, TQString(cls + "/" + name).ascii(), rst, pg );
+                                 parent, TQString(cls + "/" + name).ascii(), rst, pg );
   if( !toolTip.isEmpty() )
     TQWhatsThis::add( checkBox, toolTip );
   
@@ -108,19 +108,19 @@ KonfiguratorCheckBox* KonfiguratorPage::createCheckBox( TQString cls, TQString n
 }
 
 KonfiguratorSpinBox* KonfiguratorPage::createSpinBox(  TQString cls, TQString name,
-    int dflt, int min, int max, TQWidget *tqparent, bool rst, int pg )
+    int dflt, int min, int max, TQWidget *parent, bool rst, int pg )
 {
   KonfiguratorSpinBox *spinBox = new KonfiguratorSpinBox( cls, name, dflt, min, max,
-                                 tqparent, TQString(cls + "/" + name).ascii(), rst, pg );
+                                 parent, TQString(cls + "/" + name).ascii(), rst, pg );
 
   registerObject( spinBox->extension() );
   return spinBox;
 }
 
 KonfiguratorEditBox* KonfiguratorPage::createEditBox(  TQString cls, TQString name,
-    TQString dflt, TQWidget *tqparent, bool rst, int pg )
+    TQString dflt, TQWidget *parent, bool rst, int pg )
 {
-  KonfiguratorEditBox *editBox = new KonfiguratorEditBox( cls, name, dflt, tqparent,
+  KonfiguratorEditBox *editBox = new KonfiguratorEditBox( cls, name, dflt, parent,
                                         TQString(cls + "/" + name).ascii(), rst, pg );
 
   registerObject( editBox->extension() );
@@ -128,9 +128,9 @@ KonfiguratorEditBox* KonfiguratorPage::createEditBox(  TQString cls, TQString na
 }
 
 KonfiguratorListBox* KonfiguratorPage::createListBox(  TQString cls, TQString name,
-    TQStringList dflt, TQWidget *tqparent, bool rst, int pg )
+    TQStringList dflt, TQWidget *parent, bool rst, int pg )
 {
-  KonfiguratorListBox *listBox = new KonfiguratorListBox( cls, name, dflt, tqparent,
+  KonfiguratorListBox *listBox = new KonfiguratorListBox( cls, name, dflt, parent,
                                         TQString(cls + "/" + name).ascii(), rst, pg );
 
   registerObject( listBox->extension() );
@@ -138,19 +138,19 @@ KonfiguratorListBox* KonfiguratorPage::createListBox(  TQString cls, TQString na
 }
 
 KonfiguratorURLRequester* KonfiguratorPage::createURLRequester(  TQString cls, TQString name,
-    TQString dflt, TQWidget *tqparent, bool rst, int pg )
+    TQString dflt, TQWidget *parent, bool rst, int pg )
 {
   KonfiguratorURLRequester *urlRequester = new KonfiguratorURLRequester( cls, name, dflt,
-                                        tqparent, TQString(cls + "/" + name).ascii(), rst, pg );
+                                        parent, TQString(cls + "/" + name).ascii(), rst, pg );
 
   registerObject( urlRequester->extension() );
   return urlRequester;
 }
 
-TQGroupBox* KonfiguratorPage::createFrame( TQString text, TQWidget *tqparent,
+TQGroupBox* KonfiguratorPage::createFrame( TQString text, TQWidget *parent,
                                           const char *widgetName )
 {
-  TQGroupBox *groupBox = new TQGroupBox( tqparent, widgetName );
+  TQGroupBox *groupBox = new TQGroupBox( parent, widgetName );
   groupBox->setFrameShape( TQGroupBox::Box );
   groupBox->setFrameShadow( TQGroupBox::Sunken );
   if( !text.isNull() )
@@ -161,9 +161,9 @@ TQGroupBox* KonfiguratorPage::createFrame( TQString text, TQWidget *tqparent,
   return groupBox;
 }                                          
 
-TQGridLayout* KonfiguratorPage::createGridLayout( TQLayout *tqparent )
+TQGridLayout* KonfiguratorPage::createGridLayout( TQLayout *parent )
 {
-  TQGridLayout *gridLayout = new TQGridLayout( tqparent );
+  TQGridLayout *gridLayout = new TQGridLayout( parent );
   gridLayout->tqsetAlignment( TQt::AlignTop );
   gridLayout->setSpacing( 6 );
   gridLayout->setMargin( 11 );
@@ -171,16 +171,16 @@ TQGridLayout* KonfiguratorPage::createGridLayout( TQLayout *tqparent )
 }
 
 TQLabel* KonfiguratorPage::addLabel( TQGridLayout *tqlayout, int x, int y, TQString label,
-                                    TQWidget *tqparent, const char *widgetName )
+                                    TQWidget *parent, const char *widgetName )
 {
-  TQLabel *lbl = new TQLabel( label, tqparent, widgetName );
+  TQLabel *lbl = new TQLabel( label, parent, widgetName );
   tqlayout->addWidget( lbl, x, y );
   return lbl;
 }
 
-TQWidget* KonfiguratorPage::createSpacer( TQWidget *tqparent, const char *widgetName )
+TQWidget* KonfiguratorPage::createSpacer( TQWidget *parent, const char *widgetName )
 {
-  TQWidget *widget = new TQWidget( tqparent, widgetName );
+  TQWidget *widget = new TQWidget( parent, widgetName );
   TQHBoxLayout *hboxtqlayout = new TQHBoxLayout( widget );
   TQSpacerItem* spacer = new TQSpacerItem( 40, 20, TQSizePolicy::Expanding, TQSizePolicy::Minimum );
   hboxtqlayout->addItem( spacer );
@@ -188,10 +188,10 @@ TQWidget* KonfiguratorPage::createSpacer( TQWidget *tqparent, const char *widget
 }
 
 KonfiguratorCheckBoxGroup* KonfiguratorPage::createCheckBoxGroup( int sizex, int sizey,
-    KONFIGURATOR_CHECKBOX_PARAM *params, int paramNum, TQWidget *tqparent,
+    KONFIGURATOR_CHECKBOX_PARAM *params, int paramNum, TQWidget *parent,
     const char *widgetName, int pg )
 {
-  KonfiguratorCheckBoxGroup *groupWidget = new KonfiguratorCheckBoxGroup( tqparent, widgetName );
+  KonfiguratorCheckBoxGroup *groupWidget = new KonfiguratorCheckBoxGroup( parent, widgetName );
   TQGridLayout *tqlayout = new TQGridLayout( groupWidget );
   tqlayout->setSpacing( 6 );
   tqlayout->setMargin( 0 );
@@ -224,9 +224,9 @@ KonfiguratorCheckBoxGroup* KonfiguratorPage::createCheckBoxGroup( int sizex, int
 
 KonfiguratorRadioButtons* KonfiguratorPage::createRadioButtonGroup( TQString cls,
     TQString name, TQString dflt, int sizex, int sizey, KONFIGURATOR_NAME_VALUE_TIP *params,
-    int paramNum, TQWidget *tqparent, const char *widgetName, bool rst, int pg )
+    int paramNum, TQWidget *parent, const char *widgetName, bool rst, int pg )
 {
-  KonfiguratorRadioButtons *radioWidget = new KonfiguratorRadioButtons( cls, name, dflt, tqparent, widgetName, rst, pg );
+  KonfiguratorRadioButtons *radioWidget = new KonfiguratorRadioButtons( cls, name, dflt, parent, widgetName, rst, pg );
   radioWidget->setFrameShape( TQButtonGroup::NoFrame );
   radioWidget->setFrameShadow( TQButtonGroup::Sunken );
   radioWidget->setTitle( "" );
@@ -271,9 +271,9 @@ KonfiguratorRadioButtons* KonfiguratorPage::createRadioButtonGroup( TQString cls
 }
 
 KonfiguratorFontChooser *KonfiguratorPage::createFontChooser( TQString cls, TQString name,
-  TQFont *dflt, TQWidget *tqparent, bool rst, int pg )
+  TQFont *dflt, TQWidget *parent, bool rst, int pg )
 {
-  KonfiguratorFontChooser *fontChooser = new KonfiguratorFontChooser( cls, name, dflt, tqparent,
+  KonfiguratorFontChooser *fontChooser = new KonfiguratorFontChooser( cls, name, dflt, parent,
                                         TQString(cls + "/" + name).ascii(), rst, pg );
 
   registerObject( fontChooser->extension() );
@@ -281,19 +281,19 @@ KonfiguratorFontChooser *KonfiguratorPage::createFontChooser( TQString cls, TQSt
 }
 
 KonfiguratorComboBox *KonfiguratorPage::createComboBox(  TQString cls, TQString name, TQString dflt,
-    KONFIGURATOR_NAME_VALUE_PAIR *params, int paramNum, TQWidget *tqparent, bool rst, bool editable, int pg )
+    KONFIGURATOR_NAME_VALUE_PAIR *params, int paramNum, TQWidget *parent, bool rst, bool editable, int pg )
 {
   KonfiguratorComboBox *comboBox = new KonfiguratorComboBox( cls, name, dflt, params,
-                                        paramNum, tqparent, TQString(cls + "/" + name).ascii(),
+                                        paramNum, parent, TQString(cls + "/" + name).ascii(),
                                         rst, editable, pg );
 
   registerObject( comboBox->extension() );
   return comboBox;
 }
 
-TQFrame* KonfiguratorPage::createLine( TQWidget *tqparent, const char *widgetName, bool vertical )
+TQFrame* KonfiguratorPage::createLine( TQWidget *parent, const char *widgetName, bool vertical )
 {
-  TQFrame *line = new TQFrame( tqparent, widgetName );
+  TQFrame *line = new TQFrame( parent, widgetName );
   line->setFrameStyle( ( vertical ? TQFrame::VLine : TQFrame::HLine ) | TQFrame::Sunken );
   return line;
 }
@@ -321,10 +321,10 @@ void KonfiguratorPage::removeObject( KonfiguratorExtension *item )
 }
 
 KonfiguratorColorChooser *KonfiguratorPage::createColorChooser( TQString cls, TQString name, TQColor dflt,
-                                                                TQWidget *tqparent, bool rst,
+                                                                TQWidget *parent, bool rst,
                                                                 ADDITIONAL_COLOR *addColPtr, int addColNum, int pg )
 {
-  KonfiguratorColorChooser *colorChooser = new KonfiguratorColorChooser( cls, name, dflt,  tqparent,
+  KonfiguratorColorChooser *colorChooser = new KonfiguratorColorChooser( cls, name, dflt,  parent,
                                         TQString(cls + "/" + name).ascii(), rst, addColPtr, addColNum, pg );
 
   registerObject( colorChooser->extension() );

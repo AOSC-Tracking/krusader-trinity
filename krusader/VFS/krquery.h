@@ -66,7 +66,7 @@ public:
 
   // sets the text for name filtering
   void setNameFilter( const TQString &text, bool cs=true );
-  // returns the current filter tqmask
+  // returns the current filter mask
   const TQString& nameFilter() const { return origFilter; }
   // returns whether the filter is case sensitive
   bool isCaseSensitive() { return matchesCaseSensitive; }
