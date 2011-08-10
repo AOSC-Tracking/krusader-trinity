@@ -44,9 +44,9 @@ KonfiguratorExtension::KonfiguratorExtension( TQObject *obj, TQString cfgClass, 
 
 void KonfiguratorExtension::connectNotify( const char *signal )
 {
-  TQString signalString    = TQString( signal ).tqreplace( " ", "" );
-  TQString applyString     = TQString( TQT_SIGNAL( applyManually(TQObject *,TQString, TQString) ) ).tqreplace( " ", "" );
-  TQString defaultsString  = TQString( TQT_SIGNAL( setDefaultsManually(TQObject *) ) ).tqreplace( " ", "" );
+  TQString signalString    = TQString( signal ).replace( " ", "" );
+  TQString applyString     = TQString( TQT_SIGNAL( applyManually(TQObject *,TQString, TQString) ) ).replace( " ", "" );
+  TQString defaultsString  = TQString( TQT_SIGNAL( setDefaultsManually(TQObject *) ) ).replace( " ", "" );
 
   if( signalString == applyString )
     applyConnected = true;
@@ -180,12 +180,12 @@ void KonfiguratorCheckBoxGroup::add( KonfiguratorCheckBox *checkBox )
   checkBoxList.append( checkBox );
 }
 
-KonfiguratorCheckBox * KonfiguratorCheckBoxGroup::tqfind( int index )
+KonfiguratorCheckBox * KonfiguratorCheckBoxGroup::find( int index )
 {
   return checkBoxList.at( index );
 }
 
-KonfiguratorCheckBox * KonfiguratorCheckBoxGroup::tqfind( TQString name )
+KonfiguratorCheckBox * KonfiguratorCheckBoxGroup::find( TQString name )
 {
   KonfiguratorCheckBox *checkBox = checkBoxList.first();
 
@@ -227,14 +227,14 @@ void KonfiguratorRadioButtons::addRadioButton( TQRadioButton *radioWidget, TQStr
   connect( radioWidget, TQT_SIGNAL( stateChanged(int) ), ext, TQT_SLOT( setChanged() ) );
 }
 
-TQRadioButton * KonfiguratorRadioButtons::tqfind( int index )
+TQRadioButton * KonfiguratorRadioButtons::find( int index )
 {
   return radioButtons.at( index );
 }
 
-TQRadioButton * KonfiguratorRadioButtons::tqfind( TQString name )
+TQRadioButton * KonfiguratorRadioButtons::find( TQString name )
 {
-  int index = radioNames.tqfindIndex( name );
+  int index = radioNames.findIndex( name );
   if( index == -1 )
     return 0;
 
@@ -795,7 +795,7 @@ TQStringList KonfiguratorListBox::list()
 
 void KonfiguratorListBox::addItem( const TQString & item )
 {
-  if( !list().tqcontains( item ) )
+  if( !list().contains( item ) )
   {
     insertItem( item );
     ext->setChanged();
@@ -804,7 +804,7 @@ void KonfiguratorListBox::addItem( const TQString & item )
 
 void KonfiguratorListBox::removeItem( const TQString & item )
 {
-  TQListBoxItem * listItem = tqfindItem( item );
+  TQListBoxItem * listItem = findItem( item );
   if( listItem != 0 )
   {
     takeItem( listItem );

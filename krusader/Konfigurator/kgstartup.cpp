@@ -47,7 +47,7 @@ KgStartup::KgStartup( bool first, TQWidget* tqparent,  const char* name ) :
   TQGroupBox *panelsGrp = createFrame( i18n( "General" ), tqparent, "panelsGrp" );
   TQGridLayout *panelsGrid = createGridLayout( panelsGrp->tqlayout() );
 
-  TQString s = "<p><img src='toolbar|kr_profile'></p>" + i18n( "Defines the panel profile used at startup. A panel profile tqcontains:<ul><li>all the tabs paths</li><li>the current tab</li><li>the active panel</li></ul><b>&lt;Last session&gt;</b> is a special panel profile which is saved automatically when Krusader is closed.");
+  TQString s = "<p><img src='toolbar|kr_profile'></p>" + i18n( "Defines the panel profile used at startup. A panel profile contains:<ul><li>all the tabs paths</li><li>the current tab</li><li>the active panel</li></ul><b>&lt;Last session&gt;</b> is a special panel profile which is saved automatically when Krusader is closed.");
   TQLabel *label = addLabel( panelsGrid, 0, 0, i18n( "Startup profile:" ), panelsGrp, "Startup session" );
   TQWhatsThis::add( label, s );
   TQWhatsThis::add( panelsGrp, s );
@@ -96,7 +96,7 @@ KgStartup::KgStartup( bool first, TQWidget* tqparent,  const char* name ) :
     };
 
   uiCbGroup = createCheckBoxGroup( 2, 0, uiCheckBoxes, 8, uiGrp );
-  connect( uiCbGroup->tqfind( "UI Save Settings" ), TQT_SIGNAL( stateChanged( int ) ), this, TQT_SLOT( slotDisable() ) );
+  connect( uiCbGroup->find( "UI Save Settings" ), TQT_SIGNAL( stateChanged( int ) ), this, TQT_SLOT( slotDisable() ) );
 
   uiGrid->addWidget( uiCbGroup, 1, 0 );
 
@@ -107,11 +107,11 @@ KgStartup::KgStartup( bool first, TQWidget* tqparent,  const char* name ) :
 
 void KgStartup::slotDisable()
 {
-  bool isUiSave   = !uiCbGroup->tqfind( "UI Save Settings" )->isChecked();
+  bool isUiSave   = !uiCbGroup->find( "UI Save Settings" )->isChecked();
 
   int i=1;
-  while( uiCbGroup->tqfind( i ) )
-    uiCbGroup->tqfind( i++ )->setEnabled( isUiSave );
+  while( uiCbGroup->find( i ) )
+    uiCbGroup->find( i++ )->setEnabled( isUiSave );
 }
 
 #include "kgstartup.moc"

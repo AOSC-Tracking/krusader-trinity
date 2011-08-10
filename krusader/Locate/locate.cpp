@@ -308,7 +308,7 @@ void LocateDlg::processStdout(KProcess *proc, char *buffer, int length)
         TQString fileName = (*it).stripWhiteSpace();
         if( fileName.endsWith( "/" ) && fileName != "/" )
           fileName.truncate( fileName.length() -1 );
-        fileName = fileName.mid( fileName.tqfindRev( '/' ) + 1 );
+        fileName = fileName.mid( fileName.findRev( '/' ) + 1 );
         
         if( !regExp.exactMatch( fileName ) )
           continue;        
@@ -394,8 +394,8 @@ void LocateDlg::slotDoubleClick(TQListViewItem *item)
 
   if( !TQDir( dirName ).exists() )
   {
-    fileName = dirName.mid( dirName.tqfindRev( '/' ) + 1 );
-    dirName.truncate( dirName.tqfindRev( '/' ) );
+    fileName = dirName.mid( dirName.findRev( '/' ) + 1 );
+    dirName.truncate( dirName.findRev( '/' ) );
   }
     
   ACTIVE_FUNC->openUrl(vfs::fromPathOrURL( dirName ), fileName );
@@ -481,7 +481,7 @@ void LocateDlg::operate( TQListViewItem *item, int task )
 
       findCurrentItem = (KListViewItem *)resultList->currentItem();
       
-      if( tqfind() && findCurrentItem )
+      if( find() && findCurrentItem )
         resultList->setCurrentItem( findCurrentItem );
       else
         KMessageBox::information( 0, i18n( "Search string not found!" ) );
@@ -498,7 +498,7 @@ void LocateDlg::operate( TQListViewItem *item, int task )
       findCurrentItem = (KListViewItem *)resultList->currentItem();
       nextLine();
 
-      if( tqfind() && findCurrentItem )
+      if( find() && findCurrentItem )
         resultList->setCurrentItem( findCurrentItem );
       else
         KMessageBox::information( 0, i18n( "Search string not found!" ) );
@@ -541,7 +541,7 @@ void LocateDlg::nextLine()
     findCurrentItem = (KListViewItem *)findCurrentItem->itemBelow();
 }
 
-bool LocateDlg::tqfind()
+bool LocateDlg::find()
 {
   while( findCurrentItem )
   {
@@ -549,12 +549,12 @@ bool LocateDlg::tqfind()
 
     if( findOptions & KFindDialog::RegularExpression )
     {
-      if( item.tqcontains( TQRegExp( findPattern, findOptions & KFindDialog::CaseSensitive ) ) )
+      if( item.contains( TQRegExp( findPattern, findOptions & KFindDialog::CaseSensitive ) ) )
         return true;
     }
     else
     {
-      if( item.tqcontains( findPattern, findOptions & KFindDialog::CaseSensitive ) )
+      if( item.contains( findPattern, findOptions & KFindDialog::CaseSensitive ) )
         return true;
     }
     

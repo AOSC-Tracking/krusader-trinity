@@ -91,7 +91,7 @@ bool KonfiguratorPage::isChanged()
     item = itemList.next();
   }
 
-  itemList.tqfind( currentItem );  /* restore the current pointer */
+  itemList.find( currentItem );  /* restore the current pointer */
   return isChanged;
 }
 
@@ -305,7 +305,7 @@ void KonfiguratorPage::registerObject( KonfiguratorExtension *item )
   itemList.append( item );
   connect( item, TQT_SIGNAL( sigChanged( bool ) ), this, TQT_SIGNAL ( sigChanged( ) ) );
 
-  itemList.tqfind( currentItem );
+  itemList.find( currentItem );
 }
 
 void KonfiguratorPage::removeObject( KonfiguratorExtension *item )

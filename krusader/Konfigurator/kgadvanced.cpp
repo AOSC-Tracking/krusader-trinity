@@ -67,7 +67,7 @@ KgAdvanced::KgAdvanced( bool first, TQWidget* tqparent,  const char* name ) :
   KonfiguratorCheckBoxGroup *generals = createCheckBoxGroup( 1, 0, generalSettings, 3, generalGrp );
 
   if( !isMediaProtocolPresent )
-    generals->tqfind( "DontUseMediaProt" )->setEnabled( false );
+    generals->find( "DontUseMediaProt" )->setEnabled( false );
 
   generalGrid->addWidget( generals, 1, 0 );
 
@@ -78,7 +78,7 @@ KgAdvanced::KgAdvanced( bool first, TQWidget* tqparent,  const char* name ) :
  
   
 #ifdef BSD
-  generals->tqfind( "AutoMount" )->setEnabled( false ); /* disable AutoMount on BSD */
+  generals->find( "AutoMount" )->setEnabled( false ); /* disable AutoMount on BSD */
 #endif
     
   kgAdvancedLayout->addWidget( generalGrp, 0 ,0 );

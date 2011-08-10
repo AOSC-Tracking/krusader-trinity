@@ -160,8 +160,8 @@ public:
     TQWidget( tqparent, name ) {};
 
   void                    add( KonfiguratorCheckBox * );
-  KonfiguratorCheckBox *  tqfind( int index );
-  KonfiguratorCheckBox *  tqfind( TQString name );
+  KonfiguratorCheckBox *  find( int index );
+  KonfiguratorCheckBox *  find( TQString name );
 
 private:
   TQPtrList<KonfiguratorCheckBox>  checkBoxList;
@@ -186,8 +186,8 @@ public:
 
   void            selectButton( TQString value );
 
-  TQRadioButton*   tqfind( int index );
-  TQRadioButton*   tqfind( TQString name );
+  TQRadioButton*   find( int index );
+  TQRadioButton*   find( TQString name );
 
 public slots:
   virtual void loadInitialValue();

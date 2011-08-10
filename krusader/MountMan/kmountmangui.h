@@ -115,7 +115,7 @@ public:
       return Name;
    }
    inline TQString shortName() {
-      return Name.right( Name.length() - Name.tqfind( "/", 1 ) - 1 );
+      return Name.right( Name.length() - Name.find( "/", 1 ) - 1 );
    }
    inline TQString type() {
       return Type;

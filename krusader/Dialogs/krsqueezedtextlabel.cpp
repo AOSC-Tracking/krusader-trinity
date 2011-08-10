@@ -49,12 +49,12 @@ void KrSqueezedTextLabel::squeezeTextToLabel(int index, int length) {
 			if (index>3) {
 				delta=TQMIN(index, numOfExtraChars);
 				numOfExtraChars -= delta;
-				sqtext.tqreplace(0, delta, "...");
+				sqtext.replace(0, delta, "...");
 			}
 			
 			if (numOfExtraChars>0 && ((int)sqtext.length() > length+3)) {
 				delta = TQMIN(numOfExtraChars, (int)sqtext.length() - (length+3));
-				sqtext.tqreplace(sqtext.length()-delta, delta, "...");
+				sqtext.replace(sqtext.length()-delta, delta, "...");
 			}
 			TQLabel::setText(sqtext);
 

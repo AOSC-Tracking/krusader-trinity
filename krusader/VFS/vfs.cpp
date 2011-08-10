@@ -87,23 +87,23 @@ KURL vfs::fromPathOrURL( const TQString &originIn )
   TQString password, loginName, origin = originIn;
   bool bugfix = false;
   
-  if ( originIn.tqcontains( ":/" ) && !originIn.startsWith( "/" ) )
+  if ( originIn.contains( ":/" ) && !originIn.startsWith( "/" ) )
   {
     // breakdown the url;
     /* FIXME: untill KDE fixes the bug we have to check for
        passwords and users with @ in them... */
-    bugfix = origin.tqfind("@") != origin.tqfindRev("@");
+    bugfix = origin.find("@") != origin.findRev("@");
     if(bugfix){
-      if(origin.tqfind(":") != origin.tqfindRev(":", origin.tqfindRev("@") )){
-        int passStart = origin.tqfind( ":",origin.tqfind(":")+1 )+1;
-        int passLen = origin.tqfindRev("@")-passStart;
+      if(origin.find(":") != origin.findRev(":", origin.findRev("@") )){
+        int passStart = origin.find( ":",origin.find(":")+1 )+1;
+        int passLen = origin.findRev("@")-passStart;
         password = origin.mid(passStart,passLen);
         origin = origin.remove(passStart-1,passLen+1);
       }
-      if(origin.tqfind("@") != origin.tqfindRev("@")){
-        int usrStart = origin.tqfind( "/" )+1;
+      if(origin.find("@") != origin.findRev("@")){
+        int usrStart = origin.find( "/" )+1;
         if(origin.at(usrStart) == '/') ++usrStart;
-        int usrLen = origin.tqfindRev("@")-usrStart;
+        int usrLen = origin.findRev("@")-usrStart;
         loginName = origin.mid(usrStart,usrLen);
         origin = origin.remove(usrStart,usrLen+1);
       }
@@ -337,7 +337,7 @@ void vfs::calculateURLSize( KURL url,  KIO::filesize_t* totalSize, unsigned long
 
 void vfs::vfs_calcSpaceLocal(TQString name ,KIO::filesize_t *totalSize,unsigned long *totalFiles,unsigned long *totalDirs, bool* stop){
   if ( *stop ) return;
-  if (!name.tqcontains("/")) name = vfs_workingDir()+"/"+name;
+  if (!name.contains("/")) name = vfs_workingDir()+"/"+name;
   if (name == "/proc") return;
 
   KDE_struct_stat stat_p;                // KDE lstat is necessary as TQFileInfo and KFileItem 

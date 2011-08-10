@@ -90,7 +90,7 @@ void virt_vfs::vfs_addFiles( KURL::List *fileUrls, KIO::CopyJob::CopyMode /*mode
 	
 	KURL::List* urlList = virtVfsDict[ path ];
 	for( unsigned i=0; i != fileUrls->count(); i++ ) {
-		if( !urlList->tqcontains( (*fileUrls)[ i ] ) )
+		if( !urlList->contains( (*fileUrls)[ i ] ) )
 			urlList->push_back( (*fileUrls)[ i ] );
 	}
 
@@ -268,8 +268,8 @@ vfile* virt_vfs::stat( const KURL& url ) {
 		temp = new vfile( name, size, perm, mtime, symLink, getuid(), getgid(), mime, symDest, mode );
 	else {
 		TQString currentUser = url.user();
-		if ( currentUser.tqcontains( "@" ) )  /* remove the FTP proxy tags from the username */
-			currentUser.truncate( currentUser.tqfind( '@' ) );
+		if ( currentUser.contains( "@" ) )  /* remove the FTP proxy tags from the username */
+			currentUser.truncate( currentUser.find( '@' ) );
 		if ( currentUser.isEmpty() )
 			currentUser = KRpermHandler::uid2user( getuid() );
 		temp = new vfile( name, size, perm, mtime, symLink, kfi->user(), kfi->group(), currentUser, mime, symDest, mode );

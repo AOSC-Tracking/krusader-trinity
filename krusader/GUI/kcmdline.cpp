@@ -158,11 +158,11 @@ void KCMDLine::slotRun() {
   cmdLine->addToHistory(command1);
 
   if ( command1.simplifyWhiteSpace().left( 3 ) == "cd " ) { // cd command effect the active panel
-    TQString dir = command1.right( command1.length() - command1.tqfind( " " ) ).stripWhiteSpace();
+    TQString dir = command1.right( command1.length() - command1.find( " " ) ).stripWhiteSpace();
     if ( dir == "~" )
       dir = TQDir::homeDirPath();
     else
-      if ( dir.left( 1 ) != "/" && !dir.tqcontains( ":/" ) )
+      if ( dir.left( 1 ) != "/" && !dir.contains( ":/" ) )
         dir = panelPath + ( panelPath == "/" ? "" : "/" ) + dir;
     SLOTS->refresh( dir );
   } else {

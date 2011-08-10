@@ -84,7 +84,7 @@ public:
    virtual inline KrViewItem *getPrev( KrViewItem *current ) { return dynamic_cast<KrViewItem*>( dynamic_cast<KListViewItem*>( current ) ->itemAbove() ); }
    virtual inline KrViewItem *getCurrentKrViewItem() { return dynamic_cast<KrViewItem*>( currentItem() ); }
    virtual KrViewItem *getKrViewItemAt( const TQPoint &vp );
-   virtual inline KrViewItem *findItemByName( const TQString &name ) { return dynamic_cast<KrViewItem*>( tqfindItem( name, 0 ) ); }
+   virtual inline KrViewItem *findItemByName( const TQString &name ) { return dynamic_cast<KrViewItem*>( findItem( name, 0 ) ); }
    virtual void addItems( vfs *v, bool addUpDir = true );
  	virtual TQString getCurrentItem() const;
    virtual void makeItemVisible( const KrViewItem *item );	

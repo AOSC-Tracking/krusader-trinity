@@ -84,7 +84,7 @@ void KrBookmarkHandler::deleteBookmark(KrBookmark *bm) {
 }
 
 void KrBookmarkHandler::removeReferences( KrBookmark *root, KrBookmark *bmToRemove ) {
-	int index = root->tqchildren().tqfind( bmToRemove );
+	int index = root->tqchildren().find( bmToRemove );
 	if( index >= 0 )
 		root->tqchildren().take( index );
 	
@@ -290,7 +290,7 @@ void KrBookmarkHandler::buildMenu(KrBookmark *tqparent, KPopupMenu *menu) {
 		int id = menu->insertItem(TQIconSet(krLoader->loadIcon(bm->icon(), KIcon::Small)),
 									bm->text(), newMenu, -1 /* dummy id */, -1 /* end of list */);
 		
-		if( !_bookmarkIDTable.tqfind( menu ) )
+		if( !_bookmarkIDTable.find( menu ) )
 			_bookmarkIDTable.insert( menu, new TQMap<int, KrBookmark *> );
 		(*_bookmarkIDTable[ menu ])[ id ] = bm;
 		
@@ -308,7 +308,7 @@ void KrBookmarkHandler::buildMenu(KrBookmark *tqparent, KPopupMenu *menu) {
 		CONNECT_BM(bm);
 		
 		int id = bm->itemId( itemIndex );
-		if( !_bookmarkIDTable.tqfind( menu ) )
+		if( !_bookmarkIDTable.find( menu ) )
 			_bookmarkIDTable.insert( menu, new TQMap<int, KrBookmark *> );
 		(*_bookmarkIDTable[ menu ])[ id ] = bm;
 	}
@@ -437,12 +437,12 @@ bool KrBookmarkHandler::eventFilter( TQObject *obj, TQEvent *ev ) {
 				if( obj->inherits( TQPOPUPMENU_OBJECT_NAME_STRING ) ) {
 					int id = static_cast<TQPopupMenu*>(TQT_TQWIDGET(obj))->idAt( TQT_TQMOUSEEVENT(ev)->pos() );
 					
-					if( TQT_BASE_OBJECT(obj) == TQT_BASE_OBJECT(_mainBookmarkPopup) && _specialBookmarkIDs.tqcontains( id ) ) {
+					if( TQT_BASE_OBJECT(obj) == TQT_BASE_OBJECT(_mainBookmarkPopup) && _specialBookmarkIDs.contains( id ) ) {
 						rightClickOnSpecialBookmark();
 						return true;
 					}
 					
-					if( _bookmarkIDTable.tqfind( obj ) ) {
+					if( _bookmarkIDTable.find( obj ) ) {
 						TQMap<int, KrBookmark*> * table = _bookmarkIDTable[ obj ];
 						if( table && table->count( id ) ) {
 							KrBookmark *bm = (*table)[ id ];

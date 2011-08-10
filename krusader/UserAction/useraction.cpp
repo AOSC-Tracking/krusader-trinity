@@ -60,7 +60,7 @@ TQStringList UserAction::allCategories() {
    TQStringList actionCategories;
 
    for ( KrAction* action = _actions.first(); action; action = _actions.next() )
-      if ( actionCategories.tqfind( action->category() ) == actionCategories.end() )
+      if ( actionCategories.find( action->category() ) == actionCategories.end() )
          actionCategories.append( action->category() );
 
   return actionCategories;

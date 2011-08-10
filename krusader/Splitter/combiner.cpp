@@ -117,7 +117,7 @@ void Combiner::combineSplitFileFinished(KIO::Job *job)
     
     for(unsigned int i = 0; i != splitFileContent.count(); i++ )
     {
-      int ndx = splitFileContent[i].tqfind( '=' );    
+      int ndx = splitFileContent[i].find( '=' );    
       if( ndx == -1 )
         continue;      
       TQString token = splitFileContent[i].left( ndx ).stripWhiteSpace();

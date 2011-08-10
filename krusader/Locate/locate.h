@@ -67,7 +67,7 @@ protected:
 private:
   void              operate( TQListViewItem *item, int task );
 
-  bool              tqfind();
+  bool              find();
   void              nextLine();
 
   bool              stopping;

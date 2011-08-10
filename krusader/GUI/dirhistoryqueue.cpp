@@ -31,7 +31,7 @@ DirHistoryQueue::~DirHistoryQueue() {}
 void DirHistoryQueue::slotPathChanged( ListPanel* p ) {
 	KURL url = p->virtualPath();
 	// already in the queue ?
-	if(  urlQueue.tqfindIndex( url ) >= 0 ){
+	if(  urlQueue.findIndex( url ) >= 0 ){
 		// remove it !
 		urlQueue.remove( url );
 	}
@@ -60,7 +60,7 @@ void DirHistoryQueue::addUrl(const KURL& url){
 
 void DirHistoryQueue::RemovePath( const TQString& path ) {
 	TQStringList::iterator it;
-	it = pathQueue.tqfind( path );
+	it = pathQueue.find( path );
 	if ( it != pathQueue.end() ) {
 		pathQueue.remove( it );
 	}

@@ -356,7 +356,7 @@ void KrSearchDialog::found(TQString what, TQString where, KIO::filesize_t size, 
   struct tm* t=localtime((time_t *)&mtime);
   TQDateTime tmp(TQDate(t->tm_year+1900, t->tm_mon+1, t->tm_mday), TQTime(t->tm_hour, t->tm_min));
   ResultListViewItem *it =new ResultListViewItem(resultsList, what,
-  	 where.tqreplace(TQRegExp("\\\\"),"#"), size, tmp, perm);
+  	 where.replace(TQRegExp("\\\\"),"#"), size, tmp, perm);
   TQString totals = TQString(i18n("Found %1 matches.")).tqarg(resultsList->childCount());
   foundLabel->setText(totals);
 
@@ -445,8 +445,8 @@ void KrSearchDialog::resultClicked(TQListViewItem* i) {
 	if (!it->foundText().isEmpty()) {
 		// ugly hack: find the <b> and </b> in the text, then
 		// use it to set the are which we don't want squeezed
-		int idx = it->foundText().tqfind("<b>")-4; // take "<qt>" into account
-		int length = it->foundText().tqfind("</b>")-idx+4;
+		int idx = it->foundText().find("<b>")-4; // take "<qt>" into account
+		int length = it->foundText().find("</b>")-idx+4;
 		foundTextLabel->setText(it->foundText(), idx, length);
 	}
 }

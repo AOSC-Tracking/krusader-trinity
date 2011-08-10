@@ -32,7 +32,7 @@
 #include <iostream>
 using namespace std;
 
-#define PS(x) _supported.tqcontains(x)>0
+#define PS(x) _supported.contains(x)>0
 
 KrResultTable::KrResultTable(TQWidget* tqparent)
   : TQWidget(tqparent),

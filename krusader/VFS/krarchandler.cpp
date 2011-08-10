@@ -82,35 +82,35 @@ bool KRarcHandler::arcSupported( TQString type ) {
   krConfig->setGroup( "Archives" );
   TQStringList lst = krConfig->readListEntry( "Supported Packers" );
 
-  if ( type == "-zip" && lst.tqcontains( "unzip" ) )
+  if ( type == "-zip" && lst.contains( "unzip" ) )
     return true;
-  else if ( type == "-tar" && lst.tqcontains( "tar" ) )
+  else if ( type == "-tar" && lst.contains( "tar" ) )
     return true;
-  else if ( type == "-tbz" && lst.tqcontains( "tar" ) )
+  else if ( type == "-tbz" && lst.contains( "tar" ) )
     return true;
-  else if ( type == "-tgz" && lst.tqcontains( "tar" ) )
+  else if ( type == "-tgz" && lst.contains( "tar" ) )
     return true;
-  else if ( type == "tarz" && lst.tqcontains( "tar" ) )
+  else if ( type == "tarz" && lst.contains( "tar" ) )
     return true;
-  else if ( type == "gzip" && lst.tqcontains( "gzip" ) )
+  else if ( type == "gzip" && lst.contains( "gzip" ) )
     return true;
-  else if ( type == "zip2" && lst.tqcontains( "bzip2" ) )
+  else if ( type == "zip2" && lst.contains( "bzip2" ) )
     return true;
-  else if ( type == "-lha" && lst.tqcontains( "lha" ) )
+  else if ( type == "-lha" && lst.contains( "lha" ) )
     return true;
-  else if ( type == "-ace" && lst.tqcontains( "unace" ) )
+  else if ( type == "-ace" && lst.contains( "unace" ) )
     return true;
-  else if ( type == "-rpm" && lst.tqcontains( "cpio" ) )
+  else if ( type == "-rpm" && lst.contains( "cpio" ) )
     return true;
-  else if ( type == "cpio" && lst.tqcontains( "cpio" ) )
+  else if ( type == "cpio" && lst.contains( "cpio" ) )
     return true;
-  else if ( type == "-rar" && ( lst.tqcontains( "unrar" ) || lst.tqcontains( "rar" ) ) )
+  else if ( type == "-rar" && ( lst.contains( "unrar" ) || lst.contains( "rar" ) ) )
     return true;
-  else if ( type == "-arj" && ( lst.tqcontains( "unarj" ) || lst.tqcontains( "arj" ) ) )
+  else if ( type == "-arj" && ( lst.contains( "unarj" ) || lst.contains( "arj" ) ) )
     return true;
-  else if ( type == "-deb" && ( lst.tqcontains( "dpkg"  ) && lst.tqcontains( "tar" ) ) )
+  else if ( type == "-deb" && ( lst.contains( "dpkg"  ) && lst.contains( "tar" ) ) )
     return true;
-  else if ( type == "-7z" && lst.tqcontains( "7z"  ) )
+  else if ( type == "-7z" && lst.contains( "7z"  ) )
     return true;
   // not supported : (
   return false;
@@ -299,8 +299,8 @@ bool KRarcHandler::unpack( TQString archive, TQString type, TQString password, T
   KrShellProcess proc;
   proc << packer << " " + KrServices::quote( archive );
   if( type == "zip2" || type=="gzip" ){
-    TQString arcname = archive.mid(archive.tqfindRev("/")+1);
-    if( arcname.tqcontains(".") ) arcname = arcname.left(arcname.tqfindRev("."));
+    TQString arcname = archive.mid(archive.findRev("/")+1);
+    if( arcname.contains(".") ) arcname = arcname.left(arcname.findRev("."));
     proc << ">" << KrServices::quote( dest+"/"+arcname );
   }
   if( type == "-ace" && TQFile( "/dev/ptmx" ).exists() ) // Don't remove, unace crashes if missing!!!
@@ -536,7 +536,7 @@ TQString KRarcHandler::getPassword( TQString path ) {
 			wallet->setFolder( KWallet::Wallet::PasswordFolder() );
 			TQMap<TQString,TQString> map;
 			if ( wallet->readMap( key, map ) == 0 ) {
-				TQMap<TQString, TQString>::ConstIterator it = map.tqfind( "password" );
+				TQMap<TQString, TQString>::ConstIterator it = map.find( "password" );
 				if ( it != map.end() )
 					password = it.data();
 			}
@@ -578,7 +578,7 @@ TQString KRarcHandler::getPassword( TQString path ) {
 
 bool KRarcHandler::isArchive(const KURL& url) {
 	TQString protocol = url.protocol();
-	if (arcProtocols.tqfind(protocol) != arcProtocols.end())
+	if (arcProtocols.find(protocol) != arcProtocols.end())
 		return true;
 	else return false;	
 }

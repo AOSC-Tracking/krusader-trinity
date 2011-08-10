@@ -66,7 +66,7 @@ public:
 	virtual inline KrViewItem *getPrev( KrViewItem *current ) { return dynamic_cast<KrViewItem*>( dynamic_cast<TQIconViewItem*>( current ) ->prevItem() ); }
 	virtual inline KrViewItem *getCurrentKrViewItem() { return dynamic_cast<KrViewItem*>( currentItem() ); }
 	virtual KrViewItem *getKrViewItemAt(const TQPoint &vp);
-	virtual inline KrViewItem *findItemByName(const TQString &name) { return dynamic_cast<KrViewItem*>( tqfindItem( name, TQt::ExactMatch ) ); }
+	virtual inline KrViewItem *findItemByName(const TQString &name) { return dynamic_cast<KrViewItem*>( findItem( name, TQt::ExactMatch ) ); }
 	virtual void addItems(vfs* v, bool addUpDir = true);
 	virtual void delItem(const TQString &);
 	virtual TQString getCurrentItem() const;

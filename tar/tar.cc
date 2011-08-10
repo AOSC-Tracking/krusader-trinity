@@ -132,7 +132,7 @@ bool ArchiveProtocol::checkNewFile( const KURL & url, TQString & path ) {
 		fullPath += '/';
 
 	kdDebug( 7109 ) << "the full path is " << fullPath << endl;
-	while ( ( pos = fullPath.tqfind( '/', pos + 1 ) ) != -1 ) {
+	while ( ( pos = fullPath.find( '/', pos + 1 ) ) != -1 ) {
 		TQString tryPath = fullPath.left( pos );
 		kdDebug( 7109 ) << fullPath << "  trying " << tryPath << endl;
 		struct stat statbuf;

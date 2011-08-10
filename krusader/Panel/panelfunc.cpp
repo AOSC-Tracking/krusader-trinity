@@ -329,7 +329,7 @@ void ListPanelFunc::krlink( bool sym ) {
 	if ( linkName.left( 1 ) != "/" )
 		linkName = files() ->vfs_workingDir() + "/" + linkName;
 
-	if ( linkName.tqcontains( "/" ) )
+	if ( linkName.contains( "/" ) )
 		name = files() ->vfs_getFile( name ).path( -1 );
 
 	if ( sym ) {
@@ -370,7 +370,7 @@ void ListPanelFunc::terminal() {
 	TQString term = krConfig->readEntry( "Terminal", _Terminal );
 	proc << KrServices::separateArgs( term );
 
-	if ( term.tqcontains( "konsole" ) )    /* KDE 3.2 bug (konsole is killed by pressing Ctrl+C) */
+	if ( term.contains( "konsole" ) )    /* KDE 3.2 bug (konsole is killed by pressing Ctrl+C) */
 	{                                  /* Please remove the patch if the bug is corrected */
 		proc << "&";
 		proc.setUseShell( true );
@@ -777,7 +777,7 @@ void ListPanelFunc::pack() {
 		return ; // the user canceled
 
 	// check for partial URLs	
-	if( !PackGUI::destination.tqcontains(":/") && !PackGUI::destination.startsWith("/") ){
+	if( !PackGUI::destination.contains(":/") && !PackGUI::destination.startsWith("/") ){
 		PackGUI::destination = panel->virtualPath().prettyURL()+"/"+PackGUI::destination;
 	}
 	

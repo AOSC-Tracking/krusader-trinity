@@ -72,7 +72,7 @@ temp_vfs::~temp_vfs(){
 TQString temp_vfs::vfs_workingDir(){
   // get the path inside the archive
   TQString path = vfs_origin.path(-1);
-  path = path.mid(path.tqfindRev('\\')+1);
+  path = path.mid(path.findRev('\\')+1);
   if(path.left(1) != "/") path = "/"+path;
   TQDir().mkdir(tmpDir+path);
   return tmpDir+path;
@@ -83,7 +83,7 @@ bool temp_vfs::vfs_refresh(const KURL& origin){
   vfs_origin = origin;
   vfs_origin.adjustPath(-1);
   // get the directory...
-  TQString path = origin.path(-1).mid(origin.path(-1).tqfindRev('\\')+1);
+  TQString path = origin.path(-1).mid(origin.path(-1).findRev('\\')+1);
   if(path.left(1) =="/") path.remove(0,1);
   if ( !normal_vfs::vfs_refresh(tmpDir+"/"+path) ){
     vfs_origin = backup;

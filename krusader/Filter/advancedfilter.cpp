@@ -463,7 +463,7 @@ void AdvancedFilter::fillList(TQComboBox *list, TQString filename) {
   while (!data.atEnd())
   {
     TQString s = t.readLine();
-    TQString name = s.left(s.tqfind(':'));
+    TQString name = s.left(s.find(':'));
     list->insertItem(name);
   }
 }

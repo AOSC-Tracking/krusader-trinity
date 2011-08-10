@@ -130,7 +130,7 @@ void remoteMan::refreshData() {
           int l=temp.mid(2,1).toInt();
           if ((++l)==10) { ++h; l=0; }
           temp=TQString("<%1%2>").tqarg(h).tqarg(l);
-          temp=currentItem->text(0).tqreplace(currentItem->text(0).length()-4,4,temp);
+          temp=currentItem->text(0).replace(currentItem->text(0).length()-4,4,temp);
           currentItem->setText(0,temp);
         } else currentItem->setText(0,currentItem->text(0)+"<02>");
         i=currentItem->tqparent()->firstChild();
@@ -211,10 +211,10 @@ TQString item2connection(TQListViewItem *item) {
     // in the connection, we cannot allow it to be inside a name, so
     // we find it (if it exists) and replace it with a ' character
     TQString temp=iterator->text(0);
-    int i=temp.tqfind('`'); // are there any ` in the name ?
+    int i=temp.find('`'); // are there any ` in the name ?
     while (i>-1) {        // if so, change them until none are left
-      temp.tqreplace(i,1,TQChar('\''));
-      i=temp.tqfind('`');
+      temp.replace(i,1,TQChar('\''));
+      i=temp.find('`');
     }
     con=temp+'`'+con;
     iterator=iterator->tqparent();
@@ -227,7 +227,7 @@ TQListViewItem* remoteMan::findItem(const TQString &name, TQListViewItem *p) {
   TQListViewItem *it;
   if (name.isEmpty()) return p; // the end of the recursion has been reached!!!
   if (p==0) it=sessions->firstChild(); else it=p->firstChild();
-  int loc=name.tqfind('`');
+  int loc=name.find('`');
   while (it) {
     if (it->text(0)==name.left(loc)) break;
     it=it->nextSibling();
@@ -264,7 +264,7 @@ void remoteMan::config2tree() {
   for( it = lst.begin(); it != lst.end(); ++it ) {
     TQString t=(*it);  // easier to work with
     // this part creates the path to the session
-    int loc=t.tqfindRev('`');
+    int loc=t.findRev('`');
     if (loc>-1) item=findItem(t.left(loc+1),0);
     // at this point we have the complete path to the object
     // let's keep only the item's name

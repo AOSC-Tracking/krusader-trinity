@@ -222,7 +222,7 @@ void Synchronizer::compareDirectory( SynchronizerFileItem *tqparent, Synchronize
 
     file_name =  left_file->vfile_getName();
 
-    if( checkIfSelected && !selectedFiles.tqcontains( file_name ) )
+    if( checkIfSelected && !selectedFiles.contains( file_name ) )
       continue;
 
     if( !query->match( left_file ) )
@@ -255,7 +255,7 @@ void Synchronizer::compareDirectory( SynchronizerFileItem *tqparent, Synchronize
 
     file_name =  right_file->vfile_getName();
 
-    if( checkIfSelected && !selectedFiles.tqcontains( file_name ) )
+    if( checkIfSelected && !selectedFiles.contains( file_name ) )
       continue;
 
     if( !query->match( right_file ) )
@@ -277,10 +277,10 @@ void Synchronizer::compareDirectory( SynchronizerFileItem *tqparent, Synchronize
       {
         TQString left_file_name =  left_file->vfile_getName();
     
-        if( checkIfSelected && !selectedFiles.tqcontains( left_file_name ) )
+        if( checkIfSelected && !selectedFiles.contains( left_file_name ) )
           continue;
 
-        if( excludedPaths.tqcontains( leftDir.isEmpty() ? left_file_name : leftDir+"/"+left_file_name ) )
+        if( excludedPaths.contains( leftDir.isEmpty() ? left_file_name : leftDir+"/"+left_file_name ) )
           continue;
 
         if( !query->matchDirName( left_file_name ) )
@@ -321,10 +321,10 @@ void Synchronizer::compareDirectory( SynchronizerFileItem *tqparent, Synchronize
       {
         file_name =  right_file->vfile_getName();
 
-        if( checkIfSelected && !selectedFiles.tqcontains( file_name ) )
+        if( checkIfSelected && !selectedFiles.contains( file_name ) )
           continue;
           
-        if( excludedPaths.tqcontains( rightDir.isEmpty() ? file_name : rightDir+"/"+file_name ) )
+        if( excludedPaths.contains( rightDir.isEmpty() ? file_name : rightDir+"/"+file_name ) )
           continue;
 
         if( !query->matchDirName( file_name ) )
@@ -547,7 +547,7 @@ void Synchronizer::addSingleDirectory( SynchronizerFileItem *tqparent, Synchroni
     {
         file_name =  file->vfile_getName();
 
-        if( excludedPaths.tqcontains( dirName.isEmpty() ? file_name : dirName+"/"+file_name ) )
+        if( excludedPaths.contains( dirName.isEmpty() ? file_name : dirName+"/"+file_name ) )
           continue;
 
         if( !query->matchDirName( file_name ) )
@@ -1029,7 +1029,7 @@ void Synchronizer::slotTaskFinished(KIO::Job *job )
 
   KIO::filesize_t receivedSize = 0;
 
-  if( receivedMap.tqcontains( job ) ) {
+  if( receivedMap.contains( job ) ) {
     receivedSize = receivedMap[ job ];
     receivedMap.remove( job );
   }
@@ -1278,7 +1278,7 @@ void Synchronizer::slotProcessedSize( KIO::Job * job , KIO::filesize_t size)
   SynchronizerFileItem * item = jobMap[ job ];
 
   KIO::filesize_t lastProcessedSize = 0;
-  if( receivedMap.tqcontains( job ) )
+  if( receivedMap.contains( job ) )
     lastProcessedSize = receivedMap[ job ];
 
   receivedMap[ job ] = size;
@@ -1422,7 +1422,7 @@ void Synchronizer::synchronizeWithKGet()
       }
 
       // creating the directory system
-      for( int i=0; i >= 0 ; i= destDir.tqfind('/',i+1) )
+      for( int i=0; i >= 0 ; i= destDir.find('/',i+1) )
         if( !TQDir( destDir.left(i) ).exists() )
           TQDir().mkdir( destDir.left(i) );
 
@@ -1432,12 +1432,12 @@ void Synchronizer::synchronizeWithKGet()
           TQFile( destURL.path() ).remove();
 
         TQString source = downloadURL.prettyURL();
-        if( source.tqcontains( '@' ) >= 2 ) /* is this an ftp proxy URL? */
+        if( source.contains( '@' ) >= 2 ) /* is this an ftp proxy URL? */
         {
-          int lastAt = source.tqfindRev( '@' );
+          int lastAt = source.findRev( '@' );
           TQString startString = source.left( lastAt );
           TQString endString = source.mid( lastAt );
-          startString.tqreplace( "@", "%40" );
+          startString.replace( "@", "%40" );
           source = startString+endString;
         }
 

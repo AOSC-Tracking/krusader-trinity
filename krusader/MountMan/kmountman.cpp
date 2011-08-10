@@ -90,12 +90,12 @@ KMountMan::KMountMan() : TQObject(), Operational( false ), waiting(false), mount
 KMountMan::~KMountMan() {}
 
 bool KMountMan::invalidFilesystem(TQString type) {
-	return (invalid_fs.tqcontains(type) > 0);
+	return (invalid_fs.contains(type) > 0);
 }
 
 // this is an ugly hack, but type can actually be a mountpoint. oh well...
 bool KMountMan::nonmountFilesystem(TQString type, TQString mntPoint) {
-	return((nonmount_fs.tqcontains(type) > 0) || (nonmount_fs_mntpoint.tqcontains(mntPoint) > 0));
+	return((nonmount_fs.contains(type) > 0) || (nonmount_fs_mntpoint.contains(mntPoint) > 0));
 }
 
 void KMountMan::mainWindow() {

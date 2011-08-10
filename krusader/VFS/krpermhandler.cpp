@@ -64,7 +64,7 @@ char KRpermHandler::writeable( TQString perm, gid_t gid, uid_t uid, int rwx ) {
 	// first check other permissions.
 	if ( perm[ 8 ] != '-' ) return ALLOWED_PERM;
 	// now check group permission
-	if ( ( perm[ 5 ] != '-' ) && ( currentGroups->tqfind( gid ) ) )
+	if ( ( perm[ 5 ] != '-' ) && ( currentGroups->find( gid ) ) )
 		return ALLOWED_PERM;
 	// the last chance - user permissions
 	if ( ( perm[ 2 ] != '-' ) && ( uid == getuid() ) )
@@ -82,7 +82,7 @@ char KRpermHandler::readable( TQString perm, gid_t gid, uid_t uid, int rwx ) {
 	// first check other permissions.
 	if ( perm[ 7 ] != '-' ) return ALLOWED_PERM;
 	// now check group permission
-	if ( ( perm[ 4 ] != '-' ) && ( currentGroups->tqfind( gid ) ) )
+	if ( ( perm[ 4 ] != '-' ) && ( currentGroups->find( gid ) ) )
 		return ALLOWED_PERM;
 	// the last chance - user permissions
 	if ( ( perm[ 1 ] != '-' ) && ( uid == getuid() ) )
@@ -97,7 +97,7 @@ char KRpermHandler::executable( TQString perm, gid_t gid, uid_t uid, int rwx ) {
 	// first check other permissions.
 	if ( perm[ 9 ] != '-' ) return ALLOWED_PERM;
 	// now check group permission
-	if ( ( perm[ 6 ] != '-' ) && ( currentGroups->tqfind( gid ) ) )
+	if ( ( perm[ 6 ] != '-' ) && ( currentGroups->find( gid ) ) )
 		return ALLOWED_PERM;
 	// the last chance - user permissions
 	if ( ( perm[ 3 ] != '-' ) && ( uid == getuid() ) )
@@ -260,8 +260,8 @@ bool KRpermHandler::dirExist( TQString path ) {
 bool KRpermHandler::fileExist( TQString fullPath ) {
 	if ( fullPath.right( 1 ) == "/" ) fullPath = fullPath.left( fullPath.length() - 1 ) ;
 	if ( fullPath.left( 1 ) != "/" ) return fileExist( "/", fullPath );
-	return fileExist( fullPath.left( fullPath.tqfindRev( "/" ) ) ,
-	                  fullPath.mid( fullPath.tqfindRev( "/" ) + 1 ) );
+	return fileExist( fullPath.left( fullPath.findRev( "/" ) ) ,
+	                  fullPath.mid( fullPath.findRev( "/" ) + 1 ) );
 }
 
 bool KRpermHandler::fileExist( TQString path, TQString name ) {
@@ -331,24 +331,24 @@ time_t KRpermHandler::TQString2time( TQString date ) {
 }
 
 gid_t KRpermHandler::group2gid( TQString group ) {
-	gid_t * gid = groupCache->tqfind( group );
+	gid_t * gid = groupCache->find( group );
 	if ( gid ) return * gid;
 	return getgid();
 }
 uid_t KRpermHandler::user2uid ( TQString user ) {
-	uid_t * uid = passwdCache->tqfind( user );
+	uid_t * uid = passwdCache->find( user );
 	if ( uid ) return * uid;
 	return getuid();
 }
 
 TQString KRpermHandler::gid2group( gid_t groupId ) {
-	TQString * group = gidCache->tqfind( groupId );
+	TQString * group = gidCache->find( groupId );
 	if ( group ) return * group;
 	return TQString( "???" );
 }
 
 TQString KRpermHandler::uid2user ( uid_t userId ) {
-	TQString * user = uidCache->tqfind( userId );
+	TQString * user = uidCache->find( userId );
 	if ( user ) return * user;
 	return TQString( "???" );
 }

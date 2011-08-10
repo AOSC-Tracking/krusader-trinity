@@ -204,7 +204,7 @@ void KgProtocols::slotAddProtocol()
 
 void KgProtocols::addProtocol( TQString name, bool changeCurrent )
 {
-  TQListBoxItem *item = protocolList->tqfindItem( name, ExactMatch );
+  TQListBoxItem *item = protocolList->findItem( name, ExactMatch );
   if( item )
   {
     protocolList->removeItem( protocolList->index( item ) );
@@ -229,7 +229,7 @@ void KgProtocols::slotRemoveProtocol()
 
 void KgProtocols::removeProtocol( TQString name )
 {
-  TQListViewItem *item = linkList->tqfindItem( name, 0 );
+  TQListViewItem *item = linkList->findItem( name, 0 );
   if( item )
   {
     while( item->childCount() != 0 )
@@ -258,8 +258,8 @@ void KgProtocols::slotAddMime()
 
 void KgProtocols::addMime( TQString name, TQString protocol )
 {
-  TQListBoxItem *item = mimeList->tqfindItem( name, ExactMatch );
-  TQListViewItem *currentListItem = linkList->tqfindItem( protocol, 0 );
+  TQListBoxItem *item = mimeList->findItem( name, ExactMatch );
+  TQListViewItem *currentListItem = linkList->findItem( protocol, 0 );
   
   if( item && currentListItem && currentListItem->tqparent() == 0 )
   {
@@ -283,7 +283,7 @@ void KgProtocols::slotRemoveMime()
 
 void KgProtocols::removeMime( TQString name )
 {
-  TQListViewItem *currentMimeItem = linkList->tqfindItem( name, 0 );
+  TQListViewItem *currentMimeItem = linkList->findItem( name, 0 );
   
   if( currentMimeItem && currentMimeItem->tqparent() != 0 )
   {
@@ -351,7 +351,7 @@ bool KgProtocols::isChanged()
   TQListViewItem *item = linkList->firstChild();
   while( item )
   {
-    if( !protList.tqcontains( item->text( 0 ) ) )
+    if( !protList.contains( item->text( 0 ) ) )
       return true;
       
     TQStringList mimes = krConfig->readListEntry( TQString( "Mimes For %1" ).tqarg( item->text( 0 ) ) );
@@ -361,7 +361,7 @@ bool KgProtocols::isChanged()
     TQListViewItem *childs = item->firstChild();
     while( childs )
     {
-      if( !mimes.tqcontains( childs->text( 0 ) ) )
+      if( !mimes.contains( childs->text( 0 ) ) )
         return true;
       childs = childs->nextSibling();
     }
@@ -405,7 +405,7 @@ bool KgProtocols::apply()
 
 void KgProtocols::init()
 {
-  if( !krConfig->groupList().tqcontains( "Protocols" ) )
+  if( !krConfig->groupList().contains( "Protocols" ) )
   {
     krConfig->setGroup( "Protocols" );
     krConfig->writeEntry( "Handled Protocols", defaultProtocols );

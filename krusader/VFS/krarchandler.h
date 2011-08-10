@@ -129,13 +129,13 @@ public slots:
 		lastData = lines[ lines.count() - 1 ];
 		for( unsigned i=0; i != lines.count(); i++ ) {
 			TQString line = lines[ i ].stripWhiteSpace().lower();
-			int ndx = line.tqfind( "testing" );
+			int ndx = line.find( "testing" );
 			if( ndx >=0 )
 				line.truncate( ndx );
 			if( line.isEmpty() )
 				continue;
 			
-			if( line.tqcontains( "password" ) && line.tqcontains( "enter" ) ) {
+			if( line.contains( "password" ) && line.contains( "enter" ) ) {
 				encrypted = true;
 				proc->kill();
 			}

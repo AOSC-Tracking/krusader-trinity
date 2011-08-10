@@ -87,7 +87,7 @@ kio_krarcProtocol::kio_krarcProtocol(const TQCString &pool_socket, const TQCStri
 	
 	arcTempDir = locateLocal("tmp",TQString());
 	TQString dirName = "krArc"+TQDateTime::tqcurrentDateTime().toString(Qt::ISODate);
-	dirName.tqreplace(TQRegExp(":"),"_");
+	dirName.replace(TQRegExp(":"),"_");
 	TQDir(arcTempDir).mkdir(dirName);
 	arcTempDir = arcTempDir+dirName+"/";
 }
@@ -132,7 +132,7 @@ void kio_krarcProtocol::mkdir(const KURL& url,int permissions){
 		TQString arcDir = url.path().mid(arcFile->url().path().length());
 		if( arcDir.right(1) != "/") arcDir = arcDir+"/";
 		
-		if( dirDict.tqfind( arcDir ) == 0 )
+		if( dirDict.find( arcDir ) == 0 )
 			addNewDir( arcDir );
 		finished();
 		return;
@@ -140,11 +140,11 @@ void kio_krarcProtocol::mkdir(const KURL& url,int permissions){
 	
 	//TQString tmpDir = arcTempDir+url.path();
 	TQString arcDir  = findArcDirectory(url);
-	TQString tmpDir = arcTempDir + arcDir.mid(1) + url.path().mid(url.path().tqfindRev("/")+1);
+	TQString tmpDir = arcTempDir + arcDir.mid(1) + url.path().mid(url.path().findRev("/")+1);
 	if( tmpDir.right(1) != "/" ) tmpDir = tmpDir+"/";
 	
 	if( permissions == -1 ) permissions = 0777; //set default permissions
-	for( unsigned int i=arcTempDir.length();i<tmpDir.length(); i=tmpDir.tqfind("/",i+1)){
+	for( unsigned int i=arcTempDir.length();i<tmpDir.length(); i=tmpDir.find("/",i+1)){
 		::mkdir(tmpDir.left(i).local8Bit(),permissions);
 	}
 	
@@ -193,10 +193,10 @@ void kio_krarcProtocol::put(const KURL& url,int permissions,bool overwrite,bool 
 	}
 	
 	TQString arcDir  = findArcDirectory(url);
-	TQString tmpFile = arcTempDir + arcDir.mid(1) + url.path().mid(url.path().tqfindRev("/")+1);
+	TQString tmpFile = arcTempDir + arcDir.mid(1) + url.path().mid(url.path().findRev("/")+1);
 	
 	TQString tmpDir = arcTempDir+arcDir.mid(1)+"/";
-	for( unsigned int i=arcTempDir.length();i<tmpDir.length(); i=tmpDir.tqfind("/",i+1)){
+	for( unsigned int i=arcTempDir.length();i<tmpDir.length(); i=tmpDir.find("/",i+1)){
 		TQDir("/").mkdir(tmpDir.left(i));
 	}
 	int fd;
@@ -539,7 +539,7 @@ void kio_krarcProtocol::copy (const KURL &url, const KURL &dest, int, bool overw
 			
 			TQString destDir = dest.path( -1 );
 			if( !TQDir( destDir ).exists() ) {
-				int ndx = destDir.tqfindRev( '/' );
+				int ndx = destDir.findRev( '/' );
 				if( ndx != -1 )
 					destDir.truncate( ndx+1 );
 			}
@@ -602,10 +602,10 @@ void kio_krarcProtocol::listDir(const KURL& url){
 		return;
 	}
 	TQString arcDir = path.mid(arcFile->url().path().length());
-	arcDir.truncate(arcDir.tqfindRev("/"));
+	arcDir.truncate(arcDir.findRev("/"));
 	if(arcDir.right(1) != "/") arcDir = arcDir+"/";
 	
-	UDSEntryList* dirList = dirDict.tqfind(arcDir);
+	UDSEntryList* dirList = dirDict.find(arcDir);
 	if( dirList == 0 ){
 		error(ERR_CANNOT_ENTER_DIRECTORY,url.path());
 		return;
@@ -645,7 +645,7 @@ bool kio_krarcProtocol::setArcFile(const KURL& url){
 		}
 		TQString newPath = path;
 		if(newPath.right(1) != "/") newPath = newPath+"/";
-		for(int pos=0; pos >= 0; pos = newPath.tqfind("/",pos+1)){
+		for(int pos=0; pos >= 0; pos = newPath.find("/",pos+1)){
 			TQFileInfo qfi(newPath.left(pos));
 			if( qfi.exists() && !qfi.isDir() ){
 				KDE_struct_stat stat_p;
@@ -681,7 +681,7 @@ bool kio_krarcProtocol::setArcFile(const KURL& url){
 	
 	if( arcType.isEmpty() ) {
 		arcType = arcFile->mimetype();
-		arcType = arcType.mid(arcType.tqfindRev("-")+1);
+		arcType = arcType.mid(arcType.findRev("-")+1);
 		
 		if( arcType == "jar" )
 			arcType = "zip";
@@ -815,7 +815,7 @@ TQString kio_krarcProtocol::findArcDirectory(const KURL& url){
 		return TQString();
 	}
 	TQString arcDir = path.mid(arcFile->url().path().length());
-	arcDir.truncate(arcDir.tqfindRev("/"));
+	arcDir.truncate(arcDir.findRev("/"));
 	if(arcDir.right(1) != "/") arcDir = arcDir+"/";
 	
 	return arcDir;
@@ -825,7 +825,7 @@ UDSEntry* kio_krarcProtocol::findFileEntry(const KURL& url){
 	TQString arcDir = findArcDirectory(url);
 	if( arcDir.isEmpty() ) return 0;
 	
-	UDSEntryList* dirList = dirDict.tqfind(arcDir);
+	UDSEntryList* dirList = dirDict.find(arcDir);
 	if( !dirList ){
 		return 0;
 	}
@@ -833,7 +833,7 @@ UDSEntry* kio_krarcProtocol::findFileEntry(const KURL& url){
 	if( arcFile->url().path(-1) == url.path(-1) ) name = "."; // the "/" case
 	else{
 		if( name.right(1) == "/" ) name.truncate(name.length()-1);
-		name = name.mid(name.tqfindRev("/")+1);
+		name = name.mid(name.findRev("/")+1);
 	}
 	
 	UDSEntryList::iterator entry;
@@ -853,7 +853,7 @@ UDSEntry* kio_krarcProtocol::findFileEntry(const KURL& url){
 
 TQString kio_krarcProtocol::nextWord(TQString &s,char d) {
 	s=s.stripWhiteSpace();
-	int j=s.tqfind(d,0);
+	int j=s.find(d,0);
 	TQString temp=s.left(j); // find the leftmost word.
 	s.remove(0,j);
 	return temp;
@@ -885,14 +885,14 @@ UDSEntryList* kio_krarcProtocol::addNewDir(TQString path){
 	UDSEntryList* dir;
 	
 	// check if the current dir exists
-	dir = dirDict.tqfind(path);
+	dir = dirDict.find(path);
 	if(dir != 0) return dir; // dir exists- return it !
 	
 	// set dir to the tqparent dir
-	dir = addNewDir(path.left(path.tqfindRev("/",-2)+1));
+	dir = addNewDir(path.left(path.findRev("/",-2)+1));
 	
 	// add a new entry in the tqparent dir
-	TQString name = path.mid(path.tqfindRev("/",-2)+1);
+	TQString name = path.mid(path.findRev("/",-2)+1);
 	name = name.left(name.length()-1);
 	
 	UDSEntry entry;
@@ -1049,7 +1049,7 @@ void kio_krarcProtocol::parseLine(int lineNo, TQString line, TQFile*) {
 		nextWord(line);
 		// full name
 		fullName = nextWord(line);
-		fullName = fullName.mid(fullName.tqfindRev("/")+1);
+		fullName = fullName.mid(fullName.findRev("/")+1);
 	}
 	if( arcType == "bzip2" ){
 		// There is no way to list bzip2 files, so we take our information from
@@ -1071,13 +1071,13 @@ void kio_krarcProtocol::parseLine(int lineNo, TQString line, TQFile*) {
 		// ignore the next field
 		nextWord(line);
 		// date & time
-		int month = (TQStringList::split(',', "Jan,Feb,Mar,Apr,May,Jun,Jul,Aug,Sep,Oct,Nov,Dec")).tqfindIndex( nextWord(line) ) + 1;
+		int month = (TQStringList::split(',', "Jan,Feb,Mar,Apr,May,Jun,Jul,Aug,Sep,Oct,Nov,Dec")).findIndex( nextWord(line) ) + 1;
 		int day = nextWord(line).toInt();
 		int year = TQDate::tqcurrentDate().year();
 		TQString third = nextWord(line);
 		TQTime qtime;
 		
-		if( third.tqcontains(":" ) )
+		if( third.contains(":" ) )
 			qtime = TQTime::fromString( third );
 		else
 			year = third.toInt();
@@ -1126,9 +1126,9 @@ void kio_krarcProtocol::parseLine(int lineNo, TQString line, TQFile*) {
 		// full name
 		fullName = nextWord( line, '\n' ).mid( 1 );
 		//if ( fullName.right( 1 ) == "/" ) return;
-		if( fullName.tqcontains("->") ){
-			symlinkDest = fullName.mid(fullName.tqfind("->")+2);
-			fullName = fullName.left(fullName.tqfind("->")-1);
+		if( fullName.contains("->") ){
+			symlinkDest = fullName.mid(fullName.find("->")+2);
+			fullName = fullName.left(fullName.find("->")-1);
 		}
 	}
 	if(arcType == "7z"){
@@ -1161,11 +1161,11 @@ void kio_krarcProtocol::parseLine(int lineNo, TQString line, TQFile*) {
 
 	if( fullName.right(1) == "/" ) fullName = fullName.left(fullName.length()-1);
 	if( !fullName.startsWith("/") ) fullName = "/"+fullName;
-	TQString path = fullName.left(fullName.tqfindRev("/")+1);
+	TQString path = fullName.left(fullName.findRev("/")+1);
 	// set/create the directory UDSEntryList
-	dir = dirDict.tqfind(path);
+	dir = dirDict.find(path);
 	if(dir == 0) dir = addNewDir(path);
-	TQString name = fullName.mid(fullName.tqfindRev("/")+1);
+	TQString name = fullName.mid(fullName.findRev("/")+1);
 	// file name
 	atom.m_uds = UDS_NAME;
 	atom.m_str = name;
@@ -1194,7 +1194,7 @@ void kio_krarcProtocol::parseLine(int lineNo, TQString line, TQFile*) {
 	}
 	if( S_ISDIR(mode) ){
 		fullName=fullName+"/";
-		if(dirDict.tqfind(fullName) == 0)
+		if(dirDict.find(fullName) == 0)
 			dirDict.insert(fullName,new UDSEntryList());
 		else {
 			// try to overwrite an existing entry
@@ -1560,13 +1560,13 @@ void kio_krarcProtocol::checkOutputForPassword( KProcess *proc,char *buf,int len
 	lastData = lines[ lines.count() - 1 ];
 	for( unsigned i=0; i != lines.count(); i++ ) {
 		TQString line = lines[ i ].stripWhiteSpace().lower();
-		int ndx = line.tqfind( "testing" );
+		int ndx = line.find( "testing" );
 		if( ndx >=0 )
 			line.truncate( ndx );
 		if( line.isEmpty() )
 			continue;
 		
-		if( line.tqcontains( "password" ) && line.tqcontains( "enter" ) ) {
+		if( line.contains( "password" ) && line.contains( "enter" ) ) {
 			KRDEBUG( "Encrypted 7z archive found!" );
 			encrypted = true;
 			proc->kill();
@@ -1588,7 +1588,7 @@ void kio_krarcProtocol::invalidatePassword() {
 	authInfo.verifyPath = true;
 	TQString fileName = arcFile->url().path(-1);
 	authInfo.url = KURL::fromPathOrURL( "/" );
-	authInfo.url.setHost( fileName /*.tqreplace('/','_')*/ );
+	authInfo.url.setHost( fileName /*.replace('/','_')*/ );
 	authInfo.url.setProtocol( "krarc" );
 	
 	password = TQString();
@@ -1612,7 +1612,7 @@ TQString kio_krarcProtocol::getPassword() {
 	authInfo.verifyPath = true;
 	TQString fileName = arcFile->url().path(-1);
 	authInfo.url = KURL::fromPathOrURL( "/" );
-	authInfo.url.setHost( fileName /*.tqreplace('/','_')*/ );
+	authInfo.url.setHost( fileName /*.replace('/','_')*/ );
 	authInfo.url.setProtocol( "krarc" );
 	
 	if( checkCachedAuthentication( authInfo ) && !authInfo.password.isNull() ) {
@@ -1640,14 +1640,14 @@ TQString kio_krarcProtocol::fullPathName( TQString name ) {
 
 TQString kio_krarcProtocol::convertFileName( TQString name ) {
 	if( arcType == "zip" )
-		name = name.tqreplace( "[", "[[]" );
+		name = name.replace( "[", "[[]" );
 	return convertName( name );
 }
 
 TQString kio_krarcProtocol::convertName( TQString name ) {
-	if( !name.tqcontains( '\'' ) )
+	if( !name.contains( '\'' ) )
 		return "'" + name + "'";
-	if( !name.tqcontains( '"' ) && !name.tqcontains( '$' ) )
+	if( !name.contains( '"' ) && !name.contains( '$' ) )
 		return "\"" + name + "\"";
 	return escape( name );
 }
@@ -1656,7 +1656,7 @@ TQString kio_krarcProtocol::escape( TQString name ) {
 	const TQString evilstuff = "\\\"'`()[]{}!?;$&<>| ";		// stuff that should get escaped
 	
 	for ( unsigned int i = 0; i < evilstuff.length(); ++i )
-		name.tqreplace( evilstuff[ i ], (TQString("\\") + evilstuff[ i ]) );
+		name.replace( evilstuff[ i ], (TQString("\\") + evilstuff[ i ]) );
 	
 	return name;
 }

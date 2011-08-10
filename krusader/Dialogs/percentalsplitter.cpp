@@ -57,7 +57,7 @@ public:
         rect.setX( splitter->sizes()[ 0 ] );
         rect.setWidth( splitter->handleWidth() );
       }
-      if( rect.tqcontains( point ) )
+      if( rect.contains( point ) )
         tip( rect, tipString );
     }
   }

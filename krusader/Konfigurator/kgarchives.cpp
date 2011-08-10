@@ -119,20 +119,20 @@ void KgArchives::slotAutoConfigure()
 
 void KgArchives::disableNonExistingPackers()
 {
-  #define PS(x) lst.tqcontains(x)>0
+  #define PS(x) lst.contains(x)>0
 
   TQStringList lst=KRarcHandler::supportedPackers(); // get list of availble packers
-  cbs->tqfind( "Do Tar" )->setEnabled(PS("tar"));
-  cbs->tqfind( "Do GZip" )->setEnabled(PS("gzip"));
-  cbs->tqfind( "Do BZip2" )->setEnabled(PS("bzip2"));
-  cbs->tqfind( "Do UnZip" )->setEnabled(PS("unzip"));
-  cbs->tqfind( "Do Lha" )->setEnabled(PS("lha"));
-  cbs->tqfind( "Do RPM" )->setEnabled(PS("rpm") || PS("cpio"));
-  cbs->tqfind( "Do UnRar" )->setEnabled(PS("unrar") || PS("rar") );
-  cbs->tqfind( "Do UnAce" )->setEnabled(PS("unace"));
-  cbs->tqfind( "Do Unarj" )->setEnabled(PS("unarj") || PS("arj") );
-  cbs->tqfind( "Do DEB" )->setEnabled(PS("dpkg") && PS("tar") );
-  cbs->tqfind( "Do 7z" )->setEnabled( PS("7z") );
+  cbs->find( "Do Tar" )->setEnabled(PS("tar"));
+  cbs->find( "Do GZip" )->setEnabled(PS("gzip"));
+  cbs->find( "Do BZip2" )->setEnabled(PS("bzip2"));
+  cbs->find( "Do UnZip" )->setEnabled(PS("unzip"));
+  cbs->find( "Do Lha" )->setEnabled(PS("lha"));
+  cbs->find( "Do RPM" )->setEnabled(PS("rpm") || PS("cpio"));
+  cbs->find( "Do UnRar" )->setEnabled(PS("unrar") || PS("rar") );
+  cbs->find( "Do UnAce" )->setEnabled(PS("unace"));
+  cbs->find( "Do Unarj" )->setEnabled(PS("unarj") || PS("arj") );
+  cbs->find( "Do DEB" )->setEnabled(PS("dpkg") && PS("tar") );
+  cbs->find( "Do 7z" )->setEnabled( PS("7z") );
 
   krConfig->setGroup( "Archives" );
   krConfig->writeEntry( "Supported Packers", lst );

@@ -17,7 +17,7 @@ KrColorCache: perfomes the color calculation and caches the result. Uses KrColor
 
 
 /*
-Copies all used color settings from krConfig into a local cache on creation. It tqcontains 3 types of properties:
+Copies all used color settings from krConfig into a local cache on creation. It contains 3 types of properties:
 color, numeric (int) and boolean. Color properties can have string or color values. Property values can be
 changed. These changes does not go into krConfig!
 

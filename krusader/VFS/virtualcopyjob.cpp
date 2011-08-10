@@ -52,10 +52,10 @@ VirtualCopyJob::VirtualCopyJob( const TQStringList *names, vfs * vfs, const KURL
 	
 	vfile * file = vfs->vfs_getFirstFile();
 	while( file ) {
-		if( names->tqcontains( file->vfile_getName() ) ) {
+		if( names->contains( file->vfile_getName() ) ) {
 			TQString relativeDir = KURL::relativeURL( baseURL, file->vfile_getUrl().upURL() );
 			
-			KURL::List *list = m_filesToCopy.tqfind( relativeDir );
+			KURL::List *list = m_filesToCopy.find( relativeDir );
 			if( list == 0 ) {
 				list = new KURL::List();
 				m_filesToCopy.insert( relativeDir, list );
@@ -65,7 +65,7 @@ VirtualCopyJob::VirtualCopyJob( const TQStringList *names, vfs * vfs, const KURL
 				m_subdirs[ relativeDir ] = 0;
 			}
 			
-			if( !list->tqcontains( file->vfile_getUrl() ) ) {
+			if( !list->contains( file->vfile_getUrl() ) ) {
 				if( file->vfile_isDir() ) {
 					m_dirsToGetSize.append( file->vfile_getUrl() );
 					m_totalSubdirs++;

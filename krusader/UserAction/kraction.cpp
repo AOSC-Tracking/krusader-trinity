@@ -309,7 +309,7 @@ bool KrAction::isAvailable( const KURL& currentURL ) {
       available = false;
       for ( TQStringList::Iterator it = _showonlyPath.begin(); it != _showonlyPath.end(); ++it ) {
          if ( (*it).right(1) == "*" ){
-             if ( currentURL.path().tqfind( (*it).left( (*it).length() - 1 ) ) == 0 ) {
+             if ( currentURL.path().find( (*it).left( (*it).length() - 1 ) ) == 0 ) {
                available = true;
                break;
             }
@@ -326,14 +326,14 @@ bool KrAction::isAvailable( const KURL& currentURL ) {
       available = false;
       KMimeType::Ptr mime = KMimeType::findByURL( currentURL );
       for ( TQStringList::Iterator it = _showonlyMime.begin(); it != _showonlyMime.end(); ++it ) {
-         if ( (*it).tqcontains("/") ) {
+         if ( (*it).contains("/") ) {
             if ( mime->is( *it ) ) {  // don't use ==; use 'is()' instead, which is aware of inheritence (ie: text/x-makefile is also text/plain)
                available = true;
                break;
             }
          }
          else {
-            if ( mime->name().tqfind( *it ) == 0 ) {  // 0 is the beginning, -1 is not found
+            if ( mime->name().find( *it ) == 0 ) {  // 0 is the beginning, -1 is not found
                available = true;
                break;
             }

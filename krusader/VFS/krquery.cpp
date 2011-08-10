@@ -112,15 +112,15 @@ KRQuery& KRQuery::operator=(const KRQuery &old) {
 }
 
 void KRQuery::connectNotify ( const char * signal ) {
-  TQString signalString  = TQString( signal ).tqreplace( " ", "" );
-  TQString processString = TQString( TQT_SIGNAL( processEvents( bool & ) ) ).tqreplace( " ", "" );
+  TQString signalString  = TQString( signal ).replace( " ", "" );
+  TQString processString = TQString( TQT_SIGNAL( processEvents( bool & ) ) ).replace( " ", "" );
   if( signalString == processString )
     processEventsConnected++;
 }
 
 void KRQuery::disconnectNotify ( const char * signal ) {
-  TQString signalString  = TQString( signal ).tqreplace( " ", "" );
-  TQString processString = TQString( TQT_SIGNAL( processEvents( bool & ) ) ).tqreplace( " ", "" );
+  TQString signalString  = TQString( signal ).replace( " ", "" );
+  TQString processString = TQString( TQT_SIGNAL( processEvents( bool & ) ) ).replace( " ", "" );
   if( signalString == processString )
     processEventsConnected--;
 }
@@ -136,12 +136,12 @@ bool KRQuery::checkType( TQString mime ) const
 {
   if ( type == mime ) return true;
   if ( type == i18n( "Archives" ) ) return KRarcHandler::arcSupported( mime.right( 4 ) );
-  if ( type == i18n( "Directories" ) ) return mime.tqcontains( "directory" );
-  if ( type == i18n( "Image Files" ) ) return mime.tqcontains( "image/" );
-  if ( type == i18n( "Text Files" ) ) return mime.tqcontains( "text/" );
-  if ( type == i18n( "Video Files" ) ) return mime.tqcontains( "video/" );
-  if ( type == i18n( "Audio Files" ) ) return mime.tqcontains( "audio/" );
-  if ( type == i18n( "Custom" ) ) return customType.tqcontains( mime );
+  if ( type == i18n( "Directories" ) ) return mime.contains( "directory" );
+  if ( type == i18n( "Image Files" ) ) return mime.contains( "image/" );
+  if ( type == i18n( "Text Files" ) ) return mime.contains( "text/" );
+  if ( type == i18n( "Video Files" ) ) return mime.contains( "video/" );
+  if ( type == i18n( "Audio Files" ) ) return mime.contains( "audio/" );
+  if ( type == i18n( "Custom" ) ) return customType.contains( mime );
   return false;
 }
 
@@ -159,7 +159,7 @@ bool KRQuery::matchCommon( const TQString &nameIn, const TQStringList &matchList
     return true;
 
   TQString name( nameIn );
-  int ndx = nameIn.tqfindRev( '/' ); // virtual filenames may contain '/'
+  int ndx = nameIn.findRev( '/' ); // virtual filenames may contain '/'
   if( ndx != -1 )                  // but the end of the filename is OK
     name = nameIn.mid( ndx + 1 );
 
@@ -251,17 +251,17 @@ void fixFoundTextForDisplay(TQString& haystack, int start, int length) {
   TQString text = haystack.mid( start, length );
   TQString after = haystack.mid( start + length );
 
-  before.tqreplace( '&', "&amp;" );
-  before.tqreplace( '<', "&lt;" );
-  before.tqreplace( '>', "&gt;" );
+  before.replace( '&', "&amp;" );
+  before.replace( '<', "&lt;" );
+  before.replace( '>', "&gt;" );
 
-  text.tqreplace( '&', "&amp;" );
-  text.tqreplace( '<', "&lt;" );
-  text.tqreplace( '>', "&gt;" );
+  text.replace( '&', "&amp;" );
+  text.replace( '<', "&lt;" );
+  text.replace( '>', "&gt;" );
 
-  after.tqreplace( '&', "&amp;" );
-  after.tqreplace( '<', "&lt;" );
-  after.tqreplace( '>', "&gt;" );
+  after.replace( '&', "&amp;" );
+  after.replace( '<', "&lt;" );
+  after.replace( '>', "&gt;" );
 
   haystack = ("<qt>"+before+"<b>"+text+"</b>"+after+"</qt>" );
 }
@@ -351,7 +351,7 @@ bool KRQuery::checkLines( const char * buf, int len ) const
     if ( line.isNull() ) return false;
     if ( containWholeWord )
     {
-      while ( ( ndx = line.tqfind( contain, ndx, containCaseSensetive ) ) != -1 )
+      while ( ( ndx = line.find( contain, ndx, containCaseSensetive ) ) != -1 )
       {
         TQChar before = line.at( ndx - 1 );
         TQChar after = line.at( ndx + contain.length() );
@@ -365,7 +365,7 @@ bool KRQuery::checkLines( const char * buf, int len ) const
         ndx++;
       }
     }
-    else if ( (ndx = line.tqfind( contain, 0, containCaseSensetive )) != -1 ) {
+    else if ( (ndx = line.find( contain, 0, containCaseSensetive )) != -1 ) {
       lastSuccessfulGrep = line;
       fixFoundTextForDisplay(lastSuccessfulGrep, ndx, contain.length());
       return true;
@@ -539,7 +539,7 @@ void KRQuery::setNameFilter( const TQString &text, bool cs )
       continue;
     }
 
-    if( !matches[ i ].tqcontains( "*" ) && !matches[ i ].tqcontains( "?" ) ) 
+    if( !matches[ i ].contains( "*" ) && !matches[ i ].contains( "?" ) ) 
       matches[ i ] = "*" + matches[ i ] + "*";
 
     i++;
@@ -555,7 +555,7 @@ void KRQuery::setNameFilter( const TQString &text, bool cs )
       continue;
     }
 
-    if( !excludes[ i ].tqcontains( "*" ) && !excludes[ i ].tqcontains( "?" ) ) 
+    if( !excludes[ i ].contains( "*" ) && !excludes[ i ].contains( "?" ) ) 
       excludes[ i ] = "*" + excludes[ i ] + "*";
 
     i++;

@@ -428,7 +428,7 @@ Directory * DiskUsage::getDirectory( TQString dir )
   if( dir.isEmpty() )
     return root;
 
-  return contentMap.tqfind( dir );
+  return contentMap.find( dir );
 }
 
 File * DiskUsage::getFile( TQString path )
@@ -438,7 +438,7 @@ File * DiskUsage::getFile( TQString path )
 
   TQString dir = path;
 
-  int ndx = path.tqfindRev( '/' );
+  int ndx = path.findRev( '/' );
   TQString file = path.mid( ndx + 1 );
 
   if( ndx == -1 )
@@ -686,15 +686,15 @@ int DiskUsage::del( File *file, bool calcPercents, int depth )
 
 void * DiskUsage::getProperty( File *item, TQString key )
 {
-  Properties * props = propertyMap.tqfind( item );
+  Properties * props = propertyMap.find( item );
   if( props == 0 )
     return 0;
-  return props->tqfind( key );
+  return props->find( key );
 }
 
 void DiskUsage::addProperty( File *item, TQString key, void * prop )
 {
-  Properties * props = propertyMap.tqfind( item );
+  Properties * props = propertyMap.find( item );
   if( props == 0 )
   {
     props = new Properties();
@@ -705,7 +705,7 @@ void DiskUsage::addProperty( File *item, TQString key, void * prop )
 
 void DiskUsage::removeProperty( File *item, TQString key )
 {
-  Properties * props = propertyMap.tqfind( item );
+  Properties * props = propertyMap.find( item );
   if( props == 0 )
     return;
   props->remove( key );
@@ -963,7 +963,7 @@ TQPixmap DiskUsage::getIcon( TQString mime )
 {
   TQPixmap icon;
 
-  if ( !TQPixmapCache::tqfind( mime, icon ) )
+  if ( !TQPixmapCache::find( mime, icon ) )
   {
     // get the icon.
     if ( mime == "Broken Link !" )
@@ -1038,7 +1038,7 @@ TQString DiskUsage::getToolTip( File *item )
                 "<tr><td>" + i18n( "Permissions:" ) +  "</td><td>" + item->perm() + "</td></tr>"+
                 "<tr><td>" + i18n( "Owner:" ) +  "</td><td>" + item->owner() + " - " + item->group() + "</td></tr>"+
                 "</table></h5></qt>";
-  str.tqreplace( " ", "&nbsp;" );
+  str.replace( " ", "&nbsp;" );
   return str;
 }
 

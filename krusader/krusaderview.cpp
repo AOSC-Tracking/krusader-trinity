@@ -342,7 +342,7 @@ bool KrusaderView::eventFilter ( TQObject * watched, TQEvent * e ) {
       TQString text = TQApplication::tqclipboard()->text();
       if ( ! text.isEmpty() )
       {
-        text.tqreplace("\n", "\r");
+        text.replace("\n", "\r");
         TQKeyEvent keyEvent(TQEvent::KeyPress, 0,-1,0, text);
         TQApplication::sendEvent( konsole_part->widget(), &keyEvent );
       }

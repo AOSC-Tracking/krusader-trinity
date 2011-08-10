@@ -100,7 +100,7 @@ TQPixmap KrView::getIcon( vfile *vf /*, KRListItem::cmpColor color*/ ) {
      icon_name="";
    
    // first try the cache
-   if ( !TQPixmapCache::tqfind( icon_name, icon ) ) {
+   if ( !TQPixmapCache::find( icon_name, icon ) ) {
       icon = FL_LOADICON( icon_name );
       // insert it into the cache
       TQPixmapCache::insert( icon_name, icon );

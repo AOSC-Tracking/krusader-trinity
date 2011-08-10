@@ -197,13 +197,13 @@ remoteManBase::remoteManBase( TQWidget* tqparent,  const char* name, bool modal,
     TQStringList protocols = KProtocolInfo::protocols();
 
     protocol = new TQComboBox( FALSE, this, "protocol" );
-    if( protocols.tqcontains("ftp") )
+    if( protocols.contains("ftp") )
       protocol->insertItem( i18n( "ftp://" ) );
-    if( protocols.tqcontains("smb") )
+    if( protocols.contains("smb") )
       protocol->insertItem( i18n( "smb://" ) );
-    if( protocols.tqcontains("fish") )
+    if( protocols.contains("fish") )
       protocol->insertItem( i18n( "fish://" ));
-    if( protocols.tqcontains("sftp") )
+    if( protocols.contains("sftp") )
       protocol->insertItem( i18n( "sftp://" ));
     protocol->tqsetSizePolicy( TQSizePolicy( (TQSizePolicy::SizeType)1, (TQSizePolicy::SizeType)0, protocol->sizePolicy().hasHeightForWidth() ) );
 

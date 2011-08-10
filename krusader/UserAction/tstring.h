@@ -30,8 +30,8 @@ public:
 	TagString_t left(unsigned) const;
 	TagString_t right(unsigned) const;
 	void insert(uint,const TQString& s);
-	int tqfind ( TQChar c, int index = 0, bool cs = TRUE ) const {
-		return str.tqfind(c,index,cs);
+	int find ( TQChar c, int index = 0, bool cs = TRUE ) const {
+		return str.find(c,index,cs);
 	}
 	TagString_t& operator+=(const TagString_t& s);
 	typename taglist::const_iterator tagsBegin() const { return tags.begin(); }

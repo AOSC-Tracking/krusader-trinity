@@ -291,7 +291,7 @@ Krusader::Krusader() : KParts::MainWindow(0,0,WType_TopLevel|WDestructiveClose|T
       for(unsigned int i = 0; i != leftTabs.count(); i++ )
       {
         leftTabs[ i ] = leftTabs[ i ].stripWhiteSpace();
-        if( !leftTabs[ i ].startsWith( "/" ) && leftTabs[ i ].tqfind( ":/" ) < 0 )
+        if( !leftTabs[ i ].startsWith( "/" ) && leftTabs[ i ].find( ":/" ) < 0 )
           leftTabs[ i ] = TQDir::currentDirPath() + "/" + leftTabs[ i ];
       }
       startProfile = TQString();
@@ -307,7 +307,7 @@ Krusader::Krusader() : KParts::MainWindow(0,0,WType_TopLevel|WDestructiveClose|T
       for(unsigned int i = 0; i != rightTabs.count(); i++ )
       {
         rightTabs[ i ] = rightTabs[ i ].stripWhiteSpace();
-        if( !rightTabs[ i ].startsWith( "/" ) && rightTabs[ i ].tqfind( ":/" ) < 0 )
+        if( !rightTabs[ i ].startsWith( "/" ) && rightTabs[ i ].find( ":/" ) < 0 )
           rightTabs[ i ] = TQDir::currentDirPath() + "/" + rightTabs[ i ];
       }
       startProfile = TQString();
@@ -438,7 +438,7 @@ bool Krusader::versionControl() {
 
 #if 0      
 	TQString oldVerText = config->readEntry( "Version", "10.0" );
-   oldVerText.truncate( oldVerText.tqfindRev( "." ) ); // remove the third dot
+   oldVerText.truncate( oldVerText.findRev( "." ) ); // remove the third dot
    float oldVer = oldVerText.toFloat();
    // older icompatible version
    if ( oldVer <= 0.9 ) {
@@ -689,9 +689,9 @@ void Krusader::setupActions() {
                               SLOTS, TQT_SLOT( runMountMan() ), actionCollection(), "mountman" );
 #endif /* KDE 3.2 */
 
-   actFind = new KAction( i18n( "&Search..." ), "filetqfind", CTRL + Key_S,
-                          SLOTS, TQT_SLOT( search() ), actionCollection(), "tqfind" );
-   actLocate = new KAction( i18n( "&Locate..." ), "tqfind", SHIFT+CTRL + Key_L,
+   actFind = new KAction( i18n( "&Search..." ), "filefind", CTRL + Key_S,
+                          SLOTS, TQT_SLOT( search() ), actionCollection(), "find" );
+   actLocate = new KAction( i18n( "&Locate..." ), "find", SHIFT+CTRL + Key_L,
                             SLOTS, TQT_SLOT( locate() ), actionCollection(), "locate" );
    actSyncDirs = new KAction( i18n( "Synchronize &Directories..." ), "kr_syncdirs", CTRL + Key_Y,
                               SLOTS, TQT_SLOT( slotSynchronizeDirs() ), actionCollection(), "sync dirs" );
@@ -967,7 +967,7 @@ bool Krusader::queryClose() {
         TQWidget *activeModal = TQT_TQWIDGET(TQApplication::activeModalWidget());
         TQWidget *w = list->first();
 
-        if( activeModal && activeModal != this && activeModal != menuBar() && activeModal != sysTray && list->tqcontains( activeModal ) && !activeModal->isHidden() )
+        if( activeModal && activeModal != this && activeModal != menuBar() && activeModal != sysTray && list->contains( activeModal ) && !activeModal->isHidden() )
           w = activeModal;
         else {
           while(w && (w==this || w==sysTray || w->isHidden() || w==menuBar()) )
@@ -1173,7 +1173,7 @@ TQString Krusader::getTempDir() {
    TQString tmpDir = krConfig->readEntry( "Temp Directory", _TempDirectory );
 
    if ( ! TQDir( tmpDir ).exists() ) {
-      for ( int i = 1 ; i != -1 ; i = tmpDir.tqfind( '/', i + 1 ) )
+      for ( int i = 1 ; i != -1 ; i = tmpDir.find( '/', i + 1 ) )
          TQDir().mkdir( tmpDir.left( i ) );
       TQDir().mkdir( tmpDir );
       chmod( tmpDir.local8Bit(), 0777 );
@@ -1203,7 +1203,7 @@ TQString Krusader::getTempFile() {
    TQString tmpDir = krConfig->readEntry( "Temp Directory", _TempDirectory );
 
    if ( ! TQDir( tmpDir ).exists() ) {
-      for ( int i = 1 ; i != -1 ; i = tmpDir.tqfind( '/', i + 1 ) )
+      for ( int i = 1 ; i != -1 ; i = tmpDir.find( '/', i + 1 ) )
          TQDir().mkdir( tmpDir.left( i ) );
       TQDir().mkdir( tmpDir );
       chmod( tmpDir.local8Bit(), 0777 );

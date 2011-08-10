@@ -114,7 +114,7 @@ void ProfileManager::newProfile( TQString defaultName )
   if( !profile.isEmpty() )
   {
     int profileNum = 1;
-    while( profileList.tqcontains( TQString( "%1" ).tqarg( profileNum ) ) )
+    while( profileList.contains( TQString( "%1" ).tqarg( profileNum ) ) )
       profileNum++;
 
     TQString profileString = TQString( "%1" ).tqarg( profileNum );

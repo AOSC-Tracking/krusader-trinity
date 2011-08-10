@@ -26,7 +26,7 @@ KrActionBase::~KrActionBase()
 void KrActionBase::exec() {
 	KrActionProc *proc;
 
-   // tqreplace %% and prepare string
+   // replace %% and prepare string
 	TQStringList commandList;
 	if(doSubstitution()) {
 		Expander exp;

@@ -106,11 +106,11 @@ void KRSearchMod::scanURL( KURL url )
     if( stopSearch ) return;
 
     if( query->isExcluded( urlToCheck ) ) {
-      if( !query->searchInDirs().tqcontains( urlToCheck ) )
+      if( !query->searchInDirs().contains( urlToCheck ) )
         continue;
     }
 
-    if( scannedUrls.tqcontains( urlToCheck ) )
+    if( scannedUrls.contains( urlToCheck ) )
       continue;
     scannedUrls.push( urlToCheck );
 
@@ -164,7 +164,7 @@ void KRSearchMod::scanLocalDir( KURL urlToScan )
     if ( query->searchInArchives() )
     {
       TQString type = mime.right( 4 );
-      if ( mime.tqcontains( "-rar" ) ) type = "-rar";
+      if ( mime.contains( "-rar" ) ) type = "-rar";
 
       if ( KRarcHandler::arcSupported( type ) )
       {

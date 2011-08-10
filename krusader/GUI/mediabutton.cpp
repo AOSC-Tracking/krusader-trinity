@@ -187,13 +187,13 @@ void MediaButton::slotEntries( KIO::Job *, const KIO::UDSEntryList& entries )
 			if( mounted && !localPath.isEmpty() )
 			{
 				url = KURL::fromPathOrURL( localPath );
-				if( !text.tqcontains( url.path() ) )
+				if( !text.contains( url.path() ) )
 					text += "  [" + url.path() + "]";
 			}
 			else if( mounted )
 			{
 				url = getLocalPath( url, &mountList );
-				if( url.isLocalFile() && !text.tqcontains( url.path() ) )
+				if( url.isLocalFile() && !text.contains( url.path() ) )
 					text += "  [" + url.path() + "]";
 			}
 			
@@ -220,7 +220,7 @@ KURL MediaButton::getLocalPath( const KURL &url, KMountPoint::List *mountList ) 
 	
 	for (KMountPoint::List::iterator it = mountList->begin(); it != mountList->end(); ++it) {
 		TQString name = (*it)->mountedFrom();
-		name = name.mid( name.tqfindRev( "/" ) + 1 );
+		name = name.mid( name.findRev( "/" ) + 1 );
 		if( name == url.fileName() ) {
 			TQString point = (*it)->mountPoint();
 			if( !point.isEmpty() )
@@ -285,7 +285,7 @@ TQString MediaButton::detectType( KMountPoint *mp )
 		{
 			TQTextStream in(&m);
 			TQString buf=in.readLine();
-			if(buf.tqcontains("cdrom"))
+			if(buf.contains("cdrom"))
 				isCd=true;
 			m.close();
 		}
@@ -315,44 +315,44 @@ TQString MediaButton::detectType( KMountPoint *mp )
 		return typeName;
 
 #elif defined(__FreeBSD__)
-	if (-1!=mp->mountedFrom().tqfind("/acd",0,FALSE)) typeName="cdrom";
-	else if (-1!=mp->mountedFrom().tqfind("/scd",0,FALSE)) typeName="cdrom";
-	else if (-1!=mp->mountedFrom().tqfind("/ad",0,FALSE)) typeName="hdd";
-	else if (-1!=mp->mountedFrom().tqfind("/da",0,FALSE)) typeName="hdd";
-	else if (-1!=mp->mountedFrom().tqfind("/afd",0,FALSE)) typeName="zip";
+	if (-1!=mp->mountedFrom().find("/acd",0,FALSE)) typeName="cdrom";
+	else if (-1!=mp->mountedFrom().find("/scd",0,FALSE)) typeName="cdrom";
+	else if (-1!=mp->mountedFrom().find("/ad",0,FALSE)) typeName="hdd";
+	else if (-1!=mp->mountedFrom().find("/da",0,FALSE)) typeName="hdd";
+	else if (-1!=mp->mountedFrom().find("/afd",0,FALSE)) typeName="zip";
 	else
 #endif
 
     /* Guessing of cdrom and cd recorder devices */
-	if (-1!=mp->mountPoint().tqfind("cdrom",0,FALSE)) typeName="cdrom";
-	else if (-1!=mp->mountedFrom().tqfind("cdrom",0,FALSE)) typeName="cdrom";
-	else if (-1!=mp->mountPoint().tqfind("cdwriter",0,FALSE)) typeName="cdwriter";
-	else if (-1!=mp->mountedFrom().tqfind("cdwriter",0,FALSE)) typeName="cdwriter";
-	else if (-1!=mp->mountedFrom().tqfind("cdrw",0,FALSE)) typeName="cdwriter";
-	else if (-1!=mp->mountPoint().tqfind("cdrw",0,FALSE)) typeName="cdwriter";
-	else if (-1!=mp->mountedFrom().tqfind("cdrecorder",0,FALSE)) typeName="cdwriter";
-	else if (-1!=mp->mountPoint().tqfind("cdrecorder",0,FALSE)) typeName="cdwriter";
-	else if (-1!=mp->mountedFrom().tqfind("dvdrecorder",0,FALSE)) typeName="dvdwriter";
-	else if (-1!=mp->mountPoint().tqfind("dvdrecorder",0,FALSE)) typeName="dvdwriter";
-	else if (-1!=mp->mountPoint().tqfind("dvdwriter",0,FALSE)) typeName="dvdwriter";
-	else if (-1!=mp->mountedFrom().tqfind("dvdwriter",0,FALSE)) typeName="dvdwriter";
-	else if (-1!=mp->mountPoint().tqfind("dvd",0,FALSE)) typeName="dvd";   
-	else if (-1!=mp->mountedFrom().tqfind("dvd",0,FALSE)) typeName="dvd";   
-	else if (-1!=mp->mountedFrom().tqfind("/dev/scd",0,FALSE)) typeName="cdrom";
-	else if (-1!=mp->mountedFrom().tqfind("/dev/sr",0,FALSE)) typeName="cdrom";
+	if (-1!=mp->mountPoint().find("cdrom",0,FALSE)) typeName="cdrom";
+	else if (-1!=mp->mountedFrom().find("cdrom",0,FALSE)) typeName="cdrom";
+	else if (-1!=mp->mountPoint().find("cdwriter",0,FALSE)) typeName="cdwriter";
+	else if (-1!=mp->mountedFrom().find("cdwriter",0,FALSE)) typeName="cdwriter";
+	else if (-1!=mp->mountedFrom().find("cdrw",0,FALSE)) typeName="cdwriter";
+	else if (-1!=mp->mountPoint().find("cdrw",0,FALSE)) typeName="cdwriter";
+	else if (-1!=mp->mountedFrom().find("cdrecorder",0,FALSE)) typeName="cdwriter";
+	else if (-1!=mp->mountPoint().find("cdrecorder",0,FALSE)) typeName="cdwriter";
+	else if (-1!=mp->mountedFrom().find("dvdrecorder",0,FALSE)) typeName="dvdwriter";
+	else if (-1!=mp->mountPoint().find("dvdrecorder",0,FALSE)) typeName="dvdwriter";
+	else if (-1!=mp->mountPoint().find("dvdwriter",0,FALSE)) typeName="dvdwriter";
+	else if (-1!=mp->mountedFrom().find("dvdwriter",0,FALSE)) typeName="dvdwriter";
+	else if (-1!=mp->mountPoint().find("dvd",0,FALSE)) typeName="dvd";   
+	else if (-1!=mp->mountedFrom().find("dvd",0,FALSE)) typeName="dvd";   
+	else if (-1!=mp->mountedFrom().find("/dev/scd",0,FALSE)) typeName="cdrom";
+	else if (-1!=mp->mountedFrom().find("/dev/sr",0,FALSE)) typeName="cdrom";
 	
 	/* Guessing of floppy types */
-	else if (-1!=mp->mountedFrom().tqfind("fd",0,FALSE)) {
-		if (-1!=mp->mountedFrom().tqfind("360",0,FALSE)) typeName="floppy5";
-			if (-1!=mp->mountedFrom().tqfind("1200",0,FALSE)) typeName="floppy5";
+	else if (-1!=mp->mountedFrom().find("fd",0,FALSE)) {
+		if (-1!=mp->mountedFrom().find("360",0,FALSE)) typeName="floppy5";
+			if (-1!=mp->mountedFrom().find("1200",0,FALSE)) typeName="floppy5";
 			else typeName="floppy";
 		}
-	else if (-1!=mp->mountPoint().tqfind("floppy",0,FALSE)) typeName="floppy";
+	else if (-1!=mp->mountPoint().find("floppy",0,FALSE)) typeName="floppy";
 	
-	else if (-1!=mp->mountPoint().tqfind("zip",0,FALSE)) typeName="zip";
-	else if (-1!=mp->mountType().tqfind("nfs",0,FALSE)) typeName="nfs";
-	else if (-1!=mp->mountType().tqfind("smb",0,FALSE)) typeName="smb";
-	else if (-1!=mp->mountedFrom().tqfind("//",0,FALSE)) typeName="smb";
+	else if (-1!=mp->mountPoint().find("zip",0,FALSE)) typeName="zip";
+	else if (-1!=mp->mountType().find("nfs",0,FALSE)) typeName="nfs";
+	else if (-1!=mp->mountType().find("smb",0,FALSE)) typeName="smb";
+	else if (-1!=mp->mountedFrom().find("//",0,FALSE)) typeName="smb";
 	else typeName="hdd";
 	
 	return typeName;
@@ -383,13 +383,13 @@ void MediaButton::gettingSpaceData(const TQString &mountPoint, unsigned long kBS
 				TQString mime = mimes[ i ];
 				if( mimes[ i ].endsWith( "_mounted" ) ) {
 					quasiMounted[ i ] = true;
-					mimes[ i ] = mimes[ i ].tqreplace( "_mounted", "_unmounted" );
+					mimes[ i ] = mimes[ i ].replace( "_mounted", "_unmounted" );
 				}
 				
 				TQPixmap pixmap = FL_LOADICON( KMimeType::mimeType( mimes[ i ] ) ->icon( TQString(), true ) );
 				popupMenu->changeItem( i, pixmap, popupMenu->text( i ) );
 			}
-			else if( mimes[ i ].tqcontains( "hdd_" ) )
+			else if( mimes[ i ].contains( "hdd_" ) )
 				popupMenu->changeItem( i, sizeText + " " + popupMenu->text( i ).stripWhiteSpace() );
 			return;
 		}
@@ -408,7 +408,7 @@ void MediaButton::addMountPoint( KMountPoint * mp, bool isMounted ) {
 	if( mp->mountPoint() == "/dev/swap" || 
 		mp->mountPoint() == "/dev/pts"  ||
 		mp->mountPoint().startsWith( "/sys/kernel" ) ||
-		mp->mountPoint().tqfind( "/proc" ) == 0 )
+		mp->mountPoint().find( "/proc" ) == 0 )
 		return;
 	if( mp->mountType() == "swap" ||
 		mp->mountType() == "sysfs" ||
@@ -421,7 +421,7 @@ void MediaButton::addMountPoint( KMountPoint * mp, bool isMounted ) {
 		return;
 	if( mp->mountedFrom() == "none" ||
 		mp->mountedFrom() == "tmpfs" ||
-		mp->mountedFrom().tqfind( "shm" )  != -1 )
+		mp->mountedFrom().find( "shm" )  != -1 )
 		return;
 	
 	int overwrite = -1;
@@ -522,8 +522,8 @@ void MediaButton::rightClickMenu( int index ) {
 		rightMenu->close();
 	
 	TQString mime = mimes[ index ];
-	bool ejectable = mime.tqcontains( "dvd_" ) || mime.tqcontains( "dvdwriter_" ) || mime.tqcontains( "cdrom_" ) || mime.tqcontains( "cdwriter_" );
-	bool mounted = mime.tqcontains( "_mounted" );
+	bool ejectable = mime.contains( "dvd_" ) || mime.contains( "dvdwriter_" ) || mime.contains( "cdrom_" ) || mime.contains( "cdwriter_" );
+	bool mounted = mime.contains( "_mounted" );
 	
 	TQPopupMenu * myMenu = rightMenu = new TQPopupMenu( popupMenu );
 	myMenu->insertItem( i18n( "Open" ), 1 );
@@ -635,11 +635,11 @@ void MediaButton::slotTimeout() {
 				urls[ index ] = uri;
 				mounted = true;
 				
-				if( !text.tqcontains( uri.path() ) ) 
+				if( !text.contains( uri.path() ) ) 
 				{
 					if( text.endsWith( "]" ) )
 					{
-						int ndx = text.tqfindRev( "  [" );
+						int ndx = text.findRev( "  [" );
 						if( ndx >0 )
 							text.truncate( ndx );
 					}
@@ -651,7 +651,7 @@ void MediaButton::slotTimeout() {
 			{
 				if( text.endsWith( "]" ) )
 				{
-					int ndx = text.tqfindRev( "  [" );
+					int ndx = text.findRev( "  [" );
 					if( ndx >0 )
 						text.truncate( ndx );
 				}
@@ -661,10 +661,10 @@ void MediaButton::slotTimeout() {
 		if( quasiMounted[ index ] ) // mounted but not listed with DF
 			mounted = false;
 		
-		if( mimes[ index ].tqcontains( "_mounted" ) && !mounted )
-			mimes[ index ] = mimes[ index ].tqreplace( "_mounted", "_unmounted" );
-		if( mimes[ index ].tqcontains( "_unmounted" ) && mounted )
-			mimes[ index ] = mimes[ index ].tqreplace( "_unmounted", "_mounted" );
+		if( mimes[ index ].contains( "_mounted" ) && !mounted )
+			mimes[ index ] = mimes[ index ].replace( "_mounted", "_unmounted" );
+		if( mimes[ index ].contains( "_unmounted" ) && mounted )
+			mimes[ index ] = mimes[ index ].replace( "_unmounted", "_mounted" );
 		
 		TQPixmap pixmap = FL_LOADICON( KMimeType::mimeType( mimes[ index ] ) ->icon( TQString(), true ) );
 		popupMenu->changeItem( index, pixmap, text );

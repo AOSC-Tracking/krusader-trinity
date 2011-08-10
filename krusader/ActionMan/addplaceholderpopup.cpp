@@ -151,7 +151,7 @@ ParameterDialog::ParameterDialog( const exp_placeholder* currentPlaceholder, TQW
          _parameter.append( new ParameterNo( currentPlaceholder->parameter( i ), plainPage() ) );
       else if ( currentPlaceholder->parameter( i ).preset() == "__file" )
          _parameter.append( new ParameterFile( currentPlaceholder->parameter( i ), plainPage() ) );
-      else if ( currentPlaceholder->parameter( i ).preset().tqfind( "__choose" ) != -1 )
+      else if ( currentPlaceholder->parameter( i ).preset().find( "__choose" ) != -1 )
          _parameter.append( new ParameterChoose( currentPlaceholder->parameter( i ), plainPage() ) );
       else if ( currentPlaceholder->parameter( i ).preset() == "__select" )
          _parameter.append( new ParameterSelect( currentPlaceholder->parameter( i ), plainPage() ) );
@@ -163,7 +163,7 @@ ParameterDialog::ParameterDialog( const exp_placeholder* currentPlaceholder, TQW
          _parameter.append( new ParameterSearch( currentPlaceholder->parameter( i ), plainPage() ) );
       else if ( currentPlaceholder->parameter( i ).preset() == "__panelprofile" )
          _parameter.append( new ParameterPanelprofile( currentPlaceholder->parameter( i ), plainPage() ) );
-      else if ( currentPlaceholder->parameter( i ).preset().tqfind( "__int" ) != -1 )
+      else if ( currentPlaceholder->parameter( i ).preset().find( "__int" ) != -1 )
          _parameter.append( new ParameterInt( currentPlaceholder->parameter( i ), plainPage() ) );
       else
          _parameter.append( new ParameterText( currentPlaceholder->parameter( i ), plainPage() ) );
@@ -196,7 +196,7 @@ TQString ParameterDialog::getParameter() {
   for ( int i = 0; i <= lastParameter; ++i ) {
      if ( i > 0 )
         parameter += ", ";
-     parameter += "\"" + _parameter[ i ]->text().tqreplace( "\"", "\\\"" ) + "\"";
+     parameter += "\"" + _parameter[ i ]->text().replace( "\"", "\\\"" ) + "\"";
   }
   parameter += ")";
   return parameter;

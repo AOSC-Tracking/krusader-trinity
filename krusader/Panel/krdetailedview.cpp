@@ -682,7 +682,7 @@ void KrDetailedView::contentsMousePressEvent( TQMouseEvent * e ) {
 
      KListView::contentsMousePressEvent( e );
 
-     if( name.isEmpty() || _dict.tqfind( name ) == 0 ) // is the file still valid?
+     if( name.isEmpty() || _dict.find( name ) == 0 ) // is the file still valid?
        newCurrent = 0;                // if not, don't do any crash...
    } else {
      // emitting the missing signals from TQListView::contentsMousePressEvent();
@@ -1215,7 +1215,7 @@ void KrDetailedView::renameCurrentItem() {
       KConfigGroupSaver svr(krConfig,"Look&Feel");
       if (!krConfig->readBoolEntry("Rename Selects Extension", true)) {
 	if (it->hasExtension() && !it->VF->vfile_isDir() ) 
-		renameLineEdit()->setSelection(0, it->name().tqfindRev(it->extension())-1);
+		renameLineEdit()->setSelection(0, it->name().findRev(it->extension())-1);
       }
       // signal will be emited when renaming is done, and finalization
       // will occur in inplaceRenameFinished()

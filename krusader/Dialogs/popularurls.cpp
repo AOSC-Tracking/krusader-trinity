@@ -108,7 +108,7 @@ void PopularUrls::addUrl(const KURL& url) {
 		appendNode(pnode);
 		ranks.insert(tmpurl.url(), head);
 	} else {
-		pnode = ranks.tqfind(tmpurl.url());
+		pnode = ranks.find(tmpurl.url());
 		if (!pnode) { // is the added url new? if so, append it
 			pnode = new UrlNode;
 			pnode->rank = STARTING_RANK;

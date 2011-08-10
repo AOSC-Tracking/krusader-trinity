@@ -87,7 +87,7 @@ void VirtProtocol::del(KURL const & /*url */, bool /* isFile */ ){
 
 void VirtProtocol::copy( const KURL &src, const KURL &dest, int /* permissions */, bool /* overwrite */ ){
 	TQString path = dest.path( -1 ).mid( 1 );
-	path = path.left(path.tqfindRev("/"));
+	path = path.left(path.findRev("/"));
 	if ( path.isEmpty() ) path = "/";
 
 	if( addDir(path) ){
@@ -103,9 +103,9 @@ bool VirtProtocol::addDir(TQString& path){
 	if( kioVirtDict[ path ] ) return true;
 
 	TQString updir;
-	if( !path.tqcontains("/") ) updir = "/";
-	else updir = path.left(path.tqfindRev("/"));
-	TQString name = path.mid(path.tqfindRev("/")+1);
+	if( !path.contains("/") ) updir = "/";
+	else updir = path.left(path.findRev("/"));
+	TQString name = path.mid(path.findRev("/")+1);
 
 	if( addDir(updir) ){ 
 		KURL url;
@@ -114,7 +114,7 @@ bool VirtProtocol::addDir(TQString& path){
 		kioVirtDict[ updir ]->append( url );
 
 		KURL::List* temp = new KURL::List();
-		kioVirtDict.tqreplace( path, temp );
+		kioVirtDict.replace( path, temp );
 
 		return true;
 	}
@@ -254,12 +254,12 @@ bool VirtProtocol::load(){
 	KURL::List* urlList;
 	for ( it = map.begin(); it != map.end(); ++it ) {
 		urlList = new KURL::List( db->readListEntry(it.key()) );
-		kioVirtDict.tqreplace( it.key(),urlList );
+		kioVirtDict.replace( it.key(),urlList );
 	}
 
 	if( !kioVirtDict["/" ]){
 		urlList = new KURL::List();
-		kioVirtDict.tqreplace( "/", urlList );	
+		kioVirtDict.replace( "/", urlList );	
 	}
 
 	unlock();

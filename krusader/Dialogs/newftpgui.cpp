@@ -74,13 +74,13 @@ newFTPGUI::newFTPGUI( TQWidget* tqparent,  const char* name, bool modal, WFlags 
     TQStringList protocols = KProtocolInfo::protocols();
 
     prefix = new KComboBox( FALSE, grid_host, "protocol" );
-    if( protocols.tqcontains("ftp") )
+    if( protocols.contains("ftp") )
       prefix->insertItem( i18n( "ftp://" ) );
-    if( protocols.tqcontains("smb") )
+    if( protocols.contains("smb") )
       prefix->insertItem( i18n( "smb://" ) );
-    if( protocols.tqcontains("fish") )
+    if( protocols.contains("fish") )
       prefix->insertItem( i18n( "fish://" ));
-    if( protocols.tqcontains("sftp") )
+    if( protocols.contains("sftp") )
       prefix->insertItem( i18n( "sftp://" ));
     prefix->setAcceptDrops( FALSE );
     prefix->setEnabled( TRUE );

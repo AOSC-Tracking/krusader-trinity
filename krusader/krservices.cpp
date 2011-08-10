@@ -167,9 +167,9 @@ bool KrServices::fileToStringList(TQTextStream *stream, TQStringList& target, bo
 }
 
 TQString KrServices::quote( TQString name ) {
-  if( !name.tqcontains( '\'' ) )
+  if( !name.contains( '\'' ) )
     return "'" + name + "'";
-  if( !name.tqcontains( '"' ) && !name.tqcontains( '$' ) )
+  if( !name.contains( '"' ) && !name.contains( '$' ) )
     return "\"" + name + "\"";
   return escape( name );
 }
@@ -185,7 +185,7 @@ TQString KrServices::escape( TQString name ) {
   const TQString evilstuff = "\\\"'`()[]{}!?;$&<>| \t\r\n";		// stuff that should get escaped
      
     for ( unsigned int i = 0; i < evilstuff.length(); ++i )
-        name.tqreplace( evilstuff[ i ], (TQString("\\") + evilstuff[ i ]) );
+        name.replace( evilstuff[ i ], (TQString("\\") + evilstuff[ i ]) );
 
   return name;
 }

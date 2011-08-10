@@ -107,7 +107,7 @@ void KgLookFeel::setupOperationTab() {
 
   quicksearchCheckboxes = createCheckBoxGroup( 2, 0, quicksearch, 2 /*count*/, quicksearchGroup, 0, PAGE_OPERATION );
   quicksearchGrid->addWidget( quicksearchCheckboxes, 0, 0 );
-  connect( quicksearchCheckboxes->tqfind( "New Style Quicksearch" ), TQT_SIGNAL( stateChanged( int ) ), this, TQT_SLOT( slotDisable() ) );
+  connect( quicksearchCheckboxes->find( "New Style Quicksearch" ), TQT_SIGNAL( stateChanged( int ) ), this, TQT_SLOT( slotDisable() ) );
   slotDisable();
 
   lookAndFeelLayout->addWidget( quicksearchGroup, 1, 0 );
@@ -197,7 +197,7 @@ void KgLookFeel::setupPanelToolbarTab() {
   };
 
   panelToolbarActive = createCheckBoxGroup( 1, 0, panelToolbarActiveCheckbox, 1, tab_4, "panelToolbarActive", PAGE_PANELTOOLBAR);
-  connect( panelToolbarActive->tqfind( "Panel Toolbar visible" ), TQT_SIGNAL( stateChanged( int ) ), this, TQT_SLOT( slotEnablePanelToolbar() ) );
+  connect( panelToolbarActive->find( "Panel Toolbar visible" ), TQT_SIGNAL( stateChanged( int ) ), this, TQT_SLOT( slotEnablePanelToolbar() ) );
     
   TQGroupBox * panelToolbarGrp = createFrame( i18n( "Visible Panel Toolbar buttons" ), tab_4, "panelToolbarGrp");
   TQGridLayout * panelToolbarGrid = createGridLayout( panelToolbarGrp->tqlayout() );
@@ -335,34 +335,34 @@ void KgLookFeel::setupMouseModeTab() {
 
 void KgLookFeel::slotDisable()
 {
-  bool isNewStyleQuickSearch = quicksearchCheckboxes->tqfind( "New Style Quicksearch" )->isChecked();
-  quicksearchCheckboxes->tqfind( "Case Sensitive Quicksearch" )->setEnabled( isNewStyleQuickSearch );
+  bool isNewStyleQuickSearch = quicksearchCheckboxes->find( "New Style Quicksearch" )->isChecked();
+  quicksearchCheckboxes->find( "Case Sensitive Quicksearch" )->setEnabled( isNewStyleQuickSearch );
 }
 
 void KgLookFeel::slotEnablePanelToolbar()
 {
-  bool enableTB = panelToolbarActive->tqfind("Panel Toolbar visible")->isChecked();
-  pnlcbs->tqfind( "Root Button Visible"     )->setEnabled(enableTB);
-  pnlcbs->tqfind( "Home Button Visible"     )->setEnabled(enableTB);
-  pnlcbs->tqfind( "Up Button Visible"       )->setEnabled(enableTB);
-  pnlcbs->tqfind( "Equal Button Visible"    )->setEnabled(enableTB);
-  pnlcbs->tqfind( "Open Button Visible"     )->setEnabled(enableTB);  
-  pnlcbs->tqfind("SyncBrowse Button Visible")->setEnabled(enableTB);  
+  bool enableTB = panelToolbarActive->find("Panel Toolbar visible")->isChecked();
+  pnlcbs->find( "Root Button Visible"     )->setEnabled(enableTB);
+  pnlcbs->find( "Home Button Visible"     )->setEnabled(enableTB);
+  pnlcbs->find( "Up Button Visible"       )->setEnabled(enableTB);
+  pnlcbs->find( "Equal Button Visible"    )->setEnabled(enableTB);
+  pnlcbs->find( "Open Button Visible"     )->setEnabled(enableTB);  
+  pnlcbs->find("SyncBrowse Button Visible")->setEnabled(enableTB);  
 }
 
 void KgLookFeel::slotSelectionModeChanged() {
-  bool enable = mouseRadio->tqfind( i18n("Custom Selection Mode") )->isChecked();
-  mouseCheckboxes->tqfind( "QT Selection" )->setEnabled( enable );
-  mouseCheckboxes->tqfind( "Left Selects" )->setEnabled( enable );
-  mouseCheckboxes->tqfind( "Left Preserves" )->setEnabled( enable );
-  mouseCheckboxes->tqfind( "ShiftCtrl Left Selects" )->setEnabled( enable );
-  mouseCheckboxes->tqfind( "Right Selects" )->setEnabled( enable );
-  mouseCheckboxes->tqfind( "Right Preserves" )->setEnabled( enable );
-  mouseCheckboxes->tqfind( "ShiftCtrl Right Selects" )->setEnabled( enable );
-  mouseCheckboxes->tqfind( "Space Moves Down" )->setEnabled( enable );
-  mouseCheckboxes->tqfind( "Space Calc Space" )->setEnabled( enable );
-  mouseCheckboxes->tqfind( "Insert Moves Down" )->setEnabled( enable );
-  mouseCheckboxes->tqfind( "Immediate Context Menu" )->setEnabled( enable );
+  bool enable = mouseRadio->find( i18n("Custom Selection Mode") )->isChecked();
+  mouseCheckboxes->find( "QT Selection" )->setEnabled( enable );
+  mouseCheckboxes->find( "Left Selects" )->setEnabled( enable );
+  mouseCheckboxes->find( "Left Preserves" )->setEnabled( enable );
+  mouseCheckboxes->find( "ShiftCtrl Left Selects" )->setEnabled( enable );
+  mouseCheckboxes->find( "Right Selects" )->setEnabled( enable );
+  mouseCheckboxes->find( "Right Preserves" )->setEnabled( enable );
+  mouseCheckboxes->find( "ShiftCtrl Right Selects" )->setEnabled( enable );
+  mouseCheckboxes->find( "Space Moves Down" )->setEnabled( enable );
+  mouseCheckboxes->find( "Space Calc Space" )->setEnabled( enable );
+  mouseCheckboxes->find( "Insert Moves Down" )->setEnabled( enable );
+  mouseCheckboxes->find( "Immediate Context Menu" )->setEnabled( enable );
 }
 
 int KgLookFeel::activeSubPage() {

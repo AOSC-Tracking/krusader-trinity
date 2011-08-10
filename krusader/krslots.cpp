@@ -101,7 +101,7 @@
 void KRslots::sendFileByEmail(TQString filename) {
   TQString mailProg;
   TQStringList lst = Krusader::supportedTools();
-  if (lst.tqcontains("MAIL")) mailProg=lst[lst.tqfindIndex("MAIL") + 1];
+  if (lst.contains("MAIL")) mailProg=lst[lst.findIndex("MAIL") + 1];
   else {
     KMessageBox::error(0,i18n("Krusader can't find a supported mail client. Please install one to your path. Hint: Krusader supports Kmail."));
     return;
@@ -111,7 +111,7 @@ void KRslots::sendFileByEmail(TQString filename) {
 
   if ( vfs::fromPathOrURL( mailProg ).fileName() == "kmail") {
     proc << "kmail" << "--subject \""+i18n("Sending file: ")+
-            filename.mid(filename.tqfindRev('/')+1)+"\"" << TQString() +
+            filename.mid(filename.findRev('/')+1)+"\"" << TQString() +
             "--attach "+"\"" + filename + "\"";
   }
 
@@ -181,7 +181,7 @@ void KRslots::compareContent( KURL url1, KURL url2 )
 {
   TQString diffProg;
   TQStringList lst = Krusader::supportedTools();
-  if (lst.tqcontains("DIFF")) diffProg=lst[lst.tqfindIndex("DIFF") + 1];
+  if (lst.contains("DIFF")) diffProg=lst[lst.findIndex("DIFF") + 1];
   else {
     KMessageBox::error(0,i18n("Krusader can't find any of the supported diff-frontends. Please install one to your path. Hint: Krusader supports Kompare, Kdiff3 and Xxdiff."));
     return;
@@ -490,7 +490,7 @@ void KRslots::homeTerminal(){
   TQString term = krConfig->readEntry("Terminal",_Terminal);
   proc << KrServices::separateArgs( term );
       
-  if( term.tqcontains( "konsole" ) )   /* KDE 3.2 bug (konsole is killed by pressing Ctrl+C) */
+  if( term.contains( "konsole" ) )   /* KDE 3.2 bug (konsole is killed by pressing Ctrl+C) */
   {                                  /* Please remove the patch if the bug is corrected */
     proc << "&";
     proc.setUseShell( true );
@@ -506,13 +506,13 @@ void KRslots::sysInfo(){
   KProcess proc;
   proc << "kcmshell" << "System/ksysctrl";
   if (!proc.start(KProcess::DontCare)){
-    KMessageBox::sorry(krApp,i18n("Can't tqfind \"KsysCtrl\". Please install KDE admin package"));
+    KMessageBox::sorry(krApp,i18n("Can't find \"KsysCtrl\". Please install KDE admin package"));
   }
 }
 
 void KRslots::multiRename(){
 	TQStringList lst = Krusader::supportedTools();
-	int i = lst.tqfindIndex("RENAME");
+	int i = lst.findIndex("RENAME");
 	if (i == -1){
   	KMessageBox::sorry(krApp,i18n("Can't find a batch rename tool.\nYou can get Krename at http://www.krename.net"));
   	return;
@@ -726,7 +726,7 @@ void KRslots::slotCombine(){
     if( !unixStyle )
     {
       TQString name = url.fileName();
-      int extPos = name.tqfindRev( '.' );
+      int extPos = name.findRev( '.' );
       TQString ext = name.mid( extPos + 1 );
       name.truncate( extPos );
       url.setFileName( name );

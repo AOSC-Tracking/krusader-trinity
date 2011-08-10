@@ -363,7 +363,7 @@ public:
     * maximum row number in one column. <br>
     *
     * One specific element can be reached by its name or index with the find methods.
-    * The first element is checkBoxGroup->tqfind( 0 ), "myCb" element is checkBoxGroup->tqfind( "myCb" ) ...
+    * The first element is checkBoxGroup->find( 0 ), "myCb" element is checkBoxGroup->find( "myCb" ) ...
     *
     * Sample:<br><br>
     * KONFIGURATOR_CHECKBOX_PARAM myCBArray[] =<br>
@@ -371,7 +371,7 @@ public:
     * &nbsp;&nbsp;{"CbClass","CbName2", true, i18n( "name2" ), false, "tooltip2"},<br>
     * &nbsp;&nbsp;{"CbClass","CbName3", true, i18n( "name3" ), false, "tooltip3"}};<br><br>
     * KonfiguratorCheckBoxGroup *myCheckBoxGroup = createCheckBoxGroup( 1, 0, myCBArray, 3, myParent, "myCheckboxGroup" );<br>
-    * myCheckBoxGroup->tqfind( 0 )->setEnabled( false );<br><br>
+    * myCheckBoxGroup->find( 0 )->setEnabled( false );<br><br>
     * myLayout->addWidget( myCheckBoxGroup, 0, 0 );<br>
     *
     * @param  sizex       the maximum column number at horizontal placing
@@ -396,7 +396,7 @@ public:
     * maximum row number in one column.<br>
     *
     * The references of the buttons can be accessed by the find methods of KonfiguratorRadioButtons.
-    * The first element is myRadioGrp->tqfind( 0 ), "myRadio" element is myRadioGrp->tqfind( "myRadio" ) ...
+    * The first element is myRadioGrp->find( 0 ), "myRadio" element is myRadioGrp->find( "myRadio" ) ...
     *
     * Sample:<br><br>
     * KONFIGURATOR_NAME_VALUE_TIP radioInfo[] =<br>
@@ -404,7 +404,7 @@ public:
     * &nbsp;&nbsp;{ i18n( "radio text2" ), "value2", i18n( "tooltip2" ) },<br>
     * &nbsp;&nbsp;{ i18n( "radio text3" ), "value3", i18n( "tooltip3" ) }};<br><br>
     * KonfiguratorRadioButtons *myRadioGroup = createRadioButtonGroup( "class", "name", "value1", 1, 0, radioInfo, 3, myParent, "myRadioGroup" );<br>
-    * myRadioGroup->tqfind( i18n( "radio text1" ) )->setEnabled( false );<br>
+    * myRadioGroup->find( i18n( "radio text1" ) )->setEnabled( false );<br>
     * myLayout->addWidget( myRadioGroup, 0, 0 );<br>
     *
     * @param  cls         The class name used in KConfig (ex. "Archives")
@@ -489,7 +489,7 @@ private:
 };
 
 /**
-  * KONFIGURATOR_CHECKBOX_PARAM is the basic item of checkbox arrays. It tqcontains
+  * KONFIGURATOR_CHECKBOX_PARAM is the basic item of checkbox arrays. It contains
   * every information related to a checkbox.
   */
 struct KONFIGURATOR_CHECKBOX_PARAM

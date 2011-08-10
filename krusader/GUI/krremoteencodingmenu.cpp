@@ -66,7 +66,7 @@ void KrRemoteEncodingMenu::slotAboutToShow()
     int id = 1;
     TQStringList::Iterator it;
     for (it = encodingNames.begin(); it != encodingNames.end(); ++it, ++id)
-      if ((*it).tqfind(charset) != -1)
+      if ((*it).find(charset) != -1)
         break;
 
 //     kdDebug() << k_funcinfo << "URL=" << currentURL << " charset=" << charset << endl;

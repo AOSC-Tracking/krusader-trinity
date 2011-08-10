@@ -169,11 +169,11 @@ bool KrViewer::eventFilter (  TQObject * /* watched */, TQEvent * e )
 	if( e->type() == TQEvent::AccelOverride )
 	{
 		TQKeyEvent* ke = (TQKeyEvent*) e;
-		if( reservedKeys.tqcontains( ke->key() ) )
+		if( reservedKeys.contains( ke->key() ) )
 		{
 			ke->accept();
 			
-			int id = reservedKeyIDs[ reservedKeys.tqfindIndex( ke->key() ) ];
+			int id = reservedKeyIDs[ reservedKeys.findIndex( ke->key() ) ];
 			if( id != -1 )
 			{
 				// don't activate the close functions immediately!
@@ -193,7 +193,7 @@ bool KrViewer::eventFilter (  TQObject * /* watched */, TQEvent * e )
 	else if( e->type() == TQEvent::KeyPress )
 	{
 		TQKeyEvent* ke = (TQKeyEvent*) e;
-		if( reservedKeys.tqcontains( ke->key() ) )
+		if( reservedKeys.contains( ke->key() ) )
 		{
 			ke->accept();
 			return true;
@@ -606,7 +606,7 @@ bool KrViewer::viewGeneric() {
 		viewerMenu->setItemEnabled( 1, false );
 
 	if ( !generic_part ) {
-		if ( mimetype.tqcontains( "html" ) ) {
+		if ( mimetype.contains( "html" ) ) {
 			KHTMLPart * p = new KHTMLPart( this, 0, 0, 0, KHTMLPart::BrowserViewGUI );
 			connect( p->browserExtension(), TQT_SIGNAL( openURLRequest( const KURL &, const KParts::URLArgs & ) ),
 			         TQT_TQOBJECT(this), TQT_SLOT( handleOpenURLRequest( const KURL &, const KParts::URLArgs & ) ) );

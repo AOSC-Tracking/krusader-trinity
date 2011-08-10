@@ -704,7 +704,7 @@ void ListPanel::slotUpdate() {
 
    TQString origin = virtualPath().prettyURL(-1);
    if ( origin.right( 1 ) != "/" && !( ( func->files() ->vfs_getType() == vfs::FTP ) && isFtp &&
-                                       origin.tqfind( '/', origin.tqfind( ":/" ) + 3 ) == -1 ) ) {
+                                       origin.find( '/', origin.find( ":/" ) + 3 ) == -1 ) ) {
       view->addItems( func->files() );
    } else
       view->addItems( func->files(), false );

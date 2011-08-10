@@ -81,13 +81,13 @@ KURL KRSpWidgets::newFTP() {
 	TQString password = p->password->text().simplifyWhiteSpace();
 	TQString uri = p->url->currentText();
 
-	int uriStart = uri.tqfindRev( '@' ); /* lets the user enter user and password in the URI field */
+	int uriStart = uri.findRev( '@' ); /* lets the user enter user and password in the URI field */
 	if( uriStart != -1 ) {
 		TQString uriUser = uri.left( uriStart );
 		TQString uriPsw = TQString();
 		uri = uri.mid( uriStart + 1 );
 
-		int pswStart = uriUser.tqfind( ':' ); /* getting the password name from the URL */
+		int pswStart = uriUser.find( ':' ); /* getting the password name from the URL */
 		if( pswStart != -1 ) {
 			uriPsw = uriUser.mid( pswStart + 1 );
 			uriUser = uriUser.left( pswStart );
@@ -102,7 +102,7 @@ KURL KRSpWidgets::newFTP() {
 
 	TQString host = uri;               /* separating the hostname and path from the uri */
 	TQString path = TQString();
-	int pathStart = uri.tqfind( "/" );
+	int pathStart = uri.find( "/" );
 	if( pathStart != -1 ) {
 		path = host.mid( pathStart );
 		host = host.left( pathStart );
@@ -184,7 +184,7 @@ void KRMaskChoiceSub::accept() {
   TQStrList list;
   TQListBoxItem *i=preSelections->firstItem();
   while (i!=0) {
-    if (i->text().tqfind(i18n("compare mode"))==-1)
+    if (i->text().find(i18n("compare mode"))==-1)
       list.append(i->text().local8Bit());
     i=i->next();
   }
@@ -211,7 +211,7 @@ void KRMaskChoiceSub::addSelection() {
 
 void KRMaskChoiceSub::deleteSelection() {
   if (preSelections->currentItem()!=-1 &&
-      preSelections->currentText().tqfind(i18n("compare mode"))==-1) {
+      preSelections->currentText().find(i18n("compare mode"))==-1) {
     preSelections->removeItem(preSelections->currentItem());
     preSelections->update();
   }
@@ -283,7 +283,7 @@ int QuickNavLineEdit::charCount(const TQMouseEvent * const m,TQString * const st
 	
 	int numOfChars = findCharFromPos(tx, fontMetrics(), m->x() - 5);
 	if(str) *str=tx;
-	return tx.tqfind('/', numOfChars);
+	return tx.find('/', numOfChars);
 }
 
 void QuickNavLineEdit::mouseMoveEvent( TQMouseEvent *m) {

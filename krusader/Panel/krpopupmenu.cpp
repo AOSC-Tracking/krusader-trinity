@@ -76,7 +76,7 @@ KrPopupMenu::KrPopupMenu(ListPanel *thePanel, TQWidget *tqparent) : KPopupMenu(t
       insertItem( i18n("Preview"), &preview, PREVIEW_ID );
    }
 
-   // -------------- Open with: try to tqfind-out which apps can open the file
+   // -------------- Open with: try to find-out which apps can open the file
    // this too, is meaningful only if one file is selected or if all the files
    // have the same mimetype !
    TQString mime = panel->func->getVFile(item)->vfile_getMime();
@@ -177,7 +177,7 @@ KrPopupMenu::KrPopupMenu(ListPanel *thePanel, TQWidget *tqparent) : KPopupMenu(t
    }
    
    // --------- send by mail
-   if ( Krusader::supportedTools().tqcontains( "MAIL" ) && !vf->vfile_isDir() ) {
+   if ( Krusader::supportedTools().contains( "MAIL" ) && !vf->vfile_isDir() ) {
       insertItem( i18n( "Send by Email" ), SEND_BY_EMAIL_ID );
    }
    
@@ -314,7 +314,7 @@ void KrPopupMenu::performAction(int id) {
                
                for ( KrViewItemList::Iterator it2 = otherItems.begin(); it2 != otherItems.end(); ++it2 ) {
                   TQString name = ( *it2 ) ->name();
-                  if( !selectedNames.tqcontains( name ) )
+                  if( !selectedNames.contains( name ) )
                     selectedNames.append( name );
                }
             }
@@ -330,7 +330,7 @@ void KrPopupMenu::performAction(int id) {
          	TQString term = krConfig->readEntry( "Terminal", _Terminal );
          	proc << KrServices::separateArgs( term );
          	if ( !panel->func->getVFile(item)->vfile_isDir() ) proc << "-e" << item->name();
-         	if ( term.tqcontains( "konsole" ) ) {   /* KDE 3.2 bug (konsole is killed by pressing Ctrl+C) */
+         	if ( term.contains( "konsole" ) ) {   /* KDE 3.2 bug (konsole is killed by pressing Ctrl+C) */
          	                                      /* Please remove the patch if the bug is corrected */
 					proc << "&";
             	proc.setUseShell( true );

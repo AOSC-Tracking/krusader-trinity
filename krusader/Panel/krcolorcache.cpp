@@ -108,7 +108,7 @@ TQValueList<TQString> KrColorSettingNames::getColorNames()
 bool KrColorSettingNames::isColorNameValid(const TQString & settingName)
 {
 	initialize();
-	return s_colorNames.tqcontains(settingName);
+	return s_colorNames.contains(settingName);
 }
 
 TQValueList<TQString> KrColorSettingNames::getNumNames()
@@ -120,7 +120,7 @@ TQValueList<TQString> KrColorSettingNames::getNumNames()
 bool KrColorSettingNames::isNumNameValid(const TQString & settingName)
 {
 	initialize();
-	return s_numNames.tqcontains(settingName);
+	return s_numNames.contains(settingName);
 }
 
 TQValueList<TQString> KrColorSettingNames::getBoolNames()
@@ -132,7 +132,7 @@ TQValueList<TQString> KrColorSettingNames::getBoolNames()
 bool KrColorSettingNames::isBoolNameValid(const TQString & settingName)
 {
 	initialize();
-	return s_boolNames.tqcontains(settingName);
+	return s_boolNames.contains(settingName);
 }
 
 
@@ -293,7 +293,7 @@ int KrColorSettings::getNumValue(const TQString & settingName, int defaultValue)
 		krOut << "Invalid number setting name: " << settingName << endl;
 		return 0;
 	}
-	if (!m_impl->m_numValues.tqcontains(settingName))
+	if (!m_impl->m_numValues.contains(settingName))
 		return defaultValue;
 	return m_impl->m_numValues[settingName];
 }
@@ -326,7 +326,7 @@ int KrColorSettings::getBoolValue(const TQString & settingName, bool defaultValu
 		krOut << "Invalid bool setting name: " << settingName << endl;
 		return false;
 	}
-	if (!m_impl->m_boolValues.tqcontains(settingName))
+	if (!m_impl->m_boolValues.contains(settingName))
 		return defaultValue;
 	return m_impl->m_boolValues[settingName];
 }
@@ -722,7 +722,7 @@ void KrColorCache::getColors(TQColorGroup  & result, const KrColorItemType & typ
 		strcat(hashKey, "-Selected");
 
 	// lookup in cache
-	if (!m_impl->m_cachedColors.tqcontains(hashKey))
+	if (!m_impl->m_cachedColors.contains(hashKey))
 		// not found: calculate color group and store it in cache
 		m_impl->m_cachedColors[hashKey] = m_impl->getColors(type);
 

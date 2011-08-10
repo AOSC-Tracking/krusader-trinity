@@ -65,7 +65,7 @@ KrBriefViewToolTip::KrBriefViewToolTip( KrBriefView *lv, TQWidget *tqparent )
 
 void KrBriefViewToolTip::maybeTip( const TQPoint &pos )
 {
-  TQIconViewItem *item = view->tqfindItem( view->viewportToContents( pos ) );
+  TQIconViewItem *item = view->findItem( view->viewportToContents( pos ) );
 
   if ( !item )
     return;
@@ -173,7 +173,7 @@ void KrBriefView::resizeEvent ( TQResizeEvent * resEvent )
    TQRect viewportRect( pnt, resEvent->oldSize() );
    bool visible = false;
    if( currentItem() )
-     visible = viewportRect.tqcontains( currentItem()->rect() );
+     visible = viewportRect.contains( currentItem()->rect() );
 
    KIconView::resizeEvent( resEvent );
    redrawColumns();
@@ -442,7 +442,7 @@ void KrBriefView::contentsMousePressEvent( TQMouseEvent * e ) {
    e = transformMouseEvent( e );
    
    TQIconViewItem * oldCurrent = currentItem();
-   TQIconViewItem *newCurrent = tqfindItem( e->pos() );
+   TQIconViewItem *newCurrent = findItem( e->pos() );
    if (e->button() == Qt::RightButton)
    {
 	if (KrSelectionMode::getSelectionHandler()->rightButtonSelects() || 
@@ -596,7 +596,7 @@ void KrBriefView::contentsMousePressEvent( TQMouseEvent * e ) {
 
      KIconView::contentsMousePressEvent( e );
 
-     if( name.isEmpty() || _dict.tqfind( name ) == 0 ) // is the file still valid?
+     if( name.isEmpty() || _dict.find( name ) == 0 ) // is the file still valid?
        newCurrent = 0;                // if not, don't do any crash...
    } else {
      // emitting the missing signals from TQIconView::contentsMousePressEvent();
@@ -638,7 +638,7 @@ void KrBriefView::contentsMouseReleaseEvent( TQMouseEvent * e ) {
    
   if( pressedItem ) {
     TQPoint vp = contentsToViewport( e->pos() );
-    TQIconViewItem *newCurrent = tqfindItem( e->pos() );
+    TQIconViewItem *newCurrent = findItem( e->pos() );
 
     if( pressedItem == newCurrent ) {
       // emitting the missing signals from TQIconView::contentsMouseReleaseEvent();
@@ -659,7 +659,7 @@ void KrBriefView::contentsMouseReleaseEvent( TQMouseEvent * e ) {
 void KrBriefView::contentsMouseMoveEvent ( TQMouseEvent * e ) {
    e = transformMouseEvent( e );
 
-   if ( ( singleClicked || renameTimer.isActive() ) && tqfindItem( e->pos() ) != clickedItem )
+   if ( ( singleClicked || renameTimer.isActive() ) && findItem( e->pos() ) != clickedItem )
       CANCEL_TWO_CLICK_RENAME;
 
    if ( dragStartPos != TQPoint( -1, -1 ) &&
@@ -669,7 +669,7 @@ void KrBriefView::contentsMouseMoveEvent ( TQMouseEvent * e ) {
       && KrSelectionMode::getSelectionHandler()->rightButtonSelects() 
       && KrSelectionMode::getSelectionHandler()->showContextMenu() >= 0 && e->state() == Qt::RightButton)
       {
-         TQIconViewItem *newItem = tqfindItem( e->pos() );
+         TQIconViewItem *newItem = findItem( e->pos() );
          e->accept();
          if (newItem != lastSwushPosition && newItem)
          {
@@ -743,7 +743,7 @@ void KrBriefView::showContextMenu()
 }
 
 KrViewItem *KrBriefView::getKrViewItemAt( const TQPoint & vp ) {
-   return dynamic_cast<KrViewItem*>( KIconView::tqfindItem( vp ) );
+   return dynamic_cast<KrViewItem*>( KIconView::findItem( vp ) );
 }
 
 bool KrBriefView::acceptDrag( TQDropEvent* ) const {
@@ -1158,7 +1158,7 @@ void KrBriefView::renameCurrentItem() {
    KConfigGroupSaver svr(krConfig,"Look&Feel");
    if (!krConfig->readBoolEntry("Rename Selects Extension", true)) {
      if (it->hasExtension() && !it->VF->vfile_isDir() ) 
-       renameLineEdit()->setSelection(0, it->name().tqfindRev(it->extension())-1);
+       renameLineEdit()->setSelection(0, it->name().findRev(it->extension())-1);
    }*/
 }
 
@@ -1398,7 +1398,7 @@ void KrBriefView::changeSortOrder()
 
 TQMouseEvent * KrBriefView::transformMouseEvent( TQMouseEvent * e )
 {
-	if( tqfindItem( e->pos() ) != 0 )
+	if( findItem( e->pos() ) != 0 )
 		return e;
 	
 	TQIconViewItem *closestItem = 0;

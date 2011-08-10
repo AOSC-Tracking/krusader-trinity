@@ -19,7 +19,7 @@ QueueManager::~QueueManager()
 
 Queue* QueueManager::queue(const TQString& queueName)
 {
-	if (!_queues.tqcontains(queueName))
+	if (!_queues.contains(queueName))
 		return 0;
 	return _queues[queueName];
 }

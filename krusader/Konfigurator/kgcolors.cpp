@@ -66,10 +66,10 @@ KgColors::KgColors( bool first, TQWidget* tqparent,  const char* name ) :
 
   generals->tqlayout()->setSpacing( 5 );
 
-  connect( generals->tqfind( "KDE Default" ), TQT_SIGNAL( stateChanged( int ) ), this, TQT_SLOT( slotDisable() ) );
-  connect( generals->tqfind( "Enable Alternate Background" ), TQT_SIGNAL( stateChanged( int ) ), this, TQT_SLOT( generatePreview() ) );
-  connect( generals->tqfind( "Show Current Item Always" ), TQT_SIGNAL( stateChanged( int ) ), this, TQT_SLOT( slotDisable() ) );
-  connect( generals->tqfind( "Dim Inactive Colors" ), TQT_SIGNAL( stateChanged( int ) ), this, TQT_SLOT( slotDisable() ) );
+  connect( generals->find( "KDE Default" ), TQT_SIGNAL( stateChanged( int ) ), this, TQT_SLOT( slotDisable() ) );
+  connect( generals->find( "Enable Alternate Background" ), TQT_SIGNAL( stateChanged( int ) ), this, TQT_SLOT( generatePreview() ) );
+  connect( generals->find( "Show Current Item Always" ), TQT_SIGNAL( stateChanged( int ) ), this, TQT_SLOT( slotDisable() ) );
+  connect( generals->find( "Dim Inactive Colors" ), TQT_SIGNAL( stateChanged( int ) ), this, TQT_SLOT( slotDisable() ) );
 
   kgColorsLayout->addMultiCellWidget( generalGrp, 0 ,0, 0, 2 );
   TQHBox *hbox = new TQHBox( tqparent );
@@ -286,7 +286,7 @@ TQLabel *KgColors::getSelectorLabel( TQString name )
 
 void KgColors::slotDisable()
 {
-  bool enabled = generals->tqfind( "KDE Default" )->isChecked();
+  bool enabled = generals->find( "KDE Default" )->isChecked();
 
   importBtn->setEnabled(!enabled);
   exportBtn->setEnabled(!enabled);
@@ -297,17 +297,17 @@ void KgColors::slotDisable()
   for( int j = 0; itemList.at( j ) && j < endOfPanelColors ; j++ )
     itemList.at( j )->setEnabled( !enabled );
 
-  generals->tqfind("Enable Alternate Background")->setEnabled( enabled );
-  generals->tqfind("Show Current Item Always")->setEnabled( !enabled );
-  generals->tqfind("Dim Inactive Colors")->setEnabled( !enabled );
+  generals->find("Enable Alternate Background")->setEnabled( enabled );
+  generals->find("Show Current Item Always")->setEnabled( !enabled );
+  generals->find("Dim Inactive Colors")->setEnabled( !enabled );
 
-  bool dimmed = !enabled && generals->tqfind("Dim Inactive Colors")->isChecked();
+  bool dimmed = !enabled && generals->find("Dim Inactive Colors")->isChecked();
   if( dimmed )
     inactiveColorStack->raiseWidget( dimmedInactiveWidget );
   else
     inactiveColorStack->raiseWidget( normalInactiveWidget );
 
-  enabled = enabled || !generals->tqfind( "Show Current Item Always" )->isChecked();
+  enabled = enabled || !generals->find( "Show Current Item Always" )->isChecked();
 
   getColorSelector( "Inactive Current Foreground" )->setEnabled( !enabled );
   getColorSelector( "Inactive Current Background" )->setEnabled( !enabled );
@@ -440,10 +440,10 @@ void KgColors::generatePreview()
             colorSettings.setColorValue( *it, TQColor());
     }
 
-    colorSettings.setBoolValue("KDE Default", generals->tqfind( "KDE Default" )->isChecked());
-    colorSettings.setBoolValue("Enable Alternate Background", generals->tqfind( "Enable Alternate Background" )->isChecked());
-    colorSettings.setBoolValue("Show Current Item Always", generals->tqfind( "Show Current Item Always" )->isChecked());
-    colorSettings.setBoolValue("Dim Inactive Colors", generals->tqfind( "Dim Inactive Colors" )->isChecked());
+    colorSettings.setBoolValue("KDE Default", generals->find( "KDE Default" )->isChecked());
+    colorSettings.setBoolValue("Enable Alternate Background", generals->find( "Enable Alternate Background" )->isChecked());
+    colorSettings.setBoolValue("Show Current Item Always", generals->find( "Show Current Item Always" )->isChecked());
+    colorSettings.setBoolValue("Dim Inactive Colors", generals->find( "Dim Inactive Colors" )->isChecked());
     colorSettings.setNumValue("Dim Factor", dimFactor->value());
 
     // let the color cache use the local color settings
@@ -498,7 +498,7 @@ bool KgColors::apply()
 }
 
 void KgColors::slotImportColors() {
-	// tqfind $KDEDIR/share/apps/krusader
+	// find $KDEDIR/share/apps/krusader
 	TQString basedir = KGlobal::dirs()->findResourceDir("appdata", "total_commander.keymap");
 	// let the user select a file to load
 	TQString file = KFileDialog::getOpenFileName(basedir, "*.color", 0, i18n("Select a color-scheme file"));
@@ -593,7 +593,7 @@ void KgColors::deserialize(TQDataStream & stream)
         if( value == "true" || value == "yes" || value == "on" || value == "1" )
           bValue = true;
 
-        generals->tqfind( name )->setChecked( bValue );
+        generals->find( name )->setChecked( bValue );
         continue;
       }
 
@@ -618,7 +618,7 @@ void KgColors::serializeItem(class TQDataStream & stream, const char * name)
         || (strcmp( name, "Show Current Item Always") == 0)
         || (strcmp( name, "Dim Inactive Colors") == 0) )
    {
-     bool bValue = generals->tqfind( name )->isChecked();
+     bool bValue = generals->find( name )->isChecked();
      stream << TQString( bValue ? "true" : "false" );
    }
    else if( strcmp( name, "Dim Factor") == 0 )

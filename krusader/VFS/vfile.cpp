@@ -149,7 +149,7 @@ char vfile::vfile_isExecutable() const {
 const TQString& vfile::vfile_getMime(bool fast){
 	if( vfile_mimeType == TQString() ){ // mimetype == "" is OK so don't check mimetype.empty() !
 		vfile_mimeType = KMimeType::findByURL( vfile_getUrl(),vfile_getMode(),vfile_getUrl().isLocalFile(),fast)->name();
-		if( vfile_mimeType.tqcontains("directory") ) vfile_perm[0] = 'd', vfile_isdir = true;
+		if( vfile_mimeType.contains("directory") ) vfile_perm[0] = 'd', vfile_isdir = true;
 	}
 	return vfile_mimeType;
 }

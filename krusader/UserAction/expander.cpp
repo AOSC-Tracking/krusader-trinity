@@ -339,7 +339,7 @@ TQString bashquote( TQString s ) {
     static const TQString evilstuff = "\\\"'`()[]{}!?;$&<>| \t\r\n";		// stuff that should get escaped
      
     for ( unsigned int i = 0; i < evilstuff.length(); ++i )
-        s.tqreplace( evilstuff[ i ], (TQString("\\") + evilstuff[ i ]) );
+        s.replace( evilstuff[ i ], (TQString("\\") + evilstuff[ i ]) );
 
     return s;
 }
@@ -946,7 +946,7 @@ TagString exp_Script::expFunc( const ListPanel*, const TQStringList& parameter, 
    }
 
    TQString filename = parameter[0];
-   if ( filename.tqfind('/') && KURL::isRelativeURL(filename) ) {
+   if ( filename.find('/') && KURL::isRelativeURL(filename) ) {
       // this return the local version of the file if this exists. else the global one is returnd
       filename = locate( "data", "krusader/js/"+filename );
    }
@@ -1079,7 +1079,7 @@ TagString Expander::expandCurrent( const TQString& stringToExpand, bool useUrl )
 //    bool inQuotes = false;
    unsigned int idx = 0;
    while ( idx < stringToExpand.length() ) {
-      if ( ( begin = stringToExpand.tqfind( '%', idx ) ) == -1 ) break;
+      if ( ( begin = stringToExpand.find( '%', idx ) ) == -1 ) break;
       if ( ( end = findEnd( stringToExpand, begin ) ) == -1 ) {
          setError(Error(Error::S_FATAL,Error::C_SYNTAX,i18n("Error: unterminated % in Expander::expandCurrent")) );
          return TQString();
@@ -1097,7 +1097,7 @@ TagString Expander::expandCurrent( const TQString& stringToExpand, bool useUrl )
         if ( error() )
            return TQString();
         char panelIndicator = exp.lower()[0].latin1();
-        exp.tqreplace( 0, 1, "" );
+        exp.replace( 0, 1, "" );
         for ( i = 0; i < placeholderCount(); ++i )
            if ( exp == placeholder( i )->expression() ) {
 //               kdDebug() << "---------------------------------------" << endl;
@@ -1145,8 +1145,8 @@ TagStringList Expander::separateParameter( TQString* const exp, bool useUrl ) {
    TQStringList parameter1;
    TQString result;
    int begin, end;
-   if ( ( begin = exp->tqfind( '(' ) ) != -1 ) {
-      if ( ( end = exp->tqfindRev( ')' ) ) == -1 ) {
+   if ( ( begin = exp->find( '(' ) ) != -1 ) {
+      if ( ( end = exp->findRev( ')' ) ) == -1 ) {
          setError(Error(Error::S_FATAL,Error::C_SYNTAX,i18n("Error: missing ')' in Expander::separateParameter") ));
          return TagStringList();
       }
@@ -1159,7 +1159,7 @@ TagStringList Expander::separateParameter( TQString* const exp, bool useUrl ) {
       while ( idx < result.length() ) {
          if ( result[ idx ].latin1() == '\\' ) {
             if ( result[ idx+1 ].latin1() == '"')
-               result.tqreplace( idx, 1, "" );
+               result.replace( idx, 1, "" );
          }
          if ( result[ idx ].latin1() == '"' )
             inQuotes = !inQuotes;
@@ -1187,10 +1187,10 @@ TagStringList Expander::separateParameter( TQString* const exp, bool useUrl ) {
 }
 
 int Expander::findEnd( const TQString& str, int start ) {
-   int end = str.tqfind( '%', start + 1 );
+   int end = str.find( '%', start + 1 );
    if ( end == -1 )
       return end;
-   int bracket = str.tqfind( '(', start + 1 );
+   int bracket = str.find( '(', start + 1 );
    if ( end < bracket || bracket == -1 )
       return end;
       

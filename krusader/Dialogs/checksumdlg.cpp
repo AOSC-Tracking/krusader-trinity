@@ -78,7 +78,7 @@ TQStringList sumFailedFunc(const TQStringList& stdOut, const TQStringList& stdEr
 	// grep for the ":FAILED" substring
 	const TQString tmp = TQString(": FAILED").local8Bit();
 	for (uint i=0; i<stdOut.size();++i) {
-		if (stdOut[i].tqfind(tmp) != -1)
+		if (stdOut[i].find(tmp) != -1)
 			result += stdOut[i];
 	}
 	
@@ -417,7 +417,7 @@ bool MatchChecksumDlg::verifyChecksumFile(TQString path,  TQString& extension) {
 	TQFileInfo f(path);
 	if (!f.exists() || f.isDir()) return false;
 	// find the extension
-	extension = path.mid(path.tqfindRev(".")+1);
+	extension = path.mid(path.findRev(".")+1);
 	
 	// TODO: do we know the extension? if not, ask the user for one
 	
@@ -501,7 +501,7 @@ ChecksumResultsDlg::ChecksumResultsDlg(const TQStringList& stdOut, const TQStrin
 		for ( TQStringList::ConstIterator it = stdOut.begin(); it != stdOut.end(); ++it ) {
 			TQString line = (*it);
 			if(standardFormat) {
-				int space = line.tqfind(' ');
+				int space = line.find(' ');
 				new KListViewItem(lv, line.left(space), line.mid(space+2));
 			} else {
 				new KListViewItem(lv, line);
@@ -559,7 +559,7 @@ ChecksumResultsDlg::ChecksumResultsDlg(const TQStringList& stdOut, const TQStrin
 	
 	if (exec() == Accepted && successes) {
 		if (stdOut.size()>1 && standardFormat && onePerFile->isChecked()) {
-			savePerFile(stdOut, suggestedFilename.mid(suggestedFilename.tqfindRev('.')));
+			savePerFile(stdOut, suggestedFilename.mid(suggestedFilename.findRev('.')));
 		} else if (saveFileCb->isEnabled() && saveFileCb->isChecked() && !checksumFile->url().simplifyWhiteSpace().isEmpty()) {
 			saveChecksum(stdOut, checksumFile->url());
 		}
@@ -592,7 +592,7 @@ void ChecksumResultsDlg::savePerFile(const TQStringList& data, const TQString& t
 	krApp->startWaiting(i18n("Saving checksum files..."), 0);
 	for ( TQStringList::ConstIterator it = data.begin(); it != data.end(); ++it ) {
 			TQString line = (*it);
-			TQString filename = line.mid(line.tqfind(' ')+2)+type;
+			TQString filename = line.mid(line.find(' ')+2)+type;
 			if (!saveChecksum(*it, filename)) {
 				KMessageBox::error(0, i18n("Errors occured while saving multiple checksums. Stopping"));
 				krApp->stopWait();

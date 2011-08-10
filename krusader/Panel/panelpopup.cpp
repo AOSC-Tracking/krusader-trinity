@@ -360,7 +360,7 @@ void PanelPopup::quickSelect(const TQString &tqmask) {
 void PanelPopup::quickSelectStore() {
         krConfig->setGroup( "Private" );
         TQStringList lst = krConfig->readListEntry( "Predefined Selections" );
-        if ( lst.tqfind(quickSelectCombo->currentText()) == lst.end() )
+        if ( lst.find(quickSelectCombo->currentText()) == lst.end() )
            lst.append( quickSelectCombo->currentText() );
         krConfig->writeEntry( "Predefined Selections", lst );
 }

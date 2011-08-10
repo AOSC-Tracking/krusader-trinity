@@ -156,10 +156,10 @@ TQString PanelTabBar::squeeze(TQString text, int index) {
     {
       TQString shortName;
                     
-      if( text.tqcontains( ":/" ) )
-        shortName = text.left( text.tqfind( ":/" ) ) + ":";
+      if( text.contains( ":/" ) )
+        shortName = text.left( text.find( ":/" ) ) + ":";
     
-      shortName += text.mid( text.tqfindRev( "/" ) + 1 );      
+      shortName += text.mid( text.findRev( "/" ) + 1 );      
       text = shortName;
     }
     

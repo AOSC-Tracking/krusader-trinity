@@ -38,7 +38,7 @@
 #include <tqlabel.h>
 #include <tqpushbutton.h>
 
-#define PS(x) lst.tqcontains(x)>0
+#define PS(x) lst.contains(x)>0
 
 // clear the statics first
 TQString PackGUI::filename=0;
