@@ -154,7 +154,7 @@ To checkout the Krusader KDE3 version from cvs:
 ===============================================
 $ cvs -d:pserver:anonymous@krusader.cvs.sourceforge.net:/cvsroot/krusader login
 $ cvs -z3 -d:pserver:anonymous@krusader.cvs.sourceforge.net:/cvsroot/krusader \
-co krusader_kde3
+co krusader_trinity
  
 (Note: updates from within the modules directory do not need the -d
 parameter)
@@ -269,7 +269,7 @@ messages, we want to prevent this, of course.
 Use i18n_status and ViewCVS to see the live translation status of
 Krusader!
 http://krusader.sourceforge.net/i18n.php
-http://cvs.sourceforge.net/cgi-bin/viewcvs.cgi/krusader/krusader_kde3/po/
+http://cvs.sourceforge.net/cgi-bin/viewcvs.cgi/krusader/krusader_trinity/po/
 The latest news about the Krusader translations will be in the LATEST
 NEWS section of the "Krusader translation howto".
 

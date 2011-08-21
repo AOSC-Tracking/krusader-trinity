@@ -233,7 +233,7 @@ Installation FAQ
     In this case only the Help menu is visible and all other menu items like
     e.g. File and Select are missing. This is because some distributions put
     the krusaderui.rc file in the wrong directory. To solve the problem, just
-    copy the krusaderui.rc file from the package krusader_kde3/krusader/
+    copy the krusaderui.rc file from the package krusader_trinity/krusader/
     krusaderui.rc to $KDEDIR/share/apps/krusader/krusaderui.rc and ~/.kde/
     share/apps/krusader/krusaderui.rc and re-run Krusader. If you have compiled
     Krusader from sources this is often caused if the KDEDIR_-_QTDIR
@@ -468,7 +468,7 @@ Usage FAQ
 7.  Krusader reports "krarc:... protocol not supported" error at opening an
     archive file, what to do?
     Install the krarc slave properly:
-    Copy the kio_krarc.so, kio_krarc.la files into $KDEDIR/lib/kde3
+    Copy the kio_krarc.so, kio_krarc.la files into $KDEDIR/lib/trinity
     Copy the krarc.protocol file into $KDEDIR/share/services
     or the directory where the KIO slaves are placed in your Linux�
     distribution.

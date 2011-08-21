@@ -111,7 +111,7 @@ protected:
 /**
  * The Expander expands the command of an UserAction by replacing all placeholders by thier current values.@n
  * Each placeholder begins with a '%'-sign, followed by one char indicating the panel, followed by a command which may have some paramenter enclosed in brackets and also ends with a '%'-sign.
- * Examples are %aPath% or %rBookmark("/home/jonas/src/krusader_kde3", "yes")%.@n
+ * Examples are %aPath% or %rBookmark("/home/jonas/src/krusader_trinity", "yes")%.@n
  * The panel-indicator has to be either 'a' for the active, 'o' for the other, 'r' for the right, 'l' for the left or '_' for panel-independence.
  * 
  * Currently sopported are these commands can be ordered in three groups (childs are the parameter in the right order):

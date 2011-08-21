@@ -383,7 +383,7 @@
           directory. To solve the problem, just copy the 
           <filename>krusaderui.rc</filename> file from the package 
           <filename>
-          krusader_kde3/krusader/krusaderui.rc</filename> to 
+          krusader_trinity/krusader/krusaderui.rc</filename> to 
           <filename>
           $KDEDIR/share/apps/krusader/krusaderui.rc</filename> and 
           <filename>
@@ -930,7 +930,7 @@
           <filename>kio_krarc.so</filename>, 
           <filename>kio_krarc.la</filename> files into 
           <filename class="directory">
-          $KDEDIR/lib/kde3</filename></para>
+          $KDEDIR/lib/trinity</filename></para>
           <para>Copy the 
           <filename>krarc.protocol</filename> file into 
           <filename class="directory">

@@ -126,7 +126,7 @@ since the Entity Backspace is not defined in
 >CVSNEWS</filename
 ></ulink
 >'>
-<!ENTITY docchangelog_url '<ulink url="http://cvs.sourceforge.net/viewcvs.py/krusader/krusader_kde3/doc/ChangeLog?view=markup"
+<!ENTITY docchangelog_url '<ulink url="http://cvs.sourceforge.net/viewcvs.py/krusader/krusader_trinity/doc/ChangeLog?view=markup"
 >Documentation ChangeLog</ulink
 >'>
 <!ENTITY i18n_page_url '<ulink url="http://www.krusader.org/i18n.php"
@@ -187,7 +187,7 @@ since the Entity Backspace is not defined in
 <!ENTITY online_buglist_url '<ulink url="http://sourceforge.net/tracker/?atid=106488&amp;group_id=6488&amp;func=browse"
 >online bug list</ulink
 >'>
-<!ENTITY i18n_credits_url '<ulink url="http://cvs.sourceforge.net/cgi-bin/viewcvs.cgi/krusader/krusader_kde3/po/"
+<!ENTITY i18n_credits_url '<ulink url="http://cvs.sourceforge.net/cgi-bin/viewcvs.cgi/krusader/krusader_trinity/po/"
 >more translator credits</ulink
 >'>
 

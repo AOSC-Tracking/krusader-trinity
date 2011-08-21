@@ -349,24 +349,24 @@
           changes</para>
         </listitem>
         <listitem>
-          <para>krusader_kde3: the &kde;3 branch that we
+          <para>krusader_trinity: the &kde;3 branch that we
           currently use</para>
         </listitem>
       </itemizedlist></para>
       <para>To check out &krusader; from CVS: 
       <screen><prompt>$</prompt> <userinput><command>cvs</command> <option>-d:pserver:anonymous@krusader.cvs.sourceforge.net:/cvsroot/krusader login</option></userinput></screen>
-      <screen><prompt>$</prompt> <userinput><command>cvs</command> <option>-z3 -d:pserver:anonymous@krusader.cvs.sourceforge.net:/cvsroot/krusader co krusader_kde3</option></userinput></screen>
+      <screen><prompt>$</prompt> <userinput><command>cvs</command> <option>-z3 -d:pserver:anonymous@krusader.cvs.sourceforge.net:/cvsroot/krusader co krusader_trinity</option></userinput></screen>
       (note: updates from within the modules directory do
       not need the -d parameter)</para>
       <para>If you want to check out a specific version of
       &krusader; from CVS (&eg;
       &krusader;-1.60.0) : 
-      <screen><prompt>$</prompt> <userinput><command>cvs</command> <option>-z3 -d:pserver:anonymous@krusader.cvs.sourceforge.net:/cvsroot/krusader co -rversion_1_60_0 krusader_kde3</option></userinput></screen>
+      <screen><prompt>$</prompt> <userinput><command>cvs</command> <option>-z3 -d:pserver:anonymous@krusader.cvs.sourceforge.net:/cvsroot/krusader co -rversion_1_60_0 krusader_trinity</option></userinput></screen>
       </para>
       <para>If you want to check out a specific date of
       &krusader; from CVS (&eg;
       &krusader;-2006-10-29) : 
-      <screen><prompt>$</prompt> <userinput><command>cvs</command> <option>-z3 -d:pserver:anonymous@krusader.cvs.sourceforge.net:/cvsroot/krusader co -D2006-10-29 krusader_kde3</option></userinput></screen>
+      <screen><prompt>$</prompt> <userinput><command>cvs</command> <option>-z3 -d:pserver:anonymous@krusader.cvs.sourceforge.net:/cvsroot/krusader co -D2006-10-29 krusader_trinity</option></userinput></screen>
       </para>
       <para>Mostly being &gentoo; users, we provide a
       &gentoo-life-ebuild-url; for all those who want to
@@ -384,9 +384,9 @@
       it is also possible to
       &browse-svn-repo-url;.</para>
       <para>To check out the latest &krusader; 1.x for
-      &kde; 3 from SVN: (NOTE: at moment of writing use CVS for krusader_kde3, since krusader_kde3
+      &kde; 3 from SVN: (NOTE: at moment of writing use CVS for krusader_trinity, since krusader_trinity
       is developed in CVS and NOT in SVN, currently you will get an old version in SVN) 
-      <screen><prompt>$</prompt> <userinput><command>svn</command> <option>co https://krusader.svn.sourceforge.net/svnroot/krusader/trunk/krusader_kde3</option></userinput></screen>
+      <screen><prompt>$</prompt> <userinput><command>svn</command> <option>co https://krusader.svn.sourceforge.net/svnroot/krusader/trunk/krusader_trinity</option></userinput></screen>
       To check out the latest &krusader; 2.x
       for &kde; 4 from SVN:
       <screen><prompt>$</prompt> <userinput><command>svn</command> <option>co https://krusader.svn.sourceforge.net/svnroot/krusader/trunk/krusader_kde4</option></userinput></screen>
@@ -443,7 +443,7 @@
 </para>
 
 <para><link linkend="version_scheme">Download</link> the &krusader; sourcecode, unpack and 
-enter the <filename>krusader_kde3</filename> directory.</para>
+enter the <filename>krusader_trinity</filename> directory.</para>
 
 <para> 
 The next command will create <command>./configure</command>
@@ -480,7 +480,7 @@ It's recommended to use enable the full debug, so that you can possible problems
 <title>SuSE</title>
 <para>Install the <link linkend="faqi_missing_libs">build dependencies</link> for &krusader;</para>  
 <para><link linkend="version_scheme">Download</link> the &krusader; sourcecode, unpack and 
-enter the <filename>krusader_kde3</filename> directory. Now you can compile and install &krusader;
+enter the <filename>krusader_trinity</filename> directory. Now you can compile and install &krusader;
 <screen>
 <prompt>$</prompt> <userinput><command>make -f</command> <option>Makefile.cvs</option></userinput>
 <prompt>$</prompt> <userinput><command>./configure</command> <option>--prefix=/opt/krusader --enable-debug=full</option></userinput>
@@ -499,7 +499,7 @@ enter the <filename>krusader_kde3</filename> directory. Now you can compile and 
 are installed by your package managment system. 
 Please don't use the <filename>/usr/local</filename> directory as it simply won't work.</para> 
 <para>Install the <link linkend="faqi_missing_libs">build dependencies</link> for &krusader;</para>  
-<para><link linkend="version_scheme">Download</link> the &krusader; sourcecode, unpack and enter the <filename>krusader_kde3</filename> directory. Now you can compile and install &krusader;
+<para><link linkend="version_scheme">Download</link> the &krusader; sourcecode, unpack and enter the <filename>krusader_trinity</filename> directory. Now you can compile and install &krusader;
 <screen>
 <prompt>$</prompt> <userinput><command>make -f</command> <option>Makefile.cvs</option></userinput>
 <prompt>$</prompt> <userinput><command>./configure</command> <option>--prefix=/usr</option></userinput>
@@ -611,7 +611,7 @@ Please don't use the <filename>/usr/local</filename> directory as it simply won'
           <replaceable>&lt;path to your KDE
           installation&gt;</replaceable> &eg; 
           <filename>/usr</filename> or 
-          <filename>/opt/kde3</filename></para>
+          <filename>/opt/trinity</filename></para>
           <para>Normally your distribution will set them for you,
           but experience has shown that some do not. You can easily
           check the values with the 
@@ -845,10 +845,10 @@ Good - your configure finished. Start make now
           the following messages: 
 <screen>
 foo
-make[2]: Leaving directory `/home/source/krusader_kde3/tar'
-make[2]: Entering directory `/home/source/krusader_kde3'
-make[2]: Leaving directory `/home/source/krusader_kde3'
-make[1]: Leaving directory `/home/source/krusader_kde3'
+make[2]: Leaving directory `/home/source/krusader_trinity/tar'
+make[2]: Entering directory `/home/source/krusader_trinity'
+make[2]: Leaving directory `/home/source/krusader_trinity'
+make[1]: Leaving directory `/home/source/krusader_trinity'
 <prompt>bash$</prompt>
 </screen>
           </para>

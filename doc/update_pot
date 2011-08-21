@@ -21,7 +21,7 @@
 # * MA 02111-1307, USA.                                                     *
 # ***************************************************************************
 #
-# This script creates *.pot translation template files in the krusader_kde3/doc/i18n folder
+# This script creates *.pot translation template files in the krusader_trinity/doc/i18n folder
 # with xml2pot *.docbook > *.docbook.pot
 
 # Requirements: bash, xml2pot, perl
@@ -49,7 +49,7 @@ for FILENAME in $(ls *.docbook);do
     perl -p -i -e 's/kde-i18n-doc\@kde.org/krusader-i18n\@googlegroups.com/g' ${FILENAME}.pot
 done
 
-# move pot files to folder krusader_kde3/doc/i18n/pot since they don't belong in the english folder
+# move pot files to folder krusader_trinity/doc/i18n/pot since they don't belong in the english folder
 mv *.pot ../i18n/pot
 
 echo NOTE: This script sould only be used by the Documentation i18n coordinator or the Krusader Krew

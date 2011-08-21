@@ -86,7 +86,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(-,root,root,-)
 %doc doc/actions_tutorial.txt AUTHORS ChangeLog COPYING CVSNEWS FAQ README TODO
 %{_bindir}/krusader
-%{_libdir}/kde3/kio_*.*
+%{_libdir}/trinity/kio_*.*
 %{_datadir}/applications/kde/*krusader*.desktop
 %{_datadir}/apps/konqueror/servicemenus/isoservice.desktop
 %{_datadir}/apps/krusader/
@@ -152,10 +152,10 @@ rm -rf $RPM_BUILD_ROOT
 * Wed Aug 10 2005 Marcin Garski <mgarski[AT]post.pl> 1.60.0-1
 - Updated to version 1.60.0 & clean up for Fedora Extras
 
-* Fri Dec 17 2004 Marcin Garski <mgarski[AT]post.pl> 1.51.fc2kde331
+* Fri Dec 17 2004 Marcin Garski <mgarski[AT]post.pl> 1.51.fc2trinity31
 - Updated to version 1.51
 
-* Sat Nov 11 2004 Marcin Garski <mgarski[AT]post.pl> 1.50.fc2kde331
+* Sat Nov 11 2004 Marcin Garski <mgarski[AT]post.pl> 1.50.fc2trinity31
 - Added Requires:
 
 * Tue Nov 02 2004 Marcin Garski <mgarski[AT]post.pl> 1.50.fc2

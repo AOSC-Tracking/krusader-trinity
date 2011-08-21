@@ -83,7 +83,7 @@ http://groups.google.com/group/krusader-devel/browse_thread/thread/d102adec2edcf
 '<ulink url="http://www.krusader.org/text.php?t=cvs.changelog"><filename>ChangeLog</filename></ulink>'>
 <!ENTITY cvsnews-url
 '<ulink url="http://www.krusader.org/text.php?t=cvs.news"><filename>CVSNEWS</filename></ulink>'>
-<!ENTITY docchangelog-url '<ulink url="http://cvs.sourceforge.net/viewcvs.py/krusader/krusader_kde3/doc/ChangeLog?view=markup">Documentation ChangeLog</ulink>'>
+<!ENTITY docchangelog-url '<ulink url="http://cvs.sourceforge.net/viewcvs.py/krusader/krusader_trinity/doc/ChangeLog?view=markup">Documentation ChangeLog</ulink>'>
 <!ENTITY i18n-page-url '<ulink url="http://www.krusader.org/i18n.php">i18n page</ulink>'>
 
 <!ENTITY deb-requirements-url '<ulink url="http://packages.debian.org/unstable/utils/krusader">requirements on &debian;</ulink>'>
@@ -107,7 +107,7 @@ http://groups.google.com/group/krusader-devel/browse_thread/thread/d102adec2edcf
 
 <!ENTITY online-buglist-url '<ulink url="http://sourceforge.net/tracker/?atid=106488&amp;group_id=6488&amp;func=browse">online bug list</ulink>'>
 <!ENTITY patch-tracker-url '<ulink url="http://sourceforge.net/tracker/?group_id=6488&amp;atid=306488">Patch Tracker</ulink>'>
-<!ENTITY i18n-credits-url '<ulink url="http://krusader.cvs.sourceforge.net/krusader/krusader_kde3/po/">more translator credits</ulink>'>
+<!ENTITY i18n-credits-url '<ulink url="http://krusader.cvs.sourceforge.net/krusader/krusader_trinity/po/">more translator credits</ulink>'>
 
 
 <!ENTITY subversion-url '<ulink url="http://sourceforge.net/svn/?group_id=6488">Subversion</ulink>'>

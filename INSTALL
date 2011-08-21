@@ -215,20 +215,20 @@ the Enter key.
 Currently, there are two module options:
     * krusader_kde2: the KDE2 branch, stable but it is basically v1.01 and
       there are no planned changes
-    * krusader_kde3: the KDE3 branch that we currently use
+    * krusader_trinity: the KDE3 branch that we currently use
 To check out Krusader from CVS:
 $ cvs -d:pserver:anonymous@krusader.cvs.sourceforge.net:/cvsroot/krusader login
 $ cvs -z3 -d:pserver:anonymous@krusader.cvs.sourceforge.net:/cvsroot/krusader
-co krusader_kde3
+co krusader_trinity
 (note: updates from within the modules directory do not need the -d parameter)
 If you want to check out a specific version of Krusader from CVS (e.g.
 Krusader-1.60.0) :
 $ cvs -z3 -d:pserver:anonymous@krusader.cvs.sourceforge.net:/cvsroot/krusader
-co -rversion_1_60_0 krusader_kde3
+co -rversion_1_60_0 krusader_trinity
 If you want to check out a specific date of Krusader from CVS (e.g. Krusader-
 2006-10-29) :
 $ cvs -z3 -d:pserver:anonymous@krusader.cvs.sourceforge.net:/cvsroot/krusader
-co -D2006-10-29 krusader_kde3
+co -D2006-10-29 krusader_trinity
 Mostly being Gentoo® users, we provide a Gentoo®_Live_Ebuild for all those who
 want to stay on the bleeding edge of file management and do not want to miss
 the advantages of portage. Please take a look at our Krusader's_Cutting_Edge
@@ -238,10 +238,10 @@ Subversion
 Subversion is used for the Krusader 2.x series for KDE4. it is also possible to
 Browse_the_Subversion_Repository.
 To check out the latest Krusader 1.x for KDE 3 from SVN: (NOTE: at moment of
-writing use CVS for krusader_kde3, since krusader_kde3 is developed in CVS and
+writing use CVS for krusader_trinity, since krusader_trinity is developed in CVS and
 NOT in SVN, currently you will get an old version in SVN)
 $ svn co https://krusader.svn.sourceforge.net/svnroot/krusader/trunk/
-krusader_kde3
+krusader_trinity
 To check out the latest Krusader 2.x for KDE 4 from SVN:
 $ svn co https://krusader.svn.sourceforge.net/svnroot/krusader/trunk/
 krusader_kde4
@@ -273,7 +273,7 @@ export KDEDIR=/usr
 export export KDEDIRS=/opt/krusader:/usr
 Install the build_dependencies for Krusader
 # apt-get build-dep krusader
-Download the Krusader sourcecode, unpack and enter the krusader_kde3 directory.
+Download the Krusader sourcecode, unpack and enter the krusader_trinity directory.
 The next command will create ./configure
 $ make -f Makefile.cvs
 NOTE: you might need to upgrade automake and/or autoconf, if an error message
@@ -291,7 +291,7 @@ $ su -c "make install"
 /opt/bin/krusader runs the compiled Krusader version.
 SuSE
 Install the build_dependencies for Krusader
-Download the Krusader sourcecode, unpack and enter the krusader_kde3 directory.
+Download the Krusader sourcecode, unpack and enter the krusader_trinity directory.
 Now you can compile and install Krusader
 $ make -f Makefile.cvs
 $ ./configure --prefix=/opt/krusader --enable-debug=full
@@ -305,7 +305,7 @@ krusader are usually better so that you don't overwrite files that are
 installed by your package managment system. Please don't use the /usr/local
 directory as it simply won't work.
 Install the build_dependencies for Krusader
-Download the Krusader sourcecode, unpack and enter the krusader_kde3 directory.
+Download the Krusader sourcecode, unpack and enter the krusader_trinity directory.
 Now you can compile and install Krusader
 $ make -f Makefile.cvs
 $ ./configure --prefix=/usr
@@ -350,7 +350,7 @@ the FAQ. If the problem persists, use the help_request to ask for help.
    7. Check the environment variables QTDIRand KDEDIR. Krusader's ./configure
       script needs to know where the Qt&#8482; and KDE directories are.
       QTDIR: <path to your Qt installation> e.g. /usr/lib/qt3 or /usr/qt3
-      KDEDIR: <path to your KDE installation> e.g. /usr or /opt/kde3
+      KDEDIR: <path to your KDE installation> e.g. /usr or /opt/trinity
       Normally your distribution will set them for you, but experience has
       shown that some do not. You can easily check the values with the echo
       command.
@@ -480,10 +480,10 @@ the FAQ. If the problem persists, use the help_request to ask for help.
       runs. If everything goes well, it will e.g. end with the following
       messages:
       foo
-      make[2]: Leaving directory `/home/source/krusader_kde3/tar'
-      make[2]: Entering directory `/home/source/krusader_kde3'
-      make[2]: Leaving directory `/home/source/krusader_kde3'
-      make[1]: Leaving directory `/home/source/krusader_kde3'
+      make[2]: Leaving directory `/home/source/krusader_trinity/tar'
+      make[2]: Entering directory `/home/source/krusader_trinity'
+      make[2]: Leaving directory `/home/source/krusader_trinity'
+      make[1]: Leaving directory `/home/source/krusader_trinity'
       bash$
       If ./configure was successful and make failed for some reason, continue
       to read this page. If you can not find a solution to your problem, feel

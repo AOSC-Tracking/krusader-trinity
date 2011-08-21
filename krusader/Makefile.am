@@ -114,7 +114,7 @@ krusader_LDFLAGS = $(all_libraries) $(kde_RPATH)
 
 
 # this installes alle the icons in the current dir.
-# see the comment in krusader_kde3/icons/Makefile.am for more info
+# see the comment in krusader_trinity/icons/Makefile.am for more info
 KDE_ICON = AUTO
 
 # How it works (by jonas): 
