@@ -281,7 +281,7 @@ KrToolResultTable::KrToolResultTable(TQWidget* parent)
   _tableHeaders.append( i18n("Group") );
   _tableHeaders.append( i18n("Tool") );
   _tableHeaders.append( i18n("Found") );
-  _tableHeaders.append( i18n("tqStatus") );
+  _tableHeaders.append( i18n("Status") );
   _numColumns = _tableHeaders.size();
 
   _grid = initTable();
