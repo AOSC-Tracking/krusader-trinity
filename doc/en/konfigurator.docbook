@@ -1191,13 +1191,13 @@ HTML_PARSING-->
           <row>
             <entry>
               <para>
-                <command>kdesu</command>
+                <command>tdesu</command>
               </para>
             </entry>
             <entry>
               <para>
                 <filename class="directory">
-                  <replaceable>/usr/bin/kdesu</replaceable>
+                  <replaceable>/usr/bin/tdesu</replaceable>
                 </filename>
               </para>
             </entry>

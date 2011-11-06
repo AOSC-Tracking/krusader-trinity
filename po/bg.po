@@ -6317,10 +6317,10 @@ msgstr ""
 
 #: krslots.cpp:547
 msgid ""
-"Can't start root mode krusader, because krusader or kdesu is missing from "
+"Can't start root mode krusader, because krusader or tdesu is missing from "
 "the path. Please configure the dependencies in Konfigurator!"
 msgstr ""
-"Krusader не може да се стартира в root режим, защото krusader или kdesu "
+"Krusader не може да се стартира в root режим, защото krusader или tdesu "
 "липсват в пътя. Моля, настройте зависимостите в конфигуратора!"
 
 #: krslots.cpp:602

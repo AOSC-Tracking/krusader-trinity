@@ -102,13 +102,13 @@ krusader_LDADD   = \
 	$(LIB_KDECORE) \
 	$(LIB_QT) \
 	$(LIBSOCKET) \
-	-lkdefx \
+	-ltdefx \
 	-lkutils \
 	-lkwalletclient
 
 
 # the library search path.
-krusader_LDFLAGS = $(all_libraries) $(kde_RPATH) $(LIB_QT) -lDCOP $(LIB_KDECORE) $(LIB_KDEUI) -lkdefx $(LIB_KIO) -lktexteditor -lkwalletclient
+krusader_LDFLAGS = $(all_libraries) $(kde_RPATH) $(LIB_QT) -lDCOP $(LIB_KDECORE) $(LIB_KDEUI) -ltdefx $(LIB_KIO) -lktexteditor -lkwalletclient
 
 
 ###########################################################

@@ -6373,11 +6373,11 @@ msgstr ""
 
 #: krslots.cpp:547
 msgid ""
-"Can't start root mode krusader, because krusader or kdesu is missing from "
+"Can't start root mode krusader, because krusader or tdesu is missing from "
 "the path. Please configure the dependencies in Konfigurator!"
 msgstr ""
 "Nepavyko paleisti Krusader root naudotojo teisėmis, nes programų kelyje "
-"nerasta krusader arba kdesu programos. Patikrinkite programų kelius Krusader "
+"nerasta krusader arba tdesu programos. Patikrinkite programų kelius Krusader "
 "derinimo lange Keliai!"
 
 #: krslots.cpp:602

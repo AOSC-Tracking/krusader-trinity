@@ -227,13 +227,13 @@ void KrActionProc::start( TQStringList cmdLineList ) {
             if ( _action->user().isEmpty() )
                ( *_proc ) << term << cmd;
             else
-//                ( *_proc )  << "kdesu" << "-u" << *_properties->user() << "-c" << KProcess::quote("konsole --noclose -e " + KProcess::quote(cmd) );
-               ( *_proc )  << "kdesu" << "-u" << _action->user() << "-c" << KProcess::quote( term + " " + cmd );
+//                ( *_proc )  << "tdesu" << "-u" << *_properties->user() << "-c" << KProcess::quote("konsole --noclose -e " + KProcess::quote(cmd) );
+               ( *_proc )  << "tdesu" << "-u" << _action->user() << "-c" << KProcess::quote( term + " " + cmd );
          } else { // no terminal, no output collection, start&forget
             if ( _action->user().isEmpty() )
                ( *_proc ) << cmd;
             else
-               ( *_proc ) << "kdesu" << "-u" << _action->user() << "-c" << KProcess::quote(cmd);
+               ( *_proc ) << "tdesu" << "-u" << _action->user() << "-c" << KProcess::quote(cmd);
          }
          _proc->start( KProcess::NotifyOnExit, ( KProcess::Communication ) ( KProcess::Stdout | KProcess::Stderr ) );
       }
@@ -259,8 +259,8 @@ void KrActionProc::start( TQStringList cmdLineList ) {
       if ( _action->user().isEmpty() )
          ( *_proc ) << cmd;
       else
-         // "-t" is nessesary that kdesu displays the terminal-output of the command
-         ( *_proc ) << "kdesu" << "-t" << "-u" << _action->user() << "-c" << KProcess::quote(cmd);
+         // "-t" is nessesary that tdesu displays the terminal-output of the command
+         ( *_proc ) << "tdesu" << "-t" << "-u" << _action->user() << "-c" << KProcess::quote(cmd);
       _proc->start( KProcess::NotifyOnExit, ( KProcess::Communication ) ( KProcess::Stdout | KProcess::Stderr ) );
    }
 

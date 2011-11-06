@@ -6285,11 +6285,11 @@ msgstr ""
 
 #: krslots.cpp:547
 msgid ""
-"Can't start root mode krusader, because krusader or kdesu is missing from "
+"Can't start root mode krusader, because krusader or tdesu is missing from "
 "the path. Please configure the dependencies in Konfigurator!"
 msgstr ""
 "Nem lehet elindítani a rendszergazdai módú Krusadert, mert vagy a krusader, "
-"vagy a kdesu program nincs az elérési útvonalon. Állítsa be a függőségeket a "
+"vagy a tdesu program nincs az elérési útvonalon. Állítsa be a függőségeket a "
 "Konfigurátorban."
 
 #: krslots.cpp:602

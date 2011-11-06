@@ -1401,14 +1401,14 @@ HTML_PARSING-->
 <entry
 ><para
 ><command
->kdesu</command
+>tdesu</command
 ></para
 ></entry>
 <entry
 ><para
 ><filename class="directory"
 ><replaceable
->/usr/bin/kdesu</replaceable
+>/usr/bin/tdesu</replaceable
 ></filename
 ></para
 ></entry>

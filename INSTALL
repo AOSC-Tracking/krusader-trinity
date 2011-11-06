@@ -364,8 +364,8 @@ the FAQ. If the problem persists, use the help_request to ask for help.
       command.
       $ find /usr /opt -name qtconfig -type f 2>/dev/null
       /usr/lib/qt3/bin/qtconfig
-      $ find /usr /opt -name kdeinit -type f 2>/dev/null
-      /usr/bin/kdeinit
+      $ find /usr /opt -name tdeinit -type f 2>/dev/null
+      /usr/bin/tdeinit
       In this case /usr/lib/qt3 is your QTDIR and /usr is your KDEDIR. The
       installed binaries will go to /usr/bin. Now we will set the enviroment
       variables with the export command.

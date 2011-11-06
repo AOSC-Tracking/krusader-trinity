@@ -542,14 +542,14 @@ void KRslots::multiRename(){
 
 void KRslots::rootKrusader()
 {
-  if( !KrServices::cmdExist( "krusader" ) || !KrServices::cmdExist( "kdesu" ) )
+  if( !KrServices::cmdExist( "krusader" ) || !KrServices::cmdExist( "tdesu" ) )
   {
-    KMessageBox::sorry( krApp, i18n( "Can't start root mode krusader, because krusader or kdesu is missing from the path. Please configure the dependencies in Konfigurator!" ) );
+    KMessageBox::sorry( krApp, i18n( "Can't start root mode krusader, because krusader or tdesu is missing from the path. Please configure the dependencies in Konfigurator!" ) );
     return;
   }
   
   KShellProcess proc;
-  proc << KrServices::fullPathName( "kdesu" ) << TQString("'") + KrServices::fullPathName( "krusader" ) +
+  proc << KrServices::fullPathName( "tdesu" ) << TQString("'") + KrServices::fullPathName( "krusader" ) +
        " --left=\"" +MAIN_VIEW->left->func->files()->vfs_getOrigin().url() +
        "\" --right=\""+MAIN_VIEW->right->func->files()->vfs_getOrigin().url() + "\"'";
 

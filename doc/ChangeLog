@@ -271,7 +271,7 @@ UPDATED: Bookman: in kde 3.4, devices:/ is now media:/
 UPDATED: new i18n page url
 UPDATED: mailing lists
 UPDATED: installation $ find /usr /opt -name qtconfig -type f 2>/dev/null
-                      $ find /usr /opt -name kdeinit -type f 2>/dev/null
+                      $ find /usr /opt -name tdeinit -type f 2>/dev/null
          thanks Dirk             
 UPDATED: Commands, Settings -> Save Position
 UPDATED: kgstartup.png used $ import ... -resize 60% and $ pngcrush

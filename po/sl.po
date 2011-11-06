@@ -6162,8 +6162,8 @@ msgstr ""
 "Namig: Program Krename dobite na http://www.krename.net"
 
 #: krslots.cpp:547
-msgid "Can't start root mode krusader, because krusader or kdesu is missing from the path. Please configure the dependencies in Konfigurator!"
-msgstr "Ni mogoče zagnati Krusaderja kot skrbnik, ker Krusader ali kdesu nista na določeni poti. Nastavitve so določene v Konfiguratorju!"
+msgid "Can't start root mode krusader, because krusader or tdesu is missing from the path. Please configure the dependencies in Konfigurator!"
+msgstr "Ni mogoče zagnati Krusaderja kot skrbnik, ker Krusader ali tdesu nista na določeni poti. Nastavitve so določene v Konfiguratorju!"
 
 #: krslots.cpp:602
 msgid "Enter a URL to view:"

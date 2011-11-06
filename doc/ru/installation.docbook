@@ -536,8 +536,8 @@
 > command. <screen
 ><prompt>$</prompt> <userinput><command>find</command> <option>/usr /opt -name</option> qtconfig <option>-type f 2>/dev/null</option></userinput>
 /usr/lib/qt3/bin/qtconfig
-<prompt>$</prompt> <userinput><command>find</command> <option>/usr /opt -name</option> kdeinit <option>-type f 2>/dev/null</option></userinput>
-/usr/bin/kdeinit</screen
+<prompt>$</prompt> <userinput><command>find</command> <option>/usr /opt -name</option> tdeinit <option>-type f 2>/dev/null</option></userinput>
+/usr/bin/tdeinit</screen
 > In this case <filename
 >/usr/lib/qt3</filename
 > is your <envar

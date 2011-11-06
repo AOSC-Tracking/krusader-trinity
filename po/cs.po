@@ -6343,11 +6343,11 @@ msgstr ""
 
 #: krslots.cpp:547
 msgid ""
-"Can't start root mode krusader, because krusader or kdesu is missing from "
+"Can't start root mode krusader, because krusader or tdesu is missing from "
 "the path. Please configure the dependencies in Konfigurator!"
 msgstr ""
 "Nelze spustit Superuživatelský režim, protože nelze nalézt krusader nebo "
-"kdesu. Nastavte prosím závislosti v Konfigurátoru."
+"tdesu. Nastavte prosím závislosti v Konfigurátoru."
 
 #: krslots.cpp:602
 msgid "Enter a URL to view:"

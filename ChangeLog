@@ -849,7 +849,7 @@
            from the right panel
     FIXED: extension is separated from the dirname after renaming directories
            containing '.'
-    FIXED: locate does not call kdesu any more
+    FIXED: locate does not call tdesu any more
     FIXED: [ 950052 ] synchronizer: the left and right side depends of the
            active panel
     FIXED: [ 770676 ] krarc does not handle password zips

@@ -169,7 +169,7 @@
 &lt;/KrusaderUserActions></programlisting>
       </para></listitem>
 
-      <listitem><para>This useraction edits a file with root permissions using <command>kdesu</command>:
+      <listitem><para>This useraction edits a file with root permissions using <command>tdesu</command>:
       <programlisting>
 &lt;!DOCTYPE KrusaderUserActions>
 &lt;KrusaderUserActions>
@@ -178,8 +178,8 @@
   &lt;tooltip>Edit as root&lt;/tooltip>
   &lt;icon>kwrite&lt;/icon>
   &lt;category>System&lt;/category>
-  &lt;description>Edit a file with root permissions using kdesu&lt;/description>
-  &lt;command>kdesu kedit %aCurrent%&lt;/command>
+  &lt;description>Edit a file with root permissions using tdesu&lt;/description>
+  &lt;command>tdesu kedit %aCurrent%&lt;/command>
   &lt;defaultshortcut>Win+F4&lt;/defaultshortcut>
  &lt;/action>
 &lt;/KrusaderUserActions></programlisting>

@@ -59,7 +59,7 @@ KgDependencies::KgDependencies( bool first, TQWidget* parent,  const char* name 
   
   addApplication( "df",       pathsGrid, 0, general_tab, PAGE_GENERAL );
   addApplication( "eject",    pathsGrid, 1, general_tab, PAGE_GENERAL );
-  addApplication( "kdesu",    pathsGrid, 2, general_tab, PAGE_GENERAL );
+  addApplication( "tdesu",    pathsGrid, 2, general_tab, PAGE_GENERAL );
   addApplication( "kget",     pathsGrid, 3, general_tab, PAGE_GENERAL );
   addApplication( "kmail",    pathsGrid, 4, general_tab, PAGE_GENERAL );
   addApplication( "diff utility",  pathsGrid, 5, general_tab, PAGE_GENERAL );
