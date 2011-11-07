@@ -98,8 +98,8 @@ krusader_LDADD   = \
 	$(LIB_KPARTS) \
 	$(LIB_KFILE) \
 	$(LIB_KHTML) \
-	$(LIB_KDEUI) \
-	$(LIB_KDECORE) \
+	$(LIB_TDEUI) \
+	$(LIB_TDECORE) \
 	$(LIB_QT) \
 	$(LIBSOCKET) \
 	-ltdefx \
@@ -108,7 +108,7 @@ krusader_LDADD   = \
 
 
 # the library search path.
-krusader_LDFLAGS = $(all_libraries) $(kde_RPATH) $(LIB_QT) -lDCOP $(LIB_KDECORE) $(LIB_KDEUI) -ltdefx $(LIB_KIO) -lktexteditor -lkwalletclient
+krusader_LDFLAGS = $(all_libraries) $(kde_RPATH) $(LIB_QT) -lDCOP $(LIB_TDECORE) $(LIB_TDEUI) -ltdefx $(LIB_KIO) -lktexteditor -lkwalletclient
 
 
 ###########################################################
