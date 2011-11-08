@@ -29,7 +29,7 @@
 #include <kiconloader.h>
 #include <kpushbutton.h>
 #include <kstdguiitem.h>
-#include <kwin.h>
+#include <twin.h>
 
 #include <kio/jobclasses.h>
 

@@ -45,7 +45,7 @@ YP   YD 88   YD ~Y8888P' `8888Y' YP   YP Y8888D' Y88888P 88   YD
 #include <kglobal.h>
 #include <klocale.h>
 #include <kaccelmanager.h>
-#include <kwin.h>
+#include <twin.h>
 
 #if KDE_IS_VERSION(3,2,0)
 #include <kactionclasses.h>
