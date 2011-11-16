@@ -45,7 +45,7 @@
 #include <klineedit.h>
 #include <kurlrequester.h>
 #include <kstandarddirs.h>
-#include <kdeversion.h>
+#include <tdeversion.h>
 #include <tqcheckbox.h>
 #include <krecentdocument.h>
 #include <tqhbox.h>

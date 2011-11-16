@@ -45,7 +45,7 @@
 #include <tqdatetime.h>
 #include <tqdir.h> 
 // krusader includes
-#include <kdeversion.h>
+#include <tdeversion.h>
 #include "krpermhandler.h"
 #include "../resources.h"
 

@@ -35,7 +35,7 @@ A
 #include <tqstring.h>
 
 // KDE includes
-#include <kdeversion.h>
+#include <tdeversion.h>
 #include <kio/jobclasses.h>
 #include <kio/job.h>
 #include <kio/global.h>

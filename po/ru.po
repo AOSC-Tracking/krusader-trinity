@@ -5606,9 +5606,9 @@ msgstr "Не использовать протокол поиска носите
 #: Konfigurator/kgadvanced.cpp:65
 msgid ""
 "Select if your media protocol is buggy (in some older KDE versions), or not "
-"present (no kdebase package installed)."
+"present (no tdebase package installed)."
 msgstr ""
-"Выберите, если у вас старая версия KDE или не установлен пакет kdebase."
+"Выберите, если у вас старая версия KDE или не установлен пакет tdebase."
 
 #: Konfigurator/kgadvanced.cpp:74
 msgid "MountMan won't (un)mount the following mount-points:"

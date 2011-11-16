@@ -251,7 +251,7 @@
         </term>
         <listitem>
           <para
->Compares two current files by content - one from each panel via an external graphical diff utility. By default &kompare; (part of the kdebase package) is used, but you can also use &eg; &xxdiff_url; or &kdiff3_url; , change it in the &konfigdependencie_lnk;. </para>
+>Compares two current files by content - one from each panel via an external graphical diff utility. By default &kompare; (part of the tdebase package) is used, but you can also use &eg; &xxdiff_url; or &kdiff3_url; , change it in the &konfigdependencie_lnk;. </para>
         </listitem>
       </varlistentry>
       <varlistentry id="multi_rename">

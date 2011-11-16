@@ -221,7 +221,7 @@
     <guimenuitem>Manage Bookmarks</guimenuitem>,
     &keditbookmarks; will be displayed. This is where
     you can edit/remove and rearrange the bookmarks.
-    &keditbookmarks; (part of the kdebase package) is a
+    &keditbookmarks; (part of the tdebase package) is a
     bookmark editor for &konqueror;,
     &krusader; and other applications, which use the
     &xbel-url; standard for the bookmark format. The

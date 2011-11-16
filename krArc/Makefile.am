@@ -1,4 +1,4 @@
-####### kdevelop will overwrite this part!!! (begin)##########
+####### tdevelop will overwrite this part!!! (begin)##########
 kde_module_LTLIBRARIES = kio_krarc.la
 
 
@@ -26,7 +26,7 @@ install-data-local:
 uninstall-local:
 	rm -f  $(DESTDIR)$(kde_servicesdir)/krarc.protocol
 
-####### kdevelop will overwrite this part!!! (end)############
+####### tdevelop will overwrite this part!!! (end)############
 # These paths are KDE specific. Use them:
 # kde_appsdir         Where your application's menu entry (.desktop) should go to.
 # kde_icondir         Where your icon should go to - better use KDE_ICON.
@@ -50,7 +50,7 @@ uninstall-local:
 
 
 # make messages.po. Move this one to ../po/ and "make merge" in po
-# the -x is for skipping messages already translated in kdelibs
+# the -x is for skipping messages already translated in tdelibs
 messages:
 	LIST=`find . -name \*.h -o -name \*.hh -o -name \*.H -o -name \*.hxx -o -name \*.hpp -o -name \*.cpp -o -name \*.cc -o -name \*.cxx -o -name \*.ecpp -o -name \*.C`; \
 	if test -n "$$LIST"; then \

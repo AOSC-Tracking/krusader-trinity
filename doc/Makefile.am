@@ -1,4 +1,4 @@
-####### kdevelop will overwrite this part!!! (begin)##########
+####### tdevelop will overwrite this part!!! (begin)##########
 
 SUBDIRS = en ru pics 
 
@@ -11,5 +11,5 @@ install-data-local:
 uninstall-local:
 	-rm -f $(DESTDIR)$(mandir)/man1/krusader.1
 
-####### kdevelop will overwrite this part!!! (end)############
+####### tdevelop will overwrite this part!!! (end)############
 

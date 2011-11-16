@@ -1,4 +1,4 @@
-####### kdevelop will overwrite this part!!! (begin)##########
+####### tdevelop will overwrite this part!!! (begin)##########
 
 
 EXTRA_DIST = bookmanadd.png bookmanedit.png cmdline.png fnkeys.png kgstartup.png krusader1.png listpanel.png mainwindow.png mountman.png actionman.png search_advanced.png search_general.png terminalEmu.png toolbar.png tabbed_browsing.png krusader_title.png syncdir.png 
@@ -57,4 +57,4 @@ uninstall-local:
 	-rm -f $(DESTDIR)$(kde_htmldir)/en/krusader/tabbed_browsing.png
 	-rm -f $(DESTDIR)$(kde_htmldir)/en/krusader/krusader_title.png
 	-rm -f $(DESTDIR)$(kde_htmldir)/en/krusader/syncdir.png
-####### kdevelop will overwrite this part!!! (end)############
+####### tdevelop will overwrite this part!!! (end)############

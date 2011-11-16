@@ -38,7 +38,7 @@
 #include <klargefile.h>
 #include <tqapplication.h>
 #include <tqdir.h>
-#include <kdeversion.h>
+#include <tdeversion.h>
 
 
 #if KDE_IS_VERSION(3,5,0) && defined( HAVE_POSIX_ACL )

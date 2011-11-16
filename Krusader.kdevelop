@@ -1,5 +1,5 @@
 <?xml version = '1.0'?>
-<kdevelop>
+<tdevelop>
   <general>
     <author>Shie Erlich and Rafi Yanai</author>
     <email/>
@@ -210,4 +210,4 @@
       <usermanualurl/>
     </projectdoc>
   </kdevdocumentation>
-</kdevelop>
+</tdevelop>

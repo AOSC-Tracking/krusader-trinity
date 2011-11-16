@@ -5578,10 +5578,10 @@ msgstr ""
 #: Konfigurator/kgadvanced.cpp:65
 msgid ""
 "Select if your media protocol is buggy (in some older KDE versions), or not "
-"present (no kdebase package installed)."
+"present (no tdebase package installed)."
 msgstr ""
 "Selecione caso seu protocolo de mídia esteja com problemas (em algumas "
-"versões mais antigas do KDE), ou não estiver presente (caso o pacote kdebase "
+"versões mais antigas do KDE), ou não estiver presente (caso o pacote tdebase "
 "não esteja instalado)."
 
 #: Konfigurator/kgadvanced.cpp:74

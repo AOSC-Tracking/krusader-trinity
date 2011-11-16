@@ -42,7 +42,7 @@
 #include <kdirnotify_stub.h>
 #include <kio/netaccess.h>
 #include <kedittoolbar.h>
-#include <kdeversion.h>
+#include <tdeversion.h>
 #include <kcmdlineargs.h>
 #include <KViewer/krviewer.h>
 

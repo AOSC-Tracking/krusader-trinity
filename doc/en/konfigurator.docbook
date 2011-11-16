@@ -987,7 +987,7 @@ HTML_PARSING-->
               <link linkend="list_panel">Media button</link>.
               Choose this when the media protocol is buggy (in some
               older &kde; versions) or if you have no
-              kdebase package installed on your system.</para>
+              tdebase package installed on your system.</para>
             </listitem>
             <listitem>
               <para>
@@ -1328,7 +1328,7 @@ HTML_PARSING-->
       </tgroup>
     </informaltable></para>
     <tip>
-      <para>By default &kompare; (part of the kdebase
+      <para>By default &kompare; (part of the tdebase
       package) is used as external diff utility but you can also
       use your favorite diff utility &eg;
       &xxdiff-url; or &kdiff3-url;, just fill

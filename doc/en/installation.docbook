@@ -538,12 +538,12 @@ Please don't use the <filename>/usr/local</filename> directory as it simply won'
           for the compilation, please read the
           &faq-lnk;. 
           <tip>
-            <para>If you install &kdevelop;, (almost)
+            <para>If you install &tdevelop;, (almost)
             everything that you need to compile
             &krusader; will be installed on your
             computer. However, if you are not a developer, please
             follow the instructions and do not use
-            &kdevelop; to compile
+            &tdevelop; to compile
             &krusader;.</para>
           </tip></para>
           <para></para>
@@ -974,7 +974,7 @@ make[1]: Leaving directory `/home/source/krusader_trinity'
         <para>Install the fink-base</para>
       </listitem>
       <listitem>
-        <para>Compile kdelibs 3.4.1 or higher (fink provides the
+        <para>Compile tdelibs 3.4.1 or higher (fink provides the
         necessary 
         <filename>.info</filename> files)</para>
       </listitem>

@@ -33,7 +33,7 @@ bool KrJS::runFile(const TQString & filename) {
 
    KJS::Completion jsres = completion();
 
-   // this is based on this example-code http://webcvs.kde.org/kdebindings/kjsembed/kjscmd.cpp?rev=1.28&view=auto
+   // this is based on this example-code http://webcvs.kde.org/tdebindings/kjsembed/kjscmd.cpp?rev=1.28&view=auto
    if ( jsres.complType() != KJS::Normal) {
       switch ( jsres.complType() ) {
          case KJS::Break:

@@ -37,7 +37,7 @@
 #include <tqdatetime.h>
 // KDE includes
 #include <kmimetype.h>
-#include <kdeversion.h>
+#include <tdeversion.h>
 // Krusader includes
 #include "vfile.h"
 #include "krpermhandler.h"

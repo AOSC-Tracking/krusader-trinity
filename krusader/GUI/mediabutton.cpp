@@ -43,7 +43,7 @@
 #include <klocale.h>
 #include <kiconloader.h>
 
-#include <kdeversion.h>
+#include <tdeversion.h>
 #include <kio/job.h>
 #include <kmessagebox.h>
 #include <kmimetype.h>

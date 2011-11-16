@@ -51,7 +51,7 @@ YP   YD 88   YD ~Y8888P' `8888Y' YP   YP Y8888D' Y88888P 88   YD
 #include <kactionclasses.h>
 #endif
 
-#include <kdeversion.h> 
+#include <tdeversion.h> 
 // QT includes
 #include <tqpixmap.h>
 #include <tqstringlist.h>

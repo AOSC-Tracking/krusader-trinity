@@ -54,7 +54,7 @@
     <title>Installation &FAQ;</title>
     <qandaset>
       <qandaentry>
-        <question id="faqi_kdelibs">
+        <question id="faqi_tdelibs">
           <para>Does &krusader; need &kde; to
           run?</para>
         </question>
@@ -91,9 +91,9 @@
           &krusader; uses the &kde;
           &kioslaves1-url; to access remote file
           systems, and support for only a limited number of file
-          system types are shipped with &kdelibs-url;,
+          system types are shipped with &tdelibs-url;,
           most of the &kioslaves2-url; are bundled with
-          &kdebase-url; (including fish, sftp and tar).
+          &tdebase-url; (including fish, sftp and tar).
           However, if you want the property-dialog to show
           EXIF-data for .jpeg's, you need &kde;graphics.
           If you want ID3-infos, you need
@@ -129,7 +129,7 @@
           <para>
           <itemizedlist>
             <listitem>
-              <para>kdelibs (for the required &kde;
+              <para>tdelibs (for the required &kde;
               version see the &install-proc-lnk;)</para>
             </listitem>
             <listitem>
@@ -178,7 +178,7 @@
                 <para>libqt3 libqt-devel</para>
               </listitem>
               <listitem>
-                <para>kdelibs kdelibs-devel</para>
+                <para>tdelibs tdelibs-devel</para>
               </listitem>
               <listitem>
                 <para>libjpeg62 libjpeg-devel libpng3
@@ -204,7 +204,7 @@
           from the libs. The headers are needed to compile
           &krusader;. Look for packages in the form
           foo-devel-*.rpm (&eg; 
-          <filename>kdelibs-devel-foo.i586.rpm</filename>) or
+          <filename>tdelibs-devel-foo.i586.rpm</filename>) or
           foo-dev-*.deb for &debian; based
           distributions. These are usually included with your
           distribution. 
@@ -1478,7 +1478,7 @@
             &konqueror; or another &kde;
             application. If you encounter the same problem then it
             is possibly a &kioslaves1-url; or
-            &kde; (kdelibs) bug, and not a
+            &kde; (tdelibs) bug, and not a
             &krusader; bug. &krusader; uses
             the &kde; libraries and the
             &kioslaves2-url; for many operations. In

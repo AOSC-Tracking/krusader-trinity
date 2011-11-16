@@ -111,12 +111,12 @@ AM_INIT_AUTOMAKE(krusader,1.90.0)
 # It can be used to add a name to a release. If commented out only VERSION is used, see main.cpp
 AH_BOTTOM([#define RELEASE_NAME "Power Stone"])
 
-dnl CXXFLAGS="$NOOPT_CXXFLAGS" dnl __kdevelop[noopt]__
-dnl CFLAGS="$NOOPT_CFLAGS" dnl __kdevelop[noopt]__
-dnl CXXFLAGS="$CXXFLAGS $USE_EXCEPTIONS" dnl __kdevelop[exc]__
+dnl CXXFLAGS="$NOOPT_CXXFLAGS" dnl __tdevelop[noopt]__
+dnl CFLAGS="$NOOPT_CFLAGS" dnl __tdevelop[noopt]__
+dnl CXXFLAGS="$CXXFLAGS $USE_EXCEPTIONS" dnl __tdevelop[exc]__
 
-dnl KDE_NEED_FLEX dnl __kdevelop__
-dnl AC_PROG_YACC dnl __kdevelop__
+dnl KDE_NEED_FLEX dnl __tdevelop__
+dnl AC_PROG_YACC dnl __tdevelop__
 
 
 CPPFLAGS="$CPPFLAGS -D_LARGEFILE64_SOURCE -DKDE_NO_COMPAT -DQT_NO_ASCII_CAST"

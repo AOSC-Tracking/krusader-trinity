@@ -1174,7 +1174,7 @@ HTML_PARSING-->
 >Don't use KDE's media protocol for the Media button (if it's buggy or missing)</guilabel
 >: If checked, &krusader; won't use &kde;'s media protocol for the <link linkend="list_panel"
 >Media button</link
->. Use this open when the media protocol is buggy (in some older &kde; versions) or if you have no kdebase package installed on your system. </para
+>. Use this open when the media protocol is buggy (in some older &kde; versions) or if you have no tdebase package installed on your system. </para
 ></listitem>
 
   <listitem
@@ -1562,7 +1562,7 @@ HTML_PARSING-->
 
 <tip
 ><para
->By default &kompare; (part of the kdebase package) is used as external diff utility but you can also use your favorite diff utility &eg; &xxdiff_url; or &kdiff3_url; , just fill in the full path and enjoy.</para
+>By default &kompare; (part of the tdebase package) is used as external diff utility but you can also use your favorite diff utility &eg; &xxdiff_url; or &kdiff3_url; , just fill in the full path and enjoy.</para
 ></tip>
 
 <para

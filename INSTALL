@@ -534,7 +534,7 @@ recent version of Krusader:
    2. Install the Apple®_X11_SDK developer-tools with X11 headers (gcc is
       included)
    3. Install the fink-base
-   4. Compile kdelibs 3.4.1 or higher (fink provides the necessary .info files)
+   4. Compile tdelibs 3.4.1 or higher (fink provides the necessary .info files)
    5. Compile the Krusader-tarball or follow steps 2 and 3 of the previous
       section if a recent Krusader-package e.g. krusader-1.70.0.fink.darwin-
       ppc.tar.bz2 is available

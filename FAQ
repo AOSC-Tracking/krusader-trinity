@@ -139,7 +139,7 @@ Installation FAQ
     you only need the C-compliler gcc when you compile Krusader from source
     (see the next question).
     Here is a list of the required shared libraries when you run Krusader:
-        * kdelibs (for the required KDE version see the Installation_procedure)
+        * tdelibs (for the required KDE version see the Installation_procedure)
         * libacl1 libart-2.0 libattr1 libaudio2 libc6 libfam0 libfontconfig1
         * libfreetype6 libgcc1 libgcc2 libice6 libidn11 libjpeg62 libkjsembed1
         * libkonq4 libpcre3 libpng12 libqt3-mt libsm6 libstdc++6 libunwind7
@@ -155,7 +155,7 @@ Installation FAQ
           been tested)
         * autoconf automake XFree
         * libqt3 libqt-devel
-        * kdelibs kdelibs-devel
+        * tdelibs tdelibs-devel
         * libjpeg62 libjpeg-devel libpng3 libmng1
         * fam libfam-devel
         * zlib1 arts libart_lgpl2 libstdc++5 libpcre0
@@ -164,7 +164,7 @@ Installation FAQ
           right-click menu entries.
     Most RPM-based distributions separate the headers from the libs. The
     headers are needed to compile Krusader. Look for packages in the form foo-
-    devel-*.rpm (e.g. kdelibs-devel-foo.i586.rpm) or foo-dev-*.deb for Debian�
+    devel-*.rpm (e.g. tdelibs-devel-foo.i586.rpm) or foo-dev-*.deb for Debian�
     based distributions. These are usually included with your distribution.
     **** Tip ****
     If you ca not find the needed package, use rpmfind and click 'missing lib
@@ -673,7 +673,7 @@ General FAQ
     **** Note ****
     If possible, try to do the same operation with Konqueror or another KDE
     application. If you encounter the same problem then it is possibly a
-    KIOSlaves or KDE (kdelibs) bug, and not a Krusader bug. Krusader uses the
+    KIOSlaves or KDE (tdelibs) bug, and not a Krusader bug. Krusader uses the
     KDE libraries and the KIOSlaves for many operations. In some cases you can
     encounter problems if your distribution is incorrectly configured, please
     test it first as explained above.

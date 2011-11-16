@@ -44,7 +44,7 @@ since the Entity Backspace is not defined in
 /usr/share/apps/ksgmltools2/customization/ru/user.entities on KDE: 3.5.4
 -->
 
-<!-- kdebase, kdeadmin, etc. Leave this unchanged if your application is not maintained in KDE CVS -->
+<!-- tdebase, tdeadmin, etc. Leave this unchanged if your application is not maintained in KDE CVS -->
 <!ENTITY package "kde-module">
 
 <!-- internet links, Krusader -->
@@ -362,7 +362,7 @@ since the Entity Backspace is not defined in
 <!ENTITY rpm_guide_url '<ulink url="http://fedora.redhat.com/docs/drafts/rpm-guide-en/"
 >RPM Guide</ulink
 >'>
-<!ENTITY kioslaves1_url '<ulink url="http://docs.kde.org/development/en/kdebase/kioslave/index.html"
+<!ENTITY kioslaves1_url '<ulink url="http://docs.kde.org/development/en/tdebase/kioslave/index.html"
 >KIOSlaves</ulink
 >'>
 <!ENTITY kioslaves2_url '<ulink url="http://developer.kde.org/documentation/library/3.4-api/kio/html/index.html"
@@ -371,10 +371,10 @@ since the Entity Backspace is not defined in
 <!ENTITY kio_ipodslave_url '<ulink url="http://sourceforge.net/projects/kpod"
 >KIOipod-slave</ulink
 >'>
-<!ENTITY kdelibs_url '<ulink url="http://lxr.kde.org/source/kdelibs/kioslave"
+<!ENTITY tdelibs_url '<ulink url="http://lxr.kde.org/source/tdelibs/kioslave"
 >&kde;libs</ulink
 >'>
-<!ENTITY kdebase_url '<ulink url="http://lxr.kde.org/source/kdebase/kioslave"
+<!ENTITY tdebase_url '<ulink url="http://lxr.kde.org/source/tdebase/kioslave"
 >&kde;base</ulink
 >'>
 <!ENTITY gnome_url '<ulink url="http://www.gnome.org"
@@ -707,7 +707,7 @@ since the Entity Backspace is not defined in
 <!ENTITY filelight '<application
 >Filelight</application
 >'>
-<!ENTITY kdevelop '<application
+<!ENTITY tdevelop '<application
 >Kdevelop</application
 >'>
 <!ENTITY keditbookmarks '<application

@@ -5553,10 +5553,10 @@ msgstr ""
 #: Konfigurator/kgadvanced.cpp:65
 msgid ""
 "Select if your media protocol is buggy (in some older KDE versions), or not "
-"present (no kdebase package installed)."
+"present (no tdebase package installed)."
 msgstr ""
 "Vyberte, jestli je u vás protokol media chybový (v některých starších "
-"verzích KDE), nebo vůbec není nainstalovaný (bývá v balíčku kdebase)"
+"verzích KDE), nebo vůbec není nainstalovaný (bývá v balíčku tdebase)"
 
 #: Konfigurator/kgadvanced.cpp:74
 msgid "MountMan won't (un)mount the following mount-points:"

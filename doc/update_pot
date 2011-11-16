@@ -46,7 +46,7 @@ for FILENAME in $(ls *.docbook);do
 # This file is distributed under the same license as the Krusader package/g' ${FILENAME}.pot
     perl -p -i -e 's/Project-Id-Version: PACKAGE VERSION/Project-Id-Version: Krusader-doc-'$VERSION' '$DATENOW'/g' ${FILENAME}.pot
     perl -p -i -e 's/Report-Msgid-Bugs-To: http:\/\/bugs.kde.org/Report-Msgid-Bugs-To:  <frank_schoolmeesters\@yahoo.com>/g' ${FILENAME}.pot
-    perl -p -i -e 's/kde-i18n-doc\@kde.org/krusader-i18n\@googlegroups.com/g' ${FILENAME}.pot
+    perl -p -i -e 's/tde-i18n-doc\@kde.org/krusader-i18n\@googlegroups.com/g' ${FILENAME}.pot
 done
 
 # move pot files to folder krusader_trinity/doc/i18n/pot since they don't belong in the english folder

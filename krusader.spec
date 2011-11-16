@@ -15,7 +15,7 @@ URL:		http://krusader.sourceforge.net/
 Source0:	http://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
-BuildRequires:	kdelibs-devel kdebase-devel kdebindings-devel
+BuildRequires:	tdelibs-devel tdebase-devel tdebindings-devel
 BuildRequires:	libpng-devel gamin-devel libacl-devel
 BuildRequires:	desktop-file-utils automake gettext
 
