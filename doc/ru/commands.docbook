@@ -1517,7 +1517,7 @@
 > <guibutton
 >Export shortcuts</guibutton
 > buttons you can load and save a Key-binding profile. This allows &krusader; to have the &tcmd;, &mc;, foo-commander, or your custom Key-bindings. The only limitation is that global &kde; key-bindings and some &krusader; key-bindings can't be changed yet, as well as some features in foo-commander that we either don't have or don't need. The Key-bindings are stored in <filename
->$KDEDIR/share/apps/krusader</filename
+>$TDEDIR/share/apps/krusader</filename
 >, <filename
 >foo.keymap.info</filename
 > contains a description, <filename

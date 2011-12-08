@@ -806,7 +806,7 @@ HTML_PARSING-->
           &krusader; to use &tcmd;,
           &mc;, foo-commander or your own custom color
           profile. The Color Schemes are stored in 
-          <filename>$KDEDIR/share/apps/krusader</filename>, the 
+          <filename>$TDEDIR/share/apps/krusader</filename>, the 
           <filename>foo.color</filename> is a binary file that holds
           the color scheme.</para>
           <tip>

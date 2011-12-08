@@ -385,7 +385,7 @@
           <filename>
           krusader_trinity/krusader/krusaderui.rc</filename> to 
           <filename>
-          $KDEDIR/share/apps/krusader/krusaderui.rc</filename> and 
+          $TDEDIR/share/apps/krusader/krusaderui.rc</filename> and 
           <filename>
           ~/.kde/share/apps/krusader/krusaderui.rc</filename> and
           re-run &krusader;. If you have compiled
@@ -408,7 +408,7 @@
           <para>The 
           <filename>krusaderui.rc</filename> file is stored in 
           <filename>
-          $KDEDIR/share/apps/krusader/krusaderui.rc</filename>.
+          $TDEDIR/share/apps/krusader/krusaderui.rc</filename>.
           When you change the 
           <guilabel>"Toolbar"</guilabel>, &kde; makes a
           copy of that file in the home directory at 
@@ -930,11 +930,11 @@
           <filename>kio_krarc.so</filename>, 
           <filename>kio_krarc.la</filename> files into 
           <filename class="directory">
-          $KDEDIR/lib/trinity</filename></para>
+          $TDEDIR/lib/trinity</filename></para>
           <para>Copy the 
           <filename>krarc.protocol</filename> file into 
           <filename class="directory">
-          $KDEDIR/share/services</filename></para>
+          $TDEDIR/share/services</filename></para>
           <para>or the directory where the KIO slaves are placed in
           your &Linux; distribution.</para>
           <para></para>

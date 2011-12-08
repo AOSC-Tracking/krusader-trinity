@@ -402,7 +402,7 @@
 > file from the package <filename
 >krusader_trinity/krusader/krusaderui.rc</filename
 > to <filename
->$KDEDIR/share/apps/krusader/krusaderui.rc</filename
+>$TDEDIR/share/apps/krusader/krusaderui.rc</filename
 > and <filename
 >~/.kde/share/apps/krusader/krusaderui.rc</filename
 > and re-run &krusader;. If you have compiled &krusader; from sources this is often caused when the &kdeqtdir_lnk; environment variables are not correctly set. The result is that the <filename
@@ -422,7 +422,7 @@
 >Файл <filename
 >krusaderui.rc</filename
 > хранится в <filename
->$KDEDIR/share/apps/krusader/krusaderui.rc</filename
+>$TDEDIR/share/apps/krusader/krusaderui.rc</filename
 >. Если  вы выбрали новую <guilabel
 >"Панель"</guilabel
 > ,&kde; создаст копию файла <filename
@@ -909,13 +909,13 @@
 >, <filename
 >kio_krarc.la</filename
 > в <filename class="directory"
->$KDEDIR/lib/trinity</filename
+>$TDEDIR/lib/trinity</filename
 ></para>
         <para
 >Копируйте <filename
 >krarc.protocol</filename
 > в <filename class="directory"
->$KDEDIR/share/services</filename
+>$TDEDIR/share/services</filename
 ></para>
         <para
 >или директорию , в которой находятся KIO slaves вашего дистрибутива &Linux;. </para>

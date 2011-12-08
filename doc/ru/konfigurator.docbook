@@ -964,7 +964,7 @@ HTML_PARSING-->
 > <guibutton
 >Export Color Scheme</guibutton
 > buttons you can load and save a Color Scheme profile. This allows that &krusader; can have the &tcmd;, &mc;, foo-commander or your custom colors. The Color Schemes are stored in <filename
->$KDEDIR/share/apps/krusader</filename
+>$TDEDIR/share/apps/krusader</filename
 >, the <filename
 >foo.color</filename
 > is a binary file that holds the Color Scheme.</para>

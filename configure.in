@@ -209,7 +209,7 @@ AC_CONFIG_FILES([ tar/Makefile ])
 AC_CONFIG_FILES([ virt/Makefile ])
 AC_OUTPUT
 # added manualy, it dumps a summary of the most important settings
-# and displays a warning if the KDEDIR or QTDIR is empty
+# and displays a warning if the TDEDIR or QTDIR is empty
 echo "
 Krusader Project:
 -----------------
@@ -223,7 +223,7 @@ Krusader Project:
   kde_locale:           ${prefix}/share/locale
   qt_libraries:         ${ac_qt_libraries}
   qt_includes:          ${ac_qt_includes}
-  KDEDIR:               ${KDEDIR}
+  TDEDIR:               ${TDEDIR}
   QTDIR:                ${QTDIR}
   Install path:         ${prefix}/bin
   krusader version:     ${VERSION}
@@ -241,7 +241,7 @@ if test -n "$kde_libs_prefix" -a -n "$given_prefix"; then
       echo "Warning: you chose to install this package in $given_prefix,"
       echo "but KDE was found in $kde_libs_prefix."
       echo "For this to work, you will need to tell KDE about the new prefix, by ensuring"
-      echo "that KDEDIRS contains it, e.g. export KDEDIRS=$given_prefix:$kde_libs_prefix"
+      echo "that TDEDIRS contains it, e.g. export TDEDIRS=$given_prefix:$kde_libs_prefix"
       echo "Then restart KDE."
       echo ""
     fi
@@ -284,8 +284,8 @@ if (test $with_tar != "no");
    then echo "NOTICE:  Our write-enabled version of KDE's tar KIO-Slave will be build. \"make install\" will may overwrite the KDE-version!"
 fi
 
-if (test -z "$KDEDIR");
-   then echo "WARNING:  KDEDIR enviroment variable is empty! Please read Krusader FAQ"
+if (test -z "$TDEDIR");
+   then echo "WARNING:  TDEDIR enviroment variable is empty! Please read Krusader FAQ"
 fi
 
 if (test -z "$QTDIR");

@@ -234,14 +234,14 @@ Installation FAQ
     e.g. File and Select are missing. This is because some distributions put
     the krusaderui.rc file in the wrong directory. To solve the problem, just
     copy the krusaderui.rc file from the package krusader_trinity/krusader/
-    krusaderui.rc to $KDEDIR/share/apps/krusader/krusaderui.rc and ~/.kde/
+    krusaderui.rc to $TDEDIR/share/apps/krusader/krusaderui.rc and ~/.kde/
     share/apps/krusader/krusaderui.rc and re-run Krusader. If you have compiled
-    Krusader from sources this is often caused if the KDEDIR_-_QTDIR
+    Krusader from sources this is often caused if the TDEDIR_-_QTDIR
     environment variables are not correctly set. The result is that the
     krusaderui.rc file is installed in the wrong directory. Please read the
     following question, as well.
 9.  Some new menu items are missing after updating Krusader, what's wrong?
-    The krusaderui.rc file is stored in $KDEDIR/share/apps/krusader/
+    The krusaderui.rc file is stored in $TDEDIR/share/apps/krusader/
     krusaderui.rc. When you change the "Toolbar", KDE makes a copy of that file
     in the home directory at ~/.kde/share/apps/krusader/krusaderui.rc. If
     Krusader was previously installed on your computer, and you install a newer
@@ -468,8 +468,8 @@ Usage FAQ
 7.  Krusader reports "krarc:... protocol not supported" error at opening an
     archive file, what to do?
     Install the krarc slave properly:
-    Copy the kio_krarc.so, kio_krarc.la files into $KDEDIR/lib/trinity
-    Copy the krarc.protocol file into $KDEDIR/share/services
+    Copy the kio_krarc.so, kio_krarc.la files into $TDEDIR/lib/trinity
+    Copy the krarc.protocol file into $TDEDIR/share/services
     or the directory where the KIO slaves are placed in your Linux�
     distribution.
 8.  I get the error message "Protocol not supported by Krusader: "krarc:/path/

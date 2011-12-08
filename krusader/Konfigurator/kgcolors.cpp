@@ -498,7 +498,7 @@ bool KgColors::apply()
 }
 
 void KgColors::slotImportColors() {
-	// find $KDEDIR/share/apps/krusader
+	// find $TDEDIR/share/apps/krusader
 	TQString basedir = KGlobal::dirs()->findResourceDir("appdata", "total_commander.keymap");
 	// let the user select a file to load
 	TQString file = KFileDialog::getOpenFileName(basedir, "*.color", 0, i18n("Select a color-scheme file"));

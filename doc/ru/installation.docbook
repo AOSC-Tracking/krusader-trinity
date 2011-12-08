@@ -496,7 +496,7 @@
 >Check the environment variables <envar
 >QTDIR</envar
 > and <envar
->KDEDIR</envar
+>TDEDIR</envar
 >. &krusader;'s <command
 >./configure</command
 > script needs to know where the &Qt; and &kde; directories are. </para>
@@ -514,7 +514,7 @@
 
 <para
 ><envar
->KDEDIR</envar
+>TDEDIR</envar
 > : <replaceable
 >&lt;path to your KDE installation&gt;</replaceable
 > &eg; <filename
@@ -529,7 +529,7 @@
 > command. <screen
 ><prompt>$</prompt> <userinput><command>echo</command> $QTDIR</userinput>
 /usr/lib/qt3
-<prompt>$</prompt> <userinput><command>echo</command> $KDEDIR</userinput>
+<prompt>$</prompt> <userinput><command>echo</command> $TDEDIR</userinput>
 /usr</screen
 > If both commands give an output, the enviroment variables are set (the above example are the settings of &mandriva;-&Linux;). In case you just receive empty lines, the variables are not set and you have to set them it manually. If you have no idea what to set the variables to, or if you want to check if the variables are correctly set, ask your distributor or use the <command
 >find</command
@@ -545,7 +545,7 @@
 > and <filename
 >/usr</filename
 > is your <envar
->KDEDIR</envar
+>TDEDIR</envar
 >. The installed binaries will go to <filename
 >/usr/bin</filename
 >. Now we will set the enviroment variables with the <command
@@ -553,7 +553,7 @@
 > command. <screen
 ><prompt>$</prompt> <userinput><command>export</command> QTDIR=<replaceable>&lt;replace with your QTDIR&gt;</replaceable></userinput></screen>
 <screen
-><prompt>$</prompt> <userinput><command>export</command> KDEDIR=<replaceable>&lt;replace with your KDEDIR&gt;</replaceable></userinput></screen>
+><prompt>$</prompt> <userinput><command>export</command> TDEDIR=<replaceable>&lt;replace with your TDEDIR&gt;</replaceable></userinput></screen>
 </para>
 
   <note
@@ -564,7 +564,7 @@
 ></note>
 
 <para
->If you can't determine your KDEDIR than <command
+>If you can't determine your TDEDIR than <command
 >kde-config --prefix</command
 > might help you.</para>
 
@@ -642,7 +642,7 @@ If you haven't done so in a while, run ./configure --help
 <listitem>
   <para
 >Your &Linux; distro &krusader; RPM or DEB package will usually install &krusader; in the <filename
->KDEDIR/bin</filename
+>TDEDIR/bin</filename
 > directory. According to the &fhs_url;, any user installed files should go to the <filename
 >/usr/local</filename
 > directory, but in some cases you might want that &krusader; will be installed in an other directory, this behaviour can be determed with the prefix option. If you don't have root access <filename
@@ -673,7 +673,7 @@ kde_includes:         /usr/lib
 kde_locale:           /usr/share/locale
 qt_libraries:         /usr/lib/qt3/lib
 qt_includes:          /usr/lib/qt3/include
-KDEDIR:               /usr
+TDEDIR:               /usr
 QTDIR:                /usr/lib/qt3
 Install path:         /usr/local/bin
 krusader version:     1.51
@@ -737,13 +737,13 @@ Good - your configure finished. Start make now
 
 <para
 >If you dit use the an other --prefix= than <filename
->$KDEDIR or /usr/local</filename
+>$TDEDIR or /usr/local</filename
 > , then it can't hurt to do an extra check: <screen
 ><prompt>$</prompt> <userinput><command>kde-config</command> <option>--path exe</option></userinput>
 /home/frank/.kde/bin/:/usr/bin/:/usr/local/bin/   
 <prompt>$</prompt></screen
 > If the &lt;prefix_dir/bin&gt; directory is not shown, you need to use e.g. <command
->export KDEDIRS=/usr/local:/usr</command
+>export TDEDIRS=/usr/local:/usr</command
 >. To make these settings permanent you can &eg; append this export command to your <filename
 >/etc/profile</filename
 > file. Than you need to restart &kde;, and check again. </para>
