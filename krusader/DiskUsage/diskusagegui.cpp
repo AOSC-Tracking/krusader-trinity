@@ -53,7 +53,7 @@ DiskUsageGUI::DiskUsageGUI( KURL openDir, TQWidget* parent, const char *name )
   duGrid->setMargin( 11 );
   
   TQHBox *duTools = new TQHBox( this, "duTools" );
-  duTools->tqsetSizePolicy( TQSizePolicy::Fixed, TQSizePolicy::Fixed );
+  duTools->setSizePolicy( TQSizePolicy::Fixed, TQSizePolicy::Fixed );
     
   btnNewSearch = new TQToolButton( duTools, "btnNewSearch" );
   btnNewSearch->setIconSet( TQIconSet(krLoader->loadIcon("fileopen",KIcon::Desktop)) );
@@ -86,9 +86,9 @@ DiskUsageGUI::DiskUsageGUI( KURL openDir, TQWidget* parent, const char *name )
   TQToolTip::add( btnFilelight, i18n( "Filelight view" ) );
     
   TQWidget *spacerWidget = new TQWidget( duTools, "spacerWidget" );
-  TQHBoxLayout *hboxtqlayout = new TQHBoxLayout( spacerWidget );
+  TQHBoxLayout *hboxlayout = new TQHBoxLayout( spacerWidget );
   TQSpacerItem* spacer = new TQSpacerItem( 0, 0, TQSizePolicy::Expanding, TQSizePolicy::Fixed );
-  hboxtqlayout->addItem( spacer );
+  hboxlayout->addItem( spacer );
   
   duGrid->addWidget( duTools, 0, 0 );
   
@@ -100,7 +100,7 @@ DiskUsageGUI::DiskUsageGUI( KURL openDir, TQWidget* parent, const char *name )
   status->setFrameShadow( TQLabel::Sunken );  
   duGrid->addWidget( status, 2, 0 );
   
-  connect( diskUsage, TQT_SIGNAL( status( TQString ) ), this, TQT_SLOT( settqStatus( TQString ) ) );
+  connect( diskUsage, TQT_SIGNAL( status( TQString ) ), this, TQT_SLOT( setStatus( TQString ) ) );
   connect( diskUsage, TQT_SIGNAL( viewChanged( int ) ), this, TQT_SLOT( slotViewChanged( int ) ) );
   connect( diskUsage, TQT_SIGNAL( newSearch() ), this,  TQT_SLOT( newSearch() ) );
   connect( diskUsage, TQT_SIGNAL( loadFinished( bool ) ), this,  TQT_SLOT( slotLoadFinished( bool ) ) );
@@ -178,7 +178,7 @@ void DiskUsageGUI::loadUsageInfo()
   diskUsage->load( baseDirectory );
 }
 
-void DiskUsageGUI::settqStatus( TQString stat )
+void DiskUsageGUI::setStatus( TQString stat )
 {
   status->setText( stat );
 }

@@ -34,7 +34,7 @@
 #include <tqlabel.h>
 #include <tqlistbox.h>
 #include <tqpushbutton.h>
-#include <tqlayout.h>
+#include <layout.h>
 #include <tqvariant.h>
 #include <tqtooltip.h>
 #include <tqwhatsthis.h>
@@ -56,7 +56,7 @@ KRMaskChoice::KRMaskChoice( TQWidget* parent,  const char* name, bool modal, WFl
 	setName( "KRMaskChoice" );
     resize( 401, 314 );
     setCaption( i18n( "Choose Files"  ) );
-    tqsetSizePolicy( TQSizePolicy( (TQSizePolicy::SizeType)5, (TQSizePolicy::SizeType)5 ) );
+    setSizePolicy( TQSizePolicy( (TQSizePolicy::SizeType)5, (TQSizePolicy::SizeType)5 ) );
 
     selection = new TQComboBox( FALSE, this, "selection" );
     int height = TQFontMetrics( selection->font() ).height();

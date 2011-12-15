@@ -35,7 +35,7 @@
 #include <tqlineedit.h>
 #include <tqpushbutton.h>
 #include <tqtoolbutton.h>
-#include <tqlayout.h>
+#include <layout.h>
 #include <tqvariant.h>
 #include <tqtooltip.h>
 #include <tqwhatsthis.h>
@@ -82,7 +82,7 @@ PackGUIBase::PackGUIBase( TQWidget* parent,  const char* name, bool modal, WFlag
     hbox->addWidget( nameData );
 
     typeData = new TQComboBox( FALSE, this, "typeData" );
-    typeData->tqsetSizePolicy( TQSizePolicy( (TQSizePolicy::SizeType)1, (TQSizePolicy::SizeType)0 ) );
+    typeData->setSizePolicy( TQSizePolicy( (TQSizePolicy::SizeType)1, (TQSizePolicy::SizeType)0 ) );
     connect( typeData, TQT_SIGNAL( activated( const TQString & ) ), this,  TQT_SLOT( checkConsistency() ) );
     connect( typeData, TQT_SIGNAL( highlighted( const TQString & ) ), this,  TQT_SLOT( checkConsistency() ) );
     hbox->addWidget( typeData );
@@ -115,7 +115,7 @@ PackGUIBase::PackGUIBase( TQWidget* parent,  const char* name, bool modal, WFlag
     PixmapLabel1 = new TQLabel( this, "PixmapLabel1" );
     PixmapLabel1->setPixmap( krLoader->loadIcon("package", KIcon::Desktop, 32) );
     PixmapLabel1->setScaledContents( TRUE );
-    PixmapLabel1->tqsetSizePolicy( TQSizePolicy( (TQSizePolicy::SizeType)0, (TQSizePolicy::SizeType)0 ) );
+    PixmapLabel1->setSizePolicy( TQSizePolicy( (TQSizePolicy::SizeType)0, (TQSizePolicy::SizeType)0 ) );
     hbox_3->addWidget( PixmapLabel1 );
 
     TextLabel1 = new TQLabel( this, "TextLabel1" );
@@ -188,7 +188,7 @@ PackGUIBase::PackGUIBase( TQWidget* parent,  const char* name, bool modal, WFlag
     TQHBox * minmaxHBox = new TQHBox( sliderVBox );
     minLabel = new TQLabel( i18n("MIN"), minmaxHBox );
     maxLabel = new TQLabel( i18n("MAX"), minmaxHBox );
-    maxLabel->tqsetSizePolicy( TQSizePolicy::Fixed, TQSizePolicy::Fixed );
+    maxLabel->setSizePolicy( TQSizePolicy::Fixed, TQSizePolicy::Fixed );
 
     sliderHbox->addWidget( sliderVBox );
 
@@ -249,7 +249,7 @@ PackGUIBase::PackGUIBase( TQWidget* parent,  const char* name, bool modal, WFlag
     hbox_7->setMargin( 0 );
 
     TextLabel8 = new TQLabel( i18n( "Command line switches:" ), advancedWidget, "TextLabel8" );
-    TextLabel8->tqsetSizePolicy( TQSizePolicy::Fixed, TQSizePolicy::Fixed );
+    TextLabel8->setSizePolicy( TQSizePolicy::Fixed, TQSizePolicy::Fixed );
     hbox_7->addWidget( TextLabel8 );
 
     commandLineSwitches = new KHistoryCombo( advancedWidget, "commandLineSwitches" );
@@ -320,8 +320,8 @@ void PackGUIBase::expand() {
       advancedWidget->show();
     else {
       advancedWidget->hide();
-      tqlayout()->activate();
-      TQSize minSize = tqminimumSize();
+      layout()->activate();
+      TQSize minSize = minimumSize();
       resize( width(), minSize.height() );
     }
     show();
@@ -412,7 +412,7 @@ bool PackGUIBase::extraProperties( TQMap<TQString,TQString> & inMap ) {
     }
 
     if( setCompressionLevel->isEnabled() && setCompressionLevel->isChecked() ) {
-      inMap[ "CompressionLevel" ] = TQString("%1").tqarg( compressionSlider->value() );
+      inMap[ "CompressionLevel" ] = TQString("%1").arg( compressionSlider->value() );
     }
 
     TQString cmdArgs = commandLineSwitches->currentText().stripWhiteSpace();

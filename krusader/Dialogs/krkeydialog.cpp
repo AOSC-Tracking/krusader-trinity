@@ -11,7 +11,7 @@
 //
 #include "krkeydialog.h"
 
-#include <tqlayout.h>
+#include <layout.h>
 #include <tqwhatsthis.h>
 #include <klocale.h>
 #include <kpushbutton.h>
@@ -32,11 +32,11 @@ static const char* FILE_FILTER = I18N_NOOP("*.keymap|Krusader keymaps\n*|all fil
 KrKeyDialog::KrKeyDialog( TQWidget * parent ) : KKeyDialog( false /* allow letter shortcuts */, parent ) {
    insert( krApp->actionCollection() );
 
-   // HACK This fetches the tqlayout of the buttonbox from KDialogBase, although it is not accessable with KDialogBase's API
+   // HACK This fetches the layout of the buttonbox from KDialogBase, although it is not accessable with KDialogBase's API
    // None the less it's quite save to use since this implementation hasn't changed since KDE-3.3 (I haven't looked at earlier
    // versions since we don't support them) and now all work is done in KDE-4.
    TQWidget* buttonBox = TQT_TQWIDGET( actionButton(KDialogBase::Ok)->parent() );
-   TQBoxLayout* buttonBoxLayout = static_cast<TQBoxLayout*>( buttonBox->tqlayout() );
+   TQBoxLayout* buttonBoxLayout = static_cast<TQBoxLayout*>( buttonBox->layout() );
 
    KPushButton* importButton = new KPushButton( i18n("Import shortcuts"), buttonBox );
    TQWhatsThis::add( importButton, i18n( "Load a keybinding profile, e.g., total_commander.keymap" ) );
@@ -131,7 +131,7 @@ void KrKeyDialog::slotExportShortcuts() {
    TQFile f( filename );
    if ( f.exists() &&
    		KMessageBox::warningContinueCancel( this, 
-		i18n("<qt>File <b>%1</b> already exists. Do you really want to overwrite it?</qt>").tqarg(filename),
+		i18n("<qt>File <b>%1</b> already exists. Do you really want to overwrite it?</qt>").arg(filename),
 		i18n("Warning"), i18n("Overwrite") )
 	!= KMessageBox::Continue)
 	return;
@@ -140,7 +140,7 @@ void KrKeyDialog::slotExportShortcuts() {
       // Additionaly this prevents merging if the file already contains some shortcuts
       f.close();
    else {
-      KMessageBox::error( this, i18n("<qt>Can't open <b>%1</b> for writing!</qt>").tqarg(filename) );
+      KMessageBox::error( this, i18n("<qt>Can't open <b>%1</b> for writing!</qt>").arg(filename) );
       return;
    }
 

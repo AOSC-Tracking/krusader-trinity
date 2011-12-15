@@ -40,7 +40,7 @@
 #include <kparts/part.h>
 
 // QT includes
-#include <tqlayout.h>
+#include <layout.h>
 #include <tqsplitter.h>
 #include <tqwidget.h>
 #include <tqpushbutton.h>

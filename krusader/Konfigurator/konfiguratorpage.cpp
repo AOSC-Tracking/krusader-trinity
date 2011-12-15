@@ -29,7 +29,7 @@
  ***************************************************************************/
 
 #include "konfiguratorpage.h"
-#include <tqlayout.h>
+#include <layout.h>
 #include "../krusader.h"
 #include <tqwhatsthis.h>
 
@@ -156,34 +156,34 @@ TQGroupBox* KonfiguratorPage::createFrame( TQString text, TQWidget *parent,
   if( !text.isNull() )
     groupBox->setTitle( text );
   groupBox->setColumnLayout(0, Qt::Vertical );
-  groupBox->tqlayout()->setSpacing( 0 );
-  groupBox->tqlayout()->setMargin( 0 );
+  groupBox->layout()->setSpacing( 0 );
+  groupBox->layout()->setMargin( 0 );
   return groupBox;
 }                                          
 
 TQGridLayout* KonfiguratorPage::createGridLayout( TQLayout *parent )
 {
   TQGridLayout *gridLayout = new TQGridLayout( parent );
-  gridLayout->tqsetAlignment( TQt::AlignTop );
+  gridLayout->setAlignment( TQt::AlignTop );
   gridLayout->setSpacing( 6 );
   gridLayout->setMargin( 11 );
   return gridLayout;
 }
 
-TQLabel* KonfiguratorPage::addLabel( TQGridLayout *tqlayout, int x, int y, TQString label,
+TQLabel* KonfiguratorPage::addLabel( TQGridLayout *layout, int x, int y, TQString label,
                                     TQWidget *parent, const char *widgetName )
 {
   TQLabel *lbl = new TQLabel( label, parent, widgetName );
-  tqlayout->addWidget( lbl, x, y );
+  layout->addWidget( lbl, x, y );
   return lbl;
 }
 
 TQWidget* KonfiguratorPage::createSpacer( TQWidget *parent, const char *widgetName )
 {
   TQWidget *widget = new TQWidget( parent, widgetName );
-  TQHBoxLayout *hboxtqlayout = new TQHBoxLayout( widget );
+  TQHBoxLayout *hboxlayout = new TQHBoxLayout( widget );
   TQSpacerItem* spacer = new TQSpacerItem( 40, 20, TQSizePolicy::Expanding, TQSizePolicy::Minimum );
-  hboxtqlayout->addItem( spacer );
+  hboxlayout->addItem( spacer );
   return widget;
 }
 
@@ -192,9 +192,9 @@ KonfiguratorCheckBoxGroup* KonfiguratorPage::createCheckBoxGroup( int sizex, int
     const char *widgetName, int pg )
 {
   KonfiguratorCheckBoxGroup *groupWidget = new KonfiguratorCheckBoxGroup( parent, widgetName );
-  TQGridLayout *tqlayout = new TQGridLayout( groupWidget );
-  tqlayout->setSpacing( 6 );
-  tqlayout->setMargin( 0 );
+  TQGridLayout *layout = new TQGridLayout( groupWidget );
+  layout->setSpacing( 6 );
+  layout->setMargin( 0 );
   
   int x = 0, y = 0;
   
@@ -205,7 +205,7 @@ KonfiguratorCheckBoxGroup* KonfiguratorPage::createCheckBoxGroup( int sizex, int
       params[i].restart, params[i].toolTip, pg );
 
     groupWidget->add( checkBox );
-    tqlayout->addWidget( checkBox, y, x );
+    layout->addWidget( checkBox, y, x );
 
     if( sizex )
     {
@@ -234,10 +234,10 @@ KonfiguratorRadioButtons* KonfiguratorPage::createRadioButtonGroup( TQString cls
   radioWidget->setRadioButtonExclusive( true );
   radioWidget->setColumnLayout(0, Qt::Vertical );
 
-  TQGridLayout *tqlayout = new TQGridLayout( radioWidget->tqlayout() );
-  tqlayout->tqsetAlignment( TQt::AlignTop );
-  tqlayout->setSpacing( 6 );
-  tqlayout->setMargin( 0 );
+  TQGridLayout *layout = new TQGridLayout( radioWidget->layout() );
+  layout->setAlignment( TQt::AlignTop );
+  layout->setSpacing( 6 );
+  layout->setMargin( 0 );
 
   int x = 0, y = 0;
 
@@ -249,7 +249,7 @@ KonfiguratorRadioButtons* KonfiguratorPage::createRadioButtonGroup( TQString cls
     if( !params[i].tooltip.isEmpty() )
       TQWhatsThis::add( radBtn, params[i].tooltip );
 
-    tqlayout->addWidget( radBtn, y, x );
+    layout->addWidget( radBtn, y, x );
 
     radioWidget->addRadioButton( radBtn, params[i].text, params[i].value );
 

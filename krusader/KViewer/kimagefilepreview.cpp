@@ -7,7 +7,7 @@
 * License. See the file "COPYING" for the exact licensing terms.
 */
 
-#include <tqlayout.h>
+#include <layout.h>
 #include <tqlabel.h>
 #include <tqcombobox.h>
 #include <tqcheckbox.h>
@@ -36,8 +36,8 @@ m_job( 0L ) {
 
 	imageLabel = new TQLabel( this );
 	imageLabel->setFrameStyle( TQFrame::Panel | TQFrame::Sunken );
-	imageLabel->tqsetAlignment( TQt::AlignHCenter | TQt::AlignVCenter );
-	imageLabel->tqsetSizePolicy( TQSizePolicy( TQSizePolicy::Preferred, TQSizePolicy::Ignored ) );
+	imageLabel->setAlignment( TQt::AlignHCenter | TQt::AlignVCenter );
+	imageLabel->setSizePolicy( TQSizePolicy( TQSizePolicy::Preferred, TQSizePolicy::Ignored ) );
 	vb->addWidget( imageLabel, 1 );
 
 	timer = new TQTimer( this );
@@ -91,7 +91,7 @@ void KrusaderImageFilePreview::resizeEvent( TQResizeEvent * ) {
 	timer->start( 100, true ); // forces a new preview
 }
 
-TQSize KrusaderImageFilePreview::tqsizeHint() const {
+TQSize KrusaderImageFilePreview::sizeHint() const {
 	return TQSize( 20, 200 ); // otherwise it ends up huge???
 }
 

@@ -70,7 +70,7 @@ protected:
 private:
 	void get(const KURL& url, int tries);
 	/** checks if the exit code is OK. */
-	bool checktqStatus( int exitCode );
+	bool checkStatus( int exitCode );
 	/** service function for parseLine. */
 	TQString nextWord(TQString &s,char d=' ');
 	/** translate permittion string to mode_t. */

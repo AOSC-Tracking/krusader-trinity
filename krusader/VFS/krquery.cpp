@@ -37,8 +37,8 @@
 #include "krarchandler.h"
 #include "krpermhandler.h"
 
-#include <tqtextstream.h>
-#include <tqtextcodec.h>
+#include <textstream.h>
+#include <textcodec.h>
 #include <tqregexp.h>
 #include <klargefile.h>
 #include <klocale.h>
@@ -451,7 +451,7 @@ bool KRQuery::checkTimer() const {
   if( timer.elapsed() >= STATUS_SEND_DELAY ) {
     int pcnt = (int)(100.*(double)receivedBytes/(double)totalBytes + .5);
     TQString message = i18n( "Searching content of '%1' (%2%)" )
-                      .tqarg( fileName ).tqarg( pcnt );
+                      .arg( fileName ).arg( pcnt );
     timer.start();
     emit ((KRQuery *)this)->status( message );
     return true;
@@ -571,16 +571,16 @@ void KRQuery::setContent( const TQString &content, bool cs, bool wholeWord, bool
   containOnRemote = remoteSearch;
 }
 
-void KRQuery::setMinimumFileSize( KIO::filesize_t tqminimumSize )
+void KRQuery::setMinimumFileSize( KIO::filesize_t minimumSize )
 {
   bNull = false;
-  minSize = tqminimumSize;
+  minSize = minimumSize;
 }
 
-void KRQuery::setMaximumFileSize( KIO::filesize_t tqmaximumSize )
+void KRQuery::setMaximumFileSize( KIO::filesize_t maximumSize )
 {
   bNull = false;
-  maxSize = tqmaximumSize;
+  maxSize = maximumSize;
 }
 
 void KRQuery::setNewerThan( time_t time )

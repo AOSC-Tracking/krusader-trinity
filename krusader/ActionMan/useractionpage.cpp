@@ -12,7 +12,7 @@
 #include "useractionpage.h"
 
 #include <tqsplitter.h>
-#include <tqlayout.h>
+#include <layout.h>
 #include <tqtoolbutton.h>
 #include <tqtooltip.h>
 #include <klineedit.h>
@@ -37,10 +37,10 @@ static const char* FILE_FILTER = I18N_NOOP("*.xml|xml-files\n*|all files");
 UserActionPage::UserActionPage( TQWidget* parent )
  : TQWidget( parent, "UserActionPage" )
 {
-   TQVBoxLayout* tqlayout = new TQVBoxLayout( this, 0, 6, "UserActionPageLayout" ); // 0px margin, 6px item-spacing
+   TQVBoxLayout* layout = new TQVBoxLayout( this, 0, 6, "UserActionPageLayout" ); // 0px margin, 6px item-spacing
 
    // ======== pseudo-toolbar start ========
-   TQHBoxLayout* toolbarLayout = new TQHBoxLayout( tqlayout, 0, 0 ); // neither margin nor spacing for the toolbar with autoRaise
+   TQHBoxLayout* toolbarLayout = new TQHBoxLayout( layout, 0, 0 ); // neither margin nor spacing for the toolbar with autoRaise
 
    newButton = new TQToolButton( this, "newButton" );
    newButton->setPixmap( ICON("filenew") );
@@ -93,7 +93,7 @@ UserActionPage::UserActionPage( TQWidget* parent )
   	);
 */
    TQSplitter *split = new TQSplitter( this, "useractionpage splitter");
-   tqlayout->addWidget( split, 1000 ); // again a very large stretch-factor to fix the height of the toolbar
+   layout->addWidget( split, 1000 ); // again a very large stretch-factor to fix the height of the toolbar
 
    actionTree = new UserActionListView( split, "actionTree" );
    actionProperties = new ActionProperty( split, "actionProperties" );
@@ -268,7 +268,7 @@ void UserActionPage::slotExport() {
    bool success = UserAction::writeToFile( doc, filename );
    if ( ! success )
       KMessageBox::error( this,
-      		i18n("Can't open %1 for writing!\nNothing exported.").tqarg(filename),
+      		i18n("Can't open %1 for writing!\nNothing exported.").arg(filename),
       		i18n("Export failed!")
       );
 }
@@ -278,12 +278,12 @@ void UserActionPage::slotToClip() {
       return;
 
    TQDomDocument doc = actionTree->dumpSelectedActions();
-   KApplication::tqclipboard()->setText( doc.toString() );
+   KApplication::clipboard()->setText( doc.toString() );
 }
 
 void UserActionPage::slotFromClip() {
    TQDomDocument doc( ACTION_DOCTYPE );
-   if ( doc.setContent( KApplication::tqclipboard()->text() ) ) {
+   if ( doc.setContent( KApplication::clipboard()->text() ) ) {
       TQDomElement root = doc.documentElement();
       UserAction::KrActionList newActions;
       krUserAction->readFromElement( root, UserAction::renameDoublicated, &newActions );

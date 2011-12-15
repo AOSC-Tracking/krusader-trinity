@@ -131,14 +131,14 @@ void CompareContentTask::start() {
   if( leftURL.isLocalFile() && rightURL.isLocalFile() ) {
     leftFile = new TQFile( leftURL.path() );
     if( !leftFile->open( IO_ReadOnly ) ) {
-      KMessageBox::error(parentWidget, i18n("Error at opening %1!").tqarg( leftURL.path() ));
+      KMessageBox::error(parentWidget, i18n("Error at opening %1!").arg( leftURL.path() ));
       m_state = ST_STATE_ERROR;
       return;
     }
 
     rightFile = new TQFile( rightURL.path() );
     if( !rightFile->open( IO_ReadOnly ) ) {
-      KMessageBox::error(parentWidget, i18n("Error at opening %1!").tqarg( rightURL.path() ));
+      KMessageBox::error(parentWidget, i18n("Error at opening %1!").arg( rightURL.path() ));
       m_state = ST_STATE_ERROR;
       return;
     }
@@ -300,8 +300,8 @@ void CompareContentTask::slotFinished(KIO::Job *job)
   {
     errorPrinted = true;
     KMessageBox::error(parentWidget, i18n("IO error at comparing file %1 with %2!")
-                       .tqarg( vfs::pathOrURL( leftURL ) )
-                       .tqarg( vfs::pathOrURL( rightURL ) ) );
+                       .arg( vfs::pathOrURL( leftURL ) )
+                       .arg( vfs::pathOrURL( rightURL ) ) );
   }
 
   if( leftReadJob == 0 && rightReadJob == 0 )
@@ -335,8 +335,8 @@ void CompareContentTask::sendStatusMessage()
 {
   double perc = (size == 0) ? 1. : (double)received / (double)size;
   int percent = (int)(perc * 10000. + 0.5);
-  TQString statstr = TQString( "%1.%2%3" ).tqarg( percent / 100 ).tqarg( ( percent / 10 )%10 ).tqarg( percent % 10 ) + "%";
-  setStatusMessage( i18n( "Comparing file %1 (%2)..." ).tqarg( leftURL.fileName() ).tqarg( statstr ) );
+  TQString statstr = TQString( "%1.%2%3" ).arg( percent / 100 ).arg( ( percent / 10 )%10 ).arg( percent % 10 ) + "%";
+  setStatusMessage( i18n( "Comparing file %1 (%2)..." ).arg( leftURL.fileName() ).arg( statstr ) );
   timer->start( 500, true );
 }
 

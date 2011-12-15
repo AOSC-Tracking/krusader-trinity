@@ -32,7 +32,7 @@
 #include "../VFS/vfs.h"
 #include <tqpixmap.h>
 #include <tqcursor.h>
-#include <tqlayout.h>
+#include <layout.h>
 #include <kfiledialog.h>
 #include <kpopupmenu.h>
 #include <kiconloader.h>

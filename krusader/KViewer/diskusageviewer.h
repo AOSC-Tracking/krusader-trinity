@@ -33,7 +33,7 @@
 
 #include "../DiskUsage/diskusage.h"
 #include <kurl.h>
-#include <tqlayout.h>
+#include <layout.h>
 #include <tqlabel.h>
 
 class DiskUsageViewer : public TQWidget
@@ -55,12 +55,12 @@ signals:
   void openURLRequest(const KURL &);
   
 protected slots:
-  void slotUpdatetqStatus( TQString status = TQString() );
+  void slotUpdateStatus( TQString status = TQString() );
   void slotNewSearch();
 
 protected:  
   DiskUsage *diskUsage;
-  TQGridLayout *tqlayout;
+  TQGridLayout *layout;
   
   TQLabel *statusLabel;
   TQString prefix;

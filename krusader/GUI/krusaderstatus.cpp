@@ -34,13 +34,13 @@
 #include "../resources.h"
 
 
-KrusadertqStatus::KrusadertqStatus(TQWidget *parent, const char *name ):
+KrusaderStatus::KrusaderStatus(TQWidget *parent, const char *name ):
   KStatusBar(parent,name){
 	insertItem(i18n("Ready."), S_READY_ID);
 	setMaximumHeight(TQFontMetrics(font()).height()+2);
 }
 
-KrusadertqStatus::~KrusadertqStatus(){
+KrusaderStatus::~KrusaderStatus(){
 }
 
 #include "krusaderstatus.moc"

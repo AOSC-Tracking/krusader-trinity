@@ -3,7 +3,7 @@
 #include "krbookmarkhandler.h"
 #include <klocale.h>
 #include <tqheader.h>
-#include <tqlayout.h>
+#include <layout.h>
 #include <tqlabel.h>
 #include <kinputdialog.h>
 #include <kiconloader.h>
@@ -21,33 +21,33 @@ KrAddBookmarkDlg::KrAddBookmarkDlg(TQWidget *parent, KURL url):
 	TQWidget *page = new TQWidget(this);
 	setMainWidget(page);
 
-	TQGridLayout *tqlayout = new TQGridLayout(page, 1, 1, 0, spacingHint()); // expanding
+	TQGridLayout *layout = new TQGridLayout(page, 1, 1, 0, spacingHint()); // expanding
 	// name and url
 	TQLabel *lb1 = new TQLabel(i18n("Name:"), page);
 	_name = new KLineEdit(page);
 	_name->setText(url.prettyURL()); // default name is the url
 	_name->selectAll(); // make the text selected
-	tqlayout->addWidget(lb1, 0, 0);	
-	tqlayout->addWidget(_name, 0, 1);
+	layout->addWidget(lb1, 0, 0);	
+	layout->addWidget(_name, 0, 1);
 	
 	TQLabel *lb2 = new TQLabel(i18n("URL:"), page);
 	_url = new KLineEdit(page);
-	tqlayout->addWidget(lb2, 1, 0);	
-	tqlayout->addWidget(_url, 1, 1);
+	layout->addWidget(lb2, 1, 0);	
+	layout->addWidget(_url, 1, 1);
 	_url->setText(url.prettyURL()); // set the url in the field
 
 	// create in linedit and button
 	TQLabel *lb3 = new TQLabel(i18n("Create in:"), page);
 	_folder = new KLineEdit(page);
-	tqlayout->addWidget(lb3, 2, 0);
-	tqlayout->addWidget(_folder, 2, 1);
+	layout->addWidget(lb3, 2, 0);
+	layout->addWidget(_folder, 2, 1);
 	_folder->setReadOnly(true);
 
 	_createInBtn = new TQToolButton(page);
 	_createInBtn->setPixmap(krLoader->loadIcon("down", KIcon::Small));
 	_createInBtn->setToggleButton(true);
 	connect(_createInBtn, TQT_SIGNAL(toggled(bool)), this, TQT_SLOT(toggleCreateIn(bool )));
-	tqlayout->addWidget(_createInBtn, 2, 2);
+	layout->addWidget(_createInBtn, 2, 2);
 
 	setDetailsWidget(createInWidget());
 	
@@ -88,7 +88,7 @@ void KrAddBookmarkDlg::createInSelection(TQListViewItem *item) {
 }
 
 void KrAddBookmarkDlg::populateCreateInWidget(KrBookmark *root, KListViewItem *parent) {
-	for (KrBookmark *bm = root->tqchildren().first(); bm; bm = root->tqchildren().next()) {
+	for (KrBookmark *bm = root->children().first(); bm; bm = root->children().next()) {
 		if (bm->isFolder()) {
 			KListViewItem *item = new KListViewItem(parent, bm->text());
 			item->setOpen(true);

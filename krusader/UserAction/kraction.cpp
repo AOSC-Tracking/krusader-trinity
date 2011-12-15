@@ -14,9 +14,9 @@
 #include <kdebug.h>
 #include <klocale.h>
 #include <kinputdialog.h>
-#include <tqtextedit.h>
+#include <textedit.h>
 #include <tqvbox.h>
-#include <tqlayout.h>
+#include <layout.h>
 #include <tqsplitter.h>
 #include <tqpushbutton.h>
 #include <tqcheckbox.h>
@@ -41,7 +41,7 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////  KrActionProcDlg  /////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////
-#include <tqlayout.h>
+#include <layout.h>
 KrActionProcDlg::KrActionProcDlg( TQString caption, bool enableStderr, TQWidget *parent ) :
 KDialogBase( parent, 0, false, caption, KDialogBase::User1 | KDialogBase::Ok | KDialogBase::Cancel, KDialogBase::Cancel ),
 _stdout(0), _stderr(0), _currentTextEdit(0) {
@@ -90,11 +90,11 @@ _stdout(0), _stderr(0), _currentTextEdit(0) {
    bool startupState = krConfig->readBoolEntry( "Use Fixed Font", _UserActions_UseFixedFont );
    toggleFixedFont( startupState );
 
-   // HACK This fetches the tqlayout of the buttonbox from KDialogBase, although it is not accessable with KDialogBase's API
+   // HACK This fetches the layout of the buttonbox from KDialogBase, although it is not accessable with KDialogBase's API
    // None the less it's quite save to use since this implementation hasn't changed since KDE-3.3 (I haven't looked at earlier
    // versions since we don't support them) and now all work is done in KDE-4.
    TQWidget* buttonBox = TQT_TQWIDGET( actionButton(KDialogBase::Ok)->parent() );
-   TQBoxLayout* buttonBoxLayout = static_cast<TQBoxLayout*>( buttonBox->tqlayout() );
+   TQBoxLayout* buttonBoxLayout = static_cast<TQBoxLayout*>( buttonBox->layout() );
    TQCheckBox* useFixedFont = new TQCheckBox( i18n("Use font with fixed width"), buttonBox );
    buttonBoxLayout->insertWidget( 0, useFixedFont );
    useFixedFont->setChecked( startupState );
@@ -103,16 +103,16 @@ _stdout(0), _stderr(0), _currentTextEdit(0) {
 
 void KrActionProcDlg::addStderr( KProcess *, char *buffer, int buflen ) {
    if (_stderr)
-      _stderr->append( TQString::tqfromLatin1( buffer, buflen ) );
+      _stderr->append( TQString::fromLatin1( buffer, buflen ) );
    else {
       _stdout->setItalic(true);
-      _stdout->append( TQString::tqfromLatin1( buffer, buflen ) );
+      _stdout->append( TQString::fromLatin1( buffer, buflen ) );
       _stdout->setItalic(false);
    }
 }
 
 void KrActionProcDlg::addStdout( KProcess *, char *buffer, int buflen ) {
-   _stdout->append( TQString::tqfromLatin1( buffer, buflen ) );
+   _stdout->append( TQString::fromLatin1( buffer, buflen ) );
 }
 
 void KrActionProcDlg::toggleFixedFont( bool state ) {
@@ -151,7 +151,7 @@ void KrActionProcDlg::slotUser1() {
 
    if ( ! open ) {
       KMessageBox::error( this,
-      		i18n("Can't open %1 for writing!\nNothing exported.").tqarg(filename),
+      		i18n("Can't open %1 for writing!\nNothing exported.").arg(filename),
       		i18n("Export failed!")
       	);
       return;

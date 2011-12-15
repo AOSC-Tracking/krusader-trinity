@@ -163,9 +163,9 @@ TQString KrView::statistics() {
        _countSize += it->getVfile()->vfile_getSize();
    }
    TQString tmp = TQString(i18n("%1 out of %2, %3 (%4) out of %5 (%6)"))
-                 .tqarg( _numSelected ).tqarg( _count ).tqarg( KIO::convertSize( _selectedSize ) )
-                 .tqarg( KRpermHandler::parseSize(_selectedSize) )
-					  .tqarg( KIO::convertSize( _countSize ) ).tqarg( KRpermHandler::parseSize(_countSize) );
+                 .arg( _numSelected ).arg( _count ).arg( KIO::convertSize( _selectedSize ) )
+                 .arg( KRpermHandler::parseSize(_selectedSize) )
+					  .arg( KIO::convertSize( _countSize ) ).arg( KRpermHandler::parseSize(_countSize) );
 	// notify if we're running a filtered view
 	if (filter() != KrViewProperties::All)
 		tmp = ">> [ " + filterMask().nameFilter() + " ]  "+tmp;

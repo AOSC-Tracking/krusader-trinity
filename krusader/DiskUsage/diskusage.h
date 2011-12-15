@@ -136,7 +136,7 @@ protected:
   int        calculateSizes( Directory *dir = 0, bool emitSig = false, int depth = 0 );
   int        calculatePercents( bool emitSig = false, Directory *dir = 0 , int depth = 0 );
   int        include( Directory *dir, int depth = 0 );
-  void       createtqStatus();
+  void       createStatus();
   void       executeAction( int, File * = 0 );
   
   KURL       baseURL;             //< the base URL of loading

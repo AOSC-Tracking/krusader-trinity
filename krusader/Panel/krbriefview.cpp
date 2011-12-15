@@ -249,7 +249,7 @@ void KrBriefView::addItems( vfs *v, bool addUpDir ) {
 
 
    // text for updating the status bar
-   TQString statusText = TQString("%1/  ").tqarg( v->vfs_getOrigin().fileName() ) + i18n("Directory");
+   TQString statusText = TQString("%1/  ").arg( v->vfs_getOrigin().fileName() ) + i18n("Directory");
 
    bool as = sortDirection();
    setSorting( false, as ); // disable sorting
@@ -459,7 +459,7 @@ void KrBriefView::contentsMousePressEvent( TQMouseEvent * e ) {
              lastSwushPosition = newCurrent;
            }
            newCurrent->setSelected(!newCurrent->isSelected(), true);
-           newCurrent->tqrepaint();
+           newCurrent->repaint();
 			  selectionChanged = true;
          }
          callDefaultHandler = false;
@@ -474,7 +474,7 @@ void KrBriefView::contentsMousePressEvent( TQMouseEvent * e ) {
             if( newCurrent )
             {
                newCurrent->setSelected(!newCurrent->isSelected());
-               newCurrent->tqrepaint();
+               newCurrent->repaint();
                selectionChanged = true;
                callDefaultHandler = false;
                e->accept();
@@ -486,7 +486,7 @@ void KrBriefView::contentsMousePressEvent( TQMouseEvent * e ) {
             if( newCurrent )
             {
                newCurrent->setSelected( true );
-               newCurrent->tqrepaint();
+               newCurrent->repaint();
             }
             selectionChanged = true;
             callDefaultHandler = false;
@@ -514,7 +514,7 @@ void KrBriefView::contentsMousePressEvent( TQMouseEvent * e ) {
          if (newCurrent)
          {
            newCurrent->setSelected(!newCurrent->isSelected(), true);
-           newCurrent->tqrepaint();
+           newCurrent->repaint();
 			  selectionChanged = true;
          }
          callDefaultHandler = false;
@@ -769,9 +769,9 @@ void KrBriefView::contentsDragMoveEvent( TQDragMoveEvent * e ) {
    if( _currDragItem != oldDragItem )
    {
      if( oldDragItem )
-        dynamic_cast<KrBriefViewItem *>( oldDragItem )->tqrepaint();
+        dynamic_cast<KrBriefViewItem *>( oldDragItem )->repaint();
      if( _currDragItem )
-        dynamic_cast<KrBriefViewItem *>( _currDragItem )->tqrepaint();
+        dynamic_cast<KrBriefViewItem *>( _currDragItem )->repaint();
    }
 }
 
@@ -783,7 +783,7 @@ void KrBriefView::contentsDragLeaveEvent ( TQDragLeaveEvent *e )
    KIconView::contentsDragLeaveEvent( e );
 
    if( oldDragItem )
-     dynamic_cast<KrBriefViewItem *>( oldDragItem )->tqrepaint();
+     dynamic_cast<KrBriefViewItem *>( oldDragItem )->repaint();
 }
 
 void KrBriefView::imStartEvent(TQIMEvent* e)
@@ -803,7 +803,7 @@ void KrBriefView::imStartEvent(TQIMEvent* e)
 								// item is "below" the quick search window, as the icon view will
 								// realize its new size after the key processing. The following line
 								// will resize the icon view immediately.
-        ACTIVE_PANEL->tqlayout->activate();
+        ACTIVE_PANEL->layout->activate();
 								// second, we need to disable the dirup action - hack!
         krDirUp->setEnabled( false );
       }
@@ -1109,7 +1109,7 @@ void KrBriefView::keyPressEvent( TQKeyEvent * e ) {
 								// item is "below" the quick search window, as the icon view will
 								// realize its new size after the key processing. The following line
 								// will resize the icon view immediately.
-								ACTIVE_PANEL->tqlayout->activate();
+								ACTIVE_PANEL->layout->activate();
 								// second, we need to disable the dirup action - hack!
 								krDirUp->setEnabled( false );
 							}
@@ -1352,7 +1352,7 @@ void KrBriefView::setColumnNr()
 
   for( int i=1; i <= MAX_COLS; i++ )
   {
-    popup.insertItem( TQString( "%1" ).tqarg( i ), COL_ID + i );
+    popup.insertItem( TQString( "%1" ).arg( i ), COL_ID + i );
     popup.setItemChecked( COL_ID + i, PROPS->numberOfColumns == i );
   }
   

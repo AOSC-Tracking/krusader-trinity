@@ -49,11 +49,11 @@ RadialMap::Widget::url( File const * const file ) const
 }
 
 void
-RadialMap::Widget::tqinvalidate( const bool b )
+RadialMap::Widget::invalidate( const bool b )
 {
    if( isValid() )
    {
-      //**** have to check that only way to tqinvalidate is this function frankly
+      //**** have to check that only way to invalidate is this function frankly
       //**** otherwise you may get bugs..
 
       //disable mouse tracking
@@ -70,7 +70,7 @@ RadialMap::Widget::tqinvalidate( const bool b )
 
       //FIXME move this disablement thing no?
       //      it is confusing in other areas, like the whole createFromCache() thing
-      m_map.tqinvalidate( b ); //b signifies whether the pixmap is made to look disabled or not
+      m_map.invalidate( b ); //b signifies whether the pixmap is made to look disabled or not
       if( b )
          update();
 
@@ -82,10 +82,10 @@ RadialMap::Widget::tqinvalidate( const bool b )
 void
 RadialMap::Widget::create( const Directory *tree )
 {
-   //it is not the responsibility of create() to tqinvalidate first
+   //it is not the responsibility of create() to invalidate first
    //skip invalidation at your own risk
 
-   //FIXME make it the responsibility of create to tqinvalidate first
+   //FIXME make it the responsibility of create to invalidate first
 
    if( tree )
    {
@@ -108,8 +108,8 @@ RadialMap::Widget::create( const Directory *tree )
 void
 RadialMap::Widget::createFromCache( const Directory *tree )
 {
-    //no scan was necessary, use cached tree, however we MUST still emit tqinvalidate
-    tqinvalidate( false );
+    //no scan was necessary, use cached tree, however we MUST still emit invalidate
+    invalidate( false );
     create( tree );
 }
 

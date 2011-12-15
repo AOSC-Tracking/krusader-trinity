@@ -33,7 +33,7 @@
 
 #include <tqstring.h>
 #include <tqlabel.h>
-#include <tqlayout.h>
+#include <layout.h>
 #include <tqhbox.h>
 #include <tqvbox.h>
 #include <tqgrid.h>
@@ -84,14 +84,14 @@ protected:
   TQLabel* _label; // generic label
 
   /**
-  * Creates the main grid tqlayout and attaches the table header
+  * Creates the main grid layout and attaches the table header
   *
-  * @return bool  Pointer to the main grid tqlayout
+  * @return bool  Pointer to the main grid layout
   */
   TQGridLayout* initTable();
 
   /**
-  * Applies settings to each cell of the grid tqlayout
+  * Applies settings to each cell of the grid layout
   * Supposed to be run after a row was added
   *
   * @param const TQGridLayout* grid  The GridLayout

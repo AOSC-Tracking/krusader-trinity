@@ -91,14 +91,14 @@ struct PredefinedDevice
 
         if( frac_part )
         {
-          frac = TQString( "%1" ).tqarg( frac_part ).rightJustify( 3, '0' );
+          frac = TQString( "%1" ).arg( frac_part ).rightJustify( 3, '0' );
           frac = "." + frac;
           while( frac.endsWith("0") )
             frac.truncate( frac.length() - 1 );
         }
       }
 
-      return TQString( "%1%2" ).tqarg( int_part ).tqarg( frac );
+      return TQString( "%1%2" ).arg( int_part ).arg( frac );
     }
 
     int mapTextToValue( bool * )

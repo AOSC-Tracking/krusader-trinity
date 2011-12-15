@@ -49,7 +49,7 @@ KgColors::KgColors( bool first, TQWidget* parent,  const char* name ) :
   //  -------------------------- GENERAL GROUPBOX ----------------------------------
 
   TQGroupBox *generalGrp = createFrame( i18n( "General" ), parent, "kgColorsGeneralGrp" );
-  TQGridLayout *generalGrid = createGridLayout( generalGrp->tqlayout() );
+  TQGridLayout *generalGrid = createGridLayout( generalGrp->layout() );
 
   generalGrid->setSpacing( 0 );
   generalGrid->setMargin( 5 );
@@ -64,7 +64,7 @@ KgColors::KgColors( bool first, TQWidget* parent,  const char* name ) :
   generals = createCheckBoxGroup( 0, 2, generalSettings, sizeof(generalSettings)/sizeof(generalSettings[0]), generalGrp );
   generalGrid->addWidget( generals, 1, 0 );
 
-  generals->tqlayout()->setSpacing( 5 );
+  generals->layout()->setSpacing( 5 );
 
   connect( generals->find( "KDE Default" ), TQT_SIGNAL( stateChanged( int ) ), this, TQT_SLOT( slotDisable() ) );
   connect( generals->find( "Enable Alternate Background" ), TQT_SIGNAL( stateChanged( int ) ), this, TQT_SLOT( generatePreview() ) );
@@ -77,7 +77,7 @@ KgColors::KgColors( bool first, TQWidget* parent,  const char* name ) :
   //  -------------------------- COLORS GROUPBOX ----------------------------------
 
   TQGroupBox *colorsFrameGrp = createFrame( i18n( "Colors" ), hbox, "kgColorsColorsGrp" );
-  TQGridLayout *colorsFrameGrid = createGridLayout( colorsFrameGrp->tqlayout() );
+  TQGridLayout *colorsFrameGrid = createGridLayout( colorsFrameGrp->layout() );
   colorsFrameGrid->setSpacing( 0 );
   colorsFrameGrid->setMargin( 3 );
 
@@ -168,9 +168,9 @@ KgColors::KgColors( bool first, TQWidget* parent,  const char* name ) :
   addColorSelector( "Dim Target Color", i18n( "Dim target color:" ), TQt::white);
 
   int index = itemList.count() - offset;
-  labelList.append( addLabel( colorsGrid, index, 0, i18n("Dim factor:"), colorsGrp, TQString( "ColorsLabel%1" ).tqarg( index ).ascii() ) );
+  labelList.append( addLabel( colorsGrid, index, 0, i18n("Dim factor:"), colorsGrp, TQString( "ColorsLabel%1" ).arg( index ).ascii() ) );
   dimFactor = createSpinBox("Colors", "Dim Factor", 100, 0, 100, colorsGrp);
-  dimFactor->tqsetSizePolicy( TQSizePolicy::Expanding, TQSizePolicy::Fixed );
+  dimFactor->setSizePolicy( TQSizePolicy::Expanding, TQSizePolicy::Fixed );
   connect( dimFactor, TQT_SIGNAL( valueChanged( int ) ), this, TQT_SLOT( generatePreview() ) );
   colorsGrid->addWidget( dimFactor, index++, 1 );
 
@@ -210,7 +210,7 @@ KgColors::KgColors( bool first, TQWidget* parent,  const char* name ) :
   //  -------------------------- PREVIEW GROUPBOX ----------------------------------
 
   previewGrp = createFrame( i18n( "Preview" ), hbox, "kgColorsPreviewGrp" );
-  previewGrid = createGridLayout( previewGrp->tqlayout() );
+  previewGrid = createGridLayout( previewGrp->layout() );
 
   preview = new TQListView( previewGrp, "colorPreView" );
 
@@ -241,9 +241,9 @@ int KgColors::addColorSelector( TQString cfgName, TQString name, TQColor dflt, T
 {
   int index = itemList.count() - offset;
 
-  labelList.append( addLabel( colorsGrid, index, 0, name, colorsGrp, TQString( "ColorsLabel%1" ).tqarg( index ).ascii() ) );
+  labelList.append( addLabel( colorsGrid, index, 0, name, colorsGrp, TQString( "ColorsLabel%1" ).arg( index ).ascii() ) );
   KonfiguratorColorChooser *chooser = createColorChooser( "Colors", cfgName, dflt, colorsGrp, false, addColor, addColNum );
-  chooser->tqsetSizePolicy( TQSizePolicy::Expanding, TQSizePolicy::Fixed );
+  chooser->setSizePolicy( TQSizePolicy::Expanding, TQSizePolicy::Fixed );
 
   if( !dfltName.isEmpty() )
     chooser->setDefaultText( dfltName );

@@ -37,7 +37,7 @@
 #include "../GUI/profilemanager.h"
 
 #include <tqwidget.h>
-#include <tqlayout.h>
+#include <layout.h>
 #include <tqgroupbox.h>
 #include <tqcheckbox.h>
 #include <tqlabel.h>

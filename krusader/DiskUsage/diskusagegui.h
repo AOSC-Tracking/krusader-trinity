@@ -32,7 +32,7 @@
 #define __DISK_USAGE_GUI_H__
 
 #include <tqdialog.h>
-#include <tqlayout.h>
+#include <layout.h>
 #include <tqtoolbutton.h>
 #include <kurl.h>
 #include <ksqueezedtextlabel.h>
@@ -52,7 +52,7 @@ public:
 public slots:
   void                       loadUsageInfo();
   bool                       newSearch();
-  void                       settqStatus( TQString );
+  void                       setStatus( TQString );
   
   void                       selectLinesView()     { diskUsage->setView( VIEW_LINES ); }
   void                       selectListView()      { diskUsage->setView( VIEW_DETAILED ); }

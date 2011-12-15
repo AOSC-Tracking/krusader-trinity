@@ -87,7 +87,7 @@ bool normal_vfs::populateVfsList(const KURL& origin, bool showHidden){
 	// check that the new origin exists
 	if ( !TQDir(path).exists() )
 	{
-		if( !quietMode ) KMessageBox::error(krApp, i18n("Directory %1 does not exist!").tqarg( path ), i18n("Error"));
+		if( !quietMode ) KMessageBox::error(krApp, i18n("Directory %1 does not exist!").arg( path ), i18n("Error"));
 		return false;
 	}
     
@@ -97,7 +97,7 @@ bool normal_vfs::populateVfsList(const KURL& origin, bool showHidden){
 	DIR* dir = opendir(path.local8Bit());
 	if(!dir) 
 	{
-		if( !quietMode ) KMessageBox::error(krApp, i18n("Can't open the %1 directory!").tqarg( path ), i18n("Error"));
+		if( !quietMode ) KMessageBox::error(krApp, i18n("Can't open the %1 directory!").arg( path ), i18n("Error"));
 		return false;
 	}
 
@@ -337,7 +337,7 @@ TQString normal_vfs::getACL( const TQString & path, int type )
 		return TQString();
 	
 	char *aclString = acl_to_text( acl, 0 );
-	TQString ret = TQString::tqfromLatin1( aclString );
+	TQString ret = TQString::fromLatin1( aclString );
 	acl_free( (void*)aclString );
 	acl_free( acl );
 	

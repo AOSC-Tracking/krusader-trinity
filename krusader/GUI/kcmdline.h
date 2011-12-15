@@ -36,7 +36,7 @@
 // QT includes
 #include <tqwidget.h>
 #include <tqlabel.h>
-#include <tqlayout.h>
+#include <layout.h>
 #include <tqtoolbutton.h>
 
 // KDE includes

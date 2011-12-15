@@ -37,7 +37,7 @@ RadialMap::Map::~Map()
 }
 
 void
-RadialMap::Map::tqinvalidate( const bool desaturateTheImage )
+RadialMap::Map::invalidate( const bool desaturateTheImage )
 {
     delete [] m_signature;
     m_signature = 0;
@@ -173,7 +173,7 @@ RadialMap::Map::colorise()
             case 2000: //HACK for summary view
 
                if( (*it)->file()->name() == "Used" ) {
-                  cb = TQApplication::tqpalette().active().color( TQColorGroup::Highlight );
+                  cb = TQApplication::palette().active().color( TQColorGroup::Highlight );
                   cb.hsv( &h, &s1, &v1 );
 
                   if( s1 > 80 )

@@ -98,7 +98,7 @@ bool SynchronizerDirList::load( const TQString &urlIn, bool wait ) {
     TQString path = url.path( -1 );
     DIR* dir = opendir(path.local8Bit());
     if(!dir)  {
-      KMessageBox::error(parentWidget, i18n("Can't open the %1 directory!").tqarg( path ), i18n("Error"));
+      KMessageBox::error(parentWidget, i18n("Can't open the %1 directory!").arg( path ), i18n("Error"));
       emit finished( result = false );
       return false;
     }

@@ -26,7 +26,7 @@
 #include <tqcheckbox.h>
 #include <tqgroupbox.h>
 #include <klistbox.h>
-#include <tqlayout.h>
+#include <layout.h>
 #include <tqtooltip.h>
 #include <tqwhatsthis.h>
 #include "klineedit.h"
@@ -57,17 +57,17 @@ ActionPropertyBase::ActionPropertyBase( TQWidget* parent, const char* name, WFla
     tabLayout->addWidget( ButtonAddStartpath, 8, 3 );
 
     LabelDescription = new TQLabel( tab, "LabelDescription" );
-    LabelDescription->tqsetSizePolicy( TQSizePolicy( (TQSizePolicy::SizeType)1, (TQSizePolicy::SizeType)1, 0, 0, LabelDescription->sizePolicy().hasHeightForWidth() ) );
+    LabelDescription->setSizePolicy( TQSizePolicy( (TQSizePolicy::SizeType)1, (TQSizePolicy::SizeType)1, 0, 0, LabelDescription->sizePolicy().hasHeightForWidth() ) );
 
     tabLayout->addWidget( LabelDescription, 4, 0 );
 
     bgAccept = new TQButtonGroup( tab, "bgAccept" );
-    bgAccept->tqsetSizePolicy( TQSizePolicy( (TQSizePolicy::SizeType)5, (TQSizePolicy::SizeType)1, 0, 0, bgAccept->sizePolicy().hasHeightForWidth() ) );
+    bgAccept->setSizePolicy( TQSizePolicy( (TQSizePolicy::SizeType)5, (TQSizePolicy::SizeType)1, 0, 0, bgAccept->sizePolicy().hasHeightForWidth() ) );
     bgAccept->setColumnLayout(0, Qt::Vertical );
-    bgAccept->tqlayout()->setSpacing( 6 );
-    bgAccept->tqlayout()->setMargin( 11 );
-    bgAcceptLayout = new TQGridLayout( bgAccept->tqlayout() );
-    bgAcceptLayout->tqsetAlignment( TQt::AlignTop );
+    bgAccept->layout()->setSpacing( 6 );
+    bgAccept->layout()->setMargin( 11 );
+    bgAcceptLayout = new TQGridLayout( bgAccept->layout() );
+    bgAcceptLayout->setAlignment( TQt::AlignTop );
 
     radioLocal = new TQRadioButton( bgAccept, "radioLocal" );
     radioLocal->setChecked( TRUE );
@@ -85,37 +85,37 @@ ActionPropertyBase::ActionPropertyBase( TQWidget* parent, const char* name, WFla
     tabLayout->addMultiCellWidget( leTitle, 2, 2, 1, 3 );
 
     LabelTitle = new TQLabel( tab, "LabelTitle" );
-    LabelTitle->tqsetSizePolicy( TQSizePolicy( (TQSizePolicy::SizeType)1, (TQSizePolicy::SizeType)0, 0, 0, LabelTitle->sizePolicy().hasHeightForWidth() ) );
+    LabelTitle->setSizePolicy( TQSizePolicy( (TQSizePolicy::SizeType)1, (TQSizePolicy::SizeType)0, 0, 0, LabelTitle->sizePolicy().hasHeightForWidth() ) );
 
     tabLayout->addWidget( LabelTitle, 2, 0 );
 
-    tqlayout3 = new TQHBoxLayout( 0, 0, 6, "tqlayout3"); 
+    layout3 = new TQHBoxLayout( 0, 0, 6, "layout3"); 
 
-    tqlayout2 = new TQVBoxLayout( 0, 0, 6, "tqlayout2"); 
+    layout2 = new TQVBoxLayout( 0, 0, 6, "layout2"); 
 
     leDistinctName = new KLineEdit( tab, "leDistinctName" );
-    tqlayout2->addWidget( leDistinctName );
+    layout2->addWidget( leDistinctName );
 
     cbCategory = new KComboBox( FALSE, tab, "cbCategory" );
     cbCategory->setEditable( TRUE );
-    tqlayout2->addWidget( cbCategory );
-    tqlayout3->addLayout( tqlayout2 );
+    layout2->addWidget( cbCategory );
+    layout3->addLayout( layout2 );
 
     ButtonIcon = new KIconButton( tab, "ButtonIcon" );
-    ButtonIcon->tqsetSizePolicy( TQSizePolicy( (TQSizePolicy::SizeType)0, (TQSizePolicy::SizeType)0, 0, 0, ButtonIcon->sizePolicy().hasHeightForWidth() ) );
+    ButtonIcon->setSizePolicy( TQSizePolicy( (TQSizePolicy::SizeType)0, (TQSizePolicy::SizeType)0, 0, 0, ButtonIcon->sizePolicy().hasHeightForWidth() ) );
     ButtonIcon->setMinimumSize( TQSize( 50, 50 ) );
     ButtonIcon->setMaximumSize( TQSize( 50, 50 ) );
-    tqlayout3->addWidget( ButtonIcon );
+    layout3->addWidget( ButtonIcon );
 
-    tabLayout->addMultiCellLayout( tqlayout3, 0, 1, 1, 3 );
+    tabLayout->addMultiCellLayout( layout3, 0, 1, 1, 3 );
 
     LabelDistinctName = new TQLabel( tab, "LabelDistinctName" );
-    LabelDistinctName->tqsetSizePolicy( TQSizePolicy( (TQSizePolicy::SizeType)1, (TQSizePolicy::SizeType)0, 0, 0, LabelDistinctName->sizePolicy().hasHeightForWidth() ) );
+    LabelDistinctName->setSizePolicy( TQSizePolicy( (TQSizePolicy::SizeType)1, (TQSizePolicy::SizeType)0, 0, 0, LabelDistinctName->sizePolicy().hasHeightForWidth() ) );
 
     tabLayout->addWidget( LabelDistinctName, 0, 0 );
 
     LabelCommandline = new TQLabel( tab, "LabelCommandline" );
-    LabelCommandline->tqsetSizePolicy( TQSizePolicy( (TQSizePolicy::SizeType)0, (TQSizePolicy::SizeType)0, 0, 0, LabelCommandline->sizePolicy().hasHeightForWidth() ) );
+    LabelCommandline->setSizePolicy( TQSizePolicy( (TQSizePolicy::SizeType)0, (TQSizePolicy::SizeType)0, 0, 0, LabelCommandline->sizePolicy().hasHeightForWidth() ) );
 
     tabLayout->addWidget( LabelCommandline, 7, 0 );
 
@@ -128,7 +128,7 @@ ActionPropertyBase::ActionPropertyBase( TQWidget* parent, const char* name, WFla
     tabLayout->addMultiCellWidget( leStartpath, 8, 8, 1, 2 );
 
     LabelTooltip = new TQLabel( tab, "LabelTooltip" );
-    LabelTooltip->tqsetSizePolicy( TQSizePolicy( (TQSizePolicy::SizeType)1, (TQSizePolicy::SizeType)0, 0, 0, LabelTooltip->sizePolicy().hasHeightForWidth() ) );
+    LabelTooltip->setSizePolicy( TQSizePolicy( (TQSizePolicy::SizeType)1, (TQSizePolicy::SizeType)0, 0, 0, LabelTooltip->sizePolicy().hasHeightForWidth() ) );
 
     tabLayout->addWidget( LabelTooltip, 3, 0 );
 
@@ -137,12 +137,12 @@ ActionPropertyBase::ActionPropertyBase( TQWidget* parent, const char* name, WFla
     tabLayout->addMultiCellWidget( leCommandline, 7, 7, 1, 2 );
 
     LabelCategory = new TQLabel( tab, "LabelCategory" );
-    LabelCategory->tqsetSizePolicy( TQSizePolicy( (TQSizePolicy::SizeType)1, (TQSizePolicy::SizeType)0, 0, 0, LabelCategory->sizePolicy().hasHeightForWidth() ) );
+    LabelCategory->setSizePolicy( TQSizePolicy( (TQSizePolicy::SizeType)1, (TQSizePolicy::SizeType)0, 0, 0, LabelCategory->sizePolicy().hasHeightForWidth() ) );
 
     tabLayout->addWidget( LabelCategory, 1, 0 );
 
     ButtonAddPlaceholder = new TQToolButton( tab, "ButtonAddPlaceholder" );
-    ButtonAddPlaceholder->tqsetSizePolicy( TQSizePolicy( (TQSizePolicy::SizeType)0, (TQSizePolicy::SizeType)0, 0, 0, ButtonAddPlaceholder->sizePolicy().hasHeightForWidth() ) );
+    ButtonAddPlaceholder->setSizePolicy( TQSizePolicy( (TQSizePolicy::SizeType)0, (TQSizePolicy::SizeType)0, 0, 0, ButtonAddPlaceholder->sizePolicy().hasHeightForWidth() ) );
     ButtonAddPlaceholder->setMinimumSize( TQSize( 0, 0 ) );
 
     tabLayout->addWidget( ButtonAddPlaceholder, 7, 3 );
@@ -153,31 +153,31 @@ ActionPropertyBase::ActionPropertyBase( TQWidget* parent, const char* name, WFla
     tabLayout->addMultiCellWidget( textDescription, 4, 6, 1, 3 );
 
     LabelStartpath = new TQLabel( tab, "LabelStartpath" );
-    LabelStartpath->tqsetSizePolicy( TQSizePolicy( (TQSizePolicy::SizeType)0, (TQSizePolicy::SizeType)0, 0, 0, LabelStartpath->sizePolicy().hasHeightForWidth() ) );
+    LabelStartpath->setSizePolicy( TQSizePolicy( (TQSizePolicy::SizeType)0, (TQSizePolicy::SizeType)0, 0, 0, LabelStartpath->sizePolicy().hasHeightForWidth() ) );
 
     tabLayout->addWidget( LabelStartpath, 8, 0 );
     spacer = new TQSpacerItem( 80, 19, TQSizePolicy::Minimum, TQSizePolicy::Expanding );
     tabLayout->addItem( spacer, 6, 0 );
 
-    tqlayout4 = new TQHBoxLayout( 0, 0, 6, "tqlayout4"); 
+    layout4 = new TQHBoxLayout( 0, 0, 6, "layout4"); 
 
     LabelShortcut = new TQLabel( tab, "LabelShortcut" );
-    tqlayout4->addWidget( LabelShortcut );
+    layout4->addWidget( LabelShortcut );
     spacer6_2 = new TQSpacerItem( 161, 21, TQSizePolicy::Expanding, TQSizePolicy::Minimum );
-    tqlayout4->addItem( spacer6_2 );
+    layout4->addItem( spacer6_2 );
 
     KeyButtonShortcut = new KKeyButton( tab, "KeyButtonShortcut" );
-    tqlayout4->addWidget( KeyButtonShortcut );
+    layout4->addWidget( KeyButtonShortcut );
 
-    tabLayout->addMultiCellLayout( tqlayout4, 10, 10, 2, 3 );
+    tabLayout->addMultiCellLayout( layout4, 10, 10, 2, 3 );
 
     bgExecType = new TQButtonGroup( tab, "bgExecType" );
-    bgExecType->tqsetSizePolicy( TQSizePolicy( (TQSizePolicy::SizeType)5, (TQSizePolicy::SizeType)1, 0, 0, bgExecType->sizePolicy().hasHeightForWidth() ) );
+    bgExecType->setSizePolicy( TQSizePolicy( (TQSizePolicy::SizeType)5, (TQSizePolicy::SizeType)1, 0, 0, bgExecType->sizePolicy().hasHeightForWidth() ) );
     bgExecType->setColumnLayout(0, Qt::Vertical );
-    bgExecType->tqlayout()->setSpacing( 6 );
-    bgExecType->tqlayout()->setMargin( 11 );
-    bgExecTypeLayout = new TQGridLayout( bgExecType->tqlayout() );
-    bgExecTypeLayout->tqsetAlignment( TQt::AlignTop );
+    bgExecType->layout()->setSpacing( 6 );
+    bgExecType->layout()->setMargin( 11 );
+    bgExecTypeLayout = new TQGridLayout( bgExecType->layout() );
+    bgExecTypeLayout->setAlignment( TQt::AlignTop );
 
     radioCollectOutput = new TQRadioButton( bgExecType, "radioCollectOutput" );
 
@@ -198,18 +198,18 @@ ActionPropertyBase::ActionPropertyBase( TQWidget* parent, const char* name, WFla
     bgExecTypeLayout->addWidget( radioTerminal, 1, 0 );
 
     tabLayout->addMultiCellWidget( bgExecType, 9, 10, 0, 1 );
-    tabWidget3->insertTab( tab, TQString::tqfromLatin1("") );
+    tabWidget3->insertTab( tab, TQString::fromLatin1("") );
 
     tab_2 = new TQWidget( tabWidget3, "tab_2" );
     tabLayout_2 = new TQGridLayout( tab_2, 1, 1, 11, 6, "tabLayout_2"); 
 
     gbShowonly = new TQGroupBox( tab_2, "gbShowonly" );
-    gbShowonly->tqsetSizePolicy( TQSizePolicy( (TQSizePolicy::SizeType)7, (TQSizePolicy::SizeType)7, 0, 0, gbShowonly->sizePolicy().hasHeightForWidth() ) );
+    gbShowonly->setSizePolicy( TQSizePolicy( (TQSizePolicy::SizeType)7, (TQSizePolicy::SizeType)7, 0, 0, gbShowonly->sizePolicy().hasHeightForWidth() ) );
     gbShowonly->setColumnLayout(0, Qt::Vertical );
-    gbShowonly->tqlayout()->setSpacing( 6 );
-    gbShowonly->tqlayout()->setMargin( 11 );
-    gbShowonlyLayout = new TQGridLayout( gbShowonly->tqlayout() );
-    gbShowonlyLayout->tqsetAlignment( TQt::AlignTop );
+    gbShowonly->layout()->setSpacing( 6 );
+    gbShowonly->layout()->setMargin( 11 );
+    gbShowonlyLayout = new TQGridLayout( gbShowonly->layout() );
+    gbShowonlyLayout->setAlignment( TQt::AlignTop );
 
     tabShowonly = new TQTabWidget( gbShowonly, "tabShowonly" );
     tabShowonly->setTabPosition( TQTabWidget::Top );
@@ -219,14 +219,14 @@ ActionPropertyBase::ActionPropertyBase( TQWidget* parent, const char* name, WFla
     TabPageLayout = new TQGridLayout( TabPage, 1, 1, 11, 6, "TabPageLayout"); 
 
     ButtonNewProtocol = new TQToolButton( TabPage, "ButtonNewProtocol" );
-    ButtonNewProtocol->tqsetSizePolicy( TQSizePolicy( (TQSizePolicy::SizeType)1, (TQSizePolicy::SizeType)0, 0, 0, ButtonNewProtocol->sizePolicy().hasHeightForWidth() ) );
+    ButtonNewProtocol->setSizePolicy( TQSizePolicy( (TQSizePolicy::SizeType)1, (TQSizePolicy::SizeType)0, 0, 0, ButtonNewProtocol->sizePolicy().hasHeightForWidth() ) );
     ButtonNewProtocol->setMinimumSize( TQSize( 0, 0 ) );
     ButtonNewProtocol->setMaximumSize( TQSize( 32767, 32767 ) );
 
     TabPageLayout->addWidget( ButtonNewProtocol, 0, 1 );
 
     ButtonEditProtocol = new TQToolButton( TabPage, "ButtonEditProtocol" );
-    ButtonEditProtocol->tqsetSizePolicy( TQSizePolicy( (TQSizePolicy::SizeType)1, (TQSizePolicy::SizeType)0, 0, 0, ButtonEditProtocol->sizePolicy().hasHeightForWidth() ) );
+    ButtonEditProtocol->setSizePolicy( TQSizePolicy( (TQSizePolicy::SizeType)1, (TQSizePolicy::SizeType)0, 0, 0, ButtonEditProtocol->sizePolicy().hasHeightForWidth() ) );
     ButtonEditProtocol->setMinimumSize( TQSize( 0, 0 ) );
     ButtonEditProtocol->setMaximumSize( TQSize( 32767, 32767 ) );
 
@@ -235,7 +235,7 @@ ActionPropertyBase::ActionPropertyBase( TQWidget* parent, const char* name, WFla
     TabPageLayout->addItem( spacer6_3, 3, 1 );
 
     ButtonRemoveProtocol = new TQToolButton( TabPage, "ButtonRemoveProtocol" );
-    ButtonRemoveProtocol->tqsetSizePolicy( TQSizePolicy( (TQSizePolicy::SizeType)1, (TQSizePolicy::SizeType)0, 0, 0, ButtonRemoveProtocol->sizePolicy().hasHeightForWidth() ) );
+    ButtonRemoveProtocol->setSizePolicy( TQSizePolicy( (TQSizePolicy::SizeType)1, (TQSizePolicy::SizeType)0, 0, 0, ButtonRemoveProtocol->sizePolicy().hasHeightForWidth() ) );
     ButtonRemoveProtocol->setMinimumSize( TQSize( 0, 0 ) );
     ButtonRemoveProtocol->setMaximumSize( TQSize( 32767, 32767 ) );
 
@@ -244,7 +244,7 @@ ActionPropertyBase::ActionPropertyBase( TQWidget* parent, const char* name, WFla
     lbShowonlyProtocol = new KListBox( TabPage, "lbShowonlyProtocol" );
 
     TabPageLayout->addMultiCellWidget( lbShowonlyProtocol, 0, 3, 0, 0 );
-    tabShowonly->insertTab( TabPage, TQString::tqfromLatin1("") );
+    tabShowonly->insertTab( TabPage, TQString::fromLatin1("") );
 
     tab_3 = new TQWidget( tabShowonly, "tab_3" );
     tabLayout_3 = new TQGridLayout( tab_3, 1, 1, 11, 6, "tabLayout_3"); 
@@ -254,28 +254,28 @@ ActionPropertyBase::ActionPropertyBase( TQWidget* parent, const char* name, WFla
     tabLayout_3->addMultiCellWidget( lbShowonlyPath, 0, 3, 0, 0 );
 
     ButtonAddPath = new TQToolButton( tab_3, "ButtonAddPath" );
-    ButtonAddPath->tqsetSizePolicy( TQSizePolicy( (TQSizePolicy::SizeType)1, (TQSizePolicy::SizeType)0, 0, 0, ButtonAddPath->sizePolicy().hasHeightForWidth() ) );
+    ButtonAddPath->setSizePolicy( TQSizePolicy( (TQSizePolicy::SizeType)1, (TQSizePolicy::SizeType)0, 0, 0, ButtonAddPath->sizePolicy().hasHeightForWidth() ) );
     ButtonAddPath->setMinimumSize( TQSize( 0, 0 ) );
     ButtonAddPath->setMaximumSize( TQSize( 32767, 32767 ) );
 
     tabLayout_3->addWidget( ButtonAddPath, 0, 1 );
 
     ButtonEditPath = new TQToolButton( tab_3, "ButtonEditPath" );
-    ButtonEditPath->tqsetSizePolicy( TQSizePolicy( (TQSizePolicy::SizeType)1, (TQSizePolicy::SizeType)0, 0, 0, ButtonEditPath->sizePolicy().hasHeightForWidth() ) );
+    ButtonEditPath->setSizePolicy( TQSizePolicy( (TQSizePolicy::SizeType)1, (TQSizePolicy::SizeType)0, 0, 0, ButtonEditPath->sizePolicy().hasHeightForWidth() ) );
     ButtonEditPath->setMinimumSize( TQSize( 0, 0 ) );
     ButtonEditPath->setMaximumSize( TQSize( 32767, 32767 ) );
 
     tabLayout_3->addWidget( ButtonEditPath, 1, 1 );
 
     ButtonRemovePath = new TQToolButton( tab_3, "ButtonRemovePath" );
-    ButtonRemovePath->tqsetSizePolicy( TQSizePolicy( (TQSizePolicy::SizeType)1, (TQSizePolicy::SizeType)0, 0, 0, ButtonRemovePath->sizePolicy().hasHeightForWidth() ) );
+    ButtonRemovePath->setSizePolicy( TQSizePolicy( (TQSizePolicy::SizeType)1, (TQSizePolicy::SizeType)0, 0, 0, ButtonRemovePath->sizePolicy().hasHeightForWidth() ) );
     ButtonRemovePath->setMinimumSize( TQSize( 0, 0 ) );
     ButtonRemovePath->setMaximumSize( TQSize( 32767, 32767 ) );
 
     tabLayout_3->addWidget( ButtonRemovePath, 2, 1 );
     spacer4 = new TQSpacerItem( 21, 61, TQSizePolicy::Minimum, TQSizePolicy::Expanding );
     tabLayout_3->addItem( spacer4, 3, 1 );
-    tabShowonly->insertTab( tab_3, TQString::tqfromLatin1("") );
+    tabShowonly->insertTab( tab_3, TQString::fromLatin1("") );
 
     tab_4 = new TQWidget( tabShowonly, "tab_4" );
     tabLayout_4 = new TQGridLayout( tab_4, 1, 1, 11, 6, "tabLayout_4"); 
@@ -285,28 +285,28 @@ ActionPropertyBase::ActionPropertyBase( TQWidget* parent, const char* name, WFla
     tabLayout_4->addMultiCellWidget( lbShowonlyMime, 0, 3, 0, 0 );
 
     ButtonAddMime = new TQToolButton( tab_4, "ButtonAddMime" );
-    ButtonAddMime->tqsetSizePolicy( TQSizePolicy( (TQSizePolicy::SizeType)1, (TQSizePolicy::SizeType)0, 0, 0, ButtonAddMime->sizePolicy().hasHeightForWidth() ) );
+    ButtonAddMime->setSizePolicy( TQSizePolicy( (TQSizePolicy::SizeType)1, (TQSizePolicy::SizeType)0, 0, 0, ButtonAddMime->sizePolicy().hasHeightForWidth() ) );
     ButtonAddMime->setMinimumSize( TQSize( 0, 0 ) );
     ButtonAddMime->setMaximumSize( TQSize( 32767, 32767 ) );
 
     tabLayout_4->addWidget( ButtonAddMime, 0, 1 );
 
     ButtonEditMime = new TQToolButton( tab_4, "ButtonEditMime" );
-    ButtonEditMime->tqsetSizePolicy( TQSizePolicy( (TQSizePolicy::SizeType)1, (TQSizePolicy::SizeType)0, 0, 0, ButtonEditMime->sizePolicy().hasHeightForWidth() ) );
+    ButtonEditMime->setSizePolicy( TQSizePolicy( (TQSizePolicy::SizeType)1, (TQSizePolicy::SizeType)0, 0, 0, ButtonEditMime->sizePolicy().hasHeightForWidth() ) );
     ButtonEditMime->setMinimumSize( TQSize( 0, 0 ) );
     ButtonEditMime->setMaximumSize( TQSize( 32767, 32767 ) );
 
     tabLayout_4->addWidget( ButtonEditMime, 1, 1 );
 
     ButtonRemoveMime = new TQToolButton( tab_4, "ButtonRemoveMime" );
-    ButtonRemoveMime->tqsetSizePolicy( TQSizePolicy( (TQSizePolicy::SizeType)1, (TQSizePolicy::SizeType)0, 0, 0, ButtonRemoveMime->sizePolicy().hasHeightForWidth() ) );
+    ButtonRemoveMime->setSizePolicy( TQSizePolicy( (TQSizePolicy::SizeType)1, (TQSizePolicy::SizeType)0, 0, 0, ButtonRemoveMime->sizePolicy().hasHeightForWidth() ) );
     ButtonRemoveMime->setMinimumSize( TQSize( 0, 0 ) );
     ButtonRemoveMime->setMaximumSize( TQSize( 32767, 32767 ) );
 
     tabLayout_4->addWidget( ButtonRemoveMime, 2, 1 );
     spacer5 = new TQSpacerItem( 21, 41, TQSizePolicy::Minimum, TQSizePolicy::Expanding );
     tabLayout_4->addItem( spacer5, 3, 1 );
-    tabShowonly->insertTab( tab_4, TQString::tqfromLatin1("") );
+    tabShowonly->insertTab( tab_4, TQString::fromLatin1("") );
 
     TabPage_2 = new TQWidget( tabShowonly, "TabPage_2" );
     TabPageLayout_2 = new TQGridLayout( TabPage_2, 1, 1, 11, 6, "TabPageLayout_2"); 
@@ -316,28 +316,28 @@ ActionPropertyBase::ActionPropertyBase( TQWidget* parent, const char* name, WFla
     TabPageLayout_2->addMultiCellWidget( lbShowonlyFile, 0, 3, 0, 0 );
 
     ButtonNewFile = new TQToolButton( TabPage_2, "ButtonNewFile" );
-    ButtonNewFile->tqsetSizePolicy( TQSizePolicy( (TQSizePolicy::SizeType)1, (TQSizePolicy::SizeType)0, 0, 0, ButtonNewFile->sizePolicy().hasHeightForWidth() ) );
+    ButtonNewFile->setSizePolicy( TQSizePolicy( (TQSizePolicy::SizeType)1, (TQSizePolicy::SizeType)0, 0, 0, ButtonNewFile->sizePolicy().hasHeightForWidth() ) );
     ButtonNewFile->setMinimumSize( TQSize( 0, 0 ) );
     ButtonNewFile->setMaximumSize( TQSize( 32767, 32767 ) );
 
     TabPageLayout_2->addWidget( ButtonNewFile, 0, 1 );
 
     ButtonEditFile = new TQToolButton( TabPage_2, "ButtonEditFile" );
-    ButtonEditFile->tqsetSizePolicy( TQSizePolicy( (TQSizePolicy::SizeType)1, (TQSizePolicy::SizeType)0, 0, 0, ButtonEditFile->sizePolicy().hasHeightForWidth() ) );
+    ButtonEditFile->setSizePolicy( TQSizePolicy( (TQSizePolicy::SizeType)1, (TQSizePolicy::SizeType)0, 0, 0, ButtonEditFile->sizePolicy().hasHeightForWidth() ) );
     ButtonEditFile->setMinimumSize( TQSize( 0, 0 ) );
     ButtonEditFile->setMaximumSize( TQSize( 32767, 32767 ) );
 
     TabPageLayout_2->addWidget( ButtonEditFile, 1, 1 );
 
     ButtonRemoveFile = new TQToolButton( TabPage_2, "ButtonRemoveFile" );
-    ButtonRemoveFile->tqsetSizePolicy( TQSizePolicy( (TQSizePolicy::SizeType)1, (TQSizePolicy::SizeType)0, 0, 0, ButtonRemoveFile->sizePolicy().hasHeightForWidth() ) );
+    ButtonRemoveFile->setSizePolicy( TQSizePolicy( (TQSizePolicy::SizeType)1, (TQSizePolicy::SizeType)0, 0, 0, ButtonRemoveFile->sizePolicy().hasHeightForWidth() ) );
     ButtonRemoveFile->setMinimumSize( TQSize( 0, 0 ) );
     ButtonRemoveFile->setMaximumSize( TQSize( 32767, 32767 ) );
 
     TabPageLayout_2->addWidget( ButtonRemoveFile, 2, 1 );
     spacer6 = new TQSpacerItem( 21, 41, TQSizePolicy::Minimum, TQSizePolicy::Expanding );
     TabPageLayout_2->addItem( spacer6, 3, 1 );
-    tabShowonly->insertTab( TabPage_2, TQString::tqfromLatin1("") );
+    tabShowonly->insertTab( TabPage_2, TQString::fromLatin1("") );
 
     gbShowonlyLayout->addWidget( tabShowonly, 0, 0 );
 
@@ -357,11 +357,11 @@ ActionPropertyBase::ActionPropertyBase( TQWidget* parent, const char* name, WFla
     tabLayout_2->addWidget( leDifferentUser, 2, 1 );
     spacer3 = new TQSpacerItem( 161, 102, TQSizePolicy::Minimum, TQSizePolicy::Expanding );
     tabLayout_2->addMultiCell( spacer3, 3, 3, 0, 1 );
-    tabWidget3->insertTab( tab_2, TQString::tqfromLatin1("") );
+    tabWidget3->insertTab( tab_2, TQString::fromLatin1("") );
 
     ActionPropertyBaseLayout->addWidget( tabWidget3, 0, 0 );
     languageChange();
-    resize( TQSize(485, 470).expandedTo(tqminimumSizeHint()) );
+    resize( TQSize(485, 470).expandedTo(minimumSizeHint()) );
     clearWState( WState_Polished );
 
     // signals and slots connections
