@@ -297,7 +297,7 @@ void QuickNavLineEdit::mouseMoveEvent( TQMouseEvent *m) {
 		if (idx == -1 && !_dummyDisplayed) { // pointing on or after the current directory
 			if (_pop) delete _pop;
 			_pop = KPassivePopup::message( i18n("Quick Navigation"),
-				"<qt>" + i18n("Already at <i>%1</i>").arg(tx.left(idx)) + "</qt>",
+				"<qt>" + i18n("Already at <i>%1</i>").tqarg(tx.left(idx)) + "</qt>",
 				*(KCursor::handCursor().bitmap()), this);
 
 			_dummyDisplayed=true;
@@ -308,7 +308,7 @@ void QuickNavLineEdit::mouseMoveEvent( TQMouseEvent *m) {
 			_dummyDisplayed=false;
 
 			_pop = KPassivePopup::message( i18n("Quick Navigation"),
-				"<qt>" + i18n("Click to go to <i>%1</i>").arg(tx.left(idx)) + "</qt>",
+				"<qt>" + i18n("Click to go to <i>%1</i>").tqarg(tx.left(idx)) + "</qt>",
 				*(KCursor::handCursor().bitmap()), this );
 		}
 	KLineEdit::mouseMoveEvent(m);

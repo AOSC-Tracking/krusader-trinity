@@ -97,7 +97,7 @@ void UserAction::readFromFile( const TQString& filename, ReadMode mode, KrAction
       file.close();
       delete doc; doc = 0;
       KMessageBox::error( MAIN_VIEW,
-      		i18n( "The file %1 does not contain valid UserActions.\n" ).arg( filename ), // text
+      		i18n( "The file %1 does not contain valid UserActions.\n" ).tqarg( filename ), // text
       		i18n("UserActions - can't read from file!") // caption
       	);
     }
@@ -108,7 +108,7 @@ void UserAction::readFromFile( const TQString& filename, ReadMode mode, KrAction
       // check if the file got the right root-element (ACTION_ROOT) - this finds out if the xml-file read to the DOM is realy an krusader useraction-file
       if( root.tagName() != ACTION_ROOT ) {
         KMessageBox::error( MAIN_VIEW,
-        	i18n( "The actionfile's root-element isn't called "ACTION_ROOT", using %1").arg( filename ),
+        	i18n( "The actionfile's root-element isn't called "ACTION_ROOT", using %1").tqarg( filename ),
         	i18n( "UserActions - can't read from file!" )
         );
         delete doc; doc = 0;
@@ -120,7 +120,7 @@ void UserAction::readFromFile( const TQString& filename, ReadMode mode, KrAction
   } // if ( file.open( IO_ReadOnly ) )
   else {
       KMessageBox::error( MAIN_VIEW,
-      		i18n( "Unable to open actionfile %1").arg( filename ),
+      		i18n( "Unable to open actionfile %1").tqarg( filename ),
       		i18n( "UserActions - can't read from file!" )
       );
    }
@@ -150,7 +150,7 @@ void UserAction::readFromElement( const TQDomElement& element, ReadMode mode, Kr
          int i = 0;
          // appent a counter till the name is unique... (this checks every action, not only useractions)
          while ( krApp->actionCollection()->action( name.latin1() ) )
-            name = basename.arg( ++i );
+            name = basename.tqarg( ++i );
 
          KrAction* act = new KrAction( krApp->actionCollection(), name.latin1() );
          if ( act->xmlRead( e ) ) {

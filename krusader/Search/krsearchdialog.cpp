@@ -47,7 +47,7 @@
 #include <kmessagebox.h>
 #include <kpopupmenu.h>
 #include <tqcursor.h>
-#include <clipboard.h>
+#include <tqclipboard.h>
 #include <tqheader.h>
 #include <kurldrag.h>
 #include <../kicons.h>
@@ -160,7 +160,7 @@ KrSearchDialog::KrSearchDialog( TQString profile, TQWidget* parent,  const char*
   resultLabelLayout->setMargin( 0 );
 
   foundLabel = new TQLabel( resultTab, "foundLabel" );
-  foundLabel->setSizePolicy( TQSizePolicy( (TQSizePolicy::SizeType)1, (TQSizePolicy::SizeType)1, foundLabel->sizePolicy().hasHeightForWidth() ) );
+  foundLabel->tqsetSizePolicy( TQSizePolicy( (TQSizePolicy::SizeType)1, (TQSizePolicy::SizeType)1, foundLabel->sizePolicy().hasHeightForWidth() ) );
   foundLabel->setFrameShape( TQLabel::StyledPanel );
   foundLabel->setFrameShadow( TQLabel::Sunken );
   foundLabel->setText( i18n( "Found 0 matches." ) );
@@ -216,7 +216,7 @@ KrSearchDialog::KrSearchDialog( TQString profile, TQWidget* parent,  const char*
   foundTextLayout->setMargin( 0 );
   
   TQLabel *l1 = new TQLabel(resultTab);
-  l1->setSizePolicy( TQSizePolicy( (TQSizePolicy::SizeType)1, (TQSizePolicy::SizeType)1, l1->sizePolicy().hasHeightForWidth() ) );
+  l1->tqsetSizePolicy( TQSizePolicy( (TQSizePolicy::SizeType)1, (TQSizePolicy::SizeType)1, l1->sizePolicy().hasHeightForWidth() ) );
   l1->setFrameShape( TQLabel::StyledPanel );
   l1->setFrameShadow( TQLabel::Sunken );
   l1->setText(i18n("Text found:"));
@@ -357,7 +357,7 @@ void KrSearchDialog::found(TQString what, TQString where, KIO::filesize_t size, 
   TQDateTime tmp(TQDate(t->tm_year+1900, t->tm_mon+1, t->tm_mday), TQTime(t->tm_hour, t->tm_min));
   ResultListViewItem *it =new ResultListViewItem(resultsList, what,
   	 where.replace(TQRegExp("\\\\"),"#"), size, tmp, perm);
-  TQString totals = TQString(i18n("Found %1 matches.")).arg(resultsList->childCount());
+  TQString totals = TQString(i18n("Found %1 matches.")).tqarg(resultsList->childCount());
   foundLabel->setText(totals);
 
   if (!foundText.isEmpty()) it->setFoundText(foundText);
@@ -476,15 +476,15 @@ void KrSearchDialog::keyPressEvent(TQKeyEvent *e)
   {
     if( e->key() == Key_F4 )
     {
-      if (!generalFilter->containsText->currentText().isEmpty() && TQApplication::clipboard()->text() != generalFilter->containsText->currentText())
-        TQApplication::clipboard()->setText(generalFilter->containsText->currentText());
+      if (!generalFilter->containsText->currentText().isEmpty() && TQApplication::tqclipboard()->text() != generalFilter->containsText->currentText())
+        TQApplication::tqclipboard()->setText(generalFilter->containsText->currentText());
       editCurrent();
       return;
     }
     else if( e->key() == Key_F3 )
     {
-      if (!generalFilter->containsText->currentText().isEmpty() && TQApplication::clipboard()->text() != generalFilter->containsText->currentText())
-        TQApplication::clipboard()->setText(generalFilter->containsText->currentText());
+      if (!generalFilter->containsText->currentText().isEmpty() && TQApplication::tqclipboard()->text() != generalFilter->containsText->currentText())
+        TQApplication::tqclipboard()->setText(generalFilter->containsText->currentText());
       viewCurrent();
       return;
     }
@@ -568,7 +568,7 @@ void KrSearchDialog::feedToListBox()
   int listBoxNum = krConfig->readNumEntry( "Feed To Listbox Counter", 1 );
   TQString queryName;
   do {
-    queryName = i18n("Search results")+TQString( " %1" ).arg( listBoxNum++ );
+    queryName = i18n("Search results")+TQString( " %1" ).tqarg( listBoxNum++ );
   }while( v.vfs_search( queryName ) != 0 );
   krConfig->writeEntry( "Feed To Listbox Counter", listBoxNum );
 
@@ -622,7 +622,7 @@ void KrSearchDialog::copyToClipBoard()
 
   KURLDrag *d = new KURLDrag(urls, this);
   d->setPixmap( FL_LOADICON( "file" ), TQPoint( -7, 0 ) );
-  TQApplication::clipboard()->setData( d );
+  TQApplication::tqclipboard()->setData( d );
 }
 
 #include "krsearchdialog.moc"

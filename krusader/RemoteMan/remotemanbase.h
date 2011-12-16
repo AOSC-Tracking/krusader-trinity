@@ -75,7 +75,7 @@ protected:
     TQGridLayout* Layout10;
     TQVBoxLayout* Layout26;
     TQVBoxLayout* Layout27;
-    TQGridLayout* layout;
+    TQGridLayout* tqlayout;
     TQGridLayout* Layout11;
     bool event( TQEvent* );
 };

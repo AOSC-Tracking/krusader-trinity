@@ -46,7 +46,7 @@ KgUserActions::KgUserActions( bool first, TQWidget* parent,  const char* name ) 
 
    // ============= Info Group =============
    TQGroupBox *InfoGroup = createFrame( i18n( "Information" ), parent, "kgUserActionInfoGroup" );
-   TQGridLayout *InfoGrid = createGridLayout( InfoGroup->layout() );
+   TQGridLayout *InfoGrid = createGridLayout( InfoGroup->tqlayout() );
 
    // terminal for the UserActions
    TQLabel *labelInfo = new TQLabel( i18n(
@@ -62,7 +62,7 @@ KgUserActions::KgUserActions( bool first, TQWidget* parent,  const char* name ) 
 
    // ============= Terminal Group =============
    TQGroupBox *terminalGroup = createFrame( i18n( "Terminal execution" ), parent, "kgUserActionTerminalGroup" );
-   TQGridLayout *terminalGrid = createGridLayout( terminalGroup->layout() );
+   TQGridLayout *terminalGrid = createGridLayout( terminalGroup->tqlayout() );
 
    // terminal for the UserActions
    TQLabel *labelTerminal = new TQLabel( i18n( "Terminal for UserActions:" ),
@@ -76,7 +76,7 @@ KgUserActions::KgUserActions( bool first, TQWidget* parent,  const char* name ) 
 
    // ============= Outputcollection Group =============
    TQGroupBox *outputGroup = createFrame( i18n( "Output collection" ), parent, "kgUserActionOutputGroup" );
-   TQGridLayout *outputGrid = createGridLayout( outputGroup->layout() );
+   TQGridLayout *outputGrid = createGridLayout( outputGroup->tqlayout() );
 
    TQHBox *hbox;
    hbox = new TQHBox( outputGroup, "HBoxNormalFont" );

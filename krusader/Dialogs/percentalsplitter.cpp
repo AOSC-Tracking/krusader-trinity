@@ -77,7 +77,7 @@ TQString PercentalSplitter::toolTipString( int p ) {
     if( p < 0 )
       p = values[ 0 ];
     int percent = (int)(((double)p / (double)( values[ 0 ] + values[ 1 ] )) * 10000. + 0.5);
-    return TQString( "%1.%2%3" ).arg( percent / 100 ).arg( ( percent / 10 )%10 ).arg( percent % 10 ) + "%";
+    return TQString( "%1.%2%3" ).tqarg( percent / 100 ).tqarg( ( percent / 10 )%10 ).tqarg( percent % 10 ) + "%";
   }
   return TQString();
 }
@@ -136,7 +136,7 @@ void PercentalSplitter::setRubberband ( int p ) {
       label->setAutoMask( FALSE );
       label->setFrameStyle( TQFrame::Plain | TQFrame::Box );
       label->setLineWidth( 1 );
-      label->setAlignment( AlignAuto | AlignTop );
+      label->tqsetAlignment( AlignAuto | AlignTop );
       label->setIndent(0);
 
       TQFontMetrics fm = label->fontMetrics();

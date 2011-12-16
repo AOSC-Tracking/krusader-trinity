@@ -141,7 +141,7 @@ KURLRequesterDlgForCopy::KURLRequesterDlgForCopy( const TQString& urlName, const
 	topLayout->addWidget( label );
 
 	urlRequester_ = new KURLRequester( urlName, plainPage(), "urlRequester" );
-	urlRequester_->setMinimumWidth( urlRequester_->sizeHint().width() * 3 );
+	urlRequester_->setMinimumWidth( urlRequester_->tqsizeHint().width() * 3 );
 	topLayout->addWidget( urlRequester_ );
 	preserveAttrsCB = new TQCheckBox(i18n("Preserve attributes (only for local targets)"), plainPage());
 	preserveAttrsCB->setChecked( presAttrs );
@@ -158,7 +158,7 @@ KURLRequesterDlgForCopy::KURLRequesterDlgForCopy( const TQString& urlName, const
 		new TQLabel( i18n("Base URL:"),  hbox, "baseURLLabel" );
 		
 		baseUrlCombo = new TQComboBox( hbox, "baseUrlRequester" );
-		baseUrlCombo->setMinimumWidth( baseUrlCombo->sizeHint().width() * 3 );
+		baseUrlCombo->setMinimumWidth( baseUrlCombo->tqsizeHint().width() * 3 );
 		baseUrlCombo->setEnabled( copyDirStructureCB->isChecked() );
 		KURL temp = baseURL, tempOld;
 		do {
@@ -230,10 +230,10 @@ KURL KURLRequesterDlgForCopy::baseURL() const {
 
 KRGetDate::KRGetDate(TQDate date, TQWidget *parent, const char *name) : KDialog(parent, name,true,WStyle_DialogBorder) {
   dateWidget = new KDatePicker(this, date);
-  dateWidget->resize(dateWidget->sizeHint());
-  setMinimumSize(dateWidget->sizeHint());
-  setMaximumSize(dateWidget->sizeHint());
-  resize(minimumSize());
+  dateWidget->resize(dateWidget->tqsizeHint());
+  setMinimumSize(dateWidget->tqsizeHint());
+  setMaximumSize(dateWidget->tqsizeHint());
+  resize(tqminimumSize());
   connect(dateWidget, TQT_SIGNAL(dateSelected(TQDate)), this, TQT_SLOT(setDate(TQDate)));
   connect(dateWidget, TQT_SIGNAL(dateEntered(TQDate)), this, TQT_SLOT(setDate(TQDate)));
 

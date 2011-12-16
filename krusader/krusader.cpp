@@ -360,7 +360,7 @@ Krusader::Krusader() : KParts::MainWindow(0,0,WType_TopLevel|WDestructiveClose|T
    setupAccels();
 
    // create a status bar
-   status = new KrusaderStatus( this );
+   status = new KrusadertqStatus( this );
    TQWhatsThis::add( status, i18n( "Statusbar will show basic information "
                                           "about file below mouse pointer." ) );
 
@@ -466,7 +466,7 @@ bool Krusader::versionControl() {
 void Krusader::statusBarUpdate( TQString& mess ) {
    // change the message on the statusbar for 2 seconds
    if (status) // ugly!!!! But as statusBar() creates a status bar if there is no, I have to ask status to prevent 
-               // the creation of the KDE default status bar instead of KrusaderStatus.
+               // the creation of the KDE default status bar instead of KrusadertqStatus.
       statusBar() ->message( mess, 5000 );
 }
 
@@ -963,7 +963,7 @@ bool Krusader::queryClose() {
          main window close. */
 
       for(;;) {
-        TQWidgetList * list = TQApplication::topLevelWidgets();
+        TQWidgetList * list = TQApplication::tqtopLevelWidgets();
         TQWidget *activeModal = TQT_TQWIDGET(TQApplication::activeModalWidget());
         TQWidget *w = list->first();
 

@@ -124,7 +124,7 @@ public slots:
 	bool vfs_refresh();
 	void vfs_setQuiet(bool beQuiet){ quietMode=beQuiet; }
 	void vfs_enableRefresh(bool enable);        
-	void vfs_invalidate() { invalidated = true; }          
+	void vfs_tqinvalidate() { invalidated = true; }          
 
 signals:
 	void startUpdate(); //< emitted when the VFS starts to refresh its list of vfiles.

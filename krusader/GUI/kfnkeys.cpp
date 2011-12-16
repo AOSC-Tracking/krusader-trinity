@@ -46,7 +46,7 @@ KFnKeys::KFnKeys(TQWidget *parent, char *name): TQWidget(parent,name) {
 }
 				
 		setFont( KGlobalSettings::generalFont() );
-		layout=new TQGridLayout(this,1,9);	// 9 keys
+		tqlayout=new TQGridLayout(this,1,9);	// 9 keys
     F2=new TQPushButton( i18n("F2 Term  ") ,this);
       TQToolTip::add( F2, "<qt>" + i18n( "<p>Open terminal in current directory.</p>"
                      "<p>The terminal can be defined in Konfigurator, "
@@ -104,17 +104,17 @@ KFnKeys::KFnKeys(TQWidget *parent, char *name): TQWidget(parent,name) {
     F8->setMaximumHeight(h); F9->setMaximumHeight(h);
     F10->setMaximumHeight(h);
     
-		layout->addWidget(F2,0,0);
-		layout->addWidget(F3,0,1);
-		layout->addWidget(F4,0,2);
-		layout->addWidget(F5,0,3);
-		layout->addWidget(F6,0,4);
-		layout->addWidget(F7,0,5);
-		layout->addWidget(F8,0,6);
-		layout->addWidget(F9,0,7);
-		layout->addWidget(F10,0,8);
+		tqlayout->addWidget(F2,0,0);
+		tqlayout->addWidget(F3,0,1);
+		tqlayout->addWidget(F4,0,2);
+		tqlayout->addWidget(F5,0,3);
+		tqlayout->addWidget(F6,0,4);
+		tqlayout->addWidget(F7,0,5);
+		tqlayout->addWidget(F8,0,6);
+		tqlayout->addWidget(F9,0,7);
+		tqlayout->addWidget(F10,0,8);
 		
-		layout->activate();
+		tqlayout->activate();
 }
 
 void KFnKeys::updateShortcuts() {

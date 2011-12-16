@@ -37,7 +37,7 @@
 DiskUsageViewer::DiskUsageViewer( TQWidget *parent, char *name ) 
   : TQWidget( parent, name ), diskUsage( 0 ), statusLabel( 0 )
 {
-  layout = new TQGridLayout( this, 1, 1 );
+  tqlayout = new TQGridLayout( this, 1, 1 );
 }
 
 DiskUsageViewer::~ DiskUsageViewer()
@@ -56,10 +56,10 @@ void DiskUsageViewer::openURL( KURL url )
   {
     diskUsage = new DiskUsage( "DiskUsageViewer", this );
     
-    connect( diskUsage, TQT_SIGNAL( enteringDirectory( Directory * ) ), this, TQT_SLOT( slotUpdateStatus() ) );
-    connect( diskUsage, TQT_SIGNAL( status( TQString ) ), this, TQT_SLOT( slotUpdateStatus( TQString ) ) );
+    connect( diskUsage, TQT_SIGNAL( enteringDirectory( Directory * ) ), this, TQT_SLOT( slotUpdatetqStatus() ) );
+    connect( diskUsage, TQT_SIGNAL( status( TQString ) ), this, TQT_SLOT( slotUpdatetqStatus( TQString ) ) );
     connect( diskUsage, TQT_SIGNAL( newSearch() ), this, TQT_SLOT( slotNewSearch() ) );
-    layout->addWidget( diskUsage, 0, 0 );
+    tqlayout->addWidget( diskUsage, 0, 0 );
     this->show();
     diskUsage->show();
     
@@ -109,7 +109,7 @@ void DiskUsageViewer::setStatusLabel( TQLabel *statLabel, TQString pref )
   prefix = pref;
 }
 
-void DiskUsageViewer::slotUpdateStatus( TQString status )
+void DiskUsageViewer::slotUpdatetqStatus( TQString status )
 {
   if( statusLabel ) {
     if( status.isEmpty() ) {

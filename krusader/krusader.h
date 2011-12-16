@@ -45,7 +45,7 @@
 #include <kconfig.h>
 #include <kaccel.h>
 #include <tqstringlist.h>
-#include <textstream.h>
+#include <tqtextstream.h>
 #include <kdebug.h>
 #include <dcopobject.h>
 
@@ -53,7 +53,7 @@
 class KrJS;
 #endif
 
-class KrusaderStatus;
+class KrusadertqStatus;
 class KRPleaseWaitHandler;
 class KrusaderView;
 class KProcess;
@@ -159,7 +159,7 @@ class Krusader : public KParts::MainWindow, public DCOPObject {
     void stopWait();
 	 bool wasWaitingCancelled() const;
 
-    KrusaderStatus *status;
+    KrusadertqStatus *status;
     KRslots *slot;
     KAccel *accels; // global accelerators
     

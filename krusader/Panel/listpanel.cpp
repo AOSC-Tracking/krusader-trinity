@@ -113,7 +113,7 @@ ListPanel::ListPanel( TQString typeIn, TQWidget *parent, bool &left, const char 
 
    func = new ListPanelFunc( this );
    setAcceptDrops( true );
-   layout = new TQGridLayout( this, 3, 3 );
+   tqlayout = new TQGridLayout( this, 3, 3 );
 
    mediaButton = new MediaButton( this, "mediaButton" );
    connect( mediaButton, TQT_SIGNAL( pressed() ), this, TQT_SLOT( slotFocusOnMe() ) );
@@ -134,7 +134,7 @@ ListPanel::ListPanel( TQString typeIn, TQWidget *parent, bool &left, const char 
                       "which holds your current directory: Total size, free space, "
                       "type of filesystem, etc." ) );
    connect( status, TQT_SIGNAL( clicked() ), this, TQT_SLOT( slotFocusOnMe() ) );
-   connect( status, TQT_SIGNAL( dropped( TQDropEvent *) ), this, TQT_SLOT( handleDropOnStatus(TQDropEvent *) ) );
+   connect( status, TQT_SIGNAL( dropped( TQDropEvent *) ), this, TQT_SLOT( handleDropOntqStatus(TQDropEvent *) ) );
 
    // ... create the history button
    dirHistoryQueue = new DirHistoryQueue( this );
@@ -274,17 +274,17 @@ ListPanel::ListPanel( TQString typeIn, TQWidget *parent, bool &left, const char 
 	connect(popup, TQT_SIGNAL(hideMe()), this, TQT_SLOT(togglePanelPopup()));
 	popup->hide();
 	
-   // finish the layout
-	layout->addMultiCellWidget( hbox, 0, 0, 0, 3 );
-   layout->addWidget( mediaButton, 1, 0 );
-   layout->addWidget( status, 1, 1 );
-   layout->addWidget( historyButton, 1, 2 );
-   layout->addWidget( bookmarksButton, 1, 3 );
-   layout->addMultiCellWidget( header, 2, 2, 0, 3 );
-   layout->addMultiCellWidget( splt, 3, 3, 0, 3 );
-   layout->addMultiCellWidget( quickSearch, 4, 4, 0, 3 );
+   // finish the tqlayout
+	tqlayout->addMultiCellWidget( hbox, 0, 0, 0, 3 );
+   tqlayout->addWidget( mediaButton, 1, 0 );
+   tqlayout->addWidget( status, 1, 1 );
+   tqlayout->addWidget( historyButton, 1, 2 );
+   tqlayout->addWidget( bookmarksButton, 1, 3 );
+   tqlayout->addMultiCellWidget( header, 2, 2, 0, 3 );
+   tqlayout->addMultiCellWidget( splt, 3, 3, 0, 3 );
+   tqlayout->addMultiCellWidget( quickSearch, 4, 4, 0, 3 );
    quickSearch->hide();
-   layout->addMultiCellLayout( totalsLayout, 5, 5, 0, 3 );
+   tqlayout->addMultiCellLayout( totalsLayout, 5, 5, 0, 3 );
    //filter = ALL;
 }
 
@@ -370,7 +370,7 @@ ListPanel::~ListPanel() {
    delete cdUpButton;
    delete cdOtherButton;
    delete syncBrowseButton;
-   delete layout;
+   delete tqlayout;
 }
 
 int ListPanel::getProperties()
@@ -760,9 +760,9 @@ void ListPanel::gotStats( const TQString &mountPoint, unsigned long kBSize,
 	}
 	
 	TQString stats = i18n( "%1 free out of %2 (%3%) on %4 [ (%5) ]" )
-        .arg( KIO::convertSizeFromKB( kBAvail ) )
-        .arg( KIO::convertSizeFromKB( kBSize ) ).arg( perc )
-        .arg( mountPoint ).arg( fstype );
+        .tqarg( KIO::convertSizeFromKB( kBAvail ) )
+        .tqarg( KIO::convertSizeFromKB( kBSize ) ).tqarg( perc )
+        .tqarg( mountPoint ).tqarg( fstype );
 	status->setText( stats );
 }
 
@@ -770,7 +770,7 @@ void ListPanel::handleDropOnTotals( TQDropEvent *e ) {
   handleDropOnView( e, totals );
 }
 
-void ListPanel::handleDropOnStatus( TQDropEvent *e ) {
+void ListPanel::handleDropOntqStatus( TQDropEvent *e ) {
   handleDropOnView( e, status );
 }
 
@@ -917,7 +917,7 @@ void ListPanel::setFilter( KrViewProperties::FilterSpec f ) {
          return ;
    }
    view->setFilter( f ); // do that in any case
-   func->files()->vfs_invalidate();
+   func->files()->vfs_tqinvalidate();
    func->refresh();
 }
 
@@ -1077,7 +1077,7 @@ void ListPanel::inlineRefreshCancel() {
 }
 
 void ListPanel::inlineRefreshPercent( KIO::Job*, unsigned long perc) {
-	TQString msg = TQString(">> %1: %2 % complete...").arg(i18n("Reading")).arg(perc);
+	TQString msg = TQString(">> %1: %2 % complete...").tqarg(i18n("Reading")).tqarg(perc);
 	totals->setText(msg);
 }
 

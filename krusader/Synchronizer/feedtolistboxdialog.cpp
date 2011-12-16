@@ -39,7 +39,7 @@
 #include <klocale.h>
 #include <kmessagebox.h>
 #include <tqcheckbox.h>
-#include <layout.h>
+#include <tqlayout.h>
 #include <tqlineedit.h>
 #include <tqlabel.h>
 #include <tqhbox.h>
@@ -98,30 +98,30 @@ FeedToListBoxDialog::FeedToListBoxDialog(TQWidget *parent,  const char *name, Sy
   int listBoxNum = krConfig->readNumEntry( "Feed To Listbox Counter", 1 );
   TQString queryName;
   do {
-    queryName = i18n("Synchronize results")+TQString( " %1" ).arg( listBoxNum++ );
+    queryName = i18n("Synchronize results")+TQString( " %1" ).tqarg( listBoxNum++ );
   }while( v.vfs_search( queryName ) != 0 );
   krConfig->writeEntry( "Feed To Listbox Counter", listBoxNum );
 
   // creating the widget
 
   TQWidget *widget=new TQWidget(this, "feedToListBoxMainWidget");
-  TQVBoxLayout *layout = new TQVBoxLayout( widget, 0, 10, "FeedToListBoxDialogLayout" );
+  TQVBoxLayout *tqlayout = new TQVBoxLayout( widget, 0, 10, "FeedToListBoxDialogLayout" );
     
   TQLabel *label = new TQLabel( i18n("Here you can name the file collection"), widget, "fbLabel" );
-  layout->addWidget( label );    
+  tqlayout->addWidget( label );    
   
   lineEdit = new TQLineEdit( widget, "fbLineEdit" );
   lineEdit->setText( queryName );
   lineEdit->selectAll();
-  layout->addWidget( lineEdit );  
+  tqlayout->addWidget( lineEdit );  
   
   TQHBox *hbox = new TQHBox( widget, "fbHBox" );
   
   TQLabel *label2 = new TQLabel( i18n( "Side to feed:" ), hbox, "fbSideLabel" );  
-  label2->setSizePolicy( TQSizePolicy::Fixed, TQSizePolicy::Fixed );
+  label2->tqsetSizePolicy( TQSizePolicy::Fixed, TQSizePolicy::Fixed );
   
   sideCombo = new TQComboBox( hbox, "fbSideCombo" );
-  sideCombo->setSizePolicy( TQSizePolicy::Fixed, TQSizePolicy::Fixed );
+  sideCombo->tqsetSizePolicy( TQSizePolicy::Fixed, TQSizePolicy::Fixed );
   sideCombo->insertItem( i18n( "Left" ) );
   sideCombo->insertItem( i18n( "Right" ) );
   sideCombo->insertItem( i18n( "Both" ) );
@@ -136,14 +136,14 @@ FeedToListBoxDialog::FeedToListBoxDialog(TQWidget *parent,  const char *name, Sy
   
   TQFrame *line = new TQFrame( hbox, "fbVLine" );
   line->setFrameStyle( TQFrame::VLine | TQFrame::Sunken );
-  line->setSizePolicy( TQSizePolicy::Expanding, TQSizePolicy::Expanding );
+  line->tqsetSizePolicy( TQSizePolicy::Expanding, TQSizePolicy::Expanding );
   
   cbSelected = new TQCheckBox( i18n( "Selected files only" ), hbox, "cbSelected" );
-  cbSelected->setSizePolicy( TQSizePolicy::Fixed, TQSizePolicy::Fixed );
+  cbSelected->tqsetSizePolicy( TQSizePolicy::Fixed, TQSizePolicy::Fixed );
   cbSelected->setEnabled( selectedNum != 0 );
   cbSelected->setChecked( selectedNum != 0 );
   
-  layout->addWidget( hbox );      
+  tqlayout->addWidget( hbox );      
     
   setMainWidget(widget);
   
@@ -188,7 +188,7 @@ void FeedToListBoxDialog::slotOk() {
   KURL url = KURL::fromPathOrURL(TQString("virt:/")+ name);
   virt_vfs v(0,true);
   if( !v.vfs_refresh( url ) ) {
-    KMessageBox::error( parentWidget(), i18n( "Cannot open %1!" ).arg( url.prettyURL() ) );
+    KMessageBox::error( parentWidget(), i18n( "Cannot open %1!" ).tqarg( url.prettyURL() ) );
     return;
   }
   v.vfs_addFiles( &urlList, KIO::CopyJob::Copy, 0 );

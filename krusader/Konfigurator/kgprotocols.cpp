@@ -65,7 +65,7 @@ KgProtocols::KgProtocols( bool first, TQWidget* parent,  const char* name ) :
   //  -------------------------- LINK VIEW ----------------------------------
   
   TQGroupBox *linkGrp = createFrame( i18n( "Links" ), parent, "linkGrp" );    
-  TQGridLayout *linkGrid = createGridLayout( linkGrp->layout() );
+  TQGridLayout *linkGrid = createGridLayout( linkGrp->tqlayout() );
   
   linkList = new TQListView( linkGrp, "linkList" );
   linkList->addColumn( i18n( "Defined Links" ) );
@@ -106,7 +106,7 @@ KgProtocols::KgProtocols( bool first, TQWidget* parent,  const char* name ) :
   //  -------------------------- PROTOCOLS LISTBOX ----------------------------------
 
   TQGroupBox *protocolGrp = createFrame( i18n( "Protocols" ), parent, "protocolGrp" );    
-  TQGridLayout *protocolGrid = createGridLayout( protocolGrp->layout() );
+  TQGridLayout *protocolGrid = createGridLayout( protocolGrp->tqlayout() );
   
   protocolList = new TQListBox( protocolGrp, "protocolList" );
   loadListCapableProtocols();
@@ -117,7 +117,7 @@ KgProtocols::KgProtocols( bool first, TQWidget* parent,  const char* name ) :
   //  -------------------------- MIMES LISTBOX ----------------------------------
 
   TQGroupBox *mimeGrp = createFrame( i18n( "Mimes" ), parent, "mimeGrp" );    
-  TQGridLayout *mimeGrid = createGridLayout( mimeGrp->layout() );
+  TQGridLayout *mimeGrid = createGridLayout( mimeGrp->tqlayout() );
   
   mimeList = new TQListBox( mimeGrp, "protocolList" );
   loadMimes();
@@ -143,9 +143,9 @@ KgProtocols::KgProtocols( bool first, TQWidget* parent,  const char* name ) :
 TQWidget* KgProtocols::addSpacer( TQWidget *parent, const char *widgetName )
 {
   TQWidget *widget = new TQWidget( parent, widgetName );
-  TQVBoxLayout *vboxlayout = new TQVBoxLayout( widget );
+  TQVBoxLayout *vboxtqlayout = new TQVBoxLayout( widget );
   TQSpacerItem* spacer = new TQSpacerItem( 20, 20, TQSizePolicy::Minimum, TQSizePolicy::Expanding );
-  vboxlayout->addItem( spacer );
+  vboxtqlayout->addItem( spacer );
   return widget;
 }
 
@@ -305,7 +305,7 @@ void KgProtocols::loadInitialValues()
   {
     addProtocol( *it );
     
-    TQStringList mimes = krConfig->readListEntry( TQString( "Mimes For %1" ).arg( *it ) );
+    TQStringList mimes = krConfig->readListEntry( TQString( "Mimes For %1" ).tqarg( *it ) );
     
     for( TQStringList::Iterator it2 = mimes.begin(); it2 != mimes.end(); it2++ )
       addMime( *it2, *it );
@@ -354,7 +354,7 @@ bool KgProtocols::isChanged()
     if( !protList.contains( item->text( 0 ) ) )
       return true;
       
-    TQStringList mimes = krConfig->readListEntry( TQString( "Mimes For %1" ).arg( item->text( 0 ) ) );
+    TQStringList mimes = krConfig->readListEntry( TQString( "Mimes For %1" ).tqarg( item->text( 0 ) ) );
     
     if( (int)mimes.count() != item->childCount() )
       return true;
@@ -390,7 +390,7 @@ bool KgProtocols::apply()
       mimes.append( childs->text( 0 ) );
       childs = childs->nextSibling();
     }
-    krConfig->writeEntry( TQString( "Mimes For %1" ).arg( item->text( 0 ) ), mimes );
+    krConfig->writeEntry( TQString( "Mimes For %1" ).tqarg( item->text( 0 ) ), mimes );
     
     item = item->nextSibling();
   }  

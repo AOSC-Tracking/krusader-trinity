@@ -54,7 +54,7 @@
 #include <kprocess.h>
 #include <kdialogbase.h>
 #include <kprogress.h>
-#include <layout.h>
+#include <tqlayout.h>
 #include <kurlcompletion.h>
 
 #include <sys/types.h>
@@ -154,7 +154,7 @@ int Synchronizer::compare( TQString leftURL, TQString rightURL, KRQuery *query, 
   if( !autoScroll )
     refresh( true );
 
-  emit statusInfo( i18n( "Number of files: %1" ).arg( fileCount ) );
+  emit statusInfo( i18n( "Number of files: %1" ).tqarg( fileCount ) );
   return fileCount;
 }
 
@@ -185,7 +185,7 @@ void Synchronizer::compareLoop() {
         break;
       case ST_STATE_READY:
       case ST_STATE_ERROR:
-        emit statusInfo( i18n( "Number of compared directories: %1" ).arg( comparedDirs ) );
+        emit statusInfo( i18n( "Number of compared directories: %1" ).tqarg( comparedDirs ) );
         stack.removeRef( entry );
         continue;
       default:
@@ -645,7 +645,7 @@ int Synchronizer::refresh(bool nostatus)
   }
 
   if( !nostatus )
-    emit statusInfo( i18n( "Number of files: %1" ).arg( fileCount ) );
+    emit statusInfo( i18n( "Number of files: %1" ).tqarg( fileCount ) );
 
   return fileCount;
 }
@@ -1207,16 +1207,16 @@ void Synchronizer::slotTaskFinished(KIO::Job *job )
         {
         case TT_COPY_TO_LEFT:
           error = i18n("Error at copying file %1 to %2!")
-                       .arg( vfs::pathOrURL( rightURL ) )
-                       .arg( vfs::pathOrURL( leftURL ) );
+                       .tqarg( vfs::pathOrURL( rightURL ) )
+                       .tqarg( vfs::pathOrURL( leftURL ) );
           break;
         case TT_COPY_TO_RIGHT:
           error = i18n("Error at copying file %1 to %2!")
-                       .arg( vfs::pathOrURL( leftURL ) )
-                       .arg( vfs::pathOrURL( rightURL ) );
+                       .tqarg( vfs::pathOrURL( leftURL ) )
+                       .tqarg( vfs::pathOrURL( rightURL ) );
           break;
         case TT_DELETE:
-          error = i18n("Error at deleting file %1!").arg( vfs::pathOrURL( leftURL ) );
+          error = i18n("Error at deleting file %1!").tqarg( vfs::pathOrURL( leftURL ) );
           break;
         default:
           break;
@@ -1332,13 +1332,13 @@ public:
     showButton(KDialogBase::Close, false);
 
     TQFrame* mainWidget = plainPage();
-    TQVBoxLayout* layout = new TQVBoxLayout(mainWidget, 10);
+    TQVBoxLayout* tqlayout = new TQVBoxLayout(mainWidget, 10);
 
     TQLabel *mLabel = new TQLabel(text, mainWidget);
-    layout->addWidget(mLabel);
+    tqlayout->addWidget(mLabel);
 
     mProgressBar = new KProgress(mainWidget);
-    layout->addWidget(mProgressBar);
+    tqlayout->addWidget(mProgressBar);
 
     setButtonText( KDialogBase::User1, i18n( "Pause" ) );
 

@@ -134,7 +134,7 @@ void PreservingCopyJob::slotAboutToCreate( KIO::Job */*job*/, const TQValueList<
       if( acl )
       {
         char *aclString = acl_to_text( acl, 0 );
-        aclStr = TQString::fromLatin1( aclString );
+        aclStr = TQString::tqfromLatin1( aclString );
         acl_free( (void*)aclString );
         acl_free( acl );
       }

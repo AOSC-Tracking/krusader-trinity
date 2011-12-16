@@ -41,7 +41,7 @@ YP   YD 88   YD ~Y8888P' `8888Y' YP   YP Y8888D' Y88888P 88   YD
 #include "../GUI/kcmdline.h"
 #include "../Dialogs/krspecialwidgets.h"
 #include "../panelmanager.h"
-#include <layout.h>
+#include <tqlayout.h>
 #include <tqdir.h>
 #include <tqwhatsthis.h>
 #include <tqheader.h>
@@ -300,7 +300,7 @@ void KrDetailedView::addItems( vfs *v, bool addUpDir ) {
    }
 
    // text for updating the status bar
-   TQString statusText = TQString("%1/  ").arg( v->vfs_getOrigin().fileName() ) + i18n("Directory");
+   TQString statusText = TQString("%1/  ").tqarg( v->vfs_getOrigin().fileName() ) + i18n("Directory");
 
    int cnt = 0;
    int cl = columnSorted();
@@ -549,7 +549,7 @@ void KrDetailedView::contentsMousePressEvent( TQMouseEvent * e ) {
              lastSwushPosition = newCurrent;
            }
            newCurrent->setSelected(!newCurrent->isSelected());
-           newCurrent->repaint();
+           newCurrent->tqrepaint();
 			  selectionChanged = true;
          }
          callDefaultHandler = false;
@@ -564,7 +564,7 @@ void KrDetailedView::contentsMousePressEvent( TQMouseEvent * e ) {
             if( newCurrent )
             {
                newCurrent->setSelected(!newCurrent->isSelected());
-               newCurrent->repaint();
+               newCurrent->tqrepaint();
                selectionChanged = true;
                callDefaultHandler = false;
                e->accept();
@@ -576,7 +576,7 @@ void KrDetailedView::contentsMousePressEvent( TQMouseEvent * e ) {
             if( newCurrent )
             {
                newCurrent->setSelected( true );
-               newCurrent->repaint();
+               newCurrent->tqrepaint();
             }
             selectionChanged = true;
             callDefaultHandler = false;
@@ -604,7 +604,7 @@ void KrDetailedView::contentsMousePressEvent( TQMouseEvent * e ) {
          if (newCurrent)
          {
            newCurrent->setSelected(!newCurrent->isSelected());
-           newCurrent->repaint();
+           newCurrent->tqrepaint();
 			  selectionChanged = true;
          }
          callDefaultHandler = false;
@@ -832,11 +832,11 @@ TQRect KrDetailedView::drawItemHighlighter(TQPainter *painter, TQListViewItem *i
 {
   TQRect r;
   if( _currDragItem && item ) {
-    r = itemRect(item);
+    r = tqitemRect(item);
 
     if (painter)
-       tqstyle().tqdrawPrimitive(TQStyle::PE_FocusRect, painter, r, colorGroup(),
-                             TQStyle::Style_FocusAtBorder, colorGroup().highlight());
+       tqstyle().tqdrawPrimitive(TQStyle::PE_FocusRect, painter, r, tqcolorGroup(),
+                             TQStyle::Style_FocusAtBorder, tqcolorGroup().highlight());
   }
   return r;
 }
@@ -873,7 +873,7 @@ void KrDetailedView::imStartEvent(TQIMEvent* e)
 								// item is "below" the quick search window, as the list view will
 								// realize its new size after the key processing. The following line
 								// will resize the list view immediately.
-        ACTIVE_PANEL->layout->activate();
+        ACTIVE_PANEL->tqlayout->activate();
 								// second, we need to disable the dirup action - hack!
         krDirUp->setEnabled( false );
       }
@@ -938,7 +938,7 @@ void KrDetailedView::keyPressEvent( TQKeyEvent * e ) {
          case Key_Next:  if (!KrSelectionMode::getSelectionHandler()->useTQTSelection()){
             TQListViewItem * i = currentItem(), *j;
             if ( !i ) break;
-            TQRect r( itemRect( i ) );
+            TQRect r( tqitemRect( i ) );
             if ( !r.height() ) break;
             for ( int page = visibleHeight() / r.height() - 1; page > 0 && ( j = i->itemBelow() ); --page )
                i = j;
@@ -948,7 +948,7 @@ void KrDetailedView::keyPressEvent( TQKeyEvent * e ) {
          case Key_Prior:  if (!KrSelectionMode::getSelectionHandler()->useTQTSelection()){
             TQListViewItem * i = currentItem(), *j;
             if ( !i ) break;
-            TQRect r( itemRect( i ) );
+            TQRect r( tqitemRect( i ) );
             if ( !r.height() ) break;
             for ( int page = visibleHeight() / r.height() - 1; page > 0 && ( j = i->itemAbove() ); --page )
                i = j;
@@ -1146,7 +1146,7 @@ mark:       if (KrSelectionMode::getSelectionHandler()->spaceMovesDown())
 								// item is "below" the quick search window, as the list view will
 								// realize its new size after the key processing. The following line
 								// will resize the list view immediately.
-								ACTIVE_PANEL->layout->activate();
+								ACTIVE_PANEL->tqlayout->activate();
 								// second, we need to disable the dirup action - hack!
 								krDirUp->setEnabled( false );
 							}

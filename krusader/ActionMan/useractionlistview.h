@@ -26,7 +26,7 @@ class UserActionListView : public KListView {
 public:
    UserActionListView( TQWidget* parent = 0, const char* name = 0 );
    ~UserActionListView();
-   virtual TQSize sizeHint() const;
+   virtual TQSize tqsizeHint() const;
 
    void update();
    void update( KrAction* action );

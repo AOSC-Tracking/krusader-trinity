@@ -64,7 +64,7 @@ class KrDetailedViewItem;
 
 /**
  * KrDetailedView implements everthing and anything regarding a detailed view in a filemananger.
- * IT MUST USE KrViewItem as the children to it's *KListView. KrDetailedView and KrViewItem are
+ * IT MUST USE KrViewItem as the tqchildren to it's *KListView. KrDetailedView and KrViewItem are
  * tightly coupled and the view will not work with other kinds of items.
  * Apart from this, the view is self-reliant and you can use the vast interface to get whatever
  * information is necessery from it.

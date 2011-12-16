@@ -17,7 +17,7 @@
 */
 
 #include <tqtimer.h>
-#include <layout.h>
+#include <tqlayout.h>
 #include <tqtooltip.h>
 #include <tqdatetime.h>
 
@@ -81,9 +81,9 @@ KrProgress::KrProgress( KIO::Job* job )
   hBox->addWidget(resumeLabel);
 
   progressLabel = new TQLabel( this );
-/*  progressLabel->setSizePolicy( TQSizePolicy( TQSizePolicy::MinimumExpanding,
+/*  progressLabel->tqsetSizePolicy( TQSizePolicy( TQSizePolicy::MinimumExpanding,
                                              TQSizePolicy::Preferred ) );*/
-  progressLabel->setAlignment( TQLabel::AlignRight );
+  progressLabel->tqsetAlignment( TQLabel::AlignRight );
   hBox->addWidget( progressLabel );
 
   hBox = new TQHBoxLayout();
@@ -106,8 +106,8 @@ KrProgress::KrProgress( KIO::Job* job )
   connect( pb, TQT_SIGNAL( clicked() ), TQT_SLOT( slotStop() ) );
   hBox->addWidget( pb );
 
-  resize( sizeHint() );
-  setMaximumHeight(sizeHint().height());
+  resize( tqsizeHint() );
+  setMaximumHeight(tqsizeHint().height());
 
   setCaption(i18n("Krusader Progress")); // show something better than kio_uiserver
 
@@ -169,7 +169,7 @@ void KrProgress::showTotals(){
 }
 
 void KrProgress::slotPercent( KIO::Job*, unsigned long percent ){
-  TQString tmp(i18n( "%1% of %2 ").arg( percent ).arg( KIO::convertSize(m_iTotalSize)));
+  TQString tmp(i18n( "%1% of %2 ").tqarg( percent ).tqarg( KIO::convertSize(m_iTotalSize)));
   m_pProgressBar->setValue( percent );
   tmp.append(i18n(" (Reading)"));
 
@@ -180,7 +180,7 @@ void KrProgress::slotPercent( KIO::Job*, unsigned long percent ){
 void KrProgress::slotInfoMessage( KIO::Job*, const TQString & msg )
 {
   speedLabel->setText( msg );
-  speedLabel->setAlignment( speedLabel->alignment() & ~TQt::WordBreak );
+  speedLabel->tqsetAlignment( speedLabel->tqalignment() & ~TQt::WordBreak );
 }
 
 
@@ -188,7 +188,7 @@ void KrProgress::slotProcessedSize( KIO::Job*, KIO::filesize_t bytes ) {
   m_iProcessedSize = bytes;
 
   TQString tmp;
-  tmp = i18n( "%1 of %2 complete").arg( KIO::convertSize(bytes) ).arg( KIO::convertSize(m_iTotalSize));
+  tmp = i18n( "%1 of %2 complete").tqarg( KIO::convertSize(bytes) ).tqarg( KIO::convertSize(m_iTotalSize));
   sizeLabel->setText( tmp );
 }
 
@@ -198,9 +198,9 @@ void KrProgress::slotProcessedDirs( KIO::Job*, unsigned long dirs )
   m_iProcessedDirs = dirs;
 
   TQString tmps;
-  tmps = i18n("%1 / %n directory", "%1 / %n directories", m_iTotalDirs).arg( m_iProcessedDirs );
+  tmps = i18n("%1 / %n directory", "%1 / %n directories", m_iTotalDirs).tqarg( m_iProcessedDirs );
   tmps += "   ";
-  tmps += i18n("%1 / %n file", "%1 / %n files", m_iTotalFiles).arg( m_iProcessedFiles );
+  tmps += i18n("%1 / %n file", "%1 / %n files", m_iTotalFiles).tqarg( m_iProcessedFiles );
   progressLabel->setText( tmps );
 }
 
@@ -211,10 +211,10 @@ void KrProgress::slotProcessedFiles( KIO::Job*, unsigned long files )
 
   TQString tmps;
   if ( m_iTotalDirs > 1 ) {
-    tmps = i18n("%1 / %n directory", "%1 / %n directories", m_iTotalDirs).arg( m_iProcessedDirs );
+    tmps = i18n("%1 / %n directory", "%1 / %n directories", m_iTotalDirs).tqarg( m_iProcessedDirs );
     tmps += "   ";
   }
-  tmps += i18n("%1 / %n file", "%1 / %n files", m_iTotalFiles).arg( m_iProcessedFiles );
+  tmps += i18n("%1 / %n file", "%1 / %n files", m_iTotalFiles).tqarg( m_iProcessedFiles );
   progressLabel->setText( tmps );
 }
 
@@ -230,7 +230,7 @@ void KrProgress::slotSpeed( KIO::Job*, unsigned long bytes_per_second )
 #else
     TQString remaining = KIO::calculateRemaining( m_iTotalSize, m_iProcessedSize, bytes_per_second ).toString();
 #endif
-    speedLabel->setText( i18n( "%1/s ( %2 remaining )").arg( KIO::convertSize( bytes_per_second )).arg( remaining ) );
+    speedLabel->setText( i18n( "%1/s ( %2 remaining )").tqarg( KIO::convertSize( bytes_per_second )).tqarg( remaining ) );
   }
 }
 

@@ -34,7 +34,7 @@
 #include <tqlabel.h>
 #include <tqvbox.h>
 #include <tqhbox.h>
-#include <layout.h>
+#include <tqlayout.h>
 #include <tqstringlist.h>
 #include <tqvaluevector.h>
 

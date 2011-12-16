@@ -33,7 +33,7 @@
 #define KFNKEYS_H
 
 #include <tqwidget.h>
-#include <layout.h>
+#include <tqlayout.h>
 #include <tqpushbutton.h>
 
 // Function Keys widget
@@ -49,7 +49,7 @@ public:
 
 private:
 	TQPushButton *F2 ,*F3,*F4,*F5,*F6,*F7,*F8,*F9,*F10;
-	TQGridLayout *layout;
+	TQGridLayout *tqlayout;
 };
 
 #endif

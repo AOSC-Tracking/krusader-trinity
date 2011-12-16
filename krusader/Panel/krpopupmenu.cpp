@@ -168,9 +168,9 @@ KrPopupMenu::KrPopupMenu(ListPanel *thePanel, TQWidget *parent) : KPopupMenu(par
 	
 	// ---------- mount/umount/eject
    if ( panel->func->files() ->vfs_getType() == vfs::NORMAL && vf->vfile_isDir() && !multipleSelections ) {
-      if ( krMtMan.getStatus( panel->func->files() ->vfs_getFile( item->name() ).path( -1 ) ) == KMountMan::MOUNTED )
+      if ( krMtMan.gettqStatus( panel->func->files() ->vfs_getFile( item->name() ).path( -1 ) ) == KMountMan::MOUNTED )
          insertItem( i18n( "Unmount" ), UNMOUNT_ID );
-      else if ( krMtMan.getStatus( panel->func->files() ->vfs_getFile( item->name() ).path( -1 ) ) == KMountMan::NOT_MOUNTED )
+      else if ( krMtMan.gettqStatus( panel->func->files() ->vfs_getFile( item->name() ).path( -1 ) ) == KMountMan::NOT_MOUNTED )
          insertItem( i18n( "Mount" ), MOUNT_ID );
       if ( krMtMan.ejectable( panel->func->files() ->vfs_getFile( item->name() ).path( -1 ) ) )
          insertItem( i18n( "Eject" ), EJECT_ID );
@@ -258,7 +258,7 @@ void KrPopupMenu::performAction(int id) {
          	break;
          case SHRED_ID :
             if ( KMessageBox::warningContinueCancel( krApp,
-                 i18n("<qt>Do you really want to shred <b>%1</b>? Once shred, the file is gone forever!</qt>").arg(item->name()),
+                 i18n("<qt>Do you really want to shred <b>%1</b>? Once shred, the file is gone forever!</qt>").tqarg(item->name()),
                  TQString(), KStdGuiItem::cont(), "Shred" ) == KMessageBox::Continue )
                KShred::shred( panel->func->files() ->vfs_getFile( item->name() ).path( -1 ) );
          	break;
@@ -336,7 +336,7 @@ void KrPopupMenu::performAction(int id) {
             	proc.setUseShell( true );
          	}
          	if ( !proc.start( KProcess::DontCare ) )
-               KMessageBox::sorry( krApp, i18n( "Can't open \"%1\"" ).arg(term) );
+               KMessageBox::sorry( krApp, i18n( "Can't open \"%1\"" ).tqarg(term) );
 				} // group-saver is blown out of scope here
          	chdir( save.local8Bit() );
          	break;

@@ -78,7 +78,7 @@ void KgLookFeel::setupOperationTab() {
 
   // -------------- General -----------------
   TQGroupBox *lookFeelGrp = createFrame( i18n( "Look && Feel" ), tab, "kgLookAndFeelGrp" );
-  TQGridLayout *lookFeelGrid = createGridLayout( lookFeelGrp->layout() );
+  TQGridLayout *lookFeelGrid = createGridLayout( lookFeelGrp->tqlayout() );
 
   KONFIGURATOR_CHECKBOX_PARAM settings[] =
     { //   cfg_class  cfg_name                default             text                              restart tooltip
@@ -97,7 +97,7 @@ void KgLookFeel::setupOperationTab() {
 
   // -------------- Quicksearch -----------------
   TQGroupBox *quicksearchGroup = createFrame( i18n( "Quicksearch" ), tab, "kgQuicksearchGrp" );
-  TQGridLayout *quicksearchGrid = createGridLayout( quicksearchGroup->layout() );
+  TQGridLayout *quicksearchGrid = createGridLayout( quicksearchGroup->tqlayout() );
 
   KONFIGURATOR_CHECKBOX_PARAM quicksearch[] =
    { //   cfg_class  cfg_name                default             text                              restart tooltip
@@ -124,7 +124,7 @@ void KgLookFeel::setupPanelTab() {
   panelLayout->setSpacing( 6 );
   panelLayout->setMargin( 11 );
   TQGroupBox *panelGrp = createFrame( i18n( "Panel settings" ), tab_panel, "kgPanelGrp" );
-  TQGridLayout *panelGrid = createGridLayout( panelGrp->layout() );
+  TQGridLayout *panelGrid = createGridLayout( panelGrp->tqlayout() );
 
   TQHBox *hbox = new TQHBox( panelGrp, "lookAndFeelHBox1" );
   new TQLabel( i18n( "Panel font:" ), hbox, "lookAndFeelLabel" );
@@ -200,7 +200,7 @@ void KgLookFeel::setupPanelToolbarTab() {
   connect( panelToolbarActive->find( "Panel Toolbar visible" ), TQT_SIGNAL( stateChanged( int ) ), this, TQT_SLOT( slotEnablePanelToolbar() ) );
     
   TQGroupBox * panelToolbarGrp = createFrame( i18n( "Visible Panel Toolbar buttons" ), tab_4, "panelToolbarGrp");
-  TQGridLayout * panelToolbarGrid = createGridLayout( panelToolbarGrp->layout() );
+  TQGridLayout * panelToolbarGrid = createGridLayout( panelToolbarGrp->tqlayout() );
 
   KONFIGURATOR_CHECKBOX_PARAM panelToolbarCheckboxes[] = 
     {
@@ -238,7 +238,7 @@ void KgLookFeel::setupMouseModeTab() {
 
   // -------------- General -----------------
   TQGroupBox *mouseGeneralGroup = createFrame( i18n( "General" ), tab_mouse, "mouseGeneralGroup" );
-  TQGridLayout *mouseGeneralGrid = createGridLayout( mouseGeneralGroup->layout() );
+  TQGridLayout *mouseGeneralGrid = createGridLayout( mouseGeneralGroup->tqlayout() );
   mouseGeneralGrid->setSpacing( 0 );
   mouseGeneralGrid->setMargin( 5 );
 
@@ -251,7 +251,7 @@ void KgLookFeel::setupMouseModeTab() {
      	{ i18n( "Custom Selection Mode" ), "3", i18n( "Design your own selection mode!" ) }
      };
   mouseRadio = createRadioButtonGroup( "Look&Feel", "Mouse Selection", "0", 2, 2, mouseSelection, 4, mouseGeneralGroup, "myLook&FeelRadio", true, PAGE_MOUSE );
-  mouseRadio->layout()->setMargin( 0 );
+  mouseRadio->tqlayout()->setMargin( 0 );
   mouseGeneralGrid->addWidget( mouseRadio, 0, 0 );
   connect( mouseRadio, TQT_SIGNAL( clicked(int) ), TQT_SLOT( slotSelectionModeChanged() ) );
 
@@ -259,7 +259,7 @@ void KgLookFeel::setupMouseModeTab() {
 
   // -------------- Details -----------------
   TQGroupBox *mouseDetailGroup = createFrame( i18n( "Details" ), tab_mouse, "mouseDetailGroup" );
-  TQGridLayout *mouseDetailGrid = createGridLayout( mouseDetailGroup->layout() );
+  TQGridLayout *mouseDetailGrid = createGridLayout( mouseDetailGroup->tqlayout() );
   mouseDetailGrid->setSpacing( 0 );
   mouseDetailGrid->setMargin( 5 );
 
@@ -270,7 +270,7 @@ void KgLookFeel::setupMouseModeTab() {
     	{ i18n( "Obey KDE's global selection policy" ), "1", i18n( "<p>Use KDE's global setting:</p><p><i>KDE Control Center -> Peripherals -> Mouse</i></p>" ) }
     };
   KonfiguratorRadioButtons *clickRadio = createRadioButtonGroup( "Look&Feel", "Single Click Selects", "0", 1, 0, singleOrDoubleClick, 2, mouseDetailGroup, "myLook&FeelRadio0", true, PAGE_MOUSE );
-  clickRadio->layout()->setMargin( 0 );
+  clickRadio->tqlayout()->setMargin( 0 );
   mouseDetailGrid->addWidget( clickRadio, 0, 0 );
   
   KONFIGURATOR_CHECKBOX_PARAM mouseCheckboxesParam[] = 
@@ -324,7 +324,7 @@ void KgLookFeel::setupMouseModeTab() {
 
   // -------------- Preview -----------------
   TQGroupBox *mousePreviewGroup = createFrame( i18n( "Preview" ), tab_mouse, "mousePreviewGroup" );
-  TQGridLayout *mousePreviewGrid = createGridLayout( mousePreviewGroup->layout() );
+  TQGridLayout *mousePreviewGrid = createGridLayout( mousePreviewGroup->tqlayout() );
   // TODO preview
   mousePreview = new TQListView( mousePreviewGroup, "mousePreview" );
   mousePreviewGrid->addWidget( mousePreview, 0 ,0 );

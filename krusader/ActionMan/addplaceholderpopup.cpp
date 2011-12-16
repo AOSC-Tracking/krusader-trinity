@@ -23,7 +23,7 @@
 #include "../BookMan/krbookmarkbutton.h"
 #include "../GUI/profilemanager.h"
 
-#include <layout.h>
+#include <tqlayout.h>
 #include <tqhbox.h>
 #include <tqlabel.h>
 #include <tqtoolbutton.h>
@@ -136,9 +136,9 @@ ParameterDialog::ParameterDialog( const exp_placeholder* currentPlaceholder, TQW
    _parameter.clear();
    _parameterCount = currentPlaceholder->parameterCount();
    
-   TQVBoxLayout* layout = new TQVBoxLayout( plainPage() );
-   layout->setAutoAdd( true );
-   layout->setSpacing( 11 );
+   TQVBoxLayout* tqlayout = new TQVBoxLayout( plainPage() );
+   tqlayout->setAutoAdd( true );
+   tqlayout->setSpacing( 11 );
    
    new TQLabel( i18n("This placeholder allows some parameter:"), plainPage(), "intro" );
    
@@ -220,9 +220,9 @@ void ParameterDialog::slotOk() {
 
 ///////////// ParameterText
 ParameterText::ParameterText( const exp_parameter& parameter, TQWidget* parent ) : ParameterBase( parameter, parent ) {
-   TQVBoxLayout* layout = new TQVBoxLayout( this );
-   layout->setAutoAdd( true );
-   layout->setSpacing( 6 );
+   TQVBoxLayout* tqlayout = new TQVBoxLayout( this );
+   tqlayout->setAutoAdd( true );
+   tqlayout->setSpacing( 6 );
    
    new TQLabel( i18n( parameter.description().utf8() ), this );
    _lineEdit = new KLineEdit( parameter.preset(), this );
@@ -247,9 +247,9 @@ bool ParameterText::valid() {
 
 ///////////// ParameterPlaceholder
 ParameterPlaceholder::ParameterPlaceholder( const exp_parameter& parameter, TQWidget* parent ) : ParameterBase( parameter, parent ) {
-   TQVBoxLayout* layout = new TQVBoxLayout( this );
-   layout->setAutoAdd( true );
-   layout->setSpacing( 6 );
+   TQVBoxLayout* tqlayout = new TQVBoxLayout( this );
+   tqlayout->setAutoAdd( true );
+   tqlayout->setSpacing( 6 );
    
    new TQLabel( i18n( parameter.description().utf8() ), this );
    TQHBox * hbox = new TQHBox( this );
@@ -284,9 +284,9 @@ void ParameterPlaceholder::addPlaceholder() {
 
 ///////////// ParameterYes
 ParameterYes::ParameterYes( const exp_parameter& parameter, TQWidget* parent ) : ParameterBase( parameter, parent ) {
-   TQVBoxLayout* layout = new TQVBoxLayout( this );
-   layout->setAutoAdd( true );
-   layout->setSpacing( 6 );
+   TQVBoxLayout* tqlayout = new TQVBoxLayout( this );
+   tqlayout->setAutoAdd( true );
+   tqlayout->setSpacing( 6 );
    
    _checkBox = new TQCheckBox( i18n( parameter.description().utf8() ), this );
    _checkBox->setChecked( true );
@@ -310,9 +310,9 @@ bool ParameterYes::valid() {
 
 ///////////// ParameterNo
 ParameterNo::ParameterNo( const exp_parameter& parameter, TQWidget* parent ) : ParameterBase( parameter, parent ) {
-   TQVBoxLayout* layout = new TQVBoxLayout( this );
-   layout->setAutoAdd( true );
-   layout->setSpacing( 6 );
+   TQVBoxLayout* tqlayout = new TQVBoxLayout( this );
+   tqlayout->setAutoAdd( true );
+   tqlayout->setSpacing( 6 );
    
    _checkBox = new TQCheckBox( i18n( parameter.description().utf8() ), this );
    _checkBox->setChecked( false );
@@ -336,9 +336,9 @@ bool ParameterNo::valid() {
 
 ///////////// ParameterFile
 ParameterFile::ParameterFile( const exp_parameter& parameter, TQWidget* parent ) : ParameterBase( parameter, parent ) {
-   TQVBoxLayout* layout = new TQVBoxLayout( this );
-   layout->setAutoAdd( true );
-   layout->setSpacing( 6 );
+   TQVBoxLayout* tqlayout = new TQVBoxLayout( this );
+   tqlayout->setAutoAdd( true );
+   tqlayout->setSpacing( 6 );
    
    new TQLabel( i18n( parameter.description().utf8() ), this );
    TQHBox * hbox = new TQHBox( this );
@@ -372,9 +372,9 @@ void ParameterFile::addFile() {
 
 ///////////// ParameterChoose
 ParameterChoose::ParameterChoose( const exp_parameter& parameter, TQWidget* parent ) : ParameterBase( parameter, parent ) {
-   TQVBoxLayout* layout = new TQVBoxLayout( this );
-   layout->setAutoAdd( true );
-   layout->setSpacing( 6 );
+   TQVBoxLayout* tqlayout = new TQVBoxLayout( this );
+   tqlayout->setAutoAdd( true );
+   tqlayout->setSpacing( 6 );
    
    new TQLabel( i18n( parameter.description().utf8() ), this );
    _combobox = new KComboBox( this );
@@ -396,9 +396,9 @@ bool ParameterChoose::valid() {
 
 ///////////// ParameterSelect
 ParameterSelect::ParameterSelect( const exp_parameter& parameter, TQWidget* parent ) : ParameterBase( parameter, parent ) {
-   TQVBoxLayout* layout = new TQVBoxLayout( this );
-   layout->setAutoAdd( true );
-   layout->setSpacing( 6 );
+   TQVBoxLayout* tqlayout = new TQVBoxLayout( this );
+   tqlayout->setAutoAdd( true );
+   tqlayout->setSpacing( 6 );
    
    new TQLabel( i18n( parameter.description().utf8() ), this );
    _combobox = new KComboBox( this );
@@ -428,9 +428,9 @@ bool ParameterSelect::valid() {
 
 ///////////// ParameterGoto
 ParameterGoto::ParameterGoto( const exp_parameter& parameter, TQWidget* parent ) : ParameterBase( parameter, parent ) {
-   TQVBoxLayout* layout = new TQVBoxLayout( this );
-   layout->setAutoAdd( true );
-   layout->setSpacing( 6 );
+   TQVBoxLayout* tqlayout = new TQVBoxLayout( this );
+   tqlayout->setAutoAdd( true );
+   tqlayout->setSpacing( 6 );
    
    new TQLabel( i18n( parameter.description().utf8() ), this );
    TQHBox * hbox = new TQHBox( this );
@@ -474,9 +474,9 @@ void ParameterGoto::addPlaceholder() {
 
 ///////////// ParameterSyncprofile
 ParameterSyncprofile::ParameterSyncprofile( const exp_parameter& parameter, TQWidget* parent ) : ParameterBase( parameter, parent ) {
-   TQVBoxLayout* layout = new TQVBoxLayout( this );
-   layout->setAutoAdd( true );
-   layout->setSpacing( 6 );
+   TQVBoxLayout* tqlayout = new TQVBoxLayout( this );
+   tqlayout->setAutoAdd( true );
+   tqlayout->setSpacing( 6 );
    
    new TQLabel( i18n( parameter.description().utf8() ), this );
    _combobox = new KComboBox( this );
@@ -499,9 +499,9 @@ bool ParameterSyncprofile::valid() {
 
 ///////////// ParameterSearch
 ParameterSearch::ParameterSearch( const exp_parameter& parameter, TQWidget* parent ) : ParameterBase( parameter, parent ) {
-   TQVBoxLayout* layout = new TQVBoxLayout( this );
-   layout->setAutoAdd( true );
-   layout->setSpacing( 6 );
+   TQVBoxLayout* tqlayout = new TQVBoxLayout( this );
+   tqlayout->setAutoAdd( true );
+   tqlayout->setSpacing( 6 );
    
    new TQLabel( i18n( parameter.description().utf8() ), this );
    _combobox = new KComboBox( this );
@@ -524,9 +524,9 @@ bool ParameterSearch::valid() {
 
 ///////////// ParameterPanelprofile
 ParameterPanelprofile::ParameterPanelprofile( const exp_parameter& parameter, TQWidget* parent ) : ParameterBase( parameter, parent ) {
-   TQVBoxLayout* layout = new TQVBoxLayout( this );
-   layout->setAutoAdd( true );
-   layout->setSpacing( 6 );
+   TQVBoxLayout* tqlayout = new TQVBoxLayout( this );
+   tqlayout->setAutoAdd( true );
+   tqlayout->setSpacing( 6 );
    
    new TQLabel( i18n( parameter.description().utf8() ), this );
    _combobox = new KComboBox( this );
@@ -549,9 +549,9 @@ bool ParameterPanelprofile::valid() {
 
 ///////////// ParameterInt
 ParameterInt::ParameterInt( const exp_parameter& parameter, TQWidget* parent ) : ParameterBase( parameter, parent ) {
-   TQHBoxLayout* layout = new TQHBoxLayout( this );
-   layout->setAutoAdd( true );
-   layout->setSpacing( 6 );
+   TQHBoxLayout* tqlayout = new TQHBoxLayout( this );
+   tqlayout->setAutoAdd( true );
+   tqlayout->setSpacing( 6 );
    
    new TQLabel( i18n( parameter.description().utf8() ), this );
    _spinbox = new KIntSpinBox( this );
@@ -569,7 +569,7 @@ TQString ParameterInt::text() {
    return _spinbox->text();
 } 
 TQString ParameterInt::preset() {
-   return TQString( "%1" ).arg( _default );
+   return TQString( "%1" ).tqarg( _default );
 } 
 void ParameterInt::reset() {
    return _spinbox->setValue( _default );

@@ -31,7 +31,7 @@
 #include "splittergui.h"
 #include "../VFS/vfs.h"
 #include <klocale.h>
-#include <layout.h>
+#include <tqlayout.h>
 #include <tqlabel.h>
 #include <kmessagebox.h>
 
@@ -57,7 +57,7 @@ SplitterGUI::SplitterGUI( TQWidget* parent,  KURL fileURL, KURL defaultDir ) :
   grid->setMargin( 11 );
 
   TQLabel *splitterLabel = new TQLabel( this, "SplitterLabel" );
-  splitterLabel->setText( i18n( "Split the file %1 to directory:"  ).arg( vfs::pathOrURL( fileURL ) ) );
+  splitterLabel->setText( i18n( "Split the file %1 to directory:"  ).tqarg( vfs::pathOrURL( fileURL ) ) );
   splitterLabel->setMinimumWidth( 400 );
   grid->addWidget( splitterLabel,0 ,0 );
 
@@ -75,7 +75,7 @@ SplitterGUI::SplitterGUI( TQWidget* parent,  KURL fileURL, KURL defaultDir ) :
 
   TQLabel *spacer = new TQLabel( splitSizeLine );
   spacer->setText( " "  );
-  spacer->setSizePolicy( TQSizePolicy::Expanding, TQSizePolicy::Minimum );
+  spacer->tqsetSizePolicy( TQSizePolicy::Expanding, TQSizePolicy::Minimum );
 
   TQLabel *bytesPerFile = new TQLabel( splitSizeLine, "BytesPerFile" );
   bytesPerFile->setText( i18n( "Max file size:"  ) );
@@ -94,7 +94,7 @@ SplitterGUI::SplitterGUI( TQWidget* parent,  KURL fileURL, KURL defaultDir ) :
 
   TQFrame *separator = new TQFrame( this, "separatorLine" );
   separator->setFrameStyle( TQFrame::HLine | TQFrame::Sunken );
-  separator->setFixedHeight( separator->sizeHint().height() );
+  separator->setFixedHeight( separator->tqsizeHint().height() );
 
   grid->addWidget( separator,3 ,0 );
   

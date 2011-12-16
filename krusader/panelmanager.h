@@ -2,7 +2,7 @@
 #define _PANEL_MANAGER_H
 
 #include <tqwidget.h>
-#include <layout.h>
+#include <tqlayout.h>
 #include "paneltabbar.h"
 
 class KConfig;
@@ -44,7 +44,7 @@ class PanelManager: public TQWidget {
     int  activeTab();
     void setActiveTab( int );
     void setCurrentTab( int );
-    void refreshAllTabs( bool invalidate = false );
+    void refreshAllTabs( bool tqinvalidate = false );
 
   public slots:
     /**

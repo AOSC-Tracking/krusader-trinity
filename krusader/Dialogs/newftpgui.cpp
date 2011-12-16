@@ -12,7 +12,7 @@
 #include <tqlineedit.h>
 #include <tqpushbutton.h>
 #include <tqspinbox.h>
-#include <layout.h>
+#include <tqlayout.h>
 #include <tqhbox.h>
 #include <tqgrid.h>
 #include <tqvariant.h>
@@ -40,15 +40,15 @@
 newFTPGUI::newFTPGUI( TQWidget* parent,  const char* name, bool modal, WFlags fl )
     : TQDialog( parent, name, modal, fl ){
     
-    TQVBoxLayout * layout = new TQVBoxLayout( this, 11, 6, "newFTPGUI_layout" );
-    layout->setAutoAdd(true);
+    TQVBoxLayout * tqlayout = new TQVBoxLayout( this, 11, 6, "newFTPGUI_layout" );
+    tqlayout->setAutoAdd(true);
     
     if ( !name )
     setName( "newFTPGUI" );
     resize( 342, 261 );
     setCaption( i18n( "New Network Connection"  ) );
 //     setSizeGripEnabled( TRUE );
-    setSizePolicy( TQSizePolicy( (TQSizePolicy::SizeType)5, (TQSizePolicy::SizeType)5, sizePolicy().hasHeightForWidth() ) );
+    tqsetSizePolicy( TQSizePolicy( (TQSizePolicy::SizeType)5, (TQSizePolicy::SizeType)5, sizePolicy().hasHeightForWidth() ) );
     setMinimumSize( TQSize( 342, 261 ) );
 
     
@@ -57,7 +57,7 @@ newFTPGUI::newFTPGUI( TQWidget* parent,  const char* name, bool modal, WFlags fl
     
     PixmapLabel1 = new TQLabel( hbox_image, "PixmapLabel1" );
     PixmapLabel1->setPixmap( krLoader->loadIcon("network", KIcon::Desktop, 32) );
-    PixmapLabel1->setSizePolicy( SIZE_MINIMUM );
+    PixmapLabel1->tqsetSizePolicy( SIZE_MINIMUM );
 
     TextLabel3 = new TQLabel( i18n( "About to connect to..."  ), hbox_image, "TextLabel3" );
     TQFont TextLabel3_font(  TextLabel3->font() );
@@ -84,7 +84,7 @@ newFTPGUI::newFTPGUI( TQWidget* parent,  const char* name, bool modal, WFlags fl
       prefix->insertItem( i18n( "sftp://" ));
     prefix->setAcceptDrops( FALSE );
     prefix->setEnabled( TRUE );
-    prefix->setSizePolicy( SIZE_MINIMUM );
+    prefix->tqsetSizePolicy( SIZE_MINIMUM );
     connect( prefix,TQT_SIGNAL(activated(const TQString& )),
                this,TQT_SLOT(slotTextChanged(const TQString& )));
 
@@ -104,7 +104,7 @@ newFTPGUI::newFTPGUI( TQWidget* parent,  const char* name, bool modal, WFlags fl
     port = new TQSpinBox( grid_host, "port" );
     port->setMaxValue( 65535 );
     port->setValue( 21 );
-    port->setSizePolicy( SIZE_MINIMUM );
+    port->tqsetSizePolicy( SIZE_MINIMUM );
 
 
     TextLabel1_2 = new TQLabel( i18n( "Username:"  ), this, "TextLabel1_2" );

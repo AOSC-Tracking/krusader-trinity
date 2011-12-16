@@ -50,7 +50,7 @@ PackGUI::PackGUI(TQString defaultName, TQString defaultPath, int noOfFiles, TQSt
     PackGUIBase(0,0,true) {
   // first, fill the WhatToPack textfield with information
   if(noOfFiles == 1)
-    TextLabel1->setText( i18n("Pack %1").arg(filename) );
+    TextLabel1->setText( i18n("Pack %1").tqarg(filename) );
   else
     TextLabel1->setText( i18n("Pack %n file", "Pack %n files", noOfFiles) );
 

@@ -37,7 +37,7 @@
 FilterDialog::FilterDialog(  TQWidget *parent, const char *name )
     : KDialogBase( parent, name, true, i18n("Krusader::Choose Files"), Ok|Cancel )
 {
-  TQGridLayout *filterGrid = new TQGridLayout( this->layout() );
+  TQGridLayout *filterGrid = new TQGridLayout( this->tqlayout() );
   filterGrid->setSpacing( 6 );
   filterGrid->setMargin( 11 );
 

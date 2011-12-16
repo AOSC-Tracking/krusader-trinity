@@ -315,15 +315,15 @@ void PanelManager::slotPreviousTab() {
 	slotChangePanel(nextp);   
 }
 
-void PanelManager::refreshAllTabs( bool invalidate ) {
+void PanelManager::refreshAllTabs( bool tqinvalidate ) {
    int i=0;
    while (i < _tabbar->count()) {
       PanelTab *t = dynamic_cast<PanelTab*>(_tabbar->tabAt(i));
       if (t && t->panel && t->panel->func ) {
          vfs * vfs = t->panel->func->files();
          if( vfs ) {
-            if( invalidate )
-               vfs->vfs_invalidate();
+            if( tqinvalidate )
+               vfs->vfs_tqinvalidate();
             vfs->vfs_refresh();
          }
       }

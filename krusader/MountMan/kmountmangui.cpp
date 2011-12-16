@@ -42,7 +42,7 @@ A
 #include <kpopupmenu.h>
 #include <tqbitmap.h>
 #include <kmessagebox.h>
-#include <layout.h>
+#include <tqlayout.h>
 #include <tqgroupbox.h>
 #include <kprocess.h>
 #include <tqcursor.h>
@@ -73,10 +73,10 @@ info( 0 ), mountList( 0 ) {
    widget = new KJanusWidget( this, 0, KJanusWidget::Tabbed );
    createLayout();
    setMainWidget( widget );
-   widget->setMinimumSize( widget->sizeHint().width() + mountList->columnWidth( 5 ),
-                           widget->sizeHint().height() );
-   setMinimumSize( widget->minimumSize().width(), widget->minimumSize().height() );
-   resize( minimumSize() );
+   widget->setMinimumSize( widget->tqsizeHint().width() + mountList->columnWidth( 5 ),
+                           widget->tqsizeHint().height() );
+   setMinimumSize( widget->tqminimumSize().width(), widget->tqminimumSize().height() );
+   resize( tqminimumSize() );
 
    // connections
    connect( mountList, TQT_SIGNAL( doubleClicked( TQListViewItem * ) ), this,
@@ -111,7 +111,7 @@ void KMountManGUI::createMainPage() {
       mountList = 0;
    }
    // clean up is finished...
-   TQGridLayout *layout = new TQGridLayout( mainPage, 1, 1 );
+   TQGridLayout *tqlayout = new TQGridLayout( mainPage, 1, 1 );
    mountList = new TQListView( mainPage );  // create the main container
    krConfig->setGroup( "Look&Feel" );
    mountList->setFont( krConfig->readFontEntry( "Filelist Font", _FilelistFont ) );
@@ -139,11 +139,11 @@ void KMountManGUI::createMainPage() {
    // now the list is created, time to fill it with data.
    //=>krMtMan.forceUpdate();
    TQGroupBox *box = new TQGroupBox( "MountMan.Info", mainPage );
-   box->setAlignment( TQt::AlignHCenter );
+   box->tqsetAlignment( TQt::AlignHCenter );
    info = new KRFSDisplay( box );
    info->resize( info->width(), height() );
-   layout->addWidget( box, 0, 0 );
-   layout->addWidget( mountList, 0, 1 );
+   tqlayout->addWidget( box, 0, 0 );
+   tqlayout->addWidget( mountList, 0, 1 );
 }
 
 void KMountManGUI::getSpaceData() {
@@ -201,9 +201,9 @@ void KMountManGUI::gettingSpaceData( const TQString &mountPoint, unsigned long k
 void KMountManGUI::addItemToMountList( TQListView *lst, fsData &fs ) {
    bool mtd = fs.mounted();
 
-   TQString tSize = TQString( "%1" ).arg( KIO::convertSizeFromKB( fs.totalBlks() ) );
-   TQString fSize = TQString( "%1" ).arg( KIO::convertSizeFromKB( fs.freeBlks() ) );
-   TQString sPrct = TQString( "%1%" ).arg( 100 - ( fs.usedPerct() ) );
+   TQString tSize = TQString( "%1" ).tqarg( KIO::convertSizeFromKB( fs.totalBlks() ) );
+   TQString fSize = TQString( "%1" ).tqarg( KIO::convertSizeFromKB( fs.freeBlks() ) );
+   TQString sPrct = TQString( "%1%" ).tqarg( 100 - ( fs.usedPerct() ) );
    TQListViewItem *item = new TQListViewItem( lst, fs.name(),
                          fs.type(), fs.mntPoint(),
                          ( mtd ? tSize : TQString( "N/A" ) ), ( mtd ? fSize : TQString( "N/A" ) ),
@@ -254,7 +254,7 @@ void KMountManGUI::updateList() {
    mountList->clearSelection();
    if ( info ) {
       info->setEmpty( true );
-      info->repaint();
+      info->tqrepaint();
    }
    watcher->start( WATCHER_DELAY, true );   // starting the watch timer ( single shot )
 }
@@ -300,7 +300,7 @@ void KMountManGUI::changeActive( TQListViewItem *i ) {
    info->setEmpty( false );
 	info->setTotalSpace( system->totalBlks() );
    info->setFreeSpace( system->freeBlks() );
-   info->repaint();
+   info->tqrepaint();
 }
 
 // called when right-clicked on a filesystem

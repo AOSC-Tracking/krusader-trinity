@@ -68,7 +68,7 @@ void KrBookmarkHandler::addBookmark(KrBookmark *bm, KrBookmark *folder) {
 		folder = _root;
 		
 	// add to the list (bottom)
-	folder->children().append(bm);
+	folder->tqchildren().append(bm);
 
 	exportToFile();
 }
@@ -84,15 +84,15 @@ void KrBookmarkHandler::deleteBookmark(KrBookmark *bm) {
 }
 
 void KrBookmarkHandler::removeReferences( KrBookmark *root, KrBookmark *bmToRemove ) {
-	int index = root->children().find( bmToRemove );
+	int index = root->tqchildren().find( bmToRemove );
 	if( index >= 0 )
-		root->children().take( index );
+		root->tqchildren().take( index );
 	
-	KrBookmark *bm = root->children().first();
+	KrBookmark *bm = root->tqchildren().first();
 	while (bm) {
 		if (bm->isFolder())
 			removeReferences(bm, bmToRemove);
-		bm = root->children().next();
+		bm = root->tqchildren().next();
 	}
 }
 
@@ -117,7 +117,7 @@ void KrBookmarkHandler::exportToFileBookmark(TQDomDocument &doc, TQDomElement &w
 }
 
 void KrBookmarkHandler::exportToFileFolder(TQDomDocument &doc, TQDomElement &parent, KrBookmark *folder) {
-	for (KrBookmark *bm = folder->children().first(); bm; bm = folder->children().next()) {
+	for (KrBookmark *bm = folder->tqchildren().first(); bm; bm = folder->tqchildren().next()) {
 		if (bm->isFolder()) {
 			TQDomElement newFolder = doc.createElement("folder");
 			newFolder.setAttribute("icon", bm->icon());
@@ -169,7 +169,7 @@ void KrBookmarkHandler::exportToFile() {
 		stream << doc.toString();
 		file.close();
 	} else {
-		KMessageBox::error(krApp, i18n("Unable to write to %1").arg(filename), i18n("Error"));
+		KMessageBox::error(krApp, i18n("Unable to write to %1").tqarg(filename), i18n("Error"));
 	}
 }
 
@@ -199,7 +199,7 @@ bool KrBookmarkHandler::importFromFileBookmark(TQDomElement &e, KrBookmark *pare
 	KrBookmark *bm = KrBookmark::getExistingBookmark(path+name, _collection);
 	if (!bm) {
 		bm = new KrBookmark(name, vfs::fromPathOrURL( url ), _collection, icon, path+name);
-	parent->children().append(bm);
+	parent->tqchildren().append(bm);
 	}
 
 	return true;
@@ -223,13 +223,13 @@ bool KrBookmarkHandler::importFromFileFolder(TQDomNode &first, KrBookmark *paren
 				return false;
 			} else name = tmp.text();
 			KrBookmark *folder = new KrBookmark(name, iconName);
-			parent->children().append(folder);
+			parent->tqchildren().append(folder);
 
 			TQDomNode nextOne = tmp.nextSibling();
 			if (!importFromFileFolder(nextOne, folder, path + name + "/", errorMsg))
 				return false;
 		} else if (e.tagName() == "separator") {
-			parent->children().append(KrBookmark::separator());
+			parent->tqchildren().append(KrBookmark::separator());
 		}
 		n = n.nextSibling();
 	}
@@ -258,14 +258,14 @@ void KrBookmarkHandler::importFromFile() {
 		n = n.nextSibling();
 
 	if (n.isNull() || n.toElement().tagName()!="xbel") {
-		errorMsg = i18n("%1 doesn't seem to be a valid Bookmarks file").arg(filename);
+		errorMsg = i18n("%1 doesn't seem to be a valid Bookmarks file").tqarg(filename);
 		goto ERROR;
 	} else n = n.firstChild(); // skip the xbel part
 	importFromFileFolder(n, _root, "", &errorMsg);
 	goto SUCCESS;
 	
 ERROR:
-	KMessageBox::error(krApp, i18n("Error reading bookmarks file: %1").arg(errorMsg), i18n( "Error" ));
+	KMessageBox::error(krApp, i18n("Error reading bookmarks file: %1").tqarg(errorMsg), i18n( "Error" ));
 
 SUCCESS:
 	file.close();
@@ -284,7 +284,7 @@ void KrBookmarkHandler::buildMenu(KrBookmark *parent, KPopupMenu *menu) {
 
 	// run the loop twice, in order to put the folders on top. stupid but easy :-)
 	// note: this code drops the separators put there by the user
-	for (KrBookmark *bm = parent->children().first(); bm; bm = parent->children().next()) {
+	for (KrBookmark *bm = parent->tqchildren().first(); bm; bm = parent->tqchildren().next()) {
 		if (!bm->isFolder()) continue;
 		KPopupMenu *newMenu = new KPopupMenu(menu);
 		int id = menu->insertItem(TQIconSet(krLoader->loadIcon(bm->icon(), KIcon::Small)),
@@ -298,7 +298,7 @@ void KrBookmarkHandler::buildMenu(KrBookmark *parent, KPopupMenu *menu) {
 		buildMenu(bm, newMenu);
 		--inSecondaryMenu;
 	}
-	for (KrBookmark *bm = parent->children().first(); bm; bm = parent->children().next()) {
+	for (KrBookmark *bm = parent->tqchildren().first(); bm; bm = parent->tqchildren().next()) {
 		if (bm->isFolder()) continue;
 		if (bm->isSeparator() ) {
 			menu->insertSeparator();
@@ -411,7 +411,7 @@ void KrBookmarkHandler::buildMenu(KrBookmark *parent, KPopupMenu *menu) {
 }
 
 void KrBookmarkHandler::clearBookmarks(KrBookmark *root) {
-	KrBookmark *bm = root->children().first();
+	KrBookmark *bm = root->tqchildren().first();
 	while (bm) {	
 		if (bm->isFolder())
 			clearBookmarks(bm);
@@ -420,9 +420,9 @@ void KrBookmarkHandler::clearBookmarks(KrBookmark *root) {
 			delete bm;
 		}
 
-		bm = root->children().next();
+		bm = root->tqchildren().next();
 	}
-	root->children().clear();
+	root->tqchildren().clear();
 }
 
 void KrBookmarkHandler::bookmarksChanged(const TQString&, const TQString&) {

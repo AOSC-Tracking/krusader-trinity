@@ -43,7 +43,7 @@
 #include <unistd.h>
 #include <sys/types.h>
 #include <sys/stat.h>
-#include <textstream.h>
+#include <tqtextstream.h>
 #include <tqregexp.h>
 #include <klargefile.h>
 #include <kurlrequesterdlg.h>

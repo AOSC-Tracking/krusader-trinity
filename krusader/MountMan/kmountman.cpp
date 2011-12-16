@@ -148,7 +148,7 @@ void KMountMan::unmount( TQString mntPoint, bool blocking ) {
 	}
 }
 
-KMountMan::mntStatus KMountMan::getStatus( TQString mntPoint ) {	
+KMountMan::mnttqStatus KMountMan::gettqStatus( TQString mntPoint ) {	
 	KMountPoint::List::iterator it;
    KMountPoint *m;
 	
@@ -170,7 +170,7 @@ KMountMan::mntStatus KMountMan::getStatus( TQString mntPoint ) {
 
 
 void KMountMan::toggleMount( TQString mntPoint ) {
-	mntStatus status = getStatus(mntPoint);
+	mnttqStatus status = gettqStatus(mntPoint);
 	switch (status) {
 		case MOUNTED:
 			unmount(mntPoint);
@@ -185,7 +185,7 @@ void KMountMan::toggleMount( TQString mntPoint ) {
 }
 
 void KMountMan::autoMount( TQString path ) {
-   if ( getStatus( path ) == NOT_MOUNTED )
+   if ( gettqStatus( path ) == NOT_MOUNTED )
       mount( path );
 }
 
@@ -221,24 +221,24 @@ TQString KMountMan::convertSize( KIO::filesize_t size ) {
       fsize = ( float ) size / ( float ) 1073741824;
       if ( fsize > 1024 )         // no name for something bigger than tera byte
          // let's call it Zega-Byte, who'll ever find out? :-)
-         s = i18n( "%1 ZB" ).arg( KGlobal::locale() ->formatNumber( fsize / ( float ) 1024, 1 ) );
+         s = i18n( "%1 ZB" ).tqarg( KGlobal::locale() ->formatNumber( fsize / ( float ) 1024, 1 ) );
       else
-         s = i18n( "%1 TB" ).arg( KGlobal::locale() ->formatNumber( fsize, 1 ) );
+         s = i18n( "%1 TB" ).tqarg( KGlobal::locale() ->formatNumber( fsize, 1 ) );
    }
    // Giga-byte
    else if ( size >= 1048576 ) {
       fsize = ( float ) size / ( float ) 1048576;
-      s = i18n( "%1 GB" ).arg( KGlobal::locale() ->formatNumber( fsize, 1 ) );
+      s = i18n( "%1 GB" ).tqarg( KGlobal::locale() ->formatNumber( fsize, 1 ) );
    }
    // Mega-byte
    else if ( size > 1024 ) {
       fsize = ( float ) size / ( float ) 1024;
-      s = i18n( "%1 MB" ).arg( KGlobal::locale() ->formatNumber( fsize, 1 ) );
+      s = i18n( "%1 MB" ).tqarg( KGlobal::locale() ->formatNumber( fsize, 1 ) );
    }
    // Kilo-byte
    else {
       fsize = ( float ) size;
-      s = i18n( "%1 KB" ).arg( KGlobal::locale() ->formatNumber( fsize, 0 ) );
+      s = i18n( "%1 KB" ).tqarg( KGlobal::locale() ->formatNumber( fsize, 0 ) );
    }
    return s;
 }

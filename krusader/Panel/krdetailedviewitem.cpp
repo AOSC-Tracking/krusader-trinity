@@ -43,7 +43,7 @@
 #include <pwd.h>
 #include <grp.h>
 #include <stdlib.h>
-#include <palette.h>
+#include <tqpalette.h>
 #include <kdebug.h>
 #include <kmimetype.h>
 

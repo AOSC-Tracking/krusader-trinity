@@ -42,7 +42,7 @@
 #include <klocale.h>
 #include <tqhbox.h>
 #include <tqlabel.h>
-#include <layout.h>
+#include <tqlayout.h>
 #include <tqfontmetrics.h>
 #include <kmessagebox.h>
 #include <kpopupmenu.h>
@@ -52,7 +52,7 @@
 #include <kinputdialog.h>
 #include <tqregexp.h>
 #include <tqdir.h>
-#include <clipboard.h>
+#include <tqclipboard.h>
 #include <kurldrag.h>
 #include <../kicons.h>
 
@@ -117,14 +117,14 @@ LocateDlg::LocateDlg() : KDialogBase(0,0,false,"Locate", KDialogBase::User1 | KD
   locateSearchFor->setHistoryItems(list);
   locateSearchFor->setEditable( true );
   locateSearchFor->setDuplicatesEnabled( false );
-  locateSearchFor->setSizePolicy(TQSizePolicy::Expanding,TQSizePolicy::Fixed);
+  locateSearchFor->tqsetSizePolicy(TQSizePolicy::Expanding,TQSizePolicy::Fixed);
   locateSearchFor->lineEdit()->setFocus();
 
   grid->addWidget( hbox, 0, 0 );
 
   TQHBox *hbox2 = new TQHBox( widget, "locateHBox" );
   TQSpacerItem* spacer = new TQSpacerItem( 40, 20, TQSizePolicy::Expanding, TQSizePolicy::Minimum );
-  hbox2->layout()->addItem( spacer );
+  hbox2->tqlayout()->addItem( spacer );
   dontSearchInPath = new TQCheckBox( i18n( "Don't search in path" ), hbox2, "dontSearchInPath" );
   dontSearchInPath->setChecked( krConfig->readBoolEntry("Dont Search In Path") );
   existingFiles = new TQCheckBox( i18n( "Show only the existing files" ), hbox2, "existingFiles" );
@@ -527,7 +527,7 @@ void LocateDlg::operate( TQListViewItem *item, int task )
 
       KURLDrag *d = new KURLDrag(urls, this);
       d->setPixmap( FL_LOADICON( "file" ), TQPoint( -7, 0 ) );
-      TQApplication::clipboard()->setData( d );
+      TQApplication::tqclipboard()->setData( d );
     }
     break;
   }
@@ -573,7 +573,7 @@ void LocateDlg::feedToListBox()
   int listBoxNum = krConfig->readNumEntry( "Feed To Listbox Counter", 1 );  
   TQString queryName;
   do {
-    queryName = i18n("Locate results")+TQString( " %1" ).arg( listBoxNum++ );
+    queryName = i18n("Locate results")+TQString( " %1" ).tqarg( listBoxNum++ );
   }while( v.vfs_search( queryName ) != 0 );
   krConfig->writeEntry( "Feed To Listbox Counter", listBoxNum );  
   

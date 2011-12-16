@@ -30,9 +30,9 @@ A
 #include <unistd.h> 
 // TQt Includes
 #include <tqdir.h>
-#include <textstream.h>
+#include <tqtextstream.h>
 #include <tqeventloop.h>
-#include <clipboard.h> 
+#include <tqclipboard.h> 
 // KDE Includes
 #include <klocale.h>
 #include <kprocess.h>
@@ -377,7 +377,7 @@ void ListPanelFunc::terminal() {
 	}
 
 	if ( !proc.start( KProcess::DontCare ) )
-		KMessageBox::sorry( krApp, i18n( "<qt>Can't open <b>%1</b></qt>" ).arg(term) );
+		KMessageBox::sorry( krApp, i18n( "<qt>Can't open <b>%1</b></qt>" ).tqarg(term) );
 
 	chdir( save.local8Bit() );
 }
@@ -423,7 +423,7 @@ void ListPanelFunc::moveFiles() {
 		TQString s;
 
   if( fileNames.count() == 1 )
-    s = i18n("Move %1 to:").arg(fileNames.first());
+    s = i18n("Move %1 to:").tqarg(fileNames.first());
   else
     s = i18n("Move %n file to:", "Move %n files to:", fileNames.count());
 
@@ -578,7 +578,7 @@ void ListPanelFunc::copyFiles() {
 		TQString s;
 
   if( fileNames.count() == 1 )
-    s = i18n("Copy %1 to:").arg(fileNames.first());
+    s = i18n("Copy %1 to:").tqarg(fileNames.first());
   else
     s = i18n("Copy %n file to:", "Copy %n files to:", fileNames.count());
 
@@ -679,7 +679,7 @@ void ListPanelFunc::deleteFiles(bool reallyDelete) {
 			dir.setPath( panel->virtualPath().path() + "/" + ( *name ) );
 			if ( dir.entryList(TQDir::All | TQDir::System | TQDir::Hidden ).count() > 2 ) {
 				switch ( KMessageBox::warningYesNoCancel( krApp,
-																		i18n( "<qt><p>Directory <b>%1</b> is not empty!</p><p>Skip this one or Delete All?</p></qt>" ).arg(*name),
+																		i18n( "<qt><p>Directory <b>%1</b> is not empty!</p><p>Skip this one or Delete All?</p></qt>" ).tqarg(*name),
 																		TQString(), i18n( "&Skip" ), i18n( "&Delete All" ) ) ) {
 						case KMessageBox::Cancel :
 						return ;
@@ -806,9 +806,9 @@ void ListPanelFunc::pack() {
 	}
 
 	if (  TQFileInfo( arcFile ).exists() ) {
-		TQString msg = i18n( "<qt><p>The archive <b>%1.%2</b> already exists. Do you want to overwrite it?</p><p>All data in the previous archive will be lost!</p></qt>").arg(PackGUI::filename).arg(PackGUI::type);
+		TQString msg = i18n( "<qt><p>The archive <b>%1.%2</b> already exists. Do you want to overwrite it?</p><p>All data in the previous archive will be lost!</p></qt>").tqarg(PackGUI::filename).tqarg(PackGUI::type);
 		if( PackGUI::type == "zip" ) {
-			msg = i18n( "<qt><p>The archive <b>%1.%2</b> already exists. Do you want to overwrite it?</p><p>Zip will replace identically named entries in the zip archive or add entries for new names.</p></qt>").arg(PackGUI::filename).arg(PackGUI::type);
+			msg = i18n( "<qt><p>The archive <b>%1.%2</b> already exists. Do you want to overwrite it?</p><p>Zip will replace identically named entries in the zip archive or add entries for new names.</p></qt>").tqarg(PackGUI::filename).tqarg(PackGUI::type);
 		}
 		if ( KMessageBox::warningContinueCancel( krApp,msg,TQString(),i18n( "&Overwrite" ))
 		        == KMessageBox::Cancel )
@@ -887,7 +887,7 @@ void ListPanelFunc::testArchive() {
 	
 	// check we that archive is supported
 	if ( !KRarcHandler::arcSupported( type ) ) {
-		KMessageBox::sorry( krApp, i18n( "%1, unknown archive type." ).arg( arcName ) );
+		KMessageBox::sorry( krApp, i18n( "%1, unknown archive type." ).tqarg( arcName ) );
 		return ;
 	}
 	
@@ -895,9 +895,9 @@ void ListPanelFunc::testArchive() {
 	
 	// test the archive
 	if ( KRarcHandler::test( url, type, password ) )
-		KMessageBox::information( krApp, i18n( "%1, test passed." ).arg( arcName ) );
+		KMessageBox::information( krApp, i18n( "%1, test passed." ).tqarg( arcName ) );
 	else
-		KMessageBox::error( krApp, i18n( "%1, test failed!" ).arg( arcName ) );
+		KMessageBox::error( krApp, i18n( "%1, test failed!" ).tqarg( arcName ) );
 
 	// remove the downloaded file if necessary
 	if ( url != arcURL.path( -1 ) )
@@ -913,7 +913,7 @@ void ListPanelFunc::unpack() {
 
 	TQString s;
   if(fileNames.count() == 1)
-    s = i18n("Unpack %1 to:").arg(fileNames[0]);
+    s = i18n("Unpack %1 to:").tqarg(fileNames[0]);
   else
     s = i18n("Unpack %n file to:", "Unpack %n files to:", fileNames.count());
 
@@ -961,7 +961,7 @@ void ListPanelFunc::unpack() {
 
 		// check we that archive is supported
 		if ( !KRarcHandler::arcSupported( type ) ) {
-			KMessageBox::sorry( krApp, i18n( "%1, unknown archive type" ).arg( arcName ) );
+			KMessageBox::sorry( krApp, i18n( "%1, unknown archive type" ).tqarg( arcName ) );
 			continue;
 		}
 		
@@ -1159,7 +1159,7 @@ void ListPanelFunc::copyToClipboard( bool move ) {
 	KURL::List* fileUrls = files() ->vfs_getFiles( &fileNames );
 	if ( fileUrls ) {
 		KRDrag * urlData = KRDrag::newDrag( *fileUrls, move, krApp->mainView, "krusader" );
-		TQApplication::clipboard() ->setData( urlData );
+		TQApplication::tqclipboard() ->setData( urlData );
 		
 		if( move && files()->vfs_getType() == vfs::VIRT )
 			( static_cast<virt_vfs*>( files() ) )->vfs_removeFiles( &fileNames );
@@ -1169,7 +1169,7 @@ void ListPanelFunc::copyToClipboard( bool move ) {
 }
 
 void ListPanelFunc::pasteFromClipboard() {
-	TQClipboard * cb = TQApplication::clipboard();
+	TQClipboard * cb = TQApplication::tqclipboard();
 	TQMimeSource * data = cb->data();
 	KURL::List urls;
 	if ( KURLDrag::canDecode( data ) ) {

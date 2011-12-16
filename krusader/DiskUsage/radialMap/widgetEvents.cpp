@@ -122,8 +122,8 @@ RadialMap::Widget::mouseMoveEvent( TQMouseEvent *e )
          m_tip.updateTip( m_focus->file(), m_tree );
          emit mouseHover( m_focus->file()->fullPath() );
 
-         //repaint required to update labels now before transparency is generated
-         repaint( false );
+         //tqrepaint required to update labels now before transparency is generated
+         tqrepaint( false );
       }
 
       m_tip.moveto( e->globalPos(), *this, ( p.y() < 0 ) ); //updates tooltip psuedo-tranparent background
@@ -174,11 +174,11 @@ RadialMap::Widget::mousePressEvent( TQMouseEvent *e )
          switch( popup.exec( e->globalPos(), 1 ) ) {
          case 0:
             //KRun::runCommand will show an error message if there was trouble
-            KRun::runCommand( TQString( "kfmclient openURL '%1'" ).arg( url.url() ) );
+            KRun::runCommand( TQString( "kfmclient openURL '%1'" ).tqarg( url.url() ) );
             break;
 
          case 1:
-            KRun::runCommand( TQString( "konsole --workdir '%1'" ).arg( url.url() ) );
+            KRun::runCommand( TQString( "konsole --workdir '%1'" ).tqarg( url.url() ) );
             break;
 
          case 2:
@@ -190,7 +190,7 @@ RadialMap::Widget::mousePressEvent( TQMouseEvent *e )
             const KURL url = Widget::url( m_focus->file() );
             const TQString message = ( m_focus->file()->isDir()
                ? i18n( "<qt>The directory at <i>'%1'</i> will be <b>recursively</b> and <b>permanently</b> deleted!</qt>" )
-               : i18n( "<qt><i>'%1'</i> will be <b>permanently</b> deleted!</qt>" )).arg( url.prettyURL() );
+               : i18n( "<qt><i>'%1'</i> will be <b>permanently</b> deleted!</qt>" )).tqarg( url.prettyURL() );
             const int userIntention = KMessageBox::warningContinueCancel( this, message, TQString(), KGuiItem( i18n("&Delete"), "editdelete" ) );
 
             if( userIntention == KMessageBox::Continue ) {
@@ -235,7 +235,7 @@ RadialMap::Widget::deleteJobFinished( KIO::Job *job )
 {
    TQApplication::restoreOverrideCursor();
    if( !job->error() )
-      invalidate();
+      tqinvalidate();
    else
       job->showErrorDialog( this );
 }

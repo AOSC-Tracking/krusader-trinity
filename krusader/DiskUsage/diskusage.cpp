@@ -29,7 +29,7 @@
  ***************************************************************************/
 
 #include <time.h>
-#include <layout.h>
+#include <tqlayout.h>
 #include <klocale.h>
 #include <kpopupmenu.h>
 #include <kmimetype.h>
@@ -89,18 +89,18 @@ LoaderWidget::LoaderWidget( TQWidget *parent, const char *name ) : TQScrollView(
   loaderBox->setFrameShape( TQGroupBox::Box );
   loaderBox->setFrameShadow( TQGroupBox::Sunken );
   loaderBox->setColumnLayout(0, Qt::Vertical );
-  loaderBox->layout()->setSpacing( 0 );
-  loaderBox->layout()->setMargin( 0 );
-  loaderBox->setSizePolicy( TQSizePolicy::Fixed, TQSizePolicy::Fixed );
+  loaderBox->tqlayout()->setSpacing( 0 );
+  loaderBox->tqlayout()->setMargin( 0 );
+  loaderBox->tqsetSizePolicy( TQSizePolicy::Fixed, TQSizePolicy::Fixed );
   loaderBox->setFrameStyle( TQFrame::Panel + TQFrame::Raised );
   loaderBox->setLineWidth( 2 );
 
-  TQGridLayout *synchGrid = new TQGridLayout( loaderBox->layout() );
+  TQGridLayout *synchGrid = new TQGridLayout( loaderBox->tqlayout() );
   synchGrid->setSpacing( 6 );
   synchGrid->setMargin( 11 );
 
   TQLabel *titleLabel = new TQLabel( i18n( "Loading Usage Information" ), loaderBox, "titleLabel" );
-  titleLabel->setAlignment( TQt::AlignHCenter );
+  titleLabel->tqsetAlignment( TQt::AlignHCenter );
   synchGrid->addMultiCellWidget( titleLabel, 0, 0, 0, 1 );
 
   TQLabel *filesLabel = new TQLabel( i18n( "Files:" ), loaderBox, "filesLabel" );
@@ -121,19 +121,19 @@ LoaderWidget::LoaderWidget( TQWidget *parent, const char *name ) : TQScrollView(
   files = new TQLabel( loaderBox, "files" );
   files->setFrameShape( TQLabel::StyledPanel );
   files->setFrameShadow( TQLabel::Sunken );
-  files->setAlignment( TQt::AlignRight );
+  files->tqsetAlignment( TQt::AlignRight );
   synchGrid->addWidget( files, 1, 1 );
 
   directories = new TQLabel( loaderBox, "directories" );
   directories->setFrameShape( TQLabel::StyledPanel );
   directories->setFrameShadow( TQLabel::Sunken );
-  directories->setAlignment( TQt::AlignRight );
+  directories->tqsetAlignment( TQt::AlignRight );
   synchGrid->addWidget( directories, 2, 1 );
 
   totalSize = new TQLabel( loaderBox, "totalSize" );
   totalSize->setFrameShape( TQLabel::StyledPanel );
   totalSize->setFrameShadow( TQLabel::Sunken );
-  totalSize->setAlignment( TQt::AlignRight );
+  totalSize->tqsetAlignment( TQt::AlignRight );
   synchGrid->addWidget( totalSize, 3, 1 );
 
   int width;
@@ -150,7 +150,7 @@ LoaderWidget::LoaderWidget( TQWidget *parent, const char *name ) : TQScrollView(
 
   TQHBox *hbox = new TQHBox( loaderBox, "hbox" );
   TQSpacerItem* spacer = new TQSpacerItem( 0, 0, TQSizePolicy::Minimum, TQSizePolicy::Expanding );
-  hbox->layout()->addItem( spacer );
+  hbox->tqlayout()->addItem( spacer );
   TQPushButton *cancelButton = new TQPushButton( hbox, "cancelButton" );
   cancelButton->setText( i18n( "Cancel"  ) );
   synchGrid->addWidget( hbox, 6, 1 );
@@ -186,9 +186,9 @@ void LoaderWidget::setCurrentURL( KURL url )
 
 void LoaderWidget::setValues( int fileNum, int dirNum, KIO::filesize_t total )
 {
-  files->setText( TQString("%1").arg( fileNum ) );
-  directories->setText( TQString("%1").arg( dirNum ) );
-  totalSize->setText( TQString("%1").arg( KRpermHandler::parseSize( total ).stripWhiteSpace() ) );
+  files->setText( TQString("%1").tqarg( fileNum ) );
+  directories->setText( TQString("%1").tqarg( dirNum ) );
+  totalSize->setText( TQString("%1").tqarg( KRpermHandler::parseSize( total ).stripWhiteSpace() ) );
 }
 
 void LoaderWidget::slotCancelled()
@@ -411,7 +411,7 @@ void DiskUsage::dirUp()
       if( KMessageBox::questionYesNo( this, i18n( "Stepping into the parent directory requires "
                                                   "loading the content of the \"%1\" URL. Do you wish "
                                                   "to continue?" )
-                                            .arg( vfs::pathOrURL( up ) ),
+                                            .tqarg( vfs::pathOrURL( up ) ),
                                             i18n( "Krusader::DiskUsage" ), KStdGuiItem::yes(),
                                             KStdGuiItem::no(), "DiskUsageLoadParentDir"
                                             ) == KMessageBox::Yes )
@@ -530,7 +530,7 @@ int DiskUsage::exclude( File *file, bool calcPercents, int depth )
   {
     calculateSizes( root, true );
     calculatePercents( true );
-    createStatus();
+    createtqStatus();
   }
 
   if( depth == 0 && changeNr != 0 )
@@ -572,7 +572,7 @@ void DiskUsage::includeAll()
   include( root );
   calculateSizes( root, true );
   calculatePercents( true );
-  createStatus();
+  createtqStatus();
 }
 
 int DiskUsage::del( File *file, bool calcPercents, int depth )
@@ -608,7 +608,7 @@ int DiskUsage::del( File *file, bool calcPercents, int depth )
         return 0;
     }
 
-    emit status( i18n( "Deleting %1..." ).arg( file->name() ) );
+    emit status( i18n( "Deleting %1..." ).tqarg( file->name() ) );
   }
 
   if( file == currentDirectory )
@@ -668,13 +668,13 @@ int DiskUsage::del( File *file, bool calcPercents, int depth )
   delete file;
 
   if( depth == 0 )
-    createStatus();
+    createtqStatus();
 
   if( calcPercents )
   {
     calculateSizes( root, true );
     calculatePercents( true );
-    createStatus();
+    createtqStatus();
     emit enteringDirectory( currentDirectory );
   }
 
@@ -713,7 +713,7 @@ void DiskUsage::removeProperty( File *item, TQString key )
     propertyMap.remove( item );
 }
 
-void DiskUsage::createStatus()
+void DiskUsage::createtqStatus()
 {
   Directory *dirEntry = currentDirectory;
 
@@ -725,9 +725,9 @@ void DiskUsage::createStatus()
       url.addPath( dirEntry->directory() );
 
   emit status( i18n( "Current directory:%1,  Total size:%2,  Own size:%3" )
-               .arg( vfs::pathOrURL( url, -1 ) )
-               .arg( " "+KRpermHandler::parseSize( dirEntry->size() ) )
-               .arg( " "+KRpermHandler::parseSize( dirEntry->ownSize() ) ) );
+               .tqarg( vfs::pathOrURL( url, -1 ) )
+               .tqarg( " "+KRpermHandler::parseSize( dirEntry->size() ) )
+               .tqarg( " "+KRpermHandler::parseSize( dirEntry->ownSize() ) ) );
 }
 
 void DiskUsage::changeDirectory( Directory *dir )
@@ -737,7 +737,7 @@ void DiskUsage::changeDirectory( Directory *dir )
   currentSize = dir->size();
   calculatePercents( true, dir );
 
-  createStatus();
+  createtqStatus();
   emit enteringDirectory( dir );
 }
 

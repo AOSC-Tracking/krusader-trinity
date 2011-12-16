@@ -25,13 +25,13 @@
 
 PanelViewerBase::PanelViewerBase( TQWidget *parent ) :
 TQWidgetStack( parent ), mimes( 0 ), cpart( 0 ) {
-	setSizePolicy( TQSizePolicy( TQSizePolicy::Preferred, TQSizePolicy::Ignored ) );
+	tqsetSizePolicy( TQSizePolicy( TQSizePolicy::Preferred, TQSizePolicy::Ignored ) );
 
 	mimes = new TQDict<KParts::ReadOnlyPart>( DICTSIZE, false );
 	mimes->setAutoDelete( true );
 	cpart = 0;
 	fallback = new TQLabel( i18n( "No file selected or selected file can't be displayed." ), this );
-	fallback->setAlignment( AlignCenter | ExpandTabs | WordBreak );
+	fallback->tqsetAlignment( AlignCenter | ExpandTabs | WordBreak );
 	addWidget( fallback );
 	raiseWidget( fallback );
 }

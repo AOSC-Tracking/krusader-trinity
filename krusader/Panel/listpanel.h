@@ -38,7 +38,7 @@
 #include <kurl.h>
 #include <tqwidget.h>
 #include <tqlabel.h>
-#include <layout.h>
+#include <tqlayout.h>
 #include <tqstring.h>
 #include <tqpixmap.h>
 #include <tqtoolbutton.h>
@@ -47,7 +47,7 @@
 #include <tqpixmapcache.h>
 #include <tqiconset.h>
 #include <tqptrstack.h>
-#include <textbrowser.h>
+#include <tqtextbrowser.h>
 #include <keditcl.h>
 #include <klineedit.h>
 #include <tqguardedptr.h>
@@ -150,7 +150,7 @@ protected:
 protected slots:
    void handleDropOnView(TQDropEvent *, TQWidget *destWidget=0); // handles drops on the view only
    void handleDropOnTotals( TQDropEvent * );                   // handles drops on the totals line
-   void handleDropOnStatus( TQDropEvent * );                   // handles drops on the status line
+   void handleDropOntqStatus( TQDropEvent * );                   // handles drops on the status line
    void startDragging( TQStringList, TQPixmap );
 	// those handle the in-panel refresh notifications
 	void slotJobStarted(KIO::Job* job);
@@ -160,7 +160,7 @@ protected slots:
 	void inlineRefreshCancel();
 
 signals:
-   void signalStatus( TQString msg );       // emmited when we need to update the status bar
+   void signaltqStatus( TQString msg );       // emmited when we need to update the status bar
    void cmdLineUpdate( TQString p );	      // emitted when we need to update the command line
    void pathChanged( ListPanel *panel );
    void activePanelChanged( ListPanel *p ); // emitted when the user changes panels
@@ -181,7 +181,7 @@ public:
    KrSqueezedTextLabel *status, *totals;
    KrQuickSearch *quickSearch;
    KURLRequester *origin;
-   TQGridLayout *layout;
+   TQGridLayout *tqlayout;
    TQToolButton *cdRootButton;
    TQToolButton *cdHomeButton;
    TQToolButton *cdUpButton;

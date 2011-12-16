@@ -36,7 +36,7 @@
 #include <tqptrlist.h>
 #include <tqgroupbox.h>
 #include <tqlabel.h>
-#include <layout.h>
+#include <tqlayout.h>
 
 struct KONFIGURATOR_CHECKBOX_PARAM;
 struct KONFIGURATOR_NAME_VALUE_TIP;
@@ -293,25 +293,25 @@ public:
     *
     * Sample:<br><br>
     * TQGroupBox *myGroup = createFrame( i18n( "MyFrameName" ), parentWidget, "frameName" );<br>
-    * TQGridLayout *myLayout = createGridLayout( myGroup->layout() );<br>
+    * TQGridLayout *myLayout = createGridLayout( myGroup->tqlayout() );<br>
     * myLayout->addWidget( myGroup, 0, 0 );
     *
-    * @param  parent      Reference to the parent layout
+    * @param  parent      Reference to the parent tqlayout
     *
     * @return             reference to the newly created TQGridLayout
     */
   TQGridLayout             *createGridLayout( TQLayout *parent );
 
   /**
-    * Adds a new label to a grid layout.
+    * Adds a new label to a grid tqlayout.
     *
     * Sample:<br><br>
     * TQGroupBox *myGroup = createFrame( i18n( "MyFrameName" ), parentWidget, "frameName" );<br>
-    * TQGridLayout *myLayout = createGridLayout( myGroup->layout() );<br>
+    * TQGridLayout *myLayout = createGridLayout( myGroup->tqlayout() );<br>
     * addLabel( myLayout, 0, 0, i18n( "Hello world!" ), myGroup, "myLabel" );<br>
     * mainLayout->addWidget( myGroup, 0, 0 );
     *
-    * @param  layout      The grid layout on which the item will be placed
+    * @param  tqlayout      The grid tqlayout on which the item will be placed
     * @param  x           the column to which the label will be placed
     * @param  y           the row to which the label will be placed
     * @param  label       the text of the label
@@ -320,7 +320,7 @@ public:
     *
     * @return             reference to the newly created label
     */
-  TQLabel                  *addLabel( TQGridLayout *layout, int x, int y, TQString label,
+  TQLabel                  *addLabel( TQGridLayout *tqlayout, int x, int y, TQString label,
                                            TQWidget *parent=0, const char *widgetName=0 );
 
   /**

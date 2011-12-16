@@ -59,7 +59,7 @@ void DUFilelight::slotDirChanged( Directory *dir )
   {
     currentDir = dir;
     
-    invalidate( false );
+    tqinvalidate( false );
     create( dir );
     refreshNeeded = false;
   }
@@ -67,7 +67,7 @@ void DUFilelight::slotDirChanged( Directory *dir )
 
 void DUFilelight::clear()
 {
-  invalidate( false );
+  tqinvalidate( false );
   currentDir = 0;
 }
 
@@ -208,7 +208,7 @@ void DUFilelight::slotAboutToShow( TQWidget *widget )
     refreshNeeded = false;
     if( ( currentDir = diskUsage->getCurrentDir() ) != 0 )
     {
-      invalidate( false );
+      tqinvalidate( false );
       create( currentDir );
     }
   }
@@ -222,7 +222,7 @@ void DUFilelight::slotRefresh()
   refreshNeeded = false;
   if( currentDir && currentDir == diskUsage->getCurrentDir() )
   {
-    invalidate( false );
+    tqinvalidate( false );
     create( currentDir );
   }
 }
