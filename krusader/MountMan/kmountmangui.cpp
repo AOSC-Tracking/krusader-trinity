@@ -73,10 +73,10 @@ info( 0 ), mountList( 0 ) {
    widget = new KJanusWidget( this, 0, KJanusWidget::Tabbed );
    createLayout();
    setMainWidget( widget );
-   widget->setMinimumSize( widget->tqsizeHint().width() + mountList->columnWidth( 5 ),
-                           widget->tqsizeHint().height() );
-   setMinimumSize( widget->tqminimumSize().width(), widget->tqminimumSize().height() );
-   resize( tqminimumSize() );
+   widget->setMinimumSize( widget->sizeHint().width() + mountList->columnWidth( 5 ),
+                           widget->sizeHint().height() );
+   setMinimumSize( widget->minimumSize().width(), widget->minimumSize().height() );
+   resize( minimumSize() );
 
    // connections
    connect( mountList, TQT_SIGNAL( doubleClicked( TQListViewItem * ) ), this,
@@ -139,7 +139,7 @@ void KMountManGUI::createMainPage() {
    // now the list is created, time to fill it with data.
    //=>krMtMan.forceUpdate();
    TQGroupBox *box = new TQGroupBox( "MountMan.Info", mainPage );
-   box->tqsetAlignment( TQt::AlignHCenter );
+   box->setAlignment( TQt::AlignHCenter );
    info = new KRFSDisplay( box );
    info->resize( info->width(), height() );
    tqlayout->addWidget( box, 0, 0 );

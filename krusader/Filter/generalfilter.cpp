@@ -57,7 +57,7 @@ GeneralFilter::GeneralFilter( FilterTabs *tabs, int properties, TQWidget *parent
   nameGroup->tqlayout()->setSpacing( 0 );
   nameGroup->tqlayout()->setMargin( 0 );
   TQGridLayout *nameGroupLayout = new TQGridLayout( nameGroup->tqlayout() );
-  nameGroupLayout->tqsetAlignment( TQt::AlignTop );
+  nameGroupLayout->setAlignment( TQt::AlignTop );
   nameGroupLayout->setSpacing( 6 );
   nameGroupLayout->setMargin( 11 );
 
@@ -71,7 +71,7 @@ GeneralFilter::GeneralFilter( FilterTabs *tabs, int properties, TQWidget *parent
   nameGroupLayout->addWidget( searchForLabel, 0, 0 );
 
   searchFor = new KHistoryCombo( false, nameGroup, "searchFor" );
-  searchFor->tqsetSizePolicy( TQSizePolicy( (TQSizePolicy::SizeType)7, (TQSizePolicy::SizeType)0, searchFor->sizePolicy().hasHeightForWidth() ) );
+  searchFor->setSizePolicy( TQSizePolicy( (TQSizePolicy::SizeType)7, (TQSizePolicy::SizeType)0, searchFor->sizePolicy().hasHeightForWidth() ) );
   searchFor->setEditable( true );
   searchFor->setDuplicatesEnabled( false );
   searchFor->setMaxCount( 25 );
@@ -87,7 +87,7 @@ GeneralFilter::GeneralFilter( FilterTabs *tabs, int properties, TQWidget *parent
   nameGroupLayout->addWidget( searchType, 1, 0 );
 
   ofType = new KComboBox( false, nameGroup, "ofType" );
-  ofType->tqsetSizePolicy( TQSizePolicy( (TQSizePolicy::SizeType)7, (TQSizePolicy::SizeType)0, ofType->sizePolicy().hasHeightForWidth() ) );
+  ofType->setSizePolicy( TQSizePolicy( (TQSizePolicy::SizeType)7, (TQSizePolicy::SizeType)0, ofType->sizePolicy().hasHeightForWidth() ) );
   ofType->setEditable( false );
   searchType->setBuddy(ofType);
   ofType->insertItem(i18n("All Files"));
@@ -117,7 +117,7 @@ GeneralFilter::GeneralFilter( FilterTabs *tabs, int properties, TQWidget *parent
     profileHandler->tqlayout()->setSpacing( 0 );
     profileHandler->tqlayout()->setMargin( 0 );
     TQGridLayout *profileLayout = new TQGridLayout( profileHandler->tqlayout() );
-    profileLayout->tqsetAlignment( TQt::AlignTop );
+    profileLayout->setAlignment( TQt::AlignTop );
     profileLayout->setSpacing( 6 );
     profileLayout->setMargin( 11 );
 
@@ -157,7 +157,7 @@ GeneralFilter::GeneralFilter( FilterTabs *tabs, int properties, TQWidget *parent
     searchInGroup->tqlayout()->setSpacing( 0 );
     searchInGroup->tqlayout()->setMargin( 0 );
     TQGridLayout *searchInLayout = new TQGridLayout( searchInGroup->tqlayout() );
-    searchInLayout->tqsetAlignment( TQt::AlignTop );
+    searchInLayout->setAlignment( TQt::AlignTop );
     searchInLayout->setSpacing( 6 );
     searchInLayout->setMargin( 11 );
 
@@ -177,7 +177,7 @@ GeneralFilter::GeneralFilter( FilterTabs *tabs, int properties, TQWidget *parent
     dontSearchInGroup->tqlayout()->setSpacing( 0 );
     dontSearchInGroup->tqlayout()->setMargin( 0 );
     TQGridLayout *dontSearchInLayout = new TQGridLayout( dontSearchInGroup->tqlayout() );
-    dontSearchInLayout->tqsetAlignment( TQt::AlignTop );
+    dontSearchInLayout->setAlignment( TQt::AlignTop );
     dontSearchInLayout->setSpacing( 6 );
     dontSearchInLayout->setMargin( 11 );
 
@@ -197,7 +197,7 @@ GeneralFilter::GeneralFilter( FilterTabs *tabs, int properties, TQWidget *parent
   containsGroup->tqlayout()->setSpacing( 0 );
   containsGroup->tqlayout()->setMargin( 0 );
   TQGridLayout *containsLayout = new TQGridLayout( containsGroup->tqlayout() );
-  containsLayout->tqsetAlignment( TQt::AlignTop );
+  containsLayout->setAlignment( TQt::AlignTop );
   containsLayout->setSpacing( 6 );
   containsLayout->setMargin( 11 );
 
@@ -206,12 +206,12 @@ GeneralFilter::GeneralFilter( FilterTabs *tabs, int properties, TQWidget *parent
   containsTextLayout->setMargin( 0 );
 
   TQLabel *containsLabel = new TQLabel( containsGroup, "containsLabel" );
-  containsLabel->tqsetSizePolicy( TQSizePolicy( (TQSizePolicy::SizeType)0, (TQSizePolicy::SizeType)1, containsLabel->sizePolicy().hasHeightForWidth() ) );
+  containsLabel->setSizePolicy( TQSizePolicy( (TQSizePolicy::SizeType)0, (TQSizePolicy::SizeType)1, containsLabel->sizePolicy().hasHeightForWidth() ) );
   containsLabel->setText( i18n( "&Text:" ) );
   containsTextLayout->addWidget( containsLabel );
 
   containsText = new KHistoryCombo( false, containsGroup, "containsText" );
-  containsText->tqsetSizePolicy( TQSizePolicy( (TQSizePolicy::SizeType)7, (TQSizePolicy::SizeType)0, containsText->sizePolicy().hasHeightForWidth() ) );
+  containsText->setSizePolicy( TQSizePolicy( (TQSizePolicy::SizeType)7, (TQSizePolicy::SizeType)0, containsText->sizePolicy().hasHeightForWidth() ) );
   containsText->setDuplicatesEnabled( false );
   containsText->setMaxCount( 25 );
   containsTextLayout->addWidget( containsText );
@@ -226,7 +226,7 @@ GeneralFilter::GeneralFilter( FilterTabs *tabs, int properties, TQWidget *parent
   containsCbsLayout->addItem( cbSpacer );
 
   remoteContentSearch = new TQCheckBox( containsGroup, "remoteContentSearch" );
-  remoteContentSearch->tqsetSizePolicy( TQSizePolicy( (TQSizePolicy::SizeType)5, (TQSizePolicy::SizeType)0, remoteContentSearch->sizePolicy().hasHeightForWidth() ) );
+  remoteContentSearch->setSizePolicy( TQSizePolicy( (TQSizePolicy::SizeType)5, (TQSizePolicy::SizeType)0, remoteContentSearch->sizePolicy().hasHeightForWidth() ) );
   remoteContentSearch->setText( i18n( "&Remote content search" ) );
   remoteContentSearch->setChecked( false );
   containsCbsLayout->addWidget( remoteContentSearch );
@@ -234,13 +234,13 @@ GeneralFilter::GeneralFilter( FilterTabs *tabs, int properties, TQWidget *parent
     remoteContentSearch->hide();
 
   containsWholeWord = new TQCheckBox( containsGroup, "containsWholeWord" );
-  containsWholeWord->tqsetSizePolicy( TQSizePolicy( (TQSizePolicy::SizeType)5, (TQSizePolicy::SizeType)0, containsWholeWord->sizePolicy().hasHeightForWidth() ) );
+  containsWholeWord->setSizePolicy( TQSizePolicy( (TQSizePolicy::SizeType)5, (TQSizePolicy::SizeType)0, containsWholeWord->sizePolicy().hasHeightForWidth() ) );
   containsWholeWord->setText( i18n( "&Match whole word only" ) );
   containsWholeWord->setChecked( false );
   containsCbsLayout->addWidget( containsWholeWord );
 
   containsTextCase = new TQCheckBox( containsGroup, "containsTextCase" );
-  containsTextCase->tqsetSizePolicy( TQSizePolicy( (TQSizePolicy::SizeType)5, (TQSizePolicy::SizeType)0, containsTextCase->sizePolicy().hasHeightForWidth() ) );
+  containsTextCase->setSizePolicy( TQSizePolicy( (TQSizePolicy::SizeType)5, (TQSizePolicy::SizeType)0, containsTextCase->sizePolicy().hasHeightForWidth() ) );
   containsTextCase->setText( i18n( "Cas&e sensitive" ) );
   containsTextCase->setChecked( true );
   containsCbsLayout->addWidget( containsTextCase );

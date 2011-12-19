@@ -136,7 +136,7 @@ void PercentalSplitter::setRubberband ( int p ) {
       label->setAutoMask( FALSE );
       label->setFrameStyle( TQFrame::Plain | TQFrame::Box );
       label->setLineWidth( 1 );
-      label->tqsetAlignment( AlignAuto | AlignTop );
+      label->setAlignment( AlignAuto | AlignTop );
       label->setIndent(0);
 
       TQFontMetrics fm = label->fontMetrics();

@@ -571,16 +571,16 @@ void KRQuery::setContent( const TQString &content, bool cs, bool wholeWord, bool
   containOnRemote = remoteSearch;
 }
 
-void KRQuery::setMinimumFileSize( KIO::filesize_t tqminimumSize )
+void KRQuery::setMinimumFileSize( KIO::filesize_t minimumSize )
 {
   bNull = false;
-  minSize = tqminimumSize;
+  minSize = minimumSize;
 }
 
-void KRQuery::setMaximumFileSize( KIO::filesize_t tqmaximumSize )
+void KRQuery::setMaximumFileSize( KIO::filesize_t maximumSize )
 {
   bNull = false;
-  maxSize = tqmaximumSize;
+  maxSize = maximumSize;
 }
 
 void KRQuery::setNewerThan( time_t time )

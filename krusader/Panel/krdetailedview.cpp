@@ -832,11 +832,11 @@ TQRect KrDetailedView::drawItemHighlighter(TQPainter *painter, TQListViewItem *i
 {
   TQRect r;
   if( _currDragItem && item ) {
-    r = tqitemRect(item);
+    r = itemRect(item);
 
     if (painter)
-       tqstyle().tqdrawPrimitive(TQStyle::PE_FocusRect, painter, r, tqcolorGroup(),
-                             TQStyle::Style_FocusAtBorder, tqcolorGroup().highlight());
+       tqstyle().tqdrawPrimitive(TQStyle::PE_FocusRect, painter, r, colorGroup(),
+                             TQStyle::Style_FocusAtBorder, colorGroup().highlight());
   }
   return r;
 }
@@ -938,7 +938,7 @@ void KrDetailedView::keyPressEvent( TQKeyEvent * e ) {
          case Key_Next:  if (!KrSelectionMode::getSelectionHandler()->useTQTSelection()){
             TQListViewItem * i = currentItem(), *j;
             if ( !i ) break;
-            TQRect r( tqitemRect( i ) );
+            TQRect r( itemRect( i ) );
             if ( !r.height() ) break;
             for ( int page = visibleHeight() / r.height() - 1; page > 0 && ( j = i->itemBelow() ); --page )
                i = j;
@@ -948,7 +948,7 @@ void KrDetailedView::keyPressEvent( TQKeyEvent * e ) {
          case Key_Prior:  if (!KrSelectionMode::getSelectionHandler()->useTQTSelection()){
             TQListViewItem * i = currentItem(), *j;
             if ( !i ) break;
-            TQRect r( tqitemRect( i ) );
+            TQRect r( itemRect( i ) );
             if ( !r.height() ) break;
             for ( int page = visibleHeight() / r.height() - 1; page > 0 && ( j = i->itemAbove() ); --page )
                i = j;

@@ -111,7 +111,7 @@ KgAdvanced::KgAdvanced( bool first, TQWidget* parent,  const char* name ) :
 
   TQGroupBox *fineTuneGrp = createFrame( i18n( "Fine-Tuning" ), parent, "kgFineTuneGrp" );
   TQGridLayout *fineTuneGrid = createGridLayout( fineTuneGrp->tqlayout() );
-  fineTuneGrid->tqsetAlignment( TQt::AlignLeft | TQt::AlignTop );
+  fineTuneGrid->setAlignment( TQt::AlignLeft | TQt::AlignTop );
   
   TQLabel *label = new TQLabel( i18n( "Icon cache size (KB):" ), fineTuneGrp, "iconCacheLabel" );
   TQWhatsThis::add( label, i18n( "The icon cache size influences how fast the contents of a panel can be displayed. However, too large a cache might consume your memory." ) );
@@ -119,7 +119,7 @@ KgAdvanced::KgAdvanced( bool first, TQWidget* parent,  const char* name ) :
   KonfiguratorSpinBox *spinBox = createSpinBox( "Advanced", "Icon Cache Size", _IconCacheSize,
                                                 1, 8192, fineTuneGrp, false );
   TQWhatsThis::add( spinBox, i18n( "The icon cache size influences how fast the contents of a panel can be displayed. However, too large a cache might consume your memory." ) );
-  spinBox->tqsetSizePolicy( TQSizePolicy::Fixed, TQSizePolicy::Fixed);
+  spinBox->setSizePolicy( TQSizePolicy::Fixed, TQSizePolicy::Fixed);
   fineTuneGrid->addWidget( spinBox, 0, 1 );
 
   addLabel( fineTuneGrid, 1, 0, i18n( "Arguments of updatedb:" ),

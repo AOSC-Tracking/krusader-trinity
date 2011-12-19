@@ -40,7 +40,7 @@ RadialMap::Builder::Builder( RadialMap::Map *m, const Directory* const d, bool f
 void
 RadialMap::Builder::findVisibleDepth( const Directory* const dir, const unsigned int depth )
 {
-    //**** because I don't use the same tqminimumSize criteria as in the visual function
+    //**** because I don't use the same minimumSize criteria as in the visual function
     //     this can lead to incorrect visual representation
     //**** BUT, you can't set those limits until you know m_depth!
 

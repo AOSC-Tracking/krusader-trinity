@@ -56,7 +56,7 @@ KRMaskChoice::KRMaskChoice( TQWidget* parent,  const char* name, bool modal, WFl
 	setName( "KRMaskChoice" );
     resize( 401, 314 );
     setCaption( i18n( "Choose Files"  ) );
-    tqsetSizePolicy( TQSizePolicy( (TQSizePolicy::SizeType)5, (TQSizePolicy::SizeType)5 ) );
+    setSizePolicy( TQSizePolicy( (TQSizePolicy::SizeType)5, (TQSizePolicy::SizeType)5 ) );
 
     selection = new TQComboBox( FALSE, this, "selection" );
     int height = TQFontMetrics( selection->font() ).height();

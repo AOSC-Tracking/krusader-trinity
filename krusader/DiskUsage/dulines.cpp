@@ -201,7 +201,7 @@ void DULinesToolTip::maybeTip( const TQPoint &pos )
 
   int width = item->width( TQFontMetrics( view->font() ), view, col );
     
-  TQRect r = view->tqitemRect( item );
+  TQRect r = view->itemRect( item );
   int headerPos = view->header()->sectionPos( col );
   r.setLeft( headerPos );
   r.setRight( headerPos + view->header()->sectionSize( col ) );

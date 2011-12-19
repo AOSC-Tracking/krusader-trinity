@@ -55,7 +55,7 @@ KgDependencies::KgDependencies( bool first, TQWidget* parent,  const char* name 
   TQGridLayout *pathsGrid = new TQGridLayout( general_tab );
   pathsGrid->setSpacing( 6 );
   pathsGrid->setMargin( 11 );
-  pathsGrid->tqsetAlignment( TQt::AlignTop );
+  pathsGrid->setAlignment( TQt::AlignTop );
   
   addApplication( "df",       pathsGrid, 0, general_tab, PAGE_GENERAL );
   addApplication( "eject",    pathsGrid, 1, general_tab, PAGE_GENERAL );
@@ -77,7 +77,7 @@ KgDependencies::KgDependencies( bool first, TQWidget* parent,  const char* name 
   TQGridLayout *archGrid1 = new TQGridLayout( packers_tab );
   archGrid1->setSpacing( 6 );
   archGrid1->setMargin( 11 );
-  archGrid1->tqsetAlignment( TQt::AlignTop );
+  archGrid1->setAlignment( TQt::AlignTop );
 
   addApplication( "7z",    archGrid1, 0, packers_tab, PAGE_PACKERS, "7za" );
   addApplication( "arj",   archGrid1, 1, packers_tab, PAGE_PACKERS );
@@ -101,7 +101,7 @@ KgDependencies::KgDependencies( bool first, TQWidget* parent,  const char* name 
   TQGridLayout *archGrid2 = new TQGridLayout( checksum_tab );
   archGrid2->setSpacing( 6 );
   archGrid2->setMargin( 11 );
-  archGrid2->tqsetAlignment( TQt::AlignTop );
+  archGrid2->setAlignment( TQt::AlignTop );
 
   addApplication( "md5sum",         archGrid2, 0, checksum_tab, PAGE_CHECKSUM );
   addApplication( "sha1sum",        archGrid2, 1, checksum_tab, PAGE_CHECKSUM );

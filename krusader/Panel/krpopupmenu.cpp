@@ -168,9 +168,9 @@ KrPopupMenu::KrPopupMenu(ListPanel *thePanel, TQWidget *parent) : KPopupMenu(par
 	
 	// ---------- mount/umount/eject
    if ( panel->func->files() ->vfs_getType() == vfs::NORMAL && vf->vfile_isDir() && !multipleSelections ) {
-      if ( krMtMan.gettqStatus( panel->func->files() ->vfs_getFile( item->name() ).path( -1 ) ) == KMountMan::MOUNTED )
+      if ( krMtMan.getStatus( panel->func->files() ->vfs_getFile( item->name() ).path( -1 ) ) == KMountMan::MOUNTED )
          insertItem( i18n( "Unmount" ), UNMOUNT_ID );
-      else if ( krMtMan.gettqStatus( panel->func->files() ->vfs_getFile( item->name() ).path( -1 ) ) == KMountMan::NOT_MOUNTED )
+      else if ( krMtMan.getStatus( panel->func->files() ->vfs_getFile( item->name() ).path( -1 ) ) == KMountMan::NOT_MOUNTED )
          insertItem( i18n( "Mount" ), MOUNT_ID );
       if ( krMtMan.ejectable( panel->func->files() ->vfs_getFile( item->name() ).path( -1 ) ) )
          insertItem( i18n( "Eject" ), EJECT_ID );

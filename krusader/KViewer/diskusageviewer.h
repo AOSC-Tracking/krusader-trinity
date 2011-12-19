@@ -55,7 +55,7 @@ signals:
   void openURLRequest(const KURL &);
   
 protected slots:
-  void slotUpdatetqStatus( TQString status = TQString() );
+  void slotUpdateStatus( TQString status = TQString() );
   void slotNewSearch();
 
 protected:  

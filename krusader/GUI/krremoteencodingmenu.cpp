@@ -41,7 +41,7 @@
 
 #include "krremoteencodingmenu.h"
 
-#define DATA_KEY    TQString::tqfromLatin1("Charset")
+#define DATA_KEY    TQString::fromLatin1("Charset")
 
 KrRemoteEncodingMenu::KrRemoteEncodingMenu(const TQString &text, const TQString &icon, TQObject *parent, const char *name) :
   KActionMenu( text, icon, parent, name ), settingsLoaded( false )

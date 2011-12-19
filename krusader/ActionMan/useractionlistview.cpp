@@ -46,7 +46,7 @@ UserActionListView::~UserActionListView()
 {
 }
 
-TQSize UserActionListView::tqsizeHint() const {
+TQSize UserActionListView::sizeHint() const {
    return TQSize(200, 400);
 }
 

@@ -81,9 +81,9 @@ KrProgress::KrProgress( KIO::Job* job )
   hBox->addWidget(resumeLabel);
 
   progressLabel = new TQLabel( this );
-/*  progressLabel->tqsetSizePolicy( TQSizePolicy( TQSizePolicy::MinimumExpanding,
+/*  progressLabel->setSizePolicy( TQSizePolicy( TQSizePolicy::MinimumExpanding,
                                              TQSizePolicy::Preferred ) );*/
-  progressLabel->tqsetAlignment( TQLabel::AlignRight );
+  progressLabel->setAlignment( TQLabel::AlignRight );
   hBox->addWidget( progressLabel );
 
   hBox = new TQHBoxLayout();
@@ -106,8 +106,8 @@ KrProgress::KrProgress( KIO::Job* job )
   connect( pb, TQT_SIGNAL( clicked() ), TQT_SLOT( slotStop() ) );
   hBox->addWidget( pb );
 
-  resize( tqsizeHint() );
-  setMaximumHeight(tqsizeHint().height());
+  resize( sizeHint() );
+  setMaximumHeight(sizeHint().height());
 
   setCaption(i18n("Krusader Progress")); // show something better than kio_uiserver
 
@@ -180,7 +180,7 @@ void KrProgress::slotPercent( KIO::Job*, unsigned long percent ){
 void KrProgress::slotInfoMessage( KIO::Job*, const TQString & msg )
 {
   speedLabel->setText( msg );
-  speedLabel->tqsetAlignment( speedLabel->tqalignment() & ~TQt::WordBreak );
+  speedLabel->setAlignment( speedLabel->tqalignment() & ~TQt::WordBreak );
 }
 
 

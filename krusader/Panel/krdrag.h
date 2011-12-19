@@ -48,7 +48,7 @@ public:
     virtual ~KRDrag() {}
 
     virtual const char* format( int i ) const;
-    virtual TQByteArray tqencodedData( const char* mime ) const;
+    virtual TQByteArray encodedData( const char* mime ) const;
 
     void setMoveSelection( bool move ) { m_bCutSelection = move; }
 

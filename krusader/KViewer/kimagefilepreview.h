@@ -34,7 +34,7 @@ class KrusaderImageFilePreview : public KPreviewWidgetBase {
 		KrusaderImageFilePreview( TQWidget *parent );
 		~KrusaderImageFilePreview();
 
-		virtual TQSize tqsizeHint() const;
+		virtual TQSize sizeHint() const;
 
 	public slots:
 		virtual void showPreview( const KURL &url );

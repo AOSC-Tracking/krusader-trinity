@@ -148,7 +148,7 @@ void KMountMan::unmount( TQString mntPoint, bool blocking ) {
 	}
 }
 
-KMountMan::mnttqStatus KMountMan::gettqStatus( TQString mntPoint ) {	
+KMountMan::mntStatus KMountMan::getStatus( TQString mntPoint ) {	
 	KMountPoint::List::iterator it;
    KMountPoint *m;
 	
@@ -170,7 +170,7 @@ KMountMan::mnttqStatus KMountMan::gettqStatus( TQString mntPoint ) {
 
 
 void KMountMan::toggleMount( TQString mntPoint ) {
-	mnttqStatus status = gettqStatus(mntPoint);
+	mntStatus status = getStatus(mntPoint);
 	switch (status) {
 		case MOUNTED:
 			unmount(mntPoint);
@@ -185,7 +185,7 @@ void KMountMan::toggleMount( TQString mntPoint ) {
 }
 
 void KMountMan::autoMount( TQString path ) {
-   if ( gettqStatus( path ) == NOT_MOUNTED )
+   if ( getStatus( path ) == NOT_MOUNTED )
       mount( path );
 }
 

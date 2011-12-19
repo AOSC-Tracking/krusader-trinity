@@ -201,7 +201,7 @@ long KRarcHandler::arcFileCount( TQString archive, TQString type, TQString passw
   
   krApp->stopWait();
   
-  if( !list.normalExit() || !checktqStatus( type, list.exitStatus() ) ) {
+  if( !list.normalExit() || !checkStatus( type, list.exitStatus() ) ) {
     KMessageBox::detailedError (krApp, i18n( "Failed to list the content of the archive (%1)!" ).tqarg( archive ), 
                                 list.getErrorMsg(), i18n("Error" ) );
     return 0;
@@ -258,7 +258,7 @@ bool KRarcHandler::unpack( TQString archive, TQString type, TQString password, T
     KrShellProcess cpio;
     cpio << KrServices::fullPathName( "rpm2cpio" ) << " " + KrServices::quote( archive ) << " > " << cpioName;
     cpio.start(KProcess::Block, KProcess::AllOutput );
-    if( !cpio.normalExit() || !checktqStatus( "cpio", cpio.exitStatus() ) ) {
+    if( !cpio.normalExit() || !checkStatus( "cpio", cpio.exitStatus() ) ) {
       KMessageBox::detailedError (krApp, i18n( "Failed to convert rpm (%1) to cpio!" ).tqarg( archive ), 
                                   cpio.getErrorMsg(), i18n("Error" ) );
       return 0;
@@ -275,7 +275,7 @@ bool KRarcHandler::unpack( TQString archive, TQString type, TQString password, T
     KrShellProcess dpkg;
     dpkg << KrServices::fullPathName( "dpkg" ) << " --fsys-tarfile " + KrServices::quote( archive ) << " > " << cpioName;
     dpkg.start(KProcess::Block, KProcess::AllOutput );
-    if( !dpkg.normalExit() || !checktqStatus( "-deb", dpkg.exitStatus() ) ) {
+    if( !dpkg.normalExit() || !checkStatus( "-deb", dpkg.exitStatus() ) ) {
       KMessageBox::detailedError (krApp, i18n( "Failed to convert deb (%1) to tar!" ).tqarg( archive ), 
                                   dpkg.getErrorMsg(), i18n("Error" ) );
       return 0;
@@ -335,7 +335,7 @@ bool KRarcHandler::unpack( TQString archive, TQString type, TQString password, T
     TQFile( cpioName ).remove();    /* remove the cpio file */
   
   // check the return value
-  if ( !proc.normalExit() || !checktqStatus( type, proc.exitStatus() ) ) {
+  if ( !proc.normalExit() || !checkStatus( type, proc.exitStatus() ) ) {
     KMessageBox::detailedError (krApp, i18n( "Failed to unpack %1!" ).tqarg( archive ), 
                                 krApp->wasWaitingCancelled() ? i18n( "User cancelled." ) : 
                                 proc.getErrorMsg(), i18n("Error" ) );
@@ -397,7 +397,7 @@ bool KRarcHandler::test( TQString archive, TQString type, TQString password, lon
   krApp->stopWait();
 
   // check the return value
-  if ( !proc.normalExit() || !checktqStatus( type, proc.exitStatus() ) )
+  if ( !proc.normalExit() || !checkStatus( type, proc.exitStatus() ) )
     return false;
 
   return true; // SUCCESS
@@ -504,7 +504,7 @@ bool KRarcHandler::pack( TQStringList fileNames, TQString type, TQString dest, l
   krApp->stopWait();
 
   // check the return value
-  if ( !proc.normalExit() || !checktqStatus( type, proc.exitStatus() ) ) {
+  if ( !proc.normalExit() || !checkStatus( type, proc.exitStatus() ) ) {
     KMessageBox::detailedError (krApp, i18n( "Failed to pack %1!" ).tqarg( dest ), 
                                 krApp->wasWaitingCancelled() ? i18n( "User cancelled." ) : proc.getErrorMsg(), 
                                 i18n("Error" ) );
@@ -597,7 +597,7 @@ TQString KRarcHandler::getType( bool &encrypted, TQString fileName, TQString mim
 }
 
 
-bool KRarcHandler::checktqStatus( TQString type, int exitCode ) {
+bool KRarcHandler::checkStatus( TQString type, int exitCode ) {
 	if( type == "-zip" || type == "-rar" || type == "-7z" )
 		return exitCode == 0 || exitCode == 1;
 	else if( type == "-ace" || type == "zip2" || type == "-lha" || type == "-rpm" || type == "cpio" ||

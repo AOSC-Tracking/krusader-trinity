@@ -80,7 +80,7 @@ void KrResultTable::adjustRow(TQGridLayout* grid)
   while( (child = it.current()) != 0 )
   {
     // Add some space between columns
-    child->widget()->setMinimumWidth( child->widget()->tqsizeHint().width() + 15 );
+    child->widget()->setMinimumWidth( child->widget()->sizeHint().width() + 15 );
 
     // Paint uneven rows in alternate color
     if( ((col/_numColumns)%2) )
@@ -178,7 +178,7 @@ bool KrArchiverResultTable::addRow(SearchObject* search, TQGridLayout* grid)
   // Name column
   _label = new KURLLabel(arch->getWebsite(), arch->getSearchName(), this);
   _label->setMargin(5);
-  _label->tqsetAlignment(TQt::AlignTop);
+  _label->setAlignment(TQt::AlignTop);
   grid->addWidget(_label, _numRows, 0);
   connect(_label, TQT_SIGNAL(leftClickedURL(const TQString&)),
                       TQT_SLOT(website(const TQString&)));
@@ -191,7 +191,7 @@ bool KrArchiverResultTable::addRow(SearchObject* search, TQGridLayout* grid)
   // Packing column
   _label = new TQLabel(this);
   _label->setMargin(5);
-  _label->tqsetAlignment( TQt::AlignTop );
+  _label->setAlignment( TQt::AlignTop );
   if( arch->getIsPacker() && arch->getFound() ) {
     _label->setText( i18n("enabled") );
     _label->setPaletteForegroundColor("darkgreen");
@@ -205,7 +205,7 @@ bool KrArchiverResultTable::addRow(SearchObject* search, TQGridLayout* grid)
   // Unpacking column
   _label = new TQLabel(this);
   _label->setMargin(5);
-  _label->tqsetAlignment( TQt::AlignTop );
+  _label->setAlignment( TQt::AlignTop );
   if( arch->getIsUnpacker() && arch->getFound() ) {
     _label->setText( i18n("enabled") );
     _label->setPaletteForegroundColor("darkgreen");
@@ -219,7 +219,7 @@ bool KrArchiverResultTable::addRow(SearchObject* search, TQGridLayout* grid)
   // Note column
   _label = new TQLabel(arch->getNote(), this);
   _label->setMargin(5);
-  _label->tqsetAlignment( TQt::AlignTop | TQt::WordBreak ); // wrap words
+  _label->setAlignment( TQt::AlignTop | TQt::WordBreak ); // wrap words
   grid->addWidget(_label, _numRows, 4);
 
   // Apply shared design elements
@@ -323,7 +323,7 @@ bool KrToolResultTable::addRow(SearchObject* search, TQGridLayout* grid)
   // Name column
   _label = new TQLabel(appGroup->getSearchName(), this);
   _label->setMargin(5);
-  _label->tqsetAlignment( TQt::AlignTop );
+  _label->setAlignment( TQt::AlignTop );
   grid->addWidget(_label, _numRows, 0);
 
   // Tool column
@@ -331,7 +331,7 @@ bool KrToolResultTable::addRow(SearchObject* search, TQGridLayout* grid)
   for( TQValueVector<Application*>::Iterator it=_apps.begin(); it!=_apps.end(); it++ )
   {
     KURLLabel* l = new KURLLabel( (*it)->getWebsite(), (*it)->getAppName(), toolBox);
-    l->tqsetAlignment(TQt::AlignLeft | TQt::AlignTop);
+    l->setAlignment(TQt::AlignLeft | TQt::AlignTop);
     l->setMargin(5);
     connect(l, TQT_SIGNAL(leftClickedURL(const TQString&)),
                TQT_SLOT(website(const TQString&)));
@@ -344,14 +344,14 @@ bool KrToolResultTable::addRow(SearchObject* search, TQGridLayout* grid)
   {
     _label = new TQLabel( (*it)->getPath(), vbox);
     _label->setMargin(5);
-    _label->tqsetAlignment( TQt::AlignTop );
+    _label->setAlignment( TQt::AlignTop );
   }
   grid->addWidget(vbox, _numRows, 2);
 
-  // tqStatus column
+  // Status column
   _label = new TQLabel(this);
   _label->setMargin(5);
-  _label->tqsetAlignment( TQt::AlignTop );
+  _label->setAlignment( TQt::AlignTop );
   if( appGroup->getFoundGroup() ) {
     _label->setText( i18n("enabled") );
     _label->setPaletteForegroundColor("darkgreen");

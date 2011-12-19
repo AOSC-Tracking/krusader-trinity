@@ -296,7 +296,7 @@ void PopularUrlsDlg::run(KURL::List list) {
 	}
 	//urls->setCurrentItem(urls->firstChild());
 	//urls->setSelected(urls->firstChild(), true);
-	setMinimumSize(urls->tqsizeHint().width()+45, 400);
+	setMinimumSize(urls->sizeHint().width()+45, 400);
 	
 	search->clear();
 	search->setFocus();

@@ -162,7 +162,7 @@ PanelPopup::PanelPopup( TQSplitter *parent, bool left ) : TQWidget( parent ),
 	if ( i > 0 )
 		quickSelectCombo->insertStrList( lst );
 	quickSelectCombo->setCurrentText( "*" );
-	quickSelectCombo->tqsetSizePolicy( TQSizePolicy( TQSizePolicy::Expanding, TQSizePolicy::Preferred ) );
+	quickSelectCombo->setSizePolicy( TQSizePolicy( TQSizePolicy::Expanding, TQSizePolicy::Preferred ) );
 
 	connect(quickSelectCombo, TQT_SIGNAL(returnPressed(const TQString& )),
 		this, TQT_SLOT(quickSelect(const TQString& )));

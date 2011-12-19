@@ -86,7 +86,7 @@ kio_krarcProtocol::kio_krarcProtocol(const TQCString &pool_socket, const TQCStri
 	dirDict.setAutoDelete(true);
 	
 	arcTempDir = locateLocal("tmp",TQString());
-	TQString dirName = "krArc"+TQDateTime::tqcurrentDateTime().toString(Qt::ISODate);
+	TQString dirName = "krArc"+TQDateTime::currentDateTime().toString(Qt::ISODate);
 	dirName.replace(TQRegExp(":"),"_");
 	TQDir(arcTempDir).mkdir(dirName);
 	arcTempDir = arcTempDir+dirName+"/";
@@ -161,7 +161,7 @@ void kio_krarcProtocol::mkdir(const KURL& url,int permissions){
 	// delete the temp directory
 	TQDir().rmdir(arcTempDir);
 	
-	if( !proc.normalExit() || !checktqStatus( proc.exitStatus() ) )  {
+	if( !proc.normalExit() || !checkStatus( proc.exitStatus() ) )  {
 		error(ERR_COULD_NOT_WRITE,url.path() + "\n\n" + proc.getErrorMsg() );
 		return;
 	}
@@ -231,7 +231,7 @@ void kio_krarcProtocol::put(const KURL& url,int permissions,bool overwrite,bool 
 	// remove the file
 	TQFile::remove(tmpFile);
 
-	if( !proc.normalExit() || !checktqStatus( proc.exitStatus() ) )  {
+	if( !proc.normalExit() || !checkStatus( proc.exitStatus() ) )  {
 		error(ERR_COULD_NOT_WRITE,url.path() + "\n\n" + proc.getErrorMsg() );
 		return;
 	}
@@ -323,7 +323,7 @@ void kio_krarcProtocol::get(const KURL& url, int tries ){
 	proc.start(KProcess::Block,KProcess::AllOutput);
 	
 	if( !extArcReady && !decompressToFile ) {  
-		if( !proc.normalExit() || !checktqStatus( proc.exitStatus() ) || ( arcType != "bzip2" && expectedSize != decompressedLen ) ) {
+		if( !proc.normalExit() || !checkStatus( proc.exitStatus() ) || ( arcType != "bzip2" && expectedSize != decompressedLen ) ) {
 			if( encrypted && tries ) {
 				invalidatePassword();
 				get( url, tries - 1 );
@@ -334,7 +334,7 @@ void kio_krarcProtocol::get(const KURL& url, int tries ){
 		}
 	}
 	else{
-		if( !proc.normalExit() || !checktqStatus( proc.exitStatus() ) || !TQFileInfo( arcTempDir+file ).exists() ) {
+		if( !proc.normalExit() || !checkStatus( proc.exitStatus() ) || !TQFileInfo( arcTempDir+file ).exists() ) {
 			if( decompressToFile )
 				TQFile(arcTempDir+file).remove();
 			if( encrypted && tries ) {
@@ -457,7 +457,7 @@ void kio_krarcProtocol::del(KURL const & url, bool isFile){
 	proc << delCmd << convertName( arcFile->url().path() )+" " << convertFileName( file );
 	infoMessage(i18n("Deleting %1 ...").tqarg( url.fileName() ) );
 	proc.start(KProcess::Block, KProcess::AllOutput);
-	if( !proc.normalExit() || !checktqStatus( proc.exitStatus() ) )  {
+	if( !proc.normalExit() || !checkStatus( proc.exitStatus() ) )  {
 		error(ERR_COULD_NOT_WRITE,url.path() + "\n\n" + proc.getErrorMsg() );
 		return;
 	}
@@ -553,7 +553,7 @@ void kio_krarcProtocol::copy (const KURL &url, const KURL &dest, int, bool overw
 			
 			infoMessage(i18n("Unpacking %1 ...").tqarg( url.fileName() ) );
 			proc.start(KProcess::Block, KProcess::AllOutput);
-			if( !proc.normalExit() || !checktqStatus( proc.exitStatus() ) )  {
+			if( !proc.normalExit() || !checkStatus( proc.exitStatus() ) )  {
 				error(KIO::ERR_COULD_NOT_WRITE, dest.path(-1) + "\n\n" + proc.getErrorMsg() );
 				return;
 			}
@@ -712,7 +712,7 @@ bool kio_krarcProtocol::initDirDict(const KURL&url, bool forced){
 		if( arcType == "ace" && TQFile( "/dev/ptmx" ).exists() ) // Don't remove, unace crashes if missing!!!
 			proc << "<" << "/dev/ptmx";
 		proc.start(KProcess::Block,KProcess::AllOutput);
-		if( !proc.normalExit() || !checktqStatus( proc.exitStatus() ) ) return false;
+		if( !proc.normalExit() || !checkStatus( proc.exitStatus() ) ) return false;
 	}
 	// clear the dir dictionary
 	dirDict.clear();
@@ -1073,7 +1073,7 @@ void kio_krarcProtocol::parseLine(int lineNo, TQString line, TQFile*) {
 		// date & time
 		int month = (TQStringList::split(',', "Jan,Feb,Mar,Apr,May,Jun,Jul,Aug,Sep,Oct,Nov,Dec")).findIndex( nextWord(line) ) + 1;
 		int day = nextWord(line).toInt();
-		int year = TQDate::tqcurrentDate().year();
+		int year = TQDate::currentDate().year();
 		TQString third = nextWord(line);
 		TQTime qtime;
 		
@@ -1376,7 +1376,7 @@ bool kio_krarcProtocol::initArcParameters() {
 	return true;
 }
 
-bool kio_krarcProtocol::checktqStatus( int exitCode ) {
+bool kio_krarcProtocol::checkStatus( int exitCode ) {
 	KRDEBUG( exitCode );
 	
 	if( arcType == "zip" || arcType == "rar" || arcType == "7z" )

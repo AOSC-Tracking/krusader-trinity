@@ -64,7 +64,7 @@ public:
   static TQString detectArchive( bool &encrypted, TQString fileName, bool checkEncrypted = true );
 private:
   // checks if the returned status is correct
-  static bool checktqStatus( TQString type, int exitCode );
+  static bool checkStatus( TQString type, int exitCode );
 
   static KWallet::Wallet * wallet;
 };

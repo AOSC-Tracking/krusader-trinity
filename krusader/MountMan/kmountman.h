@@ -53,7 +53,7 @@ class KMountMan : public TQObject {
    friend class KMountManGUI;
 
 public:
-   enum mnttqStatus {DOESNT_EXIST, NOT_MOUNTED, MOUNTED};
+   enum mntStatus {DOESNT_EXIST, NOT_MOUNTED, MOUNTED};
 
    inline bool operational() {
       return Operational;
@@ -62,7 +62,7 @@ public:
 	void mainWindow();                        // opens up the GUI
    void mount( TQString mntPoint, bool blocking=true ); // this is probably what you need for mount
    void unmount( TQString mntPoint, bool blocking=true ); // this is probably what you need for unmount
-   mnttqStatus gettqStatus( TQString mntPoint );  // return the status of a mntPoint (if any)
+   mntStatus getStatus( TQString mntPoint );  // return the status of a mntPoint (if any)
    void autoMount( TQString path );           // just call it before refreshing into a dir
    static void eject( TQString mntPoint );
    bool ejectable( TQString path );
