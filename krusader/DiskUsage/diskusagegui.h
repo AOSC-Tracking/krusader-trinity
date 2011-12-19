@@ -52,7 +52,7 @@ public:
 public slots:
   void                       loadUsageInfo();
   bool                       newSearch();
-  void                       settqStatus( TQString );
+  void                       setStatus( TQString );
   
   void                       selectLinesView()     { diskUsage->setView( VIEW_LINES ); }
   void                       selectListView()      { diskUsage->setView( VIEW_DETAILED ); }

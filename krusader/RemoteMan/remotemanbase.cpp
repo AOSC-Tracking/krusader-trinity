@@ -205,12 +205,12 @@ remoteManBase::remoteManBase( TQWidget* parent,  const char* name, bool modal, W
       protocol->insertItem( i18n( "fish://" ));
     if( protocols.contains("sftp") )
       protocol->insertItem( i18n( "sftp://" ));
-    protocol->tqsetSizePolicy( TQSizePolicy( (TQSizePolicy::SizeType)1, (TQSizePolicy::SizeType)0, protocol->sizePolicy().hasHeightForWidth() ) );
+    protocol->setSizePolicy( TQSizePolicy( (TQSizePolicy::SizeType)1, (TQSizePolicy::SizeType)0, protocol->sizePolicy().hasHeightForWidth() ) );
 
     Layout11->addWidget( protocol, 1, 0 );
 
     hostName = new TQLineEdit( this, "hostName" );
-    hostName->tqsetSizePolicy( TQSizePolicy( (TQSizePolicy::SizeType)7, (TQSizePolicy::SizeType)0, hostName->sizePolicy().hasHeightForWidth() ) );
+    hostName->setSizePolicy( TQSizePolicy( (TQSizePolicy::SizeType)7, (TQSizePolicy::SizeType)0, hostName->sizePolicy().hasHeightForWidth() ) );
     hostName->setMinimumSize( TQSize( 0, 0 ) );
 
     Layout11->addWidget( hostName, 1, 1 );
@@ -233,7 +233,7 @@ remoteManBase::remoteManBase( TQWidget* parent,  const char* name, bool modal, W
     TextLabel1_4_font.setPointSize( 10 );
     TextLabel1_4->setFont( TextLabel1_4_font );
     TextLabel1_4->setText( i18n( "* Warning: Storing your password is not secure !!!" ) );
-    TextLabel1_4->tqsetAlignment( int( TQLabel::AlignVCenter | TQLabel::AlignRight ) );
+    TextLabel1_4->setAlignment( int( TQLabel::AlignVCenter | TQLabel::AlignRight ) );
 
     remoteManBaseLayout->addWidget( TextLabel1_4, 3, 1 );
 

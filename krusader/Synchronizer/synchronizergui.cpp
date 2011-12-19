@@ -1108,7 +1108,7 @@ void SynchronizerGUI::initGUI(TQWidget* /* parent */, TQString profileName, KURL
   synchronizerGrid->setMargin( 11 );
 
   TQGroupBox *compareDirs = new TQGroupBox( synchronizerTab, "SyncCompareDirectories" );
-  compareDirs->tqsetSizePolicy( TQSizePolicy::Expanding, TQSizePolicy::Fixed);
+  compareDirs->setSizePolicy( TQSizePolicy::Expanding, TQSizePolicy::Fixed);
   compareDirs->setTitle( i18n( "Directory Comparison" ) );
   compareDirs->setColumnLayout(0, Qt::Vertical );
   compareDirs->tqlayout()->setSpacing( 0 );
@@ -1119,16 +1119,16 @@ void SynchronizerGUI::initGUI(TQWidget* /* parent */, TQString profileName, KURL
   grid->setMargin( 11 );
 
   leftDirLabel = new TQLabel( compareDirs, "leftDirLabel" );
-  leftDirLabel->tqsetAlignment( TQt::AlignHCenter );
+  leftDirLabel->setAlignment( TQt::AlignHCenter );
   grid->addWidget( leftDirLabel, 0 ,0 );
 
   TQLabel *filterLabel = new TQLabel( compareDirs, "filterLabel" );
   filterLabel->setText( i18n( "File &Filter:" ) );
-  filterLabel->tqsetAlignment( TQt::AlignHCenter );
+  filterLabel->setAlignment( TQt::AlignHCenter );
   grid->addWidget( filterLabel, 0 ,1 );
 
   rightDirLabel = new TQLabel( compareDirs, "rightDirLabel" );
-  rightDirLabel->tqsetAlignment( TQt::AlignHCenter );
+  rightDirLabel->setAlignment( TQt::AlignHCenter );
   grid->addWidget( rightDirLabel, 0 ,2 );
 
   krConfig->setGroup("Synchronize");
@@ -1137,7 +1137,7 @@ void SynchronizerGUI::initGUI(TQWidget* /* parent */, TQString profileName, KURL
   leftLocation->setMaxCount(25);  // remember 25 items
   leftLocation->setDuplicatesEnabled( false );
   leftLocation->setEditable( true );
-  leftLocation->tqsetSizePolicy(TQSizePolicy::Ignored,TQSizePolicy::Fixed);
+  leftLocation->setSizePolicy(TQSizePolicy::Ignored,TQSizePolicy::Fixed);
   TQStringList list = krConfig->readListEntry("Left Directory History");
   leftLocation->setHistoryItems(list);
   KURLRequester *leftUrlReq = new KURLRequester( leftLocation, compareDirs, "LeftDirectory" );
@@ -1155,7 +1155,7 @@ void SynchronizerGUI::initGUI(TQWidget* /* parent */, TQString profileName, KURL
   fileFilter->setDuplicatesEnabled( false );
   fileFilter->setMinimumWidth( 100 );
   fileFilter->setMaximumWidth( 100 );
-  fileFilter->tqsetSizePolicy(TQSizePolicy::Fixed,TQSizePolicy::Fixed);
+  fileFilter->setSizePolicy(TQSizePolicy::Fixed,TQSizePolicy::Fixed);
   list = krConfig->readListEntry("File Filter");
   fileFilter->setHistoryItems(list);
   fileFilter->setEditText("*");
@@ -1170,7 +1170,7 @@ void SynchronizerGUI::initGUI(TQWidget* /* parent */, TQString profileName, KURL
   rightLocation->setMaxCount(25);  // remember 25 items
   rightLocation->setDuplicatesEnabled( false );
   rightLocation->setEditable( true );
-  rightLocation->tqsetSizePolicy(TQSizePolicy::Ignored,TQSizePolicy::Fixed);
+  rightLocation->setSizePolicy(TQSizePolicy::Ignored,TQSizePolicy::Fixed);
   list = krConfig->readListEntry("Right Directory History");
   rightLocation->setHistoryItems(list);
   KURLRequester *rightUrlReq = new KURLRequester( rightLocation, compareDirs, "RightDirectory" );
@@ -1209,7 +1209,7 @@ void SynchronizerGUI::initGUI(TQWidget* /* parent */, TQString profileName, KURL
 
   TQGroupBox *showOptions  = new TQGroupBox( optionBox, "SyncOptionBox" );
   showOptions->setTitle( i18n( "S&how options" ) );
-  showOptions->tqsetSizePolicy( TQSizePolicy::Fixed, TQSizePolicy::Fixed);
+  showOptions->setSizePolicy( TQSizePolicy::Fixed, TQSizePolicy::Fixed);
   showOptions->setColumnLayout(0, Qt::Vertical );
   showOptions->tqlayout()->setSpacing( 0 );
   showOptions->tqlayout()->setMargin( 0 );
@@ -1357,7 +1357,7 @@ void SynchronizerGUI::initGUI(TQWidget* /* parent */, TQString profileName, KURL
   optionsGroup->tqlayout()->setSpacing( 0 );
   optionsGroup->tqlayout()->setMargin( 0 );
   TQGridLayout *optionsLayout = new TQGridLayout( optionsGroup->tqlayout() );
-  optionsLayout->tqsetAlignment( TQt::AlignTop );
+  optionsLayout->setAlignment( TQt::AlignTop );
   optionsLayout->setSpacing( 6 );
   optionsLayout->setMargin( 11 );
 

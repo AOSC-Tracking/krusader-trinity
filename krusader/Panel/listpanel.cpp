@@ -134,7 +134,7 @@ ListPanel::ListPanel( TQString typeIn, TQWidget *parent, bool &left, const char 
                       "which holds your current directory: Total size, free space, "
                       "type of filesystem, etc." ) );
    connect( status, TQT_SIGNAL( clicked() ), this, TQT_SLOT( slotFocusOnMe() ) );
-   connect( status, TQT_SIGNAL( dropped( TQDropEvent *) ), this, TQT_SLOT( handleDropOntqStatus(TQDropEvent *) ) );
+   connect( status, TQT_SIGNAL( dropped( TQDropEvent *) ), this, TQT_SLOT( handleDropOnStatus(TQDropEvent *) ) );
 
    // ... create the history button
    dirHistoryQueue = new DirHistoryQueue( this );
@@ -770,7 +770,7 @@ void ListPanel::handleDropOnTotals( TQDropEvent *e ) {
   handleDropOnView( e, totals );
 }
 
-void ListPanel::handleDropOntqStatus( TQDropEvent *e ) {
+void ListPanel::handleDropOnStatus( TQDropEvent *e ) {
   handleDropOnView( e, status );
 }
 

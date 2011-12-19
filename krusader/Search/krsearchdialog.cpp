@@ -160,7 +160,7 @@ KrSearchDialog::KrSearchDialog( TQString profile, TQWidget* parent,  const char*
   resultLabelLayout->setMargin( 0 );
 
   foundLabel = new TQLabel( resultTab, "foundLabel" );
-  foundLabel->tqsetSizePolicy( TQSizePolicy( (TQSizePolicy::SizeType)1, (TQSizePolicy::SizeType)1, foundLabel->sizePolicy().hasHeightForWidth() ) );
+  foundLabel->setSizePolicy( TQSizePolicy( (TQSizePolicy::SizeType)1, (TQSizePolicy::SizeType)1, foundLabel->sizePolicy().hasHeightForWidth() ) );
   foundLabel->setFrameShape( TQLabel::StyledPanel );
   foundLabel->setFrameShadow( TQLabel::Sunken );
   foundLabel->setText( i18n( "Found 0 matches." ) );
@@ -216,7 +216,7 @@ KrSearchDialog::KrSearchDialog( TQString profile, TQWidget* parent,  const char*
   foundTextLayout->setMargin( 0 );
   
   TQLabel *l1 = new TQLabel(resultTab);
-  l1->tqsetSizePolicy( TQSizePolicy( (TQSizePolicy::SizeType)1, (TQSizePolicy::SizeType)1, l1->sizePolicy().hasHeightForWidth() ) );
+  l1->setSizePolicy( TQSizePolicy( (TQSizePolicy::SizeType)1, (TQSizePolicy::SizeType)1, l1->sizePolicy().hasHeightForWidth() ) );
   l1->setFrameShape( TQLabel::StyledPanel );
   l1->setFrameShadow( TQLabel::Sunken );
   l1->setText(i18n("Text found:"));

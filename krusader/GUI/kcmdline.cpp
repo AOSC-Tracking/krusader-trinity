@@ -62,14 +62,14 @@ KCMDLine::KCMDLine( TQWidget *parent, const char *name ) : TQWidget( parent, nam
   path = new TQLabel( this );
   TQWhatsThis::add
     ( path, i18n( "Name of directory where command will be processed." ) );
-  path->tqsetAlignment( TQt::AlignRight );
+  path->setAlignment( TQt::AlignRight );
   path->setFrameStyle( TQFrame::Box | TQFrame::Sunken );
   path->setLineWidth( 1 );
   path->setFont( KGlobalSettings::generalFont() );
   int height = TQFontMetrics( KGlobalSettings::generalFont() ).height();
   height =  height + 5*(height > 14) + 6;
   path->setMaximumHeight( height );
-  path->tqsetSizePolicy(TQSizePolicy(TQSizePolicy::Maximum, TQSizePolicy::Preferred));
+  path->setSizePolicy(TQSizePolicy(TQSizePolicy::Maximum, TQSizePolicy::Preferred));
   tqlayout->addWidget( path, 0, 0 );
 
   // and editable command line
@@ -80,7 +80,7 @@ KCMDLine::KCMDLine( TQWidget *parent, const char *name ) : TQWidget( parent, nam
   cmdLine->setFont( KGlobalSettings::generalFont() );
   cmdLine->setMaximumHeight( height );
   cmdLine->setCompletionObject( &completion );
-  cmdLine->tqsetSizePolicy(TQSizePolicy(TQSizePolicy::Preferred, TQSizePolicy::Fixed));
+  cmdLine->setSizePolicy(TQSizePolicy(TQSizePolicy::Preferred, TQSizePolicy::Fixed));
   // load the history
   KConfigGroupSaver grpSvr( krConfig, "Private" );
   TQStringList list = krConfig->readListEntry( "cmdline history" );

@@ -91,7 +91,7 @@ LoaderWidget::LoaderWidget( TQWidget *parent, const char *name ) : TQScrollView(
   loaderBox->setColumnLayout(0, Qt::Vertical );
   loaderBox->tqlayout()->setSpacing( 0 );
   loaderBox->tqlayout()->setMargin( 0 );
-  loaderBox->tqsetSizePolicy( TQSizePolicy::Fixed, TQSizePolicy::Fixed );
+  loaderBox->setSizePolicy( TQSizePolicy::Fixed, TQSizePolicy::Fixed );
   loaderBox->setFrameStyle( TQFrame::Panel + TQFrame::Raised );
   loaderBox->setLineWidth( 2 );
 
@@ -100,7 +100,7 @@ LoaderWidget::LoaderWidget( TQWidget *parent, const char *name ) : TQScrollView(
   synchGrid->setMargin( 11 );
 
   TQLabel *titleLabel = new TQLabel( i18n( "Loading Usage Information" ), loaderBox, "titleLabel" );
-  titleLabel->tqsetAlignment( TQt::AlignHCenter );
+  titleLabel->setAlignment( TQt::AlignHCenter );
   synchGrid->addMultiCellWidget( titleLabel, 0, 0, 0, 1 );
 
   TQLabel *filesLabel = new TQLabel( i18n( "Files:" ), loaderBox, "filesLabel" );
@@ -121,19 +121,19 @@ LoaderWidget::LoaderWidget( TQWidget *parent, const char *name ) : TQScrollView(
   files = new TQLabel( loaderBox, "files" );
   files->setFrameShape( TQLabel::StyledPanel );
   files->setFrameShadow( TQLabel::Sunken );
-  files->tqsetAlignment( TQt::AlignRight );
+  files->setAlignment( TQt::AlignRight );
   synchGrid->addWidget( files, 1, 1 );
 
   directories = new TQLabel( loaderBox, "directories" );
   directories->setFrameShape( TQLabel::StyledPanel );
   directories->setFrameShadow( TQLabel::Sunken );
-  directories->tqsetAlignment( TQt::AlignRight );
+  directories->setAlignment( TQt::AlignRight );
   synchGrid->addWidget( directories, 2, 1 );
 
   totalSize = new TQLabel( loaderBox, "totalSize" );
   totalSize->setFrameShape( TQLabel::StyledPanel );
   totalSize->setFrameShadow( TQLabel::Sunken );
-  totalSize->tqsetAlignment( TQt::AlignRight );
+  totalSize->setAlignment( TQt::AlignRight );
   synchGrid->addWidget( totalSize, 3, 1 );
 
   int width;
@@ -530,7 +530,7 @@ int DiskUsage::exclude( File *file, bool calcPercents, int depth )
   {
     calculateSizes( root, true );
     calculatePercents( true );
-    createtqStatus();
+    createStatus();
   }
 
   if( depth == 0 && changeNr != 0 )
@@ -572,7 +572,7 @@ void DiskUsage::includeAll()
   include( root );
   calculateSizes( root, true );
   calculatePercents( true );
-  createtqStatus();
+  createStatus();
 }
 
 int DiskUsage::del( File *file, bool calcPercents, int depth )
@@ -668,13 +668,13 @@ int DiskUsage::del( File *file, bool calcPercents, int depth )
   delete file;
 
   if( depth == 0 )
-    createtqStatus();
+    createStatus();
 
   if( calcPercents )
   {
     calculateSizes( root, true );
     calculatePercents( true );
-    createtqStatus();
+    createStatus();
     emit enteringDirectory( currentDirectory );
   }
 
@@ -713,7 +713,7 @@ void DiskUsage::removeProperty( File *item, TQString key )
     propertyMap.remove( item );
 }
 
-void DiskUsage::createtqStatus()
+void DiskUsage::createStatus()
 {
   Directory *dirEntry = currentDirectory;
 
@@ -737,7 +737,7 @@ void DiskUsage::changeDirectory( Directory *dir )
   currentSize = dir->size();
   calculatePercents( true, dir );
 
-  createtqStatus();
+  createStatus();
   emit enteringDirectory( dir );
 }
 

@@ -211,9 +211,9 @@
 
 /////////////////////// [Private]
 // Start Position /////
-#define _StartPosition new TQPoint(TQApplication::desktop()->width()/2 - mainView->tqsizeHint().width()/2,TQApplication::desktop()->height()/2 - 250) 
+#define _StartPosition new TQPoint(TQApplication::desktop()->width()/2 - mainView->sizeHint().width()/2,TQApplication::desktop()->height()/2 - 250) 
 // Start Size /////////
-#define _StartSize     new TQSize(mainView->tqsizeHint().width(),500) 
+#define _StartSize     new TQSize(mainView->sizeHint().width(),500) 
 // Panel Size /////////
 #define _PanelSize     0 
 // Terminal Size //////

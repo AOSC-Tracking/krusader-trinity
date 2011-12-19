@@ -61,7 +61,7 @@ KgStartup::KgStartup( bool first, TQWidget* parent,  const char* name ) :
   comboItems[ 0 ].value = "";
 
   profileCombo = createComboBox( "Startup", "Starter Profile Name", comboItems[ 0 ].value, comboItems, profileList.count(), panelsGrp, false, false );
-  profileCombo->tqsetSizePolicy(  TQSizePolicy::Expanding, TQSizePolicy::Fixed);
+  profileCombo->setSizePolicy(  TQSizePolicy::Expanding, TQSizePolicy::Fixed);
   panelsGrid->addWidget( profileCombo, 0, 1 );
 
   //------------------------------------------------

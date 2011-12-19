@@ -75,7 +75,7 @@ SplitterGUI::SplitterGUI( TQWidget* parent,  KURL fileURL, KURL defaultDir ) :
 
   TQLabel *spacer = new TQLabel( splitSizeLine );
   spacer->setText( " "  );
-  spacer->tqsetSizePolicy( TQSizePolicy::Expanding, TQSizePolicy::Minimum );
+  spacer->setSizePolicy( TQSizePolicy::Expanding, TQSizePolicy::Minimum );
 
   TQLabel *bytesPerFile = new TQLabel( splitSizeLine, "BytesPerFile" );
   bytesPerFile->setText( i18n( "Max file size:"  ) );
@@ -94,7 +94,7 @@ SplitterGUI::SplitterGUI( TQWidget* parent,  KURL fileURL, KURL defaultDir ) :
 
   TQFrame *separator = new TQFrame( this, "separatorLine" );
   separator->setFrameStyle( TQFrame::HLine | TQFrame::Sunken );
-  separator->setFixedHeight( separator->tqsizeHint().height() );
+  separator->setFixedHeight( separator->sizeHint().height() );
 
   grid->addWidget( separator,3 ,0 );
   

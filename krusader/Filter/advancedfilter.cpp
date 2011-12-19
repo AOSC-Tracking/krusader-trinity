@@ -55,13 +55,13 @@ AdvancedFilter::AdvancedFilter( FilterTabs *tabs, TQWidget *parent, const char *
   // Options for size
 
   TQGroupBox *sizeGroup = new TQGroupBox( this, "sizeGroup" );
-  sizeGroup->tqsetSizePolicy( TQSizePolicy( (TQSizePolicy::SizeType)5, (TQSizePolicy::SizeType)1, sizeGroup->sizePolicy().hasHeightForWidth() ) );
+  sizeGroup->setSizePolicy( TQSizePolicy( (TQSizePolicy::SizeType)5, (TQSizePolicy::SizeType)1, sizeGroup->sizePolicy().hasHeightForWidth() ) );
   sizeGroup->setTitle( i18n( "Size" ) );
   sizeGroup->setColumnLayout(0, Qt::Vertical );
   sizeGroup->tqlayout()->setSpacing( 0 );
   sizeGroup->tqlayout()->setMargin( 0 );
   TQGridLayout *sizeLayout = new TQGridLayout( sizeGroup->tqlayout() );
-  sizeLayout->tqsetAlignment( TQt::AlignTop );
+  sizeLayout->setAlignment( TQt::AlignTop );
   sizeLayout->setSpacing( 6 );
   sizeLayout->setMargin( 11 );
 
@@ -71,7 +71,7 @@ AdvancedFilter::AdvancedFilter( FilterTabs *tabs, TQWidget *parent, const char *
 
   biggerThanAmount = new TQLineEdit( sizeGroup, "biggerThanAmount" );
   biggerThanAmount->setEnabled( false );
-  biggerThanAmount->tqsetSizePolicy( TQSizePolicy( TQSizePolicy::Fixed, TQSizePolicy::Fixed, biggerThanAmount->sizePolicy().hasHeightForWidth() ) );
+  biggerThanAmount->setSizePolicy( TQSizePolicy( TQSizePolicy::Fixed, TQSizePolicy::Fixed, biggerThanAmount->sizePolicy().hasHeightForWidth() ) );
   sizeLayout->addWidget( biggerThanAmount, 0, 1 );
 
   biggerThanType = new KComboBox( false, sizeGroup, "biggerThanType" );
@@ -87,7 +87,7 @@ AdvancedFilter::AdvancedFilter( FilterTabs *tabs, TQWidget *parent, const char *
 
   smallerThanAmount = new TQLineEdit( sizeGroup, "smallerThanAmount" );
   smallerThanAmount->setEnabled( false );
-  smallerThanAmount->tqsetSizePolicy( TQSizePolicy( TQSizePolicy::Fixed, TQSizePolicy::Fixed, smallerThanAmount->sizePolicy().hasHeightForWidth() ) );
+  smallerThanAmount->setSizePolicy( TQSizePolicy( TQSizePolicy::Fixed, TQSizePolicy::Fixed, smallerThanAmount->sizePolicy().hasHeightForWidth() ) );
   sizeLayout->addWidget( smallerThanAmount, 0, 4 );
 
   smallerThanType = new KComboBox( false, sizeGroup, "smallerThanType" );
@@ -116,7 +116,7 @@ AdvancedFilter::AdvancedFilter( FilterTabs *tabs, TQWidget *parent, const char *
   dateGroup->tqlayout()->setSpacing( 0 );
   dateGroup->tqlayout()->setMargin( 0 );
   TQGridLayout *dateLayout = new TQGridLayout( dateGroup->tqlayout() );
-  dateLayout->tqsetAlignment( TQt::AlignTop );
+  dateLayout->setAlignment( TQt::AlignTop );
   dateLayout->setSpacing( 6 );
   dateLayout->setMargin( 11 );
 
@@ -215,7 +215,7 @@ AdvancedFilter::AdvancedFilter( FilterTabs *tabs, TQWidget *parent, const char *
   ownershipGroup->tqlayout()->setSpacing( 0 );
   ownershipGroup->tqlayout()->setMargin( 0 );
   TQGridLayout *ownershipLayout = new TQGridLayout( ownershipGroup->tqlayout() );
-  ownershipLayout->tqsetAlignment( TQt::AlignTop );
+  ownershipLayout->setAlignment( TQt::AlignTop );
   ownershipLayout->setSpacing( 6 );
   ownershipLayout->setMargin( 11 );
 
@@ -423,7 +423,7 @@ void AdvancedFilter::notModifiedAfterSetDate()
 void AdvancedFilter::changeDate(TQLineEdit *p) {
   // check if the current date is valid
   TQDate d = KGlobal::locale()->readDate(p->text());
-  if (!d.isValid()) d = TQDate::tqcurrentDate();
+  if (!d.isValid()) d = TQDate::currentDate();
 
   KRGetDate *gd = new KRGetDate(d, this);
   d = gd->getDate();
@@ -547,7 +547,7 @@ bool AdvancedFilter::fillQuery( KRQuery *query )
   } else if (modifiedInTheLastEnabled->isChecked()) {
     if ( !(modifiedInTheLastData->text().simplifyWhiteSpace().isEmpty() &&
           notModifiedInTheLastData->text().simplifyWhiteSpace().isEmpty()) ) {
-      TQDate d1 = TQDate::tqcurrentDate(); TQDate d2 = TQDate::tqcurrentDate();
+      TQDate d1 = TQDate::currentDate(); TQDate d2 = TQDate::currentDate();
       if (!modifiedInTheLastData->text().simplifyWhiteSpace().isEmpty()) {
         int tmp1 = modifiedInTheLastData->text().simplifyWhiteSpace().toInt();
         switch (modifiedInTheLastType->currentItem()) {

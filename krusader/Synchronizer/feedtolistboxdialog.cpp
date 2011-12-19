@@ -118,10 +118,10 @@ FeedToListBoxDialog::FeedToListBoxDialog(TQWidget *parent,  const char *name, Sy
   TQHBox *hbox = new TQHBox( widget, "fbHBox" );
   
   TQLabel *label2 = new TQLabel( i18n( "Side to feed:" ), hbox, "fbSideLabel" );  
-  label2->tqsetSizePolicy( TQSizePolicy::Fixed, TQSizePolicy::Fixed );
+  label2->setSizePolicy( TQSizePolicy::Fixed, TQSizePolicy::Fixed );
   
   sideCombo = new TQComboBox( hbox, "fbSideCombo" );
-  sideCombo->tqsetSizePolicy( TQSizePolicy::Fixed, TQSizePolicy::Fixed );
+  sideCombo->setSizePolicy( TQSizePolicy::Fixed, TQSizePolicy::Fixed );
   sideCombo->insertItem( i18n( "Left" ) );
   sideCombo->insertItem( i18n( "Right" ) );
   sideCombo->insertItem( i18n( "Both" ) );
@@ -136,10 +136,10 @@ FeedToListBoxDialog::FeedToListBoxDialog(TQWidget *parent,  const char *name, Sy
   
   TQFrame *line = new TQFrame( hbox, "fbVLine" );
   line->setFrameStyle( TQFrame::VLine | TQFrame::Sunken );
-  line->tqsetSizePolicy( TQSizePolicy::Expanding, TQSizePolicy::Expanding );
+  line->setSizePolicy( TQSizePolicy::Expanding, TQSizePolicy::Expanding );
   
   cbSelected = new TQCheckBox( i18n( "Selected files only" ), hbox, "cbSelected" );
-  cbSelected->tqsetSizePolicy( TQSizePolicy::Fixed, TQSizePolicy::Fixed );
+  cbSelected->setSizePolicy( TQSizePolicy::Fixed, TQSizePolicy::Fixed );
   cbSelected->setEnabled( selectedNum != 0 );
   cbSelected->setChecked( selectedNum != 0 );
   

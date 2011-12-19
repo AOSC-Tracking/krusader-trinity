@@ -42,12 +42,12 @@
 #include <kstatusbar.h>
 #include <klocale.h>
 
-class KrusadertqStatus : public KStatusBar {
+class KrusaderStatus : public KStatusBar {
    Q_OBJECT
   TQ_OBJECT
 public: 
-	KrusadertqStatus(TQWidget *parent=0, const char *name=0);
-	~KrusadertqStatus();
+	KrusaderStatus(TQWidget *parent=0, const char *name=0);
+	~KrusaderStatus();
 
 private:
 	TQLabel *mess;

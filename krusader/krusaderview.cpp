@@ -159,7 +159,7 @@ void KrusaderView::createTE() {
   if ( konsole_part == 0L ) {  // konsole part is not yet loaded
     KLibFactory * factory = KLibLoader::self() ->factory( "libkonsolepart" );
     if ( factory ) {
-      TQWidget *focusW = tqApp->tqfocusWidget();
+      TQWidget *focusW = tqApp->focusWidget();
       // Create the part
       konsole_part = ( KParts::ReadOnlyPart * )
                           factory->create( TQT_TQOBJECT(terminal_dock), "konsolepart",

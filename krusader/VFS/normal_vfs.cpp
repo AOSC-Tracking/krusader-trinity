@@ -337,7 +337,7 @@ TQString normal_vfs::getACL( const TQString & path, int type )
 		return TQString();
 	
 	char *aclString = acl_to_text( acl, 0 );
-	TQString ret = TQString::tqfromLatin1( aclString );
+	TQString ret = TQString::fromLatin1( aclString );
 	acl_free( (void*)aclString );
 	acl_free( acl );
 	

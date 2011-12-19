@@ -40,7 +40,7 @@ KrResultTableDialog::KrResultTableDialog( TQWidget *parent, DialogType type,
   _page = new TQWidget(this);
   setMainWidget(_page);
   _topLayout = new TQVBoxLayout(_page, 0, spacingHint());
-  _topLayout->tqsetAlignment( TQt::AlignTop );
+  _topLayout->setAlignment( TQt::AlignTop );
 
   // +++ Heading +++
   // prepare the icon
@@ -48,8 +48,8 @@ KrResultTableDialog::KrResultTableDialog( TQWidget *parent, DialogType type,
   _iconLabel = new TQLabel(_iconBox, "iconLabel");
   _iconLabel->setPixmap(krLoader->loadIcon(headerIcon, KIcon::Desktop, 32));
   _iconLabel->setMinimumWidth(fontMetrics().maxWidth()*20);
-  _iconLabel->tqsetAlignment( TQt::AlignLeft | TQt::AlignVCenter );
-  _iconLabel->setFixedSize( _iconLabel->tqsizeHint() );
+  _iconLabel->setAlignment( TQt::AlignLeft | TQt::AlignVCenter );
+  _iconLabel->setFixedSize( _iconLabel->sizeHint() );
   _headingLabel = new TQLabel(heading, _iconBox);
   TQFont defFont = KGlobalSettings::generalFont();
   defFont.setBold(true);
@@ -85,11 +85,11 @@ KrResultTableDialog::KrResultTableDialog( TQWidget *parent, DialogType type,
   if(hint != TQString()) {
     _hintLabel = new TQLabel(hint, _page);
     _hintLabel->setIndent(5);
-    _hintLabel->tqsetAlignment(TQt::AlignRight);
+    _hintLabel->setAlignment(TQt::AlignRight);
     _topLayout->addWidget(_hintLabel);
   }
 
-  this->setFixedSize( this->tqsizeHint() ); // make non-resizeable
+  this->setFixedSize( this->sizeHint() ); // make non-resizeable
 }
 
 KrResultTableDialog::~KrResultTableDialog()

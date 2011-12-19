@@ -170,7 +170,7 @@ KgColors::KgColors( bool first, TQWidget* parent,  const char* name ) :
   int index = itemList.count() - offset;
   labelList.append( addLabel( colorsGrid, index, 0, i18n("Dim factor:"), colorsGrp, TQString( "ColorsLabel%1" ).tqarg( index ).ascii() ) );
   dimFactor = createSpinBox("Colors", "Dim Factor", 100, 0, 100, colorsGrp);
-  dimFactor->tqsetSizePolicy( TQSizePolicy::Expanding, TQSizePolicy::Fixed );
+  dimFactor->setSizePolicy( TQSizePolicy::Expanding, TQSizePolicy::Fixed );
   connect( dimFactor, TQT_SIGNAL( valueChanged( int ) ), this, TQT_SLOT( generatePreview() ) );
   colorsGrid->addWidget( dimFactor, index++, 1 );
 
@@ -243,7 +243,7 @@ int KgColors::addColorSelector( TQString cfgName, TQString name, TQColor dflt, T
 
   labelList.append( addLabel( colorsGrid, index, 0, name, colorsGrp, TQString( "ColorsLabel%1" ).tqarg( index ).ascii() ) );
   KonfiguratorColorChooser *chooser = createColorChooser( "Colors", cfgName, dflt, colorsGrp, false, addColor, addColNum );
-  chooser->tqsetSizePolicy( TQSizePolicy::Expanding, TQSizePolicy::Fixed );
+  chooser->setSizePolicy( TQSizePolicy::Expanding, TQSizePolicy::Fixed );
 
   if( !dfltName.isEmpty() )
     chooser->setDefaultText( dfltName );

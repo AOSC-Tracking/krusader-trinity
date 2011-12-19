@@ -103,16 +103,16 @@ _stdout(0), _stderr(0), _currentTextEdit(0) {
 
 void KrActionProcDlg::addStderr( KProcess *, char *buffer, int buflen ) {
    if (_stderr)
-      _stderr->append( TQString::tqfromLatin1( buffer, buflen ) );
+      _stderr->append( TQString::fromLatin1( buffer, buflen ) );
    else {
       _stdout->setItalic(true);
-      _stdout->append( TQString::tqfromLatin1( buffer, buflen ) );
+      _stdout->append( TQString::fromLatin1( buffer, buflen ) );
       _stdout->setItalic(false);
    }
 }
 
 void KrActionProcDlg::addStdout( KProcess *, char *buffer, int buflen ) {
-   _stdout->append( TQString::tqfromLatin1( buffer, buflen ) );
+   _stdout->append( TQString::fromLatin1( buffer, buflen ) );
 }
 
 void KrActionProcDlg::toggleFixedFont( bool state ) {

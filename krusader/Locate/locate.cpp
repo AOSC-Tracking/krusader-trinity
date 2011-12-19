@@ -117,7 +117,7 @@ LocateDlg::LocateDlg() : KDialogBase(0,0,false,"Locate", KDialogBase::User1 | KD
   locateSearchFor->setHistoryItems(list);
   locateSearchFor->setEditable( true );
   locateSearchFor->setDuplicatesEnabled( false );
-  locateSearchFor->tqsetSizePolicy(TQSizePolicy::Expanding,TQSizePolicy::Fixed);
+  locateSearchFor->setSizePolicy(TQSizePolicy::Expanding,TQSizePolicy::Fixed);
   locateSearchFor->lineEdit()->setFocus();
 
   grid->addWidget( hbox, 0, 0 );

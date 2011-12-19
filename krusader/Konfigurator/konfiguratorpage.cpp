@@ -164,7 +164,7 @@ TQGroupBox* KonfiguratorPage::createFrame( TQString text, TQWidget *parent,
 TQGridLayout* KonfiguratorPage::createGridLayout( TQLayout *parent )
 {
   TQGridLayout *gridLayout = new TQGridLayout( parent );
-  gridLayout->tqsetAlignment( TQt::AlignTop );
+  gridLayout->setAlignment( TQt::AlignTop );
   gridLayout->setSpacing( 6 );
   gridLayout->setMargin( 11 );
   return gridLayout;
@@ -235,7 +235,7 @@ KonfiguratorRadioButtons* KonfiguratorPage::createRadioButtonGroup( TQString cls
   radioWidget->setColumnLayout(0, Qt::Vertical );
 
   TQGridLayout *tqlayout = new TQGridLayout( radioWidget->tqlayout() );
-  tqlayout->tqsetAlignment( TQt::AlignTop );
+  tqlayout->setAlignment( TQt::AlignTop );
   tqlayout->setSpacing( 6 );
   tqlayout->setMargin( 0 );
 
