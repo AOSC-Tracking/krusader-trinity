@@ -186,9 +186,9 @@ void LoaderWidget::setCurrentURL( KURL url )
 
 void LoaderWidget::setValues( int fileNum, int dirNum, KIO::filesize_t total )
 {
-  files->setText( TQString("%1").tqarg( fileNum ) );
-  directories->setText( TQString("%1").tqarg( dirNum ) );
-  totalSize->setText( TQString("%1").tqarg( KRpermHandler::parseSize( total ).stripWhiteSpace() ) );
+  files->setText( TQString("%1").arg( fileNum ) );
+  directories->setText( TQString("%1").arg( dirNum ) );
+  totalSize->setText( TQString("%1").arg( KRpermHandler::parseSize( total ).stripWhiteSpace() ) );
 }
 
 void LoaderWidget::slotCancelled()
@@ -411,7 +411,7 @@ void DiskUsage::dirUp()
       if( KMessageBox::questionYesNo( this, i18n( "Stepping into the parent directory requires "
                                                   "loading the content of the \"%1\" URL. Do you wish "
                                                   "to continue?" )
-                                            .tqarg( vfs::pathOrURL( up ) ),
+                                            .arg( vfs::pathOrURL( up ) ),
                                             i18n( "Krusader::DiskUsage" ), KStdGuiItem::yes(),
                                             KStdGuiItem::no(), "DiskUsageLoadParentDir"
                                             ) == KMessageBox::Yes )
@@ -608,7 +608,7 @@ int DiskUsage::del( File *file, bool calcPercents, int depth )
         return 0;
     }
 
-    emit status( i18n( "Deleting %1..." ).tqarg( file->name() ) );
+    emit status( i18n( "Deleting %1..." ).arg( file->name() ) );
   }
 
   if( file == currentDirectory )
@@ -725,9 +725,9 @@ void DiskUsage::createStatus()
       url.addPath( dirEntry->directory() );
 
   emit status( i18n( "Current directory:%1,  Total size:%2,  Own size:%3" )
-               .tqarg( vfs::pathOrURL( url, -1 ) )
-               .tqarg( " "+KRpermHandler::parseSize( dirEntry->size() ) )
-               .tqarg( " "+KRpermHandler::parseSize( dirEntry->ownSize() ) ) );
+               .arg( vfs::pathOrURL( url, -1 ) )
+               .arg( " "+KRpermHandler::parseSize( dirEntry->size() ) )
+               .arg( " "+KRpermHandler::parseSize( dirEntry->ownSize() ) ) );
 }
 
 void DiskUsage::changeDirectory( Directory *dir )

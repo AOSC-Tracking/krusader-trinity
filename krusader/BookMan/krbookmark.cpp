@@ -34,7 +34,7 @@ KrBookmark::KrBookmark(TQString name, KURL url, KActionCollection *parent, TQStr
 		}
 	}
 
-	_tqchildren.setAutoDelete(true);
+	_children.setAutoDelete(true);
 }
 
 KrBookmark::KrBookmark(TQString name, TQString icon):

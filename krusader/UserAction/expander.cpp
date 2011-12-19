@@ -54,7 +54,7 @@ TQValueList<const exp_placeholder*>& Expander::_placeholder()
 
 void exp_placeholder::panelMissingError(const TQString &s, Expander& exp)
 {
-	exp.setError( Error(Error::S_FATAL,Error::C_ARGUMENT,i18n("Needed panel specification missing in expander %1").tqarg(s)) );
+	exp.setError( Error(Error::S_FATAL,Error::C_ARGUMENT,i18n("Needed panel specification missing in expander %1").arg(s)) );
 }
 
 TQStringList exp_placeholder::fileList(const ListPanel* const panel,const TQString& type,const TQString& mask,const bool ommitPath,const bool useUrl,Expander& exp,const TQString& error)
@@ -69,7 +69,7 @@ TQStringList exp_placeholder::fileList(const ListPanel* const panel,const TQStri
    else if ( type == "selected" )
       panel->view->getSelectedItems( &items );
    else {
-      setError(exp, Error(Error::S_FATAL,Error::C_ARGUMENT,i18n("Expander: Bad argument to %1: %2 is not valid item specifier").tqarg(error,type) ) );
+      setError(exp, Error(Error::S_FATAL,Error::C_ARGUMENT,i18n("Expander: Bad argument to %1: %2 is not valid item specifier").arg(error,type) ) );
       return TQString();
    }
    if ( !ommitPath ) {  // add the current path
@@ -397,11 +397,11 @@ TagString exp_Count::expFunc( const ListPanel* panel, const TQStringList& parame
    else if ( parameter[ 0 ].lower() == "selected" )
       n = panel->view->numSelected();
    else {
-      setError(exp, Error(Error::S_FATAL,Error::C_ARGUMENT,i18n("Expander: Bad argument to Count: %1 is not valid item specifier").tqarg(parameter[0]) ));
+      setError(exp, Error(Error::S_FATAL,Error::C_ARGUMENT,i18n("Expander: Bad argument to Count: %1 is not valid item specifier").arg(parameter[0]) ));
       return TQString();
    }
 
-   return TagString(TQString("%1").tqarg( n ));
+   return TagString(TQString("%1").arg( n ));
 }
 
 exp_Filter::exp_Filter() {
@@ -503,7 +503,7 @@ TagString exp_ListFile::expFunc( const ListPanel* panel, const TQStringList& par
    KTempFile tmpFile( locateLocal("tmp", "krusader"), ".itemlist" );
    
     if ( tmpFile.status() != 0 ) {
-      setError(exp, Error(Error::S_FATAL,Error::C_WORLD, i18n("Expander: tempfile couldn't be opened (%1)" ).tqarg(strerror( tmpFile.status() )) ));
+      setError(exp, Error(Error::S_FATAL,Error::C_WORLD, i18n("Expander: tempfile couldn't be opened (%1)" ).arg(strerror( tmpFile.status() )) ));
       return TQString();
     }
     
@@ -832,7 +832,7 @@ TagString exp_ColSort::expFunc( const ListPanel* panel, const TQStringList& para
    */
    
 //   krOut << "start: exp_ColSort::expFunc" << endl;
-   #define MODE_OUT krOut << TQString( "mode: %1" ).tqarg( mode, 0, 2 ) << endl; // displays mode in base-2
+   #define MODE_OUT krOut << TQString( "mode: %1" ).arg( mode, 0, 2 ) << endl; // displays mode in base-2
    //MODE_OUT
       
    if ( parameter.count() <= 1 || ( parameter[1].lower() != "asc" && parameter[1].lower() != "desc" ) ) {  //default == toggle
@@ -882,7 +882,7 @@ TagString exp_ColSort::expFunc( const ListPanel* panel, const TQStringList& para
    if ( parameter[0].lower() == "group" ) {
       mode |= KrViewProperties::Group;
    } else {
-      setError(exp, Error(Error::S_WARNING,Error::C_ARGUMENT,i18n("Expander: unknown column specified for %_ColSort(%1)%").tqarg(parameter[0]) ));
+      setError(exp, Error(Error::S_WARNING,Error::C_ARGUMENT,i18n("Expander: unknown column specified for %_ColSort(%1)%").arg(parameter[0]) ));
       return TQString();
    }
    
@@ -909,7 +909,7 @@ TagString exp_PanelSize::expFunc( const ListPanel* panel, const TQStringList& pa
       newSize = parameter[0].toInt();
    
    if ( newSize < 0 || newSize > 100 ) {
-      setError(exp, Error(Error::S_FATAL,Error::C_ARGUMENT,i18n("Expander: Value %1 out of range for %_PanelSize(percent)%. The first parameter has to be >0 and <100").tqarg(newSize)) );
+      setError(exp, Error(Error::S_FATAL,Error::C_ARGUMENT,i18n("Expander: Value %1 out of range for %_PanelSize(percent)%. The first parameter has to be >0 and <100").arg(newSize)) );
       return TQString();
    }
 
@@ -1031,7 +1031,7 @@ TagString exp_simpleplaceholder::expFunc( const ListPanel* p, const TagStringLis
 		if((*it).isSimple())
 			lst.push_back((*it).string());
 		else {
-			setError(exp,Error(Error::S_FATAL,Error::C_SYNTAX,i18n("%Each% is not allowed in parameter to %1").tqarg(description())));
+			setError(exp,Error(Error::S_FATAL,Error::C_SYNTAX,i18n("%Each% is not allowed in parameter to %1").arg(description())));
 			return TQString();
 		}
 	return expFunc(p,lst,useUrl,exp);
@@ -1052,7 +1052,7 @@ ListPanel* Expander::getPanel( const char panelIndicator, const exp_placeholder*
    case '_':
       return 0;
    default:
-		 exp.setError(Error(Error::S_FATAL,Error::C_SYNTAX,i18n("Expander: Bad panel specifier %1 in placeholder %2").tqarg(panelIndicator).tqarg(pl->description())));
+		 exp.setError(Error(Error::S_FATAL,Error::C_SYNTAX,i18n("Expander: Bad panel specifier %1 in placeholder %2").arg(panelIndicator).arg(pl->description())));
       return 0;
    }
 }
@@ -1111,7 +1111,7 @@ TagString Expander::expandCurrent( const TQString& stringToExpand, bool useUrl )
               break;
            }
          if ( i == placeholderCount() ) { // didn't find an expander
-            setError(Error(Error::S_FATAL,Error::C_SYNTAX,i18n("Error: unrecognized %%%1%2%% in Expander::expand").tqarg(panelIndicator).tqarg(exp)) );
+            setError(Error(Error::S_FATAL,Error::C_SYNTAX,i18n("Error: unrecognized %%%1%2%% in Expander::expand").arg(panelIndicator).arg(exp)) );
            return TQString();
          }
       } //else

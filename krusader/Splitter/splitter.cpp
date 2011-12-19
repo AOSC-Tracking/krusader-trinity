@@ -67,7 +67,7 @@ void Splitter::split( KIO::filesize_t splitSizeIn )
   splitSize = splitSizeIn;
 
   setCaption( i18n("Krusader::Splitting...") );
-  setLabelText( i18n("Splitting the file %1...").tqarg( vfs::pathOrURL( fileName ) ) );
+  setLabelText( i18n("Splitting the file %1...").arg( vfs::pathOrURL( fileName ) ) );
 
   if( file.isDir() )
   {
@@ -122,17 +122,17 @@ void Splitter::splitReceiveFinished(KIO::Job *job)
   if( job->error() )    /* any error occurred? */
   {
     splitAbortJobs();
-    KMessageBox::error(0, i18n("Error reading file %1!").tqarg( vfs::pathOrURL( fileName ) ) );
+    KMessageBox::error(0, i18n("Error reading file %1!").arg( vfs::pathOrURL( fileName ) ) );
     emit reject();
     return;
   }
 
-  TQString crcResult = TQString( "%1" ).tqarg( crcContext->result(), 0, 16 ).upper().stripWhiteSpace()
+  TQString crcResult = TQString( "%1" ).arg( crcContext->result(), 0, 16 ).upper().stripWhiteSpace()
                                      .rightJustify(8, '0');
 
-  splitFile = TQString( "filename=%1\n" ).tqarg( fileName.fileName()     )+
-              TQString( "size=%1\n" )    .tqarg( KIO::number( fileSize ) )+
-              TQString( "crc32=%1\n" )   .tqarg( crcResult );
+  splitFile = TQString( "filename=%1\n" ).arg( fileName.fileName()     )+
+              TQString( "size=%1\n" )    .arg( KIO::number( fileSize ) )+
+              TQString( "crc32=%1\n" )   .arg( crcResult );
 }
 
 void Splitter::splitReceivePercent (KIO::Job *, unsigned long percent)
@@ -143,7 +143,7 @@ void Splitter::splitReceivePercent (KIO::Job *, unsigned long percent)
 void Splitter::splitCreateWriteJob()
 {
   TQString index( "%1" );                   /* making the splitted filename */
-  index = index.tqarg(++fileNumber).rightJustify( 3, '0' );
+  index = index.arg(++fileNumber).rightJustify( 3, '0' );
   TQString outFileName = fileName.fileName() + "." + index;
   
   writeURL = destinationDir;
@@ -198,7 +198,7 @@ void Splitter::splitSendFinished(KIO::Job *job)
   if( job->error() )    /* any error occurred? */
   {
     splitAbortJobs();
-    KMessageBox::error(0, i18n("Error writing file %1!").tqarg( vfs::pathOrURL( writeURL ) ) );
+    KMessageBox::error(0, i18n("Error writing file %1!").arg( vfs::pathOrURL( writeURL ) ) );
     emit reject();
     return;
   }
@@ -241,7 +241,7 @@ void Splitter::splitFileFinished(KIO::Job *job)
 
   if( job->error() )    /* any error occurred? */
   {
-    KMessageBox::error(0, i18n("Error at writing file %1!").tqarg( vfs::pathOrURL( writeURL ) ) );
+    KMessageBox::error(0, i18n("Error at writing file %1!").arg( vfs::pathOrURL( writeURL ) ) );
     emit reject();
     return;
   }

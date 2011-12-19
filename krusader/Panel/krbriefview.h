@@ -48,7 +48,7 @@ class TQHeader;
 
 /**
  * KrBriefView implements everthing and anything regarding a brief view in a filemananger.
- * IT MUST USE KrViewItem as the tqchildren to it's *KIconView. KrBriefView and KrViewItem are
+ * IT MUST USE KrViewItem as the children to it's *KIconView. KrBriefView and KrViewItem are
  * tightly coupled and the view will not work with other kinds of items.
  * Apart from this, the view is self-reliant and you can use the vast interface to get whatever
  * information is necessery from it.

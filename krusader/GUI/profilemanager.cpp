@@ -114,12 +114,12 @@ void ProfileManager::newProfile( TQString defaultName )
   if( !profile.isEmpty() )
   {
     int profileNum = 1;
-    while( profileList.contains( TQString( "%1" ).tqarg( profileNum ) ) )
+    while( profileList.contains( TQString( "%1" ).arg( profileNum ) ) )
       profileNum++;
 
-    TQString profileString = TQString( "%1" ).tqarg( profileNum );
+    TQString profileString = TQString( "%1" ).arg( profileNum );
     TQString profileName = profileType + " - " + profileString;
-    profileList.append( TQString( "%1" ).tqarg( profileString ) );
+    profileList.append( TQString( "%1" ).arg( profileString ) );
   
     krConfig->setGroup("Private");
     krConfig->writeEntry( profileType, profileList );

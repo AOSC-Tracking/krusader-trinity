@@ -57,7 +57,7 @@ SplitterGUI::SplitterGUI( TQWidget* parent,  KURL fileURL, KURL defaultDir ) :
   grid->setMargin( 11 );
 
   TQLabel *splitterLabel = new TQLabel( this, "SplitterLabel" );
-  splitterLabel->setText( i18n( "Split the file %1 to directory:"  ).tqarg( vfs::pathOrURL( fileURL ) ) );
+  splitterLabel->setText( i18n( "Split the file %1 to directory:"  ).arg( vfs::pathOrURL( fileURL ) ) );
   splitterLabel->setMinimumWidth( 400 );
   grid->addWidget( splitterLabel,0 ,0 );
 

@@ -19,7 +19,7 @@ public:
 	inline void setURL(const KURL& url) { _url = url; }
 	inline bool isFolder() const { return _folder; }
 	inline bool isSeparator() const { return _separator; }
-	TQPtrList<KrBookmark>& tqchildren() { return _tqchildren; }
+	TQPtrList<KrBookmark>& children() { return _children; }
 
 	static KrBookmark* getExistingBookmark(TQString actionName, KActionCollection *collection);	
 	// ----- special bookmarks
@@ -40,7 +40,7 @@ private:
 	TQString _icon;
 	bool _folder;
 	bool _separator;
-	TQPtrList<KrBookmark> _tqchildren;
+	TQPtrList<KrBookmark> _children;
 };
 
 #endif // KRBOOKMARK_H

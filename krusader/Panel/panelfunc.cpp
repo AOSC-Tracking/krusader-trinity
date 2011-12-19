@@ -377,7 +377,7 @@ void ListPanelFunc::terminal() {
 	}
 
 	if ( !proc.start( KProcess::DontCare ) )
-		KMessageBox::sorry( krApp, i18n( "<qt>Can't open <b>%1</b></qt>" ).tqarg(term) );
+		KMessageBox::sorry( krApp, i18n( "<qt>Can't open <b>%1</b></qt>" ).arg(term) );
 
 	chdir( save.local8Bit() );
 }
@@ -423,7 +423,7 @@ void ListPanelFunc::moveFiles() {
 		TQString s;
 
   if( fileNames.count() == 1 )
-    s = i18n("Move %1 to:").tqarg(fileNames.first());
+    s = i18n("Move %1 to:").arg(fileNames.first());
   else
     s = i18n("Move %n file to:", "Move %n files to:", fileNames.count());
 
@@ -578,7 +578,7 @@ void ListPanelFunc::copyFiles() {
 		TQString s;
 
   if( fileNames.count() == 1 )
-    s = i18n("Copy %1 to:").tqarg(fileNames.first());
+    s = i18n("Copy %1 to:").arg(fileNames.first());
   else
     s = i18n("Copy %n file to:", "Copy %n files to:", fileNames.count());
 
@@ -679,7 +679,7 @@ void ListPanelFunc::deleteFiles(bool reallyDelete) {
 			dir.setPath( panel->virtualPath().path() + "/" + ( *name ) );
 			if ( dir.entryList(TQDir::All | TQDir::System | TQDir::Hidden ).count() > 2 ) {
 				switch ( KMessageBox::warningYesNoCancel( krApp,
-																		i18n( "<qt><p>Directory <b>%1</b> is not empty!</p><p>Skip this one or Delete All?</p></qt>" ).tqarg(*name),
+																		i18n( "<qt><p>Directory <b>%1</b> is not empty!</p><p>Skip this one or Delete All?</p></qt>" ).arg(*name),
 																		TQString(), i18n( "&Skip" ), i18n( "&Delete All" ) ) ) {
 						case KMessageBox::Cancel :
 						return ;
@@ -806,9 +806,9 @@ void ListPanelFunc::pack() {
 	}
 
 	if (  TQFileInfo( arcFile ).exists() ) {
-		TQString msg = i18n( "<qt><p>The archive <b>%1.%2</b> already exists. Do you want to overwrite it?</p><p>All data in the previous archive will be lost!</p></qt>").tqarg(PackGUI::filename).tqarg(PackGUI::type);
+		TQString msg = i18n( "<qt><p>The archive <b>%1.%2</b> already exists. Do you want to overwrite it?</p><p>All data in the previous archive will be lost!</p></qt>").arg(PackGUI::filename).arg(PackGUI::type);
 		if( PackGUI::type == "zip" ) {
-			msg = i18n( "<qt><p>The archive <b>%1.%2</b> already exists. Do you want to overwrite it?</p><p>Zip will replace identically named entries in the zip archive or add entries for new names.</p></qt>").tqarg(PackGUI::filename).tqarg(PackGUI::type);
+			msg = i18n( "<qt><p>The archive <b>%1.%2</b> already exists. Do you want to overwrite it?</p><p>Zip will replace identically named entries in the zip archive or add entries for new names.</p></qt>").arg(PackGUI::filename).arg(PackGUI::type);
 		}
 		if ( KMessageBox::warningContinueCancel( krApp,msg,TQString(),i18n( "&Overwrite" ))
 		        == KMessageBox::Cancel )
@@ -887,7 +887,7 @@ void ListPanelFunc::testArchive() {
 	
 	// check we that archive is supported
 	if ( !KRarcHandler::arcSupported( type ) ) {
-		KMessageBox::sorry( krApp, i18n( "%1, unknown archive type." ).tqarg( arcName ) );
+		KMessageBox::sorry( krApp, i18n( "%1, unknown archive type." ).arg( arcName ) );
 		return ;
 	}
 	
@@ -895,9 +895,9 @@ void ListPanelFunc::testArchive() {
 	
 	// test the archive
 	if ( KRarcHandler::test( url, type, password ) )
-		KMessageBox::information( krApp, i18n( "%1, test passed." ).tqarg( arcName ) );
+		KMessageBox::information( krApp, i18n( "%1, test passed." ).arg( arcName ) );
 	else
-		KMessageBox::error( krApp, i18n( "%1, test failed!" ).tqarg( arcName ) );
+		KMessageBox::error( krApp, i18n( "%1, test failed!" ).arg( arcName ) );
 
 	// remove the downloaded file if necessary
 	if ( url != arcURL.path( -1 ) )
@@ -913,7 +913,7 @@ void ListPanelFunc::unpack() {
 
 	TQString s;
   if(fileNames.count() == 1)
-    s = i18n("Unpack %1 to:").tqarg(fileNames[0]);
+    s = i18n("Unpack %1 to:").arg(fileNames[0]);
   else
     s = i18n("Unpack %n file to:", "Unpack %n files to:", fileNames.count());
 
@@ -961,7 +961,7 @@ void ListPanelFunc::unpack() {
 
 		// check we that archive is supported
 		if ( !KRarcHandler::arcSupported( type ) ) {
-			KMessageBox::sorry( krApp, i18n( "%1, unknown archive type" ).tqarg( arcName ) );
+			KMessageBox::sorry( krApp, i18n( "%1, unknown archive type" ).arg( arcName ) );
 			continue;
 		}
 		

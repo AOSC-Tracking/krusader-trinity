@@ -357,7 +357,7 @@ void KrSearchDialog::found(TQString what, TQString where, KIO::filesize_t size, 
   TQDateTime tmp(TQDate(t->tm_year+1900, t->tm_mon+1, t->tm_mday), TQTime(t->tm_hour, t->tm_min));
   ResultListViewItem *it =new ResultListViewItem(resultsList, what,
   	 where.replace(TQRegExp("\\\\"),"#"), size, tmp, perm);
-  TQString totals = TQString(i18n("Found %1 matches.")).tqarg(resultsList->childCount());
+  TQString totals = TQString(i18n("Found %1 matches.")).arg(resultsList->childCount());
   foundLabel->setText(totals);
 
   if (!foundText.isEmpty()) it->setFoundText(foundText);
@@ -568,7 +568,7 @@ void KrSearchDialog::feedToListBox()
   int listBoxNum = krConfig->readNumEntry( "Feed To Listbox Counter", 1 );
   TQString queryName;
   do {
-    queryName = i18n("Search results")+TQString( " %1" ).tqarg( listBoxNum++ );
+    queryName = i18n("Search results")+TQString( " %1" ).arg( listBoxNum++ );
   }while( v.vfs_search( queryName ) != 0 );
   krConfig->writeEntry( "Feed To Listbox Counter", listBoxNum );
 

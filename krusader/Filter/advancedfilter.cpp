@@ -472,7 +472,7 @@ void AdvancedFilter::invalidDateMessage(TQLineEdit *p)
 {
   // FIXME p->text() is empty sometimes (to reproduce, set date to "13.09.005")
   KMessageBox::detailedError(this, i18n("Invalid date entered."),
-                             i18n("The date %1 is not valid according to your locale. Please re-enter a valid date (use the date button for easy access).").tqarg(p->text()) );
+                             i18n("The date %1 is not valid according to your locale. Please re-enter a valid date (use the date button for easy access).").arg(p->text()) );
   p->setFocus();
 }
 

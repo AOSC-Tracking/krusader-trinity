@@ -451,7 +451,7 @@ bool KRQuery::checkTimer() const {
   if( timer.elapsed() >= STATUS_SEND_DELAY ) {
     int pcnt = (int)(100.*(double)receivedBytes/(double)totalBytes + .5);
     TQString message = i18n( "Searching content of '%1' (%2%)" )
-                      .tqarg( fileName ).tqarg( pcnt );
+                      .arg( fileName ).arg( pcnt );
     timer.start();
     emit ((KRQuery *)this)->status( message );
     return true;

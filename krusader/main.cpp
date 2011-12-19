@@ -105,7 +105,7 @@ int main(int argc, char *argv[]) {
 
   // ABOUT data information
 #ifdef RELEASE_NAME
-  TQString versionName = TQString("%1 \"%2\"").tqarg(VERSION).tqarg(RELEASE_NAME);
+  TQString versionName = TQString("%1 \"%2\"").arg(VERSION).arg(RELEASE_NAME);
 #else
   TQString versionName = VERSION;
 #endif

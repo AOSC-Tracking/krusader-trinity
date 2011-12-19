@@ -282,7 +282,7 @@ CreateChecksumDlg::CreateChecksumDlg(const TQStringList& files, bool containFold
 	krApp->stopWait();
 	TQApplication::restoreOverrideCursor();
 	if (!r || !proc.normalExit()) {	
-		KMessageBox::error(0, i18n("<qt>There was an error while running <b>%1</b>.</qt>").tqarg(mytool->binary));
+		KMessageBox::error(0, i18n("<qt>There was an error while running <b>%1</b>.</qt>").arg(mytool->binary));
 		return;
 	}
 	
@@ -361,7 +361,7 @@ MatchChecksumDlg::MatchChecksumDlg(const TQStringList& files, bool containFolder
 	TQString file = checksumFileReq->url();
 	TQString extension;
 	if (!verifyChecksumFile(file, extension)) {
-		KMessageBox::error(0, i18n("<qt>Error reading checksum file <i>%1</i>.<br />Please specify a valid checksum file.</qt>").tqarg(file));
+		KMessageBox::error(0, i18n("<qt>Error reading checksum file <i>%1</i>.<br />Please specify a valid checksum file.</qt>").arg(file));
 		return;
 	}
 	
@@ -374,7 +374,7 @@ MatchChecksumDlg::MatchChecksumDlg(const TQStringList& files, bool containFolder
 			break;
 		}
 	if (!mytool) {
-		KMessageBox::error(0, i18n("<qt>Krusader can't find a checksum tool that handles %1 on your system. Please check the <b>Dependencies</b> page in Krusader's settings.</qt>").tqarg(extension));
+		KMessageBox::error(0, i18n("<qt>Krusader can't find a checksum tool that handles %1 on your system. Please check the <b>Dependencies</b> page in Krusader's settings.</qt>").arg(extension));
 		return;
 	}
 	
@@ -396,7 +396,7 @@ MatchChecksumDlg::MatchChecksumDlg(const TQStringList& files, bool containFolder
 		}
    };
 	if (!r || !proc.normalExit()) {	
-		KMessageBox::error(0, i18n("<qt>There was an error while running <b>%1</b>.</qt>").tqarg(mytool->binary));
+		KMessageBox::error(0, i18n("<qt>There was an error while running <b>%1</b>.</qt>").arg(mytool->binary));
 		return;
 	}
 	TQApplication::restoreOverrideCursor();
@@ -569,7 +569,7 @@ ChecksumResultsDlg::ChecksumResultsDlg(const TQStringList& stdOut, const TQStrin
 bool ChecksumResultsDlg::saveChecksum(const TQStringList& data, TQString filename) {
 	if (TQFile::exists(filename) &&
 		KMessageBox::warningContinueCancel(this,
-		i18n("File %1 already exists.\nAre you sure you want to overwrite it?").tqarg(filename),
+		i18n("File %1 already exists.\nAre you sure you want to overwrite it?").arg(filename),
 		i18n("Warning"), i18n("Overwrite")) != KMessageBox::Continue) {
 		// find a better name to save to
 		filename = KFileDialog::getSaveFileName(TQString(), "*", 0, i18n("Select a file to save to"));
@@ -577,7 +577,7 @@ bool ChecksumResultsDlg::saveChecksum(const TQStringList& data, TQString filenam
 	} 
 	TQFile file(filename);
 	if (!file.open(IO_WriteOnly)) {
-		KMessageBox::detailedError(0, i18n("Error saving file %1").tqarg(filename),
+		KMessageBox::detailedError(0, i18n("Error saving file %1").arg(filename),
 			file.errorString());
 		return false;
 	}

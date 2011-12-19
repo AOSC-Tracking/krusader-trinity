@@ -57,8 +57,8 @@ SynchronizeDialog::SynchronizeDialog( TQWidget* parent,  const char* name, bool 
   cbRightToLeft->setEnabled( leftCopyNr != 0 );
   tqlayout->addWidget( cbRightToLeft );
 
-  lbRightToLeft = new TQLabel( "\t" + i18n( "Ready: %1/1 file, %3/%4", "Ready: %1/%n files, %3/%4", leftCopyNr).tqarg( 0 )
-                             .tqarg( 0 ).tqarg( KRpermHandler::parseSize( leftCopySize ).stripWhiteSpace() ),
+  lbRightToLeft = new TQLabel( "\t" + i18n( "Ready: %1/1 file, %3/%4", "Ready: %1/%n files, %3/%4", leftCopyNr).arg( 0 )
+                             .arg( 0 ).arg( KRpermHandler::parseSize( leftCopySize ).stripWhiteSpace() ),
                              this, "lbRightToLeft" );
   lbRightToLeft->setEnabled( leftCopyNr != 0 );
   tqlayout->addWidget( lbRightToLeft );
@@ -70,8 +70,8 @@ SynchronizeDialog::SynchronizeDialog( TQWidget* parent,  const char* name, bool 
   cbLeftToRight->setEnabled( rightCopyNr != 0 );
   tqlayout->addWidget( cbLeftToRight );
 
-  lbLeftToRight = new TQLabel( "\t" + i18n( "Ready: %1/1 file, %3/%4", "Ready: %1/%n files, %3/%4", rightCopyNr ).tqarg( 0 )
-                             .tqarg( 0 ).tqarg( KRpermHandler::parseSize( rightCopySize ).stripWhiteSpace() ),
+  lbLeftToRight = new TQLabel( "\t" + i18n( "Ready: %1/1 file, %3/%4", "Ready: %1/%n files, %3/%4", rightCopyNr ).arg( 0 )
+                             .arg( 0 ).arg( KRpermHandler::parseSize( rightCopySize ).stripWhiteSpace() ),
                              this, "lbLeftToRight" );
   lbLeftToRight->setEnabled( rightCopyNr != 0 );
   tqlayout->addWidget( lbLeftToRight );
@@ -83,8 +83,8 @@ SynchronizeDialog::SynchronizeDialog( TQWidget* parent,  const char* name, bool 
   cbDeletable->setEnabled( deleteNr != 0 );
   tqlayout->addWidget( cbDeletable );
 
-  lbDeletable   = new TQLabel( "\t" + i18n( "Ready: %1/1 file, %3/%4", "Ready: %1/%n files, %3/%4", deleteNr ).tqarg( 0 )
-                             .tqarg( 0 ).tqarg( KRpermHandler::parseSize( deleteSize ).stripWhiteSpace() ),
+  lbDeletable   = new TQLabel( "\t" + i18n( "Ready: %1/1 file, %3/%4", "Ready: %1/%n files, %3/%4", deleteNr ).arg( 0 )
+                             .arg( 0 ).arg( KRpermHandler::parseSize( deleteSize ).stripWhiteSpace() ),
                              this, "lbDeletable" );
   lbDeletable->setEnabled( deleteNr != 0 );
   tqlayout->addWidget( lbDeletable );
@@ -155,15 +155,15 @@ void SynchronizeDialog::synchronizationFinished()
 void SynchronizeDialog::processedSizes( int leftNr, KIO::filesize_t leftSize, int rightNr,
                                         KIO::filesize_t rightSize, int delNr, KIO::filesize_t delSize )
 {
-  lbRightToLeft->setText( i18n( "\tReady: %1/%2 files, %3/%4" ).tqarg( leftNr ).tqarg( leftCopyNr )
-                          .tqarg( KRpermHandler::parseSize( leftSize ).stripWhiteSpace() )
-                          .tqarg( KRpermHandler::parseSize( leftCopySize ).stripWhiteSpace() ) );
-  lbLeftToRight->setText( i18n( "\tReady: %1/%2 files, %3/%4" ).tqarg( rightNr ).tqarg( rightCopyNr )
-                          .tqarg( KRpermHandler::parseSize( rightSize ).stripWhiteSpace() )
-                          .tqarg( KRpermHandler::parseSize( rightCopySize ).stripWhiteSpace() ) );
-  lbDeletable->setText  ( i18n( "\tReady: %1/%2 files, %3/%4" ).tqarg( delNr ).tqarg( deleteNr )
-                          .tqarg( KRpermHandler::parseSize( delSize ).stripWhiteSpace() )
-                          .tqarg( KRpermHandler::parseSize( deleteSize ).stripWhiteSpace() ) );
+  lbRightToLeft->setText( i18n( "\tReady: %1/%2 files, %3/%4" ).arg( leftNr ).arg( leftCopyNr )
+                          .arg( KRpermHandler::parseSize( leftSize ).stripWhiteSpace() )
+                          .arg( KRpermHandler::parseSize( leftCopySize ).stripWhiteSpace() ) );
+  lbLeftToRight->setText( i18n( "\tReady: %1/%2 files, %3/%4" ).arg( rightNr ).arg( rightCopyNr )
+                          .arg( KRpermHandler::parseSize( rightSize ).stripWhiteSpace() )
+                          .arg( KRpermHandler::parseSize( rightCopySize ).stripWhiteSpace() ) );
+  lbDeletable->setText  ( i18n( "\tReady: %1/%2 files, %3/%4" ).arg( delNr ).arg( deleteNr )
+                          .arg( KRpermHandler::parseSize( delSize ).stripWhiteSpace() )
+                          .arg( KRpermHandler::parseSize( deleteSize ).stripWhiteSpace() ) );
 
   KIO::filesize_t totalSum      = leftCopySize + rightCopySize + deleteSize;
   KIO::filesize_t processedSum  = leftSize + rightSize + delSize;

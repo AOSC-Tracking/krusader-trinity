@@ -305,7 +305,7 @@ void KgProtocols::loadInitialValues()
   {
     addProtocol( *it );
     
-    TQStringList mimes = krConfig->readListEntry( TQString( "Mimes For %1" ).tqarg( *it ) );
+    TQStringList mimes = krConfig->readListEntry( TQString( "Mimes For %1" ).arg( *it ) );
     
     for( TQStringList::Iterator it2 = mimes.begin(); it2 != mimes.end(); it2++ )
       addMime( *it2, *it );
@@ -354,7 +354,7 @@ bool KgProtocols::isChanged()
     if( !protList.contains( item->text( 0 ) ) )
       return true;
       
-    TQStringList mimes = krConfig->readListEntry( TQString( "Mimes For %1" ).tqarg( item->text( 0 ) ) );
+    TQStringList mimes = krConfig->readListEntry( TQString( "Mimes For %1" ).arg( item->text( 0 ) ) );
     
     if( (int)mimes.count() != item->childCount() )
       return true;
@@ -390,7 +390,7 @@ bool KgProtocols::apply()
       mimes.append( childs->text( 0 ) );
       childs = childs->nextSibling();
     }
-    krConfig->writeEntry( TQString( "Mimes For %1" ).tqarg( item->text( 0 ) ), mimes );
+    krConfig->writeEntry( TQString( "Mimes For %1" ).arg( item->text( 0 ) ), mimes );
     
     item = item->nextSibling();
   }  

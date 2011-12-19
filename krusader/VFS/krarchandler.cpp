@@ -202,7 +202,7 @@ long KRarcHandler::arcFileCount( TQString archive, TQString type, TQString passw
   krApp->stopWait();
   
   if( !list.normalExit() || !checkStatus( type, list.exitStatus() ) ) {
-    KMessageBox::detailedError (krApp, i18n( "Failed to list the content of the archive (%1)!" ).tqarg( archive ), 
+    KMessageBox::detailedError (krApp, i18n( "Failed to list the content of the archive (%1)!" ).arg( archive ), 
                                 list.getErrorMsg(), i18n("Error" ) );
     return 0;
   }
@@ -259,7 +259,7 @@ bool KRarcHandler::unpack( TQString archive, TQString type, TQString password, T
     cpio << KrServices::fullPathName( "rpm2cpio" ) << " " + KrServices::quote( archive ) << " > " << cpioName;
     cpio.start(KProcess::Block, KProcess::AllOutput );
     if( !cpio.normalExit() || !checkStatus( "cpio", cpio.exitStatus() ) ) {
-      KMessageBox::detailedError (krApp, i18n( "Failed to convert rpm (%1) to cpio!" ).tqarg( archive ), 
+      KMessageBox::detailedError (krApp, i18n( "Failed to convert rpm (%1) to cpio!" ).arg( archive ), 
                                   cpio.getErrorMsg(), i18n("Error" ) );
       return 0;
     }
@@ -276,7 +276,7 @@ bool KRarcHandler::unpack( TQString archive, TQString type, TQString password, T
     dpkg << KrServices::fullPathName( "dpkg" ) << " --fsys-tarfile " + KrServices::quote( archive ) << " > " << cpioName;
     dpkg.start(KProcess::Block, KProcess::AllOutput );
     if( !dpkg.normalExit() || !checkStatus( "-deb", dpkg.exitStatus() ) ) {
-      KMessageBox::detailedError (krApp, i18n( "Failed to convert deb (%1) to tar!" ).tqarg( archive ), 
+      KMessageBox::detailedError (krApp, i18n( "Failed to convert deb (%1) to tar!" ).arg( archive ), 
                                   dpkg.getErrorMsg(), i18n("Error" ) );
       return 0;
     }
@@ -336,7 +336,7 @@ bool KRarcHandler::unpack( TQString archive, TQString type, TQString password, T
   
   // check the return value
   if ( !proc.normalExit() || !checkStatus( type, proc.exitStatus() ) ) {
-    KMessageBox::detailedError (krApp, i18n( "Failed to unpack %1!" ).tqarg( archive ), 
+    KMessageBox::detailedError (krApp, i18n( "Failed to unpack %1!" ).arg( archive ), 
                                 krApp->wasWaitingCancelled() ? i18n( "User cancelled." ) : 
                                 proc.getErrorMsg(), i18n("Error" ) );
     return false;
@@ -446,7 +446,7 @@ bool KRarcHandler::pack( TQStringList fileNames, TQString type, TQString dest, l
 
      if( size >= 10000 ) {
        if( type == "-arj" || type == "-rar" )
-           packer += TQString( " -v%1b" ).tqarg( sizeStr );
+           packer += TQString( " -v%1b" ).arg( sizeStr );
      }
   }
 
@@ -459,24 +459,24 @@ bool KRarcHandler::pack( TQStringList fileNames, TQString type, TQString dest, l
 
      if( type == "-rar" ) {
        static const int rarLevels[] = { 0, 1, 2, 2, 3, 3, 4, 4, 5 };
-       packer += TQString( " -m%1" ).tqarg( rarLevels[ level ] );
+       packer += TQString( " -m%1" ).arg( rarLevels[ level ] );
      }
      else if( type == "-arj" ) {
        static const int arjLevels[] = { 0, 4, 4, 3, 3, 2, 2, 1, 1 };
-       packer += TQString( " -m%1" ).tqarg( arjLevels[ level ] );
+       packer += TQString( " -m%1" ).arg( arjLevels[ level ] );
      }
      else if( type == "-zip" ) {
        static const int zipLevels[] = { 0, 1, 2, 4, 5, 6, 7, 8, 9 };
-       packer += TQString( " -%1" ).tqarg( zipLevels[ level ] );
+       packer += TQString( " -%1" ).arg( zipLevels[ level ] );
      }
      else if( type == "-7z" ) {
        static const int sevenZipLevels[] = { 0, 1, 2, 4, 5, 6, 7, 8, 9 };
-       packer += TQString( " -mx%1" ).tqarg( sevenZipLevels[ level ] );
+       packer += TQString( " -mx%1" ).arg( sevenZipLevels[ level ] );
      }
   }
 
   if( extraProps.count( "CommandLineSwitches" ) > 0 )
-     packer += TQString( " %1" ).tqarg( extraProps[ "CommandLineSwitches" ] );
+     packer += TQString( " %1" ).arg( extraProps[ "CommandLineSwitches" ] );
   
   // prepare to pack
   KrShellProcess proc;
@@ -505,7 +505,7 @@ bool KRarcHandler::pack( TQStringList fileNames, TQString type, TQString dest, l
 
   // check the return value
   if ( !proc.normalExit() || !checkStatus( type, proc.exitStatus() ) ) {
-    KMessageBox::detailedError (krApp, i18n( "Failed to pack %1!" ).tqarg( dest ), 
+    KMessageBox::detailedError (krApp, i18n( "Failed to pack %1!" ).arg( dest ), 
                                 krApp->wasWaitingCancelled() ? i18n( "User cancelled." ) : proc.getErrorMsg(), 
                                 i18n("Error" ) );
     return false;

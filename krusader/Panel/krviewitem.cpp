@@ -58,14 +58,14 @@ TQString KrViewItem::description() const {
 		TQString tmp;
 		if ( comment.isEmpty() )	tmp = i18n ( "Symbolic Link" ) ;
 		else if( _vf->vfile_getMime() == "Broken Link !" ) tmp = i18n("(broken link !)");
-		else tmp = i18n("%1 (Link)").tqarg(comment);
+		else tmp = i18n("%1 (Link)").arg(comment);
 	
 		text += "->";
 	text += myLinkDest;
 	text += "  ";
 	text += tmp;
 	} else if ( S_ISREG( m_fileMode ) ){
-	text = TQString("%1 (%2)").tqarg(text2).tqarg( PROPS->humanReadableSize ?
+	text = TQString("%1 (%2)").arg(text2).arg( PROPS->humanReadableSize ?
 		KRpermHandler::parseSize(_vf->vfile_getSize()) : KIO::convertSize( mySize ) );
 	text += "  ";
 	text += comment;

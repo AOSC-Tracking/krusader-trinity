@@ -154,10 +154,10 @@ void KgDependencies::slotApply( TQObject *obj, TQString cls, TQString name )
     krConfig->writeEntry( name, usedPath );
     if( usedPath.isEmpty() )
       KMessageBox::error( this, i18n( "The %1 path is incorrect, no valid path found." )
-                          .tqarg( urlRequester->url() ) );
+                          .arg( urlRequester->url() ) );
     else
       KMessageBox::error( this, i18n( "The %1 path is incorrect, %2 used instead." )
-                          .tqarg( urlRequester->url() ).tqarg( usedPath ) );
+                          .arg( urlRequester->url() ).arg( usedPath ) );
     urlRequester->setURL( usedPath );
   }
 }

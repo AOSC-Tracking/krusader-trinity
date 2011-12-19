@@ -44,7 +44,7 @@ class PanelManager: public TQWidget {
     int  activeTab();
     void setActiveTab( int );
     void setCurrentTab( int );
-    void refreshAllTabs( bool tqinvalidate = false );
+    void refreshAllTabs( bool invalidate = false );
 
   public slots:
     /**

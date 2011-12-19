@@ -412,7 +412,7 @@ bool PackGUIBase::extraProperties( TQMap<TQString,TQString> & inMap ) {
     }
 
     if( setCompressionLevel->isEnabled() && setCompressionLevel->isChecked() ) {
-      inMap[ "CompressionLevel" ] = TQString("%1").tqarg( compressionSlider->value() );
+      inMap[ "CompressionLevel" ] = TQString("%1").arg( compressionSlider->value() );
     }
 
     TQString cmdArgs = commandLineSwitches->currentText().stripWhiteSpace();
