@@ -274,7 +274,7 @@ void kio_isoProtocol::listDir( const KURL & url )
     const KArchiveDirectory* dir;
     if (!path.isEmpty() && path != "/")
     {
-        kdDebug()   << TQString("Looking for entry %1").tqarg(path) << endl;
+        kdDebug()   << TQString("Looking for entry %1").arg(path) << endl;
         const KArchiveEntry* e = root->entry( path );
         if ( !e )
         {

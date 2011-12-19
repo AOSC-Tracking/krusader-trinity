@@ -28,7 +28,7 @@ namespace RadialMap
         bool resize( const TQRect& );
 
         bool isNull() const { return ( m_signature == 0 ); }
-        void tqinvalidate( const bool );
+        void invalidate( const bool );
 
         friend class Builder;
         friend class Widget;
@@ -69,7 +69,7 @@ namespace RadialMap
         void zoomIn();
         void zoomOut();
         void create( const Directory* );
-        void tqinvalidate( const bool = true );
+        void invalidate( const bool = true );
         void refresh( int );
 
     private slots:

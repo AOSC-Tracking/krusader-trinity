@@ -37,7 +37,7 @@ RadialMap::Map::~Map()
 }
 
 void
-RadialMap::Map::tqinvalidate( const bool desaturateTheImage )
+RadialMap::Map::invalidate( const bool desaturateTheImage )
 {
     delete [] m_signature;
     m_signature = 0;

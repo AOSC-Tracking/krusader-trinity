@@ -79,7 +79,7 @@ void ArchiveProtocol::put( const KURL& url, int, bool, bool resume ){
 
 	if( !m_archiveFile->prepareWriting(filename,user,group,size) ){
 		error(ERR_UNSUPPORTED_ACTION,
-		      i18n("Writing to %1 is not supported").tqarg(filename) );
+		      i18n("Writing to %1 is not supported").arg(filename) );
 		return;
 	}
 	while( (temp=buffer.dequeue()) ){
@@ -259,7 +259,7 @@ void ArchiveProtocol::listDir( const KURL & url ) {
 	const KArchiveDirectory* root = m_archiveFile->directory();
 	const KArchiveDirectory* dir;
 	if ( !path.isEmpty() && path != "/" ) {
-		kdDebug( 7109 ) << TQString( "Looking for entry %1" ).tqarg( path ) << endl;
+		kdDebug( 7109 ) << TQString( "Looking for entry %1" ).arg( path ) << endl;
 		const KArchiveEntry* e = root->entry( path );
 		if ( !e ) {
 			error( KIO::ERR_DOES_NOT_EXIST, url.prettyURL() );

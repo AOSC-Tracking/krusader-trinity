@@ -154,7 +154,7 @@ int Synchronizer::compare( TQString leftURL, TQString rightURL, KRQuery *query, 
   if( !autoScroll )
     refresh( true );
 
-  emit statusInfo( i18n( "Number of files: %1" ).tqarg( fileCount ) );
+  emit statusInfo( i18n( "Number of files: %1" ).arg( fileCount ) );
   return fileCount;
 }
 
@@ -185,7 +185,7 @@ void Synchronizer::compareLoop() {
         break;
       case ST_STATE_READY:
       case ST_STATE_ERROR:
-        emit statusInfo( i18n( "Number of compared directories: %1" ).tqarg( comparedDirs ) );
+        emit statusInfo( i18n( "Number of compared directories: %1" ).arg( comparedDirs ) );
         stack.removeRef( entry );
         continue;
       default:
@@ -645,7 +645,7 @@ int Synchronizer::refresh(bool nostatus)
   }
 
   if( !nostatus )
-    emit statusInfo( i18n( "Number of files: %1" ).tqarg( fileCount ) );
+    emit statusInfo( i18n( "Number of files: %1" ).arg( fileCount ) );
 
   return fileCount;
 }
@@ -1207,16 +1207,16 @@ void Synchronizer::slotTaskFinished(KIO::Job *job )
         {
         case TT_COPY_TO_LEFT:
           error = i18n("Error at copying file %1 to %2!")
-                       .tqarg( vfs::pathOrURL( rightURL ) )
-                       .tqarg( vfs::pathOrURL( leftURL ) );
+                       .arg( vfs::pathOrURL( rightURL ) )
+                       .arg( vfs::pathOrURL( leftURL ) );
           break;
         case TT_COPY_TO_RIGHT:
           error = i18n("Error at copying file %1 to %2!")
-                       .tqarg( vfs::pathOrURL( leftURL ) )
-                       .tqarg( vfs::pathOrURL( rightURL ) );
+                       .arg( vfs::pathOrURL( leftURL ) )
+                       .arg( vfs::pathOrURL( rightURL ) );
           break;
         case TT_DELETE:
-          error = i18n("Error at deleting file %1!").tqarg( vfs::pathOrURL( leftURL ) );
+          error = i18n("Error at deleting file %1!").arg( vfs::pathOrURL( leftURL ) );
           break;
         default:
           break;

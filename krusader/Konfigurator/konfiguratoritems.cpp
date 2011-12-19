@@ -418,7 +418,7 @@ void KonfiguratorFontChooser::loadInitialValue()
 void KonfiguratorFontChooser::setFont()
 {
   pLabel->setFont( font );
-  pLabel->setText( font.family()+TQString(", %1").tqarg(font.pointSize()) );
+  pLabel->setText( font.family()+TQString(", %1").arg(font.pointSize()) );
 }
 
 void KonfiguratorFontChooser::slotApply(TQObject *,TQString cls, TQString name)
@@ -696,7 +696,7 @@ TQString KonfiguratorColorChooser::getValue()
   else if( currentItem() >= 2 && (unsigned)currentItem() < 2 + additionalColors.size() )
     return additionalColors[ currentItem() - 2 ].value;
   else
-    return TQString( "%1,%2,%3" ).tqarg( color.red() ).tqarg( color.green() ).tqarg( color.blue() );
+    return TQString( "%1,%2,%3" ).arg( color.red() ).arg( color.green() ).arg( color.blue() );
 }
 
 bool KonfiguratorColorChooser::isValueRGB()

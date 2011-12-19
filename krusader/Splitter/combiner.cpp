@@ -59,7 +59,7 @@ Combiner::~Combiner()
 void Combiner::combine()
 {
   setCaption( i18n("Krusader::Combining...") );
-  setLabelText( i18n("Combining the file %1...").tqarg( vfs::pathOrURL( baseURL ) ));
+  setLabelText( i18n("Combining the file %1...").arg( vfs::pathOrURL( baseURL ) ));
 
     /* check whether the .crc file exists */
   splURL = baseURL;
@@ -71,7 +71,7 @@ void Combiner::combine()
   {
     int ret = KMessageBox::questionYesNo(0, i18n("The CRC information file (%1) is missing!\n"
         "Validity checking is impossible without it. Continue combining?")
-        .tqarg( vfs::pathOrURL( splURL ) ) );
+        .arg( vfs::pathOrURL( splURL ) ) );
 
     if( ret == KMessageBox::No )
     {
@@ -107,7 +107,7 @@ void Combiner::combineSplitFileFinished(KIO::Job *job)
   TQString error;
   
   if( job->error() )
-    error = i18n("Error at reading the CRC file (%1)!").tqarg( vfs::pathOrURL( splURL ) );
+    error = i18n("Error at reading the CRC file (%1)!").arg( vfs::pathOrURL( splURL ) );
   else
   {
     splitFile.remove( '\r' ); // Windows compatibility
@@ -174,7 +174,7 @@ void Combiner::openNextFile()
       
       do
       {
-        ch = name.tqat( pos ).latin1() + 1;
+        ch = name.at( pos ).latin1() + 1;
         if( ch == TQChar( 'Z' + 1 ) )
           ch = 'A';
         if( ch == TQChar( 'z' + 1 ) )
@@ -189,7 +189,7 @@ void Combiner::openNextFile()
   else
   {
     TQString index( "%1" );      /* determining the filename */
-    index = index.tqarg(++fileCounter).rightJustify( 3, '0' );
+    index = index.arg(++fileCounter).rightJustify( 3, '0' );
     readURL = baseURL;
     readURL.setFileName( baseURL.fileName() + "." + index );
   }
@@ -254,14 +254,14 @@ void Combiner::combineReceiveFinished(KIO::Job *job)
     {
       combineAbortJobs();
       KMessageBox::questionYesNo(0, i18n("Can't open the first split file of %1!")
-                                 .tqarg( vfs::pathOrURL( baseURL ) ) );
+                                 .arg( vfs::pathOrURL( baseURL ) ) );
       emit reject();
       return;
     }    
 
     if( hasValidSplitFile )
     {
-      TQString crcResult = TQString( "%1" ).tqarg( crcContext->result(), 0, 16 ).upper().stripWhiteSpace()
+      TQString crcResult = TQString( "%1" ).arg( crcContext->result(), 0, 16 ).upper().stripWhiteSpace()
                                          .rightJustify(8, '0');
       
       if( receivedSize != expectedSize )
@@ -293,7 +293,7 @@ void Combiner::combineSendFinished(KIO::Job *job)
   if( job->error() )    /* any error occurred? */
   {
     combineAbortJobs();
-    KMessageBox::error(0, i18n("Error writing file %1!").tqarg( vfs::pathOrURL( writeURL ) ) );
+    KMessageBox::error(0, i18n("Error writing file %1!").arg( vfs::pathOrURL( writeURL ) ) );
     emit reject();
     return;
   }

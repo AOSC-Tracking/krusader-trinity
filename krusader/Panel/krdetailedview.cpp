@@ -300,7 +300,7 @@ void KrDetailedView::addItems( vfs *v, bool addUpDir ) {
    }
 
    // text for updating the status bar
-   TQString statusText = TQString("%1/  ").tqarg( v->vfs_getOrigin().fileName() ) + i18n("Directory");
+   TQString statusText = TQString("%1/  ").arg( v->vfs_getOrigin().fileName() ) + i18n("Directory");
 
    int cnt = 0;
    int cl = columnSorted();
@@ -549,7 +549,7 @@ void KrDetailedView::contentsMousePressEvent( TQMouseEvent * e ) {
              lastSwushPosition = newCurrent;
            }
            newCurrent->setSelected(!newCurrent->isSelected());
-           newCurrent->tqrepaint();
+           newCurrent->repaint();
 			  selectionChanged = true;
          }
          callDefaultHandler = false;
@@ -564,7 +564,7 @@ void KrDetailedView::contentsMousePressEvent( TQMouseEvent * e ) {
             if( newCurrent )
             {
                newCurrent->setSelected(!newCurrent->isSelected());
-               newCurrent->tqrepaint();
+               newCurrent->repaint();
                selectionChanged = true;
                callDefaultHandler = false;
                e->accept();
@@ -576,7 +576,7 @@ void KrDetailedView::contentsMousePressEvent( TQMouseEvent * e ) {
             if( newCurrent )
             {
                newCurrent->setSelected( true );
-               newCurrent->tqrepaint();
+               newCurrent->repaint();
             }
             selectionChanged = true;
             callDefaultHandler = false;
@@ -604,7 +604,7 @@ void KrDetailedView::contentsMousePressEvent( TQMouseEvent * e ) {
          if (newCurrent)
          {
            newCurrent->setSelected(!newCurrent->isSelected());
-           newCurrent->tqrepaint();
+           newCurrent->repaint();
 			  selectionChanged = true;
          }
          callDefaultHandler = false;

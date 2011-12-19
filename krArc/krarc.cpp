@@ -124,7 +124,7 @@ void kio_krarcProtocol::mkdir(const KURL& url,int permissions){
 	
 	if( putCmd.isEmpty() ){
 		error(ERR_UNSUPPORTED_ACTION,
-		i18n("Creating directories is not supported with %1 archives").tqarg(arcType) );
+		i18n("Creating directories is not supported with %1 archives").arg(arcType) );
 		return;
 	}
 	
@@ -154,7 +154,7 @@ void kio_krarcProtocol::mkdir(const KURL& url,int permissions){
 	// pack the directory
 	KrShellProcess proc;
 	proc << putCmd << convertName( arcFile->url().path() ) + " " << convertFileName( tmpDir.mid(arcTempDir.length()) );
-	infoMessage(i18n("Creating %1 ...").tqarg( url.fileName() ) );
+	infoMessage(i18n("Creating %1 ...").arg( url.fileName() ) );
 	TQDir::setCurrent(arcTempDir);
 	proc.start(KProcess::Block,KProcess::AllOutput);
 	
@@ -184,7 +184,7 @@ void kio_krarcProtocol::put(const KURL& url,int permissions,bool overwrite,bool 
 	
 	if( putCmd.isEmpty() ){
 		error(ERR_UNSUPPORTED_ACTION,
-		i18n("Writing to %1 archives is not supported").tqarg(arcType) );
+		i18n("Writing to %1 archives is not supported").arg(arcType) );
 		return;
 	} 
 	if( !overwrite && findFileEntry(url) ){
@@ -225,7 +225,7 @@ void kio_krarcProtocol::put(const KURL& url,int permissions,bool overwrite,bool 
 	// pack the file
 	KrShellProcess proc;
 	proc << putCmd << convertName( arcFile->url().path() )+ " " <<convertFileName( tmpFile.mid(arcTempDir.length()) );
-	infoMessage(i18n("Packing %1 ...").tqarg( url.fileName() ) );
+	infoMessage(i18n("Packing %1 ...").arg( url.fileName() ) );
 	TQDir::setCurrent(arcTempDir);
 	proc.start(KProcess::Block,KProcess::AllOutput);
 	// remove the file
@@ -259,7 +259,7 @@ void kio_krarcProtocol::get(const KURL& url, int tries ){
 	
 	if( getCmd.isEmpty() ){
 		error(ERR_UNSUPPORTED_ACTION,
-		i18n("Retrieving data from %1 archives is not supported").tqarg(arcType) );
+		i18n("Retrieving data from %1 archives is not supported").arg(arcType) );
 		return;
 	} 
 	UDSEntry* entry = findFileEntry(url);
@@ -317,7 +317,7 @@ void kio_krarcProtocol::get(const KURL& url, int tries ){
 		connect(&proc,TQT_SIGNAL(receivedStdout(KProcess*,char*,int)),
 				this,TQT_SLOT(receivedData(KProcess*,char*,int)) );
 	}
-	infoMessage(i18n("Unpacking %1 ...").tqarg( url.fileName() ) );
+	infoMessage(i18n("Unpacking %1 ...").arg( url.fileName() ) );
 	// change the working directory to our arcTempDir
 	TQDir::setCurrent(arcTempDir);
 	proc.start(KProcess::Block,KProcess::AllOutput);
@@ -439,7 +439,7 @@ void kio_krarcProtocol::del(KURL const & url, bool isFile){
 	
 	if( delCmd.isEmpty() ){
 		error(ERR_UNSUPPORTED_ACTION,
-		i18n("Deleting files from %1 archives is not supported").tqarg(arcType) );
+		i18n("Deleting files from %1 archives is not supported").arg(arcType) );
 		return;
 	}
 	if( !findFileEntry(url) ){
@@ -455,7 +455,7 @@ void kio_krarcProtocol::del(KURL const & url, bool isFile){
 	}
 	KrShellProcess proc;
 	proc << delCmd << convertName( arcFile->url().path() )+" " << convertFileName( file );
-	infoMessage(i18n("Deleting %1 ...").tqarg( url.fileName() ) );
+	infoMessage(i18n("Deleting %1 ...").arg( url.fileName() ) );
 	proc.start(KProcess::Block, KProcess::AllOutput);
 	if( !proc.normalExit() || !checkStatus( proc.exitStatus() ) )  {
 		error(ERR_COULD_NOT_WRITE,url.path() + "\n\n" + proc.getErrorMsg() );
@@ -479,7 +479,7 @@ void kio_krarcProtocol::stat( const KURL & url ){
 	
 	if( listCmd.isEmpty() ){
 		error(ERR_UNSUPPORTED_ACTION,
-		i18n("Accessing files is not supported with the %1 archives").tqarg(arcType) );
+		i18n("Accessing files is not supported with the %1 archives").arg(arcType) );
 		return;
 	}    
 	TQString path = url.path(-1);
@@ -551,7 +551,7 @@ void kio_krarcProtocol::copy (const KURL &url, const KURL &dest, int, bool overw
 			if( arcType == "ace" && TQFile( "/dev/ptmx" ).exists() ) // Don't remove, unace crashes if missing!!!
 				proc << "<" << "/dev/ptmx"; 
 			
-			infoMessage(i18n("Unpacking %1 ...").tqarg( url.fileName() ) );
+			infoMessage(i18n("Unpacking %1 ...").arg( url.fileName() ) );
 			proc.start(KProcess::Block, KProcess::AllOutput);
 			if( !proc.normalExit() || !checkStatus( proc.exitStatus() ) )  {
 				error(KIO::ERR_COULD_NOT_WRITE, dest.path(-1) + "\n\n" + proc.getErrorMsg() );
@@ -579,7 +579,7 @@ void kio_krarcProtocol::listDir(const KURL& url){
 	}
 	if( listCmd.isEmpty() ){
 		error(ERR_UNSUPPORTED_ACTION,
-		i18n("Listing directories is not supported for %1 archives").tqarg(arcType) );
+		i18n("Listing directories is not supported for %1 archives").arg(arcType) );
 		return;
 	}  
 	TQString path = url.path();
@@ -983,13 +983,13 @@ void kio_krarcProtocol::parseLine(int lineNo, TQString line, TQFile*) {
 		
 		if( perm.length() == 7 ) // windows rar permission format
 		{
-			bool isDir  = ( perm.tqat(1).lower() == 'd' );
-			bool isReadOnly = ( perm.tqat(2).lower() == 'r' );
+			bool isDir  = ( perm.at(1).lower() == 'd' );
+			bool isReadOnly = ( perm.at(2).lower() == 'r' );
 			
 			perm = isDir ? "drwxr-xr-x" : "-rw-r--r--";
 			
 			if( isReadOnly )
-				perm.tqat( 2 ) = '-';
+				perm.at( 2 ) = '-';
 		}        
 		
 		if(perm.length() != 10) perm = (perm.at(0)=='d')? "drwxr-xr-x" : "-rw-r--r--" ;    
@@ -1141,11 +1141,11 @@ void kio_krarcProtocol::parseLine(int lineNo, TQString line, TQFile*) {
 		
 		// permissions
 		perm = nextWord(line);
-		bool isDir  = ( perm.tqat(0).lower() == 'd' );
-		bool isReadOnly = ( perm.tqat(1).lower() == 'r' );
+		bool isDir  = ( perm.at(0).lower() == 'd' );
+		bool isReadOnly = ( perm.at(1).lower() == 'r' );
 		perm = isDir ? "drwxr-xr-x" : "-rw-r--r--";
 		if( isReadOnly )
-			perm.tqat( 2 ) = '-';
+			perm.at( 2 ) = '-';
 		
 		mode = parsePermString(perm);
 		
@@ -1369,7 +1369,7 @@ bool kio_krarcProtocol::initArcParameters() {
 	if( KStandardDirs::findExe(cmd).isEmpty() ){
 		error( KIO::ERR_CANNOT_LAUNCH_PROCESS,
 		cmd+
-		i18n("\nMake sure that the %1 binary are installed properly on your system.").tqarg(cmd));
+		i18n("\nMake sure that the %1 binary are installed properly on your system.").arg(cmd));
 		KRDEBUG("Failed to find cmd: " << cmd);
 		return false;
 	}

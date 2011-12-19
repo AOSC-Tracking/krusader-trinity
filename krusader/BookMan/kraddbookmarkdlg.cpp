@@ -88,7 +88,7 @@ void KrAddBookmarkDlg::createInSelection(TQListViewItem *item) {
 }
 
 void KrAddBookmarkDlg::populateCreateInWidget(KrBookmark *root, KListViewItem *parent) {
-	for (KrBookmark *bm = root->tqchildren().first(); bm; bm = root->tqchildren().next()) {
+	for (KrBookmark *bm = root->children().first(); bm; bm = root->children().next()) {
 		if (bm->isFolder()) {
 			KListViewItem *item = new KListViewItem(parent, bm->text());
 			item->setOpen(true);

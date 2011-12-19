@@ -139,7 +139,7 @@ TQString KrServices::registerdProtocol(TQString mimetype){
 		krConfig->setGroup( "Protocols" );
 		TQStringList protList = krConfig->readListEntry( "Handled Protocols" );
 		for( TQStringList::Iterator it = protList.begin(); it != protList.end(); it++ ){
-			TQStringList mimes = krConfig->readListEntry( TQString( "Mimes For %1" ).tqarg( *it ) );
+			TQStringList mimes = krConfig->readListEntry( TQString( "Mimes For %1" ).arg( *it ) );
 			for( TQStringList::Iterator it2 = mimes.begin(); it2 != mimes.end(); it2++ )
 				(*slaveMap)[*it2] = *it;
   		}

@@ -129,7 +129,7 @@ void remoteMan::refreshData() {
           int h=temp.mid(1,1).toInt();
           int l=temp.mid(2,1).toInt();
           if ((++l)==10) { ++h; l=0; }
-          temp=TQString("<%1%2>").tqarg(h).tqarg(l);
+          temp=TQString("<%1%2>").arg(h).arg(l);
           temp=currentItem->text(0).replace(currentItem->text(0).length()-4,4,temp);
           currentItem->setText(0,temp);
         } else currentItem->setText(0,currentItem->text(0)+"<02>");

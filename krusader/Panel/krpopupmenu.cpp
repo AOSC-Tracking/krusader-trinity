@@ -258,7 +258,7 @@ void KrPopupMenu::performAction(int id) {
          	break;
          case SHRED_ID :
             if ( KMessageBox::warningContinueCancel( krApp,
-                 i18n("<qt>Do you really want to shred <b>%1</b>? Once shred, the file is gone forever!</qt>").tqarg(item->name()),
+                 i18n("<qt>Do you really want to shred <b>%1</b>? Once shred, the file is gone forever!</qt>").arg(item->name()),
                  TQString(), KStdGuiItem::cont(), "Shred" ) == KMessageBox::Continue )
                KShred::shred( panel->func->files() ->vfs_getFile( item->name() ).path( -1 ) );
          	break;
@@ -336,7 +336,7 @@ void KrPopupMenu::performAction(int id) {
             	proc.setUseShell( true );
          	}
          	if ( !proc.start( KProcess::DontCare ) )
-               KMessageBox::sorry( krApp, i18n( "Can't open \"%1\"" ).tqarg(term) );
+               KMessageBox::sorry( krApp, i18n( "Can't open \"%1\"" ).arg(term) );
 				} // group-saver is blown out of scope here
          	chdir( save.local8Bit() );
          	break;

@@ -760,9 +760,9 @@ void ListPanel::gotStats( const TQString &mountPoint, unsigned long kBSize,
 	}
 	
 	TQString stats = i18n( "%1 free out of %2 (%3%) on %4 [ (%5) ]" )
-        .tqarg( KIO::convertSizeFromKB( kBAvail ) )
-        .tqarg( KIO::convertSizeFromKB( kBSize ) ).tqarg( perc )
-        .tqarg( mountPoint ).tqarg( fstype );
+        .arg( KIO::convertSizeFromKB( kBAvail ) )
+        .arg( KIO::convertSizeFromKB( kBSize ) ).arg( perc )
+        .arg( mountPoint ).arg( fstype );
 	status->setText( stats );
 }
 
@@ -917,7 +917,7 @@ void ListPanel::setFilter( KrViewProperties::FilterSpec f ) {
          return ;
    }
    view->setFilter( f ); // do that in any case
-   func->files()->vfs_tqinvalidate();
+   func->files()->vfs_invalidate();
    func->refresh();
 }
 
@@ -1077,7 +1077,7 @@ void ListPanel::inlineRefreshCancel() {
 }
 
 void ListPanel::inlineRefreshPercent( KIO::Job*, unsigned long perc) {
-	TQString msg = TQString(">> %1: %2 % complete...").tqarg(i18n("Reading")).tqarg(perc);
+	TQString msg = TQString(">> %1: %2 % complete...").arg(i18n("Reading")).arg(perc);
 	totals->setText(msg);
 }
 

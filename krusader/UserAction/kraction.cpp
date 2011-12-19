@@ -151,7 +151,7 @@ void KrActionProcDlg::slotUser1() {
 
    if ( ! open ) {
       KMessageBox::error( this,
-      		i18n("Can't open %1 for writing!\nNothing exported.").tqarg(filename),
+      		i18n("Can't open %1 for writing!\nNothing exported.").arg(filename),
       		i18n("Export failed!")
       	);
       return;

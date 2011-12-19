@@ -98,7 +98,7 @@ FeedToListBoxDialog::FeedToListBoxDialog(TQWidget *parent,  const char *name, Sy
   int listBoxNum = krConfig->readNumEntry( "Feed To Listbox Counter", 1 );
   TQString queryName;
   do {
-    queryName = i18n("Synchronize results")+TQString( " %1" ).tqarg( listBoxNum++ );
+    queryName = i18n("Synchronize results")+TQString( " %1" ).arg( listBoxNum++ );
   }while( v.vfs_search( queryName ) != 0 );
   krConfig->writeEntry( "Feed To Listbox Counter", listBoxNum );
 
@@ -188,7 +188,7 @@ void FeedToListBoxDialog::slotOk() {
   KURL url = KURL::fromPathOrURL(TQString("virt:/")+ name);
   virt_vfs v(0,true);
   if( !v.vfs_refresh( url ) ) {
-    KMessageBox::error( parentWidget(), i18n( "Cannot open %1!" ).tqarg( url.prettyURL() ) );
+    KMessageBox::error( parentWidget(), i18n( "Cannot open %1!" ).arg( url.prettyURL() ) );
     return;
   }
   v.vfs_addFiles( &urlList, KIO::CopyJob::Copy, 0 );

@@ -569,7 +569,7 @@ TQString ParameterInt::text() {
    return _spinbox->text();
 } 
 TQString ParameterInt::preset() {
-   return TQString( "%1" ).tqarg( _default );
+   return TQString( "%1" ).arg( _default );
 } 
 void ParameterInt::reset() {
    return _spinbox->setValue( _default );

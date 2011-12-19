@@ -573,7 +573,7 @@ void LocateDlg::feedToListBox()
   int listBoxNum = krConfig->readNumEntry( "Feed To Listbox Counter", 1 );  
   TQString queryName;
   do {
-    queryName = i18n("Locate results")+TQString( " %1" ).tqarg( listBoxNum++ );
+    queryName = i18n("Locate results")+TQString( " %1" ).arg( listBoxNum++ );
   }while( v.vfs_search( queryName ) != 0 );
   krConfig->writeEntry( "Feed To Listbox Counter", listBoxNum );  
   

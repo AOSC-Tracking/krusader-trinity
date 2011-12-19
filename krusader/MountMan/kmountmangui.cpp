@@ -201,9 +201,9 @@ void KMountManGUI::gettingSpaceData( const TQString &mountPoint, unsigned long k
 void KMountManGUI::addItemToMountList( TQListView *lst, fsData &fs ) {
    bool mtd = fs.mounted();
 
-   TQString tSize = TQString( "%1" ).tqarg( KIO::convertSizeFromKB( fs.totalBlks() ) );
-   TQString fSize = TQString( "%1" ).tqarg( KIO::convertSizeFromKB( fs.freeBlks() ) );
-   TQString sPrct = TQString( "%1%" ).tqarg( 100 - ( fs.usedPerct() ) );
+   TQString tSize = TQString( "%1" ).arg( KIO::convertSizeFromKB( fs.totalBlks() ) );
+   TQString fSize = TQString( "%1" ).arg( KIO::convertSizeFromKB( fs.freeBlks() ) );
+   TQString sPrct = TQString( "%1%" ).arg( 100 - ( fs.usedPerct() ) );
    TQListViewItem *item = new TQListViewItem( lst, fs.name(),
                          fs.type(), fs.mntPoint(),
                          ( mtd ? tSize : TQString( "N/A" ) ), ( mtd ? fSize : TQString( "N/A" ) ),
@@ -254,7 +254,7 @@ void KMountManGUI::updateList() {
    mountList->clearSelection();
    if ( info ) {
       info->setEmpty( true );
-      info->tqrepaint();
+      info->repaint();
    }
    watcher->start( WATCHER_DELAY, true );   // starting the watch timer ( single shot )
 }
@@ -300,7 +300,7 @@ void KMountManGUI::changeActive( TQListViewItem *i ) {
    info->setEmpty( false );
 	info->setTotalSpace( system->totalBlks() );
    info->setFreeSpace( system->freeBlks() );
-   info->tqrepaint();
+   info->repaint();
 }
 
 // called when right-clicked on a filesystem

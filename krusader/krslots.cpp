@@ -738,7 +738,7 @@ void KRslots::slotCombine(){
       {
         if( windowsStyle )
         {
-          KMessageBox::error(0,i18n("Not a split file %1!").tqarg( vfs::pathOrURL( url ) ));
+          KMessageBox::error(0,i18n("Not a split file %1!").arg( vfs::pathOrURL( url ) ));
           return;
         }
         unixStyle = true;
@@ -801,14 +801,14 @@ void KRslots::slotCombine(){
 
       if( error )
       {
-        KMessageBox::error(0,i18n("Not a splitted file %1!").tqarg( vfs::pathOrURL( url ) ));
+        KMessageBox::error(0,i18n("Not a splitted file %1!").arg( vfs::pathOrURL( url ) ));
         return;
       }
     }
   }
 
    // ask the user for the copy dest
-  KURL dest = KChooseDir::getDir(i18n("Combining %1.* to directory:" ).tqarg( vfs::pathOrURL( baseURL ) ),
+  KURL dest = KChooseDir::getDir(i18n("Combining %1.* to directory:" ).arg( vfs::pathOrURL( baseURL ) ),
                                  ACTIVE_PANEL->otherPanel->virtualPath(), ACTIVE_PANEL->virtualPath());
   if ( dest.isEmpty() ) return ; // the user canceled
 

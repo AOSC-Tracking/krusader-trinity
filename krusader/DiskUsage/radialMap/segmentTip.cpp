@@ -90,7 +90,7 @@ SegmentTip::updateTip( const File* const file, const Directory* const root )
     uint maxw         = 0;
     uint h            = fontMetrics().height()*2 + 2*MARGIN;
 
-    if( pc > 0 ) s2 += TQString( " (%1%)" ).tqarg( loc->formatNumber( pc, 0 ) );
+    if( pc > 0 ) s2 += TQString( " (%1%)" ).arg( loc->formatNumber( pc, 0 ) );
 
     m_text  = s1;
     m_text += '\n';
@@ -100,9 +100,9 @@ SegmentTip::updateTip( const File* const file, const Directory* const root )
     {
         double files  = static_cast<const Directory*>(file)->fileCount();
         const uint pc = uint((100 * files) / (double)root->fileCount());
-        TQString s3    = i18n( "Files: %1" ).tqarg( loc->formatNumber( files, 0 ) );
+        TQString s3    = i18n( "Files: %1" ).arg( loc->formatNumber( files, 0 ) );
 
-        if( pc > 0 ) s3 += TQString( " (%1%)" ).tqarg( loc->formatNumber( pc, 0 ) );
+        if( pc > 0 ) s3 += TQString( " (%1%)" ).arg( loc->formatNumber( pc, 0 ) );
 
         maxw    = fontMetrics().width( s3 );
         h      += fontMetrics().height();
