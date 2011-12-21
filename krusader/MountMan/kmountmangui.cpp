@@ -111,7 +111,7 @@ void KMountManGUI::createMainPage() {
       mountList = 0;
    }
    // clean up is finished...
-   TQGridLayout *tqlayout = new TQGridLayout( mainPage, 1, 1 );
+   TQGridLayout *layout = new TQGridLayout( mainPage, 1, 1 );
    mountList = new TQListView( mainPage );  // create the main container
    krConfig->setGroup( "Look&Feel" );
    mountList->setFont( krConfig->readFontEntry( "Filelist Font", _FilelistFont ) );
@@ -142,8 +142,8 @@ void KMountManGUI::createMainPage() {
    box->setAlignment( TQt::AlignHCenter );
    info = new KRFSDisplay( box );
    info->resize( info->width(), height() );
-   tqlayout->addWidget( box, 0, 0 );
-   tqlayout->addWidget( mountList, 0, 1 );
+   layout->addWidget( box, 0, 0 );
+   layout->addWidget( mountList, 0, 1 );
 }
 
 void KMountManGUI::getSpaceData() {

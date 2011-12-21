@@ -49,7 +49,7 @@ KgArchives::KgArchives( bool first, TQWidget* parent,  const char* name ) :
   //  -------------------------- GENERAL GROUPBOX ----------------------------------
 
   TQGroupBox *generalGrp = createFrame( i18n( "General" ), parent, "generalGrp" );
-  TQGridLayout *generalGrid = createGridLayout( generalGrp->tqlayout() );
+  TQGridLayout *generalGrid = createGridLayout( generalGrp->layout() );
 
   addLabel( generalGrid, 0, 0, i18n( "Krusader transparently handles the following types of archives:" ),
             generalGrp, "KgLabel1" );
@@ -87,7 +87,7 @@ KgArchives::KgArchives( bool first, TQWidget* parent,  const char* name ) :
   //  ------------------------ FINE-TUNING GROUPBOX --------------------------------
 
   TQGroupBox *fineTuneGrp = createFrame( i18n( "Fine-Tuning" ), parent, "fineTuneGrp" );
-  TQGridLayout *fineTuneGrid = createGridLayout( fineTuneGrp->tqlayout() );
+  TQGridLayout *fineTuneGrid = createGridLayout( fineTuneGrp->layout() );
 
   KONFIGURATOR_CHECKBOX_PARAM finetuners[] =
   //   cfg_class  cfg_name                  default           text                                          restart ToolTip

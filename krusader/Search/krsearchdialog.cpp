@@ -476,15 +476,15 @@ void KrSearchDialog::keyPressEvent(TQKeyEvent *e)
   {
     if( e->key() == Key_F4 )
     {
-      if (!generalFilter->containsText->currentText().isEmpty() && TQApplication::tqclipboard()->text() != generalFilter->containsText->currentText())
-        TQApplication::tqclipboard()->setText(generalFilter->containsText->currentText());
+      if (!generalFilter->containsText->currentText().isEmpty() && TQApplication::clipboard()->text() != generalFilter->containsText->currentText())
+        TQApplication::clipboard()->setText(generalFilter->containsText->currentText());
       editCurrent();
       return;
     }
     else if( e->key() == Key_F3 )
     {
-      if (!generalFilter->containsText->currentText().isEmpty() && TQApplication::tqclipboard()->text() != generalFilter->containsText->currentText())
-        TQApplication::tqclipboard()->setText(generalFilter->containsText->currentText());
+      if (!generalFilter->containsText->currentText().isEmpty() && TQApplication::clipboard()->text() != generalFilter->containsText->currentText())
+        TQApplication::clipboard()->setText(generalFilter->containsText->currentText());
       viewCurrent();
       return;
     }
@@ -622,7 +622,7 @@ void KrSearchDialog::copyToClipBoard()
 
   KURLDrag *d = new KURLDrag(urls, this);
   d->setPixmap( FL_LOADICON( "file" ), TQPoint( -7, 0 ) );
-  TQApplication::tqclipboard()->setData( d );
+  TQApplication::clipboard()->setData( d );
 }
 
 #include "krsearchdialog.moc"

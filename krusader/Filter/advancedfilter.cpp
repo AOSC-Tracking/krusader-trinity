@@ -58,9 +58,9 @@ AdvancedFilter::AdvancedFilter( FilterTabs *tabs, TQWidget *parent, const char *
   sizeGroup->setSizePolicy( TQSizePolicy( (TQSizePolicy::SizeType)5, (TQSizePolicy::SizeType)1, sizeGroup->sizePolicy().hasHeightForWidth() ) );
   sizeGroup->setTitle( i18n( "Size" ) );
   sizeGroup->setColumnLayout(0, Qt::Vertical );
-  sizeGroup->tqlayout()->setSpacing( 0 );
-  sizeGroup->tqlayout()->setMargin( 0 );
-  TQGridLayout *sizeLayout = new TQGridLayout( sizeGroup->tqlayout() );
+  sizeGroup->layout()->setSpacing( 0 );
+  sizeGroup->layout()->setMargin( 0 );
+  TQGridLayout *sizeLayout = new TQGridLayout( sizeGroup->layout() );
   sizeLayout->setAlignment( TQt::AlignTop );
   sizeLayout->setSpacing( 6 );
   sizeLayout->setMargin( 11 );
@@ -113,9 +113,9 @@ AdvancedFilter::AdvancedFilter( FilterTabs *tabs, TQWidget *parent, const char *
   dateGroup->setTitle( i18n( "Date" ) );
   dateGroup->setExclusive( true );
   dateGroup->setColumnLayout(0, Qt::Vertical );
-  dateGroup->tqlayout()->setSpacing( 0 );
-  dateGroup->tqlayout()->setMargin( 0 );
-  TQGridLayout *dateLayout = new TQGridLayout( dateGroup->tqlayout() );
+  dateGroup->layout()->setSpacing( 0 );
+  dateGroup->layout()->setMargin( 0 );
+  TQGridLayout *dateLayout = new TQGridLayout( dateGroup->layout() );
   dateLayout->setAlignment( TQt::AlignTop );
   dateLayout->setSpacing( 6 );
   dateLayout->setMargin( 11 );
@@ -212,9 +212,9 @@ AdvancedFilter::AdvancedFilter( FilterTabs *tabs, TQWidget *parent, const char *
   TQGroupBox *ownershipGroup = new TQGroupBox( this, "ownershipGroup" );
   ownershipGroup->setTitle( i18n( "Ownership" ) );
   ownershipGroup->setColumnLayout(0, Qt::Vertical );
-  ownershipGroup->tqlayout()->setSpacing( 0 );
-  ownershipGroup->tqlayout()->setMargin( 0 );
-  TQGridLayout *ownershipLayout = new TQGridLayout( ownershipGroup->tqlayout() );
+  ownershipGroup->layout()->setSpacing( 0 );
+  ownershipGroup->layout()->setMargin( 0 );
+  TQGridLayout *ownershipLayout = new TQGridLayout( ownershipGroup->layout() );
   ownershipLayout->setAlignment( TQt::AlignTop );
   ownershipLayout->setSpacing( 6 );
   ownershipLayout->setMargin( 11 );

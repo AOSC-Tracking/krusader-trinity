@@ -147,23 +147,23 @@ remoteManBase::remoteManBase( TQWidget* parent,  const char* name, bool modal, W
 
     remoteManBaseLayout->addLayout( Layout27, 5, 1 );
 
-    tqlayout = new TQGridLayout;
-    tqlayout->setSpacing( 6 );
-    tqlayout->setMargin( 0 );
+    layout = new TQGridLayout;
+    layout->setSpacing( 6 );
+    layout->setMargin( 0 );
 
     removeBtn = new TQPushButton( this, "removeBtn" );
     removeBtn->setText( i18n( "&Remove" ) );
     removeBtn->setAutoDefault( FALSE );
     removeBtn->setDefault( FALSE );
 
-    tqlayout->addWidget( removeBtn, 0, 2 );
+    layout->addWidget( removeBtn, 0, 2 );
 
     connectBtn = new TQPushButton( this, "connectBtn" );
     connectBtn->setText( i18n( "Co&nnect" ) );
     connectBtn->setAutoDefault( FALSE );
     connectBtn->setDefault( FALSE );
 
-    tqlayout->addMultiCellWidget( connectBtn, 1, 1, 0, 2 );
+    layout->addMultiCellWidget( connectBtn, 1, 1, 0, 2 );
 
     newGroupBtn = new TQPushButton( this, "newGroupBtn" );
     newGroupBtn->setEnabled( TRUE );
@@ -172,7 +172,7 @@ remoteManBase::remoteManBase( TQWidget* parent,  const char* name, bool modal, W
     newGroupBtn->setDefault( FALSE );
     newGroupBtn->setFlat( FALSE );
 
-    tqlayout->addWidget( newGroupBtn, 0, 0 );
+    layout->addWidget( newGroupBtn, 0, 0 );
 
     addBtn = new TQPushButton( this, "addBtn" );
     addBtn->setEnabled( TRUE );
@@ -181,9 +181,9 @@ remoteManBase::remoteManBase( TQWidget* parent,  const char* name, bool modal, W
     addBtn->setDefault( FALSE );
     addBtn->setFlat( FALSE );
 
-    tqlayout->addWidget( addBtn, 0, 1 );
+    layout->addWidget( addBtn, 0, 1 );
 
-    remoteManBaseLayout->addLayout( tqlayout, 6, 1 );
+    remoteManBaseLayout->addLayout( layout, 6, 1 );
 
     Layout11 = new TQGridLayout;
     Layout11->setSpacing( 6 );

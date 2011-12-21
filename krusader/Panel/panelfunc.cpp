@@ -1159,7 +1159,7 @@ void ListPanelFunc::copyToClipboard( bool move ) {
 	KURL::List* fileUrls = files() ->vfs_getFiles( &fileNames );
 	if ( fileUrls ) {
 		KRDrag * urlData = KRDrag::newDrag( *fileUrls, move, krApp->mainView, "krusader" );
-		TQApplication::tqclipboard() ->setData( urlData );
+		TQApplication::clipboard() ->setData( urlData );
 		
 		if( move && files()->vfs_getType() == vfs::VIRT )
 			( static_cast<virt_vfs*>( files() ) )->vfs_removeFiles( &fileNames );
@@ -1169,7 +1169,7 @@ void ListPanelFunc::copyToClipboard( bool move ) {
 }
 
 void ListPanelFunc::pasteFromClipboard() {
-	TQClipboard * cb = TQApplication::tqclipboard();
+	TQClipboard * cb = TQApplication::clipboard();
 	TQMimeSource * data = cb->data();
 	KURL::List urls;
 	if ( KURLDrag::canDecode( data ) ) {

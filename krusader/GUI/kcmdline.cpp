@@ -58,7 +58,7 @@
 #include <ktempfile.h> 
 
 KCMDLine::KCMDLine( TQWidget *parent, const char *name ) : TQWidget( parent, name ) {
-  TQGridLayout * tqlayout = new TQGridLayout( this, 1, 4 );
+  TQGridLayout * layout = new TQGridLayout( this, 1, 4 );
   path = new TQLabel( this );
   TQWhatsThis::add
     ( path, i18n( "Name of directory where command will be processed." ) );
@@ -70,7 +70,7 @@ KCMDLine::KCMDLine( TQWidget *parent, const char *name ) : TQWidget( parent, nam
   height =  height + 5*(height > 14) + 6;
   path->setMaximumHeight( height );
   path->setSizePolicy(TQSizePolicy(TQSizePolicy::Maximum, TQSizePolicy::Preferred));
-  tqlayout->addWidget( path, 0, 0 );
+  layout->addWidget( path, 0, 0 );
 
   // and editable command line
   completion.setMode( KURLCompletion::FileCompletion );
@@ -92,7 +92,7 @@ KCMDLine::KCMDLine( TQWidget *parent, const char *name ) : TQWidget( parent, nam
 
   TQWhatsThis::add
     ( cmdLine, i18n( "<qt><p>Well, it's actually quite simple: You type your command here and Krusader obeys.</p><p><b>Tip</b>: Move within command line history with &lt;Up&gt; and &lt;Down&gt; arrows.</p></qt>" ) );
-  tqlayout->addWidget( cmdLine, 0, 1 );
+  layout->addWidget( cmdLine, 0, 1 );
 
   buttonAddPlaceholder = new TQToolButton( this, "ButtonAddPlaceholder" );
   buttonAddPlaceholder->setFixedSize(22,20);
@@ -101,13 +101,13 @@ KCMDLine::KCMDLine( TQWidget *parent, const char *name ) : TQWidget( parent, nam
   connect( buttonAddPlaceholder, TQT_SIGNAL( clicked() ), this, TQT_SLOT( addPlaceholder() ) );
   TQWhatsThis::add( buttonAddPlaceholder, i18n( "Add <b>Placeholders</b> for the selected files in the panel." ) );
 
-  tqlayout->addWidget( buttonAddPlaceholder, 0, 2 );
+  layout->addWidget( buttonAddPlaceholder, 0, 2 );
 
   // a run in terminal button
   terminal = new KCMDModeButton( this );
-  tqlayout->addWidget( terminal, 0, 3 );
+  layout->addWidget( terminal, 0, 3 );
 
-  tqlayout->activate();
+  layout->activate();
 }
 
 void KCMDLine::addPlaceholder() {

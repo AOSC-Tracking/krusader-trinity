@@ -89,13 +89,13 @@ LoaderWidget::LoaderWidget( TQWidget *parent, const char *name ) : TQScrollView(
   loaderBox->setFrameShape( TQGroupBox::Box );
   loaderBox->setFrameShadow( TQGroupBox::Sunken );
   loaderBox->setColumnLayout(0, Qt::Vertical );
-  loaderBox->tqlayout()->setSpacing( 0 );
-  loaderBox->tqlayout()->setMargin( 0 );
+  loaderBox->layout()->setSpacing( 0 );
+  loaderBox->layout()->setMargin( 0 );
   loaderBox->setSizePolicy( TQSizePolicy::Fixed, TQSizePolicy::Fixed );
   loaderBox->setFrameStyle( TQFrame::Panel + TQFrame::Raised );
   loaderBox->setLineWidth( 2 );
 
-  TQGridLayout *synchGrid = new TQGridLayout( loaderBox->tqlayout() );
+  TQGridLayout *synchGrid = new TQGridLayout( loaderBox->layout() );
   synchGrid->setSpacing( 6 );
   synchGrid->setMargin( 11 );
 
@@ -150,7 +150,7 @@ LoaderWidget::LoaderWidget( TQWidget *parent, const char *name ) : TQScrollView(
 
   TQHBox *hbox = new TQHBox( loaderBox, "hbox" );
   TQSpacerItem* spacer = new TQSpacerItem( 0, 0, TQSizePolicy::Minimum, TQSizePolicy::Expanding );
-  hbox->tqlayout()->addItem( spacer );
+  hbox->layout()->addItem( spacer );
   TQPushButton *cancelButton = new TQPushButton( hbox, "cancelButton" );
   cancelButton->setText( i18n( "Cancel"  ) );
   synchGrid->addWidget( hbox, 6, 1 );

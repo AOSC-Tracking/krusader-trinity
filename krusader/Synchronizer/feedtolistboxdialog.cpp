@@ -105,15 +105,15 @@ FeedToListBoxDialog::FeedToListBoxDialog(TQWidget *parent,  const char *name, Sy
   // creating the widget
 
   TQWidget *widget=new TQWidget(this, "feedToListBoxMainWidget");
-  TQVBoxLayout *tqlayout = new TQVBoxLayout( widget, 0, 10, "FeedToListBoxDialogLayout" );
+  TQVBoxLayout *layout = new TQVBoxLayout( widget, 0, 10, "FeedToListBoxDialogLayout" );
     
   TQLabel *label = new TQLabel( i18n("Here you can name the file collection"), widget, "fbLabel" );
-  tqlayout->addWidget( label );    
+  layout->addWidget( label );    
   
   lineEdit = new TQLineEdit( widget, "fbLineEdit" );
   lineEdit->setText( queryName );
   lineEdit->selectAll();
-  tqlayout->addWidget( lineEdit );  
+  layout->addWidget( lineEdit );  
   
   TQHBox *hbox = new TQHBox( widget, "fbHBox" );
   
@@ -143,7 +143,7 @@ FeedToListBoxDialog::FeedToListBoxDialog(TQWidget *parent,  const char *name, Sy
   cbSelected->setEnabled( selectedNum != 0 );
   cbSelected->setChecked( selectedNum != 0 );
   
-  tqlayout->addWidget( hbox );      
+  layout->addWidget( hbox );      
     
   setMainWidget(widget);
   

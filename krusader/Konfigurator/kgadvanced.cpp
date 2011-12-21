@@ -46,7 +46,7 @@ KgAdvanced::KgAdvanced( bool first, TQWidget* parent,  const char* name ) :
   //  -------------------------- GENERAL GROUPBOX ----------------------------------
   
   TQGroupBox *generalGrp = createFrame( i18n( "General" ), parent, "kgAdvGeneralGrp" );
-  TQGridLayout *generalGrid = createGridLayout( generalGrp->tqlayout() );
+  TQGridLayout *generalGrid = createGridLayout( generalGrp->layout() );
 
 #if KDE_IS_VERSION( 3,5,1 )
   bool dontUseMedia = false;
@@ -86,7 +86,7 @@ KgAdvanced::KgAdvanced( bool first, TQWidget* parent,  const char* name ) :
   //  ----------------------- CONFIRMATIONS GROUPBOX -------------------------------
   
   TQGroupBox *confirmGrp = createFrame( i18n( "Confirmations" ), parent, "confirmGrp" );
-  TQGridLayout *confirmGrid = createGridLayout( confirmGrp->tqlayout() );
+  TQGridLayout *confirmGrid = createGridLayout( confirmGrp->layout() );
 
   addLabel( confirmGrid, 0, 0, "\n"+i18n( "Request user confirmation for the following operations:" )+"\n",
             confirmGrp, "KgAdvLabel1" );
@@ -110,7 +110,7 @@ KgAdvanced::KgAdvanced( bool first, TQWidget* parent,  const char* name ) :
   //  ------------------------ FINE-TUNING GROUPBOX --------------------------------
 
   TQGroupBox *fineTuneGrp = createFrame( i18n( "Fine-Tuning" ), parent, "kgFineTuneGrp" );
-  TQGridLayout *fineTuneGrid = createGridLayout( fineTuneGrp->tqlayout() );
+  TQGridLayout *fineTuneGrid = createGridLayout( fineTuneGrp->layout() );
   fineTuneGrid->setAlignment( TQt::AlignLeft | TQt::AlignTop );
   
   TQLabel *label = new TQLabel( i18n( "Icon cache size (KB):" ), fineTuneGrp, "iconCacheLabel" );

@@ -64,9 +64,9 @@ ActionPropertyBase::ActionPropertyBase( TQWidget* parent, const char* name, WFla
     bgAccept = new TQButtonGroup( tab, "bgAccept" );
     bgAccept->setSizePolicy( TQSizePolicy( (TQSizePolicy::SizeType)5, (TQSizePolicy::SizeType)1, 0, 0, bgAccept->sizePolicy().hasHeightForWidth() ) );
     bgAccept->setColumnLayout(0, Qt::Vertical );
-    bgAccept->tqlayout()->setSpacing( 6 );
-    bgAccept->tqlayout()->setMargin( 11 );
-    bgAcceptLayout = new TQGridLayout( bgAccept->tqlayout() );
+    bgAccept->layout()->setSpacing( 6 );
+    bgAccept->layout()->setMargin( 11 );
+    bgAcceptLayout = new TQGridLayout( bgAccept->layout() );
     bgAcceptLayout->setAlignment( TQt::AlignTop );
 
     radioLocal = new TQRadioButton( bgAccept, "radioLocal" );
@@ -89,25 +89,25 @@ ActionPropertyBase::ActionPropertyBase( TQWidget* parent, const char* name, WFla
 
     tabLayout->addWidget( LabelTitle, 2, 0 );
 
-    tqlayout3 = new TQHBoxLayout( 0, 0, 6, "tqlayout3"); 
+    layout3 = new TQHBoxLayout( 0, 0, 6, "layout3"); 
 
-    tqlayout2 = new TQVBoxLayout( 0, 0, 6, "tqlayout2"); 
+    layout2 = new TQVBoxLayout( 0, 0, 6, "layout2"); 
 
     leDistinctName = new KLineEdit( tab, "leDistinctName" );
-    tqlayout2->addWidget( leDistinctName );
+    layout2->addWidget( leDistinctName );
 
     cbCategory = new KComboBox( FALSE, tab, "cbCategory" );
     cbCategory->setEditable( TRUE );
-    tqlayout2->addWidget( cbCategory );
-    tqlayout3->addLayout( tqlayout2 );
+    layout2->addWidget( cbCategory );
+    layout3->addLayout( layout2 );
 
     ButtonIcon = new KIconButton( tab, "ButtonIcon" );
     ButtonIcon->setSizePolicy( TQSizePolicy( (TQSizePolicy::SizeType)0, (TQSizePolicy::SizeType)0, 0, 0, ButtonIcon->sizePolicy().hasHeightForWidth() ) );
     ButtonIcon->setMinimumSize( TQSize( 50, 50 ) );
     ButtonIcon->setMaximumSize( TQSize( 50, 50 ) );
-    tqlayout3->addWidget( ButtonIcon );
+    layout3->addWidget( ButtonIcon );
 
-    tabLayout->addMultiCellLayout( tqlayout3, 0, 1, 1, 3 );
+    tabLayout->addMultiCellLayout( layout3, 0, 1, 1, 3 );
 
     LabelDistinctName = new TQLabel( tab, "LabelDistinctName" );
     LabelDistinctName->setSizePolicy( TQSizePolicy( (TQSizePolicy::SizeType)1, (TQSizePolicy::SizeType)0, 0, 0, LabelDistinctName->sizePolicy().hasHeightForWidth() ) );
@@ -159,24 +159,24 @@ ActionPropertyBase::ActionPropertyBase( TQWidget* parent, const char* name, WFla
     spacer = new TQSpacerItem( 80, 19, TQSizePolicy::Minimum, TQSizePolicy::Expanding );
     tabLayout->addItem( spacer, 6, 0 );
 
-    tqlayout4 = new TQHBoxLayout( 0, 0, 6, "tqlayout4"); 
+    layout4 = new TQHBoxLayout( 0, 0, 6, "layout4"); 
 
     LabelShortcut = new TQLabel( tab, "LabelShortcut" );
-    tqlayout4->addWidget( LabelShortcut );
+    layout4->addWidget( LabelShortcut );
     spacer6_2 = new TQSpacerItem( 161, 21, TQSizePolicy::Expanding, TQSizePolicy::Minimum );
-    tqlayout4->addItem( spacer6_2 );
+    layout4->addItem( spacer6_2 );
 
     KeyButtonShortcut = new KKeyButton( tab, "KeyButtonShortcut" );
-    tqlayout4->addWidget( KeyButtonShortcut );
+    layout4->addWidget( KeyButtonShortcut );
 
-    tabLayout->addMultiCellLayout( tqlayout4, 10, 10, 2, 3 );
+    tabLayout->addMultiCellLayout( layout4, 10, 10, 2, 3 );
 
     bgExecType = new TQButtonGroup( tab, "bgExecType" );
     bgExecType->setSizePolicy( TQSizePolicy( (TQSizePolicy::SizeType)5, (TQSizePolicy::SizeType)1, 0, 0, bgExecType->sizePolicy().hasHeightForWidth() ) );
     bgExecType->setColumnLayout(0, Qt::Vertical );
-    bgExecType->tqlayout()->setSpacing( 6 );
-    bgExecType->tqlayout()->setMargin( 11 );
-    bgExecTypeLayout = new TQGridLayout( bgExecType->tqlayout() );
+    bgExecType->layout()->setSpacing( 6 );
+    bgExecType->layout()->setMargin( 11 );
+    bgExecTypeLayout = new TQGridLayout( bgExecType->layout() );
     bgExecTypeLayout->setAlignment( TQt::AlignTop );
 
     radioCollectOutput = new TQRadioButton( bgExecType, "radioCollectOutput" );
@@ -206,9 +206,9 @@ ActionPropertyBase::ActionPropertyBase( TQWidget* parent, const char* name, WFla
     gbShowonly = new TQGroupBox( tab_2, "gbShowonly" );
     gbShowonly->setSizePolicy( TQSizePolicy( (TQSizePolicy::SizeType)7, (TQSizePolicy::SizeType)7, 0, 0, gbShowonly->sizePolicy().hasHeightForWidth() ) );
     gbShowonly->setColumnLayout(0, Qt::Vertical );
-    gbShowonly->tqlayout()->setSpacing( 6 );
-    gbShowonly->tqlayout()->setMargin( 11 );
-    gbShowonlyLayout = new TQGridLayout( gbShowonly->tqlayout() );
+    gbShowonly->layout()->setSpacing( 6 );
+    gbShowonly->layout()->setMargin( 11 );
+    gbShowonlyLayout = new TQGridLayout( gbShowonly->layout() );
     gbShowonlyLayout->setAlignment( TQt::AlignTop );
 
     tabShowonly = new TQTabWidget( gbShowonly, "tabShowonly" );

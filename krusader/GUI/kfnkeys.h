@@ -49,7 +49,7 @@ public:
 
 private:
 	TQPushButton *F2 ,*F3,*F4,*F5,*F6,*F7,*F8,*F9,*F10;
-	TQGridLayout *tqlayout;
+	TQGridLayout *layout;
 };
 
 #endif

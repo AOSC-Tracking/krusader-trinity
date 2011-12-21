@@ -124,7 +124,7 @@ LocateDlg::LocateDlg() : KDialogBase(0,0,false,"Locate", KDialogBase::User1 | KD
 
   TQHBox *hbox2 = new TQHBox( widget, "locateHBox" );
   TQSpacerItem* spacer = new TQSpacerItem( 40, 20, TQSizePolicy::Expanding, TQSizePolicy::Minimum );
-  hbox2->tqlayout()->addItem( spacer );
+  hbox2->layout()->addItem( spacer );
   dontSearchInPath = new TQCheckBox( i18n( "Don't search in path" ), hbox2, "dontSearchInPath" );
   dontSearchInPath->setChecked( krConfig->readBoolEntry("Dont Search In Path") );
   existingFiles = new TQCheckBox( i18n( "Show only the existing files" ), hbox2, "existingFiles" );
@@ -527,7 +527,7 @@ void LocateDlg::operate( TQListViewItem *item, int task )
 
       KURLDrag *d = new KURLDrag(urls, this);
       d->setPixmap( FL_LOADICON( "file" ), TQPoint( -7, 0 ) );
-      TQApplication::tqclipboard()->setData( d );
+      TQApplication::clipboard()->setData( d );
     }
     break;
   }
