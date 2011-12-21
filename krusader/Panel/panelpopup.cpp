@@ -25,7 +25,7 @@
 PanelPopup::PanelPopup( TQSplitter *parent, bool left ) : TQWidget( parent ), 
 	_left( left ), _hidden(true), stack( 0 ), viewer( 0 ), pjob( 0 ), splitterSizes() {
 	splitter = parent;
-	TQGridLayout * tqlayout = new TQGridLayout(this, 1, 1);
+	TQGridLayout * layout = new TQGridLayout(this, 1, 1);
 	
 	// loading the splitter sizes
 	krConfig->setGroup( "Private" );
@@ -98,12 +98,12 @@ PanelPopup::PanelPopup( TQSplitter *parent, bool left ) : TQWidget( parent ),
 	duBtn->setToggleButton(true);
 	btns->insert(duBtn, DskUsage);	
 		
-	tqlayout->addWidget(dataLine,0,0);
-	tqlayout->addWidget(treeBtn,0,1);
-	tqlayout->addWidget(previewBtn,0,2);
-	tqlayout->addWidget(quickBtn,0,3);
-	tqlayout->addWidget(viewerBtn,0,4);
-	tqlayout->addWidget(duBtn,0,5);
+	layout->addWidget(dataLine,0,0);
+	layout->addWidget(treeBtn,0,1);
+	layout->addWidget(previewBtn,0,2);
+	layout->addWidget(quickBtn,0,3);
+	layout->addWidget(viewerBtn,0,4);
+	layout->addWidget(duBtn,0,5);
 	
 	// create a widget stack on which to put the parts
    stack = new TQWidgetStack( this );
@@ -151,7 +151,7 @@ PanelPopup::PanelPopup( TQSplitter *parent, bool left ) : TQWidget( parent ),
 	// create the quick-panel part ----
 	
 	TQWidget *quickPanel = new TQWidget(stack);
-	TQGridLayout *qtqlayout = new TQGridLayout(quickPanel);	
+	TQGridLayout *qlayout = new TQGridLayout(quickPanel);	
 	// --- quick select
 	TQLabel *selectLabel = new TQLabel(i18n("Quick Select"), quickPanel);
 	quickSelectCombo = new KComboBox( quickPanel );
@@ -185,15 +185,15 @@ PanelPopup::PanelPopup( TQSplitter *parent, bool left ) : TQWidget( parent ),
 	TQToolTip::add( qsettingsBtn, i18n("select group dialog") );
 	connect(qsettingsBtn, TQT_SIGNAL(clicked()), krSelect, TQT_SLOT(activate()));
 
-	qtqlayout->addWidget(selectLabel,0,0);
-	qtqlayout->addWidget(quickSelectCombo,0,1);
-	qtqlayout->addWidget(qselectBtn,0,2);
-	qtqlayout->addWidget(qstoreBtn,0,3);
-	qtqlayout->addWidget(qsettingsBtn,0,4);
+	qlayout->addWidget(selectLabel,0,0);
+	qlayout->addWidget(quickSelectCombo,0,1);
+	qlayout->addWidget(qselectBtn,0,2);
+	qlayout->addWidget(qstoreBtn,0,3);
+	qlayout->addWidget(qsettingsBtn,0,4);
 	stack->addWidget(quickPanel, QuickPanel);
 	
-	// -------- finish the tqlayout (General one)
-	tqlayout->addMultiCellWidget(stack,1,1,0,5);
+	// -------- finish the layout (General one)
+	layout->addMultiCellWidget(stack,1,1,0,5);
 	
    // set the wanted widget
 	// ugly: are we left or right?

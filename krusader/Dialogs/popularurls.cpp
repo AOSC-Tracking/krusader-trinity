@@ -228,7 +228,7 @@ void PopularUrls::showDialog() {
 // ===================================== PopularUrlsDlg ======================================
 PopularUrlsDlg::PopularUrlsDlg(): 
 	KDialogBase(Plain, i18n("Popular Urls"), Close, KDialogBase::NoDefault, krApp) {
-	TQGridLayout *tqlayout = new TQGridLayout( plainPage(), 0, KDialog::spacingHint() );
+	TQGridLayout *layout = new TQGridLayout( plainPage(), 0, KDialog::spacingHint() );
 	
 	// listview to contain the urls
 	urls = new KListView(plainPage());
@@ -244,10 +244,10 @@ PopularUrlsDlg::PopularUrlsDlg():
 	search->setTrapReturnKey(true);
 	TQLabel *lbl = new TQLabel(search, i18n(" &Search: "), plainPage());
 
-	tqlayout->addWidget(btn,0,0);
-	tqlayout->addWidget(lbl,0,1);
-	tqlayout->addWidget(search,0,2);
-	tqlayout->addMultiCellWidget(urls,1,1,0,2);
+	layout->addWidget(btn,0,0);
+	layout->addWidget(lbl,0,1);
+	layout->addWidget(search,0,2);
+	layout->addMultiCellWidget(urls,1,1,0,2);
 	setMaximumSize(600, 500);
 	
 	setTabOrder(search, urls);

@@ -65,7 +65,7 @@ KgProtocols::KgProtocols( bool first, TQWidget* parent,  const char* name ) :
   //  -------------------------- LINK VIEW ----------------------------------
   
   TQGroupBox *linkGrp = createFrame( i18n( "Links" ), parent, "linkGrp" );    
-  TQGridLayout *linkGrid = createGridLayout( linkGrp->tqlayout() );
+  TQGridLayout *linkGrid = createGridLayout( linkGrp->layout() );
   
   linkList = new TQListView( linkGrp, "linkList" );
   linkList->addColumn( i18n( "Defined Links" ) );
@@ -106,7 +106,7 @@ KgProtocols::KgProtocols( bool first, TQWidget* parent,  const char* name ) :
   //  -------------------------- PROTOCOLS LISTBOX ----------------------------------
 
   TQGroupBox *protocolGrp = createFrame( i18n( "Protocols" ), parent, "protocolGrp" );    
-  TQGridLayout *protocolGrid = createGridLayout( protocolGrp->tqlayout() );
+  TQGridLayout *protocolGrid = createGridLayout( protocolGrp->layout() );
   
   protocolList = new TQListBox( protocolGrp, "protocolList" );
   loadListCapableProtocols();
@@ -117,7 +117,7 @@ KgProtocols::KgProtocols( bool first, TQWidget* parent,  const char* name ) :
   //  -------------------------- MIMES LISTBOX ----------------------------------
 
   TQGroupBox *mimeGrp = createFrame( i18n( "Mimes" ), parent, "mimeGrp" );    
-  TQGridLayout *mimeGrid = createGridLayout( mimeGrp->tqlayout() );
+  TQGridLayout *mimeGrid = createGridLayout( mimeGrp->layout() );
   
   mimeList = new TQListBox( mimeGrp, "protocolList" );
   loadMimes();
@@ -143,9 +143,9 @@ KgProtocols::KgProtocols( bool first, TQWidget* parent,  const char* name ) :
 TQWidget* KgProtocols::addSpacer( TQWidget *parent, const char *widgetName )
 {
   TQWidget *widget = new TQWidget( parent, widgetName );
-  TQVBoxLayout *vboxtqlayout = new TQVBoxLayout( widget );
+  TQVBoxLayout *vboxlayout = new TQVBoxLayout( widget );
   TQSpacerItem* spacer = new TQSpacerItem( 20, 20, TQSizePolicy::Minimum, TQSizePolicy::Expanding );
-  vboxtqlayout->addItem( spacer );
+  vboxlayout->addItem( spacer );
   return widget;
 }
 

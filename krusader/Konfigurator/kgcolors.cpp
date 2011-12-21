@@ -49,7 +49,7 @@ KgColors::KgColors( bool first, TQWidget* parent,  const char* name ) :
   //  -------------------------- GENERAL GROUPBOX ----------------------------------
 
   TQGroupBox *generalGrp = createFrame( i18n( "General" ), parent, "kgColorsGeneralGrp" );
-  TQGridLayout *generalGrid = createGridLayout( generalGrp->tqlayout() );
+  TQGridLayout *generalGrid = createGridLayout( generalGrp->layout() );
 
   generalGrid->setSpacing( 0 );
   generalGrid->setMargin( 5 );
@@ -64,7 +64,7 @@ KgColors::KgColors( bool first, TQWidget* parent,  const char* name ) :
   generals = createCheckBoxGroup( 0, 2, generalSettings, sizeof(generalSettings)/sizeof(generalSettings[0]), generalGrp );
   generalGrid->addWidget( generals, 1, 0 );
 
-  generals->tqlayout()->setSpacing( 5 );
+  generals->layout()->setSpacing( 5 );
 
   connect( generals->find( "KDE Default" ), TQT_SIGNAL( stateChanged( int ) ), this, TQT_SLOT( slotDisable() ) );
   connect( generals->find( "Enable Alternate Background" ), TQT_SIGNAL( stateChanged( int ) ), this, TQT_SLOT( generatePreview() ) );
@@ -77,7 +77,7 @@ KgColors::KgColors( bool first, TQWidget* parent,  const char* name ) :
   //  -------------------------- COLORS GROUPBOX ----------------------------------
 
   TQGroupBox *colorsFrameGrp = createFrame( i18n( "Colors" ), hbox, "kgColorsColorsGrp" );
-  TQGridLayout *colorsFrameGrid = createGridLayout( colorsFrameGrp->tqlayout() );
+  TQGridLayout *colorsFrameGrid = createGridLayout( colorsFrameGrp->layout() );
   colorsFrameGrid->setSpacing( 0 );
   colorsFrameGrid->setMargin( 3 );
 
@@ -210,7 +210,7 @@ KgColors::KgColors( bool first, TQWidget* parent,  const char* name ) :
   //  -------------------------- PREVIEW GROUPBOX ----------------------------------
 
   previewGrp = createFrame( i18n( "Preview" ), hbox, "kgColorsPreviewGrp" );
-  previewGrid = createGridLayout( previewGrp->tqlayout() );
+  previewGrid = createGridLayout( previewGrp->layout() );
 
   preview = new TQListView( previewGrp, "colorPreView" );
 

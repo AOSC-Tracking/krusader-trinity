@@ -181,7 +181,7 @@ public:
    KrSqueezedTextLabel *status, *totals;
    KrQuickSearch *quickSearch;
    KURLRequester *origin;
-   TQGridLayout *tqlayout;
+   TQGridLayout *layout;
    TQToolButton *cdRootButton;
    TQToolButton *cdHomeButton;
    TQToolButton *cdUpButton;

@@ -88,7 +88,7 @@ void KrusaderView::start( TQStringList leftTabs, TQStringList leftTypes, TQValue
     ( fnKeys, i18n( "Function keys allow performing fast "
                     "operations on files." ) );
 
-  // and insert the whole thing into the main tqlayout... at last
+  // and insert the whole thing into the main layout... at last
   mainLayout->addWidget( vert_splitter, 0, 0 );  //<>
   mainLayout->addWidget( cmdLine, 1, 0 );
   mainLayout->addWidget( fnKeys, 2, 0 );
@@ -339,7 +339,7 @@ bool KrusaderView::eventFilter ( TQObject * watched, TQEvent * e ) {
       ACTIVE_PANEL->slotFocusOnMe();
       return true;
     } else if( Krusader::actPaste->shortcut().contains( pressedKey ) ) {
-      TQString text = TQApplication::tqclipboard()->text();
+      TQString text = TQApplication::clipboard()->text();
       if ( ! text.isEmpty() )
       {
         text.replace("\n", "\r");

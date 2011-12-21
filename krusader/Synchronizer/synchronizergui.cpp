@@ -1111,10 +1111,10 @@ void SynchronizerGUI::initGUI(TQWidget* /* parent */, TQString profileName, KURL
   compareDirs->setSizePolicy( TQSizePolicy::Expanding, TQSizePolicy::Fixed);
   compareDirs->setTitle( i18n( "Directory Comparison" ) );
   compareDirs->setColumnLayout(0, Qt::Vertical );
-  compareDirs->tqlayout()->setSpacing( 0 );
-  compareDirs->tqlayout()->setMargin( 0 );
+  compareDirs->layout()->setSpacing( 0 );
+  compareDirs->layout()->setMargin( 0 );
 
-  TQGridLayout *grid = new TQGridLayout( compareDirs->tqlayout() );
+  TQGridLayout *grid = new TQGridLayout( compareDirs->layout() );
   grid->setSpacing( 6 );
   grid->setMargin( 11 );
 
@@ -1211,9 +1211,9 @@ void SynchronizerGUI::initGUI(TQWidget* /* parent */, TQString profileName, KURL
   showOptions->setTitle( i18n( "S&how options" ) );
   showOptions->setSizePolicy( TQSizePolicy::Fixed, TQSizePolicy::Fixed);
   showOptions->setColumnLayout(0, Qt::Vertical );
-  showOptions->tqlayout()->setSpacing( 0 );
-  showOptions->tqlayout()->setMargin( 0 );
-  TQGridLayout *showOptionsLayout = new TQGridLayout( showOptions->tqlayout() );
+  showOptions->layout()->setSpacing( 0 );
+  showOptions->layout()->setMargin( 0 );
+  TQGridLayout *showOptionsLayout = new TQGridLayout( showOptions->layout() );
   showOptionsLayout->setSpacing( 6 );
   showOptionsLayout->setMargin( 11 );
 
@@ -1354,9 +1354,9 @@ void SynchronizerGUI::initGUI(TQWidget* /* parent */, TQString profileName, KURL
   TQGroupBox *optionsGroup = new TQGroupBox( generalFilter, "options" );
   optionsGroup->setTitle( i18n( "&Options" ) );
   optionsGroup->setColumnLayout(0, Qt::Vertical );
-  optionsGroup->tqlayout()->setSpacing( 0 );
-  optionsGroup->tqlayout()->setMargin( 0 );
-  TQGridLayout *optionsLayout = new TQGridLayout( optionsGroup->tqlayout() );
+  optionsGroup->layout()->setSpacing( 0 );
+  optionsGroup->layout()->setMargin( 0 );
+  TQGridLayout *optionsLayout = new TQGridLayout( optionsGroup->layout() );
   optionsLayout->setAlignment( TQt::AlignTop );
   optionsLayout->setSpacing( 6 );
   optionsLayout->setMargin( 11 );
@@ -2472,7 +2472,7 @@ void SynchronizerGUI::copyToClipboard( bool isLeft )
 
   KURLDrag *d = new KURLDrag(urls, this);
   d->setPixmap( FL_LOADICON( isLeft ? "2leftarrow" : "2rightarrow" ), TQPoint( -7, 0 ) );
-  TQApplication::tqclipboard()->setData( d );
+  TQApplication::clipboard()->setData( d );
 }
 
 #include "synchronizergui.moc"

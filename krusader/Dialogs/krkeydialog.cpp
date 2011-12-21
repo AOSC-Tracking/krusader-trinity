@@ -32,11 +32,11 @@ static const char* FILE_FILTER = I18N_NOOP("*.keymap|Krusader keymaps\n*|all fil
 KrKeyDialog::KrKeyDialog( TQWidget * parent ) : KKeyDialog( false /* allow letter shortcuts */, parent ) {
    insert( krApp->actionCollection() );
 
-   // HACK This fetches the tqlayout of the buttonbox from KDialogBase, although it is not accessable with KDialogBase's API
+   // HACK This fetches the layout of the buttonbox from KDialogBase, although it is not accessable with KDialogBase's API
    // None the less it's quite save to use since this implementation hasn't changed since KDE-3.3 (I haven't looked at earlier
    // versions since we don't support them) and now all work is done in KDE-4.
    TQWidget* buttonBox = TQT_TQWIDGET( actionButton(KDialogBase::Ok)->parent() );
-   TQBoxLayout* buttonBoxLayout = static_cast<TQBoxLayout*>( buttonBox->tqlayout() );
+   TQBoxLayout* buttonBoxLayout = static_cast<TQBoxLayout*>( buttonBox->layout() );
 
    KPushButton* importButton = new KPushButton( i18n("Import shortcuts"), buttonBox );
    TQWhatsThis::add( importButton, i18n( "Load a keybinding profile, e.g., total_commander.keymap" ) );

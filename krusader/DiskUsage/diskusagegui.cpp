@@ -86,9 +86,9 @@ DiskUsageGUI::DiskUsageGUI( KURL openDir, TQWidget* parent, const char *name )
   TQToolTip::add( btnFilelight, i18n( "Filelight view" ) );
     
   TQWidget *spacerWidget = new TQWidget( duTools, "spacerWidget" );
-  TQHBoxLayout *hboxtqlayout = new TQHBoxLayout( spacerWidget );
+  TQHBoxLayout *hboxlayout = new TQHBoxLayout( spacerWidget );
   TQSpacerItem* spacer = new TQSpacerItem( 0, 0, TQSizePolicy::Expanding, TQSizePolicy::Fixed );
-  hboxtqlayout->addItem( spacer );
+  hboxlayout->addItem( spacer );
   
   duGrid->addWidget( duTools, 0, 0 );
   

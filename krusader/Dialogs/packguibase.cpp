@@ -320,7 +320,7 @@ void PackGUIBase::expand() {
       advancedWidget->show();
     else {
       advancedWidget->hide();
-      tqlayout()->activate();
+      layout()->activate();
       TQSize minSize = minimumSize();
       resize( width(), minSize.height() );
     }

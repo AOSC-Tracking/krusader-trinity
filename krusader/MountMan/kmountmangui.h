@@ -64,7 +64,7 @@ class KMountManGUI : public KDialogBase {
 public:
    KMountManGUI();
    ~KMountManGUI();
-   void createLayout();   // calls the various tab tqlayout-creators
+   void createLayout();   // calls the various tab layout-creators
    void createMainPage(); // creator of the main page - filesystems
 
 protected slots:

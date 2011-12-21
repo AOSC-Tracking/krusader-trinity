@@ -113,7 +113,7 @@ ListPanel::ListPanel( TQString typeIn, TQWidget *parent, bool &left, const char 
 
    func = new ListPanelFunc( this );
    setAcceptDrops( true );
-   tqlayout = new TQGridLayout( this, 3, 3 );
+   layout = new TQGridLayout( this, 3, 3 );
 
    mediaButton = new MediaButton( this, "mediaButton" );
    connect( mediaButton, TQT_SIGNAL( pressed() ), this, TQT_SLOT( slotFocusOnMe() ) );
@@ -274,17 +274,17 @@ ListPanel::ListPanel( TQString typeIn, TQWidget *parent, bool &left, const char 
 	connect(popup, TQT_SIGNAL(hideMe()), this, TQT_SLOT(togglePanelPopup()));
 	popup->hide();
 	
-   // finish the tqlayout
-	tqlayout->addMultiCellWidget( hbox, 0, 0, 0, 3 );
-   tqlayout->addWidget( mediaButton, 1, 0 );
-   tqlayout->addWidget( status, 1, 1 );
-   tqlayout->addWidget( historyButton, 1, 2 );
-   tqlayout->addWidget( bookmarksButton, 1, 3 );
-   tqlayout->addMultiCellWidget( header, 2, 2, 0, 3 );
-   tqlayout->addMultiCellWidget( splt, 3, 3, 0, 3 );
-   tqlayout->addMultiCellWidget( quickSearch, 4, 4, 0, 3 );
+   // finish the layout
+	layout->addMultiCellWidget( hbox, 0, 0, 0, 3 );
+   layout->addWidget( mediaButton, 1, 0 );
+   layout->addWidget( status, 1, 1 );
+   layout->addWidget( historyButton, 1, 2 );
+   layout->addWidget( bookmarksButton, 1, 3 );
+   layout->addMultiCellWidget( header, 2, 2, 0, 3 );
+   layout->addMultiCellWidget( splt, 3, 3, 0, 3 );
+   layout->addMultiCellWidget( quickSearch, 4, 4, 0, 3 );
    quickSearch->hide();
-   tqlayout->addMultiCellLayout( totalsLayout, 5, 5, 0, 3 );
+   layout->addMultiCellLayout( totalsLayout, 5, 5, 0, 3 );
    //filter = ALL;
 }
 
@@ -370,7 +370,7 @@ ListPanel::~ListPanel() {
    delete cdUpButton;
    delete cdOtherButton;
    delete syncBrowseButton;
-   delete tqlayout;
+   delete layout;
 }
 
 int ListPanel::getProperties()

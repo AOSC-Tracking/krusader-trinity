@@ -835,7 +835,7 @@ TQRect KrDetailedView::drawItemHighlighter(TQPainter *painter, TQListViewItem *i
     r = itemRect(item);
 
     if (painter)
-       tqstyle().tqdrawPrimitive(TQStyle::PE_FocusRect, painter, r, colorGroup(),
+       style().tqdrawPrimitive(TQStyle::PE_FocusRect, painter, r, colorGroup(),
                              TQStyle::Style_FocusAtBorder, colorGroup().highlight());
   }
   return r;
@@ -873,7 +873,7 @@ void KrDetailedView::imStartEvent(TQIMEvent* e)
 								// item is "below" the quick search window, as the list view will
 								// realize its new size after the key processing. The following line
 								// will resize the list view immediately.
-        ACTIVE_PANEL->tqlayout->activate();
+        ACTIVE_PANEL->layout->activate();
 								// second, we need to disable the dirup action - hack!
         krDirUp->setEnabled( false );
       }
@@ -1146,7 +1146,7 @@ mark:       if (KrSelectionMode::getSelectionHandler()->spaceMovesDown())
 								// item is "below" the quick search window, as the list view will
 								// realize its new size after the key processing. The following line
 								// will resize the list view immediately.
-								ACTIVE_PANEL->tqlayout->activate();
+								ACTIVE_PANEL->layout->activate();
 								// second, we need to disable the dirup action - hack!
 								krDirUp->setEnabled( false );
 							}

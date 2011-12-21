@@ -222,40 +222,40 @@ CreateChecksumDlg::CreateChecksumDlg(const TQStringList& files, bool containFold
 		return;
 	}
 	
-	TQGridLayout *tqlayout = new TQGridLayout( plainPage(), 1, 1,
+	TQGridLayout *layout = new TQGridLayout( plainPage(), 1, 1,
 		KDialogBase::marginHint(), KDialogBase::spacingHint());
 	
 	int row=0;
 		
 	// title (icon+text)	
-	TQHBoxLayout *htqlayout = new TQHBoxLayout(tqlayout, KDialogBase::spacingHint());
+	TQHBoxLayout *hlayout = new TQHBoxLayout(layout, KDialogBase::spacingHint());
 	TQLabel *p = new TQLabel(plainPage());
 	p->setPixmap(krLoader->loadIcon("binary", KIcon::Desktop, 32));
-	htqlayout->addWidget(p);
+	hlayout->addWidget(p);
 	TQLabel *l1 = new TQLabel(i18n("About to calculate checksum for the following files") + 
 		(containFolders ? i18n(" and folders:") : ":"), plainPage());
-	htqlayout->addWidget(l1);
-	tqlayout->addMultiCellLayout(htqlayout, row, row, 0, 1, TQt::AlignLeft); 
+	hlayout->addWidget(l1);
+	layout->addMultiCellLayout(hlayout, row, row, 0, 1, TQt::AlignLeft); 
 	++row;
 	
 	// file list
 	KListBox *lb = new KListBox(plainPage());
 	lb->insertStringList(files);
-	tqlayout->addMultiCellWidget(lb, row, row, 0, 1);
+	layout->addMultiCellWidget(lb, row, row, 0, 1);
 	++row;
 
 	// checksum method
-	TQHBoxLayout *htqlayout2 = new TQHBoxLayout(tqlayout, KDialogBase::spacingHint());
+	TQHBoxLayout *hlayout2 = new TQHBoxLayout(layout, KDialogBase::spacingHint());
 	TQLabel *l2 = new TQLabel(i18n("Select the checksum method:"), plainPage());
-	htqlayout2->addWidget(l2);
+	hlayout2->addWidget(l2);
 	KComboBox *method = new KComboBox(plainPage());
 	// -- fill the combo with available methods
 	uint i;
 	for ( i=0; i<tools.count(); ++i )
 		method->insertItem( cs_typeToText[tools.at(i)->type], i);
 	method->setFocus();
-	htqlayout2->addWidget(method);	
-	tqlayout->addMultiCellLayout(htqlayout2, row, row, 0, 1, TQt::AlignLeft);
+	hlayout2->addWidget(method);	
+	layout->addMultiCellLayout(hlayout2, row, row, 0, 1, TQt::AlignLeft);
 	++row;
 
 	if (exec() != Accepted) return;
@@ -323,39 +323,39 @@ MatchChecksumDlg::MatchChecksumDlg(const TQStringList& files, bool containFolder
 		return;
 	}
 	
-	TQGridLayout *tqlayout = new TQGridLayout( plainPage(), 1, 1,
+	TQGridLayout *layout = new TQGridLayout( plainPage(), 1, 1,
 		KDialogBase::marginHint(), KDialogBase::spacingHint());
 	
 	int row=0;
 		
 	// title (icon+text)	
-	TQHBoxLayout *htqlayout = new TQHBoxLayout(tqlayout, KDialogBase::spacingHint());
+	TQHBoxLayout *hlayout = new TQHBoxLayout(layout, KDialogBase::spacingHint());
 	TQLabel *p = new TQLabel(plainPage());
 	p->setPixmap(krLoader->loadIcon("binary", KIcon::Desktop, 32));
-	htqlayout->addWidget(p);
+	hlayout->addWidget(p);
 	TQLabel *l1 = new TQLabel(i18n("About to verify checksum for the following files") +
 		(containFolders ? i18n(" and folders:") : ":"), plainPage());
-	htqlayout->addWidget(l1);
-	tqlayout->addMultiCellLayout(htqlayout, row, row, 0, 1, TQt::AlignLeft); 
+	hlayout->addWidget(l1);
+	layout->addMultiCellLayout(hlayout, row, row, 0, 1, TQt::AlignLeft); 
 	++row;
 	
 	// file list
 	KListBox *lb = new KListBox(plainPage());
 	lb->insertStringList(files);
-	tqlayout->addMultiCellWidget(lb, row, row, 0, 1);
+	layout->addMultiCellWidget(lb, row, row, 0, 1);
 	++row;
 
 	// checksum file
-	TQHBoxLayout *htqlayout2 = new TQHBoxLayout(tqlayout, KDialogBase::spacingHint());
+	TQHBoxLayout *hlayout2 = new TQHBoxLayout(layout, KDialogBase::spacingHint());
 	TQLabel *l2 = new TQLabel(i18n("Checksum file:"), plainPage());
-	htqlayout2->addWidget(l2);
+	hlayout2->addWidget(l2);
 	KURLRequester *checksumFileReq = new KURLRequester( plainPage() );
 	if (!checksumFile.isEmpty())
 		checksumFileReq->setURL(checksumFile);
 	checksumFileReq->fileDialog()->setURL(path);
 	checksumFileReq->setFocus();
-	htqlayout2->addWidget(checksumFileReq);
-	tqlayout->addMultiCellLayout(htqlayout2, row, row, 0, 1, TQt::AlignLeft);
+	hlayout2->addWidget(checksumFileReq);
+	layout->addMultiCellLayout(hlayout2, row, row, 0, 1, TQt::AlignLeft);
 
 	if (exec() != Accepted) return;
 	TQString file = checksumFileReq->url();
@@ -428,31 +428,31 @@ bool MatchChecksumDlg::verifyChecksumFile(TQString path,  TQString& extension) {
 // ------------- VerifyResultDlg
 VerifyResultDlg::VerifyResultDlg(const TQStringList& failed):
 	KDialogBase(Plain, i18n("Verify Checksum"), Close, Close, krApp) {
-	TQGridLayout *tqlayout = new TQGridLayout( plainPage(), 1, 1,
+	TQGridLayout *layout = new TQGridLayout( plainPage(), 1, 1,
 		KDialogBase::marginHint(), KDialogBase::spacingHint());
 
 	bool errors = failed.size()>0;
 	int row = 0;
 	
 	// create the icon and title
-	TQHBoxLayout *htqlayout = new TQHBoxLayout(tqlayout, KDialogBase::spacingHint());
+	TQHBoxLayout *hlayout = new TQHBoxLayout(layout, KDialogBase::spacingHint());
 	TQLabel p(plainPage());
 	p.setPixmap(krLoader->loadIcon(errors ? "messagebox_critical" : "messagebox_info", KIcon::Desktop, 32));
-	htqlayout->addWidget(&p);
+	hlayout->addWidget(&p);
 	
 	TQLabel *l1 = new TQLabel((errors ? i18n("Errors were detected while verifying the checksums") :
 		i18n("Checksums were verified successfully")), plainPage());
-	htqlayout->addWidget(l1);
-	tqlayout->addMultiCellLayout(htqlayout,row,row,0,1, TQt::AlignLeft);
+	hlayout->addWidget(l1);
+	layout->addMultiCellLayout(hlayout,row,row,0,1, TQt::AlignLeft);
 	++row;
 
 	if (errors) { 
 		TQLabel *l3 = new TQLabel(i18n("The following files have failed:"), plainPage());
-		tqlayout->addMultiCellWidget(l3, row, row, 0, 1);
+		layout->addMultiCellWidget(l3, row, row, 0, 1);
 		++row;
 		KListBox *lb2 = new KListBox(plainPage());
 		lb2->insertStringList(failed);
-		tqlayout->addMultiCellWidget(lb2, row, row, 0, 1);
+		layout->addMultiCellWidget(lb2, row, row, 0, 1);
 		++row;
 	}
 		
@@ -464,7 +464,7 @@ VerifyResultDlg::VerifyResultDlg(const TQStringList& failed):
 ChecksumResultsDlg::ChecksumResultsDlg(const TQStringList& stdOut, const TQStringList& stdErr,
 	const TQString& suggestedFilename, const TQString& binary, const TQString& /* type */, bool standardFormat):
 	KDialogBase(Plain, i18n("Create Checksum"), Ok | Cancel, Ok, krApp), _binary(binary) {
-	TQGridLayout *tqlayout = new TQGridLayout( plainPage(), 1, 1,
+	TQGridLayout *layout = new TQGridLayout( plainPage(), 1, 1,
 		KDialogBase::marginHint(), KDialogBase::spacingHint());
 
 	// md5 tools display errors into stderr, so we'll use that to determine the result of the job
@@ -473,21 +473,21 @@ ChecksumResultsDlg::ChecksumResultsDlg(const TQStringList& stdOut, const TQStrin
 	int row = 0;
 	
 	// create the icon and title
-	TQHBoxLayout *htqlayout = new TQHBoxLayout(tqlayout, KDialogBase::spacingHint());
+	TQHBoxLayout *hlayout = new TQHBoxLayout(layout, KDialogBase::spacingHint());
 	TQLabel p(plainPage());
 	p.setPixmap(krLoader->loadIcon(errors ? "messagebox_critical" : "messagebox_info", KIcon::Desktop, 32));
-	htqlayout->addWidget(&p);
+	hlayout->addWidget(&p);
 	
 	TQLabel *l1 = new TQLabel((errors ? i18n("Errors were detected while creating the checksums") :
 		i18n("Checksums were created successfully")), plainPage());
-	htqlayout->addWidget(l1);
-	tqlayout->addMultiCellLayout(htqlayout,row,row,0,1, TQt::AlignLeft);
+	hlayout->addWidget(l1);
+	layout->addMultiCellLayout(hlayout,row,row,0,1, TQt::AlignLeft);
 	++row;
 
 	if (successes) {
 		if (errors) {
 			TQLabel *l2 = new TQLabel(i18n("Here are the calculated checksums:"), plainPage());
-			tqlayout->addMultiCellWidget(l2, row, row, 0, 1);
+			layout->addMultiCellWidget(l2, row, row, 0, 1);
 			++row;
 		}
 		KListView *lv = new KListView(plainPage());
@@ -507,7 +507,7 @@ ChecksumResultsDlg::ChecksumResultsDlg(const TQStringList& stdOut, const TQStrin
 				new KListViewItem(lv, line);
 			}	
 		}
-		tqlayout->addMultiCellWidget(lv, row, row, 0, 1);
+		layout->addMultiCellWidget(lv, row, row, 0, 1);
 		++row;
 	}
 
@@ -516,15 +516,15 @@ ChecksumResultsDlg::ChecksumResultsDlg(const TQStringList& stdOut, const TQStrin
 		line1->setGeometry( TQRect( 60, 210, 501, 20 ) );
 		line1->setFrameShape( TQFrame::HLine );
 		line1->setFrameShadow( TQFrame::Sunken );
-		tqlayout->addMultiCellWidget(line1, row, row, 0, 1);
+		layout->addMultiCellWidget(line1, row, row, 0, 1);
 		++row;
     
 		TQLabel *l3 = new TQLabel(i18n("Here are the errors received:"), plainPage());
-		tqlayout->addMultiCellWidget(l3, row, row, 0, 1);
+		layout->addMultiCellWidget(l3, row, row, 0, 1);
 		++row;
 		KListBox *lb = new KListBox(plainPage());
 		lb->insertStringList(stdErr);
-		tqlayout->addMultiCellWidget(lb, row, row, 0, 1);
+		layout->addMultiCellWidget(lb, row, row, 0, 1);
 		++row;
 	}
 
@@ -532,14 +532,14 @@ ChecksumResultsDlg::ChecksumResultsDlg(const TQStringList& stdOut, const TQStrin
 	KURLRequester *checksumFile=0;
 	TQCheckBox *saveFileCb=0;
 	if (successes) {
-		TQHBoxLayout *htqlayout2 = new TQHBoxLayout(tqlayout, KDialogBase::spacingHint());
+		TQHBoxLayout *hlayout2 = new TQHBoxLayout(layout, KDialogBase::spacingHint());
 		saveFileCb = new TQCheckBox(i18n("Save checksum to file:"), plainPage());
 		saveFileCb->setChecked(true);
-		htqlayout2->addWidget(saveFileCb);
+		hlayout2->addWidget(saveFileCb);
 
 		checksumFile = new KURLRequester( suggestedFilename, plainPage() );
-		htqlayout2->addWidget(checksumFile, TQt::AlignLeft);
-		tqlayout->addMultiCellLayout(htqlayout2, row, row,0,1, TQt::AlignLeft);
+		hlayout2->addWidget(checksumFile, TQt::AlignLeft);
+		layout->addMultiCellLayout(hlayout2, row, row,0,1, TQt::AlignLeft);
 		++row;
 		connect(saveFileCb, TQT_SIGNAL(toggled(bool)), checksumFile, TQT_SLOT(setEnabled(bool)));
 		checksumFile->setFocus();
@@ -553,7 +553,7 @@ ChecksumResultsDlg::ChecksumResultsDlg(const TQStringList& stdOut, const TQStrin
 		connect(onePerFile, TQT_SIGNAL(toggled(bool)), saveFileCb, TQT_SLOT(toggle()));
 		connect(onePerFile, TQT_SIGNAL(toggled(bool)), saveFileCb, TQT_SLOT(setDisabled(bool)));
 		connect(onePerFile, TQT_SIGNAL(toggled(bool)), checksumFile, TQT_SLOT(setDisabled(bool)));
-		tqlayout->addMultiCellWidget(onePerFile, row, row,0,1, TQt::AlignLeft);
+		layout->addMultiCellWidget(onePerFile, row, row,0,1, TQt::AlignLeft);
 		++row;
 	}
 	

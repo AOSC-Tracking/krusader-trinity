@@ -60,7 +60,7 @@ protected slots:
 
 protected:  
   DiskUsage *diskUsage;
-  TQGridLayout *tqlayout;
+  TQGridLayout *layout;
   
   TQLabel *statusLabel;
   TQString prefix;

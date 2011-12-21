@@ -803,7 +803,7 @@ void KrBriefView::imStartEvent(TQIMEvent* e)
 								// item is "below" the quick search window, as the icon view will
 								// realize its new size after the key processing. The following line
 								// will resize the icon view immediately.
-        ACTIVE_PANEL->tqlayout->activate();
+        ACTIVE_PANEL->layout->activate();
 								// second, we need to disable the dirup action - hack!
         krDirUp->setEnabled( false );
       }
@@ -1109,7 +1109,7 @@ void KrBriefView::keyPressEvent( TQKeyEvent * e ) {
 								// item is "below" the quick search window, as the icon view will
 								// realize its new size after the key processing. The following line
 								// will resize the icon view immediately.
-								ACTIVE_PANEL->tqlayout->activate();
+								ACTIVE_PANEL->layout->activate();
 								// second, we need to disable the dirup action - hack!
 								krDirUp->setEnabled( false );
 							}

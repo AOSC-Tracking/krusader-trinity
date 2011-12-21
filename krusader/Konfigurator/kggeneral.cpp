@@ -53,7 +53,7 @@ if( first )
   //  -------------------------- GENERAL GROUPBOX ----------------------------------
 
   TQGroupBox *generalGrp = createFrame( i18n( "General" ), parent, "kgGenGeneralGrp" );
-  TQGridLayout *generalGrid = createGridLayout( generalGrp->tqlayout() );
+  TQGridLayout *generalGrid = createGridLayout( generalGrp->layout() );
 
   KONFIGURATOR_NAME_VALUE_TIP deleteMode[] =
   //            name            value    tooltip

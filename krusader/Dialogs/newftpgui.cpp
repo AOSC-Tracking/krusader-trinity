@@ -40,8 +40,8 @@
 newFTPGUI::newFTPGUI( TQWidget* parent,  const char* name, bool modal, WFlags fl )
     : TQDialog( parent, name, modal, fl ){
     
-    TQVBoxLayout * tqlayout = new TQVBoxLayout( this, 11, 6, "newFTPGUI_layout" );
-    tqlayout->setAutoAdd(true);
+    TQVBoxLayout * layout = new TQVBoxLayout( this, 11, 6, "newFTPGUI_layout" );
+    layout->setAutoAdd(true);
     
     if ( !name )
     setName( "newFTPGUI" );
