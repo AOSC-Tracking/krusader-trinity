@@ -295,7 +295,7 @@
  &lt;action name="search_replace" >
   &lt;title>Simple Search and Replace&lt;/title>
   &lt;tooltip>Search and replace a string/regex in textfiles&lt;/tooltip>
-  &lt;icon>kcachegrind&lt;/icon>
+  &lt;icon>tdecachegrind&lt;/icon>
   &lt;category>Samples&lt;/category>
   &lt;description>This UA uses the UNIX standard-tool sed (the stream-editor) so perform search and replace operations in all selected files It is possible to give a regular expression for both strings. Please note: The sed-command is "s/search/repleace/", so you have to escape the slash when you need it!&lt;/description>
   &lt;command>sed -i -e 's/%_Ask("Search for:")%/%_Ask("Replace with:")%/' %aList("Selected")%&lt;/command>
