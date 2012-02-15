@@ -37,7 +37,7 @@ DirHistoryButton::DirHistoryButton( DirHistoryQueue* hQ, TQWidget *parent, const
 	setAcceptDrops( false );
 
 	popupMenu = new TQPopupMenu( this );
-	Q_CHECK_PTR( popupMenu );
+	TQ_CHECK_PTR( popupMenu );
 
 	setPopup( popupMenu );
 	popupMenu->setCheckable( true );

@@ -45,13 +45,13 @@ KCMDModeButton::KCMDModeButton( TQWidget *parent, const char *name ) : TQToolBut
   setIconSet( SmallIcon( "konsole" ) );
   adjustSize();
   action = new KActionMenu( i18n("Execution mode") );
-  Q_CHECK_PTR( action );
+  TQ_CHECK_PTR( action );
   for( int i=0; Krusader::execTypeArray[i] != 0; i++ )
   {
     action->insert( *Krusader::execTypeArray[i] );
   }
   TQPopupMenu *pP = action->popupMenu();
-  Q_CHECK_PTR( pP );
+  TQ_CHECK_PTR( pP );
   setPopup( pP );
   setPopupDelay( 10 );
   setAcceptDrops( false );

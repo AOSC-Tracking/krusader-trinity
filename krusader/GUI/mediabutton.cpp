@@ -84,7 +84,7 @@ MediaButton::MediaButton( TQWidget *parent, const char *name ) : TQToolButton( p
 
 	popupMenu = new TQPopupMenu( this );
 	popupMenu->installEventFilter( this );
-	Q_CHECK_PTR( popupMenu );
+	TQ_CHECK_PTR( popupMenu );
 
 	setPopup( popupMenu );
 
