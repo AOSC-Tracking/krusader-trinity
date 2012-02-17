@@ -25,7 +25,7 @@ class DiskUsageViewer;
 
 class PanelPopup: public TQWidget {
    Q_OBJECT
-  TQ_OBJECT
+  
    enum Parts { Tree, Preview, QuickPanel, View, DskUsage, Last=0xFF };
 public:
    PanelPopup( TQSplitter *splitter, bool left );

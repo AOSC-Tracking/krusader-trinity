@@ -44,7 +44,7 @@
 class AdvancedFilter : public TQWidget, public FilterBase
 {
   Q_OBJECT
-  TQ_OBJECT
+  
 
 public:
   AdvancedFilter( FilterTabs *tabs, TQWidget *parent = 0, const char *name = 0 );

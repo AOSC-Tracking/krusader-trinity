@@ -50,7 +50,7 @@
  */
 class vfs: public TQObject{
 	Q_OBJECT
-  TQ_OBJECT
+  
 public:
 	typedef TQDict<vfile> vfileDict;	
 	enum VFS_TYPE{ERROR=0,NORMAL,FTP,TEMP,VIRT};

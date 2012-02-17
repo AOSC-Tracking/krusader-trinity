@@ -15,7 +15,7 @@ class TQToolButton;
  */
 class PanelManager: public TQWidget {
     Q_OBJECT
-  TQ_OBJECT
+  
 
   public:
     /**

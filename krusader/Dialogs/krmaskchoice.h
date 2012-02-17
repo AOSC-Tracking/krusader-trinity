@@ -44,7 +44,7 @@ class TQPushButton;
 class KRMaskChoice : public TQDialog
 { 
     Q_OBJECT
-  TQ_OBJECT
+  
 
 public:
     KRMaskChoice( TQWidget* parent = 0, const char* name = 0, bool modal = FALSE, WFlags fl = 0 );

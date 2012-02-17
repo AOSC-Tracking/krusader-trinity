@@ -38,7 +38,7 @@ class KProcess;
  */
 class KDiskFreeSp : public TQObject
 {  Q_OBJECT
-  TQ_OBJECT
+  
 public:
    KDiskFreeSp( TQObject *parent=0, const char *name=0 );
    /**

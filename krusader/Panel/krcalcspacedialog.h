@@ -53,7 +53,7 @@ class KrView;
  */
 class KrCalcSpaceDialog : public KDialogBase{
 	Q_OBJECT
-  TQ_OBJECT
+  
 	/* Thread which does the actual calculation. Deletes itself, if no longer
 	   needed. Creator must call finished(), if the thread is no longer needed.
 	*/

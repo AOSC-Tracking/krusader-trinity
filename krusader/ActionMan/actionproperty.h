@@ -24,7 +24,7 @@ class KShortcut;
  */
 class ActionProperty : public ActionPropertyBase {
 	Q_OBJECT
-	TQ_OBJECT
+	
 public:
 	ActionProperty( TQWidget *parent=0, const char *name=0, KrAction *action=0 );
 	~ActionProperty();

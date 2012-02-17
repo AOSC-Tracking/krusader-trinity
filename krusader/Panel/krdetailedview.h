@@ -71,7 +71,7 @@ class KrDetailedViewItem;
  */
 class KrDetailedView : public KListView, public KrView {
    Q_OBJECT
-  TQ_OBJECT
+  
    friend class KrDetailedViewItem;
 
 public:

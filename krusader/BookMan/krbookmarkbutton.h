@@ -6,7 +6,7 @@
 
 class KrBookmarkButton: public TQToolButton {
 	Q_OBJECT
-  TQ_OBJECT
+  
 public:
 	KrBookmarkButton(TQWidget *parent);
 	void openPopup();

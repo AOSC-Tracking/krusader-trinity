@@ -35,7 +35,7 @@
 
 class PackGUI : public PackGUIBase {
   Q_OBJECT
-  TQ_OBJECT
+  
 public:
   PackGUI(TQString defaultName, TQString defaultPath, int noOfFiles, TQString filename="");
 

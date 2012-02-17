@@ -55,7 +55,7 @@
 class KonfiguratorExtension : public TQObject
 {
   Q_OBJECT
-  TQ_OBJECT
+  
 
 public:
   KonfiguratorExtension(TQObject *obj, TQString cfgClass, TQString cfgName, bool rst = false, int pg=FIRST_PAGE );
@@ -106,7 +106,7 @@ protected:
 class KonfiguratorCheckBox : public TQCheckBox
 {
   Q_OBJECT
-  TQ_OBJECT
+  
 
 public:
   KonfiguratorCheckBox( TQString cls, TQString name, bool dflt, TQString text,
@@ -131,7 +131,7 @@ protected:
 class KonfiguratorSpinBox : public TQSpinBox
 {
   Q_OBJECT
-  TQ_OBJECT
+  
 
 public:
   KonfiguratorSpinBox( TQString cls, TQString name, int dflt, int min, int max,
@@ -173,7 +173,7 @@ private:
 class KonfiguratorRadioButtons : public TQButtonGroup
 {
   Q_OBJECT
-  TQ_OBJECT
+  
 
 public:
   KonfiguratorRadioButtons( TQString cls, TQString name, TQString dflt, TQWidget *parent=0,
@@ -211,7 +211,7 @@ protected:
 class KonfiguratorEditBox : public TQLineEdit
 {
   Q_OBJECT
-  TQ_OBJECT
+  
 
 public:
   KonfiguratorEditBox( TQString cls, TQString name, TQString dflt, TQWidget *parent=0,
@@ -237,7 +237,7 @@ protected:
 class KonfiguratorURLRequester : public KURLRequester
 {
   Q_OBJECT
-  TQ_OBJECT
+  
 
 public:
   KonfiguratorURLRequester( TQString cls, TQString name, TQString dflt, TQWidget *parent=0,
@@ -262,7 +262,7 @@ protected:
 class KonfiguratorFontChooser : public TQHBox
 {
   Q_OBJECT
-  TQ_OBJECT
+  
 
 public:
   KonfiguratorFontChooser( TQString cls, TQString name, TQFont *dflt, TQWidget *parent=0,
@@ -313,7 +313,7 @@ struct KONFIGURATOR_NAME_VALUE_TIP
 class KonfiguratorComboBox : public TQComboBox
 {
   Q_OBJECT
-  TQ_OBJECT
+  
 
 public:
   KonfiguratorComboBox( TQString cls, TQString name, TQString dflt,
@@ -352,7 +352,7 @@ typedef struct
 class KonfiguratorColorChooser : public TQComboBox
 {
   Q_OBJECT
-  TQ_OBJECT
+  
 
 public:
   KonfiguratorColorChooser( TQString cls, TQString name, TQColor dflt,
@@ -398,7 +398,7 @@ protected:
 class KonfiguratorListBox : public TQListBox
 {
   Q_OBJECT
-  TQ_OBJECT
+  
 
 public:
   KonfiguratorListBox( TQString cls, TQString name, TQStringList dflt,

@@ -53,7 +53,7 @@ namespace RadialMap
     class Widget : public TQWidget
     {
     Q_OBJECT
-  TQ_OBJECT
+  
 
     public:
         Widget( TQWidget* = 0, const char* = 0 );

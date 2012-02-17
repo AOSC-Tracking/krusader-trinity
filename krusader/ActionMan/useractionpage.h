@@ -23,7 +23,7 @@ class TQToolButton;
 */
 class UserActionPage : public TQWidget {
 Q_OBJECT
-  TQ_OBJECT
+  
 public:
    UserActionPage( TQWidget* parent );
    ~UserActionPage();

@@ -30,7 +30,7 @@ class TQDomDocument;
  */
 class KrAction: public KAction, public KrActionBase {
    Q_OBJECT
-  TQ_OBJECT
+  
    public:
       KrAction( KActionCollection *parent, const char* name );
       ~KrAction();
@@ -122,7 +122,7 @@ class TQFont;
  */
 class KrActionProcDlg: public KDialogBase {
       Q_OBJECT
-  TQ_OBJECT
+  
    public:
       KrActionProcDlg( TQString caption, bool enableStderr = false, TQWidget *parent = 0 );
 
@@ -146,7 +146,7 @@ class KrActionProcDlg: public KDialogBase {
  */
 class KrActionProc: public TQObject {
       Q_OBJECT
-  TQ_OBJECT
+  
    public:
 
       KrActionProc( KrActionBase* action );

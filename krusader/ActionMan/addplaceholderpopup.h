@@ -113,7 +113,7 @@ private:
  */
 class ParameterPlaceholder : public ParameterBase {
 Q_OBJECT
-  TQ_OBJECT
+  
 public:
    ParameterPlaceholder( const exp_parameter& parameter, TQWidget* parent );
    TQString text();
@@ -163,7 +163,7 @@ private:
  */
 class ParameterFile : public ParameterBase {
 Q_OBJECT
-  TQ_OBJECT
+  
 public:
    ParameterFile( const exp_parameter& parameter, TQWidget* parent );
    TQString text();
@@ -213,7 +213,7 @@ private:
  */
 class ParameterGoto : public ParameterBase {
 Q_OBJECT
-  TQ_OBJECT
+  
 public:
    ParameterGoto( const exp_parameter& parameter, TQWidget* parent );
    TQString text();
@@ -299,7 +299,7 @@ private:
  */
 class ParameterDialog : public KDialogBase {
 Q_OBJECT
-  TQ_OBJECT
+  
 public:
    ParameterDialog( const exp_placeholder* currentPlaceholder, TQWidget *parent );
    

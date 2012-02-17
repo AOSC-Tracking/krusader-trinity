@@ -15,7 +15,7 @@
 class Queue: public TQObject
 {
 	Q_OBJECT
-  TQ_OBJECT
+  
 public:
 	Queue(const TQString& name);
 	virtual ~Queue();

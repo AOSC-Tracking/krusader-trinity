@@ -48,7 +48,7 @@
  */
 class vfile : public TQObject{
   Q_OBJECT
-  TQ_OBJECT
+  
   
 public:
 	vfile(){}

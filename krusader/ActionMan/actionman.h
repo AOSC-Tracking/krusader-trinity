@@ -19,7 +19,7 @@ class UserActionPage;
 
 class ActionMan : public KDialogBase {
 Q_OBJECT
-  TQ_OBJECT
+  
 public:
    ActionMan( TQWidget* parent=0 );
    ~ActionMan();

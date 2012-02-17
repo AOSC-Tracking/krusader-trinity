@@ -37,7 +37,7 @@ YP   YD 88   YD ~Y8888P' `8888Y' YP   YP Y8888D' Y88888P 88   YD
 class KRDrag : public TQUriDrag
 {
     Q_OBJECT
-  TQ_OBJECT
+  
 public:
     static KRDrag * newDrag( const KURL::List & urls, bool move, TQWidget * dragSource = 0, const char* name = 0 );
 

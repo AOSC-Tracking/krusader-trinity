@@ -41,7 +41,7 @@ class KRPleaseWait;
 
 class KRPleaseWaitHandler : public TQObject {
   Q_OBJECT
-  TQ_OBJECT
+  
 
 public:
   KRPleaseWaitHandler();
@@ -66,7 +66,7 @@ private:
 
 class KRPleaseWait : public TQProgressDialog {
   Q_OBJECT
-  TQ_OBJECT
+  
 public:
 	KRPleaseWait( TQString msg, int count = 0 ,bool cancel = false );
 	

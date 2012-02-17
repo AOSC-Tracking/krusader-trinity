@@ -16,7 +16,7 @@ NEW: a special setText() method allows to choose which part of the string should
 */
 class KrSqueezedTextLabel : public KSqueezedTextLabel {
 Q_OBJECT
-  TQ_OBJECT
+  
   public:
     KrSqueezedTextLabel(TQWidget *parent = 0, const char *name = 0);
     ~KrSqueezedTextLabel();

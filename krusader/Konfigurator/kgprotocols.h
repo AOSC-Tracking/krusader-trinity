@@ -39,7 +39,7 @@
 class KgProtocols : public KonfiguratorPage
 {
   Q_OBJECT
-  TQ_OBJECT
+  
 
 public:
   KgProtocols( bool first, TQWidget* parent=0,  const char* name=0 );

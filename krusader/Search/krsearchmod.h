@@ -49,7 +49,7 @@ class ftp_vfs;
 
 class KRSearchMod : public TQObject  {
   Q_OBJECT
-  TQ_OBJECT
+  
 public: 
   KRSearchMod(const KRQuery *q);
   ~KRSearchMod();

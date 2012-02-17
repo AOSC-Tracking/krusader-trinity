@@ -38,7 +38,7 @@
 
 class KRarcHandler: public TQObject {
   Q_OBJECT
-  TQ_OBJECT
+  
 public:
   // return the number of files in the archive
   static long arcFileCount(TQString archive, TQString type, TQString password);
@@ -71,7 +71,7 @@ private:
 
 class KrShellProcess : public KShellProcess {
 	Q_OBJECT
-  TQ_OBJECT
+  
 public:
 	KrShellProcess() : KShellProcess(), errorMsg( TQString() ), outputMsg( TQString() ) {
 		connect(this,TQT_SIGNAL(receivedStderr(KProcess*,char*,int)),
@@ -108,7 +108,7 @@ private:
 
 class Kr7zEncryptionChecker : public KrShellProcess {
 	Q_OBJECT
-  TQ_OBJECT
+  
 	
 public:
 	Kr7zEncryptionChecker() : KrShellProcess(), encrypted( false ), lastData() {

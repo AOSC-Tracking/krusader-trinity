@@ -49,7 +49,7 @@ class TQFile;
 
 class SynchronizerTask : public TQObject {
   Q_OBJECT
-  TQ_OBJECT
+  
 
 public:
   SynchronizerTask() : TQObject(), m_state( ST_STATE_NEW ), m_statusMessage( TQString() ) {}
@@ -83,7 +83,7 @@ protected:
 
 class CompareTask : public SynchronizerTask {
   Q_OBJECT
-  TQ_OBJECT
+  
 
 public:
   CompareTask( SynchronizerFileItem *parentIn, const TQString &leftURL,
@@ -129,7 +129,7 @@ private:
 
 class CompareContentTask : public SynchronizerTask {
   Q_OBJECT
-  TQ_OBJECT
+  
 
 public:
   CompareContentTask( Synchronizer *, SynchronizerFileItem *, const KURL &, const KURL &, KIO::filesize_t );

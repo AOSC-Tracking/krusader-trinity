@@ -39,7 +39,7 @@
 class DiskUsageViewer : public TQWidget
 {
   Q_OBJECT
-  TQ_OBJECT
+  
   
 public:
   DiskUsageViewer( TQWidget *parent = 0, char *name = 0 );

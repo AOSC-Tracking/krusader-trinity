@@ -50,7 +50,7 @@ class KCMDModeButton;
 
 class KrHistoryCombo: public KHistoryCombo {
   Q_OBJECT
-  TQ_OBJECT
+  
 
   public:
     KrHistoryCombo(TQWidget *parent): KHistoryCombo(parent) {}
@@ -64,7 +64,7 @@ class KrHistoryCombo: public KHistoryCombo {
 
 class KCMDLine : public TQWidget, KrActionBase {
     Q_OBJECT
-  TQ_OBJECT
+  
   public:
     KCMDLine( TQWidget *parent = 0, const char *name = 0 );
     ~KCMDLine();

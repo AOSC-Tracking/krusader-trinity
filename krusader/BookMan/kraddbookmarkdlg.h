@@ -12,7 +12,7 @@
 
 class KrAddBookmarkDlg: public KDialogBase {
 	Q_OBJECT
-  TQ_OBJECT
+  
 public:
 	KrAddBookmarkDlg(TQWidget *parent, KURL url = 0);
 	KURL url() const { return vfs::fromPathOrURL(_url->text()); }

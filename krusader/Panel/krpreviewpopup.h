@@ -29,7 +29,7 @@
 
 class KrPreviewPopup : public TQPopupMenu {
 	Q_OBJECT
-  TQ_OBJECT
+  
 public: 
 	KrPreviewPopup();
 	~KrPreviewPopup();

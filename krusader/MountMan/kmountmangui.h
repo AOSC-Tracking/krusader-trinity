@@ -55,7 +55,7 @@ class fsData;
 
 class KMountManGUI : public KDialogBase {
    Q_OBJECT
-  TQ_OBJECT
+  
 
    enum Pages {
       Filesystems = 0

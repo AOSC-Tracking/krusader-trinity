@@ -34,7 +34,7 @@
 
 class KrProgress : public KIO::ProgressBase {
   Q_OBJECT
-  TQ_OBJECT
+  
 public:
 
   KrProgress(KIO::Job* job);

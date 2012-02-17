@@ -34,7 +34,7 @@ class TQCString;
 
 class kio_krarcProtocol : public TQObject, public KIO::SlaveBase {
 Q_OBJECT
-  TQ_OBJECT
+  
 public:
 	kio_krarcProtocol(const TQCString &pool_socket, const TQCString &app_socket);
 	virtual ~kio_krarcProtocol();
@@ -106,7 +106,7 @@ private:
 
 class KrShellProcess : public KShellProcess {
 	Q_OBJECT
-  TQ_OBJECT
+  
 public:
 	KrShellProcess() : KShellProcess(), errorMsg( TQString() ), outputMsg( TQString() ) {
 		connect(this,TQT_SIGNAL(receivedStderr(KProcess*,char*,int)),

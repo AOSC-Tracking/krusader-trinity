@@ -42,7 +42,7 @@
 class SynchronizeDialog : TQDialog
 {
   Q_OBJECT
-  TQ_OBJECT
+  
   
   public:
     SynchronizeDialog(  TQWidget*,  const char*, bool, WFlags, Synchronizer *sync,

@@ -44,7 +44,7 @@ class KRPieSlice;
 
 class KRPie : public TQWidget {
     Q_OBJECT
-  TQ_OBJECT
+  
   public:
     KRPie( KIO::filesize_t _totalSize, TQWidget *parent = 0 );
     void addSlice( KIO::filesize_t size, TQString label );
@@ -60,7 +60,7 @@ class KRPie : public TQWidget {
 
 class KRFSDisplay : public TQWidget {
     Q_OBJECT
-  TQ_OBJECT
+  
   public:
     // this constructor is used for a mounted filesystem
     KRFSDisplay( TQWidget *parent, TQString _alias, TQString _realName,
@@ -104,7 +104,7 @@ class KRPieSlice {
 
 class KrQuickSearch: public KLineEdit {
       Q_OBJECT
-  TQ_OBJECT
+  
    public:
       KrQuickSearch(TQWidget *parent, const char * name = 0);
       void addText(const TQString &str) { setText(text()+str); }

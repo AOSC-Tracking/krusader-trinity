@@ -49,7 +49,7 @@ typedef struct krDirEntry_s{
 
 class KRdirWatch : public TQObject  {
   Q_OBJECT
-  TQ_OBJECT
+  
 public:
 	KRdirWatch(int msec = 250 , bool dirOnly = false );
 	~KRdirWatch();

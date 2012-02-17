@@ -75,7 +75,7 @@ public:
 // even if they are actually the same object (specify it twice in that case)
 class KrViewOperator: public TQObject {
 	Q_OBJECT
-  TQ_OBJECT
+  
 public:
 	KrViewOperator(KrView *view, TQWidget *widget);
 	~KrViewOperator();

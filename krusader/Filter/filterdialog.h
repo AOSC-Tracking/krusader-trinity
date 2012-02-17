@@ -40,7 +40,7 @@ class GeneralFilter;
 class FilterDialog : public KDialogBase
 {
   Q_OBJECT
-  TQ_OBJECT
+  
 
 public:
   FilterDialog(  TQWidget *parent = 0, const char *name = 0 );

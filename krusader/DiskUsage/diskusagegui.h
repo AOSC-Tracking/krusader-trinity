@@ -42,7 +42,7 @@
 class DiskUsageGUI : public TQDialog
 {
   Q_OBJECT
-  TQ_OBJECT
+  
   
 public:
   DiskUsageGUI( KURL openDir, TQWidget* parent=0, const char *name = 0 );

@@ -45,7 +45,7 @@ class TQString;
 class Konfigurator : public KDialogBase
 {
    Q_OBJECT
-  TQ_OBJECT
+  
 
 public:
   Konfigurator( bool f=false, int startPage = 0 ); // true if Konfigurator is run for the first time

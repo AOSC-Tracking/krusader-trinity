@@ -50,7 +50,7 @@ struct PredefinedDevice
   class SplitterSpinBox : public TQSpinBox
   {
     Q_OBJECT
-    TQ_OBJECT
+    
   private:
     KIO::filesize_t division;
     KIO::filesize_t value;
@@ -143,7 +143,7 @@ struct PredefinedDevice
 class SplitterGUI : TQDialog
 {
   Q_OBJECT
-  TQ_OBJECT
+  
   
 private:
   int                             predefinedDeviceNum;

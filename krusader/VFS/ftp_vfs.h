@@ -39,7 +39,7 @@
 
 class ftp_vfs : public vfs{
 	Q_OBJECT
-  TQ_OBJECT
+  
 public:
 	// the constructor simply uses the inherited constructor
 	ftp_vfs(TQObject* panel);

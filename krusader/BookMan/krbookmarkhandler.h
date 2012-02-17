@@ -16,7 +16,7 @@ class KBookmarkManager;
 
 class KrBookmarkHandler: public TQObject {
 	Q_OBJECT
-  TQ_OBJECT
+  
 	friend class KrAddBookmarkDlg;
 	enum Actions { BookmarkCurrent=0, ManageBookmarks };
 public:

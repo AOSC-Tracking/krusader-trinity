@@ -49,7 +49,7 @@ class TQSpinBox;
 class SynchronizerGUI : TQDialog
 {
    Q_OBJECT
-  TQ_OBJECT
+  
 
 public:
   class SyncViewItem : public TQListViewItem

@@ -28,7 +28,7 @@ class KFileItem;
 
 class KrusaderImageFilePreview : public KPreviewWidgetBase {
 		Q_OBJECT
-  TQ_OBJECT
+  
 
 	public:
 		KrusaderImageFilePreview( TQWidget *parent );

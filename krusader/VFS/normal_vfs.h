@@ -46,7 +46,7 @@
  */
 class normal_vfs : public vfs{
 	Q_OBJECT
-  TQ_OBJECT
+  
 public:
 	// the constructor simply uses the inherited constructor
 	normal_vfs(TQObject* panel);

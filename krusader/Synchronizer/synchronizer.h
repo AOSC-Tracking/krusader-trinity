@@ -52,7 +52,7 @@ class vfile;
 class Synchronizer : public TQObject
 {
   Q_OBJECT
-  TQ_OBJECT
+  
 
   private:
     int     displayUpdateCount;   // the display is refreshed after every x-th change

@@ -9,7 +9,7 @@ class KActionCollection;
 
 class KrBookmark: public KAction {
 	Q_OBJECT
-  TQ_OBJECT
+  
 public:
 	KrBookmark(TQString name, KURL url, KActionCollection *parent, TQString icon = "", TQString actionName = TQString() );
 	KrBookmark(TQString name, TQString icon = ""); // creates a folder

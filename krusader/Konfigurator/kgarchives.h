@@ -36,7 +36,7 @@
 class KgArchives : public KonfiguratorPage
 {
   Q_OBJECT
-  TQ_OBJECT
+  
 
 public:
   KgArchives( bool first, TQWidget* parent=0,  const char* name=0 );

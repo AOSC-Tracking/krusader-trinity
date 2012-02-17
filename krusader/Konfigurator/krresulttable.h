@@ -105,7 +105,7 @@ protected:
 class KrArchiverResultTable : public KrResultTable
 {
   Q_OBJECT
-  TQ_OBJECT
+  
 public:
   KrArchiverResultTable(TQWidget* parent);
   virtual ~KrArchiverResultTable();
@@ -125,7 +125,7 @@ protected slots:
 class KrToolResultTable : public KrResultTable
 {
   Q_OBJECT
-  TQ_OBJECT
+  
 public:
   KrToolResultTable(TQWidget* parent);
   virtual ~KrToolResultTable();

@@ -15,7 +15,7 @@
 
 class PanelViewerBase: public TQWidgetStack {
 	Q_OBJECT
-  TQ_OBJECT
+  
 
 public:
 	PanelViewerBase( TQWidget *parent = 0 );
@@ -47,7 +47,7 @@ protected:
 
 class PanelViewer: public PanelViewerBase {
 	Q_OBJECT
-  TQ_OBJECT
+  
 public slots:
 	KParts::ReadOnlyPart* openURL( const KURL &url, KrViewer::Mode mode=KrViewer::Generic );
 	bool closeURL();
@@ -66,7 +66,7 @@ protected:
 
 class PanelEditor: public PanelViewerBase {
 	Q_OBJECT
-  TQ_OBJECT
+  
 public:
 	virtual bool isModified();
 	virtual bool isEditor() { return true; }

@@ -40,7 +40,7 @@
 class KgColors : public KonfiguratorPage
 {
   Q_OBJECT
-  TQ_OBJECT
+  
 
 public:
   KgColors( bool first, TQWidget* parent=0,  const char* name=0 );

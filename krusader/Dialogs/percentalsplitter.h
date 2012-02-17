@@ -38,7 +38,7 @@ class PercentalSplitterToolTip;
 
 class PercentalSplitter : public TQSplitter {
   Q_OBJECT
-  TQ_OBJECT
+  
   
 public:
   PercentalSplitter( TQWidget * parent = 0, const char * name = 0 );  

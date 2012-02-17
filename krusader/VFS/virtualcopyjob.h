@@ -50,7 +50,7 @@ typedef enum {
 class VirtualCopyJob : public KIO::Job
 {
   Q_OBJECT
-  TQ_OBJECT
+  
 
 public:
   VirtualCopyJob( const TQStringList *names, vfs * vfs, const KURL& dest, const KURL& baseURL,

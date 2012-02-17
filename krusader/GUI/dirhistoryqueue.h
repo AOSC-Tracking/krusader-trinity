@@ -29,7 +29,7 @@ class ListPanel;
 
 class DirHistoryQueue : public TQObject  {
   Q_OBJECT
-  TQ_OBJECT
+  
 public: 
 	DirHistoryQueue(ListPanel* p);
 	~DirHistoryQueue();

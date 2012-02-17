@@ -60,7 +60,7 @@ public:
 class PreservingCopyJob : public KIO::CopyJob
 {
   Q_OBJECT
-  TQ_OBJECT
+  
 
 public:
 

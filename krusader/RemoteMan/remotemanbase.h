@@ -27,7 +27,7 @@ class TQSpinBox;
 class remoteManBase : public TQDialog
 { 
     Q_OBJECT
-  TQ_OBJECT
+  
 
 public:
     remoteManBase( TQWidget* parent = 0, const char* name = 0, bool modal = FALSE, WFlags fl = 0 );

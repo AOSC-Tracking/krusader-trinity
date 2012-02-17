@@ -15,7 +15,7 @@
 // should be renamed to KrContextMenu or similar
 class KrPopupMenu : public KPopupMenu {
 	Q_OBJECT
-  TQ_OBJECT
+  
 public:
 	static void run(const TQPoint &pos, ListPanel *panel);
 

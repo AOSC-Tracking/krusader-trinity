@@ -48,7 +48,7 @@
 class GeneralFilter : public TQWidget, public FilterBase
 {
   Q_OBJECT
-  TQ_OBJECT
+  
 
 public:
   GeneralFilter( FilterTabs *tabs, int properties, TQWidget *parent = 0, const char *name = 0 );

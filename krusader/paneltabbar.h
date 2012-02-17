@@ -44,7 +44,7 @@ public:
  */
 class PanelTabBar : public TQTabBar {
   Q_OBJECT
-  TQ_OBJECT
+  
 public:
   PanelTabBar( TQWidget *parent );
 
