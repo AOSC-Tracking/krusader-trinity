@@ -655,7 +655,7 @@ Please don't use the <filename>/usr/local</filename> directory as it simply won'
             file.</para>
           </note>
           <para>If you can notdetermine your TDEDIR, 
-          <command>kde-config --prefix</command> might help
+          <command>tde-config --prefix</command> might help
           you.</para>
           <para></para>
           <!-- Empty line to make it more readable -->
@@ -817,7 +817,7 @@ Good - your configure finished. Start make now
           <para>If you used another --prefix= than 
           <filename>$TDEDIR or /usr/local</filename>, it is
           recommended to do an extra check: 
-<screen><prompt>$</prompt> <userinput><command>kde-config</command> <option>--path exe</option></userinput>
+<screen><prompt>$</prompt> <userinput><command>tde-config</command> <option>--path exe</option></userinput>
 /home/frank/.kde/bin/:/usr/bin/:/usr/local/bin/   
 <prompt>$</prompt></screen>
           If the

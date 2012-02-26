@@ -3901,9 +3901,9 @@
 >&useraction_parameter; path to the external foo.js file, absolut path or relative to <filename
 >&lt;kde-app-data&gt;/krusader/js/</filename
 >. &lt;kde-app-data&gt; is <filename
->$(kde-config --localprefix)/share/apps/</filename
+>$(tde-config --localprefix)/share/apps/</filename
 > or <filename
->$(kde-config --prefix)/share/apps/</filename
+>$(tde-config --prefix)/share/apps/</filename
 >, for those who don't know where so copy the scripts/extensions. If all the needed files (normaly <filename
 >.js</filename
 > and maybe <filename

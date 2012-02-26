@@ -565,7 +565,7 @@
 
 <para
 >If you can't determine your TDEDIR than <command
->kde-config --prefix</command
+>tde-config --prefix</command
 > might help you.</para>
 
      <!-- Empty line to make it more readable -->
@@ -739,7 +739,7 @@ Good - your configure finished. Start make now
 >If you dit use the an other --prefix= than <filename
 >$TDEDIR or /usr/local</filename
 > , then it can't hurt to do an extra check: <screen
-><prompt>$</prompt> <userinput><command>kde-config</command> <option>--path exe</option></userinput>
+><prompt>$</prompt> <userinput><command>tde-config</command> <option>--path exe</option></userinput>
 /home/frank/.kde/bin/:/usr/bin/:/usr/local/bin/   
 <prompt>$</prompt></screen
 > If the &lt;prefix_dir/bin&gt; directory is not shown, you need to use e.g. <command

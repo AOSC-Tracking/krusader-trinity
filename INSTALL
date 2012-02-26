@@ -377,7 +377,7 @@ the FAQ. If the problem persists, use the help_request to ask for help.
       Assuming Krusader is not the only Qt&#8482;/KDE program you want to
       compile, we recommend to make these settings permanent (e.g. append both
       export commands to your /etc/profile) file.
-      If you can notdetermine your TDEDIR, kde-config --prefix might help you.
+      If you can notdetermine your TDEDIR, tde-config --prefix might help you.
    8. If you have downloaded a stable version "krusader-x.xx.tar.gz" or a beta
       version "krusader-x.xx-betax.tar.gz", you can skip this step. In this
       case the ./configure script is provided.
@@ -465,7 +465,7 @@ the FAQ. If the problem persists, use the help_request to ask for help.
       Krusader sources.
       If you used another --prefix= than $TDEDIR or /usr/local, it is
       recommended to do an extra check:
-      $ kde-config --path exe
+      $ tde-config --path exe
       /home/frank/.kde/bin/:/usr/bin/:/usr/local/bin/
       $
       If the <prefix_dir/bin> directory is not shown, you need to use e.g.
