@@ -158,22 +158,22 @@ KRMaskChoice::~KRMaskChoice()
 
 void KRMaskChoice::addSelection()
 {
-    qWarning( "KRMaskChoice::addSelection(): Not implemented yet!" );
+    tqWarning( "KRMaskChoice::addSelection(): Not implemented yet!" );
 }
 
 void KRMaskChoice::clearSelections()
 {
-    qWarning( "KRMaskChoice::clearSelections(): Not implemented yet!" );
+    tqWarning( "KRMaskChoice::clearSelections(): Not implemented yet!" );
 }
 
 void KRMaskChoice::deleteSelection()
 {
-    qWarning( "KRMaskChoice::deleteSelection(): Not implemented yet!" );
+    tqWarning( "KRMaskChoice::deleteSelection(): Not implemented yet!" );
 }
 
 void KRMaskChoice::acceptFromList(TQListBoxItem *)
 {
-    qWarning( "KRMaskChoice::acceptFromList(TQListBoxItem *): Not implemented yet!" );
+    tqWarning( "KRMaskChoice::acceptFromList(TQListBoxItem *): Not implemented yet!" );
 }
 
 #include "krmaskchoice.moc"

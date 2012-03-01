@@ -18,5 +18,5 @@ void Queue::enqueue(KIO::Job *job)
 
 void Queue::dumpQueue()
 {
-	qDebug("Queue: %s", name().latin1());
+	tqDebug("Queue: %s", name().latin1());
 }

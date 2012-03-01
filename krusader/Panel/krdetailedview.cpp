@@ -1562,7 +1562,7 @@ void KrDetailedView::slotSortOrderChanged(int col) {
 			sp = KrViewProperties::Owner; break;
 		case KrDetailedViewProperties::Group:
 			sp = KrViewProperties::Group; break;
-		default: qFatal("slotSortOrderChanged: unknown column");
+		default: tqFatal("slotSortOrderChanged: unknown column");
 	}
 	if (sortMode() & KrViewProperties::DirsFirst) 
 		sp = static_cast<KrViewProperties::SortSpec>(sp | KrViewProperties::DirsFirst);

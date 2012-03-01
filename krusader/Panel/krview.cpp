@@ -72,17 +72,17 @@ _numSelected( 0 ), _count( 0 ), _numDirs( 0 ), _countSize( 0 ), _selectedSize( 0
 
 KrView::~KrView() {
 	if (_properties)
-		qFatal("A class inheriting KrView didn't delete _properties!");
+		tqFatal("A class inheriting KrView didn't delete _properties!");
 	if (_operator) 
-		qFatal("A class inheriting KrView didn't delete _operator!");
+		tqFatal("A class inheriting KrView didn't delete _operator!");
 }
 
 void KrView::init() {
 	// sanity checks:
 	if (_nameInKConfig.isEmpty())
-		qFatal("_nameInKConfig must be set during construction of KrView inheritors");
+		tqFatal("_nameInKConfig must be set during construction of KrView inheritors");
 	if (!_widget)
-		qFatal("_widget must be set during construction of KrView inheritors");
+		tqFatal("_widget must be set during construction of KrView inheritors");
 	// ok, continue
 	initProperties();
 	initOperator();

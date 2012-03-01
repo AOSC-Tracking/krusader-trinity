@@ -308,7 +308,7 @@ PackGUIBase::~PackGUIBase()
 
 void PackGUIBase::browse()
 {
-    qWarning( "PackGUIBase::browse(): Not implemented yet!" );
+    tqWarning( "PackGUIBase::browse(): Not implemented yet!" );
 }
 
 void PackGUIBase::expand() {

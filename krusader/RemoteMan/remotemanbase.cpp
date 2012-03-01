@@ -295,37 +295,37 @@ bool remoteManBase::event( TQEvent* ev )
 
 void remoteManBase::addSession()
 {
-    qWarning( "remoteManBase::addSession(): Not implemented yet!" );
+    tqWarning( "remoteManBase::addSession(): Not implemented yet!" );
 }
 
 void remoteManBase::connection()
 {
-    qWarning( "remoteManBase::connection(): Not implemented yet!" );
+    tqWarning( "remoteManBase::connection(): Not implemented yet!" );
 }
 
 void remoteManBase::moreInfo()
 {
-    qWarning( "remoteManBase::moreInfo(): Not implemented yet!" );
+    tqWarning( "remoteManBase::moreInfo(): Not implemented yet!" );
 }
 
 void remoteManBase::addGroup()
 {
-    qWarning( "remoteManBase::addGroup(): Not implemented yet!" );
+    tqWarning( "remoteManBase::addGroup(): Not implemented yet!" );
 }
 
 void remoteManBase::refreshData()
 {
-    qWarning( "remoteManBase::refreshData(): Not implemented yet!" );
+    tqWarning( "remoteManBase::refreshData(): Not implemented yet!" );
 }
 
 void remoteManBase::removeSession()
 {
-    qWarning( "remoteManBase::removeSession(): Not implemented yet!" );
+    tqWarning( "remoteManBase::removeSession(): Not implemented yet!" );
 }
 
 void remoteManBase::updateName(const TQString&)
 {
-    qWarning( "remoteManBase::updateName(const TQString&): Not implemented yet!" );
+    tqWarning( "remoteManBase::updateName(const TQString&): Not implemented yet!" );
 }
 
 #include "remotemanbase.moc"

@@ -143,9 +143,9 @@ public:
   virtual void init();
 
 protected:
-  virtual void initProperties() { qFatal("Please implement your own initProperties() method"); }
-  virtual void initOperator() { qFatal("Please implement your own initOperator() method"); }
-  virtual void setup() { qFatal("Please implement your own setup() method"); }
+  virtual void initProperties() { tqFatal("Please implement your own initProperties() method"); }
+  virtual void initOperator() { tqFatal("Please implement your own initOperator() method"); }
+  virtual void setup() { tqFatal("Please implement your own setup() method"); }
   
   ///////////////////////////////////////////////////////
   // Every view must implement the following functions //
