@@ -1053,7 +1053,7 @@ make[1]: Leaving directory `/home/source/krusader_trinity'
     package then usually &krusader; can be started from
     the &kmenu;. &eg; on
     &Mandrake;-&Linux; 10.0 click on the
-    &kicon; button and choose 
+    &ticon; button and choose 
     <emphasis role="bold">
       <menuchoice>
         <guimenuitem>Applications</guimenuitem>
