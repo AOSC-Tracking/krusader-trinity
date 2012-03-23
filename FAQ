@@ -88,7 +88,7 @@ The FAQ is divided into three sections:
 If you feel that a FAQ is missing or if something is not clear to you, please
 let_us_know.
 Installation FAQ
-  1. Does_Krusader_need_KDE_to_run?
+  1. Does_Krusader_need_TDE_to_run?
   2. Which_libraries_does_Krusader_need_to_run?
   3. I_have_followed_all_the_steps_but_configurecomplains_about_missing_libs_or
   headers._What_do_I_need_to_do?
@@ -110,28 +110,28 @@ Installation FAQ
   help_request?
   15. How_can_I_build_an_RPM_package_for_Krusader?
   16. Why_does_Krusader-cvs_show_an_old_version_number_in_the_about_box?
-1.  Does Krusader need KDE to run?
-    No, Krusader does not need the KDE window manager to run on your computer
-    but Krusader's natural environment is KDE, because it relies on services
-    provided by the KDE base libraries. Only some shared libraries are needed
-    e.g. KDE libraries, Qt&#8482; libraries, etc. This means that Krusader runs
+1.  Does Krusader need TDE to run?
+    No, Krusader does not need the TDE window manager to run on your computer
+    but Krusader's natural environment is TDE, because it relies on services
+    provided by the TDE base libraries. Only some shared libraries are needed
+    e.g. TDE libraries, Qt&#8482; libraries, etc. This means that Krusader runs
     on GNOME, AfterStep, XFce and other window managers provided the approriate
     libraries are installed on your computer. All this is not a problem since
     the apt-get world can resolve these dependencies instantly.
-    You do not need to switch to the KDE window manager to use Krusader; you
+    You do not need to switch to the TDE window manager to use Krusader; you
     can still use GNOME, AfterStep, XFce or another window manager. However,
     the configuration of the Krusader fonts and some behavior is done by
     running kcontrol.
     A lot depends on what you want to do with Krusader. You should know that
-    Krusader uses the KDE KIOSlaves to access remote file systems, and support
-    for only a limited number of file system types are shipped with KDElibs,
-    most of the KIOSlaves are bundled with KDEbase (including fish, sftp and
+    Krusader uses the TDE KIOSlaves to access remote file systems, and support
+    for only a limited number of file system types are shipped with tdelibs,
+    most of the KIOSlaves are bundled with tdebase (including fish, sftp and
     tar). However, if you want the property-dialog to show EXIF-data for
-    .jpeg's, you need KDEgraphics. If you want ID3-infos, you need
-    KDEmultimedia, and so on.
-    To summarize, if you want a working Krusader - install KDElibs. If you want
-    a functional Krusader then you need KDElibs + KDEbase. For maximum
-    functionality, Krusader needs all of the KDE package libraries, but the KDE
+    .jpeg's, you need tdegraphics. If you want ID3-infos, you need
+    tdemultimedia, and so on.
+    To summarize, if you want a working Krusader - install tdelibs. If you want
+    a functional Krusader then you need tdelibs + tdebase. For maximum
+    functionality, Krusader needs all of the TDE package libraries, but the TDE
     window manager is optional.
 2.  Which libraries does Krusader need to run?
     For running Krusader (e.g. when you have installed Krusader with a binary
@@ -139,7 +139,7 @@ Installation FAQ
     you only need the C-compliler gcc when you compile Krusader from source
     (see the next question).
     Here is a list of the required shared libraries when you run Krusader:
-        * tdelibs (for the required KDE version see the Installation_procedure)
+        * tdelibs (for the required TDE version see the Installation_procedure)
         * libacl1 libart-2.0 libattr1 libaudio2 libc6 libfam0 libfontconfig1
         * libfreetype6 libgcc1 libgcc2 libice6 libidn11 libjpeg62 libkjsembed1
         * libkonq4 libpcre3 libpng12 libqt3-mt libsm6 libstdc++6 libunwind7
@@ -160,7 +160,7 @@ Installation FAQ
         * fam libfam-devel
         * zlib1 arts libart_lgpl2 libstdc++5 libpcre0
         * libkjsembed, if you use the JavaScript_console, often found in a
-          package called KDEbindings(-devel) and libkonq-dev for the Konqueror
+          package called tdebindings(-devel) and libkonq-dev for the Konqueror
           right-click menu entries.
     Most RPM-based distributions separate the headers from the libs. The
     headers are needed to compile Krusader. Look for packages in the form foo-
@@ -242,16 +242,16 @@ Installation FAQ
     following question, as well.
 9.  Some new menu items are missing after updating Krusader, what's wrong?
     The krusaderui.rc file is stored in $TDEDIR/share/apps/krusader/
-    krusaderui.rc. When you change the "Toolbar", KDE makes a copy of that file
+    krusaderui.rc. When you change the "Toolbar", TDE makes a copy of that file
     in the home directory at ~/.kde/share/apps/krusader/krusaderui.rc. If
     Krusader was previously installed on your computer, and you install a newer
     Krusader version the ~/.kde/share/apps/krusader/krusaderui.rc file must be
     replaced with the newer version. Note: this will also reset all your
     changes on toolbars and shortcuts!
     The first line of krusaderui.rc contains the version number. After
-    installing a newer Krusader version, KDE will automatically replace the old
+    installing a newer Krusader version, TDE will automatically replace the old
     ~/.kde/share/apps/krusader/krusaderui.rc with the newer version when
-    starting the new Krusader for the first time (KDE will detect the newer
+    starting the new Krusader for the first time (TDE will detect the newer
     version number in the first line).
     If you install a CVS or beta version and Krusader was already installed on
     your computer then you should delete the krusaderui.rc file from your home
@@ -390,7 +390,7 @@ Usage FAQ
   16. How_can_I_disable_the_default_sounds,_e.g._when_I_do_a_delete_action_?
   17. Where_is_RemoteMan,_the_remote_connection_manager_?
   18. Why_doesn't_mimetype_magic_sometimes_work_inside_archives?
-  19. Where_is_Konfigurator,_do_i_need_to_install_the_KDE_Desktop_Enviroment_to
+  19. Where_is_Konfigurator,_do_i_need_to_install_the_TDE_Desktop_Enviroment_to
   use_it?
   20. How_can_I_set_the_look_&_feel_of_2_different_users_to_be_the_same?
   21. Why_doesn't_"save_last_location"_work?
@@ -400,7 +400,7 @@ Usage FAQ
     regarding random crashes, especially during file operations such as copy,
     move, etc. These crashes are related to Qt&#8482; 3.3.5 and NOT Krusader.
     It seems that Qt&#8482; 3.3.5 introduced a serious bug which is currently
-    (December 2005) causing random crashes in many KDE applications including
+    (December 2005) causing random crashes in many TDE applications including
     Konqueror. You can use Google to find out more. As far as we know, Debian�-
     Sid and SuSE� already posted new Qt&#8482; binaries that fix the problem,
     and Gentoo� has masked Qt&#8482; 3.3.5 completely. As for now, you either
@@ -429,7 +429,7 @@ Usage FAQ
     to get you stuck. The one and only way around this architectural problem is
     using a multi-threaded design - this way if we get stuck, we don't hang the
     entire application event loop, but we don't think that the time is right
-    for adding threads, we are not sure that *all* the KDE systems out there
+    for adding threads, we are not sure that *all* the TDE systems out there
     are using Qt&#8482;-mt (the multi threaded version of the Qt&#8482;
     library), and the Krusader Krew may not be the right people to address this
     major issue in any case; so currently this is just a bug we have to learn
@@ -475,7 +475,7 @@ Usage FAQ
 8.  I get the error message "Protocol not supported by Krusader: "krarc:/path/
     to/foo-archive", when I try to open foo-Archive, what to do?
     The icons, kio_slaves and documentation must be installed in the correct
-    places in the KDE directory tree. The kio_krarc.* files must be in the same
+    places in the TDE directory tree. The kio_krarc.* files must be in the same
     directory with the other KIO slaves. Try this: locate kio_tar.* and copy/
     link the kio_krarc.* files to the same location. Don't forget to run #
     ldconfig on this directory when you're done. For more information click
@@ -494,14 +494,14 @@ Usage FAQ
 10. Howto executing jar files (and not enter the jar archive)?
     Go to the Konfigurator_Protocol_page and remove application/x-jar from the
     krarc node, Krusader should no longer enter the archive. Global file
-    associations are handled by KDE and not by Krusader. To assosiate the jar
+    associations are handled by TDE and not by Krusader. To assosiate the jar
     extension:
-        * Open KDEs control center: kcontrol
-        * KDE Components->File Associations
+        * Opens the TDE control center
+        * TDE Components->File Associations
         * Enter jar as filename pattern
         * Add java as application
 11. Why do I have trouble with my FTP connection?
-    This problem often occurs when you are behind a firewall or proxy. Open KDE
+    This problem often occurs when you are behind a firewall or proxy. Open TDE
     Control Center->Network->Preferences, "Enable Passive Mode (PASV)" has to
     be turned on or off, depending on it's current setting. Now try your FTP
     session again to see if it works. Also, make sure you have no other FTP
@@ -512,27 +512,27 @@ Usage FAQ
     remote FTP directory, what to do?
     The reason for this error is that 'FTP via HTTP proxy' feature is not yet
     supported by Krusader. This error may be caused by a misconfiguration of
-    the proxy settings in KDE Control Center. Modify the proxy settings to not
+    the proxy settings in TDE Control Center. Modify the proxy settings to not
     use HTTP proxy and FTP will work.
 13. How don't add ".part" suffix when copying files via ftp?
     When uploading files a .part suffix is added to the filename, once the
     upload is complete the filename is renamed automagically to remove the
     .part suffix. This works great but sometimes some ftp-servers don't allow a
     rename operation. You can solve this by unchecking the checkbox Mark
-    partially uploaded files in KDE's control center. The checkbox is located
+    partially uploaded files in the TDE control center. The checkbox is located
     at Internet and Network->Connection Preferences.
 14. How can I close a remote connection (e.g. a FTP connection)?
     It's explained in the remote_connections_chapter.
 15. I am experiencing problems with the media:// protocol, why?
     At the moment of writing the media:// protocol is instable, we need to wait
-    until the KDE team corrects it, every other protocol works properly with
+    until the TDE team corrects it, every other protocol works properly with
     Krusader, only media fails. More information regarding this issue is
     available in our_forum.
 16. How can I disable the default sounds, e.g. when I do a delete action ?
-    Those are the default KDE System sounds, and not related to Krusader. If
-    you want to disable them globally open your KDE KDE Control Center
-    ( kcontrol): KDE Control Center->Sound & Multimedia->System Notifications,
-    Event Source: "KDE System Notifications" and uncheck sound items you don't
+    Those are the default TDE System sounds, and not related to Krusader. If
+    you want to disable them globally open the TDE Control Center
+    (kcontrol): TDE Control Center->Sound & Multimedia->System Notifications,
+    Event Source: "TDE System Notifications" and uncheck sound items you don't
     like.
 17. Where is RemoteMan, the remote connection manager ?
     RemoteMan has been replaced by our Bookmark Manager since Krusader 1.25-
@@ -551,15 +551,15 @@ Usage FAQ
 18. Why doesn't mimetype magic sometimes work inside archives?
     When you enter an archive and press F3 to view a file that has no known
     extension, e.g. README, INSTALL etc.. And if the viewer opens in hex-mode
-    instead of the usual mode, than you need to configure: KDE Control Center-
-    >KDE components->File Associations->Application->octet-stream, binary
+    instead of the usual mode, than you need to configure: TDE Control Center-
+    >TDE components->File Associations->Application->octet-stream, binary
     viewer needs to be removed.
-19. Where is Konfigurator, do i need to install the KDE Desktop Enviroment to
+19. Where is Konfigurator, do i need to install the Trinity Desktop Enviroment to
     use it?
     Konfigurator is Krusaders configuration module, when you have installed
     Krusader than you have also Konfigurator. For some reason some people think
-    it's an other KDE application, but it is not, so you don't need to install
-    the KDE Desktop Enviroment to use Konfigurator. When runnig Krusader, use
+    it's an other TDE application, but it is not, so you don't need to install
+    the Trinity Desktop Enviroment to use Konfigurator. When runnig Krusader, use
     Settings->Configure Krusader, and it will start Konfigurator. Please read
     the manual, Krusader has many many configuration options, a lot of things
     can be customized to your needs with Konfigurator.
@@ -592,7 +592,7 @@ General FAQ
   2. How_can_I_send_a_patch?
   3. How_can_I_report_a_bug?
   4. How_can_i_send_good_debug_or_crash_reports?
-  5. What_todo_if_the_KDEcrashhandler_sends_no_usefull_backtrace_information?
+  5. What_todo_if_the_TDEcrashhandler_sends_no_usefull_backtrace_information?
   6. Does_Krusader_have_a_mailing_list?
   7. Does_Krusader_provide_newsfeeds?
   8. Does_Krusader_have_an_IRC_channel?
@@ -640,7 +640,7 @@ General FAQ
        5. Use portable solutions, Krusader should run on:
               * All POSIX (Linux�/BSD/UNIX�-like OSes), Solaris&#8482;.
               * All BSD Platforms (FreeBSD�/NetBSD�/OpenBSD�/Mac� OS).
-              * KDE 3.3- KDE 3.5 and even on GNOME with KDElibs (for krusader-
+              * KDE 3.3- KDE 3.5 and even on GNOME with tdelibs (for krusader-
                 2.x KDE 4) .
               * GCC 2.95 - GCC 4.1
           Architecture changes are made by the team only.
@@ -671,15 +671,15 @@ General FAQ
           description of the problem as you can manage.
     Thank you for your co-operation!
     **** Note ****
-    If possible, try to do the same operation with Konqueror or another KDE
+    If possible, try to do the same operation with Konqueror or another TDE
     application. If you encounter the same problem then it is possibly a
-    KIOSlaves or KDE (tdelibs) bug, and not a Krusader bug. Krusader uses the
-    KDE libraries and the KIOSlaves for many operations. In some cases you can
+    KIOSlaves or TDE (tdelibs) bug, and not a Krusader bug. Krusader uses the
+    TDE libraries and the KIOSlaves for many operations. In some cases you can
     encounter problems if your distribution is incorrectly configured, please
     test it first as explained above.
     **** Note ****
-    If you've got bugs to report please do not use KDE's bugzilla http://
-    bugs.kde.org/, KDE's Bug Tracking System. Report Krusader bugs directly to
+    If you've got bugs to report please do not use TDE's bugzilla http://
+    bugs.pearsoncomputing.net/, TDE's Bug Tracking System. Report Krusader bugs directly to
     us.
 4.  How can i send good debug or crash reports?
     Usually binary packages that are been used by your distribution do not
@@ -693,13 +693,13 @@ General FAQ
     The valgrind tool will write to stdout, what really happens. If you could
     send these informations before the crash, it's almost sure, that we may fix
     or tell you what to do.
-5.  What todo if the KDEcrashhandler sends no usefull backtrace information?
+5.  What todo if the TDEcrashhandler sends no usefull backtrace information?
     Usually binary packages that are been used by your distribution do not
     contain debug information. Since we usually only develop and fix Krusader-
     cvs, compile Krusader-cvs in debugmode and install it, than check if the
     bug still exist.
     $ ./configure --enable-debug=full
-    If the KDEKrashhandler still doesn't provide usefull backtrace information,
+    If the TDEKrashhandler still doesn't provide usefull backtrace information,
     than sometimes a coredump will give better information. Run Krusader, with
     disabled crashhandler.
     $ krusader --nocrashhandler

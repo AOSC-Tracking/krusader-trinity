@@ -194,7 +194,7 @@
               <listitem>
                 <para>libkjsembed, if you use the
                 &javascript-console-lnk;, often found in
-                a package called KDEbindings(-devel) and
+                a package called TDEbindings(-devel) and
                 libkonq-dev for the &konqueror;
                 right-click menu entries.</para>
               </listitem>
@@ -1008,7 +1008,7 @@
             <listitem>
               <para>
                <menuchoice>
-                 <guimenu>KDE Components</guimenu>
+                 <guimenu>TDE Components</guimenu>
                  <guimenuitem>File Associations</guimenuitem>
               </menuchoice>
               </para>
@@ -1037,7 +1037,7 @@
           <para>This problem often occurs when you are behind a
           firewall or proxy. Open 
             <menuchoice>
-              <guimenu>KDE Control Center</guimenu>
+              <guimenu>TDE Control Center</guimenu>
               <guimenuitem>Network</guimenuitem>
               <guimenuitem>Preferences</guimenuitem>
             </menuchoice>, 
@@ -1137,12 +1137,12 @@
           &kcontrolcenter; (
           <application>kcontrol</application>): 
             <menuchoice>
-              <guimenu>KDE Control Center</guimenu>
+              <guimenu>TDE Control Center</guimenu>
               <guimenuitem>Sound &amp;
               Multimedia</guimenuitem>
               <guimenuitem>System Notifications</guimenuitem>
             </menuchoice>, 
-          <guilabel>Event Source: "KDE System
+          <guilabel>Event Source: "TDE System
           Notifications"</guilabel> and uncheck sound items you
           don't like.</para>
           <para></para>
@@ -1205,8 +1205,8 @@
           if the viewer opens in hex-mode instead of the usual
           mode, than you need to configure:
             <menuchoice>
-              <guimenu>KDE Control Center</guimenu>
-              <guimenuitem>KDE components</guimenuitem>
+              <guimenu>TDE Control Center</guimenu>
+              <guimenuitem>TDE components</guimenuitem>
               <guimenuitem>File Associations</guimenuitem>
               <guimenuitem>Application</guimenuitem>
               <guimenuitem>octet-stream</guimenuitem>
@@ -1524,14 +1524,14 @@
 
 <qandaentry>
   <question id="faqg_crashhandler">
-  <para>What todo if the KDEcrashhandler sends no usefull backtrace information?</para>
+  <para>What todo if the TDE crashhandler sends no usefull backtrace information?</para>
   </question>
   <answer>
   <para>Usually binary packages that are been used by your distribution do not contain debug information.
         Since we usually only develop and fix &krusader;-cvs, compile &krusader;-cvs in debugmode and install it, than check if the bug still exist.
         <screen><prompt>$</prompt> <userinput><command>./configure</command> <option>--enable-debug=full</option></userinput></screen> 
  
-       If the KDEKrashhandler still doesn't provide usefull backtrace information, than sometimes a coredump will give better information. 
+       If the TDE crashhandler still doesn't provide usefull backtrace information, than sometimes a coredump will give better information. 
        Run Krusader, with disabled crashhandler.
        <screen><prompt>$</prompt> <userinput><command>krusader</command> <option>--nocrashhandler</option></userinput></screen>
 
