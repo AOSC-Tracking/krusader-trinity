@@ -1284,9 +1284,9 @@ msgid "Clear the location bar"
 msgstr "Buida la barra de navegació"
 
 #: Panel/listpanel.cpp:206
-msgid "Use superb KDE file dialog to choose location. "
+msgid "Use superb TDE file dialog to choose location. "
 msgstr ""
-"Per a escollir la ubicació utilitzeu el magnífic diàleg de fitxers del KDE."
+"Per a escollir la ubicació utilitzeu el magnífic diàleg de fitxers del TDE."
 
 #: Panel/listpanel.cpp:211
 msgid ""
@@ -2786,10 +2786,10 @@ msgstr "linux@softcatala.org"
 #: main.cpp:51
 msgid ""
 "Krusader\n"
-"Twin-Panel File Manager for KDE"
+"Twin-Panel File Manager for TDE"
 msgstr ""
 "Krusader\n"
-"El gestor de fitxers amb dos plafons per al KDE"
+"El gestor de fitxers amb dos plafons per al TDE"
 
 #: main.cpp:56
 msgid "Start left panel at <path>"
@@ -4515,8 +4515,8 @@ msgid "High Contrast"
 msgstr "Contrast alt"
 
 #: DiskUsage/dufilelight.cpp:102
-msgid "KDE"
-msgstr "KDE"
+msgid "TDE"
+msgstr "TDE"
 
 #: DiskUsage/dufilelight.cpp:105
 msgid "Scheme"
@@ -5386,24 +5386,24 @@ msgstr ""
 "o entrareu dins la carpeta."
 
 #: Konfigurator/kglookfeel.cpp:270
-msgid "Obey KDE's global selection policy"
-msgstr "Segueix la política del KDE"
+msgid "Obey TDE's global selection policy"
+msgstr "Segueix la política del TDE"
 
 #: Konfigurator/kglookfeel.cpp:270
 msgid ""
-"<p>Use KDE's global setting:</p><p><i>KDE Control Center -> Peripherals -> "
+"<p>Use TDE's global setting:</p><p><i>TDE Control Center -> Peripherals -> "
 "Mouse</i></p>"
 msgstr ""
-"<p>Opcions generals del KDE:</p><p><i>Centre de Control del KDE-> Perifèrics "
+"<p>Opcions generals del TDE:</p><p><i>Centre de Control del TDE-> Perifèrics "
 "-> Ratolí</i></p>"
 
 #: Konfigurator/kglookfeel.cpp:282
-msgid "Based on KDE's selection mode"
-msgstr "Basat amb la política del KDE"
+msgid "Based on TDE's selection mode"
+msgstr "Basat amb la política del TDE"
 
 #: Konfigurator/kglookfeel.cpp:283
-msgid "If checked, use a mode based on KDE's style."
-msgstr "Si es marca l'opció, el krusader funcionarà a l'estil KDE."
+msgid "If checked, use a mode based on TDE's style."
+msgstr "Si es marca l'opció, el krusader funcionarà a l'estil TDE."
 
 #: Konfigurator/kglookfeel.cpp:285
 msgid "Left mouse button selects"
@@ -5566,17 +5566,17 @@ msgstr ""
 
 #: Konfigurator/kgadvanced.cpp:65
 msgid ""
-"Don't use KDE's media protocol for media button (if it's buggy or missing)"
+"Don't use TDE's media protocol for media button (if it's buggy or missing)"
 msgstr ""
-"No utilitza el protocol de suport del KDE per al botó de suport (si és "
+"No utilitza el protocol de suport del TDE per al botó de suport (si és "
 "defectuós o no hi eś)"
 
 #: Konfigurator/kgadvanced.cpp:65
 msgid ""
-"Select if your media protocol is buggy (in some older KDE versions), or not "
+"Select if your media protocol is buggy (in some older TDE versions), or not "
 "present (no tdebase package installed)."
 msgstr ""
-"Selecciona si el protocol de suport és defectuós (en algunes versions de KDE "
+"Selecciona si el protocol de suport és defectuós (en algunes versions de TDE "
 "antigues), o bé no existeixen (no teniu instal·lat el paquet tdebase)."
 
 #: Konfigurator/kgadvanced.cpp:74
@@ -5744,16 +5744,16 @@ msgid "Black"
 msgstr "Negre"
 
 #: Konfigurator/kgcolors.cpp:59
-msgid "Use the default KDE colors"
-msgstr "Utilitza els colors del KDE"
+msgid "Use the default TDE colors"
+msgstr "Utilitza els colors del TDE"
 
 #: Konfigurator/kgcolors.cpp:59
 msgid ""
-"<p>Use KDE's global color configuration.</p><p><i>KDE Control Center -> "
+"<p>Use TDE's global color configuration.</p><p><i>TDE Control Center -> "
 "Appearance & Themes -> Colors</i></p>"
 msgstr ""
-"<p>Utilitza la configuració de colors general del KDE.</p><p><i>Centre de "
-"control del KDE -> Aparença i temes -> Colors</i></p>"
+"<p>Utilitza la configuració de colors general del TDE.</p><p><i>Centre de "
+"control del TDE -> Aparença i temes -> Colors</i></p>"
 
 #: Konfigurator/kgcolors.cpp:60
 msgid "Use alternate background color"
@@ -5762,11 +5762,11 @@ msgstr "Utilitza el color de fons alternatiu"
 #: Konfigurator/kgcolors.cpp:60
 msgid ""
 "<p>The <b>background color</b> and the <b>alternate background</b> color "
-"alternates line by line.</p><p>When you don't use the <i>KDE default colors</"
+"alternates line by line.</p><p>When you don't use the <i>TDE default colors</"
 "i>, you can configure the alternate colors in the <i>colors</i> box.</p>"
 msgstr ""
 "<p>El <b>color de fons</b> i el color de <b>fons alternatiu</b> alternen "
-"línia a línia.</p> <p>Quan no utilitzeu els <i>colors per defecte del KDE </"
+"línia a línia.</p> <p>Quan no utilitzeu els <i>colors per defecte del TDE </"
 "i>, podeu configurar els colors alternatius en el quadre de <i>colors</i>.</"
 "p>"
 
@@ -5777,12 +5777,12 @@ msgstr "Mostra l'element actual encara que no tingui el focus"
 #: Konfigurator/kgcolors.cpp:61
 msgid ""
 "<p>Shows the last cursor position in the non active list panel.</p><p>This "
-"option is only available when you don't use the <i>KDE default colors</i>.</"
+"option is only available when you don't use the <i>TDE default colors</i>.</"
 "p>"
 msgstr ""
 "<p>Mostra la última posició del cursor en el plafó inactiu.</p><p>Aquesta "
 "opció només s'utilitza quan no s'utilitzen els <i>colors per defecte del "
-"KDE</i>.</p>"
+"TDE</i>.</p>"
 
 #: Konfigurator/kgcolors.cpp:62
 msgid "Dim the colors of the inactive panel"
@@ -5910,8 +5910,8 @@ msgid "Synchronizer"
 msgstr "Sincronitzador"
 
 #: Konfigurator/kgcolors.cpp:190 Konfigurator/kgcolors.cpp:191
-msgid "KDE default"
-msgstr "Per defecte del KDE"
+msgid "TDE default"
+msgstr "Per defecte del TDE"
 
 #: Konfigurator/kgcolors.cpp:195
 msgid "Equals foreground:"
@@ -6352,9 +6352,9 @@ msgstr ""
 "Konfigurador."
 
 #: krslots.cpp:509
-msgid "Can't find \"KsysCtrl\". Please install KDE admin package"
+msgid "Can't find \"KsysCtrl\". Please install TDE admin package"
 msgstr ""
-"No s'ha pogut trobar  \"KsysCtrl\". Si us plau instal·leu el paquet KDE Admin"
+"No s'ha pogut trobar  \"KsysCtrl\". Si us plau instal·leu el paquet TDE Admin"
 
 #: krslots.cpp:517
 msgid ""

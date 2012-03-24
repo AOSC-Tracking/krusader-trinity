@@ -289,7 +289,7 @@ msgid ""
 "kcontrol."
 msgstr ""
 "Krusader negali pasiekti ftp serverio http protokolu.\n"
-"Jei problema ne čia, pakeiskite atstovaujančio serverio parinktis KDE "
+"Jei problema ne čia, pakeiskite atstovaujančio serverio parinktis TDE "
 "Valdymo centre."
 
 #: VFS/ftp_vfs.cpp:169
@@ -1291,8 +1291,8 @@ msgid "Clear the location bar"
 msgstr "Išvalyti adreso juostą"
 
 #: Panel/listpanel.cpp:206
-msgid "Use superb KDE file dialog to choose location. "
-msgstr "Adreso keitimui naudoti sudėtingesnį KDE bylų dialogą."
+msgid "Use superb TDE file dialog to choose location. "
+msgstr "Adreso keitimui naudoti sudėtingesnį TDE bylų dialogą."
 
 #: Panel/listpanel.cpp:211
 msgid ""
@@ -2806,10 +2806,10 @@ msgstr "laisve@gmail.com"
 #: main.cpp:51
 msgid ""
 "Krusader\n"
-"Twin-Panel File Manager for KDE"
+"Twin-Panel File Manager for TDE"
 msgstr ""
 "Krusader\n"
-"Dviejų langų bylų tvarkyklė, skirta KDE grafinei aplinkai"
+"Dviejų langų bylų tvarkyklė, skirta TDE grafinei aplinkai"
 
 #: main.cpp:56
 msgid "Start left panel at <path>"
@@ -4531,8 +4531,8 @@ msgid "High Contrast"
 msgstr "Didelis kontrastas"
 
 #: DiskUsage/dufilelight.cpp:102
-msgid "KDE"
-msgstr "KDE"
+msgid "TDE"
+msgstr "TDE"
 
 #: DiskUsage/dufilelight.cpp:105
 msgid "Scheme"
@@ -5392,24 +5392,24 @@ msgstr ""
 "Spragtelėjus dukart bus atverta byla arba aplankas."
 
 #: Konfigurator/kglookfeel.cpp:270
-msgid "Obey KDE's global selection policy"
-msgstr "Elgtis pagal KDE bendras parinktis"
+msgid "Obey TDE's global selection policy"
+msgstr "Elgtis pagal TDE bendras parinktis"
 
 #: Konfigurator/kglookfeel.cpp:270
 msgid ""
-"<p>Use KDE's global setting:</p><p><i>KDE Control Center -> Peripherals -> "
+"<p>Use TDE's global setting:</p><p><i>TDE Control Center -> Peripherals -> "
 "Mouse</i></p>"
 msgstr ""
-"<p>Naudoti KDE valdymo centre įrašytas parinktis:</p> <p> <i>KDE Valdymo "
+"<p>Naudoti TDE valdymo centre įrašytas parinktis:</p> <p> <i>TDE Valdymo "
 "centras–>Periferija–>Pelė</i></p>"
 
 #: Konfigurator/kglookfeel.cpp:282
-msgid "Based on KDE's selection mode"
-msgstr "Žymėjimo veiksena atitinka KDE veikseną"
+msgid "Based on TDE's selection mode"
+msgstr "Žymėjimo veiksena atitinka TDE veikseną"
 
 #: Konfigurator/kglookfeel.cpp:283
-msgid "If checked, use a mode based on KDE's style."
-msgstr "Jei parinktis įjungta, naudoti KDE veikseną."
+msgid "If checked, use a mode based on TDE's style."
+msgstr "Jei parinktis įjungta, naudoti TDE veikseną."
 
 #: Konfigurator/kglookfeel.cpp:285
 msgid "Left mouse button selects"
@@ -5575,18 +5575,18 @@ msgstr ""
 
 #: Konfigurator/kgadvanced.cpp:65
 msgid ""
-"Don't use KDE's media protocol for media button (if it's buggy or missing)"
+"Don't use TDE's media protocol for media button (if it's buggy or missing)"
 msgstr ""
-"Laikmenų mygtukui nenaudoti KDE laikmenų protokolo (jei jis klaidingas arba "
+"Laikmenų mygtukui nenaudoti TDE laikmenų protokolo (jei jis klaidingas arba "
 "jo nėra)"
 
 #: Konfigurator/kgadvanced.cpp:65
 msgid ""
-"Select if your media protocol is buggy (in some older KDE versions), or not "
+"Select if your media protocol is buggy (in some older TDE versions), or not "
 "present (no tdebase package installed)."
 msgstr ""
 "Įjunkite šią parinktį jei laikmenų protokolas yra klaidingas (kai kuriose "
-"senose KDE versijose) arba jo išvis nėra (neįdiegtas tdebase paketas)."
+"senose TDE versijose) arba jo išvis nėra (neįdiegtas tdebase paketas)."
 
 #: Konfigurator/kgadvanced.cpp:74
 msgid "MountMan won't (un)mount the following mount-points:"
@@ -5753,15 +5753,15 @@ msgid "Black"
 msgstr "Juoda"
 
 #: Konfigurator/kgcolors.cpp:59
-msgid "Use the default KDE colors"
-msgstr "Naudoti numatytas KDE spalvas"
+msgid "Use the default TDE colors"
+msgstr "Naudoti numatytas TDE spalvas"
 
 #: Konfigurator/kgcolors.cpp:59
 msgid ""
-"<p>Use KDE's global color configuration.</p><p><i>KDE Control Center -> "
+"<p>Use TDE's global color configuration.</p><p><i>TDE Control Center -> "
 "Appearance & Themes -> Colors</i></p>"
 msgstr ""
-"<p>Naudoti numatytas KDE parinktis.</p><p> <i>KDE valdymo centras –> "
+"<p>Naudoti numatytas TDE parinktis.</p><p> <i>TDE valdymo centras –> "
 "Išvaizda ir temos –> Spalvos</i></p>"
 
 #: Konfigurator/kgcolors.cpp:60
@@ -5771,11 +5771,11 @@ msgstr "Naudoti besikaitaliojančią fono spalvą"
 #: Konfigurator/kgcolors.cpp:60
 msgid ""
 "<p>The <b>background color</b> and the <b>alternate background</b> color "
-"alternates line by line.</p><p>When you don't use the <i>KDE default colors</"
+"alternates line by line.</p><p>When you don't use the <i>TDE default colors</"
 "i>, you can configure the alternate colors in the <i>colors</i> box.</p>"
 msgstr ""
 "<p><b>Fono spalva</b> ir <b>Kita fono spalva</b> bylų sąraše keičiasi viena "
-"po kitos.</p><p> Jei nenaudojate <i>numatytų KDE spalvų</i>, galite parinkti "
+"po kitos.</p><p> Jei nenaudojate <i>numatytų TDE spalvų</i>, galite parinkti "
 "besikaitaliojančias spalvas <i>spalvų derinimo lange</i>.</p>"
 
 #: Konfigurator/kgcolors.cpp:61
@@ -5785,11 +5785,11 @@ msgstr "Rodyti dabartinį objektą net jei aktyvus kitas langas"
 #: Konfigurator/kgcolors.cpp:61
 msgid ""
 "<p>Shows the last cursor position in the non active list panel.</p><p>This "
-"option is only available when you don't use the <i>KDE default colors</i>.</"
+"option is only available when you don't use the <i>TDE default colors</i>.</"
 "p>"
 msgstr ""
 "<p>Rodyti žymeklio vietą neaktyviame lange.</p> <p> Ši parinktis galima tik "
-"nenaudojant <i>KDE numatytų spalvų</i>.</p>"
+"nenaudojant <i>TDE numatytų spalvų</i>.</p>"
 
 #: Konfigurator/kgcolors.cpp:62
 msgid "Dim the colors of the inactive panel"
@@ -5917,8 +5917,8 @@ msgid "Synchronizer"
 msgstr "Sinchronizavimas"
 
 #: Konfigurator/kgcolors.cpp:190 Konfigurator/kgcolors.cpp:191
-msgid "KDE default"
-msgstr "KDE numatyta"
+msgid "TDE default"
+msgstr "TDE numatyta"
 
 #: Konfigurator/kgcolors.cpp:195
 msgid "Equals foreground:"
@@ -6360,8 +6360,8 @@ msgstr ""
 "derinimo lange."
 
 #: krslots.cpp:509
-msgid "Can't find \"KsysCtrl\". Please install KDE admin package"
-msgstr "Nepavyko rasti KsysCtrl programos. Įdiekite KDE administravimo paketą."
+msgid "Can't find \"KsysCtrl\". Please install TDE admin package"
+msgstr "Nepavyko rasti KsysCtrl programos. Įdiekite TDE administravimo paketą."
 
 #: krslots.cpp:517
 msgid ""

@@ -290,7 +290,7 @@ msgid ""
 "kcontrol."
 msgstr ""
 "Krusader не поддерживает доступ к ftp через http.\n"
-"Проверьте настройки proxy в центре управления KDE."
+"Проверьте настройки proxy в центре управления TDE."
 
 #: VFS/ftp_vfs.cpp:169
 #, c-format
@@ -1296,8 +1296,8 @@ msgid "Clear the location bar"
 msgstr "Очистить панель адреса"
 
 #: Panel/listpanel.cpp:206
-msgid "Use superb KDE file dialog to choose location. "
-msgstr "Использовать превосходный диалог KDE для выбора местонахождения. "
+msgid "Use superb TDE file dialog to choose location. "
+msgstr "Использовать превосходный диалог TDE для выбора местонахождения. "
 
 #: Panel/listpanel.cpp:211
 msgid ""
@@ -2813,10 +2813,10 @@ msgstr "dvc@mail.ru,dkoryavov@yandex,sam@vhnet.ru"
 #: main.cpp:51
 msgid ""
 "Krusader\n"
-"Twin-Panel File Manager for KDE"
+"Twin-Panel File Manager for TDE"
 msgstr ""
 "Krusader\n"
-"Двухпанельный файловый менеджер для KDE"
+"Двухпанельный файловый менеджер для TDE"
 
 #: main.cpp:56
 msgid "Start left panel at <path>"
@@ -4570,8 +4570,8 @@ msgid "High Contrast"
 msgstr "Высоко-контрастная"
 
 #: DiskUsage/dufilelight.cpp:102
-msgid "KDE"
-msgstr "KDE"
+msgid "TDE"
+msgstr "TDE"
 
 #: DiskUsage/dufilelight.cpp:105
 msgid "Scheme"
@@ -5427,24 +5427,24 @@ msgstr ""
 "каталог."
 
 #: Konfigurator/kglookfeel.cpp:270
-msgid "Obey KDE's global selection policy"
-msgstr "Использовать глобальную политику KDE"
+msgid "Obey TDE's global selection policy"
+msgstr "Использовать глобальную политику TDE"
 
 #: Konfigurator/kglookfeel.cpp:270
 msgid ""
-"<p>Use KDE's global setting:</p><p><i>KDE Control Center -> Peripherals -> "
+"<p>Use TDE's global setting:</p><p><i>TDE Control Center -> Peripherals -> "
 "Mouse</i></p>"
 msgstr ""
 "<p>Использовать настройки центра управления:</p><p><i>Центр управления-"
 ">Периферия->Мышь</i></p>"
 
 #: Konfigurator/kglookfeel.cpp:282
-msgid "Based on KDE's selection mode"
-msgstr "Использовать режим KDE"
+msgid "Based on TDE's selection mode"
+msgstr "Использовать режим TDE"
 
 #: Konfigurator/kglookfeel.cpp:283
-msgid "If checked, use a mode based on KDE's style."
-msgstr "Если флажок установлен, будет использован режим KDE."
+msgid "If checked, use a mode based on TDE's style."
+msgstr "Если флажок установлен, будет использован режим TDE."
 
 #: Konfigurator/kglookfeel.cpp:285
 msgid "Left mouse button selects"
@@ -5600,15 +5600,15 @@ msgstr ""
 
 #: Konfigurator/kgadvanced.cpp:65
 msgid ""
-"Don't use KDE's media protocol for media button (if it's buggy or missing)"
-msgstr "Не использовать протокол поиска носителей KDE"
+"Don't use TDE's media protocol for media button (if it's buggy or missing)"
+msgstr "Не использовать протокол поиска носителей TDE"
 
 #: Konfigurator/kgadvanced.cpp:65
 msgid ""
-"Select if your media protocol is buggy (in some older KDE versions), or not "
+"Select if your media protocol is buggy (in some older TDE versions), or not "
 "present (no tdebase package installed)."
 msgstr ""
-"Выберите, если у вас старая версия KDE или не установлен пакет tdebase."
+"Выберите, если у вас старая версия TDE или не установлен пакет tdebase."
 
 #: Konfigurator/kgadvanced.cpp:74
 msgid "MountMan won't (un)mount the following mount-points:"
@@ -5774,15 +5774,15 @@ msgid "Black"
 msgstr "Чёрный"
 
 #: Konfigurator/kgcolors.cpp:59
-msgid "Use the default KDE colors"
-msgstr "Использовать цвета KDE"
+msgid "Use the default TDE colors"
+msgstr "Использовать цвета TDE"
 
 #: Konfigurator/kgcolors.cpp:59
 msgid ""
-"<p>Use KDE's global color configuration.</p><p><i>KDE Control Center -> "
+"<p>Use TDE's global color configuration.</p><p><i>TDE Control Center -> "
 "Appearance & Themes -> Colors</i></p>"
 msgstr ""
-"<p>Использовать цветовую схему KDE.</p><p><i>KDE Control Center -> Внешний "
+"<p>Использовать цветовую схему TDE.</p><p><i>TDE Control Center -> Внешний "
 "вид и темы -> Цвета</i></p>"
 
 #: Konfigurator/kgcolors.cpp:60
@@ -5792,7 +5792,7 @@ msgstr "Использовать альтернативный цвет фона"
 #: Konfigurator/kgcolors.cpp:60
 msgid ""
 "<p>The <b>background color</b> and the <b>alternate background</b> color "
-"alternates line by line.</p><p>When you don't use the <i>KDE default colors</"
+"alternates line by line.</p><p>When you don't use the <i>TDE default colors</"
 "i>, you can configure the alternate colors in the <i>colors</i> box.</p>"
 msgstr ""
 
@@ -5803,11 +5803,11 @@ msgstr "Показывать последнюю позицию курсора н
 #: Konfigurator/kgcolors.cpp:61
 msgid ""
 "<p>Shows the last cursor position in the non active list panel.</p><p>This "
-"option is only available when you don't use the <i>KDE default colors</i>.</"
+"option is only available when you don't use the <i>TDE default colors</i>.</"
 "p>"
 msgstr ""
 "<p>Показывает последнюю позицию курсора на неактивной панели.</p><p> Этот "
-"параметр доступен, если не используются <i>стандартные цвета KDE</i>.</p>"
+"параметр доступен, если не используются <i>стандартные цвета TDE</i>.</p>"
 
 #: Konfigurator/kgcolors.cpp:62
 msgid "Dim the colors of the inactive panel"
@@ -5933,8 +5933,8 @@ msgid "Synchronizer"
 msgstr "Синхронизатор"
 
 #: Konfigurator/kgcolors.cpp:190 Konfigurator/kgcolors.cpp:191
-msgid "KDE default"
-msgstr "Используемый по умолчанию в KDE"
+msgid "TDE default"
+msgstr "Используемый по умолчанию в TDE"
 
 #: Konfigurator/kgcolors.cpp:195
 msgid "Equals foreground:"
@@ -6382,8 +6382,8 @@ msgstr ""
 "конфигураторе."
 
 #: krslots.cpp:509
-msgid "Can't find \"KsysCtrl\". Please install KDE admin package"
-msgstr "Не найден \"KsysCtrl\". Установите пакет KDE admin"
+msgid "Can't find \"KsysCtrl\". Please install TDE admin package"
+msgstr "Не найден \"KsysCtrl\". Установите пакет TDE admin"
 
 #: krslots.cpp:517
 msgid ""

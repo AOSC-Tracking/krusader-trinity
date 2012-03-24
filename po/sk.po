@@ -288,7 +288,7 @@ msgid ""
 msgstr ""
 "Krusader nepodporuje FTP prístup cez HTTP.\n"
 "Ak toto nie je ten prípad, prosím skontrolujte a zmeňte nastavenia Proxy v "
-"Ovládacom centre KDE (kcontrol)."
+"Ovládacom centre TDE (kcontrol)."
 
 #: VFS/ftp_vfs.cpp:169
 #, c-format
@@ -1306,8 +1306,8 @@ msgid "Clear the location bar"
 msgstr "Vyčistiť riadok umiestnenia"
 
 #: Panel/listpanel.cpp:206
-msgid "Use superb KDE file dialog to choose location. "
-msgstr "Použiť superb KDE súborový dialóg pre výber umiestnenia"
+msgid "Use superb TDE file dialog to choose location. "
+msgstr "Použiť superb TDE súborový dialóg pre výber umiestnenia"
 
 #: Panel/listpanel.cpp:211
 msgid ""
@@ -2820,10 +2820,10 @@ msgstr "zdpo@mailbox.sk"
 #: main.cpp:51
 msgid ""
 "Krusader\n"
-"Twin-Panel File Manager for KDE"
+"Twin-Panel File Manager for TDE"
 msgstr ""
 "Krusader\n"
-"Dvojpanelový správca súborov pre KDE"
+"Dvojpanelový správca súborov pre TDE"
 
 #: main.cpp:56
 msgid "Start left panel at <path>"
@@ -4556,8 +4556,8 @@ msgid "High Contrast"
 msgstr "Vysoký kontrast"
 
 #: DiskUsage/dufilelight.cpp:102
-msgid "KDE"
-msgstr "KDE"
+msgid "TDE"
+msgstr "TDE"
 
 #: DiskUsage/dufilelight.cpp:105
 msgid "Scheme"
@@ -5392,22 +5392,22 @@ msgid ""
 msgstr ""
 
 #: Konfigurator/kglookfeel.cpp:270
-msgid "Obey KDE's global selection policy"
-msgstr "Podľa globálnych nastavení KDE"
+msgid "Obey TDE's global selection policy"
+msgstr "Podľa globálnych nastavení TDE"
 
 #: Konfigurator/kglookfeel.cpp:270
 msgid ""
-"<p>Use KDE's global setting:</p><p><i>KDE Control Center -> Peripherals -> "
+"<p>Use TDE's global setting:</p><p><i>TDE Control Center -> Peripherals -> "
 "Mouse</i></p>"
 msgstr ""
 
 #: Konfigurator/kglookfeel.cpp:282
-msgid "Based on KDE's selection mode"
-msgstr "Založený na režime výberu v KDE"
+msgid "Based on TDE's selection mode"
+msgstr "Založený na režime výberu v TDE"
 
 #: Konfigurator/kglookfeel.cpp:283
-msgid "If checked, use a mode based on KDE's style."
-msgstr "Pokiaľ je zaškrtnuté, použije sa režim založený na KDE štýle."
+msgid "If checked, use a mode based on TDE's style."
+msgstr "Pokiaľ je zaškrtnuté, použije sa režim založený na TDE štýle."
 
 #: Konfigurator/kglookfeel.cpp:285
 msgid "Left mouse button selects"
@@ -5544,12 +5544,12 @@ msgstr ""
 
 #: Konfigurator/kgadvanced.cpp:65
 msgid ""
-"Don't use KDE's media protocol for media button (if it's buggy or missing)"
+"Don't use TDE's media protocol for media button (if it's buggy or missing)"
 msgstr ""
 
 #: Konfigurator/kgadvanced.cpp:65
 msgid ""
-"Select if your media protocol is buggy (in some older KDE versions), or not "
+"Select if your media protocol is buggy (in some older TDE versions), or not "
 "present (no tdebase package installed)."
 msgstr ""
 
@@ -5716,15 +5716,15 @@ msgid "Black"
 msgstr "Čierna"
 
 #: Konfigurator/kgcolors.cpp:59
-msgid "Use the default KDE colors"
-msgstr "Použiť štandardné KDE farby"
+msgid "Use the default TDE colors"
+msgstr "Použiť štandardné TDE farby"
 
 #: Konfigurator/kgcolors.cpp:59
 msgid ""
-"<p>Use KDE's global color configuration.</p><p><i>KDE Control Center -> "
+"<p>Use TDE's global color configuration.</p><p><i>TDE Control Center -> "
 "Appearance & Themes -> Colors</i></p>"
 msgstr ""
-"<p>Použiť globálne nastavenie farieb KDE.</p><p><i>Ovládanie centrum KDE "
+"<p>Použiť globálne nastavenie farieb TDE.</p><p><i>Ovládanie centrum TDE "
 "(kcontrol) -> Vzhľad a témy -> Farby</i></p>"
 
 #: Konfigurator/kgcolors.cpp:60
@@ -5734,7 +5734,7 @@ msgstr "Použiť alternatívnu farbu pozadia"
 #: Konfigurator/kgcolors.cpp:60
 msgid ""
 "<p>The <b>background color</b> and the <b>alternate background</b> color "
-"alternates line by line.</p><p>When you don't use the <i>KDE default colors</"
+"alternates line by line.</p><p>When you don't use the <i>TDE default colors</"
 "i>, you can configure the alternate colors in the <i>colors</i> box.</p>"
 msgstr ""
 
@@ -5745,7 +5745,7 @@ msgstr "Zobraziť aktuálnu položku, aj keď nie je zameraná"
 #: Konfigurator/kgcolors.cpp:61
 msgid ""
 "<p>Shows the last cursor position in the non active list panel.</p><p>This "
-"option is only available when you don't use the <i>KDE default colors</i>.</"
+"option is only available when you don't use the <i>TDE default colors</i>.</"
 "p>"
 msgstr ""
 
@@ -5873,8 +5873,8 @@ msgid "Synchronizer"
 msgstr "Synchronizér"
 
 #: Konfigurator/kgcolors.cpp:190 Konfigurator/kgcolors.cpp:191
-msgid "KDE default"
-msgstr "Štandardné KDE"
+msgid "TDE default"
+msgstr "Štandardné TDE"
 
 #: Konfigurator/kgcolors.cpp:195
 msgid "Equals foreground:"
@@ -6296,9 +6296,9 @@ msgstr ""
 "Konfigurátorovi."
 
 #: krslots.cpp:509
-msgid "Can't find \"KsysCtrl\". Please install KDE admin package"
+msgid "Can't find \"KsysCtrl\". Please install TDE admin package"
 msgstr ""
-"Nie je možné nájsť \"KsysCtrl\". Prosím, nainštalujte si balík KDE admin"
+"Nie je možné nájsť \"KsysCtrl\". Prosím, nainštalujte si balík TDE admin"
 
 #: krslots.cpp:517
 msgid ""

@@ -290,7 +290,7 @@ msgid ""
 msgstr ""
 "Krusader nepodporuje přístup na FTP přes HTTP.\n"
 "pokud to není tento případ, zkontrolujte a změňte prosím nastavení Proxy v "
-"Ovládacím centru KDE (kcontrol)."
+"Ovládacím centru TDE (kcontrol)."
 
 #: VFS/ftp_vfs.cpp:169
 #, c-format
@@ -1271,8 +1271,8 @@ msgid "Clear the location bar"
 msgstr "Vyčistit řádek umístění"
 
 #: Panel/listpanel.cpp:206
-msgid "Use superb KDE file dialog to choose location. "
-msgstr "Vybrat umístění pomocí dialogu prostředí KDE."
+msgid "Use superb TDE file dialog to choose location. "
+msgstr "Vybrat umístění pomocí dialogu prostředí TDE."
 
 #: Panel/listpanel.cpp:211
 msgid ""
@@ -2783,10 +2783,10 @@ msgstr "mitek@email.cz,lukumo84@seznam.cz,vaclavjuza@seznam.cz"
 #: main.cpp:51
 msgid ""
 "Krusader\n"
-"Twin-Panel File Manager for KDE"
+"Twin-Panel File Manager for TDE"
 msgstr ""
 "Krusader\n"
-"Dvoupanelový správce souborovů pro KDE"
+"Dvoupanelový správce souborovů pro TDE"
 
 #: main.cpp:56
 msgid "Start left panel at <path>"
@@ -4512,8 +4512,8 @@ msgid "High Contrast"
 msgstr "Vysoký kontrast"
 
 #: DiskUsage/dufilelight.cpp:102
-msgid "KDE"
-msgstr "KDE"
+msgid "TDE"
+msgstr "TDE"
 
 #: DiskUsage/dufilelight.cpp:105
 msgid "Scheme"
@@ -5372,24 +5372,24 @@ msgstr ""
 "nebo vkročí do adresáře."
 
 #: Konfigurator/kglookfeel.cpp:270
-msgid "Obey KDE's global selection policy"
-msgstr "Přizpůsobit se nastavení KDE"
+msgid "Obey TDE's global selection policy"
+msgstr "Přizpůsobit se nastavení TDE"
 
 #: Konfigurator/kglookfeel.cpp:270
 msgid ""
-"<p>Use KDE's global setting:</p><p><i>KDE Control Center -> Peripherals -> "
+"<p>Use TDE's global setting:</p><p><i>TDE Control Center -> Peripherals -> "
 "Mouse</i></p>"
 msgstr ""
-"<p>Použije globální nastavení KDE:</p><p><i>Ovládací Centrum KDE (Kcontrol) -"
+"<p>Použije globální nastavení TDE:</p><p><i>Ovládací Centrum TDE (Kcontrol) -"
 "> Periférie -> Myš</i></p>"
 
 #: Konfigurator/kglookfeel.cpp:282
-msgid "Based on KDE's selection mode"
-msgstr "Založený na režimu výběru v KDE"
+msgid "Based on TDE's selection mode"
+msgstr "Založený na režimu výběru v TDE"
 
 #: Konfigurator/kglookfeel.cpp:283
-msgid "If checked, use a mode based on KDE's style."
-msgstr "Při zaškrtnutí tohoto přepínače se použije režim založený na stylu KDE"
+msgid "If checked, use a mode based on TDE's style."
+msgstr "Při zaškrtnutí tohoto přepínače se použije režim založený na stylu TDE"
 
 #: Konfigurator/kglookfeel.cpp:285
 msgid "Left mouse button selects"
@@ -5545,18 +5545,18 @@ msgstr ""
 
 #: Konfigurator/kgadvanced.cpp:65
 msgid ""
-"Don't use KDE's media protocol for media button (if it's buggy or missing)"
+"Don't use TDE's media protocol for media button (if it's buggy or missing)"
 msgstr ""
-"Nepoužívat protokol media z KDE pro tlačítko Media (pokud nefunguje nebo "
+"Nepoužívat protokol media z TDE pro tlačítko Media (pokud nefunguje nebo "
 "chybí)"
 
 #: Konfigurator/kgadvanced.cpp:65
 msgid ""
-"Select if your media protocol is buggy (in some older KDE versions), or not "
+"Select if your media protocol is buggy (in some older TDE versions), or not "
 "present (no tdebase package installed)."
 msgstr ""
 "Vyberte, jestli je u vás protokol media chybový (v některých starších "
-"verzích KDE), nebo vůbec není nainstalovaný (bývá v balíčku tdebase)"
+"verzích TDE), nebo vůbec není nainstalovaný (bývá v balíčku tdebase)"
 
 #: Konfigurator/kgadvanced.cpp:74
 msgid "MountMan won't (un)mount the following mount-points:"
@@ -5725,15 +5725,15 @@ msgid "Black"
 msgstr "Černá"
 
 #: Konfigurator/kgcolors.cpp:59
-msgid "Use the default KDE colors"
-msgstr "Použít výchozí barvy KDE"
+msgid "Use the default TDE colors"
+msgstr "Použít výchozí barvy TDE"
 
 #: Konfigurator/kgcolors.cpp:59
 msgid ""
-"<p>Use KDE's global color configuration.</p><p><i>KDE Control Center -> "
+"<p>Use TDE's global color configuration.</p><p><i>TDE Control Center -> "
 "Appearance & Themes -> Colors</i></p>"
 msgstr ""
-"<p>Použít globální nastavení barev KDE. </p><p><i>Ovládací centrum KDE "
+"<p>Použít globální nastavení barev TDE. </p><p><i>Ovládací centrum TDE "
 "(kcontrol) -> Vzhled a motivy -> Barvy</i></p>"
 
 #: Konfigurator/kgcolors.cpp:60
@@ -5743,11 +5743,11 @@ msgstr "Použít alternativní barvu pozadí"
 #: Konfigurator/kgcolors.cpp:60
 msgid ""
 "<p>The <b>background color</b> and the <b>alternate background</b> color "
-"alternates line by line.</p><p>When you don't use the <i>KDE default colors</"
+"alternates line by line.</p><p>When you don't use the <i>TDE default colors</"
 "i>, you can configure the alternate colors in the <i>colors</i> box.</p>"
 msgstr ""
 "<p><b>Barva pozadí</b> a <b>alternativní barva pozadí</b> se střídají řádek "
-"po řádku.</p><p>Pokud nepoužíváte <i>výchozí barvy KDE</i>, můžete si "
+"po řádku.</p><p>Pokud nepoužíváte <i>výchozí barvy TDE</i>, můžete si "
 "nastavit alternativní barvy v rámečku <i>Barvy</i>.</p>"
 
 #: Konfigurator/kgcolors.cpp:61
@@ -5757,11 +5757,11 @@ msgstr "Vždy zobrazit současnou položku, i když není zaměřena."
 #: Konfigurator/kgcolors.cpp:61
 msgid ""
 "<p>Shows the last cursor position in the non active list panel.</p><p>This "
-"option is only available when you don't use the <i>KDE default colors</i>.</"
+"option is only available when you don't use the <i>TDE default colors</i>.</"
 "p>"
 msgstr ""
 "<p>Ukáže poslední polohu kurzoru v neaktivním panelu.</p><p>Tato volba je "
-"dostupná jen když nepoužíváte <i>výchozí barvy KDE</i>.</p>"
+"dostupná jen když nepoužíváte <i>výchozí barvy TDE</i>.</p>"
 
 #: Konfigurator/kgcolors.cpp:62
 msgid "Dim the colors of the inactive panel"
@@ -5889,8 +5889,8 @@ msgid "Synchronizer"
 msgstr "Synchronizer"
 
 #: Konfigurator/kgcolors.cpp:190 Konfigurator/kgcolors.cpp:191
-msgid "KDE default"
-msgstr "Výchozí v KDE"
+msgid "TDE default"
+msgstr "Výchozí v TDE"
 
 #: Konfigurator/kgcolors.cpp:195
 msgid "Equals foreground:"
@@ -6328,10 +6328,10 @@ msgid "Can't start 'mount'! Check the 'Dependencies' page in konfigurator."
 msgstr "Nemohu spustit 'mount'.  Zkontrolujte závislosti v Konfigurátoru."
 
 #: krslots.cpp:509
-msgid "Can't find \"KsysCtrl\". Please install KDE admin package"
+msgid "Can't find \"KsysCtrl\". Please install TDE admin package"
 msgstr ""
 "Nelze nalézt \"KsysCtrl\"\n"
-"Prosím, nainstalujte balíček KDE admin"
+"Prosím, nainstalujte balíček TDE admin"
 
 #: krslots.cpp:517
 msgid ""

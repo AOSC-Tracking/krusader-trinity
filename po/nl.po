@@ -1275,8 +1275,8 @@ msgid "Clear the location bar"
 msgstr "Locatiebalk wissen"
 
 #: Panel/listpanel.cpp:206
-msgid "Use superb KDE file dialog to choose location. "
-msgstr "Gebruik superb KDE bestand dialoog om uw locatie te kiezen. "
+msgid "Use superb TDE file dialog to choose location. "
+msgstr "Gebruik superb TDE bestand dialoog om uw locatie te kiezen. "
 
 #: Panel/listpanel.cpp:211
 msgid ""
@@ -2781,10 +2781,10 @@ msgstr "monkey9@iae.nl,frank_schoolmeesters@yahoo.com"
 #: main.cpp:51
 msgid ""
 "Krusader\n"
-"Twin-Panel File Manager for KDE"
+"Twin-Panel File Manager for TDE"
 msgstr ""
 "Krusader\n"
-"Twee-venster Bestandsbeheerder voor KDE"
+"Twee-venster Bestandsbeheerder voor TDE"
 
 #: main.cpp:56
 msgid "Start left panel at <path>"
@@ -4504,8 +4504,8 @@ msgid "High Contrast"
 msgstr "Hoog contrast"
 
 #: DiskUsage/dufilelight.cpp:102
-msgid "KDE"
-msgstr "KDE"
+msgid "TDE"
+msgstr "TDE"
 
 #: DiskUsage/dufilelight.cpp:105
 msgid "Scheme"
@@ -5370,26 +5370,26 @@ msgstr ""
 "zal het bestand openen of in de map instappen."
 
 #: Konfigurator/kglookfeel.cpp:270
-msgid "Obey KDE's global selection policy"
-msgstr "KDE s algemeen selectiebeleid toepassen"
+msgid "Obey TDE's global selection policy"
+msgstr "TDE s algemeen selectiebeleid toepassen"
 
 #: Konfigurator/kglookfeel.cpp:270
 msgid ""
-"<p>Use KDE's global setting:</p><p><i>KDE Control Center -> Peripherals -> "
+"<p>Use TDE's global setting:</p><p><i>TDE Control Center -> Peripherals -> "
 "Mouse</i></p>"
 msgstr ""
-"<p>KDE Kcontrol instellingen gebruiken: <p><i>KDE Configuratiescherm -> "
+"<p>TDE Kcontrol instellingen gebruiken: <p><i>TDE Configuratiescherm -> "
 "Randapparaten -> Muis</i></p>"
 
 #: Konfigurator/kglookfeel.cpp:282
-msgid "Based on KDE's selection mode"
-msgstr "Gebaseerd op KDE's selectie modus"
+msgid "Based on TDE's selection mode"
+msgstr "Gebaseerd op TDE's selectie modus"
 
 #: Konfigurator/kglookfeel.cpp:283
-msgid "If checked, use a mode based on KDE's style."
+msgid "If checked, use a mode based on TDE's style."
 msgstr ""
 "Indien aangevinkt, zal er een modus gebruikt worden die gebaseerd is op de "
-"KDE stijl."
+"TDE stijl."
 
 #: Konfigurator/kglookfeel.cpp:285
 msgid "Left mouse button selects"
@@ -5544,17 +5544,17 @@ msgstr ""
 "parameters."
 
 #: Konfigurator/kgadvanced.cpp:65
-msgid "Don't use KDE's media protocol for media button (if it's buggy or missing)"
+msgid "Don't use TDE's media protocol for media button (if it's buggy or missing)"
 msgstr ""
-"Het KDE media protocol niet gebruiken voor de media knop (als het fouten "
+"Het TDE media protocol niet gebruiken voor de media knop (als het fouten "
 "bevat of als het niet aanwezig is)"
 
 #: Konfigurator/kgadvanced.cpp:65
 msgid ""
-"Select if your media protocol is buggy (in some older KDE versions), or not "
+"Select if your media protocol is buggy (in some older TDE versions), or not "
 "present (no tdebase package installed)."
 msgstr ""
-"Dit selecteren als uw media protocol fouten vertoond (in sommige oudere KDE "
+"Dit selecteren als uw media protocol fouten vertoond (in sommige oudere TDE "
 "versies, of als het niet aanwezig is (als geen tdebase pakket geïnstalleerd "
 "is)."
 
@@ -5723,15 +5723,15 @@ msgid "Black"
 msgstr "Zwart"
 
 #: Konfigurator/kgcolors.cpp:59
-msgid "Use the default KDE colors"
-msgstr "KDE standaard kleuren gebruiken"
+msgid "Use the default TDE colors"
+msgstr "TDE standaard kleuren gebruiken"
 
 #: Konfigurator/kgcolors.cpp:59
 msgid ""
-"<p>Use KDE's global color configuration.</p><p><i>KDE Control Center -> "
+"<p>Use TDE's global color configuration.</p><p><i>TDE Control Center -> "
 "Appearance & Themes -> Colors</i></p>"
 msgstr ""
-"<p>Globale kleur instellingen van KDE gebruiken: </p><p><i>KDE "
+"<p>Globale kleur instellingen van TDE gebruiken: </p><p><i>TDE "
 "Configuratiescherm -> Thema's -> Kleuren</i></p>"
 
 #: Konfigurator/kgcolors.cpp:60
@@ -5741,12 +5741,12 @@ msgstr "Beurtelings afwisselende achtergrondkleur gebruiken"
 #: Konfigurator/kgcolors.cpp:60
 msgid ""
 "<p>The <b>background color</b> and the <b>alternate background</b> color "
-"alternates line by line.</p><p>When you don't use the <i>KDE default colors</"
+"alternates line by line.</p><p>When you don't use the <i>TDE default colors</"
 "i>, you can configure the alternate colors in the <i>colors</i> box.</p>"
 msgstr ""
 "<p>De <b>achtergrondkleur</b> en de <b>beurtelings afwisselende "
 "achtergrondkleur</b> afwisselen lijn per lijn.</p><p>Wanneer u niet de "
-"<i>KDE standaard kleuren</i> kiest, kan u de alternatieve achtergrondkleuren "
+"<i>TDE standaard kleuren</i> kiest, kan u de alternatieve achtergrondkleuren "
 "configureren in de <i>kleuren</i> box.</p>"
 
 #: Konfigurator/kgcolors.cpp:61
@@ -5756,11 +5756,11 @@ msgstr "Toon huidig item, zelfs wanneer dit geen focus heeft"
 #: Konfigurator/kgcolors.cpp:61
 msgid ""
 "<p>Shows the last cursor position in the non active list panel.</p><p>This "
-"option is only available when you don't use the <i>KDE default colors</i>.</"
+"option is only available when you don't use the <i>TDE default colors</i>.</"
 "p>"
 msgstr ""
 "<p>Toont de laatste cursor positie in het niet active paneel.</p><p>Deze "
-"optie is enkel beschikbaar wanneer u niet kiest voor de <i>standaard KDE "
+"optie is enkel beschikbaar wanneer u niet kiest voor de <i>standaard TDE "
 "kleuren</i>.</p>"
 
 #: Konfigurator/kgcolors.cpp:62
@@ -5889,8 +5889,8 @@ msgid "Synchronizer"
 msgstr "Synchronisatie"
 
 #: Konfigurator/kgcolors.cpp:190 Konfigurator/kgcolors.cpp:191
-msgid "KDE default"
-msgstr "KDE standaard"
+msgid "TDE default"
+msgstr "TDE standaard"
 
 #: Konfigurator/kgcolors.cpp:195
 msgid "Equals foreground:"
@@ -6334,8 +6334,8 @@ msgstr ""
 "Konfigurator."
 
 #: krslots.cpp:509
-msgid "Can't find \"KsysCtrl\". Please install KDE admin package"
-msgstr "Kan \"KsysCtrl\" niet vinden. Installeer a.u.b. het KDE admin pakket"
+msgid "Can't find \"KsysCtrl\". Please install TDE admin package"
+msgstr "Kan \"KsysCtrl\" niet vinden. Installeer a.u.b. het TDE admin pakket"
 
 #: krslots.cpp:517
 msgid ""

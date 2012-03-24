@@ -1257,8 +1257,8 @@ msgid "Clear the location bar"
 msgstr "A helymegadási sor törlése"
 
 #: Panel/listpanel.cpp:206
-msgid "Use superb KDE file dialog to choose location. "
-msgstr "A KDE könyvtármegadási ablakának használata a hely kiválasztásához"
+msgid "Use superb TDE file dialog to choose location. "
+msgstr "A TDE könyvtármegadási ablakának használata a hely kiválasztásához"
 
 #: Panel/listpanel.cpp:211
 msgid ""
@@ -2736,10 +2736,10 @@ msgstr "biro_arpad@yahoo.com"
 #: main.cpp:51
 msgid ""
 "Krusader\n"
-"Twin-Panel File Manager for KDE"
+"Twin-Panel File Manager for TDE"
 msgstr ""
 "Krusader\n"
-"Kétpaneles fájlkezelő a KDE-hez"
+"Kétpaneles fájlkezelő a TDE-hez"
 
 #: main.cpp:56
 msgid "Start left panel at <path>"
@@ -4443,8 +4443,8 @@ msgid "High Contrast"
 msgstr "Magas kontraszt"
 
 #: DiskUsage/dufilelight.cpp:102
-msgid "KDE"
-msgstr "KDE"
+msgid "TDE"
+msgstr "TDE"
 
 #: DiskUsage/dufilelight.cpp:105
 msgid "Scheme"
@@ -5306,24 +5306,24 @@ msgstr ""
 "kattintás pedig megnyitja a fájlt illetve belép a könyvtárba"
 
 #: Konfigurator/kglookfeel.cpp:270
-msgid "Obey KDE's global selection policy"
-msgstr "A KDE globális kijelölési módszerének használata"
+msgid "Obey TDE's global selection policy"
+msgstr "A TDE globális kijelölési módszerének használata"
 
 #: Konfigurator/kglookfeel.cpp:270
 msgid ""
-"<p>Use KDE's global setting:</p><p><i>KDE Control Center -> Peripherals -> "
+"<p>Use TDE's global setting:</p><p><i>TDE Control Center -> Peripherals -> "
 "Mouse</i></p>"
 msgstr ""
-"<p>A KDE globális beállításának használata:</p><p><i>KDE Vezérlőpult -> "
+"<p>A TDE globális beállításának használata:</p><p><i>TDE Vezérlőpult -> "
 "Perifériák -> Egér</i></p>"
 
 #: Konfigurator/kglookfeel.cpp:282
-msgid "Based on KDE's selection mode"
-msgstr "A KDE kijelölési módszerének használata"
+msgid "Based on TDE's selection mode"
+msgstr "A TDE kijelölési módszerének használata"
 
 #: Konfigurator/kglookfeel.cpp:283
-msgid "If checked, use a mode based on KDE's style."
-msgstr "Ha be van jelölve, akkor a KDE stílusán alapuló mód jön létre"
+msgid "If checked, use a mode based on TDE's style."
+msgstr "Ha be van jelölve, akkor a TDE stílusán alapuló mód jön létre"
 
 #: Konfigurator/kglookfeel.cpp:285
 msgid "Left mouse button selects"
@@ -5488,17 +5488,17 @@ msgstr ""
 "fájlban csatolási pontként, történjen csatolás a megadott paraméterekkel"
 
 #: Konfigurator/kgadvanced.cpp:65
-msgid "Don't use KDE's media protocol for media button (if it's buggy or missing)"
+msgid "Don't use TDE's media protocol for media button (if it's buggy or missing)"
 msgstr ""
 "A media protokoll használatának tiltása a média gombnál (ha  nincs jelen, "
 "vagy hibás)"
 
 #: Konfigurator/kgadvanced.cpp:65
 msgid ""
-"Select if your media protocol is buggy (in some older KDE versions), or not "
+"Select if your media protocol is buggy (in some older TDE versions), or not "
 "present (no tdebase package installed)."
 msgstr ""
-"Válassza ki, ha a media protokoll hibás (néhány régi KDE verzióban), vagy "
+"Válassza ki, ha a media protokoll hibás (néhány régi TDE verzióban), vagy "
 "nincs telepítve (a tdebase csomag hiányzik)."
 
 #: Konfigurator/kgadvanced.cpp:74
@@ -5667,15 +5667,15 @@ msgid "Black"
 msgstr "Fekete"
 
 #: Konfigurator/kgcolors.cpp:59
-msgid "Use the default KDE colors"
-msgstr "Alapértelmezett KDE-színek használata"
+msgid "Use the default TDE colors"
+msgstr "Alapértelmezett TDE-színek használata"
 
 #: Konfigurator/kgcolors.cpp:59
 msgid ""
-"<p>Use KDE's global color configuration.</p><p><i>KDE Control Center -> "
+"<p>Use TDE's global color configuration.</p><p><i>TDE Control Center -> "
 "Appearance & Themes -> Colors</i></p>"
 msgstr ""
-"<p>A KDE globális színbeállításának használata:</p><p><i>KDE Vezérlőpult -> "
+"<p>A TDE globális színbeállításának használata:</p><p><i>TDE Vezérlőpult -> "
 "Megjelenés, témák -> Színek</i></p>"
 
 #: Konfigurator/kgcolors.cpp:60
@@ -5685,11 +5685,11 @@ msgstr "Váltakozó háttérszínek használata"
 #: Konfigurator/kgcolors.cpp:60
 msgid ""
 "<p>The <b>background color</b> and the <b>alternate background</b> color "
-"alternates line by line.</p><p>When you don't use the <i>KDE default colors</"
+"alternates line by line.</p><p>When you don't use the <i>TDE default colors</"
 "i>, you can configure the alternate colors in the <i>colors</i> box.</p>"
 msgstr ""
 "<p>A <b>háttérszín</b> és a <b>másodlagos háttérszín</b> soronként váltják "
-"egymást.</b><p>Ha nem az <i>alapértelmezett KDE-színek</i> vannak használva, "
+"egymást.</b><p>Ha nem az <i>alapértelmezett TDE-színek</i> vannak használva, "
 "akkor beállíthatók a másodlagos színek a <i>színbeállításoknál</i>.</p>"
 
 #: Konfigurator/kgcolors.cpp:61
@@ -5699,11 +5699,11 @@ msgstr "Aktuális elem mutatása akkor is, ha nincsen fókuszban"
 #: Konfigurator/kgcolors.cpp:61
 msgid ""
 "<p>Shows the last cursor position in the non active list panel.</p><p>This "
-"option is only available when you don't use the <i>KDE default colors</i>.</"
+"option is only available when you don't use the <i>TDE default colors</i>.</"
 "p>"
 msgstr ""
 "<p>A legutóbbi kurzorpozíció megjelenítése a nem aktív listapanelen.</"
-"p><p>Ez az opció csak akkor elérhető, ha nem az <i>alapértelmezett KDE-"
+"p><p>Ez az opció csak akkor elérhető, ha nem az <i>alapértelmezett TDE-"
 "színek</i> vannak használva.</p>"
 
 #: Konfigurator/kgcolors.cpp:62
@@ -5832,8 +5832,8 @@ msgid "Synchronizer"
 msgstr "Szinkronizáló"
 
 #: Konfigurator/kgcolors.cpp:190 Konfigurator/kgcolors.cpp:191
-msgid "KDE default"
-msgstr "KDE-alapértelmezés"
+msgid "TDE default"
+msgstr "TDE-alapértelmezés"
 
 #: Konfigurator/kgcolors.cpp:195
 msgid "Equals foreground:"
@@ -6272,8 +6272,8 @@ msgstr ""
 "lapot a Konfigurátorban."
 
 #: krslots.cpp:509
-msgid "Can't find \"KsysCtrl\". Please install KDE admin package"
-msgstr "\"KsysCtrl\" nem található, telepítse a KDE admin csomagot"
+msgid "Can't find \"KsysCtrl\". Please install TDE admin package"
+msgstr "\"KsysCtrl\" nem található, telepítse a TDE admin csomagot"
 
 #: krslots.cpp:517
 msgid ""

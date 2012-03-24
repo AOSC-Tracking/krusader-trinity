@@ -1290,9 +1290,9 @@ msgid "Clear the location bar"
 msgstr "Καθαρισμός της γραμμής τοποθεσίας"
 
 #: Panel/listpanel.cpp:206
-msgid "Use superb KDE file dialog to choose location. "
+msgid "Use superb TDE file dialog to choose location. "
 msgstr ""
-"Χρήση του εξαιρετικού διαλόγου αρχείων του KDE για την επιλογή τοποθεσίας. "
+"Χρήση του εξαιρετικού διαλόγου αρχείων του TDE για την επιλογή τοποθεσίας. "
 
 #: Panel/listpanel.cpp:211
 msgid ""
@@ -2804,10 +2804,10 @@ msgstr "sng@hellug.gr"
 #: main.cpp:51
 msgid ""
 "Krusader\n"
-"Twin-Panel File Manager for KDE"
+"Twin-Panel File Manager for TDE"
 msgstr ""
 "Krusader\n"
-"Διαχειριστής αρχείων διπλού πίνακα για το KDE"
+"Διαχειριστής αρχείων διπλού πίνακα για το TDE"
 
 #: main.cpp:56
 msgid "Start left panel at <path>"
@@ -4546,8 +4546,8 @@ msgid "High Contrast"
 msgstr "Υψηλή αντίθεση"
 
 #: DiskUsage/dufilelight.cpp:102
-msgid "KDE"
-msgstr "KDE"
+msgid "TDE"
+msgstr "TDE"
 
 #: DiskUsage/dufilelight.cpp:105
 msgid "Scheme"
@@ -5423,26 +5423,26 @@ msgstr ""
 "θα εμφανιστούν τα περιεχόμενά του."
 
 #: Konfigurator/kglookfeel.cpp:270
-msgid "Obey KDE's global selection policy"
-msgstr "Συμμόρφωση με την καθολική πολιτική επιλογής του KDE"
+msgid "Obey TDE's global selection policy"
+msgstr "Συμμόρφωση με την καθολική πολιτική επιλογής του TDE"
 
 #: Konfigurator/kglookfeel.cpp:270
 msgid ""
-"<p>Use KDE's global setting:</p><p><i>KDE Control Center -> Peripherals -> "
+"<p>Use TDE's global setting:</p><p><i>TDE Control Center -> Peripherals -> "
 "Mouse</i></p>"
 msgstr ""
-"<p>Χρήση των καθολικών ρυθμίσεων του KDE:</p><p><i>Κέντρο ελέγχου του KDE -> "
+"<p>Χρήση των καθολικών ρυθμίσεων του TDE:</p><p><i>Κέντρο ελέγχου του TDE -> "
 "Περιφερειακά -> Ποντίκι</i></p>"
 
 #: Konfigurator/kglookfeel.cpp:282
-msgid "Based on KDE's selection mode"
-msgstr "Βασισμένη στη λειτουργία επιλογής του KDE"
+msgid "Based on TDE's selection mode"
+msgstr "Βασισμένη στη λειτουργία επιλογής του TDE"
 
 #: Konfigurator/kglookfeel.cpp:283
-msgid "If checked, use a mode based on KDE's style."
+msgid "If checked, use a mode based on TDE's style."
 msgstr ""
 "Αν ενεργοποιηθεί, θα χρησιμοποιηθεί μία λειτουργία που βασίζεται στο στυλ "
-"του KDE."
+"του TDE."
 
 #: Konfigurator/kglookfeel.cpp:285
 msgid "Left mouse button selects"
@@ -5605,16 +5605,16 @@ msgstr ""
 
 #: Konfigurator/kgadvanced.cpp:65
 msgid ""
-"Don't use KDE's media protocol for media button (if it's buggy or missing)"
-msgstr "Να μη χρησιμοποιηθεί το πρωτόκολλο media του KDE για το κουμπί μέσων"
+"Don't use TDE's media protocol for media button (if it's buggy or missing)"
+msgstr "Να μη χρησιμοποιηθεί το πρωτόκολλο media του TDE για το κουμπί μέσων"
 
 #: Konfigurator/kgadvanced.cpp:65
 msgid ""
-"Select if your media protocol is buggy (in some older KDE versions), or not "
+"Select if your media protocol is buggy (in some older TDE versions), or not "
 "present (no tdebase package installed)."
 msgstr ""
 "Ενεργοποιήστε το αν το πρωτόκολλο media δεν είναι σταθερό (σε κάποιες "
-"παλαιότερες εκδόσεις του KDE), ή αν δεν υπάρχει καθόλου (δεν έχει "
+"παλαιότερες εκδόσεις του TDE), ή αν δεν υπάρχει καθόλου (δεν έχει "
 "εγκατασταθεί το πακέτο tdebase)."
 
 #: Konfigurator/kgadvanced.cpp:74
@@ -5783,15 +5783,15 @@ msgid "Black"
 msgstr "Μαύρο"
 
 #: Konfigurator/kgcolors.cpp:59
-msgid "Use the default KDE colors"
-msgstr "Χρήση των προκαθορισμένων χρωμάτων του KDE"
+msgid "Use the default TDE colors"
+msgstr "Χρήση των προκαθορισμένων χρωμάτων του TDE"
 
 #: Konfigurator/kgcolors.cpp:59
 msgid ""
-"<p>Use KDE's global color configuration.</p><p><i>KDE Control Center -> "
+"<p>Use TDE's global color configuration.</p><p><i>TDE Control Center -> "
 "Appearance & Themes -> Colors</i></p>"
 msgstr ""
-"<p>Χρήση των καθολικών ρυθμίσεων του KDE:</p><p><i>Κέντρο ελέγχου του KDE -> "
+"<p>Χρήση των καθολικών ρυθμίσεων του TDE:</p><p><i>Κέντρο ελέγχου του TDE -> "
 "Εμφάνιση & Θέματα -> Χρώματα</i></p>"
 
 #: Konfigurator/kgcolors.cpp:60
@@ -5801,12 +5801,12 @@ msgstr "Χρήση εναλλακτικού χρώματος φόντου"
 #: Konfigurator/kgcolors.cpp:60
 msgid ""
 "<p>The <b>background color</b> and the <b>alternate background</b> color "
-"alternates line by line.</p><p>When you don't use the <i>KDE default colors</"
+"alternates line by line.</p><p>When you don't use the <i>TDE default colors</"
 "i>, you can configure the alternate colors in the <i>colors</i> box.</p>"
 msgstr ""
 "<p>Το <b>χρώμα φόντου</b> και το <b>εναλλακτικό χρώμα φόντου</b> "
 "εναλλάσσονται από γραμμή σε γραμμή.</p><p>Όταν δεν χρησιμοποιείτε τα "
-"<i>προκαθορισμένα χρώματα του KDE</i>, μπορείτε να ρυθμίσετε τα εναλλακτικά "
+"<i>προκαθορισμένα χρώματα του TDE</i>, μπορείτε να ρυθμίσετε τα εναλλακτικά "
 "χρώματα στο πλαίσιο ρύθμισης <i>χρωμάτων</i>.</p>"
 
 #: Konfigurator/kgcolors.cpp:61
@@ -5816,12 +5816,12 @@ msgstr "Εμφάνιση τρέχοντος αντικειμένου ακόμα 
 #: Konfigurator/kgcolors.cpp:61
 msgid ""
 "<p>Shows the last cursor position in the non active list panel.</p><p>This "
-"option is only available when you don't use the <i>KDE default colors</i>.</"
+"option is only available when you don't use the <i>TDE default colors</i>.</"
 "p>"
 msgstr ""
 "<p>Εμφανίζει την τελευταία θέση του δρομέα στη λίστα του μη ενεργού πίνακα.</"
 "p><p>Αυτή η επιλογή είναι διαθέσιμη μόνο όταν δε χρησιμοποιείτε τα "
-"<i>προκαθορισμένα χρώματα του KDE</i>.</p>"
+"<i>προκαθορισμένα χρώματα του TDE</i>.</p>"
 
 #: Konfigurator/kgcolors.cpp:62
 msgid "Dim the colors of the inactive panel"
@@ -5949,8 +5949,8 @@ msgid "Synchronizer"
 msgstr "Συγχρονισμός"
 
 #: Konfigurator/kgcolors.cpp:190 Konfigurator/kgcolors.cpp:191
-msgid "KDE default"
-msgstr "Προκαθορισμένα του KDE"
+msgid "TDE default"
+msgstr "Προκαθορισμένα του TDE"
 
 #: Konfigurator/kgcolors.cpp:195
 msgid "Equals foreground:"
@@ -6399,10 +6399,10 @@ msgstr ""
 "konfigurator."
 
 #: krslots.cpp:509
-msgid "Can't find \"KsysCtrl\". Please install KDE admin package"
+msgid "Can't find \"KsysCtrl\". Please install TDE admin package"
 msgstr ""
 "Αδύνατη η εύρεση του \"KsysCtrl\". Παρακαλώ εγκαταστήστε το πακέτο admin του "
-"KDE"
+"TDE"
 
 #: krslots.cpp:517
 msgid ""

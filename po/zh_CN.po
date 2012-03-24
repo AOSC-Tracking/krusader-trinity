@@ -1280,8 +1280,8 @@ msgid "Clear the location bar"
 msgstr "清除位置栏"
 
 #: Panel/listpanel.cpp:206
-msgid "Use superb KDE file dialog to choose location. "
-msgstr "使用 superb KDE 文件对话框来选择位置。"
+msgid "Use superb TDE file dialog to choose location. "
+msgstr "使用 superb TDE 文件对话框来选择位置。"
 
 #: Panel/listpanel.cpp:211
 msgid ""
@@ -2832,10 +2832,10 @@ msgstr "sunmoon1997@gmail.com"
 #, fuzzy
 msgid ""
 "Krusader\n"
-"Twin-Panel File Manager for KDE"
+"Twin-Panel File Manager for TDE"
 msgstr ""
 "Krusader\n"
-"KDE的双面板文件管理器"
+"TDE的双面板文件管理器"
 
 #: main.cpp:56
 msgid "Start left panel at <path>"
@@ -4527,8 +4527,8 @@ msgid "High Contrast"
 msgstr "高对比度"
 
 #: DiskUsage/dufilelight.cpp:102
-msgid "KDE"
-msgstr "KDE"
+msgid "TDE"
+msgstr "TDE"
 
 #: DiskUsage/dufilelight.cpp:105
 msgid "Scheme"
@@ -5367,22 +5367,22 @@ msgid ""
 msgstr "单击一个文件来选择它，双击打开文件或者进入一个目录。"
 
 #: Konfigurator/kglookfeel.cpp:270
-msgid "Obey KDE's global selection policy"
-msgstr "遵循 KDE 全局规则"
+msgid "Obey TDE's global selection policy"
+msgstr "遵循 TDE 全局规则"
 
 #: Konfigurator/kglookfeel.cpp:270
 #, fuzzy
 msgid ""
-"<p>Use KDE's global setting:</p><p><i>KDE Control Center -> Peripherals -> "
+"<p>Use TDE's global setting:</p><p><i>TDE Control Center -> Peripherals -> "
 "Mouse</i></p>"
-msgstr "使用 KDE 控制中心： <p><i>KDE 控制中心->外设->鼠标</i>"
+msgstr "使用 TDE 控制中心： <p><i>TDE 控制中心->外设->鼠标</i>"
 
 #: Konfigurator/kglookfeel.cpp:282
-msgid "Based on KDE's selection mode"
-msgstr "遵循 KDE 的选择模式"
+msgid "Based on TDE's selection mode"
+msgstr "遵循 TDE 的选择模式"
 
 #: Konfigurator/kglookfeel.cpp:283
-msgid "If checked, use a mode based on KDE's style."
+msgid "If checked, use a mode based on TDE's style."
 msgstr "选择这个将会创建基于 kde 样式的模式"
 
 #: Konfigurator/kglookfeel.cpp:285
@@ -5515,12 +5515,12 @@ msgstr "当进入一个在 <b>fstab</b> 中定义的目录时， 尝试用定义
 
 #: Konfigurator/kgadvanced.cpp:65
 msgid ""
-"Don't use KDE's media protocol for media button (if it's buggy or missing)"
+"Don't use TDE's media protocol for media button (if it's buggy or missing)"
 msgstr ""
 
 #: Konfigurator/kgadvanced.cpp:65
 msgid ""
-"Select if your media protocol is buggy (in some older KDE versions), or not "
+"Select if your media protocol is buggy (in some older TDE versions), or not "
 "present (no tdebase package installed)."
 msgstr ""
 
@@ -5687,15 +5687,15 @@ msgid "Black"
 msgstr "黑色"
 
 #: Konfigurator/kgcolors.cpp:59
-msgid "Use the default KDE colors"
-msgstr "使用 KDE 的默认颜色方案"
+msgid "Use the default TDE colors"
+msgstr "使用 TDE 的默认颜色方案"
 
 #: Konfigurator/kgcolors.cpp:59
 #, fuzzy
 msgid ""
-"<p>Use KDE's global color configuration.</p><p><i>KDE Control Center -> "
+"<p>Use TDE's global color configuration.</p><p><i>TDE Control Center -> "
 "Appearance & Themes -> Colors</i></p>"
-msgstr "使用 KDE 控制中心： <p><i>KDE 控制中心->外设->鼠标</i>"
+msgstr "使用 TDE 控制中心： <p><i>TDE 控制中心->外设->鼠标</i>"
 
 #: Konfigurator/kgcolors.cpp:60
 msgid "Use alternate background color"
@@ -5704,7 +5704,7 @@ msgstr "使用自定义的背景颜色"
 #: Konfigurator/kgcolors.cpp:60
 msgid ""
 "<p>The <b>background color</b> and the <b>alternate background</b> color "
-"alternates line by line.</p><p>When you don't use the <i>KDE default colors</"
+"alternates line by line.</p><p>When you don't use the <i>TDE default colors</"
 "i>, you can configure the alternate colors in the <i>colors</i> box.</p>"
 msgstr ""
 
@@ -5715,7 +5715,7 @@ msgstr "显示当然的项目即使它没有获得焦点"
 #: Konfigurator/kgcolors.cpp:61
 msgid ""
 "<p>Shows the last cursor position in the non active list panel.</p><p>This "
-"option is only available when you don't use the <i>KDE default colors</i>.</"
+"option is only available when you don't use the <i>TDE default colors</i>.</"
 "p>"
 msgstr ""
 
@@ -5850,8 +5850,8 @@ msgid "Synchronizer"
 msgstr "同步器"
 
 #: Konfigurator/kgcolors.cpp:190 Konfigurator/kgcolors.cpp:191
-msgid "KDE default"
-msgstr "KDE 默认值"
+msgid "TDE default"
+msgstr "TDE 默认值"
 
 #: Konfigurator/kgcolors.cpp:195
 msgid "Equals foreground:"
@@ -6283,10 +6283,10 @@ msgid "Can't start 'mount'! Check the 'Dependencies' page in konfigurator."
 msgstr "不能启动 \"mount\"！请检查 konfigurator “依赖” 标签。"
 
 #: krslots.cpp:509
-msgid "Can't find \"KsysCtrl\". Please install KDE admin package"
+msgid "Can't find \"KsysCtrl\". Please install TDE admin package"
 msgstr ""
 "没有找到 \"KsysCtrl\" \n"
-"请安装 KDE admin 包"
+"请安装 TDE admin 包"
 
 #: krslots.cpp:517
 msgid ""

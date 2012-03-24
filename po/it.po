@@ -288,7 +288,7 @@ msgid ""
 msgstr ""
 "Krusader non supporta l'accesso FTP attraverso HTTP.\n"
 "Se non è questo il caso, per favore controllare e cambiare le impostazioni "
-"Proxy nel centro di controllo KDE."
+"Proxy nel centro di controllo TDE."
 
 #: VFS/ftp_vfs.cpp:169
 #, c-format
@@ -1263,8 +1263,8 @@ msgid "Clear the location bar"
 msgstr "Pulisci la barra posizione"
 
 #: Panel/listpanel.cpp:206
-msgid "Use superb KDE file dialog to choose location. "
-msgstr "Usa la superba finestra di dialogo di KDE per la scelta della posizione. "
+msgid "Use superb TDE file dialog to choose location. "
+msgstr "Usa la superba finestra di dialogo di TDE per la scelta della posizione. "
 
 #: Panel/listpanel.cpp:211
 msgid ""
@@ -2764,10 +2764,10 @@ msgstr "geppo@geppozone.com"
 #: main.cpp:51
 msgid ""
 "Krusader\n"
-"Twin-Panel File Manager for KDE"
+"Twin-Panel File Manager for TDE"
 msgstr ""
 "Krusader\n"
-"File Manager a doppio pannello per KDE"
+"File Manager a doppio pannello per TDE"
 
 #: main.cpp:56
 msgid "Start left panel at <path>"
@@ -4482,8 +4482,8 @@ msgid "High Contrast"
 msgstr "Alto contrasto"
 
 #: DiskUsage/dufilelight.cpp:102
-msgid "KDE"
-msgstr "KDE"
+msgid "TDE"
+msgstr "TDE"
 
 #: DiskUsage/dufilelight.cpp:105
 msgid "Scheme"
@@ -5348,24 +5348,24 @@ msgstr ""
 "apre il file o entra nella directory."
 
 #: Konfigurator/kglookfeel.cpp:270
-msgid "Obey KDE's global selection policy"
-msgstr "Adeguati alle impostazioni globali di KDE"
+msgid "Obey TDE's global selection policy"
+msgstr "Adeguati alle impostazioni globali di TDE"
 
 #: Konfigurator/kglookfeel.cpp:270
 msgid ""
-"<p>Use KDE's global setting:</p><p><i>KDE Control Center -> Peripherals -> "
+"<p>Use TDE's global setting:</p><p><i>TDE Control Center -> Peripherals -> "
 "Mouse</i></p>"
 msgstr ""
-"<p>Usa le impostazioni globali di KDE:</p><p><i>Centro di controllo KDE-> "
+"<p>Usa le impostazioni globali di TDE:</p><p><i>Centro di controllo TDE-> "
 "Periferiche -> Mouse</i></p>"
 
 #: Konfigurator/kglookfeel.cpp:282
-msgid "Based on KDE's selection mode"
-msgstr "Basato sul modo di selezione di KDE"
+msgid "Based on TDE's selection mode"
+msgstr "Basato sul modo di selezione di TDE"
 
 #: Konfigurator/kglookfeel.cpp:283
-msgid "If checked, use a mode based on KDE's style."
-msgstr "Impostando questo si usa una modalità basata sullo stile di KDE."
+msgid "If checked, use a mode based on TDE's style."
+msgstr "Impostando questo si usa una modalità basata sullo stile di TDE."
 
 #: Konfigurator/kglookfeel.cpp:285
 msgid "Left mouse button selects"
@@ -5518,18 +5518,18 @@ msgstr ""
 "file <b>fstab</b>, si prova a montarla con i parametri definiti."
 
 #: Konfigurator/kgadvanced.cpp:65
-msgid "Don't use KDE's media protocol for media button (if it's buggy or missing)"
+msgid "Don't use TDE's media protocol for media button (if it's buggy or missing)"
 msgstr ""
-"Non usare per i bottoni dei dispositivi il protocollo di KDE (se è difettoso "
+"Non usare per i bottoni dei dispositivi il protocollo di TDE (se è difettoso "
 "o mancante)"
 
 #: Konfigurator/kgadvanced.cpp:65
 msgid ""
-"Select if your media protocol is buggy (in some older KDE versions), or not "
+"Select if your media protocol is buggy (in some older TDE versions), or not "
 "present (no tdebase package installed)."
 msgstr ""
 "Seleziona se il tuo protocollo per i dispositivi è difettoso (in alcune "
-"vecchie versioni di KDE) o mancante (non è installato il pacchetto tdebase)."
+"vecchie versioni di TDE) o mancante (non è installato il pacchetto tdebase)."
 
 #: Konfigurator/kgadvanced.cpp:74
 msgid "MountMan won't (un)mount the following mount-points:"
@@ -5697,15 +5697,15 @@ msgid "Black"
 msgstr "Nero"
 
 #: Konfigurator/kgcolors.cpp:59
-msgid "Use the default KDE colors"
-msgstr "Usa i colori predefiniti di KDE"
+msgid "Use the default TDE colors"
+msgstr "Usa i colori predefiniti di TDE"
 
 #: Konfigurator/kgcolors.cpp:59
 msgid ""
-"<p>Use KDE's global color configuration.</p><p><i>KDE Control Center -> "
+"<p>Use TDE's global color configuration.</p><p><i>TDE Control Center -> "
 "Appearance & Themes -> Colors</i></p>"
 msgstr ""
-"<p>Usa la configurazione globale di KDE.</p><p><i>Centro di controllo KDE -> "
+"<p>Usa la configurazione globale di TDE.</p><p><i>Centro di controllo TDE -> "
 "Aspetto e Temi -> Colori</i></p>"
 
 #: Konfigurator/kgcolors.cpp:60
@@ -5715,12 +5715,12 @@ msgstr "Usa colore di sfondo alternato"
 #: Konfigurator/kgcolors.cpp:60
 msgid ""
 "<p>The <b>background color</b> and the <b>alternate background</b> color "
-"alternates line by line.</p><p>When you don't use the <i>KDE default colors</"
+"alternates line by line.</p><p>When you don't use the <i>TDE default colors</"
 "i>, you can configure the alternate colors in the <i>colors</i> box.</p>"
 msgstr ""
 "<p>Il <b>colore di sfondo</b> e quello di <b>sfondo alternato</b> sono "
 "alternati linea per linea.</p><p>Quando non si usano i <i>colori predefiniti "
-"di KDE</i>, si possono configurare i colori alternati nelle caselle "
+"di TDE</i>, si possono configurare i colori alternati nelle caselle "
 "<i>Colori</i>.</p>"
 
 #: Konfigurator/kgcolors.cpp:61
@@ -5730,12 +5730,12 @@ msgstr "Mostra l'elemento attuale anche se non ha il focus"
 #: Konfigurator/kgcolors.cpp:61
 msgid ""
 "<p>Shows the last cursor position in the non active list panel.</p><p>This "
-"option is only available when you don't use the <i>KDE default colors</i>.</"
+"option is only available when you don't use the <i>TDE default colors</i>.</"
 "p>"
 msgstr ""
 "<p>Mostra l'ultima posizione del cursore nel pannello attivo.</p><p>Questa "
 "opzione è disponibile solo quando non si usano i <i>colori predefiniti di "
-"KDE</i>.</p>"
+"TDE</i>.</p>"
 
 #: Konfigurator/kgcolors.cpp:62
 msgid "Dim the colors of the inactive panel"
@@ -5863,8 +5863,8 @@ msgid "Synchronizer"
 msgstr "Sincronizzazione"
 
 #: Konfigurator/kgcolors.cpp:190 Konfigurator/kgcolors.cpp:191
-msgid "KDE default"
-msgstr "Impostazioni KDE predefinite"
+msgid "TDE default"
+msgstr "Impostazioni TDE predefinite"
 
 #: Konfigurator/kgcolors.cpp:195
 msgid "Equals foreground:"
@@ -6308,8 +6308,8 @@ msgstr ""
 "Konfigurator."
 
 #: krslots.cpp:509
-msgid "Can't find \"KsysCtrl\". Please install KDE admin package"
-msgstr "Impossibile trovare \"KsysCtrl\". Per favore installa il pacchetto KDE admin"
+msgid "Can't find \"KsysCtrl\". Please install TDE admin package"
+msgstr "Impossibile trovare \"KsysCtrl\". Per favore installa il pacchetto TDE admin"
 
 #: krslots.cpp:517
 msgid ""

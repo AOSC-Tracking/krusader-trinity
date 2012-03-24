@@ -1272,8 +1272,8 @@ msgid "Clear the location bar"
 msgstr "Počisti lokacijsko vrstico"
 
 #: Panel/listpanel.cpp:206
-msgid "Use superb KDE file dialog to choose location. "
-msgstr "Uporabi KDE okno za izbor lokacije."
+msgid "Use superb TDE file dialog to choose location. "
+msgstr "Uporabi TDE okno za izbor lokacije."
 
 #: Panel/listpanel.cpp:211
 msgid "Name of directory where you are. You can also enter name of desired location to move there. Use of Net protocols like ftp or fish is possible."
@@ -2824,10 +2824,10 @@ msgstr "matej.urban@gmail.com"
 #: main.cpp:51
 msgid ""
 "Krusader\n"
-"Twin-Panel File Manager for KDE"
+"Twin-Panel File Manager for TDE"
 msgstr ""
 "Krusader\n"
-"Dvostranski upravljavec datotek za KDE"
+"Dvostranski upravljavec datotek za TDE"
 
 #: main.cpp:56
 msgid "Start left panel at <path>"
@@ -4502,8 +4502,8 @@ msgid "High Contrast"
 msgstr "Visok kontrast"
 
 #: DiskUsage/dufilelight.cpp:102
-msgid "KDE"
-msgstr "KDE"
+msgid "TDE"
+msgstr "TDE"
 
 #: DiskUsage/dufilelight.cpp:105
 msgid "Scheme"
@@ -5307,20 +5307,20 @@ msgid "A single click on a file will select and focus, a double click opens the 
 msgstr "Enkratni klik na datoteko bo izbral, dvojni klik odprl oziroma vstopil v podmapo."
 
 #: Konfigurator/kglookfeel.cpp:270
-msgid "Obey KDE's global selection policy"
-msgstr "Upoštevanje KDE postavk označevanja"
+msgid "Obey TDE's global selection policy"
+msgstr "Upoštevanje TDE postavk označevanja"
 
 #: Konfigurator/kglookfeel.cpp:270
-msgid "<p>Use KDE's global setting:</p><p><i>KDE Control Center -> Peripherals -> Mouse</i></p>"
-msgstr "<p>Uporabi privzete KDE nastavitve:<p><i>KDE Nadzornini Center -> Periferno -> Miška</i>.</p>"
+msgid "<p>Use TDE's global setting:</p><p><i>TDE Control Center -> Peripherals -> Mouse</i></p>"
+msgstr "<p>Uporabi privzete TDE nastavitve:<p><i>TDE Nadzornini Center -> Periferno -> Miška</i>.</p>"
 
 #: Konfigurator/kglookfeel.cpp:282
-msgid "Based on KDE's selection mode"
-msgstr "Temelji na KDE načinu izbiranja:"
+msgid "Based on TDE's selection mode"
+msgstr "Temelji na TDE načinu izbiranja:"
 
 #: Konfigurator/kglookfeel.cpp:283
-msgid "If checked, use a mode based on KDE's style."
-msgstr "Če je odkljukano bo uporabljen način prikaza, ki temelji na KDE videzu."
+msgid "If checked, use a mode based on TDE's style."
+msgstr "Če je odkljukano bo uporabljen način prikaza, ki temelji na TDE videzu."
 
 #: Konfigurator/kglookfeel.cpp:285
 msgid "Left mouse button selects"
@@ -5435,12 +5435,12 @@ msgid "When stepping into a directory which is defined as a mount point in the <
 msgstr "Ob vstopu v mapo, ki je definirana kot priklopna točka v <b>fstab</b>, poskusi točko priklopiti z določenimi parametri."
 
 #: Konfigurator/kgadvanced.cpp:65
-msgid "Don't use KDE's media protocol for media button (if it's buggy or missing)"
-msgstr "Ne uporabljaj KDE media protokola za media gumb."
+msgid "Don't use TDE's media protocol for media button (if it's buggy or missing)"
+msgstr "Ne uporabljaj TDE media protokola za media gumb."
 
 #: Konfigurator/kgadvanced.cpp:65
-msgid "Select if your media protocol is buggy (in some older KDE versions), or not present (no tdebase package installed)."
-msgstr "Izberite, če media protokol ne deluje (starejše različice KDE), ali pa ni dostopen (brez naloženega tdebase paketa)."
+msgid "Select if your media protocol is buggy (in some older TDE versions), or not present (no tdebase package installed)."
+msgstr "Izberite, če media protokol ne deluje (starejše različice TDE), ali pa ni dostopen (brez naloženega tdebase paketa)."
 
 #: Konfigurator/kgadvanced.cpp:74
 msgid "MountMan won't (un)mount the following mount-points:"
@@ -5601,28 +5601,28 @@ msgid "Black"
 msgstr "Črna"
 
 #: Konfigurator/kgcolors.cpp:59
-msgid "Use the default KDE colors"
-msgstr "Uporabi privzete KDE barve"
+msgid "Use the default TDE colors"
+msgstr "Uporabi privzete TDE barve"
 
 #: Konfigurator/kgcolors.cpp:59
-msgid "<p>Use KDE's global color configuration.</p><p><i>KDE Control Center -> Appearance & Themes -> Colors</i></p>"
-msgstr "<p>Uporabi globalne KDE nastavitve.</p><p><i>KDE Nadzorni Center -> Videz & Teme -> Barve</i></p>"
+msgid "<p>Use TDE's global color configuration.</p><p><i>TDE Control Center -> Appearance & Themes -> Colors</i></p>"
+msgstr "<p>Uporabi globalne TDE nastavitve.</p><p><i>TDE Nadzorni Center -> Videz & Teme -> Barve</i></p>"
 
 #: Konfigurator/kgcolors.cpp:60
 msgid "Use alternate background color"
 msgstr "Uporabi alternirajoči barvi ozadja"
 
 #: Konfigurator/kgcolors.cpp:60
-msgid "<p>The <b>background color</b> and the <b>alternate background</b> color alternates line by line.</p><p>When you don't use the <i>KDE default colors</i>, you can configure the alternate colors in the <i>colors</i> box.</p>"
-msgstr "<p><b>Barva ozadja</b> in <b>druga barva ozadja</b> se izmenjujeta po linijah.</p><p> Alternirajoče obarvanje je možno samo kadar niso privzete barve KDE namizja.</p>"
+msgid "<p>The <b>background color</b> and the <b>alternate background</b> color alternates line by line.</p><p>When you don't use the <i>TDE default colors</i>, you can configure the alternate colors in the <i>colors</i> box.</p>"
+msgstr "<p><b>Barva ozadja</b> in <b>druga barva ozadja</b> se izmenjujeta po linijah.</p><p> Alternirajoče obarvanje je možno samo kadar niso privzete barve TDE namizja.</p>"
 
 #: Konfigurator/kgcolors.cpp:61
 msgid "Show current item even if not focused"
 msgstr "Pokaži trenutni predmet"
 
 #: Konfigurator/kgcolors.cpp:61
-msgid "<p>Shows the last cursor position in the non active list panel.</p><p>This option is only available when you don't use the <i>KDE default colors</i>.</p>"
-msgstr "<p>Pokaže zadnjo lego kazala v neaktivnem spisku okna.</p><p>Možnost je mogoča samo takrat, ko ni uporabljen <i>privzet nabor KDE barv</i>.</p>"
+msgid "<p>Shows the last cursor position in the non active list panel.</p><p>This option is only available when you don't use the <i>TDE default colors</i>.</p>"
+msgstr "<p>Pokaže zadnjo lego kazala v neaktivnem spisku okna.</p><p>Možnost je mogoča samo takrat, ko ni uporabljen <i>privzet nabor TDE barv</i>.</p>"
 
 #: Konfigurator/kgcolors.cpp:62
 msgid "Dim the colors of the inactive panel"
@@ -5773,8 +5773,8 @@ msgstr "Usklajevalnik"
 
 #: Konfigurator/kgcolors.cpp:190
 #: Konfigurator/kgcolors.cpp:191
-msgid "KDE default"
-msgstr "KDE Privzeto"
+msgid "TDE default"
+msgstr "TDE Privzeto"
 
 #: Konfigurator/kgcolors.cpp:195
 msgid "Equals foreground:"
@@ -6150,8 +6150,8 @@ msgid "Can't start 'mount'! Check the 'Dependencies' page in konfigurator."
 msgstr "Ni mogoče zagnati priklopa! Preverite 'Odvisnosti' v Konfiguratorju."
 
 #: krslots.cpp:509
-msgid "Can't find \"KsysCtrl\". Please install KDE admin package"
-msgstr "Ne najdem \"KsysCtrl\". Naložiti bo potrebno KDE administratorski paket"
+msgid "Can't find \"KsysCtrl\". Please install TDE admin package"
+msgstr "Ne najdem \"KsysCtrl\". Naložiti bo potrebno TDE administratorski paket"
 
 #: krslots.cpp:517
 msgid ""

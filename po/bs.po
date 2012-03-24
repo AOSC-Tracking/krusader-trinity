@@ -46,7 +46,7 @@ msgstr "Dodaj novi unos"
 msgid "Krusader::ProfileManager"
 msgstr ""
 "Krusader\n"
-"Dvojni panel, datotečni menadžer za KDE"
+"Dvojni panel, datotečni menadžer za TDE"
 
 #: GUI/profilemanager.cpp:112
 msgid "Enter the profile name:"
@@ -1311,8 +1311,8 @@ msgid "Clear the location bar"
 msgstr "u"
 
 #: Panel/listpanel.cpp:206
-msgid "Use superb KDE file dialog to choose location. "
-msgstr "Koristite veličanstveni KDE dijalog da izaberete lokaciju."
+msgid "Use superb TDE file dialog to choose location. "
+msgstr "Koristite veličanstveni TDE dijalog da izaberete lokaciju."
 
 #: Panel/listpanel.cpp:211
 msgid ""
@@ -2905,10 +2905,10 @@ msgstr "asim.h@megatel.ba"
 #, fuzzy
 msgid ""
 "Krusader\n"
-"Twin-Panel File Manager for KDE"
+"Twin-Panel File Manager for TDE"
 msgstr ""
 "Krusader\n"
-"Dvojni panel, datotečni menadžer za KDE"
+"Dvojni panel, datotečni menadžer za TDE"
 
 #: main.cpp:56
 msgid "Start left panel at <path>"
@@ -4660,7 +4660,7 @@ msgid "High Contrast"
 msgstr ""
 
 #: DiskUsage/dufilelight.cpp:102
-msgid "KDE"
+msgid "TDE"
 msgstr ""
 
 #: DiskUsage/dufilelight.cpp:105
@@ -5553,22 +5553,22 @@ msgid ""
 msgstr ""
 
 #: Konfigurator/kglookfeel.cpp:270
-msgid "Obey KDE's global selection policy"
-msgstr "Koristi KDE postavke označavanja"
+msgid "Obey TDE's global selection policy"
+msgstr "Koristi TDE postavke označavanja"
 
 #: Konfigurator/kglookfeel.cpp:270
 msgid ""
-"<p>Use KDE's global setting:</p><p><i>KDE Control Center -> Peripherals -> "
+"<p>Use TDE's global setting:</p><p><i>TDE Control Center -> Peripherals -> "
 "Mouse</i></p>"
 msgstr ""
 
 #: Konfigurator/kglookfeel.cpp:282
 #, fuzzy
-msgid "Based on KDE's selection mode"
-msgstr "Koristi KDE postavke označavanja"
+msgid "Based on TDE's selection mode"
+msgstr "Koristi TDE postavke označavanja"
 
 #: Konfigurator/kglookfeel.cpp:283
-msgid "If checked, use a mode based on KDE's style."
+msgid "If checked, use a mode based on TDE's style."
 msgstr ""
 
 #: Konfigurator/kglookfeel.cpp:285
@@ -5696,12 +5696,12 @@ msgstr ""
 
 #: Konfigurator/kgadvanced.cpp:65
 msgid ""
-"Don't use KDE's media protocol for media button (if it's buggy or missing)"
+"Don't use TDE's media protocol for media button (if it's buggy or missing)"
 msgstr ""
 
 #: Konfigurator/kgadvanced.cpp:65
 msgid ""
-"Select if your media protocol is buggy (in some older KDE versions), or not "
+"Select if your media protocol is buggy (in some older TDE versions), or not "
 "present (no tdebase package installed)."
 msgstr ""
 
@@ -5880,12 +5880,12 @@ msgid "Black"
 msgstr "Crna"
 
 #: Konfigurator/kgcolors.cpp:59
-msgid "Use the default KDE colors"
-msgstr "Koristi uobičajene KDE boje"
+msgid "Use the default TDE colors"
+msgstr "Koristi uobičajene TDE boje"
 
 #: Konfigurator/kgcolors.cpp:59
 msgid ""
-"<p>Use KDE's global color configuration.</p><p><i>KDE Control Center -> "
+"<p>Use TDE's global color configuration.</p><p><i>TDE Control Center -> "
 "Appearance & Themes -> Colors</i></p>"
 msgstr ""
 
@@ -5897,7 +5897,7 @@ msgstr "Koristi alternativnu boju pozadine"
 #: Konfigurator/kgcolors.cpp:60
 msgid ""
 "<p>The <b>background color</b> and the <b>alternate background</b> color "
-"alternates line by line.</p><p>When you don't use the <i>KDE default colors</"
+"alternates line by line.</p><p>When you don't use the <i>TDE default colors</"
 "i>, you can configure the alternate colors in the <i>colors</i> box.</p>"
 msgstr ""
 
@@ -5908,7 +5908,7 @@ msgstr "Pokaži trenutnu stavku ako nije fokusirano"
 #: Konfigurator/kgcolors.cpp:61
 msgid ""
 "<p>Shows the last cursor position in the non active list panel.</p><p>This "
-"option is only available when you don't use the <i>KDE default colors</i>.</"
+"option is only available when you don't use the <i>TDE default colors</i>.</"
 "p>"
 msgstr ""
 
@@ -6045,7 +6045,7 @@ msgstr "Sinhronizer"
 
 #: Konfigurator/kgcolors.cpp:190 Konfigurator/kgcolors.cpp:191
 #, fuzzy
-msgid "KDE default"
+msgid "TDE default"
 msgstr "Uobičajeno"
 
 #: Konfigurator/kgcolors.cpp:195
@@ -6515,9 +6515,9 @@ msgstr ""
 "Konfiguratoru."
 
 #: krslots.cpp:509
-msgid "Can't find \"KsysCtrl\". Please install KDE admin package"
+msgid "Can't find \"KsysCtrl\". Please install TDE admin package"
 msgstr ""
-"Ne mogu pronaći \"KsysCtrl\". Molim instalirajte KDE administratorski paket"
+"Ne mogu pronaći \"KsysCtrl\". Molim instalirajte TDE administratorski paket"
 
 #: krslots.cpp:517
 #, fuzzy

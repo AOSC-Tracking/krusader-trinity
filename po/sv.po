@@ -1273,8 +1273,8 @@ msgid "Clear the location bar"
 msgstr "Nollställ platsraden"
 
 #: Panel/listpanel.cpp:206
-msgid "Use superb KDE file dialog to choose location. "
-msgstr "Använd utmärkt KDE fildialog för att välja plats. "
+msgid "Use superb TDE file dialog to choose location. "
+msgstr "Använd utmärkt TDE fildialog för att välja plats. "
 
 #: Panel/listpanel.cpp:211
 msgid ""
@@ -2778,10 +2778,10 @@ msgstr "peter.talken@telia.com"
 #: main.cpp:51
 msgid ""
 "Krusader\n"
-"Twin-Panel File Manager for KDE"
+"Twin-Panel File Manager for TDE"
 msgstr ""
 "Krusader\n"
-"Filhanterare med tvenne paneler  för KDE"
+"Filhanterare med tvenne paneler  för TDE"
 
 #: main.cpp:56
 msgid "Start left panel at <path>"
@@ -4495,8 +4495,8 @@ msgid "High Contrast"
 msgstr "Hög kontrast"
 
 #: DiskUsage/dufilelight.cpp:102
-msgid "KDE"
-msgstr "KDE"
+msgid "TDE"
+msgstr "TDE"
 
 #: DiskUsage/dufilelight.cpp:105
 msgid "Scheme"
@@ -5359,24 +5359,24 @@ msgstr ""
 "in i mappen."
 
 #: Konfigurator/kglookfeel.cpp:270
-msgid "Obey KDE's global selection policy"
-msgstr "Följ KDE's övergripande urvalssätt"
+msgid "Obey TDE's global selection policy"
+msgstr "Följ TDE's övergripande urvalssätt"
 
 #: Konfigurator/kglookfeel.cpp:270
 msgid ""
-"<p>Use KDE's global setting:</p><p><i>KDE Control Center -> Peripherals -> "
+"<p>Use TDE's global setting:</p><p><i>TDE Control Center -> Peripherals -> "
 "Mouse</i></p>"
 msgstr ""
-"<p>Använd KDE's globala inställning:<p><i>KDE Control Center-"
+"<p>Använd TDE's globala inställning:<p><i>TDE Control Center-"
 ">Kringutrustning->Mus</i></p>"
 
 #: Konfigurator/kglookfeel.cpp:282
-msgid "Based on KDE's selection mode"
-msgstr "Grundat på KDE's urvalsläge"
+msgid "Based on TDE's selection mode"
+msgstr "Grundat på TDE's urvalsläge"
 
 #: Konfigurator/kglookfeel.cpp:283
-msgid "If checked, use a mode based on KDE's style."
-msgstr "Om markerad, använd stil grundad på KDE's stil."
+msgid "If checked, use a mode based on TDE's style."
+msgstr "Om markerad, använd stil grundad på TDE's stil."
 
 #: Konfigurator/kglookfeel.cpp:285
 msgid "Left mouse button selects"
@@ -5528,17 +5528,17 @@ msgstr ""
 
 #: Konfigurator/kgadvanced.cpp:65
 msgid ""
-"Don't use KDE's media protocol for media button (if it's buggy or missing)"
+"Don't use TDE's media protocol for media button (if it's buggy or missing)"
 msgstr ""
-"Använd inte KDE's mediaprotokoll för mediaknapp (om den är felaktig eller "
+"Använd inte TDE's mediaprotokoll för mediaknapp (om den är felaktig eller "
 "saknas)"
 
 #: Konfigurator/kgadvanced.cpp:65
 msgid ""
-"Select if your media protocol is buggy (in some older KDE versions), or not "
+"Select if your media protocol is buggy (in some older TDE versions), or not "
 "present (no tdebase package installed)."
 msgstr ""
-"Välj om ditt mediaprotokoll är felaktigt (i vissa äldre KDE-versioner), "
+"Välj om ditt mediaprotokoll är felaktigt (i vissa äldre TDE-versioner), "
 "eller inte närvarande (inget tdebase-paket installerat)."
 
 #: Konfigurator/kgadvanced.cpp:74
@@ -5706,15 +5706,15 @@ msgid "Black"
 msgstr "Svart"
 
 #: Konfigurator/kgcolors.cpp:59
-msgid "Use the default KDE colors"
-msgstr "Används KDE's standardfärger"
+msgid "Use the default TDE colors"
+msgstr "Används TDE's standardfärger"
 
 #: Konfigurator/kgcolors.cpp:59
 msgid ""
-"<p>Use KDE's global color configuration.</p><p><i>KDE Control Center -> "
+"<p>Use TDE's global color configuration.</p><p><i>TDE Control Center -> "
 "Appearance & Themes -> Colors</i></p>"
 msgstr ""
-"<p>Använd KDE's globala färgkonfiguration.</p><p><i>KDE Control Center -> "
+"<p>Använd TDE's globala färgkonfiguration.</p><p><i>TDE Control Center -> "
 "Utseende & Teman -> Färger</i></p>"
 
 #: Konfigurator/kgcolors.cpp:60
@@ -5724,11 +5724,11 @@ msgstr "Använd alternativ bakgrundsfärg"
 #: Konfigurator/kgcolors.cpp:60
 msgid ""
 "<p>The <b>background color</b> and the <b>alternate background</b> color "
-"alternates line by line.</p><p>When you don't use the <i>KDE default colors</"
+"alternates line by line.</p><p>When you don't use the <i>TDE default colors</"
 "i>, you can configure the alternate colors in the <i>colors</i> box.</p>"
 msgstr ""
 "<p><b>Bakgrundsfärgen</b> och den <b>alternativa bakgrundsfärgen</b> växlar "
-"rad för rad.</p> <p>När du inte använder <i>KDE's standardfärger</i>, kan du "
+"rad för rad.</p> <p>När du inte använder <i>TDE's standardfärger</i>, kan du "
 "konfigurera den alternativa färgen i <i>färg</i>lådan.</p>"
 
 #: Konfigurator/kgcolors.cpp:61
@@ -5738,11 +5738,11 @@ msgstr "Visa aktuellt även om det inte är fokuserat"
 #: Konfigurator/kgcolors.cpp:61
 msgid ""
 "<p>Shows the last cursor position in the non active list panel.</p><p>This "
-"option is only available when you don't use the <i>KDE default colors</i>.</"
+"option is only available when you don't use the <i>TDE default colors</i>.</"
 "p>"
 msgstr ""
 "<p>Visa den sista markörpositionen i den icke aktiva listpanelen.</"
-"p><p>Detta tillägg är endast tillgängligt när du inte använder <i>KDE's "
+"p><p>Detta tillägg är endast tillgängligt när du inte använder <i>TDE's "
 "standardfärger</i>.</p>"
 
 #: Konfigurator/kgcolors.cpp:62
@@ -5871,8 +5871,8 @@ msgid "Synchronizer"
 msgstr "Synkroniserare"
 
 #: Konfigurator/kgcolors.cpp:190 Konfigurator/kgcolors.cpp:191
-msgid "KDE default"
-msgstr "KDE standard"
+msgid "TDE default"
+msgstr "TDE standard"
 
 #: Konfigurator/kgcolors.cpp:195
 msgid "Equals foreground:"
@@ -6315,8 +6315,8 @@ msgid "Can't start 'mount'! Check the 'Dependencies' page in konfigurator."
 msgstr "Kan inte starta 'montering'! Kontrollera beroendesidan i Konfigurator."
 
 #: krslots.cpp:509
-msgid "Can't find \"KsysCtrl\". Please install KDE admin package"
-msgstr "Kan inte hitta \"KsysCtrl\". Vänligen installera KDE's 'admin' paket"
+msgid "Can't find \"KsysCtrl\". Please install TDE admin package"
+msgstr "Kan inte hitta \"KsysCtrl\". Vänligen installera TDE's 'admin' paket"
 
 #: krslots.cpp:517
 msgid ""

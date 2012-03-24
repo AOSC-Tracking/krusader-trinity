@@ -1303,8 +1303,8 @@ msgid "Clear the location bar"
 msgstr "Konum çubuğunu temizler"
 
 #: Panel/listpanel.cpp:206
-msgid "Use superb KDE file dialog to choose location. "
-msgstr "Konum'u seçmek için KDE Dosya-aç iletişimini kullan"
+msgid "Use superb TDE file dialog to choose location. "
+msgstr "Konum'u seçmek için TDE Dosya-aç iletişimini kullan"
 
 #: Panel/listpanel.cpp:211
 msgid ""
@@ -2864,10 +2864,10 @@ msgstr "bekirsonat@kde.org.tr"
 #: main.cpp:51
 msgid ""
 "Krusader\n"
-"Twin-Panel File Manager for KDE"
+"Twin-Panel File Manager for TDE"
 msgstr ""
 "Krusader\n"
-"KDE için Çift-pencereli Dosya Yöneticisi"
+"TDE için Çift-pencereli Dosya Yöneticisi"
 
 #: main.cpp:56
 msgid "Start left panel at <path>"
@@ -4666,8 +4666,8 @@ msgid "High Contrast"
 msgstr "Yüksek Karşıtlık"
 
 #: DiskUsage/dufilelight.cpp:102
-msgid "KDE"
-msgstr "KDE"
+msgid "TDE"
+msgstr "TDE"
 
 #: DiskUsage/dufilelight.cpp:105
 msgid "Scheme"
@@ -5538,25 +5538,25 @@ msgstr ""
 "(Nesne, eğer bir dizin ise, içine girer)"
 
 #: Konfigurator/kglookfeel.cpp:270
-msgid "Obey KDE's global selection policy"
-msgstr "KDE'nin genel seçimlerine uy"
+msgid "Obey TDE's global selection policy"
+msgstr "TDE'nin genel seçimlerine uy"
 
 #: Konfigurator/kglookfeel.cpp:270
 #, fuzzy
 msgid ""
-"<p>Use KDE's global setting:</p><p><i>KDE Control Center -> Peripherals -> "
+"<p>Use TDE's global setting:</p><p><i>TDE Control Center -> Peripherals -> "
 "Mouse</i></p>"
 msgstr ""
-"KDE genel ayarlarını kullan:<p><i>KDE Denetim Merkezi-> Çevreseller -> Fare</"
+"TDE genel ayarlarını kullan:<p><i>TDE Denetim Merkezi-> Çevreseller -> Fare</"
 "i>"
 
 #: Konfigurator/kglookfeel.cpp:282
-msgid "Based on KDE's selection mode"
-msgstr "KDE'nin seçim kipi temelinde"
+msgid "Based on TDE's selection mode"
+msgstr "TDE'nin seçim kipi temelinde"
 
 #: Konfigurator/kglookfeel.cpp:283
-msgid "If checked, use a mode based on KDE's style."
-msgstr "İşaretli ise KDE görümünde kullanım sağlar."
+msgid "If checked, use a mode based on TDE's style."
+msgstr "İşaretli ise TDE görümünde kullanım sağlar."
 
 #: Konfigurator/kglookfeel.cpp:285
 msgid "Left mouse button selects"
@@ -5708,17 +5708,17 @@ msgstr ""
 
 #: Konfigurator/kgadvanced.cpp:65
 msgid ""
-"Don't use KDE's media protocol for media button (if it's buggy or missing)"
+"Don't use TDE's media protocol for media button (if it's buggy or missing)"
 msgstr ""
-"Ortam düğmesi için KDE'nin ( hatalı veya eksik ) ortam yordamlarını kullanma "
+"Ortam düğmesi için TDE'nin ( hatalı veya eksik ) ortam yordamlarını kullanma "
 
 #: Konfigurator/kgadvanced.cpp:65
 #, fuzzy
 msgid ""
-"Select if your media protocol is buggy (in some older KDE versions), or not "
+"Select if your media protocol is buggy (in some older TDE versions), or not "
 "present (no tdebase package installed)."
 msgstr ""
-"Eğer ortam yordamı eski KDE sürümlerindeki gibi hatalı veya eksik ( tdebase "
+"Eğer ortam yordamı eski TDE sürümlerindeki gibi hatalı veya eksik ( tdebase "
 "paketleri kurulmamış ) ise seçin."
 
 #: Konfigurator/kgadvanced.cpp:74
@@ -5887,15 +5887,15 @@ msgid "Black"
 msgstr "Siyah"
 
 #: Konfigurator/kgcolors.cpp:59
-msgid "Use the default KDE colors"
-msgstr "Öntanımlı KDE renklerini kullan"
+msgid "Use the default TDE colors"
+msgstr "Öntanımlı TDE renklerini kullan"
 
 #: Konfigurator/kgcolors.cpp:59
 msgid ""
-"<p>Use KDE's global color configuration.</p><p><i>KDE Control Center -> "
+"<p>Use TDE's global color configuration.</p><p><i>TDE Control Center -> "
 "Appearance & Themes -> Colors</i></p>"
 msgstr ""
-"KDE'nin genel renk yapılandırmasını kullan.<p><i>KDE Denetim Masası -> "
+"TDE'nin genel renk yapılandırmasını kullan.<p><i>TDE Denetim Masası -> "
 "Görünüm ve Temalar -> Renkler</i>"
 
 #: Konfigurator/kgcolors.cpp:60
@@ -5905,11 +5905,11 @@ msgstr "Başka-bir zemin rengi kullan"
 #: Konfigurator/kgcolors.cpp:60
 msgid ""
 "<p>The <b>background color</b> and the <b>alternate background</b> color "
-"alternates line by line.</p><p>When you don't use the <i>KDE default colors</"
+"alternates line by line.</p><p>When you don't use the <i>TDE default colors</"
 "i>, you can configure the alternate colors in the <i>colors</i> box.</p>"
 msgstr ""
 "<b>Zemin rengi</b> ve <b>zemin değiştir</b> seçenekleri ile satırı satırına "
-"renk değiştirilir.<p><i>KDE öntanımlı renkleri</i> kullanmadığınızda "
+"renk değiştirilir.<p><i>TDE öntanımlı renkleri</i> kullanmadığınızda "
 "<i>renkler</i> kutusundaki değişik renkler ile yapılandırabilirsiniz."
 
 #: Konfigurator/kgcolors.cpp:61
@@ -5919,11 +5919,11 @@ msgstr "Bulunulan ögeyi göster,-hatta seçilmese de."
 #: Konfigurator/kgcolors.cpp:61
 msgid ""
 "<p>Shows the last cursor position in the non active list panel.</p><p>This "
-"option is only available when you don't use the <i>KDE default colors</i>.</"
+"option is only available when you don't use the <i>TDE default colors</i>.</"
 "p>"
 msgstr ""
 "<p>Etkin olmayan pencerede, imleçin en son bulunduğu yeri göster.</p> <p>Bu "
-"seçenek sadece <i>KDE öntanımlı renkleri</i> kullanılmamışsa etkin olacaktır."
+"seçenek sadece <i>TDE öntanımlı renkleri</i> kullanılmamışsa etkin olacaktır."
 "</p>"
 
 #: Konfigurator/kgcolors.cpp:62
@@ -6058,8 +6058,8 @@ msgid "Synchronizer"
 msgstr "Eşgüdümleyici"
 
 #: Konfigurator/kgcolors.cpp:190 Konfigurator/kgcolors.cpp:191
-msgid "KDE default"
-msgstr "KDE Öntanımlı"
+msgid "TDE default"
+msgstr "TDE Öntanımlı"
 
 #: Konfigurator/kgcolors.cpp:195
 msgid "Equals foreground:"
@@ -6499,8 +6499,8 @@ msgstr ""
 "sayfasını denetleyin."
 
 #: krslots.cpp:509
-msgid "Can't find \"KsysCtrl\". Please install KDE admin package"
-msgstr "\"KsysCtrl\" bulunamadı. KDE admin paketini kurmalısınız."
+msgid "Can't find \"KsysCtrl\". Please install TDE admin package"
+msgstr "\"KsysCtrl\" bulunamadı. TDE admin paketini kurmalısınız."
 
 #: krslots.cpp:517
 msgid ""

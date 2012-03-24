@@ -1303,8 +1303,8 @@ msgstr "クリア"
 
 #: Panel/listpanel.cpp:206
 #, fuzzy
-msgid "Use superb KDE file dialog to choose location. "
-msgstr "使用 KDE to "
+msgid "Use superb TDE file dialog to choose location. "
+msgstr "使用 TDE to "
 
 #: Panel/listpanel.cpp:211
 #, fuzzy
@@ -3049,8 +3049,8 @@ msgstr "shinobo@leo.bekkoame.ne.jp"
 #, fuzzy
 msgid ""
 "Krusader\n"
-"Twin-Panel File Manager for KDE"
-msgstr "パネル ファイル マネージャ for KDE"
+"Twin-Panel File Manager for TDE"
+msgstr "パネル ファイル マネージャ for TDE"
 
 #: main.cpp:56
 #, fuzzy
@@ -4980,8 +4980,8 @@ msgstr "高 コントラスト"
 
 #: DiskUsage/dufilelight.cpp:102
 #, fuzzy
-msgid "KDE"
-msgstr "KDE"
+msgid "TDE"
+msgstr "TDE"
 
 #: DiskUsage/dufilelight.cpp:105
 msgid "Scheme"
@@ -5960,25 +5960,25 @@ msgstr "A a と a double もしくは."
 
 #: Konfigurator/kglookfeel.cpp:270
 #, fuzzy
-msgid "Obey KDE's global selection policy"
-msgstr "KDE 秒"
+msgid "Obey TDE's global selection policy"
+msgstr "TDE 秒"
 
 #: Konfigurator/kglookfeel.cpp:270
 #, fuzzy
 msgid ""
-"<p>Use KDE's global setting:</p><p><i>KDE Control Center -> Peripherals -> "
+"<p>Use TDE's global setting:</p><p><i>TDE Control Center -> Peripherals -> "
 "Mouse</i></p>"
-msgstr "<p> 使用 KDE 秒</p><p><i> KDE コントロールキー 中央 マウス</i></p>"
+msgstr "<p> 使用 TDE 秒</p><p><i> TDE コントロールキー 中央 マウス</i></p>"
 
 #: Konfigurator/kglookfeel.cpp:282
 #, fuzzy
-msgid "Based on KDE's selection mode"
-msgstr "KDE 秒"
+msgid "Based on TDE's selection mode"
+msgstr "TDE 秒"
 
 #: Konfigurator/kglookfeel.cpp:283
 #, fuzzy
-msgid "If checked, use a mode based on KDE's style."
-msgstr "a KDE 秒 スタイル."
+msgid "If checked, use a mode based on TDE's style."
+msgstr "a TDE 秒 スタイル."
 
 #: Konfigurator/kglookfeel.cpp:285
 #, fuzzy
@@ -6130,15 +6130,15 @@ msgstr "a a 点 in<b></b> 置換後."
 #: Konfigurator/kgadvanced.cpp:65
 #, fuzzy
 msgid ""
-"Don't use KDE's media protocol for media button (if it's buggy or missing)"
-msgstr "KDE 秒 メディア for メディア 秒 もしくは"
+"Don't use TDE's media protocol for media button (if it's buggy or missing)"
+msgstr "TDE 秒 メディア for メディア 秒 もしくは"
 
 #: Konfigurator/kgadvanced.cpp:65
 #, fuzzy
 msgid ""
-"Select if your media protocol is buggy (in some older KDE versions), or not "
+"Select if your media protocol is buggy (in some older TDE versions), or not "
 "present (no tdebase package installed)."
-msgstr "選択 メディア in 同じ KDE もしくは いいえ tdebase パッケージ."
+msgstr "選択 メディア in 同じ TDE もしくは いいえ tdebase パッケージ."
 
 #: Konfigurator/kgadvanced.cpp:74
 #, fuzzy
@@ -6335,16 +6335,16 @@ msgstr "黒"
 
 #: Konfigurator/kgcolors.cpp:59
 #, fuzzy
-msgid "Use the default KDE colors"
-msgstr "使用 標準 KDE"
+msgid "Use the default TDE colors"
+msgstr "使用 標準 TDE"
 
 #: Konfigurator/kgcolors.cpp:59
 #, fuzzy
 msgid ""
-"<p>Use KDE's global color configuration.</p><p><i>KDE Control Center -> "
+"<p>Use TDE's global color configuration.</p><p><i>TDE Control Center -> "
 "Appearance & Themes -> Colors</i></p>"
 msgstr ""
-"<p> 使用 KDE 秒 色 構成</p><p><i> KDE コントロールキー 中央 外観 テーマ 色</"
+"<p> 使用 TDE 秒 色 構成</p><p><i> TDE コントロールキー 中央 外観 テーマ 色</"
 "i></p>"
 
 #: Konfigurator/kgcolors.cpp:60
@@ -6356,10 +6356,10 @@ msgstr "使用 背景 色"
 #, fuzzy
 msgid ""
 "<p>The <b>background color</b> and the <b>alternate background</b> color "
-"alternates line by line.</p><p>When you don't use the <i>KDE default colors</"
+"alternates line by line.</p><p>When you don't use the <i>TDE default colors</"
 "i>, you can configure the alternate colors in the <i>colors</i> box.</p>"
 msgstr ""
-"<p><b> 背景 色</b> と<b> 背景</b> 色 直線 直線</p><p><i> KDE 標準</i> 設定 "
+"<p><b> 背景 色</b> と<b> 背景</b> 色 直線 直線</p><p><i> TDE 標準</i> 設定 "
 "in<i></i> 箱</p>"
 
 #: Konfigurator/kgcolors.cpp:61
@@ -6371,9 +6371,9 @@ msgstr "表示"
 #, fuzzy
 msgid ""
 "<p>Shows the last cursor position in the non active list panel.</p><p>This "
-"option is only available when you don't use the <i>KDE default colors</i>.</"
+"option is only available when you don't use the <i>TDE default colors</i>.</"
 "p>"
-msgstr "<p> カーソル in アクティブ パネル</p><p><i> KDE 標準</i></p>"
+msgstr "<p> カーソル in アクティブ パネル</p><p><i> TDE 標準</i></p>"
 
 #: Konfigurator/kgcolors.cpp:62
 #, fuzzy
@@ -6526,8 +6526,8 @@ msgstr "ディレクトリ"
 
 #: Konfigurator/kgcolors.cpp:190 Konfigurator/kgcolors.cpp:191
 #, fuzzy
-msgid "KDE default"
-msgstr "KDE 標準"
+msgid "TDE default"
+msgstr "TDE 標準"
 
 #: Konfigurator/kgcolors.cpp:195
 #, fuzzy
@@ -6998,8 +6998,8 @@ msgid "Can't start 'mount'! Check the 'Dependencies' page in konfigurator."
 msgstr "Can't start 'mount'! Check the 'Dependencies' page in konfigurator."
 
 #: krslots.cpp:509
-msgid "Can't find \"KsysCtrl\". Please install KDE admin package"
-msgstr "Can't find \"KsysCtrl\". Please install KDE admin package"
+msgid "Can't find \"KsysCtrl\". Please install TDE admin package"
+msgstr "Can't find \"KsysCtrl\". Please install TDE admin package"
 
 #: krslots.cpp:517
 msgid ""

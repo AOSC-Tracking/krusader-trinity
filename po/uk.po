@@ -1304,8 +1304,8 @@ msgid "Clear the location bar"
 msgstr "Перескочити до адреси"
 
 #: Panel/listpanel.cpp:206
-msgid "Use superb KDE file dialog to choose location. "
-msgstr "Вживайте вікно файлів KDE для вибору адреси. "
+msgid "Use superb TDE file dialog to choose location. "
+msgstr "Вживайте вікно файлів TDE для вибору адреси. "
 
 #: Panel/listpanel.cpp:211
 msgid ""
@@ -2881,10 +2881,10 @@ msgstr "iip@telus.net"
 #, fuzzy
 msgid ""
 "Krusader\n"
-"Twin-Panel File Manager for KDE"
+"Twin-Panel File Manager for TDE"
 msgstr ""
 "Krusader\n"
-"Двопанельний менеджер для KDE"
+"Двопанельний менеджер для TDE"
 
 #: main.cpp:56
 msgid "Start left panel at <path>"
@@ -4626,8 +4626,8 @@ msgid "High Contrast"
 msgstr "Висока контрастність"
 
 #: DiskUsage/dufilelight.cpp:102
-msgid "KDE"
-msgstr "KDE"
+msgid "TDE"
+msgstr "TDE"
 
 #: DiskUsage/dufilelight.cpp:105
 msgid "Scheme"
@@ -5511,26 +5511,26 @@ msgstr ""
 "відкриває файл або входить в каталог."
 
 #: Konfigurator/kglookfeel.cpp:270
-msgid "Obey KDE's global selection policy"
-msgstr "Підкорятись глобальним правилам вибору KDE"
+msgid "Obey TDE's global selection policy"
+msgstr "Підкорятись глобальним правилам вибору TDE"
 
 #: Konfigurator/kglookfeel.cpp:270
 #, fuzzy
 msgid ""
-"<p>Use KDE's global setting:</p><p><i>KDE Control Center -> Peripherals -> "
+"<p>Use TDE's global setting:</p><p><i>TDE Control Center -> Peripherals -> "
 "Mouse</i></p>"
 msgstr ""
-"Використовувати параметри KDE Kcontrol: Центр керування KDE ->Периферійні "
+"Використовувати параметри TDE Kcontrol: Центр керування TDE ->Периферійні "
 "пристрої->Мишка"
 
 #: Konfigurator/kglookfeel.cpp:282
-msgid "Based on KDE's selection mode"
-msgstr "Оснований на режимі вибору KDE"
+msgid "Based on TDE's selection mode"
+msgstr "Оснований на режимі вибору TDE"
 
 #: Konfigurator/kglookfeel.cpp:283
 #, fuzzy
-msgid "If checked, use a mode based on KDE's style."
-msgstr "Увімкнення цього параметра створить режим оснований на стилі KDE."
+msgid "If checked, use a mode based on TDE's style."
+msgstr "Увімкнення цього параметра створить режим оснований на стилі TDE."
 
 #: Konfigurator/kglookfeel.cpp:285
 msgid "Left mouse button selects"
@@ -5686,12 +5686,12 @@ msgstr ""
 
 #: Konfigurator/kgadvanced.cpp:65
 msgid ""
-"Don't use KDE's media protocol for media button (if it's buggy or missing)"
+"Don't use TDE's media protocol for media button (if it's buggy or missing)"
 msgstr ""
 
 #: Konfigurator/kgadvanced.cpp:65
 msgid ""
-"Select if your media protocol is buggy (in some older KDE versions), or not "
+"Select if your media protocol is buggy (in some older TDE versions), or not "
 "present (no tdebase package installed)."
 msgstr ""
 
@@ -5865,16 +5865,16 @@ msgid "Black"
 msgstr "Чорний"
 
 #: Konfigurator/kgcolors.cpp:59
-msgid "Use the default KDE colors"
-msgstr "Вживати типові кольори KDE"
+msgid "Use the default TDE colors"
+msgstr "Вживати типові кольори TDE"
 
 #: Konfigurator/kgcolors.cpp:59
 #, fuzzy
 msgid ""
-"<p>Use KDE's global color configuration.</p><p><i>KDE Control Center -> "
+"<p>Use TDE's global color configuration.</p><p><i>TDE Control Center -> "
 "Appearance & Themes -> Colors</i></p>"
 msgstr ""
-"Використовувати параметри KDE Kcontrol: Центр керування KDE ->Периферійні "
+"Використовувати параметри TDE Kcontrol: Центр керування TDE ->Периферійні "
 "пристрої->Мишка"
 
 #: Konfigurator/kgcolors.cpp:60
@@ -5885,11 +5885,11 @@ msgstr "Вживати альтернативний колір тла"
 #, fuzzy
 msgid ""
 "<p>The <b>background color</b> and the <b>alternate background</b> color "
-"alternates line by line.</p><p>When you don't use the <i>KDE default colors</"
+"alternates line by line.</p><p>When you don't use the <i>TDE default colors</"
 "i>, you can configure the alternate colors in the <i>colors</i> box.</p>"
 msgstr ""
 "Колір тла та альтернативний колір тла чергуються рядок за рядком.\n"
-"Якщо ви не використовуєте типові кольори KDE, ви можете налаштувати "
+"Якщо ви не використовуєте типові кольори TDE, ви можете налаштувати "
 "альтернативні кольори в рамці кольорів."
 
 #: Konfigurator/kgcolors.cpp:61
@@ -5900,11 +5900,11 @@ msgstr "Показувати поточний елемент, навіть, як
 #, fuzzy
 msgid ""
 "<p>Shows the last cursor position in the non active list panel.</p><p>This "
-"option is only available when you don't use the <i>KDE default colors</i>.</"
+"option is only available when you don't use the <i>TDE default colors</i>.</"
 "p>"
 msgstr ""
 "Показує останню позицію курсора в неактивній панелі списку. Цей\n"
-"параметр доступний тільки, якщо ви не використовуєте типові кольори KDE."
+"параметр доступний тільки, якщо ви не використовуєте типові кольори TDE."
 
 #: Konfigurator/kgcolors.cpp:62
 msgid "Dim the colors of the inactive panel"
@@ -6039,7 +6039,7 @@ msgstr "&Синхронізатор"
 
 #: Konfigurator/kgcolors.cpp:190 Konfigurator/kgcolors.cpp:191
 #, fuzzy
-msgid "KDE default"
+msgid "TDE default"
 msgstr "Стандартні значення"
 
 #: Konfigurator/kgcolors.cpp:195
@@ -6502,9 +6502,9 @@ msgstr ""
 "Конфігураторі."
 
 #: krslots.cpp:509
-msgid "Can't find \"KsysCtrl\". Please install KDE admin package"
+msgid "Can't find \"KsysCtrl\". Please install TDE admin package"
 msgstr ""
-"Не вдається знайти \"KsysCtrl\". Будь ласка, встановіть пакет admin для KDE"
+"Не вдається знайти \"KsysCtrl\". Будь ласка, встановіть пакет admin для TDE"
 
 #: krslots.cpp:517
 msgid ""

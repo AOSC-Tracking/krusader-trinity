@@ -1268,8 +1268,8 @@ msgid "Clear the location bar"
 msgstr "Изчистване на лентата"
 
 #: Panel/listpanel.cpp:206
-msgid "Use superb KDE file dialog to choose location. "
-msgstr "Използвайте файловия superb KDE диалог за избор на местоположение."
+msgid "Use superb TDE file dialog to choose location. "
+msgstr "Използвайте файловия superb TDE диалог за избор на местоположение."
 
 #: Panel/listpanel.cpp:211
 msgid ""
@@ -2769,10 +2769,10 @@ msgstr "milen.kerat@gmail.com"
 #: main.cpp:51
 msgid ""
 "Krusader\n"
-"Twin-Panel File Manager for KDE"
+"Twin-Panel File Manager for TDE"
 msgstr ""
 "Krusader\n"
-"Двупанелен файлов мениджър за KDE"
+"Двупанелен файлов мениджър за TDE"
 
 #: main.cpp:56
 msgid "Start left panel at <path>"
@@ -4489,8 +4489,8 @@ msgid "High Contrast"
 msgstr "Висок контраст"
 
 #: DiskUsage/dufilelight.cpp:102
-msgid "KDE"
-msgstr "KDE"
+msgid "TDE"
+msgstr "TDE"
 
 #: DiskUsage/dufilelight.cpp:105
 msgid "Scheme"
@@ -5346,24 +5346,24 @@ msgstr ""
 "щракване се отваря файла или се влиза в директория."
 
 #: Konfigurator/kglookfeel.cpp:270
-msgid "Obey KDE's global selection policy"
-msgstr "Начина на селектиране се определя от настройките на KDE"
+msgid "Obey TDE's global selection policy"
+msgstr "Начина на селектиране се определя от настройките на TDE"
 
 #: Konfigurator/kglookfeel.cpp:270
 msgid ""
-"<p>Use KDE's global setting:</p><p><i>KDE Control Center -> Peripherals -> "
+"<p>Use TDE's global setting:</p><p><i>TDE Control Center -> Peripherals -> "
 "Mouse</i></p>"
 msgstr ""
-"<p>Използват се KDE настройките:</p><p><i>Контролен център -> Периферия -> "
+"<p>Използват се TDE настройките:</p><p><i>Контролен център -> Периферия -> "
 "Мишка</i></p>"
 
 #: Konfigurator/kglookfeel.cpp:282
-msgid "Based on KDE's selection mode"
-msgstr "Начина на избор се определя от настройките на KDE"
+msgid "Based on TDE's selection mode"
+msgstr "Начина на избор се определя от настройките на TDE"
 
 #: Konfigurator/kglookfeel.cpp:283
-msgid "If checked, use a mode based on KDE's style."
-msgstr "Тази настройка ще използва режим, базиран на KDE стила."
+msgid "If checked, use a mode based on TDE's style."
+msgstr "Тази настройка ще използва режим, базиран на TDE стила."
 
 #: Konfigurator/kglookfeel.cpp:285
 msgid "Left mouse button selects"
@@ -5517,17 +5517,17 @@ msgstr ""
 
 #: Konfigurator/kgadvanced.cpp:65
 msgid ""
-"Don't use KDE's media protocol for media button (if it's buggy or missing)"
+"Don't use TDE's media protocol for media button (if it's buggy or missing)"
 msgstr ""
-"Не използвайте медийния протокол на KDE за медия бутон (ако е бъгав или "
+"Не използвайте медийния протокол на TDE за медия бутон (ако е бъгав или "
 "липсващ)"
 
 #: Konfigurator/kgadvanced.cpp:65
 msgid ""
-"Select if your media protocol is buggy (in some older KDE versions), or not "
+"Select if your media protocol is buggy (in some older TDE versions), or not "
 "present (no tdebase package installed)."
 msgstr ""
-"Изберете, ако вашия медиен протокол е бъгав (в някои стари версии на KDE) "
+"Изберете, ако вашия медиен протокол е бъгав (в някои стари версии на TDE) "
 "или липсва (нямате инсталиран пакета tdebase)."
 
 #: Konfigurator/kgadvanced.cpp:74
@@ -5696,15 +5696,15 @@ msgid "Black"
 msgstr "Черно"
 
 #: Konfigurator/kgcolors.cpp:59
-msgid "Use the default KDE colors"
-msgstr "Използване на цветовете на KDE"
+msgid "Use the default TDE colors"
+msgstr "Използване на цветовете на TDE"
 
 #: Konfigurator/kgcolors.cpp:59
 msgid ""
-"<p>Use KDE's global color configuration.</p><p><i>KDE Control Center -> "
+"<p>Use TDE's global color configuration.</p><p><i>TDE Control Center -> "
 "Appearance & Themes -> Colors</i></p>"
 msgstr ""
-"<p>Използват се KDE настройките за цветове:</p><p><i>KDE Control Center -> "
+"<p>Използват се TDE настройките за цветове:</p><p><i>TDE Control Center -> "
 "Appearance & Themes -> Colors</i></p>"
 
 #: Konfigurator/kgcolors.cpp:60
@@ -5714,11 +5714,11 @@ msgstr "Редуващ се фонов цвят"
 #: Konfigurator/kgcolors.cpp:60
 msgid ""
 "<p>The <b>background color</b> and the <b>alternate background</b> color "
-"alternates line by line.</p><p>When you don't use the <i>KDE default colors</"
+"alternates line by line.</p><p>When you don't use the <i>TDE default colors</"
 "i>, you can configure the alternate colors in the <i>colors</i> box.</p>"
 msgstr ""
 "<p><b>Основният</b> и <b>алтернативния</b> фонов цвят се редуват през ред.</"
-"p><p>Ако не използвате <i>цветовата палитра на KDE</i>, в <i>Цветове</i> "
+"p><p>Ако не използвате <i>цветовата палитра на TDE</i>, в <i>Цветове</i> "
 "можете да настроите тази подредба.</p>"
 
 #: Konfigurator/kgcolors.cpp:61
@@ -5728,11 +5728,11 @@ msgstr "Показване на текущият обект, дори и да н
 #: Konfigurator/kgcolors.cpp:61
 msgid ""
 "<p>Shows the last cursor position in the non active list panel.</p><p>This "
-"option is only available when you don't use the <i>KDE default colors</i>.</"
+"option is only available when you don't use the <i>TDE default colors</i>.</"
 "p>"
 msgstr ""
 "<p>Показва последната позиция на курсора в неактивния панел.</p><p>Тази "
-"настройка е достъпна само ако не използвате <i>цветовете на KDE</i>.</p>"
+"настройка е достъпна само ако не използвате <i>цветовете на TDE</i>.</p>"
 
 #: Konfigurator/kgcolors.cpp:62
 msgid "Dim the colors of the inactive panel"
@@ -5860,8 +5860,8 @@ msgid "Synchronizer"
 msgstr "Синхронизатор"
 
 #: Konfigurator/kgcolors.cpp:190 Konfigurator/kgcolors.cpp:191
-msgid "KDE default"
-msgstr "KDE default"
+msgid "TDE default"
+msgstr "TDE default"
 
 #: Konfigurator/kgcolors.cpp:195
 msgid "Equals foreground:"
@@ -6303,9 +6303,9 @@ msgstr ""
 "конфигуратора."
 
 #: krslots.cpp:509
-msgid "Can't find \"KsysCtrl\". Please install KDE admin package"
+msgid "Can't find \"KsysCtrl\". Please install TDE admin package"
 msgstr ""
-"Не намирам \"KsysCtrl\". Моля, инсталирайте администраторския пакет на KDE"
+"Не намирам \"KsysCtrl\". Моля, инсталирайте администраторския пакет на TDE"
 
 #: krslots.cpp:517
 msgid ""
