@@ -1299,7 +1299,7 @@
           requested help file could not be found. Check that you
           have installed the documentation." To fix it go to 
           <filename>
-          /usr/share/doc/kde/HTML/en/krusader/</filename>, you will
+          /usr/share/doc/tde/HTML/en/krusader/</filename>, you will
           see the 
           <filename>foo.docbook.gz</filename> files. Now, you need
           to extract all these files with root privileges
