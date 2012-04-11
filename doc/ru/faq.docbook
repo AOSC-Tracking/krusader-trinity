@@ -1129,7 +1129,7 @@
   <answer>
   <para
 >Эта ошибка случается в  дистрибутивах &debian;(или на основе &debian;) с пакетом krusader_1.51-1_i386.deb.Вы видите следующее сообщение об ошибке , когда открываете Руководство  "Запрашиваемый файл не найден. Проверьте правильность установки документации".Для устранения перейдите  в <filename
->/usr/share/doc/kde/HTML/en/krusader/</filename
+>/usr/share/doc/tde/HTML/en/krusader/</filename
 >,  вы должны увидеть файлы <filename
 >foo.docbook.gz</filename
 >.Теперь распакуйте все эти файлы с привилегиями root в файлы <filename
