@@ -27,8 +27,8 @@
  *   (at your option) any later version.                                   *
  *                                                                         *
  ***************************************************************************/
-#ifndef KRTQUERY_H
-#define KRTQUERY_H
+#ifndef KRQUERY_H
+#define KRQUERY_H
 
 #include <tqstringlist.h>
 #include <tqdatetime.h>

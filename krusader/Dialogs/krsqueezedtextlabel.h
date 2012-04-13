@@ -1,5 +1,5 @@
-#ifndef KRSTQUEEZEDTEXTLABEL_H
-#define KRSTQUEEZEDTEXTLABEL_H
+#ifndef KRSQUEEZEDTEXTLABEL_H
+#define KRSQUEEZEDTEXTLABEL_H
 
 #include <ksqueezedtextlabel.h>
 

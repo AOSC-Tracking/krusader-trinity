@@ -1,5 +1,5 @@
-#ifndef TQUEUE_MGR_H
-#define TQUEUE_MGR_H
+#ifndef QUEUE_MGR_H
+#define QUEUE_MGR_H
 
 #include "queue.h"
 #include <tqmap.h>
@@ -23,4 +23,4 @@ protected:
 	static TQMap<TQString, Queue*> _queues;
 };
 
-#endif // TQUEUE_MGR_H
+#endif // QUEUE_MGR_H
