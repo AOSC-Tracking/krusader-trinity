@@ -1,5 +1,5 @@
-#ifndef TQUEUE_H
-#define TQUEUE_H
+#ifndef QUEUE_H
+#define QUEUE_H
 
 #include <tqobject.h>
 #include <kio/jobclasses.h>
@@ -30,4 +30,4 @@ protected:
 	TQPtrList<KIO::Job> _jobs;
 };
 
-#endif // TQUEUE_H
+#endif // QUEUE_H

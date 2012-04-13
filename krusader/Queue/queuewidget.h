@@ -1,5 +1,5 @@
-#ifndef TQUEUE_WIDGET_H
-#define TQUEUE_WIDGET_H
+#ifndef QUEUE_WIDGET_H
+#define QUEUE_WIDGET_H
 
 #include <ktabwidget.h>
 
@@ -12,4 +12,4 @@ public:
 	~QueueWidget();
 };
 
-#endif // TQUEUE_WIDGET_H
+#endif // QUEUE_WIDGET_H

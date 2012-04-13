@@ -15,8 +15,8 @@
  *                                                                         *
  ***************************************************************************/
 
-#ifndef DIRHISTORYTQUEUE_H
-#define DIRHISTORYTQUEUE_H
+#ifndef DIRHISTORYQUEUE_H
+#define DIRHISTORYQUEUE_H
 
 #include <tqobject.h>
 #include <kurl.h>
