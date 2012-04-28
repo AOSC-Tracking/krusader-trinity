@@ -14,6 +14,9 @@
 #include <tqvaluelist.h>
 #include <utility>
 #include <cassert>
+
+using namespace std;
+
 template <class T>
 class TagString_t
 {
