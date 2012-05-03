@@ -199,7 +199,7 @@ int main(int argc, char *argv[]) {
        exit( 0 );
     TQCString regName = client->registerAs( KApplication::kApplication() ->name(), !singleInstanceMode );
     if( singleInstanceMode && regName != KApplication::kApplication()->name() ) {
-      fprintf( stderr, i18n( "Application already running!\n" ).ascii() );
+      fprintf( stderr, "%s", i18n( "Application already running!\n" ).ascii() );
 
       DCOPClient::mainClient()->send( KApplication::kApplication() ->name(), "Krusader-Interface",
                                     "moveToTop()", TQByteArray() );
