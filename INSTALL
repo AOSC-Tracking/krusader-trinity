@@ -563,7 +563,7 @@ messages that can be used for debugging Krusader.
 You can also use Alt+F2 to open the Run Command dialog box, type krusader
 (lower case) and press Enter or click on the Run button.
 If Krusader is installed by an RPM or DEB package then usually Krusader can be
-started from the K menu. e.g. on Mandrake&#8482;-Linux® 10.0 click on the  [K]
+started from the TDE menu. e.g. on Mandrake&#8482;-Linux® 10.0 click on the [T]
 icon button and choose Applications->File tools->Krusader.
 Command-line options:
   --left <path>
