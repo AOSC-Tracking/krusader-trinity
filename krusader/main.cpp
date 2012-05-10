@@ -48,7 +48,7 @@
 #include <stdlib.h>
 
 static const char *description =
-	I18N_NOOP("Krusader\nTwin-Panel File Manager for KDE");
+	I18N_NOOP("Krusader\nTwin-Panel File Manager for TDE");
 // INSERT A DESCRIPTION FOR YOUR APPLICATION HERE
 
 static KCmdLineOptions options[] =
