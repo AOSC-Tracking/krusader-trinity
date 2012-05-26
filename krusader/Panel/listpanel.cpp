@@ -203,7 +203,7 @@ ListPanel::ListPanel( TQString typeIn, TQWidget *parent, bool &left, const char 
    TQPixmap pixMap = origin->button() ->iconSet() ->pixmap( TQIconSet::Small, TQIconSet::Normal );
    origin->button() ->setFixedSize( pixMap.width() + 4, pixMap.height() + 4 );
    TQWhatsThis::add
-      ( origin, i18n( "Use superb KDE file dialog to choose location. " ) );
+      ( origin, i18n( "Use superb TDE file dialog to choose location. " ) );
    origin->setShowLocalProtocol( false );
    origin->lineEdit() ->setURLDropsEnabled( true );
    origin->lineEdit() ->installEventFilter( this );
