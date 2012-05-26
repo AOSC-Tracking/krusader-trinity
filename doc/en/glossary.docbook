@@ -154,16 +154,6 @@
       optical disk image, even a UDF image.</para>
     </glossdef>
   </glossentry>
-  <glossentry id="gloss-kde">
-    <glossterm>&kde;</glossterm>
-    <glossdef>
-      <para>
-      <ulink url="http://en.wikipedia.org/wiki/Kde">K Desktop
-      Environment</ulink>; a project to develop a free graphical
-      desktop environment for &UNIX; compatible
-      systems.</para>
-    </glossdef>
-  </glossentry>
   <glossentry id="gloss-keybinding">
     <glossterm>Key Binding</glossterm>
     <glossdef>
@@ -270,6 +260,15 @@
       <link linkend="gloss-cvs">CVS</link>. It is used by many
       software projects including &kde; and
       &krusader;.</para>
+    </glossdef>
+  </glossentry>
+  <glossentry id="gloss-tde">
+    <glossterm>&kde;</glossterm>
+    <glossdef>
+      <para>
+      <ulink url="http://www.trinitydesktop.org/">Trinity Desktop Environment</ulink> a project to develop a free graphical
+      desktop environment for &UNIX; compatible
+      systems.</para>
     </glossdef>
   </glossentry>
   <glossentry id="gloss-termemu">

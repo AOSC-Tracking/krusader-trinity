@@ -127,21 +127,21 @@
 </glossdef>
 </glossentry>
 
-<glossentry id="gloss-kde">
-<glossterm
->&kde;</glossterm>
-<glossdef>
-<para
->K Desktop Environment; a project to develop a free graphical desktop environment for &UNIX; compatible systems. </para>
-</glossdef>
-</glossentry>
-
 <glossentry id="gloss-rpm">
 <glossterm
 >RPM</glossterm>
 <glossdef>
 <para
 >This is the binary file format for distributions based on the Red Hat package manager, a widely used packaging tool for the &Linux; operating system. If you still have to get &krusader; and your system supports RPM packages, you should get &krusader; packages ending in .rpm. They are very easy to use. </para>
+</glossdef>
+</glossentry>
+
+<glossentry id="gloss-tde">
+<glossterm
+>&kde;</glossterm>
+<glossdef>
+<para
+>Trinity Desktop Environment; a project to develop a free graphical desktop environment for &UNIX; compatible systems. </para>
 </glossdef>
 </glossentry>
 
