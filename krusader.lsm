@@ -1,34 +1,14 @@
 Begin4
-Title: Krusader
-Version: 1.70.0
-Entered-date: 2006-02-13
-Description:
-            Krusader is an advanced twin panel (commander style) file manager
-            for KDE and other desktops in the *nix world, similar to
-            Midnight or Total Commander. It provides all the file management
-            features you could possibly want. Plus extensive archive handling,
-            mounted filesystem support, FTP, advanced search module,
-            viewer/editor, directory synchronisation, 
-            file content comparisons, powerful batch renaming and much much 
-            more. It supports the following archive formats,
-            tar, zip, bzip2, gzip, rar, ace, arj, lha and rpm and can
-            handle other KIOSlaves such as smb, fish, sftp It is (almost)
-            completely customizable, very user friendly, 
-            fast and looks great on your desktop!
-            You should give it a try.
-Keywords: kde file-manager commander archive twin-panel ftp midnight
-Author:   krusader@users.sourceforge.net (Krusader Krew)
-Maintained-by: krusader@users.sourceforge.net (Krusader Krew)
-Primary-site:  http://www.krusader.org/downloads.php
-Alternate-site: http://sourceforge.net/project/showfiles.php?group_id=6488
-Original-site: http://www.krusader.org/
-Platforms:     Linux/BSD/UNIX-like OSes + KDE 3.3 libs or KDE 3.4 libs
+Title:          Krusader
+Version:        R14.0.0
+Entered-date:   2010-05-10
+Description:    A twin panel (commander style) file manager for the Trinity Desktop Environment
+Keywords:       KDE file-manager commander archive twin-panel ftp midnight TDE
+Author:         krusader@users.sourceforge.net (Krusader Krew)
+Maintained-by:  The Trinity Desktop Environment (TDE) http://www.trinitydesktop.org/
+Primary-site:   http://git.trinitydesktop.org/cgit/
+Alternate-site:
+Original-site:  http://www.krusader.org/
+Platforms:      Linux and other Unices running TDE
 Copying-policy: GPL
 End
-
-
-
-mail: LSM@execpc.com 
-subject: add
-website: http://www.boutell.com/lsm/lsmbyid.cgi/002225
-
