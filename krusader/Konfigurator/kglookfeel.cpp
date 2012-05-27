@@ -267,7 +267,7 @@ void KgLookFeel::setupMouseModeTab() {
     {
     	//          name            value            tooltip
     	{ i18n( "Double-click selects (classic)" ), "0", i18n( "A single click on a file will select and focus, a double click opens the file or steps into the directory." ) },
-    	{ i18n( "Obey KDE's global selection policy" ), "1", i18n( "<p>Use KDE's global setting:</p><p><i>TDE Control Center -> Peripherals -> Mouse</i></p>" ) }
+    	{ i18n( "Obey TDE's global selection policy" ), "1", i18n( "<p>Use TDE's global setting:</p><p><i>TDE Control Center -> Peripherals -> Mouse</i></p>" ) }
     };
   KonfiguratorRadioButtons *clickRadio = createRadioButtonGroup( "Look&Feel", "Single Click Selects", "0", 1, 0, singleOrDoubleClick, 2, mouseDetailGroup, "myLook&FeelRadio0", true, PAGE_MOUSE );
   clickRadio->layout()->setMargin( 0 );
@@ -279,8 +279,8 @@ void KgLookFeel::setupMouseModeTab() {
      // 	text,  restart,
      // 	tooltip }
      {"Custom Selection Mode",  "QT Selection",  _TQtSelection,
-     	i18n( "Based on KDE's selection mode" ), true,
-     	i18n( "If checked, use a mode based on KDE's style." ) },
+     	i18n( "Based on TDE's selection mode" ), true,
+     	i18n( "If checked, use a mode based on TDE's style." ) },
      {"Custom Selection Mode",  "Left Selects",  _LeftSelects,
      	i18n( "Left mouse button selects" ), true,
      	i18n( "If checked, left clicking an item will select it." ) },

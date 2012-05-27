@@ -62,7 +62,7 @@ KgAdvanced::KgAdvanced( bool first, TQWidget* parent,  const char* name ) :
   //   cfg_class  cfg_name             default              text                                                        restart tooltip
     {{"Advanced","PreserveAttributes", _PreserveAttributes, i18n( "Preserve attributes for local copy/move (slower)" ), false,  i18n( "Krusader will try to preserve all attributes (time, owner, group) of the local files according to the source depending on your permissions:<ul><li>User preserving if you are root</li><li>Group preserving if you are root or member of the group</li><li>Preserving the timestamp</li></ul><b>Note</b>: This can slow down the copy process." ) },
      {"Advanced","AutoMount",          _AutoMount,          i18n( "Automount filesystems" ),                            false,  i18n( "When stepping into a directory which is defined as a mount point in the <b>fstab</b>, try mounting it with the defined parameters." )},
-     {"Advanced","DontUseMediaProt",   dontUseMedia,        i18n( "Don't use KDE's media protocol for media button (if it's buggy or missing)" ),  false,  i18n( "Select if your media protocol is buggy (in some older KDE versions), or not present (no tdebase package installed)." )}};
+     {"Advanced","DontUseMediaProt",   dontUseMedia,        i18n( "Don't use TDE's media protocol for media button (if it's buggy or missing)" ),  false,  i18n( "Select if your media protocol is buggy (in some older TDE versions), or not present (no tdebase package installed)." )}};
 
   KonfiguratorCheckBoxGroup *generals = createCheckBoxGroup( 1, 0, generalSettings, 3, generalGrp );
 
