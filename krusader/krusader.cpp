@@ -466,7 +466,7 @@ bool Krusader::versionControl() {
 void Krusader::statusBarUpdate( TQString& mess ) {
    // change the message on the statusbar for 2 seconds
    if (status) // ugly!!!! But as statusBar() creates a status bar if there is no, I have to ask status to prevent 
-               // the creation of the KDE default status bar instead of KrusaderStatus.
+               // the creation of the TDE default status bar instead of KrusaderStatus.
       statusBar() ->message( mess, 5000 );
 }
 
@@ -538,7 +538,7 @@ void Krusader::setupActions() {
    //KStdAction::showMenubar( SLOTS, TQT_SLOT( showMenubar() ), actionCollection(), "std_menubar" );
 
 
-   // second, the KDE standard action
+   // second, the TDE standard action
    //KStdAction::up( SLOTS, TQT_SLOT( dirUp() ), actionCollection(), "std_up" )->setShortcut(Key_Backspace);
    /* Shortcut disabled because of the Terminal Emulator bug. */
    krConfig->setGroup( "Private" );
