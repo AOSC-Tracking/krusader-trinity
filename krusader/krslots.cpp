@@ -506,7 +506,7 @@ void KRslots::sysInfo(){
   KProcess proc;
   proc << "kcmshell" << "System/ksysctrl";
   if (!proc.start(KProcess::DontCare)){
-    KMessageBox::sorry(krApp,i18n("Can't find \"KsysCtrl\". Please install KDE admin package"));
+    KMessageBox::sorry(krApp,i18n("Can't find \"KsysCtrl\". Please install the TDE admin package"));
   }
 }
 
