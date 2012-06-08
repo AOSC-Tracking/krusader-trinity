@@ -87,7 +87,7 @@ rm -rf $RPM_BUILD_ROOT
 %doc doc/actions_tutorial.txt AUTHORS ChangeLog COPYING CVSNEWS FAQ README TODO
 %{_bindir}/krusader
 %{_libdir}/trinity/kio_*.*
-%{_datadir}/applications/kde/*krusader*.desktop
+%{_datadir}/applications/tde/*krusader*.desktop
 %{_datadir}/apps/konqueror/servicemenus/isoservice.desktop
 %{_datadir}/apps/krusader/
 %{_datadir}/config/kio_isorc

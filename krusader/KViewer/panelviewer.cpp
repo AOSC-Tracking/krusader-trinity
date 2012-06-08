@@ -106,12 +106,12 @@ KParts::ReadOnlyPart* PanelViewer::getPart( TQString mimetype ) {
 	KService::Ptr ptr = KServiceTypeProfile::preferredService( mimetype, "KParts/ReadOnlyPart" );
 	if ( ptr ) {
 		TQStringList args;
-		TQVariant argsProp = ptr->property( "X-KDE-BrowserView-Args" );
+		TQVariant argsProp = ptr->property( "X-TDE-BrowserView-Args" );
 		if ( argsProp.isValid() ) {
 			TQString argStr = argsProp.toString();
 			args = TQStringList::split( " ", argStr );
 		}
-		TQVariant prop = ptr->property( "X-KDE-BrowserView-AllowAsDefault" );
+		TQVariant prop = ptr->property( "X-TDE-BrowserView-AllowAsDefault" );
 		if ( !prop.isValid() || prop.toBool() )   // defaults to true
 		{
 			factory = KLibLoader::self() ->factory( ptr->library().latin1() );
@@ -269,12 +269,12 @@ KParts::ReadWritePart* PanelEditor::getPart( TQString mimetype ) {
 	KService::Ptr ptr = KServiceTypeProfile::preferredService( mimetype, "KParts/ReadWritePart" );
 	if ( ptr ) {
 		TQStringList args;
-		TQVariant argsProp = ptr->property( "X-KDE-BrowserView-Args" );
+		TQVariant argsProp = ptr->property( "X-TDE-BrowserView-Args" );
 		if ( argsProp.isValid() ) {
 			TQString argStr = argsProp.toString();
 			args = TQStringList::split( " ", argStr );
 		}
-		TQVariant prop = ptr->property( "X-KDE-BrowserView-AllowAsDefault" );
+		TQVariant prop = ptr->property( "X-TDE-BrowserView-AllowAsDefault" );
 		if ( !prop.isValid() || prop.toBool() )  // defaults to true
 		{
 			factory = KLibLoader::self() ->factory( ptr->library().latin1() );
