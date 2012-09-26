@@ -15,18 +15,18 @@
  *                                                                         *
  ***************************************************************************/
 
-#include "tqfilehack.h"
+#include "qfilehack.h"
 
-TQFileHack::TQFileHack(){
+QFileHack::QFileHack(){
 }
 
-TQFileHack::TQFileHack( const TQString & name ) : TQFile(name) {
+QFileHack::QFileHack( const TQString & name ) : TQFile(name) {
 }
 
-TQFileHack::~TQFileHack(){
+QFileHack::~QFileHack(){
 }
 
-bool TQFileHack::open ( int m ) {
+bool QFileHack::open ( int m ) {
     bool ret;
 
 #ifdef __linux__

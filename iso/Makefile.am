@@ -17,7 +17,7 @@ kio_iso_la_LDFLAGS = $(all_libraries) -module $(KDE_PLUGIN)
 SUBDIRS = libisofs
 
 noinst_HEADERS = iso.h kiso.h qfilehack.h kisofile.h kisodirectory.h
-EXTRA_DIST = iso.protocol isoservice.desktop kio_iso.desktop
+EXTRA_DIST = iso.protocol isoservice.desktop 
 
 install-data-local:
 	$(mkinstalldirs)  $(DESTDIR)$(kde_servicesdir)/
@@ -26,14 +26,11 @@ install-data-local:
 	$(INSTALL_DATA) $(srcdir)/isoservice.desktop  $(DESTDIR)$(kde_datadir)/konqueror/servicemenus/isoservice.desktop
 	$(mkinstalldirs)  $(DESTDIR)$(kde_confdir)/
 	$(INSTALL_DATA) $(srcdir)/kio_isorc $(DESTDIR)$(kde_confdir)/kio_isorc
-	$(mkinstalldirs)  $(DESTDIR)$(kde_appsdir)/
-	$(INSTALL_DATA) $(srcdir)/kio_iso.desktop  $(DESTDIR)$(kde_appsdir)/kio_iso.desktop
 
 uninstall-local:
 	-rm -f  $(DESTDIR)$(kde_servicesdir)/iso.protocol
 	-rm -f  $(DESTDIR)$(kde_datadir)/konqueror/servicemenus/isoservice.desktop
 	-rm -f  $(DESTDIR)$(kde_confdir)/kio_isorc
-	-rm -f  $(DESTDIR)$(kde_appsdir)/kio_iso.desktop
 
 # These paths are KDE specific. Use them:
 # kde_appsdir         Where your application's menu entry (.desktop) should go to.

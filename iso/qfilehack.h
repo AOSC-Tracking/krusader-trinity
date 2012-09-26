@@ -15,8 +15,8 @@
  *                                                                         *
  ***************************************************************************/
 
-#ifndef TQFILEHACK_H
-#define TQFILEHACK_H
+#ifndef QFILEHACK_H
+#define QFILEHACK_H
 
 #include <tqfile.h>
 #include <tqstring.h>
@@ -27,11 +27,11 @@
   * block devices for example?
   */
 
-class TQFileHack : public TQFile  {
+class QFileHack : public TQFile  {
 public: 
-    TQFileHack();
-    TQFileHack( const TQString & name );
-    ~TQFileHack();
+    QFileHack();
+    QFileHack( const TQString & name );
+    ~QFileHack();
     virtual bool open ( int m );
 };
 
