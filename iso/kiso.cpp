@@ -39,7 +39,7 @@
 
 #include "kiso.h"
 #include "libisofs/isofs.h"
-#include "tqfilehack.h"
+#include "qfilehack.h"
 
 
 #ifdef __linux__
@@ -157,7 +157,7 @@ void KIso::prepareDevice( const TQString & filename,
 {
   /* 'hack' for TQt's false assumption that only S_ISREG is seekable */
   if( "inode/blockdevice" == mimetype )
-      setDevice( new TQFileHack( filename ) );
+      setDevice( new QFileHack( filename ) );
   else
   {
     if( "application/x-gzip" == mimetype
