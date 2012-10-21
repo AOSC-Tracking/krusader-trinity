@@ -11,7 +11,7 @@
 TQString atomicExtensions[] = { 
 	".tar.gz", 
 	".tar.bz2", 
-	".tqmoc.cpp"
+	".moc.cpp"
 };
 
 KrViewItem::KrViewItem(vfile *vf, const KrViewProperties* properties): 

@@ -131,7 +131,7 @@ TQFrame *line2 = createLine( generalGrp, "line2" );
   TQStringList defaultAtomicExtensions;
   defaultAtomicExtensions += ".tar.gz";
   defaultAtomicExtensions += ".tar.bz2";
-  defaultAtomicExtensions += ".tqmoc.cpp";
+  defaultAtomicExtensions += ".moc.cpp";
 
   listBox = createListBox( "Look&Feel", "Atomic Extensions", 
       defaultAtomicExtensions, vbox2, true, false );
