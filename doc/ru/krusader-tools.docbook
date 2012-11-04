@@ -583,7 +583,7 @@
 > и выберите меню <guimenuitem
 >Управление закладками</guimenuitem
 >, будет вызван Редактор закладок. Здесь вы можете редактировать/удалять и переназначать закладки. Редактор закладок (часть базового пакета КДЕ) - используется дляr &konqueror;, &krusader;  и других приложений по стандарту &xbel_url; для формата закладок. Закладки сохраняются в файле <filename
->~/.kde/share/apps/krusader/krbookmarks.xml.</filename
+>~/.trinity/share/apps/krusader/krbookmarks.xml.</filename
 ></para>
       <para
 >Вы можете импортировать закладки из <application
@@ -3385,11 +3385,11 @@
 >В менеджере действий вы можете устанавливать, настраивать и управлять вашими UserActions, некоторые основные настройки настраиваются в <link linkend="konfig-useractions"
 >Konfigurator</link
 >. В UserActions пользователь может создавать свои действия для файлов или обращаться к служебным функциям Крусадера напрямую. Действия встроены в &kde;, стандартный диалог настройки панелей и горячих клавиш также является пользовательским действием. Пользовательские действия сохраняются в файле <filename
->~/.kde/share/apps/krusader/useraction.xml</filename
+>~/.trinity/share/apps/krusader/useraction.xml</filename
 > (структура файла документирована в заголовках doxygen для UserActionXML). Некоторые <link linkend="useraction_xml"
 >примеры</link
 > включены в документацию. UserActions  редактируютсяt/добавляются/импортируются-/экспортируются в менеджере действий. UserActions  по усолчанию находятся в файле <filename
->~/.kde/share/apps/krusader/useraction_examples.xml</filename
+>~/.trinity/share/apps/krusader/useraction_examples.xml</filename
 >. UserActions can appear nearly everywhere where "normal" KActions can be placed. They integrate seamless in the well knows Edit-(Toolbar,Shortcut) Dialogs from &kde;. It's even possible to place them in the menubar, but for that one has to manipulate the <filename
 >krusaderui.rc</filename
 > file with an editor. Some examples: <itemizedlist
@@ -4034,7 +4034,7 @@
 > and <filename
 >foo.ui</filename
 >. They will be installed in <filename
->~/.kde/share/apps/krusader/js/</filename
+>~/.trinity/share/apps/krusader/js/</filename
 >, a useraction with a "%_Script" action will start the Javascripting. Currently we have 2 JS demo's <filename
 >root-mount-extension.tar.bz2</filename
 > and <filename

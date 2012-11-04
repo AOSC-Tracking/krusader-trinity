@@ -387,7 +387,7 @@
           <filename>
           $KDEDIR/share/apps/krusader/krusaderui.rc</filename> and 
           <filename>
-          ~/.kde/share/apps/krusader/krusaderui.rc</filename> and
+          ~/.trinity/share/apps/krusader/krusaderui.rc</filename> and
           re-run &krusader;. If you have compiled
           &krusader; from sources this is often caused
           if the &kdeqtdir-lnk; environment variables
@@ -413,11 +413,11 @@
           <guilabel>"Toolbar"</guilabel>, &kde; makes a
           copy of that file in the home directory at 
           <filename>
-          ~/.kde/share/apps/krusader/krusaderui.rc</filename>. If
+          ~/.trinity/share/apps/krusader/krusaderui.rc</filename>. If
           Krusader was previously installed on your computer, and
           you install a newer &krusader; version the 
           <filename>
-          ~/.kde/share/apps/krusader/krusaderui.rc</filename> file
+          ~/.trinity/share/apps/krusader/krusaderui.rc</filename> file
           must be replaced with the newer version. Note: this will
           also reset all your changes on toolbars and
           shortcuts!</para>
@@ -427,7 +427,7 @@
           version, &kde; will automatically replace the
           old 
           <filename>
-          ~/.kde/share/apps/krusader/krusaderui.rc</filename> with
+          ~/.trinity/share/apps/krusader/krusaderui.rc</filename> with
           the newer version when starting the new
           &krusader; for the first time
           (&kde; will detect the newer version number in
@@ -441,11 +441,11 @@
           <userinput>
             <command>rm</command>
             <option>
-            ~/.kde/share/apps/krusader/krusaderui.rc</option>
+            ~/.trinity/share/apps/krusader/krusaderui.rc</option>
           </userinput></para>
           <para>If the 
           <filename>
-          ~/.kde/share/apps/krusader/krusaderui.rc</filename> file
+          ~/.trinity/share/apps/krusader/krusaderui.rc</filename> file
           is older, then the new menu elements will not be shown.
           Read the previous question for information on how to
           update the 
@@ -983,7 +983,7 @@
        
        Check the &konfigprotocol-lnk;
    
-     If it doesn't work, backup your <filename>~/.kde/share/config/krusaderrc</filename> configuration file and remove it from this location,
+     If it doesn't work, backup your <filename>~/.trinity/share/config/krusaderrc</filename> configuration file and remove it from this location,
      Restart Krusader, Krusader will now start the first start configuration wizard, follow these guidelines.
    
     </para>
@@ -1250,9 +1250,9 @@
           <para>Presuming that the current setup is the good
           configuration, you can copy the configuration to the
           other user. 
-          <screen><prompt>#</prompt> <userinput><command>cp ~/.kde/share/config/krusaderrc /home/foo_user/.kde/share/config</command></userinput></screen>
+          <screen><prompt>#</prompt> <userinput><command>cp ~/.trinity/share/config/krusaderrc /home/foo_user/.trinity/share/config</command></userinput></screen>
           And when the other user is Root use: 
-          <screen><prompt>#</prompt> <userinput><command>cp ~/.kde/share/config/krusaderrc /root/.kde/share/config</command></userinput></screen>
+          <screen><prompt>#</prompt> <userinput><command>cp ~/.trinity/share/config/krusaderrc /root/.trinity/share/config</command></userinput></screen>
           </para>
           <para></para>
           <!-- Empty line to make it more readable -->
@@ -1272,7 +1272,7 @@
             <listitem>
               <para>open and edit 
               <filename>
-              ~/.kde/share/config/krusaderrc</filename></para>
+              ~/.trinity/share/config/krusaderrc</filename></para>
             </listitem>
             <listitem>
               <para>remove the "Panels Save Settings" item</para>

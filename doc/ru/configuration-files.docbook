@@ -40,7 +40,7 @@
 >Location: <filename
 >$KDEDIR/share/apps/krusader/krusaderui.rc</filename
 > or <filename
->~/.kde/share/apps/krusader/krusaderui.rc</filename
+>~/.trinity/share/apps/krusader/krusaderui.rc</filename
 ></para>
 
 
@@ -53,7 +53,7 @@
 >This file stores the &krusader; configuration.</para>
 <para
 >Location: <filename
->~/.kde/share/config/krusaderrc</filename
+>~/.trinity/share/config/krusaderrc</filename
 ></para>
 
 <para
@@ -166,7 +166,7 @@
 >This file stores the &krusader; bookmarks and uses the &xbel_url; standard.</para>
 <para
 >Location: <filename
->~/.kde/share/apps/krusader/krbookmarks.xml</filename
+>~/.trinity/share/apps/krusader/krbookmarks.xml</filename
 ></para>
 
 
@@ -178,7 +178,7 @@
 >This file stores the &useractions_lnk; configuration. The file-structure is documented in doxygen-headers of UserActionXML.</para>
 <para
 >Location: <filename
->~/.kde/share/apps/krusader/useractions.xml</filename
+>~/.trinity/share/apps/krusader/useractions.xml</filename
 ></para>
 
 <para

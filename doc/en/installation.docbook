@@ -728,7 +728,7 @@ If you haven't done so in a while, run ./configure --help
           &krusader; to be installed in another
           directory, it can be determed with the prefix option. If
           you do not have root access, 
-          <filename>/home/YOUR_USERNAME/.kde</filename> is probably
+          <filename>/home/YOUR_USERNAME/.trinity</filename> is probably
           a good choice. 
 <screen>
 foo
@@ -818,7 +818,7 @@ Good - your configure finished. Start make now
           <filename>$KDEDIR or /usr/local</filename>, it is
           recommended to do an extra check: 
 <screen><prompt>$</prompt> <userinput><command>kde-config</command> <option>--path exe</option></userinput>
-/home/frank/.kde/bin/:/usr/bin/:/usr/local/bin/   
+/home/frank/.trinity/bin/:/usr/bin/:/usr/local/bin/   
 <prompt>$</prompt></screen>
           If the
           &lt;prefix_dir/bin&gt; directory is

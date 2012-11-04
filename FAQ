@@ -234,7 +234,7 @@ Installation FAQ
     e.g. File and Select are missing. This is because some distributions put
     the krusaderui.rc file in the wrong directory. To solve the problem, just
     copy the krusaderui.rc file from the package krusader_trinity/krusader/
-    krusaderui.rc to $KDEDIR/share/apps/krusader/krusaderui.rc and ~/.kde/
+    krusaderui.rc to $KDEDIR/share/apps/krusader/krusaderui.rc and ~/.trinity/
     share/apps/krusader/krusaderui.rc and re-run Krusader. If you have compiled
     Krusader from sources this is often caused if the KDEDIR_-_QTDIR
     environment variables are not correctly set. The result is that the
@@ -243,21 +243,21 @@ Installation FAQ
 9.  Some new menu items are missing after updating Krusader, what's wrong?
     The krusaderui.rc file is stored in $KDEDIR/share/apps/krusader/
     krusaderui.rc. When you change the "Toolbar", KDE makes a copy of that file
-    in the home directory at ~/.kde/share/apps/krusader/krusaderui.rc. If
+    in the home directory at ~/.trinity/share/apps/krusader/krusaderui.rc. If
     Krusader was previously installed on your computer, and you install a newer
-    Krusader version the ~/.kde/share/apps/krusader/krusaderui.rc file must be
+    Krusader version the ~/.trinity/share/apps/krusader/krusaderui.rc file must be
     replaced with the newer version. Note: this will also reset all your
     changes on toolbars and shortcuts!
     The first line of krusaderui.rc contains the version number. After
     installing a newer Krusader version, KDE will automatically replace the old
-    ~/.kde/share/apps/krusader/krusaderui.rc with the newer version when
+    ~/.trinity/share/apps/krusader/krusaderui.rc with the newer version when
     starting the new Krusader for the first time (KDE will detect the newer
     version number in the first line).
     If you install a CVS or beta version and Krusader was already installed on
     your computer then you should delete the krusaderui.rc file from your home
-    directory to activate the new menu entries $ rm ~/.kde/share/apps/krusader/
+    directory to activate the new menu entries $ rm ~/.trinity/share/apps/krusader/
     krusaderui.rc
-    If the ~/.kde/share/apps/krusader/krusaderui.rc file is older, then the new
+    If the ~/.trinity/share/apps/krusader/krusaderui.rc file is older, then the new
     menu elements will not be shown. Read the previous question for information
     on how to update the krusaderui.rc file. If krusaderui.rc is missing or in
     a wrong directory, only the "Help" menu appears, please read the previous
@@ -487,7 +487,7 @@ Usage FAQ
     Check if tool foo is properly configured in the Konfigurator_Dependencies
     page. For Archiving tools: autodetect the archives again with the Auto
     Configure button in the Konfigurator_archive_page. Check the Konfigurator
-    Protocol_page If it doesn't work, backup your ~/.kde/share/config/
+    Protocol_page If it doesn't work, backup your ~/.trinity/share/config/
     krusaderrc configuration file and remove it from this location, Restart
     Krusader, Krusader will now start the first start configuration wizard,
     follow these guidelines.
@@ -566,14 +566,14 @@ Usage FAQ
 20. How can I set the look & feel of 2 different users to be the same?
     Presuming that the current setup is the good configuration, you can copy
     the configuration to the other user.
-    # cp ~/.kde/share/config/krusaderrc /home/foo_user/.kde/share/config
+    # cp ~/.trinity/share/config/krusaderrc /home/foo_user/.trinity/share/config
     And when the other user is Root use:
-    # cp ~/.kde/share/config/krusaderrc /root/.kde/share/config
+    # cp ~/.trinity/share/config/krusaderrc /root/.trinity/share/config
 21. Why doesn't "save last location" work?
     Unfortunately the 1.70.x version contains a bug. The tabs are not saved if
     a "Panels Save Settings=Tabs" item is present in the configuration files.
     The fix is easy:
-        * open and edit ~/.kde/share/config/krusaderrc
+        * open and edit ~/.trinity/share/config/krusaderrc
         * remove the "Panels Save Settings" item
     and it'll work with the <Last Session> feature in Konfigurator. More info
     can be found in our_forum.

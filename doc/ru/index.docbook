@@ -647,7 +647,7 @@ since the Entity Backspace is not defined in
 ><command
 >rm</command
 > <option
->~/.kde/share/apps/krusader/krusaderui.rc</option
+>~/.trinity/share/apps/krusader/krusaderui.rc</option
 ></userinput>
          , click <link linkend="faqi_krusaderui_rc"
 >here</link
