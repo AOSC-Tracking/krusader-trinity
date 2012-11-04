@@ -35,14 +35,14 @@
   <para>Location: 
   <filename>$TDEDIR/share/apps/krusader/krusaderui.rc</filename> or 
   <filename>
-  ~/.kde/share/apps/krusader/krusaderui.rc</filename></para>
+  ~/.trinity/share/apps/krusader/krusaderui.rc</filename></para>
   <para>
     <emphasis role="bold">krusaderrc</emphasis>
   </para>
   <para>This file stores the &krusader;
   configuration.</para>
   <para>Location: 
-  <filename>~/.kde/share/config/krusaderrc</filename></para>
+  <filename>~/.trinity/share/config/krusaderrc</filename></para>
   <para>The following settings are &eg; stored:</para>
   <itemizedlist>
     <listitem>
@@ -125,7 +125,7 @@
   uses the &xbel-url; standard.</para>
   <para>Location: 
   <filename>
-  ~/.kde/share/apps/krusader/krbookmarks.xml</filename></para>
+  ~/.trinity/share/apps/krusader/krbookmarks.xml</filename></para>
   <para>
     <emphasis role="bold">useractions.xml</emphasis>
   </para>
@@ -134,7 +134,7 @@
   doxygen-headers of UserActionXML.</para>
   <para>Location: 
   <filename>
-  ~/.kde/share/apps/krusader/useractions.xml</filename></para>
+  ~/.trinity/share/apps/krusader/useractions.xml</filename></para>
   <para>
     <emphasis role="bold">useraction-examples.xml</emphasis>
   </para>

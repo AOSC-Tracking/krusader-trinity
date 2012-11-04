@@ -404,7 +404,7 @@
 > to <filename
 >$TDEDIR/share/apps/krusader/krusaderui.rc</filename
 > and <filename
->~/.kde/share/apps/krusader/krusaderui.rc</filename
+>~/.trinity/share/apps/krusader/krusaderui.rc</filename
 > and re-run &krusader;. If you have compiled &krusader; from sources this is often caused when the &kdeqtdir_lnk; environment variables are not correctly set. The result is that the <filename
 >krusaderui.rc</filename
 > file is installed in the wrong directory. Please also read the next question.</para>
@@ -426,16 +426,16 @@
 >. Если  вы выбрали новую <guilabel
 >"Панель"</guilabel
 > ,&kde; создаст копию файла <filename
->~/.kde/share/apps/krusader/krusaderui.rc</filename
+>~/.trinity/share/apps/krusader/krusaderui.rc</filename
 > в домашнем каталоге. Если Крусадер уже был установлен на вашем компьютере, и вы установили новую версию , файл <filename
->~/.kde/share/apps/krusader/krusaderui.rc</filename
+>~/.trinity/share/apps/krusader/krusaderui.rc</filename
 > должен быть перезаписан новой версией. </para>
 
   <para
 >Первая строка файла <filename
 >krusaderui.rc</filename
 > содержит номер версии. После установки новой версии &krusader; &kde; автоматически перепишет старый файл <filename
->~/.kde/share/apps/krusader/krusaderui.rc</filename
+>~/.trinity/share/apps/krusader/krusaderui.rc</filename
 > новой версией при первом старте нового &krusader; (&kde; определит новую версию по первой строке). </para>
 
   <para
@@ -447,13 +447,13 @@
 ><command
 >rm</command
 > <option
->~/.kde/share/apps/krusader/krusaderui.rc</option
+>~/.trinity/share/apps/krusader/krusaderui.rc</option
 ></userinput
 > </para>
 
   <para
 >Если файл <filename
->~/.kde/share/apps/krusader/krusaderui.rc</filename
+>~/.trinity/share/apps/krusader/krusaderui.rc</filename
 > старый , новые элементы меню не будут видны. Прочитайте предыдущий вопрос , в нем описано как обновить файл <filename
 >krusaderui.rc</filename
 >. Если файл <filename
@@ -1151,7 +1151,7 @@
 > <listitem
 ><para
 >open and edit <filename
->~/.kde/share/config/krusaderrc</filename
+>~/.trinity/share/config/krusaderrc</filename
 ></para
 ></listitem
 > <listitem

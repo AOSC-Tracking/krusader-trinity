@@ -266,7 +266,7 @@ http://groups.google.com/group/krusader-devel/browse_thread/thread/d102adec2edcf
 <!ENTITY krusaderui-rc-text '<para>If you install a CVS or beta version and if &krusader; was previously
          installed on your computer, then you should delete the <filename>krusaderui.rc</filename> file
          in your home directory to activate the new menu entries
-   <prompt>$</prompt> <userinput><command>rm</command> <option>~/.kde/share/apps/krusader/krusaderui.rc</option></userinput>
+   <prompt>$</prompt> <userinput><command>rm</command> <option>~/.trinity/share/apps/krusader/krusaderui.rc</option></userinput>
          , click <link linkend="faqi_krusaderui_rc">here</link> for more info.</para>'>
 
 <!ENTITY gpl-lnk '<link linkend="credits">&GNU; General Public License (GPL)</link>'>

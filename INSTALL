@@ -258,7 +258,7 @@ directory of the Krusader package:
       $ su -c 'make install'
 If you install a CVS or beta version and if Krusader was previously installed
 on your computer, then you should delete the krusaderui.rc file in your home
-directory to activate the new menu entries $ rm ~/.kde/share/apps/krusader/
+directory to activate the new menu entries $ rm ~/.trinity/share/apps/krusader/
 krusaderui.rc , click here for more info.
 Since Krusader uses autoconf and automake you should have no trouble compiling
 it. If you run into problems, read the detailed installation instructions
@@ -414,7 +414,7 @@ the FAQ. If the problem persists, use the help_request to ask for help.
       Hierarchy_Standard_(FHS), any user installed files go to the /usr/local
       directory. If you wish Krusader to be installed in another directory, it
       can be determed with the prefix option. If you do not have root access, /
-      home/YOUR_USERNAME/.kde is probably a good choice.
+      home/YOUR_USERNAME/.trinity is probably a good choice.
       foo
 
       Krusader Project:
@@ -466,7 +466,7 @@ the FAQ. If the problem persists, use the help_request to ask for help.
       If you used another --prefix= than $TDEDIR or /usr/local, it is
       recommended to do an extra check:
       $ tde-config --path exe
-      /home/frank/.kde/bin/:/usr/bin/:/usr/local/bin/
+      /home/frank/.trinity/bin/:/usr/bin/:/usr/local/bin/
       $
       If the <prefix_dir/bin> directory is not shown, you need to use e.g.
       export TDEDIRS=/usr/local:/usr. To make these settings permanent you can
@@ -493,7 +493,7 @@ the FAQ. If the problem persists, use the help_request to ask for help.
       You will be asked to enter your root password.
   12. If you install a CVS or beta version and if Krusader was previously
       installed on your computer, then you should delete the krusaderui.rc file
-      in your home directory to activate the new menu entries $ rm ~/.kde/
+      in your home directory to activate the new menu entries $ rm ~/.trinity/
       share/apps/krusader/krusaderui.rc , click here for more info.
   13. Now you can start Krusader.
   14. Optional step: Cleaning up to save disk space. Note: All compiled files

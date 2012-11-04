@@ -32,7 +32,7 @@
     <para>JavaScript applications usually have 2 files 
     <filename>foo.js</filename>and 
     <filename>foo.ui</filename>. They will be installed in 
-    <filename>~/.kde/share/apps/krusader/js/</filename>, a
+    <filename>~/.trinity/share/apps/krusader/js/</filename>, a
     user action with a "%_Script" action will start the
     Javascripting. Currently we have 2 JS demos 
     <filename>root-mount-extension.tar.bz2</filename> and 
