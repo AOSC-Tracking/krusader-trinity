@@ -923,7 +923,7 @@ bool Krusader::queryClose() {
    { 
      saveSettings();
 
-     kapp->dcopClient()->registerAs( KApplication::kApplication()->name(), true );
+     kapp->dcopClient()->registerAs( TDEApplication::kApplication()->name(), true );
 
      kapp->deref(); // FIX: krusader exits at closing the viewer when minimized to tray
      kapp->deref(); // and close the application
@@ -1002,7 +1002,7 @@ bool Krusader::queryClose() {
       // Changes the name of the application. Single instance mode requires unique appid.
       // As Krusader is exiting, we release that unique appid, so new Krusader instances
       // can be started.
-      kapp->dcopClient()->registerAs( KApplication::kApplication()->name(), true );
+      kapp->dcopClient()->registerAs( TDEApplication::kApplication()->name(), true );
 
       kapp->deref(); // FIX: krusader exits at closing the viewer when minimized to tray
       kapp->deref(); // and close the application

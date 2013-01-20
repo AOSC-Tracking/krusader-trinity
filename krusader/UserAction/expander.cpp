@@ -635,16 +635,16 @@ exp_Clipboard::exp_Clipboard() {
    addParameter( exp_parameter( i18n("Append to current clipboard content with this separator (optional):"), "", false ) );
 }
 TagString exp_Clipboard::expFunc( const ListPanel*, const TagStringList& parameter, const bool&, Expander& exp ) const {
-//    kdDebug() << "Expander::exp_Clipboard, parameter[0]: '" << parameter[0] << "', Clipboard: " << KApplication::clipboard()->text() << endl;
+//    kdDebug() << "Expander::exp_Clipboard, parameter[0]: '" << parameter[0] << "', Clipboard: " << TDEApplication::clipboard()->text() << endl;
 	TQStringList lst=splitEach(parameter[0]);
 	if(!parameter[1].isSimple()) {
 		setError(exp,Error(Error::S_FATAL,Error::C_SYNTAX,i18n("Expander: %Each% may not be in the second argument of %Clipboard%")));
 		return TQString();
 	}
-    if ( parameter.count() <= 1 || parameter[1].string().isEmpty() || KApplication::clipboard()->text().isEmpty() )
-       KApplication::clipboard()->setText( lst.join("\n") );
+    if ( parameter.count() <= 1 || parameter[1].string().isEmpty() || TDEApplication::clipboard()->text().isEmpty() )
+       TDEApplication::clipboard()->setText( lst.join("\n") );
     else
-       KApplication::clipboard()->setText( KApplication::clipboard()->text() + parameter[1].string() + lst.join("\n") );
+       TDEApplication::clipboard()->setText( TDEApplication::clipboard()->text() + parameter[1].string() + lst.join("\n") );
 
    return TQString();  // this doesn't return anything, that's normal!
 }

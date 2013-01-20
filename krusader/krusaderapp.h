@@ -5,11 +5,11 @@
 #include "X11/Xlib.h"
 
 // declare a dummy kapplication, just to get the X focusin focusout events
-class KrusaderApp: public KApplication {
+class KrusaderApp: public TDEApplication {
 	Q_OBJECT
   
 public:
-	KrusaderApp(): KApplication() {}
+	KrusaderApp(): TDEApplication() {}
 	bool x11EventFilter ( XEvent *e ) {
 		switch (e->type) {
 			case FocusIn:
@@ -21,7 +21,7 @@ public:
 			
 		}
 		//return false; // event should be processed normally
-		return KApplication::x11EventFilter(e);
+		return TDEApplication::x11EventFilter(e);
 	}
 signals:
 	void windowActive();

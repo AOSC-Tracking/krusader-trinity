@@ -65,7 +65,7 @@ static void sigterm_handler(int i)
   fprintf(stderr,"Signal: %d\n",i);
 
   TQApplication::eventLoop()->wakeUp();
-  KApplication::exit( - 15 );
+  TDEApplication::exit( - 15 );
 }
 
 int main(int argc, char *argv[]) {
@@ -194,14 +194,14 @@ int main(int argc, char *argv[]) {
     bool singleInstanceMode = app.config()->readBoolEntry( "Single Instance Mode", _SingleInstanceMode );
 
     // register with the dcop server
-    DCOPClient* client = KApplication::kApplication() ->dcopClient();
+    DCOPClient* client = TDEApplication::kApplication() ->dcopClient();
     if ( !client->attach() )
        exit( 0 );
-    TQCString regName = client->registerAs( KApplication::kApplication() ->name(), !singleInstanceMode );
-    if( singleInstanceMode && regName != KApplication::kApplication()->name() ) {
+    TQCString regName = client->registerAs( TDEApplication::kApplication() ->name(), !singleInstanceMode );
+    if( singleInstanceMode && regName != TDEApplication::kApplication()->name() ) {
       fprintf( stderr, "%s", i18n( "Application already running!\n" ).ascii() );
 
-      DCOPClient::mainClient()->send( KApplication::kApplication() ->name(), "Krusader-Interface",
+      DCOPClient::mainClient()->send( TDEApplication::kApplication() ->name(), "Krusader-Interface",
                                     "moveToTop()", TQByteArray() );
       KStartupInfo::appStarted();
 

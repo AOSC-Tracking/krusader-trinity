@@ -278,12 +278,12 @@ void UserActionPage::slotToClip() {
       return;
 
    TQDomDocument doc = actionTree->dumpSelectedActions();
-   KApplication::clipboard()->setText( doc.toString() );
+   TDEApplication::clipboard()->setText( doc.toString() );
 }
 
 void UserActionPage::slotFromClip() {
    TQDomDocument doc( ACTION_DOCTYPE );
-   if ( doc.setContent( KApplication::clipboard()->text() ) ) {
+   if ( doc.setContent( TDEApplication::clipboard()->text() ) ) {
       TQDomElement root = doc.documentElement();
       UserAction::KrActionList newActions;
       krUserAction->readFromElement( root, UserAction::renameDoublicated, &newActions );
