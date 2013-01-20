@@ -207,7 +207,7 @@ KAction *Krusader::actShowJSConsole = 0;
 Krusader::Krusader() : KParts::MainWindow(0,0,WType_TopLevel|WDestructiveClose|TQt::WStyle_ContextHelp),
    DCOPObject("Krusader-Interface"), status(NULL), sysTray( 0 ), isStarting( true ), isExiting( false ), directExit( false ) {
    // parse command line arguments
-   KCmdLineArgs * args = KCmdLineArgs::parsedArgs();
+   TDECmdLineArgs * args = TDECmdLineArgs::parsedArgs();
 
    kapp->ref(); // FIX: krusader exits at closing the viewer when minimized to tray
 
