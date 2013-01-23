@@ -61,7 +61,7 @@ using namespace KIO;
 extern "C" {
 
 int kdemain( int argc, char **argv ){
-	KInstance instance( "kio_krarc" );
+	TDEInstance instance( "kio_krarc" );
 	
 	if (argc != 4) {
 		kdWarning() << "Usage: kio_krarc  protocol domain-socket1 domain-socket2" << endl;

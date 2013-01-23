@@ -51,7 +51,7 @@ TQDict<KURL::List> VirtProtocol::kioVirtDict;
 KConfig* VirtProtocol::kio_virt_db;
 
 int kdemain( int argc, char **argv ) {
-	KInstance instance( "kio_virt" );
+	TDEInstance instance( "kio_virt" );
 
 	if ( argc != 4 ) {
 		fprintf( stderr, "Usage: kio_virt protocol domain-socket1 domain-socket2\n" );

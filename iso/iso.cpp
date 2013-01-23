@@ -60,7 +60,7 @@ extern "C" { int kdemain(int argc, char **argv); }
 
 int kdemain( int argc, char **argv )
 {
-  KInstance instance( "kio_iso" );
+  TDEInstance instance( "kio_iso" );
 
   kdDebug()   << "Starting " << getpid() << endl;
 
