@@ -157,7 +157,7 @@ arc_vfs::arc_vfs(TQString origin,TQString type,TQObject* panel,bool write):
 		// extract the cpio archive from the rpm
 		KShellProcess rpm;
   	rpm << "rpm2cpio"<<"\""+arcFile+"\""+" > "+tmpDir+"/contents.cpio";
-  	rpm.start(KProcess::Block);
+  	rpm.start(TDEProcess::Block);
 		arcFile = tmpDir+"/contents.cpio";
 	}
 	if(type == "cpio" || type == "+rpm" ){
@@ -201,7 +201,7 @@ arc_vfs::~arc_vfs(){
   // delete the temp dir
   KShellProcess proc;
   proc<<"rm"<<"-rf"<<tmpDir;
-  proc.start(KProcess::Block);
+  proc.start(TDEProcess::Block);
 
 	// set the cursor to normal mode
   if (!quietMode) krApp->setCursor(KCursor::arrowCursor());
@@ -212,7 +212,7 @@ bool arc_vfs::getDirs(){
     // write the temp file
     KShellProcess proc;
     proc << cmd << listCmd << "\""+arcFile+"\"" <<" > " << tmpDir+"/tempfilelist";
-    proc.start(KProcess::Block);
+    proc.start(TDEProcess::Block);
     if( !proc.normalExit() || !proc.exitStatus() == 0 ){
       if (!quietMode) KMessageBox::error(krApp, i18n("<qt>Can't read <b>%1</b>. Archive "
                       "might be corrupted!</qt>").arg(arcFile.mid(arcFile.findRev('/')+1)));
@@ -300,7 +300,7 @@ void arc_vfs::vfs_delFiles(TQStringList *fileNames){
 	  KURL::List* filesUrls = vfs_getFiles(fileNames); // extract
 	  changed = true;
 	
-	  KIO::Job *job = new KIO::CopyJob(*filesUrls,KGlobalSettings::trashPath(),KIO::CopyJob::Move,false,true );
+	  KIO::Job *job = new KIO::CopyJob(*filesUrls,TDEGlobalSettings::trashPath(),KIO::CopyJob::Move,false,true );
 	  connect(job,TQT_SIGNAL(result(KIO::Job*)),this,TQT_SLOT(vfs_refresh(KIO::Job*)));
 	}
 	// else we have to delete the files from both the archive and the temp dir
@@ -320,8 +320,8 @@ void arc_vfs::vfs_delFiles(TQStringList *fileNames){
 
 		KShellProcess proc1 , proc2;
 		krApp->startWaiting(i18n("Deleting Files..."),files.count()+ignoreLines);
-	  connect(&proc1,TQT_SIGNAL(receivedStdout(KProcess*,char*,int)),
-            krApp, TQT_SLOT(incProgress(KProcess*,char*,int)) );
+	  connect(&proc1,TQT_SIGNAL(receivedStdout(TDEProcess*,char*,int)),
+            krApp, TQT_SLOT(incProgress(TDEProcess*,char*,int)) );
 
     proc1 <<  delCmd << "\""+arcFile+"\"";
     proc2 << "rm -rf";
@@ -330,7 +330,7 @@ void arc_vfs::vfs_delFiles(TQStringList *fileNames){
       proc2 << tmpDir+"/"+(*files.at(i));
 			extFiles.remove(*files.at(i++));
 			if ( i%MAX_FILES==0 || i==files.count() ){
-				proc1.start(KProcess::NotifyOnExit,KProcess::AllOutput);
+				proc1.start(TDEProcess::NotifyOnExit,TDEProcess::AllOutput);
     		proc2.start();
         while( proc1.isRunning() || proc2.isRunning() ) tqApp->processEvents(); // busy wait - need to find something better...
         proc1.clearArguments() ; proc2.clearArguments();
@@ -395,15 +395,15 @@ KURL::List* arc_vfs::vfs_getFiles(TQStringList* names){
 	if ( files.count() > 0 ){
 		krApp->startWaiting(i18n("Unpacking Files"),files.count()+ignoreLines);
     KShellProcess proc;
-	  connect(&proc,TQT_SIGNAL(receivedStdout(KProcess*,char*,int)),
-            krApp, TQT_SLOT(incProgress(KProcess*,char*,int)) );
+	  connect(&proc,TQT_SIGNAL(receivedStdout(TDEProcess*,char*,int)),
+            krApp, TQT_SLOT(incProgress(TDEProcess*,char*,int)) );
 		
 		proc << cmd << getCmd << "\""+arcFile+"\"";
   	if( vfs_type == "gzip" || vfs_type == "zip2" ) proc << ">";
 		for(unsigned int i=0 ; i < files.count() ; ){
   		proc << (prefix+*files.at(i++));
 			if ( i%MAX_FILES==0 || i==files.count() ){
-				proc.start(KProcess::NotifyOnExit,KProcess::AllOutput);
+				proc.start(TDEProcess::NotifyOnExit,TDEProcess::AllOutput);
         while( proc.isRunning() ) tqApp->processEvents();
 				proc.clearArguments();
 				proc << cmd << getCmd << "\""+arcFile+"\"";
@@ -577,14 +577,14 @@ void arc_vfs::repack(){
 		if( !filesToDelete.isEmpty() ){
 			KShellProcess delProc;
   		krApp->startWaiting(i18n("Deleting Files..."),filesToDelete.count()+ignoreLines);
-	 		connect(&delProc,TQT_SIGNAL(receivedStdout(KProcess*,char*,int)),
-               krApp, TQT_SLOT(incProgress(KProcess*,char*,int)) );
+	 		connect(&delProc,TQT_SIGNAL(receivedStdout(TDEProcess*,char*,int)),
+               krApp, TQT_SLOT(incProgress(TDEProcess*,char*,int)) );
 
 			delProc << delCmd << "\""+arcFile+"\"";
 			for( unsigned int i=0 ; i < filesToDelete.count() ;){
 				delProc << (*filesToDelete.at(i++));
 				if( i%MAX_FILES==0 || i==filesToDelete.count() ){
-  	  		delProc.start(KProcess::NotifyOnExit,KProcess::AllOutput);
+  	  		delProc.start(TDEProcess::NotifyOnExit,TDEProcess::AllOutput);
     			while( delProc.isRunning() )  tqApp->processEvents();
 					delProc.clearArguments();
 		    	delProc << delCmd << "\""+arcFile+"\"";
@@ -601,12 +601,12 @@ void arc_vfs::repack(){
 		if( !filesToPack.isEmpty() ){
 			KShellProcess addProc;
 			krApp->startWaiting(i18n("Repacking..."),filesToPack.count()+ignoreLines);
-    	connect(&addProc,TQT_SIGNAL(receivedStdout(KProcess*,char*,int)),
-            krApp, TQT_SLOT(incProgress(KProcess*,char*,int)) );
+    	connect(&addProc,TQT_SIGNAL(receivedStdout(TDEProcess*,char*,int)),
+            krApp, TQT_SLOT(incProgress(TDEProcess*,char*,int)) );
 
 			if( vfs_type=="gzip" || vfs_type=="zip2" ){
       	addProc << addCmd << *filesToPack.at(0)<< ">" << "\""+arcFile+"\"";
-				addProc.start(KProcess::NotifyOnExit);
+				addProc.start(TDEProcess::NotifyOnExit);
       	while( addProc.isRunning() ) tqApp->processEvents();
      	}
     	else {
@@ -614,7 +614,7 @@ void arc_vfs::repack(){
     		for( unsigned int i=0 ; i<filesToPack.count(); ){
       		addProc << "\""+prefix+(*filesToPack.at(i++))+"\"";
 					if( i%MAX_FILES==0 || i==filesToPack.count() ){
-      			addProc.start(KProcess::NotifyOnExit,KProcess::AllOutput);
+      			addProc.start(TDEProcess::NotifyOnExit,TDEProcess::AllOutput);
       			while( addProc.isRunning() ) tqApp->processEvents(); // busy wait - need to find something better...
         		addProc.clearArguments();
 		    		addProc << addCmd << "\""+arcFile+"\"";

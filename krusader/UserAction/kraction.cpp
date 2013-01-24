@@ -101,7 +101,7 @@ _stdout(0), _stderr(0), _currentTextEdit(0) {
    connect( useFixedFont, TQT_SIGNAL( toggled(bool) ), TQT_SLOT( toggleFixedFont(bool) ) );
 }
 
-void KrActionProcDlg::addStderr( KProcess *, char *buffer, int buflen ) {
+void KrActionProcDlg::addStderr( TDEProcess *, char *buffer, int buflen ) {
    if (_stderr)
       _stderr->append( TQString::fromLatin1( buffer, buflen ) );
    else {
@@ -111,7 +111,7 @@ void KrActionProcDlg::addStderr( KProcess *, char *buffer, int buflen ) {
    }
 }
 
-void KrActionProcDlg::addStdout( KProcess *, char *buffer, int buflen ) {
+void KrActionProcDlg::addStdout( TDEProcess *, char *buffer, int buflen ) {
    _stdout->append( TQString::fromLatin1( buffer, buflen ) );
 }
 
@@ -173,11 +173,11 @@ void KrActionProcDlg::currentTextEditChanged() {
 ////////////////////////////////////  KrActionProc  ////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////
 
-KrActionProc::KrActionProc( KrActionBase* action ) : TQObject(), _action( action ), _proc( new KProcess(this) ), _output( 0 ) {
+KrActionProc::KrActionProc( KrActionBase* action ) : TQObject(), _action( action ), _proc( new TDEProcess(this) ), _output( 0 ) {
    _proc->setUseShell( true );
 
-   connect( _proc, TQT_SIGNAL( processExited( KProcess* ) ),
-            this, TQT_SLOT( processExited( KProcess* ) ) ) ;
+   connect( _proc, TQT_SIGNAL( processExited( TDEProcess* ) ),
+            this, TQT_SLOT( processExited( TDEProcess* ) ) ) ;
 }
 
 KrActionProc::~KrActionProc() {
@@ -227,15 +227,15 @@ void KrActionProc::start( TQStringList cmdLineList ) {
             if ( _action->user().isEmpty() )
                ( *_proc ) << term << cmd;
             else
-//                ( *_proc )  << "tdesu" << "-u" << *_properties->user() << "-c" << KProcess::quote("konsole --noclose -e " + KProcess::quote(cmd) );
-               ( *_proc )  << "tdesu" << "-u" << _action->user() << "-c" << KProcess::quote( term + " " + cmd );
+//                ( *_proc )  << "tdesu" << "-u" << *_properties->user() << "-c" << TDEProcess::quote("konsole --noclose -e " + TDEProcess::quote(cmd) );
+               ( *_proc )  << "tdesu" << "-u" << _action->user() << "-c" << TDEProcess::quote( term + " " + cmd );
          } else { // no terminal, no output collection, start&forget
             if ( _action->user().isEmpty() )
                ( *_proc ) << cmd;
             else
-               ( *_proc ) << "tdesu" << "-u" << _action->user() << "-c" << KProcess::quote(cmd);
+               ( *_proc ) << "tdesu" << "-u" << _action->user() << "-c" << TDEProcess::quote(cmd);
          }
-         _proc->start( KProcess::NotifyOnExit, ( KProcess::Communication ) ( KProcess::Stdout | KProcess::Stderr ) );
+         _proc->start( TDEProcess::NotifyOnExit, ( TDEProcess::Communication ) ( TDEProcess::Stdout | TDEProcess::Stderr ) );
       }
    }
    else { // collect output
@@ -244,8 +244,8 @@ void KrActionProc::start( TQStringList cmdLineList ) {
          separateStderr = true;
       _output = new KrActionProcDlg( _action->text(), separateStderr );
       // connect the output to the dialog
-      connect( _proc, TQT_SIGNAL( receivedStderr( KProcess*, char*, int ) ), _output, TQT_SLOT( addStderr( KProcess*, char *, int ) ) );
-      connect( _proc, TQT_SIGNAL( receivedStdout( KProcess*, char*, int ) ), _output, TQT_SLOT( addStdout( KProcess*, char *, int ) ) );
+      connect( _proc, TQT_SIGNAL( receivedStderr( TDEProcess*, char*, int ) ), _output, TQT_SLOT( addStderr( TDEProcess*, char *, int ) ) );
+      connect( _proc, TQT_SIGNAL( receivedStdout( TDEProcess*, char*, int ) ), _output, TQT_SLOT( addStdout( TDEProcess*, char *, int ) ) );
       connect( _output, TQT_SIGNAL( cancelClicked() ), this, TQT_SLOT( kill() ) );
       _output->show();
       for ( TQStringList::Iterator it = cmdLineList.begin(); it != cmdLineList.end(); ++it) {
@@ -260,13 +260,13 @@ void KrActionProc::start( TQStringList cmdLineList ) {
          ( *_proc ) << cmd;
       else
          // "-t" is nessesary that tdesu displays the terminal-output of the command
-         ( *_proc ) << "tdesu" << "-t" << "-u" << _action->user() << "-c" << KProcess::quote(cmd);
-      _proc->start( KProcess::NotifyOnExit, ( KProcess::Communication ) ( KProcess::Stdout | KProcess::Stderr ) );
+         ( *_proc ) << "tdesu" << "-t" << "-u" << _action->user() << "-c" << TDEProcess::quote(cmd);
+      _proc->start( TDEProcess::NotifyOnExit, ( TDEProcess::Communication ) ( TDEProcess::Stdout | TDEProcess::Stderr ) );
    }
 
 }
 
-void KrActionProc::processExited( KProcess * ) {
+void KrActionProc::processExited( TDEProcess * ) {
    // enable the 'close' button on the dialog (if active), disable 'kill' button
    if ( _output ) {
       _output->enableButtonOK( true );

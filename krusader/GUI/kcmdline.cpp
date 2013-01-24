@@ -65,8 +65,8 @@ KCMDLine::KCMDLine( TQWidget *parent, const char *name ) : TQWidget( parent, nam
   path->setAlignment( TQt::AlignRight );
   path->setFrameStyle( TQFrame::Box | TQFrame::Sunken );
   path->setLineWidth( 1 );
-  path->setFont( KGlobalSettings::generalFont() );
-  int height = TQFontMetrics( KGlobalSettings::generalFont() ).height();
+  path->setFont( TDEGlobalSettings::generalFont() );
+  int height = TQFontMetrics( TDEGlobalSettings::generalFont() ).height();
   height =  height + 5*(height > 14) + 6;
   path->setMaximumHeight( height );
   path->setSizePolicy(TQSizePolicy(TQSizePolicy::Maximum, TQSizePolicy::Preferred));
@@ -77,7 +77,7 @@ KCMDLine::KCMDLine( TQWidget *parent, const char *name ) : TQWidget( parent, nam
   cmdLine = new KrHistoryCombo( this );
   cmdLine->setMaxCount(100);  // remember 100 commands
   cmdLine->setDuplicatesEnabled( false );
-  cmdLine->setFont( KGlobalSettings::generalFont() );
+  cmdLine->setFont( TDEGlobalSettings::generalFont() );
   cmdLine->setMaximumHeight( height );
   cmdLine->setCompletionObject( &completion );
   cmdLine->setSizePolicy(TQSizePolicy(TQSizePolicy::Preferred, TQSizePolicy::Fixed));

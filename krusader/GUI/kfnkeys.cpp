@@ -45,7 +45,7 @@ KFnKeys::KFnKeys(TQWidget *parent, char *name): TQWidget(parent,name) {
 	TARGET->setMinimumWidth(45);\
 }
 				
-		setFont( KGlobalSettings::generalFont() );
+		setFont( TDEGlobalSettings::generalFont() );
 		layout=new TQGridLayout(this,1,9);	// 9 keys
     F2=new TQPushButton( i18n("F2 Term  ") ,this);
       TQToolTip::add( F2, "<qt>" + i18n( "<p>Open terminal in current directory.</p>"

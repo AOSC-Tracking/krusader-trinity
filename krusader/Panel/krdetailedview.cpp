@@ -117,7 +117,7 @@ void KrDetailedView::setup() {
       setFont( _config->readFontEntry( "Filelist Font", _FilelistFont ) );
       // decide on single click/double click selection
       if ( _config->readBoolEntry( "Single Click Selects", _SingleClickSelects ) &&
-           KGlobalSettings::singleClick() ) {
+           TDEGlobalSettings::singleClick() ) {
          connect( this, TQT_SIGNAL( executed( TQListViewItem* ) ), this, TQT_SLOT( slotExecuted( TQListViewItem* ) ) );
       } else {
          connect( this, TQT_SIGNAL( clicked( TQListViewItem* ) ), this, TQT_SLOT( slotClicked( TQListViewItem* ) ) );
@@ -163,7 +163,7 @@ void KrDetailedView::setup() {
       newColumn( KrDetailedViewProperties::DateTime );
       setColumnWidthMode( COLUMN(DateTime), TQListView::Manual );
       //setColumnWidth( column( DateTime ), TQFontMetrics( font() ).width( "99/99/99  99:99" ) );
-      setColumnWidth( COLUMN(DateTime), TQFontMetrics( font() ).width( KGlobal::locale() ->formatDateTime(
+      setColumnWidth( COLUMN(DateTime), TQFontMetrics( font() ).width( TDEGlobal::locale() ->formatDateTime(
                          TQDateTime ( TQDate( 2099, 12, 29 ), TQTime( 23, 59 ) ) ) ) + 3 );
    }
    if ( _config->readBoolEntry( "Perm Column", _PermColumn ) ) {
@@ -431,7 +431,7 @@ void KrDetailedView::slotClicked( TQListViewItem *item ) {
 
    if ( !modifierPressed ) {
       if ( singleClicked && !renameTimer.isActive() ) {
-         KConfig * config = KGlobal::config();
+         KConfig * config = TDEGlobal::config();
          config->setGroup( "KDE" );
          int doubleClickInterval = config->readNumEntry( "DoubleClickInterval", 400 );
 
@@ -1333,9 +1333,9 @@ void KrDetailedView::refreshColors() {
       setAlternateBackground( cg.background() );
    } else {
       // KDE default is choosen: set back the background color
-      setPaletteBackgroundColor( KGlobalSettings::baseColor() );
+      setPaletteBackgroundColor( TDEGlobalSettings::baseColor() );
       // Set the alternate color to its default or to an invalid color, to turn alternate the background off.
-      setAlternateBackground( alternateBackgroundEnabled ? KGlobalSettings::alternateBackgroundColor() : TQColor() );
+      setAlternateBackground( alternateBackgroundEnabled ? TDEGlobalSettings::alternateBackgroundColor() : TQColor() );
    }
 }
 

@@ -83,7 +83,7 @@ void KrRemoteEncodingMenu::slotAboutToShow()
 void KrRemoteEncodingMenu::loadSettings()
 {
   settingsLoaded = true;
-  encodingNames = KGlobal::charsets()->descriptiveEncodingNames();
+  encodingNames = TDEGlobal::charsets()->descriptiveEncodingNames();
 
   KPopupMenu *menu = popupMenu();
   menu->clear();
@@ -125,7 +125,7 @@ void KrRemoteEncodingMenu::slotItemSelected(int id)
 
   if (!popupMenu()->isItemChecked(id))
   {
-    TQString charset = KGlobal::charsets()->encodingForName( encodingNames[id - 1] );
+    TQString charset = TDEGlobal::charsets()->encodingForName( encodingNames[id - 1] );
 
     config.setGroup(host);
     config.writeEntry(DATA_KEY, charset);

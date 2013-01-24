@@ -2098,7 +2098,7 @@ TQString SynchronizerGUI::convertTime(time_t time) const
    struct tm* t=localtime((time_t *)&time);
 
    TQDateTime tmp(TQDate(t->tm_year+1900, t->tm_mon+1, t->tm_mday), TQTime(t->tm_hour, t->tm_min));
-   return KGlobal::locale()->formatDateTime(tmp);
+   return TDEGlobal::locale()->formatDateTime(tmp);
 }
 
 void SynchronizerGUI::setMarkFlags()

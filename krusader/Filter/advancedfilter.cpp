@@ -422,14 +422,14 @@ void AdvancedFilter::notModifiedAfterSetDate()
 
 void AdvancedFilter::changeDate(TQLineEdit *p) {
   // check if the current date is valid
-  TQDate d = KGlobal::locale()->readDate(p->text());
+  TQDate d = TDEGlobal::locale()->readDate(p->text());
   if (!d.isValid()) d = TQDate::currentDate();
 
   KRGetDate *gd = new KRGetDate(d, this);
   d = gd->getDate();
   // if a user pressed ESC or closed the dialog, we'll return an invalid date
   if (d.isValid())
-    p->setText(KGlobal::locale()->formatDate(d, true));
+    p->setText(TDEGlobal::locale()->formatDate(d, true));
   delete gd;
 }
 
@@ -517,9 +517,9 @@ bool AdvancedFilter::fillQuery( KRQuery *query )
     if ( !(modifiedBetweenData1->text().simplifyWhiteSpace().isEmpty() &&
           modifiedBetweenData2->text().simplifyWhiteSpace().isEmpty()) ) {
       // check if date is valid
-      TQDate d1 = KGlobal::locale()->readDate(modifiedBetweenData1->text());
+      TQDate d1 = TDEGlobal::locale()->readDate(modifiedBetweenData1->text());
       if (!d1.isValid()) { invalidDateMessage(modifiedBetweenData1); return false; }
-      TQDate d2 = KGlobal::locale()->readDate(modifiedBetweenData2->text());
+      TQDate d2 = TDEGlobal::locale()->readDate(modifiedBetweenData2->text());
       if (!d2.isValid()) { invalidDateMessage(modifiedBetweenData2); return false; }
 
       if (d1 > d2) {
@@ -538,7 +538,7 @@ bool AdvancedFilter::fillQuery( KRQuery *query )
     }
   } else if (notModifiedAfterEnabled->isChecked()) {
     if ( !notModifiedAfterData->text().simplifyWhiteSpace().isEmpty() ) {
-      TQDate d = KGlobal::locale()->readDate(notModifiedAfterData->text());
+      TQDate d = TDEGlobal::locale()->readDate(notModifiedAfterData->text());
       if (!d.isValid()) { invalidDateMessage(notModifiedAfterData); return false; }
       time_t olderTime;
       qdate2time_t(&olderTime, d, false);

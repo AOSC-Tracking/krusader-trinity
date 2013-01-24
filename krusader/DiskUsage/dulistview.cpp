@@ -132,7 +132,7 @@ void DUListView::addDirectory( Directory *dirEntry, TQListViewItem *parent )
     time_t tma = item->time();
     struct tm* t=localtime((time_t *)&tma);
     TQDateTime tmp(TQDate(t->tm_year+1900, t->tm_mon+1, t->tm_mday), TQTime(t->tm_hour, t->tm_min));
-    TQString date = KGlobal::locale()->formatDateTime(tmp);    
+    TQString date = TDEGlobal::locale()->formatDateTime(tmp);    
     
     TQString totalSize = KRpermHandler::parseSize( item->size() ) + " ";
     TQString ownSize = KRpermHandler::parseSize( item->ownSize() ) + " ";

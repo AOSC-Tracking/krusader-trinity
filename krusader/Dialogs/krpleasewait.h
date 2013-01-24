@@ -36,7 +36,7 @@
 #include <tqguardedptr.h>
 #include <kio/jobclasses.h>
 
-class KProcess;
+class TDEProcess;
 class KRPleaseWait;
 
 class KRPleaseWaitHandler : public TQObject {
@@ -52,7 +52,7 @@ public slots:
   void stopWait();
   void cycleProgress();
   void incProgress(int i);
-  void incProgress( KProcess *, char *buffer, int buflen );
+  void incProgress( TDEProcess *, char *buffer, int buflen );
   void killJob();
   void setJob(KIO::Job* j);
   bool wasCancelled() const { return _wasCancelled; }

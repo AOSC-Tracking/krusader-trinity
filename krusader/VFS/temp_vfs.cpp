@@ -60,12 +60,12 @@ temp_vfs::~temp_vfs(){
 		// unmount the ISO image
     KShellProcess umount;
 		umount << "umount -f" << tmpDir;
-    umount.start(KProcess::Block);
+    umount.start(TDEProcess::Block);
 	}
  	// delete the temp dir
  	KShellProcess proc;
  	proc << "rm -rf" << tmpDir;
- 	proc.start(KProcess::DontCare);
+ 	proc.start(TDEProcess::DontCare);
 }
 
 // return the working dir
@@ -108,20 +108,20 @@ void temp_vfs::handleRpm(TQString origin){
 	// then extract the cpio archive from the rpm
 	KShellProcess rpm;
   rpm << "rpm2cpio"<<"\""+origin+"\""+" > "+tmpDir+"/contents.cpio";
-  rpm.start(KProcess::Block);
+  rpm.start(TDEProcess::Block);
 	// and write a nice header
 	rpm.clearArguments();
 	rpm << "rpm -qip"<<"\""+origin+"\""+" > "+tmpDir+"/header.txt";
-	rpm.start(KProcess::Block);
+	rpm.start(TDEProcess::Block);
 	// and a file list
 	rpm.clearArguments();
 	rpm << "rpm -lpq"<<"\""+origin+"\""+" > "+tmpDir+"/filelist.txt";
-	rpm.start(KProcess::Block);
+	rpm.start(TDEProcess::Block);
 }
 
 void temp_vfs::handleIso(TQString origin){
 	// mount the ISO image
 	KShellProcess mount;
 	mount << KrServices::fullPathName( "mount" ) << "-o loop" << origin << tmpDir;
-	mount.start(KProcess::Block);
+	mount.start(TDEProcess::Block);
 }

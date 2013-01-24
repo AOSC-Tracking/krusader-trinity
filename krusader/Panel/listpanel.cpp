@@ -594,8 +594,8 @@ void ListPanel::slotFocusOnMe() {
 
    // take care of the 'otherpanel'
    TQPalette q( otherPanel->status->palette() );
-   q.setColor( TQColorGroup::Foreground, KGlobalSettings::textColor() );
-   q.setColor( TQColorGroup::Background, KGlobalSettings::baseColor() );
+   q.setColor( TQColorGroup::Foreground, TDEGlobalSettings::textColor() );
+   q.setColor( TQColorGroup::Background, TDEGlobalSettings::baseColor() );
 
    otherPanel->status->setPalette( q );
    otherPanel->totals->setPalette( q );
@@ -603,8 +603,8 @@ void ListPanel::slotFocusOnMe() {
 
    // now, take care of this panel
    TQPalette p( status->palette() );
-   p.setColor( TQColorGroup::Foreground, KGlobalSettings::highlightedTextColor() );
-   p.setColor( TQColorGroup::Background, KGlobalSettings::highlightColor() );
+   p.setColor( TQColorGroup::Foreground, TDEGlobalSettings::highlightedTextColor() );
+   p.setColor( TQColorGroup::Background, TDEGlobalSettings::highlightColor() );
    status->setPalette( p );
    totals->setPalette( p );
 

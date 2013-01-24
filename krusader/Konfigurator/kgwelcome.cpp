@@ -37,7 +37,7 @@ KgWelcome::KgWelcome( bool first, TQWidget* parent,  const char* name ) :
   TQGridLayout *kgWelcomeLayout = new TQGridLayout( parent );
   kgWelcomeLayout->setSpacing( 6 );
 
-  TQString pix=KGlobal::dirs()->findResource("appdata","konfig_small.jpg");
+  TQString pix=TDEGlobal::dirs()->findResource("appdata","konfig_small.jpg");
   TQPixmap image0( pix );
   
   TQLabel *pixmapLabel = new TQLabel( parent, "pixmapLabel" );

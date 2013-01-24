@@ -51,7 +51,7 @@ KrResultTableDialog::KrResultTableDialog( TQWidget *parent, DialogType type,
   _iconLabel->setAlignment( TQt::AlignLeft | TQt::AlignVCenter );
   _iconLabel->setFixedSize( _iconLabel->sizeHint() );
   _headingLabel = new TQLabel(heading, _iconBox);
-  TQFont defFont = KGlobalSettings::generalFont();
+  TQFont defFont = TDEGlobalSettings::generalFont();
   defFont.setBold(true);
   _headingLabel->setFont(defFont);
   _headingLabel->setIndent(10);

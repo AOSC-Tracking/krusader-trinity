@@ -94,7 +94,7 @@ public:
   }
 };
 
-KProcess *  LocateDlg::updateProcess = 0;
+TDEProcess *  LocateDlg::updateProcess = 0;
 LocateDlg * LocateDlg::LocateDialog = 0;
 
 LocateDlg::LocateDlg() : KDialogBase(0,0,false,"Locate", KDialogBase::User1 | KDialogBase::User2 | KDialogBase::User3 | KDialogBase::Close,
@@ -171,7 +171,7 @@ LocateDlg::LocateDlg() : KDialogBase(0,0,false,"Locate", KDialogBase::User1 | KD
   {
     if( updateProcess->isRunning() )
     {
-      connect( updateProcess, TQT_SIGNAL(processExited(KProcess *)), this, TQT_SLOT(updateFinished()));
+      connect( updateProcess, TQT_SIGNAL(processExited(TDEProcess *)), this, TQT_SLOT(updateFinished()));
       enableButton( KDialogBase::User2, false );
     }
     else
@@ -198,12 +198,12 @@ void LocateDlg::slotUser2()   /* The Update DB button */
   {
     krConfig->setGroup("Locate");
 
-    updateProcess = new KProcess();
+    updateProcess = new TDEProcess();
     *updateProcess << KrServices::fullPathName( "updatedb" );
     *updateProcess << KrServices::separateArgs( krConfig->readEntry( "UpdateDB Arguments", "" ) );
     
-    connect( updateProcess, TQT_SIGNAL(processExited(KProcess *)), this, TQT_SLOT(updateFinished()));
-    updateProcess->start(KProcess::NotifyOnExit);
+    connect( updateProcess, TQT_SIGNAL(processExited(TDEProcess *)), this, TQT_SLOT(updateFinished()));
+    updateProcess->start(TDEProcess::NotifyOnExit);
     enableButton( KDialogBase::User2, false );
   }
 }
@@ -246,11 +246,11 @@ void LocateDlg::slotUser3()   /* The locate button */
 
   stopping = false;
   
-  KProcess locateProc;
-  connect( &locateProc, TQT_SIGNAL( receivedStdout(KProcess *, char *, int) ),
-            this, TQT_SLOT( processStdout(KProcess *, char *, int) ) );
-  connect( &locateProc, TQT_SIGNAL( receivedStderr(KProcess *, char *, int) ),
-            this, TQT_SLOT( processStderr(KProcess *, char *, int) ) );
+  TDEProcess locateProc;
+  connect( &locateProc, TQT_SIGNAL( receivedStdout(TDEProcess *, char *, int) ),
+            this, TQT_SLOT( processStdout(TDEProcess *, char *, int) ) );
+  connect( &locateProc, TQT_SIGNAL( receivedStderr(TDEProcess *, char *, int) ),
+            this, TQT_SLOT( processStderr(TDEProcess *, char *, int) ) );
 
   locateProc << KrServices::fullPathName( "locate" );
   if( !isCs )
@@ -263,7 +263,7 @@ void LocateDlg::slotUser3()   /* The locate button */
     pattern = pattern + "*";
   
   collectedErr = "";
-  bool result = !locateProc.start( KProcess::Block, KProcess::AllOutput );
+  bool result = !locateProc.start( TDEProcess::Block, TDEProcess::AllOutput );
   if( !collectedErr.isEmpty() && ( !locateProc.normalExit() || locateProc.exitStatus() ) )
   {
      KMessageBox::error( krApp, i18n( "Locate produced the following error message:\n\n" ) + collectedErr );
@@ -284,7 +284,7 @@ void LocateDlg::slotUser3()   /* The locate button */
   }
 }
 
-void LocateDlg::processStdout(KProcess *proc, char *buffer, int length)
+void LocateDlg::processStdout(TDEProcess *proc, char *buffer, int length)
 {
   char *buf = new char[ length+1 ];
   memcpy( buf, buffer, length );
@@ -335,7 +335,7 @@ void LocateDlg::processStdout(KProcess *proc, char *buffer, int length)
   tqApp->processEvents();
 }
 
-void LocateDlg::processStderr(KProcess *, char *buffer, int length)
+void LocateDlg::processStderr(TDEProcess *, char *buffer, int length)
 {
   char *buf = new char[ length+1 ];
   memcpy( buf, buffer, length );

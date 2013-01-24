@@ -56,7 +56,7 @@ class KrJS;
 class KrusaderStatus;
 class KRPleaseWaitHandler;
 class KrusaderView;
-class KProcess;
+class TDEProcess;
 class KRslots;
 class KIconLoader;
 class KSystemTray;
@@ -91,7 +91,7 @@ class Krusader : public KParts::MainWindow, public DCOPObject {
 
   public slots:
     // increase the internal progress bar
-    void incProgress( KProcess *, char *buffer, int buflen );
+    void incProgress( TDEProcess *, char *buffer, int buflen );
     void statusBarUpdate( TQString& mess );
     // in use by Krusader only
     void saveSettings();

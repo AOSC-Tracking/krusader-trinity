@@ -192,7 +192,7 @@ void KMountMan::autoMount( TQString path ) {
 void KMountMan::eject( TQString mntPoint ) {
    KShellProcess proc;
    proc << KrServices::fullPathName( "eject" ) << "'" + mntPoint + "'";
-   proc.start( KProcess::Block );
+   proc.start( TDEProcess::Block );
    if ( !proc.normalExit() || proc.exitStatus() != 0 )         // if we failed with eject
       KMessageBox::information( 0, i18n( "Error ejecting device! You need to have 'eject' in your path." ), i18n( "Error" ), "CantExecuteEjectWarning" );
 }
@@ -221,24 +221,24 @@ TQString KMountMan::convertSize( KIO::filesize_t size ) {
       fsize = ( float ) size / ( float ) 1073741824;
       if ( fsize > 1024 )         // no name for something bigger than tera byte
          // let's call it Zega-Byte, who'll ever find out? :-)
-         s = i18n( "%1 ZB" ).arg( KGlobal::locale() ->formatNumber( fsize / ( float ) 1024, 1 ) );
+         s = i18n( "%1 ZB" ).arg( TDEGlobal::locale() ->formatNumber( fsize / ( float ) 1024, 1 ) );
       else
-         s = i18n( "%1 TB" ).arg( KGlobal::locale() ->formatNumber( fsize, 1 ) );
+         s = i18n( "%1 TB" ).arg( TDEGlobal::locale() ->formatNumber( fsize, 1 ) );
    }
    // Giga-byte
    else if ( size >= 1048576 ) {
       fsize = ( float ) size / ( float ) 1048576;
-      s = i18n( "%1 GB" ).arg( KGlobal::locale() ->formatNumber( fsize, 1 ) );
+      s = i18n( "%1 GB" ).arg( TDEGlobal::locale() ->formatNumber( fsize, 1 ) );
    }
    // Mega-byte
    else if ( size > 1024 ) {
       fsize = ( float ) size / ( float ) 1024;
-      s = i18n( "%1 MB" ).arg( KGlobal::locale() ->formatNumber( fsize, 1 ) );
+      s = i18n( "%1 MB" ).arg( TDEGlobal::locale() ->formatNumber( fsize, 1 ) );
    }
    // Kilo-byte
    else {
       fsize = ( float ) size;
-      s = i18n( "%1 KB" ).arg( KGlobal::locale() ->formatNumber( fsize, 0 ) );
+      s = i18n( "%1 KB" ).arg( TDEGlobal::locale() ->formatNumber( fsize, 0 ) );
    }
    return s;
 }

@@ -59,7 +59,7 @@ TQGridLayout* KrResultTable::initTable()
     _grid->addWidget(_label, 0, column);
 
     // Set font
-    TQFont defFont = KGlobalSettings::generalFont();
+    TQFont defFont = TDEGlobalSettings::generalFont();
     defFont.setPointSize(defFont.pointSize()-1);
     defFont.setBold(true);
     _label->setFont(defFont);
@@ -84,7 +84,7 @@ void KrResultTable::adjustRow(TQGridLayout* grid)
 
     // Paint uneven rows in alternate color
     if( ((col/_numColumns)%2) )
-      child->widget()->setPaletteBackgroundColor( KGlobalSettings::baseColor() );
+      child->widget()->setPaletteBackgroundColor( TDEGlobalSettings::baseColor() );
 
     ++it;
     ++col;

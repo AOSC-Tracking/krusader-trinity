@@ -115,7 +115,7 @@ void KRslots::sendFileByEmail(TQString filename) {
             "--attach "+"\"" + filename + "\"";
   }
 
-	if (!proc.start(KProcess::DontCare))
+	if (!proc.start(TDEProcess::DontCare))
     KMessageBox::error(0,i18n("Error executing ")+mailProg+" !");
   else proc.detach();
 }
@@ -156,7 +156,7 @@ void KRslots::compareContent() {
   compareContent( name1, name2 );
 }
 
-class KrProcess: public KProcess
+class KrProcess: public TDEProcess
 {
   TQString tmp1, tmp2;
   
@@ -207,7 +207,7 @@ void KRslots::compareContent( KURL url1, KURL url2 )
   KrProcess *p = new KrProcess( tmp1 != url1.path() ? tmp1 : TQString(),
                                 tmp2 != url2.path() ? tmp2 : TQString() );
   *p << diffProg << tmp1 << tmp2;
-  if (!p->start(KProcess::DontCare))
+  if (!p->start(TDEProcess::DontCare))
     KMessageBox::error(0,i18n("Error executing ")+diffProg+" !");
 }
 
@@ -485,7 +485,7 @@ void KRslots::homeTerminal(){
   TQString save = getcwd(0,0);
   chdir (TQDir::homeDirPath().local8Bit());
 
-  KProcess proc;
+  TDEProcess proc;
   krConfig->setGroup("General");
   TQString term = krConfig->readEntry("Terminal",_Terminal);
   proc << KrServices::separateArgs( term );
@@ -496,16 +496,16 @@ void KRslots::homeTerminal(){
     proc.setUseShell( true );
   }
   
-  if(!proc.start(KProcess::DontCare))
+  if(!proc.start(TDEProcess::DontCare))
     KMessageBox::sorry(krApp,i18n("Can't open ")+"\""+term+"\"");
 
   chdir(save.local8Bit());
 }
 
 void KRslots::sysInfo(){
-  KProcess proc;
+  TDEProcess proc;
   proc << "kcmshell" << "System/ksysctrl";
-  if (!proc.start(KProcess::DontCare)){
+  if (!proc.start(TDEProcess::DontCare)){
     KMessageBox::sorry(krApp,i18n("Can't find \"KsysCtrl\". Please install the TDE admin package"));
   }
 }
@@ -536,7 +536,7 @@ void KRslots::multiRename(){
 		proc << "\"" + (*u).path() + "\""; // patch thanks to Tobias Vogele
 	}
 
-	proc.start(KProcess::DontCare);
+	proc.start(TDEProcess::DontCare);
 	delete urls;
 }
 
@@ -553,7 +553,7 @@ void KRslots::rootKrusader()
        " --left=\"" +MAIN_VIEW->left->func->files()->vfs_getOrigin().url() +
        "\" --right=\""+MAIN_VIEW->right->func->files()->vfs_getOrigin().url() + "\"'";
 
-  proc.start(KProcess::DontCare);
+  proc.start(TDEProcess::DontCare);
 }
 
 // settings slots
@@ -571,7 +571,7 @@ void KRslots::changeTrashIcon(){
 	// update trash bin icon - this is "stolen" konqi code
 	// Copyright (C) 2000  David Faure <faure@kde.org>
 	KURL trash;
-	trash.setPath(KGlobalSettings::trashPath());
+	trash.setPath(TDEGlobalSettings::trashPath());
 	KURL::List lst;
 	lst.append(trash);
 	KDirNotify_stub allDirNotify("*","KDirNotify*");

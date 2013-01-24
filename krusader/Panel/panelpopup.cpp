@@ -49,8 +49,8 @@ PanelPopup::PanelPopup( TQSplitter *parent, bool left ) : TQWidget( parent ),
    // --- hack: setup colors to be the same as an inactive panel
 	dataLine->setBackgroundMode( PaletteBackground );
 	TQPalette q( dataLine->palette() );
-   q.setColor( TQColorGroup::Foreground, KGlobalSettings::textColor() );
-   q.setColor( TQColorGroup::Background, KGlobalSettings::baseColor() );
+   q.setColor( TQColorGroup::Foreground, TDEGlobalSettings::textColor() );
+   q.setColor( TQColorGroup::Background, TDEGlobalSettings::baseColor() );
    dataLine->setPalette( q );
    dataLine->setFrameStyle( TQFrame::Box | TQFrame::Raised );
    dataLine->setLineWidth( 1 );		// a nice 3D touch :-)

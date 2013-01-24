@@ -141,7 +141,7 @@ void KRPleaseWaitHandler::incProgress(int i){
   incMutex=false;
 }
 
-void KRPleaseWaitHandler::incProgress( KProcess *, char *buffer, int buflen ) {
+void KRPleaseWaitHandler::incProgress( TDEProcess *, char *buffer, int buflen ) {
    int howMuch = 0;
    for ( int i = 0 ; i < buflen; ++i )
       if ( buffer[ i ] == '\n' )

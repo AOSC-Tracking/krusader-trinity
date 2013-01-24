@@ -33,7 +33,7 @@
 #include <ktextedit.h>
 #include <kiconloader.h>
 
-#define ICON(N)		KGlobal::iconLoader()->loadIcon(N, KIcon::Small)
+#define ICON(N)		TDEGlobal::iconLoader()->loadIcon(N, KIcon::Small)
 
 ActionProperty::ActionProperty( TQWidget *parent, const char *name, KrAction *action )
  : ActionPropertyBase( parent, name ), _modified(false)

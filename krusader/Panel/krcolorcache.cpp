@@ -400,16 +400,16 @@ TQColorGroup KrColorCacheImpl::getColors(const KrColorItemType & type) const
 	TQColorGroup result;
 	if (m_colorSettings.getBoolValue("KDE Default", _KDEDefaultColors))
 	{
-		// KDE default? Getcolors from KGlobalSettings.
+		// KDE default? Getcolors from TDEGlobalSettings.
 		bool enableAlternateBackground = m_colorSettings.getBoolValue("Enable Alternate Background", _AlternateBackground);
 		TQColor background = enableAlternateBackground && type.m_alternateBackgroundColor ? 
-			KGlobalSettings::alternateBackgroundColor()
-			: KGlobalSettings::baseColor();
+			TDEGlobalSettings::alternateBackgroundColor()
+			: TDEGlobalSettings::baseColor();
 		result.setColor(TQColorGroup::Base, background);
 		result.setColor(TQColorGroup::Background, background);
-		result.setColor(TQColorGroup::Text, KGlobalSettings::textColor());
-		result.setColor(TQColorGroup::HighlightedText, KGlobalSettings::highlightedTextColor());
-		result.setColor(TQColorGroup::Highlight, KGlobalSettings::highlightColor());
+		result.setColor(TQColorGroup::Text, TDEGlobalSettings::textColor());
+		result.setColor(TQColorGroup::HighlightedText, TDEGlobalSettings::highlightedTextColor());
+		result.setColor(TQColorGroup::Highlight, TDEGlobalSettings::highlightColor());
 		return result;
 	}
 	bool markCurrentAlways = m_colorSettings.getBoolValue("Show Current Item Always", _ShowCurrentItemAlways);
@@ -526,7 +526,7 @@ const TQColor & KrColorCacheImpl::setColorIfContrastIsSufficient(const TQColor &
 
 TQColor KrColorCacheImpl::getForegroundColor(bool isActive) const
 {
-	TQColor color = KGlobalSettings::textColor();
+	TQColor color = TDEGlobalSettings::textColor();
 	SETCOLOR(color, m_colorSettings.getColorValue("Foreground"));
 	if (!isActive) SETCOLOR(color, m_colorSettings.getColorValue("Inactive Foreground"));
 	return color;
@@ -546,7 +546,7 @@ TQColor KrColorCacheImpl::getSpecialForegroundColor(const TQString & type, bool 
 
 TQColor KrColorCacheImpl::getBackgroundColor(bool isActive) const
 {
-	TQColor color = KGlobalSettings::baseColor();
+	TQColor color = TDEGlobalSettings::baseColor();
 	SETCOLOR(color, m_colorSettings.getColorValue("Background"));
 	if (!isActive) SETCOLOR(color, m_colorSettings.getColorValue("Inactive Background"));
 	return color;
@@ -564,9 +564,9 @@ TQColor KrColorCacheImpl::getAlternateBackgroundColor(bool isActive) const
 		m_colorSettings.getColorValue("Alternate Background") 
 		: m_colorSettings.getColorValue("Inactive Alternate Background");
 	if (!color.isValid())
-		color = KGlobalSettings::alternateBackgroundColor();
+		color = TDEGlobalSettings::alternateBackgroundColor();
 	if (!color.isValid())
-		color = KGlobalSettings::baseColor();
+		color = TDEGlobalSettings::baseColor();
 	return color;
 }
 
@@ -576,7 +576,7 @@ TQColor KrColorCacheImpl::getMarkedForegroundColor(bool isActive) const
 	if (m_colorSettings.getColorTextValue(colorName) == "transparent")
 		return TQColor();
 	if (isActive && m_colorSettings.getColorTextValue(colorName) == "")
-		return KGlobalSettings::highlightedTextColor();
+		return TDEGlobalSettings::highlightedTextColor();
 	if (!isActive && m_colorSettings.getColorTextValue(colorName) == "")
 		return getMarkedForegroundColor(true);
 	return m_colorSettings.getColorValue(colorName);
@@ -585,7 +585,7 @@ TQColor KrColorCacheImpl::getMarkedForegroundColor(bool isActive) const
 TQColor KrColorCacheImpl::getMarkedBackgroundColor(bool isActive) const
 {
 	if (isActive && m_colorSettings.getColorTextValue("Marked Background") == "")
-		return KGlobalSettings::highlightColor();
+		return TDEGlobalSettings::highlightColor();
 	if (isActive && m_colorSettings.getColorTextValue("Marked Background") == "Background")
 		return getBackgroundColor(true);
 	if (!isActive && m_colorSettings.getColorTextValue("Inactive Marked Background") == "")

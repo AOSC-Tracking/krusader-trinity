@@ -16,7 +16,7 @@ Filelight::MapScheme Config::scheme;
 inline KConfig&
 Filelight::Config::kconfig()
 {
-    KConfig *config = KGlobal::config();
+    KConfig *config = TDEGlobal::config();
     config->setGroup( "DiskUsage" );
     return *config;
 }

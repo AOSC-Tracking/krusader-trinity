@@ -190,7 +190,7 @@ long KRarcHandler::arcFileCount( TQString archive, TQString type, TQString passw
   list << lister << KrServices::quote( archive ) << ">" << tmpFile.name() ;
   if( type == "-ace" && TQFile( "/dev/ptmx" ).exists() )  // Don't remove, unace crashes if missing!!!
     list<< "<" << "/dev/ptmx";
-  list.start( KProcess::NotifyOnExit, KProcess::AllOutput );
+  list.start( TDEProcess::NotifyOnExit, TDEProcess::AllOutput );
   while ( list.isRunning() ) {
     usleep( 1000 );
     tqApp->processEvents();
@@ -257,7 +257,7 @@ bool KRarcHandler::unpack( TQString archive, TQString type, TQString password, T
 
     KrShellProcess cpio;
     cpio << KrServices::fullPathName( "rpm2cpio" ) << " " + KrServices::quote( archive ) << " > " << cpioName;
-    cpio.start(KProcess::Block, KProcess::AllOutput );
+    cpio.start(TDEProcess::Block, TDEProcess::AllOutput );
     if( !cpio.normalExit() || !checkStatus( "cpio", cpio.exitStatus() ) ) {
       KMessageBox::detailedError (krApp, i18n( "Failed to convert rpm (%1) to cpio!" ).arg( archive ), 
                                   cpio.getErrorMsg(), i18n("Error" ) );
@@ -274,7 +274,7 @@ bool KRarcHandler::unpack( TQString archive, TQString type, TQString password, T
 
     KrShellProcess dpkg;
     dpkg << KrServices::fullPathName( "dpkg" ) << " --fsys-tarfile " + KrServices::quote( archive ) << " > " << cpioName;
-    dpkg.start(KProcess::Block, KProcess::AllOutput );
+    dpkg.start(TDEProcess::Block, TDEProcess::AllOutput );
     if( !dpkg.normalExit() || !checkStatus( "-deb", dpkg.exitStatus() ) ) {
       KMessageBox::detailedError (krApp, i18n( "Failed to convert deb (%1) to tar!" ).arg( archive ), 
                                   dpkg.getErrorMsg(), i18n("Error" ) );
@@ -312,15 +312,15 @@ bool KRarcHandler::unpack( TQString archive, TQString type, TQString password, T
   // tell the user to wait
   krApp->startWaiting( i18n( "Unpacking File(s)" ), count, true );
   if ( count != 0 ) {
-    connect( &proc, TQT_SIGNAL( receivedStdout( KProcess*, char*, int ) ),
-             krApp, TQT_SLOT( incProgress( KProcess*, char*, int ) ) );
+    connect( &proc, TQT_SIGNAL( receivedStdout( TDEProcess*, char*, int ) ),
+             krApp, TQT_SLOT( incProgress( TDEProcess*, char*, int ) ) );
     if( type == "-rpm" )
-      connect( &proc, TQT_SIGNAL( receivedStderr( KProcess*, char*, int ) ),
-               krApp, TQT_SLOT( incProgress( KProcess*, char*, int ) ) );
+      connect( &proc, TQT_SIGNAL( receivedStderr( TDEProcess*, char*, int ) ),
+               krApp, TQT_SLOT( incProgress( TDEProcess*, char*, int ) ) );
   }
 
   // start the unpacking process
-  proc.start( KProcess::NotifyOnExit, KProcess::AllOutput );
+  proc.start( TDEProcess::NotifyOnExit, TDEProcess::AllOutput );
   while ( proc.isRunning() ) {
     usleep( 1000 );
     tqApp->processEvents();
@@ -382,11 +382,11 @@ bool KRarcHandler::test( TQString archive, TQString type, TQString password, lon
   
   // tell the user to wait
   krApp->startWaiting( i18n( "Testing Archive" ), count, true );
-  if ( count != 0 ) connect( &proc, TQT_SIGNAL( receivedStdout( KProcess*, char*, int ) ),
-                               krApp, TQT_SLOT( incProgress( KProcess*, char*, int ) ) );
+  if ( count != 0 ) connect( &proc, TQT_SIGNAL( receivedStdout( TDEProcess*, char*, int ) ),
+                               krApp, TQT_SLOT( incProgress( TDEProcess*, char*, int ) ) );
 
   // start the unpacking process
-  proc.start( KProcess::NotifyOnExit, KProcess::AllOutput );
+  proc.start( TDEProcess::NotifyOnExit, TDEProcess::AllOutput );
   while ( proc.isRunning() ) {
     usleep( 1000 );
     tqApp->processEvents();
@@ -489,11 +489,11 @@ bool KRarcHandler::pack( TQStringList fileNames, TQString type, TQString dest, l
   // tell the user to wait
   krApp->startWaiting( i18n( "Packing File(s)" ), count, true );
   if ( count != 0 )
-    connect( &proc, TQT_SIGNAL( receivedStdout( KProcess*, char*, int ) ),
-             krApp, TQT_SLOT( incProgress( KProcess*, char*, int ) ) );
+    connect( &proc, TQT_SIGNAL( receivedStdout( TDEProcess*, char*, int ) ),
+             krApp, TQT_SLOT( incProgress( TDEProcess*, char*, int ) ) );
 
   // start the packing process
-  proc.start( KProcess::NotifyOnExit, KProcess::AllOutput );
+  proc.start( TDEProcess::NotifyOnExit, TDEProcess::AllOutput );
   while ( proc.isRunning() ) {
     usleep( 1000 );
     tqApp->processEvents();
@@ -722,7 +722,7 @@ TQString KRarcHandler::detectArchive( bool &encrypted, TQString fileName, bool c
 						Kr7zEncryptionChecker proc;
 						proc << KrServices::fullPathName( "7z" ) << " -y t";
 						proc << KrServices::quote( fileName );
-						proc.start(KProcess::Block,KProcess::AllOutput);
+						proc.start(TDEProcess::Block,TDEProcess::AllOutput);
 						encrypted = proc.isEncrypted();
 					}
 				}

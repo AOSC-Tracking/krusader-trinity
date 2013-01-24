@@ -97,11 +97,11 @@ kio_krarcProtocol::~kio_krarcProtocol(){
 	// delete the temp directory
 	KrShellProcess proc;
 	proc << "rm -rf "<< arcTempDir;
-	proc.start(KProcess::Block);
+	proc.start(TDEProcess::Block);
 }
 
 /* ---------------------------------------------------------------------------------- */
-void kio_krarcProtocol::receivedData(KProcess*,char* buf,int len){
+void kio_krarcProtocol::receivedData(TDEProcess*,char* buf,int len){
 	TQByteArray d(len);
 	d.setRawData(buf,len);
 	data(d);
@@ -156,7 +156,7 @@ void kio_krarcProtocol::mkdir(const KURL& url,int permissions){
 	proc << putCmd << convertName( arcFile->url().path() ) + " " << convertFileName( tmpDir.mid(arcTempDir.length()) );
 	infoMessage(i18n("Creating %1 ...").arg( url.fileName() ) );
 	TQDir::setCurrent(arcTempDir);
-	proc.start(KProcess::Block,KProcess::AllOutput);
+	proc.start(TDEProcess::Block,TDEProcess::AllOutput);
 	
 	// delete the temp directory
 	TQDir().rmdir(arcTempDir);
@@ -227,7 +227,7 @@ void kio_krarcProtocol::put(const KURL& url,int permissions,bool overwrite,bool 
 	proc << putCmd << convertName( arcFile->url().path() )+ " " <<convertFileName( tmpFile.mid(arcTempDir.length()) );
 	infoMessage(i18n("Packing %1 ...").arg( url.fileName() ) );
 	TQDir::setCurrent(arcTempDir);
-	proc.start(KProcess::Block,KProcess::AllOutput);
+	proc.start(TDEProcess::Block,TDEProcess::AllOutput);
 	// remove the file
 	TQFile::remove(tmpFile);
 
@@ -276,7 +276,7 @@ void kio_krarcProtocol::get(const KURL& url, int tries ){
 	if( !extArcReady && arcType == "rpm"){
 		KrShellProcess cpio;
 		cpio << "rpm2cpio" << convertName( arcFile->url().path(-1) ) << " > " << arcTempDir+"contents.cpio";
-		cpio.start(KProcess::Block,KProcess::AllOutput);
+		cpio.start(TDEProcess::Block,TDEProcess::AllOutput);
 		if( !cpio.normalExit() || cpio.exitStatus() != 0 )  {
 			error(ERR_COULD_NOT_READ,url.path() + "\n\n" + cpio.getErrorMsg() );
 			return;
@@ -287,7 +287,7 @@ void kio_krarcProtocol::get(const KURL& url, int tries ){
 	if ( !extArcReady && arcType == "deb" ) {
 		KrShellProcess dpkg;
 		dpkg << cmd + " --fsys-tarfile" << convertName( arcFile->url().path( -1 ) ) << " > " << arcTempDir + "contents.cpio";
-		dpkg.start( KProcess::Block, KProcess::AllOutput );
+		dpkg.start( TDEProcess::Block, TDEProcess::AllOutput );
 		if( !dpkg.normalExit() || dpkg.exitStatus() != 0 )  {
 			error(ERR_COULD_NOT_READ,url.path() + "\n\n" + dpkg.getErrorMsg() );
 			return;
@@ -314,13 +314,13 @@ void kio_krarcProtocol::get(const KURL& url, int tries ){
 		emit mimeType( mt->name() );
 		proc << getCmd << convertName( arcFile->url().path() )+" ";
 		if( arcType != "gzip" && arcType != "bzip2" ) proc << convertFileName( file );
-		connect(&proc,TQT_SIGNAL(receivedStdout(KProcess*,char*,int)),
-				this,TQT_SLOT(receivedData(KProcess*,char*,int)) );
+		connect(&proc,TQT_SIGNAL(receivedStdout(TDEProcess*,char*,int)),
+				this,TQT_SLOT(receivedData(TDEProcess*,char*,int)) );
 	}
 	infoMessage(i18n("Unpacking %1 ...").arg( url.fileName() ) );
 	// change the working directory to our arcTempDir
 	TQDir::setCurrent(arcTempDir);
-	proc.start(KProcess::Block,KProcess::AllOutput);
+	proc.start(TDEProcess::Block,TDEProcess::AllOutput);
 	
 	if( !extArcReady && !decompressToFile ) {  
 		if( !proc.normalExit() || !checkStatus( proc.exitStatus() ) || ( arcType != "bzip2" && expectedSize != decompressedLen ) ) {
@@ -456,7 +456,7 @@ void kio_krarcProtocol::del(KURL const & url, bool isFile){
 	KrShellProcess proc;
 	proc << delCmd << convertName( arcFile->url().path() )+" " << convertFileName( file );
 	infoMessage(i18n("Deleting %1 ...").arg( url.fileName() ) );
-	proc.start(KProcess::Block, KProcess::AllOutput);
+	proc.start(TDEProcess::Block, TDEProcess::AllOutput);
 	if( !proc.normalExit() || !checkStatus( proc.exitStatus() ) )  {
 		error(ERR_COULD_NOT_WRITE,url.path() + "\n\n" + proc.getErrorMsg() );
 		return;
@@ -552,7 +552,7 @@ void kio_krarcProtocol::copy (const KURL &url, const KURL &dest, int, bool overw
 				proc << "<" << "/dev/ptmx"; 
 			
 			infoMessage(i18n("Unpacking %1 ...").arg( url.fileName() ) );
-			proc.start(KProcess::Block, KProcess::AllOutput);
+			proc.start(TDEProcess::Block, TDEProcess::AllOutput);
 			if( !proc.normalExit() || !checkStatus( proc.exitStatus() ) )  {
 				error(KIO::ERR_COULD_NOT_WRITE, dest.path(-1) + "\n\n" + proc.getErrorMsg() );
 				return;
@@ -711,7 +711,7 @@ bool kio_krarcProtocol::initDirDict(const KURL&url, bool forced){
 			proc << listCmd << convertName( arcFile->url().path(-1) ) <<" > " << temp.name();
 		if( arcType == "ace" && TQFile( "/dev/ptmx" ).exists() ) // Don't remove, unace crashes if missing!!!
 			proc << "<" << "/dev/ptmx";
-		proc.start(KProcess::Block,KProcess::AllOutput);
+		proc.start(TDEProcess::Block,TDEProcess::AllOutput);
 		if( !proc.normalExit() || !checkStatus( proc.exitStatus() ) ) return false;
 	}
 	// clear the dir dictionary
@@ -1513,9 +1513,9 @@ TQString kio_krarcProtocol::detectArchive( bool &encrypted, TQString fileName ) 
 						
 						KrShellProcess proc;
 						proc << testCmd << convertName( fileName );
-						connect( &proc, TQT_SIGNAL( receivedStdout(KProcess*,char*,int) ),
-						         this, TQT_SLOT( checkOutputForPassword( KProcess*,char*,int ) ) );
-						proc.start(KProcess::Block,KProcess::AllOutput);
+						connect( &proc, TQT_SIGNAL( receivedStdout(TDEProcess*,char*,int) ),
+						         this, TQT_SLOT( checkOutputForPassword( TDEProcess*,char*,int ) ) );
+						proc.start(TDEProcess::Block,TDEProcess::AllOutput);
 						encrypted = this->encrypted;
 						
 						if( encrypted )
@@ -1548,7 +1548,7 @@ TQString kio_krarcProtocol::detectArchive( bool &encrypted, TQString fileName ) 
 	return TQString();
 }
 
-void kio_krarcProtocol::checkOutputForPassword( KProcess *proc,char *buf,int len ) {
+void kio_krarcProtocol::checkOutputForPassword( TDEProcess *proc,char *buf,int len ) {
 	TQByteArray d(len);
 	d.setRawData(buf,len);
 	TQString data =  TQString( d );

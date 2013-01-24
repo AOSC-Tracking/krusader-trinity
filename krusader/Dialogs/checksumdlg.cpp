@@ -24,7 +24,7 @@
 #include <kstandarddirs.h>
 
 class CS_Tool; // forward
-typedef void PREPARE_PROC_FUNC(KProcess& proc, CS_Tool *self, const TQStringList& files, 
+typedef void PREPARE_PROC_FUNC(TDEProcess& proc, CS_Tool *self, const TQStringList& files, 
 	const TQString checksumFile, bool recursive, const TQString& stdoutFileName, 
 	const TQString& stderrFileName,	const TQString& type=TQString());
 typedef TQStringList GET_FAILED_FUNC(const TQStringList& stdOut, const TQStringList& stdErr);
@@ -51,7 +51,7 @@ public:
 };
 
 // handles md5sum and sha1sum
-void sumCreateFunc(KProcess& proc, CS_Tool *self, const TQStringList& files, 
+void sumCreateFunc(TDEProcess& proc, CS_Tool *self, const TQStringList& files, 
 	const TQString, bool recursive, const TQString& stdoutFileName, 
 	const TQString& stderrFileName, const TQString&) {
 	proc.setUseShell(true, "/bin/bash");
@@ -60,7 +60,7 @@ void sumCreateFunc(KProcess& proc, CS_Tool *self, const TQStringList& files,
 	proc << files << "1>" << stdoutFileName << "2>" << stderrFileName;	
 }
 
-void sumVerifyFunc(KProcess& proc, CS_Tool *self, const TQStringList& /* files */, 
+void sumVerifyFunc(TDEProcess& proc, CS_Tool *self, const TQStringList& /* files */, 
 	const TQString checksumFile, bool recursive, const TQString& stdoutFileName, 
 	const TQString& stderrFileName, const TQString& /* type */) {
 	proc.setUseShell(true, "/bin/bash");
@@ -86,7 +86,7 @@ TQStringList sumFailedFunc(const TQStringList& stdOut, const TQStringList& stdEr
 }
 
 // handles *deep binaries
-void deepCreateFunc(KProcess& proc, CS_Tool *self, const TQStringList& files, 
+void deepCreateFunc(TDEProcess& proc, CS_Tool *self, const TQStringList& files, 
 	const TQString, bool recursive, const TQString& stdoutFileName, 
 	const TQString& stderrFileName, const TQString&) {
 	proc.setUseShell(true, "/bin/bash");
@@ -95,7 +95,7 @@ void deepCreateFunc(KProcess& proc, CS_Tool *self, const TQStringList& files,
 	proc << "-l" << files << "1>" << stdoutFileName << "2>" << stderrFileName;
 }
 
-void deepVerifyFunc(KProcess& proc, CS_Tool *self, const TQStringList& files, 
+void deepVerifyFunc(TDEProcess& proc, CS_Tool *self, const TQStringList& files, 
 	const TQString checksumFile, bool recursive, const TQString& stdoutFileName, 
 	const TQString& stderrFileName, const TQString&) {
 	proc.setUseShell(true, "/bin/bash");
@@ -110,7 +110,7 @@ TQStringList deepFailedFunc(const TQStringList& stdOut, const TQStringList&/* st
 }
 
 // handles cfv binary
-void cfvCreateFunc(KProcess& proc, CS_Tool *self, const TQStringList& files, 
+void cfvCreateFunc(TDEProcess& proc, CS_Tool *self, const TQStringList& files, 
 	const TQString, bool recursive, const TQString& stdoutFileName, 
 	const TQString& stderrFileName, const TQString& type) {
 	proc.setUseShell(true, "/bin/bash");
@@ -119,7 +119,7 @@ void cfvCreateFunc(KProcess& proc, CS_Tool *self, const TQStringList& files,
 	proc << "-t" << type << "-f-" << "-U" << files << "1>" << stdoutFileName << "2>" << stderrFileName;	
 }
 
-void cfvVerifyFunc(KProcess& proc, CS_Tool *self, const TQStringList& /* files */, 
+void cfvVerifyFunc(TDEProcess& proc, CS_Tool *self, const TQStringList& /* files */, 
 	const TQString checksumFile, bool recursive, const TQString& stdoutFileName, 
 	const TQString& stderrFileName, const TQString&type) {
 	proc.setUseShell(true, "/bin/bash");
@@ -262,14 +262,14 @@ CreateChecksumDlg::CreateChecksumDlg(const TQStringList& files, bool containFold
 	// else implied: run the process
 	tmpOut = new KTempFile(locateLocal("tmp", "krusader"), ".stdout" );
 	tmpErr = new KTempFile(locateLocal("tmp", "krusader"), ".stderr" );
-	KProcess proc;
+	TDEProcess proc;
 	CS_Tool *mytool = tools.at(method->currentItem());
 	mytool->create(proc, mytool, KrServices::quote(files), TQString(), containFolders, 
 		tmpOut->name(), tmpErr->name(), method->currentText());
 	
 	krApp->startWaiting(i18n("Calculating checksums ..."), 0, true);	
 	TQApplication::setOverrideCursor( KCursor::waitCursor() );
-	bool r = proc.start(KProcess::NotifyOnExit, KProcess::AllOutput);
+	bool r = proc.start(TDEProcess::NotifyOnExit, TDEProcess::AllOutput);
 	if (r) while ( proc.isRunning() ) {
 		usleep( 500 );
 		tqApp->processEvents();
@@ -381,11 +381,11 @@ MatchChecksumDlg::MatchChecksumDlg(const TQStringList& files, bool containFolder
 	// else implied: run the process
 	tmpOut = new KTempFile(locateLocal("tmp", "krusader"), ".stdout" );
 	tmpErr = new KTempFile(locateLocal("tmp", "krusader"), ".stderr" );
-	KProcess proc;
+	TDEProcess proc;
 	mytool->verify(proc, mytool, KrServices::quote(files), KrServices::quote(file), containFolders, tmpOut->name(), tmpErr->name(), extension);
 	krApp->startWaiting(i18n("Verifying checksums ..."), 0, true);	
 	TQApplication::setOverrideCursor( KCursor::waitCursor() );
-	bool r = proc.start(KProcess::NotifyOnExit, KProcess::AllOutput);
+	bool r = proc.start(TDEProcess::NotifyOnExit, TDEProcess::AllOutput);
 	if (r) while ( proc.isRunning() ) {
 		usleep( 500 );
   		tqApp->processEvents();

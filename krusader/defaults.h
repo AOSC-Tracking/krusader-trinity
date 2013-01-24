@@ -58,7 +58,7 @@
 
 ////////////////////////[Look&Feel]
 // Filelist Font ///////
-#define _FilelistFont   new TQFont(KGlobalSettings::generalFont())
+#define _FilelistFont   new TQFont(TDEGlobalSettings::generalFont())
 // Warn On Exit ////////
 #define _WarnOnExit     false 
 // Minimize To Tray ////
@@ -203,9 +203,9 @@
 // Terminal for UserActions ///////////
 #define _UserActions_Terminal      "konsole --noclose -e"
 // Normal font for output collection ///////
-#define _UserActions_NormalFont   new TQFont(KGlobalSettings::generalFont())
+#define _UserActions_NormalFont   new TQFont(TDEGlobalSettings::generalFont())
 // Font for output collection with fixed width ///////
-#define _UserActions_FixedFont   new TQFont(KGlobalSettings::fixedFont())
+#define _UserActions_FixedFont   new TQFont(TDEGlobalSettings::fixedFont())
 // Use for output collection  fixed width font as default ///////
 #define _UserActions_UseFixedFont   false
 

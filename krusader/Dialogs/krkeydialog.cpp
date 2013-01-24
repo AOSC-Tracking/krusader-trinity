@@ -59,7 +59,7 @@ KrKeyDialog::~KrKeyDialog() {
 
 void KrKeyDialog::slotImportShortcuts() {
    // find $TDEDIR/share/apps/krusader
-   TQString basedir = KGlobal::dirs()->findResourceDir("appdata", "total_commander.keymap");
+   TQString basedir = TDEGlobal::dirs()->findResourceDir("appdata", "total_commander.keymap");
    // let the user select a file to load
    TQString filename = KFileDialog::getOpenFileName(basedir, i18n(FILE_FILTER), 0, i18n("Select a keymap file"));
    if ( filename.isEmpty() )

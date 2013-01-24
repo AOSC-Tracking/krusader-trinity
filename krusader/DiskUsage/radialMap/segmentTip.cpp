@@ -33,7 +33,7 @@ SegmentTip::moveto( TQPoint p, const TQWidget &canvas, bool placeAbove )
   p.rx() -= rect().center().x();
   p.ry() -= (placeAbove ? 8 + height() : m_cursorHeight - 8);
 
-  const TQRect screen = KGlobalSettings::desktopGeometry( parentWidget() );
+  const TQRect screen = TDEGlobalSettings::desktopGeometry( parentWidget() );
 
   const int x  = p.x();
   const int y  = p.y();
@@ -84,7 +84,7 @@ SegmentTip::updateTip( const File* const file, const Directory* const root )
 {
     const TQString s1  = file->fullPath( root );
     TQString s2        = file->humanReadableSize();
-    KLocale *loc      = KGlobal::locale();
+    KLocale *loc      = TDEGlobal::locale();
     const uint MARGIN = 3;
     const uint pc     = 100 * file->size() / root->size();
     uint maxw         = 0;

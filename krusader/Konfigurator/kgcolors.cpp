@@ -94,16 +94,16 @@ KgColors::KgColors( bool first, TQWidget* parent,  const char* name ) :
 
   ADDITIONAL_COLOR transparent  = { i18n("Transparent"),       TQt::white, "transparent" };
 
-  addColorSelector( "Foreground",                 i18n( "Foreground:" ),                  KGlobalSettings::textColor()                                                );
+  addColorSelector( "Foreground",                 i18n( "Foreground:" ),                  TDEGlobalSettings::textColor()                                                );
   addColorSelector( "Directory Foreground",       i18n( "Directory foreground:" ),        getColorSelector( "Foreground" )->getColor(), i18n( "Same as foreground" )  );
   addColorSelector( "Executable Foreground",      i18n( "Executable foreground:" ),       getColorSelector( "Foreground" )->getColor(), i18n( "Same as foreground" )  );
   addColorSelector( "Symlink Foreground",         i18n( "Symbolic link foreground:" ),    getColorSelector( "Foreground" )->getColor(), i18n( "Same as foreground" )  );
   addColorSelector( "Invalid Symlink Foreground", i18n( "Invalid symlink foreground:" ),  getColorSelector( "Foreground" )->getColor(), i18n( "Same as foreground" )  );
-  addColorSelector( "Background",                 i18n( "Background:" ),                  KGlobalSettings::baseColor()                                                );
+  addColorSelector( "Background",                 i18n( "Background:" ),                  TDEGlobalSettings::baseColor()                                                );
   ADDITIONAL_COLOR sameAsBckgnd = { i18n("Same as background"), getColorSelector( "Background" )->getColor(), "Background" };
-  addColorSelector( "Alternate Background",       i18n( "Alternate background:" ),        KGlobalSettings::alternateBackgroundColor(),"", &sameAsBckgnd, 1            );
-  addColorSelector( "Marked Foreground",          i18n( "Selected foreground:" ),           KGlobalSettings::highlightedTextColor(), "", &transparent, 1                );
-  addColorSelector( "Marked Background",          i18n( "Selected background:" ),           KGlobalSettings::highlightColor(), "", &sameAsBckgnd, 1                     );
+  addColorSelector( "Alternate Background",       i18n( "Alternate background:" ),        TDEGlobalSettings::alternateBackgroundColor(),"", &sameAsBckgnd, 1            );
+  addColorSelector( "Marked Foreground",          i18n( "Selected foreground:" ),           TDEGlobalSettings::highlightedTextColor(), "", &transparent, 1                );
+  addColorSelector( "Marked Background",          i18n( "Selected background:" ),           TDEGlobalSettings::highlightColor(), "", &sameAsBckgnd, 1                     );
   ADDITIONAL_COLOR sameAsAltern = { i18n("Same as alt. background"), getColorSelector( "Alternate Background" )->getColor(), "Alternate Background" };
   addColorSelector( "Alternate Marked Background",i18n( "Alternate selected background:" ), getColorSelector( "Marked Background" )->getColor(), i18n( "Same as selected background" ), &sameAsAltern, 1 );
   addColorSelector( "Current Foreground",         i18n( "Current foreground:" ),          TQt::white,                                    i18n( "Not used" )            );
@@ -187,19 +187,19 @@ KgColors::KgColors( bool first, TQWidget* parent,  const char* name ) :
   colorsGrid->setSpacing( 0 );
   colorsGrid->setMargin( 2 );
 
-  ADDITIONAL_COLOR KDEDefaultBase = { i18n("KDE default"), KGlobalSettings::baseColor(), "KDE default" };
-  ADDITIONAL_COLOR KDEDefaultFore = { i18n("KDE default"), KGlobalSettings::textColor(), "KDE default" };
+  ADDITIONAL_COLOR KDEDefaultBase = { i18n("KDE default"), TDEGlobalSettings::baseColor(), "KDE default" };
+  ADDITIONAL_COLOR KDEDefaultFore = { i18n("KDE default"), TDEGlobalSettings::textColor(), "KDE default" };
 
   offset = endOfPanelColors = itemList.count();
 
   addColorSelector( "Synchronizer Equals Foreground", i18n( "Equals foreground:" ), TQt::black, TQString(), &KDEDefaultFore, 1 );
-  addColorSelector( "Synchronizer Equals Background", i18n( "Equals background:" ), KGlobalSettings::baseColor(), TQString(), &KDEDefaultBase, 1 );
+  addColorSelector( "Synchronizer Equals Background", i18n( "Equals background:" ), TDEGlobalSettings::baseColor(), TQString(), &KDEDefaultBase, 1 );
   addColorSelector( "Synchronizer Differs Foreground", i18n( "Differing foreground:" ), TQt::red, TQString(), &KDEDefaultFore, 1 );
-  addColorSelector( "Synchronizer Differs Background", i18n( "Differing background:" ), KGlobalSettings::baseColor(), TQString(), &KDEDefaultBase, 1 );
+  addColorSelector( "Synchronizer Differs Background", i18n( "Differing background:" ), TDEGlobalSettings::baseColor(), TQString(), &KDEDefaultBase, 1 );
   addColorSelector( "Synchronizer LeftCopy Foreground", i18n( "Copy to left foreground:" ), TQt::blue, TQString(), &KDEDefaultFore, 1 );
-  addColorSelector( "Synchronizer LeftCopy Background", i18n( "Copy to left background:" ), KGlobalSettings::baseColor(), TQString(), &KDEDefaultBase, 1 );
+  addColorSelector( "Synchronizer LeftCopy Background", i18n( "Copy to left background:" ), TDEGlobalSettings::baseColor(), TQString(), &KDEDefaultBase, 1 );
   addColorSelector( "Synchronizer RightCopy Foreground", i18n( "Copy to right foreground:" ), TQt::darkGreen, TQString(), &KDEDefaultFore, 1 );
-  addColorSelector( "Synchronizer RightCopy Background", i18n( "Copy to right background:" ), KGlobalSettings::baseColor(), TQString(), &KDEDefaultBase, 1 );
+  addColorSelector( "Synchronizer RightCopy Background", i18n( "Copy to right background:" ), TDEGlobalSettings::baseColor(), TQString(), &KDEDefaultBase, 1 );
   addColorSelector( "Synchronizer Delete Foreground", i18n( "Delete foreground:" ), TQt::white, TQString(), &KDEDefaultFore, 1 );
   addColorSelector( "Synchronizer Delete Background", i18n( "Delete background:" ), TQt::red, TQString(), &KDEDefaultBase, 1 );
 
@@ -499,7 +499,7 @@ bool KgColors::apply()
 
 void KgColors::slotImportColors() {
 	// find $TDEDIR/share/apps/krusader
-	TQString basedir = KGlobal::dirs()->findResourceDir("appdata", "total_commander.keymap");
+	TQString basedir = TDEGlobal::dirs()->findResourceDir("appdata", "total_commander.keymap");
 	// let the user select a file to load
 	TQString file = KFileDialog::getOpenFileName(basedir, "*.color", 0, i18n("Select a color-scheme file"));
 	if (file == TQString()) return;

@@ -44,8 +44,8 @@ KrProgress::KrProgress( KIO::Job* job )
 #ifdef TQ_WS_X11 //FIXME(E): Remove once all the KWin::foo calls have been ported to TQWS
   // Set a useful icon for this window!
   KWin::setIcons( winId(),
-          KGlobal::iconLoader()->loadIcon( "filesave", KIcon::NoGroup, 32 ),
-          KGlobal::iconLoader()->loadIcon( "filesave", KIcon::NoGroup, 16 ) );
+          TDEGlobal::iconLoader()->loadIcon( "filesave", KIcon::NoGroup, 32 ),
+          TDEGlobal::iconLoader()->loadIcon( "filesave", KIcon::NoGroup, 16 ) );
 #endif
 
   TQVBoxLayout *topLayout = new TQVBoxLayout( this, KDialog::marginHint(),

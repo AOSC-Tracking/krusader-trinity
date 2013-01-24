@@ -55,8 +55,8 @@ public:
   void              reset();
 
 public slots:
-  void              processStdout(KProcess *, char *, int);
-  void              processStderr(KProcess *proc, char *buffer, int length);
+  void              processStdout(TDEProcess *, char *, int);
+  void              processStderr(TDEProcess *proc, char *buffer, int length);
   void              slotRightClick(TQListViewItem *);
   void              slotDoubleClick(TQListViewItem *);
   void              updateFinished();
@@ -95,7 +95,7 @@ private:
   TQCheckBox        *existingFiles;
   TQCheckBox        *caseSensitive;
 
-  static KProcess  *updateProcess;
+  static TDEProcess  *updateProcess;
 };
 
 #endif /* __LOCATE_H__ */

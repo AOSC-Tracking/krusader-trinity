@@ -365,7 +365,7 @@ void ListPanelFunc::terminal() {
 	TQString save = getcwd( 0, 0 );
 	chdir( panel->realPath().local8Bit() );
 
-	KProcess proc;
+	TDEProcess proc;
 	krConfig->setGroup( "General" );
 	TQString term = krConfig->readEntry( "Terminal", _Terminal );
 	proc << KrServices::separateArgs( term );
@@ -376,7 +376,7 @@ void ListPanelFunc::terminal() {
 		proc.setUseShell( true );
 	}
 
-	if ( !proc.start( KProcess::DontCare ) )
+	if ( !proc.start( TDEProcess::DontCare ) )
 		KMessageBox::sorry( krApp, i18n( "<qt>Can't open <b>%1</b></qt>" ).arg(term) );
 
 	chdir( save.local8Bit() );

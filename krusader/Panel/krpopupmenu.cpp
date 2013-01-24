@@ -324,7 +324,7 @@ void KrPopupMenu::performAction(int id) {
          case OPEN_TERM_ID :
          	TQString save = getcwd( 0, 0 );
          	chdir( panel->func->files() ->vfs_getFile( item->name() ).path( -1 ).local8Bit() );
-				KProcess proc;
+				TDEProcess proc;
 				{
 				KConfigGroupSaver saver(krConfig, "General");
          	TQString term = krConfig->readEntry( "Terminal", _Terminal );
@@ -335,7 +335,7 @@ void KrPopupMenu::performAction(int id) {
 					proc << "&";
             	proc.setUseShell( true );
          	}
-         	if ( !proc.start( KProcess::DontCare ) )
+         	if ( !proc.start( TDEProcess::DontCare ) )
                KMessageBox::sorry( krApp, i18n( "Can't open \"%1\"" ).arg(term) );
 				} // group-saver is blown out of scope here
          	chdir( save.local8Bit() );

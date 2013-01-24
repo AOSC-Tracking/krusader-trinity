@@ -98,7 +98,7 @@ void KrBriefView::setup() {
    setFont( _config->readFontEntry( "Filelist Font", _FilelistFont ) );
    // decide on single click/double click selection
    if ( _config->readBoolEntry( "Single Click Selects", _SingleClickSelects ) &&
-           KGlobalSettings::singleClick() ) {
+           TDEGlobalSettings::singleClick() ) {
       connect( this, TQT_SIGNAL( executed( TQIconViewItem* ) ), this, TQT_SLOT( slotExecuted( TQIconViewItem* ) ) );
    } else {
       connect( this, TQT_SIGNAL( clicked( TQIconViewItem* ) ), this, TQT_SLOT( slotClicked( TQIconViewItem* ) ) );
@@ -341,7 +341,7 @@ void KrBriefView::slotClicked( TQIconViewItem *item ) {
 
    if ( !modifierPressed ) {
       if ( singleClicked && !renameTimer.isActive() ) {
-         KConfig * config = KGlobal::config();
+         KConfig * config = TDEGlobal::config();
          config->setGroup( "KDE" );
          int doubleClickInterval = config->readNumEntry( "DoubleClickInterval", 400 );
 
@@ -1237,7 +1237,7 @@ void KrBriefView::refreshColors() {
       setPaletteBackgroundColor( cg.background() );
    } else {
       // KDE default is choosen: set back the background color
-      setPaletteBackgroundColor( KGlobalSettings::baseColor() );
+      setPaletteBackgroundColor( TDEGlobalSettings::baseColor() );
    }
    slotUpdate();
 }

@@ -132,7 +132,7 @@ public:
   ResultListViewItem( TQListView *resultsList, TQString name, TQString where, KIO::filesize_t size, 
                       TQDateTime date, TQString perm ) : TQListViewItem( resultsList, name, where, 
                       KRpermHandler::parseSize(size), 
-                      KGlobal::locale()->formatDateTime( date ), perm )
+                      TDEGlobal::locale()->formatDateTime( date ), perm )
   {
     fileSize = size;
     fileDate = date;

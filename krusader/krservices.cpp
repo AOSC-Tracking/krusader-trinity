@@ -192,25 +192,25 @@ TQString KrServices::escape( TQString name ) {
 
 
 // ------- KEasyProcess
-KEasyProcess::KEasyProcess(TQObject *parent, const char *name): KProcess(parent, name) {
+KEasyProcess::KEasyProcess(TQObject *parent, const char *name): TDEProcess(parent, name) {
 	init();
 }
 
-KEasyProcess::KEasyProcess(): KProcess() {
+KEasyProcess::KEasyProcess(): TDEProcess() {
 	init();
 }
 
 void KEasyProcess::init() {
-	connect(this, TQT_SIGNAL(receivedStdout(KProcess *, char *, int)),
-		this, TQT_SLOT(receivedStdout(KProcess *, char *, int)));
-	connect(this, TQT_SIGNAL(receivedStderr(KProcess *, char *, int)),
-		this, TQT_SLOT(receivedStderr(KProcess *, char *, int)));
+	connect(this, TQT_SIGNAL(receivedStdout(TDEProcess *, char *, int)),
+		this, TQT_SLOT(receivedStdout(TDEProcess *, char *, int)));
+	connect(this, TQT_SIGNAL(receivedStderr(TDEProcess *, char *, int)),
+		this, TQT_SLOT(receivedStderr(TDEProcess *, char *, int)));
 }
 
-void KEasyProcess::receivedStdout (KProcess * /* proc */, char *buffer, int buflen) {
+void KEasyProcess::receivedStdout (TDEProcess * /* proc */, char *buffer, int buflen) {
 	_stdout+=TQString::fromLocal8Bit(buffer, buflen);
 }
 
-void KEasyProcess::receivedStderr (KProcess * /* proc */, char *buffer, int buflen) {
+void KEasyProcess::receivedStderr (TDEProcess * /* proc */, char *buffer, int buflen) {
 	_stderr+=TQString::fromLocal8Bit(buffer, buflen);
 }

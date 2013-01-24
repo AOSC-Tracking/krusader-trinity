@@ -249,7 +249,7 @@ void QuickNavLineEdit::init() {
 	_numOfSelectedChars=0;
 	_dummyDisplayed=false;
 	_pop=0;
-	//setCompletionMode( KGlobalSettings::CompletionPopupAuto );  ==> removed by public demand
+	//setCompletionMode( TDEGlobalSettings::CompletionPopupAuto );  ==> removed by public demand
 }
 
 void QuickNavLineEdit::leaveEvent(TQEvent *) {

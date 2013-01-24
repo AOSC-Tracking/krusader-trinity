@@ -127,8 +127,8 @@ class KrActionProcDlg: public KDialogBase {
       KrActionProcDlg( TQString caption, bool enableStderr = false, TQWidget *parent = 0 );
 
    protected slots:
-      void addStderr( KProcess *proc, char *buffer, int buflen );
-      void addStdout( KProcess *proc, char *buffer, int buflen );
+      void addStderr( TDEProcess *proc, char *buffer, int buflen );
+      void addStdout( TDEProcess *proc, char *buffer, int buflen );
       void toggleFixedFont( bool state );
       void slotUser1(); ///< This is used to save the buffer to disc
 
@@ -156,11 +156,11 @@ class KrActionProc: public TQObject {
 
    protected slots:
       void kill() { _proc->kill( SIGINT ); }
-      void processExited( KProcess *proc );
+      void processExited( TDEProcess *proc );
 
    private:
       KrActionBase* _action;
-      KProcess *_proc;
+      TDEProcess *_proc;
       TQString _stdout;
       TQString _stderr;
       KrActionProcDlg *_output;

@@ -274,13 +274,13 @@ void KrViewer::edit( KURL url, Mode mode, int new_window, TQWidget * parent ) {
 		new_window = krConfig->readBoolEntry( "View In Separate Window",_ViewInSeparateWindow );
 
 	if ( edit != "internal editor" ) {
-		KProcess proc;
+		TDEProcess proc;
 		// if the file is local, pass a normal path and not a url. this solves
 		// the problem for editors that aren't url-aware
 		if ( url.isLocalFile() )
 			proc << TQStringList::split( ' ', edit ) << url.path();
 		else proc << TQStringList::split( ' ', edit ) << url.prettyURL();
-		if ( !proc.start( KProcess::DontCare ) )
+		if ( !proc.start( TDEProcess::DontCare ) )
 			KMessageBox::sorry( krApp, i18n( "Can't open " ) + "\"" + edit + "\"" );
 		return ;
 	}

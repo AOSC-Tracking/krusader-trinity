@@ -56,7 +56,7 @@ private:
 // wraps over kprocess, but buffers stdout and stderr and allows easy access to them later
 // note, that you still have to enable stdout,stderr in KEasyProcess::start() for buffering
 // to happen (ie: start(KEasyProcess::Block, KEasyProcess::AllOutput);)
-class KEasyProcess: public KProcess {
+class KEasyProcess: public TDEProcess {
 	Q_OBJECT
   
 public:
@@ -68,8 +68,8 @@ public:
 	const TQString& getStderr() const { return _stderr; }
 
 protected slots:
-	void receivedStdout (KProcess *proc, char *buffer, int buflen);
-	void receivedStderr (KProcess *proc, char *buffer, int buflen);
+	void receivedStdout (TDEProcess *proc, char *buffer, int buflen);
+	void receivedStderr (TDEProcess *proc, char *buffer, int buflen);
 	void init();
 
 private:

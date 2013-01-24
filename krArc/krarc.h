@@ -28,7 +28,7 @@
 #include <kio/slavebase.h>
 #include <kprocess.h>
 
-class KProcess;
+class TDEProcess;
 class KFileItem;
 class TQCString;
 
@@ -47,8 +47,8 @@ public:
 	virtual void copy (const KURL &src, const KURL &dest, int permissions, bool overwrite);
 
 public slots:
-	void receivedData(KProcess* proc,char* buf,int len);
-	void checkOutputForPassword( KProcess*,char*,int );
+	void receivedData(TDEProcess* proc,char* buf,int len);
+	void checkOutputForPassword( TDEProcess*,char*,int );
 
 protected:
 	virtual bool   initDirDict(const KURL& url,bool forced = false);
@@ -109,10 +109,10 @@ class KrShellProcess : public KShellProcess {
   
 public:
 	KrShellProcess() : KShellProcess(), errorMsg( TQString() ), outputMsg( TQString() ) {
-		connect(this,TQT_SIGNAL(receivedStderr(KProcess*,char*,int)),
-				this,TQT_SLOT(receivedErrorMsg(KProcess*,char*,int)) );
-		connect(this,TQT_SIGNAL(receivedStdout(KProcess*,char*,int)),
-				this,TQT_SLOT(receivedOutputMsg(KProcess*,char*,int)) );
+		connect(this,TQT_SIGNAL(receivedStderr(TDEProcess*,char*,int)),
+				this,TQT_SLOT(receivedErrorMsg(TDEProcess*,char*,int)) );
+		connect(this,TQT_SIGNAL(receivedStdout(TDEProcess*,char*,int)),
+				this,TQT_SLOT(receivedOutputMsg(TDEProcess*,char*,int)) );
 	}
 	
 	TQString getErrorMsg() {
@@ -123,14 +123,14 @@ public:
 	}
 	
 public slots:
-	void receivedErrorMsg(KProcess*, char *buf, int len) {
+	void receivedErrorMsg(TDEProcess*, char *buf, int len) {
 		errorMsg += TQString::fromLocal8Bit( buf, len );
 		if( errorMsg.length() > 500 )
 			errorMsg = errorMsg.right( 500 );
 		receivedOutputMsg( 0, buf, len );
 	}
 	
-	void receivedOutputMsg(KProcess*, char *buf, int len) {
+	void receivedOutputMsg(TDEProcess*, char *buf, int len) {
 		outputMsg += TQString::fromLocal8Bit( buf, len );
 		if( outputMsg.length() > 500 )
 			outputMsg = outputMsg.right( 500 );

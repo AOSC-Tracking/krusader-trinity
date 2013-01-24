@@ -158,7 +158,7 @@ RadialMap::Map::colorise()
     double contrast = (double)Config::contrast / (double)100;
     int h, s1, s2, v1, v2;
 
-    TQColor kdeColour[2] = { KGlobalSettings::inactiveTitleColor(), KGlobalSettings::activeTitleColor() };
+    TQColor kdeColour[2] = { TDEGlobalSettings::inactiveTitleColor(), TDEGlobalSettings::activeTitleColor() };
 
     double deltaRed   = (double)(kdeColour[0].red()   - kdeColour[1].red())   / 2880; //2880 for semicircle
     double deltaGreen = (double)(kdeColour[0].green() - kdeColour[1].green()) / 2880;

@@ -329,12 +329,12 @@ void PackGUIBase::expand() {
 
 void PackGUIBase::checkConsistency() {
     if( password->text().isEmpty() && passwordAgain->text().isEmpty()) {
-      passwordConsistencyLabel->setPaletteForegroundColor( KGlobalSettings::textColor() );
+      passwordConsistencyLabel->setPaletteForegroundColor( TDEGlobalSettings::textColor() );
       passwordConsistencyLabel->setText( i18n( "No password specified" ) );
     }
     else
     if( password->text() == passwordAgain->text() ) {
-      passwordConsistencyLabel->setPaletteForegroundColor( KGlobalSettings::textColor() );
+      passwordConsistencyLabel->setPaletteForegroundColor( TDEGlobalSettings::textColor() );
       passwordConsistencyLabel->setText( i18n( "The passwords are equal" ) );
     }
     else {

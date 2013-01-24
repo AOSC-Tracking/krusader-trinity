@@ -644,7 +644,7 @@ int DiskUsage::del( File *file, bool calcPercents, int depth )
 #if KDE_IS_VERSION(3,4,0)
     job = KIO::trash( url, true );
 #else
-    job = new KIO::CopyJob( url,KGlobalSettings::trashPath(),KIO::CopyJob::Move,false,true );
+    job = new KIO::CopyJob( url,TDEGlobalSettings::trashPath(),KIO::CopyJob::Move,false,true );
 #endif
     connect(job,TQT_SIGNAL(result(KIO::Job*)),krApp,TQT_SLOT(changeTrashIcon()));
   }
@@ -1025,7 +1025,7 @@ TQString DiskUsage::getToolTip( File *item )
   time_t tma = item->time();
   struct tm* t=localtime((time_t *)&tma);
   TQDateTime tmp(TQDate(t->tm_year+1900, t->tm_mon+1, t->tm_mday), TQTime(t->tm_hour, t->tm_min));
-  TQString date = KGlobal::locale()->formatDateTime(tmp);
+  TQString date = TDEGlobal::locale()->formatDateTime(tmp);
 
   TQString str = "<qt><h5><table><tr><td>" + i18n( "Name:" ) +  "</td><td>" + item->name() + "</td></tr>"+
                 "<tr><td>" + i18n( "Type:" ) +  "</td><td>" + mime + "</td></tr>"+

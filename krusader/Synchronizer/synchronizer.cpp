@@ -1441,10 +1441,10 @@ void Synchronizer::synchronizeWithKGet()
           source = startString+endString;
         }
 
-        KProcess p;
+        TDEProcess p;
 
         p << KrServices::fullPathName( "kget" ) << source << destURL.path();
-        if (!p.start(KProcess::Block))
+        if (!p.start(TDEProcess::Block))
           KMessageBox::error(parentWidget,i18n("Error executing ")+KrServices::fullPathName( "kget" )+" !");
         else
           p.detach();

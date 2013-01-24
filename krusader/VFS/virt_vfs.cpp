@@ -124,7 +124,7 @@ void virt_vfs::vfs_delFiles( TQStringList *fileNames ) {
 #if KDE_IS_VERSION(3,4,0)
 		job = KIO::trash( filesUrls, true );
 #else
-		job = new KIO::CopyJob( filesUrls, KGlobalSettings::trashPath(), KIO::CopyJob::Move, false, true );
+		job = new KIO::CopyJob( filesUrls, TDEGlobalSettings::trashPath(), KIO::CopyJob::Move, false, true );
 #endif
 		connect( job, TQT_SIGNAL( result( KIO::Job* ) ), krApp, TQT_SLOT( changeTrashIcon() ) );
 	} else

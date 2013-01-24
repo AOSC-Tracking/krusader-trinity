@@ -237,7 +237,7 @@ Krusader::Krusader() : KParts::MainWindow(0,0,WType_TopLevel|WDestructiveClose|T
    }
 
    // create an icon loader
-   iconLoader = KGlobal::iconLoader();
+   iconLoader = TDEGlobal::iconLoader();
 
    // create MountMan
    mountMan = new KMountMan();
@@ -1020,7 +1020,7 @@ bool Krusader::wasWaitingCancelled() const {
 	return plzWait->wasCancelled(); 
 }
 
-void Krusader::incProgress( KProcess *, char *buffer, int buflen ) {
+void Krusader::incProgress( TDEProcess *, char *buffer, int buflen ) {
    int howMuch = 0;
    for ( int i = 0 ; i < buflen; ++i )
       if ( buffer[ i ] == '\n' )
