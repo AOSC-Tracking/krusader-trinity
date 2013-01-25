@@ -115,7 +115,7 @@ void DiskUsageViewer::slotUpdateStatus( TQString status )
     if( status.isEmpty() ) {
       Directory * dir = diskUsage->getCurrentDir();
       if( dir )
-        status = prefix + dir->name() + "  [" + KIO::convertSize( dir->size() ) + "]";
+        status = prefix + dir->name() + "  [" + TDEIO::convertSize( dir->size() ) + "]";
     }
     statusLabel->setText( status );
   }

@@ -222,13 +222,13 @@ Krusader::Krusader() : KParts::MainWindow(0,0,WType_TopLevel|WDestructiveClose|T
 
    TQString message;
    switch ( config->getConfigState() ) {
-         case KConfigBase::NoAccess :
+         case TDEConfigBase::NoAccess :
          message = "Krusader's configuration file can't be found. Default values will be used.";
          break;
-         case KConfigBase::ReadOnly :
+         case TDEConfigBase::ReadOnly :
          message = "Krusader's configuration file is in READ ONLY mode (why is that!?) Changed values will not be saved";
          break;
-         case KConfigBase::ReadWrite :
+         case TDEConfigBase::ReadWrite :
          message = "";
          break;
    }
@@ -1091,7 +1091,7 @@ void Krusader::updateGUI( bool enforce ) {
       }
       if ( config->readBoolEntry( "Show Terminal Emulator", _ShowTerminalEmulator ) ) {
         mainView->slotTerminalEmulator( true ); // create konsole_part
-        KConfigGroup grp(krConfig, "Private" );
+        TDEConfigGroup grp(krConfig, "Private" );
         TQValueList<int> lst;
         lst.append( grp.readNumEntry( "Panel Size", _PanelSize ) );
         lst.append( grp.readNumEntry( "Terminal Size", _TerminalSize ) );

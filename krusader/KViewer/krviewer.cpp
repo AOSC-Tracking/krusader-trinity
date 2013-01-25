@@ -645,7 +645,7 @@ void KrViewer::viewHex() {
 		TQString file;
 		// files that are not local must first be downloaded
 		if ( !url.isLocalFile() ) {
-			if ( !KIO::NetAccess::download( url, file ) ) {
+			if ( !TDEIO::NetAccess::download( url, file ) ) {
 				KMessageBox::sorry( this, i18n( "KrViewer is unable to download: " ) + url.url() );
 				return ;
 			}
@@ -659,8 +659,8 @@ void KrViewer::viewHex() {
 
 		FILE *out = KDE_fopen( tmpFile.name().local8Bit(), "w" );
 
-		KIO::filesize_t fileSize = f_in.size();
-		KIO::filesize_t address = 0;
+		TDEIO::filesize_t fileSize = f_in.size();
+		TDEIO::filesize_t address = 0;
 		char buf[ 16 ];
 		unsigned int* pBuff = ( unsigned int* ) buf;
 
@@ -687,7 +687,7 @@ void KrViewer::viewHex() {
 		f_in.close();
 		fclose( out );
 		if ( !url.isLocalFile() )
-			KIO::NetAccess::removeTempFile( file );
+			TDEIO::NetAccess::removeTempFile( file );
 
 		hex_part = static_cast<KParts::ReadOnlyPart*>( getPart( tmpFile.name(), "text/plain", true ) );
 		if ( !hex_part ) return ;

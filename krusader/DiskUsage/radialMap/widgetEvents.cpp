@@ -194,9 +194,9 @@ RadialMap::Widget::mousePressEvent( TQMouseEvent *e )
             const int userIntention = KMessageBox::warningContinueCancel( this, message, TQString(), KGuiItem( i18n("&Delete"), "editdelete" ) );
 
             if( userIntention == KMessageBox::Continue ) {
-               KIO::Job *job = KIO::del( url );
+               TDEIO::Job *job = TDEIO::del( url );
                job->setWindow( this );
-               connect( job, TQT_SIGNAL(result( KIO::Job* )), TQT_SLOT(deleteJobFinished( KIO::Job* )) );
+               connect( job, TQT_SIGNAL(result( TDEIO::Job* )), TQT_SLOT(deleteJobFinished( TDEIO::Job* )) );
                TQApplication::setOverrideCursor( KCursor::workingCursor() );
             }
          }
@@ -231,7 +231,7 @@ RadialMap::Widget::mousePressEvent( TQMouseEvent *e )
 }
 
 void
-RadialMap::Widget::deleteJobFinished( KIO::Job *job )
+RadialMap::Widget::deleteJobFinished( TDEIO::Job *job )
 {
    TQApplication::restoreOverrideCursor();
    if( !job->error() )

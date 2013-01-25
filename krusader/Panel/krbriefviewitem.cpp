@@ -23,7 +23,7 @@ KrBriefViewItem::KrBriefViewItem(KrBriefView *parent, TQIconViewItem *after, vfi
 	initiated = false;
 	// get the expected height of an item - should be done only once
 	if (expHeight == 0) {
-		KConfigGroupSaver svr(krConfig, "Look&Feel");
+		TDEConfigGroupSaver svr(krConfig, "Look&Feel");
   		expHeight = 2 + (krConfig->readEntry("Filelist Icon Size",_FilelistIconSize)).toInt();
 	}
 	if( PROPS->displayIcons )

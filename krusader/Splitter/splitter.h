@@ -45,40 +45,40 @@ class Splitter : public TQProgressDialog
 private:
   KURL            fileName;
   KURL            destinationDir;
-  KIO::filesize_t splitSize;
+  TDEIO::filesize_t splitSize;
 
-  KIO::filesize_t fileSize;
+  TDEIO::filesize_t fileSize;
   int             permissions;
   TQString         splitFile;
 
   KURL            writeURL;
   int             fileNumber;
-  KIO::filesize_t outputFileSize;
+  TDEIO::filesize_t outputFileSize;
   bool            noValidWriteJob;
   CRC32          *crcContext;
   TQByteArray      transferArray;    
   
-  KIO::TransferJob *splitReadJob;
-  KIO::TransferJob *splitWriteJob;
+  TDEIO::TransferJob *splitReadJob;
+  TDEIO::TransferJob *splitWriteJob;
     
 public:
   Splitter( TQWidget* parent,  KURL fileNameIn, KURL destinationDirIn );
   ~Splitter();
   
-  void split( KIO::filesize_t splitSizeIn );
+  void split( TDEIO::filesize_t splitSizeIn );
 
 private:
   void splitCreateWriteJob();
   void splitAbortJobs();
   
 public slots:
-  void splitDataReceived(KIO::Job *, const TQByteArray &);
-  void splitDataSend(KIO::Job *, TQByteArray &);
-  void splitSendFinished(KIO::Job *);
-  void splitReceiveFinished(KIO::Job *);
-  void splitReceivePercent (KIO::Job *, unsigned long);
-  void splitFileSend(KIO::Job *, TQByteArray &);
-  void splitFileFinished(KIO::Job *);
+  void splitDataReceived(TDEIO::Job *, const TQByteArray &);
+  void splitDataSend(TDEIO::Job *, TQByteArray &);
+  void splitSendFinished(TDEIO::Job *);
+  void splitReceiveFinished(TDEIO::Job *);
+  void splitReceivePercent (TDEIO::Job *, unsigned long);
+  void splitFileSend(TDEIO::Job *, TQByteArray &);
+  void splitFileFinished(TDEIO::Job *);
 };
 
 #endif /* __SPLITTER_H__ */

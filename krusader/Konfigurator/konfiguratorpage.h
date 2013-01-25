@@ -123,8 +123,8 @@ public:
     * KonfiguratorCheckBox *myCheckBox = createCheckBox( "class", "name", false, parentWidget );<br>
     * myLayout->addWidget( myCheckBox, 0, 0 );
     *
-    * @param  cls         The class name used in KConfig (ex. "Archives")
-    * @param  name        The item name used in KConfig (ex. "Do Tar")
+    * @param  cls         The class name used in TDEConfig (ex. "Archives")
+    * @param  name        The item name used in TDEConfig (ex. "Do Tar")
     * @param  dflt        The default value of the checkbox
     * @param  text        The text field of the checkbox
     * @param  parent      Reference to the parent widget
@@ -146,8 +146,8 @@ public:
     * KonfiguratorSpinBox *mySpinBox = createSpinBox( "class", "name", 10, 1, 100, parentWidget );<br>
     * myLayout->addWidget( mySpinBox, 0, 0 );
     *
-    * @param  cls         The class name used in KConfig (ex. "Archives")
-    * @param  name        The item name used in KConfig (ex. "Do Tar")
+    * @param  cls         The class name used in TDEConfig (ex. "Archives")
+    * @param  name        The item name used in TDEConfig (ex. "Do Tar")
     * @param  dflt        The default value of the spinbox
     * @param  min         The minimum value of the spinbox
     * @param  max         The maximum value of the spinbox
@@ -168,8 +168,8 @@ public:
     * KonfiguratorEditBox *myEditBox = createEditBox( "class", "name", "default", parentWidget );<br>
     * myLayout->addWidget( myEditBox, 0, 0 );
     *
-    * @param  cls         The class name used in KConfig (ex. "Archives")
-    * @param  name        The itemname used in KConfig (ex. "Do Tar")
+    * @param  cls         The class name used in TDEConfig (ex. "Archives")
+    * @param  name        The itemname used in TDEConfig (ex. "Do Tar")
     * @param  dflt        The default value of the editbox
     * @param  parent      Reference to the parent widget
     * @param  rst         The change of this parameter requires Krusader restart
@@ -190,8 +190,8 @@ public:
     * KonfiguratorListBox *myListBox = createListBox( "class", "name", valueList, parentWidget );<br>
     * myLayout->addWidget( myListBox, 0, 0 );
     *
-    * @param  cls         The class name used in KConfig (ex. "Archives")
-    * @param  name        The itemname used in KConfig (ex. "Do Tar")
+    * @param  cls         The class name used in TDEConfig (ex. "Archives")
+    * @param  name        The itemname used in TDEConfig (ex. "Do Tar")
     * @param  dflt        The default value of the listbox
     * @param  parent      Reference to the parent widget
     * @param  rst         The change of this parameter requires Krusader restart
@@ -210,8 +210,8 @@ public:
     * KonfiguratorURLRequester *myURLRequester = createURLRequester( "class", "name", "default", parentWidget );<br>
     * myLayout->addWidget( myURLRequester, 0, 0 );
     *
-    * @param  cls         The class name used in KConfig (ex. "Archives")
-    * @param  name        The itemname used in KConfig (ex. "Do Tar")
+    * @param  cls         The class name used in TDEConfig (ex. "Archives")
+    * @param  name        The itemname used in TDEConfig (ex. "Do Tar")
     * @param  dflt        The default value of the URL requester
     * @param  text        The text field of the URL requester
     * @param  parent      Reference to the parent widget
@@ -231,8 +231,8 @@ public:
     * KonfiguratorFontChooser *myFontChooser = createFontChooser( "class", "name", new TQFont(), parentWidget );<br>
     * myLayout->addWidget( myFontChooser, 0, 0 );
     *
-    * @param  cls         The class name used in KConfig (ex. "Archives")
-    * @param  name        The item name used in KConfig (ex. "Do Tar")
+    * @param  cls         The class name used in TDEConfig (ex. "Archives")
+    * @param  name        The item name used in TDEConfig (ex. "Do Tar")
     * @param  dflt        The default value of the font chooser
     * @param  parent      Reference to the parent widget
     * @param  rst         The change of this parameter requires Krusader restart
@@ -255,8 +255,8 @@ public:
     * KonfiguratorComboBox *myComboBox = createComboBox( "class", "name", "value2", comboInfo, 3, parentWidget );<br>
     * myLayout->addWidget( myComboBox, 0, 0 );
     *
-    * @param  cls         The class name used in KConfig (ex. "Archives")
-    * @param  name        The item name used in KConfig (ex. "Do Tar")
+    * @param  cls         The class name used in TDEConfig (ex. "Archives")
+    * @param  name        The item name used in TDEConfig (ex. "Do Tar")
     * @param  dflt        The default value of the combobox
     * @param  params      Pointer to the name-value pair array (combo elements)
     * @param  paramNum    Number of the combobox elements
@@ -407,8 +407,8 @@ public:
     * myRadioGroup->find( i18n( "radio text1" ) )->setEnabled( false );<br>
     * myLayout->addWidget( myRadioGroup, 0, 0 );<br>
     *
-    * @param  cls         The class name used in KConfig (ex. "Archives")
-    * @param  name        The item name used in KConfig (ex. "Do Tar")
+    * @param  cls         The class name used in TDEConfig (ex. "Archives")
+    * @param  name        The item name used in TDEConfig (ex. "Do Tar")
     * @param  dflt        The default value of the radio buttons
     * @param  sizex       the maximum column number at horizontal placing
     * @param  sizey       the maximum row number at vertical placing
@@ -460,8 +460,8 @@ public:
     * KonfiguratorColorChooser *myColorChooser = createColorChooser( "class", "name", TQColor( 255, 0, 255 ), parentWidget );<br>
     * myLayout->addWidget( myColorChooser, 0, 0 );
     *
-    * @param  cls         The class name used in KConfig (ex. "Archives")
-    * @param  name        The item name used in KConfig (ex. "Do Tar")
+    * @param  cls         The class name used in TDEConfig (ex. "Archives")
+    * @param  name        The item name used in TDEConfig (ex. "Do Tar")
     * @param  dflt        The default value of the color chooser
     * @param  parent      Reference to the parent widget
     * @param  rst         The change of this parameter requires Krusader restart
@@ -495,11 +495,11 @@ private:
 struct KONFIGURATOR_CHECKBOX_PARAM
 {
   /**
-    * The class used in KConfig (ex. "Archives")
+    * The class used in TDEConfig (ex. "Archives")
     */
   TQString configClass;
   /**
-    * The item name used in KConfig (ex. "Do Tar")
+    * The item name used in TDEConfig (ex. "Do Tar")
     */
   TQString configName;
   /**

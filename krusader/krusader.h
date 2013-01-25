@@ -118,7 +118,7 @@ class Krusader : public KParts::MainWindow, public DCOPObject {
     static Krusader *App;       // a kApp style pointer
     KMountMan *mountMan;  // krusader's Mount Manager
     KrusaderView *mainView;  // The GUI
-    KConfig *config;    // allow everyone to access the config
+    TDEConfig *config;    // allow everyone to access the config
     KIconLoader *iconLoader; // the app's icon loader
 	 PopularUrls *popularUrls; // holds a sorted list of the most popular urls visited
 	 QueueManager *queueManager;

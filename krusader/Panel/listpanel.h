@@ -153,10 +153,10 @@ protected slots:
    void handleDropOnStatus( TQDropEvent * );                   // handles drops on the status line
    void startDragging( TQStringList, TQPixmap );
 	// those handle the in-panel refresh notifications
-	void slotJobStarted(KIO::Job* job);
-	void inlineRefreshInfoMessage( KIO::Job* job, const TQString &msg );
-	void inlineRefreshListResult(KIO::Job* job);
-	void inlineRefreshPercent( KIO::Job*, unsigned long );
+	void slotJobStarted(TDEIO::Job* job);
+	void inlineRefreshInfoMessage( TDEIO::Job* job, const TQString &msg );
+	void inlineRefreshListResult(TDEIO::Job* job);
+	void inlineRefreshPercent( TDEIO::Job*, unsigned long );
 	void inlineRefreshCancel();
 
 signals:
@@ -195,7 +195,7 @@ public:
    MediaButton *mediaButton;
    SyncBrowseButton *syncBrowseButton;
 	KPushButton *inlineRefreshCancelButton;
-	KIO::Job *inlineRefreshJob;
+	TDEIO::Job *inlineRefreshJob;
 	TQSplitter *splt;
    TQHeader * header;
 

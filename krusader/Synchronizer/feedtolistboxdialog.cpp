@@ -191,7 +191,7 @@ void FeedToListBoxDialog::slotOk() {
     KMessageBox::error( parentWidget(), i18n( "Cannot open %1!" ).arg( url.prettyURL() ) );
     return;
   }
-  v.vfs_addFiles( &urlList, KIO::CopyJob::Copy, 0 );
+  v.vfs_addFiles( &urlList, TDEIO::CopyJob::Copy, 0 );
   ACTIVE_MNG->slotNewTab(url.prettyURL());
   accepted = true;
   accept();

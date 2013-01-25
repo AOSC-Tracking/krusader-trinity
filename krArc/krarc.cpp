@@ -57,7 +57,7 @@
 #define KRDEBUG(X...)
 #endif
 
-using namespace KIO;
+using namespace TDEIO;
 extern "C" {
 
 int kdemain( int argc, char **argv ){
@@ -80,7 +80,7 @@ kio_krarcProtocol::kio_krarcProtocol(const TQCString &pool_socket, const TQCStri
 	: SlaveBase("kio_krarc", pool_socket, app_socket), archiveChanged(true), arcFile(0L),extArcReady(false),
 		password(TQString()) {
 	
-	krConfig = new KConfig( "krusaderrc" );
+	krConfig = new TDEConfig( "krusaderrc" );
 	krConfig->setGroup( "Dependencies" );
 	
 	dirDict.setAutoDelete(true);
@@ -264,14 +264,14 @@ void kio_krarcProtocol::get(const KURL& url, int tries ){
 	} 
 	UDSEntry* entry = findFileEntry(url);
 	if( !entry ){
-		error(KIO::ERR_DOES_NOT_EXIST,url.path());
+		error(TDEIO::ERR_DOES_NOT_EXIST,url.path());
 		return;
 	}
 	if(KFileItem(*entry,url).isDir()){
-		error(KIO::ERR_IS_DIRECTORY,url.path());
+		error(TDEIO::ERR_IS_DIRECTORY,url.path());
 		return;
 	}
-	KIO::filesize_t expectedSize = KFileItem(*entry,url).size();
+	TDEIO::filesize_t expectedSize = KFileItem(*entry,url).size();
 	// for RPM files extract the cpio file first
 	if( !extArcReady && arcType == "rpm"){
 		KrShellProcess cpio;
@@ -329,7 +329,7 @@ void kio_krarcProtocol::get(const KURL& url, int tries ){
 				get( url, tries - 1 );
 				return;
 			}
-			error( KIO::ERR_ACCESS_DENIED, url.path() + "\n\n" + proc.getErrorMsg() );
+			error( TDEIO::ERR_ACCESS_DENIED, url.path() + "\n\n" + proc.getErrorMsg() );
 			return;
 		}
 	}
@@ -342,31 +342,31 @@ void kio_krarcProtocol::get(const KURL& url, int tries ){
 				get( url, tries - 1 );
 				return;
 			}
-			error( KIO::ERR_ACCESS_DENIED, url.path() );
+			error( TDEIO::ERR_ACCESS_DENIED, url.path() );
 			return;
 		}
-		// the follwing block is ripped from KDE file KIO::Slave
+		// the follwing block is ripped from KDE file TDEIO::Slave
 		// $Id: krarc.cpp,v 1.43 2007/01/13 13:39:51 ckarai Exp $
 		TQCString _path( TQFile::encodeName(arcTempDir+file) );
 		KDE_struct_stat buff;
 		if( KDE_lstat( _path.data(), &buff ) == -1 ) {
 			if ( errno == EACCES )
-				error( KIO::ERR_ACCESS_DENIED, url.path() );
+				error( TDEIO::ERR_ACCESS_DENIED, url.path() );
 			else
-				error( KIO::ERR_DOES_NOT_EXIST, url.path() );
+				error( TDEIO::ERR_DOES_NOT_EXIST, url.path() );
 			return;
 		}
 		if ( S_ISDIR( buff.st_mode ) ) {
-			error( KIO::ERR_IS_DIRECTORY, url.path() );
+			error( TDEIO::ERR_IS_DIRECTORY, url.path() );
 			return;
 		}
 		if ( !S_ISREG(buff.st_mode) ) {
-			error( KIO::ERR_CANNOT_OPEN_FOR_READING, url.path() );
+			error( TDEIO::ERR_CANNOT_OPEN_FOR_READING, url.path() );
 			return;
 		}
 		int fd = KDE_open( _path.data(), O_RDONLY );
 		if ( fd < 0 ) {
-			error( KIO::ERR_CANNOT_OPEN_FOR_READING, url.path() );
+			error( TDEIO::ERR_CANNOT_OPEN_FOR_READING, url.path() );
 			return;
 		}
 		// Determine the mimetype of the file to be retrieved, and emit it.
@@ -374,12 +374,12 @@ void kio_krarcProtocol::get(const KURL& url, int tries ){
 		KMimeType::Ptr mt = KMimeType::findByURL( arcTempDir+file, buff.st_mode, true /* local URL */ );
 		emit mimeType( mt->name() );
 		
-		KIO::filesize_t processed_size = 0;
+		TDEIO::filesize_t processed_size = 0;
 		
 		TQString resumeOffset = metaData("resume");
 		if ( !resumeOffset.isEmpty() ){
 			bool ok;
-			KIO::fileoffset_t offset = resumeOffset.toLongLong(&ok);
+			TDEIO::fileoffset_t offset = resumeOffset.toLongLong(&ok);
 			if (ok && (offset > 0) && (offset < buff.st_size)){
 				if (KDE_lseek(fd, offset, SEEK_SET) == offset){
 					canResume ();
@@ -397,7 +397,7 @@ void kio_krarcProtocol::get(const KURL& url, int tries ){
 			if (n == -1){
 				if (errno == EINTR)
 					continue;
-				error( KIO::ERR_COULD_NOT_READ, url.path());
+				error( TDEIO::ERR_COULD_NOT_READ, url.path());
 				close(fd);
 				return;
 			}
@@ -444,7 +444,7 @@ void kio_krarcProtocol::del(KURL const & url, bool isFile){
 	}
 	if( !findFileEntry(url) ){
 		if( ( arcType != "arj" && arcType != "lha" ) || isFile ) {
-			error(KIO::ERR_DOES_NOT_EXIST,url.path());
+			error(TDEIO::ERR_DOES_NOT_EXIST,url.path());
 			return;
 		}
 	}
@@ -503,7 +503,7 @@ void kio_krarcProtocol::stat( const KURL & url ){
 	if( entry ){
 		statEntry( *entry );
 		finished();
-	} else error( KIO::ERR_DOES_NOT_EXIST, path );
+	} else error( TDEIO::ERR_DOES_NOT_EXIST, path );
 }
 
 void kio_krarcProtocol::copy (const KURL &url, const KURL &dest, int, bool overwrite) {
@@ -554,11 +554,11 @@ void kio_krarcProtocol::copy (const KURL &url, const KURL &dest, int, bool overw
 			infoMessage(i18n("Unpacking %1 ...").arg( url.fileName() ) );
 			proc.start(TDEProcess::Block, TDEProcess::AllOutput);
 			if( !proc.normalExit() || !checkStatus( proc.exitStatus() ) )  {
-				error(KIO::ERR_COULD_NOT_WRITE, dest.path(-1) + "\n\n" + proc.getErrorMsg() );
+				error(TDEIO::ERR_COULD_NOT_WRITE, dest.path(-1) + "\n\n" + proc.getErrorMsg() );
 				return;
 			}
 			if( !TQFileInfo( dest.path(-1) ).exists() ) {
-				error( KIO::ERR_COULD_NOT_WRITE, dest.path(-1) );
+				error( TDEIO::ERR_COULD_NOT_WRITE, dest.path(-1) );
 				return;
 			}
 			
@@ -1367,7 +1367,7 @@ bool kio_krarcProtocol::initArcParameters() {
 	}
 
 	if( KStandardDirs::findExe(cmd).isEmpty() ){
-		error( KIO::ERR_CANNOT_LAUNCH_PROCESS,
+		error( TDEIO::ERR_CANNOT_LAUNCH_PROCESS,
 		cmd+
 		i18n("\nMake sure that the %1 binary are installed properly on your system.").arg(cmd));
 		KRDEBUG("Failed to find cmd: " << cmd);
@@ -1580,7 +1580,7 @@ void kio_krarcProtocol::invalidatePassword() {
 	if( !encrypted )
 		return;
 	
-	KIO::AuthInfo authInfo;
+	TDEIO::AuthInfo authInfo;
 	authInfo.caption= i18n( "Krarc Password Dialog" );
 	authInfo.username= "archive";
 	authInfo.readOnly = true;
@@ -1604,7 +1604,7 @@ TQString kio_krarcProtocol::getPassword() {
 	if( !encrypted )
 		return (password = "" );
 	
-	KIO::AuthInfo authInfo;
+	TDEIO::AuthInfo authInfo;
 	authInfo.caption= i18n( "Krarc Password Dialog" );
 	authInfo.username= "archive";
 	authInfo.readOnly = true;

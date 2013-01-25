@@ -55,7 +55,7 @@ YP   YD 88   YD ~Y8888P' `8888Y' YP   YP Y8888D' Y88888P 88   YD
 #include <tqdict.h>
 
 //////////////////////////////////////////////////////////////////////////
-//  The following is KrDetailedView's settings in KConfig:
+//  The following is KrDetailedView's settings in TDEConfig:
 // Group name: KrDetailedView
 //
 // Ext Column
@@ -87,11 +87,11 @@ YP   YD 88   YD ~Y8888P' `8888Y' YP   YP Y8888D' Y88888P 88   YD
 
 TQString KrDetailedView::ColumnName[ KrDetailedViewProperties::MAX_COLUMNS ];
 
-KrDetailedView::KrDetailedView( TQWidget *parent, bool &left, KConfig *cfg, const char *name ) :
+KrDetailedView::KrDetailedView( TQWidget *parent, bool &left, TDEConfig *cfg, const char *name ) :
       KListView( parent, name ), KrView( cfg ), _currDragItem( 0L ), currentlyRenamedItem( 0 ),
       pressedItem( 0 ) {
 	setWidget( this );
-	_nameInKConfig=TQString( "KrDetailedView" ) + TQString( ( left ? "Left" : "Right" ) ) ;
+	_nameInTDEConfig=TQString( "KrDetailedView" ) + TQString( ( left ? "Left" : "Right" ) ) ;
 	krConfig->setGroup("Private");
 	if (krConfig->readBoolEntry("Enable Input Method", true))
 		setInputMethodEnabled(true);
@@ -112,8 +112,8 @@ void KrDetailedView::setup() {
    }
 
    /////////////////////////////// listview ////////////////////////////////////
-   { // use the {} so that KConfigGroupSaver will work correctly!
-      KConfigGroupSaver grpSvr( _config, "Look&Feel" );
+   { // use the {} so that TDEConfigGroupSaver will work correctly!
+      TDEConfigGroupSaver grpSvr( _config, "Look&Feel" );
       setFont( _config->readFontEntry( "Filelist Font", _FilelistFont ) );
       // decide on single click/double click selection
       if ( _config->readBoolEntry( "Single Click Selects", _SingleClickSelects ) &&
@@ -139,7 +139,7 @@ void KrDetailedView::setup() {
    }
 
    // add whatever columns are needed to the listview
-   krConfig->setGroup( nameInKConfig() );
+   krConfig->setGroup( nameInTDEConfig() );
    
 	newColumn( KrDetailedViewProperties::Name );  // we always have a name
    setColumnWidthMode( COLUMN(Name), TQListView::Manual );
@@ -431,7 +431,7 @@ void KrDetailedView::slotClicked( TQListViewItem *item ) {
 
    if ( !modifierPressed ) {
       if ( singleClicked && !renameTimer.isActive() ) {
-         KConfig * config = TDEGlobal::config();
+         TDEConfig * config = TDEGlobal::config();
          config->setGroup( "KDE" );
          int doubleClickInterval = config->readNumEntry( "DoubleClickInterval", 400 );
 
@@ -470,7 +470,7 @@ void KrDetailedView::prepareForPassive() {
    CANCEL_TWO_CLICK_RENAME;
    if ( renameLineEdit() ->isVisible() )
       renameLineEdit() ->clearFocus();
-   KConfigGroupSaver grpSvr( _config, "Look&Feel" );
+   TDEConfigGroupSaver grpSvr( _config, "Look&Feel" );
    if ( _config->readBoolEntry( "New Style Quicksearch", _NewStyleQuicksearch ) ) {
       if ( MAIN_VIEW ) {
          if ( ACTIVE_PANEL ) {
@@ -627,7 +627,7 @@ void KrDetailedView::contentsMousePressEvent( TQMouseEvent * e ) {
    }
 
    // stop quick search in case a mouse click occured
-   KConfigGroupSaver grpSvr( _config, "Look&Feel" );
+   TDEConfigGroupSaver grpSvr( _config, "Look&Feel" );
    if ( _config->readBoolEntry( "New Style Quicksearch", _NewStyleQuicksearch ) ) {
       if ( MAIN_VIEW ) {
          if ( ACTIVE_PANEL ) {
@@ -862,7 +862,7 @@ void KrDetailedView::imStartEvent(TQIMEvent* e)
     ACTIVE_PANEL->quickSearch->myIMStartEvent( e );
     return ;
   }else {
-    KConfigGroupSaver grpSvr( _config, "Look&Feel" );
+    TDEConfigGroupSaver grpSvr( _config, "Look&Feel" );
     if ( !_config->readBoolEntry( "New Style Quicksearch", _NewStyleQuicksearch ) )
       KListView::imStartEvent( e );
     else {
@@ -1092,7 +1092,7 @@ void KrDetailedView::keyPressEvent( TQKeyEvent * e ) {
                // there's a folder we can't enter (permissions). in that case, the returned
                // size will not be correct.
                //
-               KIO::filesize_t totalSize = 0;
+               TDEIO::filesize_t totalSize = 0;
                unsigned long totalFiles = 0, totalDirs = 0;
                TQStringList items;
                items.push_back( viewItem->name() );
@@ -1135,7 +1135,7 @@ mark:       if (KrSelectionMode::getSelectionHandler()->spaceMovesDown())
             //if ( _config->readBoolEntry( "Do Quicksearch", _DoQuicksearch ) ) {
                // are we using krusader's classic quicksearch, or wincmd style?
                {
-						KConfigGroupSaver grpSvr( _config, "Look&Feel" );
+						TDEConfigGroupSaver grpSvr( _config, "Look&Feel" );
 						if ( !_config->readBoolEntry( "New Style Quicksearch", _NewStyleQuicksearch ) )
 							KListView::keyPressEvent( e );
 						else {
@@ -1212,7 +1212,7 @@ void KrDetailedView::renameCurrentItem() {
    if ( c >= 0 ) {
       rename( static_cast<TQListViewItem*>( it ), c );
       // if applicable, select only the name without extension
-      KConfigGroupSaver svr(krConfig,"Look&Feel");
+      TDEConfigGroupSaver svr(krConfig,"Look&Feel");
       if (!krConfig->readBoolEntry("Rename Selects Extension", true)) {
 	if (it->hasExtension() && !it->VF->vfile_isDir() ) 
 		renameLineEdit()->setSelection(0, it->name().findRev(it->extension())-1);
@@ -1272,7 +1272,7 @@ void KrDetailedView::quickSearch( const TQString & str, int direction ) {
    KrViewItem * item = getCurrentKrViewItem();
    if (!item)
       return;
-   KConfigGroupSaver grpSvr( _config, "Look&Feel" );
+   TDEConfigGroupSaver grpSvr( _config, "Look&Feel" );
    bool caseSensitive = _config->readBoolEntry( "Case Sensitive Quicksearch", _CaseSensitiveQuicksearch );
    if ( !direction ) {
       if ( caseSensitive ? item->name().startsWith( str ) : item->name().lower().startsWith( str.lower() ) )
@@ -1396,7 +1396,7 @@ void KrDetailedView::initOperator() {
 
 void KrDetailedView::initProperties() {
 	_properties = new KrDetailedViewProperties;
-	KConfigGroupSaver grpSvr( _config, "Look&Feel" );	
+	TDEConfigGroupSaver grpSvr( _config, "Look&Feel" );	
 	for (int i=0; i<KrDetailedViewProperties::MAX_COLUMNS;++i)
 		PROPS->column[i]=-1;	
 	PROPS->displayIcons = _config->readBoolEntry( "With Icons", _WithIcons );
@@ -1473,7 +1473,7 @@ void KrDetailedView::selectColumns()
   
   int result=popup.exec(TQCursor::pos());
 
-  krConfig->setGroup( nameInKConfig() );
+  krConfig->setGroup( nameInTDEConfig() );
   
   switch( result - COLUMN_POPUP_IDS )
   {

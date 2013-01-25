@@ -142,7 +142,7 @@ bool normal_vfs::populateVfsList(const KURL& origin, bool showHidden){
 }
 
 // copy a file to the vfs (physical)	
-void normal_vfs::vfs_addFiles(KURL::List *fileUrls,KIO::CopyJob::CopyMode mode,TQObject* toNotify,TQString dir, PreserveMode pmode ){
+void normal_vfs::vfs_addFiles(KURL::List *fileUrls,TDEIO::CopyJob::CopyMode mode,TQObject* toNotify,TQString dir, PreserveMode pmode ){
   //if( watcher ) watcher->stopScan(); // we will refresh manually this time...	
   if( watcher ) {
     delete watcher;   // stopScan is buggy, leaves reference on the directory, that's why we delete the watcher
@@ -152,10 +152,10 @@ void normal_vfs::vfs_addFiles(KURL::List *fileUrls,KIO::CopyJob::CopyMode mode,T
   KURL dest;
   dest.setPath(vfs_workingDir()+"/"+dir);
 
-  KIO::Job* job = PreservingCopyJob::createCopyJob( pmode, *fileUrls,dest,mode,false,true );
-  connect(job,TQT_SIGNAL(result(KIO::Job*)),this,TQT_SLOT(vfs_refresh()) );
-  if(mode == KIO::CopyJob::Move) // notify the other panel
-    connect(job,TQT_SIGNAL(result(KIO::Job*)),toNotify,TQT_SLOT(vfs_refresh(KIO::Job*)) );
+  TDEIO::Job* job = PreservingCopyJob::createCopyJob( pmode, *fileUrls,dest,mode,false,true );
+  connect(job,TQT_SIGNAL(result(TDEIO::Job*)),this,TQT_SLOT(vfs_refresh()) );
+  if(mode == TDEIO::CopyJob::Move) // notify the other panel
+    connect(job,TQT_SIGNAL(result(TDEIO::Job*)),toNotify,TQT_SLOT(vfs_refresh(TDEIO::Job*)) );
   else
     job->setAutoErrorHandlingEnabled( true );
 }
@@ -180,22 +180,22 @@ void normal_vfs::vfs_delFiles(TQStringList *fileNames){
 		url.setPath( vfs_workingDir()+"/"+filename);
 		filesUrls.append(url);
 	}
-	KIO::Job *job;
+	TDEIO::Job *job;
 	
 	// delete of move to trash ?
 	krConfig->setGroup("General");
 	if( krConfig->readBoolEntry("Move To Trash",_MoveToTrash) ){
 #if KDE_IS_VERSION(3,4,0)
-	  job = KIO::trash(filesUrls, true );
+	  job = TDEIO::trash(filesUrls, true );
 #else
-	  job = new KIO::CopyJob(filesUrls,TDEGlobalSettings::trashPath(),KIO::CopyJob::Move,false,true );
+	  job = new TDEIO::CopyJob(filesUrls,TDEGlobalSettings::trashPath(),TDEIO::CopyJob::Move,false,true );
 #endif
-	  connect(job,TQT_SIGNAL(result(KIO::Job*)),SLOTS,TQT_SLOT(changeTrashIcon()));
+	  connect(job,TQT_SIGNAL(result(TDEIO::Job*)),SLOTS,TQT_SLOT(changeTrashIcon()));
 	}
 	else
-	  job = new KIO::DeleteJob(filesUrls, false, true);
+	  job = new TDEIO::DeleteJob(filesUrls, false, true);
 	
-	connect(job,TQT_SIGNAL(result(KIO::Job*)),this,TQT_SLOT(vfs_refresh(KIO::Job*)));
+	connect(job,TQT_SIGNAL(result(TDEIO::Job*)),this,TQT_SLOT(vfs_refresh(TDEIO::Job*)));
 }
 
 // return a path to the file
@@ -235,8 +235,8 @@ void normal_vfs::vfs_rename(const TQString& fileName,const TQString& newName){
   fileUrls.append(url);
   dest.setPath(vfs_workingDir()+"/"+newName);
 
-  KIO::Job *job = new KIO::CopyJob(fileUrls,dest,KIO::CopyJob::Move,true,false );
-  connect(job,TQT_SIGNAL(result(KIO::Job*)),this,TQT_SLOT(vfs_refresh(KIO::Job*)));
+  TDEIO::Job *job = new TDEIO::CopyJob(fileUrls,dest,TDEIO::CopyJob::Move,true,false );
+  connect(job,TQT_SIGNAL(result(TDEIO::Job*)),this,TQT_SLOT(vfs_refresh(TDEIO::Job*)));
 }
 
 vfile* normal_vfs::vfileFromName(const TQString& name){
@@ -245,7 +245,7 @@ vfile* normal_vfs::vfileFromName(const TQString& name){
 	
 	KDE_struct_stat stat_p;
 	KDE_lstat(fileName.data(),&stat_p);
-	KIO::filesize_t size = stat_p.st_size;
+	TDEIO::filesize_t size = stat_p.st_size;
 	TQString perm = KRpermHandler::mode2TQString(stat_p.st_mode);
 	bool symLink= S_ISLNK(stat_p.st_mode);
 	if( S_ISDIR(stat_p.st_mode) ) perm[0] = 'd';

@@ -170,9 +170,9 @@ public:
   virtual void processHasExited (int )
   {
     if( !tmp1.isEmpty() )
-      KIO::NetAccess::removeTempFile( tmp1 );
+      TDEIO::NetAccess::removeTempFile( tmp1 );
     if( !tmp2.isEmpty() )
-      KIO::NetAccess::removeTempFile( tmp2 );
+      TDEIO::NetAccess::removeTempFile( tmp2 );
     delete this;
   }
 };
@@ -190,16 +190,16 @@ void KRslots::compareContent( KURL url1, KURL url2 )
   TQString tmp1 = TQString(), tmp2 = TQString();
   
   if (!url1.isLocalFile()) {
-    if( !KIO::NetAccess::download( url1, tmp1, 0 ) ){
+    if( !TDEIO::NetAccess::download( url1, tmp1, 0 ) ){
       KMessageBox::sorry(krApp,i18n("Krusader is unable to download: ")+url1.fileName());
       return;
     }
   } else tmp1 = url1.path();
   if (!url2.isLocalFile()) {
-    if( !KIO::NetAccess::download( url2, tmp2, 0 ) ){
+    if( !TDEIO::NetAccess::download( url2, tmp2, 0 ) ){
       KMessageBox::sorry(krApp,i18n("Krusader is unable to download: ")+url2.fileName());
       if( tmp1 != url1.path() )
-        KIO::NetAccess::removeTempFile( tmp1 );
+        TDEIO::NetAccess::removeTempFile( tmp1 );
       return;
     }
   } else tmp2 = url2.path();
@@ -883,7 +883,7 @@ void KRslots::execTypeSetup()
          // if commands are to be executed in the TE, it must be loaded
          MAIN_VIEW->createTE();
       }
-      KConfigGroup grp(krConfig,  "Private" );
+      TDEConfigGroup grp(krConfig,  "Private" );
       grp.writeEntry( "Command Execution Mode", i );
       break;
     }

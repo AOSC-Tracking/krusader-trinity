@@ -760,8 +760,8 @@ void ListPanel::gotStats( const TQString &mountPoint, unsigned long kBSize,
 	}
 	
 	TQString stats = i18n( "%1 free out of %2 (%3%) on %4 [ (%5) ]" )
-        .arg( KIO::convertSizeFromKB( kBAvail ) )
-        .arg( KIO::convertSizeFromKB( kBSize ) ).arg( perc )
+        .arg( TDEIO::convertSizeFromKB( kBAvail ) )
+        .arg( TDEIO::convertSizeFromKB( kBSize ) ).arg( perc )
         .arg( mountPoint ).arg( fstype );
 	status->setText( stats );
 }
@@ -838,7 +838,7 @@ void ListPanel::handleDropOnView( TQDropEvent *e, TQWidget *widget ) {
        break;
      }
 
-   KIO::CopyJob::CopyMode mode = KIO::CopyJob::Copy;
+   TDEIO::CopyJob::CopyMode mode = TDEIO::CopyJob::Copy;
 
    // the KURL::List is finished, let's go
    // --> display the COPY/MOVE/LINK menu
@@ -854,13 +854,13 @@ void ListPanel::handleDropOnView( TQDropEvent *e, TQWidget *widget ) {
    int result = popup.exec( tmp );
    switch ( result ) {
          case 1 :
-         mode = KIO::CopyJob::Copy;
+         mode = TDEIO::CopyJob::Copy;
          break;
          case 2 :
-         mode = KIO::CopyJob::Move;
+         mode = TDEIO::CopyJob::Move;
          break;
          case 3 :
-         mode = KIO::CopyJob::Link;
+         mode = TDEIO::CopyJob::Link;
          break;
          case - 1 :         // user pressed outside the menu
          case 4:
@@ -1038,7 +1038,7 @@ void ListPanel::panelInactive() {
 	func->files()->vfs_enableRefresh(false);
 }
 
-void ListPanel::slotJobStarted(KIO::Job* job) {
+void ListPanel::slotJobStarted(TDEIO::Job* job) {
 	// disable the parts of the panel we don't want touched
 	//static_cast<KrDetailedView*>(view)->setEnabled(false);
 	status->setEnabled(false);
@@ -1054,14 +1054,14 @@ void ListPanel::slotJobStarted(KIO::Job* job) {
    syncBrowseButton->setEnabled(false);
 
 	// connect to the job interface to provide in-panel refresh notification
-	connect( job, TQT_SIGNAL( infoMessage( KIO::Job*, const TQString & ) ),
-		TQT_SLOT( inlineRefreshInfoMessage( KIO::Job*, const TQString & ) ) );
-	connect( job, TQT_SIGNAL( percent( KIO::Job*, unsigned long ) ),
-      TQT_SLOT( inlineRefreshPercent( KIO::Job*, unsigned long ) ) );		
-	connect(job,TQT_SIGNAL(result(KIO::Job*)),
-         this,TQT_SLOT(inlineRefreshListResult(KIO::Job*)));
-	connect(job,TQT_SIGNAL(canceled(KIO::Job*)),
-         this,TQT_SLOT(inlineRefreshListResult(KIO::Job*)));
+	connect( job, TQT_SIGNAL( infoMessage( TDEIO::Job*, const TQString & ) ),
+		TQT_SLOT( inlineRefreshInfoMessage( TDEIO::Job*, const TQString & ) ) );
+	connect( job, TQT_SIGNAL( percent( TDEIO::Job*, unsigned long ) ),
+      TQT_SLOT( inlineRefreshPercent( TDEIO::Job*, unsigned long ) ) );		
+	connect(job,TQT_SIGNAL(result(TDEIO::Job*)),
+         this,TQT_SLOT(inlineRefreshListResult(TDEIO::Job*)));
+	connect(job,TQT_SIGNAL(canceled(TDEIO::Job*)),
+         this,TQT_SLOT(inlineRefreshListResult(TDEIO::Job*)));
 			
 	inlineRefreshJob = job;
 	
@@ -1076,16 +1076,16 @@ void ListPanel::inlineRefreshCancel() {
 	}
 }
 
-void ListPanel::inlineRefreshPercent( KIO::Job*, unsigned long perc) {
+void ListPanel::inlineRefreshPercent( TDEIO::Job*, unsigned long perc) {
 	TQString msg = TQString(">> %1: %2 % complete...").arg(i18n("Reading")).arg(perc);
 	totals->setText(msg);
 }
 
-void ListPanel::inlineRefreshInfoMessage( KIO::Job*, const TQString &msg ) {
+void ListPanel::inlineRefreshInfoMessage( TDEIO::Job*, const TQString &msg ) {
 	totals->setText(">> " + i18n("Reading: ") + msg);
 }
 
-void ListPanel::inlineRefreshListResult(KIO::Job*) {
+void ListPanel::inlineRefreshListResult(TDEIO::Job*) {
 	inlineRefreshJob = 0;
 	// reenable everything
 	//static_cast<KrDetailedView*>(view)->setEnabled(true);

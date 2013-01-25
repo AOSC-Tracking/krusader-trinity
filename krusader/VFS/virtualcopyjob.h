@@ -47,14 +47,14 @@ typedef enum {
   ST_COPYING                = 3
 } State;
 
-class VirtualCopyJob : public KIO::Job
+class VirtualCopyJob : public TDEIO::Job
 {
   Q_OBJECT
   
 
 public:
   VirtualCopyJob( const TQStringList *names, vfs * vfs, const KURL& dest, const KURL& baseURL,
-                  PreserveMode pmode, KIO::CopyJob::CopyMode mode, bool asMethod, bool showProgressInfo );
+                  PreserveMode pmode, TDEIO::CopyJob::CopyMode mode, bool asMethod, bool showProgressInfo );
 
 protected:
   void statNextDir();
@@ -66,35 +66,35 @@ protected slots:
   void slotStart();
   void slotReport();
   
-  void slotKdsResult( KIO::Job * );
-  void slotStatResult( KIO::Job * );
-  void slotMkdirResult( KIO::Job * );
-  void slotCopyResult( KIO::Job * );
+  void slotKdsResult( TDEIO::Job * );
+  void slotStatResult( TDEIO::Job * );
+  void slotMkdirResult( TDEIO::Job * );
+  void slotCopyResult( TDEIO::Job * );
 
-  void slotCopying(KIO::Job *, const KURL &, const KURL &);
-  void slotMoving(KIO::Job *, const KURL &, const KURL &);
-  void slotCreatingDir(KIO::Job *, const KURL &);
+  void slotCopying(TDEIO::Job *, const KURL &, const KURL &);
+  void slotMoving(TDEIO::Job *, const KURL &, const KURL &);
+  void slotCreatingDir(TDEIO::Job *, const KURL &);
   
-  void slotProcessedFiles (KIO::Job *, unsigned long);
-  void slotProcessedDirs (KIO::Job *, unsigned long);
-  void slotProcessedSize (KIO::Job *, KIO::filesize_t);
+  void slotProcessedFiles (TDEIO::Job *, unsigned long);
+  void slotProcessedDirs (TDEIO::Job *, unsigned long);
+  void slotProcessedSize (TDEIO::Job *, TDEIO::filesize_t);
 
 signals:
-  void totalFiles( KIO::Job *job, unsigned long files );
-  void totalDirs( KIO::Job *job, unsigned long dirs );
-  void processedFiles( KIO::Job *job, unsigned long files );
-  void processedDirs( KIO::Job *job, unsigned long dirs );
+  void totalFiles( TDEIO::Job *job, unsigned long files );
+  void totalDirs( TDEIO::Job *job, unsigned long dirs );
+  void processedFiles( TDEIO::Job *job, unsigned long files );
+  void processedDirs( TDEIO::Job *job, unsigned long dirs );
   
 private:
-  KIO::filesize_t          m_totalSize;
+  TDEIO::filesize_t          m_totalSize;
   unsigned long            m_totalFiles;
   unsigned long            m_totalSubdirs;
 
-  KIO::filesize_t          m_processedSize;
+  TDEIO::filesize_t          m_processedSize;
   unsigned long            m_processedFiles;
   unsigned long            m_processedSubdirs;  
     
-  KIO::filesize_t          m_tempSize;
+  TDEIO::filesize_t          m_tempSize;
   unsigned long            m_tempFiles;
   unsigned long            m_tempSubdirs;  
     
@@ -109,7 +109,7 @@ private:
   KURL                     m_baseURL;
   KURL                     m_dest;
   PreserveMode             m_pmode;
-  KIO::CopyJob::CopyMode   m_mode;
+  TDEIO::CopyJob::CopyMode   m_mode;
   bool                     m_asMethod;
   bool                     m_showProgressInfo;
   

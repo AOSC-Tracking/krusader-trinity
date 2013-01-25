@@ -37,9 +37,9 @@
 #include <klocale.h>
 
 SynchronizeDialog::SynchronizeDialog( TQWidget* parent,  const char* name, bool modal, WFlags fl,
-                                      Synchronizer *sync, int pleftCopyNr, KIO::filesize_t pleftCopySize,
-                                      int prightCopyNr, KIO::filesize_t prightCopySize, int pdeleteNr,
-                                      KIO::filesize_t pdeleteSize, int parThreads ) : TQDialog( parent, name, modal, fl ),
+                                      Synchronizer *sync, int pleftCopyNr, TDEIO::filesize_t pleftCopySize,
+                                      int prightCopyNr, TDEIO::filesize_t prightCopySize, int pdeleteNr,
+                                      TDEIO::filesize_t pdeleteSize, int parThreads ) : TQDialog( parent, name, modal, fl ),
                                       synchronizer( sync ), leftCopyNr ( pleftCopyNr ),
                                       leftCopySize( pleftCopySize ), rightCopyNr ( prightCopyNr ),
                                       rightCopySize( prightCopySize ), deleteNr( pdeleteNr ),
@@ -135,8 +135,8 @@ void SynchronizeDialog::startSynchronization()
   btnStart->setEnabled( false );
   btnPause->setEnabled( syncStarted = true );
   connect( synchronizer,  TQT_SIGNAL( synchronizationFinished() ), this, TQT_SLOT( synchronizationFinished() ) );
-  connect( synchronizer,  TQT_SIGNAL( processedSizes( int, KIO::filesize_t, int, KIO::filesize_t, int, KIO::filesize_t ) ),
-                    this, TQT_SLOT( processedSizes( int, KIO::filesize_t, int, KIO::filesize_t, int, KIO::filesize_t) ) );
+  connect( synchronizer,  TQT_SIGNAL( processedSizes( int, TDEIO::filesize_t, int, TDEIO::filesize_t, int, TDEIO::filesize_t ) ),
+                    this, TQT_SLOT( processedSizes( int, TDEIO::filesize_t, int, TDEIO::filesize_t, int, TDEIO::filesize_t) ) );
   connect( synchronizer,  TQT_SIGNAL( pauseAccepted() ), this, TQT_SLOT( pauseAccepted() ) );
 
   if( !cbRightToLeft->isChecked() ) leftCopySize = 0;
@@ -152,8 +152,8 @@ void SynchronizeDialog::synchronizationFinished()
   TQDialog::reject();
 }
 
-void SynchronizeDialog::processedSizes( int leftNr, KIO::filesize_t leftSize, int rightNr,
-                                        KIO::filesize_t rightSize, int delNr, KIO::filesize_t delSize )
+void SynchronizeDialog::processedSizes( int leftNr, TDEIO::filesize_t leftSize, int rightNr,
+                                        TDEIO::filesize_t rightSize, int delNr, TDEIO::filesize_t delSize )
 {
   lbRightToLeft->setText( i18n( "\tReady: %1/%2 files, %3/%4" ).arg( leftNr ).arg( leftCopyNr )
                           .arg( KRpermHandler::parseSize( leftSize ).stripWhiteSpace() )
@@ -165,8 +165,8 @@ void SynchronizeDialog::processedSizes( int leftNr, KIO::filesize_t leftSize, in
                           .arg( KRpermHandler::parseSize( delSize ).stripWhiteSpace() )
                           .arg( KRpermHandler::parseSize( deleteSize ).stripWhiteSpace() ) );
 
-  KIO::filesize_t totalSum      = leftCopySize + rightCopySize + deleteSize;
-  KIO::filesize_t processedSum  = leftSize + rightSize + delSize;
+  TDEIO::filesize_t totalSum      = leftCopySize + rightCopySize + deleteSize;
+  TDEIO::filesize_t processedSum  = leftSize + rightSize + delSize;
 
   if( totalSum == 0 )
     totalSum++;

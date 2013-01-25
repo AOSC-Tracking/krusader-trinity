@@ -380,16 +380,16 @@ void PanelPopup::slotDroppedOnTree(TQWidget *widget, TQDropEvent *e, KURL::List 
 	TQPoint tmp = widget->mapToGlobal( e->pos() );
    int result = popup.exec( TQCursor::pos() );
 	
-	KIO::CopyJob *job;
+	TDEIO::CopyJob *job;
    switch ( result ) {
          case 1 :
-			job = KIO::copy(lst, dest, true);
+			job = TDEIO::copy(lst, dest, true);
          break;
          case 2 :
-			job = KIO::move(lst, dest, true);
+			job = TDEIO::move(lst, dest, true);
          break;
          case 3 :
-			job = KIO::link(lst, dest, true);
+			job = TDEIO::link(lst, dest, true);
          break;
          case - 1 :         // user pressed outside the menu
          case 4:

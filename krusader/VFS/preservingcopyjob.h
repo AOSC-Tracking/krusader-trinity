@@ -57,7 +57,7 @@ public:
 	TQString  acl;
 };
 
-class PreservingCopyJob : public KIO::CopyJob
+class PreservingCopyJob : public TDEIO::CopyJob
 {
   Q_OBJECT
   
@@ -66,18 +66,18 @@ public:
 
   PreservingCopyJob( const KURL::List& src, const KURL& dest, CopyMode mode, bool asMethod, bool showProgressInfo );
 
-  static KIO::CopyJob *createCopyJob( PreserveMode pmode, const KURL::List& src, const KURL& dest, CopyMode mode, bool asMethod, bool showProgressInfo );
+  static TDEIO::CopyJob *createCopyJob( PreserveMode pmode, const KURL::List& src, const KURL& dest, CopyMode mode, bool asMethod, bool showProgressInfo );
 
 public slots:
-  void slotAboutToCreate (KIO::Job *, const TQValueList< KIO::CopyInfo > &);
-  void slotCopyingDone( KIO::Job *, const KURL &, const KURL &, bool, bool);
+  void slotAboutToCreate (TDEIO::Job *, const TQValueList< TDEIO::CopyInfo > &);
+  void slotCopyingDone( TDEIO::Job *, const KURL &, const KURL &, bool, bool);
   void slotFinished();
   virtual void slotResult( Job *job );
-  void slotListEntries(KIO::Job *job, const KIO::UDSEntryList &list);
+  void slotListEntries(TDEIO::Job *job, const TDEIO::UDSEntryList &list);
   
 private:
   TQMap<KURL, Attributes> fileAttributes;
-  TQMap<KIO::Job *, KURL> pendingJobs;
+  TQMap<TDEIO::Job *, KURL> pendingJobs;
   TQValueList<KURL>       directoriesToStamp;
   TQValueList<KURL>       originalDirectories;
 };

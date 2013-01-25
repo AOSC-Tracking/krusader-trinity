@@ -32,7 +32,7 @@ class TDEProcess;
 class KFileItem;
 class TQCString;
 
-class kio_krarcProtocol : public TQObject, public KIO::SlaveBase {
+class kio_krarcProtocol : public TQObject, public TDEIO::SlaveBase {
 Q_OBJECT
   
 public:
@@ -78,27 +78,27 @@ private:
 	/** return the name of the directory inside the archive. */
 	TQString findArcDirectory(const KURL& url);
 	/** find the UDSEntry of a file in a directory. */
-	KIO::UDSEntry* findFileEntry(const KURL& url);
+	TDEIO::UDSEntry* findFileEntry(const KURL& url);
 	/** add a new directory (file list container). */
-	KIO::UDSEntryList* addNewDir(TQString path);
+	TDEIO::UDSEntryList* addNewDir(TQString path);
 	TQString fullPathName( TQString name );
 	TQString convertFileName( TQString name );
 	static TQString convertName( TQString name );
 	static TQString escape( TQString name );
 	
-	TQDict<KIO::UDSEntryList> dirDict; //< the directoris data structure.
+	TQDict<TDEIO::UDSEntryList> dirDict; //< the directoris data structure.
 	bool encrypted;                   //< tells whether the archive is encrypted
 	bool archiveChanged;              //< true if the archive was changed.
 	bool archiveChanging;             //< true if the archive is currently changing.
 	bool newArchiveURL;               //< true if new archive was entered for the protocol
-	KIO::filesize_t decompressedLen;  //< the number of the decompressed bytes
+	TDEIO::filesize_t decompressedLen;  //< the number of the decompressed bytes
 	KFileItem* arcFile;               //< the archive file item.
 	TQString arcPath;                  //< the archive location
 	TQString arcTempDir;               //< the currently used temp directory.
 	TQString arcType;                  //< the archive type.
 	bool extArcReady;                 //< Used for RPM & DEB files.
 	TQString password;                 //< Password for the archives
-	KConfig *krConfig;                //< The configuration file for krusader
+	TDEConfig *krConfig;                //< The configuration file for krusader
 	
 	TQString lastData;
 	TQString encryptedArchPath;

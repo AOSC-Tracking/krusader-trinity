@@ -53,7 +53,7 @@ public:
  ~normal_vfs(){if( watcher ) delete watcher;}
 
 	/// Copy a file to the vfs (physical).
-	virtual void vfs_addFiles(KURL::List *fileUrls,KIO::CopyJob::CopyMode mode,TQObject* toNotify,TQString dir = "", PreserveMode pmode = PM_DEFAULT );
+	virtual void vfs_addFiles(KURL::List *fileUrls,TDEIO::CopyJob::CopyMode mode,TQObject* toNotify,TQString dir = "", PreserveMode pmode = PM_DEFAULT );
 	/// Remove a file from the vfs (physical)
 	virtual void vfs_delFiles(TQStringList *fileNames);
 	/// Return a list of URLs for multiple files

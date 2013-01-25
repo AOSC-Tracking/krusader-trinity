@@ -167,8 +167,8 @@ void ListPanelFunc::immediateOpenUrl( const KURL& urlIn ) {
 				return;
 			}
 		}
-		connect( files(), TQT_SIGNAL(startJob(KIO::Job* )),
-				panel, TQT_SLOT(slotJobStarted(KIO::Job* )));
+		connect( files(), TQT_SIGNAL(startJob(TDEIO::Job* )),
+				panel, TQT_SLOT(slotJobStarted(TDEIO::Job* )));
 		if ( vfsP->vfs_refresh( u ) ) {
 			break; // we have a valid refreshed URL now
 		}
@@ -448,23 +448,23 @@ void ListPanelFunc::moveFiles() {
 
 	if( !virtualBaseURL.isEmpty() ) {
 		// keep the directory structure for virtual paths
-		VirtualCopyJob *vjob = new VirtualCopyJob( &fileNames, files(), dest, virtualBaseURL, pmode, KIO::CopyJob::Move, false, true );
-		connect( vjob, TQT_SIGNAL( result( KIO::Job* ) ), this, TQT_SLOT( refresh() ) );
+		VirtualCopyJob *vjob = new VirtualCopyJob( &fileNames, files(), dest, virtualBaseURL, pmode, TDEIO::CopyJob::Move, false, true );
+		connect( vjob, TQT_SIGNAL( result( TDEIO::Job* ) ), this, TQT_SLOT( refresh() ) );
 		if ( dest.equals( panel->otherPanel->virtualPath(), true ) )
-			connect( vjob, TQT_SIGNAL( result( KIO::Job* ) ), panel->otherPanel->func, TQT_SLOT( refresh() ) );
+			connect( vjob, TQT_SIGNAL( result( TDEIO::Job* ) ), panel->otherPanel->func, TQT_SLOT( refresh() ) );
 	}
 	// if we are not moving to the other panel :
 	else if ( !dest.equals( panel->otherPanel->virtualPath(), true ) ) {
 		// you can rename only *one* file not a batch,
 		// so a batch dest must alwayes be a directory
 		if ( fileNames.count() > 1 ) dest.adjustPath(1);
-		KIO::Job* job = PreservingCopyJob::createCopyJob( pmode, *fileUrls, dest, KIO::CopyJob::Move, false, true );
+		TDEIO::Job* job = PreservingCopyJob::createCopyJob( pmode, *fileUrls, dest, TDEIO::CopyJob::Move, false, true );
 		job->setAutoErrorHandlingEnabled( true );
 		// refresh our panel when done
-		connect( job, TQT_SIGNAL( result( KIO::Job* ) ), this, TQT_SLOT( refresh() ) );
+		connect( job, TQT_SIGNAL( result( TDEIO::Job* ) ), this, TQT_SLOT( refresh() ) );
 		// and if needed the other panel as well
 		if ( dest.equals( panel->otherPanel->virtualPath(), true ) )
-			connect( job, TQT_SIGNAL( result( KIO::Job* ) ), panel->otherPanel->func, TQT_SLOT( refresh() ) );
+			connect( job, TQT_SIGNAL( result( TDEIO::Job* ) ), panel->otherPanel->func, TQT_SLOT( refresh() ) );
 
 	} else { // let the other panel do the dirty job
 		//check if copy is supported
@@ -473,7 +473,7 @@ void ListPanelFunc::moveFiles() {
 			return ;
 		}
 		// finally..
-		otherFunc() ->files() ->vfs_addFiles( fileUrls, KIO::CopyJob::Move, files(), "", pmode );
+		otherFunc() ->files() ->vfs_addFiles( fileUrls, TDEIO::CopyJob::Move, files(), "", pmode );
 	}
 }
 
@@ -596,22 +596,22 @@ void ListPanelFunc::copyFiles() {
 
 	if( !virtualBaseURL.isEmpty() ) {
 		// keep the directory structure for virtual paths
-		VirtualCopyJob *vjob = new VirtualCopyJob( &fileNames, files(), dest, virtualBaseURL, pmode, KIO::CopyJob::Copy, false, true );
-		connect( vjob, TQT_SIGNAL( result( KIO::Job* ) ), this, TQT_SLOT( refresh() ) );
+		VirtualCopyJob *vjob = new VirtualCopyJob( &fileNames, files(), dest, virtualBaseURL, pmode, TDEIO::CopyJob::Copy, false, true );
+		connect( vjob, TQT_SIGNAL( result( TDEIO::Job* ) ), this, TQT_SLOT( refresh() ) );
 		if ( dest.equals( panel->otherPanel->virtualPath(), true ) )
-			connect( vjob, TQT_SIGNAL( result( KIO::Job* ) ), panel->otherPanel->func, TQT_SLOT( refresh() ) );
+			connect( vjob, TQT_SIGNAL( result( TDEIO::Job* ) ), panel->otherPanel->func, TQT_SLOT( refresh() ) );
 	}
 	// if we are  not copying to the other panel :
 	else if ( !dest.equals( panel->otherPanel->virtualPath(), true ) ) {
 		// you can rename only *one* file not a batch,
 		// so a batch dest must alwayes be a directory
 		if ( fileNames.count() > 1 ) dest.adjustPath(1);
-		KIO::Job* job = PreservingCopyJob::createCopyJob( pmode, *fileUrls, dest, KIO::CopyJob::Copy, false, true );
+		TDEIO::Job* job = PreservingCopyJob::createCopyJob( pmode, *fileUrls, dest, TDEIO::CopyJob::Copy, false, true );
 		job->setAutoErrorHandlingEnabled( true );
 		if ( dest.equals( panel->virtualPath(), true ) ||
 			dest.upURL().equals( panel->virtualPath(), true ) )
 			// refresh our panel when done
-			connect( job, TQT_SIGNAL( result( KIO::Job* ) ), this, TQT_SLOT( refresh() ) );
+			connect( job, TQT_SIGNAL( result( TDEIO::Job* ) ), this, TQT_SLOT( refresh() ) );
 	// let the other panel do the dirty job
 	} else {
 		//check if copy is supported
@@ -620,7 +620,7 @@ void ListPanelFunc::copyFiles() {
 			return ;
 		}
 		// finally..
-		otherFunc() ->files() ->vfs_addFiles( fileUrls, KIO::CopyJob::Copy, 0, "", pmode );
+		otherFunc() ->files() ->vfs_addFiles( fileUrls, TDEIO::CopyJob::Copy, 0, "", pmode );
 	}
 }
 
@@ -820,7 +820,7 @@ void ListPanelFunc::pack() {
 	// get the files to be packed:
 	files() ->vfs_getFiles( &fileNames );
 
-	KIO::filesize_t totalSize = 0;
+	TDEIO::filesize_t totalSize = 0;
 	unsigned long totalDirs = 0, totalFiles = 0;
 	if( !calcSpace( fileNames, totalSize, totalFiles, totalDirs ) )
 		return;
@@ -836,7 +836,7 @@ void ListPanelFunc::pack() {
 		tempDir->setAutoDelete( true );
 		arcDir = tempDir->name();
 		KURL::List *urlList = files() ->vfs_getFiles( &fileNames );
-		KIO::NetAccess::dircopy( *urlList, vfs::fromPathOrURL( arcDir ), 0 );
+		TDEIO::NetAccess::dircopy( *urlList, vfs::fromPathOrURL( arcDir ), 0 );
 		delete urlList;
 	}
 
@@ -853,7 +853,7 @@ void ListPanelFunc::pack() {
 
 	// copy from the temp file to it's right place
 	if ( tempDestFile ) {
-		KIO::NetAccess::file_move( vfs::fromPathOrURL( arcFile ), destURL );
+		TDEIO::NetAccess::file_move( vfs::fromPathOrURL( arcFile ), destURL );
 		delete tempDestFile;
 	}
 
@@ -874,7 +874,7 @@ void ListPanelFunc::testArchive() {
 	// download the file if it's on a remote filesystem
 	if ( !arcURL.isLocalFile() ) {
 		url = locateLocal( "tmp", TQString( arcName ) );
-		if ( !KIO::NetAccess::download( arcURL, url, 0 ) ) {
+		if ( !TDEIO::NetAccess::download( arcURL, url, 0 ) ) {
 			KMessageBox::sorry( krApp, i18n( "Krusader is unable to download: " ) + arcURL.fileName() );
 			return ;
 		}
@@ -935,7 +935,7 @@ void ListPanelFunc::unpack() {
 		TQString url = TQString();
 		if ( !arcURL.isLocalFile() ) {
 			url = locateLocal( "tmp", TQString( arcName ) );
-			if ( !KIO::NetAccess::download( arcURL, url, 0 ) ) {
+			if ( !TDEIO::NetAccess::download( arcURL, url, 0 ) ) {
 				KMessageBox::sorry( krApp, i18n( "Krusader is unable to download: " ) + arcURL.fileName() );
 				continue;
 			}
@@ -982,7 +982,7 @@ void ListPanelFunc::unpack() {
 				if ( nameList[ i ] != "." && nameList[ i ] != ".." )
 					urlList.append( vfs::fromPathOrURL( dest.path( 1 ) + nameList[ i ] ) );
 			if ( urlList.count() > 0 )
-				KIO::NetAccess::dircopy( urlList, originalDestURL, 0 );
+				TDEIO::NetAccess::dircopy( urlList, originalDestURL, 0 );
 			delete tempDir;
 		}
 	}
@@ -1044,7 +1044,7 @@ void ListPanelFunc::calcSpace() {
 	panel->slotUpdateTotals();
 }
 
-bool ListPanelFunc::calcSpace( const TQStringList & items, KIO::filesize_t & totalSize, unsigned long & totalFiles, unsigned long & totalDirs ) {
+bool ListPanelFunc::calcSpace( const TQStringList & items, TDEIO::filesize_t & totalSize, unsigned long & totalFiles, unsigned long & totalDirs ) {
 	KrCalcSpaceDialog calc( krApp, panel, items, true );
 	calc.exec();
 	totalSize = calc.getTotalSize();
@@ -1178,7 +1178,7 @@ void ListPanelFunc::pasteFromClipboard() {
 
 		KURL destUrl = panel->virtualPath();
 
-		files()->vfs_addFiles( &urls, cutSelection ? KIO::CopyJob::Move : KIO::CopyJob::Copy, otherFunc()->files(),
+		files()->vfs_addFiles( &urls, cutSelection ? TDEIO::CopyJob::Move : TDEIO::CopyJob::Copy, otherFunc()->files(),
 			"", PM_DEFAULT );
 	}
 }

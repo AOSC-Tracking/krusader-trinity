@@ -132,7 +132,7 @@ void KRPleaseWaitHandler::killJob(){
 	_wasCancelled = true;
 }
 
-void KRPleaseWaitHandler::setJob(KIO::Job* j){ job=j; }
+void KRPleaseWaitHandler::setJob(TDEIO::Job* j){ job=j; }
 
 void KRPleaseWaitHandler::incProgress(int i){
   if (incMutex) return;

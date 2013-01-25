@@ -129,23 +129,23 @@ void MediaButton::slotAboutToHide() {
 }
 
 void MediaButton::createListWithMedia() {
-	KIO::ListJob *job = KIO::listDir( KURL( "media:/" ), false );
-	connect( job, TQT_SIGNAL( entries( KIO::Job*, const KIO::UDSEntryList& ) ),
-		this, TQT_SLOT( slotEntries( KIO::Job*, const KIO::UDSEntryList& ) ) );
-	connect( job, TQT_SIGNAL( result( KIO::Job* ) ),
-		this, TQT_SLOT( slotListResult( KIO::Job* ) ) );
+	TDEIO::ListJob *job = TDEIO::listDir( KURL( "media:/" ), false );
+	connect( job, TQT_SIGNAL( entries( TDEIO::Job*, const TDEIO::UDSEntryList& ) ),
+		this, TQT_SLOT( slotEntries( TDEIO::Job*, const TDEIO::UDSEntryList& ) ) );
+	connect( job, TQT_SIGNAL( result( TDEIO::Job* ) ),
+		this, TQT_SLOT( slotListResult( TDEIO::Job* ) ) );
 	busy = true;
 	
 	if( !busy )
 		tqApp->processEvents();
 }
 
-void MediaButton::slotEntries( KIO::Job *, const KIO::UDSEntryList& entries ) 
+void MediaButton::slotEntries( TDEIO::Job *, const TDEIO::UDSEntryList& entries ) 
 {
 	KMountPoint::List mountList = KMountPoint::currentMountPoints();
 	
-	KIO::UDSEntryListConstIterator it = entries.begin();
-	KIO::UDSEntryListConstIterator end = entries.end();
+	TDEIO::UDSEntryListConstIterator it = entries.begin();
+	TDEIO::UDSEntryListConstIterator end = entries.end();
 	
 	while( it != end )
 	{
@@ -155,23 +155,23 @@ void MediaButton::slotEntries( KIO::Job *, const KIO::UDSEntryList& entries )
 		TQString localPath;
 		bool mounted = false;
 		
-		KIO::UDSEntry::ConstIterator it2 = (*it).begin();
+		TDEIO::UDSEntry::ConstIterator it2 = (*it).begin();
 		
 		for( ; it2 != (*it).end(); it2++ ) {
 			switch ((*it2).m_uds) {
-			case KIO::UDS_NAME:
+			case TDEIO::UDS_NAME:
 				text = KURL::decode_string((*it2).m_str);
 				break;
-			case KIO::UDS_URL:
+			case TDEIO::UDS_URL:
 				url = KURL::fromPathOrURL(  (*it2).m_str );
 				break;
-			case KIO::UDS_MIME_TYPE:
+			case TDEIO::UDS_MIME_TYPE:
 				mime = (*it2).m_str;
 				if( !mime.endsWith( "unmounted" ) )
 					mounted = true;
 				break;
 #if KDE_IS_VERSION(3,4,0)
-			case KIO::UDS_LOCAL_PATH:
+			case TDEIO::UDS_LOCAL_PATH:
 				localPath = (*it2).m_str;
 				break;
 #endif
@@ -207,7 +207,7 @@ void MediaButton::slotEntries( KIO::Job *, const KIO::UDSEntryList& entries )
 	}
 }
 
-void MediaButton::slotListResult( KIO::Job * ) {
+void MediaButton::slotListResult( TDEIO::Job * ) {
 	busy = false;
 }
 
@@ -373,9 +373,9 @@ void MediaButton::slotPopupActivated( int elem ) {
 void MediaButton::gettingSpaceData(const TQString &mountPoint, unsigned long kBSize, unsigned long, unsigned long ) {
 	KURL mediaURL = KURL::fromPathOrURL( mountPoint );
 	
-	KIO::filesize_t size = kBSize;
+	TDEIO::filesize_t size = kBSize;
 	size *= 1024;
-	TQString sizeText = KIO::convertSize( size );
+	TQString sizeText = TDEIO::convertSize( size );
 	
 	for( unsigned i=0; i != urls.size(); i++ ) {
 		if( mediaURL.equals( urls[ i ], true ) ) {

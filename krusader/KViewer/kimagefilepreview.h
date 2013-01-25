@@ -48,11 +48,11 @@ class KrusaderImageFilePreview : public KPreviewWidgetBase {
 
 	protected:
 		virtual void resizeEvent( TQResizeEvent *e );
-		virtual KIO::PreviewJob * createJob( const KURL& url,
+		virtual TDEIO::PreviewJob * createJob( const KURL& url,
 		                                     int w, int h );
 
 	private slots:
-		void slotResult( KIO::Job * );
+		void slotResult( TDEIO::Job * );
 		virtual void slotFailed( const KFileItem* );
 
 	private:
@@ -60,7 +60,7 @@ class KrusaderImageFilePreview : public KPreviewWidgetBase {
 		TQTimer *timer;
 		TQLabel *imageLabel;
 		TQLabel *infoLabel;
-		KIO::PreviewJob *m_job;
+		TDEIO::PreviewJob *m_job;
 	protected:
 		virtual void virtual_hook( int id, void* data );
 	private:

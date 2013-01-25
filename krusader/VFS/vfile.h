@@ -58,7 +58,7 @@ public:
 	 * file name, file size, file permissions,is the file a link,owner uid & group uid.
 	 */
 	vfile(const TQString& name,
-	      const KIO::filesize_t size,
+	      const TDEIO::filesize_t size,
 	      const TQString& perm,
 	      const time_t mtime,
 	      const bool symLink,
@@ -70,7 +70,7 @@ public:
 	      const int rwx = -1 );
 	
 	vfile(const TQString& name,	
-	      const KIO::filesize_t size,	
+	      const TDEIO::filesize_t size,	
 	      const TQString& perm,
 	      const time_t mtime,
 	      const bool symLink,
@@ -90,7 +90,7 @@ public:
 	
 	// following functions give-out file details
 	inline const TQString&   vfile_getName()    const { return vfile_name;           }
-	inline KIO::filesize_t  vfile_getSize()    const { return vfile_size;           }
+	inline TDEIO::filesize_t  vfile_getSize()    const { return vfile_size;           }
 	inline const TQString&   vfile_getPerm()    const { return vfile_perm;           }
 	inline bool             vfile_isDir()      const { return vfile_isdir;          }
 	inline bool             vfile_isSymLink()  const { return vfile_symLink;        }
@@ -106,7 +106,7 @@ public:
 	const TQString&          vfile_getGroup();
 	const TQString&          vfile_getACL();
 	const TQString&          vfile_getDefaultACL();
-	const KIO::UDSEntry     vfile_getEntry(); //< return the UDSEntry from the vfile
+	const TDEIO::UDSEntry     vfile_getEntry(); //< return the UDSEntry from the vfile
 	char                    vfile_isReadable()   const;
 	char                    vfile_isWriteable()  const;
 	char                    vfile_isExecutable() const;
@@ -115,7 +115,7 @@ public:
 	 * used ONLY when calculating a directory's space, needs to change the
 	 * displayed size of the viewitem and thus the vfile. For INTERNAL USE !
 	 */
-	inline void             vfile_setSize(KIO::filesize_t size) {vfile_size = size;}
+	inline void             vfile_setSize(TDEIO::filesize_t size) {vfile_size = size;}
 	inline void             vfile_setUrl(const KURL& url)       {vfile_url = url;  }
 
 	inline void             vfile_setIcon(const TQString& icn)   {vfile_icon = icn; }
@@ -129,7 +129,7 @@ private:
 protected:
 	// the file information list
 	TQString          vfile_name;     //< file name
-	KIO::filesize_t  vfile_size;     //< file size
+	TDEIO::filesize_t  vfile_size;     //< file size
 	mode_t           vfile_mode;     //< file mode
 	uid_t            vfile_ownerId;  //< file owner id
 	gid_t            vfile_groupId;  //< file group id

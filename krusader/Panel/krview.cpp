@@ -66,8 +66,8 @@ void KrViewOperator::startDrag() {
 
 // ----------------------------- krview
 
-KrView::KrView( KConfig *cfg ) : _config( cfg ), _widget(0), _nameToMakeCurrent( TQString() ), _nameToMakeCurrentIfAdded( TQString() ),
-_numSelected( 0 ), _count( 0 ), _numDirs( 0 ), _countSize( 0 ), _selectedSize( 0 ), _properties(0), _focused( false ), _nameInKConfig(TQString()) {
+KrView::KrView( TDEConfig *cfg ) : _config( cfg ), _widget(0), _nameToMakeCurrent( TQString() ), _nameToMakeCurrentIfAdded( TQString() ),
+_numSelected( 0 ), _count( 0 ), _numDirs( 0 ), _countSize( 0 ), _selectedSize( 0 ), _properties(0), _focused( false ), _nameInTDEConfig(TQString()) {
 }
 
 KrView::~KrView() {
@@ -79,8 +79,8 @@ KrView::~KrView() {
 
 void KrView::init() {
 	// sanity checks:
-	if (_nameInKConfig.isEmpty())
-		tqFatal("_nameInKConfig must be set during construction of KrView inheritors");
+	if (_nameInTDEConfig.isEmpty())
+		tqFatal("_nameInTDEConfig must be set during construction of KrView inheritors");
 	if (!_widget)
 		tqFatal("_widget must be set during construction of KrView inheritors");
 	// ok, continue
@@ -163,9 +163,9 @@ TQString KrView::statistics() {
        _countSize += it->getVfile()->vfile_getSize();
    }
    TQString tmp = TQString(i18n("%1 out of %2, %3 (%4) out of %5 (%6)"))
-                 .arg( _numSelected ).arg( _count ).arg( KIO::convertSize( _selectedSize ) )
+                 .arg( _numSelected ).arg( _count ).arg( TDEIO::convertSize( _selectedSize ) )
                  .arg( KRpermHandler::parseSize(_selectedSize) )
-					  .arg( KIO::convertSize( _countSize ) ).arg( KRpermHandler::parseSize(_countSize) );
+					  .arg( TDEIO::convertSize( _countSize ) ).arg( KRpermHandler::parseSize(_countSize) );
 	// notify if we're running a filtered view
 	if (filter() != KrViewProperties::All)
 		tmp = ">> [ " + filterMask().nameFilter() + " ]  "+tmp;
@@ -173,7 +173,7 @@ TQString KrView::statistics() {
 }
 
 void KrView::changeSelection( const KRQuery& filter, bool select, bool includeDirs ) {
-   KConfigGroupSaver grpSvr( _config, "Look&Feel" );
+   TDEConfigGroupSaver grpSvr( _config, "Look&Feel" );
    bool markDirs = _config->readBoolEntry( "Mark Dirs", _MarkDirs ) || includeDirs;
 
    KrViewItem *temp = getCurrentKrViewItem();
@@ -205,7 +205,7 @@ void KrView::changeSelection( const KRQuery& filter, bool select, bool includeDi
 }
 
 void KrView::invertSelection() {
-   KConfigGroupSaver grpSvr( _config, "Look&Feel" /*nameInKConfig()*/ );
+   TDEConfigGroupSaver grpSvr( _config, "Look&Feel" /*nameInTDEConfig()*/ );
    bool markDirs = _config->readBoolEntry( "Mark Dirs", _MarkDirs );
 
    KrViewItem *temp = getCurrentKrViewItem();

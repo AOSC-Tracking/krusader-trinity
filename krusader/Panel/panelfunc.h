@@ -85,7 +85,7 @@ public:
 	// calculate the occupied space. A dialog appears, if calculation lasts more than 3 seconds
 	// and disappears, if the calculation is done. Returns true, if the result is ok and false
 	// otherwise (Cancel was pressed).
-	bool calcSpace(const TQStringList & items,KIO::filesize_t & totalSize,unsigned long & totalFiles,unsigned long & totalDirs);
+	bool calcSpace(const TQStringList & items,TDEIO::filesize_t & totalSize,unsigned long & totalFiles,unsigned long & totalDirs);
 	void FTPDisconnect();
 	void newFTPconnection();
 	inline ListPanelFunc* otherFunc(){ return panel->otherPanel->func; }

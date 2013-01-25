@@ -65,7 +65,7 @@ class Synchronizer : public TQObject
     void    stop() {stopped = true;}
     void    setMarkFlags( bool left, bool equal, bool differs, bool right, bool dup, bool sing, bool del );
     int     refresh( bool nostatus=false );
-    bool    totalSizes( int *, KIO::filesize_t *, int *, KIO::filesize_t *, int *, KIO::filesize_t * );
+    bool    totalSizes( int *, TDEIO::filesize_t *, int *, TDEIO::filesize_t *, int *, TDEIO::filesize_t * );
     void    synchronize( TQWidget *,bool leftCopyEnabled, bool rightCopyEnabled, bool deleteEnabled,
                          bool overWrite, int parThreads );
     void    synchronizeWithKGet();
@@ -95,13 +95,13 @@ class Synchronizer : public TQObject
     void    comparedFileData( SynchronizerFileItem * );
     void    markChanged( SynchronizerFileItem *, bool );
     void    synchronizationFinished();
-    void    processedSizes( int, KIO::filesize_t, int, KIO::filesize_t, int, KIO::filesize_t );
+    void    processedSizes( int, TDEIO::filesize_t, int, TDEIO::filesize_t, int, TDEIO::filesize_t );
     void    pauseAccepted();
     void    statusInfo( TQString );
 
   public slots:
-    void    slotTaskFinished(KIO::Job*);
-    void    slotProcessedSize( KIO::Job * , KIO::filesize_t );
+    void    slotTaskFinished(TDEIO::Job*);
+    void    slotProcessedSize( TDEIO::Job * , TDEIO::filesize_t );
     
   private:
     bool                  isDir( const vfile * file );
@@ -111,19 +111,19 @@ class Synchronizer : public TQObject
                               const TQString &leftDir, const TQString &rightDir );
     void    addSingleDirectory( SynchronizerFileItem *, SynchronizerDirList *, const TQString &, bool );
     SynchronizerFileItem * addItem( SynchronizerFileItem *, const TQString &, const TQString &,
-                                    const TQString &, const TQString &, bool, bool, KIO::filesize_t,
-                                    KIO::filesize_t, time_t, time_t, const TQString &, const TQString &,
+                                    const TQString &, const TQString &, bool, bool, TDEIO::filesize_t,
+                                    TDEIO::filesize_t, time_t, time_t, const TQString &, const TQString &,
                                     const TQString &, const TQString &, const TQString &, const TQString &,
                                     mode_t, mode_t, const TQString &, const TQString &, TaskType, bool, bool);
     SynchronizerFileItem * addLeftOnlyItem( SynchronizerFileItem *, const TQString &, const TQString &,
-                                            KIO::filesize_t, time_t, const TQString &, const TQString &,
+                                            TDEIO::filesize_t, time_t, const TQString &, const TQString &,
                                             const TQString &, mode_t, const TQString &, bool isDir = false, bool isTemp = false );
     SynchronizerFileItem * addRightOnlyItem( SynchronizerFileItem *, const TQString &, const TQString &,
-                                             KIO::filesize_t, time_t, const TQString &,  const TQString &,
+                                             TDEIO::filesize_t, time_t, const TQString &,  const TQString &,
                                              const TQString &, mode_t, const TQString &, bool isDir = false, bool isTemp = false  );
     SynchronizerFileItem * addDuplicateItem( SynchronizerFileItem *, const TQString &, const TQString &,
-                                             const TQString &, const TQString &, KIO::filesize_t,
-                                             KIO::filesize_t, time_t, time_t, const TQString &,
+                                             const TQString &, const TQString &, TDEIO::filesize_t,
+                                             TDEIO::filesize_t, time_t, time_t, const TQString &,
                                              const TQString &, const TQString &, const TQString &,
                                              const TQString &, const TQString &, mode_t, mode_t, const TQString &, 
                                              const TQString &, bool isDir = false, bool isTemp = false  );
@@ -183,17 +183,17 @@ class Synchronizer : public TQObject
     int                               rightCopyNr;    // the file number copied to right
     int                               deleteNr;       // the number of the deleted files
     int                               parallelThreads;// the number of the parallel procesing threads
-    KIO::filesize_t                   leftCopySize;   // the total size copied to left
-    KIO::filesize_t                   rightCopySize;  // the total size copied to right
-    KIO::filesize_t                   deleteSize;     // the size of the deleted files
+    TDEIO::filesize_t                   leftCopySize;   // the total size copied to left
+    TDEIO::filesize_t                   rightCopySize;  // the total size copied to right
+    TDEIO::filesize_t                   deleteSize;     // the size of the deleted files
 
     int                               comparedDirs;   // the number of the compared directories
     int                               fileCount;      // the number of counted files
 
   private:
     TQPtrList<SynchronizerTask>        stack;          // stack for comparing
-    TQMap<KIO::Job *,SynchronizerFileItem *> jobMap;   // job maps
-    TQMap<KIO::Job *,KIO::filesize_t>  receivedMap;    // the received file size
+    TQMap<TDEIO::Job *,SynchronizerFileItem *> jobMap;   // job maps
+    TQMap<TDEIO::Job *,TDEIO::filesize_t>  receivedMap;    // the received file size
     SynchronizerFileItem             *lastTask;       // reference to the last stack
     int                               inTaskFinished; // counter of quasy 'threads' in slotTaskFinished
 

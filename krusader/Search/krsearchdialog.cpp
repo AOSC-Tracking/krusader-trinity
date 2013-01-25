@@ -351,7 +351,7 @@ void KrSearchDialog::resizeEvent( TQResizeEvent *e )
   }
 }
 
-void KrSearchDialog::found(TQString what, TQString where, KIO::filesize_t size, time_t mtime, TQString perm, TQString foundText){
+void KrSearchDialog::found(TQString what, TQString where, TDEIO::filesize_t size, time_t mtime, TQString perm, TQString foundText){
   // convert the time_t to struct tm
   struct tm* t=localtime((time_t *)&mtime);
   TQDateTime tmp(TQDate(t->tm_year+1900, t->tm_mon+1, t->tm_mday), TQTime(t->tm_hour, t->tm_min));
@@ -405,8 +405,8 @@ void KrSearchDialog::startSearch() {
   searcher  = new KRSearchMod(query);
   connect(searcher, TQT_SIGNAL(searching(const TQString&)),
           searchingLabel, TQT_SLOT(setText(const TQString&)));
-  connect(searcher, TQT_SIGNAL(found(TQString,TQString,KIO::filesize_t,time_t,TQString,TQString)),
-                this, TQT_SLOT(found(TQString,TQString,KIO::filesize_t,time_t,TQString,TQString)));
+  connect(searcher, TQT_SIGNAL(found(TQString,TQString,TDEIO::filesize_t,time_t,TQString,TQString)),
+                this, TQT_SLOT(found(TQString,TQString,TDEIO::filesize_t,time_t,TQString,TQString)));
   connect(searcher, TQT_SIGNAL(finished()), this, TQT_SLOT(stopSearch()));
 
   isSearching = true;
@@ -595,7 +595,7 @@ void KrSearchDialog::feedToListBox()
   }
   KURL url = KURL::fromPathOrURL( TQString("virt:/") + queryName );
   v.vfs_refresh( url );
-  v.vfs_addFiles( &urlList, KIO::CopyJob::Copy, 0 );
+  v.vfs_addFiles( &urlList, TDEIO::CopyJob::Copy, 0 );
   //ACTIVE_FUNC->openUrl(url);
   ACTIVE_MNG->slotNewTab(url.prettyURL());
   closeDialog();

@@ -48,7 +48,7 @@ public:
  ~arc_vfs();
 	
 	// copy a file to the vfs (physical)
-	void    vfs_addFiles(KURL::List *fileUrls,KIO::CopyJob::CopyMode mode,TQObject* toNotify=0,TQString dir = "",  PreserveMode pmode = PM_DEFAULT );	
+	void    vfs_addFiles(KURL::List *fileUrls,TDEIO::CopyJob::CopyMode mode,TQObject* toNotify=0,TQString dir = "",  PreserveMode pmode = PM_DEFAULT );	
 	// remove a file from the vfs (physical)
 	void 		vfs_delFiles(TQStringList *fileNames);	
 	// return a path to the file
@@ -59,7 +59,7 @@ public:
 	// rename file
 	void vfs_rename(TQString fileName,TQString newName);
 	// calculate space
-	void vfs_calcSpace(TQString name ,KIO::filesize_t *totalSize,unsigned long *totalFiles,unsigned long *totalDirs, bool* stop);
+	void vfs_calcSpace(TQString name ,TDEIO::filesize_t *totalSize,unsigned long *totalFiles,unsigned long *totalDirs, bool* stop);
 	// return the working dir
 	TQString vfs_workingDir();
 	
@@ -75,7 +75,7 @@ protected:
   TQList<arc_dir> dirList;
   TQValueList<extFile> extFiles; // the name, time & size of files unpacked from this archive
 
-  void processName(const TQString& name,TQStringList *urls,KIO::filesize_t *totalSize,unsigned long *totalFiles );
+  void processName(const TQString& name,TQStringList *urls,TDEIO::filesize_t *totalSize,unsigned long *totalFiles );
   bool getDirs();   // fill the dir list
   vfileDict* findDir(TQString name);
   arc_dir* findArcDir(TQString name);

@@ -189,7 +189,7 @@ bool KRQuery::match( vfile *vf ) const
   // checking the mime
   if( !type.isEmpty() && !checkType( vf->vfile_getMime( true ) ) ) return false;
   // check that the size fit
-  KIO::filesize_t size = vf->vfile_getSize();
+  TDEIO::filesize_t size = vf->vfile_getSize();
   if ( minSize && size < minSize ) return false;
   if ( maxSize && size > maxSize ) return false;
   // check the time frame
@@ -237,7 +237,7 @@ bool KRQuery::match( KFileItem *kfi ) const {
   if ( kfi->isDir() ) 
     perm[ 0 ] = 'd';
 
-  vfile temp( kfi->text(), kfi->size(), perm, kfi->time( KIO::UDS_MODIFICATION_TIME ),
+  vfile temp( kfi->text(), kfi->size(), perm, kfi->time( TDEIO::UDS_MODIFICATION_TIME ),
               kfi->isLink(), kfi->user(), kfi->group(), kfi->user(), 
               kfi->mimetype(), kfi->linkDest(), mode );
 
@@ -409,11 +409,11 @@ bool KRQuery::containsContent( TQString file ) const
 
 bool KRQuery::containsContent( KURL url ) const
 {
-  KIO::TransferJob *contentReader = KIO::get( url, false, false );
-  connect(contentReader, TQT_SIGNAL(data(KIO::Job *, const TQByteArray &)),
-          this, TQT_SLOT(containsContentData(KIO::Job *, const TQByteArray &)));
-  connect(contentReader, TQT_SIGNAL( result( KIO::Job* ) ),
-          this, TQT_SLOT(containsContentFinished( KIO::Job* ) ) );
+  TDEIO::TransferJob *contentReader = TDEIO::get( url, false, false );
+  connect(contentReader, TQT_SIGNAL(data(TDEIO::Job *, const TQByteArray &)),
+          this, TQT_SLOT(containsContentData(TDEIO::Job *, const TQByteArray &)));
+  connect(contentReader, TQT_SIGNAL( result( TDEIO::Job* ) ),
+          this, TQT_SLOT(containsContentFinished( TDEIO::Job* ) ) );
 
   busy = true;
   containsContentResult = false;
@@ -432,7 +432,7 @@ bool KRQuery::containsContent( KURL url ) const
   return containsContentResult;
 }
 
-void KRQuery::containsContentData(KIO::Job *job, const TQByteArray &array) {
+void KRQuery::containsContentData(TDEIO::Job *job, const TQByteArray &array) {
   receivedBytes  += array.size();
   if( checkBuffer( array.data(), array.size() ) ) {
     containsContentResult = true;
@@ -443,7 +443,7 @@ void KRQuery::containsContentData(KIO::Job *job, const TQByteArray &array) {
   checkTimer();
 }
 
-void KRQuery::containsContentFinished( KIO::Job * ) {
+void KRQuery::containsContentFinished( TDEIO::Job * ) {
   busy = false;
 }
 
@@ -571,13 +571,13 @@ void KRQuery::setContent( const TQString &content, bool cs, bool wholeWord, bool
   containOnRemote = remoteSearch;
 }
 
-void KRQuery::setMinimumFileSize( KIO::filesize_t minimumSize )
+void KRQuery::setMinimumFileSize( TDEIO::filesize_t minimumSize )
 {
   bNull = false;
   minSize = minimumSize;
 }
 
-void KRQuery::setMaximumFileSize( KIO::filesize_t maximumSize )
+void KRQuery::setMaximumFileSize( TDEIO::filesize_t maximumSize )
 {
   bNull = false;
   maxSize = maximumSize;

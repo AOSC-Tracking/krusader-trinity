@@ -264,7 +264,7 @@ bool arc_vfs::getDirs(){
 
 
 // copy a file to the vfs (physical)
-void arc_vfs::vfs_addFiles(KURL::List *fileUrls,KIO::CopyJob::CopyMode mode,TQObject* toNotify,TQString dir, PreserveMode /*pmode*/ ){
+void arc_vfs::vfs_addFiles(KURL::List *fileUrls,TDEIO::CopyJob::CopyMode mode,TQObject* toNotify,TQString dir, PreserveMode /*pmode*/ ){
   if ( addCmd.isEmpty() ) return;
 
   // get the path inside the archive
@@ -283,10 +283,10 @@ void arc_vfs::vfs_addFiles(KURL::List *fileUrls,KIO::CopyJob::CopyMode mode,TQOb
 	KURL dest;
 	dest.setPath(tmpDir+path+dir);
 
-  KIO::Job* job = new KIO::CopyJob(*fileUrls,dest,mode,false,true);
-  connect(job,TQT_SIGNAL(result(KIO::Job*)),this,TQT_SLOT(vfs_refresh(KIO::Job*)) );
-  if(mode == KIO::CopyJob::Move) // notify the other panel
-   connect(job,TQT_SIGNAL(result(KIO::Job*)),toNotify,TQT_SLOT(vfs_refresh(KIO::Job*)) );
+  TDEIO::Job* job = new TDEIO::CopyJob(*fileUrls,dest,mode,false,true);
+  connect(job,TQT_SIGNAL(result(TDEIO::Job*)),this,TQT_SLOT(vfs_refresh(TDEIO::Job*)) );
+  if(mode == TDEIO::CopyJob::Move) // notify the other panel
+   connect(job,TQT_SIGNAL(result(TDEIO::Job*)),toNotify,TQT_SLOT(vfs_refresh(TDEIO::Job*)) );
 }
 	
 
@@ -300,8 +300,8 @@ void arc_vfs::vfs_delFiles(TQStringList *fileNames){
 	  KURL::List* filesUrls = vfs_getFiles(fileNames); // extract
 	  changed = true;
 	
-	  KIO::Job *job = new KIO::CopyJob(*filesUrls,TDEGlobalSettings::trashPath(),KIO::CopyJob::Move,false,true );
-	  connect(job,TQT_SIGNAL(result(KIO::Job*)),this,TQT_SLOT(vfs_refresh(KIO::Job*)));
+	  TDEIO::Job *job = new TDEIO::CopyJob(*filesUrls,TDEGlobalSettings::trashPath(),TDEIO::CopyJob::Move,false,true );
+	  connect(job,TQT_SIGNAL(result(TDEIO::Job*)),this,TQT_SLOT(vfs_refresh(TDEIO::Job*)));
 	}
 	// else we have to delete the files from both the archive and the temp dir
 	else {
@@ -310,7 +310,7 @@ void arc_vfs::vfs_delFiles(TQStringList *fileNames){
     chdir(tmpDir.local8Bit());
 
     TQStringList files;
-    KIO::filesize_t totalSizeVal = 0;
+    TDEIO::filesize_t totalSizeVal = 0;
     unsigned long totalFilesVal =  0;
     	
 	  // names -> urls
@@ -373,7 +373,7 @@ KURL::List* arc_vfs::vfs_getFiles(TQStringList* names){
 	chdir(tmpDir.local8Bit());
 	// names -> urls
   TQStringList files;
-  KIO::filesize_t totalSize = 0;
+  TDEIO::filesize_t totalSize = 0;
   unsigned long totalFiles = 0;
   for(TQStringList::Iterator name = names->begin(); name != names->end(); ++name ){
     processName(*name,&files,&totalSize,&totalFiles);
@@ -443,8 +443,8 @@ void arc_vfs::vfs_rename(TQString fileName,TQString newName){
 	KURL dest;
 	dest.setPath(tmpDir+path+"/"+newName);
 
-  KIO::Job* job = new KIO::CopyJob(temp,dest,KIO::CopyJob::Move,false,false);
-  connect(job,TQT_SIGNAL(result(KIO::Job*)),this,TQT_SLOT(vfs_refresh(KIO::Job*)) );
+  TDEIO::Job* job = new TDEIO::CopyJob(temp,dest,TDEIO::CopyJob::Move,false,false);
+  connect(job,TQT_SIGNAL(result(TDEIO::Job*)),this,TQT_SLOT(vfs_refresh(TDEIO::Job*)) );
 }
 
 bool arc_vfs::vfs_refresh(TQString origin){
@@ -678,7 +678,7 @@ TQString arc_vfs::changeDir(TQString name){
 }
 
 // calculate space
-void arc_vfs::vfs_calcSpace(TQString name ,KIO::filesize_t *totalSize,unsigned long *totalFiles,unsigned long *totalDirs,bool* stop){
+void arc_vfs::vfs_calcSpace(TQString name ,TDEIO::filesize_t *totalSize,unsigned long *totalFiles,unsigned long *totalDirs,bool* stop){
   if ( *stop ) return;
   vfile* vf = vfs_search(name);
 
@@ -710,7 +710,7 @@ void arc_vfs::vfs_calcSpace(TQString name ,KIO::filesize_t *totalSize,unsigned l
   }
 }
 
-void arc_vfs::processName(const TQString& name, TQStringList *urls,KIO::filesize_t *totalSize,unsigned long *totalFiles ){
+void arc_vfs::processName(const TQString& name, TQStringList *urls,TDEIO::filesize_t *totalSize,unsigned long *totalFiles ){
   vfile* vf = vfs_search(name);
 	if ( vf == 0 ) return;
 
@@ -741,7 +741,7 @@ void arc_vfs::processName(const TQString& name, TQStringList *urls,KIO::filesize
 
 void arc_vfs::parseLine(TQString line, TQFile* temp){
   TQString name;
-  KIO::filesize_t size = 0;
+  TDEIO::filesize_t size = 0;
   TQString perm;
   TQFileInfo qfi(arcFile);
   time_t mtime = qfi.lastModified().toTime_t();

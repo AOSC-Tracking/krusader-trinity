@@ -34,7 +34,7 @@
 #define VIRT_VFS_DB "virt_vfs.db"
 
 TQDict<KURL::List> virt_vfs::virtVfsDict;
-KConfig* virt_vfs::virt_vfs_db=0;
+TDEConfig* virt_vfs::virt_vfs_db=0;
 
 virt_vfs::virt_vfs( TQObject* panel, bool quiet ) : vfs( panel, quiet ) {
 	// set the writable attribute
@@ -81,7 +81,7 @@ bool virt_vfs::populateVfsList( const KURL& origin, bool /*showHidden*/ ) {
 	return true;
 }
 
-void virt_vfs::vfs_addFiles( KURL::List *fileUrls, KIO::CopyJob::CopyMode /*mode*/, TQObject* /*toNotify*/, TQString /*dir*/, PreserveMode /*pmode*/ ) {
+void virt_vfs::vfs_addFiles( KURL::List *fileUrls, TDEIO::CopyJob::CopyMode /*mode*/, TQObject* /*toNotify*/, TQString /*dir*/, PreserveMode /*pmode*/ ) {
 	if ( path == "/" ) {
 		if ( !quietMode )
 			KMessageBox::error( krApp, i18n( "You can't copy files directly to the 'virt:/' directory.\nYou can create a sub directory and copy your files into it." ), i18n( "Error" ) );
@@ -116,22 +116,22 @@ void virt_vfs::vfs_delFiles( TQStringList *fileNames ) {
 		TQString filename = ( *fileNames ) [ i ];
 		filesUrls.append( vfs_getFile( filename ) );
 	}
-	KIO::Job *job;
+	TDEIO::Job *job;
 
 	// delete of move to trash ?
 	krConfig->setGroup( "General" );
 	if ( krConfig->readBoolEntry( "Move To Trash", _MoveToTrash ) ) {
 #if KDE_IS_VERSION(3,4,0)
-		job = KIO::trash( filesUrls, true );
+		job = TDEIO::trash( filesUrls, true );
 #else
-		job = new KIO::CopyJob( filesUrls, TDEGlobalSettings::trashPath(), KIO::CopyJob::Move, false, true );
+		job = new TDEIO::CopyJob( filesUrls, TDEGlobalSettings::trashPath(), TDEIO::CopyJob::Move, false, true );
 #endif
-		connect( job, TQT_SIGNAL( result( KIO::Job* ) ), krApp, TQT_SLOT( changeTrashIcon() ) );
+		connect( job, TQT_SIGNAL( result( TDEIO::Job* ) ), krApp, TQT_SLOT( changeTrashIcon() ) );
 	} else
-		job = new KIO::DeleteJob( filesUrls, false, true );
+		job = new TDEIO::DeleteJob( filesUrls, false, true );
 
 	// refresh will remove the deleted files...
-	connect( job, TQT_SIGNAL( result( KIO::Job* ) ), this, TQT_SLOT( vfs_refresh( KIO::Job* ) ) );
+	connect( job, TQT_SIGNAL( result( TDEIO::Job* ) ), this, TQT_SLOT( vfs_refresh( TDEIO::Job* ) ) );
 }
 
 void virt_vfs::vfs_removeFiles( TQStringList *fileNames ) {
@@ -204,13 +204,13 @@ void virt_vfs::vfs_rename( const TQString& fileName, const TQString& newName ) {
 	// so we don't have to worry if the job was successful
 	virtVfsDict[ path ] ->append( dest );
 
-	KIO::Job *job = new KIO::CopyJob( fileUrls, dest, KIO::CopyJob::Move, true, false );
-	connect( job, TQT_SIGNAL( result( KIO::Job* ) ), this, TQT_SLOT( vfs_refresh( KIO::Job* ) ) );
+	TDEIO::Job *job = new TDEIO::CopyJob( fileUrls, dest, TDEIO::CopyJob::Move, true, false );
+	connect( job, TQT_SIGNAL( result( TDEIO::Job* ) ), this, TQT_SLOT( vfs_refresh( TDEIO::Job* ) ) );
 }
 
-void virt_vfs::slotStatResult( KIO::Job* job ) {
-	if( !job || job->error() ) entry = KIO::UDSEntry();
-	else entry = static_cast<KIO::StatJob*>(job)->statResult();
+void virt_vfs::slotStatResult( TDEIO::Job* job ) {
+	if( !job || job->error() ) entry = TDEIO::UDSEntry();
+	else entry = static_cast<TDEIO::StatJob*>(job)->statResult();
 	busy = false;
 }
 
@@ -228,15 +228,15 @@ vfile* virt_vfs::stat( const KURL& url ) {
 	}
 	else {
 		busy = true;
-		KIO::StatJob* statJob = KIO::stat( url, false );
-		connect( statJob, TQT_SIGNAL( result( KIO::Job* ) ), this, TQT_SLOT( slotStatResult( KIO::Job* ) ) );
+		TDEIO::StatJob* statJob = TDEIO::stat( url, false );
+		connect( statJob, TQT_SIGNAL( result( TDEIO::Job* ) ), this, TQT_SLOT( slotStatResult( TDEIO::Job* ) ) );
 		while ( busy && vfs_processEvents() );
 		if( entry.isEmpty()  ) return 0; // statJob failed
 		
 		kfi = new KFileItem(entry, url, true );
 	}
 	
-	if ( !kfi->time( KIO::UDS_MODIFICATION_TIME ) ){
+	if ( !kfi->time( TDEIO::UDS_MODIFICATION_TIME ) ){
 		 delete kfi;
 		 return 0; // file not found		
 	}
@@ -250,8 +250,8 @@ vfile* virt_vfs::stat( const KURL& url ) {
 	else
 		name = url.prettyURL();
 
-	KIO::filesize_t size = kfi->size();
-	time_t mtime = kfi->time( KIO::UDS_MODIFICATION_TIME );
+	TDEIO::filesize_t size = kfi->size();
+	time_t mtime = kfi->time( TDEIO::UDS_MODIFICATION_TIME );
 	bool symLink = kfi->isLink();
 	mode_t mode = kfi->mode() | kfi->permissions();
 	TQString perm = KRpermHandler::mode2TQString( mode );
@@ -280,15 +280,15 @@ vfile* virt_vfs::stat( const KURL& url ) {
 	return temp;
 }
 
-KConfig*  virt_vfs::getVirtDB(){
+TDEConfig*  virt_vfs::getVirtDB(){
 	if( !virt_vfs_db ){
-		virt_vfs_db = new KConfig(VIRT_VFS_DB,false,"data");
+		virt_vfs_db = new TDEConfig(VIRT_VFS_DB,false,"data");
 	}
 	return virt_vfs_db; 
 }
 
 bool virt_vfs::save(){
-	KConfig* db = getVirtDB();
+	TDEConfig* db = getVirtDB();
 	
 	db->setGroup("virt_db");
 	TQDictIterator<KURL::List> it( virtVfsDict ); // See TQDictIterator
@@ -307,7 +307,7 @@ bool virt_vfs::save(){
 }
 
 bool virt_vfs::restore(){
-	KConfig* db = getVirtDB();
+	TDEConfig* db = getVirtDB();
 	db->setGroup("virt_db");
 	
 	TQMap<TQString, TQString> map = db->entryMap("virt_db");
@@ -326,7 +326,7 @@ bool virt_vfs::restore(){
 	return true;
 }
 
-void virt_vfs::vfs_calcSpace( TQString name , KIO::filesize_t* totalSize, unsigned long* totalFiles, unsigned long* totalDirs, bool* stop ) {
+void virt_vfs::vfs_calcSpace( TQString name , TDEIO::filesize_t* totalSize, unsigned long* totalFiles, unsigned long* totalDirs, bool* stop ) {
 	if ( stop && *stop ) return ;
 	if( path == "/" ) {
 		KURL::List* urlList = virtVfsDict[ name ];

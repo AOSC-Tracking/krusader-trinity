@@ -65,7 +65,7 @@ void KrKeyDialog::slotImportShortcuts() {
    if ( filename.isEmpty() )
       return;
 
-   KConfig conf( filename, true /*read only*/, false /*no KDEGlobal*/ );
+   TDEConfig conf( filename, true /*read only*/, false /*no KDEGlobal*/ );
    if ( ! conf.hasGroup("Shortcuts") ) {
       int answer = KMessageBox::warningContinueCancel( this,	//parent
 		i18n("This file does not seem to be a valid keymap.\n"
@@ -136,7 +136,7 @@ void KrKeyDialog::slotExportShortcuts() {
 	!= KMessageBox::Continue)
 	return;
    if ( f.open( IO_WriteOnly ) )
-      // This is the only way to detect if the file is writable since we don't get feetback from KConfig's sync
+      // This is the only way to detect if the file is writable since we don't get feetback from TDEConfig's sync
       // Additionaly this prevents merging if the file already contains some shortcuts
       f.close();
    else {
@@ -144,7 +144,7 @@ void KrKeyDialog::slotExportShortcuts() {
       return;
    }
 
-   KConfig conf( filename, false /*read only*/, false /*no KDEGlobal*/ );
+   TDEConfig conf( filename, false /*read only*/, false /*no KDEGlobal*/ );
 
    // unfortunately we can't use this function since it only writes the actions which are different from default.
    //krApp->actionCollection()->writeShortcutSettings( "Shortcuts", &conf );

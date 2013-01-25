@@ -107,7 +107,7 @@ void CompareTask::slotOtherFinished( bool result ) {
 }
 
 CompareContentTask::CompareContentTask( Synchronizer *syn, SynchronizerFileItem *itemIn, const KURL &leftURLIn,
-                                        const KURL &rightURLIn, KIO::filesize_t sizeIn ) : SynchronizerTask(), 
+                                        const KURL &rightURLIn, TDEIO::filesize_t sizeIn ) : SynchronizerTask(), 
                                         leftURL( leftURLIn ), rightURL( rightURLIn ),
                                         size( sizeIn ), errorPrinted(false), leftReadJob( 0 ),
                                         rightReadJob( 0 ), compareArray(), item( itemIn ), timer( 0 ),
@@ -149,17 +149,17 @@ void CompareContentTask::start() {
 
     localFileCompareCycle();
   } else {
-    leftReadJob = KIO::get( leftURL, false, false );
-    rightReadJob = KIO::get( rightURL, false, false );
+    leftReadJob = TDEIO::get( leftURL, false, false );
+    rightReadJob = TDEIO::get( rightURL, false, false );
 
-    connect(leftReadJob, TQT_SIGNAL(data(KIO::Job *, const TQByteArray &)),
-            this, TQT_SLOT(slotDataReceived(KIO::Job *, const TQByteArray &)));
-    connect(rightReadJob, TQT_SIGNAL(data(KIO::Job *, const TQByteArray &)),
-            this, TQT_SLOT(slotDataReceived(KIO::Job *, const TQByteArray &)));
-    connect(leftReadJob, TQT_SIGNAL(result(KIO::Job*)),
-            this, TQT_SLOT(slotFinished(KIO::Job *)));
-    connect(rightReadJob, TQT_SIGNAL(result(KIO::Job*)),
-            this, TQT_SLOT(slotFinished(KIO::Job *)));
+    connect(leftReadJob, TQT_SIGNAL(data(TDEIO::Job *, const TQByteArray &)),
+            this, TQT_SLOT(slotDataReceived(TDEIO::Job *, const TQByteArray &)));
+    connect(rightReadJob, TQT_SIGNAL(data(TDEIO::Job *, const TQByteArray &)),
+            this, TQT_SLOT(slotDataReceived(TDEIO::Job *, const TQByteArray &)));
+    connect(leftReadJob, TQT_SIGNAL(result(TDEIO::Job*)),
+            this, TQT_SLOT(slotFinished(TDEIO::Job *)));
+    connect(rightReadJob, TQT_SIGNAL(result(TDEIO::Job*)),
+            this, TQT_SLOT(slotFinished(TDEIO::Job *)));
 
     rightReadJob->suspend();
 
@@ -221,7 +221,7 @@ void CompareContentTask::localFileCompareCycle() {
 }
 
 
-void CompareContentTask::slotDataReceived(KIO::Job *job, const TQByteArray &data)
+void CompareContentTask::slotDataReceived(TDEIO::Job *job, const TQByteArray &data)
 {
   int bufferLen = compareArray.size();
   int dataLen   = data.size();
@@ -261,7 +261,7 @@ void CompareContentTask::slotDataReceived(KIO::Job *job, const TQByteArray &data
 
   }while ( false );
 
-  KIO::TransferJob *otherJob = ( job == leftReadJob ) ? rightReadJob : leftReadJob;
+  TDEIO::TransferJob *otherJob = ( job == leftReadJob ) ? rightReadJob : leftReadJob;
 
   if( otherJob == 0 )
   {
@@ -270,17 +270,17 @@ void CompareContentTask::slotDataReceived(KIO::Job *job, const TQByteArray &data
   }
   else
   {
-    if( !((KIO::TransferJob *)job)->isSuspended() )
+    if( !((TDEIO::TransferJob *)job)->isSuspended() )
     {
-      ((KIO::TransferJob *)job)->suspend();
+      ((TDEIO::TransferJob *)job)->suspend();
       otherJob->resume();
     }
   }
 }
 
-void CompareContentTask::slotFinished(KIO::Job *job)
+void CompareContentTask::slotFinished(TDEIO::Job *job)
 {
-  KIO::TransferJob *otherJob = ( job == leftReadJob ) ? rightReadJob : leftReadJob;
+  TDEIO::TransferJob *otherJob = ( job == leftReadJob ) ? rightReadJob : leftReadJob;
 
   if( job == leftReadJob )
     leftReadJob = 0;
@@ -296,7 +296,7 @@ void CompareContentTask::slotFinished(KIO::Job *job)
     abortContentComparing();
   }
 
-  if( job->error() && job->error() != KIO::ERR_USER_CANCELED && !errorPrinted )
+  if( job->error() && job->error() != TDEIO::ERR_USER_CANCELED && !errorPrinted )
   {
     errorPrinted = true;
     KMessageBox::error(parentWidget, i18n("IO error at comparing file %1 with %2!")

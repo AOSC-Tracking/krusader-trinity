@@ -34,7 +34,7 @@ public:
 	~virt_vfs();
 	
 	/// Copy a file to the vfs (physical).
-	void vfs_addFiles(KURL::List *fileUrls,KIO::CopyJob::CopyMode mode,TQObject* toNotify,TQString dir = "",  PreserveMode pmode = PM_DEFAULT );	
+	void vfs_addFiles(KURL::List *fileUrls,TDEIO::CopyJob::CopyMode mode,TQObject* toNotify,TQString dir = "",  PreserveMode pmode = PM_DEFAULT );	
 	/// Remove a file from the vfs (physical)
 	void vfs_delFiles(TQStringList *fileNames);	
 	/// Remove a file from the collection (only its link, not the file)
@@ -48,13 +48,13 @@ public:
 	/// Rename file
 	void vfs_rename(const TQString& fileName,const TQString& newName);
 	/// Calculate the amount of space occupied by a file or directory (recursive).
-	virtual void vfs_calcSpace(TQString name ,KIO::filesize_t *totalSize,unsigned long *totalFiles,unsigned long *totalDirs, bool * stop);
+	virtual void vfs_calcSpace(TQString name ,TDEIO::filesize_t *totalSize,unsigned long *totalFiles,unsigned long *totalDirs, bool * stop);
 	
 	/// Return the VFS working dir
 	TQString vfs_workingDir(){ return TQString(); }
 	
 protected slots:
-	void slotStatResult(KIO::Job *job);
+	void slotStatResult(TDEIO::Job *job);
 
 protected:
 	/// Save the dictionary to file
@@ -62,16 +62,16 @@ protected:
 	/// Restore the dictionary from file
 	bool restore();	
 	/// return the URLs DB
-	KConfig*  getVirtDB();
+	TDEConfig*  getVirtDB();
 
 	bool populateVfsList(const KURL& origin, bool showHidden);
 	vfile* stat(const KURL& url);
 	
 	static TQDict<KURL::List> virtVfsDict;
-	static KConfig* virt_vfs_db;
+	static TDEConfig* virt_vfs_db;
 	bool busy;
 	TQString path;
-	KIO::UDSEntry entry;
+	TDEIO::UDSEntry entry;
 };
 
 #endif

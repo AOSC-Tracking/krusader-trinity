@@ -46,7 +46,7 @@ public:
 	~ftp_vfs();
 
 	/// Copy a file to the vfs (physical).
-	virtual void vfs_addFiles(KURL::List *fileUrls,KIO::CopyJob::CopyMode mode,TQObject* toNotify,TQString dir = "", PreserveMode pmode = PM_DEFAULT );
+	virtual void vfs_addFiles(KURL::List *fileUrls,TDEIO::CopyJob::CopyMode mode,TQObject* toNotify,TQString dir = "", PreserveMode pmode = PM_DEFAULT );
 	/// Remove a file from the vfs (physical)
 	virtual void vfs_delFiles(TQStringList *fileNames);
 	/// Return a list of URLs for multiple files
@@ -62,12 +62,12 @@ public:
 	
 public slots:
 	/// Handles new files from the dir lister
-	void slotAddFiles(KIO::Job * job, const KIO::UDSEntryList& entries);
+	void slotAddFiles(TDEIO::Job * job, const TDEIO::UDSEntryList& entries);
 	/// Redirection signal handlers
-	void slotRedirection(KIO::Job *, const KURL &url);
-	void slotPermanentRedirection(KIO::Job*,const KURL&,const KURL& newUrl);
+	void slotRedirection(TDEIO::Job *, const KURL &url);
+	void slotPermanentRedirection(TDEIO::Job*,const KURL&,const KURL& newUrl);
 	/// Called when the dir listing job is finished (for better or worst)
-	void slotListResult(KIO::Job *job);
+	void slotListResult(TDEIO::Job *job);
 	/// Active the dir listing job
 	bool populateVfsList(const KURL& origin, bool showHidden);
 

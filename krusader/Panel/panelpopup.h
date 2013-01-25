@@ -59,7 +59,7 @@ protected:
 	TQWidgetStack *stack;
 	KrusaderImageFilePreview *viewer;
 	KrSqueezedTextLabel *dataLine;
-	TQGuardedPtr<KIO::PreviewJob> pjob;
+	TQGuardedPtr<TDEIO::PreviewJob> pjob;
 	KFileTreeView *tree;
 	TQToolButton *treeBtn, *previewBtn, *quickBtn, *viewerBtn, *duBtn;
 	TQButtonGroup *btns;

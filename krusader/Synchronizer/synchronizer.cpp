@@ -355,7 +355,7 @@ TQString Synchronizer::getTaskTypeName( TaskType taskType )
 SynchronizerFileItem * Synchronizer::addItem( SynchronizerFileItem *parent, const TQString &leftFile, 
                                   const TQString &rightFile, const TQString &leftDir,
                                   const TQString &rightDir, bool existsLeft, bool existsRight,
-                                  KIO::filesize_t leftSize, KIO::filesize_t rightSize,
+                                  TDEIO::filesize_t leftSize, TDEIO::filesize_t rightSize,
                                   time_t leftDate, time_t rightDate, const TQString &leftLink,
                                   const TQString &rightLink, const TQString &leftOwner,
                                   const TQString &rightOwner, const TQString &leftGroup,
@@ -420,7 +420,7 @@ void Synchronizer::setPermanent( SynchronizerFileItem *item )
 }
 
 SynchronizerFileItem * Synchronizer::addLeftOnlyItem( SynchronizerFileItem *parent,
-                                    const TQString &file_name, const TQString &dir, KIO::filesize_t size, 
+                                    const TQString &file_name, const TQString &dir, TDEIO::filesize_t size, 
                                     time_t date, const TQString &link, const TQString &owner,
                                     const TQString &group, mode_t mode, const TQString &acl, bool isDir, 
                                     bool isTemp )
@@ -431,7 +431,7 @@ SynchronizerFileItem * Synchronizer::addLeftOnlyItem( SynchronizerFileItem *pare
 }
 
 SynchronizerFileItem * Synchronizer::addRightOnlyItem( SynchronizerFileItem *parent,
-                                    const TQString &file_name, const TQString &dir, KIO::filesize_t size,
+                                    const TQString &file_name, const TQString &dir, TDEIO::filesize_t size,
                                     time_t date, const TQString &link, const TQString &owner,
                                     const TQString &group, mode_t mode, const TQString &acl, bool isDir,
                                     bool isTemp )
@@ -444,7 +444,7 @@ SynchronizerFileItem * Synchronizer::addRightOnlyItem( SynchronizerFileItem *par
 SynchronizerFileItem * Synchronizer::addDuplicateItem( SynchronizerFileItem *parent,
                                      const TQString &leftName, const TQString &rightName,
                                      const TQString &leftDir, const TQString &rightDir,
-                                     KIO::filesize_t leftSize, KIO::filesize_t rightSize, time_t leftDate, time_t rightDate,
+                                     TDEIO::filesize_t leftSize, TDEIO::filesize_t rightSize, time_t leftDate, time_t rightDate,
                                      const TQString &leftLink, const TQString &rightLink,
                                      const TQString &leftOwner, const TQString &rightOwner,
                                      const TQString &leftGroup, const TQString &rightGroup,
@@ -797,8 +797,8 @@ void Synchronizer::copyToRight( SynchronizerFileItem *item )
   }
 }
 
-bool Synchronizer::totalSizes( int * leftCopyNr, KIO::filesize_t *leftCopySize, int * rightCopyNr,
-                               KIO::filesize_t *rightCopySize, int *deleteNr, KIO::filesize_t *deletableSize )
+bool Synchronizer::totalSizes( int * leftCopyNr, TDEIO::filesize_t *leftCopySize, int * rightCopyNr,
+                               TDEIO::filesize_t *rightCopySize, int *deleteNr, TDEIO::filesize_t *deletableSize )
 {
   bool hasAnythingToDo = false;
 
@@ -953,8 +953,8 @@ void Synchronizer::executeTask( SynchronizerFileItem * task )
   case TT_COPY_TO_LEFT:
     if( task->isDir() )
     {
-      KIO::SimpleJob *job = KIO::mkdir( leftURL );
-      connect(job,TQT_SIGNAL(result(KIO::Job*)),this,TQT_SLOT(slotTaskFinished(KIO::Job*)));
+      TDEIO::SimpleJob *job = TDEIO::mkdir( leftURL );
+      connect(job,TQT_SIGNAL(result(TDEIO::Job*)),this,TQT_SLOT(slotTaskFinished(TDEIO::Job*)));
       jobMap[ job ] = task;
       disableNewTasks = true;
     }
@@ -965,16 +965,16 @@ void Synchronizer::executeTask( SynchronizerFileItem * task )
         destURL = vfs::fromPathOrURL( task->destination() );
 
       if( task->rightLink().isNull() ) {
-        KIO::FileCopyJob *job = KIO::file_copy(rightURL, destURL, -1,
+        TDEIO::FileCopyJob *job = TDEIO::file_copy(rightURL, destURL, -1,
                                   overWrite || task->overWrite(), false, false );
-        connect(job,TQT_SIGNAL(processedSize (KIO::Job *, KIO::filesize_t )), this,
-                    TQT_SLOT  (slotProcessedSize (KIO::Job *, KIO::filesize_t )));
-        connect(job,TQT_SIGNAL(result(KIO::Job*)),this,TQT_SLOT(slotTaskFinished(KIO::Job*)));
+        connect(job,TQT_SIGNAL(processedSize (TDEIO::Job *, TDEIO::filesize_t )), this,
+                    TQT_SLOT  (slotProcessedSize (TDEIO::Job *, TDEIO::filesize_t )));
+        connect(job,TQT_SIGNAL(result(TDEIO::Job*)),this,TQT_SLOT(slotTaskFinished(TDEIO::Job*)));
         jobMap[ job ] = task;
       } else {
-        KIO::SimpleJob *job = KIO::symlink( task->rightLink(), destURL,
+        TDEIO::SimpleJob *job = TDEIO::symlink( task->rightLink(), destURL,
                                             overWrite || task->overWrite(), false );
-        connect(job,TQT_SIGNAL(result(KIO::Job*)),this,TQT_SLOT(slotTaskFinished(KIO::Job*)));
+        connect(job,TQT_SIGNAL(result(TDEIO::Job*)),this,TQT_SLOT(slotTaskFinished(TDEIO::Job*)));
         jobMap[ job ] = task;
       }
     }
@@ -982,8 +982,8 @@ void Synchronizer::executeTask( SynchronizerFileItem * task )
   case TT_COPY_TO_RIGHT:
     if( task->isDir() )
     {
-      KIO::SimpleJob *job = KIO::mkdir( rightURL );
-      connect(job,TQT_SIGNAL(result(KIO::Job*)),this,TQT_SLOT(slotTaskFinished(KIO::Job*)));
+      TDEIO::SimpleJob *job = TDEIO::mkdir( rightURL );
+      connect(job,TQT_SIGNAL(result(TDEIO::Job*)),this,TQT_SLOT(slotTaskFinished(TDEIO::Job*)));
       jobMap[ job ] = task;
       disableNewTasks = true;
     }
@@ -994,24 +994,24 @@ void Synchronizer::executeTask( SynchronizerFileItem * task )
         destURL = vfs::fromPathOrURL( task->destination() );
 
       if( task->leftLink().isNull() ) {
-        KIO::FileCopyJob *job = KIO::file_copy(leftURL, destURL, -1,
+        TDEIO::FileCopyJob *job = TDEIO::file_copy(leftURL, destURL, -1,
                                   overWrite || task->overWrite(), false, false );
-        connect(job,TQT_SIGNAL(processedSize (KIO::Job *, KIO::filesize_t )), this,
-                    TQT_SLOT  (slotProcessedSize (KIO::Job *, KIO::filesize_t )));
-        connect(job,TQT_SIGNAL(result(KIO::Job*)),this,TQT_SLOT(slotTaskFinished(KIO::Job*)));
+        connect(job,TQT_SIGNAL(processedSize (TDEIO::Job *, TDEIO::filesize_t )), this,
+                    TQT_SLOT  (slotProcessedSize (TDEIO::Job *, TDEIO::filesize_t )));
+        connect(job,TQT_SIGNAL(result(TDEIO::Job*)),this,TQT_SLOT(slotTaskFinished(TDEIO::Job*)));
         jobMap[ job ] = task;
       } else {
-        KIO::SimpleJob *job = KIO::symlink( task->leftLink(), destURL,
+        TDEIO::SimpleJob *job = TDEIO::symlink( task->leftLink(), destURL,
                                             overWrite || task->overWrite(), false );
-        connect(job,TQT_SIGNAL(result(KIO::Job*)),this,TQT_SLOT(slotTaskFinished(KIO::Job*)));
+        connect(job,TQT_SIGNAL(result(TDEIO::Job*)),this,TQT_SLOT(slotTaskFinished(TDEIO::Job*)));
         jobMap[ job ] = task;
       }
     }
     break;
   case TT_DELETE:
     {
-      KIO::DeleteJob *job = KIO::del( leftURL, false );
-      connect(job,TQT_SIGNAL(result(KIO::Job*)),this,TQT_SLOT(slotTaskFinished(KIO::Job*)));
+      TDEIO::DeleteJob *job = TDEIO::del( leftURL, false );
+      connect(job,TQT_SIGNAL(result(TDEIO::Job*)),this,TQT_SLOT(slotTaskFinished(TDEIO::Job*)));
       jobMap[ job ] = task;
     }
     break;
@@ -1020,14 +1020,14 @@ void Synchronizer::executeTask( SynchronizerFileItem * task )
   }
 }
 
-void Synchronizer::slotTaskFinished(KIO::Job *job )
+void Synchronizer::slotTaskFinished(TDEIO::Job *job )
 {
   inTaskFinished++;
 
   SynchronizerFileItem * item = jobMap[ job ];
   jobMap.remove( job );
 
-  KIO::filesize_t receivedSize = 0;
+  TDEIO::filesize_t receivedSize = 0;
 
   if( receivedMap.contains( job ) ) {
     receivedSize = receivedMap[ job ];
@@ -1135,9 +1135,9 @@ void Synchronizer::slotTaskFinished(KIO::Job *job )
     }
     else
     {
-      if( job->error() == KIO::ERR_FILE_ALREADY_EXIST && item->task() != TT_DELETE )
+      if( job->error() == TDEIO::ERR_FILE_ALREADY_EXIST && item->task() != TT_DELETE )
       {
-        KIO::RenameDlg_Result result;
+        TDEIO::RenameDlg_Result result;
         TQString newDest;
 
         if( autoSkip )
@@ -1150,7 +1150,7 @@ void Synchronizer::slotTaskFinished(KIO::Job *job )
 
           result = Observer::self()->open_RenameDlg ( job, i18n("File Already Exists"),
             vfs::pathOrURL( rightURL ), vfs::pathOrURL( leftURL ),
-            (KIO::RenameDlg_Mode)( KIO::M_OVERWRITE | KIO::M_SKIP | KIO::M_MULTI ), newDest,
+            (TDEIO::RenameDlg_Mode)( TDEIO::M_OVERWRITE | TDEIO::M_SKIP | TDEIO::M_MULTI ), newDest,
             item->rightSize(), item->leftSize(), (time_t)-1, (time_t)-1,
             item->rightDate(), item->leftDate());
 
@@ -1163,7 +1163,7 @@ void Synchronizer::slotTaskFinished(KIO::Job *job )
 
           result = Observer::self()->open_RenameDlg ( job, i18n("File Already Exists"),
             vfs::pathOrURL( leftURL ), vfs::pathOrURL( rightURL ),
-            (KIO::RenameDlg_Mode)( KIO::M_OVERWRITE | KIO::M_SKIP | KIO::M_MULTI ), newDest,
+            (TDEIO::RenameDlg_Mode)( TDEIO::M_OVERWRITE | TDEIO::M_SKIP | TDEIO::M_MULTI ), newDest,
             item->leftSize(), item->rightSize(), (time_t)-1, (time_t)-1,
             item->leftDate(), item->rightDate());
 
@@ -1172,31 +1172,31 @@ void Synchronizer::slotTaskFinished(KIO::Job *job )
 
         switch ( result )
         {
-        case KIO::R_RENAME:
+        case TDEIO::R_RENAME:
           item->setDestination( newDest );
           executeTask( item );
           inTaskFinished--;
           return;
-        case KIO::R_OVERWRITE:
+        case TDEIO::R_OVERWRITE:
           item->setOverWrite();
           executeTask( item );
           inTaskFinished--;
           return;
-        case KIO::R_OVERWRITE_ALL:
+        case TDEIO::R_OVERWRITE_ALL:
           overWrite = true;
           executeTask( item );
           inTaskFinished--;
           return;
-        case KIO::R_AUTO_SKIP:
+        case TDEIO::R_AUTO_SKIP:
           autoSkip = true;
-        case KIO::R_SKIP:
+        case TDEIO::R_SKIP:
         default:
           break;
         }
         break;
       }
 
-      if( job->error() != KIO::ERR_DOES_NOT_EXIST || item->task() != TT_DELETE )
+      if( job->error() != TDEIO::ERR_DOES_NOT_EXIST || item->task() != TT_DELETE )
       {
         if( autoSkip )
           break;
@@ -1225,17 +1225,17 @@ void Synchronizer::slotTaskFinished(KIO::Job *job )
         TQWidget *mainWidget = tqApp->mainWidget(); // WORKAROUND, don't give focus to the main widget
         tqApp->setMainWidget( syncDlgWidget );
 
-        KIO::SkipDlg_Result result = Observer::self()->open_SkipDlg( job, true, error );
+        TDEIO::SkipDlg_Result result = Observer::self()->open_SkipDlg( job, true, error );
 
         tqApp->setMainWidget( mainWidget );
 
         switch( result )
         {
-        case KIO::S_CANCEL:
+        case TDEIO::S_CANCEL:
           executeTask( item );  /* simply retry */
           inTaskFinished--;
           return;
-        case KIO::S_AUTO_SKIP:
+        case TDEIO::S_AUTO_SKIP:
           autoSkip = true;
         default:
           break;
@@ -1272,12 +1272,12 @@ void Synchronizer::slotTaskFinished(KIO::Job *job )
   }
 }
 
-void Synchronizer::slotProcessedSize( KIO::Job * job , KIO::filesize_t size)
+void Synchronizer::slotProcessedSize( TDEIO::Job * job , TDEIO::filesize_t size)
 {
-  KIO::filesize_t dl = 0, dr = 0, dd = 0;
+  TDEIO::filesize_t dl = 0, dr = 0, dd = 0;
   SynchronizerFileItem * item = jobMap[ job ];
 
-  KIO::filesize_t lastProcessedSize = 0;
+  TDEIO::filesize_t lastProcessedSize = 0;
   if( receivedMap.contains( job ) )
     lastProcessedSize = receivedMap[ job ];
 

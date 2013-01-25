@@ -44,7 +44,7 @@
 struct PredefinedDevice
 {
   TQString name;
-  KIO::filesize_t capacity;
+  TDEIO::filesize_t capacity;
 };
 
   class SplitterSpinBox : public TQSpinBox
@@ -52,8 +52,8 @@ struct PredefinedDevice
     Q_OBJECT
     
   private:
-    KIO::filesize_t division;
-    KIO::filesize_t value;
+    TDEIO::filesize_t division;
+    TDEIO::filesize_t value;
     
   public:
     SplitterSpinBox ( TQWidget * parent = 0, const char * name = 0 ) : TQSpinBox( parent, name ), division( 1 ), value( 1 )
@@ -64,15 +64,15 @@ struct PredefinedDevice
       setValidator ( dval );
     }
 
-    void setLongValue( KIO::filesize_t valueIn ) {
+    void setLongValue( TDEIO::filesize_t valueIn ) {
       value = valueIn;
       if( value == 0 )
         value++;
       updateDisplay();
     }
     
-    KIO::filesize_t longValue() {
-      KIO::filesize_t val = (KIO::filesize_t)( division * text().toDouble() + 0.5 ) ;
+    TDEIO::filesize_t longValue() {
+      TDEIO::filesize_t val = (TDEIO::filesize_t)( division * text().toDouble() + 0.5 ) ;
       if( val == 0 )
         val++;
       return val;
@@ -82,12 +82,12 @@ struct PredefinedDevice
     {
       TQString frac("");
       
-      KIO::filesize_t int_part  = value / division;
-      KIO::filesize_t frac_mod = value % division;
+      TDEIO::filesize_t int_part  = value / division;
+      TDEIO::filesize_t frac_mod = value % division;
             
       if( frac_mod )
       {
-        KIO::filesize_t frac_part = (KIO::filesize_t)((1000. * frac_mod) /division + 0.5);
+        TDEIO::filesize_t frac_part = (TDEIO::filesize_t)((1000. * frac_mod) /division + 0.5);
 
         if( frac_part )
         {
@@ -111,7 +111,7 @@ struct PredefinedDevice
         return value;
     }
 
-    void setDivision( KIO::filesize_t div )
+    void setDivision( TDEIO::filesize_t div )
     {
       division = div;
       updateDisplay();
@@ -147,7 +147,7 @@ class SplitterGUI : TQDialog
   
 private:
   int                             predefinedDeviceNum;
-  KIO::filesize_t                 userDefinedSize;
+  TDEIO::filesize_t                 userDefinedSize;
   int                             lastSelectedDevice;
   int                             resultCode;
 
@@ -162,7 +162,7 @@ public:
   SplitterGUI( TQWidget* parent,  KURL fileURL, KURL defaultDir );
 
   KURL    getDestinationDir()     {return vfs::fromPathOrURL( urlReq->url() );}
-  KIO::filesize_t getSplitSize()  {return spinBox->longValue();}
+  TDEIO::filesize_t getSplitSize()  {return spinBox->longValue();}
   int     result()                {return resultCode;}
 
 public slots:

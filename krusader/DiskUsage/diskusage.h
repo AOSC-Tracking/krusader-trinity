@@ -128,7 +128,7 @@ protected:
   TQPtrDict<Properties> propertyMap;
     
   Directory* currentDirectory;
-  KIO::filesize_t currentSize;
+  TDEIO::filesize_t currentSize;
  
   virtual void keyPressEvent( TQKeyEvent * );
   virtual bool event( TQEvent * );
@@ -184,7 +184,7 @@ public:
   
   void init();
   void setCurrentURL( KURL url );
-  void setValues( int fileNum, int dirNum, KIO::filesize_t total );  
+  void setValues( int fileNum, int dirNum, TDEIO::filesize_t total );  
   bool wasCancelled()  { return cancelled; }
   
 public slots:

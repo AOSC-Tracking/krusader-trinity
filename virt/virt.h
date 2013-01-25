@@ -23,7 +23,7 @@
 #include <kconfig.h>
 #include <kio/slavebase.h>
 
-class VirtProtocol : public KIO::SlaveBase {
+class VirtProtocol : public TDEIO::SlaveBase {
 public:
 	VirtProtocol( const TQCString &pool, const TQCString &app );
 	virtual ~VirtProtocol();
@@ -41,12 +41,12 @@ protected:
 	bool save();
 	bool load();
 
-	void local_entry(const KURL& url,KIO::UDSEntry& entry);
+	void local_entry(const KURL& url,TDEIO::UDSEntry& entry);
 	bool addDir(TQString& path);
 
 
 	static TQDict<KURL::List> kioVirtDict;
-	static KConfig* kio_virt_db;
+	static TDEConfig* kio_virt_db;
 
 	bool rewriteURL(const KURL&, KURL&);
 

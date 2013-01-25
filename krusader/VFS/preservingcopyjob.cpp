@@ -78,22 +78,22 @@ Attributes::Attributes( time_t tIn, TQString user, TQString group, mode_t modeIn
 }
 
 PreservingCopyJob::PreservingCopyJob( const KURL::List& src, const KURL& dest, CopyMode mode,
-  bool asMethod, bool showProgressInfo ) : KIO::CopyJob( src, dest, mode, asMethod, showProgressInfo )
+  bool asMethod, bool showProgressInfo ) : TDEIO::CopyJob( src, dest, mode, asMethod, showProgressInfo )
 {
   if( dest.isLocalFile() )
   {
-    connect( this, TQT_SIGNAL( aboutToCreate (KIO::Job *, const TQValueList< KIO::CopyInfo > &) ),
-             this, TQT_SLOT( slotAboutToCreate (KIO::Job *, const TQValueList< KIO::CopyInfo > &) ) );
-    connect( this, TQT_SIGNAL( copyingDone( KIO::Job *, const KURL &, const KURL &, bool, bool) ),
-             this, TQT_SLOT( slotCopyingDone( KIO::Job *, const KURL &, const KURL &, bool, bool) ) );
-    connect( this, TQT_SIGNAL( result( KIO::Job * ) ),
+    connect( this, TQT_SIGNAL( aboutToCreate (TDEIO::Job *, const TQValueList< TDEIO::CopyInfo > &) ),
+             this, TQT_SLOT( slotAboutToCreate (TDEIO::Job *, const TQValueList< TDEIO::CopyInfo > &) ) );
+    connect( this, TQT_SIGNAL( copyingDone( TDEIO::Job *, const KURL &, const KURL &, bool, bool) ),
+             this, TQT_SLOT( slotCopyingDone( TDEIO::Job *, const KURL &, const KURL &, bool, bool) ) );
+    connect( this, TQT_SIGNAL( result( TDEIO::Job * ) ),
              this, TQT_SLOT( slotFinished() ) );
   }
 }
 
-void PreservingCopyJob::slotAboutToCreate( KIO::Job */*job*/, const TQValueList< KIO::CopyInfo > &files )
+void PreservingCopyJob::slotAboutToCreate( TDEIO::Job */*job*/, const TQValueList< TDEIO::CopyInfo > &files )
 {
-  for ( TQValueList< KIO::CopyInfo >::ConstIterator it = files.begin(); it != files.end(); ++it ) {
+  for ( TQValueList< TDEIO::CopyInfo >::ConstIterator it = files.begin(); it != files.end(); ++it ) {
   
     if( (*it).uSource.isLocalFile() ) {
       KDE_struct_stat stat_p;
@@ -155,16 +155,16 @@ void PreservingCopyJob::slotAboutToCreate( KIO::Job */*job*/, const TQValueList<
 
 void PreservingCopyJob::slotResult( Job *job ) {
   if( !job->error() ) {
-    if( job->inherits( "KIO::StatJob" ) ) {       /* Unfortunately KIO forgets to set times when the file is in the */
-      KURL url = ((KIO::SimpleJob *)job)->url();  /* base directory. That's why we capture every StatJob and set the */
+    if( job->inherits( "TDEIO::StatJob" ) ) {       /* Unfortunately KIO forgets to set times when the file is in the */
+      KURL url = ((TDEIO::SimpleJob *)job)->url();  /* base directory. That's why we capture every StatJob and set the */
                                                 /* time manually. */
-      KIO::UDSEntry entry = static_cast<KIO::StatJob*>(job)->statResult();      
+      TDEIO::UDSEntry entry = static_cast<TDEIO::StatJob*>(job)->statResult();      
       KFileItem kfi(entry, url );
     
 #if KDE_IS_VERSION(3,5,0) && defined( HAVE_POSIX_ACL )
-      fileAttributes[ url ] = Attributes( kfi.time( KIO::UDS_MODIFICATION_TIME ), kfi.user(), kfi.group(), kfi.mode(), kfi.ACL().asString() );
+      fileAttributes[ url ] = Attributes( kfi.time( TDEIO::UDS_MODIFICATION_TIME ), kfi.user(), kfi.group(), kfi.mode(), kfi.ACL().asString() );
 #else
-      fileAttributes[ url ] = Attributes( kfi.time( KIO::UDS_MODIFICATION_TIME ), kfi.user(), kfi.group(), kfi.mode(), TQString() );
+      fileAttributes[ url ] = Attributes( kfi.time( TDEIO::UDS_MODIFICATION_TIME ), kfi.user(), kfi.group(), kfi.mode(), TQString() );
 #endif
     }
   }
@@ -172,49 +172,49 @@ void PreservingCopyJob::slotResult( Job *job ) {
   CopyJob::slotResult( job );
   
   for( unsigned j=0; j != subjobs.count(); j++ ) {
-    if( subjobs.at( j )->inherits( "KIO::ListJob" ) ) {
-      disconnect( subjobs.at( j ), TQT_SIGNAL( entries (KIO::Job *, const KIO::UDSEntryList &) ),
-                  this, TQT_SLOT( slotListEntries (KIO::Job *, const KIO::UDSEntryList &) ) );
-      connect( subjobs.at( j ), TQT_SIGNAL( entries (KIO::Job *, const KIO::UDSEntryList &) ),
-                  this, TQT_SLOT( slotListEntries (KIO::Job *, const KIO::UDSEntryList &) ) );
+    if( subjobs.at( j )->inherits( "TDEIO::ListJob" ) ) {
+      disconnect( subjobs.at( j ), TQT_SIGNAL( entries (TDEIO::Job *, const TDEIO::UDSEntryList &) ),
+                  this, TQT_SLOT( slotListEntries (TDEIO::Job *, const TDEIO::UDSEntryList &) ) );
+      connect( subjobs.at( j ), TQT_SIGNAL( entries (TDEIO::Job *, const TDEIO::UDSEntryList &) ),
+                  this, TQT_SLOT( slotListEntries (TDEIO::Job *, const TDEIO::UDSEntryList &) ) );
     }
   }
 }
 
-void PreservingCopyJob::slotListEntries(KIO::Job *job, const KIO::UDSEntryList &list) {
-  KIO::UDSEntryListConstIterator it = list.begin();
-  KIO::UDSEntryListConstIterator end = list.end();
+void PreservingCopyJob::slotListEntries(TDEIO::Job *job, const TDEIO::UDSEntryList &list) {
+  TDEIO::UDSEntryListConstIterator it = list.begin();
+  TDEIO::UDSEntryListConstIterator end = list.end();
   for (; it != end; ++it) {
-    KURL url = ((KIO::SimpleJob *)job)->url();
+    KURL url = ((TDEIO::SimpleJob *)job)->url();
     TQString relName, user, group;
     time_t mtime = (time_t)-1;
     mode_t mode = 0755;
     TQString acl;
     
-    KIO::UDSEntry::ConstIterator it2 = (*it).begin();
+    TDEIO::UDSEntry::ConstIterator it2 = (*it).begin();
     for( ; it2 != (*it).end(); it2++ ) {
       switch ((*it2).m_uds) {
-      case KIO::UDS_NAME:
+      case TDEIO::UDS_NAME:
         if( relName.isEmpty() )
           relName = (*it2).m_str;
         break;
-      case KIO::UDS_URL:
+      case TDEIO::UDS_URL:
         relName = KURL((*it2).m_str).fileName();
         break;
-      case KIO::UDS_MODIFICATION_TIME:
+      case TDEIO::UDS_MODIFICATION_TIME:
         mtime = (time_t)((*it2).m_long);
         break;
-      case KIO::UDS_USER:
+      case TDEIO::UDS_USER:
         user = (*it2).m_str;
         break;
-      case KIO::UDS_GROUP:
+      case TDEIO::UDS_GROUP:
         group = (*it2).m_str;
         break;
-      case KIO::UDS_ACCESS:
+      case TDEIO::UDS_ACCESS:
         mode = (*it2).m_long;
         break;
 #if KDE_IS_VERSION(3,5,0) && defined( HAVE_POSIX_ACL )
-      case KIO::UDS_ACL_STRING:
+      case TDEIO::UDS_ACL_STRING:
         acl = (*it2).m_str;
         break;
 #endif
@@ -226,7 +226,7 @@ void PreservingCopyJob::slotListEntries(KIO::Job *job, const KIO::UDSEntryList &
   }
 }
 
-void PreservingCopyJob::slotCopyingDone( KIO::Job *, const KURL &from, const KURL &to, bool postpone, bool)
+void PreservingCopyJob::slotCopyingDone( TDEIO::Job *, const KURL &from, const KURL &to, bool postpone, bool)
 {
   if( postpone ) { // the directories are stamped at the last step, so if it's a directory, we postpone
     unsigned i=0;
@@ -288,11 +288,11 @@ void PreservingCopyJob::slotFinished() {
   }
 }
 
-KIO::CopyJob * PreservingCopyJob::createCopyJob( PreserveMode pmode, const KURL::List& src, const KURL& dest, CopyMode mode, bool asMethod, bool showProgressInfo )
+TDEIO::CopyJob * PreservingCopyJob::createCopyJob( PreserveMode pmode, const KURL::List& src, const KURL& dest, CopyMode mode, bool asMethod, bool showProgressInfo )
 {
   if( ! dest.isLocalFile() )
     pmode = PM_NONE;
-  if( mode == KIO::CopyJob::Link )
+  if( mode == TDEIO::CopyJob::Link )
     pmode = PM_NONE;
 
   switch( pmode )
@@ -308,11 +308,11 @@ KIO::CopyJob * PreservingCopyJob::createCopyJob( PreserveMode pmode, const KURL:
       if( preserve )
         return new PreservingCopyJob( src, dest, mode, asMethod, showProgressInfo );
       else
-        return new KIO::CopyJob( src, dest, mode, asMethod, showProgressInfo );
+        return new TDEIO::CopyJob( src, dest, mode, asMethod, showProgressInfo );
     }
   case PM_NONE:
   default:
-    return new KIO::CopyJob( src, dest, mode, asMethod, showProgressInfo );
+    return new TDEIO::CopyJob( src, dest, mode, asMethod, showProgressInfo );
   }
 }
 

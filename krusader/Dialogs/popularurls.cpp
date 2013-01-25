@@ -40,7 +40,7 @@ void PopularUrls::clearList() {
 }
 
 void PopularUrls::save() {
-	KConfigGroupSaver svr(krConfig, "Private");
+	TDEConfigGroupSaver svr(krConfig, "Private");
 	// prepare the string list containing urls and int list with ranks
 	TQStringList urlList;
 	TQValueList<int> rankList;
@@ -55,7 +55,7 @@ void PopularUrls::save() {
 }
 
 void PopularUrls::load() {
-	KConfigGroupSaver svr(krConfig, "Private");
+	TDEConfigGroupSaver svr(krConfig, "Private");
 	TQStringList urlList = krConfig->readListEntry("PopularUrls");
 	TQValueList<int> rankList = krConfig->readIntListEntry("PopularUrlsRank");
 	if (urlList.count() != rankList.count()) {

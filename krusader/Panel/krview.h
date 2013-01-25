@@ -171,7 +171,7 @@ public:
   virtual void prepareForActive() { _focused = true; }
   virtual void prepareForPassive() { _focused = false; }
   virtual void renameCurrentItem(); // Rename current item. returns immediatly
-  virtual TQString nameInKConfig() const { return _nameInKConfig; }
+  virtual TQString nameInTDEConfig() const { return _nameInTDEConfig; }
 
 protected:
 	virtual KrViewItem *preAddItem(vfile *vf) = 0;
@@ -186,11 +186,11 @@ public:
   virtual void updateItem(vfile *vf);
   virtual void delItem(const TQString &name);
   virtual uint numSelected() const { return _numSelected; }
-  virtual KIO::filesize_t selectedSize() const { return _selectedSize; }
+  virtual TDEIO::filesize_t selectedSize() const { return _selectedSize; }
   virtual uint numFiles() const { return _count-_numDirs; }
   virtual uint numDirs() const { return _numDirs; }
   virtual uint count() const { return _count; }
-  virtual KIO::filesize_t countSize() const { return _countSize; }
+  virtual TDEIO::filesize_t countSize() const { return _countSize; }
   virtual void getSelectedItems(TQStringList* names);
   virtual void getItemsByMask(TQString mask, TQStringList* names, bool dirs = true, bool files = true);
   virtual void getSelectedKrViewItems(KrViewItemList *items);
@@ -223,24 +223,24 @@ public:
   // todo: what about selection modes ???
   virtual ~KrView();
 protected:
-  KrView(KConfig *cfg = krConfig);
+  KrView(TDEConfig *cfg = krConfig);
   static TQPixmap getIcon(vfile *vf);
   void changeSelection(const KRQuery& filter, bool select, bool includeDirs = false);
 
 
 protected:
-  KConfig *_config;
+  TDEConfig *_config;
   TQWidget *_widget;
   TQString _nameToMakeCurrent;
   TQString _nameToMakeCurrentIfAdded;
   uint _numSelected, _count, _numDirs;
-  KIO::filesize_t _countSize, _selectedSize;
+  TDEIO::filesize_t _countSize, _selectedSize;
   bool _left;
   KrViewProperties *_properties;
   KrViewOperator *_operator;
   TQDict<KrViewItem> _dict;
   bool _focused;
-  TQString _nameInKConfig;
+  TQString _nameInTDEConfig;
 };
 
 #endif /* KRVIEW_H */

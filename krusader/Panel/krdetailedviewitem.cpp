@@ -63,7 +63,7 @@ KrDetailedViewItem::KrDetailedViewItem(KrDetailedView *parent, TQListViewItem *a
 	initiated = false;
 	// get the expected height of an item - should be done only once
 	if (expHeight == 0) {
-		KConfigGroupSaver svr(krConfig, "Look&Feel");
+		TDEConfigGroupSaver svr(krConfig, "Look&Feel");
   		expHeight = 2 + (krConfig->readEntry("Filelist Icon Size",_FilelistIconSize)).toInt();
 	}
 
@@ -108,7 +108,7 @@ void KrDetailedViewItem::repaintItem() {
     }
     if ((id = COLUMN(Size)) != -1) {
 		 if (_vf->vfile_isDir() && _vf->vfile_getSize() <= 0) setText(id, i18n("<DIR>"));
-	    else setText(id, PROPS->humanReadableSize ? KIO::convertSize(_vf->vfile_getSize())+"  " :
+	    else setText(id, PROPS->humanReadableSize ? TDEIO::convertSize(_vf->vfile_getSize())+"  " :
 		 						KRpermHandler::parseSize(_vf->vfile_getSize())+" ");
     }
 
@@ -160,7 +160,7 @@ void KrDetailedViewItem::repaintItem() {
 #endif
 }
 
-TQString num2qstring(KIO::filesize_t num){
+TQString num2qstring(TDEIO::filesize_t num){
   TQString buf;
   buf.sprintf("%025llu",num);
   return buf;

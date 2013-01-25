@@ -66,7 +66,7 @@ public:
    void autoMount( TQString path );           // just call it before refreshing into a dir
    static void eject( TQString mntPoint );
    bool ejectable( TQString path );
-   TQString convertSize( KIO::filesize_t size );
+   TQString convertSize( TDEIO::filesize_t size );
 	bool invalidFilesystem(TQString type);
 	bool nonmountFilesystem(TQString type, TQString mntPoint);
 
@@ -79,7 +79,7 @@ public slots:
    void quickList();
 
 protected slots:
-	void jobResult(KIO::Job *job);
+	void jobResult(TDEIO::Job *job);
 	
 protected:
 	// used internally

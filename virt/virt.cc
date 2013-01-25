@@ -30,7 +30,7 @@
 
 #include "virt.h"
 
-using namespace KIO;
+using namespace TDEIO;
 
 #define VIRT_VFS_DB "virt_vfs.db"
 #define VIRT_PROTOCOL "virt"
@@ -48,7 +48,7 @@ extern "C" { int kdemain( int argc, char **argv ); }
 }
 
 TQDict<KURL::List> VirtProtocol::kioVirtDict;
-KConfig* VirtProtocol::kio_virt_db;
+TDEConfig* VirtProtocol::kio_virt_db;
 
 int kdemain( int argc, char **argv ) {
 	TDEInstance instance( "kio_virt" );
@@ -65,7 +65,7 @@ int kdemain( int argc, char **argv ) {
 }
 
 VirtProtocol::VirtProtocol( const TQCString &pool, const TQCString &app ) : SlaveBase( "virt", pool, app ) {
-	kio_virt_db = new KConfig(VIRT_VFS_DB,false,"data");
+	kio_virt_db = new TDEConfig(VIRT_VFS_DB,false,"data");
 }
 
 VirtProtocol::~VirtProtocol() {
@@ -75,7 +75,7 @@ VirtProtocol::~VirtProtocol() {
 void VirtProtocol::del(KURL const & /*url */, bool /* isFile */ ){
 //	KRDEBUG(url.path());
 	
-	messageBox(KIO::SlaveBase::QuestionYesNo,
+	messageBox(TDEIO::SlaveBase::QuestionYesNo,
 	                         i18n(""),
 	                         i18n("Virtulal delete"),
 	                         i18n("remove from virtual space"),
@@ -132,7 +132,7 @@ void VirtProtocol::mkdir(const KURL& url,int){
 	if ( path.isEmpty() ) path = "/";
 
 	if( kioVirtDict[ path ] ){
-		error( KIO::ERR_DIR_ALREADY_EXIST, url.path() );
+		error( TDEIO::ERR_DIR_ALREADY_EXIST, url.path() );
 		return;
 	}
 
@@ -222,7 +222,7 @@ bool VirtProtocol::rewriteURL(const KURL& /* src */, KURL&){
 bool VirtProtocol::save(){
 	lock();
 
-	KConfig* db = new KConfig(VIRT_VFS_DB,false,"data");;
+	TDEConfig* db = new TDEConfig(VIRT_VFS_DB,false,"data");;
 	
 	db->setGroup("virt_db");
 	TQDictIterator<KURL::List> it( kioVirtDict ); // See TQDictIterator
@@ -246,7 +246,7 @@ bool VirtProtocol::save(){
 bool VirtProtocol::load(){
 	lock();
 
-	KConfig* db = new KConfig(VIRT_VFS_DB,false,"data");
+	TDEConfig* db = new TDEConfig(VIRT_VFS_DB,false,"data");
 	db->setGroup("virt_db");
 	
 	TQMap<TQString, TQString> map = db->entryMap("virt_db");

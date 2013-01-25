@@ -64,7 +64,7 @@ public:
 	virtual			~vfs();
 
 	/// Copy a file to the vfs (physical).
-	virtual void vfs_addFiles(KURL::List *fileUrls,KIO::CopyJob::CopyMode mode,TQObject* toNotify,TQString dir = "", PreserveMode pmode = PM_DEFAULT)=0;	
+	virtual void vfs_addFiles(KURL::List *fileUrls,TDEIO::CopyJob::CopyMode mode,TQObject* toNotify,TQString dir = "", PreserveMode pmode = PM_DEFAULT)=0;	
 	/// Remove a file from the vfs (physical)
 	virtual void vfs_delFiles(TQStringList *fileNames)=0;	
 	/// Return a list of URLs for multiple files	
@@ -76,9 +76,9 @@ public:
 	/// Rename file
 	virtual void vfs_rename(const TQString& fileName,const TQString& newName)=0;
 	/// Calculate the amount of space occupied by a file or directory (recursive).
-	virtual void vfs_calcSpace(TQString name ,KIO::filesize_t *totalSize,unsigned long *totalFiles,unsigned long *totalDirs, bool * stop);
+	virtual void vfs_calcSpace(TQString name ,TDEIO::filesize_t *totalSize,unsigned long *totalFiles,unsigned long *totalDirs, bool * stop);
 	/// Calculate the amount of space occupied by a local file or directory (recursive).
-	virtual void vfs_calcSpaceLocal(TQString name ,KIO::filesize_t *totalSize,unsigned long *totalFiles,unsigned long *totalDirs, bool * stop);
+	virtual void vfs_calcSpaceLocal(TQString name ,TDEIO::filesize_t *totalSize,unsigned long *totalFiles,unsigned long *totalDirs, bool * stop);
 
 	/// Return the VFS working dir
 	virtual TQString vfs_workingDir()=0;
@@ -89,7 +89,7 @@ public:
 	/// Return an empty vfile* list if not found
 	TQValueList<vfile*> vfs_search(const KRQuery& filter);
 	/// The total size of all the files in the VFS,
-	KIO::filesize_t vfs_totalSize();
+	TDEIO::filesize_t vfs_totalSize();
 	/// The number of files in the VFS
 	inline unsigned long vfs_noOfFiles() { return vfs_filesP->count(); }
 	/// Returns the VFS url.
@@ -120,7 +120,7 @@ public slots:
 	bool vfs_refresh(const KURL& origin);
 	/// Used to refresh the VFS when a job finishs. it calls the refresh() slot
 	/// or display a error message if the job fails
-	bool vfs_refresh(KIO::Job* job);
+	bool vfs_refresh(TDEIO::Job* job);
 	bool vfs_refresh();
 	void vfs_setQuiet(bool beQuiet){ quietMode=beQuiet; }
 	void vfs_enableRefresh(bool enable);        
@@ -128,7 +128,7 @@ public slots:
 
 signals:
 	void startUpdate(); //< emitted when the VFS starts to refresh its list of vfiles.
-	void startJob(KIO::Job* job);
+	void startJob(TDEIO::Job* job);
 	void incrementalRefreshFinished( const KURL& ); //< emitted when the incremental refresh was finished
 	void addedVfile(vfile* vf);
 	void deletedVfile(const TQString& name);
@@ -151,7 +151,7 @@ protected:
 	inline void removeFromList(TQString name){ vfs_filesP->remove(name); }
 
 	/// Deletes a vfile from the list.
-	void calculateURLSize(KURL url,KIO::filesize_t *totalSize,unsigned long *totalFiles,unsigned long *totalDirs, bool * stop);
+	void calculateURLSize(KURL url,TDEIO::filesize_t *totalSize,unsigned long *totalFiles,unsigned long *totalDirs, bool * stop);
         
 	VFS_TYPE      vfs_type;     //< the vfs type.
 	KURL          vfs_origin;   //< the path or file the VFS originates from.
@@ -165,8 +165,8 @@ protected:
 	
 protected slots:
 	/// The slot for the KDirSize job
-	void slotKdsResult(KIO::Job *job);
-	void slotStatResultArrived(KIO::Job *job);
+	void slotKdsResult(TDEIO::Job *job);
+	void slotStatResultArrived(TDEIO::Job *job);
         
 private:
 	vfileDict*  vfs_filesP;    //< Point to a lists of virtual files (vfile).
@@ -178,8 +178,8 @@ private:
 	bool  stat_busy;
 	bool  deletePossible;        
 	bool  deleteRequested;
-	KIO::UDSEntry entry;        
-	KIO::filesize_t* kds_totalSize;
+	TDEIO::UDSEntry entry;        
+	TDEIO::filesize_t* kds_totalSize;
 	unsigned long*   kds_totalFiles;
 	unsigned long*   kds_totalDirs;
 };

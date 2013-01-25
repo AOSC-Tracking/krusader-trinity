@@ -147,7 +147,7 @@ void PanelViewer::oldHexViewer(KTempFile& tmpFile) {
 	TQString file;
 	// files that are not local must first be downloaded
 	if ( !curl.isLocalFile() ) {
-		if ( !KIO::NetAccess::download( curl, file,this ) ) {
+		if ( !TDEIO::NetAccess::download( curl, file,this ) ) {
 			KMessageBox::sorry( this, i18n( "KrViewer is unable to download: " ) + curl.url() );
 			return ;
 		}
@@ -161,8 +161,8 @@ void PanelViewer::oldHexViewer(KTempFile& tmpFile) {
 
 	FILE *out = KDE_fopen( tmpFile.name().local8Bit(), "w" );
 
-	KIO::filesize_t fileSize = f_in.size();
-	KIO::filesize_t address = 0;
+	TDEIO::filesize_t fileSize = f_in.size();
+	TDEIO::filesize_t address = 0;
 	char buf[ 16 ];
 	unsigned int* pBuff = ( unsigned int* ) buf;
 
@@ -189,7 +189,7 @@ void PanelViewer::oldHexViewer(KTempFile& tmpFile) {
 	f_in.close();
 	fclose( out );
 	if ( !curl.isLocalFile() )
-	KIO::NetAccess::removeTempFile( file );
+	TDEIO::NetAccess::removeTempFile( file );
 
 	curl = tmpFile.name();
 }
@@ -230,8 +230,8 @@ KParts::ReadOnlyPart* PanelEditor::openURL( const KURL &url, KrViewer::Mode mode
 	}
 
 	bool create = true;
-	KIO::StatJob* statJob = KIO::stat( url, false );
-	connect( statJob, TQT_SIGNAL( result( KIO::Job* ) ), this, TQT_SLOT( slotStatResult( KIO::Job* ) ) );
+	TDEIO::StatJob* statJob = TDEIO::stat( url, false );
+	connect( statJob, TQT_SIGNAL( result( TDEIO::Job* ) ), this, TQT_SLOT( slotStatResult( TDEIO::Job* ) ) );
 	busy = true;
 	while ( busy ) tqApp->processEvents();
 	if( !entry.isEmpty() ) {
@@ -294,9 +294,9 @@ KParts::ReadWritePart* PanelEditor::getPart( TQString mimetype ) {
 	return part;
 }
 
-void PanelEditor::slotStatResult( KIO::Job* job ) {
-  if( !job || job->error() ) entry = KIO::UDSEntry();
-  else entry = static_cast<KIO::StatJob*>(job)->statResult();
+void PanelEditor::slotStatResult( TDEIO::Job* job ) {
+  if( !job || job->error() ) entry = TDEIO::UDSEntry();
+  else entry = static_cast<TDEIO::StatJob*>(job)->statResult();
   busy = false;
 }
 

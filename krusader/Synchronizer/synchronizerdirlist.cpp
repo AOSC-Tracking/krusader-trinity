@@ -153,11 +153,11 @@ bool SynchronizerDirList::load( const TQString &urlIn, bool wait ) {
     emit finished( result = true );
     return true;
   } else {
-    KIO::Job *job = KIO::listDir( url, false, true );
-    connect( job, TQT_SIGNAL( entries( KIO::Job*, const KIO::UDSEntryList& ) ),
-             this, TQT_SLOT( slotEntries( KIO::Job*, const KIO::UDSEntryList& ) ) );
-    connect( job, TQT_SIGNAL( result( KIO::Job* ) ),
-             this, TQT_SLOT( slotListResult( KIO::Job* ) ) );
+    TDEIO::Job *job = TDEIO::listDir( url, false, true );
+    connect( job, TQT_SIGNAL( entries( TDEIO::Job*, const TDEIO::UDSEntryList& ) ),
+             this, TQT_SLOT( slotEntries( TDEIO::Job*, const TDEIO::UDSEntryList& ) ) );
+    connect( job, TQT_SIGNAL( result( TDEIO::Job* ) ),
+             this, TQT_SLOT( slotListResult( TDEIO::Job* ) ) );
     busy = true;
 
     if( !wait )
@@ -169,20 +169,20 @@ bool SynchronizerDirList::load( const TQString &urlIn, bool wait ) {
   }
 }
 
-void SynchronizerDirList::slotEntries( KIO::Job * job, const KIO::UDSEntryList& entries ) 
+void SynchronizerDirList::slotEntries( TDEIO::Job * job, const TDEIO::UDSEntryList& entries ) 
 {
-  KIO::UDSEntryListConstIterator it = entries.begin();
-  KIO::UDSEntryListConstIterator end = entries.end();
+  TDEIO::UDSEntryListConstIterator it = entries.begin();
+  TDEIO::UDSEntryListConstIterator end = entries.end();
 
   int rwx = -1;
-  TQString prot = (( KIO::ListJob *)job )->url().protocol();
+  TQString prot = (( TDEIO::ListJob *)job )->url().protocol();
 
   if( prot == "krarc" || prot == "tar" || prot == "zip" )
     rwx = PERM_ALL;
 
   while( it != end )
   {
-    KFileItem kfi( *it, (( KIO::ListJob *)job )->url(), true, true );
+    KFileItem kfi( *it, (( TDEIO::ListJob *)job )->url(), true, true );
     TQString key = kfi.text();
     if( key != "." && key != ".." && (!ignoreHidden || !key.startsWith(".") ) ) {
       mode_t mode = kfi.mode() | kfi.permissions();
@@ -190,7 +190,7 @@ void SynchronizerDirList::slotEntries( KIO::Job * job, const KIO::UDSEntryList& 
       if ( kfi.isDir() ) 
         perm[ 0 ] = 'd';
 
-      vfile *item = new vfile( kfi.text(), kfi.size(), perm, kfi.time( KIO::UDS_MODIFICATION_TIME ),
+      vfile *item = new vfile( kfi.text(), kfi.size(), perm, kfi.time( TDEIO::UDS_MODIFICATION_TIME ),
           kfi.isLink(), kfi.user(), kfi.group(), kfi.user(), 
           kfi.mimetype(), kfi.linkDest(), mode, rwx
 #if KDE_IS_VERSION(3,5,0) && defined( HAVE_POSIX_ACL )
@@ -203,7 +203,7 @@ void SynchronizerDirList::slotEntries( KIO::Job * job, const KIO::UDSEntryList& 
   }
 }
 
-void SynchronizerDirList::slotListResult( KIO::Job *job ) {
+void SynchronizerDirList::slotListResult( TDEIO::Job *job ) {
   busy = false;
   if ( job && job->error() ) {
     job->showErrorDialog( parentWidget );

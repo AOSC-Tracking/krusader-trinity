@@ -184,7 +184,7 @@ void LoaderWidget::setCurrentURL( KURL url )
   searchedDirectory->setText( vfs::pathOrURL( url, 1) );
 }
 
-void LoaderWidget::setValues( int fileNum, int dirNum, KIO::filesize_t total )
+void LoaderWidget::setValues( int fileNum, int dirNum, TDEIO::filesize_t total )
 {
   files->setText( TQString("%1").arg( fileNum ) );
   directories->setText( TQString("%1").arg( dirNum ) );
@@ -475,7 +475,7 @@ int DiskUsage::calculateSizes( Directory *dirEntry, bool emitSig, int depth )
   if( dirEntry == 0 )
     dirEntry = root;
 
-  KIO::filesize_t own = 0, total = 0;
+  TDEIO::filesize_t own = 0, total = 0;
 
   for( Iterator<File> it = dirEntry->iterator(); it != dirEntry->end(); ++it )
   {
@@ -492,7 +492,7 @@ int DiskUsage::calculateSizes( Directory *dirEntry, bool emitSig, int depth )
     }
   }
 
-  KIO::filesize_t oldOwn = dirEntry->ownSize(), oldTotal = dirEntry->size();
+  TDEIO::filesize_t oldOwn = dirEntry->ownSize(), oldTotal = dirEntry->size();
   dirEntry->setSizes( total, own );
 
   if( dirEntry == currentDirectory )
@@ -637,20 +637,20 @@ int DiskUsage::del( File *file, bool calcPercents, int depth )
   emit deleted( file );
   deleteNr++;
 
-  TQGuardedPtr<KIO::Job> job;
+  TQGuardedPtr<TDEIO::Job> job;
 
   if( trash )
   {
 #if KDE_IS_VERSION(3,4,0)
-    job = KIO::trash( url, true );
+    job = TDEIO::trash( url, true );
 #else
-    job = new KIO::CopyJob( url,TDEGlobalSettings::trashPath(),KIO::CopyJob::Move,false,true );
+    job = new TDEIO::CopyJob( url,TDEGlobalSettings::trashPath(),TDEIO::CopyJob::Move,false,true );
 #endif
-    connect(job,TQT_SIGNAL(result(KIO::Job*)),krApp,TQT_SLOT(changeTrashIcon()));
+    connect(job,TQT_SIGNAL(result(TDEIO::Job*)),krApp,TQT_SLOT(changeTrashIcon()));
   }
   else
   {
-    job = new KIO::DeleteJob( vfs::fromPathOrURL( file->fullPath() ), false, false);
+    job = new TDEIO::DeleteJob( vfs::fromPathOrURL( file->fullPath() ), false, false);
   }
 
   deleting = true;    // during tqApp->processEvent strange things can occur

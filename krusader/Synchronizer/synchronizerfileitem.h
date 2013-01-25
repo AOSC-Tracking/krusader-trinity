@@ -71,8 +71,8 @@ class SynchronizerFileItem
     bool                  m_marked;       // flag, indicates to show the file
     bool                  m_existsLeft;   // flag, the file exists in the left directory
     bool                  m_existsRight;  // flag, the file exists in the right directory
-    KIO::filesize_t       m_leftSize;     // the file size at the left directory
-    KIO::filesize_t       m_rightSize;    // the file size at the right directory
+    TDEIO::filesize_t       m_leftSize;     // the file size at the left directory
+    TDEIO::filesize_t       m_rightSize;    // the file size at the right directory
     time_t                m_leftDate;     // the file date at the left directory
     time_t                m_rightDate;    // the file date at the left directory
     TQString               m_leftLink;     // the left file's symbolic link destination
@@ -96,8 +96,8 @@ class SynchronizerFileItem
     
   public:
     SynchronizerFileItem(const TQString &leftNam, const TQString &rightNam, const TQString &leftDir,
-                       const TQString &rightDir, bool mark, bool exL, bool exR, KIO::filesize_t leftSize,
-                       KIO::filesize_t rightSize, time_t leftDate, time_t rightDate,
+                       const TQString &rightDir, bool mark, bool exL, bool exR, TDEIO::filesize_t leftSize,
+                       TDEIO::filesize_t rightSize, time_t leftDate, time_t rightDate,
                        const TQString &leftLink, const TQString &rightLink, const TQString &leftOwner,
                        const TQString &rightOwner, const TQString &leftGroup, const TQString &rightGroup,
                        mode_t leftMode, mode_t rightMode, const TQString &leftACL, const TQString &rightACL, 
@@ -121,8 +121,8 @@ class SynchronizerFileItem
     inline bool                   existsInLeft()          {return m_existsLeft;}
     inline bool                   existsInRight()         {return m_existsRight;}
     inline bool                   overWrite()             {return m_overWrite;}
-    inline KIO::filesize_t        leftSize()              {return m_leftSize;}
-    inline KIO::filesize_t        rightSize()             {return m_rightSize;}
+    inline TDEIO::filesize_t        leftSize()              {return m_leftSize;}
+    inline TDEIO::filesize_t        rightSize()             {return m_rightSize;}
     inline time_t                 leftDate()              {return m_leftDate;}
     inline time_t                 rightDate()             {return m_rightDate;}
     inline const TQString &        leftLink()              {return m_leftLink;}
@@ -157,7 +157,7 @@ class SynchronizerFileItem
     inline void                   swap( bool asym=false ) {SWAP( m_existsLeft, m_existsRight, bool );
                                                            SWAP( m_leftName, m_rightName, TQString );
                                                            SWAP( m_leftDirectory, m_rightDirectory, TQString );
-                                                           SWAP( m_leftSize, m_rightSize, KIO::filesize_t );
+                                                           SWAP( m_leftSize, m_rightSize, TDEIO::filesize_t );
                                                            SWAP( m_leftDate, m_rightDate, time_t );
                                                            SWAP( m_leftLink, m_rightLink, TQString );
                                                            SWAP( m_leftOwner, m_rightOwner, TQString );

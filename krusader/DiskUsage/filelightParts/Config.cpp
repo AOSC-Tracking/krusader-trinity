@@ -13,10 +13,10 @@ uint Config::defaultRingDepth = 4;
 Filelight::MapScheme Config::scheme;
 
 
-inline KConfig&
+inline TDEConfig&
 Filelight::Config::kconfig()
 {
-    KConfig *config = TDEGlobal::config();
+    TDEConfig *config = TDEGlobal::config();
     config->setGroup( "DiskUsage" );
     return *config;
 }
@@ -24,7 +24,7 @@ Filelight::Config::kconfig()
 void
 Filelight::Config::read()
 {
-    const KConfig &config = kconfig();
+    const TDEConfig &config = kconfig();
 
     varyLabelFontSizes = config.readBoolEntry( "varyLabelFontSizes", true );
     showSmallFiles     = config.readBoolEntry( "showSmallFiles", false );
@@ -39,7 +39,7 @@ Filelight::Config::read()
 void
 Filelight::Config::write()
 {
-    KConfig &config = kconfig();
+    TDEConfig &config = kconfig();
 
     config.writeEntry( "varyLabelFontSizes", varyLabelFontSizes );
     config.writeEntry( "showSmallFiles", showSmallFiles);

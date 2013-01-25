@@ -73,7 +73,7 @@ public:
   static bool fileExist(TQString Path, TQString name);
 
 	static TQString mode2TQString(mode_t m);
-  static TQString parseSize(KIO::filesize_t val);
+  static TQString parseSize(TDEIO::filesize_t val);
 	static TQString date2qstring(TQString date);
 	static time_t  TQString2time(TQString date);
 

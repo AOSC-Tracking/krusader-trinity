@@ -75,7 +75,7 @@ class KrDetailedView : public KListView, public KrView {
    friend class KrDetailedViewItem;
 
 public:
-   KrDetailedView( TQWidget *parent, bool &left, KConfig *cfg = krConfig, const char *name = 0 );
+   KrDetailedView( TQWidget *parent, bool &left, TDEConfig *cfg = krConfig, const char *name = 0 );
    virtual ~KrDetailedView();
    virtual int column( KrDetailedViewProperties::ColumnType type );
    virtual inline KrViewItem *getFirst() { return dynamic_cast<KrViewItem*>( firstChild() ); }
@@ -96,8 +96,8 @@ public:
    virtual void setSortMode( KrViewProperties::SortSpec mode );
    virtual void prepareForActive();
    virtual void prepareForPassive();
-   virtual inline void saveSettings() { KListView::saveLayout( _config, nameInKConfig() ); }
-   virtual inline void restoreSettings() { KListView::restoreLayout( _config, nameInKConfig() ); }
+   virtual inline void saveSettings() { KListView::saveLayout( _config, nameInTDEConfig() ); }
+   virtual inline void restoreSettings() { KListView::restoreLayout( _config, nameInTDEConfig() ); }
 
 signals:
    void middleButtonClicked( KrViewItem *item );

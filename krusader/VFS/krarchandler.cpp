@@ -442,7 +442,7 @@ bool KRarcHandler::pack( TQStringList fileNames, TQString type, TQString dest, l
 
   if( extraProps.count( "VolumeSize" ) > 0 ) {
      TQString sizeStr = extraProps[ "VolumeSize" ];
-     KIO::filesize_t size = sizeStr.toLongLong();
+     TDEIO::filesize_t size = sizeStr.toLongLong();
 
      if( size >= 10000 ) {
        if( type == "-arj" || type == "-rar" )
@@ -545,10 +545,10 @@ TQString KRarcHandler::getPassword( TQString path ) {
 	
 	bool keep = true;
 	TQString user = "archive";
-	KIO::PasswordDialog passDlg( i18n("This archive is encrypted, please supply the password:"),
+	TDEIO::PasswordDialog passDlg( i18n("This archive is encrypted, please supply the password:"),
 	                             user, true );
 	passDlg.setPassword( password );
-	if (passDlg.exec() == KIO::PasswordDialog::Accepted) {
+	if (passDlg.exec() == TDEIO::PasswordDialog::Accepted) {
 		password = passDlg.password();
 		if ( keep ) {
 			if( !KWallet::Wallet::isOpen( KWallet::Wallet::NetworkWallet() ) && wallet != 0 ) {

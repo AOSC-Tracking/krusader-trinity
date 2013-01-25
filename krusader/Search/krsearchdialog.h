@@ -67,7 +67,7 @@ public slots:
   void stopSearch();
   void feedToListBox();
   void copyToClipBoard();
-  void found(TQString what, TQString where, KIO::filesize_t size, time_t mtime, TQString perm, TQString foundText);
+  void found(TQString what, TQString where, TDEIO::filesize_t size, time_t mtime, TQString perm, TQString foundText);
   void closeDialog( bool isAccept = true );
   void resultDoubleClicked(TQListViewItem*);
   void resultClicked(TQListViewItem*);
@@ -129,7 +129,7 @@ private:
 class ResultListViewItem : public TQListViewItem
 {
 public:
-  ResultListViewItem( TQListView *resultsList, TQString name, TQString where, KIO::filesize_t size, 
+  ResultListViewItem( TQListView *resultsList, TQString name, TQString where, TDEIO::filesize_t size, 
                       TQDateTime date, TQString perm ) : TQListViewItem( resultsList, name, where, 
                       KRpermHandler::parseSize(size), 
                       TDEGlobal::locale()->formatDateTime( date ), perm )
@@ -146,7 +146,7 @@ public:
   {
     if( col == 2 ) {
       ResultListViewItem *other = (ResultListViewItem *)i;
-      KIO::filesize_t otherSize = other->getSize();
+      TDEIO::filesize_t otherSize = other->getSize();
       
       if( fileSize == otherSize )
         return 0;
@@ -167,7 +167,7 @@ public:
     return TQListViewItem::compare( i, col, ascending );
   }
 
-  KIO::filesize_t getSize() {
+  TDEIO::filesize_t getSize() {
     return fileSize;
   }
 
@@ -176,7 +176,7 @@ public:
   }
   
 private:
-  KIO::filesize_t fileSize;
+  TDEIO::filesize_t fileSize;
   TQDateTime       fileDate;
   TQString _foundText;
 };

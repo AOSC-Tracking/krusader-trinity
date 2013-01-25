@@ -79,11 +79,11 @@ void KrBriefViewToolTip::maybeTip( const TQPoint &pos )
 }
 
 
-KrBriefView::KrBriefView( TQHeader * headerIn, TQWidget *parent, bool &left, KConfig *cfg, const char *name ):
+KrBriefView::KrBriefView( TQHeader * headerIn, TQWidget *parent, bool &left, TDEConfig *cfg, const char *name ):
 	KIconView(parent, name), KrView( cfg ), header( headerIn ), _currDragItem( 0 ),
             currentlyRenamedItem( 0 ), pressedItem( 0 ), mouseEvent( 0 ) {
 	setWidget( this );
-	_nameInKConfig = TQString( "KrBriefView" ) + TQString( ( left ? "Left" : "Right" ) );
+	_nameInTDEConfig = TQString( "KrBriefView" ) + TQString( ( left ? "Left" : "Right" ) );
 	krConfig->setGroup("Private");
 	if (krConfig->readBoolEntry("Enable Input Method", true))
 		setInputMethodEnabled(true);
@@ -93,8 +93,8 @@ KrBriefView::KrBriefView( TQHeader * headerIn, TQWidget *parent, bool &left, KCo
 void KrBriefView::setup() {
    lastSwushPosition = 0;
       
-   // use the {} so that KConfigGroupSaver will work correctly!
-   KConfigGroupSaver grpSvr( _config, "Look&Feel" );
+   // use the {} so that TDEConfigGroupSaver will work correctly!
+   TDEConfigGroupSaver grpSvr( _config, "Look&Feel" );
    setFont( _config->readFontEntry( "Filelist Font", _FilelistFont ) );
    // decide on single click/double click selection
    if ( _config->readBoolEntry( "Single Click Selects", _SingleClickSelects ) &&
@@ -118,7 +118,7 @@ void KrBriefView::setup() {
    connect( &KrColorCache::getColorCache(), TQT_SIGNAL( colorsRefreshed() ), this, TQT_SLOT( refreshColors() ) );
 
    // add whatever columns are needed to the listview
-   krConfig->setGroup( nameInKConfig() );
+   krConfig->setGroup( nameInTDEConfig() );
    
    // determine basic settings for the view
    setAcceptDrops( true );
@@ -341,7 +341,7 @@ void KrBriefView::slotClicked( TQIconViewItem *item ) {
 
    if ( !modifierPressed ) {
       if ( singleClicked && !renameTimer.isActive() ) {
-         KConfig * config = TDEGlobal::config();
+         TDEConfig * config = TDEGlobal::config();
          config->setGroup( "KDE" );
          int doubleClickInterval = config->readNumEntry( "DoubleClickInterval", 400 );
 
@@ -378,7 +378,7 @@ void KrBriefView::prepareForActive() {
 void KrBriefView::prepareForPassive() {
    KrView::prepareForPassive();
    CANCEL_TWO_CLICK_RENAME;
-   KConfigGroupSaver grpSvr( _config, "Look&Feel" );
+   TDEConfigGroupSaver grpSvr( _config, "Look&Feel" );
    if ( _config->readBoolEntry( "New Style Quicksearch", _NewStyleQuicksearch ) ) {
       if ( MAIN_VIEW ) {
          if ( ACTIVE_PANEL ) {
@@ -537,7 +537,7 @@ void KrBriefView::contentsMousePressEvent( TQMouseEvent * e ) {
    }
 
    // stop quick search in case a mouse click occured
-   KConfigGroupSaver grpSvr( _config, "Look&Feel" );
+   TDEConfigGroupSaver grpSvr( _config, "Look&Feel" );
    if ( _config->readBoolEntry( "New Style Quicksearch", _NewStyleQuicksearch ) ) {
       if ( MAIN_VIEW ) {
          if ( ACTIVE_PANEL ) {
@@ -792,7 +792,7 @@ void KrBriefView::imStartEvent(TQIMEvent* e)
     ACTIVE_PANEL->quickSearch->myIMStartEvent( e );
     return ;
   }else {
-    KConfigGroupSaver grpSvr( _config, "Look&Feel" );
+    TDEConfigGroupSaver grpSvr( _config, "Look&Feel" );
     if ( !_config->readBoolEntry( "New Style Quicksearch", _NewStyleQuicksearch ) )
       KIconView::imStartEvent( e );
     else {
@@ -1098,7 +1098,7 @@ void KrBriefView::keyPressEvent( TQKeyEvent * e ) {
             //if ( _config->readBoolEntry( "Do Quicksearch", _DoQuicksearch ) ) {
                // are we using krusader's classic quicksearch, or wincmd style?
                {
-						KConfigGroupSaver grpSvr( _config, "Look&Feel" );
+						TDEConfigGroupSaver grpSvr( _config, "Look&Feel" );
 						if ( !_config->readBoolEntry( "New Style Quicksearch", _NewStyleQuicksearch ) )
 							KIconView::keyPressEvent( e );
 						else {
@@ -1155,7 +1155,7 @@ void KrBriefView::renameCurrentItem() {
    rename( static_cast<TQIconViewItem*>( it ) );
    // if applicable, select only the name without extension
 /* TODO:
-   KConfigGroupSaver svr(krConfig,"Look&Feel");
+   TDEConfigGroupSaver svr(krConfig,"Look&Feel");
    if (!krConfig->readBoolEntry("Rename Selects Extension", true)) {
      if (it->hasExtension() && !it->VF->vfile_isDir() ) 
        renameLineEdit()->setSelection(0, it->name().findRev(it->extension())-1);
@@ -1181,7 +1181,7 @@ void KrBriefView::quickSearch( const TQString & str, int direction ) {
    KrViewItem * item = getCurrentKrViewItem();
    if (!item)
       return;
-   KConfigGroupSaver grpSvr( _config, "Look&Feel" );
+   TDEConfigGroupSaver grpSvr( _config, "Look&Feel" );
    bool caseSensitive = _config->readBoolEntry( "Case Sensitive Quicksearch", _CaseSensitiveQuicksearch );
    if ( !direction ) {
       if ( caseSensitive ? item->name().startsWith( str ) : item->name().lower().startsWith( str.lower() ) )
@@ -1303,7 +1303,7 @@ void KrBriefView::initProperties() {
 	_properties = new KrBriefViewProperties;
 	_properties->filter = KrViewProperties::All;
 	_properties->filterMask = KRQuery( "*" );
-	KConfigGroupSaver grpSvr( _config, "Look&Feel" );
+	TDEConfigGroupSaver grpSvr( _config, "Look&Feel" );
 	_properties->displayIcons = _config->readBoolEntry( "With Icons", _WithIcons );
 	bool dirsByNameAlways = _config->readBoolEntry("Always sort dirs by name", false);
 	_properties->sortMode = static_cast<KrViewProperties::SortSpec>( KrViewProperties::Name |
@@ -1335,7 +1335,7 @@ void KrBriefView::initProperties() {
 	}
 	_properties->atomicExtensions = atomicExtensions;
 	
-	_config->setGroup( nameInKConfig() );
+	_config->setGroup( nameInTDEConfig() );
 	PROPS->numberOfColumns = _config->readNumEntry( "Number Of Brief Columns", _NumberOfBriefColumns );
 	if( PROPS->numberOfColumns < 1 )
 		PROPS->numberOfColumns = 1;
@@ -1358,7 +1358,7 @@ void KrBriefView::setColumnNr()
   
   int result=popup.exec(TQCursor::pos());
 
-  krConfig->setGroup( nameInKConfig() );
+  krConfig->setGroup( nameInTDEConfig() );
   
   if( result > COL_ID && result <= COL_ID + MAX_COLS )
   {

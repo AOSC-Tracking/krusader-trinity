@@ -49,7 +49,7 @@ TQString KrViewItem::description() const {
 	TQString text = _vf->vfile_getName();
 	TQString comment = KMimeType::mimeType(_vf->vfile_getMime())->comment(text, false);
 	TQString myLinkDest = _vf->vfile_getSymDest();
-	KIO::filesize_t mySize = _vf->vfile_getSize();
+	TDEIO::filesize_t mySize = _vf->vfile_getSize();
 	
 	TQString text2 = text.copy();
 	mode_t m_fileMode = _vf->vfile_getMode();
@@ -66,7 +66,7 @@ TQString KrViewItem::description() const {
 	text += tmp;
 	} else if ( S_ISREG( m_fileMode ) ){
 	text = TQString("%1 (%2)").arg(text2).arg( PROPS->humanReadableSize ?
-		KRpermHandler::parseSize(_vf->vfile_getSize()) : KIO::convertSize( mySize ) );
+		KRpermHandler::parseSize(_vf->vfile_getSize()) : TDEIO::convertSize( mySize ) );
 	text += "  ";
 	text += comment;
 	} else if ( S_ISDIR ( m_fileMode ) ){

@@ -4,7 +4,7 @@
 
 #include <tqstringlist.h>
 
-class KConfig;
+class TDEConfig;
 
 
 namespace Filelight
@@ -13,7 +13,7 @@ namespace Filelight
 
     class Config
     {
-        static KConfig& kconfig();
+        static TDEConfig& kconfig();
 
     public:
         static void read();

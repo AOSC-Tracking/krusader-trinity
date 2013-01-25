@@ -31,15 +31,15 @@ void KrPreviewPopup::setUrls(const KURL::List* urls){
 	//insertItem(i18n("Configure preview"),0);
 	insertItem(i18n("Preview not available"),0);
 
-	KIO::PreviewJob* pjob;
-	TQStringList plugins = KIO::PreviewJob::availablePlugins();
+	TDEIO::PreviewJob* pjob;
+	TQStringList plugins = TDEIO::PreviewJob::availablePlugins();
 
 	for( unsigned int i=0; i< urls->count(); ++i){
 		KFileItem* kfi = new KFileItem(KFileItem::Unknown,KFileItem::Unknown,*(urls->at(i)));
 		files.append(kfi);
 	}
 
-	pjob = new KIO::PreviewJob(files,200,200,200,1,true,true,0);
+	pjob = new TDEIO::PreviewJob(files,200,200,200,1,true,true,0);
 	connect(pjob,TQT_SIGNAL(gotPreview(const KFileItem*,const TQPixmap&)),
           this,TQT_SLOT(addPreview(const KFileItem*,const TQPixmap&)));
 }

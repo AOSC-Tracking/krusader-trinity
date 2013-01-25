@@ -5,7 +5,7 @@
 #include <tqlayout.h>
 #include "paneltabbar.h"
 
-class KConfig;
+class TDEConfig;
 class ListPanel;
 class TQWidgetStack;
 class TQToolButton;
@@ -39,8 +39,8 @@ class PanelManager: public TQWidget {
      */
     void swapPanels();
     
-    void saveSettings(KConfig *config, const TQString& key, bool localOnly = true );
-    void loadSettings(KConfig *config, const TQString& key);
+    void saveSettings(TDEConfig *config, const TQString& key, bool localOnly = true );
+    void loadSettings(TDEConfig *config, const TQString& key);
     int  activeTab();
     void setActiveTab( int );
     void setCurrentTab( int );

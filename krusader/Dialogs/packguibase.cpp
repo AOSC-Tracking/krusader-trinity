@@ -389,7 +389,7 @@ bool PackGUIBase::extraProperties( TQMap<TQString,TQString> & inMap ) {
     }
 
     if( multipleVolume->isEnabled() && multipleVolume->isChecked() ) {
-      KIO::filesize_t size = volumeSpinBox->value();
+      TDEIO::filesize_t size = volumeSpinBox->value();
 
       switch( volumeUnitCombo->currentItem() ) {
       case 2:

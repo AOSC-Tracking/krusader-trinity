@@ -82,7 +82,7 @@ KCMDLine::KCMDLine( TQWidget *parent, const char *name ) : TQWidget( parent, nam
   cmdLine->setCompletionObject( &completion );
   cmdLine->setSizePolicy(TQSizePolicy(TQSizePolicy::Preferred, TQSizePolicy::Fixed));
   // load the history
-  KConfigGroupSaver grpSvr( krConfig, "Private" );
+  TDEConfigGroupSaver grpSvr( krConfig, "Private" );
   TQStringList list = krConfig->readListEntry( "cmdline history" );
   cmdLine->setHistoryItems( list );
 
@@ -142,7 +142,7 @@ void KCMDLine::setCurrent( const TQString &p ) {
 }
 
 KCMDLine::~KCMDLine() {
-   KConfigGroupSaver grpSvr( krConfig, "Private" );
+   TDEConfigGroupSaver grpSvr( krConfig, "Private" );
    TQStringList list = cmdLine->historyItems();
    //krOut << list[0] << endl;
    krConfig->writeEntry( "cmdline history", list );
@@ -189,7 +189,7 @@ TQString KCMDLine::command() const {
 }
 
 KrActionBase::ExecType KCMDLine::execType() const {
-  KConfigGroup grp( krConfig, "Private" );
+  TDEConfigGroup grp( krConfig, "Private" );
   int i = grp.readNumEntry("Command Execution Mode",0);
   return execModesMenu[i];
 }

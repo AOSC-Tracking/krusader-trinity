@@ -2135,7 +2135,7 @@ void SynchronizerGUI::refresh()
 void SynchronizerGUI::synchronize()
 {
   int             copyToLeftNr, copyToRightNr, deleteNr;
-  KIO::filesize_t copyToLeftSize, copyToRightSize, deleteSize;
+  TDEIO::filesize_t copyToLeftSize, copyToRightSize, deleteSize;
 
   if( !synchronizer.totalSizes( &copyToLeftNr, &copyToLeftSize, &copyToRightNr, &copyToRightSize,
                                 &deleteNr, &deleteSize ) )

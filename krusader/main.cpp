@@ -190,7 +190,7 @@ int main(int argc, char *argv[]) {
   KrusaderApp app;
 
   {
-    KConfigGroupSaver saver(app.config(), "Look&Feel");
+    TDEConfigGroupSaver saver(app.config(), "Look&Feel");
     bool singleInstanceMode = app.config()->readBoolEntry( "Single Instance Mode", _SingleInstanceMode );
 
     // register with the dcop server
@@ -212,7 +212,7 @@ int main(int argc, char *argv[]) {
   // splash screen - if the user wants one
   KSplashScreen *splash = 0;
   { // don't remove bracket
-  KConfigGroupSaver saver(app.config(), "Look&Feel");
+  TDEConfigGroupSaver saver(app.config(), "Look&Feel");
   if (app.config()->readBoolEntry( "Show splashscreen", _ShowSplashScreen )) {
   	TQString splashFilename = locate( "data", "krusader/splash.png" );
   	TQPixmap pixmap( splashFilename );

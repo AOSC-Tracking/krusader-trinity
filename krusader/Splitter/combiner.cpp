@@ -85,23 +85,23 @@ void Combiner::combine()
   {
     permissions = file.permissions() | TQFileInfo::WriteUser;
     
-    combineReadJob = KIO::get( splURL, false, false );
+    combineReadJob = TDEIO::get( splURL, false, false );
 
-    connect(combineReadJob, TQT_SIGNAL(data(KIO::Job *, const TQByteArray &)),
-            this, TQT_SLOT(combineSplitFileDataReceived(KIO::Job *, const TQByteArray &)));
-    connect(combineReadJob, TQT_SIGNAL(result(KIO::Job*)),
-            this, TQT_SLOT(combineSplitFileFinished(KIO::Job *)));
+    connect(combineReadJob, TQT_SIGNAL(data(TDEIO::Job *, const TQByteArray &)),
+            this, TQT_SLOT(combineSplitFileDataReceived(TDEIO::Job *, const TQByteArray &)));
+    connect(combineReadJob, TQT_SIGNAL(result(TDEIO::Job*)),
+            this, TQT_SLOT(combineSplitFileFinished(TDEIO::Job *)));
   }
 
   exec();
 }
 
-void Combiner::combineSplitFileDataReceived(KIO::Job *, const TQByteArray &byteArray)
+void Combiner::combineSplitFileDataReceived(TDEIO::Job *, const TQByteArray &byteArray)
 {
   splitFile += TQString( byteArray );
 }
 
-void Combiner::combineSplitFileFinished(KIO::Job *job)
+void Combiner::combineSplitFileFinished(TDEIO::Job *job)
 {
   combineReadJob = 0;
   TQString error;
@@ -195,19 +195,19 @@ void Combiner::openNextFile()
   }
 
       /* creating a write job */
-  combineReadJob = KIO::get( readURL, false, false );
+  combineReadJob = TDEIO::get( readURL, false, false );
 
-  connect(combineReadJob, TQT_SIGNAL(data(KIO::Job *, const TQByteArray &)),
-          this, TQT_SLOT(combineDataReceived(KIO::Job *, const TQByteArray &)));
-  connect(combineReadJob, TQT_SIGNAL(result(KIO::Job*)),
-          this, TQT_SLOT(combineReceiveFinished(KIO::Job *)));
+  connect(combineReadJob, TQT_SIGNAL(data(TDEIO::Job *, const TQByteArray &)),
+          this, TQT_SLOT(combineDataReceived(TDEIO::Job *, const TQByteArray &)));
+  connect(combineReadJob, TQT_SIGNAL(result(TDEIO::Job*)),
+          this, TQT_SLOT(combineReceiveFinished(TDEIO::Job *)));
   if( hasValidSplitFile )
-    connect(combineReadJob, TQT_SIGNAL(percent (KIO::Job *, unsigned long)),
-                            this, TQT_SLOT(combineWritePercent(KIO::Job *, unsigned long)));
+    connect(combineReadJob, TQT_SIGNAL(percent (TDEIO::Job *, unsigned long)),
+                            this, TQT_SLOT(combineWritePercent(TDEIO::Job *, unsigned long)));
   
 }
 
-void Combiner::combineDataReceived(KIO::Job *, const TQByteArray &byteArray)
+void Combiner::combineDataReceived(TDEIO::Job *, const TQByteArray &byteArray)
 {
   if( byteArray.size() == 0 )
     return;
@@ -226,12 +226,12 @@ void Combiner::combineDataReceived(KIO::Job *, const TQByteArray &byteArray)
     else if( unixNaming )
       writeURL.setFileName( baseURL.fileName() + ".out" );
     
-    combineWriteJob = KIO::put( writeURL, permissions, true, false, false );    
+    combineWriteJob = TDEIO::put( writeURL, permissions, true, false, false );    
 
-    connect(combineWriteJob, TQT_SIGNAL(dataReq(KIO::Job *, TQByteArray &)),
-                             this, TQT_SLOT(combineDataSend(KIO::Job *, TQByteArray &)));
-    connect(combineWriteJob, TQT_SIGNAL(result(KIO::Job*)),
-                             this, TQT_SLOT(combineSendFinished(KIO::Job *)));
+    connect(combineWriteJob, TQT_SIGNAL(dataReq(TDEIO::Job *, TQByteArray &)),
+                             this, TQT_SLOT(combineDataSend(TDEIO::Job *, TQByteArray &)));
+    connect(combineWriteJob, TQT_SIGNAL(result(TDEIO::Job*)),
+                             this, TQT_SLOT(combineSendFinished(TDEIO::Job *)));
   }  
 
   if( combineWriteJob )
@@ -241,7 +241,7 @@ void Combiner::combineDataReceived(KIO::Job *, const TQByteArray &byteArray)
   }
 }
 
-void Combiner::combineReceiveFinished(KIO::Job *job)
+void Combiner::combineReceiveFinished(TDEIO::Job *job)
 {
   combineReadJob = 0;   /* KIO automatically deletes the object after Finished signal */
     
@@ -274,7 +274,7 @@ void Combiner::combineReceiveFinished(KIO::Job *job)
   openNextFile();
 }
 
-void Combiner::combineDataSend(KIO::Job *, TQByteArray &byteArray)
+void Combiner::combineDataSend(TDEIO::Job *, TQByteArray &byteArray)
 {
   byteArray = transferArray;
   transferArray = TQByteArray();
@@ -286,7 +286,7 @@ void Combiner::combineDataSend(KIO::Job *, TQByteArray &byteArray)
   }
 }
 
-void Combiner::combineSendFinished(KIO::Job *job)
+void Combiner::combineSendFinished(TDEIO::Job *job)
 {
   combineWriteJob = 0;  /* KIO automatically deletes the object after Finished signal */
 
@@ -319,7 +319,7 @@ void Combiner::combineAbortJobs()
   combineReadJob = combineWriteJob = 0;
 }
 
-void Combiner::combineWritePercent(KIO::Job *, unsigned long)
+void Combiner::combineWritePercent(TDEIO::Job *, unsigned long)
 {
   int percent = (int)((((double)receivedSize / expectedSize ) * 100. ) + 0.5 );
   setProgress( percent );

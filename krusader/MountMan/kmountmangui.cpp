@@ -201,8 +201,8 @@ void KMountManGUI::gettingSpaceData( const TQString &mountPoint, unsigned long k
 void KMountManGUI::addItemToMountList( TQListView *lst, fsData &fs ) {
    bool mtd = fs.mounted();
 
-   TQString tSize = TQString( "%1" ).arg( KIO::convertSizeFromKB( fs.totalBlks() ) );
-   TQString fSize = TQString( "%1" ).arg( KIO::convertSizeFromKB( fs.freeBlks() ) );
+   TQString tSize = TQString( "%1" ).arg( TDEIO::convertSizeFromKB( fs.totalBlks() ) );
+   TQString fSize = TQString( "%1" ).arg( TDEIO::convertSizeFromKB( fs.freeBlks() ) );
    TQString sPrct = TQString( "%1%" ).arg( 100 - ( fs.usedPerct() ) );
    TQListViewItem *item = new TQListViewItem( lst, fs.name(),
                          fs.type(), fs.mntPoint(),

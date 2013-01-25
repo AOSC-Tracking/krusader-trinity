@@ -21,7 +21,7 @@
 
 #include "tar.h"
 
-using namespace KIO;
+using namespace TDEIO;
 
 #if KDE_IS_VERSION(3,4,0)
 extern "C" { int KDE_EXPORT kdemain( int argc, char **argv ); }
@@ -230,7 +230,7 @@ void ArchiveProtocol::listDir( const KURL & url ) {
 		kdDebug( 7109 ) << "Checking (stat) on " << _path << endl;
 		struct stat buff;
 		if ( ::stat( _path.data(), &buff ) == -1 || !S_ISDIR( buff.st_mode ) ) {
-			error( KIO::ERR_DOES_NOT_EXIST, url.prettyURL() );
+			error( TDEIO::ERR_DOES_NOT_EXIST, url.prettyURL() );
 			return ;
 		}
 		// It's a real dir -> redirect
@@ -262,11 +262,11 @@ void ArchiveProtocol::listDir( const KURL & url ) {
 		kdDebug( 7109 ) << TQString( "Looking for entry %1" ).arg( path ) << endl;
 		const KArchiveEntry* e = root->entry( path );
 		if ( !e ) {
-			error( KIO::ERR_DOES_NOT_EXIST, url.prettyURL() );
+			error( TDEIO::ERR_DOES_NOT_EXIST, url.prettyURL() );
 			return ;
 		}
 		if ( ! e->isDirectory() ) {
-			error( KIO::ERR_IS_FILE, url.prettyURL() );
+			error( TDEIO::ERR_IS_FILE, url.prettyURL() );
 			return ;
 		}
 		dir = ( KArchiveDirectory* ) e;
@@ -306,17 +306,17 @@ void ArchiveProtocol::stat( const KURL & url ) {
 		struct stat buff;
 		if ( ::stat( _path.data(), &buff ) == -1 || !S_ISDIR( buff.st_mode ) ) {
 			kdDebug( 7109 ) << "isdir=" << S_ISDIR( buff.st_mode ) << "  errno=" << strerror( errno ) << endl;
-			error( KIO::ERR_DOES_NOT_EXIST, url.path() );
+			error( TDEIO::ERR_DOES_NOT_EXIST, url.path() );
 			return ;
 		}
 		// Real directory. Return just enough information for KRun to work
 		UDSAtom atom;
-		atom.m_uds = KIO::UDS_NAME;
+		atom.m_uds = TDEIO::UDS_NAME;
 		atom.m_str = url.fileName();
 		entry.append( atom );
 		kdDebug( 7109 ) << "ArchiveProtocol::stat returning name=" << url.fileName() << endl;
 
-		atom.m_uds = KIO::UDS_FILE_TYPE;
+		atom.m_uds = TDEIO::UDS_FILE_TYPE;
 		atom.m_long = buff.st_mode & S_IFMT;
 		entry.append( atom );
 
@@ -339,7 +339,7 @@ void ArchiveProtocol::stat( const KURL & url ) {
 		archiveEntry = root->entry( path );
 	}
 	if ( !archiveEntry ) {
-		error( KIO::ERR_DOES_NOT_EXIST, url.prettyURL() );
+		error( TDEIO::ERR_DOES_NOT_EXIST, url.prettyURL() );
 		return ;
 	}
 
@@ -354,7 +354,7 @@ void ArchiveProtocol::get( const KURL & url ) {
 
 	TQString path;
 	if ( !checkNewFile( url, path ) ) {
-		error( KIO::ERR_DOES_NOT_EXIST, url.prettyURL() );
+		error( TDEIO::ERR_DOES_NOT_EXIST, url.prettyURL() );
 		return ;
 	}
 
@@ -362,11 +362,11 @@ void ArchiveProtocol::get( const KURL & url ) {
 	const KArchiveEntry* archiveEntry = root->entry( path );
 
 	if ( !archiveEntry ) {
-		error( KIO::ERR_DOES_NOT_EXIST, url.prettyURL() );
+		error( TDEIO::ERR_DOES_NOT_EXIST, url.prettyURL() );
 		return ;
 	}
 	if ( archiveEntry->isDirectory() ) {
-		error( KIO::ERR_IS_DIRECTORY, url.prettyURL() );
+		error( TDEIO::ERR_IS_DIRECTORY, url.prettyURL() );
 		return ;
 	}
 	const KArchiveFile* archiveFileEntry = static_cast<const KArchiveFile *>( archiveEntry );

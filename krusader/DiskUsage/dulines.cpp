@@ -300,7 +300,7 @@ void DULines::slotDirChanged( Directory *dirEntry )
     unsigned int italicStart = fileName.length();
     
     if( showFileSize )
-      fileName += "  [" + KIO::convertSize( item->size() ) + "]";
+      fileName += "  [" + TDEIO::convertSize( item->size() ) + "]";
     
     if( lastItem == 0 )
       lastItem = new DULinesItem( diskUsage, item, this, "", item->percent() + "  ", fileName, italicStart );

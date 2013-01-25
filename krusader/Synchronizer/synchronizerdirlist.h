@@ -55,8 +55,8 @@ public:
 
 public slots:
 
-  void slotEntries( KIO::Job * job, const KIO::UDSEntryList& entries );
-  void slotListResult( KIO::Job *job );
+  void slotEntries( TDEIO::Job * job, const TDEIO::UDSEntryList& entries );
+  void slotListResult( TDEIO::Job *job );
 
 signals:
   void finished( bool err );

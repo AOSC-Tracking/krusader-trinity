@@ -12,7 +12,7 @@
 
 
 
-typedef KIO::filesize_t FileSize;
+typedef TDEIO::filesize_t FileSize;
 
 template <class T> class Iterator;
 template <class T> class ConstIterator;
@@ -214,7 +214,7 @@ public:
   inline void             setPercent( int p )          {m_percent = p;}  
   inline const Directory* parent()              const  {return m_parent;}
   
-  inline void setSizes( KIO::filesize_t totalSize, KIO::filesize_t ownSize )
+  inline void setSizes( TDEIO::filesize_t totalSize, TDEIO::filesize_t ownSize )
   {
     m_ownSize = ownSize;
     m_size = totalSize;

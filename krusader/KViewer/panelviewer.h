@@ -75,7 +75,7 @@ public slots:
 	KParts::ReadOnlyPart* openURL( const KURL &url, KrViewer::Mode mode=KrViewer::Generic );
 	bool closeURL();
 	bool queryClose();
-	void slotStatResult( KIO::Job* job );
+	void slotStatResult( TDEIO::Job* job );
 
 public:
 	PanelEditor( TQWidget *parent = 0 );
@@ -85,7 +85,7 @@ protected:
 	KParts::ReadWritePart* getPart( TQString mimetype );
 
 	bool busy;
-	KIO::UDSEntry entry;
+	TDEIO::UDSEntry entry;
 };
 
 #endif

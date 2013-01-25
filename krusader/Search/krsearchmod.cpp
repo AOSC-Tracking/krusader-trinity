@@ -149,7 +149,7 @@ void KRSearchMod::scanLocalDir( KURL urlToScan )
       mime = KMimeType::findByURL( url, stat_p.st_mode, true, false ) ->name();
 
     // creating a vfile object for matching with krquery
-    vfile * vf = new vfile(name, (KIO::filesize_t)stat_p.st_size, KRpermHandler::mode2TQString(stat_p.st_mode),
+    vfile * vf = new vfile(name, (TDEIO::filesize_t)stat_p.st_size, KRpermHandler::mode2TQString(stat_p.st_mode),
                            stat_p.st_mtime, S_ISLNK(stat_p.st_mode), stat_p.st_uid, stat_p.st_gid,
                            mime, "", stat_p.st_mode);
     vf->vfile_setUrl( url );
@@ -187,7 +187,7 @@ void KRSearchMod::scanLocalDir( KURL urlToScan )
     {
       // if we got here - we got a winner
       results.append( dir + name );
-      emit found( name, dir, ( KIO::filesize_t ) stat_p.st_size, stat_p.st_mtime, KRpermHandler::mode2TQString( stat_p.st_mode ), query->foundText() );
+      emit found( name, dir, ( TDEIO::filesize_t ) stat_p.st_size, stat_p.st_mtime, KRpermHandler::mode2TQString( stat_p.st_mode ), query->foundText() );
     }
     delete vf;
 

@@ -54,11 +54,11 @@ public slots:
   void incProgress(int i);
   void incProgress( TDEProcess *, char *buffer, int buflen );
   void killJob();
-  void setJob(KIO::Job* j);
+  void setJob(TDEIO::Job* j);
   bool wasCancelled() const { return _wasCancelled; }
 
 private:
-  TQGuardedPtr<KIO::Job> job;
+  TQGuardedPtr<TDEIO::Job> job;
   KRPleaseWait * dlg;
   bool cycle, cycleMutex, incMutex, _wasCancelled;
 };

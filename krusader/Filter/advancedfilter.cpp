@@ -478,7 +478,7 @@ void AdvancedFilter::invalidDateMessage(TQLineEdit *p)
 
 bool AdvancedFilter::fillQuery( KRQuery *query )
 {
-  KIO::filesize_t minSize = 0, maxSize = 0;
+  TDEIO::filesize_t minSize = 0, maxSize = 0;
 
   // size calculations ////////////////////////////////////////////////
   if ( biggerThanEnabled->isChecked() &&

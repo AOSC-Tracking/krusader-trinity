@@ -279,7 +279,7 @@ bool KRpermHandler::fileExist( TQString path, TQString name ) {
 	return false;
 }
 
-TQString KRpermHandler::parseSize( KIO::filesize_t val ) {
+TQString KRpermHandler::parseSize( TDEIO::filesize_t val ) {
 #if (TDE_VERSION_MAJOR >= 3) && (TDE_VERSION_MINOR >= 5)
 	return TDEGlobal::locale()->formatNumber(TQString::number(val), false, 0);
 #else

@@ -139,7 +139,7 @@ void KrusaderView::start( TQStringList leftTabs, TQStringList leftTypes, TQValue
 void KrusaderView::slotCurrentChanged( TQString p ) {
   cmdLine->setCurrent( p );
   if ( konsole_part != 0L && konsole_part->widget() != 0L ) {
-	 KConfigGroupSaver grp(krConfig, "General");
+	 TDEConfigGroupSaver grp(krConfig, "General");
     if (krConfig->readBoolEntry("Send CDs", _SendCDs)) // hopefully, this is cached in kconfig
         if( !konsole_part->url().equals( KURL( p ), true ) )
            konsole_part->openURL( KURL( p ) );
@@ -189,7 +189,7 @@ void KrusaderView::panelSwitch() { activePanel->otherPanel->slotFocusOnMe(); }
 void KrusaderView::slotSetActivePanel( ListPanel *p ) { activePanel = p; }
 
 void KrusaderView::slotTerminalEmulator( bool show ) {
-  KConfigGroupSaver grp(krConfig, "Look&Feel");
+  TDEConfigGroupSaver grp(krConfig, "Look&Feel");
   bool fullscreen = krConfig->readBoolEntry("Fullscreen Terminal Emulator", false);
   static bool fnKeysShown=true; // first time init. should be overridden
   static bool cmdLineShown=true;
@@ -279,7 +279,7 @@ void KrusaderView::focusTerminalEmulator()
 void KrusaderView::switchFullScreenTE()
 {
   if( terminal_dock->isVisible() && konsole_part && konsole_part->widget() && konsole_part->widget()->isVisible() ) {
-    KConfigGroup grp(krConfig, "Look&Feel");
+    TDEConfigGroup grp(krConfig, "Look&Feel");
     bool fullscreen=grp.readBoolEntry("Fullscreen Terminal Emulator", false);
     slotTerminalEmulator( false );
     grp.writeEntry("Fullscreen Terminal Emulator", !fullscreen);

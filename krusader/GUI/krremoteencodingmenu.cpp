@@ -60,7 +60,7 @@ void KrRemoteEncodingMenu::slotAboutToShow()
 
   KURL currentURL = ACTIVE_PANEL->virtualPath();
 
-  TQString charset = KIO::SlaveConfig::self()->configData(currentURL.protocol(), currentURL.host(), DATA_KEY);
+  TQString charset = TDEIO::SlaveConfig::self()->configData(currentURL.protocol(), currentURL.host(), DATA_KEY);
   if (!charset.isEmpty())
   {
     int id = 1;
@@ -120,7 +120,7 @@ void KrRemoteEncodingMenu::slotItemSelected(int id)
 {
   KURL currentURL = ACTIVE_PANEL->virtualPath();
 
-  KConfig config(("kio_" + currentURL.protocol() + "rc").latin1());
+  TDEConfig config(("kio_" + currentURL.protocol() + "rc").latin1());
   TQString host = currentURL.host();
 
   if (!popupMenu()->isItemChecked(id))
@@ -147,7 +147,7 @@ void KrRemoteEncodingMenu::slotDefault()
 
   // We have no choice but delete all higher domain level
   // settings here since it affects what will be matched.
-  KConfig config(("kio_" + currentURL.protocol() + "rc").latin1());
+  TDEConfig config(("kio_" + currentURL.protocol() + "rc").latin1());
 
   TQStringList partList = TQStringList::split('.', currentURL.host(), false);
   if (!partList.isEmpty())
@@ -197,7 +197,7 @@ void KrRemoteEncodingMenu::updateKIOSlaves()
   TQByteArray data;
   TQDataStream stream(data, IO_WriteOnly);
   stream << TQString();
-  client->send("*", "KIO::Scheduler", "reparseSlaveConfiguration(TQString)", data);
+  client->send("*", "TDEIO::Scheduler", "reparseSlaveConfiguration(TQString)", data);
   delete client;
 
   // Reload the page with the new charset

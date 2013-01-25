@@ -137,7 +137,7 @@ KrPopupMenu::KrPopupMenu(ListPanel *thePanel, TQWidget *parent) : KPopupMenu(par
          insertItem( i18n( "Rename" ), RENAME_ID );
   
       // -------- MOVE TO TRASH
-      KConfigGroupSaver saver(krConfig, "General");
+      TDEConfigGroupSaver saver(krConfig, "General");
       bool trash = krConfig->readBoolEntry( "Move To Trash", _MoveToTrash );
       if( trash )
         insertItem( i18n( "Move to Trash" ), TRASH_ID );
@@ -326,7 +326,7 @@ void KrPopupMenu::performAction(int id) {
          	chdir( panel->func->files() ->vfs_getFile( item->name() ).path( -1 ).local8Bit() );
 				TDEProcess proc;
 				{
-				KConfigGroupSaver saver(krConfig, "General");
+				TDEConfigGroupSaver saver(krConfig, "General");
          	TQString term = krConfig->readEntry( "Terminal", _Terminal );
          	proc << KrServices::separateArgs( term );
          	if ( !panel->func->getVFile(item)->vfile_isDir() ) proc << "-e" << item->name();

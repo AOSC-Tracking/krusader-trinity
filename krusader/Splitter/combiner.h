@@ -58,15 +58,15 @@ private:
 
   bool            hasValidSplitFile;
   TQString         expectedFileName;
-  KIO::filesize_t expectedSize;
+  TDEIO::filesize_t expectedSize;
   TQString         expectedCrcSum;
 
   int             fileCounter;
   int             permissions;
-  KIO::filesize_t receivedSize;
+  TDEIO::filesize_t receivedSize;
   
-  KIO::TransferJob *combineReadJob;
-  KIO::TransferJob *combineWriteJob;
+  TDEIO::TransferJob *combineReadJob;
+  TDEIO::TransferJob *combineWriteJob;
 
   bool            unixNaming;
   
@@ -77,13 +77,13 @@ public:
   void combine();
 
 public slots:
-  void combineSplitFileDataReceived(KIO::Job *, const TQByteArray &byteArray);
-  void combineSplitFileFinished(KIO::Job *job);
-  void combineDataReceived(KIO::Job *, const TQByteArray &);
-  void combineReceiveFinished(KIO::Job *);
-  void combineDataSend(KIO::Job *, TQByteArray &);
-  void combineSendFinished(KIO::Job *);
-  void combineWritePercent(KIO::Job *, unsigned long);
+  void combineSplitFileDataReceived(TDEIO::Job *, const TQByteArray &byteArray);
+  void combineSplitFileFinished(TDEIO::Job *job);
+  void combineDataReceived(TDEIO::Job *, const TQByteArray &);
+  void combineReceiveFinished(TDEIO::Job *);
+  void combineDataSend(TDEIO::Job *, TQByteArray &);
+  void combineSendFinished(TDEIO::Job *);
+  void combineWritePercent(TDEIO::Job *, unsigned long);
 
 private:
   void openNextFile();

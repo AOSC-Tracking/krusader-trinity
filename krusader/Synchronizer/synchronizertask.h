@@ -132,12 +132,12 @@ class CompareContentTask : public SynchronizerTask {
   
 
 public:
-  CompareContentTask( Synchronizer *, SynchronizerFileItem *, const KURL &, const KURL &, KIO::filesize_t );
+  CompareContentTask( Synchronizer *, SynchronizerFileItem *, const KURL &, const KURL &, TDEIO::filesize_t );
   virtual ~CompareContentTask();
 
 public slots:
-  void    slotDataReceived(KIO::Job *job, const TQByteArray &data);
-  void    slotFinished(KIO::Job *job);
+  void    slotDataReceived(TDEIO::Job *job, const TQByteArray &data);
+  void    slotFinished(TDEIO::Job *job);
   void    sendStatusMessage();
 
 protected:
@@ -151,11 +151,11 @@ private:
 
   KURL                   leftURL;        // the currently processed URL (left)
   KURL                   rightURL;       // the currently processed URL (right)
-  KIO::filesize_t        size;           // the size of the compared files
+  TDEIO::filesize_t        size;           // the size of the compared files
 
   bool                   errorPrinted;   // flag indicates error
-  KIO::TransferJob      *leftReadJob;    // compare left read job
-  KIO::TransferJob      *rightReadJob;   // compare right read job
+  TDEIO::TransferJob      *leftReadJob;    // compare left read job
+  TDEIO::TransferJob      *rightReadJob;   // compare right read job
   TQByteArray             compareArray;   // the array for comparing
   SynchronizerFileItem  *item;           // the item for content compare
   TQTimer                *timer;          // timer to show the process dialog at compare by content
@@ -163,7 +163,7 @@ private:
   TQFile                 *leftFile;       // the left side local file
   TQFile                 *rightFile;      // the right side local file
 
-  KIO::filesize_t        received;       // the received size
+  TDEIO::filesize_t        received;       // the received size
   Synchronizer          *sync;
 };
 

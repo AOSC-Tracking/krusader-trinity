@@ -62,8 +62,8 @@ vfs::~vfs() {
 	delete vfs_filesP;
 }
 
-KIO::filesize_t vfs::vfs_totalSize(){
-	KIO::filesize_t temp=0;
+TDEIO::filesize_t vfs::vfs_totalSize(){
+	TDEIO::filesize_t temp=0;
 	class vfile* vf=vfs_getFirstFile();
 		
 	while (vf!=0){
@@ -75,7 +75,7 @@ KIO::filesize_t vfs::vfs_totalSize(){
 	return temp;                                                     
 }
 
-bool vfs::vfs_refresh(KIO::Job* job){
+bool vfs::vfs_refresh(TDEIO::Job* job){
   if(job && job->error()){
 		job->showErrorDialog(krApp);
 	}
@@ -289,7 +289,7 @@ void vfs::vfs_requestDelete() {
 /// to be implemented
 #if KDE_IS_VERSION(3,3,0)
 #include <kdirsize.h>
-void vfs::slotKdsResult( KIO::Job* job){
+void vfs::slotKdsResult( TDEIO::Job* job){
 	if( job && !job->error() ){
 		KDirSize* kds = static_cast<KDirSize*>(job);
 		*kds_totalSize += kds->totalSize();
@@ -299,11 +299,11 @@ void vfs::slotKdsResult( KIO::Job* job){
 	*kds_busy = true;
 }
 
-void vfs::vfs_calcSpace( TQString name , KIO::filesize_t* totalSize, unsigned long* totalFiles, unsigned long* totalDirs, bool* stop ) {
+void vfs::vfs_calcSpace( TQString name , TDEIO::filesize_t* totalSize, unsigned long* totalFiles, unsigned long* totalDirs, bool* stop ) {
 	calculateURLSize( vfs_getFile( name ), totalSize, totalFiles, totalDirs, stop );
 }        
         
-void vfs::calculateURLSize( KURL url,  KIO::filesize_t* totalSize, unsigned long* totalFiles, unsigned long* totalDirs, bool* stop ) {
+void vfs::calculateURLSize( KURL url,  TDEIO::filesize_t* totalSize, unsigned long* totalFiles, unsigned long* totalDirs, bool* stop ) {
 	if ( stop && *stop ) return ;        
 	kds_busy = stop;
 	kds_totalSize  = totalSize ;
@@ -315,8 +315,8 @@ void vfs::calculateURLSize( KURL url,  KIO::filesize_t* totalSize, unsigned long
 		return;
 	} else {
 		stat_busy = true;
-		KIO::StatJob* statJob = KIO::stat( url, false );
-		connect( statJob, TQT_SIGNAL( result( KIO::Job* ) ), this, TQT_SLOT( slotStatResultArrived( KIO::Job* ) ) );
+		TDEIO::StatJob* statJob = TDEIO::stat( url, false );
+		connect( statJob, TQT_SIGNAL( result( TDEIO::Job* ) ), this, TQT_SLOT( slotStatResultArrived( TDEIO::Job* ) ) );
 		while ( !(*stop) && stat_busy ) {usleep(1000);}
 		if( entry.isEmpty()  ) return; // statJob failed
 		KFileItem kfi(entry, url, true );        
@@ -328,14 +328,14 @@ void vfs::calculateURLSize( KURL url,  KIO::filesize_t* totalSize, unsigned long
 	}
 	
 	KDirSize* kds  = KDirSize::dirSizeJob( url );
-	connect( kds, TQT_SIGNAL( result( KIO::Job* ) ), this, TQT_SLOT( slotKdsResult( KIO::Job* ) ) );
+	connect( kds, TQT_SIGNAL( result( TDEIO::Job* ) ), this, TQT_SLOT( slotKdsResult( TDEIO::Job* ) ) );
 	while ( !(*stop) ){ 
 		// we are in a sepetate thread - so sleeping is OK
 		usleep(1000);
 	}
 }
 
-void vfs::vfs_calcSpaceLocal(TQString name ,KIO::filesize_t *totalSize,unsigned long *totalFiles,unsigned long *totalDirs, bool* stop){
+void vfs::vfs_calcSpaceLocal(TQString name ,TDEIO::filesize_t *totalSize,unsigned long *totalFiles,unsigned long *totalDirs, bool* stop){
   if ( *stop ) return;
   if (!name.contains("/")) name = vfs_workingDir()+"/"+name;
   if (name == "/proc") return;
@@ -371,15 +371,15 @@ void vfs::vfs_calcSpaceLocal(TQString name ,KIO::filesize_t *totalSize,unsigned 
 }
 
         
-void vfs::slotStatResultArrived( KIO::Job* job ) {
-	if( !job || job->error() ) entry = KIO::UDSEntry();
-	else entry = static_cast<KIO::StatJob*>(job)->statResult();
+void vfs::slotStatResultArrived( TDEIO::Job* job ) {
+	if( !job || job->error() ) entry = TDEIO::UDSEntry();
+	else entry = static_cast<TDEIO::StatJob*>(job)->statResult();
 	stat_busy = false;
 }
         
 #else
-void vfs::slotKdsResult(KIO::Job *job){/* empty */}
-void vfs::vfs_calcSpace( TQString /*name*/ , KIO::filesize_t* /*totalSize*/, unsigned long* /*totalFiles*/, unsigned long* /*totalDirs*/, bool* /*stop*/ ) {/* empty*/}
+void vfs::slotKdsResult(TDEIO::Job *job){/* empty */}
+void vfs::vfs_calcSpace( TQString /*name*/ , TDEIO::filesize_t* /*totalSize*/, unsigned long* /*totalFiles*/, unsigned long* /*totalDirs*/, bool* /*stop*/ ) {/* empty*/}
 #endif
 
 TQValueList<vfile*> vfs::vfs_search(const KRQuery& filter) {

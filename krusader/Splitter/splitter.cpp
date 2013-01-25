@@ -57,7 +57,7 @@ Splitter::~Splitter()
   delete crcContext;
 }
 
-void Splitter::split( KIO::filesize_t splitSizeIn )
+void Splitter::split( TDEIO::filesize_t splitSizeIn )
 {
   KFileItem file(KFileItem::Unknown, KFileItem::Unknown, fileName );
   file.refresh();
@@ -78,14 +78,14 @@ void Splitter::split( KIO::filesize_t splitSizeIn )
   fileSize = 0;
   fileNumber = 0;
 
-  splitReadJob = KIO::get( fileName, false, false );
+  splitReadJob = TDEIO::get( fileName, false, false );
     
-  connect(splitReadJob, TQT_SIGNAL(data(KIO::Job *, const TQByteArray &)),
-                        this, TQT_SLOT(splitDataReceived(KIO::Job *, const TQByteArray &)));
-  connect(splitReadJob, TQT_SIGNAL(result(KIO::Job*)),
-                        this, TQT_SLOT(splitReceiveFinished(KIO::Job *)));
-  connect(splitReadJob, TQT_SIGNAL(percent (KIO::Job *, unsigned long)),
-                        this, TQT_SLOT(splitReceivePercent(KIO::Job *, unsigned long)));
+  connect(splitReadJob, TQT_SIGNAL(data(TDEIO::Job *, const TQByteArray &)),
+                        this, TQT_SLOT(splitDataReceived(TDEIO::Job *, const TQByteArray &)));
+  connect(splitReadJob, TQT_SIGNAL(result(TDEIO::Job*)),
+                        this, TQT_SLOT(splitReceiveFinished(TDEIO::Job *)));
+  connect(splitReadJob, TQT_SIGNAL(percent (TDEIO::Job *, unsigned long)),
+                        this, TQT_SLOT(splitReceivePercent(TDEIO::Job *, unsigned long)));
 
   splitWriteJob = 0;
   noValidWriteJob = true;
@@ -93,7 +93,7 @@ void Splitter::split( KIO::filesize_t splitSizeIn )
   exec();
 }
 
-void Splitter::splitDataReceived(KIO::Job *, const TQByteArray &byteArray)
+void Splitter::splitDataReceived(TDEIO::Job *, const TQByteArray &byteArray)
 {
   if( byteArray.size() == 0 )
     return;
@@ -112,7 +112,7 @@ void Splitter::splitDataReceived(KIO::Job *, const TQByteArray &byteArray)
   }
 }
 
-void Splitter::splitReceiveFinished(KIO::Job *job)
+void Splitter::splitReceiveFinished(TDEIO::Job *job)
 {
   splitReadJob = 0;   /* KIO automatically deletes the object after Finished signal */
   
@@ -131,11 +131,11 @@ void Splitter::splitReceiveFinished(KIO::Job *job)
                                      .rightJustify(8, '0');
 
   splitFile = TQString( "filename=%1\n" ).arg( fileName.fileName()     )+
-              TQString( "size=%1\n" )    .arg( KIO::number( fileSize ) )+
+              TQString( "size=%1\n" )    .arg( TDEIO::number( fileSize ) )+
               TQString( "crc32=%1\n" )   .arg( crcResult );
 }
 
-void Splitter::splitReceivePercent (KIO::Job *, unsigned long percent)
+void Splitter::splitReceivePercent (TDEIO::Job *, unsigned long percent)
 {
   setProgress( percent );
 }
@@ -150,16 +150,16 @@ void Splitter::splitCreateWriteJob()
   writeURL.addPath( outFileName );
 
       /* creating a write job */
-  splitWriteJob = KIO::put( writeURL, permissions, true, false, false );
+  splitWriteJob = TDEIO::put( writeURL, permissions, true, false, false );
   outputFileSize = 0;
-  connect(splitWriteJob, TQT_SIGNAL(dataReq(KIO::Job *, TQByteArray &)),
-                         this, TQT_SLOT(splitDataSend(KIO::Job *, TQByteArray &)));
-  connect(splitWriteJob, TQT_SIGNAL(result(KIO::Job*)),
-                         this, TQT_SLOT(splitSendFinished(KIO::Job *)));
+  connect(splitWriteJob, TQT_SIGNAL(dataReq(TDEIO::Job *, TQByteArray &)),
+                         this, TQT_SLOT(splitDataSend(TDEIO::Job *, TQByteArray &)));
+  connect(splitWriteJob, TQT_SIGNAL(result(TDEIO::Job*)),
+                         this, TQT_SLOT(splitSendFinished(TDEIO::Job *)));
   noValidWriteJob = false;
 }
 
-void Splitter::splitDataSend(KIO::Job *, TQByteArray &byteArray)
+void Splitter::splitDataSend(TDEIO::Job *, TQByteArray &byteArray)
 {
   int bufferLen = transferArray.size();
 
@@ -191,7 +191,7 @@ void Splitter::splitDataSend(KIO::Job *, TQByteArray &byteArray)
   }
 }
 
-void Splitter::splitSendFinished(KIO::Job *job)
+void Splitter::splitSendFinished(TDEIO::Job *job)
 {
   splitWriteJob = 0;  /* KIO automatically deletes the object after Finished signal */
 
@@ -210,11 +210,11 @@ void Splitter::splitSendFinished(KIO::Job *job)
       /* writing the split information file out */
     writeURL      = destinationDir;
     writeURL.addPath( fileName.fileName() + ".crc" );
-    splitWriteJob = KIO::put( writeURL, permissions, true, false, false );
-    connect(splitWriteJob, TQT_SIGNAL(dataReq(KIO::Job *, TQByteArray &)),
-                           this, TQT_SLOT(splitFileSend(KIO::Job *, TQByteArray &)));
-    connect(splitWriteJob, TQT_SIGNAL(result(KIO::Job*)),
-                           this, TQT_SLOT(splitFileFinished(KIO::Job *)));
+    splitWriteJob = TDEIO::put( writeURL, permissions, true, false, false );
+    connect(splitWriteJob, TQT_SIGNAL(dataReq(TDEIO::Job *, TQByteArray &)),
+                           this, TQT_SLOT(splitFileSend(TDEIO::Job *, TQByteArray &)));
+    connect(splitWriteJob, TQT_SIGNAL(result(TDEIO::Job*)),
+                           this, TQT_SLOT(splitFileFinished(TDEIO::Job *)));
   }
 }
 
@@ -228,14 +228,14 @@ void Splitter::splitAbortJobs()
   splitReadJob = splitWriteJob = 0;
 }
 
-void Splitter::splitFileSend(KIO::Job *, TQByteArray &byteArray)
+void Splitter::splitFileSend(TDEIO::Job *, TQByteArray &byteArray)
 {
   const char *content = splitFile.ascii();
   byteArray.duplicate( content, strlen ( content ) );
   splitFile = "";
 }
 
-void Splitter::splitFileFinished(KIO::Job *job)
+void Splitter::splitFileFinished(TDEIO::Job *job)
 {
   splitWriteJob = 0;  /* KIO automatically deletes the object after Finished signal */
 

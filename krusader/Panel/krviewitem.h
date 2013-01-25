@@ -62,7 +62,7 @@ public:
 
 protected:
 	// used INTERNALLY when calculation of dir size changes the displayed size of the item
-	inline void setSize(KIO::filesize_t size) { _vf->vfile_setSize(size); }
+	inline void setSize(TDEIO::filesize_t size) { _vf->vfile_setSize(size); }
 	
 	vfile* _vf;			// each view item holds a pointer to a corrosponding vfile for fast access	
 	bool dummyVfile;	// used in case our item represents the ".." (updir) item

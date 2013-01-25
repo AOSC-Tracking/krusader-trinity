@@ -46,7 +46,7 @@ class SynchronizeDialog : TQDialog
   
   public:
     SynchronizeDialog(  TQWidget*,  const char*, bool, WFlags, Synchronizer *sync,
-                        int, KIO::filesize_t, int, KIO::filesize_t, int, KIO::filesize_t, int);
+                        int, TDEIO::filesize_t, int, TDEIO::filesize_t, int, TDEIO::filesize_t, int);
     ~SynchronizeDialog();
 
     inline bool wasSyncronizationStarted()    { return syncStarted; }
@@ -54,7 +54,7 @@ class SynchronizeDialog : TQDialog
   public slots:
     void startSynchronization();
     void synchronizationFinished();
-    void processedSizes( int, KIO::filesize_t, int, KIO::filesize_t, int, KIO::filesize_t);
+    void processedSizes( int, TDEIO::filesize_t, int, TDEIO::filesize_t, int, TDEIO::filesize_t);
     void pauseOrResume();
     void pauseAccepted();
 
@@ -77,11 +77,11 @@ class SynchronizeDialog : TQDialog
     Synchronizer  *synchronizer;
 
     int               leftCopyNr;
-    KIO::filesize_t   leftCopySize;
+    TDEIO::filesize_t   leftCopySize;
     int               rightCopyNr;
-    KIO::filesize_t   rightCopySize;
+    TDEIO::filesize_t   rightCopySize;
     int               deleteNr;
-    KIO::filesize_t   deleteSize;
+    TDEIO::filesize_t   deleteSize;
 
     int               parallelThreads;
 

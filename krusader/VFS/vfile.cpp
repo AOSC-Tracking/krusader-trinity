@@ -46,7 +46,7 @@
 #include <kdebug.h>
 
 vfile::vfile(const TQString& name,	                  // useful construtor
-             const KIO::filesize_t size,
+             const TDEIO::filesize_t size,
              const TQString& perm,
              const time_t mtime,
              const bool symLink,
@@ -78,7 +78,7 @@ vfile::vfile(const TQString& name,	                  // useful construtor
 }
 
 vfile::vfile(const TQString& name,	                  // useful construtor
-             const KIO::filesize_t size,	
+             const TDEIO::filesize_t size,	
              const TQString& perm,
              const time_t mtime,
              const bool symLink,
@@ -188,48 +188,48 @@ void vfile::vfile_loadACL()
 	vfile_acl_loaded = true;
 }
 
-const KIO::UDSEntry vfile::vfile_getEntry() {
-	KIO::UDSEntry entry;
-	KIO::UDSAtom atom;
+const TDEIO::UDSEntry vfile::vfile_getEntry() {
+	TDEIO::UDSEntry entry;
+	TDEIO::UDSAtom atom;
 
-	atom.m_uds = KIO::UDS_NAME;
+	atom.m_uds = TDEIO::UDS_NAME;
 	atom.m_str = vfile_getName();
 	entry.append(atom);
 
-	atom.m_uds = KIO::UDS_SIZE;
+	atom.m_uds = TDEIO::UDS_SIZE;
 	atom.m_long = vfile_getSize();
 	entry.append(atom);
 
-	atom.m_uds = KIO::UDS_MODIFICATION_TIME;
+	atom.m_uds = TDEIO::UDS_MODIFICATION_TIME;
 	atom.m_long = vfile_getTime_t();
 	entry.append(atom);
 
-	atom.m_uds = KIO::UDS_USER;
+	atom.m_uds = TDEIO::UDS_USER;
 	atom.m_str = vfile_getOwner();
 	entry.append(atom);
 
-	atom.m_uds = KIO::UDS_GROUP;
+	atom.m_uds = TDEIO::UDS_GROUP;
 	atom.m_str = vfile_getGroup(); 
 	entry.append(atom);
 
-	atom.m_uds = KIO::UDS_MIME_TYPE;
+	atom.m_uds = TDEIO::UDS_MIME_TYPE;
 	atom.m_str = vfile_getMime();
 	entry.append(atom);
 
-	atom.m_uds = KIO::UDS_FILE_TYPE;
+	atom.m_uds = TDEIO::UDS_FILE_TYPE;
 	atom.m_long = vfile_getMode() & S_IFMT;
 	entry.append(atom);
 
-	atom.m_uds = KIO::UDS_ACCESS;
+	atom.m_uds = TDEIO::UDS_ACCESS;
 	atom.m_long = vfile_getMode() & 07777; // keep permissions only
 	entry.append( atom );
 
-	atom.m_uds = KIO::UDS_MIME_TYPE;
+	atom.m_uds = TDEIO::UDS_MIME_TYPE;
 	atom.m_str = vfile_getMime();
 	entry.append(atom);
 
 	if( vfile_isSymLink() ){
-		atom.m_uds = KIO::UDS_LINK_DEST;
+		atom.m_uds = TDEIO::UDS_LINK_DEST;
 		atom.m_str = vfile_getSymDest();
 		entry.append(atom);
 	}
@@ -238,20 +238,20 @@ const KIO::UDSEntry vfile::vfile_getEntry() {
 	if( !vfile_acl_loaded )
 		vfile_loadACL();
 	if( vfile_has_acl ) {
-		atom.m_uds = KIO::UDS_EXTENDED_ACL;
+		atom.m_uds = TDEIO::UDS_EXTENDED_ACL;
 		atom.m_long = 1;
 		entry.append( atom );
 		
 		if( !vfile_acl.isNull() )
 		{
-			atom.m_uds = KIO::UDS_ACL_STRING;
+			atom.m_uds = TDEIO::UDS_ACL_STRING;
 			atom.m_str = vfile_acl;
 			entry.append(atom);
 		}
 		
 		if( !vfile_def_acl.isNull() )
 		{
-			atom.m_uds = KIO::UDS_DEFAULT_ACL_STRING;
+			atom.m_uds = TDEIO::UDS_DEFAULT_ACL_STRING;
 			atom.m_str = vfile_acl;
 			entry.append(atom);
 		}

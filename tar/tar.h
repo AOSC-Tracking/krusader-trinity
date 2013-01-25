@@ -23,7 +23,7 @@
 #include <kio/slavebase.h>
 #include <sys/types.h>
 
-class ArchiveProtocol : public KIO::SlaveBase {
+class ArchiveProtocol : public TDEIO::SlaveBase {
 public:
 	ArchiveProtocol( const TQCString &pool, const TQCString &app );
 	virtual ~ArchiveProtocol();
@@ -35,7 +35,7 @@ public:
 	virtual void mkdir(const KURL& url,int permissions);
 
 protected:
-	void createUDSEntry( const KArchiveEntry * tarEntry, KIO::UDSEntry & entry );
+	void createUDSEntry( const KArchiveEntry * tarEntry, TDEIO::UDSEntry & entry );
 	bool checkNewFile( const KURL & url, TQString & path );
 
 	KArchive * m_archiveFile;

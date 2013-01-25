@@ -6,7 +6,7 @@
 #include <tqptrlist.h>
 
 /**
- * Queue can hold anything which inherits KIO::Job, and schedule it, start it, stop etc...
+ * Queue can hold anything which inherits TDEIO::Job, and schedule it, start it, stop etc...
  * the main reason to hold the Job itself (at least for phase 1) is to keep the code 
  * in krusader relatively unchaged, and allow to create the job as usual and choose if 
  * to start it, or queue it.
@@ -21,13 +21,13 @@ public:
 	virtual ~Queue();
 	
 	inline const TQString& name() const { return _name; }
-	void enqueue(KIO::Job *job);
+	void enqueue(TDEIO::Job *job);
 
 protected:
 	void dumpQueue();
 
 	TQString _name;
-	TQPtrList<KIO::Job> _jobs;
+	TQPtrList<TDEIO::Job> _jobs;
 };
 
 #endif // QUEUE_H

@@ -129,10 +129,10 @@ public:
    inline long freeBlks() {
       return FreeBlks;
    }
-   inline KIO::filesize_t totalBytes() {
+   inline TDEIO::filesize_t totalBytes() {
       return TotalBlks * 1024;
    }
-   inline KIO::filesize_t freeBytes() {
+   inline TDEIO::filesize_t freeBytes() {
       return FreeBlks * 1024;
    }
    //////////////////// insert a good round function here /////////////////

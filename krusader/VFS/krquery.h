@@ -78,9 +78,9 @@ public:
   void setContent( const TQString &content, bool cs=true, bool wholeWord=false, bool remoteSearch=false );
 
   // sets the minimum file size limit
-  void setMinimumFileSize( KIO::filesize_t );
+  void setMinimumFileSize( TDEIO::filesize_t );
   // sets the maximum file size limit
-  void setMaximumFileSize( KIO::filesize_t );
+  void setMaximumFileSize( TDEIO::filesize_t );
 
   // sets the time the file newer than
   void setNewerThan( time_t time );
@@ -153,8 +153,8 @@ protected:
   bool containWholeWord;
   bool containOnRemote;
 
-  KIO::filesize_t minSize;
-  KIO::filesize_t maxSize;
+  TDEIO::filesize_t minSize;
+  TDEIO::filesize_t maxSize;
 
   time_t newerThen;
   time_t olderThen;
@@ -189,8 +189,8 @@ private:
   TQStringList split( TQString );
 
 private slots:
-  void containsContentData(KIO::Job *, const TQByteArray &);
-  void containsContentFinished(KIO::Job*);
+  void containsContentData(TDEIO::Job *, const TQByteArray &);
+  void containsContentFinished(TDEIO::Job*);
 
 private:
   TQString                  origFilter;
@@ -200,8 +200,8 @@ private:
   mutable int              receivedBufferLen;
   mutable TQString          lastSuccessfulGrep;
   mutable TQString          fileName;
-  mutable KIO::filesize_t  receivedBytes;
-  mutable KIO::filesize_t  totalBytes;
+  mutable TDEIO::filesize_t  receivedBytes;
+  mutable TDEIO::filesize_t  totalBytes;
   mutable int              processEventsConnected;
   mutable TQTime            timer;
 };

@@ -9,7 +9,7 @@ Queue::~Queue()
 	// TODO: save queue on delete? or just delete jobs
 }
 
-void Queue::enqueue(KIO::Job *job)
+void Queue::enqueue(TDEIO::Job *job)
 {
 	_jobs.append(job);
 	

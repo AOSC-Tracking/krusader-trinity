@@ -93,7 +93,7 @@ void PanelManager::startPanel( ListPanel *panel, const KURL& path ) {
    panel->start( path );
 }
 
-void PanelManager::saveSettings( KConfig *config, const TQString& key, bool localOnly ) {
+void PanelManager::saveSettings( TDEConfig *config, const TQString& key, bool localOnly ) {
    TQStringList l;
    TQStringList types;
    TQValueList<int> props;
@@ -113,7 +113,7 @@ void PanelManager::saveSettings( KConfig *config, const TQString& key, bool loca
    config->writeEntry( key + " Props", props );
 }
 
-void PanelManager::loadSettings( KConfig *config, const TQString& key ) {
+void PanelManager::loadSettings( TDEConfig *config, const TQString& key ) {
    TQStringList l = config->readPathListEntry( key );
    TQStringList types = config->readListEntry( key + " Types" );
    TQValueList<int> props = config->readIntListEntry( key + " Props" );
@@ -123,7 +123,7 @@ void PanelManager::loadSettings( KConfig *config, const TQString& key ) {
      
    while( types.count() < l.count() )
    {
-      KConfigGroupSaver saver( config, "Look&Feel");
+      TDEConfigGroupSaver saver( config, "Look&Feel");
       types << krConfig->readEntry( "Default Panel Type", _DefaultPanelType );
    }
    while( props.count() < l.count() )

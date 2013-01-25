@@ -65,7 +65,7 @@ TQColor KRPie::colors[ 12 ] = {TQt::red, TQt::blue, TQt::green, TQt::cyan, TQt::
 //////////////////////////////////////////////////////////////////////////////
 // This is the full constructor: use it for a mounted filesystem
 KRFSDisplay::KRFSDisplay( TQWidget *parent, TQString _alias, TQString _realName,
-                          KIO::filesize_t _total, KIO::filesize_t _free ) : TQWidget( parent ), totalSpace( _total ),
+                          TDEIO::filesize_t _total, TDEIO::filesize_t _free ) : TQWidget( parent ), totalSpace( _total ),
       freeSpace( _free ), alias( _alias ), realName( _realName ), mounted( true ),
 empty( false ), supermount( false ) {
    resize( 150, 200 );
@@ -100,7 +100,7 @@ void KRFSDisplay::paintEvent( TQPaintEvent * ) {
       paint.drawText( 10, 37, "(" + realName + ")" );
       if ( mounted ) {  // incase the filesystem is already mounted
          // second, the capacity
-         paint.drawText( 10, 70, i18n( "Capacity: " ) + KIO::convertSizeFromKB( totalSpace ) );
+         paint.drawText( 10, 70, i18n( "Capacity: " ) + TDEIO::convertSizeFromKB( totalSpace ) );
          // third, the 2 boxes (used, free)
          TQPen systemPen = paint.pen();
          paint.setPen( TQt::black );
@@ -110,8 +110,8 @@ void KRFSDisplay::paintEvent( TQPaintEvent * ) {
          paint.fillRect( 11, 111, 8, 8, TQBrush( TQt::white ) );
          // now, the text for the boxes
          paint.setPen( systemPen );
-         paint.drawText( 25, 100, i18n( "Used: " ) + KIO::convertSizeFromKB( totalSpace - freeSpace ) );
-         paint.drawText( 25, 120, i18n( "Free: " ) + KIO::convertSizeFromKB( freeSpace ) );
+         paint.drawText( 25, 100, i18n( "Used: " ) + TDEIO::convertSizeFromKB( totalSpace - freeSpace ) );
+         paint.drawText( 25, 120, i18n( "Free: " ) + TDEIO::convertSizeFromKB( freeSpace ) );
          // first, create the empty pie
          // bottom...
          paint.setPen( TQt::black );
@@ -146,7 +146,7 @@ void KRFSDisplay::paintEvent( TQPaintEvent * ) {
 }
 
 ////////////////////////////////////////////////////////////////////////////////
-KRPie::KRPie( KIO::filesize_t _totalSize, TQWidget *parent ) : TQWidget( parent, 0 ), totalSize( _totalSize ) {
+KRPie::KRPie( TDEIO::filesize_t _totalSize, TQWidget *parent ) : TQWidget( parent, 0 ), totalSize( _totalSize ) {
    slices.setAutoDelete( true ); // kill items when they are removed
    slices.append( new KRPieSlice( 100, TQt::yellow, "DEFAULT" ) );
    sizeLeft = totalSize;
@@ -193,7 +193,7 @@ void KRPie::paintEvent( TQPaintEvent * ) {
 
 }
 
-void KRPie::addSlice( KIO::filesize_t size, TQString label ) {
+void KRPie::addSlice( TDEIO::filesize_t size, TQString label ) {
    int i = ( slices.count() % 12 );
    slices.removeLast();
    slices.append( new KRPieSlice( size * 100 / totalSize, colors[ i ], label ) );

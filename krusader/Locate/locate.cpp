@@ -598,7 +598,7 @@ void LocateDlg::feedToListBox()
   }
   KURL url = KURL::fromPathOrURL(TQString("virt:/")+ queryName);
   v.vfs_refresh( url );
-  v.vfs_addFiles( &urlList, KIO::CopyJob::Copy, 0 );
+  v.vfs_addFiles( &urlList, TDEIO::CopyJob::Copy, 0 );
   //ACTIVE_FUNC->openUrl(url);  
   ACTIVE_MNG->slotNewTab(url.prettyURL());
   accept();

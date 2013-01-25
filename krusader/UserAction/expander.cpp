@@ -676,7 +676,7 @@ TagString exp_Copy::expFunc( const ListPanel*, const TagStringList& parameter, c
       return TQString();
    }
 
-   PreservingCopyJob::createCopyJob( PM_DEFAULT, src, dest, KIO::CopyJob::Copy, false, true );
+   PreservingCopyJob::createCopyJob( PM_DEFAULT, src, dest, TDEIO::CopyJob::Copy, false, true );
 
    return TQString();  // this doesn't return everything, that's normal!
 }
@@ -707,7 +707,7 @@ TagString exp_Move::expFunc( const ListPanel*, const TagStringList& parameter, c
       return TQString();
    }
 
-   PreservingCopyJob::createCopyJob( PM_DEFAULT, src, dest, KIO::CopyJob::Move, false, true );
+   PreservingCopyJob::createCopyJob( PM_DEFAULT, src, dest, TDEIO::CopyJob::Move, false, true );
 
    return TQString();  // this doesn't return anything, that's normal!
 }

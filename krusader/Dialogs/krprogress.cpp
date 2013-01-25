@@ -36,7 +36,7 @@
 #include "krprogress.h"
 #include "../krusader.h"
 
-KrProgress::KrProgress( KIO::Job* job )
+KrProgress::KrProgress( TDEIO::Job* job )
   : ProgressBase( krApp ),
   m_iTotalSize(0), m_iTotalFiles(0), m_iTotalDirs(0),
   m_iProcessedSize(0), m_iProcessedDirs(0), m_iProcessedFiles(0){
@@ -115,16 +115,16 @@ KrProgress::KrProgress( KIO::Job* job )
   setOnlyClean(false);
   setStopOnClose(true);
   // Connect global progress info signals
-  connect( job, TQT_SIGNAL( percent( KIO::Job*, unsigned long ) ),
-                TQT_SLOT( slotPercent( KIO::Job*, unsigned long ) ) );
-  connect( job, TQT_SIGNAL( infoMessage( KIO::Job*, const TQString & ) ),
-                TQT_SLOT( slotInfoMessage( KIO::Job*, const TQString & ) ) );
-  connect( job, TQT_SIGNAL( totalSize( KIO::Job*, KIO::filesize_t ) ),
-                TQT_SLOT( slotTotalSize( KIO::Job*, KIO::filesize_t ) ) );
-  connect( job, TQT_SIGNAL( processedSize( KIO::Job*, KIO::filesize_t ) ),
-                TQT_SLOT( slotProcessedSize( KIO::Job*, KIO::filesize_t ) ) );
-  connect( job, TQT_SIGNAL( speed( KIO::Job*, unsigned long ) ),
-                TQT_SLOT( slotSpeed( KIO::Job*, unsigned long ) ) );
+  connect( job, TQT_SIGNAL( percent( TDEIO::Job*, unsigned long ) ),
+                TQT_SLOT( slotPercent( TDEIO::Job*, unsigned long ) ) );
+  connect( job, TQT_SIGNAL( infoMessage( TDEIO::Job*, const TQString & ) ),
+                TQT_SLOT( slotInfoMessage( TDEIO::Job*, const TQString & ) ) );
+  connect( job, TQT_SIGNAL( totalSize( TDEIO::Job*, TDEIO::filesize_t ) ),
+                TQT_SLOT( slotTotalSize( TDEIO::Job*, TDEIO::filesize_t ) ) );
+  connect( job, TQT_SIGNAL( processedSize( TDEIO::Job*, TDEIO::filesize_t ) ),
+                TQT_SLOT( slotProcessedSize( TDEIO::Job*, TDEIO::filesize_t ) ) );
+  connect( job, TQT_SIGNAL( speed( TDEIO::Job*, unsigned long ) ),
+                TQT_SLOT( slotSpeed( TDEIO::Job*, unsigned long ) ) );
 
   // change to modal & move to Krusader's center
     TQPoint center((krApp->width()-width())/2,(krApp->height()-height())/2);
@@ -137,18 +137,18 @@ KrProgress::KrProgress( KIO::Job* job )
 
 KrProgress::~KrProgress(){}
 
-void KrProgress::slotTotalSize( KIO::Job*, KIO::filesize_t bytes ){
+void KrProgress::slotTotalSize( TDEIO::Job*, TDEIO::filesize_t bytes ){
   m_iTotalSize = bytes;
 }
 
 
-void KrProgress::slotTotalFiles( KIO::Job*, unsigned long files ){
+void KrProgress::slotTotalFiles( TDEIO::Job*, unsigned long files ){
   m_iTotalFiles = files;
   showTotals();
 }
 
 
-void KrProgress::slotTotalDirs( KIO::Job*, unsigned long dirs ){
+void KrProgress::slotTotalDirs( TDEIO::Job*, unsigned long dirs ){
   m_iTotalDirs = dirs;
   showTotals();
 }
@@ -168,8 +168,8 @@ void KrProgress::showTotals(){
   }
 }
 
-void KrProgress::slotPercent( KIO::Job*, unsigned long percent ){
-  TQString tmp(i18n( "%1% of %2 ").arg( percent ).arg( KIO::convertSize(m_iTotalSize)));
+void KrProgress::slotPercent( TDEIO::Job*, unsigned long percent ){
+  TQString tmp(i18n( "%1% of %2 ").arg( percent ).arg( TDEIO::convertSize(m_iTotalSize)));
   m_pProgressBar->setValue( percent );
   tmp.append(i18n(" (Reading)"));
 
@@ -177,23 +177,23 @@ void KrProgress::slotPercent( KIO::Job*, unsigned long percent ){
 }
 
 
-void KrProgress::slotInfoMessage( KIO::Job*, const TQString & msg )
+void KrProgress::slotInfoMessage( TDEIO::Job*, const TQString & msg )
 {
   speedLabel->setText( msg );
   speedLabel->setAlignment( speedLabel->alignment() & ~TQt::WordBreak );
 }
 
 
-void KrProgress::slotProcessedSize( KIO::Job*, KIO::filesize_t bytes ) {
+void KrProgress::slotProcessedSize( TDEIO::Job*, TDEIO::filesize_t bytes ) {
   m_iProcessedSize = bytes;
 
   TQString tmp;
-  tmp = i18n( "%1 of %2 complete").arg( KIO::convertSize(bytes) ).arg( KIO::convertSize(m_iTotalSize));
+  tmp = i18n( "%1 of %2 complete").arg( TDEIO::convertSize(bytes) ).arg( TDEIO::convertSize(m_iTotalSize));
   sizeLabel->setText( tmp );
 }
 
 
-void KrProgress::slotProcessedDirs( KIO::Job*, unsigned long dirs )
+void KrProgress::slotProcessedDirs( TDEIO::Job*, unsigned long dirs )
 {
   m_iProcessedDirs = dirs;
 
@@ -205,7 +205,7 @@ void KrProgress::slotProcessedDirs( KIO::Job*, unsigned long dirs )
 }
 
 
-void KrProgress::slotProcessedFiles( KIO::Job*, unsigned long files )
+void KrProgress::slotProcessedFiles( TDEIO::Job*, unsigned long files )
 {
   m_iProcessedFiles = files;
 
@@ -219,18 +219,18 @@ void KrProgress::slotProcessedFiles( KIO::Job*, unsigned long files )
 }
 
 
-void KrProgress::slotSpeed( KIO::Job*, unsigned long bytes_per_second )
+void KrProgress::slotSpeed( TDEIO::Job*, unsigned long bytes_per_second )
 {
   if ( bytes_per_second == 0 ) {
     speedLabel->setText( i18n( "Working") );
   } else {
 #if KDE_IS_VERSION(3,4,0)
-    unsigned int seconds = KIO::calculateRemainingSeconds( m_iTotalSize, m_iProcessedSize, bytes_per_second );
-	 TQString remaining = KIO::convertSeconds(seconds);
+    unsigned int seconds = TDEIO::calculateRemainingSeconds( m_iTotalSize, m_iProcessedSize, bytes_per_second );
+	 TQString remaining = TDEIO::convertSeconds(seconds);
 #else
-    TQString remaining = KIO::calculateRemaining( m_iTotalSize, m_iProcessedSize, bytes_per_second ).toString();
+    TQString remaining = TDEIO::calculateRemaining( m_iTotalSize, m_iProcessedSize, bytes_per_second ).toString();
 #endif
-    speedLabel->setText( i18n( "%1/s ( %2 remaining )").arg( KIO::convertSize( bytes_per_second )).arg( remaining ) );
+    speedLabel->setText( i18n( "%1/s ( %2 remaining )").arg( TDEIO::convertSize( bytes_per_second )).arg( remaining ) );
   }
 }
 

@@ -76,7 +76,7 @@ KMountMan::KMountMan() : TQObject(), Operational( false ), waiting(false), mount
 	// list of FS that we don't allow to mount/unmount
 	nonmount_fs << "supermount";
 	{
-		KConfigGroupSaver saver(krConfig, "Advanced");
+		TDEConfigGroupSaver saver(krConfig, "Advanced");
 		TQStringList nonmount = TQStringList::split(",", krConfig->readEntry("Nonmount Points", _NonMountPoints));
 		nonmount_fs_mntpoint += nonmount;
 		// simplify the white space
@@ -115,7 +115,7 @@ KMountPoint *KMountMan::findInListByMntPoint(KMountPoint::List &lst, TQString va
 	return 0;
 }
 
-void KMountMan::jobResult(KIO::Job *job) {
+void KMountMan::jobResult(TDEIO::Job *job) {
 	waiting = false;
 	if ( job->error() )
 		job->showErrorDialog( 0 );
@@ -127,9 +127,9 @@ void KMountMan::mount( TQString mntPoint, bool blocking ) {
 	if (!m) return;
 	if (blocking)
 	   waiting = true; // prepare to block
-	KIO::SimpleJob *job = KIO::mount(false, m->mountType().local8Bit(), m->mountedFrom(), m->mountPoint(), false);
+	TDEIO::SimpleJob *job = TDEIO::mount(false, m->mountType().local8Bit(), m->mountedFrom(), m->mountPoint(), false);
 	new KrProgress(job);
-	connect(job, TQT_SIGNAL(result(KIO::Job* )), this, TQT_SLOT(jobResult(KIO::Job* )));
+	connect(job, TQT_SIGNAL(result(TDEIO::Job* )), this, TQT_SLOT(jobResult(TDEIO::Job* )));
 	while (blocking && waiting) {
 		tqApp->processEvents();
 		usleep( 1000 );
@@ -139,9 +139,9 @@ void KMountMan::mount( TQString mntPoint, bool blocking ) {
 void KMountMan::unmount( TQString mntPoint, bool blocking ) {
 	if (blocking)
 	   waiting = true; // prepare to block
-	KIO::SimpleJob *job = KIO::unmount(mntPoint, false);
+	TDEIO::SimpleJob *job = TDEIO::unmount(mntPoint, false);
 	new KrProgress(job);
-	connect(job, TQT_SIGNAL(result(KIO::Job* )), this, TQT_SLOT(jobResult(KIO::Job* )));
+	connect(job, TQT_SIGNAL(result(TDEIO::Job* )), this, TQT_SLOT(jobResult(TDEIO::Job* )));
 	while (blocking && waiting) {
 		tqApp->processEvents();
 		usleep( 1000 );
@@ -210,10 +210,10 @@ bool KMountMan::ejectable( TQString path ) {
 }
 
 
-// a mountMan special version of KIO::convertSize, which deals
+// a mountMan special version of TDEIO::convertSize, which deals
 // with large filesystems ==> >4GB, it actually recieve size in
 // a minimum block of 1024 ==> data is KB not bytes
-TQString KMountMan::convertSize( KIO::filesize_t size ) {
+TQString KMountMan::convertSize( TDEIO::filesize_t size ) {
    float fsize;
    TQString s;
    // Tera-byte

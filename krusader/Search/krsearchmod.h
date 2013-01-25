@@ -65,7 +65,7 @@ private:
 signals:
   void finished();
   void searching(const TQString&);
-  void found(TQString what, TQString where, KIO::filesize_t size, time_t mtime, TQString perm, TQString textFound);
+  void found(TQString what, TQString where, TDEIO::filesize_t size, time_t mtime, TQString perm, TQString textFound);
 
 private slots:
   void slotProcessEvents( bool & stopped );

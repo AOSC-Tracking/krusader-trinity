@@ -43,7 +43,7 @@ m_job( 0L ) {
 	timer = new TQTimer( this );
 	connect( timer, TQT_SIGNAL( timeout() ), TQT_SLOT( showPreview() ) );
 
-	setSupportedMimeTypes( KIO::PreviewJob::supportedMimeTypes() );
+	setSupportedMimeTypes( TDEIO::PreviewJob::supportedMimeTypes() );
 }
 
 KrusaderImageFilePreview::~KrusaderImageFilePreview() {
@@ -76,8 +76,8 @@ void KrusaderImageFilePreview::showPreview( const KURL &url, bool force ) {
 		int h = imageLabel->contentsRect().height() - 4;
 
 		m_job = createJob( url, w, h );
-		connect( m_job, TQT_SIGNAL( result( KIO::Job * ) ),
-		         this, TQT_SLOT( slotResult( KIO::Job * ) ) );
+		connect( m_job, TQT_SIGNAL( result( TDEIO::Job * ) ),
+		         this, TQT_SLOT( slotResult( TDEIO::Job * ) ) );
 		connect( m_job, TQT_SIGNAL( gotPreview( const KFileItem*,
 		                                    const TQPixmap& ) ),
 		         TQT_SLOT( gotPreview( const KFileItem*, const TQPixmap& ) ) );
@@ -95,10 +95,10 @@ TQSize KrusaderImageFilePreview::sizeHint() const {
 	return TQSize( 20, 200 ); // otherwise it ends up huge???
 }
 
-KIO::PreviewJob * KrusaderImageFilePreview::createJob( const KURL& url, int w, int h ) {
+TDEIO::PreviewJob * KrusaderImageFilePreview::createJob( const KURL& url, int w, int h ) {
 	KURL::List urls;
 	urls.append( url );
-	return KIO::filePreview( urls, w, h, 0, 0, true, false );
+	return TDEIO::filePreview( urls, w, h, 0, 0, true, false );
 }
 
 void KrusaderImageFilePreview::gotPreview( const KFileItem* item, const TQPixmap& pm ) {
@@ -114,7 +114,7 @@ void KrusaderImageFilePreview::slotFailed( const KFileItem* item ) {
 		                                  KIcon::DisabledState ) );
 }
 
-void KrusaderImageFilePreview::slotResult( KIO::Job *job ) {
+void KrusaderImageFilePreview::slotResult( TDEIO::Job *job ) {
 	if ( job == m_job )
 		m_job = 0L;
 }
