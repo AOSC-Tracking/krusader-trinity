@@ -39,7 +39,7 @@
 
 // KDE includes
 #include <kapplication.h>
-#include <kparts/mainwindow.h>
+#include <tdeparts/mainwindow.h>
 #include <kstdaction.h>
 #include <kaction.h>
 #include <kconfig.h>

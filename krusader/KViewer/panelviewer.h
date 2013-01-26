@@ -4,7 +4,7 @@
 #include <kurl.h>
 #include <tqstring.h>
 #include <tqwidgetstack.h>
-#include <kparts/part.h>
+#include <tdeparts/part.h>
 #include <kio/job.h>
 #include <ktempfile.h>
 #include <tqdict.h>

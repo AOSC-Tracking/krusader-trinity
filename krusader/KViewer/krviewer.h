@@ -20,10 +20,10 @@
 
 #include <tqwidget.h>
 #include <tqptrlist.h>
-#include <kparts/mainwindow.h>
+#include <tdeparts/mainwindow.h>
 #include <ktempfile.h>
-#include <kparts/partmanager.h>
-#include <kparts/browserextension.h>
+#include <tdeparts/partmanager.h>
+#include <tdeparts/browserextension.h>
 #include <tqguardedptr.h>
 #include <ktabwidget.h>
 

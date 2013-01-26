@@ -2,8 +2,8 @@
 #include <tqstring.h>
 #include <tqwidgetstack.h>
 #include <tqapplication.h>
-#include <kparts/part.h>
-#include <kparts/browserextension.h>
+#include <tdeparts/part.h>
+#include <tdeparts/browserextension.h>
 #include <kmessagebox.h>
 #include <tqdict.h>
 #include <tqlabel.h>

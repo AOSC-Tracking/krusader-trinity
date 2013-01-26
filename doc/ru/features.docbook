@@ -83,7 +83,7 @@
                <para
 >Мощный встроенный <link linkend="krviewer"
 >просмотрщик и редактор</link
-> через kparts поддерживает все доступные форматы файлов!</para>
+> через tdeparts поддерживает все доступные форматы файлов!</para>
           </listitem>
           <listitem>
                <para
@@ -353,7 +353,7 @@
              <para
 ><link linkend="archives"
 >Поддержка паролей</link
-> для: arj, ace, rar и zip. Пароли будут сохраняться в &kwallet;</para>
+> для: arj, ace, rar и zip. Пароли будут сохраняться в &tdewallet;</para>
           </listitem>
 
           <listitem>

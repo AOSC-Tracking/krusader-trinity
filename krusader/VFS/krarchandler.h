@@ -34,7 +34,7 @@
 #include <tqobject.h>
 #include <kprocess.h>
 #include <kurl.h>
-#include <kwallet.h>
+#include <tdewallet.h>
 
 class KRarcHandler: public TQObject {
   Q_OBJECT

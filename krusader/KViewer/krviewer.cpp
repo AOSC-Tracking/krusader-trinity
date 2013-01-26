@@ -23,8 +23,8 @@
 #include <kmenubar.h>
 #include <kmimetype.h>
 #include <klocale.h>
-#include <kparts/part.h>
-#include <kparts/componentfactory.h>
+#include <tdeparts/part.h>
+#include <tdeparts/componentfactory.h>
 #include <kmessagebox.h>
 #include <klibloader.h>
 #include <ktrader.h>
@@ -34,7 +34,7 @@
 #include <kstatusbar.h>
 #include <kdebug.h>
 #include <klargefile.h>
-#include <khtml_part.h>
+#include <tdehtml_part.h>
 #include <kprocess.h>
 #include <kfileitem.h> 
 // Krusader includes

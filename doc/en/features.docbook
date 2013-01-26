@@ -56,7 +56,7 @@
           <listitem>
             <para>Powerful internal 
             <link linkend="krviewer">viewer and editor</link> via
-            kparts supporting almost every file format.</para>
+            tdeparts supporting almost every file format.</para>
           </listitem>
           <listitem>
             <para>&advanced-search-module-lnk; :
@@ -289,7 +289,7 @@
           <para>
           <link linkend="archives">Password support</link> for: arj,
           ace, rar and zip. Passwords can be stored in
-          &kwallet;</para>
+          &tdewallet;</para>
         </listitem>
         <listitem>
           <para>

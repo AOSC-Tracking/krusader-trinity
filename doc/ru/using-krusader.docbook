@@ -446,7 +446,7 @@
 <title
 >Browsing Archives</title>
 <para
->The &vfs_lnk; allows to browse archives as it was a directory. &krusader; supports currently the following archives types: ace, arj, bzip2, deb, gzip, iso, lha, rar, rpm, tar, zip and 7-zip and supports the next passworded archives: arj, ace, rar and zip. Passwords can be stored in &kwallet;. Please note that the archive support first needs to be properly <link linkend="konfig-archives"
+>The &vfs_lnk; allows to browse archives as it was a directory. &krusader; supports currently the following archives types: ace, arj, bzip2, deb, gzip, iso, lha, rar, rpm, tar, zip and 7-zip and supports the next passworded archives: arj, ace, rar and zip. Passwords can be stored in &tdewallet;. Please note that the archive support first needs to be properly <link linkend="konfig-archives"
 >configured</link
 > in Konfigurator. To open the archive use &Enter;, (double-)click or the <keycap
 >Right Arrow</keycap

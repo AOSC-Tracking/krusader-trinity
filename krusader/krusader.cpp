@@ -713,7 +713,7 @@ void Krusader::setupActions() {
    //                             SLOTS, TQT_SLOT( execFilter() ), actionCollection(), "exec files" );
    actCustomFilter = new KAction( i18n( "&Custom" ), SHIFT + Key_F12,
                                   SLOTS, TQT_SLOT( customFilter() ), actionCollection(), "custom files" );
-   actCompare = new KAction( i18n( "Compare b&y Content..." ), "kmultiple", 0,
+   actCompare = new KAction( i18n( "Compare b&y Content..." ), "tdemultiple", 0,
                              SLOTS, TQT_SLOT( compareContent() ), actionCollection(), "compare" );
    actMultiRename = new KAction( i18n( "Multi &Rename..." ), "krename", SHIFT + Key_F9,
                                  SLOTS, TQT_SLOT( multiRename() ), actionCollection(), "multirename" );

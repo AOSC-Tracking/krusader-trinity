@@ -297,7 +297,7 @@ http://groups.google.com/group/krusader-devel/browse_thread/thread/d102adec2edcf
 <!ENTITY filelight '<application>Filelight</application>'>
 <!ENTITY tdevelop '<application>Kdevelop</application>'>
 <!ENTITY keditbookmarks '<application>KeditBookmarks</application>'>
-<!ENTITY kwallet "<application>Kwallet</application>">
+<!ENTITY tdewallet "<application>Kwallet</application>">
 
 <!-- (TM) Trademark ENTITIES -->
 <!ENTITY fedora '<trademark>Fedora</trademark>'>

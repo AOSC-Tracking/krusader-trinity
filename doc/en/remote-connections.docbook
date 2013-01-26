@@ -182,7 +182,7 @@
 <para>
 Let's start with installing all the packages we need: 
 <screen>
-<prompt>#</prompt> <userinput><command>apt-get install</command> <option>avahi-daemon libnss-mdns kdnssd</option></userinput>
+<prompt>#</prompt> <userinput><command>apt-get install</command> <option>avahi-daemon libnss-mdns tdednssd</option></userinput>
 </screen>
 
 Everything is installed, now let's do some configuration. First, we need our services to be announced on LAN.

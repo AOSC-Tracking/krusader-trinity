@@ -37,7 +37,7 @@
 #include <klocale.h>
 #include <kaccel.h>
 #include <kapplication.h>
-#include <kparts/part.h>
+#include <tdeparts/part.h>
 
 // QT includes
 #include <tqlayout.h>
