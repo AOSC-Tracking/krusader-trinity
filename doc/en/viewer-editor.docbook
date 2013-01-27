@@ -117,7 +117,7 @@
     <note>
       <para>The embedded viewer is not written by us, it is
       supplied via &kde; (libs) and
-      &kioslaves1-url; We cannot and do not want to
+      &tdeioslaves1-url; We cannot and do not want to
       change it, usings these libraries reduces the amount of
       written code. So we do not have to reinvent the wheel
       ;-)</para>

@@ -37,7 +37,7 @@
 #include <sys/types.h>
 #include <tqdict.h>
 #include <tqintdict.h>
-#include <kio/global.h>
+#include <tdeio/global.h>
 
 #define NO_PERM      0
 #define UNKNOWN_PERM 1

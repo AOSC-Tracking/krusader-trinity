@@ -32,7 +32,7 @@
 #define __SYNCHRONIZER_TASK_H__
 
 #include <tqobject.h>
-#include <kio/job.h>
+#include <tdeio/job.h>
 
 class Synchronizer;
 class SynchronizerDirList;

@@ -1,6 +1,6 @@
 
 #include "Config.h"
-#include <kconfig.h>
+#include <tdeconfig.h>
 #include <kglobal.h>
 
 
@@ -14,7 +14,7 @@ Filelight::MapScheme Config::scheme;
 
 
 inline TDEConfig&
-Filelight::Config::kconfig()
+Filelight::Config::tdeconfig()
 {
     TDEConfig *config = TDEGlobal::config();
     config->setGroup( "DiskUsage" );
@@ -24,7 +24,7 @@ Filelight::Config::kconfig()
 void
 Filelight::Config::read()
 {
-    const TDEConfig &config = kconfig();
+    const TDEConfig &config = tdeconfig();
 
     varyLabelFontSizes = config.readBoolEntry( "varyLabelFontSizes", true );
     showSmallFiles     = config.readBoolEntry( "showSmallFiles", false );
@@ -39,7 +39,7 @@ Filelight::Config::read()
 void
 Filelight::Config::write()
 {
-    TDEConfig &config = kconfig();
+    TDEConfig &config = tdeconfig();
 
     config.writeEntry( "varyLabelFontSizes", varyLabelFontSizes );
     config.writeEntry( "showSmallFiles", showSmallFiles);

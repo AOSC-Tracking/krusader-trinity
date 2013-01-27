@@ -28,15 +28,15 @@
 #include <kmessagebox.h>
 #include <klibloader.h>
 #include <ktrader.h>
-#include <kio/netaccess.h>
-#include <kio/jobclasses.h>
-#include <kio/job.h>
+#include <tdeio/netaccess.h>
+#include <tdeio/jobclasses.h>
+#include <tdeio/job.h>
 #include <kstatusbar.h>
 #include <kdebug.h>
 #include <klargefile.h>
 #include <tdehtml_part.h>
 #include <kprocess.h>
-#include <kfileitem.h> 
+#include <tdefileitem.h> 
 // Krusader includes
 #include "krviewer.h"
 #include "../krusader.h"

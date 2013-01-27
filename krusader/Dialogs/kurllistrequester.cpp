@@ -33,7 +33,7 @@
 #include <tqpixmap.h>
 #include <tqcursor.h>
 #include <tqlayout.h>
-#include <kfiledialog.h>
+#include <tdefiledialog.h>
 #include <kpopupmenu.h>
 #include <kiconloader.h>
 #include <klocale.h>

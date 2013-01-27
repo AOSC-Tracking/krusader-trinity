@@ -20,7 +20,7 @@
 
 #include <tqpopupmenu.h>
 #include <tqpixmap.h>
-#include <kfileitem.h>
+#include <tdefileitem.h>
 #include <kurl.h>
 
 /**

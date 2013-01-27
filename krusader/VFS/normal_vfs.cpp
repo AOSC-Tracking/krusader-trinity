@@ -38,12 +38,12 @@
 // KDE includes
 #include <kmessagebox.h>
 #include <kmimetype.h>
-#include <kio/jobclasses.h>
+#include <tdeio/jobclasses.h>
 #include <klocale.h>
 #include <kglobalsettings.h>
 #include <kdebug.h>
 #include <klargefile.h>
-#include <kfileitem.h>
+#include <tdefileitem.h>
 // Krusader includes
 #include "normal_vfs.h"
 #include "../Dialogs/krdialogs.h"

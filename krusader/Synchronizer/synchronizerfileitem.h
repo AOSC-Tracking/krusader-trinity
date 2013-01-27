@@ -32,7 +32,7 @@
 #define __SYNCHRONIZER_FILE_ITEM_H__
 
 #include <tqstring.h>
-#include <kio/global.h>
+#include <tdeio/global.h>
 
 typedef enum 
 {

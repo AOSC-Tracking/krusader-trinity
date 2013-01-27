@@ -42,7 +42,7 @@ extern "C" { int kdemain( int argc, char **argv ); }
 #endif
 
 #define KrDEBUG(X...){\
-	FILE* f = fopen("/tmp/kio_virt.log","a+");\
+	FILE* f = fopen("/tmp/tdeio_virt.log","a+");\
 	fprintf(f,X);\
 	fclose(f);\
 }

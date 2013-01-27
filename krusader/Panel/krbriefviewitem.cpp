@@ -4,7 +4,7 @@
 #include "../defaults.h"
 #include "../kicons.h"
 #include "listpanel.h"
-#include <kconfig.h>
+#include <tdeconfig.h>
 #include "krcolorcache.h"
 
 #include <tqpainter.h>

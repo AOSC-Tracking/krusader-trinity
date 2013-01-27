@@ -8,7 +8,7 @@
 #include <kcursor.h>     //::mouseMoveEvent()
 #include <kiconeffect.h> //::mousePressEvent()
 #include <kiconloader.h> //::mousePressEvent()
-#include <kio/job.h>     //::mousePressEvent()
+#include <tdeio/job.h>     //::mousePressEvent()
 #include <klocale.h>
 #include <kmessagebox.h> //::mousePressEvent()
 #include <kpopupmenu.h>  //::mousePressEvent()

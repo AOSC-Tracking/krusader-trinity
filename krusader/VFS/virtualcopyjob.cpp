@@ -32,9 +32,9 @@
 #include "vfs.h"
 #include "vfile.h"
 #include "../krusader.h"
-#include <kio/observer.h>
-#include <kio/global.h>
-#include <kio/jobclasses.h>
+#include <tdeio/observer.h>
+#include <tdeio/global.h>
+#include <tdeio/jobclasses.h>
 #include <kdirsize.h>
 
 #define REPORT_TIMEOUT 200

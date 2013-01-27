@@ -34,7 +34,7 @@
 #define LISTPANEL_H
 
 #include <kpropsdlg.h>
-#include <kfileitem.h>
+#include <tdefileitem.h>
 #include <kurl.h>
 #include <tqwidget.h>
 #include <tqlabel.h>

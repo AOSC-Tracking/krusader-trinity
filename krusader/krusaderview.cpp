@@ -140,7 +140,7 @@ void KrusaderView::slotCurrentChanged( TQString p ) {
   cmdLine->setCurrent( p );
   if ( konsole_part != 0L && konsole_part->widget() != 0L ) {
 	 TDEConfigGroupSaver grp(krConfig, "General");
-    if (krConfig->readBoolEntry("Send CDs", _SendCDs)) // hopefully, this is cached in kconfig
+    if (krConfig->readBoolEntry("Send CDs", _SendCDs)) // hopefully, this is cached in tdeconfig
         if( !konsole_part->url().equals( KURL( p ), true ) )
            konsole_part->openURL( KURL( p ) );
   }

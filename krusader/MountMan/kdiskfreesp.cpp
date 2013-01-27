@@ -28,7 +28,7 @@
 
 #include <kdebug.h>
 #include <kprocess.h>
-#include <kio/global.h>
+#include <tdeio/global.h>
 
 #include "kdiskfreesp.moc"
 
@@ -106,21 +106,21 @@ void KDiskFreeSp::dfDone()
     s=t.readLine();
     s=s.simplifyWhiteSpace();
     if ( !s.isEmpty() ) {
-      //kdDebug(kfile_area) << "GOT: [" << s << "]" << endl;
+      //kdDebug(tdefile_area) << "GOT: [" << s << "]" << endl;
 
       if (s.find(BLANK)<0)      // devicename was too long, rest in next line
 	if ( !t.eof() ) {       // just appends the next line
             v=t.readLine();
             s=s.append(v);
             s=s.simplifyWhiteSpace();
-            //kdDebug(kfile_area) << "SPECIAL GOT: [" << s << "]" << endl;
+            //kdDebug(tdefile_area) << "SPECIAL GOT: [" << s << "]" << endl;
 	 }//if silly linefeed
 
-      //kdDebug(kfile_area) << "[" << s << "]" << endl;
+      //kdDebug(tdefile_area) << "[" << s << "]" << endl;
 
       //TQString deviceName = s.left(s.find(BLANK));
       s=s.remove(0,s.find(BLANK)+1 );
-      //kdDebug(kfile_area) << "    DeviceName:    [" << deviceName << "]" << endl;
+      //kdDebug(tdefile_area) << "    DeviceName:    [" << deviceName << "]" << endl;
 
       if (!NO_FS_TYPE)
           s=s.remove(0,s.find(BLANK)+1 ); // eat fs type
@@ -128,26 +128,26 @@ void KDiskFreeSp::dfDone()
       u=s.left(s.find(BLANK));
       unsigned long kBSize = u.toULong();
       s=s.remove(0,s.find(BLANK)+1 );
-      //kdDebug(kfile_area) << "    Size:       [" << kBSize << "]" << endl;
+      //kdDebug(tdefile_area) << "    Size:       [" << kBSize << "]" << endl;
 
       u=s.left(s.find(BLANK));
       unsigned long kBUsed = u.toULong();
       s=s.remove(0,s.find(BLANK)+1 );
-      //kdDebug(kfile_area) << "    Used:       [" << kBUsed << "]" << endl;
+      //kdDebug(tdefile_area) << "    Used:       [" << kBUsed << "]" << endl;
 
       u=s.left(s.find(BLANK));
       unsigned long kBAvail = u.toULong();
       s=s.remove(0,s.find(BLANK)+1 );
-      //kdDebug(kfile_area) << "    Avail:       [" << kBAvail << "]" << endl;
+      //kdDebug(tdefile_area) << "    Avail:       [" << kBAvail << "]" << endl;
 
 
       s=s.remove(0,s.find(BLANK)+1 );  // delete the capacity 94%
       TQString mountPoint = s.stripWhiteSpace();
-      //kdDebug(kfile_area) << "    MountPoint:       [" << mountPoint << "]" << endl;
+      //kdDebug(tdefile_area) << "    MountPoint:       [" << mountPoint << "]" << endl;
 
       if ( mountPoint == m_mountPoint )
       {
-        //kdDebug(kfile_area) << "Found mount point. Emitting" << endl;
+        //kdDebug(tdefile_area) << "Found mount point. Emitting" << endl;
         emit foundMountPoint( mountPoint, kBSize, kBUsed, kBAvail );
         emit foundMountPoint( kBSize, kBUsed, kBAvail, mountPoint ); // sic!
       }

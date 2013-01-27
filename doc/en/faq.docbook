@@ -89,10 +89,10 @@
           <para>A lot depends on what you want to do with
           &krusader;. You should know that
           &krusader; uses the &kde;
-          &kioslaves1-url; to access remote file
+          &tdeioslaves1-url; to access remote file
           systems, and support for only a limited number of file
           system types are shipped with &tdelibs-url;,
-          most of the &kioslaves2-url; are bundled with
+          most of the &tdeioslaves2-url; are bundled with
           &tdebase-url; (including fish, sftp and tar).
           However, if you want the property-dialog to show
           EXIF-data for .jpeg's, you need &kde;graphics.
@@ -1477,11 +1477,11 @@
             <para>If possible, try to do the same operation with
             &konqueror; or another &kde;
             application. If you encounter the same problem then it
-            is possibly a &kioslaves1-url; or
+            is possibly a &tdeioslaves1-url; or
             &kde; (tdelibs) bug, and not a
             &krusader; bug. &krusader; uses
             the &kde; libraries and the
-            &kioslaves2-url; for many operations. In
+            &tdeioslaves2-url; for many operations. In
             some cases you can encounter problems if your
             distribution is incorrectly configured, please test it
             first as explained above.</para>

@@ -23,12 +23,12 @@
 
 #include <tqlabel.h>
 
-#include <kio/global.h>
+#include <tdeio/global.h>
 
 #include <kprogress.h>
 #include <ksqueezedtextlabel.h>
 
-#include <kio/progressbase.h>
+#include <tdeio/progressbase.h>
 
 #include <tqobject.h>
 

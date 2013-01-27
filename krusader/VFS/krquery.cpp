@@ -45,8 +45,8 @@
 #include <kmimetype.h>
 #include <tqfile.h>
 #include <kurlcompletion.h>
-#include <kio/job.h>
-#include <kfileitem.h>
+#include <tdeio/job.h>
+#include <tdefileitem.h>
 
 #define  STATUS_SEND_DELAY     250
 #define  MAX_LINE_LEN          500

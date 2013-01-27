@@ -37,7 +37,7 @@
 #include <tqdict.h>
 // KDE includes
 #include <kurl.h>
-#include <kio/jobclasses.h>
+#include <tdeio/jobclasses.h>
 // Krusader includes
 #include "vfile.h"
 #include "preservingcopyjob.h"

@@ -15,7 +15,7 @@
  *                                                                         *
  ***************************************************************************/
 
-#include <kio/previewjob.h>
+#include <tdeio/previewjob.h>
 #include "krpreviewpopup.h"
 #include <kdebug.h>
 #include <klocale.h>

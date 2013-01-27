@@ -46,7 +46,7 @@ A
 #include <krun.h>
 #include <kinputdialog.h>
 #include <kdebug.h>
-#include <kio/netaccess.h>
+#include <tdeio/netaccess.h>
 #include <kstandarddirs.h>
 #include <ktempdir.h> 
 #include <kurlrequester.h>

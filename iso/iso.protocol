@@ -7,5 +7,5 @@ output=filesystem
 reading=true
 source=true
 Icon=cd
-Description=A kioslave for ISO9660 filesystems
+Description=A tdeioslave for ISO9660 filesystems
 MimeType=application/x-iso

@@ -31,7 +31,7 @@
 #ifndef __VIRTUAL_COPY_JOB_H__
 #define __VIRTUAL_COPY_JOB_H__
 
-#include <kio/job.h>
+#include <tdeio/job.h>
 #include "preservingcopyjob.h"
 #include <tqvaluelist.h>
 #include <tqtimer.h>

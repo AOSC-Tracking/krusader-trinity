@@ -5,9 +5,9 @@
 #include <tqwidgetstack.h>
 #include <tqpixmap.h>
 #include <tqvaluelist.h>
-#include <kfileitem.h>
+#include <tdefileitem.h>
 #include <tqguardedptr.h>
-#include <kio/previewjob.h>
+#include <tdeio/previewjob.h>
 #include <kurl.h>
 
 class TQButtonGroup;

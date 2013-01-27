@@ -42,7 +42,7 @@
 #include <kmessagebox.h>
 #include <klocale.h>
 #include <kprocess.h>
-#include <kio/jobclasses.h>
+#include <tdeio/jobclasses.h>
 #include <tqprogressdialog.h>
 #include <kglobalsettings.h>
 #include <kmimetype.h>

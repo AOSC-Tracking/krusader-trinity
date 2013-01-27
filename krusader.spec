@@ -86,11 +86,11 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(-,root,root,-)
 %doc doc/actions_tutorial.txt AUTHORS ChangeLog COPYING CVSNEWS FAQ README TODO
 %{_bindir}/krusader
-%{_libdir}/trinity/kio_*.*
+%{_libdir}/trinity/tdeio_*.*
 %{_datadir}/applications/tde/*krusader*.desktop
 %{_datadir}/apps/konqueror/servicemenus/isoservice.desktop
 %{_datadir}/apps/krusader/
-%{_datadir}/config/kio_isorc
+%{_datadir}/config/tdeio_isorc
 %{_docdir}/HTML/*/krusader/
 %{_datadir}/icons/crystalsvg/*/apps/*
 %{_datadir}/icons/locolor/*/apps/*

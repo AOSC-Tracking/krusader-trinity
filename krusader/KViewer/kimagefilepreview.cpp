@@ -21,9 +21,9 @@
 #include <kstandarddirs.h>
 #include <kdebug.h>
 #include <klocale.h>
-#include <kfiledialog.h>
-#include <kfileitem.h>
-#include <kio/previewjob.h>
+#include <tdefiledialog.h>
+#include <tdefileitem.h>
+#include <tdeio/previewjob.h>
 
 #include "kimagefilepreview.h"
 

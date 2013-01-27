@@ -18,7 +18,7 @@
 #include <unistd.h>
 #include <time.h>
  
-#include <kfileitem.h>
+#include <tdefileitem.h>
 #include <kglobalsettings.h>
 #include <kurl.h>
 #include <kmessagebox.h>

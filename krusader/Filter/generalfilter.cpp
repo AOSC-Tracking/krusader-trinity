@@ -34,7 +34,7 @@
 #include "../VFS/vfs.h"
 
 #include <klocale.h>
-#include <kfiledialog.h>
+#include <tdefiledialog.h>
 #include <kmessagebox.h>
 #include <kiconloader.h>
 #include <tqwhatsthis.h>

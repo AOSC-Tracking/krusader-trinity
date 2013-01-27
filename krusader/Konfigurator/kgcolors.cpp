@@ -33,7 +33,7 @@
 #include "../Panel/krcolorcache.h"
 #include <kmessagebox.h>
 #include <klocale.h>
-#include <kfiledialog.h>
+#include <tdefiledialog.h>
 #include <kglobalsettings.h>
 #include <kstandarddirs.h>
 #include <tqhbox.h>

@@ -44,11 +44,11 @@
 #include <kiconloader.h>
 
 #include <tdeversion.h>
-#include <kio/job.h>
+#include <tdeio/job.h>
 #include <kmessagebox.h>
 #include <kmimetype.h>
 #include <kprotocolinfo.h>
-#include <kfileitem.h>
+#include <tdefileitem.h>
 #include <kprocess.h>
 #include <tqcursor.h>
 

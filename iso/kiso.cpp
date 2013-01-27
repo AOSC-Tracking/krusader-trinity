@@ -33,7 +33,7 @@
 #include <kdebug.h>
 #include <kurl.h>
 #include <kmimetype.h>
-#include <kconfig.h>
+#include <tdeconfig.h>
 #include <kfilterdev.h>
 #include <kfilterbase.h>
 

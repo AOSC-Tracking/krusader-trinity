@@ -36,7 +36,7 @@
 
 // KDE Includes
 #include <kdialogbase.h>
-#include <kio/jobclasses.h>
+#include <tdeio/jobclasses.h>
 // TQt Includes
 #include <tqthread.h>
 // Krusader Includes

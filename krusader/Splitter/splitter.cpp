@@ -33,8 +33,8 @@
 #include <tqlayout.h>
 #include <klocale.h>
 #include <kmessagebox.h>
-#include <kio/job.h>
-#include <kfileitem.h>
+#include <tdeio/job.h>
+#include <tdefileitem.h>
 #include <tqfileinfo.h>
     
 Splitter::Splitter( TQWidget* parent,  KURL fileNameIn, KURL destinationDirIn ) :

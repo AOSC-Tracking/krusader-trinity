@@ -17,7 +17,7 @@
 #include <tqtooltip.h>
 #include <klineedit.h>
 #include <kmessagebox.h>
-#include <kfiledialog.h>
+#include <tdefiledialog.h>
 #include <kiconloader.h>
 #include <klocale.h>
 #include <kclipboard.h>

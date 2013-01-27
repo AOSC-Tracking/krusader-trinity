@@ -29,7 +29,7 @@
  ***************************************************************************/
 
 #include "packgui.h"
-#include <kfiledialog.h>
+#include <tdefiledialog.h>
 #include "../krusader.h"
 #include "../defaults.h"
 #include <tqlineedit.h>

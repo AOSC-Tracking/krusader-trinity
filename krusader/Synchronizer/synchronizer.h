@@ -37,7 +37,7 @@
 #include <tqptrvector.h>
 #include <tqmap.h>
 #include <tqcolor.h>
-#include <kio/job.h>
+#include <tdeio/job.h>
 
 class KRQuery;
 class vfile;

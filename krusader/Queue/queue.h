@@ -2,7 +2,7 @@
 #define QUEUE_H
 
 #include <tqobject.h>
-#include <kio/jobclasses.h>
+#include <tdeio/jobclasses.h>
 #include <tqptrlist.h>
 
 /**

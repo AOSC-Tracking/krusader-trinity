@@ -34,7 +34,7 @@
 #include <tqprogressdialog.h>
 #include <tqtimer.h>
 #include <tqguardedptr.h>
-#include <kio/jobclasses.h>
+#include <tdeio/jobclasses.h>
 
 class TDEProcess;
 class KRPleaseWait;

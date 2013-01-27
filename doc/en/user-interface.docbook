@@ -164,7 +164,7 @@
       archive". This format makes the paths uniform and easy to
       read. The 
       <guibutton>Location Toolbar</guibutton> supports also
-      &kioslaves1-url; but not all of them, some can
+      &tdeioslaves1-url; but not all of them, some can
       only be used with the 
       <link linkend="krviewer">viewer</link> and some can not be
       used. The user can enter a desired path by clicking on it. 

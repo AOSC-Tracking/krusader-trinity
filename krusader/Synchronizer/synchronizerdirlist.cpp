@@ -34,7 +34,7 @@
 #include <dirent.h>
 #include <klocale.h>
 #include <kmessagebox.h>
-#include <kfileitem.h>
+#include <tdefileitem.h>
 #include <klargefile.h>
 #include <tqapplication.h>
 #include <tqdir.h>

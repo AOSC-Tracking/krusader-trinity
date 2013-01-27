@@ -40,7 +40,7 @@
 #include <kmessagebox.h>
 #include <klineeditdlg.h>
 #include <kdirnotify_stub.h>
-#include <kio/netaccess.h>
+#include <tdeio/netaccess.h>
 #include <kedittoolbar.h>
 #include <tdeversion.h>
 #include <kcmdlineargs.h>
@@ -504,7 +504,7 @@ void KRslots::homeTerminal(){
 
 void KRslots::sysInfo(){
   TDEProcess proc;
-  proc << "kcmshell" << "System/ksysctrl";
+  proc << "tdecmshell" << "System/ksysctrl";
   if (!proc.start(TDEProcess::DontCare)){
     KMessageBox::sorry(krApp,i18n("Can't find \"KsysCtrl\". Please install the TDE admin package"));
   }

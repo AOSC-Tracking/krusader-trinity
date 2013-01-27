@@ -13,7 +13,7 @@ namespace Filelight
 
     class Config
     {
-        static TDEConfig& kconfig();
+        static TDEConfig& tdeconfig();
 
     public:
         static void read();

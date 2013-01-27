@@ -34,7 +34,7 @@
 #include <tqobject.h>
 #include <tqdict.h>
 #include "../VFS/vfile.h"
-#include <kio/job.h>
+#include <tdeio/job.h>
 
 
 class SynchronizerDirList : public TQObject, public TQDict<vfile>

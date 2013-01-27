@@ -34,11 +34,11 @@
 #include <ktempfile.h>
 #include <klocale.h>
 #include <kmessagebox.h>
-#include <kio/passdlg.h> 
+#include <tdeio/passdlg.h> 
 #include <tqfile.h>
 #include <kstandarddirs.h>
 #include <ktar.h>
-#include <kio/global.h>
+#include <tdeio/global.h>
 // Krusader includes
 #include "krarchandler.h"
 #include "../krusader.h"

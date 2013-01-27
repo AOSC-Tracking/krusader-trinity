@@ -18,7 +18,7 @@
 #ifndef VIRT_VFS_H
 #define VIRT_VFS_H
 
-#include <kconfig.h>
+#include <tdeconfig.h>
 
 #include "vfs.h"
 

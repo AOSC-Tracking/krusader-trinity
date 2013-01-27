@@ -20,8 +20,8 @@
 
 #include <sys/types.h>
 #include <tqdict.h>
-#include <kconfig.h>
-#include <kio/slavebase.h>
+#include <tdeconfig.h>
+#include <tdeio/slavebase.h>
 
 class VirtProtocol : public TDEIO::SlaveBase {
 public:

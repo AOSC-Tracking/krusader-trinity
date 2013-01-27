@@ -35,7 +35,7 @@
 #include <kmimetype.h>
 #include <kmessagebox.h>
 #include <kglobalsettings.h>
-#include <kio/job.h>
+#include <tdeio/job.h>
 #include <tqpushbutton.h>
 #include <tqhbox.h>
 #include <tqapplication.h>

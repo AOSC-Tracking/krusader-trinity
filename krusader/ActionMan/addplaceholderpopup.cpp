@@ -15,7 +15,7 @@
 #include "../UserAction/expander.h"
 
 #include <klocale.h>
-#include <kfiledialog.h>
+#include <tdefiledialog.h>
 #include <kmessagebox.h>
 
 // for ParameterDialog

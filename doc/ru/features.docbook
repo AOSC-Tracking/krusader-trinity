@@ -95,7 +95,7 @@
           </listitem>
           <listitem>
                <para
->&remote_connections_lnk; : &FTP;/SAMBA с поддержкой SFTP/SCP через &kioslaves1_url;</para>
+>&remote_connections_lnk; : &FTP;/SAMBA с поддержкой SFTP/SCP через &tdeioslaves1_url;</para>
           </listitem>
         </itemizedlist>
      </para>

@@ -31,7 +31,7 @@
 #include <kstdguiitem.h>
 #include <twin.h>
 
-#include <kio/jobclasses.h>
+#include <tdeio/jobclasses.h>
 
 #include "krprogress.h"
 #include "../krusader.h"
@@ -109,7 +109,7 @@ KrProgress::KrProgress( TDEIO::Job* job )
   resize( sizeHint() );
   setMaximumHeight(sizeHint().height());
 
-  setCaption(i18n("Krusader Progress")); // show something better than kio_uiserver
+  setCaption(i18n("Krusader Progress")); // show something better than tdeio_uiserver
 
   setJob(job);
   setOnlyClean(false);

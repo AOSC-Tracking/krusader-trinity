@@ -34,7 +34,7 @@
 // QT includes
 #include <tqstring.h>
 // KDE includes
-#include <kfileitem.h>
+#include <tdefileitem.h>
 #include <kdirwatch.h>
 #include <kurl.h>
 // Krusader includes

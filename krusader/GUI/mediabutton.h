@@ -34,7 +34,7 @@
 #include <tqwidget.h>
 #include <tqtoolbutton.h>
 #include <kurl.h>
-#include <kio/jobclasses.h>
+#include <tdeio/jobclasses.h>
 #include <tqvaluelist.h>
 #include <kmountpoint.h>
 #include <tqtimer.h>

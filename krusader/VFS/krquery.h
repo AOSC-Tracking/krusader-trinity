@@ -34,7 +34,7 @@
 #include <tqdatetime.h>
 #include <time.h>
 #include <kurl.h>
-#include <kio/jobclasses.h>
+#include <tdeio/jobclasses.h>
 #include "vfile.h"
 
 class KFileItem;

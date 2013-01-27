@@ -36,9 +36,9 @@ A
 
 // KDE includes
 #include <tdeversion.h>
-#include <kio/jobclasses.h>
-#include <kio/job.h>
-#include <kio/global.h>
+#include <tdeio/jobclasses.h>
+#include <tdeio/job.h>
+#include <tdeio/global.h>
 #include <kmountpoint.h>
 
 // krusader includes

@@ -11,7 +11,7 @@
 #include <kmessagebox.h>
 #include <tqfile.h>
 #include <tqtextstream.h>
-#include <kfiledialog.h>
+#include <tdefiledialog.h>
 #include <tqframe.h>
 #include <kiconloader.h>
 #include <kcombobox.h>

@@ -31,7 +31,7 @@
 #define KRVIEWITEM_H
 
 #include <sys/types.h>
-#include <kio/global.h>
+#include <tdeio/global.h>
 #include "../VFS/vfile.h"
 #include "krview.h"
 

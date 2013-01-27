@@ -42,7 +42,7 @@
 #include <tdeparts/mainwindow.h>
 #include <kstdaction.h>
 #include <kaction.h>
-#include <kconfig.h>
+#include <tdeconfig.h>
 #include <kaccel.h>
 #include <tqstringlist.h>
 #include <tqtextstream.h>

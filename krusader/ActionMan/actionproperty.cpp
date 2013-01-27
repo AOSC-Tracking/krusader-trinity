@@ -22,7 +22,7 @@
 #include <tqradiobutton.h>
 #include <tqbuttongroup.h>
 #include <klocale.h>
-#include <kfiledialog.h>
+#include <tdefiledialog.h>
 #include <klineedit.h>
 #include <kdebug.h>
 #include <kmessagebox.h>

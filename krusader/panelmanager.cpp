@@ -3,7 +3,7 @@
 #include <klocale.h>
 #include <tqimage.h>
 #include <kdebug.h>
-#include <kconfig.h>
+#include <tdeconfig.h>
 #include <kiconloader.h>
 #include "panelmanager.h"
 #include "Panel/listpanel.h"

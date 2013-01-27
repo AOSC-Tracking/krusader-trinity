@@ -188,12 +188,12 @@
   </glossentry>
   <glossentry id="gloss-kio">
     <glossterm>
-    <acronym>KIO</acronym> or kioslave</glossterm>
+    <acronym>KIO</acronym> or tdeioslave</glossterm>
     <glossdef>
       <para>
       <ulink url="http://en.wikipedia.org/wiki/Kioslave">KDE
       Input/Output</ulink>; also known as
-      &kioslaves1-url; is part of the &kde;
+      &tdeioslaves1-url; is part of the &kde;
       architecture. It provides access to files, web sites and
       other resources through a single consistent API.</para>
     </glossdef>

@@ -25,7 +25,7 @@
 #include <kaction.h>
 #include <kurl.h>
 #include <kmessagebox.h>
-#include <kfiledialog.h>
+#include <tdefiledialog.h>
 #include "kraction.h"
 #include "expander.h"
 #include "useraction.h"

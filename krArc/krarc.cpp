@@ -26,7 +26,7 @@
 #include <tqregexp.h>
 #include <tqdir.h>
 
-#include <kfileitem.h>
+#include <tdefileitem.h>
 #include <kdebug.h>
 #include <kmessagebox.h>
 #include <kinstance.h>
@@ -35,7 +35,7 @@
 #include <ktempfile.h>
 #include <klargefile.h>
 #include <kstandarddirs.h>
-#include <kio/job.h>
+#include <tdeio/job.h>
 #include <ktar.h>
 
 #include <iostream>

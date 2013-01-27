@@ -6,7 +6,7 @@
 
 #include <stdlib.h>
 #include <sys/types.h>
-#include <kio/global.h>
+#include <tdeio/global.h>
 
 //TODO these are pointlessly general purpose now, make them incredibly specific
 

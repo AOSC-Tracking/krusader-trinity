@@ -31,7 +31,7 @@
 
 #include <kpopupmenu.h>
 #include <kcharsets.h>
-#include <kio/slaveconfig.h>
+#include <tdeio/slaveconfig.h>
 #include <dcopclient.h>
 
 #include "../krusader.h"

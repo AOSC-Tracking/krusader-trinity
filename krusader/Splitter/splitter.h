@@ -35,7 +35,7 @@
 #include <tqstring.h>
 #include <tqprogressdialog.h>
 #include <kurl.h>
-#include <kio/jobclasses.h>
+#include <tdeio/jobclasses.h>
  
 class Splitter : public TQProgressDialog
 {

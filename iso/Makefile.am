@@ -25,12 +25,12 @@ install-data-local:
 	$(mkinstalldirs)  $(DESTDIR)$(kde_datadir)/konqueror/servicemenus/
 	$(INSTALL_DATA) $(srcdir)/isoservice.desktop  $(DESTDIR)$(kde_datadir)/konqueror/servicemenus/isoservice.desktop
 	$(mkinstalldirs)  $(DESTDIR)$(kde_confdir)/
-	$(INSTALL_DATA) $(srcdir)/kio_isorc $(DESTDIR)$(kde_confdir)/kio_isorc
+	$(INSTALL_DATA) $(srcdir)/tdeio_isorc $(DESTDIR)$(kde_confdir)/tdeio_isorc
 
 uninstall-local:
 	-rm -f  $(DESTDIR)$(kde_servicesdir)/iso.protocol
 	-rm -f  $(DESTDIR)$(kde_datadir)/konqueror/servicemenus/isoservice.desktop
-	-rm -f  $(DESTDIR)$(kde_confdir)/kio_isorc
+	-rm -f  $(DESTDIR)$(kde_confdir)/tdeio_isorc
 
 # These paths are KDE specific. Use them:
 # kde_appsdir         Where your application's menu entry (.desktop) should go to.

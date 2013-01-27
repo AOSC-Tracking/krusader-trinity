@@ -37,7 +37,7 @@
 #include <tqvalidator.h>
 #include <tqcombobox.h>
 #include <kurlrequester.h>
-#include <kio/global.h>
+#include <tdeio/global.h>
 
 #include "../VFS/vfs.h"
 

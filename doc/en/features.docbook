@@ -77,7 +77,7 @@
           <listitem>
             <para>&remote-connections-lnk; :
             &FTP;/SAMBA with SFTP/SCP support via
-            &kioslaves1-url;</para>
+            &tdeioslaves1-url;</para>
           </listitem>
           <listitem>
             <para>&locate-lnk;</para>

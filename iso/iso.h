@@ -22,7 +22,7 @@
 #ifndef _ISO_H
 #define _ISO_H
 
-#include <kio/slavebase.h>
+#include <tdeio/slavebase.h>
 #include <sys/types.h>
 #include "kisofile.h"
 

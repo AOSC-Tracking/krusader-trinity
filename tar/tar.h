@@ -20,7 +20,7 @@
 #ifndef _TAR_H
 #define _TAR_H
 
-#include <kio/slavebase.h>
+#include <tdeio/slavebase.h>
 #include <sys/types.h>
 
 class ArchiveProtocol : public TDEIO::SlaveBase {

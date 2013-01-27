@@ -13,7 +13,7 @@
 // of the icon to allow automatic resizing when needed.
 #define LOADICON(X) TQIconSet(krLoader->loadIcon(X,KIcon::Desktop)).pixmap(TQIconSet::Small,true)
 
-// used only for calls within the kfilelist framework, handles icon sizes
+// used only for calls within the tdefilelist framework, handles icon sizes
 TQPixmap FL_LOADICON(TQString name);
 
 extern  const char * no_xpm[];

@@ -5,7 +5,7 @@
 #include <tqstring.h>
 #include <tqwidgetstack.h>
 #include <tdeparts/part.h>
-#include <kio/job.h>
+#include <tdeio/job.h>
 #include <ktempfile.h>
 #include <tqdict.h>
 #include <tqlabel.h>

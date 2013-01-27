@@ -38,7 +38,7 @@ A
 #include <tqptrlist.h>
 #include <klineedit.h>
 #include <tqevent.h>
-#include <kio/global.h>
+#include <tdeio/global.h>
 
 class KRPieSlice;
 

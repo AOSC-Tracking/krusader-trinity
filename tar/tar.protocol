@@ -7,6 +7,6 @@ output=filesystem
 listing=Name,Type,Size,Date,Access,Owner,Group,Link
 reading=true
 source=true
-DocPath=kioslave/tar.html
+DocPath=tdeioslave/tar.html
 Icon=tar
 Class=:local

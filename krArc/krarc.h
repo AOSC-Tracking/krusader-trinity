@@ -24,8 +24,8 @@
 #include <sys/types.h>
 
 #include <kurl.h>
-#include <kio/global.h>
-#include <kio/slavebase.h>
+#include <tdeio/global.h>
+#include <tdeio/slavebase.h>
 #include <kprocess.h>
 
 class TDEProcess;

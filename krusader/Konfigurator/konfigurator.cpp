@@ -35,7 +35,7 @@
 #include "../Dialogs/krdialogs.h"
 #include "../kicons.h"
 
-#include <kfiledialog.h>
+#include <tdefiledialog.h>
 #include <tqwidget.h>
 #include <klocale.h>
 #include <kglobal.h>

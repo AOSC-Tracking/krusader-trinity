@@ -8,7 +8,7 @@
 #include <tqtooltip.h>
 #include <tqbuttongroup.h>
 #include <tqtoolbutton.h>
-#include <kfiletreeview.h>
+#include <tdefiletreeview.h>
 #include <klocale.h>
 #include <tqcursor.h>
 #include <tqlayout.h>
@@ -17,7 +17,7 @@
 #include <krview.h>
 #include <krviewitem.h>
 #include <klineedit.h>
-#include <kio/jobclasses.h>
+#include <tdeio/jobclasses.h>
 #include "../KViewer/kimagefilepreview.h"
 #include "../KViewer/panelviewer.h"
 #include "../KViewer/diskusageviewer.h"

@@ -38,7 +38,7 @@
 #include <tqvalidator.h>
 #include <tqlistview.h>
 #include <kmessagebox.h>
-#include <kfiledialog.h>
+#include <tdefiledialog.h>
 #include <kglobal.h>
 #include <kstandarddirs.h>
 #include "../Panel/krselectionmode.h"

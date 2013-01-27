@@ -33,7 +33,7 @@
 
 #include "config.h"
 #include <time.h>
-#include <kio/jobclasses.h>
+#include <tdeio/jobclasses.h>
 #include <tqmap.h>
 #include <tqvaluelist.h>
 

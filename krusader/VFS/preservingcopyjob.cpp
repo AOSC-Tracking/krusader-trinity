@@ -33,9 +33,9 @@
 #include "../krusader.h"
 #include <utime.h>
 #include <klargefile.h>
-#include <kio/job.h>
-#include <kio/jobclasses.h>
-#include <kfileitem.h>
+#include <tdeio/job.h>
+#include <tdeio/jobclasses.h>
+#include <tdefileitem.h>
 #include <tqfile.h>
 #include <pwd.h>
 #include <grp.h>

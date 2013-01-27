@@ -41,9 +41,9 @@
 #include <tqtimer.h>
 #include <tqeventloop.h>
 // KDE includes
-#include <kio/jobclasses.h>
+#include <tdeio/jobclasses.h>
 #include <klocale.h>
-#include <kio/job.h>
+#include <tdeio/job.h>
 #include <kmessagebox.h>
 #include <kprotocolinfo.h>
 #include <kdebug.h> 

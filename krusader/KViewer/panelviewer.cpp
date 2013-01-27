@@ -13,8 +13,8 @@
 #include <klibloader.h>
 #include <kuserprofile.h>
 #include <kdebug.h>
-#include <kfileitem.h>
-#include <kio/netaccess.h>
+#include <tdefileitem.h>
+#include <tdeio/netaccess.h>
 #include <tqfile.h>
 #include <klargefile.h>
 #include "panelviewer.h"

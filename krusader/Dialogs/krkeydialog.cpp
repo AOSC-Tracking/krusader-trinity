@@ -16,10 +16,10 @@
 #include <klocale.h>
 #include <kpushbutton.h>
 #include <kmessagebox.h>
-#include <kfiledialog.h>
+#include <tdefiledialog.h>
 #include <kglobal.h>
 #include <kstandarddirs.h>
-#include <kconfig.h>
+#include <tdeconfig.h>
 #include <kactionshortcutlist.h>
 #include <kdebug.h>
 

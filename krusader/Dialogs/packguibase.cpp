@@ -49,7 +49,7 @@
 #include <kglobalsettings.h>
 #include <kcombobox.h>
 #include <kmessagebox.h>
-#include <kio/global.h>
+#include <tdeio/global.h>
 #include "../krusader.h"
 
 /* 

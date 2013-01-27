@@ -35,7 +35,7 @@
 // System includes
 #include <sys/types.h>
 // KDE includes
-#include <kio/global.h>
+#include <tdeio/global.h>
 #include <kmimetype.h>
 
 #define PERM_ALL          -2

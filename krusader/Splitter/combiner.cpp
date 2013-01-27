@@ -32,8 +32,8 @@
 #include "../VFS/vfs.h"
 #include <klocale.h>
 #include <kmessagebox.h>
-#include <kfileitem.h>
-#include <kio/job.h>
+#include <tdefileitem.h>
+#include <tdeio/job.h>
 #include <tqfileinfo.h>
 
 Combiner::Combiner( TQWidget* parent,  KURL baseURLIn, KURL destinationURLIn, bool unixNamingIn ) :

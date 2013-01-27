@@ -48,7 +48,7 @@
 #include <tqcursor.h>
 #include <time.h>
 #include <kmessagebox.h>
-#include <kio/netaccess.h>
+#include <tdeio/netaccess.h>
 #include <tqeventloop.h>
 #include <tqwhatsthis.h>
 #include <tqregexp.h>

@@ -6,9 +6,9 @@
   <para>Remote connections are easily made by typing the
   &URL; in the 
   <link linkend="list_panel">Location Toolbar</link>; these are
-  actually &kioslaves1-url;. Please note that the
+  actually &tdeioslaves1-url;. Please note that the
   &krusader; panel does not support all
-  &kioslaves2-url; &eg; 
+  &tdeioslaves2-url; &eg; 
   <command>http://</command> will not work in the panel, but will
   work in the 
   <link linkend="krviewer">viewer</link>. Some examples:</para>
@@ -149,7 +149,7 @@
   </itemizedlist></para>
   <note>
     <para>&krusader; is a file manager that supports
-    remote connections via &kioslaves1-url;, but if you
+    remote connections via &tdeioslaves1-url;, but if you
     are looking for even more advanced remote connections features,
     &eg; an advanced &FTP;-client we
     recommend you to use &eg;

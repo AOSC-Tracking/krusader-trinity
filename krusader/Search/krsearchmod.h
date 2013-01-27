@@ -38,7 +38,7 @@
 #include <tqstringlist.h>
 #include <tqdatetime.h>
 #include <time.h>
-#include <kio/global.h>
+#include <tdeio/global.h>
 #include <kurl.h>
 #include "../VFS/ftp_vfs.h"
 #include "../VFS/virt_vfs.h"

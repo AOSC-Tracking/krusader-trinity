@@ -42,11 +42,11 @@
 #include <tqregexp.h>
 #include <tqdir.h>
 #include <tqtimer.h>
-#include <kio/job.h>
+#include <tdeio/job.h>
 #include <kdialogbase.h>
-#include <kio/observer.h>
-#include <kio/renamedlg.h>
-#include <kio/skipdlg.h>
+#include <tdeio/observer.h>
+#include <tdeio/renamedlg.h>
+#include <tdeio/skipdlg.h>
 #include <unistd.h>
 #include <tqeventloop.h>
 #include <tqpushbutton.h>

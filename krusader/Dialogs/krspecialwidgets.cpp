@@ -36,7 +36,7 @@ A
 #include "../krusader.h"
 #include "../MountMan/kmountman.h"
 #include <math.h>
-#include <kfileitem.h>
+#include <tdefileitem.h>
 #include <klocale.h>
 #include <klineedit.h>
 #include <kdebug.h>
