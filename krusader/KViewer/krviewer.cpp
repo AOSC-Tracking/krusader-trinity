@@ -119,7 +119,7 @@ KrViewer::~KrViewer() {
 }
 
 void KrViewer::createGUI( KParts::Part* part ) {
-	if ( part == 0 )   /*     KHTMLPart calls this function with 0 at destruction.    */
+	if ( part == 0 )   /*     TDEHTMLPart calls this function with 0 at destruction.    */
 		return ;        /*   Can cause crash after JavaScript self.close() if removed  */
 
 	
@@ -607,10 +607,10 @@ bool KrViewer::viewGeneric() {
 
 	if ( !generic_part ) {
 		if ( mimetype.contains( "html" ) ) {
-			KHTMLPart * p = new KHTMLPart( this, 0, 0, 0, KHTMLPart::BrowserViewGUI );
+			TDEHTMLPart * p = new TDEHTMLPart( this, 0, 0, 0, TDEHTMLPart::BrowserViewGUI );
 			connect( p->browserExtension(), TQT_SIGNAL( openURLRequest( const KURL &, const KParts::URLArgs & ) ),
 			         TQT_TQOBJECT(this), TQT_SLOT( handleOpenURLRequest( const KURL &, const KParts::URLArgs & ) ) );
-			/* At JavaScript self.close() the KHTMLPart destroys itself.  */
+			/* At JavaScript self.close() the TDEHTMLPart destroys itself.  */
 			/* After destruction, just close the window */
 			connect( p, TQT_SIGNAL( destroyed() ), TQT_TQOBJECT(this), TQT_SLOT( close() ) );
 
