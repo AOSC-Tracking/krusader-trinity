@@ -927,8 +927,8 @@
         <answer>
           <para>Install the krarc slave properly:</para>
           <para>Copy the 
-          <filename>kio_krarc.so</filename>, 
-          <filename>kio_krarc.la</filename> files into 
+          <filename>tdeio_krarc.so</filename>, 
+          <filename>tdeio_krarc.la</filename> files into 
           <filename class="directory">
           $TDEDIR/lib/trinity</filename></para>
           <para>Copy the 
@@ -948,13 +948,13 @@
           open foo-Archive, what to do?</para>
         </question>
         <answer>
-          <para>The icons, kio_slaves and documentation must be
+          <para>The icons, tdeio_slaves and documentation must be
           installed in the correct places in the &kde;
           directory tree. The 
-          <filename>kio_krarc.*</filename> files must be in the same
+          <filename>tdeio_krarc.*</filename> files must be in the same
           directory with the other KIO slaves. Try this: locate 
-          <filename>kio_tar.*</filename> and copy/link the 
-          <filename>kio_krarc.*</filename> files to the same
+          <filename>tdeio_tar.*</filename> and copy/link the 
+          <filename>tdeio_krarc.*</filename> files to the same
           location. Don't forget to run 
           <command># ldconfig</command> on this directory when
           you're done. For more information click 

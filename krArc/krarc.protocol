@@ -1,5 +1,5 @@
 [Protocol]
-exec=kio_krarc
+exec=tdeio_krarc
 protocol=krarc
 mimetype=application/x-archive
 input=filesystem

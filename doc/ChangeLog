@@ -331,7 +331,7 @@ Final handbook revision for "Krusader 1.60.0 stable"
   ADDED: PopUp Panel has now a Full Viewer
   ADDED: Shift+DEL will delete a file permanently
   ADDED: inport/export keybindings (konfigurator, look & feel)
-  ADDED: kio_krarc.* "Protocol not supported by Krusader" (FAQ)
+  ADDED: tdeio_krarc.* "Protocol not supported by Krusader" (FAQ)
   ADDED: krusader-devel-ro mailing list
   ADDED: Ctrl+O keybinding
   ADDED: This handbook is available in several formats (HTML, TXT, RTF, PDF)

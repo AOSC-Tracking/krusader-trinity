@@ -368,7 +368,7 @@ since the Entity Backspace is not defined in
 <!ENTITY tdeioslaves2_url '<ulink url="http://developer.kde.org/documentation/library/3.4-api/tdeio/html/index.html"
 >KIOSlaves</ulink
 >'>
-<!ENTITY kio_ipodslave_url '<ulink url="http://sourceforge.net/projects/kpod"
+<!ENTITY tdeio_ipodslave_url '<ulink url="http://sourceforge.net/projects/kpod"
 >KIOipod-slave</ulink
 >'>
 <!ENTITY tdelibs_url '<ulink url="http://lxr.kde.org/source/tdelibs/tdeioslave"

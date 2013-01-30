@@ -120,7 +120,7 @@ void KrRemoteEncodingMenu::slotItemSelected(int id)
 {
   KURL currentURL = ACTIVE_PANEL->virtualPath();
 
-  TDEConfig config(("kio_" + currentURL.protocol() + "rc").latin1());
+  TDEConfig config(("tdeio_" + currentURL.protocol() + "rc").latin1());
   TQString host = currentURL.host();
 
   if (!popupMenu()->isItemChecked(id))
@@ -147,7 +147,7 @@ void KrRemoteEncodingMenu::slotDefault()
 
   // We have no choice but delete all higher domain level
   // settings here since it affects what will be matched.
-  TDEConfig config(("kio_" + currentURL.protocol() + "rc").latin1());
+  TDEConfig config(("tdeio_" + currentURL.protocol() + "rc").latin1());
 
   TQStringList partList = TQStringList::split('.', currentURL.host(), false);
   if (!partList.isEmpty())

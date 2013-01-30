@@ -61,14 +61,14 @@ using namespace TDEIO;
 extern "C" {
 
 int kdemain( int argc, char **argv ){
-	TDEInstance instance( "kio_krarc" );
+	TDEInstance instance( "tdeio_krarc" );
 	
 	if (argc != 4) {
-		kdWarning() << "Usage: kio_krarc  protocol domain-socket1 domain-socket2" << endl;
+		kdWarning() << "Usage: tdeio_krarc  protocol domain-socket1 domain-socket2" << endl;
 		exit(-1);
 	}
 	
-	kio_krarcProtocol slave(argv[2], argv[3]);
+	tdeio_krarcProtocol slave(argv[2], argv[3]);
 	slave.dispatchLoop();
 	
 	return 0;
@@ -76,8 +76,8 @@ int kdemain( int argc, char **argv ){
 
 } // extern "C" 
 
-kio_krarcProtocol::kio_krarcProtocol(const TQCString &pool_socket, const TQCString &app_socket)
-	: SlaveBase("kio_krarc", pool_socket, app_socket), archiveChanged(true), arcFile(0L),extArcReady(false),
+tdeio_krarcProtocol::tdeio_krarcProtocol(const TQCString &pool_socket, const TQCString &app_socket)
+	: SlaveBase("tdeio_krarc", pool_socket, app_socket), archiveChanged(true), arcFile(0L),extArcReady(false),
 		password(TQString()) {
 	
 	krConfig = new TDEConfig( "krusaderrc" );
@@ -93,7 +93,7 @@ kio_krarcProtocol::kio_krarcProtocol(const TQCString &pool_socket, const TQCStri
 }
 
 /* ---------------------------------------------------------------------------------- */
-kio_krarcProtocol::~kio_krarcProtocol(){
+tdeio_krarcProtocol::~tdeio_krarcProtocol(){
 	// delete the temp directory
 	KrShellProcess proc;
 	proc << "rm -rf "<< arcTempDir;
@@ -101,7 +101,7 @@ kio_krarcProtocol::~kio_krarcProtocol(){
 }
 
 /* ---------------------------------------------------------------------------------- */
-void kio_krarcProtocol::receivedData(TDEProcess*,char* buf,int len){
+void tdeio_krarcProtocol::receivedData(TDEProcess*,char* buf,int len){
 	TQByteArray d(len);
 	d.setRawData(buf,len);
 	data(d);
@@ -110,7 +110,7 @@ void kio_krarcProtocol::receivedData(TDEProcess*,char* buf,int len){
 	decompressedLen += len;
 }
 
-void kio_krarcProtocol::mkdir(const KURL& url,int permissions){
+void tdeio_krarcProtocol::mkdir(const KURL& url,int permissions){
 	KRDEBUG(url.path());
 	
 	if( !setArcFile( url ) ) {
@@ -171,7 +171,7 @@ void kio_krarcProtocol::mkdir(const KURL& url,int permissions){
 	finished();
 }
 
-void kio_krarcProtocol::put(const KURL& url,int permissions,bool overwrite,bool resume){
+void tdeio_krarcProtocol::put(const KURL& url,int permissions,bool overwrite,bool resume){
 	KRDEBUG(url.path());
 	if( !setArcFile( url ) ) {
 		error(ERR_CANNOT_ENTER_DIRECTORY,url.path());
@@ -240,11 +240,11 @@ void kio_krarcProtocol::put(const KURL& url,int permissions,bool overwrite,bool 
 	finished();
 }
 
-void kio_krarcProtocol::get(const KURL& url ){
+void tdeio_krarcProtocol::get(const KURL& url ){
 	get( url, TRIES_WITH_PASSWORDS );
 }
 
-void kio_krarcProtocol::get(const KURL& url, int tries ){
+void tdeio_krarcProtocol::get(const KURL& url, int tries ){
 	bool decompressToFile = false;
 	KRDEBUG(url.path());
 	
@@ -425,7 +425,7 @@ void kio_krarcProtocol::get(const KURL& url, int tries ){
 	finished();
 }
 
-void kio_krarcProtocol::del(KURL const & url, bool isFile){
+void tdeio_krarcProtocol::del(KURL const & url, bool isFile){
 	KRDEBUG(url.path());
 	
 	if( !setArcFile( url ) ) {
@@ -466,7 +466,7 @@ void kio_krarcProtocol::del(KURL const & url, bool isFile){
 	finished();
 }
 
-void kio_krarcProtocol::stat( const KURL & url ){  
+void tdeio_krarcProtocol::stat( const KURL & url ){  
 	KRDEBUG(url.path());
 	if( !setArcFile( url ) ) {
 		error(ERR_CANNOT_ENTER_DIRECTORY,url.path());
@@ -506,7 +506,7 @@ void kio_krarcProtocol::stat( const KURL & url ){
 	} else error( TDEIO::ERR_DOES_NOT_EXIST, path );
 }
 
-void kio_krarcProtocol::copy (const KURL &url, const KURL &dest, int, bool overwrite) {
+void tdeio_krarcProtocol::copy (const KURL &url, const KURL &dest, int, bool overwrite) {
 	KRDEBUG(url.path());
   
 	// KDE HACK: opening the password dlg in copy causes error for the COPY, and further problems
@@ -571,7 +571,7 @@ void kio_krarcProtocol::copy (const KURL &url, const KURL &dest, int, bool overw
 	error(  ERR_UNSUPPORTED_ACTION, unsupportedActionErrorString(mProtocol, CMD_COPY));
 }
 
-void kio_krarcProtocol::listDir(const KURL& url){
+void tdeio_krarcProtocol::listDir(const KURL& url){
 	KRDEBUG(url.path());
 	if( !setArcFile( url ) ) {
 		error(ERR_CANNOT_ENTER_DIRECTORY,url.path());
@@ -615,7 +615,7 @@ void kio_krarcProtocol::listDir(const KURL& url){
 	finished();
 }
 
-bool kio_krarcProtocol::setArcFile(const KURL& url){
+bool tdeio_krarcProtocol::setArcFile(const KURL& url){
 	TQString path = url.path();
 	time_t currTime = time( 0 );
 	archiveChanged = true;
@@ -690,7 +690,7 @@ bool kio_krarcProtocol::setArcFile(const KURL& url){
 	return initArcParameters();
 }
 
-bool kio_krarcProtocol::initDirDict(const KURL&url, bool forced){
+bool tdeio_krarcProtocol::initDirDict(const KURL&url, bool forced){
 	// set the archive location
 	//if( !setArcFile(url.path()) ) return false;
 	// no need to rescan the archive if it's not changed
@@ -807,7 +807,7 @@ bool kio_krarcProtocol::initDirDict(const KURL&url, bool forced){
 	return true;
 }
 
-TQString kio_krarcProtocol::findArcDirectory(const KURL& url){
+TQString tdeio_krarcProtocol::findArcDirectory(const KURL& url){
 	TQString path = url.path();
 	if( path.right(1) == "/" ) path.truncate(path.length()-1);
 	
@@ -821,7 +821,7 @@ TQString kio_krarcProtocol::findArcDirectory(const KURL& url){
 	return arcDir;
 }
 
-UDSEntry* kio_krarcProtocol::findFileEntry(const KURL& url){
+UDSEntry* tdeio_krarcProtocol::findFileEntry(const KURL& url){
 	TQString arcDir = findArcDirectory(url);
 	if( arcDir.isEmpty() ) return 0;
 	
@@ -851,7 +851,7 @@ UDSEntry* kio_krarcProtocol::findFileEntry(const KURL& url){
 	return 0;
 }
 
-TQString kio_krarcProtocol::nextWord(TQString &s,char d) {
+TQString tdeio_krarcProtocol::nextWord(TQString &s,char d) {
 	s=s.stripWhiteSpace();
 	int j=s.find(d,0);
 	TQString temp=s.left(j); // find the leftmost word.
@@ -859,7 +859,7 @@ TQString kio_krarcProtocol::nextWord(TQString &s,char d) {
 	return temp;
 }
 
-mode_t kio_krarcProtocol::parsePermString(TQString perm){
+mode_t tdeio_krarcProtocol::parsePermString(TQString perm){
 	mode_t mode=0;
 	// file type
 	if(perm[0] == 'd') mode |= S_IFDIR;
@@ -881,7 +881,7 @@ mode_t kio_krarcProtocol::parsePermString(TQString perm){
 	return mode;
 }
 
-UDSEntryList* kio_krarcProtocol::addNewDir(TQString path){
+UDSEntryList* tdeio_krarcProtocol::addNewDir(TQString path){
 	UDSEntryList* dir;
 	
 	// check if the current dir exists
@@ -928,7 +928,7 @@ UDSEntryList* kio_krarcProtocol::addNewDir(TQString path){
 	return dir;
 }
 
-void kio_krarcProtocol::parseLine(int lineNo, TQString line, TQFile*) {
+void tdeio_krarcProtocol::parseLine(int lineNo, TQString line, TQFile*) {
 	UDSEntryList* dir;
 	UDSEntry entry;
 	UDSAtom atom;
@@ -1232,7 +1232,7 @@ void kio_krarcProtocol::parseLine(int lineNo, TQString line, TQFile*) {
 	dir->append(entry);
 }
 
-bool kio_krarcProtocol::initArcParameters() {
+bool tdeio_krarcProtocol::initArcParameters() {
 	KRDEBUG("arcType: "<<arcType);
 	
 	if(arcType == "zip"){
@@ -1376,7 +1376,7 @@ bool kio_krarcProtocol::initArcParameters() {
 	return true;
 }
 
-bool kio_krarcProtocol::checkStatus( int exitCode ) {
+bool tdeio_krarcProtocol::checkStatus( int exitCode ) {
 	KRDEBUG( exitCode );
 	
 	if( arcType == "zip" || arcType == "rar" || arcType == "7z" )
@@ -1395,7 +1395,7 @@ struct AutoDetectParams {
 	TQString detectionString;
 };
 
-TQString kio_krarcProtocol::detectArchive( bool &encrypted, TQString fileName ) {
+TQString tdeio_krarcProtocol::detectArchive( bool &encrypted, TQString fileName ) {
 	static AutoDetectParams autoDetectParams[] = {{"zip",  0, "PK\x03\x04"},
 	                                              {"rar",  0, "Rar!\x1a" },
 	                                              {"arj",  0, "\x60\xea" },
@@ -1548,7 +1548,7 @@ TQString kio_krarcProtocol::detectArchive( bool &encrypted, TQString fileName ) 
 	return TQString();
 }
 
-void kio_krarcProtocol::checkOutputForPassword( TDEProcess *proc,char *buf,int len ) {
+void tdeio_krarcProtocol::checkOutputForPassword( TDEProcess *proc,char *buf,int len ) {
 	TQByteArray d(len);
 	d.setRawData(buf,len);
 	TQString data =  TQString( d );
@@ -1574,7 +1574,7 @@ void kio_krarcProtocol::checkOutputForPassword( TDEProcess *proc,char *buf,int l
 	}
 }
 
-void kio_krarcProtocol::invalidatePassword() {
+void tdeio_krarcProtocol::invalidatePassword() {
 	KRDEBUG( arcFile->url().path(-1) + "/" );
 	
 	if( !encrypted )
@@ -1596,7 +1596,7 @@ void kio_krarcProtocol::invalidatePassword() {
 	cacheAuthentication( authInfo );
 }
 
-TQString kio_krarcProtocol::getPassword() {
+TQString tdeio_krarcProtocol::getPassword() {
 	KRDEBUG( encrypted );
 	
 	if( !password.isNull() )
@@ -1631,20 +1631,20 @@ TQString kio_krarcProtocol::getPassword() {
 	return password;
 }
 
-TQString kio_krarcProtocol::fullPathName( TQString name ) {
+TQString tdeio_krarcProtocol::fullPathName( TQString name ) {
 	TQString supposedName = krConfig->readEntry( name, name );
 	if( supposedName.isEmpty() )
 		supposedName = name;
 	return escape( supposedName );
 }
 
-TQString kio_krarcProtocol::convertFileName( TQString name ) {
+TQString tdeio_krarcProtocol::convertFileName( TQString name ) {
 	if( arcType == "zip" )
 		name = name.replace( "[", "[[]" );
 	return convertName( name );
 }
 
-TQString kio_krarcProtocol::convertName( TQString name ) {
+TQString tdeio_krarcProtocol::convertName( TQString name ) {
 	if( !name.contains( '\'' ) )
 		return "'" + name + "'";
 	if( !name.contains( '"' ) && !name.contains( '$' ) )
@@ -1652,7 +1652,7 @@ TQString kio_krarcProtocol::convertName( TQString name ) {
 	return escape( name );
 }
 
-TQString kio_krarcProtocol::escape( TQString name ) {    
+TQString tdeio_krarcProtocol::escape( TQString name ) {    
 	const TQString evilstuff = "\\\"'`()[]{}!?;$&<>| ";		// stuff that should get escaped
 	
 	for ( unsigned int i = 0; i < evilstuff.length(); ++i )

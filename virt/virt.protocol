@@ -1,5 +1,5 @@
 [Protocol]
-exec=kio_virt
+exec=tdeio_virt
 protocol=virt
 input=filesystem
 output=filesystem

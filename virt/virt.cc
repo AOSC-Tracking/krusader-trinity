@@ -48,13 +48,13 @@ extern "C" { int kdemain( int argc, char **argv ); }
 }
 
 TQDict<KURL::List> VirtProtocol::kioVirtDict;
-TDEConfig* VirtProtocol::kio_virt_db;
+TDEConfig* VirtProtocol::tdeio_virt_db;
 
 int kdemain( int argc, char **argv ) {
-	TDEInstance instance( "kio_virt" );
+	TDEInstance instance( "tdeio_virt" );
 
 	if ( argc != 4 ) {
-		fprintf( stderr, "Usage: kio_virt protocol domain-socket1 domain-socket2\n" );
+		fprintf( stderr, "Usage: tdeio_virt protocol domain-socket1 domain-socket2\n" );
 		exit( -1 );
 	}
 
@@ -65,11 +65,11 @@ int kdemain( int argc, char **argv ) {
 }
 
 VirtProtocol::VirtProtocol( const TQCString &pool, const TQCString &app ) : SlaveBase( "virt", pool, app ) {
-	kio_virt_db = new TDEConfig(VIRT_VFS_DB,false,"data");
+	tdeio_virt_db = new TDEConfig(VIRT_VFS_DB,false,"data");
 }
 
 VirtProtocol::~VirtProtocol() {
-	delete kio_virt_db;
+	delete tdeio_virt_db;
 }
 
 void VirtProtocol::del(KURL const & /*url */, bool /* isFile */ ){

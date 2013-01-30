@@ -577,7 +577,7 @@ bool MediaButton::mount( int index ) {
 	if ( (unsigned)index < mimes.count() ) {
 		if( !mediaUrls[ index ].isEmpty() ) {
 			TDEProcess proc;
-			proc << KrServices::fullPathName( "kio_media_mounthelper" ) << "-m" << mediaUrls[ index ].url();
+			proc << KrServices::fullPathName( "tdeio_media_mounthelper" ) << "-m" << mediaUrls[ index ].url();
 			proc.start( TDEProcess::DontCare );
 		} else {
 			krMtMan.mount( urls[ index ].path(), false );
@@ -590,7 +590,7 @@ bool MediaButton::umount( int index ) {
 	if ( (unsigned)index < mimes.count() ) {
 		if( !mediaUrls[ index ].isEmpty() ) {
 			TDEProcess proc;
-			proc << KrServices::fullPathName( "kio_media_mounthelper" ) << "-u" << mediaUrls[ index ].url();
+			proc << KrServices::fullPathName( "tdeio_media_mounthelper" ) << "-u" << mediaUrls[ index ].url();
 			proc.start( TDEProcess::DontCare );
 		} else {
 			krMtMan.unmount( urls[ index ].path(), false );
@@ -603,7 +603,7 @@ bool MediaButton::eject( int index ) {
 	if ( (unsigned)index < mimes.count() ) {
 		if( !mediaUrls[ index ].isEmpty() ) {
 			TDEProcess proc;
-			proc << KrServices::fullPathName( "kio_media_mounthelper" ) << "-e" << mediaUrls[ index ].url();
+			proc << KrServices::fullPathName( "tdeio_media_mounthelper" ) << "-e" << mediaUrls[ index ].url();
 			proc.start( TDEProcess::DontCare );
 		} else {
 			krMtMan.eject( urls[ index ].path() );

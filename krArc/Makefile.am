@@ -1,5 +1,5 @@
 ####### tdevelop will overwrite this part!!! (begin)##########
-kde_module_LTLIBRARIES = kio_krarc.la
+kde_module_LTLIBRARIES = tdeio_krarc.la
 
 
 INCLUDES = $(all_includes)
@@ -7,13 +7,13 @@ INCLUDES = $(all_includes)
 
 #LDFLAGS =    
 
-kio_krarc_la_METASOURCES=AUTO
+tdeio_krarc_la_METASOURCES=AUTO
 
-kio_krarc_la_SOURCES = krarc.cpp
-kio_krarc_la_LIBADD = $(LIB_QT) $(LIB_TDECORE) $(LIB_KIO)
+tdeio_krarc_la_SOURCES = krarc.cpp
+tdeio_krarc_la_LIBADD = $(LIB_QT) $(LIB_TDECORE) $(LIB_KIO)
 # $(LIB_TDEUI) $(LIB_TDECORE) $(LIB_QT)
 
-kio_krarc_la_LDFLAGS = $(all_libraries) -module $(KDE_PLUGIN)
+tdeio_krarc_la_LDFLAGS = $(all_libraries) -module $(KDE_PLUGIN)
 
 noinst_HEADERS = krarc.h
 

@@ -349,7 +349,7 @@
 > <command
 >ipod:/</command
 ></userinput
-> используется для доступа к &kio_ipodslave_url;, загрузка песен и управление &appleipod;.</para
+> используется для доступа к &tdeio_ipodslave_url;, загрузка песен и управление &appleipod;.</para
 ></listitem
 > <listitem
 ><para

@@ -32,12 +32,12 @@ class TDEProcess;
 class KFileItem;
 class TQCString;
 
-class kio_krarcProtocol : public TQObject, public TDEIO::SlaveBase {
+class tdeio_krarcProtocol : public TQObject, public TDEIO::SlaveBase {
 Q_OBJECT
   
 public:
-	kio_krarcProtocol(const TQCString &pool_socket, const TQCString &app_socket);
-	virtual ~kio_krarcProtocol();
+	tdeio_krarcProtocol(const TQCString &pool_socket, const TQCString &app_socket);
+	virtual ~tdeio_krarcProtocol();
 	virtual void stat( const KURL & url );
 	virtual void get(const KURL& url);
 	virtual void put(const KURL& url,int permissions,bool overwrite,bool resume);

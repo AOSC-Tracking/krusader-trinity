@@ -46,7 +46,7 @@ protected:
 
 
 	static TQDict<KURL::List> kioVirtDict;
-	static TDEConfig* kio_virt_db;
+	static TDEConfig* tdeio_virt_db;
 
 	bool rewriteURL(const KURL&, KURL&);
 

@@ -468,16 +468,16 @@ Usage FAQ
 7.  Krusader reports "krarc:... protocol not supported" error at opening an
     archive file, what to do?
     Install the krarc slave properly:
-    Copy the kio_krarc.so, kio_krarc.la files into $TDEDIR/lib/trinity
+    Copy the tdeio_krarc.so, tdeio_krarc.la files into $TDEDIR/lib/trinity
     Copy the krarc.protocol file into $TDEDIR/share/services
     or the directory where the KIO slaves are placed in your Linux�
     distribution.
 8.  I get the error message "Protocol not supported by Krusader: "krarc:/path/
     to/foo-archive", when I try to open foo-Archive, what to do?
-    The icons, kio_slaves and documentation must be installed in the correct
-    places in the TDE directory tree. The kio_krarc.* files must be in the same
-    directory with the other KIO slaves. Try this: locate kio_tar.* and copy/
-    link the kio_krarc.* files to the same location. Don't forget to run #
+    The icons, tdeio_slaves and documentation must be installed in the correct
+    places in the TDE directory tree. The tdeio_krarc.* files must be in the same
+    directory with the other KIO slaves. Try this: locate tdeio_tar.* and copy/
+    link the tdeio_krarc.* files to the same location. Don't forget to run #
     ldconfig on this directory when you're done. For more information click
     here.
 9.  What todo if an extenal tool doesn't seem to work?

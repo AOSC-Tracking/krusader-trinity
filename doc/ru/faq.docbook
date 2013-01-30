@@ -905,9 +905,9 @@
 >Решение: установите правильно krarc slave:</para>
         <para
 >Скопируйте файлы <filename
->kio_krarc.so</filename
+>tdeio_krarc.so</filename
 >, <filename
->kio_krarc.la</filename
+>tdeio_krarc.la</filename
 > в <filename class="directory"
 >$TDEDIR/lib/trinity</filename
 ></para>
@@ -931,12 +931,12 @@
  </question>
  <answer>
  <para
->Иконки, kio_slaves и документация должны быть  правильно установлены в дереве каталогов &kde;. Файлы <filename
->kio_krarc.*</filename
+>Иконки, tdeio_slaves и документация должны быть  правильно установлены в дереве каталогов &kde;. Файлы <filename
+>tdeio_krarc.*</filename
 > быть в той же директории , что и остальные KIO slaves.Попробуйте : locate <filename
->kio_tar.*</filename
+>tdeio_tar.*</filename
 > и копируйте/сделайте ссылки на файлы <filename
->kio_krarc.*</filename
+>tdeio_krarc.*</filename
 > в соответствующей директории. Не забудьте  после запустить команду <command
 ># ldconfig</command
 > в соответствующей директории.Дополнительная информация <ulink url="www.krusader.org/phpBB/viewtopic.php?t=991"
