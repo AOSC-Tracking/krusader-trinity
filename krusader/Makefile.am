@@ -96,7 +96,7 @@ krusader_LDADD   = \
 	$(LIB_KONQ) \
 	$(LIB_KJSEMBED) \
 	$(LIB_KPARTS) \
-	$(LIB_KFILE) \
+	$(LIB_TDEFILE) \
 	$(LIB_TDEHTML) \
 	$(LIB_TDEUI) \
 	$(LIB_TDECORE) \
