@@ -1241,7 +1241,7 @@ bool tdeio_krarcProtocol::initArcParameters() {
 		getCmd  = fullPathName( "unzip" ) + " -p ";
 		copyCmd = fullPathName( "unzip" ) + " -jo ";
 		
-		if( KStandardDirs::findExe( "zip" ).isEmpty() ) {
+		if( TDEStandardDirs::findExe( "zip" ).isEmpty() ) {
 			delCmd  = TQString();
 			putCmd  = TQString();
 		} else {
@@ -1255,7 +1255,7 @@ bool tdeio_krarcProtocol::initArcParameters() {
 			putCmd += "-P '"+password+"' ";
 		}
 	} else if (arcType == "rar") {
-		if( KStandardDirs::findExe( "rar" ).isEmpty() ) {
+		if( TDEStandardDirs::findExe( "rar" ).isEmpty() ) {
 			cmd     = fullPathName( "unrar" );
 			listCmd = fullPathName( "unrar" ) + " -c- -v v ";
 			getCmd  = fullPathName( "unrar" ) + " p -ierr -idp -c- -y ";
@@ -1339,7 +1339,7 @@ bool tdeio_krarcProtocol::initArcParameters() {
 		putCmd = TQString();	
 	} else if (arcType == "7z") {
 		cmd = fullPathName( "7z" );
-		if( KStandardDirs::findExe(cmd).isEmpty() )
+		if( TDEStandardDirs::findExe(cmd).isEmpty() )
 			cmd = fullPathName( "7za" );
 		
 		listCmd = cmd + " l -y ";
@@ -1366,7 +1366,7 @@ bool tdeio_krarcProtocol::initArcParameters() {
 		putCmd  = TQString();
 	}
 
-	if( KStandardDirs::findExe(cmd).isEmpty() ){
+	if( TDEStandardDirs::findExe(cmd).isEmpty() ){
 		error( TDEIO::ERR_CANNOT_LAUNCH_PROCESS,
 		cmd+
 		i18n("\nMake sure that the %1 binary are installed properly on your system.").arg(cmd));
@@ -1501,9 +1501,9 @@ TQString tdeio_krarcProtocol::detectArchive( bool &encrypted, TQString fileName 
 					else {  // we try to find whether the 7z archive is encrypted
 						// this is hard as the headers are also compresseds
 						TQString tester = fullPathName( "7z" );
-						if( KStandardDirs::findExe( tester ).isEmpty() ) {
+						if( TDEStandardDirs::findExe( tester ).isEmpty() ) {
 							tester = fullPathName( "7za" );
-							if( KStandardDirs::findExe( tester ).isEmpty() ) {
+							if( TDEStandardDirs::findExe( tester ).isEmpty() ) {
 								return type;
 							}
 						}
