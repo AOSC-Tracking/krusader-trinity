@@ -84,7 +84,7 @@ SegmentTip::updateTip( const File* const file, const Directory* const root )
 {
     const TQString s1  = file->fullPath( root );
     TQString s2        = file->humanReadableSize();
-    KLocale *loc      = TDEGlobal::locale();
+    TDELocale *loc      = TDEGlobal::locale();
     const uint MARGIN = 3;
     const uint pc     = 100 * file->size() / root->size();
     uint maxw         = 0;

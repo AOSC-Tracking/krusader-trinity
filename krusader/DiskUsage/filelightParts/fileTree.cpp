@@ -52,7 +52,7 @@ File::humanReadableSize( FileSize size, UnitPrefix key /*= mega*/ ) //static
 {
     TQString s;
     double prettySize = (double)size / (double)DENOMINATOR[key];
-    const KLocale &locale = *TDEGlobal::locale();
+    const TDELocale &locale = *TDEGlobal::locale();
 
     if( prettySize >= 0.01 )
     {
