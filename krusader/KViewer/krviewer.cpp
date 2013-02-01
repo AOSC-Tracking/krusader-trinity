@@ -552,11 +552,11 @@ void KrViewer::updateActions( PanelViewerBase * pvb ) {
 bool KrViewer::editGeneric( TQString mimetype, KURL _url ) {
 	KParts::ReadWritePart * kedit_part = 0L;
 	KLibFactory *factory = 0;
-	KTrader::OfferList offers = KTrader::self() ->query( mimetype );
+	TDETrader::OfferList offers = TDETrader::self() ->query( mimetype );
 
 	// in theory, we only care about the first one.. but let's try all
 	// offers just in case the first can't be loaded for some reason
-	KTrader::OfferList::Iterator it( offers.begin() );
+	TDETrader::OfferList::Iterator it( offers.begin() );
 	for ( ; it != offers.end(); ++it ) {
 		KService::Ptr ptr = ( *it );
 		// we now know that our offer can handle mimetype and is a part.
