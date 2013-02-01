@@ -58,7 +58,7 @@ int KrDetailedViewItem::expHeight = 0;
 #endif // FASTER
 
 KrDetailedViewItem::KrDetailedViewItem(KrDetailedView *parent, TQListViewItem *after, vfile *vf):
-	KListViewItem(parent, after), KrViewItem(vf, parent->properties()) {
+	TDEListViewItem(parent, after), KrViewItem(vf, parent->properties()) {
 #ifdef FASTER
 	initiated = false;
 	// get the expected height of an item - should be done only once
@@ -92,7 +92,7 @@ void KrDetailedViewItem::setup() {
 	// idea: when not having pixmaps in the first place, the height of the item is smaller then with
 	// the pixmap. when the pixmap is inserted, the item resizes, thereby making ensureItemVisible()
 	// become 'confused' and stop working. therefore, we set the correct height here and avoid the issue
-	KListViewItem::setup();
+	TDEListViewItem::setup();
 	setHeight(expHeight);
 }
 #endif
@@ -179,10 +179,10 @@ void KrDetailedViewItem::paintCell(TQPainter *p, const TQColorGroup &cg, int col
   
   TQColorGroup _cg(cg);
 
-   // This is ugly! I had to dublicate KListViewItem::paintCell() code, as the
-   // KListViewItem::paintCell() overwrites my color settings. So KrDetailedViewItem::paintCell
-   // must dublicate the KListViewItem::paintCell() code, do the required color settings
-   // and call TQListViewItem::paintCell() afterwards (the base class of KListViewItem).
+   // This is ugly! I had to dublicate TDEListViewItem::paintCell() code, as the
+   // TDEListViewItem::paintCell() overwrites my color settings. So KrDetailedViewItem::paintCell
+   // must dublicate the TDEListViewItem::paintCell() code, do the required color settings
+   // and call TQListViewItem::paintCell() afterwards (the base class of TDEListViewItem).
    // This tabooed in the object oriented heaven, but necessary here. Blame the KDE team for
    // this really poor paintCell implementation!
    
@@ -194,9 +194,9 @@ void KrDetailedViewItem::paintCell(TQPainter *p, const TQColorGroup &cg, int col
    }
    else if (isAlternate())
         if (listView()->viewport()->backgroundMode()==TQt::FixedColor)
-             _cg.setColor(TQColorGroup::Background, static_cast< KListView* >(listView())->alternateBackground());
+             _cg.setColor(TQColorGroup::Background, static_cast< TDEListView* >(listView())->alternateBackground());
        else
-             _cg.setColor(TQColorGroup::Base, static_cast< KListView* >(listView())->alternateBackground());
+             _cg.setColor(TQColorGroup::Base, static_cast< TDEListView* >(listView())->alternateBackground());
 
   // end of uglyness
 

@@ -16,8 +16,8 @@ static const char* NAME_DEVICES = I18N_NOOP("Devices");
 static const char* NAME_VIRTUAL = I18N_NOOP("Virtual Filesystem");
 static const char* NAME_LAN = I18N_NOOP("Local Network");
 
-KrBookmark::KrBookmark(TQString name, KURL url, KActionCollection *parent, TQString icon, TQString actionName ):
-	KAction(name, 0, 0, 0, parent, actionName.isNull() ? BM_NAME(name).latin1() : BM_NAME(actionName).latin1()), 
+KrBookmark::KrBookmark(TQString name, KURL url, TDEActionCollection *parent, TQString icon, TQString actionName ):
+	TDEAction(name, 0, 0, 0, parent, actionName.isNull() ? BM_NAME(name).latin1() : BM_NAME(actionName).latin1()), 
 	_url(url), _folder(false), _separator(false) {
 	connect(this, TQT_SIGNAL(activated()), this, TQT_SLOT(activatedProxy()));
 	// do we have an icon?
@@ -38,15 +38,15 @@ KrBookmark::KrBookmark(TQString name, KURL url, KActionCollection *parent, TQStr
 }
 
 KrBookmark::KrBookmark(TQString name, TQString icon):
-	KAction(name, 0, 0, 0, 0), _folder(true), _separator(false) {
+	TDEAction(name, 0, 0, 0, 0), _folder(true), _separator(false) {
 	setIcon(icon=="" ? "folder" : icon);
 }
 
-KrBookmark* KrBookmark::getExistingBookmark(TQString actionName, KActionCollection *collection) {
+KrBookmark* KrBookmark::getExistingBookmark(TQString actionName, TDEActionCollection *collection) {
 	return static_cast<KrBookmark*>(collection->action(BM_NAME(actionName).latin1()));
 }
 
-KrBookmark* KrBookmark::devices(KActionCollection *collection) {
+KrBookmark* KrBookmark::devices(TDEActionCollection *collection) {
 	KrBookmark *bm = getExistingBookmark(i18n(NAME_DEVICES), collection);	
 	if (!bm) {
 #if KDE_IS_VERSION(3,4,0)
@@ -59,7 +59,7 @@ KrBookmark* KrBookmark::devices(KActionCollection *collection) {
 	return bm;
 }
 
-KrBookmark* KrBookmark::virt(KActionCollection *collection) {
+KrBookmark* KrBookmark::virt(TDEActionCollection *collection) {
 	KrBookmark *bm = getExistingBookmark(i18n(NAME_VIRTUAL), collection);	
 	if (!bm) {
 		bm = new KrBookmark(i18n(NAME_VIRTUAL), "virt:/", collection);
@@ -68,7 +68,7 @@ KrBookmark* KrBookmark::virt(KActionCollection *collection) {
 	return bm;
 }
 
-KrBookmark* KrBookmark::lan(KActionCollection *collection) {
+KrBookmark* KrBookmark::lan(TDEActionCollection *collection) {
 	KrBookmark *bm = getExistingBookmark(i18n(NAME_LAN), collection);	
 	if (!bm) {
 		bm = new KrBookmark(i18n(NAME_LAN), "lan:/", collection);

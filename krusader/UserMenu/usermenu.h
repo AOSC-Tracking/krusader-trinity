@@ -23,7 +23,7 @@ email                :
 class TQWidget;
 class UserMenu;
 
-class UserMenuGui: public KPopupMenu {
+class UserMenuGui: public TDEPopupMenu {
    public:
       UserMenuGui( UserMenu* menu, TQWidget *parent = 0 );
       void run();

@@ -533,7 +533,7 @@ void KrSearchDialog::rightClickMenu(TQListViewItem *item, const TQPoint&, int)
     return;
 
   // create the menu
-  KPopupMenu popup;
+  TDEPopupMenu popup;
   popup.insertTitle(i18n("Krusader Search"));
 
   popup.insertItem(i18n("View File (F3)"),            VIEW_FILE_ID);

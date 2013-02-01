@@ -17,7 +17,7 @@
 
 class KURL;
 
-class UserActionPopupMenu : public KPopupMenu {
+class UserActionPopupMenu : public TDEPopupMenu {
 public:
    UserActionPopupMenu( KURL currentURL, TQWidget *parent = 0 );
 };

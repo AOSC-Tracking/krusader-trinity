@@ -81,15 +81,15 @@ private:
   TQString           pattern;
   
   KHistoryCombo    *locateSearchFor;
-  KListView        *resultList;
+  TDEListView        *resultList;
   TQString           remaining;
-  KListViewItem    *lastItem;
+  TDEListViewItem    *lastItem;
 
   TQString           collectedErr;
   
   long              findOptions;
   TQString           findPattern;
-  KListViewItem    *findCurrentItem;
+  TDEListViewItem    *findCurrentItem;
 
   TQCheckBox        *dontSearchInPath;
   TQCheckBox        *existingFiles;

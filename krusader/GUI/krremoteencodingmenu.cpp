@@ -44,7 +44,7 @@
 #define DATA_KEY    TQString::fromLatin1("Charset")
 
 KrRemoteEncodingMenu::KrRemoteEncodingMenu(const TQString &text, const TQString &icon, TQObject *parent, const char *name) :
-  KActionMenu( text, icon, parent, name ), settingsLoaded( false )
+  TDEActionMenu( text, icon, parent, name ), settingsLoaded( false )
 {
   connect(popupMenu(), TQT_SIGNAL(aboutToShow()), this, TQT_SLOT(slotAboutToShow()));
 }
@@ -85,7 +85,7 @@ void KrRemoteEncodingMenu::loadSettings()
   settingsLoaded = true;
   encodingNames = TDEGlobal::charsets()->descriptiveEncodingNames();
 
-  KPopupMenu *menu = popupMenu();
+  TDEPopupMenu *menu = popupMenu();
   menu->clear();
 
   TQStringList::ConstIterator it;
@@ -107,7 +107,7 @@ int KrRemoteEncodingMenu::plug( TQWidget *widget, int index )
     slotCheckEnabled();
   }
 
-  return KActionMenu::plug( widget, index );
+  return TDEActionMenu::plug( widget, index );
 }
 
 void KrRemoteEncodingMenu::slotCheckEnabled()

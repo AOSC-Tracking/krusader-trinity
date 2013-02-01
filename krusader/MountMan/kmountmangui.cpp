@@ -327,7 +327,7 @@ void KMountManGUI::clicked( TQListViewItem *item, const TQPoint& pos, int /* col
       exit( 0 );
    }
    // create the menu
-   KPopupMenu popup;
+   TDEPopupMenu popup;
    popup.insertTitle( i18n( "MountMan" ) );
    if ( !system->mounted() ) {
       popup.insertItem( i18n( "Mount" ), MOUNT_ID );

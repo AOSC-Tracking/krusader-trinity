@@ -5,13 +5,13 @@
 #include <tqptrlist.h>
 #include <kurl.h>
 
-class KActionCollection;
+class TDEActionCollection;
 
-class KrBookmark: public KAction {
+class KrBookmark: public TDEAction {
 	Q_OBJECT
   
 public:
-	KrBookmark(TQString name, KURL url, KActionCollection *parent, TQString icon = "", TQString actionName = TQString() );
+	KrBookmark(TQString name, KURL url, TDEActionCollection *parent, TQString icon = "", TQString actionName = TQString() );
 	KrBookmark(TQString name, TQString icon = ""); // creates a folder
 	// text() and setText() to change the name of the bookmark
 	// icon() and setIcon() to change icons (by name)
@@ -21,11 +21,11 @@ public:
 	inline bool isSeparator() const { return _separator; }
 	TQPtrList<KrBookmark>& children() { return _children; }
 
-	static KrBookmark* getExistingBookmark(TQString actionName, KActionCollection *collection);	
+	static KrBookmark* getExistingBookmark(TQString actionName, TDEActionCollection *collection);	
 	// ----- special bookmarks
-	static KrBookmark* devices(KActionCollection *collection);
-	static KrBookmark* virt(KActionCollection *collection);
-	static KrBookmark* lan(KActionCollection *collection);
+	static KrBookmark* devices(TDEActionCollection *collection);
+	static KrBookmark* virt(TDEActionCollection *collection);
+	static KrBookmark* lan(TDEActionCollection *collection);
 	static KrBookmark* separator();
 
 signals:

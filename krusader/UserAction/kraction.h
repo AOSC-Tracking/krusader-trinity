@@ -20,19 +20,19 @@
 
 class UserActionProperties;
 class TQTextEdit;
-class KActionCollection;
+class TDEActionCollection;
 class TQDomElement;
 class TQDomDocument;
 
 /**
- * This subclass of KAction extends it with an individual executor and a struct UserActionProperties. It is used to integrate useractions into KDE's KAction-System
+ * This subclass of TDEAction extends it with an individual executor and a struct UserActionProperties. It is used to integrate useractions into KDE's TDEAction-System
  * @author Jonas Bähr (http://www.jonas-baehr.de)
  */
-class KrAction: public KAction, public KrActionBase {
+class KrAction: public TDEAction, public KrActionBase {
    Q_OBJECT
   
    public:
-      KrAction( KActionCollection *parent, const char* name );
+      KrAction( TDEActionCollection *parent, const char* name );
       ~KrAction();
 
       /**
@@ -85,7 +85,7 @@ class KrAction: public KAction, public KrActionBase {
       }
 
       TQString text() const {
-        return KAction::text();
+        return TDEAction::text();
       }
 
    public slots:

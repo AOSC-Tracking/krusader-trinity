@@ -29,7 +29,7 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////////
 
 UserActionListView::UserActionListView( TQWidget * parent, const char * name )
- : KListView( parent, name )
+ : TDEListView( parent, name )
 {
    addColumn( i18n("Title") );
    //addColumn( i18n("Identifier") );
@@ -85,7 +85,7 @@ UserActionListViewItem* UserActionListView::insertAction( KrAction* action ) {
    else {
       TQListViewItem* categoryItem = findCategoryItem( action->category() );
       if ( ! categoryItem ) {
-         categoryItem = new KListViewItem( this, action->category() ); // create the new category item it not already present
+         categoryItem = new TDEListViewItem( this, action->category() ); // create the new category item it not already present
          categoryItem->setSelectable( false );
       }
       item = new UserActionListViewItem( categoryItem, action );
@@ -177,13 +177,13 @@ void UserActionListView::removeSelectedActions() {
 //////////////////////////////////////////////////////////////////////////////////////////////////////
 
 UserActionListViewItem::UserActionListViewItem( TQListView* view, KrAction* action )
- : KListViewItem( view )
+ : TDEListViewItem( view )
 {
    setAction( action );
 }
 
 UserActionListViewItem::UserActionListViewItem( TQListViewItem* item, KrAction * action )
- : KListViewItem( item )
+ : TDEListViewItem( item )
 {
    setAction( action );
 }

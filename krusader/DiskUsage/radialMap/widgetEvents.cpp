@@ -151,7 +151,7 @@ RadialMap::Widget::mousePressEvent( TQMouseEvent *e )
 
       if( e->button() == Qt::RightButton )
       {
-         KPopupMenu popup;
+         TDEPopupMenu popup;
          popup.insertTitle( m_focus->file()->fullPath( m_tree ) );
 
          if( isDir )

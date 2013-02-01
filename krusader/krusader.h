@@ -123,31 +123,31 @@ class Krusader : public KParts::MainWindow, public DCOPObject {
 	 PopularUrls *popularUrls; // holds a sorted list of the most popular urls visited
 	 QueueManager *queueManager;
     // Actions
-    static KAction *actProperties, *actPack, *actUnpack, *actTest, *actCompare, *actCmdlinePopup;
-    static KAction *actCalculate, *actSelect, *actUnselect, *actSelectAll, *actLocate, *actSwitchFullScreenTE;
-    static KAction *actUnselectAll, *actInvert, *actSync, *actDiskUsage, *actSavePosition, *actCompDirs;
-    static KAction *actHomeTerminal, *actFTPConnect, *actFTPNewConnect, *actFTPDisconnect, *actProfiles;
-    static KAction *actExecFilter, *actCustomFilter, *actMountMan, *actNewTool, *actSwapPanels, *actSwapSides;
-    static KAction *actKonfigurator, *actToolsSetup, *actBack, *actRoot, *actFind, *actDirUp;
-    static KAction *actSelectColorMask, *actMultiRename, *actAllFilter, *actOpenLeftBm, *actOpenRightBm;
-    static KAction *actNewTab, *actDupTab, *actCloseTab, *actPreviousTab, *actNextTab, *actSplit; 
-    static KAction *actCombine, *actUserMenu, *actManageUseractions, *actSyncDirs, *actSyncBrowse;
-    static KAction *actF2, *actF3, *actF4, *actF5, *actF6, *actF7, *actF8, *actF9, *actF10;
-    static KAction *actPopularUrls, *actLocationBar, *actJumpBack, *actSetJumpBack, *actCreateChecksum, *actMatchChecksum;
-    static KAction *actDetailedView, *actBriefView, *actCopy, *actPaste;
-    static KToggleAction *actToggleTerminal, *actVerticalMode;
-    static KRadioAction *actSelectNewerAndSingle, *actSelectNewer, *actSelectSingle, 
+    static TDEAction *actProperties, *actPack, *actUnpack, *actTest, *actCompare, *actCmdlinePopup;
+    static TDEAction *actCalculate, *actSelect, *actUnselect, *actSelectAll, *actLocate, *actSwitchFullScreenTE;
+    static TDEAction *actUnselectAll, *actInvert, *actSync, *actDiskUsage, *actSavePosition, *actCompDirs;
+    static TDEAction *actHomeTerminal, *actFTPConnect, *actFTPNewConnect, *actFTPDisconnect, *actProfiles;
+    static TDEAction *actExecFilter, *actCustomFilter, *actMountMan, *actNewTool, *actSwapPanels, *actSwapSides;
+    static TDEAction *actKonfigurator, *actToolsSetup, *actBack, *actRoot, *actFind, *actDirUp;
+    static TDEAction *actSelectColorMask, *actMultiRename, *actAllFilter, *actOpenLeftBm, *actOpenRightBm;
+    static TDEAction *actNewTab, *actDupTab, *actCloseTab, *actPreviousTab, *actNextTab, *actSplit; 
+    static TDEAction *actCombine, *actUserMenu, *actManageUseractions, *actSyncDirs, *actSyncBrowse;
+    static TDEAction *actF2, *actF3, *actF4, *actF5, *actF6, *actF7, *actF8, *actF9, *actF10;
+    static TDEAction *actPopularUrls, *actLocationBar, *actJumpBack, *actSetJumpBack, *actCreateChecksum, *actMatchChecksum;
+    static TDEAction *actDetailedView, *actBriefView, *actCopy, *actPaste;
+    static TDEToggleAction *actToggleTerminal, *actVerticalMode;
+    static TDERadioAction *actSelectNewerAndSingle, *actSelectNewer, *actSelectSingle, 
                         *actSelectDifferentAndSingle, *actSelectDifferent;
     /** actions for setting the execution mode of commands from commanddline */
-    static KRadioAction *actExecStartAndForget,
+    static TDERadioAction *actExecStartAndForget,
                         *actExecCollectSeparate,*actExecCollectTogether,
                         *actExecTerminalExternal,*actExecTerminalEmbedded;
-    KToggleAction *actToggleFnkeys, *actToggleCmdline, *actShowToolBar,
+    TDEToggleAction *actToggleFnkeys, *actToggleCmdline, *actShowToolBar,
                   *actShowStatusBar, *actToggleHidden, *actCompareDirs;
 
-    static KRadioAction **compareArray[];
+    static TDERadioAction **compareArray[];
     /** actions for setting the execution mode of commands from commanddline */
-    static KRadioAction **execTypeArray[];
+    static TDERadioAction **execTypeArray[];
 
     // return a path to a temp dir or file we can use.
     TQString getTempDir();
@@ -161,16 +161,16 @@ class Krusader : public KParts::MainWindow, public DCOPObject {
 
     KrusaderStatus *status;
     KRslots *slot;
-    KAccel *accels; // global accelerators
+    TDEAccel *accels; // global accelerators
     
-    static KPopupMenu *userActionMenu;
+    static TDEPopupMenu *userActionMenu;
     static UserMenu *userMenu;
     static UserAction *userAction;
 	 static KrBookmarkHandler *bookman;
 
     #ifdef __KJSEMBED__
     static KrJS *js;
-    static KAction *actShowJSConsole;
+    static TDEAction *actShowJSConsole;
     #endif
 
   signals:

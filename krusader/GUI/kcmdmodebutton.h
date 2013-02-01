@@ -25,7 +25,7 @@
 
 #include <tqtoolbutton.h>
 
-class KActionMenu;
+class TDEActionMenu;
 
 /**
   * @author Vaclav Juza
@@ -47,7 +47,7 @@ public:
 
 private:
   /** The menu containing the actions for switching the mode */
-  KActionMenu *action;
+  TDEActionMenu *action;
 };
 
 #endif

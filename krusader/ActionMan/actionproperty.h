@@ -16,7 +16,7 @@
 #include "actionpropertybase.h"
 
 class KrAction;
-class KShortcut;
+class TDEShortcut;
 
 /**
  * Use this widget where ever you need to manipulate a UserAction
@@ -141,7 +141,7 @@ private slots:
     * This updates the ShortcutButton
     * @internal
     */
-   void changedShortcut(const KShortcut& shortcut);
+   void changedShortcut(const TDEShortcut& shortcut);
 };
 
 #endif

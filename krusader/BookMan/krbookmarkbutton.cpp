@@ -16,7 +16,7 @@ KrBookmarkButton::KrBookmarkButton(TQWidget *parent): TQToolButton(parent) {
 	setPopupDelay(10); // 0.01 seconds press
 	setAcceptDrops(false);
 
-	acmBookmarks = new KActionMenu(i18n("Bookmarks"), "bookmark", 0, 0);
+	acmBookmarks = new TDEActionMenu(i18n("Bookmarks"), "bookmark", 0, 0);
 	acmBookmarks->setDelayed(false);
 	acmBookmarks->popupMenu()->setKeyboardShortcutsEnabled(true);
 	acmBookmarks->popupMenu()->setKeyboardShortcutsExecute(true);
@@ -27,7 +27,7 @@ KrBookmarkButton::KrBookmarkButton(TQWidget *parent): TQToolButton(parent) {
 }
 
 void KrBookmarkButton::populate() {
-	krBookMan->populate(static_cast<KPopupMenu*>(popup()));
+	krBookMan->populate(static_cast<TDEPopupMenu*>(popup()));
 }
 
 void KrBookmarkButton::openPopup() {

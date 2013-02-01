@@ -3390,7 +3390,7 @@
 >примеры</link
 > включены в документацию. UserActions  редактируютсяt/добавляются/импортируются-/экспортируются в менеджере действий. UserActions  по усолчанию находятся в файле <filename
 >~/.trinity/share/apps/krusader/useraction_examples.xml</filename
->. UserActions can appear nearly everywhere where "normal" KActions can be placed. They integrate seamless in the well knows Edit-(Toolbar,Shortcut) Dialogs from &kde;. It's even possible to place them in the menubar, but for that one has to manipulate the <filename
+>. UserActions can appear nearly everywhere where "normal" TDEActions can be placed. They integrate seamless in the well knows Edit-(Toolbar,Shortcut) Dialogs from &kde;. It's even possible to place them in the menubar, but for that one has to manipulate the <filename
 >krusaderui.rc</filename
 > file with an editor. Some examples: <itemizedlist
 > <listitem

@@ -11,7 +11,7 @@
 #include <tqdom.h>
 #include <tqmap.h>
 
-class KActionCollection;
+class TDEActionCollection;
 class KBookmarkManager;
 
 class KrBookmarkHandler: public TQObject {
@@ -22,7 +22,7 @@ class KrBookmarkHandler: public TQObject {
 public:
 	KrBookmarkHandler();
 	~KrBookmarkHandler();
-	void populate(KPopupMenu *menu);
+	void populate(TDEPopupMenu *menu);
 	void addBookmark(KrBookmark *bm, KrBookmark *parent = 0);
 	void bookmarkCurrent(KURL url);
 
@@ -35,7 +35,7 @@ protected:
 	void exportToFileFolder(TQDomDocument &doc, TQDomElement &parent, KrBookmark *folder);
 	void exportToFileBookmark(TQDomDocument &doc, TQDomElement &where, KrBookmark *bm);
 	void clearBookmarks(KrBookmark *root);
-	void buildMenu(KrBookmark *parent, KPopupMenu *menu);
+	void buildMenu(KrBookmark *parent, TDEPopupMenu *menu);
 
 	bool eventFilter( TQObject *obj, TQEvent *ev );
 	
@@ -50,13 +50,13 @@ protected slots:
 	void slotActivated(const KURL& url);
 
 private:
-	KActionCollection *_collection, *_privateCollection;
+	TDEActionCollection *_collection, *_privateCollection;
 	KrBookmark *_root;
 	// the whole KBookmarkManager is an ugly hack. use it until we have our own
 	KBookmarkManager *manager;
 	bool _middleClick; // if true, the user clicked the middle button to open the bookmark
 	
-	TQGuardedPtr<KPopupMenu>            _mainBookmarkPopup; // main bookmark popup menu
+	TQGuardedPtr<TDEPopupMenu>            _mainBookmarkPopup; // main bookmark popup menu
 	TQValueList<int>                    _specialBookmarkIDs; // the ID list of the special bookmarks
 	TQPtrDict<TQMap<int,KrBookmark*> >   _bookmarkIDTable;    // the IDs of the bookmarks
 };

@@ -13,7 +13,7 @@
 #endif
 
 // should be renamed to KrContextMenu or similar
-class KrPopupMenu : public KPopupMenu {
+class KrPopupMenu : public TDEPopupMenu {
 	Q_OBJECT
   
 public:
@@ -63,9 +63,9 @@ protected:
 private:
 	ListPanel *panel;
 	bool empty, multipleSelections;
-	KPopupMenu openWith, linkPopup, createNewPopup;
+	TDEPopupMenu openWith, linkPopup, createNewPopup;
    KrPreviewPopup preview;
-   KActionCollection *actions;
+   TDEActionCollection *actions;
    KrViewItemList items; // list of selected items
    KrViewItem *item; // the (first) selected item
    KFileItemList _items;

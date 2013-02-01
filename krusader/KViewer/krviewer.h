@@ -99,8 +99,8 @@ private:
 	
 	int detachActionIndex;
 
-	KAction *printAction;
-	KAction *copyAction;
+	TDEAction *printAction;
+	TDEAction *copyAction;
 
 	int tabCloseID;
 	int closeID;

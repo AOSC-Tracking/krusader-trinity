@@ -436,7 +436,7 @@ void KonfiguratorFontChooser::slotSetDefaults(TQObject *)
 
 void KonfiguratorFontChooser::slotBrowseFont()
 {
-  int ok=KFontDialog::getFont( font );
+  int ok=TDEFontDialog::getFont( font );
   if (ok!=1) return;  // cancelled by the user
   ext->setChanged();
   setFont();

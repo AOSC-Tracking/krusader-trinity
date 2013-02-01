@@ -42,13 +42,13 @@
 class TQPixmap;
 class KrDetailedView;
 
-class KrDetailedViewItem : public KListViewItem, public KrViewItem {
+class KrDetailedViewItem : public TDEListViewItem, public KrViewItem {
 friend class KrDetailedView;
 friend class KrCalcSpaceDialog;
 public:
 	KrDetailedViewItem(KrDetailedView *parent, TQListViewItem *after, vfile *vf);
-	inline bool isSelected() const { return KListViewItem::isSelected(); }
-	inline void setSelected(bool s) { KListViewItem::setSelected(s); }
+	inline bool isSelected() const { return TDEListViewItem::isSelected(); }
+	inline void setSelected(bool s) { TDEListViewItem::setSelected(s); }
 	int compare(TQListViewItem *i,int col,bool ascending ) const;
 	void paintCell(TQPainter *p, const TQColorGroup &cg, int column, int width, int align);
 	void repaintItem();
@@ -60,7 +60,7 @@ public:
 protected:
 	// text() was made protected in order to catch every place where text(x) is used
 	// to gain unlawful information on the object
-	virtual inline TQString text(int column) const { return KListViewItem::text(column); }
+	virtual inline TQString text(int column) const { return TDEListViewItem::text(column); }
 
 private:
 	static const TQColor & setColorIfContrastIsSufficient(const TQColor & background, const TQColor & color1, const TQColor & color2);

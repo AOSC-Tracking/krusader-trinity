@@ -211,7 +211,7 @@ KURL KURLRequesterDlgForCopy::selectedURL() const {
 	if ( result() == TQDialog::Accepted ) {
 		KURL url = KURL::fromPathOrURL( urlRequester_->url() );
 		if( url.isValid() )
-			KRecentDocument::add(url);                                
+			TDERecentDocument::add(url);                                
 		return url;
 	}        
 	else

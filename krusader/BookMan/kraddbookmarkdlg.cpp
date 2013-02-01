@@ -62,13 +62,13 @@ void KrAddBookmarkDlg::toggleCreateIn(bool show) {
 
 // creates the widget that lets you decide where to put the new bookmark
 TQWidget *KrAddBookmarkDlg::createInWidget() {
-	_createIn = new KListView(this);
+	_createIn = new TDEListView(this);
 	_createIn->addColumn("Folders");
 	_createIn->header()->hide();
 	_createIn->setRootIsDecorated(true);
 	_createIn->setAlternateBackground(TQColor()); // disable alternate coloring 
 	
-	KListViewItem *item = new KListViewItem(_createIn, i18n("Bookmarks"));
+	TDEListViewItem *item = new TDEListViewItem(_createIn, i18n("Bookmarks"));
 	item->setOpen(true);
 	item->setSelected(true);
 	_xr[item] = krBookMan->_root;
@@ -83,14 +83,14 @@ TQWidget *KrAddBookmarkDlg::createInWidget() {
 
 void KrAddBookmarkDlg::createInSelection(TQListViewItem *item) {
 	if (item) {
-		_folder->setText(_xr[static_cast<KListViewItem*>(item)]->text());
+		_folder->setText(_xr[static_cast<TDEListViewItem*>(item)]->text());
 	}
 }
 
-void KrAddBookmarkDlg::populateCreateInWidget(KrBookmark *root, KListViewItem *parent) {
+void KrAddBookmarkDlg::populateCreateInWidget(KrBookmark *root, TDEListViewItem *parent) {
 	for (KrBookmark *bm = root->children().first(); bm; bm = root->children().next()) {
 		if (bm->isFolder()) {
-			KListViewItem *item = new KListViewItem(parent, bm->text());
+			TDEListViewItem *item = new TDEListViewItem(parent, bm->text());
 			item->setOpen(true);
 			_xr[item] = bm;
 			populateCreateInWidget(bm, item);
@@ -105,9 +105,9 @@ void KrAddBookmarkDlg::newFolder() {
 		return;
 	// add to the list in bookman
 	KrBookmark *bm = new KrBookmark(newFolder);
-	krBookMan->addBookmark(bm, _xr[static_cast<KListViewItem*>(_createIn->selectedItem())]);
+	krBookMan->addBookmark(bm, _xr[static_cast<TDEListViewItem*>(_createIn->selectedItem())]);
 	// fix the gui
-	KListViewItem *item = new KListViewItem(_createIn->selectedItem(), bm->text());
+	TDEListViewItem *item = new TDEListViewItem(_createIn->selectedItem(), bm->text());
 	_xr[item] = bm;
 
 	_createIn->setCurrentItem(item);

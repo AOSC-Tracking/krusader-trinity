@@ -88,7 +88,7 @@ YP   YD 88   YD ~Y8888P' `8888Y' YP   YP Y8888D' Y88888P 88   YD
 TQString KrDetailedView::ColumnName[ KrDetailedViewProperties::MAX_COLUMNS ];
 
 KrDetailedView::KrDetailedView( TQWidget *parent, bool &left, TDEConfig *cfg, const char *name ) :
-      KListView( parent, name ), KrView( cfg ), _currDragItem( 0L ), currentlyRenamedItem( 0 ),
+      TDEListView( parent, name ), KrView( cfg ), _currDragItem( 0L ), currentlyRenamedItem( 0 ),
       pressedItem( 0 ) {
 	setWidget( this );
 	_nameInTDEConfig=TQString( "KrDetailedView" ) + TQString( ( left ? "Left" : "Right" ) ) ;
@@ -193,7 +193,7 @@ void KrDetailedView::setup() {
    setTooltipColumn( COLUMN(Name) );
    setDropVisualizer(false);
    setDropHighlighter(true);
-   setSelectionModeExt( KListView::FileManager );
+   setSelectionModeExt( TDEListView::FileManager );
    setAllColumnsShowFocus( true );
    setShowSortIndicator( true );
    header() ->setStretchEnabled( true, COLUMN(Name) );
@@ -357,7 +357,7 @@ void KrDetailedView::addItems( vfs *v, bool addUpDir ) {
 
    if ( !currentItem )
       currentItem = firstChild();
-   KListView::setCurrentItem( currentItem );
+   TDEListView::setCurrentItem( currentItem );
    ensureItemVisible( currentItem );
 
    op()->emitItemDescription( statusText );
@@ -374,7 +374,7 @@ TQString KrDetailedView::getCurrentItem() const {
 void KrDetailedView::setCurrentItem( const TQString& name ) {
    KrDetailedViewItem * it = dynamic_cast<KrDetailedViewItem*>(_dict[ name ]);
    if ( it )
-      KListView::setCurrentItem( it );
+      TDEListView::setCurrentItem( it );
 }
 
 void KrDetailedView::clear() {
@@ -388,7 +388,7 @@ void KrDetailedView::clear() {
    /* KDE HACK END */
 
    op()->emitSelectionChanged(); /* to avoid rename crash at refresh */
-   KListView::clear();
+   TDEListView::clear();
    KrView::clear();
 }
 
@@ -423,7 +423,7 @@ void KrDetailedView::setSortMode( KrViewProperties::SortSpec mode ) {
                         if ( mode & KrViewProperties::Group )
                            cl = COLUMN( Group );
    setSorting( cl, ascending );
-   KListView::sort();
+   TDEListView::sort();
 }
 
 void KrDetailedView::slotClicked( TQListViewItem *item ) {
@@ -497,7 +497,7 @@ void KrDetailedView::handleQuickSearchEvent( TQKeyEvent * e ) {
          case Key_Insert:
          {
             TQKeyEvent ev = TQKeyEvent( TQKeyEvent::KeyPress, Key_Space, 0, 0 );
-            KListView::keyPressEvent( & ev );
+            TDEListView::keyPressEvent( & ev );
             ev = TQKeyEvent( TQKeyEvent::KeyPress, Key_Down, 0, 0 );
             keyPressEvent( & ev );
             break;
@@ -680,7 +680,7 @@ void KrDetailedView::contentsMousePressEvent( TQMouseEvent * e ) {
      if( newCurrent )                 // save the name of the file
        name = static_cast<KrDetailedViewItem*>( newCurrent ) ->name();
 
-     KListView::contentsMousePressEvent( e );
+     TDEListView::contentsMousePressEvent( e );
 
      if( name.isEmpty() || _dict.find( name ) == 0 ) // is the file still valid?
        newCurrent = 0;                // if not, don't do any crash...
@@ -717,7 +717,7 @@ void KrDetailedView::contentsMousePressEvent( TQMouseEvent * e ) {
 void KrDetailedView::contentsMouseReleaseEvent( TQMouseEvent * e ) {
   if (e->button() == Qt::RightButton)
     contextMenuTimer.stop();
-  KListView::contentsMouseReleaseEvent( e );
+  TDEListView::contentsMouseReleaseEvent( e );
 
   if( pressedItem ) {
     TQPoint vp = contentsToViewport( e->pos() );
@@ -788,13 +788,13 @@ void KrDetailedView::contentsMouseMoveEvent ( TQMouseEvent * e ) {
            emit onViewport();
       }
       else
-         KListView::contentsMouseMoveEvent( e );
+         TDEListView::contentsMouseMoveEvent( e );
 }
 
 void KrDetailedView::contentsWheelEvent( TQWheelEvent * e ) {
    if ( !_focused )
       op()->emitNeedFocus();
-   KListView::contentsWheelEvent( e );
+   TDEListView::contentsWheelEvent( e );
 }
 
 void KrDetailedView::handleContextMenu( TQListViewItem * it, const TQPoint & pos, int ) {
@@ -821,7 +821,7 @@ void KrDetailedView::showContextMenu()
 }
 
 KrViewItem *KrDetailedView::getKrViewItemAt( const TQPoint & vp ) {
-   return dynamic_cast<KrViewItem*>( KListView::itemAt( vp ) );
+   return dynamic_cast<KrViewItem*>( TDEListView::itemAt( vp ) );
 }
 
 bool KrDetailedView::acceptDrag( TQDropEvent* ) const {
@@ -845,7 +845,7 @@ void KrDetailedView::contentsDropEvent( TQDropEvent * e ) {
    e->setPoint( contentsToViewport( e->pos() ) );
    op()->emitGotDrop(e);
    e->ignore();
-   KListView::contentsDropEvent( e );
+   TDEListView::contentsDropEvent( e );
 }
 
 void KrDetailedView::contentsDragMoveEvent( TQDragMoveEvent * e ) {
@@ -853,7 +853,7 @@ void KrDetailedView::contentsDragMoveEvent( TQDragMoveEvent * e ) {
    if( _currDragItem && !_currDragItem->VF->vfile_isDir() )
      _currDragItem = 0;
    
-   KListView::contentsDragMoveEvent( e );
+   TDEListView::contentsDragMoveEvent( e );
 }
 
 void KrDetailedView::imStartEvent(TQIMEvent* e)
@@ -864,7 +864,7 @@ void KrDetailedView::imStartEvent(TQIMEvent* e)
   }else {
     TDEConfigGroupSaver grpSvr( _config, "Look&Feel" );
     if ( !_config->readBoolEntry( "New Style Quicksearch", _NewStyleQuicksearch ) )
-      KListView::imStartEvent( e );
+      TDEListView::imStartEvent( e );
     else {
 							// first, show the quicksearch if its hidden
       if ( ACTIVE_PANEL->quickSearch->isHidden() ) {
@@ -921,7 +921,7 @@ void KrDetailedView::keyPressEvent( TQKeyEvent * e ) {
 					TQListView::setCurrentItem( i );
 					TQListView::ensureItemVisible( i );
 				}
-         } else KListView::keyPressEvent(e);
+         } else TDEListView::keyPressEvent(e);
          break;
          case Key_Down :
          if ( e->state() == ControlButton || e->state() == ( ControlButton | ShiftButton ) ) { // let the panel handle it - jump to command line
@@ -933,7 +933,7 @@ void KrDetailedView::keyPressEvent( TQKeyEvent * e ) {
             if ( e->state() == ShiftButton ) setSelected( i, !i->isSelected() );
             i = i->itemBelow();
          if ( i ) {TQListView::setCurrentItem( i ); TQListView::ensureItemVisible( i ); }
-         } else KListView::keyPressEvent(e);
+         } else TDEListView::keyPressEvent(e);
          break;
          case Key_Next:  if (!KrSelectionMode::getSelectionHandler()->useTQTSelection()){
             TQListViewItem * i = currentItem(), *j;
@@ -943,7 +943,7 @@ void KrDetailedView::keyPressEvent( TQKeyEvent * e ) {
             for ( int page = visibleHeight() / r.height() - 1; page > 0 && ( j = i->itemBelow() ); --page )
                i = j;
             if ( i ) {TQListView::setCurrentItem( i ); TQListView::ensureItemVisible( i ); }
-         } else KListView::keyPressEvent(e);
+         } else TDEListView::keyPressEvent(e);
          break;
          case Key_Prior:  if (!KrSelectionMode::getSelectionHandler()->useTQTSelection()){
             TQListViewItem * i = currentItem(), *j;
@@ -953,13 +953,13 @@ void KrDetailedView::keyPressEvent( TQKeyEvent * e ) {
             for ( int page = visibleHeight() / r.height() - 1; page > 0 && ( j = i->itemAbove() ); --page )
                i = j;
             if ( i ) {TQListView::setCurrentItem( i ); TQListView::ensureItemVisible( i ); }
-         } else KListView::keyPressEvent(e);
+         } else TDEListView::keyPressEvent(e);
          break;
          case Key_Home:  if (!KrSelectionMode::getSelectionHandler()->useTQTSelection()){
             if ( e->state() & ShiftButton )  /* Shift+Home */
             {
                clearSelection();
-               KListView::keyPressEvent( e );
+               TDEListView::keyPressEvent( e );
                op()->emitSelectionChanged();
                triggerUpdate();
                break;
@@ -967,13 +967,13 @@ void KrDetailedView::keyPressEvent( TQKeyEvent * e ) {
                TQListViewItem * i = firstChild();
                if ( i ) {TQListView::setCurrentItem( i ); TQListView::ensureItemVisible( i ); }
             }
-         } else KListView::keyPressEvent(e);
+         } else TDEListView::keyPressEvent(e);
          break;
          case Key_End:  if (!KrSelectionMode::getSelectionHandler()->useTQTSelection()){
             if ( e->state() & ShiftButton )  /* Shift+End */
             {
                clearSelection();
-               KListView::keyPressEvent( e );
+               TDEListView::keyPressEvent( e );
                op()->emitSelectionChanged();
                triggerUpdate();
                break;
@@ -986,7 +986,7 @@ void KrDetailedView::keyPressEvent( TQKeyEvent * e ) {
             if ( i ) {TQListView::setCurrentItem( i ); TQListView::ensureItemVisible( i ); }
                break;
             }
-         } else KListView::keyPressEvent(e);
+         } else TDEListView::keyPressEvent(e);
          break;
          case Key_Enter :
          case Key_Return : {
@@ -1048,7 +1048,7 @@ void KrDetailedView::keyPressEvent( TQKeyEvent * e ) {
             return ;         // safety
          }
          //case Key_Up :
-         //KListView::keyPressEvent( e );
+         //TDEListView::keyPressEvent( e );
          //break;
 /*#ifndef _newSelectionHandling
          case Key_Down :
@@ -1056,7 +1056,7 @@ void KrDetailedView::keyPressEvent( TQKeyEvent * e ) {
             e->ignore();
             break;
          } else
-            KListView::keyPressEvent( e );
+            TDEListView::keyPressEvent( e );
          break;
 #endif*/
          case Key_Delete :                   // kill file
@@ -1065,11 +1065,11 @@ void KrDetailedView::keyPressEvent( TQKeyEvent * e ) {
          break ;
          case Key_Insert : {
             if (KrSelectionMode::getSelectionHandler()->insertMovesDown())
-               KListView::keyPressEvent( e );
+               TDEListView::keyPressEvent( e );
             else
             {
                TQKeyEvent ev = TQKeyEvent( TQKeyEvent::KeyPress, Key_Space, 0, 0 );
-               KListView::keyPressEvent( & ev );
+               TDEListView::keyPressEvent( & ev );
             }
             break ; 
          }
@@ -1079,10 +1079,10 @@ void KrDetailedView::keyPressEvent( TQKeyEvent * e ) {
                if (KrSelectionMode::getSelectionHandler()->spaceMovesDown())
                {
                   TQKeyEvent ev = TQKeyEvent( TQKeyEvent::KeyPress, Key_Insert, 0, 0 );
-                  KListView::keyPressEvent( & ev );
+                  TDEListView::keyPressEvent( & ev );
                }
                else
-                  KListView::keyPressEvent( e );
+                  TDEListView::keyPressEvent( e );
                break ; 
             }
             if ( viewItem->VF->vfile_isDir() && viewItem->VF->vfile_getSize() <= 0 && 
@@ -1108,15 +1108,15 @@ void KrDetailedView::keyPressEvent( TQKeyEvent * e ) {
 mark:       if (KrSelectionMode::getSelectionHandler()->spaceMovesDown())
             {
                TQKeyEvent ev = TQKeyEvent( TQKeyEvent::KeyPress, Key_Insert, 0, 0 );
-               KListView::keyPressEvent( & ev );
+               TDEListView::keyPressEvent( & ev );
             }
             else
-               KListView::keyPressEvent( e );
+               TDEListView::keyPressEvent( e );
          }
          break;
          case Key_A :                 // mark all
          if ( e->state() == ControlButton ) {
-            KListView::keyPressEvent( e );
+            TDEListView::keyPressEvent( e );
             updateView();
             break;
          }
@@ -1137,7 +1137,7 @@ mark:       if (KrSelectionMode::getSelectionHandler()->spaceMovesDown())
                {
 						TDEConfigGroupSaver grpSvr( _config, "Look&Feel" );
 						if ( !_config->readBoolEntry( "New Style Quicksearch", _NewStyleQuicksearch ) )
-							KListView::keyPressEvent( e );
+							TDEListView::keyPressEvent( e );
 						else {
 							// first, show the quicksearch if its hidden
 							if ( ACTIVE_PANEL->quickSearch->isHidden() ) {
@@ -1162,7 +1162,7 @@ mark:       if (KrSelectionMode::getSelectionHandler()->spaceMovesDown())
                ACTIVE_PANEL->quickSearch->clear();
                krDirUp->setEnabled( true );
             }
-            KListView::keyPressEvent( e );
+            TDEListView::keyPressEvent( e );
          }
    }
    // emit the new item description
@@ -1183,7 +1183,7 @@ void KrDetailedView::rename( TQListViewItem * item, int c ) {
    renameLineEdit()->setBackgroundMode(TQt::FixedColor);
    renameLineEdit()->setPaletteBackgroundColor(TQt::white);
    renameLineEdit()->setPaletteForegroundColor(TQt::black);
-   KListView::rename( item, c );
+   TDEListView::rename( item, c );
    renameLineEdit() ->selectAll();
 }
 
@@ -1351,7 +1351,7 @@ bool KrDetailedView::event( TQEvent *e ) {
          default:
          CANCEL_TWO_CLICK_RENAME;
    }
-   return KListView::event( e );
+   return TDEListView::event( e );
 }
 
 bool KrDetailedView::eventFilter( TQObject * watched, TQEvent * e )
@@ -1380,7 +1380,7 @@ bool KrDetailedView::eventFilter( TQObject * watched, TQEvent * e )
     }
     return FALSE;
   }
-  return KListView::eventFilter( watched, e );
+  return TDEListView::eventFilter( watched, e );
 }
 
 void KrDetailedView::makeItemVisible( const KrViewItem *item ) {
@@ -1433,7 +1433,7 @@ void KrDetailedView::initProperties() {
 
 void KrDetailedView::selectColumns()
 {
-  KPopupMenu popup( this );
+  TDEPopupMenu popup( this );
   popup.insertTitle( i18n("Columns"));
   
   bool refresh = false;

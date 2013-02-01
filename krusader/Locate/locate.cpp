@@ -65,10 +65,10 @@
 #define COPY_SELECTED_TO_CLIPBOARD  95
 //////////////////////////////////////////////////////////
 
-class LocateListView : public KListView
+class LocateListView : public TDEListView
 {
 public:
-  LocateListView( TQWidget * parent, const char * name = 0 ) : KListView( parent, name )
+  LocateListView( TQWidget * parent, const char * name = 0 ) : TDEListView( parent, name )
   {
   }
 
@@ -321,9 +321,9 @@ void LocateDlg::processStdout(TDEProcess *proc, char *buffer, int length)
       }
       
       if( lastItem )    
-        lastItem = new KListViewItem( resultList, lastItem, *it );
+        lastItem = new TDEListViewItem( resultList, lastItem, *it );
       else
-        lastItem = new KListViewItem( resultList, *it );
+        lastItem = new TDEListViewItem( resultList, *it );
 
       lastItem->setDragEnabled( true );
     }
@@ -351,7 +351,7 @@ void LocateDlg::slotRightClick(TQListViewItem *item)
     return;
 
   // create the menu
-  KPopupMenu popup;
+  TDEPopupMenu popup;
   popup.insertTitle(i18n("Locate"));
 
   popup.insertItem(i18n("View (F3)"), VIEW_ID);
@@ -479,7 +479,7 @@ void LocateDlg::operate( TQListViewItem *item, int task )
         resultList->setCurrentItem( ( findOptions & KFindDialog::FindBackwards ) ?
                                     resultList->lastItem() : resultList->firstChild() );
 
-      findCurrentItem = (KListViewItem *)resultList->currentItem();
+      findCurrentItem = (TDEListViewItem *)resultList->currentItem();
       
       if( find() && findCurrentItem )
         resultList->setCurrentItem( findCurrentItem );
@@ -495,7 +495,7 @@ void LocateDlg::operate( TQListViewItem *item, int task )
       if( task == FIND_PREV_ID )
         findOptions ^= KFindDialog::FindBackwards;
       
-      findCurrentItem = (KListViewItem *)resultList->currentItem();
+      findCurrentItem = (TDEListViewItem *)resultList->currentItem();
       nextLine();
 
       if( find() && findCurrentItem )
@@ -536,9 +536,9 @@ void LocateDlg::operate( TQListViewItem *item, int task )
 void LocateDlg::nextLine()
 {
   if( findOptions & KFindDialog::FindBackwards )
-    findCurrentItem = (KListViewItem *)findCurrentItem->itemAbove();
+    findCurrentItem = (TDEListViewItem *)findCurrentItem->itemAbove();
   else
-    findCurrentItem = (KListViewItem *)findCurrentItem->itemBelow();
+    findCurrentItem = (TDEListViewItem *)findCurrentItem->itemBelow();
 }
 
 bool LocateDlg::find()

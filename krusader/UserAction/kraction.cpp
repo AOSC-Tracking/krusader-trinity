@@ -280,7 +280,7 @@ void KrActionProc::processExited( TDEProcess * ) {
 ///////////////////////////////////////  KrAction  ///////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////
 
-KrAction::KrAction( KActionCollection *parent, const char* name ) : KAction( parent, name ) {
+KrAction::KrAction( TDEActionCollection *parent, const char* name ) : TDEAction( parent, name ) {
    connect(this, TQT_SIGNAL(activated()), this, TQT_SLOT(exec()) );
 }
 
@@ -399,7 +399,7 @@ bool KrAction::xmlRead( const TQDomElement& element ) {
          readAvailability( e );
       else
       if ( e.tagName() == "defaultshortcut" )
-         setShortcut(  KShortcut( e.text() ) );
+         setShortcut(  TDEShortcut( e.text() ) );
       else
 
       // unknown but not empty

@@ -29,14 +29,14 @@
 
 
 UserAction::UserAction() {
-   _actions.setAutoDelete( false ); // the actions are "owned" by Krusader's KActionCollection, so they should not be deleted
+   _actions.setAutoDelete( false ); // the actions are "owned" by Krusader's TDEActionCollection, so they should not be deleted
    krOut << "Initialisising useractions..." << endl;
    readAllFiles();
    krOut << _actions.count() << " useractions read." << endl;
 }
 
 UserAction::~UserAction() {
-  // KrActions are deleted by Krusader's KActionCollection
+  // KrActions are deleted by Krusader's TDEActionCollection
 }
 
 void UserAction::setAvailability() {
@@ -50,7 +50,7 @@ void UserAction::setAvailability( const KURL& currentURL ) {
       action->setEnabled( action->isAvailable( currentURL ) );
 }
 
-void UserAction::populateMenu( KPopupMenu* menu ) {
+void UserAction::populateMenu( TDEPopupMenu* menu ) {
    for ( KrAction* action = _actions.first(); action; action = _actions.next() )
       if ( ! action->isPlugged( menu ) )
          action->plug( menu );

@@ -105,7 +105,7 @@ void KrKeyDialog::importLegacyShortcuts( const TQString& file ) {
 	char *actionName;
 	TQDataStream stream(&f);
 	int key;
-	KAction *action;
+	TDEAction *action;
 	while (!stream.atEnd()) {
 		stream >> actionName >> key;
 		action = krApp->actionCollection()->action(actionName);
@@ -148,9 +148,9 @@ void KrKeyDialog::slotExportShortcuts() {
 
    // unfortunately we can't use this function since it only writes the actions which are different from default.
    //krApp->actionCollection()->writeShortcutSettings( "Shortcuts", &conf );
-   KActionShortcutList list( krApp->actionCollection() );
+   TDEActionShortcutList list( krApp->actionCollection() );
    list.writeSettings( "Shortcuts", &conf, true /* write all actions */ );
-   // That does KActionShortcutList::writeSettings for us
+   // That does TDEActionShortcutList::writeSettings for us
    //conf.sync(); // write back all changes
 }
 

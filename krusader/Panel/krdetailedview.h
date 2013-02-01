@@ -64,12 +64,12 @@ class KrDetailedViewItem;
 
 /**
  * KrDetailedView implements everthing and anything regarding a detailed view in a filemananger.
- * IT MUST USE KrViewItem as the children to it's *KListView. KrDetailedView and KrViewItem are
+ * IT MUST USE KrViewItem as the children to it's *TDEListView. KrDetailedView and KrViewItem are
  * tightly coupled and the view will not work with other kinds of items.
  * Apart from this, the view is self-reliant and you can use the vast interface to get whatever
  * information is necessery from it.
  */
-class KrDetailedView : public KListView, public KrView {
+class KrDetailedView : public TDEListView, public KrView {
    Q_OBJECT
   
    friend class KrDetailedViewItem;
@@ -80,8 +80,8 @@ public:
    virtual int column( KrDetailedViewProperties::ColumnType type );
    virtual inline KrViewItem *getFirst() { return dynamic_cast<KrViewItem*>( firstChild() ); }
    virtual inline KrViewItem *getLast() { return dynamic_cast<KrViewItem*>( lastChild() ); }
-   virtual inline KrViewItem *getNext( KrViewItem *current ) { return dynamic_cast<KrViewItem*>( dynamic_cast<KListViewItem*>( current ) ->itemBelow() ); }
-   virtual inline KrViewItem *getPrev( KrViewItem *current ) { return dynamic_cast<KrViewItem*>( dynamic_cast<KListViewItem*>( current ) ->itemAbove() ); }
+   virtual inline KrViewItem *getNext( KrViewItem *current ) { return dynamic_cast<KrViewItem*>( dynamic_cast<TDEListViewItem*>( current ) ->itemBelow() ); }
+   virtual inline KrViewItem *getPrev( KrViewItem *current ) { return dynamic_cast<KrViewItem*>( dynamic_cast<TDEListViewItem*>( current ) ->itemAbove() ); }
    virtual inline KrViewItem *getCurrentKrViewItem() { return dynamic_cast<KrViewItem*>( currentItem() ); }
    virtual KrViewItem *getKrViewItemAt( const TQPoint &vp );
    virtual inline KrViewItem *findItemByName( const TQString &name ) { return dynamic_cast<KrViewItem*>( findItem( name, 0 ) ); }
@@ -92,12 +92,12 @@ public:
    virtual void updateView();
    virtual void updateItem(KrViewItem* item);
    virtual void clear();
-   virtual void sort() { KListView::sort(); }
+   virtual void sort() { TDEListView::sort(); }
    virtual void setSortMode( KrViewProperties::SortSpec mode );
    virtual void prepareForActive();
    virtual void prepareForPassive();
-   virtual inline void saveSettings() { KListView::saveLayout( _config, nameInTDEConfig() ); }
-   virtual inline void restoreSettings() { KListView::restoreLayout( _config, nameInTDEConfig() ); }
+   virtual inline void saveSettings() { TDEListView::saveLayout( _config, nameInTDEConfig() ); }
+   virtual inline void restoreSettings() { TDEListView::restoreLayout( _config, nameInTDEConfig() ); }
 
 signals:
    void middleButtonClicked( KrViewItem *item );

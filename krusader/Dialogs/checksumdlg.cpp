@@ -239,7 +239,7 @@ CreateChecksumDlg::CreateChecksumDlg(const TQStringList& files, bool containFold
 	++row;
 	
 	// file list
-	KListBox *lb = new KListBox(plainPage());
+	TDEListBox *lb = new TDEListBox(plainPage());
 	lb->insertStringList(files);
 	layout->addMultiCellWidget(lb, row, row, 0, 1);
 	++row;
@@ -340,7 +340,7 @@ MatchChecksumDlg::MatchChecksumDlg(const TQStringList& files, bool containFolder
 	++row;
 	
 	// file list
-	KListBox *lb = new KListBox(plainPage());
+	TDEListBox *lb = new TDEListBox(plainPage());
 	lb->insertStringList(files);
 	layout->addMultiCellWidget(lb, row, row, 0, 1);
 	++row;
@@ -450,7 +450,7 @@ VerifyResultDlg::VerifyResultDlg(const TQStringList& failed):
 		TQLabel *l3 = new TQLabel(i18n("The following files have failed:"), plainPage());
 		layout->addMultiCellWidget(l3, row, row, 0, 1);
 		++row;
-		KListBox *lb2 = new KListBox(plainPage());
+		TDEListBox *lb2 = new TDEListBox(plainPage());
 		lb2->insertStringList(failed);
 		layout->addMultiCellWidget(lb2, row, row, 0, 1);
 		++row;
@@ -490,7 +490,7 @@ ChecksumResultsDlg::ChecksumResultsDlg(const TQStringList& stdOut, const TQStrin
 			layout->addMultiCellWidget(l2, row, row, 0, 1);
 			++row;
 		}
-		KListView *lv = new KListView(plainPage());
+		TDEListView *lv = new TDEListView(plainPage());
 		if(standardFormat){
 			lv->addColumn(i18n("Hash"));
 			lv->addColumn(i18n("File"));
@@ -502,9 +502,9 @@ ChecksumResultsDlg::ChecksumResultsDlg(const TQStringList& stdOut, const TQStrin
 			TQString line = (*it);
 			if(standardFormat) {
 				int space = line.find(' ');
-				new KListViewItem(lv, line.left(space), line.mid(space+2));
+				new TDEListViewItem(lv, line.left(space), line.mid(space+2));
 			} else {
-				new KListViewItem(lv, line);
+				new TDEListViewItem(lv, line);
 			}	
 		}
 		layout->addMultiCellWidget(lv, row, row, 0, 1);
@@ -522,7 +522,7 @@ ChecksumResultsDlg::ChecksumResultsDlg(const TQStringList& stdOut, const TQStrin
 		TQLabel *l3 = new TQLabel(i18n("Here are the errors received:"), plainPage());
 		layout->addMultiCellWidget(l3, row, row, 0, 1);
 		++row;
-		KListBox *lb = new KListBox(plainPage());
+		TDEListBox *lb = new TDEListBox(plainPage());
 		lb->insertStringList(stdErr);
 		layout->addMultiCellWidget(lb, row, row, 0, 1);
 		++row;

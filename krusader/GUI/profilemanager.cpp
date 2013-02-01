@@ -63,7 +63,7 @@ void ProfileManager::profilePopup()
   #define OVERWRITE_ENTRY_ID  4000
   
   // create the menu
-  KPopupMenu popup, removePopup, overwritePopup;
+  TDEPopupMenu popup, removePopup, overwritePopup;
   popup.insertTitle(i18n("Profiles"));
   
   for( unsigned i=0; i != profileList.count() ; i++ )

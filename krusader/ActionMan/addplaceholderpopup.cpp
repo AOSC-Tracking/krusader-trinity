@@ -44,13 +44,13 @@
 #define EXECUTABLE_ID		0xFFFF
 
 
-AddPlaceholderPopup::AddPlaceholderPopup( TQWidget *parent ) : KPopupMenu( parent ) {
+AddPlaceholderPopup::AddPlaceholderPopup( TQWidget *parent ) : TDEPopupMenu( parent ) {
 
-   _activeSub = new KPopupMenu( this );
-   _otherSub = new KPopupMenu( this );
-   _leftSub = new KPopupMenu( this );
-   _rightSub = new KPopupMenu( this );
-   _independentSub = new KPopupMenu( this );
+   _activeSub = new TDEPopupMenu( this );
+   _otherSub = new TDEPopupMenu( this );
+   _leftSub = new TDEPopupMenu( this );
+   _rightSub = new TDEPopupMenu( this );
+   _independentSub = new TDEPopupMenu( this );
 
    insertItem( i18n( "Active panel" ), _activeSub );
    insertItem( i18n( "Other panel" ), _otherSub );

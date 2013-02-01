@@ -231,7 +231,7 @@ PopularUrlsDlg::PopularUrlsDlg():
 	TQGridLayout *layout = new TQGridLayout( plainPage(), 0, KDialog::spacingHint() );
 	
 	// listview to contain the urls
-	urls = new KListView(plainPage());
+	urls = new TDEListView(plainPage());
 	urls->header()->hide();
 	urls->addColumn("");
 	urls->setSorting(-1);
@@ -240,7 +240,7 @@ PopularUrlsDlg::PopularUrlsDlg():
 	// quick search
 	TQToolButton *btn = new TQToolButton(plainPage());
 	btn->setIconSet(SmallIcon("locationbar_erase"));
-	search = new KListViewSearchLine(plainPage(), urls);
+	search = new TDEListViewSearchLine(plainPage(), urls);
 	search->setTrapReturnKey(true);
 	TQLabel *lbl = new TQLabel(search, i18n(" &Search: "), plainPage());
 
@@ -290,7 +290,7 @@ void PopularUrlsDlg::run(KURL::List list) {
 	urls->clear();
 	KURL::List::Iterator it;
 	for (it = list.begin(); it!=list.end(); ++it) {
-		KListViewItem *item = new KListViewItem(urls, urls->lastItem());
+		TDEListViewItem *item = new TDEListViewItem(urls, urls->lastItem());
 		item->setText(0, (*it).isLocalFile() ? (*it).path() : (*it).prettyURL());
 		item->setPixmap(0, (*it).isLocalFile() ? SmallIcon("folder") : SmallIcon("folder_html"));
 	}

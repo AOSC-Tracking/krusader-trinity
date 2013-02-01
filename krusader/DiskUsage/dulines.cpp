@@ -456,7 +456,7 @@ void DULines::slotRightClicked( TQListViewItem *item )
   if ( item && item->text( 0 ) != ".." )
     file = ((DULinesItem *)item)->getFile();
 
-  KPopupMenu linesPopup;    
+  TDEPopupMenu linesPopup;    
   int lid = linesPopup.insertItem( i18n("Show file sizes"), this, TQT_SLOT( slotShowFileSizes() ) );
   linesPopup.setItemChecked( lid, showFileSize );
     

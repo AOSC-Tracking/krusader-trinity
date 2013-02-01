@@ -102,97 +102,97 @@ YP   YD 88   YD ~Y8888P' `8888Y' YP   YP Y8888D' Y88888P 88   YD
 
 // define the static members
 Krusader *Krusader::App = 0;
-KAction *Krusader::actProperties = 0;
-KAction *Krusader::actPack = 0;
-KAction *Krusader::actUnpack = 0;
-KAction *Krusader::actTest = 0;
-KAction *Krusader::actCopy = 0;
-KAction *Krusader::actPaste = 0;
-KAction *Krusader::actCompare = 0;
-KAction *Krusader::actCalculate = 0;
-KAction *Krusader::actCreateChecksum = 0;
-KAction *Krusader::actMatchChecksum = 0;
-KAction *Krusader::actSelect = 0;
-KAction *Krusader::actSelectAll = 0;
-KAction *Krusader::actUnselect = 0;
-KAction *Krusader::actUnselectAll = 0;
-KAction *Krusader::actInvert = 0;
-KAction *Krusader::actCompDirs = 0;
-KAction *Krusader::actSync = 0;
-KAction *Krusader::actDiskUsage = 0;
-KAction *Krusader::actHomeTerminal = 0;
-KAction *Krusader::actFTPConnect = 0;
-KAction *Krusader::actFTPNewConnect = 0;
-KAction *Krusader::actFTPDisconnect = 0;
-KAction *Krusader::actProfiles = 0;
-KAction *Krusader::actMultiRename = 0;
-KAction *Krusader::actAllFilter = 0;
-KAction *Krusader::actExecFilter = 0;
-KAction *Krusader::actCustomFilter = 0;
-KAction *Krusader::actMountMan = 0;
-KAction *Krusader::actNewTool = 0;
-KAction *Krusader::actKonfigurator = 0;
-KAction *Krusader::actToolsSetup = 0;
-KAction *Krusader::actSwapPanels = 0;
-KAction *Krusader::actSwapSides = 0;
-KAction *Krusader::actBack = 0;
-KAction *Krusader::actRoot = 0;
-KAction *Krusader::actFind = 0;
-KAction *Krusader::actLocate = 0;
-KAction *Krusader::actSwitchFullScreenTE = 0;
-//KAction *Krusader::actAddBookmark = 0;
-KAction *Krusader::actSavePosition = 0;
-KAction *Krusader::actSelectColorMask = 0;
-KAction *Krusader::actOpenLeftBm = 0;
-KAction *Krusader::actOpenRightBm = 0;
-KAction *Krusader::actDirUp = 0;
-KAction *Krusader::actCmdlinePopup = 0;
-KAction *Krusader::actNewTab = 0;
-KAction *Krusader::actDupTab = 0;
-KAction *Krusader::actCloseTab = 0;
-KAction *Krusader::actNextTab = 0;
-KAction *Krusader::actPreviousTab = 0;
-KAction *Krusader::actSplit = 0;
-KAction *Krusader::actCombine = 0;
-KAction *Krusader::actUserMenu = 0;
-KAction *Krusader::actManageUseractions = 0;
-KAction *Krusader::actSyncDirs = 0;
-KAction *Krusader::actSyncBrowse = 0;
-KAction *Krusader::actF2 = 0;
-KAction *Krusader::actF3 = 0;
-KAction *Krusader::actF4 = 0;
-KAction *Krusader::actF5 = 0;
-KAction *Krusader::actF6 = 0;
-KAction *Krusader::actF7 = 0;
-KAction *Krusader::actF8 = 0;
-KAction *Krusader::actF9 = 0;
-KAction *Krusader::actF10 = 0;
-KAction *Krusader::actLocationBar = 0;
-KAction *Krusader::actPopularUrls = 0;
-KAction *Krusader::actJumpBack = 0;
-KAction *Krusader::actSetJumpBack = 0;
-KAction *Krusader::actDetailedView = 0;
-KAction *Krusader::actBriefView = 0;
+TDEAction *Krusader::actProperties = 0;
+TDEAction *Krusader::actPack = 0;
+TDEAction *Krusader::actUnpack = 0;
+TDEAction *Krusader::actTest = 0;
+TDEAction *Krusader::actCopy = 0;
+TDEAction *Krusader::actPaste = 0;
+TDEAction *Krusader::actCompare = 0;
+TDEAction *Krusader::actCalculate = 0;
+TDEAction *Krusader::actCreateChecksum = 0;
+TDEAction *Krusader::actMatchChecksum = 0;
+TDEAction *Krusader::actSelect = 0;
+TDEAction *Krusader::actSelectAll = 0;
+TDEAction *Krusader::actUnselect = 0;
+TDEAction *Krusader::actUnselectAll = 0;
+TDEAction *Krusader::actInvert = 0;
+TDEAction *Krusader::actCompDirs = 0;
+TDEAction *Krusader::actSync = 0;
+TDEAction *Krusader::actDiskUsage = 0;
+TDEAction *Krusader::actHomeTerminal = 0;
+TDEAction *Krusader::actFTPConnect = 0;
+TDEAction *Krusader::actFTPNewConnect = 0;
+TDEAction *Krusader::actFTPDisconnect = 0;
+TDEAction *Krusader::actProfiles = 0;
+TDEAction *Krusader::actMultiRename = 0;
+TDEAction *Krusader::actAllFilter = 0;
+TDEAction *Krusader::actExecFilter = 0;
+TDEAction *Krusader::actCustomFilter = 0;
+TDEAction *Krusader::actMountMan = 0;
+TDEAction *Krusader::actNewTool = 0;
+TDEAction *Krusader::actKonfigurator = 0;
+TDEAction *Krusader::actToolsSetup = 0;
+TDEAction *Krusader::actSwapPanels = 0;
+TDEAction *Krusader::actSwapSides = 0;
+TDEAction *Krusader::actBack = 0;
+TDEAction *Krusader::actRoot = 0;
+TDEAction *Krusader::actFind = 0;
+TDEAction *Krusader::actLocate = 0;
+TDEAction *Krusader::actSwitchFullScreenTE = 0;
+//TDEAction *Krusader::actAddBookmark = 0;
+TDEAction *Krusader::actSavePosition = 0;
+TDEAction *Krusader::actSelectColorMask = 0;
+TDEAction *Krusader::actOpenLeftBm = 0;
+TDEAction *Krusader::actOpenRightBm = 0;
+TDEAction *Krusader::actDirUp = 0;
+TDEAction *Krusader::actCmdlinePopup = 0;
+TDEAction *Krusader::actNewTab = 0;
+TDEAction *Krusader::actDupTab = 0;
+TDEAction *Krusader::actCloseTab = 0;
+TDEAction *Krusader::actNextTab = 0;
+TDEAction *Krusader::actPreviousTab = 0;
+TDEAction *Krusader::actSplit = 0;
+TDEAction *Krusader::actCombine = 0;
+TDEAction *Krusader::actUserMenu = 0;
+TDEAction *Krusader::actManageUseractions = 0;
+TDEAction *Krusader::actSyncDirs = 0;
+TDEAction *Krusader::actSyncBrowse = 0;
+TDEAction *Krusader::actF2 = 0;
+TDEAction *Krusader::actF3 = 0;
+TDEAction *Krusader::actF4 = 0;
+TDEAction *Krusader::actF5 = 0;
+TDEAction *Krusader::actF6 = 0;
+TDEAction *Krusader::actF7 = 0;
+TDEAction *Krusader::actF8 = 0;
+TDEAction *Krusader::actF9 = 0;
+TDEAction *Krusader::actF10 = 0;
+TDEAction *Krusader::actLocationBar = 0;
+TDEAction *Krusader::actPopularUrls = 0;
+TDEAction *Krusader::actJumpBack = 0;
+TDEAction *Krusader::actSetJumpBack = 0;
+TDEAction *Krusader::actDetailedView = 0;
+TDEAction *Krusader::actBriefView = 0;
 
-KToggleAction *Krusader::actToggleTerminal = 0;
-KToggleAction *Krusader::actVerticalMode = 0;
-KRadioAction  *Krusader::actSelectNewerAndSingle = 0;
-KRadioAction  *Krusader::actSelectSingle = 0;
-KRadioAction  *Krusader::actSelectNewer = 0;
-KRadioAction  *Krusader::actSelectDifferentAndSingle = 0;
-KRadioAction  *Krusader::actSelectDifferent = 0;
-KRadioAction  **Krusader::compareArray[] = {&actSelectNewerAndSingle, &actSelectNewer, &actSelectSingle, 
+TDEToggleAction *Krusader::actToggleTerminal = 0;
+TDEToggleAction *Krusader::actVerticalMode = 0;
+TDERadioAction  *Krusader::actSelectNewerAndSingle = 0;
+TDERadioAction  *Krusader::actSelectSingle = 0;
+TDERadioAction  *Krusader::actSelectNewer = 0;
+TDERadioAction  *Krusader::actSelectDifferentAndSingle = 0;
+TDERadioAction  *Krusader::actSelectDifferent = 0;
+TDERadioAction  **Krusader::compareArray[] = {&actSelectNewerAndSingle, &actSelectNewer, &actSelectSingle, 
                                             &actSelectDifferentAndSingle, &actSelectDifferent, 0};
-KRadioAction *Krusader::actExecStartAndForget = 0;
-KRadioAction *Krusader::actExecCollectSeparate = 0;
-KRadioAction *Krusader::actExecCollectTogether = 0;
-KRadioAction *Krusader::actExecTerminalExternal = 0;
-KRadioAction *Krusader::actExecTerminalEmbedded = 0;
-KRadioAction **Krusader::execTypeArray[] =
+TDERadioAction *Krusader::actExecStartAndForget = 0;
+TDERadioAction *Krusader::actExecCollectSeparate = 0;
+TDERadioAction *Krusader::actExecCollectTogether = 0;
+TDERadioAction *Krusader::actExecTerminalExternal = 0;
+TDERadioAction *Krusader::actExecTerminalEmbedded = 0;
+TDERadioAction **Krusader::execTypeArray[] =
        {&actExecStartAndForget, &actExecCollectSeparate, &actExecCollectTogether,
         &actExecTerminalExternal, &actExecTerminalEmbedded, 0};
 
-KPopupMenu *Krusader::userActionMenu = 0;
+TDEPopupMenu *Krusader::userActionMenu = 0;
 UserAction *Krusader::userAction = 0;
 UserMenu *Krusader::userMenu = 0;
 KrBookmarkHandler *Krusader::bookman = 0;
@@ -200,7 +200,7 @@ KrBookmarkHandler *Krusader::bookman = 0;
 
 #ifdef __KJSEMBED__
 KrJS *Krusader::js = 0;
-KAction *Krusader::actShowJSConsole = 0;
+TDEAction *Krusader::actShowJSConsole = 0;
 #endif
 
 // construct the views, statusbar and menu bars and prepare Krusader to start
@@ -386,7 +386,7 @@ Krusader::Krusader() : KParts::MainWindow(0,0,WType_TopLevel|WDestructiveClose|T
 
 
    // manage our keyboard short-cuts
-   //KAcceleratorManager::manage(this,true);
+   //TDEAcceleratorManager::manage(this,true);
 
    setCursor( KCursor::arrowCursor() );
 
@@ -518,7 +518,7 @@ void Krusader::resizeEvent ( TQResizeEvent *e ) {
 }
 
 void Krusader::setupAccels() {
-	 accels = new KAccel( this );
+	 accels = new TDEAccel( this );
 	 // SHIFT+F3
    accels->insert( "F3_ViewDlg", i18n( "F3 View Dialog" ), TQString(),
                    SHIFT + Key_F3, SLOTS, TQT_SLOT( viewDlg() ) );
@@ -531,9 +531,9 @@ void Krusader::setupAccels() {
 // <patch> Moving from Pixmap actions to generic filenames - thanks to Carsten Pfeiffer
 void Krusader::setupActions() {
    // first come the TODO actions
-   //actSync =       0;//new KAction(i18n("S&yncronize Dirs"),                         0, this, 0, actionCollection(), "sync dirs");
-   //actNewTool =    0;//new KAction(i18n("&Add a new tool"),                          0, this, 0, actionCollection(), "add tool");
-   //actToolsSetup = 0;//new KAction(i18n("&Tools Menu Setup"),                        0, 0, this, 0, actionCollection(), "tools setup");
+   //actSync =       0;//new TDEAction(i18n("S&yncronize Dirs"),                         0, this, 0, actionCollection(), "sync dirs");
+   //actNewTool =    0;//new TDEAction(i18n("&Add a new tool"),                          0, this, 0, actionCollection(), "add tool");
+   //actToolsSetup = 0;//new TDEAction(i18n("&Tools Menu Setup"),                        0, 0, this, 0, actionCollection(), "tools setup");
    //KStdAction::print(SLOTS, 0,actionCollection(),"std_print");
    //KStdAction::showMenubar( SLOTS, TQT_SLOT( showMenubar() ), actionCollection(), "std_menubar" );
 
@@ -546,9 +546,9 @@ void Krusader::setupActions() {
    int cmdExecMode =  krConfig->readNumEntry( "Command Execution Mode", 0 );
 
    KStdAction::home( SLOTS, TQT_SLOT( home() ), actionCollection(), "std_home" )->setText( i18n("Home") ); /*->setShortcut(Key_QuoteLeft);*/
-   new KAction( i18n( "&Reload" ), "reload", CTRL + Key_R, SLOTS, TQT_SLOT( refresh() ), actionCollection(), "std_redisplay" );
+   new TDEAction( i18n( "&Reload" ), "reload", CTRL + Key_R, SLOTS, TQT_SLOT( refresh() ), actionCollection(), "std_redisplay" );
    actShowToolBar = KStdAction::showToolbar( SLOTS, TQT_SLOT( toggleToolbar() ), actionCollection(), "std_toolbar" );
-   new KToggleAction( i18n("Show Actions Toolbar"), 0, SLOTS, TQT_SLOT( toggleActionsToolbar() ),
+   new TDEToggleAction( i18n("Show Actions Toolbar"), 0, SLOTS, TQT_SLOT( toggleActionsToolbar() ),
                       actionCollection(), "toggle actions toolbar" );
    actShowStatusBar = KStdAction::showStatusbar( SLOTS, TQT_SLOT( toggleStatusbar() ), actionCollection(), "std_statusbar" );
    KStdAction::quit( TQT_TQOBJECT(this), TQT_SLOT( slotClose() ), actionCollection(), "std_quit" );
@@ -560,109 +560,109 @@ void Krusader::setupActions() {
    (actPaste = KStdAction::paste( SLOTS, TQT_SLOT( paste() ), actionCollection(), "std_paste" ))->setText( i18n("Paste from Clipboard") );
 
    // the toggle actions
-   actToggleFnkeys = new KToggleAction( i18n( "Show &FN Keys Bar" ), 0, SLOTS,
+   actToggleFnkeys = new TDEToggleAction( i18n( "Show &FN Keys Bar" ), 0, SLOTS,
                                         TQT_SLOT( toggleFnkeys() ), actionCollection(), "toggle fn bar" );
    actToggleFnkeys->setChecked( true );
-   actToggleCmdline = new KToggleAction( i18n( "Show &Command Line" ), 0, SLOTS,
+   actToggleCmdline = new TDEToggleAction( i18n( "Show &Command Line" ), 0, SLOTS,
                                          TQT_SLOT( toggleCmdline() ), actionCollection(), "toggle command line" );
    actToggleCmdline->setChecked( true );
-   actToggleTerminal = new KToggleAction( i18n( "Show Terminal &Emulator" ), ALT + CTRL + Key_T, SLOTS,
+   actToggleTerminal = new TDEToggleAction( i18n( "Show Terminal &Emulator" ), ALT + CTRL + Key_T, SLOTS,
                                           TQT_SLOT( toggleTerminal() ), actionCollection(), "toggle terminal emulator" );
    actToggleTerminal->setChecked( false );
 
-   actDetailedView = new KAction( i18n( "&Detailed View" ), ALT + SHIFT + Key_D, SLOTS,
+   actDetailedView = new TDEAction( i18n( "&Detailed View" ), ALT + SHIFT + Key_D, SLOTS,
                                 TQT_SLOT( setDetailedView() ), actionCollection(), "detailed_view" );
 
-   actBriefView = new KAction( i18n( "&Brief View" ), ALT + SHIFT + Key_B, SLOTS,
+   actBriefView = new TDEAction( i18n( "&Brief View" ), ALT + SHIFT + Key_B, SLOTS,
                                 TQT_SLOT( setBriefView() ), actionCollection(), "brief_view" );
 
-   actToggleHidden = new KToggleAction( i18n( "Show &Hidden Files" ), CTRL + Key_Period, SLOTS,
+   actToggleHidden = new TDEToggleAction( i18n( "Show &Hidden Files" ), CTRL + Key_Period, SLOTS,
                                         TQT_SLOT( toggleHidden() ), actionCollection(), "toggle hidden files" );
-   actSwapPanels = new KAction( i18n( "S&wap Panels" ), CTRL + Key_U, SLOTS,
+   actSwapPanels = new TDEAction( i18n( "S&wap Panels" ), CTRL + Key_U, SLOTS,
                                 TQT_SLOT( swapPanels() ), actionCollection(), "swap panels" );
-   actSwapSides = new KAction( i18n( "Sw&ap Sides" ), CTRL + SHIFT + Key_U, SLOTS,
+   actSwapSides = new TDEAction( i18n( "Sw&ap Sides" ), CTRL + SHIFT + Key_U, SLOTS,
                                 TQT_SLOT( toggleSwapSides() ), actionCollection(), "toggle swap sides" );
    krConfig->setGroup( "Look&Feel" );
    actToggleHidden->setChecked( krConfig->readBoolEntry( "Show Hidden", _ShowHidden ) );
 
    // and then the DONE actions
-   actCmdlinePopup = new KAction( i18n( "popup cmdline" ), 0, CTRL + Key_Slash, SLOTS,
+   actCmdlinePopup = new TDEAction( i18n( "popup cmdline" ), 0, CTRL + Key_Slash, SLOTS,
                                   TQT_SLOT( cmdlinePopup() ), actionCollection(), "cmdline popup" );
    /* Shortcut disabled because of the Terminal Emulator bug. */
-   actDirUp = new KAction( i18n( "Up" ), "up", CTRL+Key_PageUp /*Key_Backspace*/, SLOTS, TQT_SLOT( dirUp() ), actionCollection(), "dirUp" );
-   new KAction( i18n( "&New Text File..." ), "filenew", SHIFT + Key_F4, SLOTS, TQT_SLOT( editDlg() ), actionCollection(), "edit_new_file" );
-   new KAction( i18n( "Start &Root Mode Krusader" ), "krusader_root", ALT + Key_K, SLOTS, TQT_SLOT( rootKrusader() ), actionCollection(), "root krusader" );
+   actDirUp = new TDEAction( i18n( "Up" ), "up", CTRL+Key_PageUp /*Key_Backspace*/, SLOTS, TQT_SLOT( dirUp() ), actionCollection(), "dirUp" );
+   new TDEAction( i18n( "&New Text File..." ), "filenew", SHIFT + Key_F4, SLOTS, TQT_SLOT( editDlg() ), actionCollection(), "edit_new_file" );
+   new TDEAction( i18n( "Start &Root Mode Krusader" ), "krusader_root", ALT + Key_K, SLOTS, TQT_SLOT( rootKrusader() ), actionCollection(), "root krusader" );
 
-   actTest = new KAction( i18n( "T&est Archive" ), "ark", ALT + Key_E,
+   actTest = new TDEAction( i18n( "T&est Archive" ), "ark", ALT + Key_E,
                           SLOTS, TQT_SLOT( testArchive() ), actionCollection(), "test archives" );
-   //actFTPConnect = new KAction( i18n( "&Net Connections" ), "domtreeviewer", 0,
+   //actFTPConnect = new TDEAction( i18n( "&Net Connections" ), "domtreeviewer", 0,
    //                             SLOTS, TQT_SLOT( runRemoteMan() ), actionCollection(), "ftp connect" );
-   actFTPNewConnect = new KAction( i18n( "New Net &Connection..." ), "connect_creating", CTRL + Key_N,
+   actFTPNewConnect = new TDEAction( i18n( "New Net &Connection..." ), "connect_creating", CTRL + Key_N,
                                    SLOTS, TQT_SLOT( newFTPconnection() ), actionCollection(), "ftp new connection" );
-   actProfiles = new KAction( i18n( "Pro&files" ), "kr_profile", ALT + Key_L,
+   actProfiles = new TDEAction( i18n( "Pro&files" ), "kr_profile", ALT + Key_L,
                                    TQT_TQOBJECT(MAIN_VIEW), TQT_SLOT( profiles() ), actionCollection(), "profile" );
-   actCalculate = new KAction( i18n( "Calculate &Occupied Space" ), "kcalc", 0,
+   actCalculate = new TDEAction( i18n( "Calculate &Occupied Space" ), "kcalc", 0,
                                SLOTS, TQT_SLOT( calcSpace() ), actionCollection(), "calculate" );
-   actCreateChecksum = new KAction( i18n( "Create Checksum..." ), "binary", 0,
+   actCreateChecksum = new TDEAction( i18n( "Create Checksum..." ), "binary", 0,
                                SLOTS, TQT_SLOT( createChecksum() ), actionCollection(), "create checksum" );
-   actMatchChecksum = new KAction( i18n( "Verify Checksum..." ), "match_checksum", 0,
+   actMatchChecksum = new TDEAction( i18n( "Verify Checksum..." ), "match_checksum", 0,
                                SLOTS, TQT_SLOT( matchChecksum() ), actionCollection(), "match checksum" );
-   actProperties = new KAction( i18n( "&Properties..." ), 0, ALT+Key_Enter,
+   actProperties = new TDEAction( i18n( "&Properties..." ), 0, ALT+Key_Enter,
                                 SLOTS, TQT_SLOT( properties() ), actionCollection(), "properties" );
-   actPack = new KAction( i18n( "Pac&k..." ), "kr_arc_pack", ALT + Key_P,
+   actPack = new TDEAction( i18n( "Pac&k..." ), "kr_arc_pack", ALT + Key_P,
                           SLOTS, TQT_SLOT( slotPack() ), actionCollection(), "pack" );
-   actUnpack = new KAction( i18n( "&Unpack..." ), "kr_arc_unpack", ALT + Key_U,
+   actUnpack = new TDEAction( i18n( "&Unpack..." ), "kr_arc_unpack", ALT + Key_U,
                             SLOTS, TQT_SLOT( slotUnpack() ), actionCollection() , "unpack" );
-   actSplit = new KAction( i18n( "Sp&lit File..." ), "kr_split", CTRL + Key_P,
+   actSplit = new TDEAction( i18n( "Sp&lit File..." ), "kr_split", CTRL + Key_P,
                            SLOTS, TQT_SLOT( slotSplit() ), actionCollection(), "split" );
-   actCombine = new KAction( i18n( "Com&bine Files..." ), "kr_combine", CTRL + Key_B,
+   actCombine = new TDEAction( i18n( "Com&bine Files..." ), "kr_combine", CTRL + Key_B,
                              SLOTS, TQT_SLOT( slotCombine() ), actionCollection() , "combine" );
-   actSelect = new KAction( i18n( "Select &Group..." ), "kr_select", CTRL + Key_Plus,
+   actSelect = new TDEAction( i18n( "Select &Group..." ), "kr_select", CTRL + Key_Plus,
                             SLOTS, TQT_SLOT( markGroup() ), actionCollection(), "select group" );
-   actSelectAll = new KAction( i18n( "&Select All" ), "kr_selectall", ALT + Key_Plus,
+   actSelectAll = new TDEAction( i18n( "&Select All" ), "kr_selectall", ALT + Key_Plus,
                                SLOTS, TQT_SLOT( markAll() ), actionCollection(), "select all" );
-   actUnselect = new KAction( i18n( "&Unselect Group..." ), "kr_unselect", CTRL + Key_Minus,
+   actUnselect = new TDEAction( i18n( "&Unselect Group..." ), "kr_unselect", CTRL + Key_Minus,
                               SLOTS, TQT_SLOT( unmarkGroup() ), actionCollection(), "unselect group" );
-   actUnselectAll = new KAction( i18n( "U&nselect All" ), "kr_unselectall", ALT + Key_Minus,
+   actUnselectAll = new TDEAction( i18n( "U&nselect All" ), "kr_unselectall", ALT + Key_Minus,
                                  SLOTS, TQT_SLOT( unmarkAll() ), actionCollection(), "unselect all" );
-   actInvert = new KAction( i18n( "&Invert Selection" ), "kr_invert", ALT + Key_Asterisk,
+   actInvert = new TDEAction( i18n( "&Invert Selection" ), "kr_invert", ALT + Key_Asterisk,
                             SLOTS, TQT_SLOT( invert() ), actionCollection(), "invert" );
-   actCompDirs = new KAction( i18n( "&Compare Directories" ), "view_left_right", ALT + Key_C,
+   actCompDirs = new TDEAction( i18n( "&Compare Directories" ), "view_left_right", ALT + Key_C,
                               SLOTS, TQT_SLOT( compareDirs() ), actionCollection(), "compare dirs" );
-   actSelectNewerAndSingle = new KRadioAction( i18n( "&Select Newer and Single" ), 0,
+   actSelectNewerAndSingle = new TDERadioAction( i18n( "&Select Newer and Single" ), 0,
                                  SLOTS, TQT_SLOT( compareSetup() ), actionCollection(), "select_newer_and_single" );
-   actSelectNewer = new KRadioAction( i18n( "Select &Newer" ), 0,
+   actSelectNewer = new TDERadioAction( i18n( "Select &Newer" ), 0,
                                  SLOTS, TQT_SLOT( compareSetup() ), actionCollection(), "select_newer" );
-   actSelectSingle = new KRadioAction( i18n( "Select &Single" ), 0,
+   actSelectSingle = new TDERadioAction( i18n( "Select &Single" ), 0,
                                  SLOTS, TQT_SLOT( compareSetup() ), actionCollection(), "select_single" );
-   actSelectDifferentAndSingle = new KRadioAction( i18n( "Select Different &and Single" ), 0,
+   actSelectDifferentAndSingle = new TDERadioAction( i18n( "Select Different &and Single" ), 0,
                                  SLOTS, TQT_SLOT( compareSetup() ), actionCollection(), "select_different_and_single" );
-   actSelectDifferent = new KRadioAction( i18n( "Select &Different" ), 0,
+   actSelectDifferent = new TDERadioAction( i18n( "Select &Different" ), 0,
                                  SLOTS, TQT_SLOT( compareSetup() ), actionCollection(), "select_different" );
    actSelectNewerAndSingle->setExclusiveGroup( "the_select_group" );
    actSelectNewer->setExclusiveGroup( "the_select_group" );
    actSelectSingle->setExclusiveGroup( "the_select_group" );
    actSelectDifferentAndSingle->setExclusiveGroup( "the_select_group" );
    actSelectDifferent->setExclusiveGroup( "the_select_group" );
-   if( compareMode < (int)( sizeof( compareArray ) / sizeof( KRadioAction ** ) ) -1 )
+   if( compareMode < (int)( sizeof( compareArray ) / sizeof( TDERadioAction ** ) ) -1 )
      (*compareArray[ compareMode ])->setChecked( true );
-   actExecStartAndForget = new KRadioAction(
+   actExecStartAndForget = new TDERadioAction(
                                  i18n( "Start and &Forget" ), 0,
                                  SLOTS, TQT_SLOT( execTypeSetup() ),
                                  actionCollection(), "exec_start_and_forget" );
-   actExecCollectSeparate = new KRadioAction(
+   actExecCollectSeparate = new TDERadioAction(
                                  i18n( "Display &Separated Standard and Error Output" ), 0,
                                  SLOTS, TQT_SLOT( execTypeSetup() ),
                                  actionCollection(), "exec_collect_separate" );
-   actExecCollectTogether = new KRadioAction(
+   actExecCollectTogether = new TDERadioAction(
                                  i18n( "Display &Mixed Standard and Error Output" ), 0,
                                  SLOTS, TQT_SLOT( execTypeSetup() ),
                                  actionCollection(), "exec_collect_together" );
-   actExecTerminalExternal = new KRadioAction(
+   actExecTerminalExternal = new TDERadioAction(
                                  i18n( "Start in &New Terminal" ), 0,
                                  SLOTS, TQT_SLOT( execTypeSetup() ),
                                  actionCollection(), "exec_terminal_external" );
-   actExecTerminalEmbedded = new KRadioAction(
+   actExecTerminalEmbedded = new TDERadioAction(
                                  i18n( "Send to &Embedded Terminal Emulator" ), 0,
                                  SLOTS, TQT_SLOT( execTypeSetup() ),
                                  actionCollection(), "exec_terminal_embedded" );
@@ -671,128 +671,128 @@ void Krusader::setupActions() {
    actExecCollectTogether->setExclusiveGroup("the_exec_type_group");
    actExecTerminalExternal->setExclusiveGroup("the_exec_type_group");
    actExecTerminalEmbedded->setExclusiveGroup("the_exec_type_group");
-   if( cmdExecMode < (int)( sizeof( execTypeArray ) / sizeof( KRadioAction ** ) ) -1 )
+   if( cmdExecMode < (int)( sizeof( execTypeArray ) / sizeof( TDERadioAction ** ) ) -1 )
      (*execTypeArray[ cmdExecMode ])->setChecked( true );
 
 
-   actHomeTerminal = new KAction( i18n( "Start &Terminal" ), "terminal", 0,
+   actHomeTerminal = new TDEAction( i18n( "Start &Terminal" ), "terminal", 0,
                                   SLOTS, TQT_SLOT( homeTerminal() ), actionCollection(), "terminal@home" );
-   actFTPDisconnect = new KAction( i18n( "Disconnect &from Net" ), "kr_ftp_disconnect", SHIFT + CTRL + Key_F,
+   actFTPDisconnect = new TDEAction( i18n( "Disconnect &from Net" ), "kr_ftp_disconnect", SHIFT + CTRL + Key_F,
                                    SLOTS, TQT_SLOT( FTPDisconnect() ), actionCollection(), "ftp disconnect" );
 #if KDE_IS_VERSION(3,2,0)	/* new mountman feature is available in kde 3.2 only! */
-   actMountMan = new KToolBarPopupAction( i18n( "&MountMan..." ), "kr_mountman", ALT + Key_Slash,
+   actMountMan = new TDEToolBarPopupAction( i18n( "&MountMan..." ), "kr_mountman", ALT + Key_Slash,
                                           SLOTS, TQT_SLOT( runMountMan() ), actionCollection(), "mountman" );
-   connect( ( ( KToolBarPopupAction* ) actMountMan ) ->popupMenu(), TQT_SIGNAL( aboutToShow() ),
+   connect( ( ( TDEToolBarPopupAction* ) actMountMan ) ->popupMenu(), TQT_SIGNAL( aboutToShow() ),
             mountMan, TQT_SLOT( quickList() ) );
 #else
-   actMountMan = new KAction( i18n( "&MountMan..." ), "kr_mountman", ALT + Key_Slash,
+   actMountMan = new TDEAction( i18n( "&MountMan..." ), "kr_mountman", ALT + Key_Slash,
                               SLOTS, TQT_SLOT( runMountMan() ), actionCollection(), "mountman" );
 #endif /* KDE 3.2 */
 
-   actFind = new KAction( i18n( "&Search..." ), "filefind", CTRL + Key_S,
+   actFind = new TDEAction( i18n( "&Search..." ), "filefind", CTRL + Key_S,
                           SLOTS, TQT_SLOT( search() ), actionCollection(), "find" );
-   actLocate = new KAction( i18n( "&Locate..." ), "find", SHIFT+CTRL + Key_L,
+   actLocate = new TDEAction( i18n( "&Locate..." ), "find", SHIFT+CTRL + Key_L,
                             SLOTS, TQT_SLOT( locate() ), actionCollection(), "locate" );
-   actSyncDirs = new KAction( i18n( "Synchronize &Directories..." ), "kr_syncdirs", CTRL + Key_Y,
+   actSyncDirs = new TDEAction( i18n( "Synchronize &Directories..." ), "kr_syncdirs", CTRL + Key_Y,
                               SLOTS, TQT_SLOT( slotSynchronizeDirs() ), actionCollection(), "sync dirs" );
-   actSyncBrowse = new KAction( i18n( "S&ynchron Directory Changes" ), "kr_syncbrowse_off", ALT + Key_Y,
+   actSyncBrowse = new TDEAction( i18n( "S&ynchron Directory Changes" ), "kr_syncbrowse_off", ALT + Key_Y,
                               SLOTS, TQT_SLOT( slotSyncBrowse() ), actionCollection(), "sync browse" );
-   actDiskUsage = new KAction( i18n( "D&isk Usage..." ), "kr_diskusage", ALT + Key_D,
+   actDiskUsage = new TDEAction( i18n( "D&isk Usage..." ), "kr_diskusage", ALT + Key_D,
                               SLOTS, TQT_SLOT( slotDiskUsage() ), actionCollection(), "disk usage" );
-   actKonfigurator = new KAction( i18n( "Configure &Krusader..." ), "configure", 0,
+   actKonfigurator = new TDEAction( i18n( "Configure &Krusader..." ), "configure", 0,
                                   SLOTS, TQT_SLOT( startKonfigurator() ), actionCollection(), "konfigurator" );
-   actBack = new KAction( i18n( "Back" ), "back", 0,
+   actBack = new TDEAction( i18n( "Back" ), "back", 0,
                           SLOTS, TQT_SLOT( back() ), actionCollection(), "back" );
-   actRoot = new KAction( i18n( "Root" ), "top", CTRL + Key_Backspace,
+   actRoot = new TDEAction( i18n( "Root" ), "top", CTRL + Key_Backspace,
                           SLOTS, TQT_SLOT( root() ), actionCollection(), "root" );
-   actSavePosition = new KAction( i18n( "Save &Position" ), 0,
+   actSavePosition = new TDEAction( i18n( "Save &Position" ), 0,
                                   TQT_TQOBJECT(krApp), TQT_SLOT( savePosition() ), actionCollection(), "save position" );   
-   actAllFilter = new KAction( i18n( "&All Files" ), SHIFT + Key_F10,
+   actAllFilter = new TDEAction( i18n( "&All Files" ), SHIFT + Key_F10,
                                SLOTS, TQT_SLOT( allFilter() ), actionCollection(), "all files" );
-   //actExecFilter = new KAction( i18n( "&Executables" ), SHIFT + Key_F11,
+   //actExecFilter = new TDEAction( i18n( "&Executables" ), SHIFT + Key_F11,
    //                             SLOTS, TQT_SLOT( execFilter() ), actionCollection(), "exec files" );
-   actCustomFilter = new KAction( i18n( "&Custom" ), SHIFT + Key_F12,
+   actCustomFilter = new TDEAction( i18n( "&Custom" ), SHIFT + Key_F12,
                                   SLOTS, TQT_SLOT( customFilter() ), actionCollection(), "custom files" );
-   actCompare = new KAction( i18n( "Compare b&y Content..." ), "tdemultiple", 0,
+   actCompare = new TDEAction( i18n( "Compare b&y Content..." ), "tdemultiple", 0,
                              SLOTS, TQT_SLOT( compareContent() ), actionCollection(), "compare" );
-   actMultiRename = new KAction( i18n( "Multi &Rename..." ), "krename", SHIFT + Key_F9,
+   actMultiRename = new TDEAction( i18n( "Multi &Rename..." ), "krename", SHIFT + Key_F9,
                                  SLOTS, TQT_SLOT( multiRename() ), actionCollection(), "multirename" );
-   new KAction( i18n( "Right-click Menu" ), Key_Menu,
+   new TDEAction( i18n( "Right-click Menu" ), Key_Menu,
                 SLOTS, TQT_SLOT( rightclickMenu() ), actionCollection(), "rightclick menu" );
-   new KAction( i18n( "Right Bookmarks" ), ALT + Key_Right,
+   new TDEAction( i18n( "Right Bookmarks" ), ALT + Key_Right,
                 SLOTS, TQT_SLOT( openRightBookmarks() ), actionCollection(), "right bookmarks" );
-   new KAction( i18n( "Left Bookmarks" ), ALT + Key_Left,
+   new TDEAction( i18n( "Left Bookmarks" ), ALT + Key_Left,
                 SLOTS, TQT_SLOT( openLeftBookmarks() ), actionCollection(), "left bookmarks" );
-   new KAction( i18n( "Bookmarks" ), CTRL + Key_D,
+   new TDEAction( i18n( "Bookmarks" ), CTRL + Key_D,
                 SLOTS, TQT_SLOT( openBookmarks() ), actionCollection(), "bookmarks" );
-   new KAction( i18n( "Bookmark Current" ), CTRL + SHIFT + Key_D,
+   new TDEAction( i18n( "Bookmark Current" ), CTRL + SHIFT + Key_D,
                 SLOTS, TQT_SLOT( bookmarkCurrent() ), actionCollection(), "bookmark current" );
-   new KAction( i18n( "History" ), CTRL + Key_H,
+   new TDEAction( i18n( "History" ), CTRL + Key_H,
                 SLOTS, TQT_SLOT( openHistory() ), actionCollection(), "history" );
-   new KAction( i18n( "Sync Panels" ), ALT + Key_O,
+   new TDEAction( i18n( "Sync Panels" ), ALT + Key_O,
                 SLOTS, TQT_SLOT( syncPanels() ), actionCollection(), "sync panels");
-   new KAction( i18n( "Left History" ), ALT + CTRL + Key_Left,
+   new TDEAction( i18n( "Left History" ), ALT + CTRL + Key_Left,
                 SLOTS, TQT_SLOT( openLeftHistory() ), actionCollection(), "left history" );
-   new KAction( i18n( "Right History" ), ALT + CTRL + Key_Right,
+   new TDEAction( i18n( "Right History" ), ALT + CTRL + Key_Right,
                 SLOTS, TQT_SLOT( openRightHistory() ), actionCollection(), "right history" );
-   new KAction( i18n( "Media" ), CTRL + Key_M,
+   new TDEAction( i18n( "Media" ), CTRL + Key_M,
                 SLOTS, TQT_SLOT( openMedia() ), actionCollection(), "media" );
-   new KAction( i18n( "Left Media" ), CTRL + SHIFT + Key_Left,
+   new TDEAction( i18n( "Left Media" ), CTRL + SHIFT + Key_Left,
                 SLOTS, TQT_SLOT( openLeftMedia() ), actionCollection(), "left media" );
-   new KAction( i18n( "Right Media" ), CTRL + SHIFT + Key_Right,
+   new TDEAction( i18n( "Right Media" ), CTRL + SHIFT + Key_Right,
                 SLOTS, TQT_SLOT( openRightMedia() ), actionCollection(), "right media" );
-   new KAction( i18n( "New Symlink..." ), CTRL + ALT + Key_S,
+   new TDEAction( i18n( "New Symlink..." ), CTRL + ALT + Key_S,
                 SLOTS, TQT_SLOT( newSymlink() ), actionCollection(), "new symlink");
-   new KToggleAction( i18n( "Toggle Popup Panel" ), ALT + Key_Down, SLOTS,
+   new TDEToggleAction( i18n( "Toggle Popup Panel" ), ALT + Key_Down, SLOTS,
                             TQT_SLOT( togglePopupPanel() ), actionCollection(), "toggle popup panel" );
-   actVerticalMode = new KToggleAction( i18n( "Vertical Mode" ), "view_top_bottom", ALT + CTRL + Key_R, TQT_TQOBJECT(MAIN_VIEW), 
+   actVerticalMode = new TDEToggleAction( i18n( "Vertical Mode" ), "view_top_bottom", ALT + CTRL + Key_R, TQT_TQOBJECT(MAIN_VIEW), 
                                         TQT_SLOT( toggleVerticalMode() ), actionCollection(), "toggle vertical mode" );
-   actNewTab = new KAction( i18n( "New Tab" ), "tab_new", ALT + CTRL + Key_N, SLOTS,
+   actNewTab = new TDEAction( i18n( "New Tab" ), "tab_new", ALT + CTRL + Key_N, SLOTS,
                             TQT_SLOT( newTab() ), actionCollection(), "new tab" );
-   actDupTab = new KAction( i18n( "Duplicate Current Tab" ), "tab_duplicate", ALT + CTRL + SHIFT + Key_N, SLOTS,
+   actDupTab = new TDEAction( i18n( "Duplicate Current Tab" ), "tab_duplicate", ALT + CTRL + SHIFT + Key_N, SLOTS,
                             TQT_SLOT( duplicateTab() ), actionCollection(), "duplicate tab" );
-   actCloseTab = new KAction( i18n( "Close Current Tab" ), "tab_remove", CTRL + Key_W, SLOTS,
+   actCloseTab = new TDEAction( i18n( "Close Current Tab" ), "tab_remove", CTRL + Key_W, SLOTS,
                               TQT_SLOT( closeTab() ), actionCollection(), "close tab" );
-   actNextTab  = new KAction( i18n( "Next Tab" ), SHIFT + Key_Right, SLOTS,
+   actNextTab  = new TDEAction( i18n( "Next Tab" ), SHIFT + Key_Right, SLOTS,
                               TQT_SLOT( nextTab() ), actionCollection(), "next tab" );
-   actPreviousTab  = new KAction( i18n( "Previous Tab" ), SHIFT + Key_Left, SLOTS,
+   actPreviousTab  = new TDEAction( i18n( "Previous Tab" ), SHIFT + Key_Left, SLOTS,
                                   TQT_SLOT( previousTab() ), actionCollection(), "previous tab" );
 /*
-   actUserMenu = new KAction( i18n( "User Menu" ), ALT + Key_QuoteLeft, SLOTS,
+   actUserMenu = new TDEAction( i18n( "User Menu" ), ALT + Key_QuoteLeft, SLOTS,
                               TQT_SLOT( userMenu() ), actionCollection(), "user menu" );
 */
-   actManageUseractions = new KAction( i18n( "Manage User Actions..." ), 0, SLOTS,
+   actManageUseractions = new TDEAction( i18n( "Manage User Actions..." ), 0, SLOTS,
                               TQT_SLOT( manageUseractions() ), actionCollection(), "manage useractions" );
    new KrRemoteEncodingMenu(i18n("Select Remote Charset"), "charset", actionCollection(), "changeremoteencoding");
 
    // setup the Fn keys
-   actF2 = new KAction( i18n( "Start Terminal Here" ), "terminal", Key_F2,
+   actF2 = new TDEAction( i18n( "Start Terminal Here" ), "terminal", Key_F2,
                         SLOTS, TQT_SLOT( terminal() ) , actionCollection(), "F2_Terminal" );
-   actF3 = new KAction( i18n( "View File" ), Key_F3,
+   actF3 = new TDEAction( i18n( "View File" ), Key_F3,
                         SLOTS, TQT_SLOT( view() ) , actionCollection(), "F3_View" );
-   actF4 = new KAction( i18n( "Edit File" ), Key_F4,
+   actF4 = new TDEAction( i18n( "Edit File" ), Key_F4,
                         SLOTS, TQT_SLOT( edit() ) , actionCollection(), "F4_Edit" );
-   actF5 = new KAction( i18n( "Copy..." ), Key_F5,
+   actF5 = new TDEAction( i18n( "Copy..." ), Key_F5,
                         SLOTS, TQT_SLOT( copyFiles() ) , actionCollection(), "F5_Copy" );
-   actF6 = new KAction( i18n( "Move..." ), Key_F6,
+   actF6 = new TDEAction( i18n( "Move..." ), Key_F6,
                         SLOTS, TQT_SLOT( moveFiles() ) , actionCollection(), "F6_Move" );
-   actF7 = new KAction( i18n( "New Directory..." ), "folder_new", Key_F7,
+   actF7 = new TDEAction( i18n( "New Directory..." ), "folder_new", Key_F7,
                         SLOTS, TQT_SLOT( mkdir() ) , actionCollection(), "F7_Mkdir" );
-   actF8 = new KAction( i18n( "Delete" ), "editdelete", Key_F8,
+   actF8 = new TDEAction( i18n( "Delete" ), "editdelete", Key_F8,
                         SLOTS, TQT_SLOT( deleteFiles() ) , actionCollection(), "F8_Delete" );
-   actF9 = new KAction( i18n( "Rename" ), Key_F9,
+   actF9 = new TDEAction( i18n( "Rename" ), Key_F9,
                         SLOTS, TQT_SLOT( rename() ) , actionCollection(), "F9_Rename" );
-   actF10 = new KAction( i18n( "Quit" ), Key_F10,
+   actF10 = new TDEAction( i18n( "Quit" ), Key_F10,
                          TQT_TQOBJECT(this), TQT_SLOT( slotClose() ) , actionCollection(), "F10_Quit" );
-   actPopularUrls = new KAction( i18n("Popular URLs..."), CTRL+Key_Z,
+   actPopularUrls = new TDEAction( i18n("Popular URLs..."), CTRL+Key_Z,
                                  popularUrls, TQT_SLOT( showDialog() ), actionCollection(), "Popular_Urls");
-   actLocationBar = new KAction( i18n("Go to Location Bar"), CTRL+Key_L,
+   actLocationBar = new TDEAction( i18n("Go to Location Bar"), CTRL+Key_L,
                                  SLOTS, TQT_SLOT( slotLocationBar() ), actionCollection(), "location_bar");
-   actJumpBack = new KAction( i18n("Jump Back"), "kr_jumpback", CTRL+Key_J,
+   actJumpBack = new TDEAction( i18n("Jump Back"), "kr_jumpback", CTRL+Key_J,
                               SLOTS, TQT_SLOT( slotJumpBack() ), actionCollection(), "jump_back");
-   actSetJumpBack = new KAction( i18n("Set Jump Back Point"), "kr_setjumpback", CTRL+SHIFT+Key_J,
+   actSetJumpBack = new TDEAction( i18n("Set Jump Back Point"), "kr_setjumpback", CTRL+SHIFT+Key_J,
                                  SLOTS, TQT_SLOT( slotSetJumpBack() ), actionCollection(), "set_jump_back");
-   actSwitchFullScreenTE = new KAction( i18n( "Toggle Fullwidget Terminal Emulator" ), 0, CTRL + Key_F,
+   actSwitchFullScreenTE = new TDEAction( i18n( "Toggle Fullwidget Terminal Emulator" ), 0, CTRL + Key_F,
                                         TQT_TQOBJECT(MAIN_VIEW), TQT_SLOT( switchFullScreenTE() ), actionCollection(), "switch_fullscreen_te" );
 
    // and at last we can set the tool-tips
@@ -808,7 +808,7 @@ void Krusader::setupActions() {
    userAction = new UserAction();
 
    #ifdef __KJSEMBED__
-   actShowJSConsole = new KAction( i18n( "JavaScript Console..." ), ALT + CTRL + Key_J, SLOTS, TQT_SLOT( jsConsole() ), actionCollection(), "JS_Console" );
+   actShowJSConsole = new TDEAction( i18n( "JavaScript Console..." ), ALT + CTRL + Key_J, SLOTS, TQT_SLOT( jsConsole() ), actionCollection(), "JS_Console" );
    #endif
 }
 
@@ -1041,14 +1041,14 @@ void Krusader::updateGUI( bool enforce ) {
    createGUI( mainView->konsole_part );
    
    // this needs to be called AFTER createGUI() !!!
-   userActionMenu = (KPopupMenu*) guiFactory()->container( "useractionmenu", this );
+   userActionMenu = (TDEPopupMenu*) guiFactory()->container( "useractionmenu", this );
    if ( userActionMenu )
       userAction->populateMenu( userActionMenu );
    
    toolBar() ->applySettings( krConfig, "Private" );
 	
 	toolBar("actionsToolBar") ->applySettings( krConfig, "Actions Toolbar" );
-	static_cast<KToggleAction*>(actionCollection()->action("toggle actions toolbar"))->
+	static_cast<TDEToggleAction*>(actionCollection()->action("toggle actions toolbar"))->
 		setChecked(toolBar("actionsToolBar")->isVisible());
 	
    if ( enforce ) {

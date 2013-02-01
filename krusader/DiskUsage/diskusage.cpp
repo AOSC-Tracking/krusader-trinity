@@ -746,9 +746,9 @@ Directory* DiskUsage::getCurrentDir()
   return currentDirectory;
 }
 
-void DiskUsage::rightClickMenu( File *fileItem, KPopupMenu *addPopup, TQString addPopupName )
+void DiskUsage::rightClickMenu( File *fileItem, TDEPopupMenu *addPopup, TQString addPopupName )
 {
-  KPopupMenu popup( this );
+  TDEPopupMenu popup( this );
 
   popup.insertTitle( i18n("Disk Usage"));
 
@@ -780,7 +780,7 @@ void DiskUsage::rightClickMenu( File *fileItem, KPopupMenu *addPopup, TQString a
     popup.changeItem( ADDITIONAL_POPUP_ID, addPopupName );
   }
 
-  KPopupMenu viewPopup;
+  TDEPopupMenu viewPopup;
   viewPopup.insertItem(i18n("Lines"),      LINES_VIEW_ID);
   viewPopup.setAccel( CTRL + Key_L, LINES_VIEW_ID );
   viewPopup.insertItem(i18n("Detailed"),   DETAILED_VIEW_ID);

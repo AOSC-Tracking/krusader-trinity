@@ -59,8 +59,8 @@ private:
 	PopularUrlsDlg *dlg;
 };
 
-class KListView;
-class KListViewSearchLine;
+class TDEListView;
+class TDEListViewSearchLine;
 
 class PopularUrlsDlg: public KDialogBase {
 	Q_OBJECT
@@ -77,8 +77,8 @@ protected slots:
 	void slotItemSelected(TQListViewItem *it);
 	
 private:
-	KListView *urls;
-	KListViewSearchLine *search;
+	TDEListView *urls;
+	TDEListViewSearchLine *search;
 	int selection;
 };
 

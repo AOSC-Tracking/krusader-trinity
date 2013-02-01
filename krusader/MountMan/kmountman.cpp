@@ -252,7 +252,7 @@ void KMountMan::quickList() {
    }
 
    // clear the popup menu
-   ( ( KToolBarPopupAction* ) krMountMan ) ->popupMenu() ->clear();
+   ( ( TDEToolBarPopupAction* ) krMountMan ) ->popupMenu() ->clear();
 
    // create lists of current and possible mount points
    KMountPoint::List current = KMountPoint::currentMountPoints();
@@ -288,9 +288,9 @@ void KMountMan::quickList() {
                      " (" + m->mountedFrom() + ")";
 
 
-      ( ( KToolBarPopupAction* ) krMountMan ) ->popupMenu() ->insertItem( text, idx );
+      ( ( TDEToolBarPopupAction* ) krMountMan ) ->popupMenu() ->insertItem( text, idx );
    }
-   connect( ( ( KToolBarPopupAction* ) krMountMan ) ->popupMenu(), TQT_SIGNAL( activated( int ) ),
+   connect( ( ( TDEToolBarPopupAction* ) krMountMan ) ->popupMenu(), TQT_SIGNAL( activated( int ) ),
             this, TQT_SLOT( delayedPerformAction( int ) ) );
 
 }
@@ -321,7 +321,7 @@ void KMountMan::performAction( int idx ) {
    // free memory
    delete[] _actions;
    _actions = 0L;
-   disconnect( ( ( KToolBarPopupAction* ) krMountMan ) ->popupMenu(), TQT_SIGNAL( activated( int ) ), 0, 0 );
+   disconnect( ( ( TDEToolBarPopupAction* ) krMountMan ) ->popupMenu(), TQT_SIGNAL( activated( int ) ), 0, 0 );
 }
 
 #include "kmountman.moc"

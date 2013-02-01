@@ -145,7 +145,7 @@ void KURLListRequester::slotRightClicked( TQListBoxItem *item )
   if( item == 0 )
     return;
     
-  KPopupMenu popupMenu( this );
+  TDEPopupMenu popupMenu( this );
   popupMenu.insertItem( i18n( "Delete" ), DELETE_ITEM_ID );
   
   switch( popupMenu.exec( TQCursor::pos() ) )

@@ -31,7 +31,7 @@ class KIntSpinBox;
  * This reads Expander::placeholder[] and fills a popup for easy access to the UserAction Placeholder
  * @author Jonas Bähr (http://www.jonas-baehr.de), Shie Erlich
  */
-class AddPlaceholderPopup : public KPopupMenu {
+class AddPlaceholderPopup : public TDEPopupMenu {
 
 public:
    AddPlaceholderPopup( TQWidget *parent );
@@ -52,7 +52,7 @@ protected:
    TQString getParameter( exp_placeholder* currentPlaceholder );
    
 private:
-   KPopupMenu *_activeSub, *_otherSub, *_leftSub, *_rightSub, *_independentSub;
+   TDEPopupMenu *_activeSub, *_otherSub, *_leftSub, *_rightSub, *_independentSub;
 };
 
 

@@ -17,11 +17,11 @@ public:
 	KrAddBookmarkDlg(TQWidget *parent, KURL url = 0);
 	KURL url() const { return vfs::fromPathOrURL(_url->text()); }
 	TQString name() const { return _name->text(); }
-	KrBookmark *folder() const { return _xr[static_cast<KListViewItem*>(_createIn->selectedItem())]; }
+	KrBookmark *folder() const { return _xr[static_cast<TDEListViewItem*>(_createIn->selectedItem())]; }
 
 protected:
 	TQWidget *createInWidget();
-	void populateCreateInWidget(KrBookmark *root, KListViewItem *parent);
+	void populateCreateInWidget(KrBookmark *root, TDEListViewItem *parent);
 
 protected slots:
 	void toggleCreateIn(bool show);
@@ -32,8 +32,8 @@ private:
 	KLineEdit *_name;
 	KLineEdit *_url;
 	KLineEdit *_folder;
-	KListView *_createIn;
-	TQMap<KListViewItem*, KrBookmark*> _xr;
+	TDEListView *_createIn;
+	TQMap<TDEListViewItem*, KrBookmark*> _xr;
 	TQToolButton *_createInBtn;
 };
 

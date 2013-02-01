@@ -21,7 +21,7 @@ class TQString;
 class TQStringList;
 class KrAction;
 class KURL;
-class KPopupMenu;
+class TDEPopupMenu;
 
 /**
  * Useractions are Krusaders backend for user-defined actions on current/selected files in its panels
@@ -86,10 +86,10 @@ public:
   void setAvailability(const KURL& currentURL);
   
   /**
-   * Fills a KPopupMenu with all available UserActions in the list
+   * Fills a TDEPopupMenu with all available UserActions in the list
    * @param  popupmenu to populate
    */
-  void populateMenu(KPopupMenu* menu);
+  void populateMenu(TDEPopupMenu* menu);
 
    TQStringList allCategories();
    TQStringList allNames();

@@ -32,7 +32,7 @@
 #define DISPLAY(X)	(X.isLocalFile() ? X.path() : X.prettyURL())
 
 PanelTabBar::PanelTabBar(TQWidget *parent): TQTabBar(parent), _maxTabLength(0) {
-  _panelActionMenu = new KActionMenu( i18n("Panel"), TQT_TQOBJECT(this) );
+  _panelActionMenu = new TDEActionMenu( i18n("Panel"), TQT_TQOBJECT(this) );
 
   setAcceptDrops(true);  
   insertAction(krNewTab);
@@ -71,7 +71,7 @@ void PanelTabBar::mousePressEvent( TQMouseEvent* e ) {
   TQTabBar::mousePressEvent(e);
 }
 
-void PanelTabBar::insertAction( KAction* action ) {
+void PanelTabBar::insertAction( TDEAction* action ) {
   _panelActionMenu->insert( action );
 }
 

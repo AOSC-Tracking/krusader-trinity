@@ -37,7 +37,7 @@
 #include <klibloader.h>
 #include <kaction.h>
 
-class KrRemoteEncodingMenu: public KActionMenu
+class KrRemoteEncodingMenu: public TDEActionMenu
 {
   Q_OBJECT
   

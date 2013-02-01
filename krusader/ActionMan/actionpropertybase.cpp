@@ -241,7 +241,7 @@ ActionPropertyBase::ActionPropertyBase( TQWidget* parent, const char* name, WFla
 
     TabPageLayout->addWidget( ButtonRemoveProtocol, 2, 1 );
 
-    lbShowonlyProtocol = new KListBox( TabPage, "lbShowonlyProtocol" );
+    lbShowonlyProtocol = new TDEListBox( TabPage, "lbShowonlyProtocol" );
 
     TabPageLayout->addMultiCellWidget( lbShowonlyProtocol, 0, 3, 0, 0 );
     tabShowonly->insertTab( TabPage, TQString::fromLatin1("") );
@@ -249,7 +249,7 @@ ActionPropertyBase::ActionPropertyBase( TQWidget* parent, const char* name, WFla
     tab_3 = new TQWidget( tabShowonly, "tab_3" );
     tabLayout_3 = new TQGridLayout( tab_3, 1, 1, 11, 6, "tabLayout_3"); 
 
-    lbShowonlyPath = new KListBox( tab_3, "lbShowonlyPath" );
+    lbShowonlyPath = new TDEListBox( tab_3, "lbShowonlyPath" );
 
     tabLayout_3->addMultiCellWidget( lbShowonlyPath, 0, 3, 0, 0 );
 
@@ -280,7 +280,7 @@ ActionPropertyBase::ActionPropertyBase( TQWidget* parent, const char* name, WFla
     tab_4 = new TQWidget( tabShowonly, "tab_4" );
     tabLayout_4 = new TQGridLayout( tab_4, 1, 1, 11, 6, "tabLayout_4"); 
 
-    lbShowonlyMime = new KListBox( tab_4, "lbShowonlyMime" );
+    lbShowonlyMime = new TDEListBox( tab_4, "lbShowonlyMime" );
 
     tabLayout_4->addMultiCellWidget( lbShowonlyMime, 0, 3, 0, 0 );
 
@@ -311,7 +311,7 @@ ActionPropertyBase::ActionPropertyBase( TQWidget* parent, const char* name, WFla
     TabPage_2 = new TQWidget( tabShowonly, "TabPage_2" );
     TabPageLayout_2 = new TQGridLayout( TabPage_2, 1, 1, 11, 6, "TabPageLayout_2"); 
 
-    lbShowonlyFile = new KListBox( TabPage_2, "lbShowonlyFile" );
+    lbShowonlyFile = new TDEListBox( TabPage_2, "lbShowonlyFile" );
 
     TabPageLayout_2->addMultiCellWidget( lbShowonlyFile, 0, 3, 0, 0 );
 

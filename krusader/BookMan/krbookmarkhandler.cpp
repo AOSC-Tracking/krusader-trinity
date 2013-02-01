@@ -23,7 +23,7 @@
 											
 KrBookmarkHandler::KrBookmarkHandler(): TQObject(0), _middleClick(false), _mainBookmarkPopup( 0 ), _specialBookmarkIDs(), _bookmarkIDTable() {
 	// create our own action collection and make the shortcuts apply only to parent
-	_privateCollection = new KActionCollection(krApp, "private collection");
+	_privateCollection = new TDEActionCollection(krApp, "private collection");
 	_collection = krApp->actionCollection();
 
 	// create _root: father of all bookmarks. it is a dummy bookmark and never shown
@@ -271,7 +271,7 @@ SUCCESS:
 	file.close();
 }
 
-void KrBookmarkHandler::populate(KPopupMenu *menu) {
+void KrBookmarkHandler::populate(TDEPopupMenu *menu) {
 	_mainBookmarkPopup = menu;
 	menu->clear();
 	_bookmarkIDTable.clear();
@@ -279,14 +279,14 @@ void KrBookmarkHandler::populate(KPopupMenu *menu) {
 	buildMenu(_root, menu);
 }
 
-void KrBookmarkHandler::buildMenu(KrBookmark *parent, KPopupMenu *menu) {
+void KrBookmarkHandler::buildMenu(KrBookmark *parent, TDEPopupMenu *menu) {
 	static int inSecondaryMenu = 0; // used to know if we're on the top menu
 
 	// run the loop twice, in order to put the folders on top. stupid but easy :-)
 	// note: this code drops the separators put there by the user
 	for (KrBookmark *bm = parent->children().first(); bm; bm = parent->children().next()) {
 		if (!bm->isFolder()) continue;
-		KPopupMenu *newMenu = new KPopupMenu(menu);
+		TDEPopupMenu *newMenu = new TDEPopupMenu(menu);
 		int id = menu->insertItem(TQIconSet(krLoader->loadIcon(bm->icon(), KIcon::Small)),
 									bm->text(), newMenu, -1 /* dummy id */, -1 /* end of list */);
 		
@@ -327,7 +327,7 @@ void KrBookmarkHandler::buildMenu(KrBookmark *parent, KPopupMenu *menu) {
 			menu->insertSeparator();
 			
 			// add the popular links submenu
-			KPopupMenu *newMenu = new KPopupMenu(menu);
+			TDEPopupMenu *newMenu = new TDEPopupMenu(menu);
 			itemIndex = menu->insertItem(TQIconSet(krLoader->loadIcon("bookmark_folder", KIcon::Small)),
 										i18n("Popular URLs"), newMenu, -1 /* dummy id */, -1 /* end of list */);
 			_specialBookmarkIDs.append( itemIndex );
@@ -565,7 +565,7 @@ void KrBookmarkHandler::rightClicked( TQPopupMenu *menu, int /*id*/, KrBookmark 
 
 // used to monitor middle clicks. if mid is found, then the
 // bookmark is opened in a new tab. ugly, but easier than overloading
-// KAction and KActionCollection.
+// TDEAction and TDEActionCollection.
 void KrBookmarkHandler::slotActivated(const KURL& url) {
 	if (_middleClick)
 		SLOTS->newTab(url);

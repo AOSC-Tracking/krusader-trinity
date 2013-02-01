@@ -38,7 +38,7 @@ void KrPopupMenu::run(const TQPoint &pos, ListPanel *panel) {
 	menu.performAction(result);
 }
 
-KrPopupMenu::KrPopupMenu(ListPanel *thePanel, TQWidget *parent) : KPopupMenu(parent), panel(thePanel), empty(false), 
+KrPopupMenu::KrPopupMenu(ListPanel *thePanel, TQWidget *parent) : TDEPopupMenu(parent), panel(thePanel), empty(false), 
 	multipleSelections(false),actions(0) {
 #ifdef __LIBKONTQ__
 	konqMenu = 0;
@@ -116,7 +116,7 @@ KrPopupMenu::KrPopupMenu(ListPanel *thePanel, TQWidget *parent) : KPopupMenu(par
    
 #ifdef __LIBKONTQ__
 	// -------------- konqueror menu
-   actions = new KActionCollection(this);
+   actions = new TDEActionCollection(this);
 	konqMenu = new KonqPopupMenu( KonqBookmarkManager::self(), _items, panel->func->files()->vfs_getOrigin(), *actions, 0, this, 
                            KonqPopupMenu::NoFlags, KParts::BrowserExtension::DefaultPopupItems );
    insertItem( TQPixmap(), konqMenu, KONTQ_MENU_ID );

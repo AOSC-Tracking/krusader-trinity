@@ -1345,7 +1345,7 @@ void KrBriefView::initProperties() {
 
 void KrBriefView::setColumnNr()
 {
-  KPopupMenu popup( this );
+  TDEPopupMenu popup( this );
   popup.insertTitle( i18n("Columns"));
   
   int COL_ID = 14700;

@@ -92,11 +92,11 @@ void DUFilelight::mousePressEvent( TQMouseEvent *event )
      if( focus && !focus->isFake() && focus->file() != currentDir )
        file = (File *)focus->file();
 
-     KPopupMenu filelightPopup;
+     TDEPopupMenu filelightPopup;
      filelightPopup.insertItem( i18n("Zoom In"),  this, TQT_SLOT( zoomIn() ), Key_Plus );
      filelightPopup.insertItem( i18n("Zoom Out"), this, TQT_SLOT( zoomOut() ), Key_Minus );
      
-     KPopupMenu schemePopup;           
+     TDEPopupMenu schemePopup;           
      schemePopup.insertItem( i18n("Rainbow"),       this, TQT_SLOT( schemeRainbow() ) );
      schemePopup.insertItem( i18n("High Contrast"), this, TQT_SLOT( schemeHighContrast() ) );
      schemePopup.insertItem( i18n("KDE"),           this, TQT_SLOT( schemeKDE() ) );

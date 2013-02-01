@@ -44,7 +44,7 @@ KCMDModeButton::KCMDModeButton( TQWidget *parent, const char *name ) : TQToolBut
 */
   setIconSet( SmallIcon( "konsole" ) );
   adjustSize();
-  action = new KActionMenu( i18n("Execution mode") );
+  action = new TDEActionMenu( i18n("Execution mode") );
   TQ_CHECK_PTR( action );
   for( int i=0; Krusader::execTypeArray[i] != 0; i++ )
   {

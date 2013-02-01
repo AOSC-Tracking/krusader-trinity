@@ -57,7 +57,7 @@ typedef TQDict<void> Properties;
 class DUListView;
 class DULines;
 class DUFilelight;
-class KPopupMenu;
+class TDEPopupMenu;
 class LoaderWidget;
 
 class DiskUsage : public TQWidgetStack
@@ -93,7 +93,7 @@ public:
   
   TQString    getToolTip( File * );
   
-  void       rightClickMenu( File *, KPopupMenu * = 0, TQString = TQString() );
+  void       rightClickMenu( File *, TDEPopupMenu * = 0, TQString = TQString() );
   
   void       changeDirectory( Directory *dir );
   

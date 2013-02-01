@@ -43,7 +43,7 @@
   in 
   <filename>
   ~/.trinity/share/apps/krusader/useraction-examples.xml</filename>.
-  UserActions can appear nearly everywhere where "normal" KActions
+  UserActions can appear nearly everywhere where "normal" TDEActions
   can be placed. The actions integrate seamlessly into
   &kde; action system, which means that the standard
   Edit Toolbar and Edit Shortcut dialogs will show UserActions,

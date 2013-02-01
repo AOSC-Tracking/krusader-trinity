@@ -22,8 +22,8 @@
 #include <tqvaluelist.h>
 
 class TQMouseEvent;
-class KAction;
-class KActionMenu;
+class TDEAction;
+class TDEActionMenu;
 class ListPanel;
 
 /**
@@ -81,7 +81,7 @@ signals:
 
 protected:
   void mousePressEvent( TQMouseEvent* );
-  void insertAction( KAction* );
+  void insertAction( TDEAction* );
   TQString squeeze(TQString text, int index=-1);
   virtual void dragEnterEvent(TQDragEnterEvent *);
   virtual void dragMoveEvent(TQDragMoveEvent *);
@@ -92,7 +92,7 @@ protected slots:
   void duplicateTab();
 
 private:
-  KActionMenu *_panelActionMenu;
+  TDEActionMenu *_panelActionMenu;
   bool _left;
   int _maxTabLength;
 };

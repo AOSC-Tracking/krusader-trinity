@@ -1684,7 +1684,7 @@ void SynchronizerGUI::rightMouseClicked(TQListViewItem *itemIn)
   KURL rightURL = vfs::fromPathOrURL( synchronizer.rightBaseDirectory() + rightDirName + item->rightName() );
 
   // create the menu
-  KPopupMenu popup;
+  TDEPopupMenu popup;
   popup.insertTitle(i18n("Synchronize Directories"));
 
   popup.insertItem(i18n("E&xclude"),EXCLUDE_ID);

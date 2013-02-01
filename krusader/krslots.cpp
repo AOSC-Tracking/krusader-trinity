@@ -219,7 +219,7 @@ void KRslots::rightclickMenu() {
     {
       ACTIVE_PANEL->popRightClickMenu(
        ACTIVE_PANEL->mapToGlobal(
-         dynamic_cast<KListView*>(ACTIVE_PANEL->view)->itemRect( currentItem ).topLeft()
+         dynamic_cast<TDEListView*>(ACTIVE_PANEL->view)->itemRect( currentItem ).topLeft()
        )
       );
     }

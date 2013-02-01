@@ -18,7 +18,7 @@ protected slots:
 	void populate();
 	
 private:
-	KActionMenu *acmBookmarks;
+	TDEActionMenu *acmBookmarks;
 };
 
 #endif // KRBOOKMARK_BUTTON_H

@@ -22,7 +22,7 @@ class TQDomDocument;
 /**
  * @author Jonas Bähr
  */
-class UserActionListView : public KListView {
+class UserActionListView : public TDEListView {
 public:
    UserActionListView( TQWidget* parent = 0, const char* name = 0 );
    ~UserActionListView();
@@ -58,7 +58,7 @@ protected:
 /**
  * @author Jonas Bähr
  */
-class UserActionListViewItem : public KListViewItem {
+class UserActionListViewItem : public TDEListViewItem {
 public:
    UserActionListViewItem( TQListView* view, KrAction* action );
    UserActionListViewItem( TQListViewItem* item, KrAction* action );

@@ -63,7 +63,7 @@ ActionProperty::ActionProperty( TQWidget *parent, const char *name, KrAction *ac
    connect( ButtonNewFile, TQT_SIGNAL( clicked() ), this, TQT_SLOT( newFile() ) );
    connect( ButtonEditFile, TQT_SIGNAL( clicked() ), this, TQT_SLOT( editFile() ) );
    connect( ButtonRemoveFile, TQT_SIGNAL( clicked() ), this, TQT_SLOT( removeFile() ) );
-   connect( KeyButtonShortcut, TQT_SIGNAL( capturedShortcut(const KShortcut&) ), this, TQT_SLOT( changedShortcut(const KShortcut&) ) );
+   connect( KeyButtonShortcut, TQT_SIGNAL( capturedShortcut(const TDEShortcut&) ), this, TQT_SLOT( changedShortcut(const TDEShortcut&) ) );
    // track modifications:
    connect( leDistinctName, TQT_SIGNAL( textChanged(const TQString&) ), TQT_SLOT( setModified() ) );
    connect( leTitle, TQT_SIGNAL( textChanged(const TQString&) ), TQT_SLOT( setModified() ) );
@@ -76,7 +76,7 @@ ActionProperty::ActionProperty( TQWidget *parent, const char *name, KrAction *ac
    connect( leStartpath, TQT_SIGNAL( textChanged(const TQString&) ), TQT_SLOT( setModified() ) );
    connect( bgExecType, TQT_SIGNAL( clicked(int) ), TQT_SLOT( setModified() ) );
    connect( bgAccept, TQT_SIGNAL( clicked(int) ), TQT_SLOT( setModified() ) );
-   connect( KeyButtonShortcut, TQT_SIGNAL( capturedShortcut(const KShortcut&) ), TQT_SLOT( setModified() ) );
+   connect( KeyButtonShortcut, TQT_SIGNAL( capturedShortcut(const TDEShortcut&) ), TQT_SLOT( setModified() ) );
    connect( leDifferentUser, TQT_SIGNAL( textChanged(const TQString&) ), TQT_SLOT( setModified() ) );
    connect( chkDifferentUser, TQT_SIGNAL( clicked() ), TQT_SLOT( setModified() ) );
    connect( chkConfirmExecution, TQT_SIGNAL( clicked() ), TQT_SLOT( setModified() ) );
@@ -86,7 +86,7 @@ ActionProperty::ActionProperty( TQWidget *parent, const char *name, KrAction *ac
 ActionProperty::~ActionProperty() {
 }
 
-void ActionProperty::changedShortcut( const KShortcut& shortcut ) {
+void ActionProperty::changedShortcut( const TDEShortcut& shortcut ) {
   KeyButtonShortcut->setShortcut( shortcut, false );
 }
 
@@ -104,7 +104,7 @@ void ActionProperty::clear() {
    textDescription->clear();
    leCommandline->clear();
    leStartpath->clear();
-   KeyButtonShortcut->setShortcut( KShortcut(), false );
+   KeyButtonShortcut->setShortcut( TDEShortcut(), false );
 
    lbShowonlyProtocol->clear();
    lbShowonlyPath->clear();
