@@ -203,7 +203,7 @@ int main(int argc, char *argv[]) {
 
       DCOPClient::mainClient()->send( TDEApplication::kApplication() ->name(), "Krusader-Interface",
                                     "moveToTop()", TQByteArray() );
-      KStartupInfo::appStarted();
+      TDEStartupInfo::appStarted();
 
       return 1;
     }
