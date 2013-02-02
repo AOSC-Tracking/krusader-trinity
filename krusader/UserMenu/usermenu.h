@@ -18,7 +18,7 @@ email                :
 #ifndef USERMENU_H
 #define USERMENU_H
 
-#include <kpopupmenu.h>
+#include <tdepopupmenu.h>
 
 class TQWidget;
 class UserMenu;

@@ -44,7 +44,7 @@
 #include <kurlrequester.h>
 #include <klocale.h>
 #include <tqgrid.h>
-#include <kpopupmenu.h>
+#include <tdepopupmenu.h>
 #include <tqcursor.h>
 #include <time.h>
 #include <kmessagebox.h>

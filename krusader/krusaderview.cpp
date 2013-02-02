@@ -32,7 +32,7 @@
 #include <tqwhatsthis.h> 
 #include <kstatusbar.h>
 #include <kmenubar.h>
-#include <kshortcut.h>
+#include <tdeshortcut.h>
 // Krusader includes
 #include "krusaderview.h"
 #include "krusader.h"

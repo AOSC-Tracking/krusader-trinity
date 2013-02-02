@@ -22,7 +22,7 @@
 #include <tqcheckbox.h>
 #include <tqfile.h>
 #include <tqlabel.h>
-#include <kaction.h>
+#include <tdeaction.h>
 #include <kurl.h>
 #include <kmessagebox.h>
 #include <tdefiledialog.h>

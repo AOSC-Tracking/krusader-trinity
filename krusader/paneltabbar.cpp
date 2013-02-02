@@ -20,9 +20,9 @@
 #include "krusaderview.h"
 #include "krslots.h"
 #include "defaults.h"
-#include <kaction.h>
+#include <tdeaction.h>
 #include <klocale.h>
-#include <kshortcut.h>
+#include <tdeshortcut.h>
 #include <tqevent.h>
 #include <tqwidgetstack.h>
 #include <tqfontmetrics.h>

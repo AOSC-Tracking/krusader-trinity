@@ -12,7 +12,7 @@
 
 #include <kdebug.h>
 #include <kurl.h>
-#include <kpopupmenu.h>
+#include <tdepopupmenu.h>
 #include <kstandarddirs.h>
 #include <kmessagebox.h>
 

@@ -396,7 +396,7 @@ since the Entity Backspace is not defined in
 <!ENTITY debian_qt_a_url '<ulink url="http://www.krusader.org/phpBB/viewtopic.php?t=710"
 >in our forum</ulink
 >'>
-<!ENTITY debian_qt_b_url '<ulink url="http://opendoorsoftware.com/cgi/http.pl?p=DebianQTChecklist"
+<!ENTITY debian_qt_b_url '<ulink url="http://opendoorsoftware.com/cgi/http.pl?p=DebianQTChectdelist"
 >instructions</ulink
 >'>
 <!ENTITY freenode_url '<ulink url="http://freenode.net"

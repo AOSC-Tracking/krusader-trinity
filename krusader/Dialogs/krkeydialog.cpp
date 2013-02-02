@@ -20,7 +20,7 @@
 #include <kglobal.h>
 #include <kstandarddirs.h>
 #include <tdeconfig.h>
-#include <kactionshortcutlist.h>
+#include <tdeactionshortcutlist.h>
 #include <kdebug.h>
 
 #include "../krusader.h"

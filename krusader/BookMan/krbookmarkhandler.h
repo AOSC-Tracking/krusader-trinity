@@ -4,7 +4,7 @@
 #include "krbookmark.h"
 #include <tqobject.h>
 #include <tqguardedptr.h>
-#include <kpopupmenu.h>
+#include <tdepopupmenu.h>
 #include <kurl.h>
 #include <tqptrdict.h>
 #include <tqvaluelist.h>

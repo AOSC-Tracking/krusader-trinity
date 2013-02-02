@@ -69,8 +69,8 @@ public:
 };
 
 // operator can handle two ways of doing things:
-// 1. if the view is a widget (inherits krview and klistview for example)
-// 2. if the view HAS A widget (a krview-son has a member of klistview)
+// 1. if the view is a widget (inherits krview and tdelistview for example)
+// 2. if the view HAS A widget (a krview-son has a member of tdelistview)
 // this is done by specifying the view and the widget in the constructor,
 // even if they are actually the same object (specify it twice in that case)
 class KrViewOperator: public TQObject {

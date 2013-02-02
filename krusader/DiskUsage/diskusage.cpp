@@ -31,7 +31,7 @@
 #include <time.h>
 #include <tqlayout.h>
 #include <klocale.h>
-#include <kpopupmenu.h>
+#include <tdepopupmenu.h>
 #include <kmimetype.h>
 #include <kmessagebox.h>
 #include <kglobalsettings.h>

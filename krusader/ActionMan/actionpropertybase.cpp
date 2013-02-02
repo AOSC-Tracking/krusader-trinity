@@ -25,7 +25,7 @@
 #include <kkeybutton.h>
 #include <tqcheckbox.h>
 #include <tqgroupbox.h>
-#include <klistbox.h>
+#include <tdelistbox.h>
 #include <tqlayout.h>
 #include <tqtooltip.h>
 #include <tqwhatsthis.h>
@@ -34,7 +34,7 @@
 #include "kicondialog.h"
 #include "ktextedit.h"
 #include "kkeybutton.h"
-#include "klistbox.h"
+#include "tdelistbox.h"
 
 /*
  *  Constructs a ActionPropertyBase as a child of 'parent', with the

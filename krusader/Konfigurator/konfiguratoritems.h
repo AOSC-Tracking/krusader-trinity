@@ -44,7 +44,7 @@
 #include <tqlineedit.h>
 #include <kurlrequester.h>
 #include <tqhbox.h>
-#include <kfontdialog.h>
+#include <tdefontdialog.h>
 #include <tqlabel.h>
 #include <tqfont.h>
 #include <tqtoolbutton.h>

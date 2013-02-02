@@ -5,7 +5,7 @@
 #include <tqlabel.h>
 #include <tqcheckbox.h>
 #include <klineedit.h>
-#include <klistview.h>
+#include <tdelistview.h>
 #include <tqpixmap.h>
 #include <kcursor.h>
 #include <kmessagebox.h>

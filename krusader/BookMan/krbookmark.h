@@ -1,7 +1,7 @@
 #ifndef KRBOOKMARK_H
 #define KRBOOKMARK_H
 
-#include <kaction.h>
+#include <tdeaction.h>
 #include <tqptrlist.h>
 #include <kurl.h>
 

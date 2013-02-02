@@ -39,7 +39,7 @@
 #include <tqfontmetrics.h>
 #include <tqtimer.h>
 #include <tqtooltip.h>
-#include <kpopupmenu.h>
+#include <tdepopupmenu.h>
 
 class DULinesItem : public TQListViewItem
 {

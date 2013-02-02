@@ -3,9 +3,9 @@
 #include "../krusader.h"
 #include <tqpixmap.h>
 #include <kiconloader.h>
-#include <kaction.h>
+#include <tdeaction.h>
 #include <klocale.h>
-#include <kpopupmenu.h>
+#include <tdepopupmenu.h>
 #include <kdebug.h>
 
 KrBookmarkButton::KrBookmarkButton(TQWidget *parent): TQToolButton(parent) {

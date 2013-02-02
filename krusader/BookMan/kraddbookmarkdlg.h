@@ -7,7 +7,7 @@
 #include <kurl.h>
 #include <klineedit.h>
 #include <tqmap.h>
-#include <klistview.h>
+#include <tdelistview.h>
 #include <tqtoolbutton.h>
 
 class KrAddBookmarkDlg: public KDialogBase {

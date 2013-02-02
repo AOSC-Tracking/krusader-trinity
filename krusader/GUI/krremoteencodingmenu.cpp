@@ -29,7 +29,7 @@
  *                                                                         *
  ***************************************************************************/
 
-#include <kpopupmenu.h>
+#include <tdepopupmenu.h>
 #include <kcharsets.h>
 #include <tdeio/slaveconfig.h>
 #include <dcopclient.h>

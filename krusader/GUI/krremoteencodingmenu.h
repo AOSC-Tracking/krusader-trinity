@@ -35,7 +35,7 @@
 #include <tqstringlist.h>
 #include <kurl.h>
 #include <klibloader.h>
-#include <kaction.h>
+#include <tdeaction.h>
 
 class KrRemoteEncodingMenu: public TDEActionMenu
 {

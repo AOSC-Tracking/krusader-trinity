@@ -13,7 +13,7 @@
 #ifndef KRACTION_H
 #define KRACTION_H
 
-#include <kaction.h>
+#include <tdeaction.h>
 #include <kprocess.h>
 #include <kdialogbase.h>
 #include "kractionbase.h"

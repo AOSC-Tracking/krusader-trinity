@@ -1,13 +1,13 @@
 #include <kmessagebox.h>
 #include <klocale.h>
 #include <tqpushbutton.h>
-#include <klistview.h>
+#include <tdelistview.h>
 #include <kiconloader.h>
-#include <klistviewsearchline.h>
+#include <tdelistviewsearchline.h>
 #include <tqheader.h>
 #include <tqlayout.h>
 #include <tqlabel.h>
-#include <ktoolbarbutton.h>
+#include <tdetoolbarbutton.h>
 #include "../krusader.h"
 #include "../krslots.h"
 #include "popularurls.h"

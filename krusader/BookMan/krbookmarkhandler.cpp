@@ -7,7 +7,7 @@
 #include <kiconloader.h>
 #include <kmessagebox.h>
 #include <tqptrlist.h>
-#include <kactioncollection.h>
+#include <tdeactioncollection.h>
 #include <klocale.h>
 #include <kdebug.h>
 #include <kbookmarkmanager.h>

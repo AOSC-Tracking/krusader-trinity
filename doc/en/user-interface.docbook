@@ -281,7 +281,7 @@
       </listitem>
       <listitem>
         <para>&popup-panel-lnk;: has several display
-        modes: Preview, Tree, Quickselect, View and Disk Usage for
+        modes: Preview, Tree, Quictdeselect, View and Disk Usage for
         the file or directory that has the focus. The PopUp Panel
         may be left open or closed, as desired.</para>
       </listitem>
@@ -520,7 +520,7 @@
         <listitem>
           <para>
           <emphasis>
-            <guilabel>Quickselect Panel</guilabel>
+            <guilabel>Quictdeselect Panel</guilabel>
           </emphasis>: is used to quickly select files,
           &eg; 
           <literal role="extension">*.png</literal>and click on the

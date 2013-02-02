@@ -33,7 +33,7 @@
 
 #include <kdialogbase.h>
 #include <kcombobox.h>
-#include <klistview.h>
+#include <tdelistview.h>
 #include <kprocess.h>
 #include <tqcheckbox.h>
 

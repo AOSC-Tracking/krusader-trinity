@@ -34,7 +34,7 @@
 #include "krviewitem.h"
 #include <sys/types.h>
 #include "../VFS/vfile.h"
-#include <klistview.h>
+#include <tdelistview.h>
 #include <tqguardedptr.h>
 
 #define FASTER

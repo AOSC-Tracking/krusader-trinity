@@ -1,7 +1,7 @@
 #include "krbookmark.h"
 #include "../krusader.h"
 #include "../VFS/krarchandler.h"
-#include <kactioncollection.h>
+#include <tdeactioncollection.h>
 #include <kiconloader.h>
 #include <klocale.h>
 #include <kdebug.h>

@@ -1,7 +1,7 @@
 #ifndef KRPOPUPMENU_H
 #define KRPOPUPMENU_H
 
-#include <kpopupmenu.h>
+#include <tdepopupmenu.h>
 #include <kurl.h>
 #include <kuserprofile.h>
 #include "listpanel.h"

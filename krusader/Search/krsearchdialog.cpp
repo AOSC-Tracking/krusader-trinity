@@ -45,7 +45,7 @@
 #include <tqregexp.h>
 #include <tqfontmetrics.h>
 #include <kmessagebox.h>
-#include <kpopupmenu.h>
+#include <tdepopupmenu.h>
 #include <tqcursor.h>
 #include <tqclipboard.h>
 #include <tqheader.h>

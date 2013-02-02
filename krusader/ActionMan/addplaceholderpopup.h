@@ -13,7 +13,7 @@
 #ifndef ADDPLACEHOLDERPOPUP_H
 #define ADDPLACEHOLDERPOPUP_H
 
-#include <kpopupmenu.h>
+#include <tdepopupmenu.h>
 #include <kdialogbase.h>
 #include "../UserAction/expander.h"
 

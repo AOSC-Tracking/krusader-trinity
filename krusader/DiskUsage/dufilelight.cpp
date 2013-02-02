@@ -30,7 +30,7 @@
 
 #include "dufilelight.h"
 #include "radialMap/radialMap.h"
-#include <kpopupmenu.h>
+#include <tdepopupmenu.h>
 #include <klocale.h>
 #include <kinputdialog.h>
 

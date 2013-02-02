@@ -34,7 +34,7 @@
 #include <tqcursor.h>
 #include <tqlayout.h>
 #include <tdefiledialog.h>
-#include <kpopupmenu.h>
+#include <tdepopupmenu.h>
 #include <kiconloader.h>
 #include <klocale.h>
 #include <kmessagebox.h>

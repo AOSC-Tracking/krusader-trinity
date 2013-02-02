@@ -30,7 +30,7 @@ A
 #ifndef KRDETAILEDVIEW_H
 #define KRDETAILEDVIEW_H
 
-#include <klistview.h>
+#include <tdelistview.h>
 #include <ksqueezedtextlabel.h>
 #include <klocale.h>
 #include <tqwidget.h>

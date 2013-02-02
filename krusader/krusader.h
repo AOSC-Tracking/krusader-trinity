@@ -41,9 +41,9 @@
 #include <kapplication.h>
 #include <tdeparts/mainwindow.h>
 #include <kstdaction.h>
-#include <kaction.h>
+#include <tdeaction.h>
 #include <tdeconfig.h>
-#include <kaccel.h>
+#include <tdeaccel.h>
 #include <tqstringlist.h>
 #include <tqtextstream.h>
 #include <kdebug.h>

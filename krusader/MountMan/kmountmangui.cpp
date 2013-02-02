@@ -39,7 +39,7 @@ A
 #include "../VFS/vfs.h"
 #include <klocale.h>
 #include <tqpixmap.h>
-#include <kpopupmenu.h>
+#include <tdepopupmenu.h>
 #include <tqbitmap.h>
 #include <kmessagebox.h>
 #include <tqlayout.h>

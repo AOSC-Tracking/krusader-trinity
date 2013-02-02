@@ -36,7 +36,7 @@ YP   YD 88   YD ~Y8888P' `8888Y' YP   YP Y8888D' Y88888P 88   YD
 #endif
 // KDE includes
 #include <kmessagebox.h>
-#include <kaction.h>
+#include <tdeaction.h>
 #include <kcursor.h>
 #include <ksystemtray.h>
 #include <kmenubar.h>
@@ -44,11 +44,11 @@ YP   YD 88   YD ~Y8888P' `8888Y' YP   YP Y8888D' Y88888P 88   YD
 #include <kcmdlineargs.h>
 #include <kglobal.h>
 #include <klocale.h>
-#include <kaccelmanager.h>
+#include <tdeaccelmanager.h>
 #include <twin.h>
 
 #if KDE_IS_VERSION(3,2,0)
-#include <kactionclasses.h>
+#include <tdeactionclasses.h>
 #endif
 
 #include <tdeversion.h> 

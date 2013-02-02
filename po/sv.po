@@ -5615,19 +5615,19 @@ msgstr "Definierade länkar"
 
 #: Konfigurator/kgprotocols.cpp:85
 msgid "Add protocol to the link list."
-msgstr "Lägg till protokoll till länklistan."
+msgstr "Lägg till protokoll till läntdelistan."
 
 #: Konfigurator/kgprotocols.cpp:88
 msgid "Remove protocol from the link list."
-msgstr "Tag bort protokoll från länklistan."
+msgstr "Tag bort protokoll från läntdelistan."
 
 #: Konfigurator/kgprotocols.cpp:98
 msgid "Add mime to the selected protocol on the link list."
-msgstr "Lägg till mime till det valda protokollet i länklistan."
+msgstr "Lägg till mime till det valda protokollet i läntdelistan."
 
 #: Konfigurator/kgprotocols.cpp:101
 msgid "Remove mime from the link list."
-msgstr "Tag bort mime från länklistan."
+msgstr "Tag bort mime från läntdelistan."
 
 #: Konfigurator/kgprotocols.cpp:119
 msgid "Mimes"

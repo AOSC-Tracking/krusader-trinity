@@ -47,7 +47,7 @@
 #include <kstandarddirs.h>
 #include <tdeversion.h>
 #include <tqcheckbox.h>
-#include <krecentdocument.h>
+#include <tderecentdocument.h>
 #include <tqhbox.h>
 // Krusader includes
 #include "../krusader.h"

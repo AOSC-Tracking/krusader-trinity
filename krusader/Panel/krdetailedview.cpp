@@ -51,7 +51,7 @@ YP   YD 88   YD ~Y8888P' `8888Y' YP   YP Y8888D' Y88888P 88   YD
 #include <kinputdialog.h>
 #include <kmessagebox.h>
 #include <klocale.h>
-#include <kpopupmenu.h>
+#include <tdepopupmenu.h>
 #include <tqdict.h>
 
 //////////////////////////////////////////////////////////////////////////
@@ -1390,7 +1390,7 @@ void KrDetailedView::makeItemVisible( const KrViewItem *item ) {
 
 void KrDetailedView::initOperator() {
 	_operator = new KrViewOperator(this, this);
-	// klistview emits selection changed, so chain them to operator
+	// tdelistview emits selection changed, so chain them to operator
 	connect(this, TQT_SIGNAL(selectionChanged()), _operator, TQT_SIGNAL(selectionChanged()));
 }
 

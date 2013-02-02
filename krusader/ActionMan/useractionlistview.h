@@ -12,7 +12,7 @@
 #ifndef USERACTIONLISTVIEW_H
 #define USERACTIONLISTVIEW_H
 
-#include <klistview.h>
+#include <tdelistview.h>
 
 class KrAction;
 class TQString;

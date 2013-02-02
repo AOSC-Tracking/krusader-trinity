@@ -13,7 +13,7 @@
 #ifndef USERACTIONPOPUPMENU_H
 #define USERACTIONPOPUPMENU_H
 
-#include <kpopupmenu.h>
+#include <tdepopupmenu.h>
 
 class KURL;
 

@@ -25,10 +25,10 @@
 #include "../krusader.h"
 #include "../krusaderview.h"
 
-#include <kactionclasses.h>
+#include <tdeactionclasses.h>
 #include <klocale.h>
 #include <kiconloader.h>
-#include <kpopupmenu.h>
+#include <tdepopupmenu.h>
 
 #include <kdebug.h>
 

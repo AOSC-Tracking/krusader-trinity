@@ -11,7 +11,7 @@
 #include <tdeio/job.h>     //::mousePressEvent()
 #include <klocale.h>
 #include <kmessagebox.h> //::mousePressEvent()
-#include <kpopupmenu.h>  //::mousePressEvent()
+#include <tdepopupmenu.h>  //::mousePressEvent()
 #include <krun.h>        //::mousePressEvent()
 #include <math.h>        //::segmentAt()
 #include <tqapplication.h>//TQApplication::setOverrideCursor()

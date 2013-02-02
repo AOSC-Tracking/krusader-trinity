@@ -33,7 +33,7 @@
 
 #include <klocale.h>
 #include <tqtooltip.h>
-#include <kpopupmenu.h>
+#include <tdepopupmenu.h>
 #include <tqcursor.h>
 #include <kinputdialog.h>
 #include <kiconloader.h>
