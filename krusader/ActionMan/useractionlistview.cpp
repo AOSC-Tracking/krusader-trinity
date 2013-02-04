@@ -214,7 +214,7 @@ void UserActionListViewItem::update() {
       return;
 
    if ( ! _action->icon().isEmpty() )
-      setPixmap( COL_TITLE, TDEGlobal::iconLoader()->loadIcon( _action->icon(), KIcon::Small ) );
+      setPixmap( COL_TITLE, TDEGlobal::iconLoader()->loadIcon( _action->icon(), TDEIcon::Small ) );
    setText( COL_TITLE, _action->text() );
    setText( COL_NAME, _action->name() );
 }

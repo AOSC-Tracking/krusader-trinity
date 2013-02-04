@@ -43,9 +43,9 @@
 
 KURLListRequester::KURLListRequester( TQWidget *parent, const char * name ) : TQWidget( parent, name )
 {
-  KIconLoader *iconLoader = new KIconLoader();
-  TQPixmap imageAdd = iconLoader->loadIcon( "1downarrow", KIcon::Panel, 16 );
-  TQPixmap imageFolder = iconLoader->loadIcon( "folder", KIcon::Panel, 16 );
+  TDEIconLoader *iconLoader = new TDEIconLoader();
+  TQPixmap imageAdd = iconLoader->loadIcon( "1downarrow", TDEIcon::Panel, 16 );
+  TQPixmap imageFolder = iconLoader->loadIcon( "folder", TDEIcon::Panel, 16 );
     
   // Creating the widget
   

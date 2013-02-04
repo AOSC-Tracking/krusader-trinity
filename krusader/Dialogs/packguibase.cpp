@@ -113,7 +113,7 @@ PackGUIBase::PackGUIBase( TQWidget* parent,  const char* name, bool modal, WFlag
     hbox_3->setMargin( 0 );
 
     PixmapLabel1 = new TQLabel( this, "PixmapLabel1" );
-    PixmapLabel1->setPixmap( krLoader->loadIcon("package", KIcon::Desktop, 32) );
+    PixmapLabel1->setPixmap( krLoader->loadIcon("package", TDEIcon::Desktop, 32) );
     PixmapLabel1->setScaledContents( TRUE );
     PixmapLabel1->setSizePolicy( TQSizePolicy( (TQSizePolicy::SizeType)0, (TQSizePolicy::SizeType)0 ) );
     hbox_3->addWidget( PixmapLabel1 );

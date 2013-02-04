@@ -56,32 +56,32 @@ DiskUsageGUI::DiskUsageGUI( KURL openDir, TQWidget* parent, const char *name )
   duTools->setSizePolicy( TQSizePolicy::Fixed, TQSizePolicy::Fixed );
     
   btnNewSearch = new TQToolButton( duTools, "btnNewSearch" );
-  btnNewSearch->setIconSet( TQIconSet(krLoader->loadIcon("fileopen",KIcon::Desktop)) );
+  btnNewSearch->setIconSet( TQIconSet(krLoader->loadIcon("fileopen",TDEIcon::Desktop)) );
   TQToolTip::add( btnNewSearch, i18n( "Start new disk usage search" ) );
   
   btnRefresh = new TQToolButton( duTools, "btnRefresh" );
-  btnRefresh->setIconSet( TQIconSet(krLoader->loadIcon("reload",KIcon::Desktop)) );
+  btnRefresh->setIconSet( TQIconSet(krLoader->loadIcon("reload",TDEIcon::Desktop)) );
   TQToolTip::add( btnRefresh, i18n( "Refresh" ) );
 
   btnDirUp = new TQToolButton( duTools, "btnDirUp" );
-  btnDirUp->setIconSet( TQIconSet(krLoader->loadIcon("up",KIcon::Desktop)) );
+  btnDirUp->setIconSet( TQIconSet(krLoader->loadIcon("up",TDEIcon::Desktop)) );
   TQToolTip::add( btnDirUp, i18n( "Parent directory" ) );
   
   TQWidget * separatorWidget = new TQWidget( duTools, "separatorWidget" );
   separatorWidget->setMinimumWidth( 10 );
   
   btnLines = new TQToolButton( duTools, "btnLines" );
-  btnLines->setIconSet( TQIconSet(krLoader->loadIcon("leftjust",KIcon::Desktop)) );
+  btnLines->setIconSet( TQIconSet(krLoader->loadIcon("leftjust",TDEIcon::Desktop)) );
   btnLines->setToggleButton( true );
   TQToolTip::add( btnLines, i18n( "Line view" ) );
 
   btnDetailed = new TQToolButton( duTools, "btnDetailed" );
-  btnDetailed->setIconSet( TQIconSet(krLoader->loadIcon("view_detailed",KIcon::Desktop)) );
+  btnDetailed->setIconSet( TQIconSet(krLoader->loadIcon("view_detailed",TDEIcon::Desktop)) );
   btnDetailed->setToggleButton( true );
   TQToolTip::add( btnDetailed, i18n( "Detailed view" ) );
 
   btnFilelight = new TQToolButton( duTools, "btnFilelight" );
-  btnFilelight->setIconSet( TQIconSet(krLoader->loadIcon("kr_diskusage",KIcon::Desktop)) );
+  btnFilelight->setIconSet( TQIconSet(krLoader->loadIcon("kr_diskusage",TDEIcon::Desktop)) );
   btnFilelight->setToggleButton( true );
   TQToolTip::add( btnFilelight, i18n( "Filelight view" ) );
     

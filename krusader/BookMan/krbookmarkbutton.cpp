@@ -9,7 +9,7 @@
 #include <kdebug.h>
 
 KrBookmarkButton::KrBookmarkButton(TQWidget *parent): TQToolButton(parent) {
-	TQPixmap icon = krLoader->loadIcon("bookmark", KIcon::Toolbar, 16);
+	TQPixmap icon = krLoader->loadIcon("bookmark", TDEIcon::Toolbar, 16);
 	setFixedSize(icon.width() + 4, icon.height() + 4);
 	setPixmap(icon);
 	setTextLabel(i18n("BookMan II"), true);

@@ -27,8 +27,8 @@
 #include <kdebug.h>
 
 DirHistoryButton::DirHistoryButton( DirHistoryQueue* hQ, TQWidget *parent, const char *name ) : TQToolButton( parent, name ) {
-	KIconLoader * iconLoader = new KIconLoader();
-	TQPixmap icon = iconLoader->loadIcon( "history", KIcon::Toolbar, 16 );
+	TDEIconLoader * iconLoader = new TDEIconLoader();
+	TQPixmap icon = iconLoader->loadIcon( "history", TDEIcon::Toolbar, 16 );
 
 	setFixedSize( icon.width() + 4, icon.height() + 4 );
 	setPixmap( icon );

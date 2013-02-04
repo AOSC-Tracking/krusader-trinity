@@ -345,8 +345,8 @@ ParameterFile::ParameterFile( const exp_parameter& parameter, TQWidget* parent )
    hbox->setSpacing( 6 );
    _lineEdit = new KLineEdit( hbox );
    _button = new TQToolButton( hbox);
-   KIconLoader *iconLoader = new KIconLoader();
-  _button->setPixmap( iconLoader->loadIcon( "fileopen", KIcon::Toolbar, 16 ) );
+   TDEIconLoader *iconLoader = new TDEIconLoader();
+  _button->setPixmap( iconLoader->loadIcon( "fileopen", TDEIcon::Toolbar, 16 ) );
    connect( _button, TQT_SIGNAL(clicked()), this, TQT_SLOT(addFile()) );
 }
 
@@ -438,8 +438,8 @@ ParameterGoto::ParameterGoto( const exp_parameter& parameter, TQWidget* parent )
    _lineEdit = new KLineEdit( hbox );
    _lineEdit->setCompletionObject( new KURLCompletion( KURLCompletion::DirCompletion ) );
    _dirButton = new TQToolButton( hbox );
-   KIconLoader *iconLoader = new KIconLoader();
-  _dirButton->setPixmap( iconLoader->loadIcon( "fileopen", KIcon::Toolbar, 16 ) );
+   TDEIconLoader *iconLoader = new TDEIconLoader();
+  _dirButton->setPixmap( iconLoader->loadIcon( "fileopen", TDEIcon::Toolbar, 16 ) );
    connect( _dirButton, TQT_SIGNAL(clicked()), this, TQT_SLOT(setDir()) );
    _placeholderButton = new TQToolButton( hbox);
    _placeholderButton->setText( i18n("add") );

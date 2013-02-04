@@ -81,10 +81,10 @@ KgProtocols::KgProtocols( bool first, TQWidget* parent,  const char* name ) :
   
   addSpacer( vbox1 );
   btnAddProtocol = new TQPushButton( vbox1, "btnAddProtocolButton" );
-  btnAddProtocol->setPixmap( krLoader->loadIcon( "1leftarrow", KIcon::Small ) );
+  btnAddProtocol->setPixmap( krLoader->loadIcon( "1leftarrow", TDEIcon::Small ) );
   TQWhatsThis::add( btnAddProtocol, i18n( "Add protocol to the link list." ) );
   btnRemoveProtocol = new TQPushButton( vbox1, "btnRemoveProtocolButton" );
-  btnRemoveProtocol->setPixmap( krLoader->loadIcon( "1rightarrow", KIcon::Small ) );
+  btnRemoveProtocol->setPixmap( krLoader->loadIcon( "1rightarrow", TDEIcon::Small ) );
   TQWhatsThis::add( btnRemoveProtocol, i18n( "Remove protocol from the link list." ) );
   addSpacer( vbox1 );
   
@@ -94,10 +94,10 @@ KgProtocols::KgProtocols( bool first, TQWidget* parent,  const char* name ) :
   
   addSpacer( vbox2 );
   btnAddMime = new TQPushButton( vbox2, "btnAddMimeButton" );
-  btnAddMime->setPixmap( krLoader->loadIcon( "1leftarrow", KIcon::Small ) );
+  btnAddMime->setPixmap( krLoader->loadIcon( "1leftarrow", TDEIcon::Small ) );
   TQWhatsThis::add( btnAddMime, i18n( "Add mime to the selected protocol on the link list." ) );
   btnRemoveMime = new TQPushButton( vbox2, "btnRemoveMimeButton" );
-  btnRemoveMime->setPixmap( krLoader->loadIcon( "1rightarrow", KIcon::Small ) );
+  btnRemoveMime->setPixmap( krLoader->loadIcon( "1rightarrow", TDEIcon::Small ) );
   TQWhatsThis::add( btnRemoveMime, i18n( "Remove mime from the link list." ) );
   addSpacer( vbox2 );
   
@@ -209,7 +209,7 @@ void KgProtocols::addProtocol( TQString name, bool changeCurrent )
   {
     protocolList->removeItem( protocolList->index( item ) );
     TQListViewItem *listViewItem = new TQListViewItem( linkList, name );
-    listViewItem->setPixmap( 0, krLoader->loadIcon( "exec", KIcon::Small ) );
+    listViewItem->setPixmap( 0, krLoader->loadIcon( "exec", TDEIcon::Small ) );
     
     if( changeCurrent )
       linkList->setCurrentItem( listViewItem );
@@ -265,7 +265,7 @@ void KgProtocols::addMime( TQString name, TQString protocol )
   {
     mimeList->removeItem( mimeList->index( item ) );
     TQListViewItem *listViewItem = new TQListViewItem( currentListItem, name );
-    listViewItem->setPixmap( 0, krLoader->loadIcon( "mime", KIcon::Small ) );
+    listViewItem->setPixmap( 0, krLoader->loadIcon( "mime", TDEIcon::Small ) );
     currentListItem->setOpen( true );
   }
 }

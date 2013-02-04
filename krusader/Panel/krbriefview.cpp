@@ -80,7 +80,7 @@ void KrBriefViewToolTip::maybeTip( const TQPoint &pos )
 
 
 KrBriefView::KrBriefView( TQHeader * headerIn, TQWidget *parent, bool &left, TDEConfig *cfg, const char *name ):
-	KIconView(parent, name), KrView( cfg ), header( headerIn ), _currDragItem( 0 ),
+	TDEIconView(parent, name), KrView( cfg ), header( headerIn ), _currDragItem( 0 ),
             currentlyRenamedItem( 0 ), pressedItem( 0 ), mouseEvent( 0 ) {
 	setWidget( this );
 	_nameInTDEConfig = TQString( "KrBriefView" ) + TQString( ( left ? "Left" : "Right" ) );
@@ -175,7 +175,7 @@ void KrBriefView::resizeEvent ( TQResizeEvent * resEvent )
    if( currentItem() )
      visible = viewportRect.contains( currentItem()->rect() );
 
-   KIconView::resizeEvent( resEvent );
+   TDEIconView::resizeEvent( resEvent );
    redrawColumns();
 
    if( visible && currentItem() )
@@ -300,7 +300,7 @@ void KrBriefView::addItems( vfs *v, bool addUpDir ) {
 
    if ( !currentItem )
       currentItem = firstItem();
-   KIconView::setCurrentItem( currentItem );
+   TDEIconView::setCurrentItem( currentItem );
    ensureItemVisible( currentItem );
 
    op()->emitItemDescription( statusText );
@@ -322,7 +322,7 @@ TQString KrBriefView::getCurrentItem() const {
 void KrBriefView::setCurrentItem( const TQString& name ) {
    KrBriefViewItem * it = dynamic_cast<KrBriefViewItem*>(_dict[ name ]);
    if ( it )
-      KIconView::setCurrentItem( it );
+      TDEIconView::setCurrentItem( it );
 }
 
 void KrBriefView::clear() {
@@ -332,7 +332,7 @@ void KrBriefView::clear() {
    }
 
    op()->emitSelectionChanged(); /* to avoid rename crash at refresh */
-   KIconView::clear();
+   TDEIconView::clear();
    KrView::clear();
 }
 
@@ -405,7 +405,7 @@ void KrBriefView::handleQuickSearchEvent( TQKeyEvent * e ) {
          case Key_Insert:
          {
             TQKeyEvent ev = TQKeyEvent( TQKeyEvent::KeyPress, Key_Space, 0, 0 );
-            KIconView::keyPressEvent( & ev );
+            TDEIconView::keyPressEvent( & ev );
             ev = TQKeyEvent( TQKeyEvent::KeyPress, Key_Down, 0, 0 );
             keyPressEvent( & ev );
             break;
@@ -594,7 +594,7 @@ void KrBriefView::contentsMousePressEvent( TQMouseEvent * e ) {
      if( newCurrent )                 // save the name of the file
        name = static_cast<KrBriefViewItem*>( newCurrent ) ->name();
 
-     KIconView::contentsMousePressEvent( e );
+     TDEIconView::contentsMousePressEvent( e );
 
      if( name.isEmpty() || _dict.find( name ) == 0 ) // is the file still valid?
        newCurrent = 0;                // if not, don't do any crash...
@@ -634,7 +634,7 @@ void KrBriefView::contentsMouseReleaseEvent( TQMouseEvent * e ) {
   
   e = transformMouseEvent( e );
   
-  KIconView::contentsMouseReleaseEvent( e );
+  TDEIconView::contentsMouseReleaseEvent( e );
    
   if( pressedItem ) {
     TQPoint vp = contentsToViewport( e->pos() );
@@ -708,13 +708,13 @@ void KrBriefView::contentsMouseMoveEvent ( TQMouseEvent * e ) {
            emit onViewport();
       }
       else
-         KIconView::contentsMouseMoveEvent( e );
+         TDEIconView::contentsMouseMoveEvent( e );
 }
 
 void KrBriefView::contentsMouseDoubleClickEvent ( TQMouseEvent * e )
 {
    e = transformMouseEvent ( e );
-   KIconView::contentsMouseDoubleClickEvent( e );
+   TDEIconView::contentsMouseDoubleClickEvent( e );
 }
 
 void KrBriefView::handleContextMenu( TQIconViewItem * it, const TQPoint & pos ) {
@@ -743,7 +743,7 @@ void KrBriefView::showContextMenu()
 }
 
 KrViewItem *KrBriefView::getKrViewItemAt( const TQPoint & vp ) {
-   return dynamic_cast<KrViewItem*>( KIconView::findItem( vp ) );
+   return dynamic_cast<KrViewItem*>( TDEIconView::findItem( vp ) );
 }
 
 bool KrBriefView::acceptDrag( TQDropEvent* ) const {
@@ -754,7 +754,7 @@ void KrBriefView::contentsDropEvent( TQDropEvent * e ) {
    _currDragItem = 0;
    op()->emitGotDrop(e);
    e->ignore();
-   KIconView::contentsDropEvent( e );                   
+   TDEIconView::contentsDropEvent( e );                   
 }
 
 void KrBriefView::contentsDragMoveEvent( TQDragMoveEvent * e ) {
@@ -764,7 +764,7 @@ void KrBriefView::contentsDragMoveEvent( TQDragMoveEvent * e ) {
    if( _currDragItem && !_currDragItem->VF->vfile_isDir() )
      _currDragItem = 0;
    
-   KIconView::contentsDragMoveEvent( e );
+   TDEIconView::contentsDragMoveEvent( e );
 
    if( _currDragItem != oldDragItem )
    {
@@ -780,7 +780,7 @@ void KrBriefView::contentsDragLeaveEvent ( TQDragLeaveEvent *e )
    KrViewItem *oldDragItem = _currDragItem;
 
    _currDragItem = 0;
-   KIconView::contentsDragLeaveEvent( e );
+   TDEIconView::contentsDragLeaveEvent( e );
 
    if( oldDragItem )
      dynamic_cast<KrBriefViewItem *>( oldDragItem )->repaint();
@@ -794,7 +794,7 @@ void KrBriefView::imStartEvent(TQIMEvent* e)
   }else {
     TDEConfigGroupSaver grpSvr( _config, "Look&Feel" );
     if ( !_config->readBoolEntry( "New Style Quicksearch", _NewStyleQuicksearch ) )
-      KIconView::imStartEvent( e );
+      TDEIconView::imStartEvent( e );
     else {
 							// first, show the quicksearch if its hidden
       if ( ACTIVE_PANEL->quickSearch->isHidden() ) {
@@ -850,7 +850,7 @@ void KrBriefView::keyPressEvent( TQKeyEvent * e ) {
 					TQIconView::setCurrentItem( i );
 					TQIconView::ensureItemVisible( i );
 				}
-         } else KIconView::keyPressEvent(e);
+         } else TDEIconView::keyPressEvent(e);
          break;
          case Key_Down :
          if ( e->state() == ControlButton || e->state() == ( ControlButton | ShiftButton ) ) { // let the panel handle it - jump to command line
@@ -862,7 +862,7 @@ void KrBriefView::keyPressEvent( TQKeyEvent * e ) {
             if ( e->state() == ShiftButton ) setSelected( i, !i->isSelected(), true );
             i = i->nextItem();
          if ( i ) {TQIconView::setCurrentItem( i ); TQIconView::ensureItemVisible( i ); }
-         } else KIconView::keyPressEvent(e);
+         } else TDEIconView::keyPressEvent(e);
          break;
          case Key_Next:  if (!KrSelectionMode::getSelectionHandler()->useTQTSelection()){
             TQIconViewItem * i = currentItem(), *j;
@@ -872,7 +872,7 @@ void KrBriefView::keyPressEvent( TQKeyEvent * e ) {
             for ( int page = visibleHeight() / r.height() - 1; page > 0 && ( j = i->nextItem() ); --page )
                i = j;
             if ( i ) {TQIconView::setCurrentItem( i ); TQIconView::ensureItemVisible( i ); }
-         } else KIconView::keyPressEvent(e);
+         } else TDEIconView::keyPressEvent(e);
          break;
          case Key_Prior:  if (!KrSelectionMode::getSelectionHandler()->useTQTSelection()){
             TQIconViewItem * i = currentItem(), *j;
@@ -882,13 +882,13 @@ void KrBriefView::keyPressEvent( TQKeyEvent * e ) {
             for ( int page = visibleHeight() / r.height() - 1; page > 0 && ( j = i->prevItem() ); --page )
                i = j;
             if ( i ) {TQIconView::setCurrentItem( i ); TQIconView::ensureItemVisible( i ); }
-         } else KIconView::keyPressEvent(e);
+         } else TDEIconView::keyPressEvent(e);
          break;
          case Key_Home:  if (!KrSelectionMode::getSelectionHandler()->useTQTSelection()){
             if ( e->state() & ShiftButton )  /* Shift+Home */
             {
                clearSelection();
-               KIconView::keyPressEvent( e );
+               TDEIconView::keyPressEvent( e );
                op()->emitSelectionChanged();
                arrangeItemsInGrid();
                break;
@@ -896,13 +896,13 @@ void KrBriefView::keyPressEvent( TQKeyEvent * e ) {
                TQIconViewItem * i = firstItem();
                if ( i ) {TQIconView::setCurrentItem( i ); TQIconView::ensureItemVisible( i ); }
             }
-         } else KIconView::keyPressEvent(e);
+         } else TDEIconView::keyPressEvent(e);
          break;
          case Key_End:  if (!KrSelectionMode::getSelectionHandler()->useTQTSelection()){
             if ( e->state() & ShiftButton )  /* Shift+End */
             {
                clearSelection();
-               KIconView::keyPressEvent( e );
+               TDEIconView::keyPressEvent( e );
                op()->emitSelectionChanged();
                arrangeItemsInGrid();
                break;
@@ -915,7 +915,7 @@ void KrBriefView::keyPressEvent( TQKeyEvent * e ) {
             if ( i ) {TQIconView::setCurrentItem( i ); TQIconView::ensureItemVisible( i ); }
                break;
             }
-         } else KIconView::keyPressEvent(e);
+         } else TDEIconView::keyPressEvent(e);
          break;
          case Key_Enter :
          case Key_Return : {
@@ -977,7 +977,7 @@ void KrBriefView::keyPressEvent( TQKeyEvent * e ) {
               TQIconView::setCurrentItem( newCurrent );
               TQIconView::ensureItemVisible( newCurrent );
             }
-         } else KIconView::keyPressEvent(e);
+         } else TDEIconView::keyPressEvent(e);
          break;
          case Key_Backspace :                         // Terminal Emulator bugfix
          if ( e->state() == ControlButton || e->state() == ShiftButton ) { // let the panel handle it
@@ -1026,7 +1026,7 @@ void KrBriefView::keyPressEvent( TQKeyEvent * e ) {
               TQIconView::setCurrentItem( newCurrent );
               TQIconView::ensureItemVisible( newCurrent );
             }
-         } else KIconView::keyPressEvent(e);
+         } else TDEIconView::keyPressEvent(e);
          break;
 
          case Key_Delete :                   // kill file
@@ -1079,7 +1079,7 @@ void KrBriefView::keyPressEvent( TQKeyEvent * e ) {
          }
          case Key_A :                 // mark all
          if ( e->state() == ControlButton ) {
-            KIconView::keyPressEvent( e );
+            TDEIconView::keyPressEvent( e );
             updateView();
             break;
          }
@@ -1100,7 +1100,7 @@ void KrBriefView::keyPressEvent( TQKeyEvent * e ) {
                {
 						TDEConfigGroupSaver grpSvr( _config, "Look&Feel" );
 						if ( !_config->readBoolEntry( "New Style Quicksearch", _NewStyleQuicksearch ) )
-							KIconView::keyPressEvent( e );
+							TDEIconView::keyPressEvent( e );
 						else {
 							// first, show the quicksearch if its hidden
 							if ( ACTIVE_PANEL->quickSearch->isHidden() ) {
@@ -1125,7 +1125,7 @@ void KrBriefView::keyPressEvent( TQKeyEvent * e ) {
                ACTIVE_PANEL->quickSearch->clear();
                krDirUp->setEnabled( true );
             }
-            KIconView::keyPressEvent( e );
+            TDEIconView::keyPressEvent( e );
          }
    }
    // emit the new item description
@@ -1260,7 +1260,7 @@ bool KrBriefView::event( TQEvent *e ) {
          op()->emitNeedFocus();
       setFocus();
    }
-   return KIconView::event( e );
+   return TDEIconView::event( e );
 }
 
 
@@ -1270,7 +1270,7 @@ bool KrBriefView::eventFilter( TQObject * watched, TQEvent * e )
   {
     if( e->type() == TQEvent::Hide || e->type() == TQEvent::Show )
     {
-      bool res = KIconView::eventFilter( watched, e );
+      bool res = TDEIconView::eventFilter( watched, e );
       arrangeItemsInGrid();
       return res;
     }
@@ -1284,7 +1284,7 @@ bool KrBriefView::eventFilter( TQObject * watched, TQEvent * e )
     }
     return FALSE;
   }
-  return KIconView::eventFilter( watched, e );
+  return TDEIconView::eventFilter( watched, e );
 }
 
 void KrBriefView::makeItemVisible( const KrViewItem *item ) {

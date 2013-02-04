@@ -62,7 +62,7 @@ KrPopupMenu::KrPopupMenu(ListPanel *thePanel, TQWidget *parent) : TDEPopupMenu(p
       // open in a new tab (if folder)
       if ( vf->vfile_isDir() ) {
          insertItem( i18n( "Open in New Tab" ), OPEN_TAB_ID );
-         changeItem( OPEN_TAB_ID, krLoader->loadIcon( "tab_new", KIcon::Panel ), i18n( "Open in New Tab" ) );
+         changeItem( OPEN_TAB_ID, krLoader->loadIcon( "tab_new", TDEIcon::Panel ), i18n( "Open in New Tab" ) );
       }
       insertSeparator();
    }
@@ -93,12 +93,12 @@ KrPopupMenu::KrPopupMenu(ListPanel *thePanel, TQWidget *parent) : TDEPopupMenu(p
          KService::Ptr service = offers[ i ].service();
          if ( service->isValid() && service->type() == "Application" ) {
             openWith.insertItem( service->name(), SERVICE_LIST_ID + i );
-            openWith.changeItem( SERVICE_LIST_ID + i, service->pixmap( KIcon::Small ), service->name() );
+            openWith.changeItem( SERVICE_LIST_ID + i, service->pixmap( TDEIcon::Small ), service->name() );
          }
       }
       openWith.insertSeparator();
       if ( vf->vfile_isDir() )
-         openWith.insertItem( krLoader->loadIcon( "konsole", KIcon::Small ), i18n( "Terminal" ), OPEN_TERM_ID );
+         openWith.insertItem( krLoader->loadIcon( "konsole", TDEIcon::Small ), i18n( "Terminal" ), OPEN_TERM_ID );
       openWith.insertItem( i18n( "Other..." ), CHOOSE_ID );
       insertItem( TQPixmap(), &openWith, OPEN_WITH_ID );
       changeItem( OPEN_WITH_ID, i18n( "Open With" ) );
@@ -212,8 +212,8 @@ void KrPopupMenu::addEmptyMenuEntries() {
 }
 
 void KrPopupMenu::addCreateNewMenu() {
-	createNewPopup.insertItem( krLoader->loadIcon( "folder", KIcon::Small ), i18n("Folder..."), MKDIR_ID);
-	createNewPopup.insertItem( krLoader->loadIcon( "txt", KIcon::Small ), i18n("Text File..."), NEW_TEXT_FILE_ID);
+	createNewPopup.insertItem( krLoader->loadIcon( "folder", TDEIcon::Small ), i18n("Folder..."), MKDIR_ID);
+	createNewPopup.insertItem( krLoader->loadIcon( "txt", TDEIcon::Small ), i18n("Text File..."), NEW_TEXT_FILE_ID);
 	
 	insertItem( TQPixmap(), &createNewPopup, CREATE_NEW_ID);
 	changeItem( CREATE_NEW_ID, i18n( "Create New" ) );

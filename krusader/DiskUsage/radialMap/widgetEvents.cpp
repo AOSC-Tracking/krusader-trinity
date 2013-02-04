@@ -216,12 +216,12 @@ RadialMap::Widget::mousePressEvent( TQMouseEvent *e )
 
          if( !isDir || e->button() == Qt::MidButton )
          {
-            KIconEffect::visualActivate( this, rect );
+            TDEIconEffect::visualActivate( this, rect );
             new KRun( url, this, true ); //FIXME see above
          }
          else if( m_focus->file() != m_tree ) //is left mouse button
          {
-            KIconEffect::visualActivate( this, rect );
+            TDEIconEffect::visualActivate( this, rect );
             emit activated( url ); //activate first, this will cause UI to prepare itself
             if( m_focus )
               createFromCache( (Directory *)m_focus->file() );

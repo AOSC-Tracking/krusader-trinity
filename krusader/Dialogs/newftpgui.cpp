@@ -56,7 +56,7 @@ newFTPGUI::newFTPGUI( TQWidget* parent,  const char* name, bool modal, WFlags fl
     hbox_image->setSpacing( 6 );
     
     PixmapLabel1 = new TQLabel( hbox_image, "PixmapLabel1" );
-    PixmapLabel1->setPixmap( krLoader->loadIcon("network", KIcon::Desktop, 32) );
+    PixmapLabel1->setPixmap( krLoader->loadIcon("network", TDEIcon::Desktop, 32) );
     PixmapLabel1->setSizePolicy( SIZE_MINIMUM );
 
     TextLabel3 = new TQLabel( i18n( "About to connect to..."  ), hbox_image, "TextLabel3" );

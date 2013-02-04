@@ -107,7 +107,7 @@ AdvancedFilter::AdvancedFilter( FilterTabs *tabs, TQWidget *parent, const char *
 
   // Options for date
 
-  TQPixmap iconDate = krLoader->loadIcon( "date", KIcon::Toolbar, 16 );
+  TQPixmap iconDate = krLoader->loadIcon( "date", TDEIcon::Toolbar, 16 );
 
   TQButtonGroup *dateGroup = new TQButtonGroup( this, "dateGroup" );
   dateGroup->setTitle( i18n( "Date" ) );

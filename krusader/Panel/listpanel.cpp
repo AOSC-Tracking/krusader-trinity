@@ -168,13 +168,13 @@ ListPanel::ListPanel( TQString typeIn, TQWidget *parent, bool &left, const char 
 	// a cancel button for the inplace refresh mechanism
 	inlineRefreshCancelButton = new KPushButton(this);
 	inlineRefreshCancelButton->setFixedSize( 22, 20 );
-	inlineRefreshCancelButton->setPixmap(krLoader->loadIcon("cancel", KIcon::Toolbar, 16));
+	inlineRefreshCancelButton->setPixmap(krLoader->loadIcon("cancel", TDEIcon::Toolbar, 16));
 	connect(inlineRefreshCancelButton, TQT_SIGNAL(clicked()), this, TQT_SLOT(inlineRefreshCancel()));
 
 	// a quick button to open the popup panel
 	popupBtn = new TQToolButton( this, "popupbtn" );
 	popupBtn->setFixedSize( 22, 20 );
-	popupBtn->setPixmap(krLoader->loadIcon("1uparrow", KIcon::Toolbar, 16));
+	popupBtn->setPixmap(krLoader->loadIcon("1uparrow", TDEIcon::Toolbar, 16));
 	connect(popupBtn, TQT_SIGNAL(clicked()), this, TQT_SLOT(togglePanelPopup()));
 	TQToolTip::add(  popupBtn, i18n( "Open the popup panel" ) );
 	totalsLayout->addWidget(totals);
@@ -194,7 +194,7 @@ ListPanel::ListPanel( TQString typeIn, TQWidget *parent, bool &left, const char 
 	bool clearButton = krConfig->readBoolEntry("Clear Location Bar Visible", _ClearLocation);
 	if (clearButton){
 		clearOrigin = new TQToolButton(hbox, "clearorigin");
-		clearOrigin->setPixmap(krLoader->loadIcon("locationbar_erase", KIcon::Toolbar, 16));
+		clearOrigin->setPixmap(krLoader->loadIcon("locationbar_erase", TDEIcon::Toolbar, 16));
 		TQToolTip::add(  clearOrigin, i18n( "Clear the location bar" ) );
 	}
 	
@@ -413,13 +413,13 @@ void ListPanel::togglePanelPopup() {
 		}
 		
 		popup->show();
-		popupBtn->setPixmap(krLoader->loadIcon("1downarrow", KIcon::Toolbar, 16));
+		popupBtn->setPixmap(krLoader->loadIcon("1downarrow", TDEIcon::Toolbar, 16));
 		TQToolTip::add(  popupBtn, i18n( "Close the popup panel" ) );
 	} else {
 		popupSizes.clear();
 		popupSizes = dynamic_cast<TQSplitter*>(popup->parent())->sizes();
 		popup->hide();
-		popupBtn->setPixmap(krLoader->loadIcon("1uparrow", KIcon::Toolbar, 16));
+		popupBtn->setPixmap(krLoader->loadIcon("1uparrow", TDEIcon::Toolbar, 16));
 		TQToolTip::add(  popupBtn, i18n( "Open the popup panel" ) );
 		
 		TQValueList<int> lst;

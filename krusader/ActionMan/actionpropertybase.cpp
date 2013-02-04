@@ -101,7 +101,7 @@ ActionPropertyBase::ActionPropertyBase( TQWidget* parent, const char* name, WFla
     layout2->addWidget( cbCategory );
     layout3->addLayout( layout2 );
 
-    ButtonIcon = new KIconButton( tab, "ButtonIcon" );
+    ButtonIcon = new TDEIconButton( tab, "ButtonIcon" );
     ButtonIcon->setSizePolicy( TQSizePolicy( (TQSizePolicy::SizeType)0, (TQSizePolicy::SizeType)0, 0, 0, ButtonIcon->sizePolicy().hasHeightForWidth() ) );
     ButtonIcon->setMinimumSize( TQSize( 50, 50 ) );
     ButtonIcon->setMaximumSize( TQSize( 50, 50 ) );

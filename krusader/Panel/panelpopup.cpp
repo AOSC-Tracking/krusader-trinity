@@ -64,7 +64,7 @@ PanelPopup::PanelPopup( TQSplitter *parent, bool left ) : TQWidget( parent ),
 	
 	treeBtn = new TQToolButton(this);
 	TQToolTip::add(treeBtn, i18n("Tree Panel: a tree view of the local file system"));
-	treeBtn->setPixmap(krLoader->loadIcon( "view_tree", KIcon::Toolbar, 16 ));
+	treeBtn->setPixmap(krLoader->loadIcon( "view_tree", TDEIcon::Toolbar, 16 ));
 	treeBtn->setFixedSize(20, 20);
 	treeBtn->setToggleButton(true);
 	btns->insert(treeBtn, Tree);
@@ -72,28 +72,28 @@ PanelPopup::PanelPopup( TQSplitter *parent, bool left ) : TQWidget( parent ),
 	
 	previewBtn = new TQToolButton(this);
 	TQToolTip::add(previewBtn, i18n("Preview Panel: display a preview of the current file"));
-	previewBtn->setPixmap(krLoader->loadIcon( "thumbnail", KIcon::Toolbar, 16 ));
+	previewBtn->setPixmap(krLoader->loadIcon( "thumbnail", TDEIcon::Toolbar, 16 ));
 	previewBtn->setFixedSize(20, 20);
 	previewBtn->setToggleButton(true);
 	btns->insert(previewBtn, Preview);
 	
 	quickBtn = new TQToolButton(this);
 	TQToolTip::add(quickBtn, i18n("Quick Panel: quick way to perform actions"));
-	quickBtn->setPixmap(krLoader->loadIcon( "misc", KIcon::Toolbar, 16 ));
+	quickBtn->setPixmap(krLoader->loadIcon( "misc", TDEIcon::Toolbar, 16 ));
 	quickBtn->setFixedSize(20, 20);
 	quickBtn->setToggleButton(true);
 	btns->insert(quickBtn, QuickPanel);
 
 	viewerBtn = new TQToolButton(this);
 	TQToolTip::add(viewerBtn, i18n("View Panel: view the current file"));
-	viewerBtn->setPixmap(krLoader->loadIcon( "viewmag", KIcon::Toolbar, 16 ));
+	viewerBtn->setPixmap(krLoader->loadIcon( "viewmag", TDEIcon::Toolbar, 16 ));
 	viewerBtn->setFixedSize(20, 20);
 	viewerBtn->setToggleButton(true);
 	btns->insert(viewerBtn, View);	
 		
 	duBtn = new TQToolButton(this);
 	TQToolTip::add(duBtn, i18n("Disk Usage Panel: view the usage of a directory"));
-	duBtn->setPixmap(krLoader->loadIcon( "kr_diskusage", KIcon::Toolbar, 16 ));
+	duBtn->setPixmap(krLoader->loadIcon( "kr_diskusage", TDEIcon::Toolbar, 16 ));
 	duBtn->setFixedSize(20, 20);
 	duBtn->setToggleButton(true);
 	btns->insert(duBtn, DskUsage);	
@@ -168,19 +168,19 @@ PanelPopup::PanelPopup( TQSplitter *parent, bool left ) : TQWidget( parent ),
 		this, TQT_SLOT(quickSelect(const TQString& )));
 	
 	TQToolButton *qselectBtn = new TQToolButton(quickPanel);
-	qselectBtn->setPixmap(krLoader->loadIcon( "kr_selectall", KIcon::Toolbar, 16 ));
+	qselectBtn->setPixmap(krLoader->loadIcon( "kr_selectall", TDEIcon::Toolbar, 16 ));
 	qselectBtn->setFixedSize(20, 20);
 	TQToolTip::add( qselectBtn, i18n("apply the selection") );
 	connect(qselectBtn, TQT_SIGNAL(clicked()), this, TQT_SLOT(quickSelect()));
 
 	TQToolButton *qstoreBtn = new TQToolButton(quickPanel);
-	qstoreBtn->setPixmap(krLoader->loadIcon( "filesave", KIcon::Toolbar, 16 ));
+	qstoreBtn->setPixmap(krLoader->loadIcon( "filesave", TDEIcon::Toolbar, 16 ));
 	qstoreBtn->setFixedSize(20, 20);
 	TQToolTip::add( qstoreBtn, i18n("store the current selection") );
 	connect(qstoreBtn, TQT_SIGNAL(clicked()), this, TQT_SLOT(quickSelectStore()));
 	
 	TQToolButton *qsettingsBtn = new TQToolButton(quickPanel);
-	qsettingsBtn->setPixmap(krLoader->loadIcon( "configure", KIcon::Toolbar, 16 ));
+	qsettingsBtn->setPixmap(krLoader->loadIcon( "configure", TDEIcon::Toolbar, 16 ));
 	qsettingsBtn->setFixedSize(20, 20);
 	TQToolTip::add( qsettingsBtn, i18n("select group dialog") );
 	connect(qsettingsBtn, TQT_SIGNAL(clicked()), krSelect, TQT_SLOT(activate()));

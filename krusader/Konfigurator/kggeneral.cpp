@@ -117,13 +117,13 @@ TQFrame *line2 = createLine( generalGrp, "line2" );
   int size = TQFontMetrics( atomLabel->font() ).height();
 
   TQToolButton *addButton = new TQToolButton( hbox3, "addBtnList" );
-  TQPixmap icon = krLoader->loadIcon("add",KIcon::Desktop, size );
+  TQPixmap icon = krLoader->loadIcon("add",TDEIcon::Desktop, size );
   addButton->setFixedSize( icon.width() + 4, icon.height() + 4 );
   addButton->setPixmap( icon );
   connect( addButton, TQT_SIGNAL( clicked() ), this, TQT_SLOT( slotAddExtension() ) );
 
   TQToolButton *removeButton = new TQToolButton( hbox3, "removeBtnList" );
-  icon = krLoader->loadIcon("remove",KIcon::Desktop, size );
+  icon = krLoader->loadIcon("remove",TDEIcon::Desktop, size );
   removeButton->setFixedSize( icon.width() + 4, icon.height() + 4 );
   removeButton->setPixmap( icon );
   connect( removeButton, TQT_SIGNAL( clicked() ), this, TQT_SLOT( slotRemoveExtension() ) );

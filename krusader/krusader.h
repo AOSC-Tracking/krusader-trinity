@@ -58,7 +58,7 @@ class KRPleaseWaitHandler;
 class KrusaderView;
 class TDEProcess;
 class KRslots;
-class KIconLoader;
+class TDEIconLoader;
 class KSystemTray;
 class UserMenu;
 class UserAction;
@@ -119,7 +119,7 @@ class Krusader : public KParts::MainWindow, public DCOPObject {
     KMountMan *mountMan;  // krusader's Mount Manager
     KrusaderView *mainView;  // The GUI
     TDEConfig *config;    // allow everyone to access the config
-    KIconLoader *iconLoader; // the app's icon loader
+    TDEIconLoader *iconLoader; // the app's icon loader
 	 PopularUrls *popularUrls; // holds a sorted list of the most popular urls visited
 	 QueueManager *queueManager;
     // Actions

@@ -73,8 +73,8 @@
 MediaButton::MediaButton( TQWidget *parent, const char *name ) : TQToolButton( parent, name ),
 		popupMenu( 0 ), rightMenu( 0 ), hasMedia( false ), waitingForMount( -1 ), mountCheckerTimer()
 	 {
-	KIconLoader * iconLoader = new KIconLoader();
-	TQPixmap icon = iconLoader->loadIcon( "blockdevice", KIcon::Toolbar, 16 );
+	TDEIconLoader * iconLoader = new TDEIconLoader();
+	TQPixmap icon = iconLoader->loadIcon( "blockdevice", TDEIcon::Toolbar, 16 );
 
 	setFixedSize( icon.width() + 4, icon.height() + 4 );
 	setPixmap( icon );

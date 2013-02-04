@@ -34,9 +34,9 @@ The current version only manages sync-browse and got no mode-switch options.
 
 SyncBrowseButton::SyncBrowseButton(TQWidget *parent, const char *name) : TQToolButton(parent,name)
 {
-  KIconLoader *iconLoader = new KIconLoader();
-  _icon_on = iconLoader->loadIcon( "kr_syncbrowse_on", KIcon::Toolbar, 16 );
-  _icon_off = iconLoader->loadIcon( "kr_syncbrowse_off", KIcon::Toolbar, 16 );
+  TDEIconLoader *iconLoader = new TDEIconLoader();
+  _icon_on = iconLoader->loadIcon( "kr_syncbrowse_on", TDEIcon::Toolbar, 16 );
+  _icon_off = iconLoader->loadIcon( "kr_syncbrowse_off", TDEIcon::Toolbar, 16 );
 
   setFixedSize( _icon_off.width() + 4, _icon_off.height() + 4 );
   setPixmap( _icon_off );

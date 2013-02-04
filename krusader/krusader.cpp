@@ -367,7 +367,7 @@ Krusader::Krusader() : KParts::MainWindow(0,0,WType_TopLevel|WDestructiveClose|T
    // This enables Krusader to show a tray icon
    sysTray = new KSystemTray( this );
    // Krusader::privIcon() returns either "krusader_blue" or "krusader_red" if the user got root-privileges
-   sysTray->setPixmap( iconLoader->loadIcon( privIcon(), KIcon::Panel, 22 ) );
+   sysTray->setPixmap( iconLoader->loadIcon( privIcon(), TDEIcon::Panel, 22 ) );
    sysTray->hide();
 
    connect( sysTray, TQT_SIGNAL( quitSelected() ), TQT_TQOBJECT(this), TQT_SLOT( setDirectExit() ) );

@@ -37,9 +37,9 @@ TQPixmap FL_LOADICON(TQString name) {
   krConfig->setGroup("Look&Feel");
   int size = (krConfig->readEntry("Filelist Icon Size",_FilelistIconSize)).toInt();
   if (size!=22)
-    return krLoader->loadIcon(name,KIcon::Desktop,size);
+    return krLoader->loadIcon(name,TDEIcon::Desktop,size);
   // else implied
-  return TQIconSet(krLoader->loadIcon(name,KIcon::Desktop,32)).pixmap(TQIconSet::Small,true);
+  return TQIconSet(krLoader->loadIcon(name,TDEIcon::Desktop,32)).pixmap(TQIconSet::Small,true);
 }
 
 const char * no_xpm[] = {

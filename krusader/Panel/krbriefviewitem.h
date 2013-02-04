@@ -42,13 +42,13 @@
 class TQPixmap;
 class KrBriefView;
 
-class KrBriefViewItem : public KIconViewItem, public KrViewItem {
+class KrBriefViewItem : public TDEIconViewItem, public KrViewItem {
 friend class KrBriefView;
 friend class KrCalcSpaceDialog;
 public:
 	KrBriefViewItem(KrBriefView *parent, TQIconViewItem *after, vfile *vf);
-	inline bool isSelected() const { return KIconViewItem::isSelected(); }
-	inline void setSelected(bool s) { KIconViewItem::setSelected(s); }
+	inline bool isSelected() const { return TDEIconViewItem::isSelected(); }
+	inline void setSelected(bool s) { TDEIconViewItem::setSelected(s); }
 	inline void cancelRename() { removeRenameBox(); }
 	int compare(TQIconViewItem *i) const;
 	virtual void repaintItem();

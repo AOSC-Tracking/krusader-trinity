@@ -177,7 +177,7 @@
                                     </widget>
                                 </vbox>
                             </widget>
-                            <widget class="KIconButton">
+                            <widget class="TDEIconButton">
                                 <property name="name">
                                     <cstring>ButtonIcon</cstring>
                                 </property>

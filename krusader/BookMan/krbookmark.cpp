@@ -54,7 +54,7 @@ KrBookmark* KrBookmark::devices(TDEActionCollection *collection) {
 #else
 		bm = new KrBookmark(i18n(NAME_DEVICES), "devices:/", collection);
 #endif
-		bm->setIconSet(krLoader->loadIcon("blockdevice", KIcon::Small));
+		bm->setIconSet(krLoader->loadIcon("blockdevice", TDEIcon::Small));
 	}
 	return bm;
 }
@@ -63,7 +63,7 @@ KrBookmark* KrBookmark::virt(TDEActionCollection *collection) {
 	KrBookmark *bm = getExistingBookmark(i18n(NAME_VIRTUAL), collection);	
 	if (!bm) {
 		bm = new KrBookmark(i18n(NAME_VIRTUAL), "virt:/", collection);
-		bm->setIconSet(krLoader->loadIcon("pipe", KIcon::Small));
+		bm->setIconSet(krLoader->loadIcon("pipe", TDEIcon::Small));
 	}
 	return bm;
 }
@@ -72,7 +72,7 @@ KrBookmark* KrBookmark::lan(TDEActionCollection *collection) {
 	KrBookmark *bm = getExistingBookmark(i18n(NAME_LAN), collection);	
 	if (!bm) {
 		bm = new KrBookmark(i18n(NAME_LAN), "lan:/", collection);
-		bm->setIconSet(krLoader->loadIcon("network", KIcon::Small));
+		bm->setIconSet(krLoader->loadIcon("network", TDEIcon::Small));
 	}
 	return bm;
 }

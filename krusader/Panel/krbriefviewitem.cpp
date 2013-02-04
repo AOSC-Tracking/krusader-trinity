@@ -18,7 +18,7 @@ int KrBriefViewItem::expHeight = 0;
 #endif // FASTER
 
 KrBriefViewItem::KrBriefViewItem(KrBriefView *parent, TQIconViewItem *after, vfile *vf):
-	KIconViewItem(parent, after), KrViewItem(vf, parent->properties()) {
+	TDEIconViewItem(parent, after), KrViewItem(vf, parent->properties()) {
 #ifdef FASTER
 	initiated = false;
 	// get the expected height of an item - should be done only once
@@ -199,7 +199,7 @@ void KrBriefViewItem::repaintItem()
 // for keeping the exact item heights...
 void KrBriefViewItem::calcRect ( const TQString & text_ )
 {
-   KIconViewItem::calcRect( text_ );
+   TDEIconViewItem::calcRect( text_ );
    TQRect rec = rect();
    
    int gridX = iconView()->gridX();

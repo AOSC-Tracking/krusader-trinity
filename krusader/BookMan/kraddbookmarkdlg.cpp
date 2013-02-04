@@ -44,7 +44,7 @@ KrAddBookmarkDlg::KrAddBookmarkDlg(TQWidget *parent, KURL url):
 	_folder->setReadOnly(true);
 
 	_createInBtn = new TQToolButton(page);
-	_createInBtn->setPixmap(krLoader->loadIcon("down", KIcon::Small));
+	_createInBtn->setPixmap(krLoader->loadIcon("down", TDEIcon::Small));
 	_createInBtn->setToggleButton(true);
 	connect(_createInBtn, TQT_SIGNAL(toggled(bool)), this, TQT_SLOT(toggleCreateIn(bool )));
 	layout->addWidget(_createInBtn, 2, 2);
@@ -55,7 +55,7 @@ KrAddBookmarkDlg::KrAddBookmarkDlg(TQWidget *parent, KURL url):
 }
 
 void KrAddBookmarkDlg::toggleCreateIn(bool show) {
-	_createInBtn->setPixmap(krLoader->loadIcon(show ? "up" :"down", KIcon::Small));
+	_createInBtn->setPixmap(krLoader->loadIcon(show ? "up" :"down", TDEIcon::Small));
 	showButton(KDialogBase::User1, show);
 	setDetails(show);
 }

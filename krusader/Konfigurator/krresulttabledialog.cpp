@@ -46,7 +46,7 @@ KrResultTableDialog::KrResultTableDialog( TQWidget *parent, DialogType type,
   // prepare the icon
   _iconBox = new TQHBox(_page, "_iconBox");
   _iconLabel = new TQLabel(_iconBox, "iconLabel");
-  _iconLabel->setPixmap(krLoader->loadIcon(headerIcon, KIcon::Desktop, 32));
+  _iconLabel->setPixmap(krLoader->loadIcon(headerIcon, TDEIcon::Desktop, 32));
   _iconLabel->setMinimumWidth(fontMetrics().maxWidth()*20);
   _iconLabel->setAlignment( TQt::AlignLeft | TQt::AlignVCenter );
   _iconLabel->setFixedSize( _iconLabel->sizeHint() );

@@ -42,8 +42,8 @@ ProfileManager::ProfileManager( TQString profileType, TQWidget * parent, const c
   : TQPushButton( parent, name )
 {
   setText( "" );
-  KIconLoader *iconLoader = new KIconLoader();
-  setPixmap( iconLoader->loadIcon( "kr_profile", KIcon::Toolbar, 16 ) );
+  TDEIconLoader *iconLoader = new TDEIconLoader();
+  setPixmap( iconLoader->loadIcon( "kr_profile", TDEIcon::Toolbar, 16 ) );
   TQToolTip::add( this, i18n( "Profiles" ) );
   
   this->profileType = profileType;
