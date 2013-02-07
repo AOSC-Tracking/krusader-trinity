@@ -82,7 +82,7 @@ class KCMDLine : public TQWidget, KrActionBase {
   signals:
     void signalRun();		
   public slots:
-    inline void setFocus() { cmdLine->setFocus(); } // overloaded for KCmdLine
+    inline void setFocus() { cmdLine->setFocus(); } // overloaded for TDECmdLine
     void slotReturnFocus(); // returns keyboard focus to panel
     void slotRun();
     void addPlaceholder();

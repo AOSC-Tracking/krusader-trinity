@@ -51,7 +51,7 @@ static const char *description =
 	I18N_NOOP("Krusader\nTwin-Panel File Manager for TDE");
 // INSERT A DESCRIPTION FOR YOUR APPLICATION HERE
 
-static KCmdLineOptions options[] =
+static TDECmdLineOptions options[] =
 {
   { "left <path>", I18N_NOOP("Start left panel at <path>"), 0},
   { "right <path>", I18N_NOOP("Start right panel at <path>"), 0},

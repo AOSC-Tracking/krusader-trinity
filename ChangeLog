@@ -945,7 +945,7 @@
     FIXED: more freedom to give FTP proxy URL-s in "New FTP Connection" menu
     FIXED: crash at ftp://user@server@proxy:port FTP URL-s
     FIXED: no parent directory at tar://... and zip://... URL-s
-    FIXED: font size problems in KCmdLine and KrMaskChoice
+    FIXED: font size problems in TDECmdLine and KrMaskChoice
     FIXED: internal editor quits without notification even if the edited file
            was not saved
     FIXED: no i18n for Name, Ext, Size, Modified
