@@ -38,7 +38,7 @@
 #endif
 
 // KDE includes
-#include <kapplication.h>
+#include <tdeapplication.h>
 #include <tdeparts/mainwindow.h>
 #include <kstdaction.h>
 #include <tdeaction.h>

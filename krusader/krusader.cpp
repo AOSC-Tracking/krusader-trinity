@@ -40,8 +40,8 @@ YP   YD 88   YD ~Y8888P' `8888Y' YP   YP Y8888D' Y88888P 88   YD
 #include <kcursor.h>
 #include <ksystemtray.h>
 #include <kmenubar.h>
-#include <kapplication.h>
-#include <kcmdlineargs.h>
+#include <tdeapplication.h>
+#include <tdecmdlineargs.h>
 #include <kglobal.h>
 #include <klocale.h>
 #include <tdeaccelmanager.h>

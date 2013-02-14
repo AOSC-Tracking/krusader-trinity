@@ -34,7 +34,7 @@
 #include <unistd.h>
 #include <time.h>
 #include <tqeventloop.h>
-#include <kapplication.h>
+#include <tdeapplication.h>
 #include <klargefile.h>
 #include <tqdir.h>
 #include "vfs.h"

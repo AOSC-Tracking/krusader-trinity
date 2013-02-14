@@ -40,7 +40,7 @@
 // KDE includes
 #include <klocale.h>
 #include <kurlcompletion.h>
-#include <kapplication.h>
+#include <tdeapplication.h>
 #include <kstandarddirs.h>
 #include <klineedit.h>
 #include <kurlrequester.h>

@@ -43,7 +43,7 @@
 #include <tdeio/netaccess.h>
 #include <kedittoolbar.h>
 #include <tdeversion.h>
-#include <kcmdlineargs.h>
+#include <tdecmdlineargs.h>
 #include <KViewer/krviewer.h>
 
 #ifdef __KJSEMBED__

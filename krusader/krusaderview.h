@@ -36,7 +36,7 @@
 #include <tdelistview.h>
 #include <klocale.h>
 #include <tdeaccel.h>
-#include <kapplication.h>
+#include <tdeapplication.h>
 #include <tdeparts/part.h>
 
 // QT includes

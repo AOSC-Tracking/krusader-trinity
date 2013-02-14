@@ -21,7 +21,7 @@
 #include <tqtooltip.h>
 #include <tqdatetime.h>
 
-#include <kapplication.h>
+#include <tdeapplication.h>
 #include <kdialog.h>
 #include <kstringhandler.h>
 #include <kglobal.h>
