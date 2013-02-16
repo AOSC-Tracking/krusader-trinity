@@ -3,7 +3,7 @@
 #include "../VFS/krarchandler.h"
 #include <tdeactioncollection.h>
 #include <kiconloader.h>
-#include <klocale.h>
+#include <tdelocale.h>
 #include <kdebug.h>
 
 #define BM_NAME(X)		(TQString("Bookmark:")+X)

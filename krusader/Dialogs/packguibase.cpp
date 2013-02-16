@@ -46,9 +46,9 @@
 #include <tqhbox.h>
 #include <tqvbox.h>
 #include <kiconloader.h>
-#include <kglobalsettings.h>
+#include <tdeglobalsettings.h>
 #include <kcombobox.h>
-#include <kmessagebox.h>
+#include <tdemessagebox.h>
 #include <tdeio/global.h>
 #include "../krusader.h"
 

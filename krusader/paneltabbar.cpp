@@ -21,7 +21,7 @@
 #include "krslots.h"
 #include "defaults.h"
 #include <tdeaction.h>
-#include <klocale.h>
+#include <tdelocale.h>
 #include <tdeshortcut.h>
 #include <tqevent.h>
 #include <tqwidgetstack.h>

@@ -14,7 +14,7 @@
 #include <kurl.h>
 #include <tdepopupmenu.h>
 #include <kstandarddirs.h>
-#include <kmessagebox.h>
+#include <tdemessagebox.h>
 
 #include <tqstring.h>
 #include <tqdom.h>

@@ -39,7 +39,7 @@
 #include <tqtooltip.h>
 #include <tqwhatsthis.h>
 #include <tqmessagebox.h>
-#include <klocale.h>
+#include <tdelocale.h>
 #include <tqlineedit.h>
 
 /*

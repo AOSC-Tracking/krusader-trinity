@@ -29,8 +29,8 @@
  ***************************************************************************/
 
 #include <tqtooltip.h>
-#include <klocale.h>
-#include <kglobalsettings.h>
+#include <tdelocale.h>
+#include <tdeglobalsettings.h>
 #include <tqfontmetrics.h>
 #include <tqwhatsthis.h>
 #include "kfnkeys.h"

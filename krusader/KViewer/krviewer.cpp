@@ -20,12 +20,12 @@
 #include <tqpopupmenu.h> 
 #include <tqtimer.h>
 // KDE includes
-#include <kmenubar.h>
+#include <tdemenubar.h>
 #include <kmimetype.h>
-#include <klocale.h>
+#include <tdelocale.h>
 #include <tdeparts/part.h>
 #include <tdeparts/componentfactory.h>
-#include <kmessagebox.h>
+#include <tdemessagebox.h>
 #include <klibloader.h>
 #include <ktrader.h>
 #include <tdeio/netaccess.h>

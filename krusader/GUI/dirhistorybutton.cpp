@@ -21,7 +21,7 @@
 #include "../VFS/vfs.h"
 #include <tqpopupmenu.h>
 #include <tqdir.h>
-#include <klocale.h>
+#include <tdelocale.h>
 #include <kiconloader.h>
 
 #include <kdebug.h>

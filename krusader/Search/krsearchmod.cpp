@@ -36,7 +36,7 @@
 #include "../VFS/krpermhandler.h"
 #include "../VFS/krarchandler.h"
 
-#include <klocale.h>
+#include <tdelocale.h>
 #include <tqdir.h>
 #include <sys/types.h>
 #include <dirent.h>

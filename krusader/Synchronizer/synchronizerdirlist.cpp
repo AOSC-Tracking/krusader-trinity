@@ -32,8 +32,8 @@
 #include "../VFS/vfs.h"
 #include "../VFS/krpermhandler.h"
 #include <dirent.h>
-#include <klocale.h>
-#include <kmessagebox.h>
+#include <tdelocale.h>
+#include <tdemessagebox.h>
 #include <tdefileitem.h>
 #include <klargefile.h>
 #include <tqapplication.h>

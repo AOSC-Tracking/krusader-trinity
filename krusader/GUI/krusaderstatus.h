@@ -40,7 +40,7 @@
 
 // KDE includes
 #include <kstatusbar.h>
-#include <klocale.h>
+#include <tdelocale.h>
 
 class KrusaderStatus : public KStatusBar {
    Q_OBJECT

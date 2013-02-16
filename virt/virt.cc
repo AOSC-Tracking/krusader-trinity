@@ -23,10 +23,10 @@
 #include <tqfile.h>
 #include <kurl.h>
 #include <kdebug.h>
-#include <klocale.h>
+#include <tdelocale.h>
 #include <tdeversion.h>
 #include <kinstance.h>
-#include <kmessagebox.h>
+#include <tdemessagebox.h>
 
 #include "virt.h"
 

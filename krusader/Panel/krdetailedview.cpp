@@ -49,8 +49,8 @@ YP   YD 88   YD ~Y8888P' `8888Y' YP   YP Y8888D' Y88888P 88   YD
 #include <kprogress.h>
 #include <kstatusbar.h>
 #include <kinputdialog.h>
-#include <kmessagebox.h>
-#include <klocale.h>
+#include <tdemessagebox.h>
+#include <tdelocale.h>
 #include <tdepopupmenu.h>
 #include <tqdict.h>
 

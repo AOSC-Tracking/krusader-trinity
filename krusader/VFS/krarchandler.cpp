@@ -31,9 +31,9 @@
 #include <tqtextstream.h> 
 // KDE includes
 #include <kprocess.h>
-#include <ktempfile.h>
-#include <klocale.h>
-#include <kmessagebox.h>
+#include <tdetempfile.h>
+#include <tdelocale.h>
+#include <tdemessagebox.h>
 #include <tdeio/passdlg.h> 
 #include <tqfile.h>
 #include <kstandarddirs.h>

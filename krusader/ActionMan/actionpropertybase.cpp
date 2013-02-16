@@ -1,5 +1,5 @@
 #include <kdialog.h>
-#include <klocale.h>
+#include <tdelocale.h>
 /****************************************************************************
 ** Form implementation generated from reading ui file './actionpropertybase.ui'
 **

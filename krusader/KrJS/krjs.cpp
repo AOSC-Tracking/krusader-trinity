@@ -11,7 +11,7 @@
 #include "../krusaderview.h"
 #include "../panelmanager.h"
 
-#include <kmessagebox.h>
+#include <tdemessagebox.h>
 
 KrJS::KrJS() : KJSEmbed::KJSEmbedPart() {
 

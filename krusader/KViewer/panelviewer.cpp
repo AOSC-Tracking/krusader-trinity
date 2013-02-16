@@ -4,12 +4,12 @@
 #include <tqapplication.h>
 #include <tdeparts/part.h>
 #include <tdeparts/browserextension.h>
-#include <kmessagebox.h>
+#include <tdemessagebox.h>
 #include <tqdict.h>
 #include <tqlabel.h>
 #include <kmimetype.h>
-#include <ktempfile.h>
-#include <klocale.h>
+#include <tdetempfile.h>
+#include <tdelocale.h>
 #include <klibloader.h>
 #include <kuserprofile.h>
 #include <kdebug.h>

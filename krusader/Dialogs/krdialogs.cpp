@@ -38,7 +38,7 @@
 #include <tqfontmetrics.h>
 #include <tqtooltip.h>
 // KDE includes
-#include <klocale.h>
+#include <tdelocale.h>
 #include <kurlcompletion.h>
 #include <tdeapplication.h>
 #include <kstandarddirs.h>

@@ -35,15 +35,15 @@ YP   YD 88   YD ~Y8888P' `8888Y' YP   YP Y8888D' Y88888P 88   YD
 #include <sys/types.h>
 #endif
 // KDE includes
-#include <kmessagebox.h>
+#include <tdemessagebox.h>
 #include <tdeaction.h>
 #include <kcursor.h>
 #include <ksystemtray.h>
-#include <kmenubar.h>
+#include <tdemenubar.h>
 #include <tdeapplication.h>
 #include <tdecmdlineargs.h>
-#include <kglobal.h>
-#include <klocale.h>
+#include <tdeglobal.h>
+#include <tdelocale.h>
 #include <tdeaccelmanager.h>
 #include <twin.h>
 

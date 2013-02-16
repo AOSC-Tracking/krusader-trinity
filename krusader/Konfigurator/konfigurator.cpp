@@ -37,10 +37,10 @@
 
 #include <tdefiledialog.h>
 #include <tqwidget.h>
-#include <klocale.h>
-#include <kglobal.h>
+#include <tdelocale.h>
+#include <tdeglobal.h>
 #include <kstandarddirs.h>
-#include <kmessagebox.h>
+#include <tdemessagebox.h>
 #include "../defaults.h"
 #include "../krusaderview.h"
 #include "../GUI/kfnkeys.h"

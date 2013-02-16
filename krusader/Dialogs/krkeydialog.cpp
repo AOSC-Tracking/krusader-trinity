@@ -13,11 +13,11 @@
 
 #include <tqlayout.h>
 #include <tqwhatsthis.h>
-#include <klocale.h>
+#include <tdelocale.h>
 #include <kpushbutton.h>
-#include <kmessagebox.h>
+#include <tdemessagebox.h>
 #include <tdefiledialog.h>
-#include <kglobal.h>
+#include <tdeglobal.h>
 #include <kstandarddirs.h>
 #include <tdeconfig.h>
 #include <tdeactionshortcutlist.h>

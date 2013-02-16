@@ -2,8 +2,8 @@
 //Copyright: See COPYING file that comes with this distribution
 
 #include "fileTree.h"
-#include <kglobal.h>
-#include <klocale.h>
+#include <tdeglobal.h>
+#include <tdelocale.h>
 #include <tqstring.h>
 
 //static definitions

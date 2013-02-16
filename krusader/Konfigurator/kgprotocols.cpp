@@ -31,7 +31,7 @@
 #include "kgprotocols.h"
 #include "../krusader.h"
 #include "../krservices.h"
-#include <klocale.h>
+#include <tdelocale.h>
 #include <kprotocolinfo.h>
 #include <kmimetype.h>
 #include <tqvbox.h>

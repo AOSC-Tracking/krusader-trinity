@@ -37,7 +37,7 @@ A
 #include "../MountMan/kmountman.h"
 #include <math.h>
 #include <tdefileitem.h>
-#include <klocale.h>
+#include <tdelocale.h>
 #include <klineedit.h>
 #include <kdebug.h>
 

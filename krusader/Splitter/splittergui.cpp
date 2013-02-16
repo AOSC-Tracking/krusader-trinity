@@ -30,10 +30,10 @@
 
 #include "splittergui.h"
 #include "../VFS/vfs.h"
-#include <klocale.h>
+#include <tdelocale.h>
 #include <tqlayout.h>
 #include <tqlabel.h>
-#include <kmessagebox.h>
+#include <tdemessagebox.h>
 
 PredefinedDevice SplitterGUI::predefinedDevices[] = {
   {i18n( "1.44 MB (3.5\")" ),   1457664},

@@ -36,7 +36,7 @@
 
 #include <tqtimer.h>
 #include <tqhbox.h>
-#include <klocale.h>
+#include <tdelocale.h>
 #include <tqtooltip.h>
 
 DiskUsageGUI::DiskUsageGUI( KURL openDir, TQWidget* parent, const char *name ) 

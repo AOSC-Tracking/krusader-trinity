@@ -31,7 +31,7 @@
 // TQt includes
 #include <tqwhatsthis.h> 
 #include <kstatusbar.h>
-#include <kmenubar.h>
+#include <tdemenubar.h>
 #include <tdeshortcut.h>
 // Krusader includes
 #include "krusaderview.h"

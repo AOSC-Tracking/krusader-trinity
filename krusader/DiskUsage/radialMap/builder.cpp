@@ -4,8 +4,8 @@
 #include "builder.h"
 #include "Config.h"
 #include "fileTree.h"
-#include <kglobal.h> //locale object
-#include <klocale.h>
+#include <tdeglobal.h> //locale object
+#include <tdelocale.h>
 #include "widget.h"
 
 

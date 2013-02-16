@@ -31,10 +31,10 @@
 #include "kgcolors.h"
 #include "../defaults.h"
 #include "../Panel/krcolorcache.h"
-#include <kmessagebox.h>
-#include <klocale.h>
+#include <tdemessagebox.h>
+#include <tdelocale.h>
 #include <tdefiledialog.h>
-#include <kglobalsettings.h>
+#include <tdeglobalsettings.h>
 #include <kstandarddirs.h>
 #include <tqhbox.h>
 #include <tqheader.h>

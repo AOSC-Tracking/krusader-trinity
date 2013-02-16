@@ -5,9 +5,9 @@
 #include "segmentTip.h"
 
 #include <tdeapplication.h>    //installing eventFilters
-#include <kglobal.h>
-#include <kglobalsettings.h>
-#include <klocale.h>
+#include <tdeglobal.h>
+#include <tdeglobalsettings.h>
+#include <tdelocale.h>
 #include <kpixmapeffect.h>
 #include <tqpainter.h>
 #include <tqtooltip.h>        //for its palette

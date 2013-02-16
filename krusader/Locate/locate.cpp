@@ -39,12 +39,12 @@
 #include "../VFS/virt_vfs.h"
 #include "../KViewer/krviewer.h"
 #include "../panelmanager.h"
-#include <klocale.h>
+#include <tdelocale.h>
 #include <tqhbox.h>
 #include <tqlabel.h>
 #include <tqlayout.h>
 #include <tqfontmetrics.h>
-#include <kmessagebox.h>
+#include <tdemessagebox.h>
 #include <tdepopupmenu.h>
 #include <tqcursor.h>
 #include <tqeventloop.h>

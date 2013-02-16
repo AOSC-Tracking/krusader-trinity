@@ -30,7 +30,7 @@
 #ifndef PACKGUIBASE_H
 #define PACKGUIBASE_H
 
-#include <klocale.h>
+#include <tdelocale.h>
 #include <tqdialog.h>
 #include <tqmap.h>
 

@@ -36,8 +36,8 @@
 #include "../VFS/krquery.h"
 #include "config.h"
 #include <kurl.h>
-#include <kmessagebox.h>
-#include <klocale.h>
+#include <tdemessagebox.h>
+#include <tdelocale.h>
 #include <tqapplication.h>
 #include <tqregexp.h>
 #include <tqdir.h>

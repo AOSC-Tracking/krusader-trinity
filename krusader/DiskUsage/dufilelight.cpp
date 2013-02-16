@@ -31,7 +31,7 @@
 #include "dufilelight.h"
 #include "radialMap/radialMap.h"
 #include <tdepopupmenu.h>
-#include <klocale.h>
+#include <tdelocale.h>
 #include <kinputdialog.h>
 
 #define SCHEME_POPUP_ID    6730

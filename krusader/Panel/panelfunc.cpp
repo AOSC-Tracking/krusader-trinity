@@ -34,14 +34,14 @@ A
 #include <tqeventloop.h>
 #include <tqclipboard.h> 
 // KDE Includes
-#include <klocale.h>
+#include <tdelocale.h>
 #include <kprocess.h>
 #include <kpropertiesdialog.h>
 #include <kopenwith.h>
-#include <kmessagebox.h>
+#include <tdemessagebox.h>
 #include <kcursor.h>
 #include <kstandarddirs.h>
-#include <ktempfile.h>
+#include <tdetempfile.h>
 #include <kurl.h>
 #include <krun.h>
 #include <kinputdialog.h>

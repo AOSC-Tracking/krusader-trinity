@@ -43,8 +43,8 @@ YP   YD 88   YD ~Y8888P' `8888Y' YP   YP Y8888D' Y88888P 88   YD
 // KDE includes
 #include <tdepopupmenu.h>
 #include <kprocess.h>
-#include <kmessagebox.h>
-#include <klocale.h>
+#include <tdemessagebox.h>
+#include <tdelocale.h>
 #include <kmimetype.h>
 #include <kurl.h>
 #include <ktrader.h>
@@ -52,9 +52,9 @@ YP   YD 88   YD ~Y8888P' `8888Y' YP   YP Y8888D' Y88888P 88   YD
 #include <kuserprofile.h>
 #include <kiconloader.h>
 #include <kcursor.h>
-#include <kmessagebox.h>
+#include <tdemessagebox.h>
 #include <kstandarddirs.h>
-#include <kglobalsettings.h>
+#include <tdeglobalsettings.h>
 #include <tqtooltip.h>
 #include <tdeversion.h>
 #include <tqimage.h>

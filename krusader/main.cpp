@@ -31,7 +31,7 @@
 // KDE includes
 #include <tdecmdlineargs.h>
 #include <tdeaboutdata.h>
-#include <klocale.h>
+#include <tdelocale.h>
 #include <kstandarddirs.h>
 #include <ksplashscreen.h>
 #include <unistd.h>
@@ -44,7 +44,7 @@
 #include "krusaderapp.h"
 #include "defaults.h"
 #include <dcopclient.h>
-#include <kstartupinfo.h>
+#include <tdestartupinfo.h>
 #include <stdlib.h>
 
 static const char *description =

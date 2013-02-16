@@ -31,8 +31,8 @@
 #include "splitter.h"
 #include "../VFS/vfs.h"
 #include <tqlayout.h>
-#include <klocale.h>
-#include <kmessagebox.h>
+#include <tdelocale.h>
+#include <tdemessagebox.h>
 #include <tdeio/job.h>
 #include <tdefileitem.h>
 #include <tqfileinfo.h>

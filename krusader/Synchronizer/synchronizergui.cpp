@@ -42,12 +42,12 @@
 #include "feedtolistboxdialog.h"
 #include <tqlayout.h>
 #include <kurlrequester.h>
-#include <klocale.h>
+#include <tdelocale.h>
 #include <tqgrid.h>
 #include <tdepopupmenu.h>
 #include <tqcursor.h>
 #include <time.h>
-#include <kmessagebox.h>
+#include <tdemessagebox.h>
 #include <tdeio/netaccess.h>
 #include <tqeventloop.h>
 #include <tqwhatsthis.h>

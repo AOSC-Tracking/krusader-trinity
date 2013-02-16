@@ -30,7 +30,7 @@
 // TQt includes
 #include <tqdir.h>
 // KDE includes
-#include <kmessagebox.h>
+#include <tdemessagebox.h>
 #include <kprocess.h>
 // Krusader includes
 #include "temp_vfs.h"

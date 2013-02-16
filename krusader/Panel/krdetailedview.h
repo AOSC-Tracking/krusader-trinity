@@ -32,7 +32,7 @@ A
 
 #include <tdelistview.h>
 #include <ksqueezedtextlabel.h>
-#include <klocale.h>
+#include <tdelocale.h>
 #include <tqwidget.h>
 #include <tqtimer.h>
 #include <tqdatetime.h>

@@ -36,8 +36,8 @@
 #include "../krusader.h"
 #include "../krusaderview.h"
 #include "../panelmanager.h"
-#include <klocale.h>
-#include <kmessagebox.h>
+#include <tdelocale.h>
+#include <tdemessagebox.h>
 #include <tqcheckbox.h>
 #include <tqlayout.h>
 #include <tqlineedit.h>

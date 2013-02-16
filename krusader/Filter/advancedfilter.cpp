@@ -33,13 +33,13 @@
 #include "../Dialogs/krdialogs.h"
 
 #include <tqgroupbox.h>
-#include <klocale.h>
+#include <tdelocale.h>
 #include <tqlayout.h>
 #include <tqlabel.h>
 #include <tqbuttongroup.h>
 #include <tqfile.h>
 #include <kdebug.h>
-#include <kmessagebox.h>
+#include <tdemessagebox.h>
 #include <time.h>
 #include <kiconloader.h>
 

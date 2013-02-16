@@ -32,7 +32,7 @@
 #include "../defaults.h"
 #include "../GUI/profilemanager.h"
 #include "../krusader.h"
-#include <klocale.h>
+#include <tdelocale.h>
 #include <klineedit.h>
 #include <tqwhatsthis.h>
 

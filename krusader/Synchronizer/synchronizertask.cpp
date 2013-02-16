@@ -34,8 +34,8 @@
 #include "synchronizerdirlist.h"
 #include <tqtimer.h>
 #include <tqfile.h>
-#include <klocale.h>
-#include <kmessagebox.h>
+#include <tdelocale.h>
+#include <tdemessagebox.h>
 #include "../VFS/vfs.h"
 
 CompareTask::CompareTask( SynchronizerFileItem *parentIn, const TQString &leftURL,

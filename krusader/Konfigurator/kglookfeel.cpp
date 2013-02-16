@@ -33,13 +33,13 @@
 #include "../defaults.h"
 #include "../Dialogs/krdialogs.h"
 #include <tqtabwidget.h>
-#include <klocale.h>
+#include <tdelocale.h>
 #include <tqwhatsthis.h>
 #include <tqvalidator.h>
 #include <tqlistview.h>
-#include <kmessagebox.h>
+#include <tdemessagebox.h>
 #include <tdefiledialog.h>
-#include <kglobal.h>
+#include <tdeglobal.h>
 #include <kstandarddirs.h>
 #include "../Panel/krselectionmode.h"
 #include "../Panel/listpanel.h"

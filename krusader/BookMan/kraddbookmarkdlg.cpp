@@ -1,7 +1,7 @@
 #include "kraddbookmarkdlg.h"
 #include "../krusader.h"
 #include "krbookmarkhandler.h"
-#include <klocale.h>
+#include <tdelocale.h>
 #include <tqheader.h>
 #include <tqlayout.h>
 #include <tqlabel.h>

@@ -34,7 +34,7 @@
 #include "../defaults.h"
 #include <tqlayout.h>
 #include <tqhbox.h>
-#include <klocale.h>
+#include <tdelocale.h>
 
 SynchronizeDialog::SynchronizeDialog( TQWidget* parent,  const char* name, bool modal, WFlags fl,
                                       Synchronizer *sync, int pleftCopyNr, TDEIO::filesize_t pleftCopySize,

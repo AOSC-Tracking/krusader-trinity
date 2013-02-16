@@ -49,13 +49,13 @@
 #include "kcmdmodebutton.h"
 #include <tqdir.h>
 #include <kstandarddirs.h>
-#include <klocale.h>
-#include <kglobalsettings.h>
+#include <tdelocale.h>
+#include <tdeglobalsettings.h>
 #include <tqfontmetrics.h>
 #include <tqimage.h>
 #include <tqstringlist.h>
 #include <tqsizepolicy.h>
-#include <ktempfile.h> 
+#include <tdetempfile.h> 
 
 KCMDLine::KCMDLine( TQWidget *parent, const char *name ) : TQWidget( parent, name ) {
   TQGridLayout * layout = new TQGridLayout( this, 1, 4 );

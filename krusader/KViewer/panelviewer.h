@@ -6,7 +6,7 @@
 #include <tqwidgetstack.h>
 #include <tdeparts/part.h>
 #include <tdeio/job.h>
-#include <ktempfile.h>
+#include <tdetempfile.h>
 #include <tqdict.h>
 #include <tqlabel.h>
 

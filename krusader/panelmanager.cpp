@@ -1,6 +1,6 @@
 #include <tqwidgetstack.h>
 #include <tqtoolbutton.h>
-#include <klocale.h>
+#include <tdelocale.h>
 #include <tqimage.h>
 #include <kdebug.h>
 #include <tdeconfig.h>

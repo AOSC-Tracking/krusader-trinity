@@ -27,7 +27,7 @@ The current version only manages sync-browse and got no mode-switch options.
 
 #include "syncbrowsebutton.h"
 
-#include <klocale.h>
+#include <tdelocale.h>
 #include <kiconloader.h>
 
 //#include <kdebug.h>

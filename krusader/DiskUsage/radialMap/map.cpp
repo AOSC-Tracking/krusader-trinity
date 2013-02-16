@@ -2,7 +2,7 @@
 //Copyright: See COPYING file that comes with this distribution
 
 #include <kcursor.h>         //make()
-#include <kglobalsettings.h> //kdeColours
+#include <tdeglobalsettings.h> //kdeColours
 #include <kimageeffect.h>    //desaturate()
 #include <tqapplication.h>    //make()
 #include <tqimage.h>          //make() & paint()

@@ -35,7 +35,7 @@
 #include <tqpushbutton.h>
 #include <unistd.h>
 #include "../krusader.h"
-#include "klocale.h"
+#include "tdelocale.h"
 #include <kcursor.h>
 
 KRPleaseWait::KRPleaseWait( TQString msg, int count, bool cancel ):

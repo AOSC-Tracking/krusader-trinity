@@ -33,7 +33,7 @@
 #include "../krusader.h"
 #include "../ActionMan/actionman.h"
 
-#include <klocale.h>
+#include <tdelocale.h>
 #include <kpushbutton.h>
 #include <kdebug.h>
 

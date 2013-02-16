@@ -2,7 +2,7 @@
 //Copyright: See COPYING file that comes with this distribution
 
 #include <kcursor.h>        //ctor
-#include <klocale.h>
+#include <tdelocale.h>
 #include <kurl.h>
 #include <tqapplication.h>   //sendEvent
 #include <tqbitmap.h>        //ctor - finding cursor size

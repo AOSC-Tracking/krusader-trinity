@@ -12,8 +12,8 @@
 
 #include "actionman.h"
 
-#include <klocale.h>
-#include <kmessagebox.h>
+#include <tdelocale.h>
+#include <tdemessagebox.h>
 
 #include "useractionpage.h"
 #include "../krusader.h"

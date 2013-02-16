@@ -40,8 +40,8 @@
 
 #include <kdialogbase.h>
 #include <kiconloader.h>
-#include <kglobalsettings.h>
-#include <klocale.h>
+#include <tdeglobalsettings.h>
+#include <tdelocale.h>
 
 #include "../krusader.h"
 #include "../Konfigurator/krresulttable.h"

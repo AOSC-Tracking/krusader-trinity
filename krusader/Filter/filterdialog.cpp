@@ -32,7 +32,7 @@
 #include "filtertabs.h"
 #include "generalfilter.h"
 
-#include <klocale.h>
+#include <tdelocale.h>
 
 FilterDialog::FilterDialog(  TQWidget *parent, const char *name )
     : KDialogBase( parent, name, true, i18n("Krusader::Choose Files"), Ok|Cancel )

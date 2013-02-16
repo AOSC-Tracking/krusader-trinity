@@ -5,10 +5,10 @@
 #include "../Dialogs/popularurls.h"
 #include "../VFS/vfs.h"
 #include <kiconloader.h>
-#include <kmessagebox.h>
+#include <tdemessagebox.h>
 #include <tqptrlist.h>
 #include <tdeactioncollection.h>
-#include <klocale.h>
+#include <tdelocale.h>
 #include <kdebug.h>
 #include <kbookmarkmanager.h>
 #include <kstandarddirs.h>

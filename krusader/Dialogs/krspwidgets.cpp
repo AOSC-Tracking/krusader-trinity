@@ -40,7 +40,7 @@
 #include <tqcheckbox.h>
 #include <tqlistbox.h>
 #include <tqspinbox.h>
-#include <klocale.h>
+#include <tdelocale.h>
 #include <kcombobox.h>
 #include <kiconloader.h>
 #include <kcursor.h>

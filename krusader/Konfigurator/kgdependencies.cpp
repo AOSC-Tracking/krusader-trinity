@@ -32,9 +32,9 @@
 #include "../krservices.h"
 #include "../krusader.h"
 #include <tqtabwidget.h>
-#include <klocale.h>
+#include <tdelocale.h>
 #include <tqhbox.h>
-#include <kmessagebox.h>
+#include <tdemessagebox.h>
 
 #define PAGE_GENERAL   0
 #define PAGE_PACKERS   1

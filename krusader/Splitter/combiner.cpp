@@ -30,8 +30,8 @@
 
 #include "combiner.h"
 #include "../VFS/vfs.h"
-#include <klocale.h>
-#include <kmessagebox.h>
+#include <tdelocale.h>
+#include <tdemessagebox.h>
 #include <tdefileitem.h>
 #include <tdeio/job.h>
 #include <tqfileinfo.h>

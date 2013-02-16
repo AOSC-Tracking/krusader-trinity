@@ -29,7 +29,7 @@
 *                                                                         *
 ***************************************************************************/
 
-#include <kglobalsettings.h>
+#include <tdeglobalsettings.h>
 
 ///////////////////////   [Startup]
 // UI Save Settings

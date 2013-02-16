@@ -16,10 +16,10 @@
 #include <tqtoolbutton.h>
 #include <tqtooltip.h>
 #include <klineedit.h>
-#include <kmessagebox.h>
+#include <tdemessagebox.h>
 #include <tdefiledialog.h>
 #include <kiconloader.h>
-#include <klocale.h>
+#include <tdelocale.h>
 #include <kclipboard.h>
 
 #include "actionproperty.h"

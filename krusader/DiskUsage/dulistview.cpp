@@ -33,9 +33,9 @@
 #include "../kicons.h"
 #include "../VFS/krpermhandler.h"
 #include <tqfontmetrics.h>
-#include <klocale.h>
+#include <tdelocale.h>
 #include <kmimetype.h>
-#include <kglobal.h>
+#include <tdeglobal.h>
 #include <tqheader.h>
 #include <time.h>
 

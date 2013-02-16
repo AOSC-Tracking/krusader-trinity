@@ -32,8 +32,8 @@
 #include <tqhbox.h>
 #include <tqvbox.h>
 #include <tqfontmetrics.h>
-#include <klocale.h>
-#include <kmessagebox.h>
+#include <tdelocale.h>
+#include <tdemessagebox.h>
 #include <kinputdialog.h>
 #include "krresulttabledialog.h"
 #include "kggeneral.h"

@@ -21,11 +21,11 @@
 #include <tqcheckbox.h>
 #include <tqradiobutton.h>
 #include <tqbuttongroup.h>
-#include <klocale.h>
+#include <tdelocale.h>
 #include <tdefiledialog.h>
 #include <klineedit.h>
 #include <kdebug.h>
-#include <kmessagebox.h>
+#include <tdemessagebox.h>
 #include <kinputdialog.h>
 #include <kkeybutton.h>
 #include <kcombobox.h>

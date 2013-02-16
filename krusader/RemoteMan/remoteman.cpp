@@ -35,7 +35,7 @@
 #include "../resources.h"
 #include "../krusader.h"
 #include <tqlineedit.h>
-#include <klocale.h>
+#include <tdelocale.h>
 #include <tqpixmap.h>
 #include <tqspinbox.h>
 #include <tqmultilineedit.h>

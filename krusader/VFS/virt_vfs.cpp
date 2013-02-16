@@ -19,10 +19,10 @@
 #include <time.h>
  
 #include <tdefileitem.h>
-#include <kglobalsettings.h>
+#include <tdeglobalsettings.h>
 #include <kurl.h>
-#include <kmessagebox.h>
-#include <klocale.h>
+#include <tdemessagebox.h>
+#include <tdelocale.h>
 #include <kdirsize.h>
 #include <kstandarddirs.h>
 

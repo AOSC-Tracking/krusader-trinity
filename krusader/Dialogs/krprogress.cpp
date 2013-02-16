@@ -24,8 +24,8 @@
 #include <tdeapplication.h>
 #include <kdialog.h>
 #include <kstringhandler.h>
-#include <kglobal.h>
-#include <klocale.h>
+#include <tdeglobal.h>
+#include <tdelocale.h>
 #include <kiconloader.h>
 #include <kpushbutton.h>
 #include <kstdguiitem.h>

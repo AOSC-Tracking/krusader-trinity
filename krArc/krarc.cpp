@@ -28,11 +28,11 @@
 
 #include <tdefileitem.h>
 #include <kdebug.h>
-#include <kmessagebox.h>
+#include <tdemessagebox.h>
 #include <kinstance.h>
-#include <klocale.h>
+#include <tdelocale.h>
 #include <kurl.h>
-#include <ktempfile.h>
+#include <tdetempfile.h>
 #include <klargefile.h>
 #include <kstandarddirs.h>
 #include <tdeio/job.h>

@@ -37,11 +37,11 @@ A
 #include "../kicons.h"
 #include "../defaults.h"
 #include "../VFS/vfs.h"
-#include <klocale.h>
+#include <tdelocale.h>
 #include <tqpixmap.h>
 #include <tdepopupmenu.h>
 #include <tqbitmap.h>
-#include <kmessagebox.h>
+#include <tdemessagebox.h>
 #include <tqlayout.h>
 #include <tqgroupbox.h>
 #include <kprocess.h>

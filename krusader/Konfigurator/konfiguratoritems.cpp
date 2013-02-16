@@ -30,7 +30,7 @@
 
 #include "konfiguratoritems.h"
 #include "../krusader.h"
-#include <klocale.h>
+#include <tdelocale.h>
 #include <tqpainter.h>
 #include <tqpen.h>
 #include <tqcolordialog.h>

@@ -34,8 +34,8 @@
 #include <kdebug.h>
 #include <kinputdialog.h>
 #include <kstandarddirs.h>
-#include <kmessagebox.h>
-#include <ktempfile.h>
+#include <tdemessagebox.h>
+#include <tdetempfile.h>
 #include <tqstringlist.h>
 #include <tqclipboard.h>
 

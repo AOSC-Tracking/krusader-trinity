@@ -34,7 +34,7 @@ A
 #include <tqlayout.h>
 #include <tqlabel.h>
 // KDE Includes
-#include <klocale.h>
+#include <tdelocale.h>
 #include <kcursor.h>
 // Krusader Includes
 #include "krcalcspacedialog.h"

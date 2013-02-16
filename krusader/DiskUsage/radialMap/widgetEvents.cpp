@@ -9,8 +9,8 @@
 #include <kiconeffect.h> //::mousePressEvent()
 #include <kiconloader.h> //::mousePressEvent()
 #include <tdeio/job.h>     //::mousePressEvent()
-#include <klocale.h>
-#include <kmessagebox.h> //::mousePressEvent()
+#include <tdelocale.h>
+#include <tdemessagebox.h> //::mousePressEvent()
 #include <tdepopupmenu.h>  //::mousePressEvent()
 #include <krun.h>        //::mousePressEvent()
 #include <math.h>        //::segmentAt()

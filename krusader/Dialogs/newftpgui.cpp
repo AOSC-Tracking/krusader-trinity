@@ -20,7 +20,7 @@
 #include <tqwhatsthis.h>
 #include <tqimage.h>
 #include <tqpixmap.h>
-#include <klocale.h>
+#include <tdelocale.h>
 #include <kprotocolinfo.h>
 #include <kcombobox.h>
 #include <kiconloader.h>

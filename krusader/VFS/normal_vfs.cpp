@@ -36,11 +36,11 @@
 #include <tqdir.h>
 #include <tqtimer.h>
 // KDE includes
-#include <kmessagebox.h>
+#include <tdemessagebox.h>
 #include <kmimetype.h>
 #include <tdeio/jobclasses.h>
-#include <klocale.h>
-#include <kglobalsettings.h>
+#include <tdelocale.h>
+#include <tdeglobalsettings.h>
 #include <kdebug.h>
 #include <klargefile.h>
 #include <tdefileitem.h>

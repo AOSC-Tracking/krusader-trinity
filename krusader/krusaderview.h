@@ -34,7 +34,7 @@
 
 // KDE includes
 #include <tdelistview.h>
-#include <klocale.h>
+#include <tdelocale.h>
 #include <tdeaccel.h>
 #include <tdeapplication.h>
 #include <tdeparts/part.h>

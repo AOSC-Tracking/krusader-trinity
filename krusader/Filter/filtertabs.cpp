@@ -33,7 +33,7 @@
 #include "generalfilter.h"
 #include "advancedfilter.h"
 
-#include <klocale.h>
+#include <tdelocale.h>
 
 FilterTabs::FilterTabs( int properties, TQTabWidget *tabWidget, TQObject *parent ) :
     TQObject( parent, 0 )

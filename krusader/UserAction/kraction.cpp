@@ -12,7 +12,7 @@
 
 #include <kdialogbase.h>
 #include <kdebug.h>
-#include <klocale.h>
+#include <tdelocale.h>
 #include <kinputdialog.h>
 #include <tqtextedit.h>
 #include <tqvbox.h>
@@ -24,7 +24,7 @@
 #include <tqlabel.h>
 #include <tdeaction.h>
 #include <kurl.h>
-#include <kmessagebox.h>
+#include <tdemessagebox.h>
 #include <tdefiledialog.h>
 #include "kraction.h"
 #include "expander.h"

@@ -4,7 +4,7 @@
 #include <tqpixmap.h>
 #include <kiconloader.h>
 #include <tdeaction.h>
-#include <klocale.h>
+#include <tdelocale.h>
 #include <tdepopupmenu.h>
 #include <kdebug.h>
 

@@ -39,12 +39,12 @@
 #include <tqdatetime.h>
 #include <tqfileinfo.h>
 // KDE includes
-#include <kmessagebox.h>
-#include <klocale.h>
+#include <tdemessagebox.h>
+#include <tdelocale.h>
 #include <kprocess.h>
 #include <tdeio/jobclasses.h>
 #include <tqprogressdialog.h>
-#include <kglobalsettings.h>
+#include <tdeglobalsettings.h>
 #include <kmimetype.h>
 #include <kcursor.h>
 #include <klargefile.h>

@@ -31,7 +31,7 @@
 #include "../krusader.h"
 #include "profilemanager.h"
 
-#include <klocale.h>
+#include <tdelocale.h>
 #include <tqtooltip.h>
 #include <tdepopupmenu.h>
 #include <tqcursor.h>

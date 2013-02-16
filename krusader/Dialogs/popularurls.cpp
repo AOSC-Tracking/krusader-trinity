@@ -1,5 +1,5 @@
-#include <kmessagebox.h>
-#include <klocale.h>
+#include <tdemessagebox.h>
+#include <tdelocale.h>
 #include <tqpushbutton.h>
 #include <tdelistview.h>
 #include <kiconloader.h>

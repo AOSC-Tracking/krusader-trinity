@@ -15,12 +15,12 @@
  *                                                                         *
  ***************************************************************************/
 
-#include <klocale.h>
+#include <tdelocale.h>
 #include <kprocess.h>
 #include <kshred.h>
 #include <krun.h>
 #include <kiconloader.h>
-#include <kmessagebox.h>
+#include <tdemessagebox.h>
 #include "../krservices.h"
 #include "../defaults.h"
 #include "../MountMan/kmountman.h"

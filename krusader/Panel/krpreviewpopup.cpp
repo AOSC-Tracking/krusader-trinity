@@ -18,7 +18,7 @@
 #include <tdeio/previewjob.h>
 #include "krpreviewpopup.h"
 #include <kdebug.h>
-#include <klocale.h>
+#include <tdelocale.h>
 #include <keditcl.h>
 #include "../KViewer/krviewer.h"
 #include "../krusader.h"

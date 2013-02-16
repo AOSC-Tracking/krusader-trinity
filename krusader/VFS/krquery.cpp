@@ -41,7 +41,7 @@
 #include <tqtextcodec.h>
 #include <tqregexp.h>
 #include <klargefile.h>
-#include <klocale.h>
+#include <tdelocale.h>
 #include <kmimetype.h>
 #include <tqfile.h>
 #include <kurlcompletion.h>

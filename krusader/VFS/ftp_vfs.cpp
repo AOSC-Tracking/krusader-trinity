@@ -42,9 +42,9 @@
 #include <tqeventloop.h>
 // KDE includes
 #include <tdeio/jobclasses.h>
-#include <klocale.h>
+#include <tdelocale.h>
 #include <tdeio/job.h>
-#include <kmessagebox.h>
+#include <tdemessagebox.h>
 #include <kprotocolinfo.h>
 #include <kdebug.h> 
 // Krusader includes

@@ -44,7 +44,7 @@
 #include <kinputdialog.h>
 #include <tqregexp.h>
 #include <tqfontmetrics.h>
-#include <kmessagebox.h>
+#include <tdemessagebox.h>
 #include <tdepopupmenu.h>
 #include <tqcursor.h>
 #include <tqclipboard.h>

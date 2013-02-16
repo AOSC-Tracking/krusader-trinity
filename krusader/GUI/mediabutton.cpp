@@ -40,12 +40,12 @@
 #include <tqfile.h>
 #include <tqfontmetrics.h>
 
-#include <klocale.h>
+#include <tdelocale.h>
 #include <kiconloader.h>
 
 #include <tdeversion.h>
 #include <tdeio/job.h>
-#include <kmessagebox.h>
+#include <tdemessagebox.h>
 #include <kmimetype.h>
 #include <kprotocolinfo.h>
 #include <tdefileitem.h>

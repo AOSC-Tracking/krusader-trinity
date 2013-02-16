@@ -33,7 +33,7 @@
 #include "../krusader.h"
 #include "../VFS/krpermhandler.h"
 #include <tqheader.h>
-#include <klocale.h>
+#include <tdelocale.h>
 #include <tqpen.h>
 #include <tqpainter.h>
 #include <tqfontmetrics.h>

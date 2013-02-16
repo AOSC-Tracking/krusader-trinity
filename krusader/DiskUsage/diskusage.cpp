@@ -30,11 +30,11 @@
 
 #include <time.h>
 #include <tqlayout.h>
-#include <klocale.h>
+#include <tdelocale.h>
 #include <tdepopupmenu.h>
 #include <kmimetype.h>
-#include <kmessagebox.h>
-#include <kglobalsettings.h>
+#include <tdemessagebox.h>
+#include <tdeglobalsettings.h>
 #include <tdeio/job.h>
 #include <tqpushbutton.h>
 #include <tqhbox.h>

@@ -30,7 +30,7 @@
 
 #include "kgadvanced.h"
 #include "../defaults.h"
-#include <klocale.h>
+#include <tdelocale.h>
 #include <tqhbox.h>
 #include <tqwhatsthis.h>
 #include <sys/param.h>

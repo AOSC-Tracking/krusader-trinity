@@ -14,7 +14,7 @@
 #include <kzip.h>
 #include <kar.h>
 #include <kmimemagic.h>
-#include <klocale.h>
+#include <tdelocale.h>
 #include <tdeversion.h>
 
 #include <errno.h> // to be removed

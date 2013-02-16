@@ -21,7 +21,7 @@
 #include <tqwidget.h>
 #include <tqptrlist.h>
 #include <tdeparts/mainwindow.h>
-#include <ktempfile.h>
+#include <tdetempfile.h>
 #include <tdeparts/partmanager.h>
 #include <tdeparts/browserextension.h>
 #include <tqguardedptr.h>

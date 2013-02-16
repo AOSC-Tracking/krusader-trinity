@@ -33,9 +33,9 @@
 #include "../krusader.h"
 #include "../VFS/vfs.h"
 
-#include <klocale.h>
+#include <tdelocale.h>
 #include <tdefiledialog.h>
-#include <kmessagebox.h>
+#include <tdemessagebox.h>
 #include <kiconloader.h>
 #include <tqwhatsthis.h>
 #include <tqpushbutton.h>

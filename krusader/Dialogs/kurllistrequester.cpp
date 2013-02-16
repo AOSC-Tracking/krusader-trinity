@@ -36,8 +36,8 @@
 #include <tdefiledialog.h>
 #include <tdepopupmenu.h>
 #include <kiconloader.h>
-#include <klocale.h>
-#include <kmessagebox.h>
+#include <tdelocale.h>
+#include <tdemessagebox.h>
 
 #define DELETE_ITEM_ID    100
 

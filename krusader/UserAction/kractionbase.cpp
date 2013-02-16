@@ -11,7 +11,7 @@
 //
 
 #include <kinputdialog.h>
-#include <klocale.h>
+#include <tdelocale.h>
 
 #include <tqerrormessage.h>
 

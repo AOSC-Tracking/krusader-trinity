@@ -49,8 +49,8 @@
 #include <tqtabwidget.h>
 #include <tqlistview.h>
 #include <tqstringlist.h>
-#include <kglobal.h>
-#include <klocale.h>
+#include <tdeglobal.h>
+#include <tdelocale.h>
 
 class KrSearchDialog : public TQDialog  {
    Q_OBJECT

@@ -1,6 +1,6 @@
 #include "krviewitem.h"
 #include "../VFS/krpermhandler.h"
-#include <klocale.h>
+#include <tdelocale.h>
 #include <kmimetype.h>
 #include <sys/types.h>
 #include <time.h>

@@ -11,7 +11,7 @@
 //
 #include "useractionlistview.h"
 
-#include <klocale.h>
+#include <tdelocale.h>
 #include <kiconloader.h>
 #include <tqptrlist.h>
 #include <tqdom.h>

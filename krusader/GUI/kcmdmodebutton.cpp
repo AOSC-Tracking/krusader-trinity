@@ -26,7 +26,7 @@
 #include "../krusaderview.h"
 
 #include <tdeactionclasses.h>
-#include <klocale.h>
+#include <tdelocale.h>
 #include <kiconloader.h>
 #include <tdepopupmenu.h>
 

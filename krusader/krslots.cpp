@@ -35,9 +35,9 @@
 #include <tqlistview.h>
 #include <tqpixmapcache.h>
 // KDE includes
-#include <klocale.h>
+#include <tdelocale.h>
 #include <kprocess.h>
-#include <kmessagebox.h>
+#include <tdemessagebox.h>
 #include <klineeditdlg.h>
 #include <kdirnotify_stub.h>
 #include <tdeio/netaccess.h>

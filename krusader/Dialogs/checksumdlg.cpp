@@ -1,6 +1,6 @@
 #include "checksumdlg.h"
 #include "../krusader.h"
-#include <klocale.h>
+#include <tdelocale.h>
 #include <tqlayout.h>
 #include <tqlabel.h>
 #include <tqcheckbox.h>
@@ -8,7 +8,7 @@
 #include <tdelistview.h>
 #include <tqpixmap.h>
 #include <kcursor.h>
-#include <kmessagebox.h>
+#include <tdemessagebox.h>
 #include <tqfile.h>
 #include <tqtextstream.h>
 #include <tdefiledialog.h>
@@ -20,7 +20,7 @@
 #include "../krservices.h"
 #include <tqptrlist.h>
 #include <tqmap.h>
-#include <ktempfile.h>
+#include <tdetempfile.h>
 #include <kstandarddirs.h>
 
 class CS_Tool; // forward

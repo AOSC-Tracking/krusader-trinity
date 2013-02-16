@@ -16,7 +16,7 @@ email                :
  ***************************************************************************/
 
 #include <kdebug.h>
-#include <klocale.h>
+#include <tdelocale.h>
 
 #include "../krusader.h"
 #include "../Konfigurator/konfigurator.h"

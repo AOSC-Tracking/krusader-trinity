@@ -38,8 +38,8 @@
 #include <sys/stat.h>
 #include <dirent.h>
 #include <time.h>
-#include <klocale.h>
-#include <kglobal.h>
+#include <tdelocale.h>
+#include <tdeglobal.h>
 #include <klargefile.h> 
 // TQt includes
 #include <tqdatetime.h>

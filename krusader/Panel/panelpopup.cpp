@@ -9,7 +9,7 @@
 #include <tqbuttongroup.h>
 #include <tqtoolbutton.h>
 #include <tdefiletreeview.h>
-#include <klocale.h>
+#include <tdelocale.h>
 #include <tqcursor.h>
 #include <tqlayout.h>
 #include <tqlabel.h>
