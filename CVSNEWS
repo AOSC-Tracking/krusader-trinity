@@ -95,7 +95,7 @@ New archive handling:
   supports passworded arj, ace, rar, zip
   step into hidden archives by pressing <RIGHT> on the archive
   decompressing debian packages by Alt+U
-  using KWallet to store the passwords
+  using TDEWallet to store the passwords
   writes out the error messages of the archiver
   archive type autodetection by its header (first 512 byte)
 

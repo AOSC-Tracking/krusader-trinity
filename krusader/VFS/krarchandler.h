@@ -66,7 +66,7 @@ private:
   // checks if the returned status is correct
   static bool checkStatus( TQString type, int exitCode );
 
-  static KWallet::Wallet * wallet;
+  static TDEWallet::Wallet * wallet;
 };
 
 class KrShellProcess : public KShellProcess {

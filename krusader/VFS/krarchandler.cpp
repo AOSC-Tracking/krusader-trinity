@@ -48,7 +48,7 @@
 
 static TQStringList arcProtocols = TQStringList::split(";", "tar;bzip;bzip2;gzip;krarc;zip");
 
-KWallet::Wallet * KRarcHandler::wallet = 0;
+TDEWallet::Wallet * KRarcHandler::wallet = 0;
 
 TQStringList KRarcHandler::supportedPackers() {
   TQStringList packers;
@@ -525,15 +525,15 @@ TQString KRarcHandler::getPassword( TQString path ) {
 	
 	TQString key = "krarc-" + path;
 	
-	if( !KWallet::Wallet::keyDoesNotExist(KWallet::Wallet::NetworkWallet(), KWallet::Wallet::PasswordFolder(), key ) ) {
-		if( !KWallet::Wallet::isOpen( KWallet::Wallet::NetworkWallet() )  && wallet != 0 ) {
+	if( !TDEWallet::Wallet::keyDoesNotExist(TDEWallet::Wallet::NetworkWallet(), TDEWallet::Wallet::PasswordFolder(), key ) ) {
+		if( !TDEWallet::Wallet::isOpen( TDEWallet::Wallet::NetworkWallet() )  && wallet != 0 ) {
 			delete wallet;
 			wallet = 0;
 		}
 		if( wallet == 0 )
-			wallet = KWallet::Wallet::openWallet( KWallet::Wallet::NetworkWallet() );
-		if ( wallet && wallet->hasFolder( KWallet::Wallet::PasswordFolder() ) ) {
-			wallet->setFolder( KWallet::Wallet::PasswordFolder() );
+			wallet = TDEWallet::Wallet::openWallet( TDEWallet::Wallet::NetworkWallet() );
+		if ( wallet && wallet->hasFolder( TDEWallet::Wallet::PasswordFolder() ) ) {
+			wallet->setFolder( TDEWallet::Wallet::PasswordFolder() );
 			TQMap<TQString,TQString> map;
 			if ( wallet->readMap( key, map ) == 0 ) {
 				TQMap<TQString, TQString>::ConstIterator it = map.find( "password" );
@@ -551,18 +551,18 @@ TQString KRarcHandler::getPassword( TQString path ) {
 	if (passDlg.exec() == TDEIO::PasswordDialog::Accepted) {
 		password = passDlg.password();
 		if ( keep ) {
-			if( !KWallet::Wallet::isOpen( KWallet::Wallet::NetworkWallet() ) && wallet != 0 ) {
+			if( !TDEWallet::Wallet::isOpen( TDEWallet::Wallet::NetworkWallet() ) && wallet != 0 ) {
 				delete wallet;
 				wallet = 0;
 			}
 			if ( !wallet )
-				wallet = KWallet::Wallet::openWallet( KWallet::Wallet::NetworkWallet() );
+				wallet = TDEWallet::Wallet::openWallet( TDEWallet::Wallet::NetworkWallet() );
 			if ( wallet ) {
 				bool ok = true;
-				if ( !wallet->hasFolder( KWallet::Wallet::PasswordFolder() ) )
-					ok = wallet->createFolder( KWallet::Wallet::PasswordFolder() );
+				if ( !wallet->hasFolder( TDEWallet::Wallet::PasswordFolder() ) )
+					ok = wallet->createFolder( TDEWallet::Wallet::PasswordFolder() );
 				if ( ok ) {
-					wallet->setFolder( KWallet::Wallet::PasswordFolder() );
+					wallet->setFolder( TDEWallet::Wallet::PasswordFolder() );
 					TQMap<TQString,TQString> map;
 					map.insert( "login", "archive" );
 					map.insert( "password", password );
