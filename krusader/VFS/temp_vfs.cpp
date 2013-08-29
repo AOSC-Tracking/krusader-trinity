@@ -56,7 +56,7 @@ temp_vfs::temp_vfs( TQString origin, TQString type, TQWidget* panel, bool ):
 }
 
 temp_vfs::~temp_vfs(){
-	if( vfs_type == "-iso" ){
+	if( tmpvfs_type == ISO ){
 		// unmount the ISO image
     KShellProcess umount;
 		umount << "umount -f" << tmpDir;
@@ -94,6 +94,13 @@ bool temp_vfs::vfs_refresh(const KURL& origin){
 }
 
 void temp_vfs::handleAceArj(TQString origin, TQString type){
+    if (type == "-ace") {
+	tmpvfs_type = ACE;
+    }
+    else if (type == "-arj") {
+	tmpvfs_type = ARJ;
+    }
+
 	// for ace and arj we just unpack to the tmpDir
 	if( !KRarcHandler::arcHandled(type) ){
   	if (!quietMode) KMessageBox::error(krApp,"This archive type is NOT supported");
@@ -117,6 +124,7 @@ void temp_vfs::handleRpm(TQString origin){
 	rpm.clearArguments();
 	rpm << "rpm -lpq"<<"\""+origin+"\""+" > "+tmpDir+"/filelist.txt";
 	rpm.start(TDEProcess::Block);
+	tmpvfs_type = RPM;
 }
 
 void temp_vfs::handleIso(TQString origin){
@@ -124,4 +132,5 @@ void temp_vfs::handleIso(TQString origin){
 	KShellProcess mount;
 	mount << KrServices::fullPathName( "mount" ) << "-o loop" << origin << tmpDir;
 	mount.start(TDEProcess::Block);
+	tmpvfs_type = ISO;
 }

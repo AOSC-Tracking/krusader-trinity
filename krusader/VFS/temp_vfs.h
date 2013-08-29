@@ -37,6 +37,8 @@
 
 class temp_vfs : public normal_vfs  {
 public: 
+	enum TMPVFS_TYPE{ERROR=0,ACE,ARJ,RPM,ISO};
+
 	temp_vfs( TQString origin, TQString type, TQWidget* panel, bool writeable);
 	~temp_vfs();
 	TQString vfs_workingDir();
@@ -50,6 +52,7 @@ protected:
 	void handleAceArj(TQString origin, TQString type);
 	void handleRpm(TQString origin);
 	void handleIso(TQString origin);
+	TMPVFS_TYPE tmpvfs_type;     //< the tmp vfs type.
   TQString tmpDir;
 
 };
