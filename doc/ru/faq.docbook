@@ -918,7 +918,7 @@
 >$TDEDIR/share/services</filename
 ></para>
         <para
->или директорию , в которой находятся KIO slaves вашего дистрибутива &Linux;. </para>
+>или директорию , в которой находятся TDEIO slaves вашего дистрибутива &Linux;. </para>
     <!-- Empty line to make it more readable -->
   </answer>
   </qandaentry>
@@ -933,7 +933,7 @@
  <para
 >Иконки, tdeio_slaves и документация должны быть  правильно установлены в дереве каталогов &kde;. Файлы <filename
 >tdeio_krarc.*</filename
-> быть в той же директории , что и остальные KIO slaves.Попробуйте : locate <filename
+> быть в той же директории , что и остальные TDEIO slaves.Попробуйте : locate <filename
 >tdeio_tar.*</filename
 > и копируйте/сделайте ссылки на файлы <filename
 >tdeio_krarc.*</filename

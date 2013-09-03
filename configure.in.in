@@ -81,11 +81,11 @@ fi
 AM_CONDITIONAL(include_libkjsembed, test "$have_libkjsembed" = yes)
 
 ###################################################
-#		If our own tar-KIO should be built
+#		If our own tar-TDEIO should be built
 ###################################################
 
 AC_ARG_WITH(kiotar,
-    AC_HELP_STRING([--with-kiotar],[use our write-enabled version of KDE's tar KIO-Slave [default=without]]),
+    AC_HELP_STRING([--with-kiotar],[use our write-enabled version of KDE's tar TDEIO-Slave [default=without]]),
     [with_tar=$withval],
     [with_tar=no]
 )
@@ -95,11 +95,11 @@ AM_CONDITIONAL(with_tar, test "$with_tar" != "no")
 ###################################################
 
 ###################################################
-#		If our own iso-KIO should be built
+#		If our own iso-TDEIO should be built
 ###################################################
 
 AC_ARG_WITH(kioiso,
-    AC_HELP_STRING([--with-kioiso],[use our version of Trinity's iso KIO-slave [default=without]]),
+    AC_HELP_STRING([--with-kioiso],[use our version of Trinity's iso TDEIO-slave [default=without]]),
     [with_iso=$withval],
     [with_iso=no]
 )

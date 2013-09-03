@@ -144,11 +144,11 @@ fi
 AM_CONDITIONAL(include_libkjsembed, test "$have_libkjsembed" = yes)
 
 ###################################################
-#		If our own tar-KIO schould be build
+#		If our own tar-TDEIO schould be build
 ###################################################
 
 AC_ARG_WITH(kiotar,
-    AC_HELP_STRING([--with-kiotar],[use our write-enabled version of KDE's tar KIO-Slave [default=without]]),
+    AC_HELP_STRING([--with-kiotar],[use our write-enabled version of KDE's tar TDEIO-Slave [default=without]]),
     [with_tar=$withval],
     [with_tar=no]
 )
@@ -281,7 +281,7 @@ if (test $warn_js);
 fi
 
 if (test $with_tar != "no");
-   then echo "NOTICE:  Our write-enabled version of KDE's tar KIO-Slave will be build. \"make install\" will may overwrite the KDE-version!"
+   then echo "NOTICE:  Our write-enabled version of KDE's tar TDEIO-Slave will be build. \"make install\" will may overwrite the KDE-version!"
 fi
 
 if (test -z "$TDEDIR");

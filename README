@@ -398,7 +398,7 @@ Plus: extensive Archive handling, mounted Filesystem support, FTP,
 advanced Search module, viewer/Editor, directory Synchronization,
 file content Comparisons, powerful batch Renaming and much, much more.
 
-It supports a wide variety of archive formats and can handle other KIO
+It supports a wide variety of archive formats and can handle other TDEIO
 slaves such as smb or fish. It is (almost) completely customizable, very
 user friendly, fast and looks great on your desktop!
 

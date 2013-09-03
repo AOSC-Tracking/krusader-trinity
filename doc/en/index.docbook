@@ -174,7 +174,7 @@ http://groups.google.com/group/krusader-devel/browse_thread/thread/d102adec2edcf
 <!ENTITY rpm-guide-url '<ulink url="http://fedora.redhat.com/docs/drafts/rpm-guide-en/">RPM Guide</ulink>'>
 <!ENTITY tdeioslaves1-url '<ulink url="http://docs.kde.org/development/en/tdebase/tdeioslave/index.html">KIOSlaves</ulink>'>
 <!ENTITY tdeioslaves2-url '<ulink url="http://developer.kde.org/documentation/library/3.4-api/tdeio/html/index.html">KIOSlaves</ulink>'>
-<!ENTITY kio-ipodslave-url '<ulink url="http://sourceforge.net/projects/kpod">KIOipod-slave</ulink>'>
+<!ENTITY tdeio-ipodslave-url '<ulink url="http://sourceforge.net/projects/kpod">KIOipod-slave</ulink>'>
 <!ENTITY tdelibs-url '<ulink url="http://lxr.kde.org/source/tdelibs/tdeioslave">&kde;libs</ulink>'>
 <!ENTITY tdebase-url '<ulink url="http://lxr.kde.org/source/tdebase/tdeioslave">&kde;base</ulink>'>
 <!ENTITY gnome-url '<ulink url="http://www.gnome.org"><application>GNOME</application></ulink>'>

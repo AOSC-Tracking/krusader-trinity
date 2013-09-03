@@ -186,9 +186,9 @@
       viewer.</para>
     </glossdef>
   </glossentry>
-  <glossentry id="gloss-kio">
+  <glossentry id="gloss-tdeio">
     <glossterm>
-    <acronym>KIO</acronym> or tdeioslave</glossterm>
+    <acronym>TDEIO</acronym> or tdeioslave</glossterm>
     <glossdef>
       <para>
       <ulink url="http://en.wikipedia.org/wiki/Kioslave">KDE

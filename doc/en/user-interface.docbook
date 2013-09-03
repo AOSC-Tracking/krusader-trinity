@@ -202,7 +202,7 @@
           <para>
           <userinput>
             <command>ipod:/</command>
-          </userinput>uses the &kio-ipodslave-url; to
+          </userinput>uses the &tdeio-ipodslave-url; to
           access, upload and organize the music stored on
           &appleipod;.</para>
         </listitem>

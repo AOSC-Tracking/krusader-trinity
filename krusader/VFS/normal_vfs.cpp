@@ -71,7 +71,7 @@ normal_vfs::normal_vfs(TQObject* panel):vfs(panel), watcher(0) {
 bool normal_vfs::populateVfsList(const KURL& origin, bool showHidden){
 	TQString path = origin.path(-1);
 	
-	// set the writable attribute to true, if that's not the case - the KIO job
+	// set the writable attribute to true, if that's not the case - the TDEIO job
 	// will give the warnings and errors
 	isWritable = true;
 	

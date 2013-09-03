@@ -114,7 +114,7 @@ void Splitter::splitDataReceived(TDEIO::Job *, const TQByteArray &byteArray)
 
 void Splitter::splitReceiveFinished(TDEIO::Job *job)
 {
-  splitReadJob = 0;   /* KIO automatically deletes the object after Finished signal */
+  splitReadJob = 0;   /* TDEIO automatically deletes the object after Finished signal */
   
   if( splitWriteJob )        /* write out the end of the file */
     splitWriteJob->resume();
@@ -193,7 +193,7 @@ void Splitter::splitDataSend(TDEIO::Job *, TQByteArray &byteArray)
 
 void Splitter::splitSendFinished(TDEIO::Job *job)
 {
-  splitWriteJob = 0;  /* KIO automatically deletes the object after Finished signal */
+  splitWriteJob = 0;  /* TDEIO automatically deletes the object after Finished signal */
 
   if( job->error() )    /* any error occurred? */
   {
@@ -237,7 +237,7 @@ void Splitter::splitFileSend(TDEIO::Job *, TQByteArray &byteArray)
 
 void Splitter::splitFileFinished(TDEIO::Job *job)
 {
-  splitWriteJob = 0;  /* KIO automatically deletes the object after Finished signal */
+  splitWriteJob = 0;  /* TDEIO automatically deletes the object after Finished signal */
 
   if( job->error() )    /* any error occurred? */
   {

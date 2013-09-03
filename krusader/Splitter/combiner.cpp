@@ -243,7 +243,7 @@ void Combiner::combineDataReceived(TDEIO::Job *, const TQByteArray &byteArray)
 
 void Combiner::combineReceiveFinished(TDEIO::Job *job)
 {
-  combineReadJob = 0;   /* KIO automatically deletes the object after Finished signal */
+  combineReadJob = 0;   /* TDEIO automatically deletes the object after Finished signal */
     
   if( job->error() )
   {
@@ -288,7 +288,7 @@ void Combiner::combineDataSend(TDEIO::Job *, TQByteArray &byteArray)
 
 void Combiner::combineSendFinished(TDEIO::Job *job)
 {
-  combineWriteJob = 0;  /* KIO automatically deletes the object after Finished signal */
+  combineWriteJob = 0;  /* TDEIO automatically deletes the object after Finished signal */
 
   if( job->error() )    /* any error occurred? */
   {

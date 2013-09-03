@@ -470,13 +470,13 @@ Usage FAQ
     Install the krarc slave properly:
     Copy the tdeio_krarc.so, tdeio_krarc.la files into $TDEDIR/lib/trinity
     Copy the krarc.protocol file into $TDEDIR/share/services
-    or the directory where the KIO slaves are placed in your Linux�
+    or the directory where the TDEIO slaves are placed in your Linux�
     distribution.
 8.  I get the error message "Protocol not supported by Krusader: "krarc:/path/
     to/foo-archive", when I try to open foo-Archive, what to do?
     The icons, tdeio_slaves and documentation must be installed in the correct
     places in the TDE directory tree. The tdeio_krarc.* files must be in the same
-    directory with the other KIO slaves. Try this: locate tdeio_tar.* and copy/
+    directory with the other TDEIO slaves. Try this: locate tdeio_tar.* and copy/
     link the tdeio_krarc.* files to the same location. Don't forget to run #
     ldconfig on this directory when you're done. For more information click
     here.

@@ -26,7 +26,7 @@ It provides all the file management features you could possibly want.
 Plus: extensive archive handling, mounted filesystem support, FTP, advanced
 search module, an internal viewer/editor, directory synchronisation,
 file content comparisons, powerful batch renaming and much much more.
-It supports a wide variety of archive formats and can handle other KIO slaves
+It supports a wide variety of archive formats and can handle other TDEIO slaves
 such as smb or fish. It is (almost) completely customizable, very user
 friendly, fast and looks great on your desktop! You should give it a try.
 

@@ -143,7 +143,7 @@ void KrBookmarkHandler::exportToFileFolder(TQDomDocument &doc, TQDomElement &par
 //        <title>My own bookmarks</title>
 //        <bookmark href="http://www.koffice.org"><title>KOffice Web Site</title></bookmark>
 //        <separator/>
-//        <bookmark href="http://www.tdevelop.org"><title>KDevelop Web Site</title></bookmark>
+//        <bookmark href="http://www.kdevelop.org"><title>KDevelop Web Site</title></bookmark>
 //      </folder>
 //    </folder>
 //  </xbel>

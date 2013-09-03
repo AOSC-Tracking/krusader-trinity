@@ -155,7 +155,7 @@ void PreservingCopyJob::slotAboutToCreate( TDEIO::Job */*job*/, const TQValueLis
 
 void PreservingCopyJob::slotResult( Job *job ) {
   if( !job->error() ) {
-    if( job->inherits( "TDEIO::StatJob" ) ) {       /* Unfortunately KIO forgets to set times when the file is in the */
+    if( job->inherits( "TDEIO::StatJob" ) ) {       /* Unfortunately TDEIO forgets to set times when the file is in the */
       KURL url = ((TDEIO::SimpleJob *)job)->url();  /* base directory. That's why we capture every StatJob and set the */
                                                 /* time manually. */
       TDEIO::UDSEntry entry = static_cast<TDEIO::StatJob*>(job)->statResult();      

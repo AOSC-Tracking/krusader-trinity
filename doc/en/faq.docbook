@@ -935,7 +935,7 @@
           <filename>krarc.protocol</filename> file into 
           <filename class="directory">
           $TDEDIR/share/services</filename></para>
-          <para>or the directory where the KIO slaves are placed in
+          <para>or the directory where the TDEIO slaves are placed in
           your &Linux; distribution.</para>
           <para></para>
           <!-- Empty line to make it more readable -->
@@ -952,7 +952,7 @@
           installed in the correct places in the &kde;
           directory tree. The 
           <filename>tdeio_krarc.*</filename> files must be in the same
-          directory with the other KIO slaves. Try this: locate 
+          directory with the other TDEIO slaves. Try this: locate 
           <filename>tdeio_tar.*</filename> and copy/link the 
           <filename>tdeio_krarc.*</filename> files to the same
           location. Don't forget to run 
