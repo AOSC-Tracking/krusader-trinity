@@ -54,7 +54,7 @@ const char* KRDrag::format( int i ) const
     if ( i == 0 )
         return "text/uri-list";
     else if ( i == 1 )
-        return "application/x-kde-cutselection";
+        return "application/x-tde-cutselection";
     else if ( i == 2 )
         return "text/plain";
     else return 0;
@@ -66,7 +66,7 @@ TQByteArray KRDrag::encodedData( const char* mime ) const
     TQCString mimetype( mime );
     if ( mimetype == "text/uri-list" )
         return TQUriDrag::encodedData( mime );
-    else if ( mimetype == "application/x-kde-cutselection" ) {
+    else if ( mimetype == "application/x-tde-cutselection" ) {
         TQCString s ( m_bCutSelection ? "1" : "0" );
         a.resize( s.length() + 1 ); // trailing zero
         memcpy( a.data(), s.data(), s.length() + 1 );
@@ -91,7 +91,7 @@ TQByteArray KRDrag::encodedData( const char* mime ) const
 
 bool KRDrag::decodeIsCutSelection( const TQMimeSource *e )
 {
-  TQByteArray a = e->encodedData( "application/x-kde-cutselection" );
+  TQByteArray a = e->encodedData( "application/x-tde-cutselection" );
   if ( a.isEmpty() )
     return false;
   else
