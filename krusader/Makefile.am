@@ -118,7 +118,7 @@ krusader_LDFLAGS = $(all_libraries) $(kde_RPATH) $(LIB_QT) -lDCOP $(LIB_TDECORE)
 
 # this installes alle the icons in the current dir.
 # see the comment in krusader_trinity/icons/Makefile.am for more info
-KDE_ICON = AUTO
+KDE_ICON = krusader*
 
 # How it works (by jonas): 
 # somenamedir = /path/what/ever		# a directory
@@ -168,6 +168,7 @@ krusaderlocal_DATA = \
 	total_commander.keymap \
 	total_commander.keymap.info \
 	useraction_examples.xml \
+	about.png \
 	splash.png
 
 # this installs data for example javascript useractions.
