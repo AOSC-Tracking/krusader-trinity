@@ -7,7 +7,7 @@
 #include "listpanel.h"
 #include "krpreviewpopup.h"
 #include "../UserAction/useractionpopupmenu.h"
-#ifdef __LIBKONTQ__
+#ifdef __LIBKONQ__
 #include <konq_popupmenu.h>
 #include <konqbookmarkmanager.h>
 #endif
@@ -29,11 +29,11 @@ protected:
 	enum ID {
 		OPEN_ID,
 		OPEN_WITH_ID,
-		OPEN_KONTQ_ID,
+		OPEN_KONQ_ID,
 		OPEN_TERM_ID,
 		OPEN_TAB_ID,
 		PREVIEW_ID,
-		KONTQ_MENU_ID,
+		KONQ_MENU_ID,
 		CHOOSE_ID,
 		DELETE_ID,
 		COPY_ID,
@@ -70,7 +70,7 @@ private:
    KrViewItem *item; // the (first) selected item
    KFileItemList _items;
    TQValueList<KServiceOffer> offers;
-#ifdef __LIBKONTQ__
+#ifdef __LIBKONQ__
    KonqPopupMenu *konqMenu;
 #endif
 };

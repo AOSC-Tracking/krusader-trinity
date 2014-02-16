@@ -95,7 +95,7 @@ YP   YD 88   YD ~Y8888P' `8888Y' YP   YP Y8888D' Y88888P 88   YD
 #include "../Dialogs/popularurls.h"
 #include "krpopupmenu.h"
 
-#ifdef __LIBKONTQ__
+#ifdef __LIBKONQ__
 #include <konq_popupmenu.h>
 #include <konqbookmarkmanager.h>
 #endif

@@ -40,7 +40,7 @@ void KrPopupMenu::run(const TQPoint &pos, ListPanel *panel) {
 
 KrPopupMenu::KrPopupMenu(ListPanel *thePanel, TQWidget *parent) : TDEPopupMenu(parent), panel(thePanel), empty(false), 
 	multipleSelections(false),actions(0) {
-#ifdef __LIBKONTQ__
+#ifdef __LIBKONQ__
 	konqMenu = 0;
 #endif
 	
@@ -114,13 +114,13 @@ KrPopupMenu::KrPopupMenu(ListPanel *thePanel, TQWidget *parent) : TDEPopupMenu(p
 		_items.append( new KFileItem( url,  file->vfile_getMime(), file->vfile_getMode() ) );
    }
    
-#ifdef __LIBKONTQ__
+#ifdef __LIBKONQ__
 	// -------------- konqueror menu
    actions = new TDEActionCollection(this);
 	konqMenu = new KonqPopupMenu( KonqBookmarkManager::self(), _items, panel->func->files()->vfs_getOrigin(), *actions, 0, this, 
                            KonqPopupMenu::NoFlags, KParts::BrowserExtension::DefaultPopupItems );
-   insertItem( TQPixmap(), konqMenu, KONTQ_MENU_ID );
-   changeItem( KONTQ_MENU_ID, i18n( "Konqueror Menu" ) );
+   insertItem( TQPixmap(), konqMenu, KONQ_MENU_ID );
+   changeItem( KONQ_MENU_ID, i18n( "Konqueror Menu" ) );
 #endif
    
 	// ------------- 'create new' submenu
@@ -202,7 +202,7 @@ KrPopupMenu::KrPopupMenu(ListPanel *thePanel, TQWidget *parent) : TDEPopupMenu(p
 
 KrPopupMenu::~KrPopupMenu() {
 	if (actions) delete actions;
-#ifdef __LIBKONTQ__
+#ifdef __LIBKONQ__
 	if (konqMenu) delete konqMenu;
 #endif	
 }
@@ -262,7 +262,7 @@ void KrPopupMenu::performAction(int id) {
                  TQString(), KStdGuiItem::cont(), "Shred" ) == KMessageBox::Continue )
                KShred::shred( panel->func->files() ->vfs_getFile( item->name() ).path( -1 ) );
          	break;
-         case OPEN_KONTQ_ID :
+         case OPEN_KONQ_ID :
          	kapp->startServiceByDesktopName( "konqueror", panel->func->files() ->vfs_getFile( item->name() ).url() );
          	break;
          case CHOOSE_ID : // open-with dialog
