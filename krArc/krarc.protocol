@@ -15,3 +15,4 @@ moving=false
 copyToFile=true
 Icon=ark
 Description=Mutiple archive handler that currently supports: zip,rar.
+DocPath=tdeioslave/krarc/index.html

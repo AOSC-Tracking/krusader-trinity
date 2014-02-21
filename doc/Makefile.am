@@ -1,6 +1,6 @@
 ####### tdevelop will overwrite this part!!! (begin)##########
 
-SUBDIRS = en ru pics 
+SUBDIRS = en ru pics tdeioslave
 
 EXTRA_DIST = krusader.1 
 
