@@ -5391,7 +5391,7 @@ msgstr "Obedece à política global de selecção do TDE"
 
 #: Konfigurator/kglookfeel.cpp:270
 msgid ""
-"<p>Use TDE's global setting:</p><p><i>TDE Control Center -> Peripherals -> "
+"<p>Use TDE's global setting:</p><p><i>Trinity Control Center -> Peripherals -> "
 "Mouse</i></p>"
 msgstr ""
 "<p>Usar a configuração global do TDE:</p><p><i> TDE Centro de Controlo-"
@@ -5747,7 +5747,7 @@ msgstr "Usar as cores por defeito do TDE"
 
 #: Konfigurator/kgcolors.cpp:59
 msgid ""
-"<p>Use TDE's global color configuration.</p><p><i>TDE Control Center -> "
+"<p>Use TDE's global color configuration.</p><p><i>Trinity Control Center -> "
 "Appearance & Themes -> Colors</i></p>"
 msgstr ""
 "<p>Use a configuração de cores global do TDE.</p><p><i>TDE Centro de "

@@ -5517,7 +5517,7 @@ msgstr "Підкорятись глобальним правилам вибор�
 #: Konfigurator/kglookfeel.cpp:270
 #, fuzzy
 msgid ""
-"<p>Use TDE's global setting:</p><p><i>TDE Control Center -> Peripherals -> "
+"<p>Use TDE's global setting:</p><p><i>Trinity Control Center -> Peripherals -> "
 "Mouse</i></p>"
 msgstr ""
 "Використовувати параметри TDE Kcontrol: Центр керування TDE ->Периферійні "
@@ -5871,7 +5871,7 @@ msgstr "Вживати типові кольори TDE"
 #: Konfigurator/kgcolors.cpp:59
 #, fuzzy
 msgid ""
-"<p>Use TDE's global color configuration.</p><p><i>TDE Control Center -> "
+"<p>Use TDE's global color configuration.</p><p><i>Trinity Control Center -> "
 "Appearance & Themes -> Colors</i></p>"
 msgstr ""
 "Використовувати параметри TDE Kcontrol: Центр керування TDE ->Периферійні "

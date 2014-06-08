@@ -5381,7 +5381,7 @@ msgstr "Poštuj TDE-ovu globalnu politiku izbora"
 
 #: Konfigurator/kglookfeel.cpp:270
 msgid ""
-"<p>Use TDE's global setting:</p><p><i>TDE Control Center -> Peripherals -> "
+"<p>Use TDE's global setting:</p><p><i>Trinity Control Center -> Peripherals -> "
 "Mouse</i></p>"
 msgstr ""
 "<p>Koristi TDE-ovo globalno podešavanje:</p><p><i>TDE Kontrolni centar-"
@@ -5730,7 +5730,7 @@ msgstr "Koristi podrazumevane TDE boje"
 
 #: Konfigurator/kgcolors.cpp:59
 msgid ""
-"<p>Use TDE's global color configuration.</p><p><i>TDE Control Center -> "
+"<p>Use TDE's global color configuration.</p><p><i>Trinity Control Center -> "
 "Appearance & Themes -> Colors</i></p>"
 msgstr ""
 "<p>Koristi TDE-ovu globalnu konfiguraciju boje.</p><p><i>TDE Kontrolni "

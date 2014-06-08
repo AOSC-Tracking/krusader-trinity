@@ -5364,10 +5364,10 @@ msgstr "Följ TDE's övergripande urvalssätt"
 
 #: Konfigurator/kglookfeel.cpp:270
 msgid ""
-"<p>Use TDE's global setting:</p><p><i>TDE Control Center -> Peripherals -> "
+"<p>Use TDE's global setting:</p><p><i>Trinity Control Center -> Peripherals -> "
 "Mouse</i></p>"
 msgstr ""
-"<p>Använd TDE's globala inställning:<p><i>TDE Control Center-"
+"<p>Använd TDE's globala inställning:<p><i>Trinity Control Center-"
 ">Kringutrustning->Mus</i></p>"
 
 #: Konfigurator/kglookfeel.cpp:282
@@ -5711,10 +5711,10 @@ msgstr "Används TDE's standardfärger"
 
 #: Konfigurator/kgcolors.cpp:59
 msgid ""
-"<p>Use TDE's global color configuration.</p><p><i>TDE Control Center -> "
+"<p>Use TDE's global color configuration.</p><p><i>Trinity Control Center -> "
 "Appearance & Themes -> Colors</i></p>"
 msgstr ""
-"<p>Använd TDE's globala färgkonfiguration.</p><p><i>TDE Control Center -> "
+"<p>Använd TDE's globala färgkonfiguration.</p><p><i>Trinity Control Center -> "
 "Utseende & Teman -> Färger</i></p>"
 
 #: Konfigurator/kgcolors.cpp:60

@@ -5432,7 +5432,7 @@ msgstr "Использовать глобальную политику TDE"
 
 #: Konfigurator/kglookfeel.cpp:270
 msgid ""
-"<p>Use TDE's global setting:</p><p><i>TDE Control Center -> Peripherals -> "
+"<p>Use TDE's global setting:</p><p><i>Trinity Control Center -> Peripherals -> "
 "Mouse</i></p>"
 msgstr ""
 "<p>Использовать настройки центра управления:</p><p><i>Центр управления-"
@@ -5779,10 +5779,10 @@ msgstr "Использовать цвета TDE"
 
 #: Konfigurator/kgcolors.cpp:59
 msgid ""
-"<p>Use TDE's global color configuration.</p><p><i>TDE Control Center -> "
+"<p>Use TDE's global color configuration.</p><p><i>Trinity Control Center -> "
 "Appearance & Themes -> Colors</i></p>"
 msgstr ""
-"<p>Использовать цветовую схему TDE.</p><p><i>TDE Control Center -> Внешний "
+"<p>Использовать цветовую схему TDE.</p><p><i>Trinity Control Center -> Внешний "
 "вид и темы -> Цвета</i></p>"
 
 #: Konfigurator/kgcolors.cpp:60

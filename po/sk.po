@@ -5397,7 +5397,7 @@ msgstr "Podľa globálnych nastavení TDE"
 
 #: Konfigurator/kglookfeel.cpp:270
 msgid ""
-"<p>Use TDE's global setting:</p><p><i>TDE Control Center -> Peripherals -> "
+"<p>Use TDE's global setting:</p><p><i>Trinity Control Center -> Peripherals -> "
 "Mouse</i></p>"
 msgstr ""
 
@@ -5721,7 +5721,7 @@ msgstr "Použiť štandardné TDE farby"
 
 #: Konfigurator/kgcolors.cpp:59
 msgid ""
-"<p>Use TDE's global color configuration.</p><p><i>TDE Control Center -> "
+"<p>Use TDE's global color configuration.</p><p><i>Trinity Control Center -> "
 "Appearance & Themes -> Colors</i></p>"
 msgstr ""
 "<p>Použiť globálne nastavenie farieb TDE.</p><p><i>Ovládanie centrum TDE "

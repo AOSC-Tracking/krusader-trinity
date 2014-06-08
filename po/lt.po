@@ -5397,7 +5397,7 @@ msgstr "Elgtis pagal TDE bendras parinktis"
 
 #: Konfigurator/kglookfeel.cpp:270
 msgid ""
-"<p>Use TDE's global setting:</p><p><i>TDE Control Center -> Peripherals -> "
+"<p>Use TDE's global setting:</p><p><i>Trinity Control Center -> Peripherals -> "
 "Mouse</i></p>"
 msgstr ""
 "<p>Naudoti TDE valdymo centre įrašytas parinktis:</p> <p> <i>TDE Valdymo "
@@ -5758,7 +5758,7 @@ msgstr "Naudoti numatytas TDE spalvas"
 
 #: Konfigurator/kgcolors.cpp:59
 msgid ""
-"<p>Use TDE's global color configuration.</p><p><i>TDE Control Center -> "
+"<p>Use TDE's global color configuration.</p><p><i>Trinity Control Center -> "
 "Appearance & Themes -> Colors</i></p>"
 msgstr ""
 "<p>Naudoti numatytas TDE parinktis.</p><p> <i>TDE valdymo centras –> "

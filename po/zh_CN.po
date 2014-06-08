@@ -5373,7 +5373,7 @@ msgstr "遵循 TDE 全局规则"
 #: Konfigurator/kglookfeel.cpp:270
 #, fuzzy
 msgid ""
-"<p>Use TDE's global setting:</p><p><i>TDE Control Center -> Peripherals -> "
+"<p>Use TDE's global setting:</p><p><i>Trinity Control Center -> Peripherals -> "
 "Mouse</i></p>"
 msgstr "使用 TDE 控制中心： <p><i>TDE 控制中心->外设->鼠标</i>"
 
@@ -5693,7 +5693,7 @@ msgstr "使用 TDE 的默认颜色方案"
 #: Konfigurator/kgcolors.cpp:59
 #, fuzzy
 msgid ""
-"<p>Use TDE's global color configuration.</p><p><i>TDE Control Center -> "
+"<p>Use TDE's global color configuration.</p><p><i>Trinity Control Center -> "
 "Appearance & Themes -> Colors</i></p>"
 msgstr "使用 TDE 控制中心： <p><i>TDE 控制中心->外设->鼠标</i>"
 

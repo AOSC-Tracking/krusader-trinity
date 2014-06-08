@@ -5311,7 +5311,7 @@ msgstr "A TDE globális kijelölési módszerének használata"
 
 #: Konfigurator/kglookfeel.cpp:270
 msgid ""
-"<p>Use TDE's global setting:</p><p><i>TDE Control Center -> Peripherals -> "
+"<p>Use TDE's global setting:</p><p><i>Trinity Control Center -> Peripherals -> "
 "Mouse</i></p>"
 msgstr ""
 "<p>A TDE globális beállításának használata:</p><p><i>TDE Vezérlőpult -> "
@@ -5672,7 +5672,7 @@ msgstr "Alapértelmezett TDE-színek használata"
 
 #: Konfigurator/kgcolors.cpp:59
 msgid ""
-"<p>Use TDE's global color configuration.</p><p><i>TDE Control Center -> "
+"<p>Use TDE's global color configuration.</p><p><i>Trinity Control Center -> "
 "Appearance & Themes -> Colors</i></p>"
 msgstr ""
 "<p>A TDE globális színbeállításának használata:</p><p><i>TDE Vezérlőpult -> "

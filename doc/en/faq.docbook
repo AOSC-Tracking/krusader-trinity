@@ -1037,7 +1037,7 @@
           <para>This problem often occurs when you are behind a
           firewall or proxy. Open 
             <menuchoice>
-              <guimenu>TDE Control Center</guimenu>
+              <guimenu>Trinity Control Center</guimenu>
               <guimenuitem>Network</guimenuitem>
               <guimenuitem>Preferences</guimenuitem>
             </menuchoice>, 
@@ -1137,7 +1137,7 @@
           &kcontrolcenter; (
           <application>kcontrol</application>): 
             <menuchoice>
-              <guimenu>TDE Control Center</guimenu>
+              <guimenu>Trinity Control Center</guimenu>
               <guimenuitem>Sound &amp;
               Multimedia</guimenuitem>
               <guimenuitem>System Notifications</guimenuitem>
@@ -1205,7 +1205,7 @@
           if the viewer opens in hex-mode instead of the usual
           mode, than you need to configure:
             <menuchoice>
-              <guimenu>TDE Control Center</guimenu>
+              <guimenu>Trinity Control Center</guimenu>
               <guimenuitem>TDE components</guimenuitem>
               <guimenuitem>File Associations</guimenuitem>
               <guimenuitem>Application</guimenuitem>

@@ -512,7 +512,7 @@ Usage FAQ
     remote FTP directory, what to do?
     The reason for this error is that 'FTP via HTTP proxy' feature is not yet
     supported by Krusader. This error may be caused by a misconfiguration of
-    the proxy settings in TDE Control Center. Modify the proxy settings to not
+    the proxy settings in Trinity Control Center. Modify the proxy settings to not
     use HTTP proxy and FTP will work.
 13. How don't add ".part" suffix when copying files via ftp?
     When uploading files a .part suffix is added to the filename, once the
@@ -530,8 +530,8 @@ Usage FAQ
     available in our_forum.
 16. How can I disable the default sounds, e.g. when I do a delete action ?
     Those are the default TDE System sounds, and not related to Krusader. If
-    you want to disable them globally open the TDE Control Center
-    (kcontrol): TDE Control Center->Sound & Multimedia->System Notifications,
+    you want to disable them globally open the Trinity Control Center
+    (kcontrol): Trinity Control Center->Sound & Multimedia->System Notifications,
     Event Source: "TDE System Notifications" and uncheck sound items you don't
     like.
 17. Where is RemoteMan, the remote connection manager ?
@@ -551,7 +551,7 @@ Usage FAQ
 18. Why doesn't mimetype magic sometimes work inside archives?
     When you enter an archive and press F3 to view a file that has no known
     extension, e.g. README, INSTALL etc.. And if the viewer opens in hex-mode
-    instead of the usual mode, than you need to configure: TDE Control Center-
+    instead of the usual mode, than you need to configure: Trinity Control Center-
     >TDE components->File Associations->Application->octet-stream, binary
     viewer needs to be removed.
 19. Where is Konfigurator, do i need to install the Trinity Desktop Enviroment to

@@ -5351,7 +5351,7 @@ msgstr "Начина на селектиране се определя от на
 
 #: Konfigurator/kglookfeel.cpp:270
 msgid ""
-"<p>Use TDE's global setting:</p><p><i>TDE Control Center -> Peripherals -> "
+"<p>Use TDE's global setting:</p><p><i>Trinity Control Center -> Peripherals -> "
 "Mouse</i></p>"
 msgstr ""
 "<p>Използват се TDE настройките:</p><p><i>Контролен център -> Периферия -> "
@@ -5701,10 +5701,10 @@ msgstr "Използване на цветовете на TDE"
 
 #: Konfigurator/kgcolors.cpp:59
 msgid ""
-"<p>Use TDE's global color configuration.</p><p><i>TDE Control Center -> "
+"<p>Use TDE's global color configuration.</p><p><i>Trinity Control Center -> "
 "Appearance & Themes -> Colors</i></p>"
 msgstr ""
-"<p>Използват се TDE настройките за цветове:</p><p><i>TDE Control Center -> "
+"<p>Използват се TDE настройките за цветове:</p><p><i>Trinity Control Center -> "
 "Appearance & Themes -> Colors</i></p>"
 
 #: Konfigurator/kgcolors.cpp:60

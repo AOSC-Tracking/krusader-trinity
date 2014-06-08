@@ -5544,7 +5544,7 @@ msgstr "TDE'nin genel seçimlerine uy"
 #: Konfigurator/kglookfeel.cpp:270
 #, fuzzy
 msgid ""
-"<p>Use TDE's global setting:</p><p><i>TDE Control Center -> Peripherals -> "
+"<p>Use TDE's global setting:</p><p><i>Trinity Control Center -> Peripherals -> "
 "Mouse</i></p>"
 msgstr ""
 "TDE genel ayarlarını kullan:<p><i>TDE Denetim Merkezi-> Çevreseller -> Fare</"
@@ -5892,7 +5892,7 @@ msgstr "Öntanımlı TDE renklerini kullan"
 
 #: Konfigurator/kgcolors.cpp:59
 msgid ""
-"<p>Use TDE's global color configuration.</p><p><i>TDE Control Center -> "
+"<p>Use TDE's global color configuration.</p><p><i>Trinity Control Center -> "
 "Appearance & Themes -> Colors</i></p>"
 msgstr ""
 "TDE'nin genel renk yapılandırmasını kullan.<p><i>TDE Denetim Masası -> "

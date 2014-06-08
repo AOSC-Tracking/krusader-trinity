@@ -5416,7 +5416,7 @@ msgstr "Sélection conforme à TDE"
 
 #: Konfigurator/kglookfeel.cpp:270
 msgid ""
-"<p>Use TDE's global setting:</p><p><i>TDE Control Center -> Peripherals -> "
+"<p>Use TDE's global setting:</p><p><i>Trinity Control Center -> Peripherals -> "
 "Mouse</i></p>"
 msgstr ""
 "<p>Utiliser les configurations globales de TDE&nbsp;:</p><p><i>Centre de "
@@ -5767,7 +5767,7 @@ msgstr "Utiliser les couleurs de TDE par défaut"
 
 #: Konfigurator/kgcolors.cpp:59
 msgid ""
-"<p>Use TDE's global color configuration.</p><p><i>TDE Control Center -> "
+"<p>Use TDE's global color configuration.</p><p><i>Trinity Control Center -> "
 "Appearance & Themes -> Colors</i></p>"
 msgstr ""
 "<p>Utilisation de la configuration des couleurs de TDE.</p><p><i>Centre de "
