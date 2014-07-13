@@ -26,7 +26,7 @@
 class CS_Tool; // forward
 typedef void PREPARE_PROC_FUNC(TDEProcess& proc, CS_Tool *self, const TQStringList& files, 
 	const TQString checksumFile, bool recursive, const TQString& stdoutFileName, 
-	const TQString& stderrFileName,	const TQString& type=TQString());
+	const TQString& stderrFileName,	const TQString& type);
 typedef TQStringList GET_FAILED_FUNC(const TQStringList& stdOut, const TQStringList& stdErr);
 
 class CS_Tool {
