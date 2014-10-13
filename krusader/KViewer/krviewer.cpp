@@ -47,7 +47,7 @@
 
 #define VIEW_ICON     "viewmag"
 #define EDIT_ICON     "edit"
-#define MODIFIED_ICON "filesaveas"
+#define MODIFIED_ICON "document-save-as"
 
 
 TQPtrList<KrViewer> KrViewer::viewers;
@@ -75,7 +75,7 @@ KParts::MainWindow( parent, name ), manager( this, TQT_TQOBJECT(this) ), tabBar(
 	tabBar.setAutomaticResizeTabs(true);
 #endif
 //	"edit"
-//	"filesaveas"
+//	"document-save-as"
 	setCentralWidget( &tabBar );
 
 	printAction = KStdAction::print( TQT_TQOBJECT(this), TQT_SLOT( print() ), 0, 0 );

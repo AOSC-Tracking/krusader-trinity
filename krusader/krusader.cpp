@@ -590,7 +590,7 @@ void Krusader::setupActions() {
                                   TQT_SLOT( cmdlinePopup() ), actionCollection(), "cmdline popup" );
    /* Shortcut disabled because of the Terminal Emulator bug. */
    actDirUp = new TDEAction( i18n( "Up" ), "go-up", CTRL+Key_PageUp /*Key_Backspace*/, SLOTS, TQT_SLOT( dirUp() ), actionCollection(), "dirUp" );
-   new TDEAction( i18n( "&New Text File..." ), "filenew", SHIFT + Key_F4, SLOTS, TQT_SLOT( editDlg() ), actionCollection(), "edit_new_file" );
+   new TDEAction( i18n( "&New Text File..." ), "document-new", SHIFT + Key_F4, SLOTS, TQT_SLOT( editDlg() ), actionCollection(), "edit_new_file" );
    new TDEAction( i18n( "Start &Root Mode Krusader" ), "krusader_root", ALT + Key_K, SLOTS, TQT_SLOT( rootKrusader() ), actionCollection(), "root krusader" );
 
    actTest = new TDEAction( i18n( "T&est Archive" ), "ark", ALT + Key_E,
@@ -776,9 +776,9 @@ void Krusader::setupActions() {
                         SLOTS, TQT_SLOT( copyFiles() ) , actionCollection(), "F5_Copy" );
    actF6 = new TDEAction( i18n( "Move..." ), Key_F6,
                         SLOTS, TQT_SLOT( moveFiles() ) , actionCollection(), "F6_Move" );
-   actF7 = new TDEAction( i18n( "New Directory..." ), "folder_new", Key_F7,
+   actF7 = new TDEAction( i18n( "New Directory..." ), "folder-new", Key_F7,
                         SLOTS, TQT_SLOT( mkdir() ) , actionCollection(), "F7_Mkdir" );
-   actF8 = new TDEAction( i18n( "Delete" ), "editdelete", Key_F8,
+   actF8 = new TDEAction( i18n( "Delete" ), "edit-delete", Key_F8,
                         SLOTS, TQT_SLOT( deleteFiles() ) , actionCollection(), "F8_Delete" );
    actF9 = new TDEAction( i18n( "Rename" ), Key_F9,
                         SLOTS, TQT_SLOT( rename() ) , actionCollection(), "F9_Rename" );

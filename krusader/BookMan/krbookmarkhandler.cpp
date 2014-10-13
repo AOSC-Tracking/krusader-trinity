@@ -535,10 +535,10 @@ void KrBookmarkHandler::rightClickOnSpecialBookmark() {
 void KrBookmarkHandler::rightClicked( TQPopupMenu *menu, int /*id*/, KrBookmark * bm ) {
 	TQPopupMenu popup( _mainBookmarkPopup );
 	
-	popup.insertItem( krLoader->loadIcon( "fileopen", TDEIcon::Panel ), i18n( "Open" ), OPEN_ID );
+	popup.insertItem( krLoader->loadIcon( "document-open", TDEIcon::Panel ), i18n( "Open" ), OPEN_ID );
 	popup.insertItem( krLoader->loadIcon( "tab_new", TDEIcon::Panel ), i18n( "Open in a new tab" ), OPEN_NEW_TAB_ID );
 	popup.insertSeparator();
-	popup.insertItem( krLoader->loadIcon( "editdelete", TDEIcon::Panel ), i18n( "Delete" ), DELETE_ID );
+	popup.insertItem( krLoader->loadIcon( "edit-delete", TDEIcon::Panel ), i18n( "Delete" ), DELETE_ID );
 	
 	connect( menu, TQT_SIGNAL( highlighted( int ) ), &popup, TQT_SLOT( close() ) );
 	connect( menu, TQT_SIGNAL( activated( int ) ), &popup, TQT_SLOT( close() ) );

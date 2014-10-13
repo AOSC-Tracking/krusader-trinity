@@ -56,7 +56,7 @@ DiskUsageGUI::DiskUsageGUI( KURL openDir, TQWidget* parent, const char *name )
   duTools->setSizePolicy( TQSizePolicy::Fixed, TQSizePolicy::Fixed );
     
   btnNewSearch = new TQToolButton( duTools, "btnNewSearch" );
-  btnNewSearch->setIconSet( TQIconSet(krLoader->loadIcon("fileopen",TDEIcon::Desktop)) );
+  btnNewSearch->setIconSet( TQIconSet(krLoader->loadIcon("document-open",TDEIcon::Desktop)) );
   TQToolTip::add( btnNewSearch, i18n( "Start new disk usage search" ) );
   
   btnRefresh = new TQToolButton( duTools, "btnRefresh" );

@@ -174,7 +174,7 @@ PanelPopup::PanelPopup( TQSplitter *parent, bool left ) : TQWidget( parent ),
 	connect(qselectBtn, TQT_SIGNAL(clicked()), this, TQT_SLOT(quickSelect()));
 
 	TQToolButton *qstoreBtn = new TQToolButton(quickPanel);
-	qstoreBtn->setPixmap(krLoader->loadIcon( "filesave", TDEIcon::Toolbar, 16 ));
+	qstoreBtn->setPixmap(krLoader->loadIcon( "document-save", TDEIcon::Toolbar, 16 ));
 	qstoreBtn->setFixedSize(20, 20);
 	TQToolTip::add( qstoreBtn, i18n("store the current selection") );
 	connect(qstoreBtn, TQT_SIGNAL(clicked()), this, TQT_SLOT(quickSelectStore()));

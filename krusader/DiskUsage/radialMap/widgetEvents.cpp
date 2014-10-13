@@ -166,10 +166,10 @@ RadialMap::Widget::mousePressEvent( TQMouseEvent *e )
                popup.insertItem( SmallIconSet( "viewmag" ), i18n( "&Center Map Here" ), 2 );
             }
          }
-         else popup.insertItem( SmallIconSet( "fileopen" ), i18n( "&Open" ), 3 );
+         else popup.insertItem( SmallIconSet( "document-open" ), i18n( "&Open" ), 3 );
 
          popup.insertSeparator();
-         popup.insertItem( SmallIconSet( "editdelete" ), i18n( "&Delete" ), 4 );
+         popup.insertItem( SmallIconSet( "edit-delete" ), i18n( "&Delete" ), 4 );
 
          switch( popup.exec( e->globalPos(), 1 ) ) {
          case 0:
@@ -191,7 +191,7 @@ RadialMap::Widget::mousePressEvent( TQMouseEvent *e )
             const TQString message = ( m_focus->file()->isDir()
                ? i18n( "<qt>The directory at <i>'%1'</i> will be <b>recursively</b> and <b>permanently</b> deleted!</qt>" )
                : i18n( "<qt><i>'%1'</i> will be <b>permanently</b> deleted!</qt>" )).arg( url.prettyURL() );
-            const int userIntention = KMessageBox::warningContinueCancel( this, message, TQString(), KGuiItem( i18n("&Delete"), "editdelete" ) );
+            const int userIntention = KMessageBox::warningContinueCancel( this, message, TQString(), KGuiItem( i18n("&Delete"), "edit-delete" ) );
 
             if( userIntention == KMessageBox::Continue ) {
                TDEIO::Job *job = TDEIO::del( url );

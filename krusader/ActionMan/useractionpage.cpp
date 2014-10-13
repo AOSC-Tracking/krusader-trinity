@@ -43,7 +43,7 @@ UserActionPage::UserActionPage( TQWidget* parent )
    TQHBoxLayout* toolbarLayout = new TQHBoxLayout( layout, 0, 0 ); // neither margin nor spacing for the toolbar with autoRaise
 
    newButton = new TQToolButton( this, "newButton" );
-   newButton->setPixmap( ICON("filenew") );
+   newButton->setPixmap( ICON("document-new") );
    newButton->setAutoRaise(true);
    TQToolTip::add( newButton, i18n("Create new useraction") );
 
@@ -58,17 +58,17 @@ UserActionPage::UserActionPage( TQWidget* parent )
    TQToolTip::add( exportButton, i18n("Export useractions") );
 
    copyButton = new TQToolButton( this, "copyButton" );
-   copyButton->setPixmap( ICON("editcopy") );
+   copyButton->setPixmap( ICON("edit-copy") );
    copyButton->setAutoRaise(true);
    TQToolTip::add( copyButton, i18n("Copy useractions to clipboard") );
 
    pasteButton = new TQToolButton( this, "pasteButton" );
-   pasteButton->setPixmap( ICON("editpaste") );
+   pasteButton->setPixmap( ICON("edit-paste") );
    pasteButton->setAutoRaise(true);
    TQToolTip::add( pasteButton, i18n("Paste useractions from clipboard") );
 
    removeButton = new TQToolButton( this, "removeButton" );
-   removeButton->setPixmap( ICON("editdelete") );
+   removeButton->setPixmap( ICON("edit-delete") );
    removeButton->setAutoRaise(true);
    TQToolTip::add( removeButton, i18n("Delete selected useractions") );
 

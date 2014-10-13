@@ -101,7 +101,7 @@ PackGUIBase::PackGUIBase( TQWidget* parent,  const char* name, bool modal, WFlag
     hbox_2->addWidget( dirData );
 
     browseButton = new TQToolButton( this, "browseButton" );
-    browseButton->setIconSet( SmallIcon( "fileopen" ) );
+    browseButton->setIconSet( SmallIcon( "document-open" ) );
     hbox_2->addWidget( browseButton );
     TQSpacerItem* spacer = new TQSpacerItem( 48, 20, TQSizePolicy::Fixed, TQSizePolicy::Fixed );
     hbox_2->addItem( spacer );

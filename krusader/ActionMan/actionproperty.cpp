@@ -44,7 +44,7 @@ ActionProperty::ActionProperty( TQWidget *parent, const char *name, KrAction *ac
    }
 
    ButtonAddPlaceholder->setPixmap( ICON("add") );
-   ButtonAddStartpath->setPixmap( ICON("fileopen") );
+   ButtonAddStartpath->setPixmap( ICON("document-open") );
 
    // fill with all existing categories
    cbCategory->insertStringList( krUserAction->allCategories() );

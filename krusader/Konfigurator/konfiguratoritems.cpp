@@ -351,7 +351,7 @@ KonfiguratorURLRequester::KonfiguratorURLRequester( TQString cls, TQString name,
 
   connect( TQT_TQOBJECT(this), TQT_SIGNAL( textChanged(const TQString &) ), ext, TQT_SLOT( setChanged() ) );
 
-  button()->setIconSet( SmallIcon( "fileopen" ) );
+  button()->setIconSet( SmallIcon( "document-open" ) );
   loadInitialValue();
 }
 
@@ -397,7 +397,7 @@ KonfiguratorFontChooser::KonfiguratorFontChooser( TQString cls, TQString name, T
 
   connect( pToolButton, TQT_SIGNAL( clicked() ), TQT_TQOBJECT(this), TQT_SLOT( slotBrowseFont() ) );
 
-  pToolButton->setIconSet( SmallIcon( "fileopen" ) );
+  pToolButton->setIconSet( SmallIcon( "document-open" ) );
 
   loadInitialValue();
 }
