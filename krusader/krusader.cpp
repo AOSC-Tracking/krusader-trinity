@@ -589,7 +589,7 @@ void Krusader::setupActions() {
    actCmdlinePopup = new TDEAction( i18n( "popup cmdline" ), 0, CTRL + Key_Slash, SLOTS,
                                   TQT_SLOT( cmdlinePopup() ), actionCollection(), "cmdline popup" );
    /* Shortcut disabled because of the Terminal Emulator bug. */
-   actDirUp = new TDEAction( i18n( "Up" ), "up", CTRL+Key_PageUp /*Key_Backspace*/, SLOTS, TQT_SLOT( dirUp() ), actionCollection(), "dirUp" );
+   actDirUp = new TDEAction( i18n( "Up" ), "go-up", CTRL+Key_PageUp /*Key_Backspace*/, SLOTS, TQT_SLOT( dirUp() ), actionCollection(), "dirUp" );
    new TDEAction( i18n( "&New Text File..." ), "filenew", SHIFT + Key_F4, SLOTS, TQT_SLOT( editDlg() ), actionCollection(), "edit_new_file" );
    new TDEAction( i18n( "Start &Root Mode Krusader" ), "krusader_root", ALT + Key_K, SLOTS, TQT_SLOT( rootKrusader() ), actionCollection(), "root krusader" );
 
@@ -703,7 +703,7 @@ void Krusader::setupActions() {
                                   SLOTS, TQT_SLOT( startKonfigurator() ), actionCollection(), "konfigurator" );
    actBack = new TDEAction( i18n( "Back" ), "back", 0,
                           SLOTS, TQT_SLOT( back() ), actionCollection(), "back" );
-   actRoot = new TDEAction( i18n( "Root" ), "top", CTRL + Key_Backspace,
+   actRoot = new TDEAction( i18n( "Root" ), "go-top", CTRL + Key_Backspace,
                           SLOTS, TQT_SLOT( root() ), actionCollection(), "root" );
    actSavePosition = new TDEAction( i18n( "Save &Position" ), 0,
                                   TQT_TQOBJECT(krApp), TQT_SLOT( savePosition() ), actionCollection(), "save position" );   

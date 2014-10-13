@@ -279,7 +279,7 @@ void DULines::slotDirChanged( Directory *dirEntry )
   if( ! ( dirEntry->parent() == 0 ) )
   {
     lastItem = new TQListViewItem( this, ".." );
-    lastItem->setPixmap( 0, FL_LOADICON( "up" ) );
+    lastItem->setPixmap( 0, FL_LOADICON( "go-up" ) );
     lastItem->setSelectable( false );
   }
           

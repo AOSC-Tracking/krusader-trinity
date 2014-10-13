@@ -77,7 +77,7 @@ KrDetailedViewItem::KrDetailedViewItem(KrDetailedView *parent, TQListViewItem *a
 		setText(COLUMN(Name), "..");
 		setText(COLUMN(Size), i18n("<DIR>") );
       if ( PROPS->displayIcons )
-         setPixmap( COLUMN(Name), FL_LOADICON( "up" ) );
+         setPixmap( COLUMN(Name), FL_LOADICON( "go-up" ) );
       setSelectable( false );
 #ifdef FASTER
 		initiated = true;

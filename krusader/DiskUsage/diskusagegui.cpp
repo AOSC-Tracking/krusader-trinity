@@ -64,7 +64,7 @@ DiskUsageGUI::DiskUsageGUI( KURL openDir, TQWidget* parent, const char *name )
   TQToolTip::add( btnRefresh, i18n( "Refresh" ) );
 
   btnDirUp = new TQToolButton( duTools, "btnDirUp" );
-  btnDirUp->setIconSet( TQIconSet(krLoader->loadIcon("up",TDEIcon::Desktop)) );
+  btnDirUp->setIconSet( TQIconSet(krLoader->loadIcon("go-up",TDEIcon::Desktop)) );
   TQToolTip::add( btnDirUp, i18n( "Parent directory" ) );
   
   TQWidget * separatorWidget = new TQWidget( duTools, "separatorWidget" );
