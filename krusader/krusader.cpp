@@ -691,7 +691,7 @@ void Krusader::setupActions() {
 
    actFind = new TDEAction( i18n( "&Search..." ), "filefind", CTRL + Key_S,
                           SLOTS, TQT_SLOT( search() ), actionCollection(), "find" );
-   actLocate = new TDEAction( i18n( "&Locate..." ), "find", SHIFT+CTRL + Key_L,
+   actLocate = new TDEAction( i18n( "&Locate..." ), "edit-find", SHIFT+CTRL + Key_L,
                             SLOTS, TQT_SLOT( locate() ), actionCollection(), "locate" );
    actSyncDirs = new TDEAction( i18n( "Synchronize &Directories..." ), "kr_syncdirs", CTRL + Key_Y,
                               SLOTS, TQT_SLOT( slotSynchronizeDirs() ), actionCollection(), "sync dirs" );
