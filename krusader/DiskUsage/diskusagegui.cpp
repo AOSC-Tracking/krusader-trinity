@@ -71,7 +71,7 @@ DiskUsageGUI::DiskUsageGUI( KURL openDir, TQWidget* parent, const char *name )
   separatorWidget->setMinimumWidth( 10 );
   
   btnLines = new TQToolButton( duTools, "btnLines" );
-  btnLines->setIconSet( TQIconSet(krLoader->loadIcon("leftjust",TDEIcon::Desktop)) );
+  btnLines->setIconSet( TQIconSet(krLoader->loadIcon("format-justify-left",TDEIcon::Desktop)) );
   btnLines->setToggleButton( true );
   TQToolTip::add( btnLines, i18n( "Line view" ) );
 
