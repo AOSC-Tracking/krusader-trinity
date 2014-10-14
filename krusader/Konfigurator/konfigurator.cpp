@@ -92,7 +92,7 @@ void Konfigurator::createLayout( int startPage )
       TDEIcon::Desktop,32)))));
   // look n' feel
   newContent(new KgLookFeel(firstTime, widget->addPage(i18n("Look & Feel"),
-    i18n("Look & Feel"),TQPixmap(krLoader->loadIcon("looknfeel",TDEIcon::Desktop,32)))));
+    i18n("Look & Feel"),TQPixmap(krLoader->loadIcon("preferences-desktop",TDEIcon::Desktop,32)))));
   // colors
   newContent(new KgColors(firstTime, widget->addPage(i18n("Colors"),
     i18n("Colors"),TQPixmap(krLoader->loadIcon("colors",TDEIcon::Desktop,32)))));
