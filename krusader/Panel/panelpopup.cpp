@@ -79,7 +79,7 @@ PanelPopup::PanelPopup( TQSplitter *parent, bool left ) : TQWidget( parent ),
 	
 	quickBtn = new TQToolButton(this);
 	TQToolTip::add(quickBtn, i18n("Quick Panel: quick way to perform actions"));
-	quickBtn->setPixmap(krLoader->loadIcon( ""application-vnd.tde.misc", TDEIcon::Toolbar, 16 ));
+	quickBtn->setPixmap(krLoader->loadIcon( ""misc", TDEIcon::Toolbar, 16 ));
 	quickBtn->setFixedSize(20, 20);
 	quickBtn->setToggleButton(true);
 	btns->insert(quickBtn, QuickPanel);
