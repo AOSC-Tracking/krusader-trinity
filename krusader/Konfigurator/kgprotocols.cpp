@@ -209,7 +209,7 @@ void KgProtocols::addProtocol( TQString name, bool changeCurrent )
   {
     protocolList->removeItem( protocolList->index( item ) );
     TQListViewItem *listViewItem = new TQListViewItem( linkList, name );
-    listViewItem->setPixmap( 0, krLoader->loadIcon( "exec", TDEIcon::Small ) );
+    listViewItem->setPixmap( 0, krLoader->loadIcon( "application-x-executable", TDEIcon::Small ) );
     
     if( changeCurrent )
       linkList->setCurrentItem( listViewItem );
