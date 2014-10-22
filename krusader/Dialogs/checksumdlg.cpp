@@ -230,7 +230,7 @@ CreateChecksumDlg::CreateChecksumDlg(const TQStringList& files, bool containFold
 	// title (icon+text)	
 	TQHBoxLayout *hlayout = new TQHBoxLayout(layout, KDialogBase::spacingHint());
 	TQLabel *p = new TQLabel(plainPage());
-	p->setPixmap(krLoader->loadIcon("binary", TDEIcon::Desktop, 32));
+	p->setPixmap(krLoader->loadIcon(""application-octet-stream", TDEIcon::Desktop, 32));
 	hlayout->addWidget(p);
 	TQLabel *l1 = new TQLabel(i18n("About to calculate checksum for the following files") + 
 		(containFolders ? i18n(" and folders:") : ":"), plainPage());
@@ -331,7 +331,7 @@ MatchChecksumDlg::MatchChecksumDlg(const TQStringList& files, bool containFolder
 	// title (icon+text)	
 	TQHBoxLayout *hlayout = new TQHBoxLayout(layout, KDialogBase::spacingHint());
 	TQLabel *p = new TQLabel(plainPage());
-	p->setPixmap(krLoader->loadIcon("binary", TDEIcon::Desktop, 32));
+	p->setPixmap(krLoader->loadIcon(""application-octet-stream", TDEIcon::Desktop, 32));
 	hlayout->addWidget(p);
 	TQLabel *l1 = new TQLabel(i18n("About to verify checksum for the following files") +
 		(containFolders ? i18n(" and folders:") : ":"), plainPage());

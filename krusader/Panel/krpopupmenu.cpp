@@ -213,7 +213,7 @@ void KrPopupMenu::addEmptyMenuEntries() {
 
 void KrPopupMenu::addCreateNewMenu() {
 	createNewPopup.insertItem( krLoader->loadIcon( "folder", TDEIcon::Small ), i18n("Folder..."), MKDIR_ID);
-	createNewPopup.insertItem( krLoader->loadIcon( "txt", TDEIcon::Small ), i18n("Text File..."), NEW_TEXT_FILE_ID);
+	createNewPopup.insertItem( krLoader->loadIcon( ""text-plain", TDEIcon::Small ), i18n("Text File..."), NEW_TEXT_FILE_ID);
 	
 	insertItem( TQPixmap(), &createNewPopup, CREATE_NEW_ID);
 	changeItem( CREATE_NEW_ID, i18n( "Create New" ) );

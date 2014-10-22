@@ -603,7 +603,7 @@ void Krusader::setupActions() {
                                    TQT_TQOBJECT(MAIN_VIEW), TQT_SLOT( profiles() ), actionCollection(), "profile" );
    actCalculate = new TDEAction( i18n( "Calculate &Occupied Space" ), "kcalc", 0,
                                SLOTS, TQT_SLOT( calcSpace() ), actionCollection(), "calculate" );
-   actCreateChecksum = new TDEAction( i18n( "Create Checksum..." ), "binary", 0,
+   actCreateChecksum = new TDEAction( i18n( "Create Checksum..." ), "application-octet-stream", 0,
                                SLOTS, TQT_SLOT( createChecksum() ), actionCollection(), "create checksum" );
    actMatchChecksum = new TDEAction( i18n( "Verify Checksum..." ), "match_checksum", 0,
                                SLOTS, TQT_SLOT( matchChecksum() ), actionCollection(), "match checksum" );
@@ -713,7 +713,7 @@ void Krusader::setupActions() {
    //                             SLOTS, TQT_SLOT( execFilter() ), actionCollection(), "exec files" );
    actCustomFilter = new TDEAction( i18n( "&Custom" ), SHIFT + Key_F12,
                                   SLOTS, TQT_SLOT( customFilter() ), actionCollection(), "custom files" );
-   actCompare = new TDEAction( i18n( "Compare b&y Content..." ), "tdemultiple", 0,
+   actCompare = new TDEAction( i18n( "Compare b&y Content..." ), "application-vnd.tde.tdemultiple", 0,
                              SLOTS, TQT_SLOT( compareContent() ), actionCollection(), "compare" );
    actMultiRename = new TDEAction( i18n( "Multi &Rename..." ), "krename", SHIFT + Key_F9,
                                  SLOTS, TQT_SLOT( multiRename() ), actionCollection(), "multirename" );

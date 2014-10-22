@@ -29,7 +29,7 @@ KrBookmark::KrBookmark(TQString name, KURL url, TDEActionCollection *parent, TQS
 			setIcon("folder");
 		} else { // is it an archive?
 			if (KRarcHandler::isArchive(_url))
-				setIcon("tar");
+				setIcon("application-x-tar");
 			else setIcon("folder_html");
 		}
 	}

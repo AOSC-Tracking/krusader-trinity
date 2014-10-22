@@ -105,7 +105,7 @@ void Konfigurator::createLayout( int startPage )
     TQPixmap(krLoader->loadIcon("messagebox_warning",TDEIcon::Desktop,32)))));
   // archives
   newContent(new KgArchives(firstTime, widget->addPage(i18n("Archives"),i18n("Customize the way Krusader deals with archives"),
-    TQPixmap(krLoader->loadIcon("tgz",TDEIcon::Desktop,32)))));
+    TQPixmap(krLoader->loadIcon(""application-x-tarz",TDEIcon::Desktop,32)))));
   // dependencies
   newContent(new KgDependencies(firstTime, widget->addPage(i18n("Dependencies"),i18n("Set the full path of the external applications"),
     TQPixmap(krLoader->loadIcon("kr_dependencies",TDEIcon::Desktop,32)))));
