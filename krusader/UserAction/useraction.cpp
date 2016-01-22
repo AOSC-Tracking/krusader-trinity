@@ -77,12 +77,14 @@ TQStringList UserAction::allNames() {
 
 void UserAction::readAllFiles() {
    TQString filename = locate( "data", ACTION_XML ); // locate returns the local file if it exists, else the global one is retrieved.
-   if ( ! filename.isEmpty() )
-      readFromFile( locate( "data", ACTION_XML ), renameDoublicated );
+   if ( ! filename.isEmpty() ) {
+      readFromFile( filename, renameDoublicated );
+      return;
+   }
 
    filename = locate( "data", ACTION_XML_EXAMPLES );
    if ( ! filename.isEmpty() )
-      readFromFile( locate( "data", ACTION_XML_EXAMPLES ), ignoreDoublicated ); // ignore samples which are already in the normal file
+      readFromFile( filename, ignoreDoublicated ); // ignore samples which are already in the normal file
 }
 
 void UserAction::readFromFile( const TQString& filename, ReadMode mode, KrActionList* list ) {
