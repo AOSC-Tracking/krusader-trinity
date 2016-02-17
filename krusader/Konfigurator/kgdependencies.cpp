@@ -56,7 +56,7 @@ KgDependencies::KgDependencies( bool first, TQWidget* parent,  const char* name 
   pathsGrid->setSpacing( 6 );
   pathsGrid->setMargin( 11 );
   pathsGrid->setAlignment( TQt::AlignTop );
-  
+
   addApplication( "df",       pathsGrid, 0, general_tab, PAGE_GENERAL );
   addApplication( "eject",    pathsGrid, 1, general_tab, PAGE_GENERAL );
   addApplication( "tdesu",    pathsGrid, 2, general_tab, PAGE_GENERAL );
@@ -93,6 +93,7 @@ KgDependencies::KgDependencies( bool first, TQWidget* parent,  const char* name 
   addApplication( "unrar", archGrid1,11, packers_tab, PAGE_PACKERS );
   addApplication( "unzip", archGrid1,12, packers_tab, PAGE_PACKERS );
   addApplication( "zip",   archGrid1,13, packers_tab, PAGE_PACKERS );
+  addApplication( "xz",    archGrid1,14, packers_tab, PAGE_PACKERS );
 
   //  ---------------------------- CHECKSUM TAB -------------------------------------
   TQWidget *checksum_tab = new TQWidget( tabWidget, "tab_4" );

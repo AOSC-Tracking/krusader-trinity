@@ -59,28 +59,28 @@ YP   YD 88   YD ~Y8888P' `8888Y' YP   YP Y8888D' Y88888P 88   YD
 // Group name: KrDetailedView
 //
 // Ext Column
-#define _ExtColumn          true 
+#define _ExtColumn          true
 // Mime Column
-#define _MimeColumn         false 
+#define _MimeColumn         false
 // Size Column
-#define _SizeColumn         true 
+#define _SizeColumn         true
 // DateTime Column
-#define _DateTimeColumn     true 
+#define _DateTimeColumn     true
 // Perm Column
-#define _PermColumn         false 
+#define _PermColumn         false
 // KrPerm Column
-#define _KrPermColumn       true 
+#define _KrPermColumn       true
 // Owner Column
-#define _OwnerColumn        false 
+#define _OwnerColumn        false
 // Group Column
-#define _GroupColumn        false 
+#define _GroupColumn        false
 // Do Quicksearch
-#define _DoQuicksearch      true 
+#define _DoQuicksearch      true
 //////////////////////////////////////////////////////////////////////////
 
 #define CANCEL_TWO_CLICK_RENAME {singleClicked = false;renameTimer.stop();}
 #define COLUMN(X)	static_cast<KrDetailedViewProperties*>(_properties)->column[ KrDetailedViewProperties::X ]
-#define PROPS	static_cast<KrDetailedViewProperties*>(_properties)	
+#define PROPS	static_cast<KrDetailedViewProperties*>(_properties)
 #define VF	getVfile()
 
 #define COLUMN_POPUP_IDS    91
@@ -140,7 +140,7 @@ void KrDetailedView::setup() {
 
    // add whatever columns are needed to the listview
    krConfig->setGroup( nameInTDEConfig() );
-   
+
 	newColumn( KrDetailedViewProperties::Name );  // we always have a name
    setColumnWidthMode( COLUMN(Name), TQListView::Manual );
    if ( _config->readBoolEntry( "Ext Column", _ExtColumn ) ) {
@@ -186,7 +186,7 @@ void KrDetailedView::setup() {
       setColumnWidthMode( COLUMN(Group), TQListView::Manual );
       setColumnWidth( COLUMN(Group), TQFontMetrics( font() ).width( 'X' ) * 6 );
    }
-   
+
    // determine basic settings for the listview
    setAcceptDrops( true );
    setDragEnabled( true );
@@ -205,7 +205,7 @@ void KrDetailedView::setup() {
 
    header()->installEventFilter( this );
    renameLineEdit()->installEventFilter( this );
-   
+
    // allow in-place renaming
    connect( renameLineEdit(), TQT_SIGNAL( done( TQListViewItem *, int ) ),
             this, TQT_SLOT( inplaceRenameFinished( TQListViewItem*, int ) ) );
@@ -235,7 +235,7 @@ void KrDetailedView::newColumn( KrDetailedViewProperties::ColumnType type ) {
 	}
 	if ( max >= KrDetailedViewProperties::MAX_COLUMNS )
       perror( "KrDetailedView::newColumn() - too many columns" );
-	
+
 	PROPS->column[type] = max;
 	addColumn( ColumnName[type], -1 );
 }
@@ -535,7 +535,7 @@ void KrDetailedView::contentsMousePressEvent( TQMouseEvent * e ) {
    TQListViewItem *newCurrent = itemAt( contentsToViewport( e->pos() ) );
    if (e->button() == Qt::RightButton)
    {
-	if (KrSelectionMode::getSelectionHandler()->rightButtonSelects() || 
+	if (KrSelectionMode::getSelectionHandler()->rightButtonSelects() ||
 		(((e->state() & ShiftButton) || (e->state() & ControlButton))) && KrSelectionMode::getSelectionHandler()->shiftCtrlRightButtonSelects())
      {
        if (KrSelectionMode::getSelectionHandler()->rightButtonPreservesSelection() && !(e->state() & ShiftButton)
@@ -594,7 +594,7 @@ void KrDetailedView::contentsMousePressEvent( TQMouseEvent * e ) {
    if (e->button() == Qt::LeftButton)
    {
      dragStartPos = e->pos();
-	  if (KrSelectionMode::getSelectionHandler()->leftButtonSelects() || 
+	  if (KrSelectionMode::getSelectionHandler()->leftButtonSelects() ||
 	  		(((e->state() & ShiftButton) || (e->state() & ControlButton))) &&
 			KrSelectionMode::getSelectionHandler()->shiftCtrlLeftButtonSelects())
      {
@@ -667,10 +667,10 @@ void KrDetailedView::contentsMousePressEvent( TQMouseEvent * e ) {
          callDefaultHandler = false;
       }
    }
-	
+
 	if (selectionChanged)
 		updateView(); // don't call triggerUpdate directly!
-	
+
    //   TQListViewItem * i = itemAt( contentsToViewport( e->pos() ) );
    if (callDefaultHandler)
    {
@@ -745,8 +745,8 @@ void KrDetailedView::contentsMouseMoveEvent ( TQMouseEvent * e ) {
    if ( dragStartPos != TQPoint( -1, -1 ) &&
         e->state() & Qt::LeftButton && ( dragStartPos - e->pos() ).manhattanLength() > TQApplication::startDragDistance() )
       startDrag();
-   if (KrSelectionMode::getSelectionHandler()->rightButtonPreservesSelection() 
-      && KrSelectionMode::getSelectionHandler()->rightButtonSelects() 
+   if (KrSelectionMode::getSelectionHandler()->rightButtonPreservesSelection()
+      && KrSelectionMode::getSelectionHandler()->rightButtonSelects()
       && KrSelectionMode::getSelectionHandler()->showContextMenu() >= 0 && e->state() == Qt::RightButton)
       {
          TQListViewItem *newItem = itemAt( contentsToViewport( e->pos() ) );
@@ -852,7 +852,7 @@ void KrDetailedView::contentsDragMoveEvent( TQDragMoveEvent * e ) {
    _currDragItem = getKrViewItemAt(contentsToViewport(e->pos()));
    if( _currDragItem && !_currDragItem->VF->vfile_isDir() )
      _currDragItem = 0;
-   
+
    TDEListView::contentsDragMoveEvent( e );
 }
 
@@ -1022,7 +1022,7 @@ void KrDetailedView::keyPressEvent( TQKeyEvent * e ) {
                TQString tmp = i->name();
                op()->emitExecuted(tmp); // thereby emulating a chdir
             } else if( i->VF->vfile_getUrl().isLocalFile() ) {
-               bool encrypted; 
+               bool encrypted;
                KURL url = i->VF->vfile_getUrl();
                TQString mime = ((vfile *)(i->VF))->vfile_getMime();
                TQString type = KRarcHandler::getType( encrypted, url.path(), mime, false );
@@ -1061,7 +1061,7 @@ void KrDetailedView::keyPressEvent( TQKeyEvent * e ) {
 #endif*/
          case Key_Delete :                   // kill file
          SLOTS->deleteFiles( e->state() == ShiftButton || e->state() == ControlButton );
-				
+
          break ;
          case Key_Insert : {
             if (KrSelectionMode::getSelectionHandler()->insertMovesDown())
@@ -1071,7 +1071,7 @@ void KrDetailedView::keyPressEvent( TQKeyEvent * e ) {
                TQKeyEvent ev = TQKeyEvent( TQKeyEvent::KeyPress, Key_Space, 0, 0 );
                TDEListView::keyPressEvent( & ev );
             }
-            break ; 
+            break ;
          }
          case Key_Space : {
             KrDetailedViewItem * viewItem = static_cast<KrDetailedViewItem *> ( getCurrentKrViewItem() );
@@ -1083,9 +1083,9 @@ void KrDetailedView::keyPressEvent( TQKeyEvent * e ) {
                }
                else
                   TDEListView::keyPressEvent( e );
-               break ; 
+               break ;
             }
-            if ( viewItem->VF->vfile_isDir() && viewItem->VF->vfile_getSize() <= 0 && 
+            if ( viewItem->VF->vfile_isDir() && viewItem->VF->vfile_getSize() <= 0 &&
 					KrSelectionMode::getSelectionHandler()->spaceCalculatesDiskSpace()) {
                //
                // NOTE: this is buggy incase somewhere down in the folder we're calculating,
@@ -1130,7 +1130,7 @@ mark:       if (KrSelectionMode::getSelectionHandler()->spaceMovesDown())
                            ( e->key() >= Key_0 && e->key() <= Key_9 ) ||
                            ( e->key() == Key_Backspace ) ||
                            ( e->key() == Key_Down ) ||
-                           ( e->key() == Key_Period ) ) */{ 
+                           ( e->key() == Key_Period ) ) */{
             // are we doing quicksearch? if not, send keys to panel
             //if ( _config->readBoolEntry( "Do Quicksearch", _DoQuicksearch ) ) {
                // are we using krusader's classic quicksearch, or wincmd style?
@@ -1192,7 +1192,7 @@ void KrDetailedView::renameCurrentItem() {
    TQString newName, fileName;
 
 	// handle inplace renaming, if possible
-	
+
    KrDetailedViewItem *it = static_cast<KrDetailedViewItem*>(getCurrentKrViewItem());
    if ( it )
       fileName = it->name();
@@ -1214,7 +1214,7 @@ void KrDetailedView::renameCurrentItem() {
       // if applicable, select only the name without extension
       TDEConfigGroupSaver svr(krConfig,"Look&Feel");
       if (!krConfig->readBoolEntry("Rename Selects Extension", true)) {
-	if (it->hasExtension() && !it->VF->vfile_isDir() ) 
+	if (it->hasExtension() && !it->VF->vfile_isDir() )
 		renameLineEdit()->setSelection(0, it->name().findRev(it->extension())-1);
       }
       // signal will be emited when renaming is done, and finalization
@@ -1234,10 +1234,10 @@ void KrDetailedView::inplaceRenameFinished( TQListViewItem * it, int ) {
       krOut << "Major failure at inplaceRenameFinished(): item is null" << endl;
       return;
    }
-   
+
    if( COLUMN( Extention ) != -1 && !currentlyRenamedItem )
      return; /* does the event filter restored the original state? */
-   
+
    // check if the item was indeed renamed
    bool restoreView = false;
    if ( it->text( COLUMN( Name ) ) != static_cast<KrDetailedViewItem*>( it ) ->name() ) { // was renamed
@@ -1249,7 +1249,7 @@ void KrDetailedView::inplaceRenameFinished( TQListViewItem * it, int ) {
 #if 0
    if ( COLUMN( Extention ) != -1 && restoreView ) { // nothing happened, restore the view (if needed)
 #endif
-      
+
       TQString ext, name = static_cast<KrDetailedViewItem*>( it ) ->name();
       if ( !static_cast<KrDetailedViewItem*>( it ) ->VF->vfile_isDir() && COLUMN( Extention ) != -1 ) {
 		ext = static_cast<KrDetailedViewItem*>( it ) ->extension();
@@ -1263,7 +1263,7 @@ void KrDetailedView::inplaceRenameFinished( TQListViewItem * it, int ) {
 #endif
 
    setFocus();
-   
+
    currentlyRenamedItem = 0;
 }
 
@@ -1318,8 +1318,8 @@ void KrDetailedView::slotMouseClicked( int button, TQListViewItem * item, const 
 
 void KrDetailedView::refreshColors() {
    krConfig->setGroup("Colors");
-   bool kdeDefault = krConfig->readBoolEntry("KDE Default"); 
-   bool alternateBackgroundEnabled = krConfig->readBoolEntry("Enable Alternate Background"); 
+   bool kdeDefault = krConfig->readBoolEntry("KDE Default");
+   bool alternateBackgroundEnabled = krConfig->readBoolEntry("Enable Alternate Background");
    if ( !kdeDefault ) {
       // KDE default is not choosen: set the background color (as this paints the empty areas) and the alternate color
       bool isActive = hasFocus();
@@ -1364,7 +1364,7 @@ bool KrDetailedView::eventFilter( TQObject * watched, TQEvent * e )
       for( TQListViewItem *it = firstChild(); it; it = it->nextSibling() )
         if( it == currentlyRenamedItem )
         {
-          if ( it->text( COLUMN( Name ) ) == dynamic_cast<KrDetailedViewItem*>( it ) ->name()  && COLUMN( Extention ) != -1 ) 
+          if ( it->text( COLUMN( Name ) ) == dynamic_cast<KrDetailedViewItem*>( it ) ->name()  && COLUMN( Extention ) != -1 )
             inplaceRenameFinished( it, COLUMN( Name ) );
           break;
         }
@@ -1385,7 +1385,7 @@ bool KrDetailedView::eventFilter( TQObject * watched, TQEvent * e )
 
 void KrDetailedView::makeItemVisible( const KrViewItem *item ) {
 //	tqApp->processEvents();  // Please don't remove the comment. Causes crash if it is inserted!
-	ensureItemVisible( static_cast<const KrDetailedViewItem*>( item ) ); 
+	ensureItemVisible( static_cast<const KrDetailedViewItem*>( item ) );
 }
 
 void KrDetailedView::initOperator() {
@@ -1396,13 +1396,13 @@ void KrDetailedView::initOperator() {
 
 void KrDetailedView::initProperties() {
 	_properties = new KrDetailedViewProperties;
-	TDEConfigGroupSaver grpSvr( _config, "Look&Feel" );	
+	TDEConfigGroupSaver grpSvr( _config, "Look&Feel" );
 	for (int i=0; i<KrDetailedViewProperties::MAX_COLUMNS;++i)
-		PROPS->column[i]=-1;	
+		PROPS->column[i]=-1;
 	PROPS->displayIcons = _config->readBoolEntry( "With Icons", _WithIcons );
 	bool dirsByNameAlways = _config->readBoolEntry("Always sort dirs by name", false);
 	PROPS->sortMode = static_cast<KrViewProperties::SortSpec>( KrViewProperties::Name |
-			KrViewProperties::Descending | KrViewProperties::DirsFirst | 
+			KrViewProperties::Descending | KrViewProperties::DirsFirst |
 			(dirsByNameAlways ? KrViewProperties::AlwaysSortDirsByName : 0) );
 	PROPS->numericPermissions = _config->readBoolEntry("Numeric permissions", _NumericPermissions);
 	if ( !_config->readBoolEntry( "Case Sensative Sort", _CaseSensativeSort ) )
@@ -1414,6 +1414,7 @@ void KrDetailedView::initProperties() {
 	defaultAtomicExtensions += ".tar.gz";
 	defaultAtomicExtensions += ".tar.bz2";
 	defaultAtomicExtensions += ".moc.cpp";
+	defaultAtomicExtensions += ".tar.xz";
 	TQStringList atomicExtensions = krConfig->readListEntry("Atomic Extensions", defaultAtomicExtensions);
 	for (TQStringList::iterator i = atomicExtensions.begin(); i != atomicExtensions.end(); )
 	{
@@ -1435,9 +1436,9 @@ void KrDetailedView::selectColumns()
 {
   TDEPopupMenu popup( this );
   popup.insertTitle( i18n("Columns"));
-  
+
   bool refresh = false;
-  
+
   bool hasExtention = COLUMN( Extention ) != -1;
   bool hasMime      = COLUMN( Mime ) != -1;
   bool hasSize      = COLUMN( Size ) != -1;
@@ -1446,7 +1447,7 @@ void KrDetailedView::selectColumns()
   bool hasKrPerms   = COLUMN( KrPermissions ) != -1;
   bool hasOwner     = COLUMN( Owner ) != -1;
   bool hasGroup     = COLUMN( Group ) != -1;
-  
+
   popup.insertItem( i18n( "Ext" ), COLUMN_POPUP_IDS + KrDetailedViewProperties::Extention );
   popup.setItemChecked( COLUMN_POPUP_IDS + KrDetailedViewProperties::Extention, hasExtention );
 
@@ -1463,18 +1464,18 @@ void KrDetailedView::selectColumns()
   popup.setItemChecked( COLUMN_POPUP_IDS + KrDetailedViewProperties::Permissions, hasPerms );
 
   popup.insertItem( i18n( "rwx" ), COLUMN_POPUP_IDS + KrDetailedViewProperties::KrPermissions );
-  popup.setItemChecked( COLUMN_POPUP_IDS + KrDetailedViewProperties::KrPermissions, hasKrPerms );      
+  popup.setItemChecked( COLUMN_POPUP_IDS + KrDetailedViewProperties::KrPermissions, hasKrPerms );
 
   popup.insertItem( i18n( "Owner" ), COLUMN_POPUP_IDS + KrDetailedViewProperties::Owner );
-  popup.setItemChecked( COLUMN_POPUP_IDS + KrDetailedViewProperties::Owner, hasOwner );      
+  popup.setItemChecked( COLUMN_POPUP_IDS + KrDetailedViewProperties::Owner, hasOwner );
 
   popup.insertItem( i18n( "Group" ), COLUMN_POPUP_IDS + KrDetailedViewProperties::Group );
-  popup.setItemChecked( COLUMN_POPUP_IDS + KrDetailedViewProperties::Group, hasGroup );        
-  
+  popup.setItemChecked( COLUMN_POPUP_IDS + KrDetailedViewProperties::Group, hasGroup );
+
   int result=popup.exec(TQCursor::pos());
 
   krConfig->setGroup( nameInTDEConfig() );
-  
+
   switch( result - COLUMN_POPUP_IDS )
   {
   case KrDetailedViewProperties::Extention:
@@ -1510,7 +1511,7 @@ void KrDetailedView::selectColumns()
     refresh = true;
     break;
   }
-  
+
   if( refresh )
   {
 	 PanelManager *p = ACTIVE_PANEL->view == this ? ACTIVE_MNG : OTHER_MNG;
@@ -1523,7 +1524,7 @@ void KrDetailedView::sortOrderChanged(int) {
 }
 
 void KrDetailedView::updateView() {
-	triggerUpdate(); 
+	triggerUpdate();
 	op()->emitSelectionChanged();
 }
 
@@ -1564,7 +1565,7 @@ void KrDetailedView::slotSortOrderChanged(int col) {
 			sp = KrViewProperties::Group; break;
 		default: tqFatal("slotSortOrderChanged: unknown column");
 	}
-	if (sortMode() & KrViewProperties::DirsFirst) 
+	if (sortMode() & KrViewProperties::DirsFirst)
 		sp = static_cast<KrViewProperties::SortSpec>(sp | KrViewProperties::DirsFirst);
 	if (sortMode() & KrViewProperties::IgnoreCase)
 		sp = static_cast<KrViewProperties::SortSpec>(sp | KrViewProperties::IgnoreCase);
@@ -1574,12 +1575,12 @@ void KrDetailedView::slotSortOrderChanged(int col) {
 		sp = static_cast<KrViewProperties::SortSpec>(sp | KrViewProperties::AlwaysSortDirsByName);
 	// fix the ascending/decending stuff
 	if (sortMode() == sp) {
-		if (sp & KrViewProperties::Descending) 
+		if (sp & KrViewProperties::Descending)
 			sp = static_cast<KrViewProperties::SortSpec>(sp &~ KrViewProperties::Descending);
 		else sp = static_cast<KrViewProperties::SortSpec>(sp | KrViewProperties::Descending);
 	}
 	PROPS->sortMode = sp;
-	
+
 	if( !_focused )
 		op()->emitNeedFocus();
 }

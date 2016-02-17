@@ -8,13 +8,14 @@
 
 #define PROPS	static_cast<const KrViewProperties*>(_viewProperties)
 
-TQString atomicExtensions[] = { 
-	".tar.gz", 
-	".tar.bz2", 
+TQString atomicExtensions[] = {
+	".tar.gz",
+	".tar.bz2",
 	".moc.cpp"
+	".tar.xz",
 };
 
-KrViewItem::KrViewItem(vfile *vf, const KrViewProperties* properties): 
+KrViewItem::KrViewItem(vfile *vf, const KrViewProperties* properties):
 	_vf(vf), dummyVfile(false), _viewProperties(properties), _hasExtension(false), _hidden(false), _extension("") {
 	if (vf) {
 		// check if the file has an extension
@@ -32,7 +33,7 @@ KrViewItem::KrViewItem(vfile *vf, const KrViewProperties* properties):
 			_extension = vfName.mid(loc+1);
 			_hasExtension=true;
 		}
-		
+
 		if( vfName.startsWith(".") )
 			_hidden = true;
 	}
@@ -50,16 +51,16 @@ TQString KrViewItem::description() const {
 	TQString comment = KMimeType::mimeType(_vf->vfile_getMime())->comment(text, false);
 	TQString myLinkDest = _vf->vfile_getSymDest();
 	TDEIO::filesize_t mySize = _vf->vfile_getSize();
-	
+
 	TQString text2 = text.copy();
 	mode_t m_fileMode = _vf->vfile_getMode();
-	
+
 	if (_vf->vfile_isSymLink() ){
 		TQString tmp;
 		if ( comment.isEmpty() )	tmp = i18n ( "Symbolic Link" ) ;
 		else if( _vf->vfile_getMime() == "Broken Link !" ) tmp = i18n("(broken link !)");
 		else tmp = i18n("%1 (Link)").arg(comment);
-	
+
 		text += "->";
 	text += myLinkDest;
 	text += "  ";
@@ -89,13 +90,13 @@ TQString KrViewItem::dateTime() const {
 }
 
 TQPixmap KrViewItem::icon() {
-#if 0  
+#if 0
   TQPixmap *p;
 
   // This is bad - very bad. the function must return a valid reference,
   // This is an interface flow - shie please fix it with a function that return TQPixmap*
   // this way we can return 0 - and do our error checking...
-  
+
   // shie answers: why? what's the difference? if we return an empty pixmap, others can use it as it
   // is, without worrying or needing to do error checking. empty pixmap displays nothing
 #endif

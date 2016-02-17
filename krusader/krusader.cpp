@@ -5,10 +5,10 @@ copyright            : (C) 2000 by Shie Erlich & Rafi Yanai
 e-mail               : krusader@users.sourceforge.net
 web site             : http://krusader.sourceforge.net
 ---------------------------------------------------------------------------
-Description 
+Description
 ***************************************************************************
 
-A 
+A
 
 db   dD d8888b. db    db .d8888.  .d8b.  d8888b. d88888b d8888b.
 88 ,8P' 88  `8D 88    88 88'  YP d8' `8b 88  `8D 88'     88  `8D
@@ -28,7 +28,7 @@ YP   YD 88   YD ~Y8888P' `8888Y' YP   YP Y8888D' Y88888P 88   YD
 *                                                                         *
 ***************************************************************************/
 #include <sys/types.h>
-#include <sys/stat.h> 
+#include <sys/stat.h>
 #include <sys/param.h>
 #include <unistd.h>
 #ifdef BSD
@@ -51,7 +51,7 @@ YP   YD 88   YD ~Y8888P' `8888Y' YP   YP Y8888D' Y88888P 88   YD
 #include <tdeactionclasses.h>
 #endif
 
-#include <tdeversion.h> 
+#include <tdeversion.h>
 // QT includes
 #include <tqpixmap.h>
 #include <tqstringlist.h>
@@ -59,7 +59,7 @@ YP   YD 88   YD ~Y8888P' `8888Y' YP   YP Y8888D' Y88888P 88   YD
 #include <tqprinter.h>
 #include <tqprogressdialog.h>
 #include <tqvaluelist.h>
-#include <tqwhatsthis.h> 
+#include <tqwhatsthis.h>
 #include <tqwidgetlist.h>
 #include <tqdatetime.h>
 #include <dcopclient.h>
@@ -181,7 +181,7 @@ TDERadioAction  *Krusader::actSelectSingle = 0;
 TDERadioAction  *Krusader::actSelectNewer = 0;
 TDERadioAction  *Krusader::actSelectDifferentAndSingle = 0;
 TDERadioAction  *Krusader::actSelectDifferent = 0;
-TDERadioAction  **Krusader::compareArray[] = {&actSelectNewerAndSingle, &actSelectNewer, &actSelectSingle, 
+TDERadioAction  **Krusader::compareArray[] = {&actSelectNewerAndSingle, &actSelectNewer, &actSelectSingle,
                                             &actSelectDifferentAndSingle, &actSelectDifferent, 0};
 TDERadioAction *Krusader::actExecStartAndForget = 0;
 TDERadioAction *Krusader::actExecCollectSeparate = 0;
@@ -278,7 +278,7 @@ Krusader::Krusader() : KParts::MainWindow(0,0,WType_TopLevel|WDestructiveClose|T
    int             rightActiveTab = krConfig->readNumEntry( "Right Active Tab", 0 );
    TQString         startProfile = krConfig->readEntry("Starter Profile Name", TQString() );
    bool            leftActive = krConfig->readBoolEntry( "Left Side Is Active", false );
-   
+
    // get command-line arguments
    if ( args->isSet( "left" ) ) {
       leftTabs = TQStringList::split( ',', args->getOption( "left" ) );
@@ -329,8 +329,8 @@ Krusader::Krusader() : KParts::MainWindow(0,0,WType_TopLevel|WDestructiveClose|T
       leftTabs.clear();
       leftTabTypes.clear();
       leftTabProps.clear();
-      rightTabs.clear();   
-      rightTabTypes.clear();   
+      rightTabs.clear();
+      rightTabTypes.clear();
       rightTabProps.clear();
       leftActiveTab = rightActiveTab = 0;
    }
@@ -349,7 +349,7 @@ Krusader::Krusader() : KParts::MainWindow(0,0,WType_TopLevel|WDestructiveClose|T
    }
 
    // starting the panels
-   mainView->start( leftTabs, leftTabTypes, leftTabProps, leftActiveTab, rightTabs, 
+   mainView->start( leftTabs, leftTabTypes, leftTabProps, leftActiveTab, rightTabs,
                     rightTabTypes, rightTabProps, rightActiveTab, leftActive );
 
    // create the user menu
@@ -397,7 +397,7 @@ Krusader::Krusader() : KParts::MainWindow(0,0,WType_TopLevel|WDestructiveClose|T
 
 	if ( runKonfig )
 		slot->runKonfigurator( true );
-	
+
    if (!runKonfig) {
 		config->setGroup( "Private" );
 		if ( krConfig->readBoolEntry( "Maximized" ) )
@@ -407,7 +407,7 @@ Krusader::Krusader() : KParts::MainWindow(0,0,WType_TopLevel|WDestructiveClose|T
 			resize( oldSize = krConfig->readSizeEntry( "Start Size", _StartSize ));
 		}
 	}
-	
+
 	if( startToTray ) {
 		sysTray->show();
 		hide();
@@ -436,7 +436,7 @@ bool Krusader::versionControl() {
    config = kapp->config();
    bool firstRun = config->readBoolEntry(FIRST_RUN, true);
 
-#if 0      
+#if 0
 	TQString oldVerText = config->readEntry( "Version", "10.0" );
    oldVerText.truncate( oldVerText.findRev( "." ) ); // remove the third dot
    float oldVer = oldVerText.toFloat();
@@ -459,13 +459,28 @@ bool Krusader::versionControl() {
    }
    config->writeEntry( "Version", VERSION );
    config->writeEntry( FIRST_RUN, false);
+
+   // Check whether Krusader is run for the first time under a new TDE version.
+   TQString lastVersion = config->readEntry("Last version");
+   if (lastVersion != TDE_VERSION_STRING)
+   {
+     config->writeEntry("Last version", TDE_VERSION_STRING);
+	   if (!retval)
+   	 {
+       KMessageBox::information(krApp, i18n( "<qt><b>Welcome to Krusader!</b><p>As this is your first run "
+         "under TDE " TDE_VERSION_STRING ", your machine will now be checked for external applications updates. "
+         "Then the Konfigurator will be launched where you can customize Krusader to your needs.</p></qt>" ) );
+     }
+     retval = true;
+   }
+
    config->sync();
    return retval;
 }
 
 void Krusader::statusBarUpdate( TQString& mess ) {
    // change the message on the statusbar for 2 seconds
-   if (status) // ugly!!!! But as statusBar() creates a status bar if there is no, I have to ask status to prevent 
+   if (status) // ugly!!!! But as statusBar() creates a status bar if there is no, I have to ask status to prevent
                // the creation of the TDE default status bar instead of KrusaderStatus.
       statusBar() ->message( mess, 5000 );
 }
@@ -476,7 +491,7 @@ void Krusader::showEvent ( TQShowEvent * ) {
    config->setGroup( "Look&Feel" );
    bool showTrayIcon = krConfig->readBoolEntry( "Minimize To Tray", _MinimizeToTray );
    bool singleInstanceMode = krConfig->readBoolEntry( "Single Instance Mode", _SingleInstanceMode );
-   
+
    if( showTrayIcon && !singleInstanceMode )
      sysTray->hide();
    show(); // needed to make sure krusader is removed from
@@ -706,7 +721,7 @@ void Krusader::setupActions() {
    actRoot = new TDEAction( i18n( "Root" ), "go-top", CTRL + Key_Backspace,
                           SLOTS, TQT_SLOT( root() ), actionCollection(), "root" );
    actSavePosition = new TDEAction( i18n( "Save &Position" ), 0,
-                                  TQT_TQOBJECT(krApp), TQT_SLOT( savePosition() ), actionCollection(), "save position" );   
+                                  TQT_TQOBJECT(krApp), TQT_SLOT( savePosition() ), actionCollection(), "save position" );
    actAllFilter = new TDEAction( i18n( "&All Files" ), SHIFT + Key_F10,
                                SLOTS, TQT_SLOT( allFilter() ), actionCollection(), "all files" );
    //actExecFilter = new TDEAction( i18n( "&Executables" ), SHIFT + Key_F11,
@@ -745,7 +760,7 @@ void Krusader::setupActions() {
                 SLOTS, TQT_SLOT( newSymlink() ), actionCollection(), "new symlink");
    new TDEToggleAction( i18n( "Toggle Popup Panel" ), ALT + Key_Down, SLOTS,
                             TQT_SLOT( togglePopupPanel() ), actionCollection(), "toggle popup panel" );
-   actVerticalMode = new TDEToggleAction( i18n( "Vertical Mode" ), "view_top_bottom", ALT + CTRL + Key_R, TQT_TQOBJECT(MAIN_VIEW), 
+   actVerticalMode = new TDEToggleAction( i18n( "Vertical Mode" ), "view_top_bottom", ALT + CTRL + Key_R, TQT_TQOBJECT(MAIN_VIEW),
                                         TQT_SLOT( toggleVerticalMode() ), actionCollection(), "toggle vertical mode" );
    actNewTab = new TDEAction( i18n( "New Tab" ), "tab_new", ALT + CTRL + Key_N, SLOTS,
                             TQT_SLOT( newTab() ), actionCollection(), "new tab" );
@@ -833,11 +848,11 @@ void Krusader::savePosition() {
    mainView->right->popup->saveSizes();
    if( !MAIN_VIEW->getTerminalEmulatorSplitterSizes().isEmpty() )
      config->writeEntry( "Terminal Emulator Splitter Sizes", MAIN_VIEW->getTerminalEmulatorSplitterSizes() );
-   
+
    // save view settings ---> fix when we have tabbed-browsing
    mainView->left->view->saveSettings();
    mainView->right->view->saveSettings();
-   
+
    config->setGroup( "Startup" );
    config->writeEntry( "Vertical Mode", actVerticalMode->isChecked());
    config->sync();
@@ -846,13 +861,13 @@ void Krusader::savePosition() {
 void Krusader::saveSettings() {
    toolBar() ->saveSettings( krConfig, "Private" );
    toolBar("actionsToolBar")->saveSettings( krConfig, "Actions Toolbar" );
-   config->setGroup( "Startup" );   
+   config->setGroup( "Startup" );
    config->writeEntry( "Left Active Tab", mainView->leftMng->activeTab() );
    config->writeEntry( "Right Active Tab", mainView->rightMng->activeTab() );
    config->writeEntry( "Left Side Is Active", MAIN_VIEW->activePanel->isLeft() );
    mainView->leftMng->saveSettings( krConfig, "Left Tab Bar" );
    mainView->rightMng->saveSettings( krConfig, "Right Tab Bar" );
-   
+
    bool rememberpos = config->readBoolEntry( "Remember Position", _RememberPos );
    bool uisavesettings = config->readBoolEntry( "UI Save Settings", _UiSave );
 
@@ -898,7 +913,7 @@ void Krusader::configChanged() {
    config->setGroup( "Look&Feel" );
    bool minimizeToTray = config->readBoolEntry( "Minimize To Tray", _MinimizeToTray );
    bool singleInstanceMode = config->readBoolEntry( "Single Instance Mode", _SingleInstanceMode );
-   
+
    if( !isHidden() ) {
      if( singleInstanceMode && minimizeToTray )
        sysTray->show();
@@ -918,9 +933,9 @@ void Krusader::slotClose() {
 bool Krusader::queryClose() {
    if( isStarting || isExiting )
      return false;
-   
+
    if( kapp->sessionSaving() ) // KDE is logging out, accept the close
-   { 
+   {
      saveSettings();
 
      kapp->dcopClient()->registerAs( TDEApplication::kApplication()->name(), true );
@@ -929,9 +944,9 @@ bool Krusader::queryClose() {
      kapp->deref(); // and close the application
      return isExiting = true;              // this will also kill the pending jobs
    }
-   
+
    krConfig->setGroup( "Look&Feel" );
-   if( !directExit && krConfig->readBoolEntry( "Single Instance Mode", _SingleInstanceMode ) && 
+   if( !directExit && krConfig->readBoolEntry( "Single Instance Mode", _SingleInstanceMode ) &&
                       krConfig->readBoolEntry( "Minimize To Tray", _MinimizeToTray ) ) {
      hide();
      return false;
@@ -942,7 +957,7 @@ bool Krusader::queryClose() {
    directExit = false;
 
    bool quit = true;
-   
+
    if ( krConfig->readBoolEntry( "Warn On Exit", _WarnOnExit ) ) {
       switch ( KMessageBox::warningYesNo( this,
                                           i18n( "Are you sure you want to quit?" ) ) ) {
@@ -989,11 +1004,11 @@ bool Krusader::queryClose() {
 
           if( w->inherits( TQDIALOG_OBJECT_NAME_STRING ) )
             fprintf( stderr, "Failed to close: %s\n", w->className() );
-  
+
           return false;
         }
       }
-   
+
       saveSettings();
 
       isExiting = true;
@@ -1016,8 +1031,8 @@ void Krusader::startWaiting( TQString msg, int count , bool cancel ) {
    plzWait->startWaiting( msg , count, cancel );
 }
 
-bool Krusader::wasWaitingCancelled() const { 
-	return plzWait->wasCancelled(); 
+bool Krusader::wasWaitingCancelled() const {
+	return plzWait->wasCancelled();
 }
 
 void Krusader::incProgress( TDEProcess *, char *buffer, int buflen ) {
@@ -1039,18 +1054,18 @@ void Krusader::updateGUI( bool enforce ) {
 
    // call the XML GUI function to draw the UI
    createGUI( mainView->konsole_part );
-   
+
    // this needs to be called AFTER createGUI() !!!
    userActionMenu = (TDEPopupMenu*) guiFactory()->container( "useractionmenu", this );
    if ( userActionMenu )
       userAction->populateMenu( userActionMenu );
-   
+
    toolBar() ->applySettings( krConfig, "Private" );
-	
+
 	toolBar("actionsToolBar") ->applySettings( krConfig, "Actions Toolbar" );
 	static_cast<TDEToggleAction*>(actionCollection()->action("toggle actions toolbar"))->
 		setChecked(toolBar("actionsToolBar")->isVisible());
-	
+
    if ( enforce ) {
       // now, hide what need to be hidden
       if ( !krConfig->readBoolEntry( "Show tool bar", _ShowToolBar ) ) {

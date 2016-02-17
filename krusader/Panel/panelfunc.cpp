@@ -5,10 +5,10 @@ copyright            : (C) 2000 by Shie Erlich & Rafi Yanai
 e-mail               : krusader@users.sourceforge.net
 web site             : http://krusader.sourceforge.net
 ---------------------------------------------------------------------------
-Description 
+Description
 ***************************************************************************
 
-A 
+A
 
  db   dD d8888b. db    db .d8888.  .d8b.  d8888b. d88888b d8888b.
  88 ,8P' 88  `8D 88    88 88'  YP d8' `8b 88  `8D 88'     88  `8D
@@ -27,12 +27,12 @@ A
 *   (at your option) any later version.                                   *
 *                                                                         *
 ***************************************************************************/
-#include <unistd.h> 
+#include <unistd.h>
 // TQt Includes
 #include <tqdir.h>
 #include <tqtextstream.h>
 #include <tqeventloop.h>
-#include <tqclipboard.h> 
+#include <tqclipboard.h>
 // KDE Includes
 #include <tdelocale.h>
 #include <kprocess.h>
@@ -48,7 +48,7 @@ A
 #include <kdebug.h>
 #include <tdeio/netaccess.h>
 #include <kstandarddirs.h>
-#include <ktempdir.h> 
+#include <ktempdir.h>
 #include <kurlrequester.h>
 #include <kprocio.h>
 #include <kdesktopfile.h>
@@ -91,7 +91,7 @@ panel( parent ), inRefresh( false ), vfsP( 0 ) {
 }
 
 void ListPanelFunc::openUrl( const TQString& url, const TQString& nameToMakeCurrent ) {
-	openUrl( vfs::fromPathOrURL( 
+	openUrl( vfs::fromPathOrURL(
 		// KURLRequester is buggy: it should return a string containing "/home/shie/downloads"
 		// but it returns "~/downloads" which is parsed incorrectly by vfs::fromPathOrURL.
 		// replacedPath should replace ONLY $HOME and environment variables
@@ -121,7 +121,7 @@ void ListPanelFunc::immediateOpenUrl( const KURL& urlIn ) {
 
 	// if we are not refreshing to current URL
 	bool is_equal_url = files() ->vfs_getOrigin().equals( url, true );
-	
+
 	if ( !is_equal_url ) {
 		// change the cursor to busy
 		panel->setCursor( KCursor::waitCursor() );
@@ -135,7 +135,7 @@ void ListPanelFunc::immediateOpenUrl( const KURL& urlIn ) {
 		if ( is_equal_url ) {
 		    panel->view->setCurrentItem( nameToMakeCurrent );
 		    panel->view->makeItemVisible( panel->view->getCurrentKrViewItem() );
-		}		
+		}
 	}
 
 	vfs* v = 0;
@@ -152,11 +152,11 @@ void ListPanelFunc::immediateOpenUrl( const KURL& urlIn ) {
 		if ( !v )
 			continue; //this should not happen !
 		if ( v != vfsP ) {
-			if( vfsP->vfs_canDelete() )                
+			if( vfsP->vfs_canDelete() )
 				delete vfsP;
 			else {
 				connect( vfsP, TQT_SIGNAL( deleteAllowed() ), vfsP, TQT_SLOT( deleteLater() ) );
-				vfsP->vfs_requestDelete();                                
+				vfsP->vfs_requestDelete();
 			}
 			vfsP = v; // v != 0 so this is safe
 		} else {
@@ -173,10 +173,10 @@ void ListPanelFunc::immediateOpenUrl( const KURL& urlIn ) {
 			break; // we have a valid refreshed URL now
 		}
 		if ( vfsP == 0 )  // the object was deleted during vfs_refresh? Hoping the best...
-			return;                
+			return;
 		// prevent repeated error messages
 		if ( vfsP->vfs_isDeleting() )
-			break;                
+			break;
 		vfsP->vfs_setQuiet( true );
 	}
 	vfsP->vfs_setQuiet( false );
@@ -204,12 +204,12 @@ void ListPanelFunc::immediateOpenUrl( const KURL& urlIn ) {
 	         panel, TQT_SLOT( slotItemDeleted( const TQString& ) ) );
 	connect( files(), TQT_SIGNAL( cleared() ),
 	         panel, TQT_SLOT( slotCleared() ) );
-	
+
 	// on local file system change the working directory
 	if ( files() ->vfs_getType() == vfs::NORMAL )
 		chdir( files() ->vfs_getOrigin().path().local8Bit() );
-	
-	// see if the open url operation failed, and if so, 
+
+	// see if the open url operation failed, and if so,
 	// put the attempted url in the origin bar and let the user change it
 	if (refreshFailed) {
 		panel->origin->setURL(urlIn.prettyURL());
@@ -529,25 +529,25 @@ void ListPanelFunc::mkdir() {
 KURL ListPanelFunc::getVirtualBaseURL() {
 	if( files()->vfs_getType() != vfs::VIRT || otherFunc()->files()->vfs_getType() == vfs::VIRT )
 		return KURL();
-	
+
 	TQStringList fileNames;
 	panel->getSelectedNames( &fileNames );
-	
+
 	KURL::List* fileUrls = files() ->vfs_getFiles( &fileNames );
 	if( fileUrls->count() == 0 )
 		return KURL();
-	
+
 	KURL base = (*fileUrls)[ 0 ].upURL();
-	
+
 	if( base.protocol() == "virt" ) // is it a virtual subfolder?
 		return KURL();          // --> cannot keep the directory structure
-	
+
 	for( unsigned i=1; i < fileUrls->count(); i++ ) {
 		if( base.isParentOf( (*fileUrls)[ i ] ) )
 			continue;
 		if( base.protocol() != (*fileUrls)[ i ].protocol() )
 			return KURL();
-		
+
 		do {
 			KURL oldBase = base;
 			base = base.upURL();
@@ -721,15 +721,13 @@ void ListPanelFunc::execute( TQString& name ) {
 		dirUp();
 		return ;
 	}
-
 	vfile *vf = files() ->vfs_search( name );
 	if ( vf == 0 )
 		return ;
-	
+
 	KURL origin = files() ->vfs_getOrigin();
 
 	TQString protocol = origin.isLocalFile() ? KrServices::registerdProtocol( vf->vfile_getMime() ) : "";
-
 	if ( protocol == "tar" || protocol == "krarc" ) {
 		bool encrypted;
 		TQString type = KRarcHandler::getType( encrypted, vf->vfile_getUrl().path(), vf->vfile_getMime(), false );
@@ -748,7 +746,7 @@ void ListPanelFunc::execute( TQString& name ) {
 	} else {
 		KURL url = files() ->vfs_getFile( name );
 		KFileItem kfi( vf->vfile_getEntry(), url,true );
-		kfi.run();	
+		kfi.run();
 	}
 }
 
@@ -776,15 +774,15 @@ void ListPanelFunc::pack() {
 	if ( PackGUI::type == TQString() )
 		return ; // the user canceled
 
-	// check for partial URLs	
+	// check for partial URLs
 	if( !PackGUI::destination.contains(":/") && !PackGUI::destination.startsWith("/") ){
 		PackGUI::destination = panel->virtualPath().prettyURL()+"/"+PackGUI::destination;
 	}
-	
+
 	TQString destDir = PackGUI::destination;
 	if( !destDir.endsWith( "/" ) )
 		destDir += "/";
-	
+
 	bool packToOtherPanel = ( destDir == panel->otherPanel->virtualPath().prettyURL(1) );
 
 	// on remote URL-s first pack into a temp file then copy to its right place
@@ -795,8 +793,8 @@ void ListPanelFunc::pack() {
 		arcFile = destURL.path();
 	else if( destURL.protocol() == "virt" ) {
 		KMessageBox::error( krApp, i18n( "Cannot pack files onto a virtual destination!" ) );
-		return;                
-	}        
+		return;
+	}
 	else {
 		tempDestFile = new KTempFile( TQString(), "." + PackGUI::type );
 		tempDestFile->setAutoDelete( true );
@@ -884,15 +882,15 @@ void ListPanelFunc::testArchive() {
 	TQString mime = files() ->vfs_search( arcName ) ->vfile_getMime();
 	bool encrypted = false;
 	TQString type = KRarcHandler::getType( encrypted, url, mime );
-	
+
 	// check we that archive is supported
 	if ( !KRarcHandler::arcSupported( type ) ) {
 		KMessageBox::sorry( krApp, i18n( "%1, unknown archive type." ).arg( arcName ) );
 		return ;
 	}
-	
+
 	TQString password = encrypted ? KRarcHandler::getPassword( url ) : TQString();
-	
+
 	// test the archive
 	if ( KRarcHandler::test( url, type, password ) )
 		KMessageBox::information( krApp, i18n( "%1, test passed." ).arg( arcName ) );
@@ -964,9 +962,9 @@ void ListPanelFunc::unpack() {
 			KMessageBox::sorry( krApp, i18n( "%1, unknown archive type" ).arg( arcName ) );
 			continue;
 		}
-		
+
 		TQString password = encrypted ? KRarcHandler::getPassword( url ) : TQString();
-		
+
 		// unpack the files
 		KRarcHandler::unpack( url, type, password, dest.path( -1 ) );
 
@@ -1020,7 +1018,7 @@ void ListPanelFunc::matchChecksum() {
 	TQValueList<vfile*> checksumFiles = files()->vfs_search(
 		KRQuery(MatchChecksumDlg::checksumTypesFilter)
 	);
-	MatchChecksumDlg dlg(args, folders, panel->realPath(), 
+	MatchChecksumDlg dlg(args, folders, panel->realPath(),
 		(checksumFiles.size()==1 ? checksumFiles[0]->vfile_getUrl().prettyURL() : TQString()));
 }
 
@@ -1149,7 +1147,7 @@ void ListPanelFunc::copyToClipboard( bool move ) {
 			KMessageBox::error( krApp, i18n( "Cannot copy a virtual URL collection onto the clipboard!" ) );
 		return;
 	}
-	
+
 	TQStringList fileNames;
 
 	panel->getSelectedNames( &fileNames );
@@ -1160,10 +1158,10 @@ void ListPanelFunc::copyToClipboard( bool move ) {
 	if ( fileUrls ) {
 		KRDrag * urlData = KRDrag::newDrag( *fileUrls, move, krApp->mainView, "krusader" );
 		TQApplication::clipboard() ->setData( urlData );
-		
+
 		if( move && files()->vfs_getType() == vfs::VIRT )
 			( static_cast<virt_vfs*>( files() ) )->vfs_removeFiles( &fileNames );
-		
+
 		delete fileUrls;
 	}
 }

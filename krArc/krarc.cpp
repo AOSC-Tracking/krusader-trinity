@@ -62,29 +62,29 @@ extern "C" {
 
 int kdemain( int argc, char **argv ){
 	TDEInstance instance( "tdeio_krarc" );
-	
+
 	if (argc != 4) {
 		kdWarning() << "Usage: tdeio_krarc  protocol domain-socket1 domain-socket2" << endl;
 		exit(-1);
 	}
-	
+
 	tdeio_krarcProtocol slave(argv[2], argv[3]);
 	slave.dispatchLoop();
-	
+
 	return 0;
 }
 
-} // extern "C" 
+} // extern "C"
 
 tdeio_krarcProtocol::tdeio_krarcProtocol(const TQCString &pool_socket, const TQCString &app_socket)
 	: SlaveBase("tdeio_krarc", pool_socket, app_socket), archiveChanged(true), arcFile(0L),extArcReady(false),
 		password(TQString()) {
-	
+
 	krConfig = new TDEConfig( "krusaderrc" );
 	krConfig->setGroup( "Dependencies" );
-	
+
 	dirDict.setAutoDelete(true);
-	
+
 	arcTempDir = locateLocal("tmp",TQString());
 	TQString dirName = "krArc"+TQDateTime::currentDateTime().toString(Qt::ISODate);
 	dirName.replace(TQRegExp(":"),"_");
@@ -106,66 +106,66 @@ void tdeio_krarcProtocol::receivedData(TDEProcess*,char* buf,int len){
 	d.setRawData(buf,len);
 	data(d);
 	d.resetRawData(buf,len);
-	processedSize(len);	
+	processedSize(len);
 	decompressedLen += len;
 }
 
 void tdeio_krarcProtocol::mkdir(const KURL& url,int permissions){
 	KRDEBUG(url.path());
-	
+
 	if( !setArcFile( url ) ) {
 		error(ERR_CANNOT_ENTER_DIRECTORY,url.path());
 		return;
 	}
-	if( newArchiveURL && !initDirDict(url) ){ 
+	if( newArchiveURL && !initDirDict(url) ){
 		error(ERR_CANNOT_ENTER_DIRECTORY,url.path());
 		return;
 	}
-	
+
 	if( putCmd.isEmpty() ){
 		error(ERR_UNSUPPORTED_ACTION,
 		i18n("Creating directories is not supported with %1 archives").arg(arcType) );
 		return;
 	}
-	
+
 	if( arcType == "arj" || arcType == "lha" ) {
 		TQString arcDir = url.path().mid(arcFile->url().path().length());
 		if( arcDir.right(1) != "/") arcDir = arcDir+"/";
-		
+
 		if( dirDict.find( arcDir ) == 0 )
 			addNewDir( arcDir );
 		finished();
 		return;
 	}
-	
+
 	//TQString tmpDir = arcTempDir+url.path();
 	TQString arcDir  = findArcDirectory(url);
 	TQString tmpDir = arcTempDir + arcDir.mid(1) + url.path().mid(url.path().findRev("/")+1);
 	if( tmpDir.right(1) != "/" ) tmpDir = tmpDir+"/";
-	
+
 	if( permissions == -1 ) permissions = 0777; //set default permissions
 	for( unsigned int i=arcTempDir.length();i<tmpDir.length(); i=tmpDir.find("/",i+1)){
 		::mkdir(tmpDir.left(i).local8Bit(),permissions);
 	}
-	
+
 	if( tmpDir.endsWith( "/" ) )
 		tmpDir.truncate( tmpDir.length() - 1 );
-	
+
 	// pack the directory
 	KrShellProcess proc;
 	proc << putCmd << convertName( arcFile->url().path() ) + " " << convertFileName( tmpDir.mid(arcTempDir.length()) );
 	infoMessage(i18n("Creating %1 ...").arg( url.fileName() ) );
 	TQDir::setCurrent(arcTempDir);
 	proc.start(TDEProcess::Block,TDEProcess::AllOutput);
-	
+
 	// delete the temp directory
 	TQDir().rmdir(arcTempDir);
-	
+
 	if( !proc.normalExit() || !checkStatus( proc.exitStatus() ) )  {
 		error(ERR_COULD_NOT_WRITE,url.path() + "\n\n" + proc.getErrorMsg() );
 		return;
 	}
-	
+
 	//  force a refresh of archive information
 	initDirDict(url,true);
 	finished();
@@ -177,24 +177,24 @@ void tdeio_krarcProtocol::put(const KURL& url,int permissions,bool overwrite,boo
 		error(ERR_CANNOT_ENTER_DIRECTORY,url.path());
 		return;
 	}
-	if( newArchiveURL && !initDirDict(url) ){ 
+	if( newArchiveURL && !initDirDict(url) ){
 		error(ERR_CANNOT_ENTER_DIRECTORY,url.path());
 		return;
 	}
-	
+
 	if( putCmd.isEmpty() ){
 		error(ERR_UNSUPPORTED_ACTION,
 		i18n("Writing to %1 archives is not supported").arg(arcType) );
 		return;
-	} 
+	}
 	if( !overwrite && findFileEntry(url) ){
 		error( ERR_FILE_ALREADY_EXIST,url.path() );
 		return;
 	}
-	
+
 	TQString arcDir  = findArcDirectory(url);
 	TQString tmpFile = arcTempDir + arcDir.mid(1) + url.path().mid(url.path().findRev("/")+1);
-	
+
 	TQString tmpDir = arcTempDir+arcDir.mid(1)+"/";
 	for( unsigned int i=arcTempDir.length();i<tmpDir.length(); i=tmpDir.find("/",i+1)){
 		TQDir("/").mkdir(tmpDir.left(i));
@@ -211,7 +211,7 @@ void tdeio_krarcProtocol::put(const KURL& url,int permissions,bool overwrite,boo
 			initialMode = permissions | S_IWUSR | S_IRUSR;
 		else
 			initialMode = 0666;
-		
+
 		fd = KDE_open(tmpFile.local8Bit(), O_CREAT | O_TRUNC | O_WRONLY, initialMode);
 	}
 	TQByteArray buffer;
@@ -247,21 +247,21 @@ void tdeio_krarcProtocol::get(const KURL& url ){
 void tdeio_krarcProtocol::get(const KURL& url, int tries ){
 	bool decompressToFile = false;
 	KRDEBUG(url.path());
-	
+
 	if( !setArcFile( url ) ) {
 		error(ERR_CANNOT_ENTER_DIRECTORY,url.path());
 		return;
 	}
-	if( newArchiveURL && !initDirDict(url) ){ 
+	if( newArchiveURL && !initDirDict(url) ){
 		error(ERR_CANNOT_ENTER_DIRECTORY,url.path());
 		return;
 	}
-	
+
 	if( getCmd.isEmpty() ){
 		error(ERR_UNSUPPORTED_ACTION,
 		i18n("Retrieving data from %1 archives is not supported").arg(arcType) );
 		return;
-	} 
+	}
 	UDSEntry* entry = findFileEntry(url);
 	if( !entry ){
 		error(TDEIO::ERR_DOES_NOT_EXIST,url.path());
@@ -303,7 +303,7 @@ void tdeio_krarcProtocol::get(const KURL& url, int tries ){
 	} else if( arcType == "arj" || arcType == "ace" || arcType == "7z" ) {
 		proc << getCmd << convertName( arcFile->url().path(-1) )+ " " << convertFileName( file );
 		if( arcType == "ace" && TQFile( "/dev/ptmx" ).exists() ) // Don't remove, unace crashes if missing!!!
-		proc << "<" << "/dev/ptmx"; 
+		proc << "<" << "/dev/ptmx";
 		file = url.fileName();
 		decompressToFile = true;
 	} else {
@@ -313,7 +313,7 @@ void tdeio_krarcProtocol::get(const KURL& url, int tries ){
 		KMimeType::Ptr mt = KMimeType::findByURL( arcTempDir+file, 0, false /* NOT local URL */ );
 		emit mimeType( mt->name() );
 		proc << getCmd << convertName( arcFile->url().path() )+" ";
-		if( arcType != "gzip" && arcType != "bzip2" ) proc << convertFileName( file );
+		if( arcType != "gzip" && arcType != "bzip2" && arcType != "xz") proc << convertFileName( file );
 		connect(&proc,TQT_SIGNAL(receivedStdout(TDEProcess*,char*,int)),
 				this,TQT_SLOT(receivedData(TDEProcess*,char*,int)) );
 	}
@@ -321,9 +321,10 @@ void tdeio_krarcProtocol::get(const KURL& url, int tries ){
 	// change the working directory to our arcTempDir
 	TQDir::setCurrent(arcTempDir);
 	proc.start(TDEProcess::Block,TDEProcess::AllOutput);
-	
-	if( !extArcReady && !decompressToFile ) {  
-		if( !proc.normalExit() || !checkStatus( proc.exitStatus() ) || ( arcType != "bzip2" && expectedSize != decompressedLen ) ) {
+
+	if( !extArcReady && !decompressToFile ) {
+		if( !proc.normalExit() || !checkStatus( proc.exitStatus() ) ||
+		   ( arcType != "bzip2" && arcType != "xz" && expectedSize != decompressedLen ) ) {
 			if( encrypted && tries ) {
 				invalidatePassword();
 				get( url, tries - 1 );
@@ -373,9 +374,9 @@ void tdeio_krarcProtocol::get(const KURL& url, int tries ){
 		// This is mandatory in all slaves (for KRun/BrowserRun to work).
 		KMimeType::Ptr mt = KMimeType::findByURL( arcTempDir+file, buff.st_mode, true /* local URL */ );
 		emit mimeType( mt->name() );
-		
+
 		TDEIO::filesize_t processed_size = 0;
-		
+
 		TQString resumeOffset = metaData("resume");
 		if ( !resumeOffset.isEmpty() ){
 			bool ok;
@@ -387,9 +388,9 @@ void tdeio_krarcProtocol::get(const KURL& url, int tries ){
 				}
 			}
 		}
-		
+
 		totalSize( buff.st_size );
-		
+
 		char buffer[ MAX_IPC_SIZE ];
 		TQByteArray array;
 		while( 1 ){
@@ -403,19 +404,19 @@ void tdeio_krarcProtocol::get(const KURL& url, int tries ){
 			}
 			if (n == 0)
 				break; // Finished
-			
+
 			array.setRawData(buffer, n);
 			data( array );
 			array.resetRawData(buffer, n);
-			
+
 			processed_size += n;
 		}
-		
+
 		data( TQByteArray() );
 		close( fd );
 		processedSize( buff.st_size );
 		finished();
-		
+
 		if( decompressToFile )
 			TQFile(arcTempDir+file).remove();
 		return;
@@ -427,16 +428,16 @@ void tdeio_krarcProtocol::get(const KURL& url, int tries ){
 
 void tdeio_krarcProtocol::del(KURL const & url, bool isFile){
 	KRDEBUG(url.path());
-	
+
 	if( !setArcFile( url ) ) {
 		error(ERR_CANNOT_ENTER_DIRECTORY,url.path());
 		return;
 	}
-	if( newArchiveURL && !initDirDict(url) ){ 
+	if( newArchiveURL && !initDirDict(url) ){
 		error(ERR_CANNOT_ENTER_DIRECTORY,url.path());
 		return;
 	}
-	
+
 	if( delCmd.isEmpty() ){
 		error(ERR_UNSUPPORTED_ACTION,
 		i18n("Deleting files from %1 archives is not supported").arg(arcType) );
@@ -448,7 +449,7 @@ void tdeio_krarcProtocol::del(KURL const & url, bool isFile){
 			return;
 		}
 	}
-	
+
 	TQString file = url.path().mid(arcFile->url().path().length()+1);
 	if( !isFile && file.right(1) != "/" ) {
 		if(arcType == "zip") file = file + "/";
@@ -466,25 +467,25 @@ void tdeio_krarcProtocol::del(KURL const & url, bool isFile){
 	finished();
 }
 
-void tdeio_krarcProtocol::stat( const KURL & url ){  
+void tdeio_krarcProtocol::stat( const KURL & url ){
 	KRDEBUG(url.path());
 	if( !setArcFile( url ) ) {
 		error(ERR_CANNOT_ENTER_DIRECTORY,url.path());
 		return;
 	}
-	if( newArchiveURL && !initDirDict(url) ){ 
+	if( newArchiveURL && !initDirDict(url) ){
 		error(ERR_CANNOT_ENTER_DIRECTORY,url.path());
 		return;
 	}
-	
+
 	if( listCmd.isEmpty() ){
 		error(ERR_UNSUPPORTED_ACTION,
 		i18n("Accessing files is not supported with the %1 archives").arg(arcType) );
 		return;
-	}    
+	}
 	TQString path = url.path(-1);
 	KURL newUrl = url;
-	
+
 	// but treat the archive itself as the archive root
 	if( path == arcFile->url().path(-1) ){
 		newUrl.setPath(path+"/");
@@ -508,49 +509,49 @@ void tdeio_krarcProtocol::stat( const KURL & url ){
 
 void tdeio_krarcProtocol::copy (const KURL &url, const KURL &dest, int, bool overwrite) {
 	KRDEBUG(url.path());
-  
+
 	// KDE HACK: opening the password dlg in copy causes error for the COPY, and further problems
 	// that's why encrypted files are not allowed to copy
 	if( !encrypted && dest.isLocalFile() )
 		do {
 			if( url.fileName() != dest.fileName() )
 				break;
-			
+
 			//the file exists and we don't want to overwrite
 			if ((!overwrite) && ( TQFile( dest.path() ).exists() ) ) {
 				error(ERR_FILE_ALREADY_EXIST, TQFile::encodeName(dest.path()) );
 				return;
 			};
-			
+
 			if( !setArcFile( url ) ) {
 				error(ERR_CANNOT_ENTER_DIRECTORY,url.path());
 				return;
 			}
-			if( newArchiveURL && !initDirDict(url) ){ 
+			if( newArchiveURL && !initDirDict(url) ){
 				error(ERR_CANNOT_ENTER_DIRECTORY,url.path());
 				return;
 			}
-			
+
 			UDSEntry* entry = findFileEntry(url);
 			if( copyCmd.isEmpty() || !entry )
 				break;
-			
+
 			TQString file = url.path().mid(arcFile->url().path().length()+1);
-			
+
 			TQString destDir = dest.path( -1 );
 			if( !TQDir( destDir ).exists() ) {
 				int ndx = destDir.findRev( '/' );
 				if( ndx != -1 )
 					destDir.truncate( ndx+1 );
 			}
-			
+
 			TQDir::setCurrent( destDir.local8Bit() );
-			
+
 			KrShellProcess proc;
 			proc << copyCmd << convertName( arcFile->url().path(-1) )+" " << convertFileName( file );
 			if( arcType == "ace" && TQFile( "/dev/ptmx" ).exists() ) // Don't remove, unace crashes if missing!!!
-				proc << "<" << "/dev/ptmx"; 
-			
+				proc << "<" << "/dev/ptmx";
+
 			infoMessage(i18n("Unpacking %1 ...").arg( url.fileName() ) );
 			proc.start(TDEProcess::Block, TDEProcess::AllOutput);
 			if( !proc.normalExit() || !checkStatus( proc.exitStatus() ) )  {
@@ -561,13 +562,13 @@ void tdeio_krarcProtocol::copy (const KURL &url, const KURL &dest, int, bool ove
 				error( TDEIO::ERR_COULD_NOT_WRITE, dest.path(-1) );
 				return;
 			}
-			
+
 			processedSize( KFileItem(*entry,url).size() );
 			finished();
 			TQDir::setCurrent( "/" ); /* for being able to umount devices after copying*/
 			return;
 		}while( 0 );
-	
+
 	error(  ERR_UNSUPPORTED_ACTION, unsupportedActionErrorString(mProtocol, CMD_COPY));
 }
 
@@ -581,10 +582,10 @@ void tdeio_krarcProtocol::listDir(const KURL& url){
 		error(ERR_UNSUPPORTED_ACTION,
 		i18n("Listing directories is not supported for %1 archives").arg(arcType) );
 		return;
-	}  
+	}
 	TQString path = url.path();
 	if( path.right(1) != "/" ) path = path+"/";
-	
+
 	// it might be a real dir !
 	if( TQFileInfo(path).exists() ){
 		if( TQFileInfo(path).isDir() ){
@@ -597,14 +598,14 @@ void tdeio_krarcProtocol::listDir(const KURL& url){
 		}
 		return;
 	}
-	if( !initDirDict(url) ){ 
+	if( !initDirDict(url) ){
 		error( ERR_CANNOT_ENTER_DIRECTORY, url.path());
 		return;
 	}
 	TQString arcDir = path.mid(arcFile->url().path().length());
 	arcDir.truncate(arcDir.findRev("/"));
 	if(arcDir.right(1) != "/") arcDir = arcDir+"/";
-	
+
 	UDSEntryList* dirList = dirDict.find(arcDir);
 	if( dirList == 0 ){
 		error(ERR_CANNOT_ENTER_DIRECTORY,url.path());
@@ -622,7 +623,7 @@ bool tdeio_krarcProtocol::setArcFile(const KURL& url){
 	newArchiveURL = true;
 	// is the file already set ?
 	if( arcFile && arcFile->url().path(-1) == path.left(arcFile->url().path(-1).length()) ){
-		newArchiveURL = false;        
+		newArchiveURL = false;
 		// Has it changed ?
 		KFileItem* newArcFile = new KFileItem(arcFile->url(),TQString(),arcFile->mode());
 		if( !newArcFile->cmp( *arcFile ) ){
@@ -659,34 +660,36 @@ bool tdeio_krarcProtocol::setArcFile(const KURL& url){
 			return false; // file not found
 		}
 	}
-	
-	/* FIX: file change can only be detected if the timestamp between the two consequent 
-	   changes is more than 1s. If the archive is continuously changing (check: move files 
-	   inside the archive), krarc may erronously think, that the archive file is unchanged, 
+
+	/* FIX: file change can only be detected if the timestamp between the two consequent
+	   changes is more than 1s. If the archive is continuously changing (check: move files
+	   inside the archive), krarc may erronously think, that the archive file is unchanged,
 	   because the timestamp is the same as the previous one. This situation can only occur
 	   if the modification time equals with the current time. While this condition is true,
-	   we can say, that the archive is changing, so content reread is always necessary 
+	   we can say, that the archive is changing, so content reread is always necessary
 	   during that period. */
 	if( archiveChanging )
 		archiveChanged = true;
 	archiveChanging = ( currTime == arcFile->time( UDS_MODIFICATION_TIME ) );
-	
+
 	arcPath = arcFile->url().path(-1);
 	arcType = detectArchive( encrypted, arcPath );
-	
+
 	if( arcType == "tbz" )
 		arcType = "bzip2";
 	else if( arcType == "tgz" )
 		arcType = "gzip";
-	
+	else if( arcType == "txz" )
+		arcType = "xz";
+
 	if( arcType.isEmpty() ) {
 		arcType = arcFile->mimetype();
 		arcType = arcType.mid(arcType.findRev("-")+1);
-		
+
 		if( arcType == "jar" )
 			arcType = "zip";
 	}
-	
+
 	return initArcParameters();
 }
 
@@ -696,18 +699,18 @@ bool tdeio_krarcProtocol::initDirDict(const KURL&url, bool forced){
 	// no need to rescan the archive if it's not changed
 	if( !archiveChanged && !forced ) return true;
 	extArcReady = false;
-	
+
 	if( !setArcFile( url ) )
 		return false;   /* if the archive was changed refresh the file information */
-	
+
 	// write the temp file
 	KrShellProcess proc;
 	KTempFile temp( TQString(), "tmp" );
 	temp.setAutoDelete(true);
-	if( arcType != "bzip2" ){
+	if (arcType != "bzip2" && arcType != "xz") {
 		if( arcType == "rpm" )
 			proc << listCmd << convertName( arcPath ) <<" > " << temp.name();
-		else        
+		else
 			proc << listCmd << convertName( arcFile->url().path(-1) ) <<" > " << temp.name();
 		if( arcType == "ace" && TQFile( "/dev/ptmx" ).exists() ) // Don't remove, unace crashes if missing!!!
 			proc << "<" << "/dev/ptmx";
@@ -716,7 +719,7 @@ bool tdeio_krarcProtocol::initDirDict(const KURL&url, bool forced){
 	}
 	// clear the dir dictionary
 	dirDict.clear();
-	
+
 	// add the "/" directory
 	UDSEntryList* root = new UDSEntryList();
 	dirDict.insert("/",root);
@@ -733,20 +736,20 @@ bool tdeio_krarcProtocol::initDirDict(const KURL&url, bool forced){
 	atom.m_uds = UDS_ACCESS;
 	atom.m_long = mode & 07777; // keep permissions only
 	entry.append( atom );
-	
+
 	root->append(entry);
-	
-	if( arcType == "bzip2" ){
+
+	if (arcType == "bzip2" || arcType == "xz"){
 		KRDEBUG("Got me here...");
 		parseLine(0,"",temp.file());
 		return true;
 	}
-	
+
 	// parse the temp file
 	temp.file()->open(IO_ReadOnly);
 	char buf[1000];
 	TQString line;
-	
+
 	int lineNo = 0;
 	bool invalidLine = false;
 	// the rar list is started with a ------ line.
@@ -755,7 +758,7 @@ bool tdeio_krarcProtocol::initDirDict(const KURL&url, bool forced){
 			line = TQString::fromLocal8Bit(buf);
 			if( line.startsWith("----------") ) break;
 		}
-	} 
+	}
 	while(temp.file()->readLine(buf,1000) != -1) {
 		line = TQString::fromLocal8Bit(buf);
 		if( arcType == "rar" ) {
@@ -802,7 +805,7 @@ bool tdeio_krarcProtocol::initDirDict(const KURL&url, bool forced){
 	}
 	// close and delete our file
 	temp.file()->close();
-	
+
 	archiveChanged = false;
 	return true;
 }
@@ -810,21 +813,21 @@ bool tdeio_krarcProtocol::initDirDict(const KURL&url, bool forced){
 TQString tdeio_krarcProtocol::findArcDirectory(const KURL& url){
 	TQString path = url.path();
 	if( path.right(1) == "/" ) path.truncate(path.length()-1);
-	
+
 	if( !initDirDict(url) ){
 		return TQString();
 	}
 	TQString arcDir = path.mid(arcFile->url().path().length());
 	arcDir.truncate(arcDir.findRev("/"));
 	if(arcDir.right(1) != "/") arcDir = arcDir+"/";
-	
+
 	return arcDir;
 }
 
 UDSEntry* tdeio_krarcProtocol::findFileEntry(const KURL& url){
 	TQString arcDir = findArcDirectory(url);
 	if( arcDir.isEmpty() ) return 0;
-	
+
 	UDSEntryList* dirList = dirDict.find(arcDir);
 	if( !dirList ){
 		return 0;
@@ -835,10 +838,10 @@ UDSEntry* tdeio_krarcProtocol::findFileEntry(const KURL& url){
 		if( name.right(1) == "/" ) name.truncate(name.length()-1);
 		name = name.mid(name.findRev("/")+1);
 	}
-	
+
 	UDSEntryList::iterator entry;
 	UDSEntry::iterator atom;
-	
+
 	for ( entry = dirList->begin(); entry != dirList->end(); ++entry ){
 		for( atom = (*entry).begin(); atom != (*entry).end(); ++atom ){
 			if( (*atom).m_uds == UDS_NAME ){
@@ -877,54 +880,54 @@ mode_t tdeio_krarcProtocol::parsePermString(TQString perm){
 	if(perm[7] != '-') mode |= S_IROTH;
 	if(perm[8] != '-') mode |= S_IWOTH;
 	if(perm[9] != '-') mode |= S_IXOTH;
-	
+
 	return mode;
 }
 
 UDSEntryList* tdeio_krarcProtocol::addNewDir(TQString path){
 	UDSEntryList* dir;
-	
+
 	// check if the current dir exists
 	dir = dirDict.find(path);
 	if(dir != 0) return dir; // dir exists- return it !
-	
+
 	// set dir to the parent dir
 	dir = addNewDir(path.left(path.findRev("/",-2)+1));
-	
+
 	// add a new entry in the parent dir
 	TQString name = path.mid(path.findRev("/",-2)+1);
 	name = name.left(name.length()-1);
-	
+
 	UDSEntry entry;
 	UDSAtom atom;
 	atom.m_uds = UDS_NAME;
 	atom.m_str = name;
 	entry.append(atom);
-	
+
 	mode_t mode = parsePermString("drwxr-xr-x");
-	
+
 	atom.m_uds = UDS_FILE_TYPE;
 	atom.m_long = mode & S_IFMT; // keep file type only
 	entry.append( atom );
-	
+
 	atom.m_uds = UDS_ACCESS;
 	atom.m_long = mode & 07777; // keep permissions only
 	entry.append( atom );
-	
+
 	atom.m_uds = UDS_SIZE;
 	atom.m_long = 0;
 	entry.append( atom );
-	
+
 	atom.m_uds = UDS_MODIFICATION_TIME;
 	atom.m_long = arcFile->time(UDS_MODIFICATION_TIME);
 	entry.append( atom );
-	
+
 	dir->append(entry);
-	
+
 	// create a new directory entry and add it..
 	dir = new UDSEntryList();
 	dirDict.insert(path,dir);
-	
+
 	return dir;
 }
 
@@ -932,7 +935,7 @@ void tdeio_krarcProtocol::parseLine(int lineNo, TQString line, TQFile*) {
 	UDSEntryList* dir;
 	UDSEntry entry;
 	UDSAtom atom;
-	
+
 	TQString owner        = TQString();
 	TQString group        = TQString();
 	TQString symlinkDest  = TQString();
@@ -941,7 +944,7 @@ void tdeio_krarcProtocol::parseLine(int lineNo, TQString line, TQFile*) {
 	size_t size          = 0;
 	time_t time          = ::time(0);
 	TQString fullName     = TQString();
-	
+
 	if(arcType == "zip"){
 		// permissions
 		perm = nextWord(line);
@@ -958,8 +961,8 @@ void tdeio_krarcProtocol::parseLine(int lineNo, TQString line, TQFile*) {
 		time = TQDateTime(qdate,qtime).toTime_t();
 		// full name
 		fullName = nextWord(line,'\n');
-		
-		if(perm.length() != 10) 
+
+		if(perm.length() != 10)
 			perm = (perm.at(0)=='d' || fullName.endsWith( "/" )) ? "drwxr-xr-x" : "-rw-r--r--" ;
 		mode = parsePermString(perm);
 	}
@@ -977,22 +980,22 @@ void tdeio_krarcProtocol::parseLine(int lineNo, TQString line, TQFile*) {
 		TQDate qdate( year, d.mid(3,2).toInt(), d.mid(0,2).toInt() );
 		TQString t = nextWord(line);
 		TQTime qtime(t.mid(0,2).toInt(),t.mid(3,2).toInt(),0);
-		time = TQDateTime(qdate,qtime).toTime_t();    
+		time = TQDateTime(qdate,qtime).toTime_t();
 		// permissions
 		perm = nextWord(line);
-		
+
 		if( perm.length() == 7 ) // windows rar permission format
 		{
 			bool isDir  = ( perm.at(1).lower() == 'd' );
 			bool isReadOnly = ( perm.at(2).lower() == 'r' );
-			
+
 			perm = isDir ? "drwxr-xr-x" : "-rw-r--r--";
-			
+
 			if( isReadOnly )
 				perm.at( 2 ) = '-';
-		}        
-		
-		if(perm.length() != 10) perm = (perm.at(0)=='d')? "drwxr-xr-x" : "-rw-r--r--" ;    
+		}
+
+		if(perm.length() != 10) perm = (perm.at(0)=='d')? "drwxr-xr-x" : "-rw-r--r--" ;
 		mode = parsePermString(perm);
 	}
 	if(arcType == "arj"){
@@ -1012,7 +1015,7 @@ void tdeio_krarcProtocol::parseLine(int lineNo, TQString line, TQFile*) {
 		TQDate qdate( year, d.mid(3,2).toInt(), d.mid(6,2).toInt() );
 		TQString t = nextWord(line);
 		TQTime qtime(t.mid(0,2).toInt(),t.mid(3,2).toInt(),0);
-		time = TQDateTime(qdate,qtime).toTime_t();    
+		time = TQDateTime(qdate,qtime).toTime_t();
 		// permissions
 		perm = nextWord(line);
 		if(perm.length() != 10) perm = (perm.at(0)=='d')? "drwxr-xr-x" : "-rw-r--r--" ;
@@ -1076,15 +1079,15 @@ void tdeio_krarcProtocol::parseLine(int lineNo, TQString line, TQFile*) {
 		int year = TQDate::currentDate().year();
 		TQString third = nextWord(line);
 		TQTime qtime;
-		
+
 		if( third.contains(":" ) )
 			qtime = TQTime::fromString( third );
 		else
 			year = third.toInt();
-		
+
 		TQDate qdate(year, month, day );
-		
-		time = TQDateTime(qdate, qtime).toTime_t();    
+
+		time = TQDateTime(qdate, qtime).toTime_t();
 		// full name
 		fullName = nextWord(line,'\n');
 	}
@@ -1096,7 +1099,7 @@ void tdeio_krarcProtocol::parseLine(int lineNo, TQString line, TQFile*) {
 		TQDate qdate( year, d.mid(3,2).toInt(), d.mid(0,2).toInt() );
 		TQString t = nextWord(line);
 		TQTime qtime(t.mid(0,2).toInt(),t.mid(3,2).toInt(),0);
-		time = TQDateTime(qdate,qtime).toTime_t();    
+		time = TQDateTime(qdate,qtime).toTime_t();
 		// ignore the next field
 		nextWord(line);
 		// size
@@ -1138,7 +1141,7 @@ void tdeio_krarcProtocol::parseLine(int lineNo, TQString line, TQFile*) {
 		TQString t = nextWord(line);
 		TQTime qtime(t.mid(0,2).toInt(),t.mid(3,2).toInt(),t.mid(6,2).toInt() );
 		time = TQDateTime(qdate,qtime).toTime_t();
-		
+
 		// permissions
 		perm = nextWord(line);
 		bool isDir  = ( perm.at(0).lower() == 'd' );
@@ -1146,18 +1149,26 @@ void tdeio_krarcProtocol::parseLine(int lineNo, TQString line, TQFile*) {
 		perm = isDir ? "drwxr-xr-x" : "-rw-r--r--";
 		if( isReadOnly )
 			perm.at( 2 ) = '-';
-		
+
 		mode = parsePermString(perm);
-		
+
 		// size
 		size = nextWord(line).toLong();
-		
+
 		// ignore the next 15 characters
 		line = line.mid( 15 );
-		
+
 		// full name
 		fullName = nextWord(line,'\n');
 	}
+  if (arcType == "xz") {
+    fullName = arcFile->name();
+    if (fullName.endsWith("xz")) {
+      fullName.truncate(fullName.length() - 3);
+    }
+    mode = arcFile->mode();
+    size = arcFile->size();
+  }
 
 	if( fullName.right(1) == "/" ) fullName = fullName.left(fullName.length()-1);
 	if( !fullName.startsWith("/") ) fullName = "/"+fullName;
@@ -1200,7 +1211,7 @@ void tdeio_krarcProtocol::parseLine(int lineNo, TQString line, TQFile*) {
 			// try to overwrite an existing entry
 			UDSEntryList::iterator entryIt;
 			UDSEntry::iterator atomIt;
-			
+
 			for ( entryIt = dir->begin(); entryIt != dir->end(); ++entryIt )
 				for( atomIt = (*entryIt).begin(); atomIt != (*entryIt).end(); ++atomIt )
 					if( (*atomIt).m_uds == UDS_NAME )
@@ -1220,7 +1231,7 @@ void tdeio_krarcProtocol::parseLine(int lineNo, TQString line, TQFile*) {
 			return; // there is alreay an entry for this directory
 		}
 	}
-	
+
 	// multi volume archives can add a file twice, use only one
 	UDSEntryList::iterator dirEntryIt;
 	UDSEntry::iterator dirAtomIt;
@@ -1228,19 +1239,19 @@ void tdeio_krarcProtocol::parseLine(int lineNo, TQString line, TQFile*) {
 		for( dirAtomIt = (*dirEntryIt).begin(); dirAtomIt != (*dirEntryIt).end(); ++dirAtomIt )
 			if( (*dirAtomIt).m_uds == UDS_NAME && (*dirAtomIt).m_str == name )
 				return;
-	
+
 	dir->append(entry);
 }
 
 bool tdeio_krarcProtocol::initArcParameters() {
 	KRDEBUG("arcType: "<<arcType);
-	
+
 	if(arcType == "zip"){
 		cmd     = fullPathName( "unzip" );
 		listCmd = fullPathName( "unzip" ) + " -ZTs-z-t-h ";
 		getCmd  = fullPathName( "unzip" ) + " -p ";
 		copyCmd = fullPathName( "unzip" ) + " -jo ";
-		
+
 		if( TDEStandardDirs::findExe( "zip" ).isEmpty() ) {
 			delCmd  = TQString();
 			putCmd  = TQString();
@@ -1248,7 +1259,7 @@ bool tdeio_krarcProtocol::initArcParameters() {
 			delCmd  = fullPathName( "zip" ) + " -d ";
 			putCmd  = fullPathName( "zip" ) + " -ry ";
 		}
-		
+
 		if( !getPassword().isEmpty() ) {
 			getCmd += "-P '"+password+"' ";
 			copyCmd += "-P '"+password+"' ";
@@ -1336,12 +1347,12 @@ bool tdeio_krarcProtocol::initArcParameters() {
 		getCmd = fullPathName("tar")+" xvf ";
 		copyCmd = TQString();
 		delCmd = TQString();
-		putCmd = TQString();	
+		putCmd = TQString();
 	} else if (arcType == "7z") {
 		cmd = fullPathName( "7z" );
 		if( TDEStandardDirs::findExe(cmd).isEmpty() )
 			cmd = fullPathName( "7za" );
-		
+
 		listCmd = cmd + " l -y ";
 		getCmd  = cmd + " e -y ";
 		copyCmd = cmd + " e -y ";
@@ -1356,8 +1367,14 @@ bool tdeio_krarcProtocol::initArcParameters() {
 				delCmd += "-p'"+password+"' ";
 			}
 		}
-	}
-	else {
+  } else if (arcType == "xz") {
+    cmd     = fullPathName("xz");
+    listCmd = fullPathName("xz");
+    getCmd  = fullPathName("xz") + "-dc";
+    copyCmd = TQString();
+    delCmd  = TQString();
+    putCmd  = TQString();
+	} else {
 		cmd     = TQString();
 		listCmd = TQString();
 		getCmd  = TQString();
@@ -1378,12 +1395,12 @@ bool tdeio_krarcProtocol::initArcParameters() {
 
 bool tdeio_krarcProtocol::checkStatus( int exitCode ) {
 	KRDEBUG( exitCode );
-	
+
 	if( arcType == "zip" || arcType == "rar" || arcType == "7z" )
 		return exitCode == 0 || exitCode == 1;
 	else if( arcType == "ace" || arcType == "bzip2" || arcType == "lha" || arcType == "rpm" || arcType == "arj" )
 		return exitCode == 0;
-	else if( arcType == "gzip" )
+	else if( arcType == "gzip"|| arcType == "xz" )
 		return exitCode == 0 || exitCode == 2;
 	else
 		return exitCode == 0;
@@ -1404,25 +1421,26 @@ TQString tdeio_krarcProtocol::detectArchive( bool &encrypted, TQString fileName 
 	                                              {"bzip2",0, "\x42\x5a\x68\x39\x31" },
 	                                              {"gzip", 0, "\x1f\x8b"},
 	                                              {"deb",  0, "!<arch>\ndebian-binary   " },
-	                                              {"7z",   0, "7z\xbc\xaf\x27\x1c" } };
+	                                              {"7z",   0, "7z\xbc\xaf\x27\x1c" },
+	                                              {"xz",   0, "\xfd7zXZ\x00"} };
 	static int autoDetectElems = sizeof( autoDetectParams ) / sizeof( AutoDetectParams );
-	
+
 	encrypted = false;
-	
+
 	TQFile arcFile( fileName );
 	if ( arcFile.open( IO_ReadOnly ) ) {
 		char buffer[ 1024 ];
 		long sizeMax = arcFile.readBlock( buffer, sizeof( buffer ) );
 		arcFile.close();
-		
+
 		for( int i=0; i < autoDetectElems; i++ ) {
 			TQString detectionString = autoDetectParams[ i ].detectionString;
 			int location = autoDetectParams[ i ].location;
-			
+
 			int endPtr = detectionString.length() + location;
 			if( endPtr > sizeMax )
 				continue;
-			
+
 			unsigned int j=0;
 			for(; j != detectionString.length(); j++ ) {
 				if( detectionString[ j ] == '?' )
@@ -1430,7 +1448,7 @@ TQString tdeio_krarcProtocol::detectArchive( bool &encrypted, TQString fileName 
 				if( buffer[ location + j ] != detectionString[ j ] )
 					break;
 			}
-			
+
 			if( j == detectionString.length() ) {
 				TQString type = autoDetectParams[ i ].type;
 				if( type == "bzip2" || type == "gzip" ) {
@@ -1465,7 +1483,7 @@ TQString tdeio_krarcProtocol::detectArchive( bool &encrypted, TQString fileName 
 								long headerSize = ((unsigned char *)buffer)[ offset+5 ] + 256*((unsigned char *)buffer)[ offset+6 ];
 								bool isDir = (buffer[ offset+7 ] == '\0' ) && (buffer[ offset+8 ] == '\0' ) &&
 								             (buffer[ offset+9 ] == '\0' ) && (buffer[ offset+10 ] == '\0' );
-								             
+
 								if( buffer[ offset + 2 ] != (char)0x74 )
 									break;
 								if( !isDir ) {
@@ -1485,7 +1503,7 @@ TQString tdeio_krarcProtocol::detectArchive( bool &encrypted, TQString fileName 
 							long headerSize = ((unsigned char *)buffer)[ offset+2 ] + 256*((unsigned char *)buffer)[ offset+3 ] + 4;
 							bool isDir = (buffer[ offset+11 ] == '\0' ) && (buffer[ offset+12 ] == '\0' ) &&
 							             (buffer[ offset+13 ] == '\0' ) && (buffer[ offset+14 ] == '\0' );
-							             
+
 							if( buffer[ offset + 4 ] != (char)0x01 )
 								break;
 							if( !isDir ) {
@@ -1507,17 +1525,17 @@ TQString tdeio_krarcProtocol::detectArchive( bool &encrypted, TQString fileName 
 								return type;
 							}
 						}
-						
+
 						TQString testCmd = tester + " t -y ";
 						lastData = encryptedArchPath = "";
-						
+
 						KrShellProcess proc;
 						proc << testCmd << convertName( fileName );
 						connect( &proc, TQT_SIGNAL( receivedStdout(TDEProcess*,char*,int) ),
 						         this, TQT_SLOT( checkOutputForPassword( TDEProcess*,char*,int ) ) );
 						proc.start(TDEProcess::Block,TDEProcess::AllOutput);
 						encrypted = this->encrypted;
-						
+
 						if( encrypted )
 							encryptedArchPath = fileName;
 					}
@@ -1525,7 +1543,7 @@ TQString tdeio_krarcProtocol::detectArchive( bool &encrypted, TQString fileName 
 				return type;
 			}
 		}
-		
+
 		if( sizeMax >= 512 ) {
 			/* checking if it's a tar file */
 			unsigned checksum = 32*8;
@@ -1545,6 +1563,16 @@ TQString tdeio_krarcProtocol::detectArchive( bool &encrypted, TQString fileName 
 			}
 		}
 	}
+
+	if (fileName.endsWith(".tar.xz"))
+	{
+	  return "txz";
+	}
+	else if (fileName.endsWith(".xz"))
+	{
+	  return "xz";
+	}
+
 	return TQString();
 }
 
@@ -1553,9 +1581,9 @@ void tdeio_krarcProtocol::checkOutputForPassword( TDEProcess *proc,char *buf,int
 	d.setRawData(buf,len);
 	TQString data =  TQString( d );
 	d.resetRawData(buf,len);
-	
+
 	TQString checkable = lastData + data;
-	
+
 	TQStringList lines = TQStringList::split( '\n', checkable );
 	lastData = lines[ lines.count() - 1 ];
 	for( unsigned i=0; i != lines.count(); i++ ) {
@@ -1565,7 +1593,7 @@ void tdeio_krarcProtocol::checkOutputForPassword( TDEProcess *proc,char *buf,int
 			line.truncate( ndx );
 		if( line.isEmpty() )
 			continue;
-		
+
 		if( line.contains( "password" ) && line.contains( "enter" ) ) {
 			KRDEBUG( "Encrypted 7z archive found!" );
 			encrypted = true;
@@ -1576,10 +1604,10 @@ void tdeio_krarcProtocol::checkOutputForPassword( TDEProcess *proc,char *buf,int
 
 void tdeio_krarcProtocol::invalidatePassword() {
 	KRDEBUG( arcFile->url().path(-1) + "/" );
-	
+
 	if( !encrypted )
 		return;
-	
+
 	TDEIO::AuthInfo authInfo;
 	authInfo.caption= i18n( "Krarc Password Dialog" );
 	authInfo.username= "archive";
@@ -1590,20 +1618,20 @@ void tdeio_krarcProtocol::invalidatePassword() {
 	authInfo.url = KURL::fromPathOrURL( "/" );
 	authInfo.url.setHost( fileName /*.replace('/','_')*/ );
 	authInfo.url.setProtocol( "krarc" );
-	
+
 	password = TQString();
-	
+
 	cacheAuthentication( authInfo );
 }
 
 TQString tdeio_krarcProtocol::getPassword() {
 	KRDEBUG( encrypted );
-	
+
 	if( !password.isNull() )
 		return password;
 	if( !encrypted )
 		return (password = "" );
-	
+
 	TDEIO::AuthInfo authInfo;
 	authInfo.caption= i18n( "Krarc Password Dialog" );
 	authInfo.username= "archive";
@@ -1614,19 +1642,19 @@ TQString tdeio_krarcProtocol::getPassword() {
 	authInfo.url = KURL::fromPathOrURL( "/" );
 	authInfo.url.setHost( fileName /*.replace('/','_')*/ );
 	authInfo.url.setProtocol( "krarc" );
-	
+
 	if( checkCachedAuthentication( authInfo ) && !authInfo.password.isNull() ) {
 		KRDEBUG( authInfo.password );
 		return ( password = authInfo.password );
 	}
-	
+
 	authInfo.password = TQString();
-	
+
 	if ( openPassDlg( authInfo, i18n("Accessing the file requires password.") ) && !authInfo.password.isNull() ) {
 		KRDEBUG( authInfo.password );
 		return ( password = authInfo.password );
 	}
-	
+
 	KRDEBUG( password );
 	return password;
 }
@@ -1652,12 +1680,12 @@ TQString tdeio_krarcProtocol::convertName( TQString name ) {
 	return escape( name );
 }
 
-TQString tdeio_krarcProtocol::escape( TQString name ) {    
+TQString tdeio_krarcProtocol::escape( TQString name ) {
 	const TQString evilstuff = "\\\"'`()[]{}!?;$&<>| ";		// stuff that should get escaped
-	
+
 	for ( unsigned int i = 0; i < evilstuff.length(); ++i )
 		name.replace( evilstuff[ i ], (TQString("\\") + evilstuff[ i ]) );
-	
+
 	return name;
 }
 

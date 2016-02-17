@@ -51,10 +51,11 @@ TQString KgProtocols::defaultKrarcMimes = "application/x-7z,application/x-7z-com
                                          "application/x-lha,application/x-lha-compressed,"
                                          "application/x-rar,application/x-rar-compressed,"
                                          "application/x-rpm,"
+                                         "application/x-xz,"
                                          "application/x-zip,application/x-zip-compressed";
-TQString KgProtocols::defaultTarMimes   = "application/x-tar,application/x-tarz,"
+TQString KgProtocols::defaultTarMimes  = "application/x-tar,application/x-tarz,"
                                          "application/x-compressed-tar,"
-                                         "application/x-tbz,application/x-tgz";
+                                         "application/x-tbz,application/x-tgz,application/x-txz";
 
 KgProtocols::KgProtocols( bool first, TQWidget* parent,  const char* name ) :
       KonfiguratorPage( first, parent, name )
@@ -63,22 +64,22 @@ KgProtocols::KgProtocols( bool first, TQWidget* parent,  const char* name ) :
   KgProtocolsLayout->setSpacing( 6 );
 
   //  -------------------------- LINK VIEW ----------------------------------
-  
-  TQGroupBox *linkGrp = createFrame( i18n( "Links" ), parent, "linkGrp" );    
+
+  TQGroupBox *linkGrp = createFrame( i18n( "Links" ), parent, "linkGrp" );
   TQGridLayout *linkGrid = createGridLayout( linkGrp->layout() );
-  
+
   linkList = new TQListView( linkGrp, "linkList" );
   linkList->addColumn( i18n( "Defined Links" ) );
   linkList->header()->setStretchEnabled( true, 0 );
   linkList->setRootIsDecorated( true );
-  
+
   linkGrid->addWidget( linkList, 0, 0 );
   KgProtocolsLayout->addMultiCellWidget( linkGrp, 0 ,1, 0, 0 );
 
   //  -------------------------- BUTTONS ----------------------------------
 
   TQVBox *vbox1 = new TQVBox( parent, "vbox1" )  ;
-  
+
   addSpacer( vbox1 );
   btnAddProtocol = new TQPushButton( vbox1, "btnAddProtocolButton" );
   btnAddProtocol->setPixmap( krLoader->loadIcon( "1leftarrow", TDEIcon::Small ) );
@@ -87,11 +88,11 @@ KgProtocols::KgProtocols( bool first, TQWidget* parent,  const char* name ) :
   btnRemoveProtocol->setPixmap( krLoader->loadIcon( "1rightarrow", TDEIcon::Small ) );
   TQWhatsThis::add( btnRemoveProtocol, i18n( "Remove protocol from the link list." ) );
   addSpacer( vbox1 );
-  
+
   KgProtocolsLayout->addWidget( vbox1, 0 ,1 );
 
   TQVBox *vbox2 = new TQVBox( parent, "vbox2" )  ;
-  
+
   addSpacer( vbox2 );
   btnAddMime = new TQPushButton( vbox2, "btnAddMimeButton" );
   btnAddMime->setPixmap( krLoader->loadIcon( "1leftarrow", TDEIcon::Small ) );
@@ -100,14 +101,14 @@ KgProtocols::KgProtocols( bool first, TQWidget* parent,  const char* name ) :
   btnRemoveMime->setPixmap( krLoader->loadIcon( "1rightarrow", TDEIcon::Small ) );
   TQWhatsThis::add( btnRemoveMime, i18n( "Remove mime from the link list." ) );
   addSpacer( vbox2 );
-  
+
   KgProtocolsLayout->addWidget( vbox2, 1 ,1 );
-  
+
   //  -------------------------- PROTOCOLS LISTBOX ----------------------------------
 
-  TQGroupBox *protocolGrp = createFrame( i18n( "Protocols" ), parent, "protocolGrp" );    
+  TQGroupBox *protocolGrp = createFrame( i18n( "Protocols" ), parent, "protocolGrp" );
   TQGridLayout *protocolGrid = createGridLayout( protocolGrp->layout() );
-  
+
   protocolList = new TQListBox( protocolGrp, "protocolList" );
   loadListCapableProtocols();
   protocolGrid->addWidget( protocolList, 0, 0 );
@@ -116,17 +117,17 @@ KgProtocols::KgProtocols( bool first, TQWidget* parent,  const char* name ) :
 
   //  -------------------------- MIMES LISTBOX ----------------------------------
 
-  TQGroupBox *mimeGrp = createFrame( i18n( "Mimes" ), parent, "mimeGrp" );    
+  TQGroupBox *mimeGrp = createFrame( i18n( "Mimes" ), parent, "mimeGrp" );
   TQGridLayout *mimeGrid = createGridLayout( mimeGrp->layout() );
-  
+
   mimeList = new TQListBox( mimeGrp, "protocolList" );
   loadMimes();
   mimeGrid->addWidget( mimeList, 0, 0 );
 
   KgProtocolsLayout->addWidget( mimeGrp, 1 ,2 );
-  
-  //  -------------------------- CONNECT TABLE ----------------------------------  
-  
+
+  //  -------------------------- CONNECT TABLE ----------------------------------
+
   connect( protocolList,      TQT_SIGNAL( selectionChanged() ), this, TQT_SLOT( slotDisableButtons() ) );
   connect( linkList,          TQT_SIGNAL( selectionChanged() ), this, TQT_SLOT( slotDisableButtons() ) );
   connect( mimeList,          TQT_SIGNAL( selectionChanged() ), this, TQT_SLOT( slotDisableButtons() ) );
@@ -135,11 +136,11 @@ KgProtocols::KgProtocols( bool first, TQWidget* parent,  const char* name ) :
   connect( btnRemoveProtocol, TQT_SIGNAL( clicked() )         , this, TQT_SLOT( slotRemoveProtocol() ) );
   connect( btnAddMime,        TQT_SIGNAL( clicked() )         , this, TQT_SLOT( slotAddMime() ) );
   connect( btnRemoveMime,     TQT_SIGNAL( clicked() )         , this, TQT_SLOT( slotRemoveMime() ) );
-  
+
   loadInitialValues();
   slotDisableButtons();
 }
-  
+
 TQWidget* KgProtocols::addSpacer( TQWidget *parent, const char *widgetName )
 {
   TQWidget *widget = new TQWidget( parent, widgetName );
@@ -153,8 +154,8 @@ void KgProtocols::loadListCapableProtocols()
 {
   TQStringList protocols = KProtocolInfo::protocols();
   protocols.sort();
-  
-  for ( TQStringList::Iterator it = protocols.begin(); it != protocols.end();) 
+
+  for ( TQStringList::Iterator it = protocols.begin(); it != protocols.end();)
   {
     if( !KProtocolInfo::supportsListing( *it ) )
     {
@@ -169,10 +170,10 @@ void KgProtocols::loadListCapableProtocols()
 void KgProtocols::loadMimes()
 {
   KMimeType::List mimes = KMimeType::allMimeTypes();
-  
+
   for( TQValueListIterator<KMimeType::Ptr> it = mimes.begin(); it != mimes.end(); it++ )
     mimeList->insertItem( (*it)->name() );
-    
+
   mimeList->sort();
 }
 
@@ -184,7 +185,7 @@ void KgProtocols::slotDisableButtons()
   btnRemoveProtocol->setEnabled( isProtocolSelected );
   btnAddMime->setEnabled( listViewItem != 0 && mimeList->selectedItem() != 0 );
   btnRemoveMime->setEnabled( listViewItem == 0 ? false : listViewItem->parent() != 0 );
-  
+
   if( linkList->currentItem() == 0 && linkList->firstChild() != 0 )
     linkList->setCurrentItem( linkList->firstChild() );
   if( linkList->selectedItem() == 0 && linkList->currentItem() != 0 )
@@ -210,7 +211,7 @@ void KgProtocols::addProtocol( TQString name, bool changeCurrent )
     protocolList->removeItem( protocolList->index( item ) );
     TQListViewItem *listViewItem = new TQListViewItem( linkList, name );
     listViewItem->setPixmap( 0, krLoader->loadIcon( "application-x-executable", TDEIcon::Small ) );
-    
+
     if( changeCurrent )
       linkList->setCurrentItem( listViewItem );
   }
@@ -234,7 +235,7 @@ void KgProtocols::removeProtocol( TQString name )
   {
     while( item->childCount() != 0 )
       removeMime( item->firstChild()->text( 0 ) );
-     
+
     linkList->takeItem( item );
     protocolList->insertItem( name );
     protocolList->sort();
@@ -249,7 +250,7 @@ void KgProtocols::slotAddMime()
     TQListViewItem *itemToAdd = linkList->currentItem();
     if( itemToAdd->parent() )
       itemToAdd = itemToAdd->parent();
-      
+
     addMime( item->text(), itemToAdd->text( 0 ) );
     slotDisableButtons();
     emit sigChanged();
@@ -260,7 +261,7 @@ void KgProtocols::addMime( TQString name, TQString protocol )
 {
   TQListBoxItem *item = mimeList->findItem( name, ExactMatch );
   TQListViewItem *currentListItem = linkList->findItem( protocol, 0 );
-  
+
   if( item && currentListItem && currentListItem->parent() == 0 )
   {
     mimeList->removeItem( mimeList->index( item ) );
@@ -284,7 +285,7 @@ void KgProtocols::slotRemoveMime()
 void KgProtocols::removeMime( TQString name )
 {
   TQListViewItem *currentMimeItem = linkList->findItem( name, 0 );
-  
+
   if( currentMimeItem && currentMimeItem->parent() != 0 )
   {
     mimeList->insertItem( currentMimeItem->text( 0 ) );
@@ -297,20 +298,20 @@ void KgProtocols::loadInitialValues()
 {
   while( linkList->childCount() != 0 )
     removeProtocol( linkList->firstChild()->text( 0 ) );
-  
+
   krConfig->setGroup( "Protocols" );
   TQStringList protList = krConfig->readListEntry( "Handled Protocols" );
-    
-  for( TQStringList::Iterator it = protList.begin(); it != protList.end(); it++ ) 
+
+  for( TQStringList::Iterator it = protList.begin(); it != protList.end(); it++ )
   {
     addProtocol( *it );
-    
+
     TQStringList mimes = krConfig->readListEntry( TQString( "Mimes For %1" ).arg( *it ) );
-    
+
     for( TQStringList::Iterator it2 = mimes.begin(); it2 != mimes.end(); it2++ )
       addMime( *it2, *it );
   }
-  
+
   if( linkList->firstChild() != 0 )
     linkList->setCurrentItem( linkList->firstChild() );
   slotDisableButtons();
@@ -320,22 +321,22 @@ void KgProtocols::setDefaults()
 {
   while( linkList->childCount() != 0 )
     removeProtocol( linkList->firstChild()->text( 0 ) );
-  
+
   addProtocol( "iso" );
   addMime( "application/x-iso", "iso" );
-  
+
   addProtocol( "krarc" );
   TQStringList krarcMimes = TQStringList::split( ',', defaultKrarcMimes );
   for( TQStringList::Iterator it = krarcMimes.begin(); it != krarcMimes.end(); it++ )
     addMime( *it, "krarc" );
-  
+
   addProtocol( "tar" );
   TQStringList tarMimes = TQStringList::split( ',', defaultTarMimes );
   for( TQStringList::Iterator it = tarMimes.begin(); it != tarMimes.end(); it++ )
     addMime( *it, "tar" );
-    
+
   slotDisableButtons();
-    
+
   if( isChanged() )
     emit sigChanged();
 }
@@ -344,18 +345,18 @@ bool KgProtocols::isChanged()
 {
   krConfig->setGroup( "Protocols" );
   TQStringList protList = krConfig->readListEntry( "Handled Protocols" );
-  
+
   if( (int)protList.count() != linkList->childCount() )
     return true;
-  
+
   TQListViewItem *item = linkList->firstChild();
   while( item )
   {
     if( !protList.contains( item->text( 0 ) ) )
       return true;
-      
+
     TQStringList mimes = krConfig->readListEntry( TQString( "Mimes For %1" ).arg( item->text( 0 ) ) );
-    
+
     if( (int)mimes.count() != item->childCount() )
       return true;
     TQListViewItem *childs = item->firstChild();
@@ -365,24 +366,24 @@ bool KgProtocols::isChanged()
         return true;
       childs = childs->nextSibling();
     }
-      
+
     item = item->nextSibling();
   }
-    
+
   return false;
 }
 
 bool KgProtocols::apply()
 {
   krConfig->setGroup( "Protocols" );
-  
+
   TQStringList protocolList;
-  
+
   TQListViewItem *item = linkList->firstChild();
   while( item )
   {
     protocolList.append( item->text( 0 ) );
-    
+
     TQStringList mimes;
     TQListViewItem *childs = item->firstChild();
     while( childs )
@@ -391,15 +392,15 @@ bool KgProtocols::apply()
       childs = childs->nextSibling();
     }
     krConfig->writeEntry( TQString( "Mimes For %1" ).arg( item->text( 0 ) ), mimes );
-    
+
     item = item->nextSibling();
-  }  
+  }
   krConfig->writeEntry( "Handled Protocols", protocolList );
-  krConfig->sync();  
-  
+  krConfig->sync();
+
   KrServices::clearProtocolCache();
-  
-  emit sigChanged();  
+
+  emit sigChanged();
   return false;
 }
 

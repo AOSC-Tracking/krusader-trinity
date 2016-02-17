@@ -44,7 +44,7 @@
 KgGeneral::KgGeneral( bool first, TQWidget* parent,  const char* name ) :
       KonfiguratorPage( first, parent, name )
 {
-if( first )  
+if( first )
     slotFindTools();
 
   TQGridLayout *kgGeneralLayout = new TQGridLayout( parent );
@@ -91,11 +91,11 @@ TQFrame *line2 = createLine( generalGrp, "line2" );
   TQVBox * vbox = new TQVBox( hbox2 );
 
   new TQLabel( i18n("Default viewer mode:"), vbox);
-  
+
   KONFIGURATOR_NAME_VALUE_TIP viewMode[] =
   //            name            value    tooltip
     {{ i18n( "Generic mode" ),  "generic", i18n( "Use the system's default viewer" ) },
-     { i18n( "Text mode" ), "text",  i18n( "View the file in text-only mode" ) }, 
+     { i18n( "Text mode" ), "text",  i18n( "View the file in text-only mode" ) },
      { i18n( "Hex mode" ), "hex",  i18n( "View the file in hex-mode (better for binary files)" ) } };
   createRadioButtonGroup( "General", "Default Viewer Mode",
       "generic", 0, 3, viewMode, 3, vbox, "myRadio2", false );
@@ -132,8 +132,9 @@ TQFrame *line2 = createLine( generalGrp, "line2" );
   defaultAtomicExtensions += ".tar.gz";
   defaultAtomicExtensions += ".tar.bz2";
   defaultAtomicExtensions += ".moc.cpp";
+  defaultAtomicExtensions += ".tar.xz";
 
-  listBox = createListBox( "Look&Feel", "Atomic Extensions", 
+  listBox = createListBox( "Look&Feel", "Atomic Extensions",
       defaultAtomicExtensions, vbox2, true, false );
 
   TQFrame *line3 = createLine( generalGrp, "line3" );

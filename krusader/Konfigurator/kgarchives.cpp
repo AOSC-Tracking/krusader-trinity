@@ -66,10 +66,11 @@ KgArchives::KgArchives( bool first, TQWidget* parent,  const char* name ) :
      {"Archives","Do UnAce", _DoUnAce, i18n( "Ace" ),   false,  ""},
      {"Archives","Do Lha",   _DoLha,   i18n( "Lha" ),   false,  ""},
      {"Archives","Do DEB",   _DoDEB,   i18n( "Deb" ),   false,  ""},
-     {"Archives","Do 7z",    _Do7z,    i18n( "7zip" ),  false,  ""}
+     {"Archives","Do 7z",    _Do7z,    i18n( "7zip" ),  false,  ""},
+     {"Archives","Do Xz",    _DoXz,    i18n( "Xz" ),    false,  ""}
     };
 
-  cbs = createCheckBoxGroup( 3, 0, packers, 11, generalGrp );
+  cbs = createCheckBoxGroup( 3, 0, packers, 12, generalGrp );
   generalGrid->addWidget( cbs, 1, 0 );
 
   addLabel( generalGrid, 2, 0, i18n( "The archives that are \"greyed-out\" were unavailable on your\nsystem last time Krusader checked. If you wish Krusader to\nsearch again, click the 'Auto Configure' button." ),
@@ -81,7 +82,7 @@ KgArchives::KgArchives( bool first, TQWidget* parent,  const char* name ) :
   createSpacer( hbox, "spacer2" );
   generalGrid->addWidget( hbox, 3, 0 );
   connect( btnAutoConfigure, TQT_SIGNAL( clicked() ), this, TQT_SLOT( slotAutoConfigure() ) );
- 
+
   kgArchivesLayout->addWidget( generalGrp, 0 ,0 );
 
   //  ------------------------ FINE-TUNING GROUPBOX --------------------------------
@@ -101,7 +102,7 @@ KgArchives::KgArchives( bool first, TQWidget* parent,  const char* name ) :
   fineTuneGrid->addWidget( finetunes, 1, 0 );
 
   kgArchivesLayout->addWidget( fineTuneGrp, 1 ,0 );
-  
+
   if( first )
     slotAutoConfigure();
 
@@ -133,6 +134,7 @@ void KgArchives::disableNonExistingPackers()
   cbs->find( "Do Unarj" )->setEnabled(PS("unarj") || PS("arj") );
   cbs->find( "Do DEB" )->setEnabled(PS("dpkg") && PS("tar") );
   cbs->find( "Do 7z" )->setEnabled( PS("7z") );
+  cbs->find( "Do Xz" )->setEnabled(PS("xz"));
 
   krConfig->setGroup( "Archives" );
   krConfig->writeEntry( "Supported Packers", lst );

@@ -99,20 +99,21 @@ KrArchiverResultTable::KrArchiverResultTable(TQWidget* parent)
 {
   _supported = KRarcHandler::supportedPackers(); // get list of available packers
 
-  Archiver* tar   = new Archiver("tar",   "http://www.gnu.org",      PS("tar"),   true,  true);
-  Archiver* gzip  = new Archiver("gzip",  "http://www.gnu.org",      PS("gzip"),  true,  true);
-  Archiver* bzip2 = new Archiver("bzip2", "http://www.gnu.org",      PS("bzip2"), true,  true);
-  Archiver* lha   = new Archiver("lha",   "http://www.gnu.org",      PS("lha"),   true,  true);
-  Archiver* zip   = new Archiver("zip",   "http://www.info-zip.org", PS("zip"),   true,  false);
-  Archiver* unzip = new Archiver("unzip", "http://www.info-zip.org", PS("unzip"), false, true);
-  Archiver* arj   = new Archiver("arj",   "http://www.arjsoftware.com",  PS("arj"),   true,  true);
-  Archiver* unarj = new Archiver("unarj", "http://www.arjsoftware.com",  PS("unarj"), false, true);
-  Archiver* unace = new Archiver("unace", "http://www.winace.com",   PS("unace"), false, true);
-  Archiver* rar   = new Archiver("rar",   "http://www.rarsoft.com",  PS("rar"),   true,  true);
-  Archiver* unrar = new Archiver("unrar", "http://www.rarsoft.com",  PS("unrar"), false, true);
-  Archiver* rpm   = new Archiver("rpm",   "http://www.gnu.org",      PS("rpm"),   false, true);
-  Archiver* dpkg  = new Archiver("dpkg",  "http://www.dpkg.org",     PS("dpkg"),  false, true);
-  Archiver* _7z   = new Archiver("7z",    "http://www.7-zip.org",    PS("7z"),  true, true);
+  Archiver* tar   = new Archiver("tar",   "http://www.gnu.org",      		PS("tar"),   true,  true);
+  Archiver* gzip  = new Archiver("gzip",  "http://www.gnu.org",      		PS("gzip"),  true,  true);
+  Archiver* bzip2 = new Archiver("bzip2", "http://www.gnu.org",      		PS("bzip2"), true,  true);
+  Archiver* lha   = new Archiver("lha",   "http://www.gnu.org",      		PS("lha"),   true,  true);
+  Archiver* zip   = new Archiver("zip",   "http://www.info-zip.org", 		PS("zip"),   true,  false);
+  Archiver* unzip = new Archiver("unzip", "http://www.info-zip.org", 		PS("unzip"), false, true);
+  Archiver* arj   = new Archiver("arj",   "http://www.arjsoftware.com", PS("arj"),   true,  true);
+  Archiver* unarj = new Archiver("unarj", "http://www.arjsoftware.com", PS("unarj"), false, true);
+  Archiver* unace = new Archiver("unace", "http://www.winace.com",   		PS("unace"), false, true);
+  Archiver* rar   = new Archiver("rar",   "http://www.rarsoft.com",  		PS("rar"),   true,  true);
+  Archiver* unrar = new Archiver("unrar", "http://www.rarsoft.com",  		PS("unrar"), false, true);
+  Archiver* rpm   = new Archiver("rpm",   "http://www.gnu.org",      		PS("rpm"),   false, true);
+  Archiver* dpkg  = new Archiver("dpkg",  "http://www.dpkg.org",     		PS("dpkg"),  false, true);
+  Archiver* _7z   = new Archiver("7z",    "http://www.7-zip.org",    		PS("7z"),  	 true,  true);
+  Archiver* xz    = new Archiver("xz",    "http://www.tukaani.org/xz",  PS("xz"), 	 true,  true);
 
   // Special case: arj can unpack, but unarj is prefered
   if(PS("arj") && PS("unarj"))
@@ -149,6 +150,7 @@ KrArchiverResultTable::KrArchiverResultTable(TQWidget* parent)
   addRow(rpm, _grid);
   addRow(dpkg, _grid);
   addRow(_7z, _grid);
+  addRow(xz, _grid);
 
   delete tar;
   delete gzip;
@@ -164,6 +166,7 @@ KrArchiverResultTable::KrArchiverResultTable(TQWidget* parent)
   delete rpm;
   delete dpkg;
   delete _7z;
+  delete xz;
 }
 
 KrArchiverResultTable::~KrArchiverResultTable()

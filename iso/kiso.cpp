@@ -16,7 +16,7 @@
  ***************************************************************************/
 
  /* This file is heavily based on ktar.cpp from tdelibs (c) David Faure */
- 
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
@@ -125,6 +125,8 @@ KIso::KIso( const TQString& filename, const TQString & _mimetype )
             mimetype = "application/x-gzip";
         else if ( mimetype == "application/x-tbz" ) // that's a bzipped2 tar file, so ask for bz2 filter
             mimetype = "application/x-bzip2";
+        else if ( mimetype == "application/x-txz" ) // that's a xzipped tar file, so ask for xz filter
+            mimetype = "application/x-xz";
         else
         {
             // Something else. Check if it's not really gzip though (e.g. for KOffice docs)
@@ -144,6 +146,14 @@ KIso::KIso( const TQString& filename, const TQString & _mimetype )
                     if ( fourthByte == 4 )
                         mimetype = "application/x-zip";
                 }
+                else if ( firstByte == 0xfd && secondByte == '7' && thirdByte == 'z' )
+                {
+                    unsigned char fourthByte = file.getch();
+                    unsigned char fifthByte = file.getch();
+                    unsigned char sixthByte = file.getch();
+                    if ( fourthByte == 'X' && fifthByte == 'Z' && sixthByte == 0)
+                        mimetype = "application/x-xz";
+                }
             }
         }
         forced = false;
@@ -160,8 +170,8 @@ void KIso::prepareDevice( const TQString & filename,
       setDevice( new QFileHack( filename ) );
   else
   {
-    if( "application/x-gzip" == mimetype
-       || "application/x-bzip2" == mimetype)
+    if("application/x-gzip" == mimetype || "application/x-bzip2" == mimetype ||
+       "application/x-xz" == mimetype)
         forced = true;
 
     TQIODevice *dev = KFilterDev::deviceForFile( filename, mimetype, forced );
@@ -294,7 +304,7 @@ void KIso::addBoot(struct el_torito_boot_descriptor* bootdesc) {
     boot_entry *be;
     TQString path;
     KIsoFile *entry;
-    
+
     entry=new KIsoFile( this, "Catalog", dirent->permissions() & ~S_IFDIR,
         dirent->date(), dirent->adate(), dirent->cdate(),
         dirent->user(), dirent->group(), TQString(),
@@ -326,7 +336,7 @@ void KIso::readParams()
     TDEConfig *config;
 
     config = new TDEConfig("tdeio_isorc");
-    
+
     showhidden=config->readBoolEntry("showhidden",false);
     showrr=config->readBoolEntry("showrr",true);
     delete config;
@@ -372,7 +382,7 @@ bool KIso::openArchive( int mode )
     if (trackno==0) trackno=1;
     for (i=0;i<trackno;i++) {
 
-        c_b=1;c_i=1;c_j=1;       
+        c_b=1;c_i=1;c_j=1;
         root=rootDir();
         if (trackno>1) {
             path=TQString();
@@ -396,11 +406,11 @@ bool KIso::openArchive( int mode )
                     if ( !memcmp(EL_TORITO_ID,bootdesc->system_id,ISODCL(8,39)) ) {
                         path="El Torito Boot";
                         if (c_b>1) path += " (" + TQString::number(c_b) + ")";
-                        
+
                         dirent = new KIsoDirectory( this, path, access | S_IFDIR,
                             buf.st_mtime, buf.st_atime, buf.st_ctime, uid, gid, TQString() );
                         root->addEntry(dirent);
-                        
+
                         addBoot(bootdesc);
                         c_b++;
                     }

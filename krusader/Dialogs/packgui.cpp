@@ -5,10 +5,10 @@
     e-mail               : krusader@users.sourceforge.net
     web site             : http://krusader.sourceforge.net
  ---------------------------------------------------------------------------
-  Description 
+  Description
  ***************************************************************************
 
-  A 
+  A
 
      db   dD d8888b. db    db .d8888.  .d8b.  d8888b. d88888b d8888b.
      88 ,8P' 88  `8D 88    88 88'  YP d8' `8b 88  `8D 88'     88  `8D
@@ -63,11 +63,13 @@ PackGUI::PackGUI(TQString defaultName, TQString defaultPath, int noOfFiles, TQSt
   if (PS("tar")) typeData->insertItem("tar");
   if (PS("tar") && PS("gzip")) typeData->insertItem("tar.gz");
   if (PS("tar") && PS("bzip2")) typeData->insertItem("tar.bz2");
+  if (PS("tar") && PS("xz")) typeData->insertItem("tar.xz");
   if (PS("zip")) typeData->insertItem("zip");
   if (PS("rar")) typeData->insertItem("rar");
   if (PS("lha")) typeData->insertItem("lha");
   if (PS("arj")) typeData->insertItem("arj");
   if (PS("7z")) typeData->insertItem("7z");
+  if (PS("xz")) typeData->insertItem("xz");
   // set the last used packer as the top one
   TQString tmp=krConfig->readEntry("lastUsedPacker",TQString());
   if (tmp!=TQString()) {

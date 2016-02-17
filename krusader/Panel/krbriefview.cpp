@@ -42,7 +42,7 @@ YP   YD 88   YD ~Y8888P' `8888Y' YP   YP Y8888D' Y88888P 88   YD
 #include <tqtooltip.h>
 
 #define CANCEL_TWO_CLICK_RENAME {singleClicked = false;renameTimer.stop();}
-#define PROPS	 static_cast<KrBriefViewProperties*>(_properties)	
+#define PROPS	 static_cast<KrBriefViewProperties*>(_properties)
 #define MAX_COLS 5
 #define VF	 getVfile()
 
@@ -69,9 +69,9 @@ void KrBriefViewToolTip::maybeTip( const TQPoint &pos )
 
   if ( !item )
     return;
-    
+
   int width = TQFontMetrics( view->font() ).width( item->text() ) + 4;
-    
+
   TQRect r = item->rect();
   r.setTopLeft( view->contentsToViewport( r.topLeft() ) );
   if( width > item->textRect().width() )
@@ -92,7 +92,7 @@ KrBriefView::KrBriefView( TQHeader * headerIn, TQWidget *parent, bool &left, TDE
 
 void KrBriefView::setup() {
    lastSwushPosition = 0;
-      
+
    // use the {} so that TDEConfigGroupSaver will work correctly!
    TDEConfigGroupSaver grpSvr( _config, "Look&Feel" );
    setFont( _config->readFontEntry( "Filelist Font", _FilelistFont ) );
@@ -119,7 +119,7 @@ void KrBriefView::setup() {
 
    // add whatever columns are needed to the listview
    krConfig->setGroup( nameInTDEConfig() );
-   
+
    // determine basic settings for the view
    setAcceptDrops( true );
    setItemsMovable( false );
@@ -131,7 +131,7 @@ void KrBriefView::setup() {
 
    // allow in-place renaming
 
-   connect( this, TQT_SIGNAL( itemRenamed ( TQIconViewItem * ) ), 
+   connect( this, TQT_SIGNAL( itemRenamed ( TQIconViewItem * ) ),
             this, TQT_SLOT( inplaceRenameFinished( TQIconViewItem * ) ) );
    connect( &renameTimer, TQT_SIGNAL( timeout() ), this, TQT_SLOT( renameCurrentItem() ) );
    connect( &contextMenuTimer, TQT_SIGNAL (timeout()), this, TQT_SLOT (showContextMenu()));
@@ -144,7 +144,7 @@ void KrBriefView::setup() {
 
    CANCEL_TWO_CLICK_RENAME;
 
-   // setting the header 
+   // setting the header
    while( header->count() )
       header->removeLabel( 0 );
 
@@ -440,12 +440,12 @@ void KrBriefView::contentsMousePressEvent( TQMouseEvent * e ) {
    pressedItem = 0;
 
    e = transformMouseEvent( e );
-   
+
    TQIconViewItem * oldCurrent = currentItem();
    TQIconViewItem *newCurrent = findItem( e->pos() );
    if (e->button() == Qt::RightButton)
    {
-	if (KrSelectionMode::getSelectionHandler()->rightButtonSelects() || 
+	if (KrSelectionMode::getSelectionHandler()->rightButtonSelects() ||
 		(((e->state() & ShiftButton) || (e->state() & ControlButton))) && KrSelectionMode::getSelectionHandler()->shiftCtrlRightButtonSelects())
      {
        if (KrSelectionMode::getSelectionHandler()->rightButtonPreservesSelection() && !(e->state() & ShiftButton)
@@ -504,7 +504,7 @@ void KrBriefView::contentsMousePressEvent( TQMouseEvent * e ) {
    if (e->button() == Qt::LeftButton)
    {
      dragStartPos = e->pos();
-	  if (KrSelectionMode::getSelectionHandler()->leftButtonSelects() || 
+	  if (KrSelectionMode::getSelectionHandler()->leftButtonSelects() ||
 	  		(((e->state() & ShiftButton) || (e->state() & ControlButton))) &&
 			KrSelectionMode::getSelectionHandler()->shiftCtrlLeftButtonSelects())
      {
@@ -582,10 +582,10 @@ void KrBriefView::contentsMousePressEvent( TQMouseEvent * e ) {
       if( e->state() & ShiftButton )
          callDefaultHandler = false;
    }
-	
+
 	if (selectionChanged)
 		updateView(); // don't call triggerUpdate directly!
-	
+
    if (callDefaultHandler)
    {
      dragStartPos = TQPoint( -1, -1 );
@@ -631,11 +631,11 @@ void KrBriefView::contentsMousePressEvent( TQMouseEvent * e ) {
 void KrBriefView::contentsMouseReleaseEvent( TQMouseEvent * e ) {
   if (e->button() == Qt::RightButton)
     contextMenuTimer.stop();
-  
+
   e = transformMouseEvent( e );
-  
+
   TDEIconView::contentsMouseReleaseEvent( e );
-   
+
   if( pressedItem ) {
     TQPoint vp = contentsToViewport( e->pos() );
     TQIconViewItem *newCurrent = findItem( e->pos() );
@@ -665,8 +665,8 @@ void KrBriefView::contentsMouseMoveEvent ( TQMouseEvent * e ) {
    if ( dragStartPos != TQPoint( -1, -1 ) &&
         e->state() & Qt::LeftButton && ( dragStartPos - e->pos() ).manhattanLength() > TQApplication::startDragDistance() )
       startDrag();
-   if (KrSelectionMode::getSelectionHandler()->rightButtonPreservesSelection() 
-      && KrSelectionMode::getSelectionHandler()->rightButtonSelects() 
+   if (KrSelectionMode::getSelectionHandler()->rightButtonPreservesSelection()
+      && KrSelectionMode::getSelectionHandler()->rightButtonSelects()
       && KrSelectionMode::getSelectionHandler()->showContextMenu() >= 0 && e->state() == Qt::RightButton)
       {
          TQIconViewItem *newItem = findItem( e->pos() );
@@ -754,7 +754,7 @@ void KrBriefView::contentsDropEvent( TQDropEvent * e ) {
    _currDragItem = 0;
    op()->emitGotDrop(e);
    e->ignore();
-   TDEIconView::contentsDropEvent( e );                   
+   TDEIconView::contentsDropEvent( e );
 }
 
 void KrBriefView::contentsDragMoveEvent( TQDragMoveEvent * e ) {
@@ -763,7 +763,7 @@ void KrBriefView::contentsDragMoveEvent( TQDragMoveEvent * e ) {
    _currDragItem = getKrViewItemAt( e->pos() );
    if( _currDragItem && !_currDragItem->VF->vfile_isDir() )
      _currDragItem = 0;
-   
+
    TDEIconView::contentsDragMoveEvent( e );
 
    if( _currDragItem != oldDragItem )
@@ -1031,7 +1031,7 @@ void KrBriefView::keyPressEvent( TQKeyEvent * e ) {
 
          case Key_Delete :                   // kill file
          SLOTS->deleteFiles( e->state() == ShiftButton || e->state() == ControlButton );
-				
+
          break ;
          case Key_Insert : {
             {
@@ -1093,7 +1093,7 @@ void KrBriefView::keyPressEvent( TQKeyEvent * e ) {
                            ( e->key() >= Key_0 && e->key() <= Key_9 ) ||
                            ( e->key() == Key_Backspace ) ||
                            ( e->key() == Key_Down ) ||
-                           ( e->key() == Key_Period ) ) */{ 
+                           ( e->key() == Key_Period ) ) */{
             // are we doing quicksearch? if not, send keys to panel
             //if ( _config->readBoolEntry( "Do Quicksearch", _DoQuicksearch ) ) {
                // are we using krusader's classic quicksearch, or wincmd style?
@@ -1142,7 +1142,7 @@ void KrBriefView::renameCurrentItem() {
    TQString newName, fileName;
 
 	// handle inplace renaming, if possible
-	
+
    KrBriefViewItem *it = static_cast<KrBriefViewItem*>(getCurrentKrViewItem());
    if ( it )
       fileName = it->name();
@@ -1157,7 +1157,7 @@ void KrBriefView::renameCurrentItem() {
 /* TODO:
    TDEConfigGroupSaver svr(krConfig,"Look&Feel");
    if (!krConfig->readBoolEntry("Rename Selects Extension", true)) {
-     if (it->hasExtension() && !it->VF->vfile_isDir() ) 
+     if (it->hasExtension() && !it->VF->vfile_isDir() )
        renameLineEdit()->setSelection(0, it->name().findRev(it->extension())-1);
    }*/
 }
@@ -1226,7 +1226,7 @@ void KrBriefView::slotMouseClicked( int button, TQIconViewItem * item, const TQP
 
 void KrBriefView::refreshColors() {
    krConfig->setGroup("Colors");
-   bool kdeDefault = krConfig->readBoolEntry("KDE Default"); 
+   bool kdeDefault = krConfig->readBoolEntry("KDE Default");
    if ( !kdeDefault ) {
       // KDE default is not choosen: set the background color (as this paints the empty areas) and the alternate color
       bool isActive = hasFocus();
@@ -1289,7 +1289,7 @@ bool KrBriefView::eventFilter( TQObject * watched, TQEvent * e )
 
 void KrBriefView::makeItemVisible( const KrViewItem *item ) {
 //	tqApp->processEvents();  // Please don't remove the comment. Causes crash if it is inserted!
-	ensureItemVisible( (TQIconViewItem *)( static_cast<const KrBriefViewItem*>( item ) ) ); 
+	ensureItemVisible( (TQIconViewItem *)( static_cast<const KrBriefViewItem*>( item ) ) );
 }
 
 void KrBriefView::initOperator() {
@@ -1307,18 +1307,19 @@ void KrBriefView::initProperties() {
 	_properties->displayIcons = _config->readBoolEntry( "With Icons", _WithIcons );
 	bool dirsByNameAlways = _config->readBoolEntry("Always sort dirs by name", false);
 	_properties->sortMode = static_cast<KrViewProperties::SortSpec>( KrViewProperties::Name |
-			KrViewProperties::Descending | KrViewProperties::DirsFirst | 
+			KrViewProperties::Descending | KrViewProperties::DirsFirst |
 			(dirsByNameAlways ? KrViewProperties::AlwaysSortDirsByName : 0) );
 	if ( !_config->readBoolEntry( "Case Sensative Sort", _CaseSensativeSort ) )
       	_properties->sortMode = static_cast<KrViewProperties::SortSpec>( _properties->sortMode |
 				 KrViewProperties::IgnoreCase );
 	_properties->humanReadableSize = krConfig->readBoolEntry("Human Readable Size", _HumanReadableSize);
 	_properties->localeAwareCompareIsCaseSensitive = TQString( "a" ).localeAwareCompare( "B" ) > 0; // see KDE bug #40131
-	
+
 	TQStringList defaultAtomicExtensions;
 	defaultAtomicExtensions += ".tar.gz";
 	defaultAtomicExtensions += ".tar.bz2";
 	defaultAtomicExtensions += ".moc.cpp";
+	defaultAtomicExtensions += ".tar.xz";
 	TQStringList atomicExtensions = krConfig->readListEntry("Atomic Extensions", defaultAtomicExtensions);
 	for (TQStringList::iterator i = atomicExtensions.begin(); i != atomicExtensions.end(); )
 	{
@@ -1334,7 +1335,7 @@ void KrBriefView::initProperties() {
 		++i;
 	}
 	_properties->atomicExtensions = atomicExtensions;
-	
+
 	_config->setGroup( nameInTDEConfig() );
 	PROPS->numberOfColumns = _config->readNumEntry( "Number Of Brief Columns", _NumberOfBriefColumns );
 	if( PROPS->numberOfColumns < 1 )
@@ -1347,7 +1348,7 @@ void KrBriefView::setColumnNr()
 {
   TDEPopupMenu popup( this );
   popup.insertTitle( i18n("Columns"));
-  
+
   int COL_ID = 14700;
 
   for( int i=1; i <= MAX_COLS; i++ )
@@ -1355,11 +1356,11 @@ void KrBriefView::setColumnNr()
     popup.insertItem( TQString( "%1" ).arg( i ), COL_ID + i );
     popup.setItemChecked( COL_ID + i, PROPS->numberOfColumns == i );
   }
-  
+
   int result=popup.exec(TQCursor::pos());
 
   krConfig->setGroup( nameInTDEConfig() );
-  
+
   if( result > COL_ID && result <= COL_ID + MAX_COLS )
   {
     krConfig->writeEntry( "Number Of Brief Columns", result - COL_ID );
@@ -1370,7 +1371,7 @@ void KrBriefView::setColumnNr()
 
 void KrBriefView::sortOrderChanged() {
 	ensureItemVisible(currentItem());
-	
+
 	if( !_focused )
 		op()->emitNeedFocus();
 
@@ -1400,14 +1401,14 @@ TQMouseEvent * KrBriefView::transformMouseEvent( TQMouseEvent * e )
 {
 	if( findItem( e->pos() ) != 0 )
 		return e;
-	
+
 	TQIconViewItem *closestItem = 0;
 	int mouseX = e->pos().x(), mouseY = e->pos().y();
 	int closestDelta = 0x7FFFFFFF;
-	
+
 	int minX = ( mouseX / gridX() ) * gridX();
 	int maxX = minX + gridX();
-	
+
 	TQIconViewItem *current = firstItem();
 	while( current )
 	{
@@ -1422,7 +1423,7 @@ TQMouseEvent * KrBriefView::transformMouseEvent( TQMouseEvent * e )
 		}
 		current = current->nextItem();
 	}
-	
+
 	if( closestItem != 0 )
 	{
 		if( mouseX - closestItem->x() > gridX() )
@@ -1430,7 +1431,7 @@ TQMouseEvent * KrBriefView::transformMouseEvent( TQMouseEvent * e )
 		else if( mouseY - closestItem->y() > closestItem->height() )
 			closestItem = 0;
 	}
-	
+
 	if( closestItem != 0 )
 	{
 		TQRect rec = closestItem->textRect( false );
@@ -1449,12 +1450,12 @@ TQMouseEvent * KrBriefView::transformMouseEvent( TQMouseEvent * e )
 			glPos = TQPoint( mouseX - e->pos().x() + e->globalPos().x(),
 			                mouseY - e->pos().y() + e->globalPos().y() );
 		}
-		
+
 		if( mouseEvent )
 			delete mouseEvent;
 		return mouseEvent = new TQMouseEvent( e->type(), newPos, glPos, e->button(), e->state() );
 	}
-	
+
 	return e;
 }
 
