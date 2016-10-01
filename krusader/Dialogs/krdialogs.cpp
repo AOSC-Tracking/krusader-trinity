@@ -59,6 +59,7 @@
 KURL KChooseDir::getDir(TQString text,const KURL& url, const KURL& cwd) {
 	KURLRequesterDlg *dlg = new KURLRequesterDlg( vfs::pathOrURL( url, 1 ),text,krApp,"");
 	dlg->urlRequester()->completionObject()->setDir(cwd.url());
+	dlg->urlRequester()->setMode(KFile::LocalOnly | KFile::Directory);
 	KURL u;
 	if (dlg->exec() == TQDialog::Accepted) {
 		u = vfs::fromPathOrURL(dlg->urlRequester()->completionObject()->replacedPath(

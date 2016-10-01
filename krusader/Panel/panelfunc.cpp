@@ -903,7 +903,6 @@ void ListPanelFunc::testArchive() {
 }
 
 void ListPanelFunc::unpack() {
-
 	TQStringList fileNames;
 	panel->getSelectedNames( &fileNames );
 	if ( fileNames.isEmpty() )
@@ -917,7 +916,9 @@ void ListPanelFunc::unpack() {
 
 	// ask the user for the copy dest
 	KURL dest = KChooseDir::getDir(s, panel->otherPanel->virtualPath(), panel->virtualPath());
-	if ( dest.isEmpty() ) return ; // the user canceled
+	if ( dest.isEmpty() ) {
+		return ; // the user canceled
+	}
 
 	bool packToOtherPanel = ( dest.equals( panel->otherPanel->virtualPath(), true ) );
 
@@ -940,6 +941,24 @@ void ListPanelFunc::unpack() {
 		} else
 			url = arcURL.path( -1 );
 
+    // for local destionation, check whether it exists or not
+		if ( dest.isLocalFile() ) {
+			TQDir destdir = TQDir(dest.path(1));
+			if (!destdir.exists()) {
+				// Destination folder does not exists
+				int res = KMessageBox::warningContinueCancel( NULL,
+						i18n("The destination folder does not exist.\nDo you want to create it?"),
+						i18n("Create folder"));
+				if ( res != KMessageBox::Continue ) {
+					return;
+				}
+				// Create destination folder. If failed, return
+				if (!destdir.mkdir(destdir.absPath())) {
+					KMessageBox::error(NULL, i18n("Unable to create the destionation folder. Aborting operation."), i18n("Error!"));
+				}
+			}
+    }
+    
 		// if the destination is in remote directory use temporary one instead
 		dest.adjustPath(1);
 		KURL originalDestURL;
