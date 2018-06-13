@@ -1422,7 +1422,7 @@ TQString tdeio_krarcProtocol::detectArchive( bool &encrypted, TQString fileName 
 	                                              {"gzip", 0, "\x1f\x8b"},
 	                                              {"deb",  0, "!<arch>\ndebian-binary   " },
 	                                              {"7z",   0, "7z\xbc\xaf\x27\x1c" },
-	                                              {"xz",   0, "\xfd7zXZ\x00"} };
+	                                              {"xz",   0, "\xfd" "7zXZ\x00"} };
 	static int autoDetectElems = sizeof( autoDetectParams ) / sizeof( AutoDetectParams );
 
 	encrypted = false;
