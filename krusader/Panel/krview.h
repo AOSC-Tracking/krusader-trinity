@@ -134,6 +134,8 @@ protected:
  */ 
 class KrView {
 friend class KrViewItem;
+friend class KrBriefViewItem;
+friend class KrDetailedViewItem;
 public:
   // instantiating a new view
   // 1. new KrView
