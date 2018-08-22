@@ -11,7 +11,7 @@
 TQString atomicExtensions[] = {
 	".tar.gz",
 	".tar.bz2",
-	".moc.cpp"
+	".moc.cpp",
 	".tar.xz",
 };
 
