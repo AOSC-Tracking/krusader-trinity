@@ -627,7 +627,7 @@ bool KRarcHandler::checkStatus( TQString type, int exitCode ) {
 		return exitCode == 0 || exitCode == 1;
 	else if( type == "-ace" || type == "zip2" || type == "-lha" || type == "-rpm" || type == "cpio" ||
 	         type == "-tar" || type == "tarz" || type == "-tbz" || type == "-tgz" || type == "-arj" ||
-	         type == "-deb" || type == "-txz" || type == "-xz")
+	         type == "-deb" || type == "-txz")
 		return exitCode == 0;
 	else if (type == "gzip" || type == "-xz")
 		return exitCode == 0 || exitCode == 2;
