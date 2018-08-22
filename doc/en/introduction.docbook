@@ -14,7 +14,7 @@
     module, viewer/editor, directory synchronization, file content
     comparisons, powerful batch renaming and much, much more.
     &krusader; supports archive formats: ace, arj, bzip2, deb, gzip, iso, lha,
-    rar, rpm, tar, zip and 7-zip and handles other
+    lzip, rar, rpm, tar, zip and 7-zip and handles other
     &tdeioslaves1-url; such as smb:// or fish://.</para>
     <para>&krusader; is almost completely customizable and therefore
     very user-friendly.</para>
@@ -95,7 +95,7 @@
     ISO,rpm,tar.gz) between these data sources/containers
     effortlessly. &krusader; currently supports VFSs for
     all popular and some specialized types of archives (ace, arj,
-    bzip2, gzip, iso, lha, rar, tar, zip and 7-zip), configuration
+    bzip2, gzip, iso, lha, lzip, rar, tar, zip and 7-zip), configuration
     packages (rpm, deb), and traditional remote file system types
     (&FTP;, NFS, Samba, FISH, SFTP).</para>
     <para>&krusader; also includes a built-in

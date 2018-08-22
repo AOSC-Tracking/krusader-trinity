@@ -63,6 +63,7 @@ PackGUI::PackGUI(TQString defaultName, TQString defaultPath, int noOfFiles, TQSt
   if (PS("tar")) typeData->insertItem("tar");
   if (PS("tar") && PS("gzip")) typeData->insertItem("tar.gz");
   if (PS("tar") && PS("bzip2")) typeData->insertItem("tar.bz2");
+  if (PS("tar") && PS("lzip")) typeData->insertItem("tar.lz");
   if (PS("tar") && PS("xz")) typeData->insertItem("tar.xz");
   if (PS("zip")) typeData->insertItem("zip");
   if (PS("rar")) typeData->insertItem("rar");

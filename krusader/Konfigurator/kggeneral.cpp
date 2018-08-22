@@ -131,6 +131,7 @@ TQFrame *line2 = createLine( generalGrp, "line2" );
   TQStringList defaultAtomicExtensions;
   defaultAtomicExtensions += ".tar.gz";
   defaultAtomicExtensions += ".tar.bz2";
+  defaultAtomicExtensions += ".tar.lz";
   defaultAtomicExtensions += ".moc.cpp";
   defaultAtomicExtensions += ".tar.xz";
 

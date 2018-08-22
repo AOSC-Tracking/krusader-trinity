@@ -102,6 +102,15 @@ arc_vfs::arc_vfs(TQString origin,TQString type,TQObject* panel,bool write):
 		ignoreLines = -1;
     isWritable = false;
   }
+  if( type == "lzip" ){
+    cmd = KrServices::fullPathName ( "lzip" );
+    listCmd = " -l ";
+    delCmd  = "";
+    addCmd  = cmd + " -c ";
+    getCmd  = " -dc ";
+    ignoreLines = -1;
+    isWritable = false;
+  }
   if(type == "-tar"){
     cmd = KrServices::fullPathName( "tar" );
     listCmd = " -tvf";
@@ -123,6 +132,14 @@ arc_vfs::arc_vfs(TQString origin,TQString type,TQObject* panel,bool write):
     delCmd  = "";
     addCmd  = cmd+" -uvjf";
     getCmd  = " -xjvf";
+    isWritable = false;
+  }
+  if(type == "-tlz"){
+    cmd = KrServices::fullPathName( "tar" );
+    listCmd = " -tvf";		// tar detects format automatically
+    delCmd  = "";
+    addCmd  = "";		// compressed tar archives can't be modified
+    getCmd  = " -xvf";
     isWritable = false;
   }
 	if(type == "-zip"){
@@ -233,7 +250,7 @@ bool arc_vfs::getDirs(){
     temp.open(IO_ReadOnly);
     char buf[1000];
     TQString line;
-    if(vfs_type == "gzip" || vfs_type == "-zip" )
+    if( vfs_type == "gzip" || vfs_type == "lzip" || vfs_type == "-zip" )
       temp.readLine(line,10000);  // skip the first line - it's garbage
     if( vfs_type == "-rar" ){
       while(temp.readLine(line,10000) != -1)
@@ -399,7 +416,8 @@ KURL::List* arc_vfs::vfs_getFiles(TQStringList* names){
             krApp, TQT_SLOT(incProgress(TDEProcess*,char*,int)) );
 		
 		proc << cmd << getCmd << "\""+arcFile+"\"";
-  	if( vfs_type == "gzip" || vfs_type == "zip2" ) proc << ">";
+	if( vfs_type == "gzip" || vfs_type == "zip2" || vfs_type == "lzip" )
+	    proc << ">";
 		for(unsigned int i=0 ; i < files.count() ; ){
   		proc << (prefix+*files.at(i++));
 			if ( i%MAX_FILES==0 || i==files.count() ){
@@ -595,7 +613,8 @@ void arc_vfs::repack(){
 	}
 
   // finaly repack tmpDir
-  if( vfs_isWritable() || vfs_type=="gzip" || vfs_type=="zip2" ){
+  if( vfs_isWritable() || vfs_type == "gzip" ||
+      vfs_type == "zip2" || vfs_type == "lzip" ){
     TQStringList filesToPack;
 		getFilesToPack(&filesToPack);
 		if( !filesToPack.isEmpty() ){
@@ -604,7 +623,7 @@ void arc_vfs::repack(){
     	connect(&addProc,TQT_SIGNAL(receivedStdout(TDEProcess*,char*,int)),
             krApp, TQT_SLOT(incProgress(TDEProcess*,char*,int)) );
 
-			if( vfs_type=="gzip" || vfs_type=="zip2" ){
+    if( vfs_type == "gzip" || vfs_type == "zip2" || vfs_type == "lzip" ){
       	addProc << addCmd << *filesToPack.at(0)<< ">" << "\""+arcFile+"\"";
 				addProc.start(TDEProcess::NotifyOnExit);
       	while( addProc.isRunning() ) tqApp->processEvents();
@@ -752,16 +771,19 @@ void arc_vfs::parseLine(TQString line, TQFile* temp){
   mode_t mode = 0;
 
 
-  // parse gziped files
-  if(vfs_type == "gzip"){
+  // parse gziped and lzipped files
+  if( vfs_type == "gzip" || vfs_type == "lzip" ) {
     KDE_struct_stat stat_p;
     KDE_stat(arcFile.local8Bit(),&stat_p);
 
-    nextWord(line);
-    size = nextWord(line).toLong();
-    nextWord(line);
+    if( vfs_type == "gzip" ) nextWord(line);	// gzip compressed size
+    size = nextWord(line).toLong();		// uncompressed size
+    if( vfs_type == "lzip" ) nextWord(line);	// lzip compressed size
+    nextWord(line);				// ratio or saved
     name = nextWord(line,'\n');
     if(name.contains('/')) name = name.mid(name.findRev('/')+1,name.length());
+    if( vfs_type == "lzip" && name.endsWith(".lz") )
+      name.truncate(name.length() - 3);
     perm  = KRpermHandler::mode2TQString(stat_p.st_mode) ;
     owner = KRpermHandler::user2uid(qfi.owner());
     group = KRpermHandler::group2gid(qfi.group());
@@ -783,7 +805,8 @@ void arc_vfs::parseLine(TQString line, TQFile* temp){
   }
 
   // parse tar files
-  if(vfs_type == "-tar" || vfs_type == "-tbz" || vfs_type == "-tgz" ){
+  if(vfs_type == "-tar" || vfs_type == "-tbz" ||
+     vfs_type == "-tgz" || vfs_type == "-tlz" ){
     perm = nextWord(line);
     TQString temp = nextWord(line);
     owner = temp.left(temp.findRev('/')).toInt();

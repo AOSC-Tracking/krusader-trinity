@@ -1318,6 +1318,7 @@ void KrBriefView::initProperties() {
 	TQStringList defaultAtomicExtensions;
 	defaultAtomicExtensions += ".tar.gz";
 	defaultAtomicExtensions += ".tar.bz2";
+	defaultAtomicExtensions += ".tar.lz";
 	defaultAtomicExtensions += ".moc.cpp";
 	defaultAtomicExtensions += ".tar.xz";
 	TQStringList atomicExtensions = krConfig->readListEntry("Atomic Extensions", defaultAtomicExtensions);

@@ -102,6 +102,7 @@ KrArchiverResultTable::KrArchiverResultTable(TQWidget* parent)
   Archiver* tar   = new Archiver("tar",   "http://www.gnu.org",      		PS("tar"),   true,  true);
   Archiver* gzip  = new Archiver("gzip",  "http://www.gnu.org",      		PS("gzip"),  true,  true);
   Archiver* bzip2 = new Archiver("bzip2", "http://www.gnu.org",      		PS("bzip2"), true,  true);
+  Archiver* lzip  = new Archiver("lzip",  "http://www.nongnu.org/lzip/lzip.html", PS("lzip"),  true,  true);
   Archiver* lha   = new Archiver("lha",   "http://www.gnu.org",      		PS("lha"),   true,  true);
   Archiver* zip   = new Archiver("zip",   "http://www.info-zip.org", 		PS("zip"),   true,  false);
   Archiver* unzip = new Archiver("unzip", "http://www.info-zip.org", 		PS("unzip"), false, true);
@@ -139,6 +140,7 @@ KrArchiverResultTable::KrArchiverResultTable(TQWidget* parent)
   addRow(tar, _grid);
   addRow(gzip, _grid);
   addRow(bzip2, _grid);
+  addRow(lzip, _grid);
   addRow(lha, _grid);
   addRow(zip, _grid);
   addRow(unzip, _grid);
@@ -155,6 +157,7 @@ KrArchiverResultTable::KrArchiverResultTable(TQWidget* parent)
   delete tar;
   delete gzip;
   delete bzip2;
+  delete lzip;
   delete lha;
   delete zip;
   delete unzip;

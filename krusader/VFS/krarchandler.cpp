@@ -46,7 +46,7 @@
 #include "../krservices.h"
 #include "../Dialogs/krpleasewait.h"
 
-static TQStringList arcProtocols = TQStringList::split(";", "tar;bzip;bzip2;gzip;krarc;zip;xz");
+static TQStringList arcProtocols = TQStringList::split(";", "tar;bzip;bzip2;gzip;krarc;lzip;zip;xz");
 
 TDEWallet::Wallet * KRarcHandler::wallet = 0;
 
@@ -57,6 +57,7 @@ TQStringList KRarcHandler::supportedPackers() {
   if ( KrServices::cmdExist( "tar" ) ) packers.append( "tar" );
   if ( KrServices::cmdExist( "gzip" ) ) packers.append( "gzip" );
   if ( KrServices::cmdExist( "bzip2" ) ) packers.append( "bzip2" );
+  if ( KrServices::cmdExist( "lzip" ) ) packers.append( "lzip" );
   if ( KrServices::cmdExist( "unzip" ) ) packers.append( "unzip" );
   if ( KrServices::cmdExist( "zip" ) ) packers.append( "zip" );
   if ( KrServices::cmdExist( "lha" ) ) packers.append( "lha" );
@@ -91,6 +92,8 @@ bool KRarcHandler::arcSupported( TQString type ) {
     return true;
   else if ( type == "-tgz" && lst.contains( "tar" ) )
     return true;
+  else if ( type == "-tlz" && lst.contains( "tar" ) )
+    return true;
   else if ( type == "-txz" && lst.contains( "tar" ) )
     return true;
   else if ( type == "tarz" && lst.contains( "tar" ) )
@@ -98,6 +101,8 @@ bool KRarcHandler::arcSupported( TQString type ) {
   else if ( type == "gzip" && lst.contains( "gzip" ) )
     return true;
   else if ( type == "zip2" && lst.contains( "bzip2" ) )
+    return true;
+  else if ( type == "lzip" && lst.contains( "lzip" ) )
     return true;
   else if ( type == "-lha" && lst.contains( "lha" ) )
     return true;
@@ -130,9 +135,11 @@ bool KRarcHandler::arcHandled( TQString type ) {
        ( type == "tarz" && krConfig->readBoolEntry( "Do GZip" , _DoGZip ) ) ||
        ( type == "-tar" && krConfig->readBoolEntry( "Do Tar"  , _DoTar ) ) ||
        ( type == "-tbz" && krConfig->readBoolEntry( "Do BZip2", _DoBZip2 ) ) ||
+       ( type == "-tlz" && krConfig->readBoolEntry( "Do LZip" , _DoLZip ) ) ||
        ( type == "-txz" && krConfig->readBoolEntry( "Do Xz"   , _DoXz ) ) ||
        ( type == "gzip" && krConfig->readBoolEntry( "Do GZip" , _DoGZip ) ) ||
        ( type == "zip2" && krConfig->readBoolEntry( "Do BZip2", _DoBZip2 ) ) ||
+       ( type == "lzip" && krConfig->readBoolEntry( "Do LZip" , _DoLZip ) ) ||
        ( type == "-zip" && krConfig->readBoolEntry( "Do UnZip", _DoUnZip ) ) ||
        ( type == "-lha" && krConfig->readBoolEntry( "Do Lha"  , _DoUnZip ) ) ||
        ( type == "-rar" && krConfig->readBoolEntry( "Do UnRar", _DoUnRar ) ) ||
@@ -155,8 +162,9 @@ long KRarcHandler::arcFileCount( TQString archive, TQString type, TQString passw
   // first check if supported
   if ( !arcSupported( type ) ) return 0;
 
-  // bzip, gzip and xz archives contain only one file
-  if ( type == "zip2" || type == "gzip" || type == "-xz") return 1L;
+  // bzip, gzip, lzip and xz archives contain only one file
+  if ( type == "zip2" || type == "gzip" || type == "lzip" || type == "-xz" )
+    return 1L;
 
   // set the right lister to do the job
   TQString lister;
@@ -166,6 +174,7 @@ long KRarcHandler::arcFileCount( TQString archive, TQString type, TQString passw
   else if ( type == "-tgz" ) lister = KrServices::fullPathName( "tar" ) + " -tvzf";
   else if ( type == "tarz" ) lister = KrServices::fullPathName( "tar" ) + " -tvzf";
   else if ( type == "-tbz" ) lister = KrServices::fullPathName( "tar" ) + " -tjvf";
+  else if ( type == "-tlz" ) lister = KrServices::fullPathName( "tar" ) + " -tvf";
   else if ( type == "-txz" ) lister = KrServices::fullPathName( "tar" ) + " -tJvf";
   else if ( type == "-lha" ) lister = KrServices::fullPathName( "lha" ) + " l";
   else if ( type == "-rar" ) lister = KrServices::fullPathName( KrServices::cmdExist( "rar" ) ? "rar" : "unrar" ) + " l -v";
@@ -250,9 +259,11 @@ bool KRarcHandler::unpack( TQString archive, TQString type, TQString password, T
   else if ( type == "-tgz" ) packer = KrServices::fullPathName( "tar" ) + " -xvzf";
   else if ( type == "tarz" ) packer = KrServices::fullPathName( "tar" ) + " -xvzf";
   else if ( type == "-tbz" ) packer = KrServices::fullPathName( "tar" ) + " -xjvf";
+  else if ( type == "-tlz" ) packer = KrServices::fullPathName( "tar" ) + " -xvf";
   else if ( type == "-txz" ) packer = KrServices::fullPathName( "tar" ) + " -xJvf";
   else if ( type == "gzip" ) packer = KrServices::fullPathName( "gzip" ) + " -cd";
   else if ( type == "zip2" ) packer = KrServices::fullPathName( "bzip2" ) + " -cdk";
+  else if ( type == "lzip" ) packer = KrServices::fullPathName( "lzip" ) + " -cd";
   else if ( type == "-lha" ) packer = KrServices::fullPathName( "lha" ) + " xf";
   else if ( type == "-rar" ) packer = KrServices::fullPathName( KrServices::cmdExist( "rar" ) ? "rar" : "unrar" ) + " -y x";
   else if ( type == "-ace" ) packer = KrServices::fullPathName( "unace" ) + " x";
@@ -309,7 +320,7 @@ bool KRarcHandler::unpack( TQString archive, TQString type, TQString password, T
   // unpack the files
   KrShellProcess proc;
   proc << packer << " " + KrServices::quote( archive );
-  if( type == "zip2" || type=="gzip" ){
+  if( type == "zip2" || type=="gzip" || type=="lzip" ){
     TQString arcname = archive.mid(archive.findRev("/")+1);
     if( arcname.contains(".") ) arcname = arcname.left(arcname.findRev("."));
     proc << ">" << KrServices::quote( dest+"/"+arcname );
@@ -365,9 +376,11 @@ bool KRarcHandler::test( TQString archive, TQString type, TQString password, lon
   else if ( type == "-tgz" ) packer = KrServices::fullPathName( "tar" ) + " -tvzf";
   else if ( type == "tarz" ) packer = KrServices::fullPathName( "tar" ) + " -tvzf";
   else if ( type == "-tbz" ) packer = KrServices::fullPathName( "tar" ) + " -tjvf";
+  else if ( type == "-tlz" ) packer = KrServices::fullPathName( "tar" ) + " -tvf";
   else if ( type == "-txz" ) packer = KrServices::fullPathName( "tar" ) + " -tJvf";
   else if ( type == "gzip" ) packer = KrServices::fullPathName( "gzip" ) + " -tv";
   else if ( type == "zip2" ) packer = KrServices::fullPathName( "bzip2" ) + " -tv";
+  else if ( type == "lzip" ) packer = KrServices::fullPathName( "lzip" ) + " -tv";
   else if ( type == "-rar" ) packer = KrServices::fullPathName( KrServices::cmdExist( "rar" ) ? "rar" : "unrar" ) + " t";
   else if ( type == "-ace" ) packer = KrServices::fullPathName( "unace" ) + " t";
   else if ( type == "-lha" ) packer = KrServices::fullPathName( "lha" ) + " t";
@@ -424,6 +437,7 @@ bool KRarcHandler::pack( TQStringList fileNames, TQString type, TQString dest, l
   else if ( type == "tar" ) { packer = KrServices::fullPathName( "tar" ) + " -cvf"; type = "-tar"; }
   else if ( type == "tar.gz" ) { packer = KrServices::fullPathName( "tar" ) + " -cvzf"; type = "-tgz"; }
   else if ( type == "tar.bz2" ) { packer = KrServices::fullPathName( "tar" ) + " -cvjf"; type = "-tbz"; }
+  else if ( type == "tar.lz" ) { packer = KrServices::fullPathName( "tar" ) + " -cv --lzip -f"; type = "-tlz"; }
   else if ( type == "tar.xz" ) { packer = KrServices::fullPathName( "tar" ) + " -cvJf"; type = "-txz"; }
   else if ( type == "rar" ) { packer = KrServices::fullPathName( "rar" ) + " -r a"; type = "-rar"; }
   else if ( type == "lha" ) { packer = KrServices::fullPathName( "lha" ) + " a"; type = "-lha"; }
@@ -627,7 +641,8 @@ bool KRarcHandler::checkStatus( TQString type, int exitCode ) {
 		return exitCode == 0 || exitCode == 1;
 	else if( type == "-ace" || type == "zip2" || type == "-lha" || type == "-rpm" || type == "cpio" ||
 	         type == "-tar" || type == "tarz" || type == "-tbz" || type == "-tgz" || type == "-arj" ||
-	         type == "-deb" || type == "-txz")
+	         type == "lzip" || type == "-tlz" ||
+	         type == "-deb" || type == "-txz" )
 		return exitCode == 0;
 	else if (type == "gzip" || type == "-xz")
 		return exitCode == 0 || exitCode == 2;
@@ -649,6 +664,7 @@ TQString KRarcHandler::detectArchive( bool &encrypted, TQString fileName, bool c
 	                                              {"ace",  7, "**ACE**" },
 	                                              {"bzip2",0, "\x42\x5a\x68\x39\x31" },
 	                                              {"gzip", 0, "\x1f\x8b"},
+	                                              {"lzip", 0, "\x4c\x5a\x49\x50\x01" },
 	                                              {"deb",  0, "!<arch>\ndebian-binary   " },
 	                                              {"7z",   0, "7z\xbc\xaf\x27\x1c" },
 	                                              {"xz",   0, "\xfd" "7zXZ\x00" } };
@@ -680,14 +696,16 @@ TQString KRarcHandler::detectArchive( bool &encrypted, TQString fileName, bool c
 
 			if( j == detectionString.length() ) {
 				TQString type = autoDetectParams[ i ].type;
-				if( type == "bzip2" || type == "gzip" ) {
+				if( type == "bzip2" || type == "gzip" || type == "lzip" ) {
 					KTar tapeArchive( fileName );
 					if( tapeArchive.open( IO_ReadOnly ) ) {
 						tapeArchive.close();
 						if( type == "bzip2" )
 							type = "tbz";
-						else
+						else if( type == "gzip" )
 							type = "tgz";
+						else
+							type = "tlz";
 					}
 				}
 				else if( type == "zip" )

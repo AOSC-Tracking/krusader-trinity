@@ -1070,7 +1070,7 @@ HTML_PARSING-->
     certain archive is grayed-out, it means that
     &krusader; could not find the appropriate executables
     in the configured path. The next archives are supported: ace,
-    arj, bzip2, deb, gzip, iso, lha, rar, rpm, tar, zip and
+    arj, bzip2, deb, gzip, iso, lha, lzip, rar, rpm, tar, zip and
     7-zip.</para>
     <!-- OLD
 <screenshot>
@@ -1442,6 +1442,20 @@ HTML_PARSING-->
               <para>
                 <filename class="directory">
                   <replaceable>/usr/bin/lha</replaceable>
+                </filename>
+              </para>
+            </entry>
+          </row>
+          <row>
+            <entry>
+              <para>
+                <command>lzip</command>
+              </para>
+            </entry>
+            <entry>
+              <para>
+                <filename class="directory">
+                  <replaceable>/usr/bin/lzip</replaceable>
                 </filename>
               </para>
             </entry>
@@ -1875,6 +1889,9 @@ HTML_PARSING-->
             <para>application/x-lha</para>
           </listitem>
           <listitem>
+            <para>application/x-lzip</para>
+          </listitem>
+          <listitem>
             <para>application/x-rar</para>
           </listitem>
           <listitem>
@@ -1899,6 +1916,9 @@ HTML_PARSING-->
           </listitem>
           <listitem>
             <para>application/x-tgz</para>
+          </listitem>
+          <listitem>
+            <para>application/x-tlz</para>
           </listitem>
         </itemizedlist>
       </listitem>

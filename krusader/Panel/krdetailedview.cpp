@@ -1029,7 +1029,8 @@ void KrDetailedView::keyPressEvent( TQKeyEvent * e ) {
 
                if( KRarcHandler::arcSupported( type ) ) {
                  KURL url = i->VF->vfile_getUrl();
-                 if( type == "-tar" || type == "-tgz" || type == "-tbz" )
+                 if( type == "-tar" || type == "-tgz" ||
+                     type == "-tbz" || type == "-tlz" )
                    url.setProtocol( "tar" );
                  else
                    url.setProtocol( "krarc" );
@@ -1413,6 +1414,7 @@ void KrDetailedView::initProperties() {
 	TQStringList defaultAtomicExtensions;
 	defaultAtomicExtensions += ".tar.gz";
 	defaultAtomicExtensions += ".tar.bz2";
+	defaultAtomicExtensions += ".tar.lz";
 	defaultAtomicExtensions += ".moc.cpp";
 	defaultAtomicExtensions += ".tar.xz";
 	TQStringList atomicExtensions = krConfig->readListEntry("Atomic Extensions", defaultAtomicExtensions);

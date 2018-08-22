@@ -106,7 +106,7 @@
           <listitem>
             <para>Archive Handling: browsing, unpack, pack,
             testing. Supported &archives-lnk; : ace,
-            arj, bzip2, deb, gzip, iso, lha, rar, rpm, tar, zip and
+            arj, bzip2, deb, gzip, iso, lha, lzip, rar, rpm, tar, zip and
             7-zip.</para>
           </listitem>
           <listitem>

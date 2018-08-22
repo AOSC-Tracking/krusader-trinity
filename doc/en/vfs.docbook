@@ -26,7 +26,7 @@
       <para>
       <link linkend="archives">Archive VFS</link>: allows to browse
       archives in VFS as it was a directory (ace, arj, bzip2, deb,
-      gzip, iso, lha, rar, rpm, tar, zip and 7-zip).</para>
+      gzip, iso, lha, lzip, rar, rpm, tar, zip and 7-zip).</para>
     </listitem>
     <listitem>
       <para>

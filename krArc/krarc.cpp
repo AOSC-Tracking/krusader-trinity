@@ -313,7 +313,9 @@ void tdeio_krarcProtocol::get(const KURL& url, int tries ){
 		KMimeType::Ptr mt = KMimeType::findByURL( arcTempDir+file, 0, false /* NOT local URL */ );
 		emit mimeType( mt->name() );
 		proc << getCmd << convertName( arcFile->url().path() )+" ";
-		if( arcType != "gzip" && arcType != "bzip2" && arcType != "xz") proc << convertFileName( file );
+		if( arcType != "gzip" && arcType != "bzip2" &&
+		    arcType != "lzip" && arcType != "xz" )
+			proc << convertFileName( file );
 		connect(&proc,TQT_SIGNAL(receivedStdout(TDEProcess*,char*,int)),
 				this,TQT_SLOT(receivedData(TDEProcess*,char*,int)) );
 	}
@@ -324,7 +326,8 @@ void tdeio_krarcProtocol::get(const KURL& url, int tries ){
 
 	if( !extArcReady && !decompressToFile ) {
 		if( !proc.normalExit() || !checkStatus( proc.exitStatus() ) ||
-		   ( arcType != "bzip2" && arcType != "xz" && expectedSize != decompressedLen ) ) {
+		   ( arcType != "bzip2" && arcType != "lzip" &&
+		     arcType != "xz" && expectedSize != decompressedLen ) ) {
 			if( encrypted && tries ) {
 				invalidatePassword();
 				get( url, tries - 1 );
@@ -679,6 +682,8 @@ bool tdeio_krarcProtocol::setArcFile(const KURL& url){
 		arcType = "bzip2";
 	else if( arcType == "tgz" )
 		arcType = "gzip";
+	else if( arcType == "tlz" )
+		arcType = "lzip";
 	else if( arcType == "txz" )
 		arcType = "xz";
 
@@ -707,7 +712,7 @@ bool tdeio_krarcProtocol::initDirDict(const KURL&url, bool forced){
 	KrShellProcess proc;
 	KTempFile temp( TQString(), "tmp" );
 	temp.setAutoDelete(true);
-	if (arcType != "bzip2" && arcType != "xz") {
+	if( arcType != "bzip2" && arcType != "lzip" && arcType != "xz" ) {
 		if( arcType == "rpm" )
 			proc << listCmd << convertName( arcPath ) <<" > " << temp.name();
 		else
@@ -739,7 +744,7 @@ bool tdeio_krarcProtocol::initDirDict(const KURL&url, bool forced){
 
 	root->append(entry);
 
-	if (arcType == "bzip2" || arcType == "xz"){
+	if( arcType == "bzip2" || arcType == "lzip" || arcType == "xz" ) {
 		KRDEBUG("Got me here...");
 		parseLine(0,"",temp.file());
 		return true;
@@ -1062,6 +1067,14 @@ void tdeio_krarcProtocol::parseLine(int lineNo, TQString line, TQFile*) {
 		mode = arcFile->mode();
 		size = arcFile->size();
 	}
+	if( arcType == "lzip" ){
+		if( !lineNo ) return; //ignore the first line
+		size = nextWord(line).toULong();	// uncompressed size
+		fullName = arcFile->name();
+		if( fullName.endsWith(".lz") )
+			fullName.truncate(fullName.length() - 3);
+		mode = arcFile->mode();
+	}
 	if(arcType == "lha"){
 		// permissions
 		perm = nextWord(line);
@@ -1311,6 +1324,13 @@ bool tdeio_krarcProtocol::initArcParameters() {
 		copyCmd = TQString();
 		delCmd  = TQString();
 		putCmd  = TQString();
+	} else if(arcType == "lzip") {
+		cmd     = fullPathName( "lzip" );
+		listCmd = cmd + " -l ";
+		getCmd  = cmd + " -dc ";
+		copyCmd = TQString();
+		delCmd  = TQString();
+		putCmd  = TQString();
 	} else if(arcType == "arj"){
 		cmd     = fullPathName( "arj" );
 		listCmd = fullPathName( "arj" ) + " v -y -v ";
@@ -1398,7 +1418,8 @@ bool tdeio_krarcProtocol::checkStatus( int exitCode ) {
 
 	if( arcType == "zip" || arcType == "rar" || arcType == "7z" )
 		return exitCode == 0 || exitCode == 1;
-	else if( arcType == "ace" || arcType == "bzip2" || arcType == "lha" || arcType == "rpm" || arcType == "arj" )
+	else if( arcType == "ace" || arcType == "bzip2" || arcType == "lha" ||
+	         arcType == "lzip" || arcType == "rpm" || arcType == "arj" )
 		return exitCode == 0;
 	else if( arcType == "gzip"|| arcType == "xz" )
 		return exitCode == 0 || exitCode == 2;
@@ -1420,6 +1441,7 @@ TQString tdeio_krarcProtocol::detectArchive( bool &encrypted, TQString fileName 
 	                                              {"ace",  7, "**ACE**" },
 	                                              {"bzip2",0, "\x42\x5a\x68\x39\x31" },
 	                                              {"gzip", 0, "\x1f\x8b"},
+	                                              {"lzip", 0, "\x4c\x5a\x49\x50\x01" },
 	                                              {"deb",  0, "!<arch>\ndebian-binary   " },
 	                                              {"7z",   0, "7z\xbc\xaf\x27\x1c" },
 	                                              {"xz",   0, "\xfd" "7zXZ\x00"} };
@@ -1451,14 +1473,16 @@ TQString tdeio_krarcProtocol::detectArchive( bool &encrypted, TQString fileName 
 
 			if( j == detectionString.length() ) {
 				TQString type = autoDetectParams[ i ].type;
-				if( type == "bzip2" || type == "gzip" ) {
+				if( type == "bzip2" || type == "gzip" || type == "lzip" ) {
 					KTar tapeArchive( fileName );
 					if( tapeArchive.open( IO_ReadOnly ) ) {
 						tapeArchive.close();
 						if( type == "bzip2" )
 							type = "tbz";
-						else
+						else if( type == "gzip" )
 							type = "tgz";
+						else
+							type = "tlz";
 					}
 				}
 				else if( type == "zip" )

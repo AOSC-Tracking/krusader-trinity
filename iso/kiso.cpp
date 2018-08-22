@@ -125,6 +125,8 @@ KIso::KIso( const TQString& filename, const TQString & _mimetype )
             mimetype = "application/x-gzip";
         else if ( mimetype == "application/x-tbz" ) // that's a bzipped2 tar file, so ask for bz2 filter
             mimetype = "application/x-bzip2";
+        else if ( mimetype == "application/x-tlz" ) // that's a lzipped tar file, so ask for lzip filter
+            mimetype = "application/x-lzip";
         else if ( mimetype == "application/x-txz" ) // that's a xzipped tar file, so ask for xz filter
             mimetype = "application/x-xz";
         else
@@ -136,22 +138,23 @@ KIso::KIso( const TQString& filename, const TQString & _mimetype )
                 unsigned char firstByte = file.getch();
                 unsigned char secondByte = file.getch();
                 unsigned char thirdByte = file.getch();
+                unsigned char fourthByte = file.getch();
                 if ( firstByte == 0037 && secondByte == 0213 )
                     mimetype = "application/x-gzip";
                 else if ( firstByte == 'B' && secondByte == 'Z' && thirdByte == 'h' )
                     mimetype = "application/x-bzip2";
-                else if ( firstByte == 'P' && secondByte == 'K' && thirdByte == 3 )
-                {
-                    unsigned char fourthByte = file.getch();
-                    if ( fourthByte == 4 )
+                else if ( firstByte == 'L' && secondByte == 'Z' &&
+                          thirdByte == 'I' && fourthByte == 'P' )
+                    mimetype = "application/x-lzip";
+                else if ( firstByte == 'P' && secondByte == 'K' &&
+                          thirdByte == 3 && fourthByte == 4 )
                         mimetype = "application/x-zip";
-                }
-                else if ( firstByte == 0xfd && secondByte == '7' && thirdByte == 'z' )
+                else if ( firstByte == 0xfd && secondByte == '7' &&
+                          thirdByte == 'z' && fourthByte == 'X' )
                 {
-                    unsigned char fourthByte = file.getch();
                     unsigned char fifthByte = file.getch();
                     unsigned char sixthByte = file.getch();
-                    if ( fourthByte == 'X' && fifthByte == 'Z' && sixthByte == 0)
+                    if ( fifthByte == 'Z' && sixthByte == 0)
                         mimetype = "application/x-xz";
                 }
             }
@@ -171,7 +174,7 @@ void KIso::prepareDevice( const TQString & filename,
   else
   {
     if("application/x-gzip" == mimetype || "application/x-bzip2" == mimetype ||
-       "application/x-xz" == mimetype)
+       "application/x-lzip" == mimetype || "application/x-xz" == mimetype)
         forced = true;
 
     TQIODevice *dev = KFilterDev::deviceForFile( filename, mimetype, forced );

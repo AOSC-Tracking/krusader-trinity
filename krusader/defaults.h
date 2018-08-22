@@ -173,6 +173,8 @@
 #define _DoUnZip       true
 // Do BZip2 ///////////
 #define _DoBZip2       true
+// Do LZip ////////////
+#define _DoLZip        true
 // Do Rar /////////////
 #define _DoRar         true
 // Do UnRar ///////////

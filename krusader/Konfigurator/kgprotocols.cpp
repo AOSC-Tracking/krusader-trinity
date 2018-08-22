@@ -49,13 +49,15 @@ TQString KgProtocols::defaultKrarcMimes = "application/x-7z,application/x-7z-com
                                          "application/x-debian-package,"
                                          "application/x-gzip,application/x-jar,"
                                          "application/x-lha,application/x-lha-compressed,"
+                                         "application/x-lzip,"
                                          "application/x-rar,"
                                          "application/x-rpm,"
                                          "application/x-xz,"
                                          "application/x-zip";
 TQString KgProtocols::defaultTarMimes  = "application/x-tar,application/x-tarz,"
                                          "application/x-compressed-tar,"
-                                         "application/x-tbz,application/x-tgz,application/x-txz";
+                                         "application/x-tbz,application/x-tgz,"
+                                         "application/x-tlz,application/x-txz";
 
 KgProtocols::KgProtocols( bool first, TQWidget* parent,  const char* name ) :
       KonfiguratorPage( first, parent, name )

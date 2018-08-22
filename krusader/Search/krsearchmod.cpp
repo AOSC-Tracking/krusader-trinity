@@ -173,7 +173,8 @@ void KRSearchMod::scanLocalDir( KURL urlToScan )
         TQString realType = KRarcHandler::getType( encrypted, url.path(), mime );
 
         if( !encrypted ) {
-          if ( realType == "-tbz" || realType == "-tgz" || realType == "tarz" || realType == "-tar" )
+          if ( realType == "-tbz" || realType == "-tgz" || realType == "-tlz" ||
+               realType == "tarz" || realType == "-tar" )
             archiveURL.setProtocol( "tar" );
           else
             archiveURL.setProtocol( "krarc" );
