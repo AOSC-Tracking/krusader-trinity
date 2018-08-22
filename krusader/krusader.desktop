@@ -2,7 +2,7 @@
 Encoding=UTF-8
 Name=Krusader
 Exec=krusader -caption "%c" %i %m
-Icon=krusader_user.png
+Icon=krusader_user
 Terminal=false
 Type=Application
 X-DocPath=krusader/index.html
