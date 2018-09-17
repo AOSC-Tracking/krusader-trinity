@@ -50,16 +50,16 @@
         <configargs/>
         <builddir/>
         <topsourcedir/>
-        <cppflags>-DQT_THREAD_SUPPORT</cppflags>
+        <cppflags>-DTQT_THREAD_SUPPORT</cppflags>
         <ldflags/>
         <ccompiler>kdevgccoptions</ccompiler>
         <cxxcompiler>kdevgppoptions</cxxcompiler>
         <f77compiler>kdevpgf77options</f77compiler>
         <ccompilerbinary/>
-        <cxxcompilerbinary>-DQT_THREAD_SUPPORT</cxxcompilerbinary>
+        <cxxcompilerbinary>-DTQT_THREAD_SUPPORT</cxxcompilerbinary>
         <f77compilerbinary/>
         <cflags/>
-        <cxxflags>-DQT_THREAD_SUPPORT </cxxflags>
+        <cxxflags>-DTQT_THREAD_SUPPORT </cxxflags>
         <f77flags/>
         <envvars/>
       </default>
