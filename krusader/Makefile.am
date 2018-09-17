@@ -100,7 +100,7 @@ krusader_LDADD   = \
 	$(LIB_TDEHTML) \
 	$(LIB_TDEUI) \
 	$(LIB_TDECORE) \
-	$(LIB_QT) \
+	$(LIB_TQT) \
 	$(LIBSOCKET) \
 	-ltdefx \
 	-ltdeutils \
@@ -108,7 +108,7 @@ krusader_LDADD   = \
 
 
 # the library search path.
-krusader_LDFLAGS = $(all_libraries) $(kde_RPATH) $(LIB_QT) -lDCOP $(LIB_TDECORE) $(LIB_TDEUI) -ltdefx $(LIB_TDEIO) -ltdetexteditor -ltdewalletclient
+krusader_LDFLAGS = $(all_libraries) $(kde_RPATH) $(LIB_TQT) -lDCOP $(LIB_TDECORE) $(LIB_TDEUI) -ltdefx $(LIB_TDEIO) -ltdetexteditor -ltdewalletclient
 
 
 ###########################################################

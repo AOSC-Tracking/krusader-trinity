@@ -10,8 +10,8 @@ INCLUDES = $(all_includes)
 tdeio_krarc_la_METASOURCES=AUTO
 
 tdeio_krarc_la_SOURCES = krarc.cpp
-tdeio_krarc_la_LIBADD = $(LIB_QT) $(LIB_TDECORE) $(LIB_TDEIO)
-# $(LIB_TDEUI) $(LIB_TDECORE) $(LIB_QT)
+tdeio_krarc_la_LIBADD = $(LIB_TQT) $(LIB_TDECORE) $(LIB_TDEIO)
+# $(LIB_TDEUI) $(LIB_TDECORE) $(LIB_TQT)
 
 tdeio_krarc_la_LDFLAGS = $(all_libraries) -module $(KDE_PLUGIN)
 
