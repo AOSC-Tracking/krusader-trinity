@@ -222,7 +222,7 @@ Krusader Project:
   kde_libraries:        ${ac_kde_libraries}
   kde_locale:           ${prefix}/share/locale
   qt_libraries:         ${ac_qt_libraries}
-  qt_includes:          ${ac_qt_includes}
+  tqt_includes:          ${ac_tqt_includes}
   TDEDIR:               ${TDEDIR}
   QTDIR:                ${QTDIR}
   Install path:         ${prefix}/bin

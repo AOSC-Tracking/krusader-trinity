@@ -432,7 +432,7 @@ the FAQ. If the problem persists, use the help_request to ask for help.
       kde_includes:         /usr/lib
       kde_locale:           /usr/share/locale
       qt_libraries:         /usr/lib/qt3/lib
-      qt_includes:          /usr/lib/qt3/include
+      tqt_includes:         /usr/lib/qt3/include
       TDEDIR:               /usr
       QTDIR:                /usr/lib/qt3
       Install path:         /usr/local/bin
