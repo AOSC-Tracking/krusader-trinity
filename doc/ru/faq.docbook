@@ -115,7 +115,7 @@
     </listitem>
     <listitem
 ><para
->libkonq4 libpcre3 libpng12 libqt3-mt libsm6 libstdc++6 libunwind7 libx11-6 </para>
+>libkonq4 libpcre3 libpng12 libtqt3-mt libsm6 libstdc++6 libunwind7 libx11-6 </para>
     </listitem>
     <listitem
 ><para
@@ -151,7 +151,7 @@
 ></listitem>
      <listitem
 ><para
->libqt3 libqt-devel</para
+>libtqt3 libtqt-devel</para
 ></listitem>
      <listitem
 ><para

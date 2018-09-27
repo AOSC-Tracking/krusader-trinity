@@ -142,7 +142,7 @@ Installation FAQ
         * tdelibs (for the required TDE version see the Installation_procedure)
         * libacl1 libart-2.0 libattr1 libaudio2 libc6 libfam0 libfontconfig1
         * libfreetype6 libgcc1 libgcc2 libice6 libidn11 libjpeg62 libkjsembed1
-        * libkonq4 libpcre3 libpng12 libqt3-mt libsm6 libstdc++6 libunwind7
+        * libkonq4 libpcre3 libpng12 libtqt3-mt libsm6 libstdc++6 libunwind7
           libx11-6
         * libxcursor1 libxext6 libxft2 libxi6 libxinerama1 libxrandr2
           libxrender1 libxt6 zlib1g
@@ -154,7 +154,7 @@ Installation FAQ
         * gcc-cpp gcc-c++ glibc libgcc1 (other compilers may work but haven't
           been tested)
         * autoconf automake XFree
-        * libqt3 libqt-devel
+        * libtqt3 libtqt-devel
         * tdelibs tdelibs-devel
         * libjpeg62 libjpeg-devel libpng3 libmng1
         * fam libfam-devel
