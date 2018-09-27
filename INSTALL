@@ -250,7 +250,7 @@ If you are looking for older releases we recommend the Sourceforge_mirrors,
 available from our project page.
 Compiling and Installing
 Compiling Krusader. What now?
-Check the environment variables TDEDIR_-_QTDIR.
+Check the environment variables TDEDIR_-_TQTDIR.
 To compile and install Krusader on your system, type the following in the base
 directory of the Krusader package:
       $ ./configure
@@ -268,7 +268,7 @@ Debian
 These instructions should work as well on Debian® based distributions like:
 Ubuntu®, Kubuntu®, Linspire®, Kanotix®, ...
 Add the next lines in the ~/.bashrc configuration file
-export QTDIR=/usr
+export TQTDIR=/usr
 export TDEDIR=/usr
 export export TDEDIRS=/opt/krusader:/usr
 Install the build_dependencies for Krusader
@@ -347,14 +347,14 @@ the FAQ. If the problem persists, use the help_request to ask for help.
       $ rm krusader-x.xx.tar.gz
    6. Change to the directory containing the sources.
       $ cd krusader-x.xx
-   7. Check the environment variables QTDIRand TDEDIR. Krusader's ./configure
+   7. Check the environment variables TQTDIRand TDEDIR. Krusader's ./configure
       script needs to know where the Qt&#8482; and KDE directories are.
-      QTDIR: <path to your Qt installation> e.g. /usr/lib/qt3 or /usr/qt3
+      TQTDIR: <path to your Qt installation> e.g. /usr/lib/qt3 or /usr/qt3
       TDEDIR: <path to your KDE installation> e.g. /usr or /opt/trinity
       Normally your distribution will set them for you, but experience has
       shown that some do not. You can easily check the values with the echo
       command.
-      $ echo $QTDIR/usr/lib/qt3
+      $ echo $TQTDIR/usr/lib/qt3
                         $ echo $TDEDIR/usr
       If both commands give an output, the enviroment variables are set (the
       above example are the settings of Mandriva®-Linux®). In case you receive
@@ -366,10 +366,10 @@ the FAQ. If the problem persists, use the help_request to ask for help.
       /usr/lib/qt3/bin/qtconfig
       $ find /usr /opt -name tdeinit -type f 2>/dev/null
       /usr/bin/tdeinit
-      In this case /usr/lib/qt3 is your QTDIR and /usr is your TDEDIR. The
+      In this case /usr/lib/qt3 is your TQTDIR and /usr is your TDEDIR. The
       installed binaries will go to /usr/bin. Now we will set the enviroment
       variables with the export command.
-      $ export QTDIR=<replace with your QTDIR>
+      $ export TQTDIR=<replace with your TQTDIR>
       $ export TDEDIR=<replace with your TDEDIR>
       **** Note ****
       These enviroment variables are only set for the lifetime of your current
@@ -434,7 +434,7 @@ the FAQ. If the problem persists, use the help_request to ask for help.
       qt_libraries:         /usr/lib/qt3/lib
       tqt_includes:         /usr/lib/qt3/include
       TDEDIR:               /usr
-      QTDIR:                /usr/lib/qt3
+      TQTDIR:                /usr/lib/qt3
       Install path:         /usr/local/bin
       krusader version:     1.80.0
       krusader binary:      /usr/local/bin/krusader     (after 'make install')
@@ -448,7 +448,7 @@ the FAQ. If the problem persists, use the help_request to ask for help.
       At the end of the ./configure script you will find a summary of the most
       important settings, e.g. where the Krusader binary will be installed
       (after the 'make install' command). This part will also display a warning
-      if the environment variables TDEDIR_-_QTDIR are empty.
+      if the environment variables TDEDIR_-_TQTDIR are empty.
       Since Krusader-1.70.0 ./configure has two specific Krusader options:
           * ./configure --without-konqueror: build Krusader without support
             Konqueror's servicemenus, default=with. This means that Konqueror's

@@ -209,7 +209,7 @@ AC_CONFIG_FILES([ tar/Makefile ])
 AC_CONFIG_FILES([ virt/Makefile ])
 AC_OUTPUT
 # added manualy, it dumps a summary of the most important settings
-# and displays a warning if the TDEDIR or QTDIR is empty
+# and displays a warning if the TDEDIR or TQTDIR is empty
 echo "
 Krusader Project:
 -----------------
@@ -224,7 +224,7 @@ Krusader Project:
   qt_libraries:         ${ac_qt_libraries}
   tqt_includes:          ${ac_tqt_includes}
   TDEDIR:               ${TDEDIR}
-  QTDIR:                ${QTDIR}
+  TQTDIR:                ${TQTDIR}
   Install path:         ${prefix}/bin
   krusader version:     ${VERSION}
   krusader binary:      ${prefix}/bin/${PACKAGE}     (after 'make install')
@@ -288,8 +288,8 @@ if (test -z "$TDEDIR");
    then echo "WARNING:  TDEDIR enviroment variable is empty! Please read Krusader FAQ"
 fi
 
-if (test -z "$QTDIR");
-   then echo "WARNING:  QTDIR enviroment variable is empty!  Please read Krusader FAQ"
+if (test -z "$TQTDIR");
+   then echo "WARNING:  TQTDIR enviroment variable is empty!  Please read Krusader FAQ"
 fi
   echo ""
   echo "Good - your configure finished. Start make now"

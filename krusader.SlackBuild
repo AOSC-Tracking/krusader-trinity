@@ -43,7 +43,7 @@ fi
 
 # Avoid a version number in .la files:
 if [ -d /usr/lib/qt ]; then
-  QTDIR=/usr/lib/qt
+  TQTDIR=/usr/lib/qt
 fi
 
 PKG=$TMP/package-krusader

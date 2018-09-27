@@ -494,7 +494,7 @@
 <listitem id="kde_qt_dir">
 <para
 >Check the environment variables <envar
->QTDIR</envar
+>TQTDIR</envar
 > and <envar
 >TDEDIR</envar
 >. &krusader;'s <command
@@ -503,7 +503,7 @@
 
 <para
 ><envar
->QTDIR</envar
+>TQTDIR</envar
 > : <replaceable
 >&lt;path to your Qt installation&gt;</replaceable
 > &eg; <filename
@@ -527,7 +527,7 @@
 >Normally your distribution will set them for you, but experience has shown that some don't. You can easily check the values with the <command
 >echo</command
 > command. <screen
-><prompt>$</prompt> <userinput><command>echo</command> $QTDIR</userinput>
+><prompt>$</prompt> <userinput><command>echo</command> $TQTDIR</userinput>
 /usr/lib/qt3
 <prompt>$</prompt> <userinput><command>echo</command> $TDEDIR</userinput>
 /usr</screen
@@ -541,7 +541,7 @@
 > In this case <filename
 >/usr/lib/qt3</filename
 > is your <envar
->QTDIR</envar
+>TQTDIR</envar
 > and <filename
 >/usr</filename
 > is your <envar
@@ -551,7 +551,7 @@
 >. Now we will set the enviroment variables with the <command
 >export</command
 > command. <screen
-><prompt>$</prompt> <userinput><command>export</command> QTDIR=<replaceable>&lt;replace with your QTDIR&gt;</replaceable></userinput></screen>
+><prompt>$</prompt> <userinput><command>export</command> TQTDIR=<replaceable>&lt;replace with your TQTDIR&gt;</replaceable></userinput></screen>
 <screen
 ><prompt>$</prompt> <userinput><command>export</command> TDEDIR=<replaceable>&lt;replace with your TDEDIR&gt;</replaceable></userinput></screen>
 </para>
@@ -674,7 +674,7 @@ kde_locale:           /usr/share/locale
 qt_libraries:         /usr/lib/qt3/lib
 tqt_includes:          /usr/lib/qt3/include
 TDEDIR:               /usr
-QTDIR:                /usr/lib/qt3
+TQTDIR:                /usr/lib/qt3
 Install path:         /usr/local/bin
 krusader version:     1.51
 krusader binary:      /usr/local/bin/krusader     (after 'make install')

@@ -119,7 +119,7 @@ Notice: if you've got bugs to report, please do so using Krusader's
 
 Installation
 ============
-Check the environment variables TDEDIR - QTDIR.
+Check the environment variables TDEDIR - TQTDIR.
 
 Unpack the tarball and go to the Krusader source directory.
 If you have downloaded from CVS you will have to run the following

@@ -236,7 +236,7 @@ Installation FAQ
     copy the krusaderui.rc file from the package krusader_trinity/krusader/
     krusaderui.rc to $TDEDIR/share/apps/krusader/krusaderui.rc and ~/.trinity/
     share/apps/krusader/krusaderui.rc and re-run Krusader. If you have compiled
-    Krusader from sources this is often caused if the TDEDIR_-_QTDIR
+    Krusader from sources this is often caused if the TDEDIR_-_TQTDIR
     environment variables are not correctly set. The result is that the
     krusaderui.rc file is installed in the wrong directory. Please read the
     following question, as well.

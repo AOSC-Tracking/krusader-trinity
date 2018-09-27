@@ -217,7 +217,7 @@ http://groups.google.com/group/krusader-devel/browse_thread/thread/d102adec2edcf
 <!ENTITY syncdirs-lnk '<link linkend="synchronizer">Synchronize Directories</link>'>
 <!ENTITY splitfile-lnk '<link linkend="splitter">Split file</link>'>
 <!ENTITY combinefiles-lnk '<link linkend="splitter">Combine files</link>'>
-<!ENTITY kdeqtdir-lnk '<link linkend="kde_qt_dir"><envar>TDEDIR</envar> - <envar>QTDIR</envar></link>'>
+<!ENTITY kdeqtdir-lnk '<link linkend="kde_qt_dir"><envar>TDEDIR</envar> - <envar>TQTDIR</envar></link>'>
 <!ENTITY useractions-lnk '<link linkend="useractions">UserActions</link>'>
 <!ENTITY usermenu-lnk '<link linkend="useractions">User Menu</link>'>
 <!ENTITY faq-lnk '<link linkend="faq">FAQ</link>'>

@@ -34,7 +34,7 @@ friendly, fast and looks great on your desktop! You should give it a try.
 %setup -q
 
 %build
-unset QTDIR || : ; . %{_sysconfdir}/profile.d/qt.sh
+unset TQTDIR || : ; . %{_sysconfdir}/profile.d/qt.sh
 
 %configure \
 	--disable-rpath \

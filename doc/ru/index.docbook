@@ -515,7 +515,7 @@ since the Entity Backspace is not defined in
 ><envar
 >TDEDIR</envar
 > - <envar
->QTDIR</envar
+>TQTDIR</envar
 ></link
 >'>
 <!ENTITY useractions_lnk '<link linkend="useractions"
