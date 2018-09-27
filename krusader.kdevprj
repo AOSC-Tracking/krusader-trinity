@@ -17,7 +17,7 @@ install_location=
 type=DATA
 
 [Config for BinMakefileAm]
-addcxxflags=-DKDE_NO_COMPAT -DQT_NO_ASCII_CAST -D_LARGEFILE64_SOURCE
+addcxxflags=-DKDE_NO_COMPAT -DTQT_NO_ASCII_CAST -D_LARGEFILE64_SOURCE
 bin_program=krusader
 cflags=-DKDE_NO_COMPAT -D_LARGEFILE64_SOURCE
 cppflags=-DKDE_NO_COMPAT -D_LARGEFILE64_SOURCE
