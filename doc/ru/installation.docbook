@@ -395,7 +395,7 @@
 >I have downloaded the sources for &krusader;. What now?</title>
 
 <para
->Check the environment variables &kdeqtdir_lnk;.</para>
+>Check the environment variables &kdetqtdir_lnk;.</para>
 
 <para
 >In order to compile and install &krusader; on your system, type the following in the base directory of the &krusader; package:</para>
@@ -692,7 +692,7 @@ Good - your configure finished. Start make now
 ><para
 >At the end of the <command
 >./configure</command
-> script you will find a summary of the most important settings, &eg; where the &krusader; binary will be installed (after the 'make install' command). This part will also display a warning if the environment variables &kdeqtdir_lnk; are empty. </para
+> script you will find a summary of the most important settings, &eg; where the &krusader; binary will be installed (after the 'make install' command). This part will also display a warning if the environment variables &kdetqtdir_lnk; are empty. </para
 ></tip>
 
   <!-- Empty line to make it more readable -->

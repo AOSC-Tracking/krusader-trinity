@@ -405,7 +405,7 @@
 >$TDEDIR/share/apps/krusader/krusaderui.rc</filename
 > and <filename
 >~/.trinity/share/apps/krusader/krusaderui.rc</filename
-> and re-run &krusader;. If you have compiled &krusader; from sources this is often caused when the &kdeqtdir_lnk; environment variables are not correctly set. The result is that the <filename
+> and re-run &krusader;. If you have compiled &krusader; from sources this is often caused when the &kdetqtdir_lnk; environment variables are not correctly set. The result is that the <filename
 >krusaderui.rc</filename
 > file is installed in the wrong directory. Please also read the next question.</para>
      <!-- Empty line to make it more readable -->

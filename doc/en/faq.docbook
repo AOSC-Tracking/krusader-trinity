@@ -390,7 +390,7 @@
           ~/.trinity/share/apps/krusader/krusaderui.rc</filename> and
           re-run &krusader;. If you have compiled
           &krusader; from sources this is often caused
-          if the &kdeqtdir-lnk; environment variables
+          if the &kdetqtdir-lnk; environment variables
           are not correctly set. The result is that the 
           <filename>krusaderui.rc</filename> file is installed in
           the wrong directory. Please read the following question,

@@ -511,7 +511,7 @@ since the Entity Backspace is not defined in
 <!ENTITY combinefiles_lnk '<link linkend="splitter"
 >Combine files</link
 >'>
-<!ENTITY kdeqtdir_lnk '<link linkend="kde_qt_dir"
+<!ENTITY kdetqtdir_lnk '<link linkend="kde_qt_dir"
 ><envar
 >TDEDIR</envar
 > - <envar
