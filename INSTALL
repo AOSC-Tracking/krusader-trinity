@@ -423,7 +423,7 @@ the FAQ. If the problem persists, use the help_request to ask for help.
       C Compiler:           gcc
       C Compiler flags:     -ansi -W -Wall -pedantic -Wchar-subscripts -Wshadow
       -Wpointer-arith
-      -Wmissing-prototypes -Wwrite-strings -D_XOPEN_SOURCE=500 -D_BSD_SOURCE -
+      -Wmissing-prototypes -Wwrite-strings -D_XOPEN_SOURCE=500 -D_DEFAULT_SOURCE -
       O2
       -Wformat-security -Wmissing-format-attribute
       C++ Compiler:         g++
