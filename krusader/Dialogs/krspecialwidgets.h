@@ -53,7 +53,7 @@ class KRPie : public TQWidget {
     void paintEvent( TQPaintEvent * );
 
   private:
-    TQList<KRPieSlice> slices;
+    TQPtrList<KRPieSlice> slices;
     TDEIO::filesize_t totalSize, sizeLeft;
     static TQColor colors[ 12 ];
 };

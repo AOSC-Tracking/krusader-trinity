@@ -72,7 +72,7 @@ protected:
   TQString tmpDir;   // the temp directory tha archive is using
   TQString arcFile;  // the archive file URL
   bool changed;     // true if repack changed the archive
-  TQList<arc_dir> dirList;
+  TQPtrList<arc_dir> dirList;
   TQValueList<extFile> extFiles; // the name, time & size of files unpacked from this archive
 
   void processName(const TQString& name,TQStringList *urls,TDEIO::filesize_t *totalSize,unsigned long *totalFiles );

@@ -68,7 +68,7 @@ signals:
     	
 protected:
   int delay;      // time in msec between updates
-  TQList<krDirEntry> watched;
+  TQPtrList<krDirEntry> watched;
   TQTimer t;
   TQDir dir;
   TQFileInfo qfi;
