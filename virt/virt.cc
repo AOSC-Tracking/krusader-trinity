@@ -76,7 +76,7 @@ void VirtProtocol::del(KURL const & /*url */, bool /* isFile */ ){
 //	KRDEBUG(url.path());
 	
 	messageBox(TDEIO::SlaveBase::QuestionYesNo,
-	                         i18n(""),
+	                         "",
 	                         i18n("Virtulal delete"),
 	                         i18n("remove from virtual space"),
 	                         i18n("really delete")
