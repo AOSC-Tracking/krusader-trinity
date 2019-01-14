@@ -8,7 +8,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: krusader-1.80.0\n"
-"POT-Creation-Date: 2019-01-03 15:00+0100\n"
+"POT-Creation-Date: 2019-01-13 19:16+0100\n"
 "PO-Revision-Date: 2007-04-20 23:10+0100\n"
 "Last-Translator: Dovydas Sankauskas <laisve@gmail.com>\n"
 "Language-Team: krusader-i18n <krusader-i18n@googlegroups.com>\n"
@@ -552,10 +552,6 @@ msgstr "Ar tikrai norite pašalinti visus pažymėtus veiksmus?"
 msgid "Remove selected actions?"
 msgstr "Pašalinti pažymėtus veiksmus?"
 
-#: ActionMan/useractionpage.cpp:205
-msgid "Remove"
-msgstr "Pašalinti"
-
 #: ActionMan/useractionpage.cpp:246
 msgid ""
 "This file already contains some useractions.\n"
@@ -618,11 +614,6 @@ msgstr "URL:"
 msgid "Create in:"
 msgstr "Kur sukurti:"
 
-#: BookMan/kraddbookmarkdlg.cpp:71 BookMan/krbookmarkbutton.cpp:19
-#: BookMan/krbookmarkhandler.cpp:30 krusader.cpp:741
-msgid "Bookmarks"
-msgstr "Žymelės"
-
 #: BookMan/kraddbookmarkdlg.cpp:103
 msgid "Folder name:"
 msgstr "Aplanko pavadinimas:"
@@ -651,17 +642,6 @@ msgstr "Žymelės II"
 #, c-format
 msgid "Unable to write to %1"
 msgstr "Nepavyko įrašyti į %1"
-
-#: BookMan/krbookmarkhandler.cpp:172 BookMan/krbookmarkhandler.cpp:268
-#: Konfigurator/kgcolors.cpp:508 Konfigurator/kgcolors.cpp:525
-#: Konfigurator/kggeneral.cpp:201 MountMan/kmountman.cpp:197
-#: Synchronizer/synchronizerdirlist.cpp:101 VFS/krarchandler.cpp:215
-#: VFS/krarchandler.cpp:274 VFS/krarchandler.cpp:291 VFS/krarchandler.cpp:352
-#: VFS/krarchandler.cpp:529 VFS/krarchandler.cpp:536 VFS/normal_vfs.cpp:90
-#: VFS/normal_vfs.cpp:100 VFS/normal_vfs.cpp:107 VFS/virt_vfs.cpp:87
-#: VFS/virt_vfs.cpp:173
-msgid "Error"
-msgstr "Klaida"
 
 #: BookMan/krbookmarkhandler.cpp:180
 msgid " instead of "
@@ -701,20 +681,9 @@ msgstr "Įjungti specialias žymeles"
 msgid "Jump back"
 msgstr "Grįžti"
 
-#: BookMan/krbookmarkhandler.cpp:538 GUI/mediabutton.cpp:529
-#: Panel/krpopupmenu.cpp:61
-msgid "Open"
-msgstr "Atverti"
-
 #: BookMan/krbookmarkhandler.cpp:539 GUI/mediabutton.cpp:530
 msgid "Open in a new tab"
 msgstr "Atverti naujoje kortelėje"
-
-#: BookMan/krbookmarkhandler.cpp:541 Dialogs/krmaskchoice.cpp:110
-#: Dialogs/kurllistrequester.cpp:149 DiskUsage/diskusage.cpp:757
-#: Konfigurator/kgcolors.cpp:474 Panel/krpopupmenu.cpp:145 krusader.cpp:796
-msgid "Delete"
-msgstr "Pašalinti"
 
 #: Dialogs/checksumdlg.cpp:211 Dialogs/checksumdlg.cpp:466
 msgid "Create Checksum"
@@ -832,10 +801,6 @@ msgstr "Apskaičiuotosios kontrolinės sumos:"
 msgid "Hash"
 msgstr "Maiša (hash)"
 
-#: Dialogs/checksumdlg.cpp:496 Konfigurator/kgcolors.cpp:418
-msgid "File"
-msgstr "Byla"
-
 #: Dialogs/checksumdlg.cpp:499
 msgid "File and hash"
 msgstr "Byla ir maiša"
@@ -859,12 +824,6 @@ msgid ""
 msgstr ""
 "Byla %1 jau egzistuoja.\n"
 "Ar tikrai norite ją perrašyti?"
-
-#: Dialogs/checksumdlg.cpp:573 Dialogs/krkeydialog.cpp:135
-#: DiskUsage/diskusage.cpp:607 Konfigurator/kgcolors.cpp:523
-#: Panel/panelfunc.cpp:664
-msgid "Warning"
-msgstr "Perspėjimas"
 
 #: Dialogs/checksumdlg.cpp:575
 msgid "Select a file to save to"
@@ -996,10 +955,6 @@ msgstr ""
 "Laukelis, kuriame rašote šablonus, turi savo žurnalą, jį taipogi galite "
 "naudoti."
 
-#: Dialogs/krmaskchoice.cpp:105
-msgid "Add"
-msgstr "Įdėti"
-
 #: Dialogs/krmaskchoice.cpp:106
 msgid "Adds the selection in the line-edit to the list"
 msgstr "Įdėti įrašytą šabloną į šablonų sąrašą"
@@ -1008,32 +963,13 @@ msgstr "Įdėti įrašytą šabloną į šablonų sąrašą"
 msgid "Delete the marked selection from the list"
 msgstr "Pašalinti pažymėtą šabloną iš sąrašo"
 
-#: Dialogs/krmaskchoice.cpp:115
-msgid "Clear"
-msgstr "Išvalyti"
-
 #: Dialogs/krmaskchoice.cpp:116
 msgid "Clears the entire list of selections"
 msgstr "Išvalyti visą šablonų sąrašą"
 
-#: Dialogs/krmaskchoice.cpp:131
-msgid "OK"
-msgstr "Gerai"
-
-#: Dialogs/krmaskchoice.cpp:135 Dialogs/packguibase.cpp:289
-#: DiskUsage/diskusage.cpp:155 Panel/listpanel.cpp:852 Panel/panelpopup.cpp:379
-msgid "Cancel"
-msgstr "Atšaukti"
-
 #: Dialogs/krpleasewait.cpp:45
 msgid "Krusader::Wait"
 msgstr "Krusader::Laukiama"
-
-#: Dialogs/krpleasewait.cpp:60 Dialogs/newftpgui.cpp:133
-#: Splitter/splittergui.cpp:113 mount.ui:86 recode.ui:87
-#, no-c-format
-msgid "&Cancel"
-msgstr "&Atšaukti"
 
 #: Dialogs/krprogress.cpp:59
 msgid "Source:"
@@ -1365,12 +1301,6 @@ msgstr "&Šiukšliadėžė"
 msgid "Do you really want to delete this item?"
 msgstr "Ar tikrai pageidaujate pašalinti šį objektą?"
 
-#: DiskUsage/diskusage.cpp:600 DiskUsage/radialMap/widgetEvents.cpp:172
-#: DiskUsage/radialMap/widgetEvents.cpp:194 Panel/panelfunc.cpp:652
-#: Panel/panelfunc.cpp:655 Panel/panelfunc.cpp:658
-msgid "&Delete"
-msgstr "&Pašalinti"
-
 #: DiskUsage/diskusage.cpp:611
 msgid "Deleting %1..."
 msgstr "Šalinama %1..."
@@ -1426,10 +1356,6 @@ msgstr "Kitas"
 #: DiskUsage/diskusage.cpp:793
 msgid "Previous"
 msgstr "Ankstesnis"
-
-#: DiskUsage/diskusage.cpp:797
-msgid "View"
-msgstr "Peržiūra"
 
 #: DiskUsage/diskusage.cpp:1031
 msgid "Type:"
@@ -1894,10 +1820,6 @@ msgstr "&Įkelti"
 msgid "&Overwrite"
 msgstr "&Perrašyti"
 
-#: Filter/generalfilter.cpp:138 RemoteMan/remotemanbase.cpp:155
-msgid "&Remove"
-msgstr "P&ašalinti"
-
 #: Filter/generalfilter.cpp:155
 msgid "&Search in"
 msgstr "&Ieškoti"
@@ -2081,14 +2003,6 @@ msgstr " Pervadinti"
 msgid " Quit"
 msgstr " Baigti"
 
-#: GUI/krremoteencodingmenu.cpp:97
-msgid "Reload"
-msgstr "Įkelti iš naujo"
-
-#: GUI/krremoteencodingmenu.cpp:98 Konfigurator/konfiguratoritems.cpp:539
-msgid "Default"
-msgstr "Numatyta"
-
 #: GUI/krusaderstatus.cpp:39
 msgid "Ready."
 msgstr "Paruošta."
@@ -2214,10 +2128,6 @@ msgstr "A&tskirti kortelę"
 #: KViewer/krviewer.cpp:101
 msgid "&Close current tab"
 msgstr "&Uždaryti dabartinę kortelę"
-
-#: KViewer/krviewer.cpp:102
-msgid "&Quit"
-msgstr "&Baigti"
 
 #: KViewer/krviewer.cpp:159
 msgid "&KrViewer"
@@ -3553,10 +3463,6 @@ msgstr ""
 "Krusader pradėjęs darbą susimažins į sistemos dėklą. Pagrindinis langa nebus "
 "rodomas."
 
-#: Konfigurator/kguseractions.cpp:48
-msgid "Information"
-msgstr "Informacija"
-
 #: Konfigurator/kguseractions.cpp:53
 msgid ""
 "Here you can configure settings about useractions.\n"
@@ -3600,11 +3506,6 @@ msgstr "Numatyta"
 #: Konfigurator/konfigurator.cpp:65
 msgid "Konfigurator - Creating Your Own Krusader"
 msgstr "Suderinkite Krusader pagal savo norus!"
-
-#: Konfigurator/konfigurator.cpp:69 Search/krsearchdialog.cpp:139
-#: Synchronizer/synchronizergui.cpp:1471 UserAction/kraction.cpp:49
-msgid "Close"
-msgstr "Uždaryti"
 
 #: Konfigurator/konfigurator.cpp:90
 msgid "Startup"
@@ -3821,11 +3722,6 @@ msgstr ""
 "%1:\n"
 "Klaida vykdant JavaScript scenarijų"
 
-#: Locate/locate.cpp:101 Locate/locate.cpp:241 Search/krsearchdialog.cpp:135
-#: Synchronizer/synchronizergui.cpp:1455
-msgid "Stop"
-msgstr "Stop"
-
 #: Locate/locate.cpp:101
 msgid "Update DB"
 msgstr "Atnaujinti duomenų bazę"
@@ -3951,11 +3847,6 @@ msgstr "%1 KB"
 #: MountMan/kmountman.cpp:250
 msgid "MountMan is not operational. Sorry"
 msgstr "Prijungiamų įrenginių tarnyba neveikia."
-
-#: MountMan/kmountmangui.cpp:70 RemoteMan/remotemanbase.cpp:73
-#: Synchronizer/synchronizedialog.cpp:117
-msgid "&Close"
-msgstr "&Uždaryti"
 
 #: MountMan/kmountmangui.cpp:72
 msgid "MountMan - Your Mount-Manager"
@@ -4978,14 +4869,6 @@ msgstr "Sinchronizuoti rezultatus"
 msgid "Side to feed:"
 msgstr "Nurodykite langą:"
 
-#: Synchronizer/feedtolistboxdialog.cpp:125
-msgid "Left"
-msgstr "Kairysis langas"
-
-#: Synchronizer/feedtolistboxdialog.cpp:126
-msgid "Right"
-msgstr "Dešinysis langas"
-
 #: Synchronizer/feedtolistboxdialog.cpp:127
 msgid "Both"
 msgstr "Abu langai"
@@ -5056,10 +4939,6 @@ msgstr ""
 #: Synchronizer/synchronizedialog.cpp:101
 msgid "Confirm overwrites"
 msgstr "Patvirtinti perrašymą"
-
-#: Synchronizer/synchronizedialog.cpp:110
-msgid "&Start"
-msgstr "P&radėti"
 
 #: Synchronizer/synchronizedialog.cpp:114
 msgid "&Pause"
@@ -5253,10 +5132,6 @@ msgstr "<=>"
 #: Synchronizer/synchronizergui.cpp:1344
 msgid "&Synchronizer"
 msgstr "&Sinchronizavimas"
-
-#: Synchronizer/synchronizergui.cpp:1355
-msgid "&Options"
-msgstr "&Parinktys"
 
 #: Synchronizer/synchronizergui.cpp:1364
 msgid "Parallel threads:"
@@ -6170,10 +6045,6 @@ msgstr "F3 Peržiūrėti"
 msgid "Tab: switch panel"
 msgstr "Tab: kitas langas"
 
-#: krusader.cpp:564
-msgid "&Reload"
-msgstr "&Atnaujinti"
-
 #: krusader.cpp:566
 msgid "Show Actions Toolbar"
 msgstr "Rodyti veiksmų juostą"
@@ -6245,10 +6116,6 @@ msgstr "Kurti kontrolinę sumą..."
 #: krusader.cpp:623
 msgid "Verify Checksum..."
 msgstr "Tikrinti kontrolinę sumą..."
-
-#: krusader.cpp:625
-msgid "&Properties..."
-msgstr "&Parinktys..."
 
 #: krusader.cpp:627
 msgid "Pac&k..."
@@ -6366,10 +6233,6 @@ msgstr "Naudojama &vieta..."
 msgid "Configure &Krusader..."
 msgstr "&Derinti Krusader..."
 
-#: krusader.cpp:719
-msgid "Back"
-msgstr "Atgal"
-
 #: krusader.cpp:723
 msgid "Save &Position"
 msgstr "&Įsiminti vietą"
@@ -6477,10 +6340,6 @@ msgstr "Keisti bylą"
 #: krusader.cpp:794
 msgid "New Directory..."
 msgstr "Naujas aplankas..."
-
-#: krusader.cpp:800
-msgid "Quit"
-msgstr "Baigti"
 
 #: krusader.cpp:802
 msgid "Popular URLs..."
@@ -6671,25 +6530,10 @@ msgstr "16"
 msgid "Set as caption"
 msgstr "Tokia kaip aktyviame lange"
 
-#: krusaderui.rc:4
-#, no-c-format
-msgid "&File"
-msgstr "&Byla"
-
-#: krusaderui.rc:36
-#, no-c-format
-msgid "&Edit"
-msgstr "&Keisti"
-
 #: krusaderui.rc:51
 #, no-c-format
 msgid "Compare Se&tup"
 msgstr "Paly&ginti parinktis"
-
-#: krusaderui.rc:63
-#, no-c-format
-msgid "&View"
-msgstr "&Peržiūrėti"
 
 #: krusaderui.rc:77
 #, no-c-format
@@ -6701,16 +6545,6 @@ msgstr "&Eiti"
 msgid "User&actions"
 msgstr "&Veiksmai"
 
-#: krusaderui.rc:93
-#, no-c-format
-msgid "&Tools"
-msgstr "&Įrankiai"
-
-#: krusaderui.rc:117
-#, no-c-format
-msgid "&Settings"
-msgstr "&Parinktys"
-
 #: krusaderui.rc:127
 #, no-c-format
 msgid "Command Execution Mode Se&tup"
@@ -6721,20 +6555,10 @@ msgstr "Vykdymo veiksenos &parinktys"
 msgid "&Window"
 msgstr "&Langai"
 
-#: krusaderui.rc:158
-#, no-c-format
-msgid "&Help"
-msgstr "&Pagalba"
-
 #: mount.ui:24
 #, fuzzy, no-c-format
 msgid "Mount a Filesystem"
 msgstr "Virtuali bylų sistema"
-
-#: mount.ui:69 recode.ui:70
-#, fuzzy, no-c-format
-msgid "&OK"
-msgstr "Gerai"
 
 #: mount.ui:102
 #, fuzzy, no-c-format
@@ -6815,6 +6639,118 @@ msgstr ""
 #, fuzzy, no-c-format
 msgid "Dump type: "
 msgstr "&Tipas:"
+
+#~ msgid "Remove"
+#~ msgstr "Pašalinti"
+
+#~ msgid "Bookmarks"
+#~ msgstr "Žymelės"
+
+#~ msgid "Error"
+#~ msgstr "Klaida"
+
+#~ msgid "Open"
+#~ msgstr "Atverti"
+
+#~ msgid "Delete"
+#~ msgstr "Pašalinti"
+
+#~ msgid "File"
+#~ msgstr "Byla"
+
+#~ msgid "Warning"
+#~ msgstr "Perspėjimas"
+
+#~ msgid "Add"
+#~ msgstr "Įdėti"
+
+#~ msgid "Clear"
+#~ msgstr "Išvalyti"
+
+#~ msgid "OK"
+#~ msgstr "Gerai"
+
+#~ msgid "Cancel"
+#~ msgstr "Atšaukti"
+
+#~ msgid "&Cancel"
+#~ msgstr "&Atšaukti"
+
+#~ msgid "&Delete"
+#~ msgstr "&Pašalinti"
+
+#~ msgid "View"
+#~ msgstr "Peržiūra"
+
+#~ msgid "&Remove"
+#~ msgstr "P&ašalinti"
+
+#~ msgid "Reload"
+#~ msgstr "Įkelti iš naujo"
+
+#~ msgid "Default"
+#~ msgstr "Numatyta"
+
+#~ msgid "&Quit"
+#~ msgstr "&Baigti"
+
+#~ msgid "Information"
+#~ msgstr "Informacija"
+
+#~ msgid "Close"
+#~ msgstr "Uždaryti"
+
+#~ msgid "Stop"
+#~ msgstr "Stop"
+
+#~ msgid "&Close"
+#~ msgstr "&Uždaryti"
+
+#~ msgid "Left"
+#~ msgstr "Kairysis langas"
+
+#~ msgid "Right"
+#~ msgstr "Dešinysis langas"
+
+#~ msgid "&Start"
+#~ msgstr "P&radėti"
+
+#~ msgid "&Options"
+#~ msgstr "&Parinktys"
+
+#~ msgid "&Reload"
+#~ msgstr "&Atnaujinti"
+
+#~ msgid "&Properties..."
+#~ msgstr "&Parinktys..."
+
+#~ msgid "Back"
+#~ msgstr "Atgal"
+
+#~ msgid "Quit"
+#~ msgstr "Baigti"
+
+#~ msgid "&File"
+#~ msgstr "&Byla"
+
+#~ msgid "&Edit"
+#~ msgstr "&Keisti"
+
+#~ msgid "&View"
+#~ msgstr "&Peržiūrėti"
+
+#~ msgid "&Tools"
+#~ msgstr "&Įrankiai"
+
+#~ msgid "&Settings"
+#~ msgstr "&Parinktys"
+
+#~ msgid "&Help"
+#~ msgstr "&Pagalba"
+
+#, fuzzy
+#~ msgid "&OK"
+#~ msgstr "Gerai"
 
 #~ msgid "If pressed, Krusader executes command line in a terminal."
 #~ msgstr "Krusader vykdys komandą terminale."

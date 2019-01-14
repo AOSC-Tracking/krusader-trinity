@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: krusader-1.80.0-beta2\n"
 "Report-Msgid-Bugs-To: Dirk Eschler <deschler@users.sourceforge.net>\n"
-"POT-Creation-Date: 2019-01-03 15:00+0100\n"
+"POT-Creation-Date: 2019-01-13 19:16+0100\n"
 "PO-Revision-Date: 2005-08-19 08:18+0800\n"
 "Last-Translator: Jinghua Luo <luojinghua@msn.com>\n"
 "Language-Team: Chinese Simplified\n"
@@ -533,10 +533,6 @@ msgstr ""
 msgid "Remove selected actions?"
 msgstr "删除这个宏？"
 
-#: ActionMan/useractionpage.cpp:205
-msgid "Remove"
-msgstr "删除"
-
 #: ActionMan/useractionpage.cpp:246
 msgid ""
 "This file already contains some useractions.\n"
@@ -602,11 +598,6 @@ msgstr "URL："
 msgid "Create in:"
 msgstr "创建于："
 
-#: BookMan/kraddbookmarkdlg.cpp:71 BookMan/krbookmarkbutton.cpp:19
-#: BookMan/krbookmarkhandler.cpp:30 krusader.cpp:741
-msgid "Bookmarks"
-msgstr "书签"
-
 #: BookMan/kraddbookmarkdlg.cpp:103
 msgid "Folder name:"
 msgstr "文件夹名："
@@ -635,17 +626,6 @@ msgstr "BookMan II"
 #, fuzzy, c-format
 msgid "Unable to write to %1"
 msgstr "不能写到："
-
-#: BookMan/krbookmarkhandler.cpp:172 BookMan/krbookmarkhandler.cpp:268
-#: Konfigurator/kgcolors.cpp:508 Konfigurator/kgcolors.cpp:525
-#: Konfigurator/kggeneral.cpp:201 MountMan/kmountman.cpp:197
-#: Synchronizer/synchronizerdirlist.cpp:101 VFS/krarchandler.cpp:215
-#: VFS/krarchandler.cpp:274 VFS/krarchandler.cpp:291 VFS/krarchandler.cpp:352
-#: VFS/krarchandler.cpp:529 VFS/krarchandler.cpp:536 VFS/normal_vfs.cpp:90
-#: VFS/normal_vfs.cpp:100 VFS/normal_vfs.cpp:107 VFS/virt_vfs.cpp:87
-#: VFS/virt_vfs.cpp:173
-msgid "Error"
-msgstr ""
 
 #: BookMan/krbookmarkhandler.cpp:180
 msgid " instead of "
@@ -687,20 +667,9 @@ msgstr "管理书签"
 msgid "Jump back"
 msgstr "跳回"
 
-#: BookMan/krbookmarkhandler.cpp:538 GUI/mediabutton.cpp:529
-#: Panel/krpopupmenu.cpp:61
-msgid "Open"
-msgstr "打开"
-
 #: BookMan/krbookmarkhandler.cpp:539 GUI/mediabutton.cpp:530
 msgid "Open in a new tab"
 msgstr "在新标签打开"
-
-#: BookMan/krbookmarkhandler.cpp:541 Dialogs/krmaskchoice.cpp:110
-#: Dialogs/kurllistrequester.cpp:149 DiskUsage/diskusage.cpp:757
-#: Konfigurator/kgcolors.cpp:474 Panel/krpopupmenu.cpp:145 krusader.cpp:796
-msgid "Delete"
-msgstr "删除"
 
 #: Dialogs/checksumdlg.cpp:211 Dialogs/checksumdlg.cpp:466
 msgid "Create Checksum"
@@ -807,10 +776,6 @@ msgstr "校验和:"
 msgid "Hash"
 msgstr "Hash"
 
-#: Dialogs/checksumdlg.cpp:496 Konfigurator/kgcolors.cpp:418
-msgid "File"
-msgstr "文件"
-
 #: Dialogs/checksumdlg.cpp:499
 #, fuzzy
 msgid "File and hash"
@@ -835,12 +800,6 @@ msgid ""
 msgstr ""
 "文件 %1 已存在。\n"
 "您确定要覆盖它吗？"
-
-#: Dialogs/checksumdlg.cpp:573 Dialogs/krkeydialog.cpp:135
-#: DiskUsage/diskusage.cpp:607 Konfigurator/kgcolors.cpp:523
-#: Panel/panelfunc.cpp:664
-msgid "Warning"
-msgstr "警告"
 
 #: Dialogs/checksumdlg.cpp:575
 msgid "Select a file to save to"
@@ -966,10 +925,6 @@ msgid ""
 "can scroll it, if needed."
 msgstr ""
 
-#: Dialogs/krmaskchoice.cpp:105
-msgid "Add"
-msgstr "添加"
-
 #: Dialogs/krmaskchoice.cpp:106
 msgid "Adds the selection in the line-edit to the list"
 msgstr "Adds the selection in the line-edit to the list"
@@ -978,33 +933,14 @@ msgstr "Adds the selection in the line-edit to the list"
 msgid "Delete the marked selection from the list"
 msgstr "在列表中删除标记的选择"
 
-#: Dialogs/krmaskchoice.cpp:115
-msgid "Clear"
-msgstr "清除"
-
 #: Dialogs/krmaskchoice.cpp:116
 msgid "Clears the entire list of selections"
 msgstr "删除选择的项目"
-
-#: Dialogs/krmaskchoice.cpp:131
-msgid "OK"
-msgstr "确定"
-
-#: Dialogs/krmaskchoice.cpp:135 Dialogs/packguibase.cpp:289
-#: DiskUsage/diskusage.cpp:155 Panel/listpanel.cpp:852 Panel/panelpopup.cpp:379
-msgid "Cancel"
-msgstr "取消"
 
 #: Dialogs/krpleasewait.cpp:45
 #, fuzzy
 msgid "Krusader::Wait"
 msgstr "Krusader：：Locate"
-
-#: Dialogs/krpleasewait.cpp:60 Dialogs/newftpgui.cpp:133
-#: Splitter/splittergui.cpp:113 mount.ui:86 recode.ui:87
-#, no-c-format
-msgid "&Cancel"
-msgstr "取消(&C)"
 
 #: Dialogs/krprogress.cpp:59
 msgid "Source:"
@@ -1318,12 +1254,6 @@ msgstr "回收站(&T)"
 msgid "Do you really want to delete this item?"
 msgstr "您确定要删除这个吗？？？"
 
-#: DiskUsage/diskusage.cpp:600 DiskUsage/radialMap/widgetEvents.cpp:172
-#: DiskUsage/radialMap/widgetEvents.cpp:194 Panel/panelfunc.cpp:652
-#: Panel/panelfunc.cpp:655 Panel/panelfunc.cpp:658
-msgid "&Delete"
-msgstr "删除(&D)"
-
 #: DiskUsage/diskusage.cpp:611
 #, fuzzy
 msgid "Deleting %1..."
@@ -1380,10 +1310,6 @@ msgstr "下一个"
 #: DiskUsage/diskusage.cpp:793
 msgid "Previous"
 msgstr "上一个"
-
-#: DiskUsage/diskusage.cpp:797
-msgid "View"
-msgstr "查看  "
 
 #: DiskUsage/diskusage.cpp:1031
 msgid "Type:"
@@ -1829,10 +1755,6 @@ msgstr "加载(&L)"
 msgid "&Overwrite"
 msgstr "覆盖(&O)"
 
-#: Filter/generalfilter.cpp:138 RemoteMan/remotemanbase.cpp:155
-msgid "&Remove"
-msgstr "删除(&R)"
-
 #: Filter/generalfilter.cpp:155
 msgid "&Search in"
 msgstr "搜索这里(&S)"
@@ -2016,14 +1938,6 @@ msgstr "重命名"
 msgid " Quit"
 msgstr "退出"
 
-#: GUI/krremoteencodingmenu.cpp:97
-msgid "Reload"
-msgstr "重新载入"
-
-#: GUI/krremoteencodingmenu.cpp:98 Konfigurator/konfiguratoritems.cpp:539
-msgid "Default"
-msgstr "默认值"
-
 #: GUI/krusaderstatus.cpp:39
 msgid "Ready."
 msgstr "已就绪。"
@@ -2155,10 +2069,6 @@ msgstr "下一个标签"
 #: KViewer/krviewer.cpp:101
 msgid "&Close current tab"
 msgstr "关闭当前标签(&C)"
-
-#: KViewer/krviewer.cpp:102
-msgid "&Quit"
-msgstr "退出(&Q)"
 
 #: KViewer/krviewer.cpp:159
 msgid "&KrViewer"
@@ -3425,11 +3335,6 @@ msgid ""
 "main window"
 msgstr ""
 
-#: Konfigurator/kguseractions.cpp:48
-#, fuzzy
-msgid "Information"
-msgstr "确认"
-
 #: Konfigurator/kguseractions.cpp:53
 msgid ""
 "Here you can configure settings about useractions.\n"
@@ -3475,11 +3380,6 @@ msgstr "默认值"
 #: Konfigurator/konfigurator.cpp:65
 msgid "Konfigurator - Creating Your Own Krusader"
 msgstr "Konfigurator - 创建个性化的 Krusader"
-
-#: Konfigurator/konfigurator.cpp:69 Search/krsearchdialog.cpp:139
-#: Synchronizer/synchronizergui.cpp:1471 UserAction/kraction.cpp:49
-msgid "Close"
-msgstr "关闭"
 
 #: Konfigurator/konfigurator.cpp:90
 msgid "Startup"
@@ -3689,11 +3589,6 @@ msgstr ""
 "在 %1中:\n"
 "JavaScript 错误。"
 
-#: Locate/locate.cpp:101 Locate/locate.cpp:241 Search/krsearchdialog.cpp:135
-#: Synchronizer/synchronizergui.cpp:1455
-msgid "Stop"
-msgstr "停止"
-
 #: Locate/locate.cpp:101
 msgid "Update DB"
 msgstr "更新数据库"
@@ -3816,11 +3711,6 @@ msgstr "%1 KB"
 #: MountMan/kmountman.cpp:250
 msgid "MountMan is not operational. Sorry"
 msgstr "对不起，挂载管理器是不可操作的。"
-
-#: MountMan/kmountmangui.cpp:70 RemoteMan/remotemanbase.cpp:73
-#: Synchronizer/synchronizedialog.cpp:117
-msgid "&Close"
-msgstr "颜色"
 
 #: MountMan/kmountmangui.cpp:72
 msgid "MountMan - Your Mount-Manager"
@@ -4821,15 +4711,6 @@ msgstr "同步器"
 msgid "Side to feed:"
 msgstr ""
 
-#: Synchronizer/feedtolistboxdialog.cpp:125
-msgid "Left"
-msgstr ""
-
-#: Synchronizer/feedtolistboxdialog.cpp:126
-#, fuzzy
-msgid "Right"
-msgstr "右侧面板"
-
 #: Synchronizer/feedtolistboxdialog.cpp:127
 #, fuzzy
 msgid "Both"
@@ -4889,11 +4770,6 @@ msgstr "左侧：删除%1个文件(%2个字节)"
 #: Synchronizer/synchronizedialog.cpp:101
 msgid "Confirm overwrites"
 msgstr "覆盖需要确定"
-
-#: Synchronizer/synchronizedialog.cpp:110
-#, fuzzy
-msgid "&Start"
-msgstr "启动"
 
 #: Synchronizer/synchronizedialog.cpp:114
 #, fuzzy
@@ -5089,11 +4965,6 @@ msgstr "<=>"
 #: Synchronizer/synchronizergui.cpp:1344
 msgid "&Synchronizer"
 msgstr "同步器(&S)"
-
-#: Synchronizer/synchronizergui.cpp:1355
-#, fuzzy
-msgid "&Options"
-msgstr "操作"
 
 #: Synchronizer/synchronizergui.cpp:1364
 msgid "Parallel threads:"
@@ -6037,10 +5908,6 @@ msgstr "F3 查看对话框  "
 msgid "Tab: switch panel"
 msgstr "Tab： 交换面板"
 
-#: krusader.cpp:564
-msgid "&Reload"
-msgstr "重新载入(&R)"
-
 #: krusader.cpp:566
 msgid "Show Actions Toolbar"
 msgstr "显示宏工具栏"
@@ -6122,11 +5989,6 @@ msgstr "生成校验和"
 #, fuzzy
 msgid "Verify Checksum..."
 msgstr "检查校验和"
-
-#: krusader.cpp:625
-#, fuzzy
-msgid "&Properties..."
-msgstr "属性(&P)"
 
 #: krusader.cpp:627
 #, fuzzy
@@ -6267,10 +6129,6 @@ msgstr "D&isk Usage"
 msgid "Configure &Krusader..."
 msgstr "配置 Krusader (&K)"
 
-#: krusader.cpp:719
-msgid "Back"
-msgstr "后退"
-
 #: krusader.cpp:723
 msgid "Save &Position"
 msgstr "保存位置(&P)"
@@ -6396,11 +6254,6 @@ msgstr "编辑文件 (F4)"
 #, fuzzy
 msgid "New Directory..."
 msgstr "新建目录"
-
-#: krusader.cpp:800
-#, fuzzy
-msgid "Quit"
-msgstr "安静"
 
 #: krusader.cpp:802
 #, fuzzy
@@ -6594,25 +6447,10 @@ msgstr "16"
 msgid "Set as caption"
 msgstr "与活动的相同"
 
-#: krusaderui.rc:4
-#, no-c-format
-msgid "&File"
-msgstr "文件(&F)"
-
-#: krusaderui.rc:36
-#, fuzzy, no-c-format
-msgid "&Edit"
-msgstr "编辑 "
-
 #: krusaderui.rc:51
 #, no-c-format
 msgid "Compare Se&tup"
 msgstr "比较设置(&T)"
-
-#: krusaderui.rc:63
-#, no-c-format
-msgid "&View"
-msgstr "查看(&V)"
 
 #: krusaderui.rc:77
 #, no-c-format
@@ -6624,16 +6462,6 @@ msgstr ""
 msgid "User&actions"
 msgstr "用户宏(&U)"
 
-#: krusaderui.rc:93
-#, no-c-format
-msgid "&Tools"
-msgstr "工具(&T)"
-
-#: krusaderui.rc:117
-#, no-c-format
-msgid "&Settings"
-msgstr "设置(&S)"
-
 #: krusaderui.rc:127
 #, fuzzy, no-c-format
 msgid "Command Execution Mode Se&tup"
@@ -6644,20 +6472,10 @@ msgstr "执行模式"
 msgid "&Window"
 msgstr ""
 
-#: krusaderui.rc:158
-#, no-c-format
-msgid "&Help"
-msgstr "Help(&H)"
-
 #: mount.ui:24
 #, fuzzy, no-c-format
 msgid "Mount a Filesystem"
 msgstr "虚拟文件系统"
-
-#: mount.ui:69 recode.ui:70
-#, fuzzy, no-c-format
-msgid "&OK"
-msgstr "确定"
 
 #: mount.ui:102
 #, fuzzy, no-c-format
@@ -6738,6 +6556,119 @@ msgstr ""
 #, fuzzy, no-c-format
 msgid "Dump type: "
 msgstr "类型(&O)："
+
+#~ msgid "Remove"
+#~ msgstr "删除"
+
+#~ msgid "Bookmarks"
+#~ msgstr "书签"
+
+#~ msgid "Open"
+#~ msgstr "打开"
+
+#~ msgid "Delete"
+#~ msgstr "删除"
+
+#~ msgid "File"
+#~ msgstr "文件"
+
+#~ msgid "Warning"
+#~ msgstr "警告"
+
+#~ msgid "Add"
+#~ msgstr "添加"
+
+#~ msgid "Clear"
+#~ msgstr "清除"
+
+#~ msgid "OK"
+#~ msgstr "确定"
+
+#~ msgid "Cancel"
+#~ msgstr "取消"
+
+#~ msgid "&Cancel"
+#~ msgstr "取消(&C)"
+
+#~ msgid "&Delete"
+#~ msgstr "删除(&D)"
+
+#~ msgid "View"
+#~ msgstr "查看  "
+
+#~ msgid "&Remove"
+#~ msgstr "删除(&R)"
+
+#~ msgid "Reload"
+#~ msgstr "重新载入"
+
+#~ msgid "Default"
+#~ msgstr "默认值"
+
+#~ msgid "&Quit"
+#~ msgstr "退出(&Q)"
+
+#, fuzzy
+#~ msgid "Information"
+#~ msgstr "确认"
+
+#~ msgid "Close"
+#~ msgstr "关闭"
+
+#~ msgid "Stop"
+#~ msgstr "停止"
+
+#~ msgid "&Close"
+#~ msgstr "颜色"
+
+#, fuzzy
+#~ msgid "Right"
+#~ msgstr "右侧面板"
+
+#, fuzzy
+#~ msgid "&Start"
+#~ msgstr "启动"
+
+#, fuzzy
+#~ msgid "&Options"
+#~ msgstr "操作"
+
+#~ msgid "&Reload"
+#~ msgstr "重新载入(&R)"
+
+#, fuzzy
+#~ msgid "&Properties..."
+#~ msgstr "属性(&P)"
+
+#~ msgid "Back"
+#~ msgstr "后退"
+
+#, fuzzy
+#~ msgid "Quit"
+#~ msgstr "安静"
+
+#~ msgid "&File"
+#~ msgstr "文件(&F)"
+
+#, fuzzy
+#~ msgid "&Edit"
+#~ msgstr "编辑 "
+
+#~ msgid "&View"
+#~ msgstr "查看(&V)"
+
+#~ msgid "&Tools"
+#~ msgstr "工具(&T)"
+
+#~ msgid "&Settings"
+#~ msgstr "设置(&S)"
+
+#~ msgid "&Help"
+#~ msgstr "Help(&H)"
+
+#, fuzzy
+#~ msgid "&OK"
+#~ msgstr "确定"
 
 #~ msgid "If pressed, Krusader executes command line in a terminal."
 #~ msgstr "如果您按下,  Krusader将会在终端执行命令。"

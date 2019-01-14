@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: krusader-1.80.0\n"
 "Report-Msgid-Bugs-To: Dirk Eschler <deschler@users.sourceforge.net>\n"
-"POT-Creation-Date: 2019-01-03 15:00+0100\n"
+"POT-Creation-Date: 2019-01-13 19:16+0100\n"
 "PO-Revision-Date: 2005-12-04 10:30+0200\n"
 "Last-Translator: Milen Ivanov <milen.kerat@gmail.com>\n"
 "Language-Team: krusader-i18n <krusader-i18n@googlegroups.com>\n"
@@ -553,10 +553,6 @@ msgstr "Сигурни ли сте, че искате да премахнете 
 msgid "Remove selected actions?"
 msgstr "Премахване на избраните действия?"
 
-#: ActionMan/useractionpage.cpp:205
-msgid "Remove"
-msgstr "Премахване"
-
 #: ActionMan/useractionpage.cpp:246
 msgid ""
 "This file already contains some useractions.\n"
@@ -620,11 +616,6 @@ msgstr "URL:"
 msgid "Create in:"
 msgstr "Създаване в:"
 
-#: BookMan/kraddbookmarkdlg.cpp:71 BookMan/krbookmarkbutton.cpp:19
-#: BookMan/krbookmarkhandler.cpp:30 krusader.cpp:741
-msgid "Bookmarks"
-msgstr "Отметки"
-
 #: BookMan/kraddbookmarkdlg.cpp:103
 msgid "Folder name:"
 msgstr "Име на папка:"
@@ -653,17 +644,6 @@ msgstr "Управление на отметки II"
 #, c-format
 msgid "Unable to write to %1"
 msgstr "Невъзможен запис в %1"
-
-#: BookMan/krbookmarkhandler.cpp:172 BookMan/krbookmarkhandler.cpp:268
-#: Konfigurator/kgcolors.cpp:508 Konfigurator/kgcolors.cpp:525
-#: Konfigurator/kggeneral.cpp:201 MountMan/kmountman.cpp:197
-#: Synchronizer/synchronizerdirlist.cpp:101 VFS/krarchandler.cpp:215
-#: VFS/krarchandler.cpp:274 VFS/krarchandler.cpp:291 VFS/krarchandler.cpp:352
-#: VFS/krarchandler.cpp:529 VFS/krarchandler.cpp:536 VFS/normal_vfs.cpp:90
-#: VFS/normal_vfs.cpp:100 VFS/normal_vfs.cpp:107 VFS/virt_vfs.cpp:87
-#: VFS/virt_vfs.cpp:173
-msgid "Error"
-msgstr "Грешка"
 
 #: BookMan/krbookmarkhandler.cpp:180
 msgid " instead of "
@@ -703,20 +683,9 @@ msgstr "Включване на специалните отметки"
 msgid "Jump back"
 msgstr "Стъпка назад"
 
-#: BookMan/krbookmarkhandler.cpp:538 GUI/mediabutton.cpp:529
-#: Panel/krpopupmenu.cpp:61
-msgid "Open"
-msgstr "Отваряне"
-
 #: BookMan/krbookmarkhandler.cpp:539 GUI/mediabutton.cpp:530
 msgid "Open in a new tab"
 msgstr "Отваряне в нов подпрозорец"
-
-#: BookMan/krbookmarkhandler.cpp:541 Dialogs/krmaskchoice.cpp:110
-#: Dialogs/kurllistrequester.cpp:149 DiskUsage/diskusage.cpp:757
-#: Konfigurator/kgcolors.cpp:474 Panel/krpopupmenu.cpp:145 krusader.cpp:796
-msgid "Delete"
-msgstr "Изтриване"
 
 #: Dialogs/checksumdlg.cpp:211 Dialogs/checksumdlg.cpp:466
 msgid "Create Checksum"
@@ -832,10 +801,6 @@ msgstr "Това са пресметнатите контролни суми:"
 msgid "Hash"
 msgstr "Хеш"
 
-#: Dialogs/checksumdlg.cpp:496 Konfigurator/kgcolors.cpp:418
-msgid "File"
-msgstr "Файл"
-
 #: Dialogs/checksumdlg.cpp:499
 msgid "File and hash"
 msgstr "Файл и хеш"
@@ -859,12 +824,6 @@ msgid ""
 msgstr ""
 "Файла %1 вече съществува.\n"
 "Сигурни ли сте, че искате ли да го презапишете?"
-
-#: Dialogs/checksumdlg.cpp:573 Dialogs/krkeydialog.cpp:135
-#: DiskUsage/diskusage.cpp:607 Konfigurator/kgcolors.cpp:523
-#: Panel/panelfunc.cpp:664
-msgid "Warning"
-msgstr "Предупреждение"
 
 #: Dialogs/checksumdlg.cpp:575
 msgid "Select a file to save to"
@@ -999,10 +958,6 @@ msgstr ""
 "Забележете, че реда, където описвате маската, има своя хроника, която можете "
 "да превъртате при нужда."
 
-#: Dialogs/krmaskchoice.cpp:105
-msgid "Add"
-msgstr "Добавяне"
-
 #: Dialogs/krmaskchoice.cpp:106
 msgid "Adds the selection in the line-edit to the list"
 msgstr "Добавяне в списъка на селекцията от реда"
@@ -1011,32 +966,13 @@ msgstr "Добавяне в списъка на селекцията от ред
 msgid "Delete the marked selection from the list"
 msgstr "Изтриване на отбелязаната селекция от списъка"
 
-#: Dialogs/krmaskchoice.cpp:115
-msgid "Clear"
-msgstr "Изчистване"
-
 #: Dialogs/krmaskchoice.cpp:116
 msgid "Clears the entire list of selections"
 msgstr "Изчистване на целият списък от селекции"
 
-#: Dialogs/krmaskchoice.cpp:131
-msgid "OK"
-msgstr "ОК"
-
-#: Dialogs/krmaskchoice.cpp:135 Dialogs/packguibase.cpp:289
-#: DiskUsage/diskusage.cpp:155 Panel/listpanel.cpp:852 Panel/panelpopup.cpp:379
-msgid "Cancel"
-msgstr "Отказ"
-
 #: Dialogs/krpleasewait.cpp:45
 msgid "Krusader::Wait"
 msgstr "Krusader::Изчакване"
-
-#: Dialogs/krpleasewait.cpp:60 Dialogs/newftpgui.cpp:133
-#: Splitter/splittergui.cpp:113 mount.ui:86 recode.ui:87
-#, no-c-format
-msgid "&Cancel"
-msgstr "&Отказ"
 
 #: Dialogs/krprogress.cpp:59
 msgid "Source:"
@@ -1359,12 +1295,6 @@ msgstr "&Кошче"
 msgid "Do you really want to delete this item?"
 msgstr "Сигурни ли сте, че искате да изтриете елемента?"
 
-#: DiskUsage/diskusage.cpp:600 DiskUsage/radialMap/widgetEvents.cpp:172
-#: DiskUsage/radialMap/widgetEvents.cpp:194 Panel/panelfunc.cpp:652
-#: Panel/panelfunc.cpp:655 Panel/panelfunc.cpp:658
-msgid "&Delete"
-msgstr "Изтрива&не"
-
 #: DiskUsage/diskusage.cpp:611
 msgid "Deleting %1..."
 msgstr "Изтриване на %1..."
@@ -1420,10 +1350,6 @@ msgstr "Следващ"
 #: DiskUsage/diskusage.cpp:793
 msgid "Previous"
 msgstr "Предишен"
-
-#: DiskUsage/diskusage.cpp:797
-msgid "View"
-msgstr "Изглед"
 
 #: DiskUsage/diskusage.cpp:1031
 msgid "Type:"
@@ -1889,10 +1815,6 @@ msgstr "&Зареждане"
 msgid "&Overwrite"
 msgstr "&Презапис"
 
-#: Filter/generalfilter.cpp:138 RemoteMan/remotemanbase.cpp:155
-msgid "&Remove"
-msgstr "&Премахване"
-
 #: Filter/generalfilter.cpp:155
 msgid "&Search in"
 msgstr "&Търси в"
@@ -2075,14 +1997,6 @@ msgstr " Преименуване"
 msgid " Quit"
 msgstr " Изход"
 
-#: GUI/krremoteencodingmenu.cpp:97
-msgid "Reload"
-msgstr "Презареждане"
-
-#: GUI/krremoteencodingmenu.cpp:98 Konfigurator/konfiguratoritems.cpp:539
-msgid "Default"
-msgstr "По подразбиране"
-
 #: GUI/krusaderstatus.cpp:39
 msgid "Ready."
 msgstr "Готово."
@@ -2207,10 +2121,6 @@ msgstr "&Откачане на подпрозорец"
 #: KViewer/krviewer.cpp:101
 msgid "&Close current tab"
 msgstr "&Затваряне на текущия подпрозорец"
-
-#: KViewer/krviewer.cpp:102
-msgid "&Quit"
-msgstr "Из&ход"
 
 #: KViewer/krviewer.cpp:159
 msgid "&KrViewer"
@@ -3532,10 +3442,6 @@ msgstr ""
 "Krusader се стартира в системния трей (ако е активирано минимизирането), без "
 "да изобрази главния си прозорец"
 
-#: Konfigurator/kguseractions.cpp:48
-msgid "Information"
-msgstr "Информация"
-
 #: Konfigurator/kguseractions.cpp:53
 msgid ""
 "Here you can configure settings about useractions.\n"
@@ -3580,11 +3486,6 @@ msgstr "Възстановяване"
 #: Konfigurator/konfigurator.cpp:65
 msgid "Konfigurator - Creating Your Own Krusader"
 msgstr "Конфигуратор - Направете Krusader удобен!"
-
-#: Konfigurator/konfigurator.cpp:69 Search/krsearchdialog.cpp:139
-#: Synchronizer/synchronizergui.cpp:1471 UserAction/kraction.cpp:49
-msgid "Close"
-msgstr "Затваряне"
 
 #: Konfigurator/konfigurator.cpp:90
 msgid "Startup"
@@ -3801,11 +3702,6 @@ msgstr ""
 "В %1:\n"
 "Има грешка в JavaScript"
 
-#: Locate/locate.cpp:101 Locate/locate.cpp:241 Search/krsearchdialog.cpp:135
-#: Synchronizer/synchronizergui.cpp:1455
-msgid "Stop"
-msgstr "Стоп"
-
 #: Locate/locate.cpp:101
 msgid "Update DB"
 msgstr "Обновява БД"
@@ -3930,11 +3826,6 @@ msgstr "%1 KB"
 #: MountMan/kmountman.cpp:250
 msgid "MountMan is not operational. Sorry"
 msgstr "Управлението на монтирането не работи. Извинете!"
-
-#: MountMan/kmountmangui.cpp:70 RemoteMan/remotemanbase.cpp:73
-#: Synchronizer/synchronizedialog.cpp:117
-msgid "&Close"
-msgstr "&Затваряне"
 
 #: MountMan/kmountmangui.cpp:72
 msgid "MountMan - Your Mount-Manager"
@@ -4946,14 +4837,6 @@ msgstr "Резултати от синхронизацията"
 msgid "Side to feed:"
 msgstr "Страна за извеждане:"
 
-#: Synchronizer/feedtolistboxdialog.cpp:125
-msgid "Left"
-msgstr "Лява"
-
-#: Synchronizer/feedtolistboxdialog.cpp:126
-msgid "Right"
-msgstr "Десна"
-
 #: Synchronizer/feedtolistboxdialog.cpp:127
 msgid "Both"
 msgstr "Двете"
@@ -5019,10 +4902,6 @@ msgstr ""
 #: Synchronizer/synchronizedialog.cpp:101
 msgid "Confirm overwrites"
 msgstr "Потвърждаване презапис"
-
-#: Synchronizer/synchronizedialog.cpp:110
-msgid "&Start"
-msgstr "&Старт"
 
 #: Synchronizer/synchronizedialog.cpp:114
 msgid "&Pause"
@@ -5221,10 +5100,6 @@ msgstr "<=>"
 #: Synchronizer/synchronizergui.cpp:1344
 msgid "&Synchronizer"
 msgstr "&Синхронизатор"
-
-#: Synchronizer/synchronizergui.cpp:1355
-msgid "&Options"
-msgstr "&Настройки"
 
 #: Synchronizer/synchronizergui.cpp:1364
 msgid "Parallel threads:"
@@ -6119,10 +5994,6 @@ msgstr "F3 Диалог Преглед"
 msgid "Tab: switch panel"
 msgstr "Tab: превключва панелите"
 
-#: krusader.cpp:564
-msgid "&Reload"
-msgstr "Пре&зареждане"
-
 #: krusader.cpp:566
 msgid "Show Actions Toolbar"
 msgstr "Показване на панела с действия"
@@ -6194,10 +6065,6 @@ msgstr "Създаване на контролна сума..."
 #: krusader.cpp:623
 msgid "Verify Checksum..."
 msgstr "Проверка на контролната сума..."
-
-#: krusader.cpp:625
-msgid "&Properties..."
-msgstr "Сво&йства..."
 
 #: krusader.cpp:627
 msgid "Pac&k..."
@@ -6315,10 +6182,6 @@ msgstr "&Заето място..."
 msgid "Configure &Krusader..."
 msgstr "&Настройка на Krusader..."
 
-#: krusader.cpp:719
-msgid "Back"
-msgstr "Назад"
-
 #: krusader.cpp:723
 msgid "Save &Position"
 msgstr "&Запис разположение"
@@ -6426,10 +6289,6 @@ msgstr "Редактиране на файл"
 #: krusader.cpp:794
 msgid "New Directory..."
 msgstr "Нова директория..."
-
-#: krusader.cpp:800
-msgid "Quit"
-msgstr "Изход"
 
 #: krusader.cpp:802
 msgid "Popular URLs..."
@@ -6620,25 +6479,10 @@ msgstr "16"
 msgid "Set as caption"
 msgstr "Също като активни"
 
-#: krusaderui.rc:4
-#, no-c-format
-msgid "&File"
-msgstr "&Файл"
-
-#: krusaderui.rc:36
-#, no-c-format
-msgid "&Edit"
-msgstr "&Редактиране"
-
 #: krusaderui.rc:51
 #, no-c-format
 msgid "Compare Se&tup"
 msgstr "&Конфигуриране на сравняването"
-
-#: krusaderui.rc:63
-#, no-c-format
-msgid "&View"
-msgstr "Из&глед"
 
 #: krusaderui.rc:77
 #, no-c-format
@@ -6650,16 +6494,6 @@ msgstr "&Давай"
 msgid "User&actions"
 msgstr "&Потребителски действия"
 
-#: krusaderui.rc:93
-#, no-c-format
-msgid "&Tools"
-msgstr "&Инструменти"
-
-#: krusaderui.rc:117
-#, no-c-format
-msgid "&Settings"
-msgstr "&Настройки"
-
 #: krusaderui.rc:127
 #, no-c-format
 msgid "Command Execution Mode Se&tup"
@@ -6670,20 +6504,10 @@ msgstr "Н&астройки на режима на изпълнение"
 msgid "&Window"
 msgstr "Про&зорец"
 
-#: krusaderui.rc:158
-#, no-c-format
-msgid "&Help"
-msgstr "Помо&щ"
-
 #: mount.ui:24
 #, fuzzy, no-c-format
 msgid "Mount a Filesystem"
 msgstr "Виртуална файлова система"
-
-#: mount.ui:69 recode.ui:70
-#, fuzzy, no-c-format
-msgid "&OK"
-msgstr "ОК"
 
 #: mount.ui:102
 #, fuzzy, no-c-format
@@ -6764,6 +6588,118 @@ msgstr ""
 #, fuzzy, no-c-format
 msgid "Dump type: "
 msgstr "&От тип:"
+
+#~ msgid "Remove"
+#~ msgstr "Премахване"
+
+#~ msgid "Bookmarks"
+#~ msgstr "Отметки"
+
+#~ msgid "Error"
+#~ msgstr "Грешка"
+
+#~ msgid "Open"
+#~ msgstr "Отваряне"
+
+#~ msgid "Delete"
+#~ msgstr "Изтриване"
+
+#~ msgid "File"
+#~ msgstr "Файл"
+
+#~ msgid "Warning"
+#~ msgstr "Предупреждение"
+
+#~ msgid "Add"
+#~ msgstr "Добавяне"
+
+#~ msgid "Clear"
+#~ msgstr "Изчистване"
+
+#~ msgid "OK"
+#~ msgstr "ОК"
+
+#~ msgid "Cancel"
+#~ msgstr "Отказ"
+
+#~ msgid "&Cancel"
+#~ msgstr "&Отказ"
+
+#~ msgid "&Delete"
+#~ msgstr "Изтрива&не"
+
+#~ msgid "View"
+#~ msgstr "Изглед"
+
+#~ msgid "&Remove"
+#~ msgstr "&Премахване"
+
+#~ msgid "Reload"
+#~ msgstr "Презареждане"
+
+#~ msgid "Default"
+#~ msgstr "По подразбиране"
+
+#~ msgid "&Quit"
+#~ msgstr "Из&ход"
+
+#~ msgid "Information"
+#~ msgstr "Информация"
+
+#~ msgid "Close"
+#~ msgstr "Затваряне"
+
+#~ msgid "Stop"
+#~ msgstr "Стоп"
+
+#~ msgid "&Close"
+#~ msgstr "&Затваряне"
+
+#~ msgid "Left"
+#~ msgstr "Лява"
+
+#~ msgid "Right"
+#~ msgstr "Десна"
+
+#~ msgid "&Start"
+#~ msgstr "&Старт"
+
+#~ msgid "&Options"
+#~ msgstr "&Настройки"
+
+#~ msgid "&Reload"
+#~ msgstr "Пре&зареждане"
+
+#~ msgid "&Properties..."
+#~ msgstr "Сво&йства..."
+
+#~ msgid "Back"
+#~ msgstr "Назад"
+
+#~ msgid "Quit"
+#~ msgstr "Изход"
+
+#~ msgid "&File"
+#~ msgstr "&Файл"
+
+#~ msgid "&Edit"
+#~ msgstr "&Редактиране"
+
+#~ msgid "&View"
+#~ msgstr "Из&глед"
+
+#~ msgid "&Tools"
+#~ msgstr "&Инструменти"
+
+#~ msgid "&Settings"
+#~ msgstr "&Настройки"
+
+#~ msgid "&Help"
+#~ msgstr "Помо&щ"
+
+#, fuzzy
+#~ msgid "&OK"
+#~ msgstr "ОК"
 
 #~ msgid "If pressed, Krusader executes command line in a terminal."
 #~ msgstr "Ако е натиснат, Krusader изпълнява командния ред в терминал."
