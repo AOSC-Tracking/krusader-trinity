@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: krusader-1.80.0-beta2\n"
 "Report-Msgid-Bugs-To: Dirk Eschler <deschler@users.sourceforge.net>\n"
-"POT-Creation-Date: 2019-01-03 15:00+0100\n"
+"POT-Creation-Date: 2019-01-13 19:16+0100\n"
 "PO-Revision-Date: 2004-10-13 23:06+0200\n"
 "Last-Translator: Asim Husanovic <asim.h@megatel.ba>\n"
 "Language-Team: Bosnian\n"
@@ -531,11 +531,6 @@ msgstr "Da li ste sigurni da želite "
 msgid "Remove selected actions?"
 msgstr "Izbriši ovu akciju?"
 
-#: ActionMan/useractionpage.cpp:205
-#, fuzzy
-msgid "Remove"
-msgstr "izbriši"
-
 #: ActionMan/useractionpage.cpp:246
 msgid ""
 "This file already contains some useractions.\n"
@@ -600,12 +595,6 @@ msgstr "URL:"
 msgid "Create in:"
 msgstr "Napravi u:"
 
-#: BookMan/kraddbookmarkdlg.cpp:71 BookMan/krbookmarkbutton.cpp:19
-#: BookMan/krbookmarkhandler.cpp:30 krusader.cpp:741
-#, fuzzy
-msgid "Bookmarks"
-msgstr "Dodaj zabilješku"
-
 #: BookMan/kraddbookmarkdlg.cpp:103
 msgid "Folder name:"
 msgstr "Korisničko ime:"
@@ -636,17 +625,6 @@ msgstr "BookMan II"
 #, fuzzy, c-format
 msgid "Unable to write to %1"
 msgstr "Ne mogu kompletirati montiranje."
-
-#: BookMan/krbookmarkhandler.cpp:172 BookMan/krbookmarkhandler.cpp:268
-#: Konfigurator/kgcolors.cpp:508 Konfigurator/kgcolors.cpp:525
-#: Konfigurator/kggeneral.cpp:201 MountMan/kmountman.cpp:197
-#: Synchronizer/synchronizerdirlist.cpp:101 VFS/krarchandler.cpp:215
-#: VFS/krarchandler.cpp:274 VFS/krarchandler.cpp:291 VFS/krarchandler.cpp:352
-#: VFS/krarchandler.cpp:529 VFS/krarchandler.cpp:536 VFS/normal_vfs.cpp:90
-#: VFS/normal_vfs.cpp:100 VFS/normal_vfs.cpp:107 VFS/virt_vfs.cpp:87
-#: VFS/virt_vfs.cpp:173
-msgid "Error"
-msgstr ""
 
 #: BookMan/krbookmarkhandler.cpp:180
 msgid " instead of "
@@ -688,22 +666,9 @@ msgstr "KMenadžer zabilješki"
 msgid "Jump back"
 msgstr ""
 
-#: BookMan/krbookmarkhandler.cpp:538 GUI/mediabutton.cpp:529
-#: Panel/krpopupmenu.cpp:61
-#, fuzzy
-msgid "Open"
-msgstr "Vidljivo dugme otvaranja"
-
 #: BookMan/krbookmarkhandler.cpp:539 GUI/mediabutton.cpp:530
 msgid "Open in a new tab"
 msgstr "Otovori u novoj kartici"
-
-#: BookMan/krbookmarkhandler.cpp:541 Dialogs/krmaskchoice.cpp:110
-#: Dialogs/kurllistrequester.cpp:149 DiskUsage/diskusage.cpp:757
-#: Konfigurator/kgcolors.cpp:474 Panel/krpopupmenu.cpp:145 krusader.cpp:796
-#, fuzzy
-msgid "Delete"
-msgstr "F8 Izbriši"
 
 #: Dialogs/checksumdlg.cpp:211 Dialogs/checksumdlg.cpp:466
 #, fuzzy
@@ -814,11 +779,6 @@ msgstr ""
 msgid "Hash"
 msgstr "baciti u smeće"
 
-#: Dialogs/checksumdlg.cpp:496 Konfigurator/kgcolors.cpp:418
-#, fuzzy
-msgid "File"
-msgstr "Polja:"
-
 #: Dialogs/checksumdlg.cpp:499
 #, fuzzy
 msgid "File and hash"
@@ -842,12 +802,6 @@ msgid ""
 "File %1 already exists.\n"
 "Are you sure you want to overwrite it?"
 msgstr " postoji. Da li želite prepisati arhivu?"
-
-#: Dialogs/checksumdlg.cpp:573 Dialogs/krkeydialog.cpp:135
-#: DiskUsage/diskusage.cpp:607 Konfigurator/kgcolors.cpp:523
-#: Panel/panelfunc.cpp:664
-msgid "Warning"
-msgstr ""
 
 #: Dialogs/checksumdlg.cpp:575
 #, fuzzy
@@ -981,11 +935,6 @@ msgstr ""
 "that the line in which you edit the mask has it's own history, you can roll "
 "it down if needed."
 
-#: Dialogs/krmaskchoice.cpp:105
-#, fuzzy
-msgid "Add"
-msgstr "&Napredno"
-
 #: Dialogs/krmaskchoice.cpp:106
 msgid "Adds the selection in the line-edit to the list"
 msgstr "Dodavanje označavanja u izmjenjujuću liniju u listi"
@@ -994,35 +943,14 @@ msgstr "Dodavanje označavanja u izmjenjujuću liniju u listi"
 msgid "Delete the marked selection from the list"
 msgstr "Izbriši označeno iz liste"
 
-#: Dialogs/krmaskchoice.cpp:115
-#, fuzzy
-msgid "Clear"
-msgstr "godina"
-
 #: Dialogs/krmaskchoice.cpp:116
 msgid "Clears the entire list of selections"
 msgstr "Očisti označeni unos sa liste"
-
-#: Dialogs/krmaskchoice.cpp:131
-msgid "OK"
-msgstr ""
-
-#: Dialogs/krmaskchoice.cpp:135 Dialogs/packguibase.cpp:289
-#: DiskUsage/diskusage.cpp:155 Panel/listpanel.cpp:852 Panel/panelpopup.cpp:379
-#, fuzzy
-msgid "Cancel"
-msgstr "Panel"
 
 #: Dialogs/krpleasewait.cpp:45
 #, fuzzy
 msgid "Krusader::Wait"
 msgstr "Krusader::Lokacija"
-
-#: Dialogs/krpleasewait.cpp:60 Dialogs/newftpgui.cpp:133
-#: Splitter/splittergui.cpp:113 mount.ui:86 recode.ui:87
-#, fuzzy, no-c-format
-msgid "&Cancel"
-msgstr "Panel"
 
 #: Dialogs/krprogress.cpp:59
 msgid "Source:"
@@ -1343,13 +1271,6 @@ msgstr "&Smeće"
 msgid "Do you really want to delete this item?"
 msgstr "Da li ste sigurni da želite ovo izbrisati???"
 
-#: DiskUsage/diskusage.cpp:600 DiskUsage/radialMap/widgetEvents.cpp:172
-#: DiskUsage/radialMap/widgetEvents.cpp:194 Panel/panelfunc.cpp:652
-#: Panel/panelfunc.cpp:655 Panel/panelfunc.cpp:658
-#, fuzzy
-msgid "&Delete"
-msgstr "F8 Izbriši"
-
 #: DiskUsage/diskusage.cpp:611
 #, fuzzy
 msgid "Deleting %1..."
@@ -1412,11 +1333,6 @@ msgstr "Slijedeća kartica"
 #, fuzzy
 msgid "Previous"
 msgstr "Nađi prethodno (Ctrl+P)"
-
-#: DiskUsage/diskusage.cpp:797
-#, fuzzy
-msgid "View"
-msgstr "F3 Pregledaj"
 
 #: DiskUsage/diskusage.cpp:1031
 #, fuzzy
@@ -1893,11 +1809,6 @@ msgstr "&Lokacija"
 msgid "&Overwrite"
 msgstr "&Prepiši"
 
-#: Filter/generalfilter.cpp:138 RemoteMan/remotemanbase.cpp:155
-#, fuzzy
-msgid "&Remove"
-msgstr "izbriši"
-
 #: Filter/generalfilter.cpp:155
 msgid "&Search in"
 msgstr "&Pretražuj u"
@@ -2093,16 +2004,6 @@ msgstr "Preimenuj"
 msgid " Quit"
 msgstr "Pitanje"
 
-#: GUI/krremoteencodingmenu.cpp:97
-#, fuzzy
-msgid "Reload"
-msgstr "Crvena"
-
-#: GUI/krremoteencodingmenu.cpp:98 Konfigurator/konfiguratoritems.cpp:539
-#, fuzzy
-msgid "Default"
-msgstr "Uobičajeno"
-
 #: GUI/krusaderstatus.cpp:39
 msgid "Ready."
 msgstr "Spreman."
@@ -2234,11 +2135,6 @@ msgstr "Slijedeća kartica"
 #, fuzzy
 msgid "&Close current tab"
 msgstr "Zatvori trenutnu karticu"
-
-#: KViewer/krviewer.cpp:102
-#, fuzzy
-msgid "&Quit"
-msgstr "Pitanje"
 
 #: KViewer/krviewer.cpp:159
 msgid "&KrViewer"
@@ -3564,11 +3460,6 @@ msgid ""
 "main window"
 msgstr ""
 
-#: Konfigurator/kguseractions.cpp:48
-#, fuzzy
-msgid "Information"
-msgstr "Potvrde operacije"
-
 #: Konfigurator/kguseractions.cpp:53
 msgid ""
 "Here you can configure settings about useractions.\n"
@@ -3614,12 +3505,6 @@ msgstr "Uobičajeno"
 #: Konfigurator/konfigurator.cpp:65
 msgid "Konfigurator - Creating Your Own Krusader"
 msgstr "Konfigurator - Podesite Krusader po sopstvenim željama"
-
-#: Konfigurator/konfigurator.cpp:69 Search/krsearchdialog.cpp:139
-#: Synchronizer/synchronizergui.cpp:1471 UserAction/kraction.cpp:49
-#, fuzzy
-msgid "Close"
-msgstr "Boje"
 
 #: Konfigurator/konfigurator.cpp:90
 msgid "Startup"
@@ -3838,12 +3723,6 @@ msgid ""
 "There is an error in the JavaScript"
 msgstr ""
 
-#: Locate/locate.cpp:101 Locate/locate.cpp:241 Search/krsearchdialog.cpp:135
-#: Synchronizer/synchronizergui.cpp:1455
-#, fuzzy
-msgid "Stop"
-msgstr "u"
-
 #: Locate/locate.cpp:101
 msgid "Update DB"
 msgstr "Update DB"
@@ -3972,12 +3851,6 @@ msgstr "%1 KB"
 #: MountMan/kmountman.cpp:250
 msgid "MountMan is not operational. Sorry"
 msgstr "MenMontiranja trenutno nije operativan. Žao mi je."
-
-#: MountMan/kmountmangui.cpp:70 RemoteMan/remotemanbase.cpp:73
-#: Synchronizer/synchronizedialog.cpp:117
-#, fuzzy
-msgid "&Close"
-msgstr "Boje"
 
 #: MountMan/kmountmangui.cpp:72
 msgid "MountMan - Your Mount-Manager"
@@ -5002,15 +4875,6 @@ msgstr "Sinhronizer"
 msgid "Side to feed:"
 msgstr ""
 
-#: Synchronizer/feedtolistboxdialog.cpp:125
-msgid "Left"
-msgstr ""
-
-#: Synchronizer/feedtolistboxdialog.cpp:126
-#, fuzzy
-msgid "Right"
-msgstr "Desni panel"
-
 #: Synchronizer/feedtolistboxdialog.cpp:127
 #, fuzzy
 msgid "Both"
@@ -5070,11 +4934,6 @@ msgstr "Lijevo: Brišem %1 datoteka (%2 bajta)"
 #: Synchronizer/synchronizedialog.cpp:101
 msgid "Confirm overwrites"
 msgstr "Potvrdi prepisivanje"
-
-#: Synchronizer/synchronizedialog.cpp:110
-#, fuzzy
-msgid "&Start"
-msgstr "Početak"
 
 #: Synchronizer/synchronizedialog.cpp:114
 #, fuzzy
@@ -5284,11 +5143,6 @@ msgstr "<=>"
 #: Synchronizer/synchronizergui.cpp:1344
 msgid "&Synchronizer"
 msgstr "Sinhronizer"
-
-#: Synchronizer/synchronizergui.cpp:1355
-#, fuzzy
-msgid "&Options"
-msgstr "Operacije"
 
 #: Synchronizer/synchronizergui.cpp:1364
 msgid "Parallel threads:"
@@ -6240,11 +6094,6 @@ msgstr "F3 Dijalog pregleda"
 msgid "Tab: switch panel"
 msgstr "Kartica: zamijeni panel"
 
-#: krusader.cpp:564
-#, fuzzy
-msgid "&Reload"
-msgstr "&Lokacija"
-
 #: krusader.cpp:566
 #, fuzzy
 msgid "Show Actions Toolbar"
@@ -6327,11 +6176,6 @@ msgstr "Napravi u:"
 #, fuzzy
 msgid "Verify Checksum..."
 msgstr "Dijeljenje datoteke %1..."
-
-#: krusader.cpp:625
-#, fuzzy
-msgid "&Properties..."
-msgstr "&Osobine"
 
 #: krusader.cpp:627
 #, fuzzy
@@ -6472,11 +6316,6 @@ msgstr "Krusader::Lokacija"
 msgid "Configure &Krusader..."
 msgstr "&Krusader"
 
-#: krusader.cpp:719
-#, fuzzy
-msgid "Back"
-msgstr "Crna"
-
 #: krusader.cpp:723
 msgid "Save &Position"
 msgstr "Sačuvaj &poziciju"
@@ -6605,11 +6444,6 @@ msgstr "Izmijeni datoteku (F4)"
 #, fuzzy
 msgid "New Directory..."
 msgstr "%n direktorij"
-
-#: krusader.cpp:800
-#, fuzzy
-msgid "Quit"
-msgstr "Pitanje"
 
 #: krusader.cpp:802
 msgid "Popular URLs..."
@@ -6804,25 +6638,10 @@ msgstr "16"
 msgid "Set as caption"
 msgstr "Isto kao aktivno"
 
-#: krusaderui.rc:4
-#, fuzzy, no-c-format
-msgid "&File"
-msgstr "Polja:"
-
-#: krusaderui.rc:36
-#, fuzzy, no-c-format
-msgid "&Edit"
-msgstr "F4 Izmijeni"
-
 #: krusaderui.rc:51
 #, no-c-format
 msgid "Compare Se&tup"
 msgstr "Uporedi"
-
-#: krusaderui.rc:63
-#, fuzzy, no-c-format
-msgid "&View"
-msgstr "F3 Pregledaj"
 
 #: krusaderui.rc:77
 #, no-c-format
@@ -6834,16 +6653,6 @@ msgstr ""
 msgid "User&actions"
 msgstr "Dodaj na korisničku akciju"
 
-#: krusaderui.rc:93
-#, fuzzy, no-c-format
-msgid "&Tools"
-msgstr "Tooltip"
-
-#: krusaderui.rc:117
-#, fuzzy, no-c-format
-msgid "&Settings"
-msgstr "Samo s jedne strane"
-
 #: krusaderui.rc:127
 #, fuzzy, no-c-format
 msgid "Command Execution Mode Se&tup"
@@ -6854,20 +6663,10 @@ msgstr "Izvršni mod"
 msgid "&Window"
 msgstr ""
 
-#: krusaderui.rc:158
-#, no-c-format
-msgid "&Help"
-msgstr ""
-
 #: mount.ui:24
 #, fuzzy, no-c-format
 msgid "Mount a Filesystem"
 msgstr "Datotečni sistem"
-
-#: mount.ui:69 recode.ui:70
-#, no-c-format
-msgid "&OK"
-msgstr ""
 
 #: mount.ui:102
 #, fuzzy, no-c-format
@@ -6948,6 +6747,130 @@ msgstr ""
 #, fuzzy, no-c-format
 msgid "Dump type: "
 msgstr "&Tipa:"
+
+#, fuzzy
+#~ msgid "Remove"
+#~ msgstr "izbriši"
+
+#, fuzzy
+#~ msgid "Bookmarks"
+#~ msgstr "Dodaj zabilješku"
+
+#, fuzzy
+#~ msgid "Open"
+#~ msgstr "Vidljivo dugme otvaranja"
+
+#, fuzzy
+#~ msgid "Delete"
+#~ msgstr "F8 Izbriši"
+
+#, fuzzy
+#~ msgid "File"
+#~ msgstr "Polja:"
+
+#, fuzzy
+#~ msgid "Add"
+#~ msgstr "&Napredno"
+
+#, fuzzy
+#~ msgid "Clear"
+#~ msgstr "godina"
+
+#, fuzzy
+#~ msgid "Cancel"
+#~ msgstr "Panel"
+
+#, fuzzy
+#~ msgid "&Cancel"
+#~ msgstr "Panel"
+
+#, fuzzy
+#~ msgid "&Delete"
+#~ msgstr "F8 Izbriši"
+
+#, fuzzy
+#~ msgid "View"
+#~ msgstr "F3 Pregledaj"
+
+#, fuzzy
+#~ msgid "&Remove"
+#~ msgstr "izbriši"
+
+#, fuzzy
+#~ msgid "Reload"
+#~ msgstr "Crvena"
+
+#, fuzzy
+#~ msgid "Default"
+#~ msgstr "Uobičajeno"
+
+#, fuzzy
+#~ msgid "&Quit"
+#~ msgstr "Pitanje"
+
+#, fuzzy
+#~ msgid "Information"
+#~ msgstr "Potvrde operacije"
+
+#, fuzzy
+#~ msgid "Close"
+#~ msgstr "Boje"
+
+#, fuzzy
+#~ msgid "Stop"
+#~ msgstr "u"
+
+#, fuzzy
+#~ msgid "&Close"
+#~ msgstr "Boje"
+
+#, fuzzy
+#~ msgid "Right"
+#~ msgstr "Desni panel"
+
+#, fuzzy
+#~ msgid "&Start"
+#~ msgstr "Početak"
+
+#, fuzzy
+#~ msgid "&Options"
+#~ msgstr "Operacije"
+
+#, fuzzy
+#~ msgid "&Reload"
+#~ msgstr "&Lokacija"
+
+#, fuzzy
+#~ msgid "&Properties..."
+#~ msgstr "&Osobine"
+
+#, fuzzy
+#~ msgid "Back"
+#~ msgstr "Crna"
+
+#, fuzzy
+#~ msgid "Quit"
+#~ msgstr "Pitanje"
+
+#, fuzzy
+#~ msgid "&File"
+#~ msgstr "Polja:"
+
+#, fuzzy
+#~ msgid "&Edit"
+#~ msgstr "F4 Izmijeni"
+
+#, fuzzy
+#~ msgid "&View"
+#~ msgstr "F3 Pregledaj"
+
+#, fuzzy
+#~ msgid "&Tools"
+#~ msgstr "Tooltip"
+
+#, fuzzy
+#~ msgid "&Settings"
+#~ msgstr "Samo s jedne strane"
 
 #~ msgid "If pressed, Krusader executes command line in a terminal."
 #~ msgstr "Ako pritisnete, Krusader izvršava komandnu liniju u terminalu."

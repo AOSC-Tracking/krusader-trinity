@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: krusader-1.80.0-beta2\n"
 "Report-Msgid-Bugs-To: Dirk Eschler <deschler@users.sourceforge.net>\n"
-"POT-Creation-Date: 2019-01-03 15:00+0100\n"
+"POT-Creation-Date: 2019-01-13 19:16+0100\n"
 "PO-Revision-Date: 2006-02-08 18:17+0100\n"
 "Last-Translator: Peter H.S. <peters@skydebanen.net>\n"
 "Language-Team: Danish\n"
@@ -569,10 +569,6 @@ msgstr ""
 msgid "Remove selected actions?"
 msgstr "Fjern denne handling?"
 
-#: ActionMan/useractionpage.cpp:205
-msgid "Remove"
-msgstr "Fjern"
-
 #: ActionMan/useractionpage.cpp:246
 msgid ""
 "This file already contains some useractions.\n"
@@ -638,11 +634,6 @@ msgstr "URL:"
 msgid "Create in:"
 msgstr "Skab i:"
 
-#: BookMan/kraddbookmarkdlg.cpp:71 BookMan/krbookmarkbutton.cpp:19
-#: BookMan/krbookmarkhandler.cpp:30 krusader.cpp:741
-msgid "Bookmarks"
-msgstr "Bogmærker"
-
 #: BookMan/kraddbookmarkdlg.cpp:103
 msgid "Folder name:"
 msgstr "Mappenavn:"
@@ -671,17 +662,6 @@ msgstr "BookMan II"
 #, fuzzy, c-format
 msgid "Unable to write to %1"
 msgstr "Kunne ikke skrive til "
-
-#: BookMan/krbookmarkhandler.cpp:172 BookMan/krbookmarkhandler.cpp:268
-#: Konfigurator/kgcolors.cpp:508 Konfigurator/kgcolors.cpp:525
-#: Konfigurator/kggeneral.cpp:201 MountMan/kmountman.cpp:197
-#: Synchronizer/synchronizerdirlist.cpp:101 VFS/krarchandler.cpp:215
-#: VFS/krarchandler.cpp:274 VFS/krarchandler.cpp:291 VFS/krarchandler.cpp:352
-#: VFS/krarchandler.cpp:529 VFS/krarchandler.cpp:536 VFS/normal_vfs.cpp:90
-#: VFS/normal_vfs.cpp:100 VFS/normal_vfs.cpp:107 VFS/virt_vfs.cpp:87
-#: VFS/virt_vfs.cpp:173
-msgid "Error"
-msgstr "Fejl"
 
 #: BookMan/krbookmarkhandler.cpp:180
 msgid " instead of "
@@ -723,20 +703,9 @@ msgstr "Organiser bogmærker"
 msgid "Jump back"
 msgstr "Spring tilbage"
 
-#: BookMan/krbookmarkhandler.cpp:538 GUI/mediabutton.cpp:529
-#: Panel/krpopupmenu.cpp:61
-msgid "Open"
-msgstr "Åben"
-
 #: BookMan/krbookmarkhandler.cpp:539 GUI/mediabutton.cpp:530
 msgid "Open in a new tab"
 msgstr "Åben i en ny tab"
-
-#: BookMan/krbookmarkhandler.cpp:541 Dialogs/krmaskchoice.cpp:110
-#: Dialogs/kurllistrequester.cpp:149 DiskUsage/diskusage.cpp:757
-#: Konfigurator/kgcolors.cpp:474 Panel/krpopupmenu.cpp:145 krusader.cpp:796
-msgid "Delete"
-msgstr "Slet"
 
 #: Dialogs/checksumdlg.cpp:211 Dialogs/checksumdlg.cpp:466
 msgid "Create Checksum"
@@ -860,10 +829,6 @@ msgstr "Her er de beregnede checksumme:"
 msgid "Hash"
 msgstr "Hash"
 
-#: Dialogs/checksumdlg.cpp:496 Konfigurator/kgcolors.cpp:418
-msgid "File"
-msgstr "Fil"
-
 #: Dialogs/checksumdlg.cpp:499
 #, fuzzy
 msgid "File and hash"
@@ -888,12 +853,6 @@ msgid ""
 msgstr ""
 "Fil %1 eksisterer allerede.\n"
 "Er du sikker på du vil overskrive den?"
-
-#: Dialogs/checksumdlg.cpp:573 Dialogs/krkeydialog.cpp:135
-#: DiskUsage/diskusage.cpp:607 Konfigurator/kgcolors.cpp:523
-#: Panel/panelfunc.cpp:664
-msgid "Warning"
-msgstr "Advarsel"
 
 #: Dialogs/checksumdlg.cpp:575
 msgid "Select a file to save to"
@@ -1029,10 +988,6 @@ msgstr ""
 "til at linien du redigerer maskerne i har sin egen historie, som du kan "
 "rulle igennem hvis du har brug for det."
 
-#: Dialogs/krmaskchoice.cpp:105
-msgid "Add"
-msgstr "Tilføj"
-
 #: Dialogs/krmaskchoice.cpp:106
 msgid "Adds the selection in the line-edit to the list"
 msgstr "Tilføjer valget i linien til listen"
@@ -1041,33 +996,14 @@ msgstr "Tilføjer valget i linien til listen"
 msgid "Delete the marked selection from the list"
 msgstr "Fjerner markerede valg fra listen"
 
-#: Dialogs/krmaskchoice.cpp:115
-msgid "Clear"
-msgstr "Ryd"
-
 #: Dialogs/krmaskchoice.cpp:116
 msgid "Clears the entire list of selections"
 msgstr "Fjerner alle valg fra listen"
-
-#: Dialogs/krmaskchoice.cpp:131
-msgid "OK"
-msgstr "OK"
-
-#: Dialogs/krmaskchoice.cpp:135 Dialogs/packguibase.cpp:289
-#: DiskUsage/diskusage.cpp:155 Panel/listpanel.cpp:852 Panel/panelpopup.cpp:379
-msgid "Cancel"
-msgstr "Aflys"
 
 #: Dialogs/krpleasewait.cpp:45
 #, fuzzy
 msgid "Krusader::Wait"
 msgstr "Krusader::Find"
-
-#: Dialogs/krpleasewait.cpp:60 Dialogs/newftpgui.cpp:133
-#: Splitter/splittergui.cpp:113 mount.ui:86 recode.ui:87
-#, no-c-format
-msgid "&Cancel"
-msgstr "&Aflys"
 
 #: Dialogs/krprogress.cpp:59
 msgid "Source:"
@@ -1395,12 +1331,6 @@ msgstr "&Papirkurv"
 msgid "Do you really want to delete this item?"
 msgstr "Er du sikker på at du vil slette dette punkt???"
 
-#: DiskUsage/diskusage.cpp:600 DiskUsage/radialMap/widgetEvents.cpp:172
-#: DiskUsage/radialMap/widgetEvents.cpp:194 Panel/panelfunc.cpp:652
-#: Panel/panelfunc.cpp:655 Panel/panelfunc.cpp:658
-msgid "&Delete"
-msgstr "&Slet"
-
 #: DiskUsage/diskusage.cpp:611
 #, fuzzy
 msgid "Deleting %1..."
@@ -1457,10 +1387,6 @@ msgstr "Næste"
 #: DiskUsage/diskusage.cpp:793
 msgid "Previous"
 msgstr "Forrige"
-
-#: DiskUsage/diskusage.cpp:797
-msgid "View"
-msgstr "Vis"
 
 #: DiskUsage/diskusage.cpp:1031
 msgid "Type:"
@@ -1913,10 +1839,6 @@ msgstr "Ind&læs"
 msgid "&Overwrite"
 msgstr "&Overskriv"
 
-#: Filter/generalfilter.cpp:138 RemoteMan/remotemanbase.cpp:155
-msgid "&Remove"
-msgstr "&Fjern"
-
 #: Filter/generalfilter.cpp:155
 msgid "&Search in"
 msgstr "&Søg i"
@@ -2102,14 +2024,6 @@ msgstr " Omdøb"
 msgid " Quit"
 msgstr " Afslut"
 
-#: GUI/krremoteencodingmenu.cpp:97
-msgid "Reload"
-msgstr "Genindlæs"
-
-#: GUI/krremoteencodingmenu.cpp:98 Konfigurator/konfiguratoritems.cpp:539
-msgid "Default"
-msgstr "Standard"
-
 #: GUI/krusaderstatus.cpp:39
 msgid "Ready."
 msgstr "Klar."
@@ -2238,10 +2152,6 @@ msgstr "&Frigør faneblad"
 #: KViewer/krviewer.cpp:101
 msgid "&Close current tab"
 msgstr "&Luk aktive tab"
-
-#: KViewer/krviewer.cpp:102
-msgid "&Quit"
-msgstr "&Afslut"
 
 #: KViewer/krviewer.cpp:159
 msgid "&KrViewer"
@@ -3566,11 +3476,6 @@ msgid ""
 "main window"
 msgstr ""
 
-#: Konfigurator/kguseractions.cpp:48
-#, fuzzy
-msgid "Information"
-msgstr "Bekræftelser"
-
 #: Konfigurator/kguseractions.cpp:53
 msgid ""
 "Here you can configure settings about useractions.\n"
@@ -3616,11 +3521,6 @@ msgstr "Standarder"
 #: Konfigurator/konfigurator.cpp:65
 msgid "Konfigurator - Creating Your Own Krusader"
 msgstr "Konfigurator - Skab din egen Krusader"
-
-#: Konfigurator/konfigurator.cpp:69 Search/krsearchdialog.cpp:139
-#: Synchronizer/synchronizergui.cpp:1471 UserAction/kraction.cpp:49
-msgid "Close"
-msgstr "Luk"
 
 #: Konfigurator/konfigurator.cpp:90
 msgid "Startup"
@@ -3837,11 +3737,6 @@ msgstr ""
 "I %1:\n"
 "Der er en fejl i JavaScriptet"
 
-#: Locate/locate.cpp:101 Locate/locate.cpp:241 Search/krsearchdialog.cpp:135
-#: Synchronizer/synchronizergui.cpp:1455
-msgid "Stop"
-msgstr "Stop"
-
 #: Locate/locate.cpp:101
 msgid "Update DB"
 msgstr "Opdater DB"
@@ -3964,11 +3859,6 @@ msgstr "%1 KB"
 #: MountMan/kmountman.cpp:250
 msgid "MountMan is not operational. Sorry"
 msgstr "MountMan er inaktiv. Beklager"
-
-#: MountMan/kmountmangui.cpp:70 RemoteMan/remotemanbase.cpp:73
-#: Synchronizer/synchronizedialog.cpp:117
-msgid "&Close"
-msgstr "&Luk"
 
 #: MountMan/kmountmangui.cpp:72
 msgid "MountMan - Your Mount-Manager"
@@ -4995,15 +4885,6 @@ msgstr "Synkronisør"
 msgid "Side to feed:"
 msgstr ""
 
-#: Synchronizer/feedtolistboxdialog.cpp:125
-msgid "Left"
-msgstr ""
-
-#: Synchronizer/feedtolistboxdialog.cpp:126
-#, fuzzy
-msgid "Right"
-msgstr "Højre panel"
-
 #: Synchronizer/feedtolistboxdialog.cpp:127
 #, fuzzy
 msgid "Both"
@@ -5067,11 +4948,6 @@ msgstr "Venstre: Slet %1 filer (%2 bytes)"
 #: Synchronizer/synchronizedialog.cpp:101
 msgid "Confirm overwrites"
 msgstr "Bekræft overskrivninger"
-
-#: Synchronizer/synchronizedialog.cpp:110
-#, fuzzy
-msgid "&Start"
-msgstr "Start"
 
 #: Synchronizer/synchronizedialog.cpp:114
 #, fuzzy
@@ -5276,11 +5152,6 @@ msgstr "<=>"
 #: Synchronizer/synchronizergui.cpp:1344
 msgid "&Synchronizer"
 msgstr "&Synkronisør"
-
-#: Synchronizer/synchronizergui.cpp:1355
-#, fuzzy
-msgid "&Options"
-msgstr "Operation"
 
 #: Synchronizer/synchronizergui.cpp:1364
 msgid "Parallel threads:"
@@ -6236,10 +6107,6 @@ msgstr "F3 Vis Dialog"
 msgid "Tab: switch panel"
 msgstr "Tab: skift panel"
 
-#: krusader.cpp:564
-msgid "&Reload"
-msgstr "&Genindlæs"
-
 #: krusader.cpp:566
 msgid "Show Actions Toolbar"
 msgstr "Vis Handlinger værktøjslinie"
@@ -6321,11 +6188,6 @@ msgstr "Skab Checksum"
 #, fuzzy
 msgid "Verify Checksum..."
 msgstr "Verificer Checksum"
-
-#: krusader.cpp:625
-#, fuzzy
-msgid "&Properties..."
-msgstr "&Egenskaber"
 
 #: krusader.cpp:627
 #, fuzzy
@@ -6466,10 +6328,6 @@ msgstr "D&isk forbrug"
 msgid "Configure &Krusader..."
 msgstr "Opsætning af &Krusader"
 
-#: krusader.cpp:719
-msgid "Back"
-msgstr "Tilbage"
-
 #: krusader.cpp:723
 msgid "Save &Position"
 msgstr "Gem &Position"
@@ -6595,11 +6453,6 @@ msgstr "Redigér fil (F4)"
 #, fuzzy
 msgid "New Directory..."
 msgstr "Ny mappe"
-
-#: krusader.cpp:800
-#, fuzzy
-msgid "Quit"
-msgstr "Stille"
 
 #: krusader.cpp:802
 #, fuzzy
@@ -6792,25 +6645,10 @@ msgstr "16"
 msgid "Set as caption"
 msgstr "Samme som aktiv"
 
-#: krusaderui.rc:4
-#, no-c-format
-msgid "&File"
-msgstr "&Fil"
-
-#: krusaderui.rc:36
-#, fuzzy, no-c-format
-msgid "&Edit"
-msgstr " Redigér"
-
 #: krusaderui.rc:51
 #, no-c-format
 msgid "Compare Se&tup"
 msgstr "Sammenligningsopsæ&tning"
-
-#: krusaderui.rc:63
-#, no-c-format
-msgid "&View"
-msgstr "&Vis"
 
 #: krusaderui.rc:77
 #, no-c-format
@@ -6822,16 +6660,6 @@ msgstr ""
 msgid "User&actions"
 msgstr "&Brugerhandlinger"
 
-#: krusaderui.rc:93
-#, no-c-format
-msgid "&Tools"
-msgstr "V&ærktøjslinie"
-
-#: krusaderui.rc:117
-#, no-c-format
-msgid "&Settings"
-msgstr "Opsæt&ninger"
-
 #: krusaderui.rc:127
 #, fuzzy, no-c-format
 msgid "Command Execution Mode Se&tup"
@@ -6842,20 +6670,10 @@ msgstr "Afviklingstilstand"
 msgid "&Window"
 msgstr ""
 
-#: krusaderui.rc:158
-#, no-c-format
-msgid "&Help"
-msgstr "&Hjælp"
-
 #: mount.ui:24
 #, fuzzy, no-c-format
 msgid "Mount a Filesystem"
 msgstr "Virtuelt filsystem"
-
-#: mount.ui:69 recode.ui:70
-#, fuzzy, no-c-format
-msgid "&OK"
-msgstr "OK"
 
 #: mount.ui:102
 #, fuzzy, no-c-format
@@ -6936,6 +6754,122 @@ msgstr ""
 #, fuzzy, no-c-format
 msgid "Dump type: "
 msgstr "&Af typen:"
+
+#~ msgid "Remove"
+#~ msgstr "Fjern"
+
+#~ msgid "Bookmarks"
+#~ msgstr "Bogmærker"
+
+#~ msgid "Error"
+#~ msgstr "Fejl"
+
+#~ msgid "Open"
+#~ msgstr "Åben"
+
+#~ msgid "Delete"
+#~ msgstr "Slet"
+
+#~ msgid "File"
+#~ msgstr "Fil"
+
+#~ msgid "Warning"
+#~ msgstr "Advarsel"
+
+#~ msgid "Add"
+#~ msgstr "Tilføj"
+
+#~ msgid "Clear"
+#~ msgstr "Ryd"
+
+#~ msgid "OK"
+#~ msgstr "OK"
+
+#~ msgid "Cancel"
+#~ msgstr "Aflys"
+
+#~ msgid "&Cancel"
+#~ msgstr "&Aflys"
+
+#~ msgid "&Delete"
+#~ msgstr "&Slet"
+
+#~ msgid "View"
+#~ msgstr "Vis"
+
+#~ msgid "&Remove"
+#~ msgstr "&Fjern"
+
+#~ msgid "Reload"
+#~ msgstr "Genindlæs"
+
+#~ msgid "Default"
+#~ msgstr "Standard"
+
+#~ msgid "&Quit"
+#~ msgstr "&Afslut"
+
+#, fuzzy
+#~ msgid "Information"
+#~ msgstr "Bekræftelser"
+
+#~ msgid "Close"
+#~ msgstr "Luk"
+
+#~ msgid "Stop"
+#~ msgstr "Stop"
+
+#~ msgid "&Close"
+#~ msgstr "&Luk"
+
+#, fuzzy
+#~ msgid "Right"
+#~ msgstr "Højre panel"
+
+#, fuzzy
+#~ msgid "&Start"
+#~ msgstr "Start"
+
+#, fuzzy
+#~ msgid "&Options"
+#~ msgstr "Operation"
+
+#~ msgid "&Reload"
+#~ msgstr "&Genindlæs"
+
+#, fuzzy
+#~ msgid "&Properties..."
+#~ msgstr "&Egenskaber"
+
+#~ msgid "Back"
+#~ msgstr "Tilbage"
+
+#, fuzzy
+#~ msgid "Quit"
+#~ msgstr "Stille"
+
+#~ msgid "&File"
+#~ msgstr "&Fil"
+
+#, fuzzy
+#~ msgid "&Edit"
+#~ msgstr " Redigér"
+
+#~ msgid "&View"
+#~ msgstr "&Vis"
+
+#~ msgid "&Tools"
+#~ msgstr "V&ærktøjslinie"
+
+#~ msgid "&Settings"
+#~ msgstr "Opsæt&ninger"
+
+#~ msgid "&Help"
+#~ msgstr "&Hjælp"
+
+#, fuzzy
+#~ msgid "&OK"
+#~ msgstr "OK"
 
 #~ msgid "If pressed, Krusader executes command line in a terminal."
 #~ msgstr "Hvis valgt starter Krusader kommandoen i en terminal."

@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: krusader-1.80.0-beta2\n"
 "Report-Msgid-Bugs-To: Dirk Eschler <deschler@users.sourceforge.net>\n"
-"POT-Creation-Date: 2019-01-03 15:00+0100\n"
+"POT-Creation-Date: 2019-01-13 19:16+0100\n"
 "PO-Revision-Date: 2007-03-27 16:13+0200\n"
 "Last-Translator: Dirk Eschler <deschler@users.sourceforge.net>\n"
 "Language-Team: krusader-i18n <krusader-i18n@googlegroups.com>\n"
@@ -558,10 +558,6 @@ msgstr "Möchten Sie die ausgewählten Aktionen wirklich löschen?"
 msgid "Remove selected actions?"
 msgstr "Möchten Sie die ausgewählten Aktionen wirklich löschen?"
 
-#: ActionMan/useractionpage.cpp:205
-msgid "Remove"
-msgstr "Entfernen"
-
 #: ActionMan/useractionpage.cpp:246
 msgid ""
 "This file already contains some useractions.\n"
@@ -625,11 +621,6 @@ msgstr "Adresse:"
 msgid "Create in:"
 msgstr "Erstellen in:"
 
-#: BookMan/kraddbookmarkdlg.cpp:71 BookMan/krbookmarkbutton.cpp:19
-#: BookMan/krbookmarkhandler.cpp:30 krusader.cpp:741
-msgid "Bookmarks"
-msgstr "Lesezeichen"
-
 #: BookMan/kraddbookmarkdlg.cpp:103
 msgid "Folder name:"
 msgstr "Verzeichnisname:"
@@ -658,17 +649,6 @@ msgstr "BookMan II"
 #, c-format
 msgid "Unable to write to %1"
 msgstr "Auf %1 kann nicht geschrieben werden"
-
-#: BookMan/krbookmarkhandler.cpp:172 BookMan/krbookmarkhandler.cpp:268
-#: Konfigurator/kgcolors.cpp:508 Konfigurator/kgcolors.cpp:525
-#: Konfigurator/kggeneral.cpp:201 MountMan/kmountman.cpp:197
-#: Synchronizer/synchronizerdirlist.cpp:101 VFS/krarchandler.cpp:215
-#: VFS/krarchandler.cpp:274 VFS/krarchandler.cpp:291 VFS/krarchandler.cpp:352
-#: VFS/krarchandler.cpp:529 VFS/krarchandler.cpp:536 VFS/normal_vfs.cpp:90
-#: VFS/normal_vfs.cpp:100 VFS/normal_vfs.cpp:107 VFS/virt_vfs.cpp:87
-#: VFS/virt_vfs.cpp:173
-msgid "Error"
-msgstr "Fehler"
 
 #: BookMan/krbookmarkhandler.cpp:180
 msgid " instead of "
@@ -708,20 +688,9 @@ msgstr "Spezielle Lesezeichen aktivieren"
 msgid "Jump back"
 msgstr "Zurück springen"
 
-#: BookMan/krbookmarkhandler.cpp:538 GUI/mediabutton.cpp:529
-#: Panel/krpopupmenu.cpp:61
-msgid "Open"
-msgstr "Öffnen"
-
 #: BookMan/krbookmarkhandler.cpp:539 GUI/mediabutton.cpp:530
 msgid "Open in a new tab"
 msgstr "In neuem Unterfenster öffnen"
-
-#: BookMan/krbookmarkhandler.cpp:541 Dialogs/krmaskchoice.cpp:110
-#: Dialogs/kurllistrequester.cpp:149 DiskUsage/diskusage.cpp:757
-#: Konfigurator/kgcolors.cpp:474 Panel/krpopupmenu.cpp:145 krusader.cpp:796
-msgid "Delete"
-msgstr "Entfernen"
 
 #: Dialogs/checksumdlg.cpp:211 Dialogs/checksumdlg.cpp:466
 msgid "Create Checksum"
@@ -841,10 +810,6 @@ msgstr "Die berechneten Prüfsummen:"
 msgid "Hash"
 msgstr "Hash"
 
-#: Dialogs/checksumdlg.cpp:496 Konfigurator/kgcolors.cpp:418
-msgid "File"
-msgstr "Datei"
-
 #: Dialogs/checksumdlg.cpp:499
 msgid "File and hash"
 msgstr "Dateiname/Hash"
@@ -868,12 +833,6 @@ msgid ""
 msgstr ""
 "Datei %1 existiert bereits.\n"
 "Wirklich überschreiben?"
-
-#: Dialogs/checksumdlg.cpp:573 Dialogs/krkeydialog.cpp:135
-#: DiskUsage/diskusage.cpp:607 Konfigurator/kgcolors.cpp:523
-#: Panel/panelfunc.cpp:664
-msgid "Warning"
-msgstr "Warnung"
 
 #: Dialogs/checksumdlg.cpp:575
 msgid "Select a file to save to"
@@ -1005,10 +964,6 @@ msgstr ""
 "Eingabefeld hat seinen eigenen Verlauf. Dieser kann bei Bedarf aufgeklappt "
 "werden."
 
-#: Dialogs/krmaskchoice.cpp:105
-msgid "Add"
-msgstr "Hinzufügen"
-
 #: Dialogs/krmaskchoice.cpp:106
 msgid "Adds the selection in the line-edit to the list"
 msgstr "Fügt die Auswahl des Eingabefeldes zur Liste hinzu"
@@ -1017,32 +972,13 @@ msgstr "Fügt die Auswahl des Eingabefeldes zur Liste hinzu"
 msgid "Delete the marked selection from the list"
 msgstr "Löscht die markierte Auswahl aus der Liste"
 
-#: Dialogs/krmaskchoice.cpp:115
-msgid "Clear"
-msgstr "Entfernen"
-
 #: Dialogs/krmaskchoice.cpp:116
 msgid "Clears the entire list of selections"
 msgstr "Leert die gesamte Liste der Auswahlen"
 
-#: Dialogs/krmaskchoice.cpp:131
-msgid "OK"
-msgstr "OK"
-
-#: Dialogs/krmaskchoice.cpp:135 Dialogs/packguibase.cpp:289
-#: DiskUsage/diskusage.cpp:155 Panel/listpanel.cpp:852 Panel/panelpopup.cpp:379
-msgid "Cancel"
-msgstr "A&bbrechen"
-
 #: Dialogs/krpleasewait.cpp:45
 msgid "Krusader::Wait"
 msgstr "Krusader::Warten"
-
-#: Dialogs/krpleasewait.cpp:60 Dialogs/newftpgui.cpp:133
-#: Splitter/splittergui.cpp:113 mount.ui:86 recode.ui:87
-#, no-c-format
-msgid "&Cancel"
-msgstr "A&bbrechen"
 
 #: Dialogs/krprogress.cpp:59
 msgid "Source:"
@@ -1372,12 +1308,6 @@ msgstr "In den Mülleimer &werfen"
 msgid "Do you really want to delete this item?"
 msgstr "Möchten Sie dieses Element wirklich löschen?"
 
-#: DiskUsage/diskusage.cpp:600 DiskUsage/radialMap/widgetEvents.cpp:172
-#: DiskUsage/radialMap/widgetEvents.cpp:194 Panel/panelfunc.cpp:652
-#: Panel/panelfunc.cpp:655 Panel/panelfunc.cpp:658
-msgid "&Delete"
-msgstr "&Löschen"
-
 #: DiskUsage/diskusage.cpp:611
 msgid "Deleting %1..."
 msgstr "Lösche %1..."
@@ -1433,10 +1363,6 @@ msgstr "Nächstes"
 #: DiskUsage/diskusage.cpp:793
 msgid "Previous"
 msgstr "Vorheriges"
-
-#: DiskUsage/diskusage.cpp:797
-msgid "View"
-msgstr "Ansicht"
 
 #: DiskUsage/diskusage.cpp:1031
 msgid "Type:"
@@ -1906,10 +1832,6 @@ msgstr "&Laden"
 msgid "&Overwrite"
 msgstr "&Überschreiben"
 
-#: Filter/generalfilter.cpp:138 RemoteMan/remotemanbase.cpp:155
-msgid "&Remove"
-msgstr "&Entfernen"
-
 #: Filter/generalfilter.cpp:155
 msgid "&Search in"
 msgstr "&Suchen in"
@@ -2093,14 +2015,6 @@ msgstr " Umbenennen"
 msgid " Quit"
 msgstr " Beenden"
 
-#: GUI/krremoteencodingmenu.cpp:97
-msgid "Reload"
-msgstr "Erneut laden"
-
-#: GUI/krremoteencodingmenu.cpp:98 Konfigurator/konfiguratoritems.cpp:539
-msgid "Default"
-msgstr "Standard"
-
 #: GUI/krusaderstatus.cpp:39
 msgid "Ready."
 msgstr "Bereit."
@@ -2225,10 +2139,6 @@ msgstr "Unterfenster ver&selbständigen"
 #: KViewer/krviewer.cpp:101
 msgid "&Close current tab"
 msgstr "Unterfenster schl&ießen"
-
-#: KViewer/krviewer.cpp:102
-msgid "&Quit"
-msgstr "B&eenden"
 
 #: KViewer/krviewer.cpp:159
 msgid "&KrViewer"
@@ -3569,10 +3479,6 @@ msgstr ""
 "Systemabschnitt der Kontrolleiste minimieren' aktiviert ist), ohne das "
 "Hauptfenster anzuzeigen."
 
-#: Konfigurator/kguseractions.cpp:48
-msgid "Information"
-msgstr "Information"
-
 #: Konfigurator/kguseractions.cpp:53
 msgid ""
 "Here you can configure settings about useractions.\n"
@@ -3617,11 +3523,6 @@ msgstr "Voreinstellungen"
 #: Konfigurator/konfigurator.cpp:65
 msgid "Konfigurator - Creating Your Own Krusader"
 msgstr "Konfigurator - Krusader den eigenen Wünschen anpassen"
-
-#: Konfigurator/konfigurator.cpp:69 Search/krsearchdialog.cpp:139
-#: Synchronizer/synchronizergui.cpp:1471 UserAction/kraction.cpp:49
-msgid "Close"
-msgstr "S&chließen"
 
 #: Konfigurator/konfigurator.cpp:90
 msgid "Startup"
@@ -3839,11 +3740,6 @@ msgstr ""
 "In %1:\n"
 "Das JavaScript enthält einen Fehler"
 
-#: Locate/locate.cpp:101 Locate/locate.cpp:241 Search/krsearchdialog.cpp:135
-#: Synchronizer/synchronizergui.cpp:1455
-msgid "Stop"
-msgstr "&Anhalten"
-
 #: Locate/locate.cpp:101
 msgid "Update DB"
 msgstr "Update DB"
@@ -3969,11 +3865,6 @@ msgstr "%1 KB"
 #: MountMan/kmountman.cpp:250
 msgid "MountMan is not operational. Sorry"
 msgstr "MountMan ist nicht funktionstüchtig."
-
-#: MountMan/kmountmangui.cpp:70 RemoteMan/remotemanbase.cpp:73
-#: Synchronizer/synchronizedialog.cpp:117
-msgid "&Close"
-msgstr "S&chließen"
 
 #: MountMan/kmountmangui.cpp:72
 msgid "MountMan - Your Mount-Manager"
@@ -4996,14 +4887,6 @@ msgstr "Ergebnisse des Synchronisierens"
 msgid "Side to feed:"
 msgstr "Einzuspeisende Seite:"
 
-#: Synchronizer/feedtolistboxdialog.cpp:125
-msgid "Left"
-msgstr "Links"
-
-#: Synchronizer/feedtolistboxdialog.cpp:126
-msgid "Right"
-msgstr "Rechts"
-
 #: Synchronizer/feedtolistboxdialog.cpp:127
 msgid "Both"
 msgstr "Beide"
@@ -5069,10 +4952,6 @@ msgstr ""
 #: Synchronizer/synchronizedialog.cpp:101
 msgid "Confirm overwrites"
 msgstr "Überschreibungen bestätigen"
-
-#: Synchronizer/synchronizedialog.cpp:110
-msgid "&Start"
-msgstr "&Start"
 
 #: Synchronizer/synchronizedialog.cpp:114
 msgid "&Pause"
@@ -5280,10 +5159,6 @@ msgstr "<=>"
 #: Synchronizer/synchronizergui.cpp:1344
 msgid "&Synchronizer"
 msgstr "&Synchronizer"
-
-#: Synchronizer/synchronizergui.cpp:1355
-msgid "&Options"
-msgstr "&Optionen"
 
 #: Synchronizer/synchronizergui.cpp:1364
 msgid "Parallel threads:"
@@ -6199,10 +6074,6 @@ msgstr "F3 Anzeigen-Dialog"
 msgid "Tab: switch panel"
 msgstr "Tab: Dateifenster wechseln"
 
-#: krusader.cpp:564
-msgid "&Reload"
-msgstr "E&rneut laden"
-
 #: krusader.cpp:566
 msgid "Show Actions Toolbar"
 msgstr "Aktionswerkzeugleiste anzeigen"
@@ -6274,10 +6145,6 @@ msgstr "Prüfsumme erstellen ..."
 #: krusader.cpp:623
 msgid "Verify Checksum..."
 msgstr "Prüfsumme verifizieren ..."
-
-#: krusader.cpp:625
-msgid "&Properties..."
-msgstr "&Eigenschaften ..."
 
 #: krusader.cpp:627
 msgid "Pac&k..."
@@ -6395,10 +6262,6 @@ msgstr "&Speicherplatzbedarf ..."
 msgid "Configure &Krusader..."
 msgstr "&Krusader einrichten ..."
 
-#: krusader.cpp:719
-msgid "Back"
-msgstr "Zurück"
-
 #: krusader.cpp:723
 msgid "Save &Position"
 msgstr "&Position speichern"
@@ -6506,10 +6369,6 @@ msgstr "Datei editieren"
 #: krusader.cpp:794
 msgid "New Directory..."
 msgstr "Neuer Ordner ..."
-
-#: krusader.cpp:800
-msgid "Quit"
-msgstr "Beenden"
 
 #: krusader.cpp:802
 msgid "Popular URLs..."
@@ -6701,25 +6560,10 @@ msgstr "16"
 msgid "Set as caption"
 msgstr "Selbe wie Aktiv"
 
-#: krusaderui.rc:4
-#, no-c-format
-msgid "&File"
-msgstr "&Datei"
-
-#: krusaderui.rc:36
-#, no-c-format
-msgid "&Edit"
-msgstr "&Bearbeiten"
-
 #: krusaderui.rc:51
 #, no-c-format
 msgid "Compare Se&tup"
 msgstr "Vergleichen einrich&ten"
-
-#: krusaderui.rc:63
-#, no-c-format
-msgid "&View"
-msgstr "&Ansicht"
 
 #: krusaderui.rc:77
 #, no-c-format
@@ -6731,16 +6575,6 @@ msgstr "&Gehe zu"
 msgid "User&actions"
 msgstr "A&ktionen"
 
-#: krusaderui.rc:93
-#, no-c-format
-msgid "&Tools"
-msgstr "E&xtras"
-
-#: krusaderui.rc:117
-#, no-c-format
-msgid "&Settings"
-msgstr "&Einstellungen"
-
 #: krusaderui.rc:127
 #, no-c-format
 msgid "Command Execution Mode Se&tup"
@@ -6751,20 +6585,10 @@ msgstr "Ausführungsmodus für Kommandos einrich&ten"
 msgid "&Window"
 msgstr "&Fenster"
 
-#: krusaderui.rc:158
-#, no-c-format
-msgid "&Help"
-msgstr "&Hilfe"
-
 #: mount.ui:24
 #, fuzzy, no-c-format
 msgid "Mount a Filesystem"
 msgstr "Virtuelles Dateisystem"
-
-#: mount.ui:69 recode.ui:70
-#, fuzzy, no-c-format
-msgid "&OK"
-msgstr "OK"
 
 #: mount.ui:102
 #, fuzzy, no-c-format
@@ -6845,3 +6669,115 @@ msgstr ""
 #, fuzzy, no-c-format
 msgid "Dump type: "
 msgstr "&Vom Typ:"
+
+#~ msgid "Remove"
+#~ msgstr "Entfernen"
+
+#~ msgid "Bookmarks"
+#~ msgstr "Lesezeichen"
+
+#~ msgid "Error"
+#~ msgstr "Fehler"
+
+#~ msgid "Open"
+#~ msgstr "Öffnen"
+
+#~ msgid "Delete"
+#~ msgstr "Entfernen"
+
+#~ msgid "File"
+#~ msgstr "Datei"
+
+#~ msgid "Warning"
+#~ msgstr "Warnung"
+
+#~ msgid "Add"
+#~ msgstr "Hinzufügen"
+
+#~ msgid "Clear"
+#~ msgstr "Entfernen"
+
+#~ msgid "OK"
+#~ msgstr "OK"
+
+#~ msgid "Cancel"
+#~ msgstr "A&bbrechen"
+
+#~ msgid "&Cancel"
+#~ msgstr "A&bbrechen"
+
+#~ msgid "&Delete"
+#~ msgstr "&Löschen"
+
+#~ msgid "View"
+#~ msgstr "Ansicht"
+
+#~ msgid "&Remove"
+#~ msgstr "&Entfernen"
+
+#~ msgid "Reload"
+#~ msgstr "Erneut laden"
+
+#~ msgid "Default"
+#~ msgstr "Standard"
+
+#~ msgid "&Quit"
+#~ msgstr "B&eenden"
+
+#~ msgid "Information"
+#~ msgstr "Information"
+
+#~ msgid "Close"
+#~ msgstr "S&chließen"
+
+#~ msgid "Stop"
+#~ msgstr "&Anhalten"
+
+#~ msgid "&Close"
+#~ msgstr "S&chließen"
+
+#~ msgid "Left"
+#~ msgstr "Links"
+
+#~ msgid "Right"
+#~ msgstr "Rechts"
+
+#~ msgid "&Start"
+#~ msgstr "&Start"
+
+#~ msgid "&Options"
+#~ msgstr "&Optionen"
+
+#~ msgid "&Reload"
+#~ msgstr "E&rneut laden"
+
+#~ msgid "&Properties..."
+#~ msgstr "&Eigenschaften ..."
+
+#~ msgid "Back"
+#~ msgstr "Zurück"
+
+#~ msgid "Quit"
+#~ msgstr "Beenden"
+
+#~ msgid "&File"
+#~ msgstr "&Datei"
+
+#~ msgid "&Edit"
+#~ msgstr "&Bearbeiten"
+
+#~ msgid "&View"
+#~ msgstr "&Ansicht"
+
+#~ msgid "&Tools"
+#~ msgstr "E&xtras"
+
+#~ msgid "&Settings"
+#~ msgstr "&Einstellungen"
+
+#~ msgid "&Help"
+#~ msgstr "&Hilfe"
+
+#, fuzzy
+#~ msgid "&OK"
+#~ msgstr "OK"

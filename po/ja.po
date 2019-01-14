@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: krusader-1.80.0-beta2\n"
 "Report-Msgid-Bugs-To: Dirk Eschler <deschler@users.sourceforge.net>\n"
-"POT-Creation-Date: 2019-01-03 15:00+0100\n"
+"POT-Creation-Date: 2019-01-13 19:16+0100\n"
 "PO-Revision-Date: 2006-10-11 03:54+0900\n"
 "Last-Translator: Hideki Kimura <hangyo1973@gmail.com>\n"
 "Language-Team: Japanese <krusader-i18n@googlegroups.com>\n"
@@ -562,11 +562,6 @@ msgstr "to 全て 動作?"
 msgid "Remove selected actions?"
 msgstr "削除 動作?"
 
-#: ActionMan/useractionpage.cpp:205
-#, fuzzy
-msgid "Remove"
-msgstr "削除"
-
 #: ActionMan/useractionpage.cpp:246
 #, fuzzy
 msgid ""
@@ -638,12 +633,6 @@ msgstr "URL:"
 msgid "Create in:"
 msgstr "作成 in:"
 
-#: BookMan/kraddbookmarkdlg.cpp:71 BookMan/krbookmarkbutton.cpp:19
-#: BookMan/krbookmarkhandler.cpp:30 krusader.cpp:741
-#, fuzzy
-msgid "Bookmarks"
-msgstr "ブックマーク"
-
 #: BookMan/kraddbookmarkdlg.cpp:103
 #, fuzzy
 msgid "Folder name:"
@@ -678,17 +667,6 @@ msgstr "II"
 #, fuzzy, c-format
 msgid "Unable to write to %1"
 msgstr "to to "
-
-#: BookMan/krbookmarkhandler.cpp:172 BookMan/krbookmarkhandler.cpp:268
-#: Konfigurator/kgcolors.cpp:508 Konfigurator/kgcolors.cpp:525
-#: Konfigurator/kggeneral.cpp:201 MountMan/kmountman.cpp:197
-#: Synchronizer/synchronizerdirlist.cpp:101 VFS/krarchandler.cpp:215
-#: VFS/krarchandler.cpp:274 VFS/krarchandler.cpp:291 VFS/krarchandler.cpp:352
-#: VFS/krarchandler.cpp:529 VFS/krarchandler.cpp:536 VFS/normal_vfs.cpp:90
-#: VFS/normal_vfs.cpp:100 VFS/normal_vfs.cpp:107 VFS/virt_vfs.cpp:87
-#: VFS/virt_vfs.cpp:173
-msgid "Error"
-msgstr "エラー"
 
 #: BookMan/krbookmarkhandler.cpp:180
 msgid " instead of "
@@ -734,21 +712,9 @@ msgstr "有効"
 msgid "Jump back"
 msgstr "背面"
 
-#: BookMan/krbookmarkhandler.cpp:538 GUI/mediabutton.cpp:529
-#: Panel/krpopupmenu.cpp:61
-msgid "Open"
-msgstr "開く"
-
 #: BookMan/krbookmarkhandler.cpp:539 GUI/mediabutton.cpp:530
 msgid "Open in a new tab"
 msgstr "新しいタブで開く"
-
-#: BookMan/krbookmarkhandler.cpp:541 Dialogs/krmaskchoice.cpp:110
-#: Dialogs/kurllistrequester.cpp:149 DiskUsage/diskusage.cpp:757
-#: Konfigurator/kgcolors.cpp:474 Panel/krpopupmenu.cpp:145 krusader.cpp:796
-#, fuzzy
-msgid "Delete"
-msgstr "削除"
 
 #: Dialogs/checksumdlg.cpp:211 Dialogs/checksumdlg.cpp:466
 #, fuzzy
@@ -872,11 +838,6 @@ msgstr ""
 msgid "Hash"
 msgstr "trash"
 
-#: Dialogs/checksumdlg.cpp:496 Konfigurator/kgcolors.cpp:418
-#, fuzzy
-msgid "File"
-msgstr "ファイル"
-
 #: Dialogs/checksumdlg.cpp:499
 #, fuzzy
 msgid "File and hash"
@@ -902,13 +863,6 @@ msgid ""
 "File %1 already exists.\n"
 "Are you sure you want to overwrite it?"
 msgstr "ファイル to?"
-
-#: Dialogs/checksumdlg.cpp:573 Dialogs/krkeydialog.cpp:135
-#: DiskUsage/diskusage.cpp:607 Konfigurator/kgcolors.cpp:523
-#: Panel/panelfunc.cpp:664
-#, fuzzy
-msgid "Warning"
-msgstr "警告"
 
 #: Dialogs/checksumdlg.cpp:575
 #, fuzzy
@@ -1047,11 +1001,6 @@ msgid ""
 "can scroll it, if needed."
 msgstr "A a o to と 追加 a と クリア 全て 直線 in 秒."
 
-#: Dialogs/krmaskchoice.cpp:105
-#, fuzzy
-msgid "Add"
-msgstr "追加"
-
 #: Dialogs/krmaskchoice.cpp:106
 #, fuzzy
 msgid "Adds the selection in the line-edit to the list"
@@ -1062,36 +1011,14 @@ msgstr "in 直線 to"
 msgid "Delete the marked selection from the list"
 msgstr "削除"
 
-#: Dialogs/krmaskchoice.cpp:115
-#, fuzzy
-msgid "Clear"
-msgstr "クリア"
-
 #: Dialogs/krmaskchoice.cpp:116
 msgid "Clears the entire list of selections"
 msgstr "選択したリストをクリア"
-
-#: Dialogs/krmaskchoice.cpp:131
-#, fuzzy
-msgid "OK"
-msgstr "OK"
-
-#: Dialogs/krmaskchoice.cpp:135 Dialogs/packguibase.cpp:289
-#: DiskUsage/diskusage.cpp:155 Panel/listpanel.cpp:852 Panel/panelpopup.cpp:379
-#, fuzzy
-msgid "Cancel"
-msgstr "キャンセル"
 
 #: Dialogs/krpleasewait.cpp:45
 #, fuzzy
 msgid "Krusader::Wait"
 msgstr "Krusader:検索"
-
-#: Dialogs/krpleasewait.cpp:60 Dialogs/newftpgui.cpp:133
-#: Splitter/splittergui.cpp:113 mount.ui:86 recode.ui:87
-#, fuzzy, no-c-format
-msgid "&Cancel"
-msgstr "キャンセル(&C)"
 
 #: Dialogs/krprogress.cpp:59
 #, fuzzy
@@ -1450,13 +1377,6 @@ msgstr "ごみ箱"
 msgid "Do you really want to delete this item?"
 msgstr "to?"
 
-#: DiskUsage/diskusage.cpp:600 DiskUsage/radialMap/widgetEvents.cpp:172
-#: DiskUsage/radialMap/widgetEvents.cpp:194 Panel/panelfunc.cpp:652
-#: Panel/panelfunc.cpp:655 Panel/panelfunc.cpp:658
-#, fuzzy
-msgid "&Delete"
-msgstr "削除(&D)"
-
 #: DiskUsage/diskusage.cpp:611
 #, fuzzy
 msgid "Deleting %1..."
@@ -1524,11 +1444,6 @@ msgstr "次"
 #, fuzzy
 msgid "Previous"
 msgstr "前曲"
-
-#: DiskUsage/diskusage.cpp:797
-#, fuzzy
-msgid "View"
-msgstr "表示"
 
 #: DiskUsage/diskusage.cpp:1031
 #, fuzzy
@@ -2013,10 +1928,6 @@ msgstr "読込(&L)"
 msgid "&Overwrite"
 msgstr "上書き(&O)"
 
-#: Filter/generalfilter.cpp:138 RemoteMan/remotemanbase.cpp:155
-msgid "&Remove"
-msgstr "削除(&R)"
-
 #: Filter/generalfilter.cpp:155
 msgid "&Search in"
 msgstr "検索(&S)"
@@ -2199,14 +2110,6 @@ msgstr " 名前変更"
 msgid " Quit"
 msgstr " 終了"
 
-#: GUI/krremoteencodingmenu.cpp:97
-msgid "Reload"
-msgstr "再読み込み"
-
-#: GUI/krremoteencodingmenu.cpp:98 Konfigurator/konfiguratoritems.cpp:539
-msgid "Default"
-msgstr "デフォルト"
-
 #: GUI/krusaderstatus.cpp:39
 msgid "Ready."
 msgstr "準備完了"
@@ -2339,11 +2242,6 @@ msgstr "切断"
 #, fuzzy
 msgid "&Close current tab"
 msgstr "閉じる"
-
-#: KViewer/krviewer.cpp:102
-#, fuzzy
-msgid "&Quit"
-msgstr "終了(&Q)"
 
 #: KViewer/krviewer.cpp:159
 msgid "&KrViewer"
@@ -3802,10 +3700,6 @@ msgstr ""
 "Krusader starts to tray (if minimize to tray is set), without showing the "
 "main window"
 
-#: Konfigurator/kguseractions.cpp:48
-msgid "Information"
-msgstr "Information"
-
 #: Konfigurator/kguseractions.cpp:53
 msgid ""
 "Here you can configure settings about useractions.\n"
@@ -3851,12 +3745,6 @@ msgstr "標準"
 #, fuzzy
 msgid "Konfigurator - Creating Your Own Krusader"
 msgstr "作成中"
-
-#: Konfigurator/konfigurator.cpp:69 Search/krsearchdialog.cpp:139
-#: Synchronizer/synchronizergui.cpp:1471 UserAction/kraction.cpp:49
-#, fuzzy
-msgid "Close"
-msgstr "閉じる"
 
 #: Konfigurator/konfigurator.cpp:90
 #, fuzzy
@@ -4112,12 +4000,6 @@ msgstr ""
 "%1 内:\n"
 "JavaScript にエラーがあります。"
 
-#: Locate/locate.cpp:101 Locate/locate.cpp:241 Search/krsearchdialog.cpp:135
-#: Synchronizer/synchronizergui.cpp:1455
-#, fuzzy
-msgid "Stop"
-msgstr "停止"
-
 #: Locate/locate.cpp:101
 #, fuzzy
 msgid "Update DB"
@@ -4264,12 +4146,6 @@ msgstr "%1 KB"
 #, fuzzy
 msgid "MountMan is not operational. Sorry"
 msgstr "すみません"
-
-#: MountMan/kmountmangui.cpp:70 RemoteMan/remotemanbase.cpp:73
-#: Synchronizer/synchronizedialog.cpp:117
-#, fuzzy
-msgid "&Close"
-msgstr "閉じる(&C)"
 
 #: MountMan/kmountmangui.cpp:72
 #, fuzzy
@@ -5390,16 +5266,6 @@ msgstr "同期"
 msgid "Side to feed:"
 msgstr "to:"
 
-#: Synchronizer/feedtolistboxdialog.cpp:125
-#, fuzzy
-msgid "Left"
-msgstr "左"
-
-#: Synchronizer/feedtolistboxdialog.cpp:126
-#, fuzzy
-msgid "Right"
-msgstr "右"
-
 #: Synchronizer/feedtolistboxdialog.cpp:127
 #, fuzzy
 msgid "Both"
@@ -5461,11 +5327,6 @@ msgstr "n 左 削除 削除 n"
 #, fuzzy
 msgid "Confirm overwrites"
 msgstr "確認"
-
-#: Synchronizer/synchronizedialog.cpp:110
-#, fuzzy
-msgid "&Start"
-msgstr "開始"
 
 #: Synchronizer/synchronizedialog.cpp:114
 #, fuzzy
@@ -5689,11 +5550,6 @@ msgstr ""
 #, fuzzy
 msgid "&Synchronizer"
 msgstr "ディレクトリ"
-
-#: Synchronizer/synchronizergui.cpp:1355
-#, fuzzy
-msgid "&Options"
-msgstr "オプション"
 
 #: Synchronizer/synchronizergui.cpp:1364
 #, fuzzy
@@ -6663,11 +6519,6 @@ msgstr "表示 ダイアログ"
 msgid "Tab: switch panel"
 msgstr "タブ パネル"
 
-#: krusader.cpp:564
-#, fuzzy
-msgid "&Reload"
-msgstr "再読み込み(&R)"
-
 #: krusader.cpp:566
 #, fuzzy
 msgid "Show Actions Toolbar"
@@ -6755,11 +6606,6 @@ msgstr "作成 チェックサム."
 #, fuzzy
 msgid "Verify Checksum..."
 msgstr "確認 チェックサム."
-
-#: krusader.cpp:625
-#, fuzzy
-msgid "&Properties..."
-msgstr "プロパティ(&P)..."
 
 #: krusader.cpp:627
 #, fuzzy
@@ -6903,11 +6749,6 @@ msgstr "使い方."
 msgid "Configure &Krusader..."
 msgstr "設定."
 
-#: krusader.cpp:719
-#, fuzzy
-msgid "Back"
-msgstr "戻る"
-
 #: krusader.cpp:723
 #, fuzzy
 msgid "Save &Position"
@@ -7041,11 +6882,6 @@ msgstr "ファイルを編集"
 #, fuzzy
 msgid "New Directory..."
 msgstr "新しいディレクトリ.."
-
-#: krusader.cpp:800
-#, fuzzy
-msgid "Quit"
-msgstr "終了"
 
 #: krusader.cpp:802
 #, fuzzy
@@ -7251,25 +7087,10 @@ msgstr "16"
 msgid "Set as caption"
 msgstr "アクティブ"
 
-#: krusaderui.rc:4
-#, fuzzy, no-c-format
-msgid "&File"
-msgstr "ファイル(&F)"
-
-#: krusaderui.rc:36
-#, fuzzy, no-c-format
-msgid "&Edit"
-msgstr "編集(&E)"
-
 #: krusaderui.rc:51
 #, fuzzy, no-c-format
 msgid "Compare Se&tup"
 msgstr "比較"
-
-#: krusaderui.rc:63
-#, fuzzy, no-c-format
-msgid "&View"
-msgstr "表示(&V)"
 
 #: krusaderui.rc:77
 #, fuzzy, no-c-format
@@ -7281,16 +7102,6 @@ msgstr "移動(&G)"
 msgid "User&actions"
 msgstr "ユーザ名:"
 
-#: krusaderui.rc:93
-#, fuzzy, no-c-format
-msgid "&Tools"
-msgstr "ツール(&T)"
-
-#: krusaderui.rc:117
-#, fuzzy, no-c-format
-msgid "&Settings"
-msgstr "設定(&S)"
-
 #: krusaderui.rc:127
 #, fuzzy, no-c-format
 msgid "Command Execution Mode Se&tup"
@@ -7301,20 +7112,10 @@ msgstr "実行中にエラー"
 msgid "&Window"
 msgstr "ウィンドウ(&W)"
 
-#: krusaderui.rc:158
-#, fuzzy, no-c-format
-msgid "&Help"
-msgstr "ヘルプ (&H)"
-
 #: mount.ui:24
 #, fuzzy, no-c-format
 msgid "Mount a Filesystem"
 msgstr "Virtual ファイルシステム"
-
-#: mount.ui:69 recode.ui:70
-#, fuzzy, no-c-format
-msgid "&OK"
-msgstr "OK"
 
 #: mount.ui:102
 #, fuzzy, no-c-format
@@ -7395,6 +7196,148 @@ msgstr ""
 #, fuzzy, no-c-format
 msgid "Dump type: "
 msgstr "タイプ(&O):"
+
+#, fuzzy
+#~ msgid "Remove"
+#~ msgstr "削除"
+
+#, fuzzy
+#~ msgid "Bookmarks"
+#~ msgstr "ブックマーク"
+
+#~ msgid "Error"
+#~ msgstr "エラー"
+
+#~ msgid "Open"
+#~ msgstr "開く"
+
+#, fuzzy
+#~ msgid "Delete"
+#~ msgstr "削除"
+
+#, fuzzy
+#~ msgid "File"
+#~ msgstr "ファイル"
+
+#, fuzzy
+#~ msgid "Warning"
+#~ msgstr "警告"
+
+#, fuzzy
+#~ msgid "Add"
+#~ msgstr "追加"
+
+#, fuzzy
+#~ msgid "Clear"
+#~ msgstr "クリア"
+
+#, fuzzy
+#~ msgid "OK"
+#~ msgstr "OK"
+
+#, fuzzy
+#~ msgid "Cancel"
+#~ msgstr "キャンセル"
+
+#, fuzzy
+#~ msgid "&Cancel"
+#~ msgstr "キャンセル(&C)"
+
+#, fuzzy
+#~ msgid "&Delete"
+#~ msgstr "削除(&D)"
+
+#, fuzzy
+#~ msgid "View"
+#~ msgstr "表示"
+
+#~ msgid "&Remove"
+#~ msgstr "削除(&R)"
+
+#~ msgid "Reload"
+#~ msgstr "再読み込み"
+
+#~ msgid "Default"
+#~ msgstr "デフォルト"
+
+#, fuzzy
+#~ msgid "&Quit"
+#~ msgstr "終了(&Q)"
+
+#~ msgid "Information"
+#~ msgstr "Information"
+
+#, fuzzy
+#~ msgid "Close"
+#~ msgstr "閉じる"
+
+#, fuzzy
+#~ msgid "Stop"
+#~ msgstr "停止"
+
+#, fuzzy
+#~ msgid "&Close"
+#~ msgstr "閉じる(&C)"
+
+#, fuzzy
+#~ msgid "Left"
+#~ msgstr "左"
+
+#, fuzzy
+#~ msgid "Right"
+#~ msgstr "右"
+
+#, fuzzy
+#~ msgid "&Start"
+#~ msgstr "開始"
+
+#, fuzzy
+#~ msgid "&Options"
+#~ msgstr "オプション"
+
+#, fuzzy
+#~ msgid "&Reload"
+#~ msgstr "再読み込み(&R)"
+
+#, fuzzy
+#~ msgid "&Properties..."
+#~ msgstr "プロパティ(&P)..."
+
+#, fuzzy
+#~ msgid "Back"
+#~ msgstr "戻る"
+
+#, fuzzy
+#~ msgid "Quit"
+#~ msgstr "終了"
+
+#, fuzzy
+#~ msgid "&File"
+#~ msgstr "ファイル(&F)"
+
+#, fuzzy
+#~ msgid "&Edit"
+#~ msgstr "編集(&E)"
+
+#, fuzzy
+#~ msgid "&View"
+#~ msgstr "表示(&V)"
+
+#, fuzzy
+#~ msgid "&Tools"
+#~ msgstr "ツール(&T)"
+
+#, fuzzy
+#~ msgid "&Settings"
+#~ msgstr "設定(&S)"
+
+#, fuzzy
+#~ msgid "&Help"
+#~ msgstr "ヘルプ (&H)"
+
+#, fuzzy
+#~ msgid "&OK"
+#~ msgstr "OK"
 
 #~ msgid "If pressed, Krusader executes command line in a terminal."
 #~ msgstr "押されていると、Krusaderはコマンドをターミナルで実行します。"

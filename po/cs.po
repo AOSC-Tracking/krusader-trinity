@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: krusader-1.80.0-beta2\n"
 "Report-Msgid-Bugs-To: Dirk Eschler <deschler@users.sourceforge.net>\n"
-"POT-Creation-Date: 2019-01-03 15:00+0100\n"
+"POT-Creation-Date: 2019-01-13 19:16+0100\n"
 "PO-Revision-Date: 2007-03-27 20:25+0200\n"
 "Last-Translator: Vaclav Juza <vaclavjuza@seznam.cz>\n"
 "Language-Team: krusader-i18n <krusader-i18n@googlegroups.com>\n"
@@ -554,10 +554,6 @@ msgstr "Opravdu chcete odstranit všechny označené akce?"
 msgid "Remove selected actions?"
 msgstr "Odstranit označené akce?"
 
-#: ActionMan/useractionpage.cpp:205
-msgid "Remove"
-msgstr "Odstranit"
-
 #: ActionMan/useractionpage.cpp:246
 msgid ""
 "This file already contains some useractions.\n"
@@ -620,11 +616,6 @@ msgstr "URL:"
 msgid "Create in:"
 msgstr "Vytvořit v:"
 
-#: BookMan/kraddbookmarkdlg.cpp:71 BookMan/krbookmarkbutton.cpp:19
-#: BookMan/krbookmarkhandler.cpp:30 krusader.cpp:741
-msgid "Bookmarks"
-msgstr "Záložky"
-
 #: BookMan/kraddbookmarkdlg.cpp:103
 msgid "Folder name:"
 msgstr "Název složky:"
@@ -653,17 +644,6 @@ msgstr "Záložky (oblíbené)"
 #, c-format
 msgid "Unable to write to %1"
 msgstr "Nemohu psát do %1"
-
-#: BookMan/krbookmarkhandler.cpp:172 BookMan/krbookmarkhandler.cpp:268
-#: Konfigurator/kgcolors.cpp:508 Konfigurator/kgcolors.cpp:525
-#: Konfigurator/kggeneral.cpp:201 MountMan/kmountman.cpp:197
-#: Synchronizer/synchronizerdirlist.cpp:101 VFS/krarchandler.cpp:215
-#: VFS/krarchandler.cpp:274 VFS/krarchandler.cpp:291 VFS/krarchandler.cpp:352
-#: VFS/krarchandler.cpp:529 VFS/krarchandler.cpp:536 VFS/normal_vfs.cpp:90
-#: VFS/normal_vfs.cpp:100 VFS/normal_vfs.cpp:107 VFS/virt_vfs.cpp:87
-#: VFS/virt_vfs.cpp:173
-msgid "Error"
-msgstr "Chyba"
 
 #: BookMan/krbookmarkhandler.cpp:180
 msgid " instead of "
@@ -703,20 +683,9 @@ msgstr "Povolit speciální záložky"
 msgid "Jump back"
 msgstr "Skok zpět"
 
-#: BookMan/krbookmarkhandler.cpp:538 GUI/mediabutton.cpp:529
-#: Panel/krpopupmenu.cpp:61
-msgid "Open"
-msgstr "Otevřít"
-
 #: BookMan/krbookmarkhandler.cpp:539 GUI/mediabutton.cpp:530
 msgid "Open in a new tab"
 msgstr "Otevřít v nové záložce"
-
-#: BookMan/krbookmarkhandler.cpp:541 Dialogs/krmaskchoice.cpp:110
-#: Dialogs/kurllistrequester.cpp:149 DiskUsage/diskusage.cpp:757
-#: Konfigurator/kgcolors.cpp:474 Panel/krpopupmenu.cpp:145 krusader.cpp:796
-msgid "Delete"
-msgstr "Smazat"
 
 #: Dialogs/checksumdlg.cpp:211 Dialogs/checksumdlg.cpp:466
 msgid "Create Checksum"
@@ -834,10 +803,6 @@ msgstr "Zde jsou vypočtené kontrolní součty:"
 msgid "Hash"
 msgstr "otisk"
 
-#: Dialogs/checksumdlg.cpp:496 Konfigurator/kgcolors.cpp:418
-msgid "File"
-msgstr "Soubor"
-
 #: Dialogs/checksumdlg.cpp:499
 msgid "File and hash"
 msgstr "Soubor a otisk"
@@ -861,12 +826,6 @@ msgid ""
 msgstr ""
 "Soubor %1 již existuje.\n"
 "Opravdu ho chcete přepsat?"
-
-#: Dialogs/checksumdlg.cpp:573 Dialogs/krkeydialog.cpp:135
-#: DiskUsage/diskusage.cpp:607 Konfigurator/kgcolors.cpp:523
-#: Panel/panelfunc.cpp:664
-msgid "Warning"
-msgstr "Varování"
 
 #: Dialogs/checksumdlg.cpp:575
 msgid "Select a file to save to"
@@ -996,10 +955,6 @@ msgstr ""
 "všechny.\n"
 "Poznámka: editační řádka má svou historii, kterou vyvoláte šipkami."
 
-#: Dialogs/krmaskchoice.cpp:105
-msgid "Add"
-msgstr "Přidat"
-
 #: Dialogs/krmaskchoice.cpp:106
 msgid "Adds the selection in the line-edit to the list"
 msgstr "Přidá masku výběru do seznamu"
@@ -1008,32 +963,13 @@ msgstr "Přidá masku výběru do seznamu"
 msgid "Delete the marked selection from the list"
 msgstr "Smaže označenou masku výběru ze seznamu"
 
-#: Dialogs/krmaskchoice.cpp:115
-msgid "Clear"
-msgstr "Vyčistit"
-
 #: Dialogs/krmaskchoice.cpp:116
 msgid "Clears the entire list of selections"
 msgstr "Vyčistí seznam masek výběru"
 
-#: Dialogs/krmaskchoice.cpp:131
-msgid "OK"
-msgstr "OK"
-
-#: Dialogs/krmaskchoice.cpp:135 Dialogs/packguibase.cpp:289
-#: DiskUsage/diskusage.cpp:155 Panel/listpanel.cpp:852 Panel/panelpopup.cpp:379
-msgid "Cancel"
-msgstr "Zrušit"
-
 #: Dialogs/krpleasewait.cpp:45
 msgid "Krusader::Wait"
 msgstr "Krusader::Čekejte"
-
-#: Dialogs/krpleasewait.cpp:60 Dialogs/newftpgui.cpp:133
-#: Splitter/splittergui.cpp:113 mount.ui:86 recode.ui:87
-#, no-c-format
-msgid "&Cancel"
-msgstr "Z&rušit"
 
 #: Dialogs/krprogress.cpp:59
 msgid "Source:"
@@ -1365,12 +1301,6 @@ msgstr "Vyhodit do &koše"
 msgid "Do you really want to delete this item?"
 msgstr "Opravdu chcete smazat tuto položku?"
 
-#: DiskUsage/diskusage.cpp:600 DiskUsage/radialMap/widgetEvents.cpp:172
-#: DiskUsage/radialMap/widgetEvents.cpp:194 Panel/panelfunc.cpp:652
-#: Panel/panelfunc.cpp:655 Panel/panelfunc.cpp:658
-msgid "&Delete"
-msgstr "&Smazat"
-
 #: DiskUsage/diskusage.cpp:611
 msgid "Deleting %1..."
 msgstr "Mažu %1 ..."
@@ -1426,10 +1356,6 @@ msgstr "Další"
 #: DiskUsage/diskusage.cpp:793
 msgid "Previous"
 msgstr "Předešlý"
-
-#: DiskUsage/diskusage.cpp:797
-msgid "View"
-msgstr "Pohled"
 
 #: DiskUsage/diskusage.cpp:1031
 msgid "Type:"
@@ -1893,10 +1819,6 @@ msgstr "&Načíst"
 msgid "&Overwrite"
 msgstr "&Přepsat"
 
-#: Filter/generalfilter.cpp:138 RemoteMan/remotemanbase.cpp:155
-msgid "&Remove"
-msgstr "O&debrat"
-
 #: Filter/generalfilter.cpp:155
 msgid "&Search in"
 msgstr "&Hledat v"
@@ -2079,14 +2001,6 @@ msgstr " Přejmenovat"
 msgid " Quit"
 msgstr " Konec"
 
-#: GUI/krremoteencodingmenu.cpp:97
-msgid "Reload"
-msgstr "Obnovit"
-
-#: GUI/krremoteencodingmenu.cpp:98 Konfigurator/konfiguratoritems.cpp:539
-msgid "Default"
-msgstr "Výchozí"
-
 #: GUI/krusaderstatus.cpp:39
 msgid "Ready."
 msgstr "Připraven."
@@ -2211,10 +2125,6 @@ msgstr "&Osamostatnit záložku"
 #: KViewer/krviewer.cpp:101
 msgid "&Close current tab"
 msgstr "&Zavřít současnou záložku"
-
-#: KViewer/krviewer.cpp:102
-msgid "&Quit"
-msgstr "U&končit"
 
 #: KViewer/krviewer.cpp:159
 msgid "&KrViewer"
@@ -3541,10 +3451,6 @@ msgstr ""
 "Krusader nastartuje do systémové části programu (pokud je nastaveno "
 "minimalizovat do systémové části panelu), aniž by se ukázalo hlavní okno."
 
-#: Konfigurator/kguseractions.cpp:48
-msgid "Information"
-msgstr "Informace"
-
 #: Konfigurator/kguseractions.cpp:53
 msgid ""
 "Here you can configure settings about useractions.\n"
@@ -3588,11 +3494,6 @@ msgstr "Výchozí"
 #: Konfigurator/konfigurator.cpp:65
 msgid "Konfigurator - Creating Your Own Krusader"
 msgstr "Konfigurátor - Vytvořte si vlastní Krusader"
-
-#: Konfigurator/konfigurator.cpp:69 Search/krsearchdialog.cpp:139
-#: Synchronizer/synchronizergui.cpp:1471 UserAction/kraction.cpp:49
-msgid "Close"
-msgstr "Zavřít"
 
 #: Konfigurator/konfigurator.cpp:90
 msgid "Startup"
@@ -3808,11 +3709,6 @@ msgstr ""
 "V %1:\n"
 "Je zde chyba v Javaskriptu"
 
-#: Locate/locate.cpp:101 Locate/locate.cpp:241 Search/krsearchdialog.cpp:135
-#: Synchronizer/synchronizergui.cpp:1455
-msgid "Stop"
-msgstr "Zastavit"
-
 #: Locate/locate.cpp:101
 msgid "Update DB"
 msgstr "Aktualizovat DB"
@@ -3936,11 +3832,6 @@ msgstr "%1 KB"
 #: MountMan/kmountman.cpp:250
 msgid "MountMan is not operational. Sorry"
 msgstr "Správce připojení: vnitřní chyba, lituji"
-
-#: MountMan/kmountmangui.cpp:70 RemoteMan/remotemanbase.cpp:73
-#: Synchronizer/synchronizedialog.cpp:117
-msgid "&Close"
-msgstr "&Zavřít"
 
 #: MountMan/kmountmangui.cpp:72
 msgid "MountMan - Your Mount-Manager"
@@ -4964,14 +4855,6 @@ msgstr "Synchronizovat výsledky"
 msgid "Side to feed:"
 msgstr "Strana pro vypsání:"
 
-#: Synchronizer/feedtolistboxdialog.cpp:125
-msgid "Left"
-msgstr "Levá"
-
-#: Synchronizer/feedtolistboxdialog.cpp:126
-msgid "Right"
-msgstr "Pravá"
-
 #: Synchronizer/feedtolistboxdialog.cpp:127
 msgid "Both"
 msgstr "Obě"
@@ -5042,10 +4925,6 @@ msgstr ""
 #: Synchronizer/synchronizedialog.cpp:101
 msgid "Confirm overwrites"
 msgstr "Potvrzovat přepisování"
-
-#: Synchronizer/synchronizedialog.cpp:110
-msgid "&Start"
-msgstr "&Spustit"
 
 #: Synchronizer/synchronizedialog.cpp:114
 msgid "&Pause"
@@ -5244,10 +5123,6 @@ msgstr "<=>"
 #: Synchronizer/synchronizergui.cpp:1344
 msgid "&Synchronizer"
 msgstr "&Synchronizer"
-
-#: Synchronizer/synchronizergui.cpp:1355
-msgid "&Options"
-msgstr "&Možnosti"
 
 #: Synchronizer/synchronizergui.cpp:1364
 msgid "Parallel threads:"
@@ -6139,10 +6014,6 @@ msgstr "F3 Dialog zobrazení"
 msgid "Tab: switch panel"
 msgstr "Záložka: prohodit panel"
 
-#: krusader.cpp:564
-msgid "&Reload"
-msgstr "&Obnovit"
-
 #: krusader.cpp:566
 msgid "Show Actions Toolbar"
 msgstr "Zobrazovat lištu akcí"
@@ -6214,10 +6085,6 @@ msgstr "Spočítat kontrolní součet..."
 #: krusader.cpp:623
 msgid "Verify Checksum..."
 msgstr "Ověřit kontrolní součet..."
-
-#: krusader.cpp:625
-msgid "&Properties..."
-msgstr "&Vlastnosti..."
 
 #: krusader.cpp:627
 msgid "Pac&k..."
@@ -6335,10 +6202,6 @@ msgstr "Obsazenost d&isku..."
 msgid "Configure &Krusader..."
 msgstr "Konfigurovat &Krusader..."
 
-#: krusader.cpp:719
-msgid "Back"
-msgstr "Zpět"
-
 #: krusader.cpp:723
 msgid "Save &Position"
 msgstr "Uložit &Pozici"
@@ -6446,10 +6309,6 @@ msgstr "Upravit soubor"
 #: krusader.cpp:794
 msgid "New Directory..."
 msgstr "Nový adresář..."
-
-#: krusader.cpp:800
-msgid "Quit"
-msgstr "Ukončit"
 
 #: krusader.cpp:802
 msgid "Popular URLs..."
@@ -6640,25 +6499,10 @@ msgstr "16"
 msgid "Set as caption"
 msgstr "Stejná jako aktivní"
 
-#: krusaderui.rc:4
-#, no-c-format
-msgid "&File"
-msgstr "&Soubor"
-
-#: krusaderui.rc:36
-#, no-c-format
-msgid "&Edit"
-msgstr "Ú&pravy"
-
 #: krusaderui.rc:51
 #, no-c-format
 msgid "Compare Se&tup"
 msgstr "Nas&tavení porovnávání"
-
-#: krusaderui.rc:63
-#, no-c-format
-msgid "&View"
-msgstr "Po&hled"
 
 #: krusaderui.rc:77
 #, no-c-format
@@ -6670,16 +6514,6 @@ msgstr "Pře&jít"
 msgid "User&actions"
 msgstr "Uživatelské &akce"
 
-#: krusaderui.rc:93
-#, no-c-format
-msgid "&Tools"
-msgstr "&Nástroje"
-
-#: krusaderui.rc:117
-#, no-c-format
-msgid "&Settings"
-msgstr "Nastav&ení"
-
 #: krusaderui.rc:127
 #, no-c-format
 msgid "Command Execution Mode Se&tup"
@@ -6690,20 +6524,10 @@ msgstr "Režim s&pouštění příkazů"
 msgid "&Window"
 msgstr "&Okno "
 
-#: krusaderui.rc:158
-#, no-c-format
-msgid "&Help"
-msgstr "Nápo&věda"
-
 #: mount.ui:24
 #, fuzzy, no-c-format
 msgid "Mount a Filesystem"
 msgstr "Virtuální souborový systém"
-
-#: mount.ui:69 recode.ui:70
-#, fuzzy, no-c-format
-msgid "&OK"
-msgstr "OK"
 
 #: mount.ui:102
 #, fuzzy, no-c-format
@@ -6784,3 +6608,115 @@ msgstr ""
 #, fuzzy, no-c-format
 msgid "Dump type: "
 msgstr "&Typ:"
+
+#~ msgid "Remove"
+#~ msgstr "Odstranit"
+
+#~ msgid "Bookmarks"
+#~ msgstr "Záložky"
+
+#~ msgid "Error"
+#~ msgstr "Chyba"
+
+#~ msgid "Open"
+#~ msgstr "Otevřít"
+
+#~ msgid "Delete"
+#~ msgstr "Smazat"
+
+#~ msgid "File"
+#~ msgstr "Soubor"
+
+#~ msgid "Warning"
+#~ msgstr "Varování"
+
+#~ msgid "Add"
+#~ msgstr "Přidat"
+
+#~ msgid "Clear"
+#~ msgstr "Vyčistit"
+
+#~ msgid "OK"
+#~ msgstr "OK"
+
+#~ msgid "Cancel"
+#~ msgstr "Zrušit"
+
+#~ msgid "&Cancel"
+#~ msgstr "Z&rušit"
+
+#~ msgid "&Delete"
+#~ msgstr "&Smazat"
+
+#~ msgid "View"
+#~ msgstr "Pohled"
+
+#~ msgid "&Remove"
+#~ msgstr "O&debrat"
+
+#~ msgid "Reload"
+#~ msgstr "Obnovit"
+
+#~ msgid "Default"
+#~ msgstr "Výchozí"
+
+#~ msgid "&Quit"
+#~ msgstr "U&končit"
+
+#~ msgid "Information"
+#~ msgstr "Informace"
+
+#~ msgid "Close"
+#~ msgstr "Zavřít"
+
+#~ msgid "Stop"
+#~ msgstr "Zastavit"
+
+#~ msgid "&Close"
+#~ msgstr "&Zavřít"
+
+#~ msgid "Left"
+#~ msgstr "Levá"
+
+#~ msgid "Right"
+#~ msgstr "Pravá"
+
+#~ msgid "&Start"
+#~ msgstr "&Spustit"
+
+#~ msgid "&Options"
+#~ msgstr "&Možnosti"
+
+#~ msgid "&Reload"
+#~ msgstr "&Obnovit"
+
+#~ msgid "&Properties..."
+#~ msgstr "&Vlastnosti..."
+
+#~ msgid "Back"
+#~ msgstr "Zpět"
+
+#~ msgid "Quit"
+#~ msgstr "Ukončit"
+
+#~ msgid "&File"
+#~ msgstr "&Soubor"
+
+#~ msgid "&Edit"
+#~ msgstr "Ú&pravy"
+
+#~ msgid "&View"
+#~ msgstr "Po&hled"
+
+#~ msgid "&Tools"
+#~ msgstr "&Nástroje"
+
+#~ msgid "&Settings"
+#~ msgstr "Nastav&ení"
+
+#~ msgid "&Help"
+#~ msgstr "Nápo&věda"
+
+#, fuzzy
+#~ msgid "&OK"
+#~ msgstr "OK"

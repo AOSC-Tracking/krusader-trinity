@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: krusader-1.80.0\n"
 "Report-Msgid-Bugs-To: Dirk Eschler <deschler@users.sourceforge.net>\n"
-"POT-Creation-Date: 2019-01-03 15:00+0100\n"
+"POT-Creation-Date: 2019-01-13 19:16+0100\n"
 "PO-Revision-Date: 2007-04-04 15:43+0100\n"
 "Last-Translator: Matej Urbancic <matej.urban@gmail.com>\n"
 "Language-Team: krusader-i18n <krusader-i18n@googlegroups.com>\n"
@@ -549,10 +549,6 @@ msgstr "Zares želite odstraniti vse izbrane skripte?"
 msgid "Remove selected actions?"
 msgstr "Odstranim te skripte?"
 
-#: ActionMan/useractionpage.cpp:205
-msgid "Remove"
-msgstr "Odstrani"
-
 #: ActionMan/useractionpage.cpp:246
 msgid ""
 "This file already contains some useractions.\n"
@@ -615,11 +611,6 @@ msgstr "Povezava:"
 msgid "Create in:"
 msgstr "Ustvari v:"
 
-#: BookMan/kraddbookmarkdlg.cpp:71 BookMan/krbookmarkbutton.cpp:19
-#: BookMan/krbookmarkhandler.cpp:30 krusader.cpp:741
-msgid "Bookmarks"
-msgstr "Zaznamki"
-
 #: BookMan/kraddbookmarkdlg.cpp:103
 msgid "Folder name:"
 msgstr "Ime mape:"
@@ -648,17 +639,6 @@ msgstr "BookMan II"
 #, c-format
 msgid "Unable to write to %1"
 msgstr "Ni mogoče pisati na %1"
-
-#: BookMan/krbookmarkhandler.cpp:172 BookMan/krbookmarkhandler.cpp:268
-#: Konfigurator/kgcolors.cpp:508 Konfigurator/kgcolors.cpp:525
-#: Konfigurator/kggeneral.cpp:201 MountMan/kmountman.cpp:197
-#: Synchronizer/synchronizerdirlist.cpp:101 VFS/krarchandler.cpp:215
-#: VFS/krarchandler.cpp:274 VFS/krarchandler.cpp:291 VFS/krarchandler.cpp:352
-#: VFS/krarchandler.cpp:529 VFS/krarchandler.cpp:536 VFS/normal_vfs.cpp:90
-#: VFS/normal_vfs.cpp:100 VFS/normal_vfs.cpp:107 VFS/virt_vfs.cpp:87
-#: VFS/virt_vfs.cpp:173
-msgid "Error"
-msgstr "Napaka"
 
 #: BookMan/krbookmarkhandler.cpp:180
 msgid " instead of "
@@ -698,20 +678,9 @@ msgstr "Omogoči posebne zaznamke"
 msgid "Jump back"
 msgstr "Skoči nazaj"
 
-#: BookMan/krbookmarkhandler.cpp:538 GUI/mediabutton.cpp:529
-#: Panel/krpopupmenu.cpp:61
-msgid "Open"
-msgstr "Odpri"
-
 #: BookMan/krbookmarkhandler.cpp:539 GUI/mediabutton.cpp:530
 msgid "Open in a new tab"
 msgstr "Odpri v novem zavihku"
-
-#: BookMan/krbookmarkhandler.cpp:541 Dialogs/krmaskchoice.cpp:110
-#: Dialogs/kurllistrequester.cpp:149 DiskUsage/diskusage.cpp:757
-#: Konfigurator/kgcolors.cpp:474 Panel/krpopupmenu.cpp:145 krusader.cpp:796
-msgid "Delete"
-msgstr "Izbriši"
 
 #: Dialogs/checksumdlg.cpp:211 Dialogs/checksumdlg.cpp:466
 msgid "Create Checksum"
@@ -827,10 +796,6 @@ msgstr "Izpis izračunanih nadzornih vsot:"
 msgid "Hash"
 msgstr "Razpršilo"
 
-#: Dialogs/checksumdlg.cpp:496 Konfigurator/kgcolors.cpp:418
-msgid "File"
-msgstr "Datoteka "
-
 #: Dialogs/checksumdlg.cpp:499
 msgid "File and hash"
 msgstr "Datoteka in razpršilo"
@@ -854,12 +819,6 @@ msgid ""
 msgstr ""
 "Datoteka 1% že obstaja.\n"
 "Naj jo prepišem?"
-
-#: Dialogs/checksumdlg.cpp:573 Dialogs/krkeydialog.cpp:135
-#: DiskUsage/diskusage.cpp:607 Konfigurator/kgcolors.cpp:523
-#: Panel/panelfunc.cpp:664
-msgid "Warning"
-msgstr "Opozorilo"
 
 #: Dialogs/checksumdlg.cpp:575
 msgid "Select a file to save to"
@@ -987,10 +946,6 @@ msgstr ""
 "Vnose lahko zbrišemo ločeno ali spraznimo celoten izbor. Maske imajo lastno "
 "zgodovino, ki jo lahko pregledujemo."
 
-#: Dialogs/krmaskchoice.cpp:105
-msgid "Add"
-msgstr "Dodaj"
-
 #: Dialogs/krmaskchoice.cpp:106
 msgid "Adds the selection in the line-edit to the list"
 msgstr "Doda izbor v urejevalni vrstici na spisek"
@@ -999,32 +954,13 @@ msgstr "Doda izbor v urejevalni vrstici na spisek"
 msgid "Delete the marked selection from the list"
 msgstr "Izbriši označeno iz spiska"
 
-#: Dialogs/krmaskchoice.cpp:115
-msgid "Clear"
-msgstr "Počisti"
-
 #: Dialogs/krmaskchoice.cpp:116
 msgid "Clears the entire list of selections"
 msgstr "Očisti označeni vnos s spiska"
 
-#: Dialogs/krmaskchoice.cpp:131
-msgid "OK"
-msgstr "V Redu"
-
-#: Dialogs/krmaskchoice.cpp:135 Dialogs/packguibase.cpp:289
-#: DiskUsage/diskusage.cpp:155 Panel/listpanel.cpp:852 Panel/panelpopup.cpp:379
-msgid "Cancel"
-msgstr "Prekliči"
-
 #: Dialogs/krpleasewait.cpp:45
 msgid "Krusader::Wait"
 msgstr "Krusader::Čakanje"
-
-#: Dialogs/krpleasewait.cpp:60 Dialogs/newftpgui.cpp:133
-#: Splitter/splittergui.cpp:113 mount.ui:86 recode.ui:87
-#, no-c-format
-msgid "&Cancel"
-msgstr "&Prekliči"
 
 #: Dialogs/krprogress.cpp:59
 msgid "Source:"
@@ -1359,12 +1295,6 @@ msgstr "&Smeti"
 msgid "Do you really want to delete this item?"
 msgstr "Zares želite izbrisati ta predmet?"
 
-#: DiskUsage/diskusage.cpp:600 DiskUsage/radialMap/widgetEvents.cpp:172
-#: DiskUsage/radialMap/widgetEvents.cpp:194 Panel/panelfunc.cpp:652
-#: Panel/panelfunc.cpp:655 Panel/panelfunc.cpp:658
-msgid "&Delete"
-msgstr "&Izbriši"
-
 #: DiskUsage/diskusage.cpp:611
 msgid "Deleting %1..."
 msgstr "Brisanje %1 ..."
@@ -1420,10 +1350,6 @@ msgstr "Naslednji"
 #: DiskUsage/diskusage.cpp:793
 msgid "Previous"
 msgstr "Predhodni"
-
-#: DiskUsage/diskusage.cpp:797
-msgid "View"
-msgstr "Pogled"
 
 #: DiskUsage/diskusage.cpp:1031
 msgid "Type:"
@@ -1885,10 +1811,6 @@ msgstr "&Naloži"
 msgid "&Overwrite"
 msgstr "&Prepiši"
 
-#: Filter/generalfilter.cpp:138 RemoteMan/remotemanbase.cpp:155
-msgid "&Remove"
-msgstr "&Odstrani"
-
 #: Filter/generalfilter.cpp:155
 msgid "&Search in"
 msgstr "&Poišči v"
@@ -2071,14 +1993,6 @@ msgstr " Preimenuj"
 msgid " Quit"
 msgstr " Izhod"
 
-#: GUI/krremoteencodingmenu.cpp:97
-msgid "Reload"
-msgstr "Osveži"
-
-#: GUI/krremoteencodingmenu.cpp:98 Konfigurator/konfiguratoritems.cpp:539
-msgid "Default"
-msgstr "Privzeto"
-
 #: GUI/krusaderstatus.cpp:39
 msgid "Ready."
 msgstr "Pripravljen."
@@ -2203,10 +2117,6 @@ msgstr "&Odcepi zavihek"
 #: KViewer/krviewer.cpp:101
 msgid "&Close current tab"
 msgstr "&Zapri trenutni zavihek"
-
-#: KViewer/krviewer.cpp:102
-msgid "&Quit"
-msgstr "&Izhod"
 
 #: KViewer/krviewer.cpp:159
 msgid "&KrViewer"
@@ -3514,10 +3424,6 @@ msgstr ""
 "Krusader se po zagonu prikaže v sistemski vrstici (če je izbrana ta možnost) "
 "in ne prikaže glavnega okna."
 
-#: Konfigurator/kguseractions.cpp:48
-msgid "Information"
-msgstr "Podrobnosti"
-
 #: Konfigurator/kguseractions.cpp:53
 msgid ""
 "Here you can configure settings about useractions.\n"
@@ -3561,11 +3467,6 @@ msgstr "Privzeto"
 #: Konfigurator/konfigurator.cpp:65
 msgid "Konfigurator - Creating Your Own Krusader"
 msgstr "Konfigurator - Nastavljanje po želji"
-
-#: Konfigurator/konfigurator.cpp:69 Search/krsearchdialog.cpp:139
-#: Synchronizer/synchronizergui.cpp:1471 UserAction/kraction.cpp:49
-msgid "Close"
-msgstr "Zapri"
 
 #: Konfigurator/konfigurator.cpp:90
 msgid "Startup"
@@ -3782,11 +3683,6 @@ msgstr ""
 "V %1:\n"
 "je napaka v JavaSkriptu"
 
-#: Locate/locate.cpp:101 Locate/locate.cpp:241 Search/krsearchdialog.cpp:135
-#: Synchronizer/synchronizergui.cpp:1455
-msgid "Stop"
-msgstr "Stop"
-
 #: Locate/locate.cpp:101
 msgid "Update DB"
 msgstr "Posodobi bazo"
@@ -3908,11 +3804,6 @@ msgstr "%1 KB"
 #: MountMan/kmountman.cpp:250
 msgid "MountMan is not operational. Sorry"
 msgstr "Priklopnik naprav ni operativen."
-
-#: MountMan/kmountmangui.cpp:70 RemoteMan/remotemanbase.cpp:73
-#: Synchronizer/synchronizedialog.cpp:117
-msgid "&Close"
-msgstr "&Zapri"
 
 #: MountMan/kmountmangui.cpp:72
 msgid "MountMan - Your Mount-Manager"
@@ -4937,14 +4828,6 @@ msgstr "Uskladi rezultate"
 msgid "Side to feed:"
 msgstr "Stran za napolnitev:"
 
-#: Synchronizer/feedtolistboxdialog.cpp:125
-msgid "Left"
-msgstr "Levo"
-
-#: Synchronizer/feedtolistboxdialog.cpp:126
-msgid "Right"
-msgstr "Desno"
-
 #: Synchronizer/feedtolistboxdialog.cpp:127
 msgid "Both"
 msgstr "Oba"
@@ -5018,10 +4901,6 @@ msgstr ""
 #: Synchronizer/synchronizedialog.cpp:101
 msgid "Confirm overwrites"
 msgstr "Potrdi prepisovanje"
-
-#: Synchronizer/synchronizedialog.cpp:110
-msgid "&Start"
-msgstr "&Začetek"
 
 #: Synchronizer/synchronizedialog.cpp:114
 msgid "&Pause"
@@ -5217,10 +5096,6 @@ msgstr "<=>"
 #: Synchronizer/synchronizergui.cpp:1344
 msgid "&Synchronizer"
 msgstr "&Usklajevalnik"
-
-#: Synchronizer/synchronizergui.cpp:1355
-msgid "&Options"
-msgstr "&Možnosti"
 
 #: Synchronizer/synchronizergui.cpp:1364
 msgid "Parallel threads:"
@@ -6108,10 +5983,6 @@ msgstr "F3 Dialog pregleda"
 msgid "Tab: switch panel"
 msgstr "Zavihek: zamenjava oken"
 
-#: krusader.cpp:564
-msgid "&Reload"
-msgstr "&Osveži"
-
 #: krusader.cpp:566
 msgid "Show Actions Toolbar"
 msgstr "Pokaži skriptno vrstico"
@@ -6183,10 +6054,6 @@ msgstr "Ustvari nadzorno vsoto ..."
 #: krusader.cpp:623
 msgid "Verify Checksum..."
 msgstr "Overi nadzorno vsoto ..."
-
-#: krusader.cpp:625
-msgid "&Properties..."
-msgstr "&Lastnosti ..."
 
 #: krusader.cpp:627
 msgid "Pac&k..."
@@ -6304,10 +6171,6 @@ msgstr "Zasedenost &diska ..."
 msgid "Configure &Krusader..."
 msgstr "&Nastavitve ..."
 
-#: krusader.cpp:719
-msgid "Back"
-msgstr "Nazaj"
-
 #: krusader.cpp:723
 msgid "Save &Position"
 msgstr "&Shrani lego"
@@ -6415,10 +6278,6 @@ msgstr "Uredi datoteko"
 #: krusader.cpp:794
 msgid "New Directory..."
 msgstr "Nova mapa ..."
-
-#: krusader.cpp:800
-msgid "Quit"
-msgstr "Zapri"
 
 #: krusader.cpp:802
 msgid "Popular URLs..."
@@ -6609,25 +6468,10 @@ msgstr "16"
 msgid "Set as caption"
 msgstr "Enako kot aktivno"
 
-#: krusaderui.rc:4
-#, no-c-format
-msgid "&File"
-msgstr "&Datoteka"
-
-#: krusaderui.rc:36
-#, no-c-format
-msgid "&Edit"
-msgstr "&Uredi"
-
 #: krusaderui.rc:51
 #, no-c-format
 msgid "Compare Se&tup"
 msgstr "&Nastavitve primerjave"
-
-#: krusaderui.rc:63
-#, no-c-format
-msgid "&View"
-msgstr "&Pogled"
 
 #: krusaderui.rc:77
 #, no-c-format
@@ -6639,16 +6483,6 @@ msgstr "&Pojdi"
 msgid "User&actions"
 msgstr "&Skripti"
 
-#: krusaderui.rc:93
-#, no-c-format
-msgid "&Tools"
-msgstr "&Orodja"
-
-#: krusaderui.rc:117
-#, no-c-format
-msgid "&Settings"
-msgstr "Na&stavitve"
-
 #: krusaderui.rc:127
 #, no-c-format
 msgid "Command Execution Mode Se&tup"
@@ -6659,20 +6493,10 @@ msgstr "Nastavitev izvršljivega načina"
 msgid "&Window"
 msgstr "&Okno"
 
-#: krusaderui.rc:158
-#, no-c-format
-msgid "&Help"
-msgstr "&Pomoč"
-
 #: mount.ui:24
 #, fuzzy, no-c-format
 msgid "Mount a Filesystem"
 msgstr "Navidezni datotečni sistem"
-
-#: mount.ui:69 recode.ui:70
-#, fuzzy, no-c-format
-msgid "&OK"
-msgstr "V Redu"
 
 #: mount.ui:102
 #, fuzzy, no-c-format
@@ -6753,6 +6577,118 @@ msgstr ""
 #, fuzzy, no-c-format
 msgid "Dump type: "
 msgstr "&Tip:"
+
+#~ msgid "Remove"
+#~ msgstr "Odstrani"
+
+#~ msgid "Bookmarks"
+#~ msgstr "Zaznamki"
+
+#~ msgid "Error"
+#~ msgstr "Napaka"
+
+#~ msgid "Open"
+#~ msgstr "Odpri"
+
+#~ msgid "Delete"
+#~ msgstr "Izbriši"
+
+#~ msgid "File"
+#~ msgstr "Datoteka "
+
+#~ msgid "Warning"
+#~ msgstr "Opozorilo"
+
+#~ msgid "Add"
+#~ msgstr "Dodaj"
+
+#~ msgid "Clear"
+#~ msgstr "Počisti"
+
+#~ msgid "OK"
+#~ msgstr "V Redu"
+
+#~ msgid "Cancel"
+#~ msgstr "Prekliči"
+
+#~ msgid "&Cancel"
+#~ msgstr "&Prekliči"
+
+#~ msgid "&Delete"
+#~ msgstr "&Izbriši"
+
+#~ msgid "View"
+#~ msgstr "Pogled"
+
+#~ msgid "&Remove"
+#~ msgstr "&Odstrani"
+
+#~ msgid "Reload"
+#~ msgstr "Osveži"
+
+#~ msgid "Default"
+#~ msgstr "Privzeto"
+
+#~ msgid "&Quit"
+#~ msgstr "&Izhod"
+
+#~ msgid "Information"
+#~ msgstr "Podrobnosti"
+
+#~ msgid "Close"
+#~ msgstr "Zapri"
+
+#~ msgid "Stop"
+#~ msgstr "Stop"
+
+#~ msgid "&Close"
+#~ msgstr "&Zapri"
+
+#~ msgid "Left"
+#~ msgstr "Levo"
+
+#~ msgid "Right"
+#~ msgstr "Desno"
+
+#~ msgid "&Start"
+#~ msgstr "&Začetek"
+
+#~ msgid "&Options"
+#~ msgstr "&Možnosti"
+
+#~ msgid "&Reload"
+#~ msgstr "&Osveži"
+
+#~ msgid "&Properties..."
+#~ msgstr "&Lastnosti ..."
+
+#~ msgid "Back"
+#~ msgstr "Nazaj"
+
+#~ msgid "Quit"
+#~ msgstr "Zapri"
+
+#~ msgid "&File"
+#~ msgstr "&Datoteka"
+
+#~ msgid "&Edit"
+#~ msgstr "&Uredi"
+
+#~ msgid "&View"
+#~ msgstr "&Pogled"
+
+#~ msgid "&Tools"
+#~ msgstr "&Orodja"
+
+#~ msgid "&Settings"
+#~ msgstr "Na&stavitve"
+
+#~ msgid "&Help"
+#~ msgstr "&Pomoč"
+
+#, fuzzy
+#~ msgid "&OK"
+#~ msgstr "V Redu"
 
 #~ msgid "If pressed, Krusader executes command line in a terminal."
 #~ msgstr "Če pritisnete bo Krusader izvedel ukaz v terminalu."

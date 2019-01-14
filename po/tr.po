@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: krusader-1.80.0\n"
 "Report-Msgid-Bugs-To: Dirk Eschler <deschler@users.sourceforge.net>\n"
-"POT-Creation-Date: 2019-01-03 15:00+0100\n"
+"POT-Creation-Date: 2019-01-13 19:16+0100\n"
 "PO-Revision-Date: 2007-05-07 14:53+0300\n"
 "Last-Translator: Mertcan Mi'ma Bekir <bekirsonat@kde.org.tr>\n"
 "Language-Team: krusader-i18n <krusader-i18n@googlegroups.com>\n"
@@ -565,10 +565,6 @@ msgstr ""
 msgid "Remove selected actions?"
 msgstr "Seçili Eylemler silinsin mi?"
 
-#: ActionMan/useractionpage.cpp:205
-msgid "Remove"
-msgstr "Sil"
-
 #: ActionMan/useractionpage.cpp:246
 msgid ""
 "This file already contains some useractions.\n"
@@ -635,11 +631,6 @@ msgstr "URL:"
 msgid "Create in:"
 msgstr "Oluşturulacak:"
 
-#: BookMan/kraddbookmarkdlg.cpp:71 BookMan/krbookmarkbutton.cpp:19
-#: BookMan/krbookmarkhandler.cpp:30 krusader.cpp:741
-msgid "Bookmarks"
-msgstr "Yer-imleri"
-
 #: BookMan/kraddbookmarkdlg.cpp:103
 msgid "Folder name:"
 msgstr "Dizin ismi:"
@@ -668,17 +659,6 @@ msgstr "BookMan II"
 #, fuzzy, c-format
 msgid "Unable to write to %1"
 msgstr "Yazılamıyor:"
-
-#: BookMan/krbookmarkhandler.cpp:172 BookMan/krbookmarkhandler.cpp:268
-#: Konfigurator/kgcolors.cpp:508 Konfigurator/kgcolors.cpp:525
-#: Konfigurator/kggeneral.cpp:201 MountMan/kmountman.cpp:197
-#: Synchronizer/synchronizerdirlist.cpp:101 VFS/krarchandler.cpp:215
-#: VFS/krarchandler.cpp:274 VFS/krarchandler.cpp:291 VFS/krarchandler.cpp:352
-#: VFS/krarchandler.cpp:529 VFS/krarchandler.cpp:536 VFS/normal_vfs.cpp:90
-#: VFS/normal_vfs.cpp:100 VFS/normal_vfs.cpp:107 VFS/virt_vfs.cpp:87
-#: VFS/virt_vfs.cpp:173
-msgid "Error"
-msgstr "Hata"
 
 #: BookMan/krbookmarkhandler.cpp:180
 #, fuzzy
@@ -721,20 +701,9 @@ msgstr "Yer-im'lerini Düzenle"
 msgid "Jump back"
 msgstr "Geriye Git"
 
-#: BookMan/krbookmarkhandler.cpp:538 GUI/mediabutton.cpp:529
-#: Panel/krpopupmenu.cpp:61
-msgid "Open"
-msgstr "Aç"
-
 #: BookMan/krbookmarkhandler.cpp:539 GUI/mediabutton.cpp:530
 msgid "Open in a new tab"
 msgstr "Yeni sekmede aç"
-
-#: BookMan/krbookmarkhandler.cpp:541 Dialogs/krmaskchoice.cpp:110
-#: Dialogs/kurllistrequester.cpp:149 DiskUsage/diskusage.cpp:757
-#: Konfigurator/kgcolors.cpp:474 Panel/krpopupmenu.cpp:145 krusader.cpp:796
-msgid "Delete"
-msgstr "Sil"
 
 #: Dialogs/checksumdlg.cpp:211 Dialogs/checksumdlg.cpp:466
 msgid "Create Checksum"
@@ -857,10 +826,6 @@ msgstr "Hasaplanan sağlamalar:"
 msgid "Hash"
 msgstr "Hash"
 
-#: Dialogs/checksumdlg.cpp:496 Konfigurator/kgcolors.cpp:418
-msgid "File"
-msgstr "Dosya"
-
 #: Dialogs/checksumdlg.cpp:499
 #, fuzzy
 msgid "File and hash"
@@ -885,12 +850,6 @@ msgid ""
 msgstr ""
 "%1 dosyası zaten var.\n"
 "Üzerine yazmak istediğinize emin misiniz?"
-
-#: Dialogs/checksumdlg.cpp:573 Dialogs/krkeydialog.cpp:135
-#: DiskUsage/diskusage.cpp:607 Konfigurator/kgcolors.cpp:523
-#: Panel/panelfunc.cpp:664
-msgid "Warning"
-msgstr "Uyarı"
 
 #: Dialogs/checksumdlg.cpp:575
 #, fuzzy
@@ -1031,10 +990,6 @@ msgstr ""
 "Unutmayınki, kalıbı düzenlediğiniz satır kendi geçmişinde saklanır ve "
 "gerektiğinde bu kayıtları listeleyebilirsiniz."
 
-#: Dialogs/krmaskchoice.cpp:105
-msgid "Add"
-msgstr "Ekle"
-
 #: Dialogs/krmaskchoice.cpp:106
 msgid "Adds the selection in the line-edit to the list"
 msgstr "Seçilen Düzenleme Satırını listeye ekler."
@@ -1043,33 +998,14 @@ msgstr "Seçilen Düzenleme Satırını listeye ekler."
 msgid "Delete the marked selection from the list"
 msgstr "İşaretli seçim'i listeden siler"
 
-#: Dialogs/krmaskchoice.cpp:115
-msgid "Clear"
-msgstr "Temizle"
-
 #: Dialogs/krmaskchoice.cpp:116
 msgid "Clears the entire list of selections"
 msgstr "Seçimler listesinin hepsini temizler"
-
-#: Dialogs/krmaskchoice.cpp:131
-msgid "OK"
-msgstr "Tamam"
-
-#: Dialogs/krmaskchoice.cpp:135 Dialogs/packguibase.cpp:289
-#: DiskUsage/diskusage.cpp:155 Panel/listpanel.cpp:852 Panel/panelpopup.cpp:379
-msgid "Cancel"
-msgstr "Vazgeç"
 
 #: Dialogs/krpleasewait.cpp:45
 #, fuzzy
 msgid "Krusader::Wait"
 msgstr "Krusader::Bul"
-
-#: Dialogs/krpleasewait.cpp:60 Dialogs/newftpgui.cpp:133
-#: Splitter/splittergui.cpp:113 mount.ui:86 recode.ui:87
-#, no-c-format
-msgid "&Cancel"
-msgstr "&Vazgeç"
 
 #: Dialogs/krprogress.cpp:59
 msgid "Source:"
@@ -1406,12 +1342,6 @@ msgstr "Çöpe &At"
 msgid "Do you really want to delete this item?"
 msgstr "Bu ögeyi silmek istediğinize emin misiniz ???"
 
-#: DiskUsage/diskusage.cpp:600 DiskUsage/radialMap/widgetEvents.cpp:172
-#: DiskUsage/radialMap/widgetEvents.cpp:194 Panel/panelfunc.cpp:652
-#: Panel/panelfunc.cpp:655 Panel/panelfunc.cpp:658
-msgid "&Delete"
-msgstr "&Sil"
-
 #: DiskUsage/diskusage.cpp:611
 msgid "Deleting %1..."
 msgstr "%1 siliniyor.."
@@ -1467,10 +1397,6 @@ msgstr "Sonraki"
 #: DiskUsage/diskusage.cpp:793
 msgid "Previous"
 msgstr "Önceki"
-
-#: DiskUsage/diskusage.cpp:797
-msgid "View"
-msgstr "Göster"
 
 #: DiskUsage/diskusage.cpp:1031
 msgid "Type:"
@@ -1939,10 +1865,6 @@ msgstr "&Yükle"
 msgid "&Overwrite"
 msgstr "Ü&zerineYaz"
 
-#: Filter/generalfilter.cpp:138 RemoteMan/remotemanbase.cpp:155
-msgid "&Remove"
-msgstr "&Sil"
-
 #: Filter/generalfilter.cpp:155
 msgid "&Search in"
 msgstr "A&ranacak"
@@ -2128,14 +2050,6 @@ msgstr "Adlandır"
 msgid " Quit"
 msgstr "Çık"
 
-#: GUI/krremoteencodingmenu.cpp:97
-msgid "Reload"
-msgstr "Yeniden Yükle"
-
-#: GUI/krremoteencodingmenu.cpp:98 Konfigurator/konfiguratoritems.cpp:539
-msgid "Default"
-msgstr "Varsayılan"
-
 #: GUI/krusaderstatus.cpp:39
 msgid "Ready."
 msgstr "Hazır"
@@ -2261,10 +2175,6 @@ msgstr "Sekmeyi &Ayır"
 #: KViewer/krviewer.cpp:101
 msgid "&Close current tab"
 msgstr "Bulunulan Sekmeyi Ka&pat"
-
-#: KViewer/krviewer.cpp:102
-msgid "&Quit"
-msgstr "&ÇIK"
 
 #: KViewer/krviewer.cpp:159
 msgid "&KrViewer"
@@ -3602,10 +3512,6 @@ msgstr ""
 "Krusader ( eğer izlem çubuğuna küçültme seçilmişse ) ana pencereyi "
 "göstermeksizin izlem çubuğuna yerleşerek çalışmaya başlar."
 
-#: Konfigurator/kguseractions.cpp:48
-msgid "Information"
-msgstr "Bilgilendirme"
-
 #: Konfigurator/kguseractions.cpp:53
 msgid ""
 "Here you can configure settings about useractions.\n"
@@ -3649,11 +3555,6 @@ msgstr "Öntanımlılar"
 #: Konfigurator/konfigurator.cpp:65
 msgid "Konfigurator - Creating Your Own Krusader"
 msgstr "Yapılandırıcı - Kendi Krusader'inizi oluşturun"
-
-#: Konfigurator/konfigurator.cpp:69 Search/krsearchdialog.cpp:139
-#: Synchronizer/synchronizergui.cpp:1471 UserAction/kraction.cpp:49
-msgid "Close"
-msgstr "Kapat"
 
 #: Konfigurator/konfigurator.cpp:90
 msgid "Startup"
@@ -3870,11 +3771,6 @@ msgstr ""
 "%1 içinde:\n"
 "JavaScript hatası"
 
-#: Locate/locate.cpp:101 Locate/locate.cpp:241 Search/krsearchdialog.cpp:135
-#: Synchronizer/synchronizergui.cpp:1455
-msgid "Stop"
-msgstr "Dur"
-
 #: Locate/locate.cpp:101
 msgid "Update DB"
 msgstr "Veritabanını güncelle"
@@ -3999,11 +3895,6 @@ msgstr "%1 KB"
 #: MountMan/kmountman.cpp:250
 msgid "MountMan is not operational. Sorry"
 msgstr "Maalesef Bağlamacı çalışamıyor."
-
-#: MountMan/kmountmangui.cpp:70 RemoteMan/remotemanbase.cpp:73
-#: Synchronizer/synchronizedialog.cpp:117
-msgid "&Close"
-msgstr "&Kapat"
 
 #: MountMan/kmountmangui.cpp:72
 msgid "MountMan - Your Mount-Manager"
@@ -5027,14 +4918,6 @@ msgstr "Sonuçları Eşgüdümle"
 msgid "Side to feed:"
 msgstr "Döküm tarafı:"
 
-#: Synchronizer/feedtolistboxdialog.cpp:125
-msgid "Left"
-msgstr "Sol"
-
-#: Synchronizer/feedtolistboxdialog.cpp:126
-msgid "Right"
-msgstr "Sağ"
-
 #: Synchronizer/feedtolistboxdialog.cpp:127
 msgid "Both"
 msgstr "Her ikisi"
@@ -5100,10 +4983,6 @@ msgstr ""
 #: Synchronizer/synchronizedialog.cpp:101
 msgid "Confirm overwrites"
 msgstr "Üstüne yazmayı onayla"
-
-#: Synchronizer/synchronizedialog.cpp:110
-msgid "&Start"
-msgstr "&Başla"
 
 #: Synchronizer/synchronizedialog.cpp:114
 msgid "&Pause"
@@ -5310,11 +5189,6 @@ msgstr "<=>"
 #: Synchronizer/synchronizergui.cpp:1344
 msgid "&Synchronizer"
 msgstr "&Eşgüdümleyici"
-
-#: Synchronizer/synchronizergui.cpp:1355
-#, fuzzy
-msgid "&Options"
-msgstr "İşlem"
 
 #: Synchronizer/synchronizergui.cpp:1364
 msgid "Parallel threads:"
@@ -6257,11 +6131,6 @@ msgstr "F3 Göster İletişimi"
 msgid "Tab: switch panel"
 msgstr "Tab: Pencere değiştir"
 
-#: krusader.cpp:564
-#, fuzzy
-msgid "&Reload"
-msgstr "&Yenile"
-
 #: krusader.cpp:566
 msgid "Show Actions Toolbar"
 msgstr "Göster:Eylemler Araç-çubuğu"
@@ -6342,11 +6211,6 @@ msgstr "Sağlama Oluştur"
 #, fuzzy
 msgid "Verify Checksum..."
 msgstr "Sağlama'yı Denetle"
-
-#: krusader.cpp:625
-#, fuzzy
-msgid "&Properties..."
-msgstr "Ö&zellikler"
 
 #: krusader.cpp:627
 #, fuzzy
@@ -6481,10 +6345,6 @@ msgstr "Disk &Kullanımı"
 msgid "Configure &Krusader..."
 msgstr "&Krusader'i Yapılandır"
 
-#: krusader.cpp:719
-msgid "Back"
-msgstr "Geri"
-
 #: krusader.cpp:723
 msgid "Save &Position"
 msgstr "&Konumu Sakla"
@@ -6605,10 +6465,6 @@ msgstr "Dosya Düzenle"
 #: krusader.cpp:794
 msgid "New Directory..."
 msgstr "Yeni dizin..."
-
-#: krusader.cpp:800
-msgid "Quit"
-msgstr "Çık"
 
 #: krusader.cpp:802
 #, fuzzy
@@ -6806,25 +6662,10 @@ msgstr "16"
 msgid "Set as caption"
 msgstr "Etkin ile aynı"
 
-#: krusaderui.rc:4
-#, no-c-format
-msgid "&File"
-msgstr "&Dosya"
-
-#: krusaderui.rc:36
-#, no-c-format
-msgid "&Edit"
-msgstr "Dü&zenle"
-
 #: krusaderui.rc:51
 #, no-c-format
 msgid "Compare Se&tup"
 msgstr "Karşılaştırma &Ayar"
-
-#: krusaderui.rc:63
-#, no-c-format
-msgid "&View"
-msgstr "Gö&rünüm"
 
 #: krusaderui.rc:77
 #, no-c-format
@@ -6836,16 +6677,6 @@ msgstr "&Git"
 msgid "User&actions"
 msgstr "Kullanıcı&Eylemleri"
 
-#: krusaderui.rc:93
-#, no-c-format
-msgid "&Tools"
-msgstr "A&raçlar"
-
-#: krusaderui.rc:117
-#, no-c-format
-msgid "&Settings"
-msgstr "Ayar&lar"
-
 #: krusaderui.rc:127
 #, fuzzy, no-c-format
 msgid "Command Execution Mode Se&tup"
@@ -6856,20 +6687,10 @@ msgstr "Çalıştırma kipi"
 msgid "&Window"
 msgstr "&Pencere"
 
-#: krusaderui.rc:158
-#, no-c-format
-msgid "&Help"
-msgstr "&Yardım"
-
 #: mount.ui:24
 #, fuzzy, no-c-format
 msgid "Mount a Filesystem"
 msgstr "Sanal Dosya-sistemi"
-
-#: mount.ui:69 recode.ui:70
-#, fuzzy, no-c-format
-msgid "&OK"
-msgstr "Tamam"
 
 #: mount.ui:102
 #, fuzzy, no-c-format
@@ -6950,3 +6771,118 @@ msgstr ""
 #, fuzzy, no-c-format
 msgid "Dump type: "
 msgstr "&Türü:"
+
+#~ msgid "Remove"
+#~ msgstr "Sil"
+
+#~ msgid "Bookmarks"
+#~ msgstr "Yer-imleri"
+
+#~ msgid "Error"
+#~ msgstr "Hata"
+
+#~ msgid "Open"
+#~ msgstr "Aç"
+
+#~ msgid "Delete"
+#~ msgstr "Sil"
+
+#~ msgid "File"
+#~ msgstr "Dosya"
+
+#~ msgid "Warning"
+#~ msgstr "Uyarı"
+
+#~ msgid "Add"
+#~ msgstr "Ekle"
+
+#~ msgid "Clear"
+#~ msgstr "Temizle"
+
+#~ msgid "OK"
+#~ msgstr "Tamam"
+
+#~ msgid "Cancel"
+#~ msgstr "Vazgeç"
+
+#~ msgid "&Cancel"
+#~ msgstr "&Vazgeç"
+
+#~ msgid "&Delete"
+#~ msgstr "&Sil"
+
+#~ msgid "View"
+#~ msgstr "Göster"
+
+#~ msgid "&Remove"
+#~ msgstr "&Sil"
+
+#~ msgid "Reload"
+#~ msgstr "Yeniden Yükle"
+
+#~ msgid "Default"
+#~ msgstr "Varsayılan"
+
+#~ msgid "&Quit"
+#~ msgstr "&ÇIK"
+
+#~ msgid "Information"
+#~ msgstr "Bilgilendirme"
+
+#~ msgid "Close"
+#~ msgstr "Kapat"
+
+#~ msgid "Stop"
+#~ msgstr "Dur"
+
+#~ msgid "&Close"
+#~ msgstr "&Kapat"
+
+#~ msgid "Left"
+#~ msgstr "Sol"
+
+#~ msgid "Right"
+#~ msgstr "Sağ"
+
+#~ msgid "&Start"
+#~ msgstr "&Başla"
+
+#, fuzzy
+#~ msgid "&Options"
+#~ msgstr "İşlem"
+
+#, fuzzy
+#~ msgid "&Reload"
+#~ msgstr "&Yenile"
+
+#, fuzzy
+#~ msgid "&Properties..."
+#~ msgstr "Ö&zellikler"
+
+#~ msgid "Back"
+#~ msgstr "Geri"
+
+#~ msgid "Quit"
+#~ msgstr "Çık"
+
+#~ msgid "&File"
+#~ msgstr "&Dosya"
+
+#~ msgid "&Edit"
+#~ msgstr "Dü&zenle"
+
+#~ msgid "&View"
+#~ msgstr "Gö&rünüm"
+
+#~ msgid "&Tools"
+#~ msgstr "A&raçlar"
+
+#~ msgid "&Settings"
+#~ msgstr "Ayar&lar"
+
+#~ msgid "&Help"
+#~ msgstr "&Yardım"
+
+#, fuzzy
+#~ msgid "&OK"
+#~ msgstr "Tamam"
