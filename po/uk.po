@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: krusader-1.80.0-beta2\n"
 "Report-Msgid-Bugs-To: Dirk Eschler <deschler@users.sourceforge.net>\n"
-"POT-Creation-Date: 2019-01-13 19:16+0100\n"
+"POT-Creation-Date: 2019-01-23 23:44+0100\n"
 "PO-Revision-Date: 2005-02-21 23:08-0800\n"
 "Last-Translator: Ivan Petrouchtchak <iip@telus.net>\n"
 "Language-Team: Ukrainian <translation@linux.org.ua>\n"
@@ -599,7 +599,7 @@ msgstr "Створити в:"
 msgid "Folder name:"
 msgstr "Назва теки:"
 
-#: BookMan/krbookmark.cpp:12 krusader.cpp:753
+#: BookMan/krbookmark.cpp:12 krusader.cpp:738
 #, fuzzy
 msgid "Media"
 msgstr "редагувати"
@@ -648,7 +648,7 @@ msgstr "Помилка читання файла закладок: "
 msgid "Popular URLs"
 msgstr "Популярні URL"
 
-#: BookMan/krbookmarkhandler.cpp:399 krusader.cpp:743
+#: BookMan/krbookmarkhandler.cpp:399 krusader.cpp:728
 msgid "Bookmark Current"
 msgstr "Зробити закладку поточного"
 
@@ -1106,7 +1106,7 @@ msgid ""
 "Pack %n files"
 msgstr ""
 
-#: Dialogs/packgui.cpp:96
+#: Dialogs/packgui.cpp:94
 msgid "Please select a directory"
 msgstr "Будь ласка, виберіть каталог"
 
@@ -1433,7 +1433,7 @@ msgid "Percent"
 msgstr "Відсотків"
 
 #: DiskUsage/dulines.cpp:240 DiskUsage/dulistview.cpp:56
-#: Konfigurator/krresulttable.cpp:130 MountMan/kmountmangui.cpp:127
+#: Konfigurator/krresulttable.cpp:129 MountMan/kmountmangui.cpp:127
 #: Panel/krbriefview.cpp:151 Panel/krdetailedview.cpp:103
 #: Search/krsearchdialog.cpp:180 Synchronizer/synchronizergui.cpp:1322
 #: Synchronizer/synchronizergui.cpp:1328
@@ -1453,7 +1453,7 @@ msgid "Own size"
 msgstr "Власний розмір"
 
 #: DiskUsage/dulistview.cpp:68 MountMan/kmountmangui.cpp:128
-#: Panel/krdetailedview.cpp:105 Panel/krdetailedview.cpp:1454
+#: Panel/krdetailedview.cpp:105 Panel/krdetailedview.cpp:1453
 msgid "Type"
 msgstr "Тип"
 
@@ -1468,12 +1468,12 @@ msgid "Permissions"
 msgstr "Права доступу"
 
 #: DiskUsage/dulistview.cpp:77 Panel/krdetailedview.cpp:110
-#: Panel/krdetailedview.cpp:1469
+#: Panel/krdetailedview.cpp:1468
 msgid "Owner"
 msgstr "Власник"
 
-#: DiskUsage/dulistview.cpp:80 Konfigurator/krresulttable.cpp:284
-#: Panel/krdetailedview.cpp:111 Panel/krdetailedview.cpp:1472
+#: DiskUsage/dulistview.cpp:80 Konfigurator/krresulttable.cpp:281
+#: Panel/krdetailedview.cpp:111 Panel/krdetailedview.cpp:1471
 msgid "Group"
 msgstr "Група"
 
@@ -1517,7 +1517,7 @@ msgid "<qt><i>'%1'</i> will be <b>permanently</b> deleted!</qt>"
 msgstr "<qt><i>\"%1\"</i> буди <b>назавжди</b> видалено!"
 
 #: Filter/advancedfilter.cpp:59 Panel/krdetailedview.cpp:106
-#: Panel/krdetailedview.cpp:1457 Search/krsearchdialog.cpp:182
+#: Panel/krdetailedview.cpp:1456 Search/krsearchdialog.cpp:182
 #: Synchronizer/synchronizergui.cpp:1323 Synchronizer/synchronizergui.cpp:1327
 msgid "Size"
 msgstr "Розмір"
@@ -1776,7 +1776,7 @@ msgstr ""
 msgid "&Load"
 msgstr "&Місцезнаходження"
 
-#: Filter/generalfilter.cpp:134 Panel/panelfunc.cpp:811
+#: Filter/generalfilter.cpp:134 Panel/panelfunc.cpp:813
 msgid "&Overwrite"
 msgstr "&Перезаписати"
 
@@ -2215,7 +2215,7 @@ msgstr ""
 msgid "Removing Useractions"
 msgstr "Видалення дій користувача"
 
-#: Konfigurator/kgadvanced.cpp:112 Konfigurator/kgarchives.cpp:90
+#: Konfigurator/kgadvanced.cpp:112 Konfigurator/kgarchives.cpp:89
 msgid "Fine-Tuning"
 msgstr "Дрібне налаштування"
 
@@ -2284,11 +2284,7 @@ msgstr ""
 msgid "7zip"
 msgstr ""
 
-#: Konfigurator/kgarchives.cpp:70
-msgid "Xz"
-msgstr ""
-
-#: Konfigurator/kgarchives.cpp:76
+#: Konfigurator/kgarchives.cpp:75
 msgid ""
 "The archives that are \"greyed-out\" were unavailable on your\n"
 "system last time Krusader checked. If you wish Krusader to\n"
@@ -2298,42 +2294,42 @@ msgstr ""
 "коли Krusader востаннє зондував її. Якщо хочете, щоб Krusader\n"
 "знову пошукав, натисніть кнопку \"Автоматичне налаштування\"."
 
-#: Konfigurator/kgarchives.cpp:81
+#: Konfigurator/kgarchives.cpp:80
 msgid "Auto Configure"
 msgstr "Автоматичне налаштування"
 
-#: Konfigurator/kgarchives.cpp:96
+#: Konfigurator/kgarchives.cpp:95
 #, fuzzy
 msgid "Test archive after packing"
 msgstr "Перевіряти архів перед розпакуванням"
 
-#: Konfigurator/kgarchives.cpp:96
+#: Konfigurator/kgarchives.cpp:95
 #, fuzzy
 msgid "Check the archive's integrity after packing it."
 msgstr "Якщо ввімкнено, Krusader буде перевіряти архів після пакування."
 
-#: Konfigurator/kgarchives.cpp:97
+#: Konfigurator/kgarchives.cpp:96
 msgid "Test archive before unpacking"
 msgstr "Перевіряти архів перед розпакуванням"
 
-#: Konfigurator/kgarchives.cpp:97
+#: Konfigurator/kgarchives.cpp:96
 msgid ""
 "Some corrupted archives might cause a crash; therefore, testing is suggested."
 msgstr ""
 "Деякі пошкоджені архіви можуть спричиняти крах, отже, рекомендується робити "
 "перевірку."
 
-#: Konfigurator/kgarchives.cpp:114 Konfigurator/kggeneral.cpp:187
+#: Konfigurator/kgarchives.cpp:113 Konfigurator/kggeneral.cpp:186
 #: Search/krsearchdialog.cpp:571
 msgid "Search results"
 msgstr "Результати пошуку"
 
-#: Konfigurator/kgarchives.cpp:114
+#: Konfigurator/kgarchives.cpp:113
 #, fuzzy
 msgid "Searching for packers..."
 msgstr "Пошук файлів"
 
-#: Konfigurator/kgarchives.cpp:115
+#: Konfigurator/kgarchives.cpp:114
 msgid ""
 "Make sure to install new packers in your <code>$PATH</code> (e.g. /usr/bin)"
 msgstr ""
@@ -2667,15 +2663,15 @@ msgstr "Помилка: не вдається записати у файл"
 msgid "Packers"
 msgstr "Архіватори"
 
-#: Konfigurator/kgdependencies.cpp:100
+#: Konfigurator/kgdependencies.cpp:99
 msgid "Checksum Utilities"
 msgstr ""
 
-#: Konfigurator/kgdependencies.cpp:157
+#: Konfigurator/kgdependencies.cpp:156
 msgid "The %1 path is incorrect, no valid path found."
 msgstr "Шлях %1 не являється правильним. Не знайдений чинний шлях."
 
-#: Konfigurator/kgdependencies.cpp:160
+#: Konfigurator/kgdependencies.cpp:159
 msgid "The %1 path is incorrect, %2 used instead."
 msgstr "Шлях %1 не є чинним, замість нього буде вживатись %2."
 
@@ -2762,30 +2758,30 @@ msgstr ""
 msgid "Atomic extensions:"
 msgstr ""
 
-#: Konfigurator/kggeneral.cpp:144
+#: Konfigurator/kggeneral.cpp:143
 msgid "Terminal:"
 msgstr "Термінал:"
 
-#: Konfigurator/kggeneral.cpp:151
+#: Konfigurator/kggeneral.cpp:150
 msgid "Terminal Emulator sends Chdir on panel change"
 msgstr ""
 
-#: Konfigurator/kggeneral.cpp:152
+#: Konfigurator/kggeneral.cpp:151
 msgid ""
 "When checked, whenever the panel is changed (for example, by pressing TAB), "
 "krusader changes the current directory in the terminal emulator."
 msgstr ""
 
-#: Konfigurator/kggeneral.cpp:160
+#: Konfigurator/kggeneral.cpp:159
 msgid "Temp Directory:"
 msgstr "Тимчасовий каталог:"
 
-#: Konfigurator/kggeneral.cpp:168
+#: Konfigurator/kggeneral.cpp:167
 #, fuzzy
 msgid "Note: you must have full permissions for the temporary directory!"
 msgstr "Примітка: ви мусите мати повні права доступу до тимчасового каталогу!"
 
-#: Konfigurator/kggeneral.cpp:187
+#: Konfigurator/kggeneral.cpp:186
 #, fuzzy
 msgid "Searching for tools..."
 msgstr ""
@@ -2793,21 +2789,21 @@ msgstr ""
 "Результати пошуку:\n"
 "\n"
 
-#: Konfigurator/kggeneral.cpp:188
+#: Konfigurator/kggeneral.cpp:187
 msgid ""
 "Make sure to install new tools in your <code>$PATH</code> (e.g. /usr/bin)"
 msgstr ""
 
-#: Konfigurator/kggeneral.cpp:196
+#: Konfigurator/kggeneral.cpp:195
 msgid "Add new atomic extension"
 msgstr ""
 
-#: Konfigurator/kggeneral.cpp:196
+#: Konfigurator/kggeneral.cpp:195
 #, fuzzy
 msgid "Extension: "
 msgstr "Розширення"
 
-#: Konfigurator/kggeneral.cpp:201
+#: Konfigurator/kggeneral.cpp:200
 msgid ""
 "Atomic extensions must start with '.'\n"
 " and must contain at least one more '.' character"
@@ -3307,39 +3303,39 @@ msgstr ""
 "контекстного меню. Інакше, користувач мусить натиснути і потримати праву "
 "кнопку мишки 500 мс."
 
-#: Konfigurator/kgprotocols.cpp:68
+#: Konfigurator/kgprotocols.cpp:67
 msgid "Links"
 msgstr "Посилання"
 
-#: Konfigurator/kgprotocols.cpp:72
+#: Konfigurator/kgprotocols.cpp:71
 msgid "Defined Links"
 msgstr "Визначені посилання"
 
-#: Konfigurator/kgprotocols.cpp:86
+#: Konfigurator/kgprotocols.cpp:85
 #, fuzzy
 msgid "Add protocol to the link list."
 msgstr "Додати протокол до списку посилань"
 
-#: Konfigurator/kgprotocols.cpp:89
+#: Konfigurator/kgprotocols.cpp:88
 #, fuzzy
 msgid "Remove protocol from the link list."
 msgstr "Видалити протокол із списку посилань"
 
-#: Konfigurator/kgprotocols.cpp:99
+#: Konfigurator/kgprotocols.cpp:98
 #, fuzzy
 msgid "Add mime to the selected protocol on the link list."
 msgstr "Додати тип mime до вибраного протоколу в списку посилань"
 
-#: Konfigurator/kgprotocols.cpp:102
+#: Konfigurator/kgprotocols.cpp:101
 #, fuzzy
 msgid "Remove mime from the link list."
 msgstr "Видалити тип mime із списку посилань"
 
-#: Konfigurator/kgprotocols.cpp:109 Konfigurator/konfigurator.cpp:116
+#: Konfigurator/kgprotocols.cpp:108 Konfigurator/konfigurator.cpp:116
 msgid "Protocols"
 msgstr "Протоколи"
 
-#: Konfigurator/kgprotocols.cpp:120
+#: Konfigurator/kgprotocols.cpp:119
 msgid "Mimes"
 msgstr "Типи MIME"
 
@@ -3635,68 +3631,68 @@ msgstr "Темно-сірий"
 msgid "Black"
 msgstr "Чорний"
 
-#: Konfigurator/krresulttable.cpp:122
+#: Konfigurator/krresulttable.cpp:121
 msgid "unarj not found, but arj found, which will be used for unpacking"
 msgstr ""
 
-#: Konfigurator/krresulttable.cpp:128
+#: Konfigurator/krresulttable.cpp:127
 msgid "rpm found, but cpio not found which is required for unpacking"
 msgstr ""
 
-#: Konfigurator/krresulttable.cpp:131 Konfigurator/krresulttable.cpp:286
+#: Konfigurator/krresulttable.cpp:130 Konfigurator/krresulttable.cpp:283
 #, fuzzy
 msgid "Found"
 msgstr "Текст:"
 
-#: Konfigurator/krresulttable.cpp:132
+#: Konfigurator/krresulttable.cpp:131
 #, fuzzy
 msgid "Packing"
 msgstr "Пакувати"
 
-#: Konfigurator/krresulttable.cpp:133
+#: Konfigurator/krresulttable.cpp:132
 #, fuzzy
 msgid "Unpacking"
 msgstr "Розпаковуються файли"
 
-#: Konfigurator/krresulttable.cpp:134
+#: Konfigurator/krresulttable.cpp:133
 #, fuzzy
 msgid "Note"
 msgstr "Немає"
 
-#: Konfigurator/krresulttable.cpp:199 Konfigurator/krresulttable.cpp:213
-#: Konfigurator/krresulttable.cpp:359
+#: Konfigurator/krresulttable.cpp:196 Konfigurator/krresulttable.cpp:210
+#: Konfigurator/krresulttable.cpp:356
 #, fuzzy
 msgid "enabled"
 msgstr "Детально"
 
-#: Konfigurator/krresulttable.cpp:202 Konfigurator/krresulttable.cpp:216
-#: Konfigurator/krresulttable.cpp:362
+#: Konfigurator/krresulttable.cpp:199 Konfigurator/krresulttable.cpp:213
+#: Konfigurator/krresulttable.cpp:359
 msgid "disabled"
 msgstr ""
 
-#: Konfigurator/krresulttable.cpp:279
+#: Konfigurator/krresulttable.cpp:276
 msgid "diff utility"
 msgstr ""
 
-#: Konfigurator/krresulttable.cpp:280
+#: Konfigurator/krresulttable.cpp:277
 msgid "email client"
 msgstr ""
 
-#: Konfigurator/krresulttable.cpp:281
+#: Konfigurator/krresulttable.cpp:278
 #, fuzzy
 msgid "batch renamer"
 msgstr " Перейменувати"
 
-#: Konfigurator/krresulttable.cpp:282
+#: Konfigurator/krresulttable.cpp:279
 msgid "checksum utility"
 msgstr ""
 
-#: Konfigurator/krresulttable.cpp:285
+#: Konfigurator/krresulttable.cpp:282
 #, fuzzy
 msgid "Tool"
 msgstr "Підказка"
 
-#: Konfigurator/krresulttable.cpp:287
+#: Konfigurator/krresulttable.cpp:284
 #, fuzzy
 msgid "Status"
 msgstr "Запуск"
@@ -3912,7 +3908,7 @@ msgstr "Монтування пристроїв"
 msgid "Format"
 msgstr "Формат"
 
-#: Panel/krbriefview.cpp:1350 Panel/krdetailedview.cpp:1438
+#: Panel/krbriefview.cpp:1349 Panel/krdetailedview.cpp:1437
 msgid "Columns"
 msgstr "Стовпчики"
 
@@ -3943,19 +3939,19 @@ msgid ""
 "and %n files"
 msgstr ""
 
-#: Panel/krdetailedview.cpp:104 Panel/krdetailedview.cpp:1451
+#: Panel/krdetailedview.cpp:104 Panel/krdetailedview.cpp:1450
 msgid "Ext"
 msgstr "Розш"
 
-#: Panel/krdetailedview.cpp:107 Panel/krdetailedview.cpp:1460
+#: Panel/krdetailedview.cpp:107 Panel/krdetailedview.cpp:1459
 msgid "Modified"
 msgstr "Змінено"
 
-#: Panel/krdetailedview.cpp:108 Panel/krdetailedview.cpp:1463
+#: Panel/krdetailedview.cpp:108 Panel/krdetailedview.cpp:1462
 msgid "Perms"
 msgstr "Права"
 
-#: Panel/krdetailedview.cpp:109 Panel/krdetailedview.cpp:1466
+#: Panel/krdetailedview.cpp:109 Panel/krdetailedview.cpp:1465
 msgid "rwx"
 msgstr "rwx"
 
@@ -3997,17 +3993,17 @@ msgstr "Відкрити з"
 msgid "Konqueror Menu"
 msgstr "Меню Konqueror-а"
 
-#: Panel/krpopupmenu.cpp:131 krusader.cpp:790
+#: Panel/krpopupmenu.cpp:131 krusader.cpp:775
 #, fuzzy
 msgid "Copy..."
 msgstr "Копіювання "
 
-#: Panel/krpopupmenu.cpp:134 krusader.cpp:792
+#: Panel/krpopupmenu.cpp:134 krusader.cpp:777
 #, fuzzy
 msgid "Move..."
 msgstr "Пересунути "
 
-#: Panel/krpopupmenu.cpp:137 Panel/krview.cpp:325 krusader.cpp:798
+#: Panel/krpopupmenu.cpp:137 Panel/krview.cpp:325 krusader.cpp:783
 msgid "Rename"
 msgstr "Перейменувати"
 
@@ -4020,7 +4016,7 @@ msgstr "Пересунути у смітник"
 msgid "Shred"
 msgstr "Знищити"
 
-#: Panel/krpopupmenu.cpp:156 krusader.cpp:759
+#: Panel/krpopupmenu.cpp:156 krusader.cpp:744
 #, fuzzy
 msgid "New Symlink..."
 msgstr "нове символічне посилання"
@@ -4050,15 +4046,15 @@ msgstr "Надіслати ел. поштою"
 msgid "Synchronize Selected Files..."
 msgstr "Синхронізувати каталоги"
 
-#: Panel/krpopupmenu.cpp:191 krusader.cpp:574
+#: Panel/krpopupmenu.cpp:191 krusader.cpp:559
 msgid "Copy to Clipboard"
 msgstr "Скопіювати до кишені"
 
-#: Panel/krpopupmenu.cpp:194 krusader.cpp:573
+#: Panel/krpopupmenu.cpp:194 krusader.cpp:558
 msgid "Cut to Clipboard"
 msgstr "Вирізати до кишені"
 
-#: Panel/krpopupmenu.cpp:195 Panel/krpopupmenu.cpp:211 krusader.cpp:575
+#: Panel/krpopupmenu.cpp:195 Panel/krpopupmenu.cpp:211 krusader.cpp:560
 msgid "Paste from Clipboard"
 msgstr "Вставити з кишені"
 
@@ -4105,19 +4101,19 @@ msgstr "Перейменувати "
 msgid " to:"
 msgstr " в:"
 
-#: Panel/krviewitem.cpp:48
+#: Panel/krviewitem.cpp:47
 msgid "Climb up the directory tree"
 msgstr "Перейти вверх по дереву каталогів"
 
-#: Panel/krviewitem.cpp:60
+#: Panel/krviewitem.cpp:59
 msgid "Symbolic Link"
 msgstr "Символічне посилання"
 
-#: Panel/krviewitem.cpp:61
+#: Panel/krviewitem.cpp:60
 msgid "(broken link !)"
 msgstr "(зламане посилання!)"
 
-#: Panel/krviewitem.cpp:62
+#: Panel/krviewitem.cpp:61
 msgid "%1 (Link)"
 msgstr "%1 (посилання)"
 
@@ -4180,7 +4176,7 @@ msgstr "Дорівнює"
 msgid ".."
 msgstr ".."
 
-#: Panel/listpanel.cpp:237 krusader.cpp:607
+#: Panel/listpanel.cpp:237 krusader.cpp:592
 msgid "Up"
 msgstr "Вверх"
 
@@ -4189,7 +4185,7 @@ msgid "~"
 msgstr "~"
 
 #: Panel/listpanel.cpp:243 Panel/panelpopup.cpp:119 Panel/panelpopup.cpp:120
-#: Panel/panelpopup.cpp:121 Panel/panelpopup.cpp:132 krusader.cpp:563
+#: Panel/panelpopup.cpp:121 Panel/panelpopup.cpp:132 krusader.cpp:548
 msgid "Home"
 msgstr "Домівка"
 
@@ -4199,7 +4195,7 @@ msgstr "/"
 
 #: Panel/listpanel.cpp:249 Panel/panelpopup.cpp:123 Panel/panelpopup.cpp:124
 #: Panel/panelpopup.cpp:126 Panel/panelpopup.cpp:127 Panel/panelpopup.cpp:131
-#: krusader.cpp:721
+#: krusader.cpp:706
 msgid "Root"
 msgstr "Кореневий каталог"
 
@@ -4432,18 +4428,18 @@ msgstr "Проп&устити"
 msgid "&Delete All"
 msgstr "&Видалити всі"
 
-#: Panel/panelfunc.cpp:795
+#: Panel/panelfunc.cpp:797
 msgid "Cannot pack files onto a virtual destination!"
 msgstr ""
 
-#: Panel/panelfunc.cpp:807
+#: Panel/panelfunc.cpp:809
 #, fuzzy
 msgid ""
 "<qt><p>The archive <b>%1.%2</b> already exists. Do you want to overwrite it?"
 "</p><p>All data in the previous archive will be lost!</p></qt>"
 msgstr " вже існує. Ви дійсно хочете перезаписати його?"
 
-#: Panel/panelfunc.cpp:809
+#: Panel/panelfunc.cpp:811
 #, fuzzy
 msgid ""
 "<qt><p>The archive <b>%1.%2</b> already exists. Do you want to overwrite it?"
@@ -4453,68 +4449,68 @@ msgstr ""
 "(ZIP перезапише в архіві zip елементи з однаковими назвами або додасть "
 "елементи, у яких відмінні назви)"
 
-#: Panel/panelfunc.cpp:816
+#: Panel/panelfunc.cpp:818
 msgid "Counting files to pack"
 msgstr "Підрахунок файлів для пакування"
 
-#: Panel/panelfunc.cpp:876 Panel/panelfunc.cpp:938 krslots.cpp:194
+#: Panel/panelfunc.cpp:878 Panel/panelfunc.cpp:940 krslots.cpp:194
 #: krslots.cpp:200
 msgid "Krusader is unable to download: "
 msgstr "Krusader не може звантажити: "
 
-#: Panel/panelfunc.cpp:888
+#: Panel/panelfunc.cpp:890
 msgid "%1, unknown archive type."
 msgstr "%1, невідомий формат архіву."
 
-#: Panel/panelfunc.cpp:896
+#: Panel/panelfunc.cpp:898
 msgid "%1, test passed."
 msgstr "%1, перевірка закінчилась успішно."
 
-#: Panel/panelfunc.cpp:898
+#: Panel/panelfunc.cpp:900
 msgid "%1, test failed!"
 msgstr "%1, перевірка зазнала невдачі!"
 
-#: Panel/panelfunc.cpp:913
+#: Panel/panelfunc.cpp:915
 #, fuzzy
 msgid "Unpack %1 to:"
 msgstr "Розпакувати"
 
-#: Panel/panelfunc.cpp:915
+#: Panel/panelfunc.cpp:917
 #, c-format
 msgid ""
 "_n: Unpack %n file to:\n"
 "Unpack %n files to:"
 msgstr ""
 
-#: Panel/panelfunc.cpp:950
+#: Panel/panelfunc.cpp:952
 #, fuzzy
 msgid ""
 "The destination folder does not exist.\n"
 "Do you want to create it?"
 msgstr " вже існує. Ви дійсно хочете перезаписати його?"
 
-#: Panel/panelfunc.cpp:951
+#: Panel/panelfunc.cpp:953
 #, fuzzy
 msgid "Create folder"
 msgstr "Створити в:"
 
-#: Panel/panelfunc.cpp:957
+#: Panel/panelfunc.cpp:959
 msgid "Unable to create the destionation folder. Aborting operation."
 msgstr ""
 
-#: Panel/panelfunc.cpp:957
+#: Panel/panelfunc.cpp:959
 msgid "Error!"
 msgstr ""
 
-#: Panel/panelfunc.cpp:981
+#: Panel/panelfunc.cpp:983
 msgid "%1, unknown archive type"
 msgstr "%1, невідомий формат архіву"
 
-#: Panel/panelfunc.cpp:1164
+#: Panel/panelfunc.cpp:1166
 msgid "Cannot cut a virtual URL collection to the clipboard!"
 msgstr ""
 
-#: Panel/panelfunc.cpp:1166
+#: Panel/panelfunc.cpp:1168
 msgid "Cannot copy a virtual URL collection onto the clipboard!"
 msgstr ""
 
@@ -5828,57 +5824,57 @@ msgstr ""
 "Krusader не підтримує цей протокол:\n"
 "%1"
 
-#: VFS/krarchandler.cpp:193
+#: VFS/krarchandler.cpp:184
 msgid "Counting files in archive"
 msgstr "Підрахунок кількості файлів в архіві"
 
-#: VFS/krarchandler.cpp:214
+#: VFS/krarchandler.cpp:205
 msgid "Failed to list the content of the archive (%1)!"
 msgstr ""
 
-#: VFS/krarchandler.cpp:234
+#: VFS/krarchandler.cpp:225
 msgid "Failed to unpack"
 msgstr "Розпакування зазнало невдачі"
 
-#: VFS/krarchandler.cpp:273
+#: VFS/krarchandler.cpp:262
 msgid "Failed to convert rpm (%1) to cpio!"
 msgstr ""
 
-#: VFS/krarchandler.cpp:290
+#: VFS/krarchandler.cpp:279
 msgid "Failed to convert deb (%1) to tar!"
 msgstr ""
 
-#: VFS/krarchandler.cpp:324
+#: VFS/krarchandler.cpp:313
 msgid "Unpacking File(s)"
 msgstr "Розпаковуються файл(и)"
 
-#: VFS/krarchandler.cpp:350
+#: VFS/krarchandler.cpp:339
 #, fuzzy
 msgid "Failed to unpack %1!"
 msgstr "Розпакування зазнало невдачі"
 
-#: VFS/krarchandler.cpp:351 VFS/krarchandler.cpp:528
+#: VFS/krarchandler.cpp:340 VFS/krarchandler.cpp:509
 msgid "User cancelled."
 msgstr ""
 
-#: VFS/krarchandler.cpp:397
+#: VFS/krarchandler.cpp:384
 msgid "Testing Archive"
 msgstr "Перевірка архіву"
 
-#: VFS/krarchandler.cpp:509
+#: VFS/krarchandler.cpp:490
 msgid "Packing File(s)"
 msgstr "Запаковуються файл(и)"
 
-#: VFS/krarchandler.cpp:527
+#: VFS/krarchandler.cpp:508
 #, fuzzy
 msgid "Failed to pack %1!"
 msgstr "Пакування зазнало невдачі: "
 
-#: VFS/krarchandler.cpp:536
+#: VFS/krarchandler.cpp:517
 msgid "Failed to pack: "
 msgstr "Пакування зазнало невдачі: "
 
-#: VFS/krarchandler.cpp:567
+#: VFS/krarchandler.cpp:548
 msgid "This archive is encrypted, please supply the password:"
 msgstr "Цей архів зашифрований, будь ласка, вкажіть пароль:"
 
@@ -6068,422 +6064,422 @@ msgid ""
 "launched where you can customize Krusader to your needs.</p></qt>"
 msgstr ""
 
-#: krusader.cpp:538
+#: krusader.cpp:523
 msgid "F3 View Dialog"
 msgstr "F3 Вікно перегляду"
 
-#: krusader.cpp:541
+#: krusader.cpp:526
 msgid "Tab: switch panel"
 msgstr "Tab: перемикання панелей"
 
-#: krusader.cpp:566
+#: krusader.cpp:551
 msgid "Show Actions Toolbar"
 msgstr "Показувати пенал дій"
 
-#: krusader.cpp:578
+#: krusader.cpp:563
 msgid "Show &FN Keys Bar"
 msgstr "Показувати смужку клавіш &функцій"
 
-#: krusader.cpp:581
+#: krusader.cpp:566
 msgid "Show &Command Line"
 msgstr "Показувати &командний рядок"
 
-#: krusader.cpp:584
+#: krusader.cpp:569
 msgid "Show Terminal &Emulator"
 msgstr "Показувати &емулятор термінала"
 
-#: krusader.cpp:588
+#: krusader.cpp:573
 #, fuzzy
 msgid "&Detailed View"
 msgstr "Детальний вигляд"
 
-#: krusader.cpp:591
+#: krusader.cpp:576
 #, fuzzy
 msgid "&Brief View"
 msgstr "Рядковий вигляд"
 
-#: krusader.cpp:594
+#: krusader.cpp:579
 msgid "Show &Hidden Files"
 msgstr "Показувати &приховані файли"
 
-#: krusader.cpp:596
+#: krusader.cpp:581
 msgid "S&wap Panels"
 msgstr "Помін&яти панелі місцями"
 
-#: krusader.cpp:598
+#: krusader.cpp:583
 #, fuzzy
 msgid "Sw&ap Sides"
 msgstr "Поміняти місцями"
 
-#: krusader.cpp:604
+#: krusader.cpp:589
 msgid "popup cmdline"
 msgstr "показ командного рядка"
 
-#: krusader.cpp:608
+#: krusader.cpp:593
 #, fuzzy
 msgid "&New Text File..."
 msgstr "&Редагувати новий файл"
 
-#: krusader.cpp:609
+#: krusader.cpp:594
 #, fuzzy
 msgid "Start &Root Mode Krusader"
 msgstr "Запустити Krusader в режимі &адміністратора"
 
-#: krusader.cpp:611
+#: krusader.cpp:596
 #, fuzzy
 msgid "T&est Archive"
 msgstr "П&еревірити архів(и)"
 
-#: krusader.cpp:615
+#: krusader.cpp:600
 #, fuzzy
 msgid "New Net &Connection..."
 msgstr "Нове &з'єднання мережі"
 
-#: krusader.cpp:617
+#: krusader.cpp:602
 msgid "Pro&files"
 msgstr "Про&філі"
 
-#: krusader.cpp:619
+#: krusader.cpp:604
 #, fuzzy
 msgid "Calculate &Occupied Space"
 msgstr "Підрахувати зайняте місце"
 
-#: krusader.cpp:621
+#: krusader.cpp:606
 #, fuzzy
 msgid "Create Checksum..."
 msgstr "Створити в:"
 
-#: krusader.cpp:623
+#: krusader.cpp:608
 #, fuzzy
 msgid "Verify Checksum..."
 msgstr "Розділення файла %1..."
 
-#: krusader.cpp:627
+#: krusader.cpp:612
 #, fuzzy
 msgid "Pac&k..."
 msgstr "Запа&кувати"
 
-#: krusader.cpp:629
+#: krusader.cpp:614
 #, fuzzy
 msgid "&Unpack..."
 msgstr "&Розпакувати"
 
-#: krusader.cpp:631
+#: krusader.cpp:616
 #, fuzzy
 msgid "Sp&lit File..."
 msgstr "Розді&лити файл"
 
-#: krusader.cpp:633
+#: krusader.cpp:618
 #, fuzzy
 msgid "Com&bine Files..."
 msgstr "О&б'єднати файли"
 
-#: krusader.cpp:635
+#: krusader.cpp:620
 #, fuzzy
 msgid "Select &Group..."
 msgstr "Вибрати &групу"
 
-#: krusader.cpp:637
+#: krusader.cpp:622
 msgid "&Select All"
 msgstr "&Вибрати все"
 
-#: krusader.cpp:639
+#: krusader.cpp:624
 #, fuzzy
 msgid "&Unselect Group..."
 msgstr "&Скасувати вибір групи"
 
-#: krusader.cpp:641
+#: krusader.cpp:626
 msgid "U&nselect All"
 msgstr "С&касувати вибір всього"
 
-#: krusader.cpp:643
+#: krusader.cpp:628
 msgid "&Invert Selection"
 msgstr "&Інвертувати вибір"
 
-#: krusader.cpp:645
+#: krusader.cpp:630
 msgid "&Compare Directories"
 msgstr "&Порівняти каталоги"
 
-#: krusader.cpp:647
+#: krusader.cpp:632
 #, fuzzy
 msgid "&Select Newer and Single"
 msgstr "&Позначити новіші і одинарні"
 
-#: krusader.cpp:649
+#: krusader.cpp:634
 #, fuzzy
 msgid "Select &Newer"
 msgstr "Вибрати елементи"
 
-#: krusader.cpp:651
+#: krusader.cpp:636
 #, fuzzy
 msgid "Select &Single"
 msgstr " Вибрати файли "
 
-#: krusader.cpp:653
+#: krusader.cpp:638
 #, fuzzy
 msgid "Select Different &and Single"
 msgstr "Позначити відмінні &й одинарні"
 
-#: krusader.cpp:655
+#: krusader.cpp:640
 #, fuzzy
 msgid "Select &Different"
 msgstr "Позначити &відмінні"
 
-#: krusader.cpp:665
+#: krusader.cpp:650
 msgid "Start and &Forget"
 msgstr ""
 
-#: krusader.cpp:669
+#: krusader.cpp:654
 #, fuzzy
 msgid "Display &Separated Standard and Error Output"
 msgstr "Відділяти стандартні помилки"
 
-#: krusader.cpp:673
+#: krusader.cpp:658
 msgid "Display &Mixed Standard and Error Output"
 msgstr ""
 
-#: krusader.cpp:677
+#: krusader.cpp:662
 #, fuzzy
 msgid "Start in &New Terminal"
 msgstr "Термінал"
 
-#: krusader.cpp:681
+#: krusader.cpp:666
 #, fuzzy
 msgid "Send to &Embedded Terminal Emulator"
 msgstr "Показувати &емулятор термінала"
 
-#: krusader.cpp:693
+#: krusader.cpp:678
 #, fuzzy
 msgid "Start &Terminal"
 msgstr "Термінал"
 
-#: krusader.cpp:695
+#: krusader.cpp:680
 #, fuzzy
 msgid "Disconnect &from Net"
 msgstr "Роз'єднати &від мережі"
 
-#: krusader.cpp:698 krusader.cpp:703
+#: krusader.cpp:683 krusader.cpp:688
 #, fuzzy
 msgid "&MountMan..."
 msgstr "&Монтування пристроїв"
 
-#: krusader.cpp:707
+#: krusader.cpp:692
 #, fuzzy
 msgid "&Search..."
 msgstr "&Пошук"
 
-#: krusader.cpp:709
+#: krusader.cpp:694
 #, fuzzy
 msgid "&Locate..."
 msgstr "&Місцезнаходження"
 
-#: krusader.cpp:711
+#: krusader.cpp:696
 #, fuzzy
 msgid "Synchronize &Directories..."
 msgstr "Синхронізувати ката&логи"
 
-#: krusader.cpp:713
+#: krusader.cpp:698
 #, fuzzy
 msgid "S&ynchron Directory Changes"
 msgstr "Син&хронізувати зміни в каталозі"
 
-#: krusader.cpp:715
+#: krusader.cpp:700
 #, fuzzy
 msgid "D&isk Usage..."
 msgstr "Використання ди&ска"
 
-#: krusader.cpp:717
+#: krusader.cpp:702
 #, fuzzy
 msgid "Configure &Krusader..."
 msgstr "Налаштувати &Krusader"
 
-#: krusader.cpp:723
+#: krusader.cpp:708
 msgid "Save &Position"
 msgstr "Зберегти &позицію"
 
-#: krusader.cpp:725
+#: krusader.cpp:710
 msgid "&All Files"
 msgstr "&Всі файли"
 
-#: krusader.cpp:729
+#: krusader.cpp:714
 msgid "&Custom"
 msgstr "&Нетипове"
 
-#: krusader.cpp:731
+#: krusader.cpp:716
 #, fuzzy
 msgid "Compare b&y Content..."
 msgstr "Порівняти з&а вмістом"
 
-#: krusader.cpp:733
+#: krusader.cpp:718
 #, fuzzy
 msgid "Multi &Rename..."
 msgstr "Групове пере&йменування"
 
-#: krusader.cpp:735
+#: krusader.cpp:720
 #, fuzzy
 msgid "Right-click Menu"
 msgstr "Контекстне меню"
 
-#: krusader.cpp:737
+#: krusader.cpp:722
 #, fuzzy
 msgid "Right Bookmarks"
 msgstr "Праві закладки"
 
-#: krusader.cpp:739
+#: krusader.cpp:724
 #, fuzzy
 msgid "Left Bookmarks"
 msgstr "Ліві закладки"
 
-#: krusader.cpp:745
+#: krusader.cpp:730
 #, fuzzy
 msgid "History"
 msgstr "Історія лівої"
 
-#: krusader.cpp:747
+#: krusader.cpp:732
 msgid "Sync Panels"
 msgstr "Синхронізувати панелі"
 
-#: krusader.cpp:749
+#: krusader.cpp:734
 #, fuzzy
 msgid "Left History"
 msgstr "Історія лівої"
 
-#: krusader.cpp:751
+#: krusader.cpp:736
 #, fuzzy
 msgid "Right History"
 msgstr "Історія правої"
 
-#: krusader.cpp:755
+#: krusader.cpp:740
 #, fuzzy
 msgid "Left Media"
 msgstr "Ліва панель"
 
-#: krusader.cpp:757
+#: krusader.cpp:742
 #, fuzzy
 msgid "Right Media"
 msgstr "Права панель"
 
-#: krusader.cpp:761
+#: krusader.cpp:746
 msgid "Toggle Popup Panel"
 msgstr "Увімкнути/вимкнути панель-вигульк"
 
-#: krusader.cpp:763
+#: krusader.cpp:748
 msgid "Vertical Mode"
 msgstr "Вертикальний режим"
 
-#: krusader.cpp:765
+#: krusader.cpp:750
 #, fuzzy
 msgid "New Tab"
 msgstr "Нова вкладка"
 
-#: krusader.cpp:767
+#: krusader.cpp:752
 #, fuzzy
 msgid "Duplicate Current Tab"
 msgstr "Здублювати вкладку"
 
-#: krusader.cpp:769
+#: krusader.cpp:754
 #, fuzzy
 msgid "Close Current Tab"
 msgstr "Закрити поточну вкладку"
 
-#: krusader.cpp:771
+#: krusader.cpp:756
 #, fuzzy
 msgid "Next Tab"
 msgstr "Наступна вкладка"
 
-#: krusader.cpp:773
+#: krusader.cpp:758
 #, fuzzy
 msgid "Previous Tab"
 msgstr "Попередня вкладка"
 
-#: krusader.cpp:779
+#: krusader.cpp:764
 #, fuzzy
 msgid "Manage User Actions..."
 msgstr "Керування діями користувача"
 
-#: krusader.cpp:781
+#: krusader.cpp:766
 #, fuzzy
 msgid "Select Remote Charset"
 msgstr "Вибрати елементи"
 
-#: krusader.cpp:784
+#: krusader.cpp:769
 msgid "Start Terminal Here"
 msgstr ""
 
-#: krusader.cpp:786
+#: krusader.cpp:771
 #, fuzzy
 msgid "View File"
 msgstr "Відео файли"
 
-#: krusader.cpp:788
+#: krusader.cpp:773
 #, fuzzy
 msgid "Edit File"
 msgstr "Правка файла (F4)"
 
-#: krusader.cpp:794
+#: krusader.cpp:779
 #, fuzzy
 msgid "New Directory..."
 msgstr "Новий каталог"
 
-#: krusader.cpp:802
+#: krusader.cpp:787
 #, fuzzy
 msgid "Popular URLs..."
 msgstr "Популярні URL"
 
-#: krusader.cpp:804
+#: krusader.cpp:789
 #, fuzzy
 msgid "Go to Location Bar"
 msgstr "Перескочити до адреси"
 
-#: krusader.cpp:806
+#: krusader.cpp:791
 #, fuzzy
 msgid "Jump Back"
 msgstr "Чорний"
 
-#: krusader.cpp:808
+#: krusader.cpp:793
 msgid "Set Jump Back Point"
 msgstr ""
 
-#: krusader.cpp:810
+#: krusader.cpp:795
 #, fuzzy
 msgid "Toggle Fullwidget Terminal Emulator"
 msgstr "Показувати емулятор термінала"
 
-#: krusader.cpp:814
+#: krusader.cpp:799
 msgid "Select files using a filter"
 msgstr "Вибрати файли за допомогою фільтра"
 
-#: krusader.cpp:815
+#: krusader.cpp:800
 msgid "Select all files in the current directory"
 msgstr "Вибрати всі файли в поточному каталозі"
 
-#: krusader.cpp:816
+#: krusader.cpp:801
 #, fuzzy
 msgid "Unselect all selected files"
 msgstr "Відмінити вибір всіх вибраних файлів"
 
-#: krusader.cpp:817
+#: krusader.cpp:802
 msgid "Setup Krusader the way you like it"
 msgstr "Налаштуйте Krusader так, як вам подобається"
 
-#: krusader.cpp:818
+#: krusader.cpp:803
 msgid "Back to the place you came from"
 msgstr "Назад до того місця звідки прийшли"
 
-#: krusader.cpp:819
+#: krusader.cpp:804
 msgid "ROOT (/)"
 msgstr "ROOT (/)"
 
-#: krusader.cpp:820
+#: krusader.cpp:805
 msgid "Search for files"
 msgstr "Пошук файлів"
 
-#: krusader.cpp:826
+#: krusader.cpp:811
 #, fuzzy
 msgid "JavaScript Console..."
 msgstr "Консоль JavaScript"
 
-#: krusader.cpp:963
+#: krusader.cpp:948
 msgid "Are you sure you want to quit?"
 msgstr "Ви дійсно хочете вийти?"
 

@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: krusader-1.80.0\n"
 "Report-Msgid-Bugs-To: Dirk Eschler <deschler@users.sourceforge.net>\n"
-"POT-Creation-Date: 2019-01-13 19:16+0100\n"
+"POT-Creation-Date: 2019-01-23 23:44+0100\n"
 "PO-Revision-Date: 2008-01-13 15:37+0100\n"
 "Last-Translator: Joaquim Perez <noguer@gmail.com>\n"
 "Language-Team: Catalan <gimp@llistes.softcatala.org>\n"
@@ -625,7 +625,7 @@ msgstr "Crea dins:"
 msgid "Folder name:"
 msgstr "Nom de la carpeta:"
 
-#: BookMan/krbookmark.cpp:12 krusader.cpp:753
+#: BookMan/krbookmark.cpp:12 krusader.cpp:738
 msgid "Media"
 msgstr "Suports"
 
@@ -672,7 +672,7 @@ msgstr "No s'ha pogut llegir el fitxer d'adreces d'interès: %1"
 msgid "Popular URLs"
 msgstr "URL famosos"
 
-#: BookMan/krbookmarkhandler.cpp:399 krusader.cpp:743
+#: BookMan/krbookmarkhandler.cpp:399 krusader.cpp:728
 msgid "Bookmark Current"
 msgstr "Afegeix com a adreça d'interès"
 
@@ -1141,7 +1141,7 @@ msgstr ""
 "_n Comprimeix %n fitxer\n"
 "Comprimeix %n fitxers"
 
-#: Dialogs/packgui.cpp:96
+#: Dialogs/packgui.cpp:94
 msgid "Please select a directory"
 msgstr "Si us plau seleccioneu una carpeta"
 
@@ -1468,7 +1468,7 @@ msgid "Percent"
 msgstr "Percentatge"
 
 #: DiskUsage/dulines.cpp:240 DiskUsage/dulistview.cpp:56
-#: Konfigurator/krresulttable.cpp:130 MountMan/kmountmangui.cpp:127
+#: Konfigurator/krresulttable.cpp:129 MountMan/kmountmangui.cpp:127
 #: Panel/krbriefview.cpp:151 Panel/krdetailedview.cpp:103
 #: Search/krsearchdialog.cpp:180 Synchronizer/synchronizergui.cpp:1322
 #: Synchronizer/synchronizergui.cpp:1328
@@ -1488,7 +1488,7 @@ msgid "Own size"
 msgstr "Mida pròpia"
 
 #: DiskUsage/dulistview.cpp:68 MountMan/kmountmangui.cpp:128
-#: Panel/krdetailedview.cpp:105 Panel/krdetailedview.cpp:1454
+#: Panel/krdetailedview.cpp:105 Panel/krdetailedview.cpp:1453
 msgid "Type"
 msgstr "Tipus"
 
@@ -1503,12 +1503,12 @@ msgid "Permissions"
 msgstr "Permisos"
 
 #: DiskUsage/dulistview.cpp:77 Panel/krdetailedview.cpp:110
-#: Panel/krdetailedview.cpp:1469
+#: Panel/krdetailedview.cpp:1468
 msgid "Owner"
 msgstr "Propietari"
 
-#: DiskUsage/dulistview.cpp:80 Konfigurator/krresulttable.cpp:284
-#: Panel/krdetailedview.cpp:111 Panel/krdetailedview.cpp:1472
+#: DiskUsage/dulistview.cpp:80 Konfigurator/krresulttable.cpp:281
+#: Panel/krdetailedview.cpp:111 Panel/krdetailedview.cpp:1471
 msgid "Group"
 msgstr "Grup"
 
@@ -1550,7 +1550,7 @@ msgid "<qt><i>'%1'</i> will be <b>permanently</b> deleted!</qt>"
 msgstr "<qt><i>'%1'</i> s'esborrarà <b>permanentment</b>.</qt>"
 
 #: Filter/advancedfilter.cpp:59 Panel/krdetailedview.cpp:106
-#: Panel/krdetailedview.cpp:1457 Search/krsearchdialog.cpp:182
+#: Panel/krdetailedview.cpp:1456 Search/krsearchdialog.cpp:182
 #: Synchronizer/synchronizergui.cpp:1323 Synchronizer/synchronizergui.cpp:1327
 msgid "Size"
 msgstr "Mida"
@@ -1818,7 +1818,7 @@ msgstr "&Gestor de perfils"
 msgid "&Load"
 msgstr "&Carrega"
 
-#: Filter/generalfilter.cpp:134 Panel/panelfunc.cpp:811
+#: Filter/generalfilter.cpp:134 Panel/panelfunc.cpp:813
 msgid "&Overwrite"
 msgstr "&Sobreescriu"
 
@@ -2255,7 +2255,7 @@ msgstr ""
 msgid "Removing Useractions"
 msgstr "Voleu esborrar les accions?"
 
-#: Konfigurator/kgadvanced.cpp:112 Konfigurator/kgarchives.cpp:90
+#: Konfigurator/kgadvanced.cpp:112 Konfigurator/kgarchives.cpp:89
 msgid "Fine-Tuning"
 msgstr "Ajusta amb més detall"
 
@@ -2323,11 +2323,7 @@ msgstr "Deb"
 msgid "7zip"
 msgstr "7zip"
 
-#: Konfigurator/kgarchives.cpp:70
-msgid "Xz"
-msgstr ""
-
-#: Konfigurator/kgarchives.cpp:76
+#: Konfigurator/kgarchives.cpp:75
 msgid ""
 "The archives that are \"greyed-out\" were unavailable on your\n"
 "system last time Krusader checked. If you wish Krusader to\n"
@@ -2337,39 +2333,39 @@ msgstr ""
 "Krusader ho intentà, si voleu tornar-ho a intentar premeu 'Configuració "
 "automàtica'."
 
-#: Konfigurator/kgarchives.cpp:81
+#: Konfigurator/kgarchives.cpp:80
 msgid "Auto Configure"
 msgstr "Configuració automàtica"
 
-#: Konfigurator/kgarchives.cpp:96
+#: Konfigurator/kgarchives.cpp:95
 msgid "Test archive after packing"
 msgstr "Comprova l'arxiu després de comprimir"
 
-#: Konfigurator/kgarchives.cpp:96
+#: Konfigurator/kgarchives.cpp:95
 msgid "Check the archive's integrity after packing it."
 msgstr "Comprova la integritat de l'arxiu després de comprimir-lo."
 
-#: Konfigurator/kgarchives.cpp:97
+#: Konfigurator/kgarchives.cpp:96
 msgid "Test archive before unpacking"
 msgstr "Comprova l'arxiu abans de descomprimir-lo"
 
-#: Konfigurator/kgarchives.cpp:97
+#: Konfigurator/kgarchives.cpp:96
 msgid ""
 "Some corrupted archives might cause a crash; therefore, testing is suggested."
 msgstr ""
 "Alguns arxiu mal comprimits poden penjar el sistema quan es descomprimeixen, "
 "per això s'aconsella fer-ne una comprovació abans."
 
-#: Konfigurator/kgarchives.cpp:114 Konfigurator/kggeneral.cpp:187
+#: Konfigurator/kgarchives.cpp:113 Konfigurator/kggeneral.cpp:186
 #: Search/krsearchdialog.cpp:571
 msgid "Search results"
 msgstr "Resultat de la cerca"
 
-#: Konfigurator/kgarchives.cpp:114
+#: Konfigurator/kgarchives.cpp:113
 msgid "Searching for packers..."
 msgstr "S'està cercant les eines de compressió..."
 
-#: Konfigurator/kgarchives.cpp:115
+#: Konfigurator/kgarchives.cpp:114
 msgid ""
 "Make sure to install new packers in your <code>$PATH</code> (e.g. /usr/bin)"
 msgstr ""
@@ -2682,15 +2678,15 @@ msgstr "No es pot escriure al fitxer"
 msgid "Packers"
 msgstr "Compressors"
 
-#: Konfigurator/kgdependencies.cpp:100
+#: Konfigurator/kgdependencies.cpp:99
 msgid "Checksum Utilities"
 msgstr "Utilitats de checksum"
 
-#: Konfigurator/kgdependencies.cpp:157
+#: Konfigurator/kgdependencies.cpp:156
 msgid "The %1 path is incorrect, no valid path found."
 msgstr "La ubicació %1 és incorrecta, i no n'hi ha cap més de vàlida."
 
-#: Konfigurator/kgdependencies.cpp:160
+#: Konfigurator/kgdependencies.cpp:159
 msgid "The %1 path is incorrect, %2 used instead."
 msgstr "La ubicació %1 és incorrecta, es farà servir %2."
 
@@ -2778,15 +2774,15 @@ msgstr ""
 msgid "Atomic extensions:"
 msgstr "Extensions atòmiques:"
 
-#: Konfigurator/kggeneral.cpp:144
+#: Konfigurator/kggeneral.cpp:143
 msgid "Terminal:"
 msgstr "Terminal:"
 
-#: Konfigurator/kggeneral.cpp:151
+#: Konfigurator/kggeneral.cpp:150
 msgid "Terminal Emulator sends Chdir on panel change"
 msgstr "L'emulador de terminal envia chdir a cada canvi de plafó"
 
-#: Konfigurator/kggeneral.cpp:152
+#: Konfigurator/kggeneral.cpp:151
 msgid ""
 "When checked, whenever the panel is changed (for example, by pressing TAB), "
 "krusader changes the current directory in the terminal emulator."
@@ -2794,35 +2790,35 @@ msgstr ""
 "Si es marca l'opció, cada cop que es canviï de plafó (per exemple prement "
 "TAB), el krusader canviarà el directori actual de l'emulador de terminal."
 
-#: Konfigurator/kggeneral.cpp:160
+#: Konfigurator/kggeneral.cpp:159
 msgid "Temp Directory:"
 msgstr "Directori temporal:"
 
-#: Konfigurator/kggeneral.cpp:168
+#: Konfigurator/kggeneral.cpp:167
 msgid "Note: you must have full permissions for the temporary directory!"
 msgstr ""
 "Nota: necessitareu tenir tots els permisos d'accés al directori temporal."
 
-#: Konfigurator/kggeneral.cpp:187
+#: Konfigurator/kggeneral.cpp:186
 msgid "Searching for tools..."
 msgstr "S'estan cercant eines..."
 
-#: Konfigurator/kggeneral.cpp:188
+#: Konfigurator/kggeneral.cpp:187
 msgid ""
 "Make sure to install new tools in your <code>$PATH</code> (e.g. /usr/bin)"
 msgstr ""
 "Assegureu-vos d'instal·lar les noves eines a <code>$PATH</code> (p.e. /usr/"
 "bin)"
 
-#: Konfigurator/kggeneral.cpp:196
+#: Konfigurator/kggeneral.cpp:195
 msgid "Add new atomic extension"
 msgstr "Afegeix una nova extensió atòmica"
 
-#: Konfigurator/kggeneral.cpp:196
+#: Konfigurator/kggeneral.cpp:195
 msgid "Extension: "
 msgstr "Extensió: "
 
-#: Konfigurator/kggeneral.cpp:201
+#: Konfigurator/kggeneral.cpp:200
 msgid ""
 "Atomic extensions must start with '.'\n"
 " and must contain at least one more '.' character"
@@ -3313,35 +3309,35 @@ msgstr ""
 "fitxer immediatament. Si no, també us mostrarà el menú contextual, però "
 "després de 500ms de prémer el botó."
 
-#: Konfigurator/kgprotocols.cpp:68
+#: Konfigurator/kgprotocols.cpp:67
 msgid "Links"
 msgstr "Enllaços"
 
-#: Konfigurator/kgprotocols.cpp:72
+#: Konfigurator/kgprotocols.cpp:71
 msgid "Defined Links"
 msgstr "Enllaços definits"
 
-#: Konfigurator/kgprotocols.cpp:86
+#: Konfigurator/kgprotocols.cpp:85
 msgid "Add protocol to the link list."
 msgstr "Afegeix un protocol a la llista d'enllaços."
 
-#: Konfigurator/kgprotocols.cpp:89
+#: Konfigurator/kgprotocols.cpp:88
 msgid "Remove protocol from the link list."
 msgstr "Esborra el protocol de la llista d'enllaços."
 
-#: Konfigurator/kgprotocols.cpp:99
+#: Konfigurator/kgprotocols.cpp:98
 msgid "Add mime to the selected protocol on the link list."
 msgstr "Afegeix un tipus mime al protocol de la llista."
 
-#: Konfigurator/kgprotocols.cpp:102
+#: Konfigurator/kgprotocols.cpp:101
 msgid "Remove mime from the link list."
 msgstr "Esborra el tipus mime de la llista."
 
-#: Konfigurator/kgprotocols.cpp:109 Konfigurator/konfigurator.cpp:116
+#: Konfigurator/kgprotocols.cpp:108 Konfigurator/konfigurator.cpp:116
 msgid "Protocols"
 msgstr "Protocols"
 
-#: Konfigurator/kgprotocols.cpp:120
+#: Konfigurator/kgprotocols.cpp:119
 msgid "Mimes"
 msgstr "Mimes"
 
@@ -3639,65 +3635,65 @@ msgstr "Gris fosc"
 msgid "Black"
 msgstr "Negre"
 
-#: Konfigurator/krresulttable.cpp:122
+#: Konfigurator/krresulttable.cpp:121
 msgid "unarj not found, but arj found, which will be used for unpacking"
 msgstr ""
 "No s'ha pogut trobar l'unarj , però en canvi s'ha trobat arj, el qual "
 "s'utilitzarà per a descomprimir"
 
-#: Konfigurator/krresulttable.cpp:128
+#: Konfigurator/krresulttable.cpp:127
 msgid "rpm found, but cpio not found which is required for unpacking"
 msgstr ""
 "S'ha trobat rpm, però no s'ha pogut trobar cpio, el qual es necessita per a "
 "descomprimir"
 
-#: Konfigurator/krresulttable.cpp:131 Konfigurator/krresulttable.cpp:286
+#: Konfigurator/krresulttable.cpp:130 Konfigurator/krresulttable.cpp:283
 msgid "Found"
 msgstr "S'ha trobat"
 
-#: Konfigurator/krresulttable.cpp:132
+#: Konfigurator/krresulttable.cpp:131
 msgid "Packing"
 msgstr "Comprimir"
 
-#: Konfigurator/krresulttable.cpp:133
+#: Konfigurator/krresulttable.cpp:132
 msgid "Unpacking"
 msgstr "Descomprimir"
 
-#: Konfigurator/krresulttable.cpp:134
+#: Konfigurator/krresulttable.cpp:133
 msgid "Note"
 msgstr "Nota"
 
-#: Konfigurator/krresulttable.cpp:199 Konfigurator/krresulttable.cpp:213
-#: Konfigurator/krresulttable.cpp:359
+#: Konfigurator/krresulttable.cpp:196 Konfigurator/krresulttable.cpp:210
+#: Konfigurator/krresulttable.cpp:356
 msgid "enabled"
 msgstr "habilitat"
 
-#: Konfigurator/krresulttable.cpp:202 Konfigurator/krresulttable.cpp:216
-#: Konfigurator/krresulttable.cpp:362
+#: Konfigurator/krresulttable.cpp:199 Konfigurator/krresulttable.cpp:213
+#: Konfigurator/krresulttable.cpp:359
 msgid "disabled"
 msgstr "deshabilitat"
 
-#: Konfigurator/krresulttable.cpp:279
+#: Konfigurator/krresulttable.cpp:276
 msgid "diff utility"
 msgstr "eina diff"
 
-#: Konfigurator/krresulttable.cpp:280
+#: Konfigurator/krresulttable.cpp:277
 msgid "email client"
 msgstr "client de correu"
 
-#: Konfigurator/krresulttable.cpp:281
+#: Konfigurator/krresulttable.cpp:278
 msgid "batch renamer"
 msgstr "canviador de noms"
 
-#: Konfigurator/krresulttable.cpp:282
+#: Konfigurator/krresulttable.cpp:279
 msgid "checksum utility"
 msgstr "eina de checksum"
 
-#: Konfigurator/krresulttable.cpp:285
+#: Konfigurator/krresulttable.cpp:282
 msgid "Tool"
 msgstr "Eina"
 
-#: Konfigurator/krresulttable.cpp:287
+#: Konfigurator/krresulttable.cpp:284
 msgid "Status"
 msgstr "Estat"
 
@@ -3914,7 +3910,7 @@ msgstr "MountMan"
 msgid "Format"
 msgstr "Format"
 
-#: Panel/krbriefview.cpp:1350 Panel/krdetailedview.cpp:1438
+#: Panel/krbriefview.cpp:1349 Panel/krdetailedview.cpp:1437
 msgid "Columns"
 msgstr "Columnes"
 
@@ -3949,19 +3945,19 @@ msgstr ""
 "_n: i %n fitxer\n"
 "i %n fitxers"
 
-#: Panel/krdetailedview.cpp:104 Panel/krdetailedview.cpp:1451
+#: Panel/krdetailedview.cpp:104 Panel/krdetailedview.cpp:1450
 msgid "Ext"
 msgstr "Ext"
 
-#: Panel/krdetailedview.cpp:107 Panel/krdetailedview.cpp:1460
+#: Panel/krdetailedview.cpp:107 Panel/krdetailedview.cpp:1459
 msgid "Modified"
 msgstr "Modificat"
 
-#: Panel/krdetailedview.cpp:108 Panel/krdetailedview.cpp:1463
+#: Panel/krdetailedview.cpp:108 Panel/krdetailedview.cpp:1462
 msgid "Perms"
 msgstr "Permisos"
 
-#: Panel/krdetailedview.cpp:109 Panel/krdetailedview.cpp:1466
+#: Panel/krdetailedview.cpp:109 Panel/krdetailedview.cpp:1465
 msgid "rwx"
 msgstr "rwx"
 
@@ -3999,15 +3995,15 @@ msgstr "Obre amb"
 msgid "Konqueror Menu"
 msgstr "Menú Konqueror"
 
-#: Panel/krpopupmenu.cpp:131 krusader.cpp:790
+#: Panel/krpopupmenu.cpp:131 krusader.cpp:775
 msgid "Copy..."
 msgstr "Copia..."
 
-#: Panel/krpopupmenu.cpp:134 krusader.cpp:792
+#: Panel/krpopupmenu.cpp:134 krusader.cpp:777
 msgid "Move..."
 msgstr "Mou..."
 
-#: Panel/krpopupmenu.cpp:137 Panel/krview.cpp:325 krusader.cpp:798
+#: Panel/krpopupmenu.cpp:137 Panel/krview.cpp:325 krusader.cpp:783
 msgid "Rename"
 msgstr "Renomena"
 
@@ -4019,7 +4015,7 @@ msgstr "Mou a la paperera"
 msgid "Shred"
 msgstr "Estripa"
 
-#: Panel/krpopupmenu.cpp:156 krusader.cpp:759
+#: Panel/krpopupmenu.cpp:156 krusader.cpp:744
 msgid "New Symlink..."
 msgstr "Nou enllaç simbòlic..."
 
@@ -4043,15 +4039,15 @@ msgstr "Envia per correu"
 msgid "Synchronize Selected Files..."
 msgstr "Sincronitza els fitxers seleccionats..."
 
-#: Panel/krpopupmenu.cpp:191 krusader.cpp:574
+#: Panel/krpopupmenu.cpp:191 krusader.cpp:559
 msgid "Copy to Clipboard"
 msgstr "Copia al porta-retalls"
 
-#: Panel/krpopupmenu.cpp:194 krusader.cpp:573
+#: Panel/krpopupmenu.cpp:194 krusader.cpp:558
 msgid "Cut to Clipboard"
 msgstr "Retalla al porta-retalls"
 
-#: Panel/krpopupmenu.cpp:195 Panel/krpopupmenu.cpp:211 krusader.cpp:575
+#: Panel/krpopupmenu.cpp:195 Panel/krpopupmenu.cpp:211 krusader.cpp:560
 msgid "Paste from Clipboard"
 msgstr "Enganxa del porta-retalls"
 
@@ -4095,19 +4091,19 @@ msgstr "Renomena"
 msgid " to:"
 msgstr " a:"
 
-#: Panel/krviewitem.cpp:48
+#: Panel/krviewitem.cpp:47
 msgid "Climb up the directory tree"
 msgstr "Puja a la carpeta pare."
 
-#: Panel/krviewitem.cpp:60
+#: Panel/krviewitem.cpp:59
 msgid "Symbolic Link"
 msgstr "Enllaç simbòlic"
 
-#: Panel/krviewitem.cpp:61
+#: Panel/krviewitem.cpp:60
 msgid "(broken link !)"
 msgstr "(enllaç trencat!)"
 
-#: Panel/krviewitem.cpp:62
+#: Panel/krviewitem.cpp:61
 msgid "%1 (Link)"
 msgstr "%1 (Enllaç)"
 
@@ -4169,7 +4165,7 @@ msgstr "Igual"
 msgid ".."
 msgstr ".."
 
-#: Panel/listpanel.cpp:237 krusader.cpp:607
+#: Panel/listpanel.cpp:237 krusader.cpp:592
 msgid "Up"
 msgstr "Puja"
 
@@ -4178,7 +4174,7 @@ msgid "~"
 msgstr "~"
 
 #: Panel/listpanel.cpp:243 Panel/panelpopup.cpp:119 Panel/panelpopup.cpp:120
-#: Panel/panelpopup.cpp:121 Panel/panelpopup.cpp:132 krusader.cpp:563
+#: Panel/panelpopup.cpp:121 Panel/panelpopup.cpp:132 krusader.cpp:548
 msgid "Home"
 msgstr "Inici"
 
@@ -4188,7 +4184,7 @@ msgstr "/"
 
 #: Panel/listpanel.cpp:249 Panel/panelpopup.cpp:123 Panel/panelpopup.cpp:124
 #: Panel/panelpopup.cpp:126 Panel/panelpopup.cpp:127 Panel/panelpopup.cpp:131
-#: krusader.cpp:721
+#: krusader.cpp:706
 msgid "Root"
 msgstr "Arrel"
 
@@ -4434,11 +4430,11 @@ msgstr "&Salta"
 msgid "&Delete All"
 msgstr "&Esborra-ho tot"
 
-#: Panel/panelfunc.cpp:795
+#: Panel/panelfunc.cpp:797
 msgid "Cannot pack files onto a virtual destination!"
 msgstr "No es poden empaquetar els fitxers en una ubicació virtual."
 
-#: Panel/panelfunc.cpp:807
+#: Panel/panelfunc.cpp:809
 msgid ""
 "<qt><p>The archive <b>%1.%2</b> already exists. Do you want to overwrite it?"
 "</p><p>All data in the previous archive will be lost!</p></qt>"
@@ -4446,7 +4442,7 @@ msgstr ""
 "<qt><p>L'arxiu <b>%1.%2</b> ja existeix. Voleu sobreescriure'l?</p><p>Es "
 "perdran les dades de l'arxiu antic.</p></qt>"
 
-#: Panel/panelfunc.cpp:809
+#: Panel/panelfunc.cpp:811
 msgid ""
 "<qt><p>The archive <b>%1.%2</b> already exists. Do you want to overwrite it?"
 "</p><p>Zip will replace identically named entries in the zip archive or add "
@@ -4456,32 +4452,32 @@ msgstr ""
 "substituirà els fitxers amb el mateix nom dins de l'arxiu zip o bé afegirà "
 "els fitxers amb un nom nou.</p></qt>"
 
-#: Panel/panelfunc.cpp:816
+#: Panel/panelfunc.cpp:818
 msgid "Counting files to pack"
 msgstr "S'estan comptant els fitxers a comprimir"
 
-#: Panel/panelfunc.cpp:876 Panel/panelfunc.cpp:938 krslots.cpp:194
+#: Panel/panelfunc.cpp:878 Panel/panelfunc.cpp:940 krslots.cpp:194
 #: krslots.cpp:200
 msgid "Krusader is unable to download: "
 msgstr "Krusader no ha pogut descarregar el fitxer: "
 
-#: Panel/panelfunc.cpp:888
+#: Panel/panelfunc.cpp:890
 msgid "%1, unknown archive type."
 msgstr "%1, no es reconeix el tipus de fitxer comprimit."
 
-#: Panel/panelfunc.cpp:896
+#: Panel/panelfunc.cpp:898
 msgid "%1, test passed."
 msgstr "%1, ha passat el test."
 
-#: Panel/panelfunc.cpp:898
+#: Panel/panelfunc.cpp:900
 msgid "%1, test failed!"
 msgstr "%1, no ha passat el test !"
 
-#: Panel/panelfunc.cpp:913
+#: Panel/panelfunc.cpp:915
 msgid "Unpack %1 to:"
 msgstr "Descomprimeix %1 a:"
 
-#: Panel/panelfunc.cpp:915
+#: Panel/panelfunc.cpp:917
 #, c-format
 msgid ""
 "_n: Unpack %n file to:\n"
@@ -4490,36 +4486,36 @@ msgstr ""
 "_n: Desempaqueta %n fitxer a:\n"
 "Desempaqueta %n fitxers a:"
 
-#: Panel/panelfunc.cpp:950
+#: Panel/panelfunc.cpp:952
 #, fuzzy
 msgid ""
 "The destination folder does not exist.\n"
 "Do you want to create it?"
 msgstr "Aquest fitxer ja existeix, voleu sobreescriure'l ?"
 
-#: Panel/panelfunc.cpp:951
+#: Panel/panelfunc.cpp:953
 #, fuzzy
 msgid "Create folder"
 msgstr "Crea un nou"
 
-#: Panel/panelfunc.cpp:957
+#: Panel/panelfunc.cpp:959
 msgid "Unable to create the destionation folder. Aborting operation."
 msgstr ""
 
-#: Panel/panelfunc.cpp:957
+#: Panel/panelfunc.cpp:959
 #, fuzzy
 msgid "Error!"
 msgstr "Error"
 
-#: Panel/panelfunc.cpp:981
+#: Panel/panelfunc.cpp:983
 msgid "%1, unknown archive type"
 msgstr "%1, no es reconeix el tipus de fitxer comprimit"
 
-#: Panel/panelfunc.cpp:1164
+#: Panel/panelfunc.cpp:1166
 msgid "Cannot cut a virtual URL collection to the clipboard!"
 msgstr "No es pot retallar una llista d'URL virtuals al porta-retalls."
 
-#: Panel/panelfunc.cpp:1166
+#: Panel/panelfunc.cpp:1168
 msgid "Cannot copy a virtual URL collection onto the clipboard!"
 msgstr "No es pot copiar una llista d'URL virtuals al porta-retalls."
 
@@ -5789,55 +5785,55 @@ msgstr ""
 "El Krusader no permet aquest protocol:\n"
 "%1"
 
-#: VFS/krarchandler.cpp:193
+#: VFS/krarchandler.cpp:184
 msgid "Counting files in archive"
 msgstr "S'està analitzant el fitxer comprimit."
 
-#: VFS/krarchandler.cpp:214
+#: VFS/krarchandler.cpp:205
 msgid "Failed to list the content of the archive (%1)!"
 msgstr "No s'ha pogut obtenir la llista del contingut de l'arxiu (%1)!"
 
-#: VFS/krarchandler.cpp:234
+#: VFS/krarchandler.cpp:225
 msgid "Failed to unpack"
 msgstr "No s'ha pogut descomprimir"
 
-#: VFS/krarchandler.cpp:273
+#: VFS/krarchandler.cpp:262
 msgid "Failed to convert rpm (%1) to cpio!"
 msgstr "No s'ha pogut convertir de rpm (%1) a cpio"
 
-#: VFS/krarchandler.cpp:290
+#: VFS/krarchandler.cpp:279
 msgid "Failed to convert deb (%1) to tar!"
 msgstr "No s'ha pogut convertir de deb (%1) a tar"
 
-#: VFS/krarchandler.cpp:324
+#: VFS/krarchandler.cpp:313
 msgid "Unpacking File(s)"
 msgstr "S'estan descomprimint els fitxers"
 
-#: VFS/krarchandler.cpp:350
+#: VFS/krarchandler.cpp:339
 msgid "Failed to unpack %1!"
 msgstr "No s'ha pogut descomprimir %1"
 
-#: VFS/krarchandler.cpp:351 VFS/krarchandler.cpp:528
+#: VFS/krarchandler.cpp:340 VFS/krarchandler.cpp:509
 msgid "User cancelled."
 msgstr "L'usuari ho ha cancel·lat."
 
-#: VFS/krarchandler.cpp:397
+#: VFS/krarchandler.cpp:384
 msgid "Testing Archive"
 msgstr "S'està comprovant l'arxiu"
 
-#: VFS/krarchandler.cpp:509
+#: VFS/krarchandler.cpp:490
 msgid "Packing File(s)"
 msgstr "S'estan comprimint els fitxers"
 
-#: VFS/krarchandler.cpp:527
+#: VFS/krarchandler.cpp:508
 msgid "Failed to pack %1!"
 msgstr "No s'ha pogut comprimir %1"
 
-#: VFS/krarchandler.cpp:536
+#: VFS/krarchandler.cpp:517
 msgid "Failed to pack: "
 msgstr "Hi ha hagut un error al comprimir: "
 
-#: VFS/krarchandler.cpp:567
+#: VFS/krarchandler.cpp:548
 msgid "This archive is encrypted, please supply the password:"
 msgstr "Aquest fitxer comprimit està encriptat, cal introduir la contrasenya:"
 
@@ -6030,363 +6026,363 @@ msgstr ""
 "s'executarà el Konfigurador per tal que podeu personalitzar el Krusader a la "
 "vostra mida.</p></qt>"
 
-#: krusader.cpp:538
+#: krusader.cpp:523
 msgid "F3 View Dialog"
 msgstr "F3 Veure"
 
-#: krusader.cpp:541
+#: krusader.cpp:526
 msgid "Tab: switch panel"
 msgstr "Tab: canvia de plafó"
 
-#: krusader.cpp:566
+#: krusader.cpp:551
 msgid "Show Actions Toolbar"
 msgstr "Mostra la barra d'accions"
 
-#: krusader.cpp:578
+#: krusader.cpp:563
 msgid "Show &FN Keys Bar"
 msgstr "Mostra la barra &Funcions del teclat"
 
-#: krusader.cpp:581
+#: krusader.cpp:566
 msgid "Show &Command Line"
 msgstr "Mostra la Línia de &Comandes"
 
-#: krusader.cpp:584
+#: krusader.cpp:569
 msgid "Show Terminal &Emulator"
 msgstr "Mostra l'&Emulador de Terminal"
 
-#: krusader.cpp:588
+#: krusader.cpp:573
 msgid "&Detailed View"
 msgstr "Visualització en &detall"
 
-#: krusader.cpp:591
+#: krusader.cpp:576
 msgid "&Brief View"
 msgstr "Visualització &breu"
 
-#: krusader.cpp:594
+#: krusader.cpp:579
 msgid "Show &Hidden Files"
 msgstr "Mostra els fitxers &ocults"
 
-#: krusader.cpp:596
+#: krusader.cpp:581
 msgid "S&wap Panels"
 msgstr "&Intercanvia Plafons"
 
-#: krusader.cpp:598
+#: krusader.cpp:583
 msgid "Sw&ap Sides"
 msgstr "Inter&canvia plafons"
 
-#: krusader.cpp:604
+#: krusader.cpp:589
 msgid "popup cmdline"
 msgstr "línia de comandes emergent"
 
-#: krusader.cpp:608
+#: krusader.cpp:593
 msgid "&New Text File..."
 msgstr "&Crea un nou fitxer..."
 
-#: krusader.cpp:609
+#: krusader.cpp:594
 msgid "Start &Root Mode Krusader"
 msgstr "Engega el Krusader en mode &Root"
 
-#: krusader.cpp:611
+#: krusader.cpp:596
 msgid "T&est Archive"
 msgstr "Comprova l'ar&xiu"
 
-#: krusader.cpp:615
+#: krusader.cpp:600
 msgid "New Net &Connection..."
 msgstr "Crea una connexió de &xarxa..."
 
-#: krusader.cpp:617
+#: krusader.cpp:602
 msgid "Pro&files"
 msgstr "Per&fils"
 
-#: krusader.cpp:619
+#: krusader.cpp:604
 msgid "Calculate &Occupied Space"
 msgstr "Calcula l'espai &ocupat"
 
-#: krusader.cpp:621
+#: krusader.cpp:606
 msgid "Create Checksum..."
 msgstr "Crea un checksum..."
 
-#: krusader.cpp:623
+#: krusader.cpp:608
 msgid "Verify Checksum..."
 msgstr "Verifica el checksum..."
 
-#: krusader.cpp:627
+#: krusader.cpp:612
 msgid "Pac&k..."
 msgstr "Com&primeix..."
 
-#: krusader.cpp:629
+#: krusader.cpp:614
 msgid "&Unpack..."
 msgstr "&Descomprimeix..."
 
-#: krusader.cpp:631
+#: krusader.cpp:616
 msgid "Sp&lit File..."
 msgstr "Trosse&ja fitxer..."
 
-#: krusader.cpp:633
+#: krusader.cpp:618
 msgid "Com&bine Files..."
 msgstr "Reaj&unta fitxers..."
 
-#: krusader.cpp:635
+#: krusader.cpp:620
 msgid "Select &Group..."
 msgstr "Selecciona un &grup..."
 
-#: krusader.cpp:637
+#: krusader.cpp:622
 msgid "&Select All"
 msgstr "&Selecciona-ho tot"
 
-#: krusader.cpp:639
+#: krusader.cpp:624
 msgid "&Unselect Group..."
 msgstr "Deselecciona el gr&up..."
 
-#: krusader.cpp:641
+#: krusader.cpp:626
 msgid "U&nselect All"
 msgstr "Deseleccio&na-ho tot"
 
-#: krusader.cpp:643
+#: krusader.cpp:628
 msgid "&Invert Selection"
 msgstr "&Inverteix la selecció"
 
-#: krusader.cpp:645
+#: krusader.cpp:630
 msgid "&Compare Directories"
 msgstr "&Compara els directoris"
 
-#: krusader.cpp:647
+#: krusader.cpp:632
 msgid "&Select Newer and Single"
 msgstr "&Selecciona els més nous i els desaparellats"
 
-#: krusader.cpp:649
+#: krusader.cpp:634
 msgid "Select &Newer"
 msgstr "Selecciona els més &nous"
 
-#: krusader.cpp:651
+#: krusader.cpp:636
 msgid "Select &Single"
 msgstr "Selecciona els &desaparellats"
 
-#: krusader.cpp:653
+#: krusader.cpp:638
 msgid "Select Different &and Single"
 msgstr "Selecciona els diferents &i els desaparellats"
 
-#: krusader.cpp:655
+#: krusader.cpp:640
 msgid "Select &Different"
 msgstr "Selecciona els &diferents"
 
-#: krusader.cpp:665
+#: krusader.cpp:650
 msgid "Start and &Forget"
 msgstr "Inicia i &oblida"
 
-#: krusader.cpp:669
+#: krusader.cpp:654
 msgid "Display &Separated Standard and Error Output"
 msgstr "Mostra la &sortida estàndard i d'error per separat"
 
-#: krusader.cpp:673
+#: krusader.cpp:658
 msgid "Display &Mixed Standard and Error Output"
 msgstr "Mostra la &sortida estàndard i d'error juntes"
 
-#: krusader.cpp:677
+#: krusader.cpp:662
 msgid "Start in &New Terminal"
 msgstr "Inicia en un &nou terminal"
 
-#: krusader.cpp:681
+#: krusader.cpp:666
 msgid "Send to &Embedded Terminal Emulator"
 msgstr "Envia'l a l'&emulador de terminal integrat"
 
-#: krusader.cpp:693
+#: krusader.cpp:678
 msgid "Start &Terminal"
 msgstr "Inicia el &terminal"
 
-#: krusader.cpp:695
+#: krusader.cpp:680
 msgid "Disconnect &from Net"
 msgstr "Desconnecta de la &xarxa"
 
-#: krusader.cpp:698 krusader.cpp:703
+#: krusader.cpp:683 krusader.cpp:688
 msgid "&MountMan..."
 msgstr "&MountMan..."
 
-#: krusader.cpp:707
+#: krusader.cpp:692
 msgid "&Search..."
 msgstr "&Cerca..."
 
-#: krusader.cpp:709
+#: krusader.cpp:694
 msgid "&Locate..."
 msgstr "&Ubicació..."
 
-#: krusader.cpp:711
+#: krusader.cpp:696
 msgid "Synchronize &Directories..."
 msgstr "Sincronitza els &directoris..."
 
-#: krusader.cpp:713
+#: krusader.cpp:698
 msgid "S&ynchron Directory Changes"
 msgstr "S&incronitza els canvis dels directoris"
 
-#: krusader.cpp:715
+#: krusader.cpp:700
 msgid "D&isk Usage..."
 msgstr "&Utilització del disc..."
 
-#: krusader.cpp:717
+#: krusader.cpp:702
 msgid "Configure &Krusader..."
 msgstr "Configura el &Krusader..."
 
-#: krusader.cpp:723
+#: krusader.cpp:708
 msgid "Save &Position"
 msgstr "Desa la &Posició"
 
-#: krusader.cpp:725
+#: krusader.cpp:710
 msgid "&All Files"
 msgstr "&Tots els fitxers"
 
-#: krusader.cpp:729
+#: krusader.cpp:714
 msgid "&Custom"
 msgstr "&Personalitza"
 
-#: krusader.cpp:731
+#: krusader.cpp:716
 msgid "Compare b&y Content..."
 msgstr "Compara per &contingut..."
 
-#: krusader.cpp:733
+#: krusader.cpp:718
 msgid "Multi &Rename..."
 msgstr "&Renomena massivament..."
 
-#: krusader.cpp:735
+#: krusader.cpp:720
 msgid "Right-click Menu"
 msgstr "Menú del clic amb el botó dret"
 
-#: krusader.cpp:737
+#: krusader.cpp:722
 msgid "Right Bookmarks"
 msgstr "Adreces d'interès de la dreta"
 
-#: krusader.cpp:739
+#: krusader.cpp:724
 msgid "Left Bookmarks"
 msgstr "Adreces d'interès de l'esquerra"
 
-#: krusader.cpp:745
+#: krusader.cpp:730
 msgid "History"
 msgstr "Historial"
 
-#: krusader.cpp:747
+#: krusader.cpp:732
 msgid "Sync Panels"
 msgstr "Sinc Plafons"
 
-#: krusader.cpp:749
+#: krusader.cpp:734
 msgid "Left History"
 msgstr "Historial (esq)"
 
-#: krusader.cpp:751
+#: krusader.cpp:736
 msgid "Right History"
 msgstr "Historial (dreta)"
 
-#: krusader.cpp:755
+#: krusader.cpp:740
 msgid "Left Media"
 msgstr "Suports (esq)"
 
-#: krusader.cpp:757
+#: krusader.cpp:742
 msgid "Right Media"
 msgstr "Suports (dreta)"
 
-#: krusader.cpp:761
+#: krusader.cpp:746
 msgid "Toggle Popup Panel"
 msgstr "Commuta el plafó emergent"
 
-#: krusader.cpp:763
+#: krusader.cpp:748
 msgid "Vertical Mode"
 msgstr "Mode vertical"
 
-#: krusader.cpp:765
+#: krusader.cpp:750
 msgid "New Tab"
 msgstr "Nova pestanya"
 
-#: krusader.cpp:767
+#: krusader.cpp:752
 msgid "Duplicate Current Tab"
 msgstr "Duplica la pestanya"
 
-#: krusader.cpp:769
+#: krusader.cpp:754
 msgid "Close Current Tab"
 msgstr "Tanca la pestanya"
 
-#: krusader.cpp:771
+#: krusader.cpp:756
 msgid "Next Tab"
 msgstr "Pestanya següent"
 
-#: krusader.cpp:773
+#: krusader.cpp:758
 msgid "Previous Tab"
 msgstr "Pestanya anterior"
 
-#: krusader.cpp:779
+#: krusader.cpp:764
 msgid "Manage User Actions..."
 msgstr "Gestió d'accions d'usuari..."
 
-#: krusader.cpp:781
+#: krusader.cpp:766
 msgid "Select Remote Charset"
 msgstr "Selecciona un joc de caràcters remot"
 
-#: krusader.cpp:784
+#: krusader.cpp:769
 msgid "Start Terminal Here"
 msgstr "Inicia un terminal aquí"
 
-#: krusader.cpp:786
+#: krusader.cpp:771
 msgid "View File"
 msgstr "Visualitza el fitxer"
 
-#: krusader.cpp:788
+#: krusader.cpp:773
 msgid "Edit File"
 msgstr "Edita el fitxer"
 
-#: krusader.cpp:794
+#: krusader.cpp:779
 msgid "New Directory..."
 msgstr "Crea un directori..."
 
-#: krusader.cpp:802
+#: krusader.cpp:787
 msgid "Popular URLs..."
 msgstr "URL famosos..."
 
-#: krusader.cpp:804
+#: krusader.cpp:789
 msgid "Go to Location Bar"
 msgstr "Salta a la barra de navegació"
 
-#: krusader.cpp:806
+#: krusader.cpp:791
 msgid "Jump Back"
 msgstr "Torna a un punt de retorn"
 
-#: krusader.cpp:808
+#: krusader.cpp:793
 msgid "Set Jump Back Point"
 msgstr "Marca un punt de retorn"
 
-#: krusader.cpp:810
+#: krusader.cpp:795
 msgid "Toggle Fullwidget Terminal Emulator"
 msgstr "Commuta l'intèrpret de terminal complet"
 
-#: krusader.cpp:814
+#: krusader.cpp:799
 msgid "Select files using a filter"
 msgstr "Selecciona fitxers amb un filtre"
 
-#: krusader.cpp:815
+#: krusader.cpp:800
 msgid "Select all files in the current directory"
 msgstr "Selecciona tots els fitxers del directori"
 
-#: krusader.cpp:816
+#: krusader.cpp:801
 msgid "Unselect all selected files"
 msgstr "Deselecciona tots els fitxers"
 
-#: krusader.cpp:817
+#: krusader.cpp:802
 msgid "Setup Krusader the way you like it"
 msgstr "Configura Krusader al teu gust"
 
-#: krusader.cpp:818
+#: krusader.cpp:803
 msgid "Back to the place you came from"
 msgstr "Tornar al lloc anterior"
 
-#: krusader.cpp:819
+#: krusader.cpp:804
 msgid "ROOT (/)"
 msgstr "ROOT (/)"
 
-#: krusader.cpp:820
+#: krusader.cpp:805
 msgid "Search for files"
 msgstr "Cerca fitxers"
 
-#: krusader.cpp:826
+#: krusader.cpp:811
 msgid "JavaScript Console..."
 msgstr "Consola Javascript..."
 
-#: krusader.cpp:963
+#: krusader.cpp:948
 msgid "Are you sure you want to quit?"
 msgstr "Voleu sortir del krusader?"
 
