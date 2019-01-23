@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2019-01-03 14:59+0100\n"
+"POT-Creation-Date: 2019-01-23 23:44+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -45,36 +45,36 @@ msgstr ""
 msgid "Retrieving data from %1 archives is not supported"
 msgstr ""
 
-#: krarc.cpp:320 krarc.cpp:555
+#: krarc.cpp:320 krarc.cpp:554
 msgid "Unpacking %1 ..."
 msgstr ""
 
-#: krarc.cpp:443
+#: krarc.cpp:442
 msgid "Deleting files from %1 archives is not supported"
 msgstr ""
 
-#: krarc.cpp:459
+#: krarc.cpp:458
 msgid "Deleting %1 ..."
 msgstr ""
 
-#: krarc.cpp:483
+#: krarc.cpp:482
 msgid "Accessing files is not supported with the %1 archives"
 msgstr ""
 
-#: krarc.cpp:583
+#: krarc.cpp:582
 msgid "Listing directories is not supported for %1 archives"
 msgstr ""
 
-#: krarc.cpp:1389
+#: krarc.cpp:1372
 msgid ""
 "\n"
 "Make sure that the %1 binary are installed properly on your system."
 msgstr ""
 
-#: krarc.cpp:1612 krarc.cpp:1636
+#: krarc.cpp:1584 krarc.cpp:1608
 msgid "Krarc Password Dialog"
 msgstr ""
 
-#: krarc.cpp:1653
+#: krarc.cpp:1625
 msgid "Accessing the file requires password."
 msgstr ""
