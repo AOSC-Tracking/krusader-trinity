@@ -212,12 +212,12 @@ void KMountManGUI::addItemToMountList( TQListView *lst, fsData &fs ) {
 	TQString id = fs.name().left(7); // only works assuming devices start with  "/dev/XX"
    TQPixmap *icon = 0;
    if ( id == "/dev/fd") {
-      icon = new TQPixmap( LOADICON( mtd ? "media-floppy-3_5-mounted" : "media-floppy-3_5" ) );
+      icon = new TQPixmap( LOADICON( mtd ? "media-floppy-3_5-mounted" : "media-floppy-3_5-unmounted" ) );
 	} else if ( id == "/dev/cd" || fs.type() == "iso9660" ) {
-		icon = new TQPixmap( LOADICON( mtd ? "media-optical-cdrom-mounted" : "media-optical-cdrom" ) );
+		icon = new TQPixmap( LOADICON( mtd ? "media-optical-cdrom-mounted" : "media-optical-cdrom-unmounted" ) );
    } else if ( fs.type() == "nfs" || fs.type() == "smbfs" ) {
-		icon = new TQPixmap( LOADICON( mtd ? "nfs_mount" : "nfs_unmount" ) );
-	} else icon = new TQPixmap( LOADICON( mtd ? "drive-harddisk-mounted" : "drive-harddisk" ) );
+		icon = new TQPixmap( LOADICON( mtd ? "nfs-mounted" : "nfs-unmounted" ) );
+	} else icon = new TQPixmap( LOADICON( mtd ? "drive-harddisk-mounted" : "drive-harddisk-unmounted" ) );
 
    item->setPixmap( 0, *icon );
    delete icon;

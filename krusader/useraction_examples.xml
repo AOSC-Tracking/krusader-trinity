@@ -84,7 +84,7 @@ Please note: The sed-command is &quot;s/search/repleace/&quot;, so you have to e
  <action name="sample_newmount" >
   <title>Mount</title>
   <tooltip>Mount a new filesystem.</tooltip>
-  <icon>hdd_mount</icon>
+  <icon>hdd-mounted</icon>
   <category>System</category>
   <command run_as="root" executionmode="collect_output" >mount -t %_Ask(&quot;Filesystem Type?&quot;)% %_Ask(&quot;Device ?&quot;)% %_Ask(&quot;Mount Point ?&quot;)%</command>
   <defaultshortcut>Alt+Ctrl+M</defaultshortcut>
@@ -296,7 +296,7 @@ You need krusader compiled with javascript support and iconv installed.</descrip
  <action name="Jscript_root-mount" >
   <title>Javascript, mount as root</title>
   <tooltip>Mounts a device with root-privileges</tooltip>
-  <icon>hdd_mount</icon>
+  <icon>hdd-mounted</icon>
   <category>System</category>
   <description>Requirements:
 You need krusader compiled with javascript support.</description>
