@@ -99,7 +99,7 @@ void DUFilelight::mousePressEvent( TQMouseEvent *event )
      TDEPopupMenu schemePopup;           
      schemePopup.insertItem( i18n("Rainbow"),       this, TQT_SLOT( schemeRainbow() ) );
      schemePopup.insertItem( i18n("High Contrast"), this, TQT_SLOT( schemeHighContrast() ) );
-     schemePopup.insertItem( i18n("KDE"),           this, TQT_SLOT( schemeKDE() ) );
+     schemePopup.insertItem( i18n("TDE"),           this, TQT_SLOT( schemeKDE() ) );
 
      filelightPopup.insertItem( TQPixmap(), &schemePopup, SCHEME_POPUP_ID );
      filelightPopup.changeItem( SCHEME_POPUP_ID, i18n( "Scheme" ) );     

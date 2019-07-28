@@ -187,8 +187,8 @@ KgColors::KgColors( bool first, TQWidget* parent,  const char* name ) :
   colorsGrid->setSpacing( 0 );
   colorsGrid->setMargin( 2 );
 
-  ADDITIONAL_COLOR KDEDefaultBase = { i18n("KDE default"), TDEGlobalSettings::baseColor(), "KDE default" };
-  ADDITIONAL_COLOR KDEDefaultFore = { i18n("KDE default"), TDEGlobalSettings::textColor(), "KDE default" };
+  ADDITIONAL_COLOR KDEDefaultBase = { i18n("TDE default"), TDEGlobalSettings::baseColor(), "KDE default" };
+  ADDITIONAL_COLOR KDEDefaultFore = { i18n("TDE default"), TDEGlobalSettings::textColor(), "KDE default" };
 
   offset = endOfPanelColors = itemList.count();
 
