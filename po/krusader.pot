@@ -1375,7 +1375,7 @@ msgid "High Contrast"
 msgstr ""
 
 #: DiskUsage/dufilelight.cpp:102
-msgid "KDE"
+msgid "TDE"
 msgstr ""
 
 #: DiskUsage/dufilelight.cpp:105
@@ -2428,7 +2428,7 @@ msgid "Synchronizer"
 msgstr ""
 
 #: Konfigurator/kgcolors.cpp:190 Konfigurator/kgcolors.cpp:191
-msgid "KDE default"
+msgid "TDE default"
 msgstr ""
 
 #: Konfigurator/kgcolors.cpp:195

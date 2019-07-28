@@ -1423,8 +1423,7 @@ msgid "High Contrast"
 msgstr "Magas kontraszt"
 
 #: DiskUsage/dufilelight.cpp:102
-#, fuzzy
-msgid "KDE"
+msgid "TDE"
 msgstr "TDE"
 
 #: DiskUsage/dufilelight.cpp:105
@@ -2547,8 +2546,7 @@ msgid "Synchronizer"
 msgstr "Szinkronizáló"
 
 #: Konfigurator/kgcolors.cpp:190 Konfigurator/kgcolors.cpp:191
-#, fuzzy
-msgid "KDE default"
+msgid "TDE default"
 msgstr "TDE-alapértelmezés"
 
 #: Konfigurator/kgcolors.cpp:195
