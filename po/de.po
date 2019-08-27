@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: krusader-1.80.0-beta2\n"
 "Report-Msgid-Bugs-To: Dirk Eschler <deschler@users.sourceforge.net>\n"
 "POT-Creation-Date: 2019-01-13 19:16+0100\n"
-"PO-Revision-Date: 2019-07-19 13:07+0000\n"
+"PO-Revision-Date: 2019-08-28 20:45+0000\n"
 "Last-Translator: Chris <xchrisx@uber.space>\n"
 "Language-Team: German <https://mirror.git.trinitydesktop.org/weblate/"
 "projects/applications/krusader/de/>\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.7.1\n"
+"X-Generator: Weblate 3.8\n"
 
 #: _translatorinfo:1
 msgid ""
@@ -2860,7 +2860,7 @@ msgstr "Beim Schließen des Hauptfensters eine Warnung anzeigen."
 
 #: Konfigurator/kglookfeel.cpp:86
 msgid "Minimize to tray"
-msgstr "In Systemabschnitt der Kontrollleiste minimieren"
+msgstr "In Systembereich minimieren"
 
 #: Konfigurator/kglookfeel.cpp:86
 msgid ""
