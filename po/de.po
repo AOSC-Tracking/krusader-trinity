@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: krusader-1.80.0-beta2\n"
 "Report-Msgid-Bugs-To: Dirk Eschler <deschler@users.sourceforge.net>\n"
 "POT-Creation-Date: 2019-01-13 19:16+0100\n"
-"PO-Revision-Date: 2019-08-28 20:45+0000\n"
+"PO-Revision-Date: 2019-11-09 18:26+0000\n"
 "Last-Translator: Chris <xchrisx@uber.space>\n"
 "Language-Team: German <https://mirror.git.trinitydesktop.org/weblate/"
 "projects/applications/krusader/de/>\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.8\n"
+"X-Generator: Weblate 3.9.1\n"
 
 #: _translatorinfo:1
 msgid ""
@@ -2092,7 +2092,7 @@ msgstr "Neuen Eintrag hinzufügen"
 
 #: GUI/profilemanager.cpp:112
 msgid "Krusader::ProfileManager"
-msgstr "Krusader::Profilmanager"
+msgstr "Krusader::Profilverwaltung"
 
 #: GUI/profilemanager.cpp:112
 msgid "Enter the profile name:"
@@ -3064,7 +3064,7 @@ msgstr "Öffnen"
 
 #: Konfigurator/kglookfeel.cpp:209
 msgid "Opens the directory browser."
-msgstr "Den Verzeichnis-Browser öffnen."
+msgstr "Den Verzeichnisnavigator öffnen."
 
 #: Konfigurator/kglookfeel.cpp:210
 msgid "Equal button (=)"
@@ -3867,7 +3867,7 @@ msgstr "MountMan ist nicht funktionstüchtig."
 
 #: MountMan/kmountmangui.cpp:72
 msgid "MountMan - Your Mount-Manager"
-msgstr "MountMan - Ihre Mount-Verwaltung"
+msgstr "MountMan - Ihre Einbindeverwaltung"
 
 #: MountMan/kmountmangui.cpp:101
 msgid "Filesystems"
@@ -4632,7 +4632,7 @@ msgstr "Möchten Sie dieses Element wirklich löschen?"
 
 #: RemoteMan/remotemanbase.cpp:41
 msgid "RemoteMan: Connection Manager"
-msgstr "RemoteMan: Verbindungsmanager"
+msgstr "RemoteMan: Verbindungsverwaltung"
 
 #: RemoteMan/remotemanbase.cpp:52
 msgid "Session name:"
@@ -5193,7 +5193,7 @@ msgstr "Versteckte Dateien ignorieren"
 
 #: Synchronizer/synchronizergui.cpp:1422
 msgid "Profile manager (Ctrl+P)."
-msgstr "Profil-Manager (Strg+P)."
+msgstr "Profilverwaltung (Strg+P)."
 
 #: Synchronizer/synchronizergui.cpp:1429
 msgid "Swap sides (Ctrl+S)."
@@ -5957,13 +5957,13 @@ msgid ""
 "Try the new bookmark-manager: open a new remote connection, once done, press "
 "the bookmark button, select 'Add bookmark' and that's it!"
 msgstr ""
-"Wichtig: RemoteMan wurde durch einen neuen Lesezeichenmanager ersetzt. Der "
-"neue Manager kann mit lokale und entfernten Adressen umgehen. RemoteMan "
+"Wichtig: RemoteMan wurde durch eine neue Lesezeichenverwaltung ersetzt. Die "
+"neue Verwaltung kann mit lokale und entfernten Adressen umgehen. RemoteMan "
 "bleibt erhalten, um einen nahtlosen Übergang zu gewährleisten und Ihnen die "
 "Transferierung alter Lesezeichen zu ermöglichen. REMOTEMAN WIRD IN ZUKUNFT "
 "ENTFERNT WERDEN!\n"
-"Probieren Sie den neuen Lesezeichenmanager einfach aus: Öffnen Sie eine neue "
-"Netzwerkverbindung, drücken Sie den Lesezeichen-Knopf und wählen "
+"Probieren Sie die neue Lesezeichenverwaltung einfach aus: Öffnen Sie eine "
+"neue Netzwerkverbindung, drücken Sie den Lesezeichen-Knopf und wählen "
 "'Lesezeichen hinzufügen'. Das ist auch schon alles!"
 
 #: krslots.cpp:477
@@ -6436,7 +6436,7 @@ msgid ""
 "Twin-Panel File Manager for TDE"
 msgstr ""
 "Krusader\n"
-"Twin-Panel-Dateimanager für TDE"
+"Twin-Panel-Dateiverwalter für TDE"
 
 #: main.cpp:56
 msgid "Start left panel at <path>"
