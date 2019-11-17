@@ -10,15 +10,17 @@ msgstr ""
 "Project-Id-Version: krusader-1.80.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-01-13 19:16+0100\n"
-"PO-Revision-Date: 2007-04-01 19:45-0300\n"
-"Last-Translator: Doutor.Zero <doutor.zero@gmail..com>\n"
-"Language-Team: krusader-i18n <krusader-i18n@googlegroups.com>\n"
-"Language: \n"
+"PO-Revision-Date: 2019-11-17 23:14+0000\n"
+"Last-Translator: Robert Peters <robertpeters9@gmail.com>\n"
+"Language-Team: Portuguese (Brazil) <https://mirror.git.trinitydesktop.org/"
+"weblate/projects/applications/krusader/pt_BR/>\n"
+"Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Generator: Weblate 3.9.1\n"
 "X-Genemouser: KBabel 1.9.1\n"
-"X-Generator: KBabel 1.9.1\n"
 "X-Poedit-Language: Portuguese\n"
 "X-Poedit-Country: BRAZIL\n"
 
@@ -26,13 +28,13 @@ msgstr ""
 msgid ""
 "_: NAME OF TRANSLATORS\n"
 "Your names"
-msgstr "Doutor.Zero"
+msgstr "Seus nomes"
 
 #: _translatorinfo:2
 msgid ""
 "_: EMAIL OF TRANSLATORS\n"
 "Your emails"
-msgstr "doutor.zero@gmail.com"
+msgstr "Seus e-mails"
 
 #: ActionMan/actionman.cpp:26
 msgid "ActionMan - Manage Your Useractions"
@@ -276,7 +278,7 @@ msgstr ""
 #: ActionMan/actionpropertybase.cpp:409 ActionMan/actionpropertybase.ui:281
 #, no-c-format
 msgid "Tooltip:"
-msgstr "Tooltip:"
+msgstr "Sugestão:"
 
 #: ActionMan/actionpropertybase.cpp:412 ActionMan/actionpropertybase.ui:295
 #, no-c-format
@@ -653,7 +655,7 @@ msgstr " em vez de "
 #: BookMan/krbookmarkhandler.cpp:185 BookMan/krbookmarkhandler.cpp:191
 #: BookMan/krbookmarkhandler.cpp:222
 msgid "missing tag "
-msgstr "etiqueta em falta"
+msgstr "etiqueta em falta "
 
 #: BookMan/krbookmarkhandler.cpp:261
 msgid "%1 doesn't seem to be a valid Bookmarks file"
@@ -2329,7 +2331,7 @@ msgstr "7zip"
 
 #: Konfigurator/kgarchives.cpp:70
 msgid "Xz"
-msgstr ""
+msgstr "Xz"
 
 #: Konfigurator/kgarchives.cpp:76
 msgid ""
@@ -2431,7 +2433,7 @@ msgid ""
 "factor.</p>"
 msgstr ""
 "<p>As cores do painel inativo são calculadas por uma cor desbotada e por um "
-"fator de desbotamento."
+"fator de desbotamento.</p>"
 
 #: Konfigurator/kgcolors.cpp:79 Konfigurator/kgcolors.cpp:221
 #: Konfigurator/konfigurator.cpp:97 Konfigurator/konfigurator.cpp:98
@@ -2988,7 +2990,7 @@ msgstr "Exibir arquivos que comecem com um ponto."
 
 #: Konfigurator/kglookfeel.cpp:156
 msgid "Case sensitive sorting"
-msgstr "Organização sensível à capitalização "
+msgstr "Organização sensível à capitalização"
 
 #: Konfigurator/kglookfeel.cpp:157
 msgid "Always sort dirs by name"
@@ -3467,8 +3469,8 @@ msgid ""
 "Krusader starts to tray (if minimize to tray is set), without showing the "
 "main window"
 msgstr ""
-"O Krusader é inicializado para a área de notificação (se 'minimizar para a "
-"área de notificação' estiver habilitado), sem mostrar a janela principal."
+"O Krusader é inicializado para a área de notificação (se \"minimizar para a "
+"área de notificação\" estiver habilitado), sem mostrar a janela principal."
 
 #: Konfigurator/kguseractions.cpp:53
 msgid ""
@@ -3963,7 +3965,7 @@ msgstr "Modificado"
 
 #: Panel/krdetailedview.cpp:108 Panel/krdetailedview.cpp:1463
 msgid "Perms"
-msgstr "Perms"
+msgstr "Permissões"
 
 #: Panel/krdetailedview.cpp:109 Panel/krdetailedview.cpp:1466
 msgid "rwx"
@@ -4496,25 +4498,22 @@ msgstr ""
 "Extrair %n arquivos para:"
 
 #: Panel/panelfunc.cpp:950
-#, fuzzy
 msgid ""
 "The destination folder does not exist.\n"
 "Do you want to create it?"
-msgstr "Este arquivo já existe. Você deseja sobrescrevê-lo?"
+msgstr "Este arquivo não existe. Você deseja criá-lo?"
 
 #: Panel/panelfunc.cpp:951
-#, fuzzy
 msgid "Create folder"
-msgstr "Criar Novo"
+msgstr "Criar pasta"
 
 #: Panel/panelfunc.cpp:957
 msgid "Unable to create the destionation folder. Aborting operation."
-msgstr ""
+msgstr "Não foi possível criar a pasta de destino. Cancelando a operação."
 
 #: Panel/panelfunc.cpp:957
-#, fuzzy
 msgid "Error!"
-msgstr "Erro"
+msgstr "Erro!"
 
 #: Panel/panelfunc.cpp:981
 msgid "%1, unknown archive type"
@@ -4992,7 +4991,7 @@ msgstr "Passando os URLs ao Kget"
 
 #: Synchronizer/synchronizer.cpp:1448 krslots.cpp:119 krslots.cpp:211
 msgid "Error executing "
-msgstr "Erro executando"
+msgstr "Erro executando "
 
 #: Synchronizer/synchronizerdirlist.cpp:101 VFS/normal_vfs.cpp:100
 msgid "Can't open the %1 directory!"
@@ -5113,7 +5112,7 @@ msgstr ""
 
 #: Synchronizer/synchronizergui.cpp:1268
 msgid "Show files marked to delete. (CTRL+T)"
-msgstr "Mostrar os arquivos marcados para apagar (Ctrl-T)."
+msgstr "Mostrar os arquivos marcados para apagar. (Ctrl-T)"
 
 #: Synchronizer/synchronizergui.cpp:1272
 msgid "Duplicates"
@@ -5560,7 +5559,7 @@ msgstr "Expansor: nenhuma coluna especificada para %_ColSort(column)%"
 
 #: UserAction/expander.cpp:885
 msgid "Expander: unknown column specified for %_ColSort(%1)%"
-msgstr "Expansor: coluna desconhecida especificada para %_ColSort(%1)% "
+msgstr "Expansor: coluna desconhecida especificada para %_ColSort(%1)%"
 
 #: UserAction/expander.cpp:897
 msgid "Set Relation Between the Panels..."
@@ -5951,11 +5950,10 @@ msgstr ""
 "'Dependências' no Konfigurador."
 
 #: krslots.cpp:509
-#, fuzzy
 msgid "Can't find \"KsysCtrl\". Please install the TDE admin package"
 msgstr ""
-"Não foi possível localizar \"Ksys Ctrl\". Por favor instale o pacote de "
-"administração TDE"
+"Não foi possível localizar \"KsysCtrl\".  Por favor instale o pacote de "
+"administração do TDE."
 
 #: krslots.cpp:517
 msgid ""
@@ -6464,82 +6462,82 @@ msgstr "Fechar aba atual"
 #: calc.ui:16
 #, no-c-format
 msgid "JS Calculator"
-msgstr ""
+msgstr "Calculadora JavaScript"
 
 #: calc.ui:43
 #, no-c-format
 msgid "+"
-msgstr ""
+msgstr "+"
 
 #: calc.ui:51
 #, no-c-format
 msgid "AC"
-msgstr ""
+msgstr "AC"
 
 #: calc.ui:75
 #, no-c-format
 msgid "CL"
-msgstr ""
+msgstr "CL"
 
 #: calc.ui:83
 #, no-c-format
 msgid "0"
-msgstr ""
+msgstr "0"
 
 #: calc.ui:91
-#, fuzzy, no-c-format
+#, no-c-format
 msgid "4"
-msgstr "48"
+msgstr "4"
 
 #: calc.ui:99
-#, fuzzy, no-c-format
+#, no-c-format
 msgid "2"
-msgstr "22"
+msgstr "2"
 
 #: calc.ui:107
 #, no-c-format
 msgid "5"
-msgstr ""
+msgstr "5"
 
 #: calc.ui:115
-#, fuzzy, no-c-format
+#, no-c-format
 msgid "3"
-msgstr "32"
+msgstr "3"
 
 #: calc.ui:123
 #, no-c-format
 msgid "7"
-msgstr ""
+msgstr "7"
 
 #: calc.ui:131
-#, fuzzy, no-c-format
+#, no-c-format
 msgid "6"
-msgstr "16"
+msgstr "6"
 
 #: calc.ui:139
-#, fuzzy, no-c-format
+#, no-c-format
 msgid "8"
-msgstr "48"
+msgstr "8"
 
 #: calc.ui:147
 #, no-c-format
 msgid "9"
-msgstr ""
+msgstr "9"
 
 #: calc.ui:155
-#, fuzzy, no-c-format
+#, no-c-format
 msgid "1"
-msgstr "16"
+msgstr "1"
 
 #: calc.ui:165
-#, fuzzy, no-c-format
+#, no-c-format
 msgid "Set as caption"
-msgstr "A mesma que ativo"
+msgstr "Definir como legenda"
 
 #: krusaderui.rc:51
 #, no-c-format
 msgid "Compare Se&tup"
-msgstr "Con&figurar Comparação"
+msgstr "Comparar configuração"
 
 #: krusaderui.rc:77
 #, no-c-format
@@ -6562,89 +6560,89 @@ msgid "&Window"
 msgstr "&Janela"
 
 #: mount.ui:24
-#, fuzzy, no-c-format
+#, no-c-format
 msgid "Mount a Filesystem"
-msgstr "Sistema de Arquivos Virtual"
+msgstr "Montar um sistema de arquivos"
 
 #: mount.ui:102
-#, fuzzy, no-c-format
+#, no-c-format
 msgid "Device"
-msgstr "Dispositivos"
+msgstr "Dispositivo"
 
 #: mount.ui:118
 #, no-c-format
 msgid "<auto>"
-msgstr ""
+msgstr "<automático>"
 
 #: mount.ui:123
 #, no-c-format
 msgid "ext2"
-msgstr ""
+msgstr "ext2"
 
 #: mount.ui:128
 #, no-c-format
 msgid "ext3"
-msgstr ""
+msgstr "ext3"
 
 #: mount.ui:133
 #, no-c-format
 msgid "vfat"
-msgstr ""
+msgstr "vfat"
 
 #: mount.ui:138
 #, no-c-format
 msgid "ntfs"
-msgstr ""
+msgstr "ntfs"
 
 #: mount.ui:153
-#, fuzzy, no-c-format
+#, no-c-format
 msgid "Filesystem"
-msgstr "Sistemas de arquivos"
+msgstr "Sistema de arquivos"
 
 #: mount.ui:161
-#, fuzzy, no-c-format
+#, no-c-format
 msgid "Mountpoint"
-msgstr "Ponto de Montagem"
+msgstr "Ponto de montagem"
 
 #: mount.ui:169
 #, no-c-format
 msgid "additional mount-options:"
-msgstr ""
+msgstr "opções adicionais de montagem:"
 
 #: recode.ui:25
-#, fuzzy, no-c-format
+#, no-c-format
 msgid "Recode file names"
-msgstr "Novo nome de arquivo"
+msgstr "Novos nomes de arquivos"
 
 #: recode.ui:103
 #, no-c-format
 msgid "INPUT:"
-msgstr ""
+msgstr "ENTRAR:"
 
 #: recode.ui:111
 #, no-c-format
 msgid "OUTPUT:"
-msgstr ""
+msgstr "SAÍDA:"
 
 #: recode.ui:119
 #, no-c-format
 msgid "Charset: "
-msgstr ""
+msgstr "Conjunto de caracteres: "
 
 #: recode.ui:143
 #, no-c-format
 msgid "End of line: "
-msgstr ""
+msgstr "Fim da linha: "
 
 #: recode.ui:167
 #, no-c-format
 msgid "MIME Encoding: "
-msgstr ""
+msgstr "Codificação MIME: "
 
 #: recode.ui:191
-#, fuzzy, no-c-format
+#, no-c-format
 msgid "Dump type: "
-msgstr "&Do tipo:"
+msgstr "Tipo de despejo: "
 
 #~ msgid "Remove"
 #~ msgstr "Remover"
