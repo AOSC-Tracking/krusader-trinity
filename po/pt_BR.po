@@ -28,13 +28,13 @@ msgstr ""
 msgid ""
 "_: NAME OF TRANSLATORS\n"
 "Your names"
-msgstr "Seus nomes"
+msgstr "Doutor.Zero, Robert Peters"
 
 #: _translatorinfo:2
 msgid ""
 "_: EMAIL OF TRANSLATORS\n"
 "Your emails"
-msgstr "Seus e-mails"
+msgstr "doutor.zero@gmail.com, robertpeters9@gmail.com"
 
 #: ActionMan/actionman.cpp:26
 msgid "ActionMan - Manage Your Useractions"
