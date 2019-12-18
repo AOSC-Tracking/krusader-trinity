@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: krusader-1.80.0-beta2\n"
 "Report-Msgid-Bugs-To: Dirk Eschler <deschler@users.sourceforge.net>\n"
 "POT-Creation-Date: 2019-01-23 23:44+0100\n"
-"PO-Revision-Date: 2019-11-27 18:56+0000\n"
+"PO-Revision-Date: 2019-12-17 15:56+0000\n"
 "Last-Translator: Chris <xchrisx@uber.space>\n"
 "Language-Team: German <https://mirror.git.trinitydesktop.org/weblate/"
 "projects/applications/krusader/de/>\n"
@@ -2642,7 +2642,7 @@ msgstr "Symbolische Verknüpfung"
 
 #: Konfigurator/kgcolors.cpp:417
 msgid "Application"
-msgstr "Applikation"
+msgstr "Programm"
 
 #: Konfigurator/kgcolors.cpp:419 Panel/krbriefview.cpp:252
 #: Panel/krdetailedview.cpp:303
@@ -6469,7 +6469,7 @@ msgstr ""
 
 #: main.cpp:202
 msgid "Application already running!\n"
-msgstr "Die Anwendung läuft bereits!\n"
+msgstr "Das Programm läuft bereits!\n"
 
 #: panelmanager.cpp:32
 msgid "Open a new tab in home"
