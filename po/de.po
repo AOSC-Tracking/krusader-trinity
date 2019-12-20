@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: krusader-1.80.0-beta2\n"
 "Report-Msgid-Bugs-To: Dirk Eschler <deschler@users.sourceforge.net>\n"
 "POT-Creation-Date: 2019-01-13 19:16+0100\n"
-"PO-Revision-Date: 2019-12-17 15:56+0000\n"
+"PO-Revision-Date: 2019-12-21 19:41+0000\n"
 "Last-Translator: Chris <xchrisx@uber.space>\n"
 "Language-Team: German <https://mirror.git.trinitydesktop.org/weblate/"
 "projects/applications/krusader/de/>\n"
@@ -140,7 +140,7 @@ msgid ""
 "<i>Konfigurator</i> and via <code>Shift-F1</code>."
 msgstr ""
 "Eine ausführliche Beschreibung der <b>Aktion</b>. Sie wird nur im "
-"<i>Konfigurator</i> oder mittels <code>Shift-F1</code> angezeigt."
+"<i>Einrichter</i> oder mittels <code>Shift-F1</code> angezeigt."
 
 #: ActionMan/actionpropertybase.cpp:390 ActionMan/actionpropertybase.ui:83
 #, no-c-format
@@ -185,7 +185,7 @@ msgid ""
 "<i>Konfigurator</i> and doesn't appear in any other menu.<p><b>Note</b>: The "
 "<i>Title</i> shown in the <b>Usermenu</b> can be set below."
 msgstr ""
-"<p>Eindeutiger Name der <b>Aktion</b>. Er wird nur im <i>Konfigurator</i> "
+"<p>Eindeutiger Name der <b>Aktion</b>. Er wird nur im <i>Einrichter</i> "
 "benutzt und erscheint sonst in keinem Menü.</p><p><b>Hinweis</b>: Der "
 "<i>Titel</i>, der im <b>Aktionsmenü</b> erscheint kann weiter unten "
 "eingegeben werden.</p>"
@@ -227,7 +227,7 @@ msgid ""
 "<i>Konfigurator</i> and doesn't appear in any other menu.</p><p><b>Note</b>: "
 "The <i>Title</i> shown in the <b>Usermenu</b> can be set below.</p>"
 msgstr ""
-"<p>Eindeutiger Name der <b>Aktion</b>. Er wird nur im <i>Konfigurator</i> "
+"<p>Eindeutiger Name der <b>Aktion</b>. Er wird nur im <i>Einrichter</i> "
 "benutzt und erscheint sonst in keinem Menü.</p><p><b>Hinweis</b>: Der "
 "<i>Titel</i>, der im <b>Aktionsmenü</b> erscheint kann weiter unten "
 "eingegeben werden.</p>"
@@ -704,7 +704,7 @@ msgid ""
 msgstr ""
 "<qt>Die Prüfsumme kann nicht verifiziert werden, da keines der unterstützten "
 "Werkzeuge gefunden werden konnte. Überprüfen Sie die <b>Abhängigkeiten</b>-"
-"Seite im Konfigurator.</qt>"
+"Seite im Einrichter.</qt>"
 
 #: Dialogs/checksumdlg.cpp:219 Dialogs/checksumdlg.cpp:320
 msgid ""
@@ -753,7 +753,7 @@ msgid ""
 msgstr ""
 "<qt>Die Prüfsumme kann nicht verifiziert werden, da keines der unterstützten "
 "Werkzeuge gefunden werden konnte. Überprüfen Sie die <b>Abhängigkeiten</b>-"
-"Seite im Konfigurator.</qt>"
+"Seite im Einrichter.</qt>"
 
 #: Dialogs/checksumdlg.cpp:336
 msgid "About to verify checksum for the following files"
@@ -777,7 +777,7 @@ msgid ""
 "Please check the <b>Dependencies</b> page in Krusader's settings.</qt>"
 msgstr ""
 "<qt>Es konnte kein Prüfsummenwerkzeug gefunden werden, dass mit %1 umgehen "
-"kann. Bitte die <b>Abhängigkeiten</b>-Seite im Konfigurator überprüfen.</qt>"
+"kann. Bitte die <b>Abhängigkeiten</b>-Seite im Einrichter überprüfen.</qt>"
 
 #: Dialogs/checksumdlg.cpp:386
 msgid "Verifying checksums ..."
@@ -1061,7 +1061,7 @@ msgstr "Frei: "
 
 #: Dialogs/krspecialwidgets.cpp:141
 msgid "Not mounted."
-msgstr "Nicht eingehängt."
+msgstr "Nicht eingebunden."
 
 #: Dialogs/krspwidgets.cpp:151
 msgid "Enter a selection:"
@@ -1907,9 +1907,9 @@ msgid ""
 "<p>Open terminal in current directory.</p><p>The terminal can be defined in "
 "Konfigurator, default is <b>konsole</b>.</p>"
 msgstr ""
-"<qt><p>Terminal im aktuellen Verzeichnis öffnen.</p><p>Im Konfigurator kann "
-"ein Terminal definiert werden, die Standardeinstellung lautet <b>konsole</b>."
-"</p></qt>"
+"<qt><p>Terminal im aktuellen Verzeichnis öffnen.</p><p>Im Einrichter kann "
+"ein Terminal definiert werden, die Standardeinstellung lautet "
+"<b>konsole</b>.</p></qt>"
 
 #: GUI/kfnkeys.cpp:57
 msgid "F3 View  "
@@ -2062,12 +2062,12 @@ msgstr "Unbekannt"
 #: GUI/mediabutton.cpp:533 MountMan/kmountman.cpp:287
 #: MountMan/kmountmangui.cpp:333 Panel/krpopupmenu.cpp:174
 msgid "Mount"
-msgstr "Einhängen"
+msgstr "Laufwerk einbinden"
 
 #: GUI/mediabutton.cpp:535 MountMan/kmountman.cpp:287
 #: MountMan/kmountmangui.cpp:337 Panel/krpopupmenu.cpp:172
 msgid "Unmount"
-msgstr "Aushängen"
+msgstr "Laufwerkeinbindung lösen"
 
 #: GUI/mediabutton.cpp:537 MountMan/kmountmangui.cpp:343
 #: Panel/krpopupmenu.cpp:176
@@ -2200,16 +2200,16 @@ msgstr ""
 
 #: Konfigurator/kgadvanced.cpp:64
 msgid "Automount filesystems"
-msgstr "Dateisysteme automatisch einhängen"
+msgstr "Dateisysteme automatisch einbinden"
 
 #: Konfigurator/kgadvanced.cpp:64
 msgid ""
 "When stepping into a directory which is defined as a mount point in the "
 "<b>fstab</b>, try mounting it with the defined parameters."
 msgstr ""
-"Beim Wechsel in ein Verzeichnis, welches als Einhängepunkt in der <b>fstab</"
-"b> definiert ist, wird versucht diesen mit den angegebenen Parametern "
-"einzuhängen."
+"Beim Wechsel in ein Verzeichnis, welches als Einbindepunkt in der "
+"<b>fstab</b> definiert ist, wird versucht diesen mit den angegebenen "
+"Parametern einzubinden."
 
 #: Konfigurator/kgadvanced.cpp:65
 msgid ""
@@ -2229,7 +2229,7 @@ msgstr ""
 
 #: Konfigurator/kgadvanced.cpp:74
 msgid "MountMan won't (un)mount the following mount-points:"
-msgstr "Folgende Einhängepunkte nicht mit MountMan einhängen/aushängen:"
+msgstr "Folgende Einbindepunkte nicht mit MountMan eingebunden/gelöst:"
 
 #: Konfigurator/kgadvanced.cpp:88
 msgid "Confirmations"
@@ -2867,8 +2867,8 @@ msgid ""
 "The icon will appear in the system tray instead of the taskbar, when "
 "Krusader is minimized."
 msgstr ""
-"Beim Minimieren das Symbol im Systemabschnitt der Kontrollleiste, anstelle "
-"der Kontrollleiste, anzeigen."
+"Beim Minimieren das Symbol im Systembereich der Kontrollleiste, anstelle der "
+"Fensterleiste, anzeigen."
 
 #: Konfigurator/kglookfeel.cpp:87
 msgid "Autoselect directories"
@@ -3467,15 +3467,15 @@ msgstr ""
 
 #: Konfigurator/kgstartup.cpp:95
 msgid "Start to tray"
-msgstr "Im Systemabschnitt der Kontrollleiste starten"
+msgstr "Im Systembereich der Kontrollleiste starten"
 
 #: Konfigurator/kgstartup.cpp:95
 msgid ""
 "Krusader starts to tray (if minimize to tray is set), without showing the "
 "main window"
 msgstr ""
-"Krusader startet im Systemabschnitt der Kontrollleiste (sofern 'In "
-"Systemabschnitt der Kontrolleiste minimieren' aktiviert ist), ohne das "
+"Krusader startet im Systembereich der Kontrollleiste (sofern 'In "
+"Systembereich der Kontrolleiste minimieren' aktiviert ist), ohne das "
 "Hauptfenster anzuzeigen."
 
 #: Konfigurator/kguseractions.cpp:53
@@ -3521,7 +3521,7 @@ msgstr "Voreinstellungen"
 
 #: Konfigurator/konfigurator.cpp:65
 msgid "Konfigurator - Creating Your Own Krusader"
-msgstr "Konfigurator - Krusader den eigenen Wünschen anpassen"
+msgstr "Einrichter - Krusader den eigenen Wünschen anpassen"
 
 #: Konfigurator/konfigurator.cpp:90
 msgid "Startup"
@@ -3775,7 +3775,7 @@ msgstr "Ergebnisse"
 msgid "Can't start 'locate'! Check the 'Dependencies' page in konfigurator."
 msgstr ""
 "Der Befehl 'locate' konnte nicht ausgeführt werden! Überprüfen Sie die "
-"'Abhängigkeiten'-Seite im Konfigurator."
+"'Abhängigkeiten'-Seite im Einrichter."
 
 #: Locate/locate.cpp:269
 msgid ""
@@ -5945,7 +5945,7 @@ msgid ""
 msgstr ""
 "Der 'locate'-Befehl konnte nicht gefunden werden. Bitte installieren Sie das "
 "'findutils-locate'-Paket von GNU, oder setzen Sie den entsprechenden Pfad im "
-"Konfigurator."
+"Einrichter."
 
 #: krslots.cpp:458
 msgid ""
@@ -5969,7 +5969,7 @@ msgstr ""
 msgid "Can't start 'mount'! Check the 'Dependencies' page in konfigurator."
 msgstr ""
 "'mount' konnte nicht ausgeführt werden! Überprüfen Sie die Abhängigkeiten-"
-"Seite im Konfigurator."
+"Seite im Einrichter."
 
 #: krslots.cpp:509
 #, fuzzy
@@ -6061,7 +6061,7 @@ msgid ""
 msgstr ""
 "<qt><b>Herzlich willkommen zu Krusader!</b><p>Da dies der erste Start ist, "
 "wird nun nach unterstützten externen Programmen gesucht. Danach wird der "
-"Konfigurator gestartet, in welchem Krusader den eigenen Wünschen angepasst "
+"Einrichter gestartet, in welchem Krusader den eigenen Wünschen angepasst "
 "werden kann.</p></qt>"
 
 #: krusader.cpp:538
@@ -6584,54 +6584,54 @@ msgid "&Window"
 msgstr "&Fenster"
 
 #: mount.ui:24
-#, fuzzy, no-c-format
+#, no-c-format
 msgid "Mount a Filesystem"
-msgstr "Virtuelles Dateisystem"
+msgstr "Ein Dateisystem einbinden"
 
 #: mount.ui:102
-#, fuzzy, no-c-format
+#, no-c-format
 msgid "Device"
-msgstr "Geräte"
+msgstr "Gerät"
 
 #: mount.ui:118
 #, no-c-format
 msgid "<auto>"
-msgstr ""
+msgstr "<auto>"
 
 #: mount.ui:123
 #, no-c-format
 msgid "ext2"
-msgstr ""
+msgstr "ext2"
 
 #: mount.ui:128
 #, no-c-format
 msgid "ext3"
-msgstr ""
+msgstr "ext3"
 
 #: mount.ui:133
 #, no-c-format
 msgid "vfat"
-msgstr ""
+msgstr "vfat"
 
 #: mount.ui:138
 #, no-c-format
 msgid "ntfs"
-msgstr ""
+msgstr "ntfs"
 
 #: mount.ui:153
-#, fuzzy, no-c-format
+#, no-c-format
 msgid "Filesystem"
-msgstr "Dateisysteme"
+msgstr "Dateisystem"
 
 #: mount.ui:161
-#, fuzzy, no-c-format
+#, no-c-format
 msgid "Mountpoint"
-msgstr "Einhängepunkt"
+msgstr "Einbindepunkt"
 
 #: mount.ui:169
 #, no-c-format
 msgid "additional mount-options:"
-msgstr ""
+msgstr "zusätzliche Einbindeoptionen:"
 
 #: recode.ui:25
 #, fuzzy, no-c-format
@@ -6661,7 +6661,7 @@ msgstr ""
 #: recode.ui:167
 #, no-c-format
 msgid "MIME Encoding: "
-msgstr ""
+msgstr "MIME-Kodierung: "
 
 #: recode.ui:191
 #, fuzzy, no-c-format
