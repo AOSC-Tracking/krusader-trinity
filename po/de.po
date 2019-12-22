@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: krusader-1.80.0-beta2\n"
 "Report-Msgid-Bugs-To: Dirk Eschler <deschler@users.sourceforge.net>\n"
 "POT-Creation-Date: 2019-01-13 19:16+0100\n"
-"PO-Revision-Date: 2019-12-22 13:51+0000\n"
+"PO-Revision-Date: 2019-12-22 17:53+0000\n"
 "Last-Translator: Chris <xchrisx@uber.space>\n"
 "Language-Team: German <https://mirror.git.trinitydesktop.org/weblate/"
 "projects/applications/krusader/de/>\n"
@@ -26,13 +26,13 @@ msgstr ""
 msgid ""
 "_: NAME OF TRANSLATORS\n"
 "Your names"
-msgstr "Christoph Thielecke, Dirk Eschler"
+msgstr "Christoph Thielecke, Dirk Eschler, Chris (TDE)"
 
 #: _translatorinfo:2
 msgid ""
 "_: EMAIL OF TRANSLATORS\n"
 "Your emails"
-msgstr "crissi99@gmx.de,deschler@users.sourceforge.net"
+msgstr "crissi99@gmx.de,deschler@users.sourceforge.net, (Keine Email)"
 
 #: ActionMan/actionman.cpp:26
 msgid "ActionMan - Manage Your Useractions"
@@ -212,8 +212,8 @@ msgid ""
 "Each <b>Useraction</b> can have its own icon. It will appear in front of the "
 "title in the <b>Usermenu</b>."
 msgstr ""
-"Jeder Aktion kann ein eigenes Symbol zugeordnet werden. Es erscheint vor dem "
-"Titel im <b>Aktionsmenü</b>."
+"Jeder <b>Aktion</b> kann ein eigenes Symbol zugeordnet werden. Es erscheint "
+"vor dem Titel im <b>Aktionsmenü</b>."
 
 #: ActionMan/actionpropertybase.cpp:402 ActionMan/actionpropertybase.ui:226
 #, no-c-format
@@ -658,7 +658,7 @@ msgstr " anstelle von "
 #: BookMan/krbookmarkhandler.cpp:185 BookMan/krbookmarkhandler.cpp:191
 #: BookMan/krbookmarkhandler.cpp:222
 msgid "missing tag "
-msgstr "Fehlende Markierung"
+msgstr "Fehlende Markierung "
 
 #: BookMan/krbookmarkhandler.cpp:261
 msgid "%1 doesn't seem to be a valid Bookmarks file"
@@ -929,7 +929,7 @@ msgstr "Import der veralteten Datei abgeschlossen"
 #: Dialogs/krkeydialog.cpp:134
 msgid ""
 "<qt>File <b>%1</b> already exists. Do you really want to overwrite it?</qt>"
-msgstr "<qt>Datei <b>%1</b> existiert bereits. Wirklich überschreiben?"
+msgstr "<qt>Datei <b>%1</b> existiert bereits. Wirklich überschreiben?</qt>"
 
 #: Dialogs/krkeydialog.cpp:143
 msgid "<qt>Can't open <b>%1</b> for writing!</qt>"
@@ -1195,7 +1195,7 @@ msgstr "Header verschlüsseln"
 
 #: Dialogs/packguibase.cpp:251
 msgid "Command line switches:"
-msgstr "Kommandozeilenparameter"
+msgstr "Kommandozeilenparameter:"
 
 #: Dialogs/packguibase.cpp:277 Dialogs/packguibase.cpp:317
 #: Filter/filtertabs.cpp:49
@@ -1233,7 +1233,7 @@ msgid ""
 "Invalid command line switch!\n"
 "Switch must start with '-'!"
 msgstr ""
-"Ungültiger Kommandozeilenparameter!\n"
+"Ungültiger Kommandozeilenparameter.\n"
 "Dem Parameter muss ein '-' vorangestellt sein."
 
 #: Dialogs/packguibase.cpp:446
@@ -1241,7 +1241,7 @@ msgid ""
 "Invalid command line switch!\n"
 "Backslash cannot be the last character"
 msgstr ""
-"Ungültiger Kommandozeilenparameter!\n"
+"Ungültiger Kommandozeilenparameter.\n"
 "Das letzte Zeichen darf kein Backslash sein."
 
 #: Dialogs/packguibase.cpp:454
@@ -1249,7 +1249,7 @@ msgid ""
 "Invalid command line switch!\n"
 "Unclosed quotation mark!"
 msgstr ""
-"Ungültiger Kommandozeilenparameter!\n"
+"Ungültiger Kommandozeilenparameter.\n"
 "Nicht geschlossene Anführungszeichen."
 
 #: Dialogs/popularurls.cpp:62
@@ -1290,8 +1290,8 @@ msgid ""
 "Stepping into the parent directory requires loading the content of the "
 "\"%1\" URL. Do you wish to continue?"
 msgstr ""
-"Beim Wechsel in das übergeordnete Verzeichnis, wird der Inhalt der Adresse "
-"\"%1\" geladen. Möchten Sie fortfahren? "
+"Beim Wechsel in das übergeordnete Verzeichnis, wird der Inhalt der Adresse \""
+"%1\" geladen. Möchten Sie fortfahren?"
 
 #: DiskUsage/diskusage.cpp:415
 msgid "Krusader::DiskUsage"
@@ -1895,8 +1895,8 @@ msgid ""
 "Up&gt; and &lt;Down&gt; arrows.</p></qt>"
 msgstr ""
 "<qt><p>Es ist wirklich einfach: Hier einen Befehl eingeben, und Krusader "
-"führt ihn aus.</p><p><Tip:>Einfügen des Befehlszeilenverlaufs mit den &lt;"
-"Bild-Hoch&gt; und &lt;Bild-Runter&gt;-Tasten.</p></qt>"
+"führt ihn aus.</p><p><b>Tip</b>:Einfügen des Befehlszeilenverlaufs mit den "
+"&lt;Bild-Hoch&gt; und &lt;Bild-Runter&gt;-Tasten.</p></qt>"
 
 #: GUI/kfnkeys.cpp:50
 msgid "F2 Term  "
@@ -1928,8 +1928,8 @@ msgid ""
 "<p>Edit file.</p><p>The editor can be defined in Konfigurator, default is "
 "<b>internal editor</b>.</p>"
 msgstr ""
-"<qt><p>Datei editieren.</p><p>Im Konfigurator kann ein Editor definiert "
-"werden, die Standardeinstellung ist <b>internal editor</b>.</p></qt>"
+"<p>Datei editieren.</p><p>Im Konfigurator kann ein Editor definiert werden, "
+"die Standardeinstellung ist <b>internal editor</b>.</p>"
 
 #: GUI/kfnkeys.cpp:69
 msgid "F5 Copy  "
@@ -2196,7 +2196,7 @@ msgstr ""
 "Systemverwalter (root) sind.</li><li>Die Gruppe wird beihalten, falls Sie "
 "der Systemverwalter (root), oder ein Mitglied der Gruppe sind.</li><li>Der "
 "Zeitstempel wird immer beibehalten.</li></ul><b>Hinweis</b>: Dies kann unter "
-"Umständen den Kopierprozess verlangsamen. "
+"Umständen den Kopierprozess verlangsamen."
 
 #: Konfigurator/kgadvanced.cpp:64
 msgid "Automount filesystems"
@@ -2342,7 +2342,7 @@ msgstr "7zip"
 
 #: Konfigurator/kgarchives.cpp:70
 msgid "Xz"
-msgstr ""
+msgstr "Xz"
 
 #: Konfigurator/kgarchives.cpp:76
 msgid ""
@@ -2416,8 +2416,9 @@ msgid ""
 "i>, you can configure the alternate colors in the <i>colors</i> box.</p>"
 msgstr ""
 "<p><b>Hintergrund</b> und <b>Alternativ-Hintergrund</b> wechseln sich Zeile "
-"für Zeile ab. Sofern nicht die <i>TDE-Standardfarben</i> benutzt werden, "
-"kann die alternative Farbe in der <i>Farben</b>-Box ausgewählt werden.</p>"
+"für Zeile ab.</p><p>Sofern nicht die <i>TDE-Standardfarben</i> benutzt "
+"werden, kann die alternative Farbe in der <i>Farben</i>-Box ausgewählt "
+"werden.</p>"
 
 #: Konfigurator/kgcolors.cpp:61
 msgid "Show current item even if not focused"
@@ -2429,8 +2430,8 @@ msgid ""
 "option is only available when you don't use the <i>TDE default colors</i>.</"
 "p>"
 msgstr ""
-"<p>Die letzte Cursor-Position im inaktiven Dateifenster anzeigen.<p></"
-"p>Diese Option ist nur verfügbar, wenn die TDE-Standardfarben nicht "
+"<p>Die letzte Cursor-Position im inaktiven Dateifenster anzeigen.<p></p>"
+"Diese Option ist nur verfügbar, wenn die <i>TDE-Standardfarben</i> nicht "
 "verwendet werden.</p>"
 
 #: Konfigurator/kgcolors.cpp:62
@@ -2813,7 +2814,7 @@ msgstr "Temporäres Verzeichnis:"
 
 #: Konfigurator/kggeneral.cpp:168
 msgid "Note: you must have full permissions for the temporary directory!"
-msgstr "Hinweis: Sie benötigen volle Rechte im temporären Verzeichnis (rwx)"
+msgstr "Hinweis: Sie benötigen volle Rechte im temporären Verzeichnis (rwx)."
 
 #: Konfigurator/kggeneral.cpp:187
 msgid "Searching for tools..."
@@ -2844,7 +2845,7 @@ msgstr ""
 
 #: Konfigurator/kglookfeel.cpp:73
 msgid "Operation"
-msgstr "Operation"
+msgstr "Bedienung"
 
 #: Konfigurator/kglookfeel.cpp:80
 msgid "Look && Feel"
@@ -3088,7 +3089,7 @@ msgstr "Persönlicher Ordner (~)"
 
 #: Konfigurator/kglookfeel.cpp:212
 msgid "Changes the panel directory to the home directory."
-msgstr "In den Persönlichen Ordner wechseln"
+msgstr "In den Persönlichen Ordner wechseln."
 
 #: Konfigurator/kglookfeel.cpp:213
 msgid "Root button (/)"
@@ -3163,7 +3164,7 @@ msgstr "Benutzerdefinierter Modus"
 
 #: Konfigurator/kglookfeel.cpp:251
 msgid "Design your own selection mode!"
-msgstr "Einen eigenen Auswahlmodus entwerfen"
+msgstr "Einen eigenen Auswahlmodus entwerfen."
 
 #: Konfigurator/kglookfeel.cpp:261
 msgid "Details"
@@ -3914,8 +3915,8 @@ msgstr ""
 msgid ""
 "MountMan has an internal error. Please notify the developers. Thank you."
 msgstr ""
-"Interner Fehler in MountMan\n"
-"Bitte benachrichtigen Sie die Entwickler"
+"Interner Fehler in MountMan.\n"
+"Bitte benachrichtigen Sie die Entwickler."
 
 #: MountMan/kmountmangui.cpp:331
 msgid "MountMan"
@@ -4214,7 +4215,7 @@ msgstr " Dateien auswählen "
 
 #: Panel/listpanel.cpp:521
 msgid " Unselect Files "
-msgstr " Auswahl aufheben"
+msgstr " Auswahl aufheben "
 
 #: Panel/listpanel.cpp:718
 msgid "No space information on non-local filesystems"
@@ -4421,8 +4422,8 @@ msgid ""
 msgstr ""
 "<qt>Möchten Sie dieses Element wirklich <b>physikalisch</b> löschen (es wird "
 "nicht nur das virtuelle Element entfernt)?</qt>\n"
-"<qt>Möchten Sie diese %n Elemente wirklich physikalisch löschen (es werden "
-"nicht nur die virtuellen Elemente entfernt)?</qt>"
+"<qt>Möchten Sie diese %n Elemente wirklich <b>physikalisch</b> löschen (es "
+"werden nicht nur die virtuellen Elemente entfernt)?</qt>"
 
 #: Panel/panelfunc.cpp:657
 #, c-format
@@ -4439,7 +4440,7 @@ msgid ""
 "p></qt>"
 msgstr ""
 "<qt><p>Das Verzeichnis <b>%1</b> ist nicht leer!</p><p>'Überspringen' oder "
-"'Alle löschen'?</p>"
+"'Alle löschen'?</p></qt>"
 
 #: Panel/panelfunc.cpp:683
 msgid "&Skip"
@@ -4507,25 +4508,24 @@ msgstr ""
 "Entpacke %n Dateien nach:"
 
 #: Panel/panelfunc.cpp:950
-#, fuzzy
 msgid ""
 "The destination folder does not exist.\n"
 "Do you want to create it?"
-msgstr "Diese Datei existiert bereits. Soll sie überschrieben werden?"
+msgstr ""
+"Der Zielordner existiert noch nicht.\n"
+"Soll er erstellt werden?"
 
 #: Panel/panelfunc.cpp:951
-#, fuzzy
 msgid "Create folder"
-msgstr "Neu erstellen"
+msgstr "Ordner erstellen"
 
 #: Panel/panelfunc.cpp:957
 msgid "Unable to create the destionation folder. Aborting operation."
-msgstr ""
+msgstr "Der Zielordner kann nicht erstellt werden. Vorgang wird abgebrochen."
 
 #: Panel/panelfunc.cpp:957
-#, fuzzy
 msgid "Error!"
-msgstr "Fehler"
+msgstr "Fehler."
 
 #: Panel/panelfunc.cpp:981
 msgid "%1, unknown archive type"
@@ -5972,11 +5972,10 @@ msgstr ""
 "Seite im Einrichter."
 
 #: krslots.cpp:509
-#, fuzzy
 msgid "Can't find \"KsysCtrl\". Please install the TDE admin package"
 msgstr ""
-"\"KsysCtrl\" konnte nicht gefunden werden. Bitte installieren Sie das Paket "
-"\"tdeadmin\"."
+"\"KsysCtrl\" konnte nicht gefunden werden. Bitte installieren Sie das TDE "
+"Admin Paket."
 
 #: krslots.cpp:517
 msgid ""
@@ -6465,7 +6464,7 @@ msgid ""
 "IRC\n"
 "server: irc.freenode.net, channel: #krusader"
 msgstr ""
-"Feedback\n"
+"Rückmeldung\n"
 "http://www.krusader.org/phpBB/\n"
 "\n"
 "IRC\n"
@@ -6486,77 +6485,77 @@ msgstr "Aktuelles Unterfenster schließen"
 #: calc.ui:16
 #, no-c-format
 msgid "JS Calculator"
-msgstr ""
+msgstr "JS Calculator"
 
 #: calc.ui:43
 #, no-c-format
 msgid "+"
-msgstr ""
+msgstr "+"
 
 #: calc.ui:51
 #, no-c-format
 msgid "AC"
-msgstr ""
+msgstr "AC"
 
 #: calc.ui:75
 #, no-c-format
 msgid "CL"
-msgstr ""
+msgstr "CL"
 
 #: calc.ui:83
 #, no-c-format
 msgid "0"
-msgstr ""
+msgstr "0"
 
 #: calc.ui:91
-#, fuzzy, no-c-format
+#, no-c-format
 msgid "4"
-msgstr "48"
+msgstr "4"
 
 #: calc.ui:99
-#, fuzzy, no-c-format
+#, no-c-format
 msgid "2"
-msgstr "22"
+msgstr "2"
 
 #: calc.ui:107
 #, no-c-format
 msgid "5"
-msgstr ""
+msgstr "5"
 
 #: calc.ui:115
-#, fuzzy, no-c-format
+#, no-c-format
 msgid "3"
-msgstr "32"
+msgstr "3"
 
 #: calc.ui:123
 #, no-c-format
 msgid "7"
-msgstr ""
+msgstr "7"
 
 #: calc.ui:131
-#, fuzzy, no-c-format
+#, no-c-format
 msgid "6"
-msgstr "16"
+msgstr "6"
 
 #: calc.ui:139
-#, fuzzy, no-c-format
+#, no-c-format
 msgid "8"
-msgstr "48"
+msgstr "8"
 
 #: calc.ui:147
 #, no-c-format
 msgid "9"
-msgstr ""
+msgstr "9"
 
 #: calc.ui:155
-#, fuzzy, no-c-format
+#, no-c-format
 msgid "1"
-msgstr "16"
+msgstr "1"
 
 #: calc.ui:165
-#, fuzzy, no-c-format
+#, no-c-format
 msgid "Set as caption"
-msgstr "Selbe wie Aktiv"
+msgstr "Als Titel festlegen"
 
 #: krusaderui.rc:51
 #, no-c-format
@@ -6634,29 +6633,29 @@ msgid "additional mount-options:"
 msgstr "zusätzliche Einbindeoptionen:"
 
 #: recode.ui:25
-#, fuzzy, no-c-format
+#, no-c-format
 msgid "Recode file names"
-msgstr "Neuer Dateiname"
+msgstr "Dateinamen umkodieren"
 
 #: recode.ui:103
 #, no-c-format
 msgid "INPUT:"
-msgstr ""
+msgstr "EINGABE:"
 
 #: recode.ui:111
 #, no-c-format
 msgid "OUTPUT:"
-msgstr ""
+msgstr "AUSGABE:"
 
 #: recode.ui:119
 #, no-c-format
 msgid "Charset: "
-msgstr ""
+msgstr "Zeichensatz: "
 
 #: recode.ui:143
 #, no-c-format
 msgid "End of line: "
-msgstr ""
+msgstr "Zeilenende: "
 
 #: recode.ui:167
 #, no-c-format
@@ -6664,9 +6663,9 @@ msgid "MIME Encoding: "
 msgstr "MIME-Kodierung: "
 
 #: recode.ui:191
-#, fuzzy, no-c-format
+#, no-c-format
 msgid "Dump type: "
-msgstr "&Vom Typ:"
+msgstr "Mülltyp: "
 
 #~ msgid "Remove"
 #~ msgstr "Entfernen"
