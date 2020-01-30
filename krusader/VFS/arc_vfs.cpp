@@ -488,10 +488,10 @@ void arc_vfs::getFilesToPack(TQStringList* filesToPack,TQString dir_name){
   if ( vfs_filesP == 0) newDir = true;
   if(dir_name != "") dir_name = dir_name+"/";
 
- 	register DIR* dir = opendir(tmpDir.local8Bit()+"/"+dir_name.local8Bit());
+ 	DIR* dir = opendir(tmpDir.local8Bit()+"/"+dir_name.local8Bit());
   if(!dir) return ;
 
-	register struct dirent* dirEnt;
+	struct dirent* dirEnt;
   TQString name;
 	KDE_struct_stat stat_p;
 	while( (dirEnt=readdir(dir)) != NULL ){
@@ -538,7 +538,7 @@ void arc_vfs::getFilesToDelete(TQStringList* filesToDelete,TQString){
 }
 
 void arc_vfs::getExtFiles(TQString dir_name){
-	register DIR* dir = opendir(tmpDir.local8Bit()+"/"+dir_name.local8Bit());
+	DIR* dir = opendir(tmpDir.local8Bit()+"/"+dir_name.local8Bit());
   if(!dir){
     kdWarning() << "faild to opendir(): " << tmpDir.local8Bit()+"/"+dir_name.local8Bit() << endl;
 		return ;
@@ -546,7 +546,7 @@ void arc_vfs::getExtFiles(TQString dir_name){
 
 	if( dir_name != "") dir_name = dir_name+"/";
 	
-	register struct dirent* dirEnt;
+	struct dirent* dirEnt;
   TQString name;
 	KDE_struct_stat stat_p;
 	while( (dirEnt=readdir(dir)) != NULL ){
