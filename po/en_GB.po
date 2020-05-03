@@ -4,13 +4,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "POT-Creation-Date: 2019-01-13 19:16+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2020-05-03 14:29+0000\n"
+"Last-Translator: Ray Vine <ray-v@inbox.lv>\n"
+"Language-Team: English (United Kingdom) <https://mirror.git.trinitydesktop."
+"org/weblate/projects/applications/krusader/en_GB/>\n"
 "Language: en_GB\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 3.11.3\n"
 
 #: _translatorinfo:1
 msgid ""
@@ -140,7 +143,7 @@ msgstr ""
 #: ActionMan/actionpropertybase.ui:94
 #, no-c-format
 msgid "Local files only (no URL's)"
-msgstr ""
+msgstr "Local files only (no URLs)"
 
 #: ActionMan/actionpropertybase.cpp:392
 #: ActionMan/actionpropertybase.ui:100
@@ -152,13 +155,13 @@ msgstr ""
 #: ActionMan/actionpropertybase.ui:108
 #, no-c-format
 msgid "URL's (remote and local)"
-msgstr ""
+msgstr "URLs (remote and local)"
 
 #: ActionMan/actionpropertybase.cpp:394
 #: ActionMan/actionpropertybase.ui:111
 #, no-c-format
 msgid "Substitute the <b>Placeholders</b> with valid URL's."
-msgstr ""
+msgstr "Substitute the <b>Placeholders</b> with valid URLs."
 
 #: ActionMan/actionpropertybase.cpp:395 ActionMan/actionpropertybase.cpp:397
 #: ActionMan/actionpropertybase.ui:121
@@ -504,7 +507,7 @@ msgstr ""
 
 #: ActionMan/addplaceholderpopup.cpp:135
 msgid "User Action Parameter Dialog"
-msgstr ""
+msgstr "User Action Parameter Dialogue"
 
 #: ActionMan/addplaceholderpopup.cpp:143
 msgid "This placeholder allows some parameter:"
@@ -830,7 +833,7 @@ msgstr ""
 
 #: Dialogs/checksumdlg.cpp:597
 msgid "Errors occured while saving multiple checksums. Stopping"
-msgstr ""
+msgstr "Errors occurred while saving multiple checksums. Stopping"
 
 #: Dialogs/krdialogs.cpp:147
 msgid "Preserve attributes (only for local targets)"
@@ -892,7 +895,7 @@ msgstr ""
 
 #: Dialogs/krkeydialog.cpp:122
 msgid "Please restart this dialog in order to see the changes"
-msgstr ""
+msgstr "Please restart this dialogue in order to see the changes"
 
 #: Dialogs/krkeydialog.cpp:123
 msgid "Legacy import completed"
@@ -1201,11 +1204,11 @@ msgstr ""
 
 #: Dialogs/popularurls.cpp:62
 msgid "Saved 'Popular Urls' are invalid. List will be cleared"
-msgstr ""
+msgstr "Saved 'Popular URLs' are invalid. List will be cleared"
 
 #: Dialogs/popularurls.cpp:230
 msgid "Popular Urls"
-msgstr ""
+msgstr "Popular URLs"
 
 #: Dialogs/popularurls.cpp:245
 msgid " &Search: "
@@ -2271,17 +2274,19 @@ msgstr ""
 
 #: Konfigurator/kgcolors.cpp:59
 msgid "Use the default TDE colors"
-msgstr ""
+msgstr "Use the default TDE colours"
 
 #: Konfigurator/kgcolors.cpp:59
 msgid ""
 "<p>Use TDE's global color configuration.</p><p><i>Trinity Control Center -> "
 "Appearance & Themes -> Colors</i></p>"
 msgstr ""
+"<p>Use TDE's global colour configuration.</p><p><i>Control Centre -> "
+"Appearance & Themes -> Colours</i></p>"
 
 #: Konfigurator/kgcolors.cpp:60
 msgid "Use alternate background color"
-msgstr ""
+msgstr "Use alternating background colours"
 
 #: Konfigurator/kgcolors.cpp:60
 msgid ""
@@ -2290,6 +2295,9 @@ msgid ""
 "colors</i>, you can configure the alternate colors in the <i>colors</i> "
 "box.</p>"
 msgstr ""
+"<p>The <b>background colours</b> alternate line by line.</p><p>When you "
+"don't use the <i>TDE default colours</i>,you can configure the alternating "
+"colours in the <i>colours</i> box.</p>"
 
 #: Konfigurator/kgcolors.cpp:61
 msgid "Show current item even if not focused"
@@ -2301,21 +2309,26 @@ msgid ""
 "option is only available when you don't use the <i>TDE default "
 "colors</i>.</p>"
 msgstr ""
+"<p>Shows the last cursor position in the non active list panel.</p><p>This "
+"option is only available when you don't use the <i>TDE default "
+"colours</i>.</p>"
 
 #: Konfigurator/kgcolors.cpp:62
 msgid "Dim the colors of the inactive panel"
-msgstr ""
+msgstr "Dim the colours of the inactive panel"
 
 #: Konfigurator/kgcolors.cpp:62
 msgid ""
 "<p>The colors of the inactive panel are calculated by a dim color and a dim "
 "factor.</p>"
 msgstr ""
+"<p>The colours of the inactive panel are calculated by a dim colour and a "
+"dim factor.</p>"
 
 #: Konfigurator/kgcolors.cpp:79 Konfigurator/kgcolors.cpp:221
 #: Konfigurator/konfigurator.cpp:97 Konfigurator/konfigurator.cpp:98
 msgid "Colors"
-msgstr ""
+msgstr "Colours"
 
 #: Konfigurator/kgcolors.cpp:89
 msgid "Active"
@@ -2420,7 +2433,7 @@ msgstr ""
 
 #: Konfigurator/kgcolors.cpp:168
 msgid "Dim target color:"
-msgstr ""
+msgstr "Dim target colour:"
 
 #: Konfigurator/kgcolors.cpp:171
 msgid "Dim factor:"
@@ -2481,11 +2494,11 @@ msgstr ""
 
 #: Konfigurator/kgcolors.cpp:228
 msgid "Import color-scheme"
-msgstr ""
+msgstr "Import colour-scheme"
 
 #: Konfigurator/kgcolors.cpp:230
 msgid "Export color-scheme"
-msgstr ""
+msgstr "Export colour-scheme"
 
 #: Konfigurator/kgcolors.cpp:411
 msgid "Selected + Current"
@@ -2538,7 +2551,7 @@ msgstr ""
 
 #: Konfigurator/kgcolors.cpp:504
 msgid "Select a color-scheme file"
-msgstr ""
+msgstr "Select a colour-scheme file"
 
 #: Konfigurator/kgcolors.cpp:508
 msgid "Error: unable to read from file"
@@ -2546,7 +2559,7 @@ msgstr ""
 
 #: Konfigurator/kgcolors.cpp:518
 msgid "Select a color scheme file"
-msgstr ""
+msgstr "Select a colour-scheme file"
 
 #: Konfigurator/kgcolors.cpp:522
 msgid "File "
@@ -2772,7 +2785,7 @@ msgstr ""
 
 #: Konfigurator/kglookfeel.cpp:104
 msgid "Opens a quick search dialog box."
-msgstr ""
+msgstr "Opens a quick search dialogue box."
 
 #: Konfigurator/kglookfeel.cpp:105
 msgid "Case sensitive quicksearch"
@@ -3358,7 +3371,7 @@ msgstr ""
 
 #: Konfigurator/konfiguratoritems.cpp:538
 msgid "Custom color"
-msgstr ""
+msgstr "Custom colour"
 
 #: Konfigurator/konfiguratoritems.cpp:547
 msgid "Red"
@@ -3414,15 +3427,15 @@ msgstr ""
 
 #: Konfigurator/konfiguratoritems.cpp:560
 msgid "Light Gray"
-msgstr ""
+msgstr "Light Grey"
 
 #: Konfigurator/konfiguratoritems.cpp:561
 msgid "Gray"
-msgstr ""
+msgstr "Grey"
 
 #: Konfigurator/konfiguratoritems.cpp:562
 msgid "Dark Gray"
-msgstr ""
+msgstr "Dark Grey"
 
 #: Konfigurator/konfiguratoritems.cpp:563
 msgid "Black"
@@ -3892,6 +3905,8 @@ msgid ""
 "The totals bar shows how many files exist, how many selected and the bytes "
 "math"
 msgstr ""
+"The totals bar shows how many files exist, how many selected and the bytes "
+"maths"
 
 #: Panel/listpanel.cpp:179 Panel/listpanel.cpp:423
 msgid "Open the popup panel"
@@ -3903,7 +3918,7 @@ msgstr ""
 
 #: Panel/listpanel.cpp:206
 msgid "Use superb TDE file dialog to choose location. "
-msgstr ""
+msgstr "Use superb TDE file dialogue to choose location. "
 
 #: Panel/listpanel.cpp:211
 msgid ""
@@ -4231,7 +4246,7 @@ msgstr ""
 
 #: Panel/panelfunc.cpp:957
 msgid "Unable to create the destionation folder. Aborting operation."
-msgstr ""
+msgstr "Unable to create the destination folder. Aborting operation."
 
 #: Panel/panelfunc.cpp:957
 msgid "Error!"
@@ -4287,7 +4302,7 @@ msgstr ""
 
 #: Panel/panelpopup.cpp:185
 msgid "select group dialog"
-msgstr ""
+msgstr "select group dialogue"
 
 #: Panel/panelpopup.cpp:286
 msgid "Tree:"
@@ -5160,7 +5175,7 @@ msgstr ""
 
 #: UserAction/expander.cpp:675
 msgid "Expander: invalid URL's in %_Copy(\"src\", \"dest\")%"
-msgstr ""
+msgstr "Expander: invalid URLs in %_Copy(\"src\", \"dest\")%"
 
 #: UserAction/expander.cpp:686
 msgid "Move/Rename a File/Folder..."
@@ -5180,7 +5195,7 @@ msgstr ""
 
 #: UserAction/expander.cpp:706
 msgid "Expander: invalid URL's in %_Move(\"src\", \"dest\")%"
-msgstr ""
+msgstr "Expander: invalid URLs in %_Move(\"src\", \"dest\")%"
 
 #: UserAction/expander.cpp:717
 msgid "Load a Synchronizer Profile..."
@@ -5213,7 +5228,7 @@ msgstr ""
 
 #: UserAction/expander.cpp:771
 msgid "Separate Program Call for Each..."
-msgstr ""
+msgstr "Separate Programme Call for Each..."
 
 #: UserAction/expander.cpp:803
 msgid "Set Sorting for This Panel..."
@@ -5625,7 +5640,7 @@ msgstr ""
 
 #: krslots.cpp:804
 msgid "Not a splitted file %1!"
-msgstr ""
+msgstr "Not a split file %1!"
 
 #: krslots.cpp:811
 msgid "Combining %1.* to directory:"
@@ -5652,7 +5667,7 @@ msgstr ""
 
 #: krusader.cpp:538
 msgid "F3 View Dialog"
-msgstr ""
+msgstr "F3 View Dialogue"
 
 #: krusader.cpp:541
 msgid "Tab: switch panel"
@@ -5836,7 +5851,7 @@ msgstr ""
 
 #: krusader.cpp:713
 msgid "S&ynchron Directory Changes"
-msgstr ""
+msgstr "S&ynchronize Directory Changes"
 
 #: krusader.cpp:715
 msgid "D&isk Usage..."
