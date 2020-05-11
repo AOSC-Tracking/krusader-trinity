@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: krusader-1.80.0\n"
 "Report-Msgid-Bugs-To: Dirk Eschler <deschler@users.sourceforge.net>\n"
-"POT-Creation-Date: 2019-01-13 19:16+0100\n"
+"POT-Creation-Date: 2020-05-11 04:27+0200\n"
 "PO-Revision-Date: 2007-04-10 00:11+0200\n"
 "Last-Translator: Tomek Grzejszczyk <tgrzej@onet.eu>\n"
 "Language-Team: krusader-i18n <krusader-i18n@googlegroups.com>\n"
@@ -25,7 +25,7 @@ msgstr ""
 "Plural-Forms:  nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n"
 "%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: _translatorinfo:1
+#. Instead of a literal translation, add your name to the end of the list (separated by a comma).
 msgid ""
 "_: NAME OF TRANSLATORS\n"
 "Your names"
@@ -33,7 +33,7 @@ msgstr ""
 "Tomek Grzejszczyk (aktualny tłumacz),Pawel Salawa,Marcin Garski,Lukasz "
 "Janyst,Marcin Szafran"
 
-#: _translatorinfo:2
+#. Instead of a literal translation, add your email to the end of the list (separated by a comma).
 msgid ""
 "_: EMAIL OF TRANSLATORS\n"
 "Your emails"
