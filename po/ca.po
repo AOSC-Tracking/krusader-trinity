@@ -995,7 +995,7 @@ msgid ""
 "_n: %n directory\n"
 "%n directories"
 msgstr ""
-"_n: %n directori\n"
+"%n directori\n"
 "%n directoris"
 
 #: Dialogs/krprogress.cpp:166
@@ -1004,7 +1004,7 @@ msgid ""
 "_n: %n file\n"
 "%n files"
 msgstr ""
-"_n: %n fitxer\n"
+"%n fitxer\n"
 "%n fitxers"
 
 #: Dialogs/krprogress.cpp:172
@@ -1024,7 +1024,7 @@ msgid ""
 "_n: %1 / %n directory\n"
 "%1 / %n directories"
 msgstr ""
-"_n: %1 / %n directori\n"
+"%1 / %n directori\n"
 "%1 / %n directoris"
 
 #: Dialogs/krprogress.cpp:203 Dialogs/krprogress.cpp:217
@@ -1032,7 +1032,7 @@ msgid ""
 "_n: %1 / %n file\n"
 "%1 / %n files"
 msgstr ""
-"_n: %1 / %n fitxer\n"
+"%1 / %n fitxer\n"
 "%1 / %n fitxers"
 
 #: Dialogs/krprogress.cpp:225
@@ -3935,7 +3935,7 @@ msgid ""
 "_n: in %n directory\n"
 "in %n directories"
 msgstr ""
-"_n: en %n directori\n"
+"en %n directori\n"
 "en %n directoris"
 
 #: Panel/krcalcspacedialog.cpp:153
@@ -3944,7 +3944,7 @@ msgid ""
 "_n: and %n file\n"
 "and %n files"
 msgstr ""
-"_n: i %n fitxer\n"
+"i %n fitxer\n"
 "i %n fitxers"
 
 #: Panel/krdetailedview.cpp:104 Panel/krdetailedview.cpp:1451
@@ -4337,7 +4337,7 @@ msgid ""
 "_n: Move %n file to:\n"
 "Move %n files to:"
 msgstr ""
-"_n: Mou %n fitxer a:\n"
+"Mou %n fitxer a:\n"
 "Mou %n fitxers a:"
 
 #: Panel/panelfunc.cpp:472
@@ -4379,7 +4379,7 @@ msgid ""
 "_n: Do you really want to move this item to the trash?\n"
 "Do you really want to move these %n items to the trash?"
 msgstr ""
-"_n: Esteu segur que voleu moure aquest element a la paperera?\n"
+"Esteu segur que voleu moure aquest element a la paperera?\n"
 "Esteu segur que voleu moure %n elements a la paperera?"
 
 #: Panel/panelfunc.cpp:651
@@ -4389,7 +4389,7 @@ msgid ""
 "Do you really want to delete these virtual items (physical files stay "
 "untouched)?"
 msgstr ""
-"_n: Segur que voleu esborrar aquest element virtual (el fitxer físic no es "
+"Segur que voleu esborrar aquest element virtual (el fitxer físic no es "
 "tocarà)?\n"
 "Segur que voleu esborrar %n elements virtuals (els fitxers físics no es "
 "tocaran)?"
@@ -4402,7 +4402,7 @@ msgid ""
 "<qt>Do you really want to delete these %n items <b>physically</b> (not just "
 "removing them from the virtual items)?</qt>"
 msgstr ""
-"_n: <qt>Segur que voleu esborrar aquest element <b>físicament</b> "
+"<qt>Segur que voleu esborrar aquest element <b>físicament</b> "
 "(s'esborraran també els elements virtuals)?</qt>\n"
 "<qt>Segur que voleu esborrar %n elements <b>físicament</b> (s'esborraran "
 "també els elements virtuals)?</qt>"
@@ -4485,7 +4485,7 @@ msgid ""
 "_n: Unpack %n file to:\n"
 "Unpack %n files to:"
 msgstr ""
-"_n: Desempaqueta %n fitxer a:\n"
+"Desempaqueta %n fitxer a:\n"
 "Desempaqueta %n fitxers a:"
 
 #: Panel/panelfunc.cpp:950
@@ -4888,7 +4888,7 @@ msgid ""
 "_n: Right to left: Copy 1 file\n"
 "Right to left: Copy %n files"
 msgstr ""
-"_n: De dreta a esquerra s'estan copiant %1 fitxer\n"
+"De dreta a esquerra s'estan copiant %1 fitxer\n"
 "De dreta a esquerra s'estan copiant %n fitxers"
 
 #: Synchronizer/synchronizedialog.cpp:54 Synchronizer/synchronizedialog.cpp:67
@@ -4898,7 +4898,7 @@ msgid ""
 "_n: (1 byte)\n"
 "(%n bytes)"
 msgstr ""
-"_n: (1 byte)\n"
+"(1 byte)\n"
 "(%n bytes)"
 
 #: Synchronizer/synchronizedialog.cpp:60 Synchronizer/synchronizedialog.cpp:73
@@ -4907,7 +4907,7 @@ msgid ""
 "_n: Ready: %1/1 file, %3/%4\n"
 "Ready: %1/%n files, %3/%4"
 msgstr ""
-"_n: Preparat: %1/1 fitxer, %3/%4\n"
+"Preparat: %1/1 fitxer, %3/%4\n"
 "Preparat: %1/%n fitxers, %3/%4"
 
 #: Synchronizer/synchronizedialog.cpp:66
@@ -4916,7 +4916,7 @@ msgid ""
 "_n: Left to right: Copy 1 file\n"
 "Left to right: Copy %n files"
 msgstr ""
-"_n: D'esquerra a dreta s'estan copiant %1 fitxer\n"
+"D'esquerra a dreta s'estan copiant %1 fitxer\n"
 "D'esquerra a dreta s'estan copiant %n fitxers"
 
 #: Synchronizer/synchronizedialog.cpp:79
@@ -4925,7 +4925,7 @@ msgid ""
 "_n: Left: Delete 1 file\n"
 "Left: Delete %n files"
 msgstr ""
-"_n: Esquerra: esborra 1 fitxer\n"
+"Esquerra: esborra 1 fitxer\n"
 "Esquerra: esborra %n fitxers"
 
 #: Synchronizer/synchronizedialog.cpp:101
