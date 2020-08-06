@@ -1001,7 +1001,7 @@ msgid ""
 "_n: %n directory\n"
 "%n directories"
 msgstr ""
-"_n: %n map\n"
+"%n map\n"
 "%n mappen"
 
 #: Dialogs/krprogress.cpp:166
@@ -1010,7 +1010,7 @@ msgid ""
 "_n: %n file\n"
 "%n files"
 msgstr ""
-"_n: %n bestand\n"
+"%n bestand\n"
 "%n bestanden"
 
 #: Dialogs/krprogress.cpp:172
@@ -1030,7 +1030,7 @@ msgid ""
 "_n: %1 / %n directory\n"
 "%1 / %n directories"
 msgstr ""
-"_n: %1 / %n map\n"
+"%1 / %n map\n"
 "%1 / %n mappen"
 
 #: Dialogs/krprogress.cpp:203 Dialogs/krprogress.cpp:217
@@ -1038,7 +1038,7 @@ msgid ""
 "_n: %1 / %n file\n"
 "%1 / %n files"
 msgstr ""
-"_n: %1 / %n bestand\n"
+"%1 / %n bestand\n"
 "%1 / %n bestanden"
 
 #: Dialogs/krprogress.cpp:225
@@ -1144,7 +1144,7 @@ msgid ""
 "_n: Pack %n file\n"
 "Pack %n files"
 msgstr ""
-"_n: Bestand %n inpakken\n"
+"Bestand %n inpakken\n"
 "%n bestanden inpakken"
 
 #: Dialogs/packgui.cpp:94
@@ -3939,7 +3939,7 @@ msgid ""
 "_n: in %n directory\n"
 "in %n directories"
 msgstr ""
-"_n: in %n map\n"
+"in %n map\n"
 "in %n mappen"
 
 #: Panel/krcalcspacedialog.cpp:153
@@ -3948,7 +3948,7 @@ msgid ""
 "_n: and %n file\n"
 "and %n files"
 msgstr ""
-"_n: en %n bestand\n"
+"en %n bestand\n"
 "en %n bestanden"
 
 #: Panel/krdetailedview.cpp:104 Panel/krdetailedview.cpp:1450
@@ -4340,7 +4340,7 @@ msgid ""
 "_n: Move %n file to:\n"
 "Move %n files to:"
 msgstr ""
-"_n: Verplaats %n bestand naar:\n"
+"Verplaats %n bestand naar:\n"
 "%n bestanden verplaatsen naar:"
 
 #: Panel/panelfunc.cpp:472
@@ -4365,7 +4365,7 @@ msgid ""
 "_n: Copy %n file to:\n"
 "Copy %n files to:"
 msgstr ""
-"_n: Kopieër %n bestand naar:\n"
+"Kopieër %n bestand naar:\n"
 "%n bestanden kopiëren naar:"
 
 #: Panel/panelfunc.cpp:619
@@ -4382,7 +4382,7 @@ msgid ""
 "_n: Do you really want to move this item to the trash?\n"
 "Do you really want to move these %n items to the trash?"
 msgstr ""
-"_n: Bent u er zeker van dat u dit item naar de prullenbak wilt verplaatsen?\n"
+"Bent u er zeker van dat u dit item naar de prullenbak wilt verplaatsen?\n"
 "Bent u er zeker van dat u %n items naar de prullenbak wilt verplaatsen?"
 
 #: Panel/panelfunc.cpp:651
@@ -4392,7 +4392,7 @@ msgid ""
 "Do you really want to delete these virtual items (physical files stay "
 "untouched)?"
 msgstr ""
-"_n: Bent u er zeker van dat u dit viruele item wil verwijderen (de fysieke "
+"Bent u er zeker van dat u dit viruele item wil verwijderen (de fysieke "
 "bestanden blijven overanderd)?\n"
 "Bent u er zeker van dat u deze %n viruele items wil verwijderen (de fysieke "
 "bestanden blijven overanderd)?"
@@ -4416,7 +4416,7 @@ msgid ""
 "_n: Do you really want to delete this item?\n"
 "Do you really want to delete these %n items?"
 msgstr ""
-"_n: Bent u er zeker van dat u dit item wilt verwijderen?\n"
+"Bent u er zeker van dat u dit item wilt verwijderen?\n"
 "Bent u er zeker van dat u deze %n items wilt verwijderen?"
 
 #: Panel/panelfunc.cpp:682
@@ -4490,7 +4490,7 @@ msgid ""
 "_n: Unpack %n file to:\n"
 "Unpack %n files to:"
 msgstr ""
-"_n: %n bestand uitpakken naar:\n"
+"%n bestand uitpakken naar:\n"
 "%n bestanden uitpakken naar:"
 
 #: Panel/panelfunc.cpp:952
@@ -4893,7 +4893,7 @@ msgid ""
 "_n: Right to left: Copy 1 file\n"
 "Right to left: Copy %n files"
 msgstr ""
-"_n: Rechts naar links: kopieër 1 bestand\n"
+"Rechts naar links: kopieër 1 bestand\n"
 "Rechts naar links: %n bestanden kopiëren"
 
 #: Synchronizer/synchronizedialog.cpp:54 Synchronizer/synchronizedialog.cpp:67
@@ -4903,7 +4903,7 @@ msgid ""
 "_n: (1 byte)\n"
 "(%n bytes)"
 msgstr ""
-"_n: (1 byte)\n"
+"(1 byte)\n"
 "(%n bytes)"
 
 #: Synchronizer/synchronizedialog.cpp:60 Synchronizer/synchronizedialog.cpp:73
@@ -4912,7 +4912,7 @@ msgid ""
 "_n: Ready: %1/1 file, %3/%4\n"
 "Ready: %1/%n files, %3/%4"
 msgstr ""
-"_n: Klaar: %1/1 bestand, %3/%4\n"
+"Klaar: %1/1 bestand, %3/%4\n"
 "Klaar: %1/%n bestanden, %3/%4"
 
 #: Synchronizer/synchronizedialog.cpp:66
@@ -4921,7 +4921,7 @@ msgid ""
 "_n: Left to right: Copy 1 file\n"
 "Left to right: Copy %n files"
 msgstr ""
-"_n: Links naar rechts: kopieër 1 bestand\n"
+"Links naar rechts: kopieër 1 bestand\n"
 "Links naar rechts: %n bestanden kopiëren"
 
 #: Synchronizer/synchronizedialog.cpp:79
@@ -4929,7 +4929,7 @@ msgstr ""
 msgid ""
 "_n: Left: Delete 1 file\n"
 "Left: Delete %n files"
-msgstr "_n: Links: Wis %1 bestandLinks: Wis %1 bestanden"
+msgstr "Links: Wis %1 bestandLinks: Wis %1 bestanden"
 
 #: Synchronizer/synchronizedialog.cpp:101
 msgid "Confirm overwrites"

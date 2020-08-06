@@ -4886,7 +4886,7 @@ msgid ""
 "_n: Right to left: Copy 1 file\n"
 "Right to left: Copy %n files"
 msgstr ""
-"_n: Direita para a esquerda: Copiar 1 ficheiro\n"
+"Direita para a esquerda: Copiar 1 ficheiro\n"
 "Direita para a esquerda: Copiar %n ficheiros"
 
 #: Synchronizer/synchronizedialog.cpp:54 Synchronizer/synchronizedialog.cpp:67
@@ -4896,7 +4896,7 @@ msgid ""
 "_n: (1 byte)\n"
 "(%n bytes)"
 msgstr ""
-"_n: (1 byte)\n"
+"(1 byte)\n"
 "(%n bytes)"
 
 #: Synchronizer/synchronizedialog.cpp:60 Synchronizer/synchronizedialog.cpp:73
@@ -4905,7 +4905,7 @@ msgid ""
 "_n: Ready: %1/1 file, %3/%4\n"
 "Ready: %1/%n files, %3/%4"
 msgstr ""
-"_n: Pronto: %1/1 ficheiro, %3/%4\n"
+"Pronto: %1/1 ficheiro, %3/%4\n"
 "Pronto: %1/%n ficheiros, %3/%4"
 
 #: Synchronizer/synchronizedialog.cpp:66
@@ -4914,7 +4914,7 @@ msgid ""
 "_n: Left to right: Copy 1 file\n"
 "Left to right: Copy %n files"
 msgstr ""
-"_n: Esquerda para a direita: Copiar 1 ficheiro\n"
+"Esquerda para a direita: Copiar 1 ficheiro\n"
 "Esquerda para a direita: Copiar %n ficheiros"
 
 #: Synchronizer/synchronizedialog.cpp:79
@@ -4923,7 +4923,7 @@ msgid ""
 "_n: Left: Delete 1 file\n"
 "Left: Delete %n files"
 msgstr ""
-"_n: Esquerda: Apagar 1 ficheiro\n"
+"Esquerda: Apagar 1 ficheiro\n"
 "Esquerda: Apagar %n ficheiros"
 
 #: Synchronizer/synchronizedialog.cpp:101

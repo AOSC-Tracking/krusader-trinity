@@ -992,7 +992,7 @@ msgid ""
 "_n: %n directory\n"
 "%n directories"
 msgstr ""
-"_n: %n директория\n"
+"%n директория\n"
 "%n директории"
 
 #: Dialogs/krprogress.cpp:166
@@ -1001,7 +1001,7 @@ msgid ""
 "_n: %n file\n"
 "%n files"
 msgstr ""
-"_n: %n файл\n"
+"%n файл\n"
 "%n файла"
 
 #: Dialogs/krprogress.cpp:172
@@ -1131,7 +1131,7 @@ msgid ""
 "_n: Pack %n file\n"
 "Pack %n files"
 msgstr ""
-"_n: Архивиране на %n файл\n"
+"Архивиране на %n файл\n"
 "Архивиране на %n файла"
 
 #: Dialogs/packgui.cpp:94
@@ -3904,7 +3904,7 @@ msgid ""
 "_n: in %n directory\n"
 "in %n directories"
 msgstr ""
-"_n: в %n директория\n"
+"в %n директория\n"
 "в %n директории"
 
 #: Panel/krcalcspacedialog.cpp:153
@@ -3913,7 +3913,7 @@ msgid ""
 "_n: and %n file\n"
 "and %n files"
 msgstr ""
-"_n: и %n файл\n"
+"и %n файл\n"
 "и %n файла"
 
 #: Panel/krdetailedview.cpp:104 Panel/krdetailedview.cpp:1450
@@ -4306,7 +4306,7 @@ msgid ""
 "_n: Move %n file to:\n"
 "Move %n files to:"
 msgstr ""
-"_n: Преместване на %n файл в:\n"
+"Преместване на %n файл в:\n"
 "Преместване на %n файла в:"
 
 #: Panel/panelfunc.cpp:472
@@ -4331,7 +4331,7 @@ msgid ""
 "_n: Copy %n file to:\n"
 "Copy %n files to:"
 msgstr ""
-"_n: Копиране на %n файл в:\n"
+"Копиране на %n файл в:\n"
 "Копиране на %n файла в:"
 
 #: Panel/panelfunc.cpp:619
@@ -4348,7 +4348,7 @@ msgid ""
 "_n: Do you really want to move this item to the trash?\n"
 "Do you really want to move these %n items to the trash?"
 msgstr ""
-"_n: Наистина ли искате да преместите този елемент в кошчето?\n"
+"Наистина ли искате да преместите този елемент в кошчето?\n"
 "Наистина ли искате да преместите тези %n елемента в кошчето?"
 
 #: Panel/panelfunc.cpp:651
@@ -4358,7 +4358,7 @@ msgid ""
 "Do you really want to delete these virtual items (physical files stay "
 "untouched)?"
 msgstr ""
-"_n: Наистина ли искате да изтриете този виртуален елемент (реалните файлове "
+"Наистина ли искате да изтриете този виртуален елемент (реалните файлове "
 "остават недокоснати)?\n"
 "Наистина ли искате да изтриете тези виртуални елементи (реалните файлове "
 "остават недокоснати)?"
@@ -4371,7 +4371,7 @@ msgid ""
 "<qt>Do you really want to delete these %n items <b>physically</b> (not just "
 "removing them from the virtual items)?</qt>"
 msgstr ""
-"_n: <qt>Наистина ли искате да изтриете този елемент <b>физически</b> (не "
+"<qt>Наистина ли искате да изтриете този елемент <b>физически</b> (не "
 "само да го премахнете от другите виртуални елементи)?</qt>\n"
 "<qt>Наистина ли искате да изтриете тези %n елемента <b>физически</b> (не "
 "само да ги премахнете от другите виртуални елементи)?</qt>"
@@ -4382,7 +4382,7 @@ msgid ""
 "_n: Do you really want to delete this item?\n"
 "Do you really want to delete these %n items?"
 msgstr ""
-"_n: Наистина ли искате да изтриете този елемент?\n"
+"Наистина ли искате да изтриете този елемент?\n"
 "Наистина ли искате да изтриете тези %n елемента?"
 
 #: Panel/panelfunc.cpp:682
@@ -4454,7 +4454,7 @@ msgid ""
 "_n: Unpack %n file to:\n"
 "Unpack %n files to:"
 msgstr ""
-"_n: Разархивиране на %n файл в:\n"
+"Разархивиране на %n файл в:\n"
 "Разархивиране на %n файла в:"
 
 #: Panel/panelfunc.cpp:952
@@ -4853,7 +4853,7 @@ msgid ""
 "_n: Right to left: Copy 1 file\n"
 "Right to left: Copy %n files"
 msgstr ""
-"_n: Отдясно на ляво: копиране на 1 файл\n"
+"Отдясно на ляво: копиране на 1 файл\n"
 "Отдясно на ляво: копиране на %n файла"
 
 #: Synchronizer/synchronizedialog.cpp:54 Synchronizer/synchronizedialog.cpp:67
@@ -4863,7 +4863,7 @@ msgid ""
 "_n: (1 byte)\n"
 "(%n bytes)"
 msgstr ""
-"_n: (1 байт)\n"
+"(1 байт)\n"
 "(%n байта)"
 
 #: Synchronizer/synchronizedialog.cpp:60 Synchronizer/synchronizedialog.cpp:73
@@ -4872,7 +4872,7 @@ msgid ""
 "_n: Ready: %1/1 file, %3/%4\n"
 "Ready: %1/%n files, %3/%4"
 msgstr ""
-"_n: Готов: %1/1 файл, %3/%4\n"
+"Готов: %1/1 файл, %3/%4\n"
 "Готови: %1/%n файла, %3/%4"
 
 #: Synchronizer/synchronizedialog.cpp:66
@@ -4881,7 +4881,7 @@ msgid ""
 "_n: Left to right: Copy 1 file\n"
 "Left to right: Copy %n files"
 msgstr ""
-"_n: От ляво на дясно: копиране на 1 файл\n"
+"От ляво на дясно: копиране на 1 файл\n"
 "От ляво на дясно: копиране на %n файла"
 
 #: Synchronizer/synchronizedialog.cpp:79
@@ -4890,7 +4890,7 @@ msgid ""
 "_n: Left: Delete 1 file\n"
 "Left: Delete %n files"
 msgstr ""
-"_n: Отляво: изтриване на 1 файл\n"
+"Отляво: изтриване на 1 файл\n"
 "Отляво: изтриване на %n файла"
 
 #: Synchronizer/synchronizedialog.cpp:101
