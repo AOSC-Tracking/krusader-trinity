@@ -4,13 +4,13 @@
 # Copyright (C) 2004-2007, Krusader Krew
 # This file is distributed under the same license as the Krusader package
 # Ivan Petrouchtchak <iip@telus.net>, 2004, 2005.
-#
+# Roman Savochenko <roman@oscada.org>, 2020.
 msgid ""
 msgstr ""
 "Project-Id-Version: krusader-1.80.0-beta2\n"
 "Report-Msgid-Bugs-To: Dirk Eschler <deschler@users.sourceforge.net>\n"
 "POT-Creation-Date: 2020-05-11 13:17+0200\n"
-"PO-Revision-Date: 2020-03-13 10:28+0000\n"
+"PO-Revision-Date: 2020-10-25 13:41+0000\n"
 "Last-Translator: Roman Savochenko <roman@oscada.org>\n"
 "Language-Team: Ukrainian <https://mirror.git.trinitydesktop.org/weblate/"
 "projects/applications/krusader/uk/>\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 3.11.3\n"
+"X-Generator: Weblate 4.2.2\n"
 "10<=4 && (n%100<10 || n%100>=20) ? 1: 2);\n"
 
 #. Instead of a literal translation, add your name to the end of the list (separated by a comma).
@@ -140,8 +140,8 @@ msgid ""
 "A detailed description of the <b>Useraction</b>. It is only displayed in the "
 "<i>Konfigurator</i> and via <code>Shift-F1</code>."
 msgstr ""
-"Детальний опис <b>дії</b>. Може бути показано тільки через \n"
-"<i>Конфігуратор</i> та <code>Shift-F1</code>."
+"Детальний опис <b>Дії</b>. Може бути показано лише у <i>Конфігуратор</i> та "
+"через <code>Shift-F1</code>."
 
 #: ActionMan/actionpropertybase.cpp:390 ActionMan/actionpropertybase.ui:83
 #, no-c-format
@@ -186,9 +186,9 @@ msgid ""
 "<i>Konfigurator</i> and doesn't appear in any other menu.<p><b>Note</b>: The "
 "<i>Title</i> shown in the <b>Usermenu</b> can be set below."
 msgstr ""
-"Назва <b>дії</b> використовується тільки у <i>конфігураторі</i> та не може \n"
-"з'являтися у інших меню.<b>Зауваження</b>: <b>назва</b> показана у \n"
-"<b>меню</b> може бути встановлена нижче."
+"Унікальна назва <b>Дії</b>. Використовується лише у <i>Конфігураторі</i> та "
+"не може з'являтися у інших меню.<b>Примітка</b>: <b>Назва</b> показана у "
+"<b>Меню користувача</b> може бути встановлена нижче."
 
 #: ActionMan/actionpropertybase.cpp:399 ActionMan/actionpropertybase.cpp:416
 #: ActionMan/actionpropertybase.ui:175 ActionMan/actionpropertybase.ui:316
@@ -211,9 +211,8 @@ msgid ""
 "Each <b>Useraction</b> can have its own icon. It will appear in front of the "
 "title in the <b>Usermenu</b>."
 msgstr ""
-"Кожна <b>дія</b> може мати власну піктограму. Вона з'явиться перед "
-"заголовком \n"
-"у <b>меню</b>."
+"Кожна <b>Дія користувача</b> може мати власну піктограму. Вона з'явиться "
+"перед заголовком у <b>Меню користувача</b>."
 
 #: ActionMan/actionpropertybase.cpp:402 ActionMan/actionpropertybase.ui:226
 #, no-c-format
@@ -227,10 +226,10 @@ msgid ""
 "<i>Konfigurator</i> and doesn't appear in any other menu.</p><p><b>Note</b>: "
 "The <i>Title</i> shown in the <b>Usermenu</b> can be set below.</p>"
 msgstr ""
-"<p>Назва <b>дії</b> використовується лише у <i>конфігураторі</i> та не "
-"може \n"
-"з'явитися у інших меню.</p><p><b>Зауваження</b>: <i>назва</i> \n"
-"показана у <b>меню</b> може бути встановлена нижче.</p>"
+"<p>Унікальна назва <b>Дії користувача</b>. Використовується лише у "
+"<i>Конфігураторі</i> та не може з'являється у інших меню.</p><p><b>Примітка</"
+"b>: <i>Назва</i> показана у <b>Меню користувача</b> може бути встановлена "
+"нижче.</p>"
 
 #: ActionMan/actionpropertybase.cpp:404 ActionMan/actionpropertybase.ui:245
 #, no-c-format
@@ -247,12 +246,11 @@ msgid ""
 "\")%</li></code></ul>\n"
 "Please consult the handbook to learn more about the syntax.</p>"
 msgstr ""
-"<p><i>Команда</i> визначає додаток, який буде запущено при \n"
-"виконанні <b>користувацької дії</b>. Це може бути проста \n"
-"команда або послідовність численних команд з <b>шаблонами</b>.</p> \n"
-"<p>Приклади:<ul><code><li>eject /mnt/cdrom</li><li>amarok --append %aList \n"
-"(\\\"Selected\\\")%</li></code></ul>\n"
-"Прочитайте довідку, щоб дізнатися більше про синтаксис.</p>"
+"<p><i>Команда</i> визначає додаток, який буде запущено при виконанні "
+"<b>Користувацької дії</b>. Це може бути проста команда або послідовність "
+"численних команд з <b>Шаблонами</b>.</p><p>Приклади:<ul><code><li>eject /mnt/"
+"cdrom</li><li>amarok --append %aList(\\\"Selected\\\")%</li></code></ul>\n"
+"Будь ласка, прочитайте посібник щоб дізнатися більше про синтаксис.</p>"
 
 #: ActionMan/actionpropertybase.cpp:407 ActionMan/actionpropertybase.cpp:410
 #: ActionMan/actionpropertybase.ui:257 ActionMan/actionpropertybase.ui:284
@@ -946,11 +944,12 @@ msgid ""
 "Notice that the line in which you edit the mask has it's own history, you "
 "can scroll it, if needed."
 msgstr ""
-"Готовий вибір - це файлова маска, яку ви часто вживаєте, напр.,\n"
-"\"*.c, *.h\", \"*.c, *.o\", тощо. Можна додати ці маски до списку\n"
-"ввівши їх і натиснувши кнопку \"Додати\". \"Видалити\" видаляє\n"
-"готовий вибір, а \"Очистити\" - видаляє їх всіх. Рядок, в якому ви редагуєте "
-"маску, має власну історію, отже можна її переглядати."
+"Готовий вибір - це файлова маска, яку ви часто вживаєте.\n"
+"Наприклад: \"*.c, *.h\", \"*.c, *.o\", тощо.\n"
+"Можна додати ці маски до списку ввівши їх і натиснувши кнопку Додати.\n"
+"Видалити видаляє готовий вибір, а Очистити - видаляє їх всіх.\n"
+"Зауважте, що рядок, в якому ви редагуєте маску, має власну історію, отже "
+"можна її переглядати."
 
 #: Dialogs/krmaskchoice.cpp:106
 msgid "Adds the selection in the line-edit to the list"
@@ -3177,8 +3176,8 @@ msgid ""
 "If checked, left clicking an item will select it, but will not unselect "
 "other, already selected items."
 msgstr ""
-"Якщо увімкнено, клацання лівою кнопкою мишки на елемент - вибирає його, але "
-"не не відміняє вибору інших вже вибраних елементів."
+"Якщо увімкнено, клацання лівою кнопкою миші на елементі - обирає його, але "
+"не скасовує вибору інших вже обраних елементів."
 
 #: Konfigurator/kglookfeel.cpp:291
 msgid "Shift/Ctrl-Left mouse button selects"
@@ -3210,8 +3209,8 @@ msgid ""
 "If checked, right clicking an item will select it, but will not unselect "
 "other, already selected items."
 msgstr ""
-"Якщо увімкнено, клацання правою кнопкою мишки на елемент - вибирає його, але "
-"не не відміняє вибору інших вже вибраних елементів."
+"Якщо увімкнено, клацання правою кнопкою миші на елемент - обирає його, але "
+"не скасовує вибору інших вже обраних елементів."
 
 #: Konfigurator/kglookfeel.cpp:300
 msgid "Shift/Ctrl-Right mouse button selects"
