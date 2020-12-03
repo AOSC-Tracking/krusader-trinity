@@ -607,7 +607,7 @@ void Krusader::setupActions() {
                                SLOTS, TQT_SLOT( createChecksum() ), actionCollection(), "create checksum" );
    actMatchChecksum = new TDEAction( i18n( "Verify Checksum..." ), "match_checksum", 0,
                                SLOTS, TQT_SLOT( matchChecksum() ), actionCollection(), "match checksum" );
-   actProperties = new TDEAction( i18n( "&Properties..." ), 0, ALT+Key_Enter,
+   actProperties = new TDEAction( i18n( "&Properties..." ), "edit", ALT+Key_Enter,
                                 SLOTS, TQT_SLOT( properties() ), actionCollection(), "properties" );
    actPack = new TDEAction( i18n( "Pac&k..." ), "kr_arc_pack", ALT + Key_P,
                           SLOTS, TQT_SLOT( slotPack() ), actionCollection(), "pack" );
