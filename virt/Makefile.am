@@ -6,7 +6,7 @@ METASOURCES = AUTO
 
 kde_module_LTLIBRARIES = tdeio_virt.la
 
-tdeio_virt_la_SOURCES = virt.cc
+tdeio_virt_la_SOURCES = virt.cpp
 tdeio_virt_la_LIBADD = $(LIB_TDESYCOCA)
 tdeio_virt_la_LDFLAGS = $(all_libraries) -module $(KDE_PLUGIN) $(LIB_TQT) $(LIB_TDECORE)
 

@@ -1,5 +1,5 @@
 /***************************************************************************
-                              virt.cc
+                              virt.cpp
                          -------------------
     begin                : Fri Dec 5 2003
     copyright            : (C) 2003 by Shie Erlich & Rafi Yanai

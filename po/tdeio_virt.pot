@@ -27,14 +27,14 @@ msgid ""
 "Your emails"
 msgstr ""
 
-#: virt.cc:80
+#: virt.cpp:80
 msgid "Virtulal delete"
 msgstr ""
 
-#: virt.cc:81
+#: virt.cpp:81
 msgid "remove from virtual space"
 msgstr ""
 
-#: virt.cc:82
+#: virt.cpp:82
 msgid "really delete"
 msgstr ""

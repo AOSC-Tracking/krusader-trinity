@@ -6,7 +6,7 @@ METASOURCES = AUTO
 
 kde_module_LTLIBRARIES = tdeio_tar.la
 
-tdeio_tar_la_SOURCES = tar.cc
+tdeio_tar_la_SOURCES = tar.cpp
 tdeio_tar_la_LIBADD = $(LIB_TDESYCOCA)
 tdeio_tar_la_LDFLAGS = $(all_libraries) -module $(KDE_PLUGIN)
 
