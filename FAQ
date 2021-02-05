@@ -678,9 +678,8 @@ General FAQ
     encounter problems if your distribution is incorrectly configured, please
     test it first as explained above.
     **** Note ****
-    If you've got bugs to report please do not use TDE's bugzilla http://
-    bugs.pearsoncomputing.net/, TDE's Bug Tracking System. Report Krusader bugs directly to
-    us.
+    If you've got bugs to report please use http://bugs.trinitydesktop.org,
+    TDE's Bug Tracking System.
 4.  How can i send good debug or crash reports?
     Usually binary packages that are been used by your distribution do not
     contain debug information. Since we usually only develop and fix Krusader-
