@@ -730,7 +730,7 @@ void Krusader::setupActions() {
                                   SLOTS, TQT_SLOT( customFilter() ), actionCollection(), "custom files" );
    actCompare = new TDEAction( i18n( "Compare b&y Content..." ), "application-vnd.tde.tdemultiple", 0,
                              SLOTS, TQT_SLOT( compareContent() ), actionCollection(), "compare" );
-   actMultiRename = new TDEAction( i18n( "Multi &Rename..." ), "krename", SHIFT + Key_F9,
+   actMultiRename = new TDEAction( i18n( "Multi &Rename..." ), "edit_rename", SHIFT + Key_F9,
                                  SLOTS, TQT_SLOT( multiRename() ), actionCollection(), "multirename" );
    new TDEAction( i18n( "Right-click Menu" ), Key_Menu,
                 SLOTS, TQT_SLOT( rightclickMenu() ), actionCollection(), "rightclick menu" );
