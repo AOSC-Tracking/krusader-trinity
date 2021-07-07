@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2020-05-11 04:27+0200\n"
+"POT-Creation-Date: 2021-07-07 18:33+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -106,78 +106,67 @@ msgid ""
 "internal action"
 msgstr ""
 
-#: ActionMan/actionpropertybase.cpp:386
-#: ActionMan/actionpropertybase.ui:16
+#: ActionMan/actionpropertybase.cpp:386 ActionMan/actionpropertybase.ui:16
 #, no-c-format
 msgid "Action Property"
 msgstr ""
 
-#: ActionMan/actionpropertybase.cpp:387
-#: ActionMan/actionpropertybase.ui:48
+#: ActionMan/actionpropertybase.cpp:387 ActionMan/actionpropertybase.ui:48
 #, no-c-format
 msgid "..."
 msgstr ""
 
-#: ActionMan/actionpropertybase.cpp:388
-#: ActionMan/actionpropertybase.ui:64 RemoteMan/remotemanbase.cpp:142
+#: ActionMan/actionpropertybase.cpp:388 ActionMan/actionpropertybase.ui:64
+#: RemoteMan/remotemanbase.cpp:142
 #, no-c-format
 msgid "Description:"
 msgstr ""
 
 #: ActionMan/actionpropertybase.cpp:389 ActionMan/actionpropertybase.cpp:419
-#: ActionMan/actionpropertybase.ui:67
-#: ActionMan/actionpropertybase.ui:352
+#: ActionMan/actionpropertybase.ui:67 ActionMan/actionpropertybase.ui:352
 #, no-c-format
 msgid ""
 "A detailed description of the <b>Useraction</b>. It is only displayed in the "
 "<i>Konfigurator</i> and via <code>Shift-F1</code>."
 msgstr ""
 
-#: ActionMan/actionpropertybase.cpp:390
-#: ActionMan/actionpropertybase.ui:83
+#: ActionMan/actionpropertybase.cpp:390 ActionMan/actionpropertybase.ui:83
 #, no-c-format
 msgid "Command accepts"
 msgstr ""
 
-#: ActionMan/actionpropertybase.cpp:391
-#: ActionMan/actionpropertybase.ui:94
+#: ActionMan/actionpropertybase.cpp:391 ActionMan/actionpropertybase.ui:94
 #, no-c-format
 msgid "Local files only (no URL's)"
 msgstr ""
 
-#: ActionMan/actionpropertybase.cpp:392
-#: ActionMan/actionpropertybase.ui:100
+#: ActionMan/actionpropertybase.cpp:392 ActionMan/actionpropertybase.ui:100
 #, no-c-format
 msgid "Substitute the <b>Placeholders</b> with local filenames."
 msgstr ""
 
-#: ActionMan/actionpropertybase.cpp:393
-#: ActionMan/actionpropertybase.ui:108
+#: ActionMan/actionpropertybase.cpp:393 ActionMan/actionpropertybase.ui:108
 #, no-c-format
 msgid "URL's (remote and local)"
 msgstr ""
 
-#: ActionMan/actionpropertybase.cpp:394
-#: ActionMan/actionpropertybase.ui:111
+#: ActionMan/actionpropertybase.cpp:394 ActionMan/actionpropertybase.ui:111
 #, no-c-format
 msgid "Substitute the <b>Placeholders</b> with valid URL's."
 msgstr ""
 
 #: ActionMan/actionpropertybase.cpp:395 ActionMan/actionpropertybase.cpp:397
-#: ActionMan/actionpropertybase.ui:121
-#: ActionMan/actionpropertybase.ui:140
+#: ActionMan/actionpropertybase.ui:121 ActionMan/actionpropertybase.ui:140
 #, no-c-format
 msgid "The title displayed in the <b>Usermenu</b>."
 msgstr ""
 
-#: ActionMan/actionpropertybase.cpp:396
-#: ActionMan/actionpropertybase.ui:137
+#: ActionMan/actionpropertybase.cpp:396 ActionMan/actionpropertybase.ui:137
 #, no-c-format
 msgid "Title:"
 msgstr ""
 
-#: ActionMan/actionpropertybase.cpp:398
-#: ActionMan/actionpropertybase.ui:164
+#: ActionMan/actionpropertybase.cpp:398 ActionMan/actionpropertybase.ui:164
 #, no-c-format
 msgid ""
 "Unique name of the <b>Useraction</b>. It is only used in the "
@@ -186,36 +175,31 @@ msgid ""
 msgstr ""
 
 #: ActionMan/actionpropertybase.cpp:399 ActionMan/actionpropertybase.cpp:416
-#: ActionMan/actionpropertybase.ui:175
-#: ActionMan/actionpropertybase.ui:316
+#: ActionMan/actionpropertybase.ui:175 ActionMan/actionpropertybase.ui:316
 #, no-c-format
 msgid ""
 "<b>Useractions</b> can be grouped in categories for better distinction. "
 "Choose a existing <i>Category</i> or create a new one by entering a name."
 msgstr ""
 
-#: ActionMan/actionpropertybase.cpp:400
-#: ActionMan/actionpropertybase.ui:205
+#: ActionMan/actionpropertybase.cpp:400 ActionMan/actionpropertybase.ui:205
 #, no-c-format
 msgid "Icon"
 msgstr ""
 
-#: ActionMan/actionpropertybase.cpp:401
-#: ActionMan/actionpropertybase.ui:208
+#: ActionMan/actionpropertybase.cpp:401 ActionMan/actionpropertybase.ui:208
 #, no-c-format
 msgid ""
 "Each <b>Useraction</b> can have its own icon. It will appear in front of the "
 "title in the <b>Usermenu</b>."
 msgstr ""
 
-#: ActionMan/actionpropertybase.cpp:402
-#: ActionMan/actionpropertybase.ui:226
+#: ActionMan/actionpropertybase.cpp:402 ActionMan/actionpropertybase.ui:226
 #, no-c-format
 msgid "Identifier:"
 msgstr ""
 
-#: ActionMan/actionpropertybase.cpp:403
-#: ActionMan/actionpropertybase.ui:229
+#: ActionMan/actionpropertybase.cpp:403 ActionMan/actionpropertybase.ui:229
 #, no-c-format
 msgid ""
 "<p>Unique name of the <b>Useraction</b>. It is only used in the "
@@ -223,27 +207,24 @@ msgid ""
 "The <i>Title</i> shown in the <b>Usermenu</b> can be set below.</p>"
 msgstr ""
 
-#: ActionMan/actionpropertybase.cpp:404
-#: ActionMan/actionpropertybase.ui:245
+#: ActionMan/actionpropertybase.cpp:404 ActionMan/actionpropertybase.ui:245
 #, no-c-format
 msgid "Command:"
 msgstr ""
 
-#: ActionMan/actionpropertybase.cpp:405
-#: ActionMan/actionpropertybase.ui:248
+#: ActionMan/actionpropertybase.cpp:405 ActionMan/actionpropertybase.ui:248
 #, no-c-format
 msgid ""
 "<p>The <i>Command</i> defines the command that will be executed when the "
 "<b>Useraction</b> is used. It can be a simple shell command or a complex "
-"sequence of multiple commands with "
-"<b>Placeholders</b>.</p><p>Examples:<ul><code><li>eject "
-"/mnt/cdrom</li><li>amarok --append %aList(\"Selected\")%</li></code></ul>\n"
+"sequence of multiple commands with <b>Placeholders</b>.</p><p>Examples:"
+"<ul><code><li>eject /mnt/cdrom</li><li>amarok --append %aList(\"Selected"
+"\")%</li></code></ul>\n"
 "Please consult the handbook to learn more about the syntax.</p>"
 msgstr ""
 
 #: ActionMan/actionpropertybase.cpp:407 ActionMan/actionpropertybase.cpp:410
-#: ActionMan/actionpropertybase.ui:257
-#: ActionMan/actionpropertybase.ui:284
+#: ActionMan/actionpropertybase.ui:257 ActionMan/actionpropertybase.ui:284
 #, no-c-format
 msgid ""
 "The <i>Tooltip</i> is shown when the mouse cursor is hold over an entry of "
@@ -251,22 +232,19 @@ msgid ""
 msgstr ""
 
 #: ActionMan/actionpropertybase.cpp:408 ActionMan/actionpropertybase.cpp:421
-#: ActionMan/actionpropertybase.ui:265
-#: ActionMan/actionpropertybase.ui:371
+#: ActionMan/actionpropertybase.ui:265 ActionMan/actionpropertybase.ui:371
 #, no-c-format
 msgid ""
 "The <i>Workdir</i> defines in which directory the <i>Command</i> will be "
 "executed."
 msgstr ""
 
-#: ActionMan/actionpropertybase.cpp:409
-#: ActionMan/actionpropertybase.ui:281
+#: ActionMan/actionpropertybase.cpp:409 ActionMan/actionpropertybase.ui:281
 #, no-c-format
 msgid "Tooltip:"
 msgstr ""
 
-#: ActionMan/actionpropertybase.cpp:412
-#: ActionMan/actionpropertybase.ui:295
+#: ActionMan/actionpropertybase.cpp:412 ActionMan/actionpropertybase.ui:295
 #, no-c-format
 msgid ""
 "The <i>Command</i> defines the command that will be executed when the "
@@ -277,206 +255,174 @@ msgid ""
 "Please consult the handbook to learn more about the syntax."
 msgstr ""
 
-#: ActionMan/actionpropertybase.cpp:415
-#: ActionMan/actionpropertybase.ui:313
+#: ActionMan/actionpropertybase.cpp:415 ActionMan/actionpropertybase.ui:313
 #, no-c-format
 msgid "Category:"
 msgstr ""
 
-#: ActionMan/actionpropertybase.cpp:417
-#: ActionMan/actionpropertybase.ui:338 Filter/generalfilter.cpp:127
+#: ActionMan/actionpropertybase.cpp:417 ActionMan/actionpropertybase.ui:338
+#: Filter/generalfilter.cpp:127
 #, no-c-format
 msgid "&Add"
 msgstr ""
 
-#: ActionMan/actionpropertybase.cpp:418
-#: ActionMan/actionpropertybase.ui:341 GUI/kcmdline.cpp:102
+#: ActionMan/actionpropertybase.cpp:418 ActionMan/actionpropertybase.ui:341
+#: GUI/kcmdline.cpp:102
 #, no-c-format
 msgid "Add <b>Placeholders</b> for the selected files in the panel."
 msgstr ""
 
-#: ActionMan/actionpropertybase.cpp:420
-#: ActionMan/actionpropertybase.ui:368
+#: ActionMan/actionpropertybase.cpp:420 ActionMan/actionpropertybase.ui:368
 #, no-c-format
 msgid "Workdir:"
 msgstr ""
 
-#: ActionMan/actionpropertybase.cpp:422
-#: ActionMan/actionpropertybase.ui:404
+#: ActionMan/actionpropertybase.cpp:422 ActionMan/actionpropertybase.ui:404
 #, no-c-format
 msgid "Default shortcut:"
 msgstr ""
 
-#: ActionMan/actionpropertybase.cpp:423
-#: ActionMan/actionpropertybase.ui:429
+#: ActionMan/actionpropertybase.cpp:423 ActionMan/actionpropertybase.ui:429
 #, no-c-format
 msgid "None"
 msgstr ""
 
-#: ActionMan/actionpropertybase.cpp:424
-#: ActionMan/actionpropertybase.ui:432
+#: ActionMan/actionpropertybase.cpp:424 ActionMan/actionpropertybase.ui:432
 #, no-c-format
 msgid "Set a default keyboard shortcut."
 msgstr ""
 
-#: ActionMan/actionpropertybase.cpp:425
-#: ActionMan/actionpropertybase.ui:450 GUI/kcmdmodebutton.cpp:47
+#: ActionMan/actionpropertybase.cpp:425 ActionMan/actionpropertybase.ui:450
+#: GUI/kcmdmodebutton.cpp:47
 #, no-c-format
 msgid "Execution mode"
 msgstr ""
 
-#: ActionMan/actionpropertybase.cpp:426
-#: ActionMan/actionpropertybase.ui:461
+#: ActionMan/actionpropertybase.cpp:426 ActionMan/actionpropertybase.ui:461
 #, no-c-format
 msgid "Collect output"
 msgstr ""
 
-#: ActionMan/actionpropertybase.cpp:427
-#: ActionMan/actionpropertybase.ui:464
+#: ActionMan/actionpropertybase.cpp:427 ActionMan/actionpropertybase.ui:464
 #, no-c-format
 msgid "Collect the output of the executed program."
 msgstr ""
 
-#: ActionMan/actionpropertybase.cpp:428
-#: ActionMan/actionpropertybase.ui:475
+#: ActionMan/actionpropertybase.cpp:428 ActionMan/actionpropertybase.ui:475
 #, no-c-format
 msgid "Separate standard error"
 msgstr ""
 
-#: ActionMan/actionpropertybase.cpp:429
-#: ActionMan/actionpropertybase.ui:478
+#: ActionMan/actionpropertybase.cpp:429 ActionMan/actionpropertybase.ui:478
 #, no-c-format
 msgid "Separate standard out and standard error in the output collection."
 msgstr ""
 
-#: ActionMan/actionpropertybase.cpp:430
-#: ActionMan/actionpropertybase.ui:486
+#: ActionMan/actionpropertybase.cpp:430 ActionMan/actionpropertybase.ui:486
 #, no-c-format
 msgid "Normal"
 msgstr ""
 
-#: ActionMan/actionpropertybase.cpp:431
-#: ActionMan/actionpropertybase.ui:497
+#: ActionMan/actionpropertybase.cpp:431 ActionMan/actionpropertybase.ui:497
 #, no-c-format
 msgid "Run in terminal"
 msgstr ""
 
-#: ActionMan/actionpropertybase.cpp:432
-#: ActionMan/actionpropertybase.ui:500
+#: ActionMan/actionpropertybase.cpp:432 ActionMan/actionpropertybase.ui:500
 #, no-c-format
 msgid "Run the command in a terminal."
 msgstr ""
 
-#: ActionMan/actionpropertybase.cpp:433
-#: ActionMan/actionpropertybase.ui:37
+#: ActionMan/actionpropertybase.cpp:433 ActionMan/actionpropertybase.ui:37
 #, no-c-format
 msgid "Basic Properties"
 msgstr ""
 
-#: ActionMan/actionpropertybase.cpp:434
-#: ActionMan/actionpropertybase.ui:531
+#: ActionMan/actionpropertybase.cpp:434 ActionMan/actionpropertybase.ui:531
 #, no-c-format
 msgid "The Useraction is only available for"
 msgstr ""
 
 #: ActionMan/actionpropertybase.cpp:435 ActionMan/actionpropertybase.cpp:441
 #: ActionMan/actionpropertybase.cpp:446 ActionMan/actionpropertybase.cpp:451
-#: ActionMan/actionpropertybase.ui:583
-#: ActionMan/actionpropertybase.ui:713
-#: ActionMan/actionpropertybase.ui:835
-#: ActionMan/actionpropertybase.ui:957
+#: ActionMan/actionpropertybase.ui:583 ActionMan/actionpropertybase.ui:713
+#: ActionMan/actionpropertybase.ui:835 ActionMan/actionpropertybase.ui:957
 #, no-c-format
 msgid "&New..."
 msgstr ""
 
 #: ActionMan/actionpropertybase.cpp:436 ActionMan/actionpropertybase.cpp:442
 #: ActionMan/actionpropertybase.cpp:447 ActionMan/actionpropertybase.cpp:452
-#: ActionMan/actionpropertybase.ui:611
-#: ActionMan/actionpropertybase.ui:741
-#: ActionMan/actionpropertybase.ui:863
-#: ActionMan/actionpropertybase.ui:985
+#: ActionMan/actionpropertybase.ui:611 ActionMan/actionpropertybase.ui:741
+#: ActionMan/actionpropertybase.ui:863 ActionMan/actionpropertybase.ui:985
 #, no-c-format
 msgid "Chan&ge..."
 msgstr ""
 
 #: ActionMan/actionpropertybase.cpp:437 ActionMan/actionpropertybase.cpp:443
 #: ActionMan/actionpropertybase.cpp:448 ActionMan/actionpropertybase.cpp:453
-#: ActionMan/actionpropertybase.ui:656
-#: ActionMan/actionpropertybase.ui:769
-#: ActionMan/actionpropertybase.ui:891
-#: ActionMan/actionpropertybase.ui:1013
+#: ActionMan/actionpropertybase.ui:656 ActionMan/actionpropertybase.ui:769
+#: ActionMan/actionpropertybase.ui:891 ActionMan/actionpropertybase.ui:1013
 #, no-c-format
 msgid "De&lete"
 msgstr ""
 
 #: ActionMan/actionpropertybase.cpp:438 ActionMan/actionpropertybase.cpp:440
-#: ActionMan/actionpropertybase.cpp:445
-#: ActionMan/actionpropertybase.ui:664
-#: ActionMan/actionpropertybase.ui:685
-#: ActionMan/actionpropertybase.ui:807
+#: ActionMan/actionpropertybase.cpp:445 ActionMan/actionpropertybase.ui:664
+#: ActionMan/actionpropertybase.ui:685 ActionMan/actionpropertybase.ui:807
 #, no-c-format
 msgid "Show the <b>Useraction</b> only for the values defined here."
 msgstr ""
 
-#: ActionMan/actionpropertybase.cpp:439
-#: ActionMan/actionpropertybase.ui:552
+#: ActionMan/actionpropertybase.cpp:439 ActionMan/actionpropertybase.ui:552
 #, no-c-format
 msgid "Protocol"
 msgstr ""
 
-#: ActionMan/actionpropertybase.cpp:444
-#: ActionMan/actionpropertybase.ui:674
+#: ActionMan/actionpropertybase.cpp:444 ActionMan/actionpropertybase.ui:674
 #, no-c-format
 msgid "Path"
 msgstr ""
 
-#: ActionMan/actionpropertybase.cpp:449
-#: ActionMan/actionpropertybase.ui:796
+#: ActionMan/actionpropertybase.cpp:449 ActionMan/actionpropertybase.ui:796
 #, no-c-format
 msgid "Mime-type"
 msgstr ""
 
-#: ActionMan/actionpropertybase.cpp:450
-#: ActionMan/actionpropertybase.ui:929
+#: ActionMan/actionpropertybase.cpp:450 ActionMan/actionpropertybase.ui:929
 #, no-c-format
 msgid ""
 "Show the <b>Useraction</b> only for the filenames defined here. The "
 "wildcards '<code>?</code>' and '<code>*</code>' can be used."
 msgstr ""
 
-#: ActionMan/actionpropertybase.cpp:454
-#: ActionMan/actionpropertybase.ui:918
+#: ActionMan/actionpropertybase.cpp:454 ActionMan/actionpropertybase.ui:918
 #, no-c-format
 msgid "Filename"
 msgstr ""
 
-#: ActionMan/actionpropertybase.cpp:455
-#: ActionMan/actionpropertybase.ui:1043
+#: ActionMan/actionpropertybase.cpp:455 ActionMan/actionpropertybase.ui:1043
 #, no-c-format
 msgid "Confirm each program call separately"
 msgstr ""
 
-#: ActionMan/actionpropertybase.cpp:456
-#: ActionMan/actionpropertybase.ui:1046
+#: ActionMan/actionpropertybase.cpp:456 ActionMan/actionpropertybase.ui:1046
 #, no-c-format
 msgid "Allows to tweak the <i>Command</i> before it is executed."
 msgstr ""
 
-#: ActionMan/actionpropertybase.cpp:457
-#: ActionMan/actionpropertybase.ui:1054
+#: ActionMan/actionpropertybase.cpp:457 ActionMan/actionpropertybase.ui:1054
 #, no-c-format
 msgid "Run as different user:"
 msgstr ""
 
 #: ActionMan/actionpropertybase.cpp:458 ActionMan/actionpropertybase.cpp:459
-#: ActionMan/actionpropertybase.ui:1057
-#: ActionMan/actionpropertybase.ui:1068
+#: ActionMan/actionpropertybase.ui:1057 ActionMan/actionpropertybase.ui:1068
 #, no-c-format
 msgid "Execute the <i>Command</i> under a different user-id."
 msgstr ""
 
-#: ActionMan/actionpropertybase.cpp:460
-#: ActionMan/actionpropertybase.ui:512
+#: ActionMan/actionpropertybase.cpp:460 ActionMan/actionpropertybase.ui:512
 #, no-c-format
 msgid "Advanced Properties"
 msgstr ""
@@ -1689,20 +1635,18 @@ msgid ""
 "of wildcards. Multiple patterns are separated by space (means logical OR) "
 "and patterns are excluded from the search using the pipe symbol.</p><p>If "
 "the pattern is ended with a slash (<code>*pattern*/</code>), that means that "
-"pattern relates to recursive search of "
-"directories.<ul><li><code>pattern</code> - means to search those "
-"files/directories that name is <code>pattern</code>, recursive search goes "
-"through all subdirectories independently of the value of "
-"<code>pattern</code></li><li><code>pattern/</code> - means to search all "
-"files/directories, but recursive search goes through/excludes the "
+"pattern relates to recursive search of directories.<ul><li><code>pattern</"
+"code> - means to search those files/directories that name is <code>pattern</"
+"code>, recursive search goes through all subdirectories independently of the "
+"value of <code>pattern</code></li><li><code>pattern/</code> - means to "
+"search all files/directories, but recursive search goes through/excludes the "
 "directories that name is <code>pattern</code></li></ul><p></p><p>It's "
-"allowed to use quotation marks for names that contain space. Filter "
-"<code>\"Program&nbsp;Files\"</code> searches out those files/directories "
-"that name is "
-"<code>Program&nbsp;Files</code>.</p><p>Examples:<ul><code><li>*.o</li><li>*.h"
-" *.c??</li><li>*.cpp *.h | *.moc.cpp</li><li>* | CVS/ "
-".svn/</li></code></ul><b>Note</b>: the search term '<code>text</code>' is "
-"equivalent to '<code>*text*</code>'.</p>"
+"allowed to use quotation marks for names that contain space. Filter <code>"
+"\"Program&nbsp;Files\"</code> searches out those files/directories that name "
+"is <code>Program&nbsp;Files</code>.</p><p>Examples:<ul><code><li>*.o</"
+"li><li>*.h *.c??</li><li>*.cpp *.h | *.moc.cpp</li><li>* | CVS/ .svn/</li></"
+"code></ul><b>Note</b>: the search term '<code>text</code>' is equivalent to "
+"'<code>*text*</code>'.</p>"
 msgstr ""
 
 #: Filter/generalfilter.cpp:86
@@ -1809,8 +1753,8 @@ msgstr ""
 #: GUI/kcmdline.cpp:94
 msgid ""
 "<qt><p>Well, it's actually quite simple: You type your command here and "
-"Krusader obeys.</p><p><b>Tip</b>: Move within command line history with "
-"&lt;Up&gt; and &lt;Down&gt; arrows.</p></qt>"
+"Krusader obeys.</p><p><b>Tip</b>: Move within command line history with &lt;"
+"Up&gt; and &lt;Down&gt; arrows.</p></qt>"
 msgstr ""
 
 #: GUI/kfnkeys.cpp:50
@@ -2091,10 +2035,10 @@ msgstr ""
 #: Konfigurator/kgadvanced.cpp:63
 msgid ""
 "Krusader will try to preserve all attributes (time, owner, group) of the "
-"local files according to the source depending on your "
-"permissions:<ul><li>User preserving if you are root</li><li>Group preserving "
-"if you are root or member of the group</li><li>Preserving the "
-"timestamp</li></ul><b>Note</b>: This can slow down the copy process."
+"local files according to the source depending on your permissions:"
+"<ul><li>User preserving if you are root</li><li>Group preserving if you are "
+"root or member of the group</li><li>Preserving the timestamp</li></"
+"ul><b>Note</b>: This can slow down the copy process."
 msgstr ""
 
 #: Konfigurator/kgadvanced.cpp:64
@@ -2289,9 +2233,8 @@ msgstr ""
 #: Konfigurator/kgcolors.cpp:60
 msgid ""
 "<p>The <b>background color</b> and the <b>alternate background</b> color "
-"alternates line by line.</p><p>When you don't use the <i>TDE default "
-"colors</i>, you can configure the alternate colors in the <i>colors</i> "
-"box.</p>"
+"alternates line by line.</p><p>When you don't use the <i>TDE default colors</"
+"i>, you can configure the alternate colors in the <i>colors</i> box.</p>"
 msgstr ""
 
 #: Konfigurator/kgcolors.cpp:61
@@ -2301,8 +2244,8 @@ msgstr ""
 #: Konfigurator/kgcolors.cpp:61
 msgid ""
 "<p>Shows the last cursor position in the non active list panel.</p><p>This "
-"option is only available when you don't use the <i>TDE default "
-"colors</i>.</p>"
+"option is only available when you don't use the <i>TDE default colors</i>.</"
+"p>"
 msgstr ""
 
 #: Konfigurator/kgcolors.cpp:62
@@ -2742,9 +2685,9 @@ msgstr ""
 
 #: Konfigurator/kglookfeel.cpp:88
 msgid ""
-"When renaming a file, the whole text is selected. If you want "
-"Total-Commander like renaming of just the name, without extension, uncheck "
-"this option."
+"When renaming a file, the whole text is selected. If you want Total-"
+"Commander like renaming of just the name, without extension, uncheck this "
+"option."
 msgstr ""
 
 #: Konfigurator/kglookfeel.cpp:89
@@ -3012,8 +2955,8 @@ msgstr ""
 
 #: Konfigurator/kglookfeel.cpp:270
 msgid ""
-"<p>Use TDE's global setting:</p><p><i>Trinity Control Center -> Peripherals "
-"-> Mouse</i></p>"
+"<p>Use TDE's global setting:</p><p><i>Trinity Control Center -> Peripherals -"
+"> Mouse</i></p>"
 msgstr ""
 
 #: Konfigurator/kglookfeel.cpp:282
@@ -3158,10 +3101,10 @@ msgstr ""
 
 #: Konfigurator/kgstartup.cpp:50
 msgid ""
-"Defines the panel profile used at startup. A panel profile "
-"contains:<ul><li>all the tabs paths</li><li>the current tab</li><li>the "
-"active panel</li></ul><b>&lt;Last session&gt;</b> is a special panel profile "
-"which is saved automatically when Krusader is closed."
+"Defines the panel profile used at startup. A panel profile contains:"
+"<ul><li>all the tabs paths</li><li>the current tab</li><li>the active panel</"
+"li></ul><b>&lt;Last session&gt;</b> is a special panel profile which is "
+"saved automatically when Krusader is closed."
 msgstr ""
 
 #: Konfigurator/kgstartup.cpp:51
@@ -4161,8 +4104,8 @@ msgstr ""
 
 #: Panel/panelfunc.cpp:682
 msgid ""
-"<qt><p>Directory <b>%1</b> is not empty!</p><p>Skip this one or Delete "
-"All?</p></qt>"
+"<qt><p>Directory <b>%1</b> is not empty!</p><p>Skip this one or Delete All?</"
+"p></qt>"
 msgstr ""
 
 #: Panel/panelfunc.cpp:683
@@ -4179,15 +4122,15 @@ msgstr ""
 
 #: Panel/panelfunc.cpp:807
 msgid ""
-"<qt><p>The archive <b>%1.%2</b> already exists. Do you want to overwrite "
-"it?</p><p>All data in the previous archive will be lost!</p></qt>"
+"<qt><p>The archive <b>%1.%2</b> already exists. Do you want to overwrite it?"
+"</p><p>All data in the previous archive will be lost!</p></qt>"
 msgstr ""
 
 #: Panel/panelfunc.cpp:809
 msgid ""
-"<qt><p>The archive <b>%1.%2</b> already exists. Do you want to overwrite "
-"it?</p><p>Zip will replace identically named entries in the zip archive or "
-"add entries for new names.</p></qt>"
+"<qt><p>The archive <b>%1.%2</b> already exists. Do you want to overwrite it?"
+"</p><p>Zip will replace identically named entries in the zip archive or add "
+"entries for new names.</p></qt>"
 msgstr ""
 
 #: Panel/panelfunc.cpp:816
@@ -4762,9 +4705,8 @@ msgstr ""
 msgid ""
 "<p><b>Asymmetric mode</b></p><p>The left side is the destination, the right "
 "is the source directory. Files existing only in the left directory will be "
-"deleted, the other differing ones will be copied from right to "
-"left.</p><p><b>Note</b>: useful when updating a directory from a file "
-"server.</p>"
+"deleted, the other differing ones will be copied from right to left.</"
+"p><p><b>Note</b>: useful when updating a directory from a file server.</p>"
 msgstr ""
 
 #: Synchronizer/synchronizergui.cpp:1204
