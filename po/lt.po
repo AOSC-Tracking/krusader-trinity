@@ -8,7 +8,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: krusader-1.80.0\n"
-"POT-Creation-Date: 2020-05-11 04:27+0200\n"
+"POT-Creation-Date: 2021-07-07 18:33+0000\n"
 "PO-Revision-Date: 2007-04-20 23:10+0100\n"
 "Last-Translator: Dovydas Sankauskas <laisve@gmail.com>\n"
 "Language-Team: krusader-i18n <krusader-i18n@googlegroups.com>\n"
