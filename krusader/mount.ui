@@ -190,19 +190,12 @@
         <slot>reject()</slot>
     </connection>
 </connections>
-<includes>
-    <include location="local" impldecl="in implementation">mount.ui.h</include>
-</includes>
 <layoutdefaults spacing="6" margin="11"/>
-<includehints>
-    <includehint>kurlrequester.h</includehint>
-    <includehint>klineedit.h</includehint>
-    <includehint>kpushbutton.h</includehint>
-    <includehint>kurlrequester.h</includehint>
-    <includehint>klineedit.h</includehint>
-    <includehint>kpushbutton.h</includehint>
-    <includehint>kcombobox.h</includehint>
-    <includehint>klineedit.h</includehint>
-    <includehint>klineedit.h</includehint>
-</includehints>
+<includes>
+    <include location="global" impldecl="in implementation">kcombobox.h</include>
+    <include location="global" impldecl="in implementation">klineedit.h</include>
+    <include location="global" impldecl="in implementation">kpushbutton.h</include>
+    <include location="global" impldecl="in implementation">kurlrequester.h</include>
+    <include location="local"  impldecl="in implementation">mount.ui.h</include>
+</includes>
 </UI>

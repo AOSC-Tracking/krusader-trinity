@@ -1105,21 +1105,12 @@ Please consult the handbook to learn more about the syntax.</string>
     </connection>
 </connections>
 <layoutdefaults spacing="6" margin="11"/>
-<includehints>
-    <includehint>klineedit.h</includehint>
-    <includehint>klineedit.h</includehint>
-    <includehint>kcombobox.h</includehint>
-    <includehint>klineedit.h</includehint>
-    <includehint>kicondialog.h</includehint>
-    <includehint>klineedit.h</includehint>
-    <includehint>klineedit.h</includehint>
-    <includehint>klineedit.h</includehint>
-    <includehint>ktextedit.h</includehint>
-    <includehint>kkeybutton.h</includehint>
-    <includehint>tdelistbox.h</includehint>
-    <includehint>tdelistbox.h</includehint>
-    <includehint>tdelistbox.h</includehint>
-    <includehint>tdelistbox.h</includehint>
-    <includehint>klineedit.h</includehint>
-</includehints>
+<includes>
+    <include location="global" impldecl="in implementation">kcombobox.h</include>
+    <include location="global" impldecl="in implementation">kicondialog.h</include>
+    <include location="global" impldecl="in implementation">kkeybutton.h</include>
+    <include location="global" impldecl="in implementation">klineedit.h</include>
+    <include location="global" impldecl="in implementation">ktextedit.h</include>
+    <include location="global" impldecl="in implementation">tdelistbox.h</include>
+</includes>
 </UI>
