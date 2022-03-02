@@ -6,31 +6,34 @@
 #
 # Bekir SONAT <bekirsonat@kde.org.tr>, 2006.
 # Mertcan Mi'ma Bekir <bekirsonat@kde.org.tr>, 2007.
+# Mehmet Dokuz <madanadam@gmail.com>, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: krusader-1.80.0\n"
 "Report-Msgid-Bugs-To: Dirk Eschler <deschler@users.sourceforge.net>\n"
-"POT-Creation-Date: 2020-05-11 13:17+0200\n"
-"PO-Revision-Date: 2007-05-07 14:53+0300\n"
-"Last-Translator: Mertcan Mi'ma Bekir <bekirsonat@kde.org.tr>\n"
-"Language-Team: krusader-i18n <krusader-i18n@googlegroups.com>\n"
-"Language: \n"
+"POT-Creation-Date: 2021-07-07 22:34+0000\n"
+"PO-Revision-Date: 2022-03-02 14:11+0000\n"
+"Last-Translator: Mehmet Dokuz <madanadam@gmail.com>\n"
+"Language-Team: Turkish <https://mirror.git.trinitydesktop.org/weblate/"
+"projects/applications/krusader/tr/>\n"
+"Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.11.4\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.11\n"
 
 #. Instead of a literal translation, add your name to the end of the list (separated by a comma).
 msgid ""
 "_: NAME OF TRANSLATORS\n"
 "Your names"
-msgstr "Bekir Mertcan Mi'ma"
+msgstr "Bekir Mertcan Mi'ma, Mehmet Akif"
 
 #. Instead of a literal translation, add your email to the end of the list (separated by a comma).
 msgid ""
 "_: EMAIL OF TRANSLATORS\n"
 "Your emails"
-msgstr "bekirsonat@kde.org.tr"
+msgstr "bekirsonat@kde.org.tr,madanadam@gmail.com"
 
 #: ActionMan/actionman.cpp:26
 #, fuzzy
