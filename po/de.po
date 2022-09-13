@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: krusader-1.80.0-beta2\n"
 "Report-Msgid-Bugs-To: Dirk Eschler <deschler@users.sourceforge.net>\n"
-"POT-Creation-Date: 2021-07-07 18:33+0000\n"
+"POT-Creation-Date: 2022-09-13 18:34+0000\n"
 "PO-Revision-Date: 2019-12-23 23:40+0000\n"
 "Last-Translator: Chris <xchrisx@uber.space>\n"
 "Language-Team: German <https://mirror.git.trinitydesktop.org/weblate/"
@@ -4685,7 +4685,7 @@ msgstr "Suchen"
 msgid "Found 0 matches."
 msgstr "Keine Übereinstimmungen gefunden."
 
-#: Search/krsearchdialog.cpp:181 recode.ui:215
+#: Search/krsearchdialog.cpp:181 recode.ui:209
 #, no-c-format
 msgid "Location"
 msgstr "Adresse"
@@ -6587,47 +6587,47 @@ msgstr "&Fenster"
 msgid "Mount a Filesystem"
 msgstr "Ein Dateisystem einbinden"
 
-#: mount.ui:102
+#: mount.ui:96
 #, no-c-format
 msgid "Device"
 msgstr "Gerät"
 
-#: mount.ui:118
+#: mount.ui:112
 #, no-c-format
 msgid "<auto>"
 msgstr "<auto>"
 
-#: mount.ui:123
+#: mount.ui:117
 #, no-c-format
 msgid "ext2"
 msgstr "ext2"
 
-#: mount.ui:128
+#: mount.ui:122
 #, no-c-format
 msgid "ext3"
 msgstr "ext3"
 
-#: mount.ui:133
+#: mount.ui:127
 #, no-c-format
 msgid "vfat"
 msgstr "vfat"
 
-#: mount.ui:138
+#: mount.ui:132
 #, no-c-format
 msgid "ntfs"
 msgstr "ntfs"
 
-#: mount.ui:153
+#: mount.ui:147
 #, no-c-format
 msgid "Filesystem"
 msgstr "Dateisystem"
 
-#: mount.ui:161
+#: mount.ui:155
 #, no-c-format
 msgid "Mountpoint"
 msgstr "Einbindepunkt"
 
-#: mount.ui:169
+#: mount.ui:163
 #, no-c-format
 msgid "additional mount-options:"
 msgstr "zusätzliche Einbindeoptionen:"
@@ -6637,32 +6637,32 @@ msgstr "zusätzliche Einbindeoptionen:"
 msgid "Recode file names"
 msgstr "Dateinamen umkodieren"
 
-#: recode.ui:103
+#: recode.ui:97
 #, no-c-format
 msgid "INPUT:"
 msgstr "EINGABE:"
 
-#: recode.ui:111
+#: recode.ui:105
 #, no-c-format
 msgid "OUTPUT:"
 msgstr "AUSGABE:"
 
-#: recode.ui:119
+#: recode.ui:113
 #, no-c-format
 msgid "Charset: "
 msgstr "Zeichensatz: "
 
-#: recode.ui:143
+#: recode.ui:137
 #, no-c-format
 msgid "End of line: "
 msgstr "Zeilenende: "
 
-#: recode.ui:167
+#: recode.ui:161
 #, no-c-format
 msgid "MIME Encoding: "
 msgstr "MIME-Kodierung: "
 
-#: recode.ui:191
+#: recode.ui:185
 #, no-c-format
 msgid "Dump type: "
 msgstr "Mülltyp: "
