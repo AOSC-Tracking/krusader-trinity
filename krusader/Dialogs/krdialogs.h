@@ -45,7 +45,6 @@
 #include <tqdatetime.h>
 #include <tqpixmap.h>
 #include <tqprogressdialog.h>
-#include <tqsemimodal.h>
 #include <tqcheckbox.h>
 #include <tqcombobox.h>
 
