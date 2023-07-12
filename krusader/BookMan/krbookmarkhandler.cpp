@@ -434,7 +434,7 @@ bool KrBookmarkHandler::eventFilter( TQObject *obj, TQEvent *ev ) {
 		switch (TQT_TQMOUSEEVENT(ev)->button()) {
 			case Qt::RightButton:
 				_middleClick = false;
-				if( obj->inherits( TQPOPUPMENU_OBJECT_NAME_STRING ) ) {
+				if( obj->inherits( "TQPopupMenu" ) ) {
 					int id = static_cast<TQPopupMenu*>(TQT_TQWIDGET(obj))->idAt( TQT_TQMOUSEEVENT(ev)->pos() );
 					
 					if( TQT_BASE_OBJECT(obj) == TQT_BASE_OBJECT(_mainBookmarkPopup) && _specialBookmarkIDs.contains( id ) ) {

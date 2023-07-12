@@ -1002,7 +1002,7 @@ bool Krusader::queryClose() {
           if( hid )
             w->show();
 
-          if( w->inherits( TQDIALOG_OBJECT_NAME_STRING ) )
+          if( w->inherits( "TQDialog" ) )
             fprintf( stderr, "Failed to close: %s\n", w->className() );
 
           return false;
