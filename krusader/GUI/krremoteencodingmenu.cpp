@@ -101,7 +101,7 @@ void KrRemoteEncodingMenu::loadSettings()
 
 int KrRemoteEncodingMenu::plug( TQWidget *widget, int index )
 {
-  if( widget->inherits( TQPOPUPMENU_OBJECT_NAME_STRING ) )
+  if( widget->inherits( "TQPopupMenu" ) )
   {
     connect( widget, TQT_SIGNAL(aboutToShow()), this, TQT_SLOT(slotCheckEnabled()));
     slotCheckEnabled();
