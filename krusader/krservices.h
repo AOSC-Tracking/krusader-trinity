@@ -57,7 +57,7 @@ private:
 // note, that you still have to enable stdout,stderr in KEasyProcess::start() for buffering
 // to happen (ie: start(KEasyProcess::Block, KEasyProcess::AllOutput);)
 class KEasyProcess: public TDEProcess {
-	Q_OBJECT
+	TQ_OBJECT
   
 public:
 	KEasyProcess(TQObject *parent, const char *name=0);

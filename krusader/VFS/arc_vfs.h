@@ -39,7 +39,7 @@
 #include <tqprogressdialog.h>
 
 class arc_vfs : public vfs  {
-  Q_OBJECT
+  TQ_OBJECT
   
   class arc_dir;
   class extFile;

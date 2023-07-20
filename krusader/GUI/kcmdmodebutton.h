@@ -35,7 +35,7 @@ class TDEActionMenu;
   * containing the actions to actually switch the mode.
   */
 class KCMDModeButton : public TQToolButton  {
-  Q_OBJECT
+  TQ_OBJECT
   
 public: 
   /** Constructor. Sets up the menu, and the icon */

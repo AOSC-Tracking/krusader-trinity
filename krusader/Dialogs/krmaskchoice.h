@@ -43,7 +43,7 @@ class TQPushButton;
 
 class KRMaskChoice : public TQDialog
 { 
-    Q_OBJECT
+    TQ_OBJECT
   
 
 public:

@@ -43,7 +43,7 @@ A
 class KRPieSlice;
 
 class KRPie : public TQWidget {
-    Q_OBJECT
+    TQ_OBJECT
   
   public:
     KRPie( TDEIO::filesize_t _totalSize, TQWidget *parent = 0 );
@@ -59,7 +59,7 @@ class KRPie : public TQWidget {
 };
 
 class KRFSDisplay : public TQWidget {
-    Q_OBJECT
+    TQ_OBJECT
   
   public:
     // this constructor is used for a mounted filesystem
@@ -103,7 +103,7 @@ class KRPieSlice {
 };
 
 class KrQuickSearch: public KLineEdit {
-      Q_OBJECT
+      TQ_OBJECT
   
    public:
       KrQuickSearch(TQWidget *parent, const char * name = 0);

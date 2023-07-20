@@ -30,7 +30,7 @@ class DirHistoryQueue;
   */
 
 class DirHistoryButton : public TQToolButton  {
-   Q_OBJECT
+   TQ_OBJECT
   
 public: 
   DirHistoryButton(DirHistoryQueue* hQ, TQWidget *parent=0, const char *name=0);

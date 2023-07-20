@@ -33,7 +33,7 @@ class KFileItem;
 class TQCString;
 
 class tdeio_krarcProtocol : public TQObject, public TDEIO::SlaveBase {
-Q_OBJECT
+TQ_OBJECT
   
 public:
 	tdeio_krarcProtocol(const TQCString &pool_socket, const TQCString &app_socket);
@@ -105,7 +105,7 @@ private:
 };
 
 class KrShellProcess : public KShellProcess {
-	Q_OBJECT
+	TQ_OBJECT
   
 public:
 	KrShellProcess() : KShellProcess(), errorMsg( TQString() ), outputMsg( TQString() ) {

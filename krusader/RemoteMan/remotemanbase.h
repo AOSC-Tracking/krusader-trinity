@@ -26,7 +26,7 @@ class TQSpinBox;
 
 class remoteManBase : public TQDialog
 { 
-    Q_OBJECT
+    TQ_OBJECT
   
 
 public:

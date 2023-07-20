@@ -72,7 +72,7 @@ class QueueManager;
 #define krOut kdDebug(50010)
 
 class Krusader : public KParts::MainWindow, public DCOPObject {
-    Q_OBJECT
+    TQ_OBJECT
   
   public:
     Krusader();

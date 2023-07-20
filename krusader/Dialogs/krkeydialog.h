@@ -20,7 +20,7 @@
  */
 class KrKeyDialog : protected KKeyDialog
 {
-Q_OBJECT
+TQ_OBJECT
   
 public:
     KrKeyDialog( TQWidget* parent = 0 );

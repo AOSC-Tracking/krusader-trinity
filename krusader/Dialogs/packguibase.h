@@ -50,7 +50,7 @@ class KHistoryCombo;
 
 class PackGUIBase : public TQDialog
 { 
-    Q_OBJECT
+    TQ_OBJECT
   
 
 public:

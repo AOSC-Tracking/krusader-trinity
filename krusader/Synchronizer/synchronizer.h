@@ -51,7 +51,7 @@ class vfile;
 
 class Synchronizer : public TQObject
 {
-  Q_OBJECT
+  TQ_OBJECT
   
 
   private:

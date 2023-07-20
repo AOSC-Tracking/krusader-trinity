@@ -74,7 +74,7 @@ public:
 };
 
 class KURLRequesterDlgForCopy : public KDialogBase {
-  Q_OBJECT
+  TQ_OBJECT
   
 public:
 	KURLRequesterDlgForCopy( const TQString& url, const TQString& text, bool presAttrs,
@@ -99,7 +99,7 @@ private:
 };
 
 class KRGetDate : public KDialog {
-  Q_OBJECT
+  TQ_OBJECT
   
 public:
   KRGetDate(TQDate date=TQDate::currentDate(), TQWidget *parent = 0, const char *name = 0);

@@ -48,7 +48,7 @@ class ListPanel;
 class KURL;
 
 class KRslots : public TQObject {
-    Q_OBJECT
+    TQ_OBJECT
   
 
   public:

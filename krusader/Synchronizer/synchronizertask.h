@@ -48,7 +48,7 @@ class TQFile;
 #define ST_STATE_ERROR    4
 
 class SynchronizerTask : public TQObject {
-  Q_OBJECT
+  TQ_OBJECT
   
 
 public:
@@ -82,7 +82,7 @@ protected:
 
 
 class CompareTask : public SynchronizerTask {
-  Q_OBJECT
+  TQ_OBJECT
   
 
 public:
@@ -128,7 +128,7 @@ private:
 
 
 class CompareContentTask : public SynchronizerTask {
-  Q_OBJECT
+  TQ_OBJECT
   
 
 public:

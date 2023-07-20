@@ -50,7 +50,7 @@ struct KONFIGURATOR_NAME_VALUE_PAIR;
   */  
 class KonfiguratorPage : public TQFrame
 {
-  Q_OBJECT
+  TQ_OBJECT
   
    
 public:

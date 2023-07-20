@@ -43,7 +43,7 @@
 #include <tdelocale.h>
 
 class KrusaderStatus : public KStatusBar {
-   Q_OBJECT
+   TQ_OBJECT
   
 public: 
 	KrusaderStatus(TQWidget *parent=0, const char *name=0);

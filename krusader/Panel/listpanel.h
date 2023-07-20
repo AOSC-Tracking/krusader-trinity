@@ -78,7 +78,7 @@ class TQHeader;
 
 class ListPanel : public TQWidget {
    friend class ListPanelFunc;
-   Q_OBJECT
+   TQ_OBJECT
   
 public:
 	#define ITEM2VFILE(PANEL_PTR, KRVIEWITEM)		PANEL_PTR->func->files()->vfs_search(KRVIEWITEM->name())

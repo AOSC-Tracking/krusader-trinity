@@ -35,7 +35,7 @@
 
 class KgAdvanced : public KonfiguratorPage
 {
-  Q_OBJECT
+  TQ_OBJECT
   
 
 public:

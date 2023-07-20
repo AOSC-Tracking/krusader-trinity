@@ -39,7 +39,7 @@ class DULinesToolTip;
 
 class DULines : public TQListView
 {
-  Q_OBJECT
+  TQ_OBJECT
   
   
 public:

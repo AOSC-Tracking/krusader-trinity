@@ -43,7 +43,7 @@
 
 class AdvancedFilter : public TQWidget, public FilterBase
 {
-  Q_OBJECT
+  TQ_OBJECT
   
 
 public:

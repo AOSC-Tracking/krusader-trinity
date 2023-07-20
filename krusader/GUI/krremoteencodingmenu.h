@@ -39,7 +39,7 @@
 
 class KrRemoteEncodingMenu: public TDEActionMenu
 {
-  Q_OBJECT
+  TQ_OBJECT
   
 public:
   KrRemoteEncodingMenu (const TQString &text, const TQString &icon, TQObject *parent=0, const char *name=0);

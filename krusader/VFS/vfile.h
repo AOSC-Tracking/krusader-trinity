@@ -47,7 +47,7 @@
  *  allow the object to give out the needed details about the file.
  */
 class vfile : public TQObject{
-  Q_OBJECT
+  TQ_OBJECT
   
   
 public:

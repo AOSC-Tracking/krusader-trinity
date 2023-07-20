@@ -114,7 +114,7 @@ private:
 
 class DUListView : public TQListView
 {
-  Q_OBJECT
+  TQ_OBJECT
   
   
 public:

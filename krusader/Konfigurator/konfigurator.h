@@ -44,7 +44,7 @@ class TQString;
 
 class Konfigurator : public KDialogBase
 {
-   Q_OBJECT
+   TQ_OBJECT
   
 
 public:

@@ -48,7 +48,7 @@ A
 class KMountManGUI;
 
 class KMountMan : public TQObject {
-   Q_OBJECT
+   TQ_OBJECT
   
    friend class KMountManGUI;
 

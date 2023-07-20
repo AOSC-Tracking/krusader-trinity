@@ -70,7 +70,7 @@ class KrDetailedViewItem;
  * information is necessery from it.
  */
 class KrDetailedView : public TDEListView, public KrView {
-   Q_OBJECT
+   TQ_OBJECT
   
    friend class KrDetailedViewItem;
 

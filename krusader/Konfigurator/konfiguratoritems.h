@@ -54,7 +54,7 @@
 
 class KonfiguratorExtension : public TQObject
 {
-  Q_OBJECT
+  TQ_OBJECT
   
 
 public:
@@ -105,7 +105,7 @@ protected:
 
 class KonfiguratorCheckBox : public TQCheckBox
 {
-  Q_OBJECT
+  TQ_OBJECT
   
 
 public:
@@ -130,7 +130,7 @@ protected:
 
 class KonfiguratorSpinBox : public TQSpinBox
 {
-  Q_OBJECT
+  TQ_OBJECT
   
 
 public:
@@ -172,7 +172,7 @@ private:
 
 class KonfiguratorRadioButtons : public TQButtonGroup
 {
-  Q_OBJECT
+  TQ_OBJECT
   
 
 public:
@@ -210,7 +210,7 @@ protected:
 
 class KonfiguratorEditBox : public TQLineEdit
 {
-  Q_OBJECT
+  TQ_OBJECT
   
 
 public:
@@ -236,7 +236,7 @@ protected:
 
 class KonfiguratorURLRequester : public KURLRequester
 {
-  Q_OBJECT
+  TQ_OBJECT
   
 
 public:
@@ -261,7 +261,7 @@ protected:
 
 class KonfiguratorFontChooser : public TQHBox
 {
-  Q_OBJECT
+  TQ_OBJECT
   
 
 public:
@@ -312,7 +312,7 @@ struct KONFIGURATOR_NAME_VALUE_TIP
 
 class KonfiguratorComboBox : public TQComboBox
 {
-  Q_OBJECT
+  TQ_OBJECT
   
 
 public:
@@ -351,7 +351,7 @@ typedef struct
 
 class KonfiguratorColorChooser : public TQComboBox
 {
-  Q_OBJECT
+  TQ_OBJECT
   
 
 public:
@@ -397,7 +397,7 @@ protected:
 
 class KonfiguratorListBox : public TQListBox
 {
-  Q_OBJECT
+  TQ_OBJECT
   
 
 public:

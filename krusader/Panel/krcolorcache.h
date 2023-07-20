@@ -80,7 +80,7 @@ setColors should NEVER be called!
 */
 class KrColorCache : public TQObject
 {
-	Q_OBJECT
+	TQ_OBJECT
   
 	static KrColorCache * m_instance;
 	class KrColorCacheImpl * m_impl;

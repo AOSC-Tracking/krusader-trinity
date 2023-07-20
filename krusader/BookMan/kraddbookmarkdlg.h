@@ -11,7 +11,7 @@
 #include <tqtoolbutton.h>
 
 class KrAddBookmarkDlg: public KDialogBase {
-	Q_OBJECT
+	TQ_OBJECT
   
 public:
 	KrAddBookmarkDlg(TQWidget *parent, KURL url = 0);

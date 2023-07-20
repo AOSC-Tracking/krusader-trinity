@@ -53,7 +53,7 @@
 #include <tdelocale.h>
 
 class KrSearchDialog : public TQDialog  {
-   Q_OBJECT
+   TQ_OBJECT
   
 public: 
   KrSearchDialog(TQString profile = 0, TQWidget* parent = 0, const char* name = 0, bool modal = false, WFlags fl = 0 );

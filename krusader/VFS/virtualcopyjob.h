@@ -49,7 +49,7 @@ typedef enum {
 
 class VirtualCopyJob : public TDEIO::Job
 {
-  Q_OBJECT
+  TQ_OBJECT
   
 
 public:

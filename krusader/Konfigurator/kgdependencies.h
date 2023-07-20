@@ -38,7 +38,7 @@ class TQTabWidget;
 
 class KgDependencies : public KonfiguratorPage
 {
-  Q_OBJECT
+  TQ_OBJECT
   
 
 public:

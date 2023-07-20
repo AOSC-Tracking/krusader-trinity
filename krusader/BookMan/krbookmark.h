@@ -8,7 +8,7 @@
 class TDEActionCollection;
 
 class KrBookmark: public TDEAction {
-	Q_OBJECT
+	TQ_OBJECT
   
 public:
 	KrBookmark(TQString name, KURL url, TDEActionCollection *parent, TQString icon = "", TQString actionName = TQString() );
