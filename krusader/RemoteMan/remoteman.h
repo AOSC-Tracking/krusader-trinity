@@ -37,7 +37,7 @@
 #include <tqlistview.h>
 
 class remoteMan : public remoteManBase  {
-  Q_OBJECT
+  TQ_OBJECT
   
 public:
 	remoteMan();

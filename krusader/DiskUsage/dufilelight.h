@@ -37,7 +37,7 @@
 
 class DUFilelight : public RadialMap::Widget
 {
-  Q_OBJECT
+  TQ_OBJECT
   
   
 public:

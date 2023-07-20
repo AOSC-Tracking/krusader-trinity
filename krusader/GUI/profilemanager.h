@@ -36,7 +36,7 @@
 
 class ProfileManager : public TQPushButton
 {
-  Q_OBJECT
+  TQ_OBJECT
   
   
 public: 

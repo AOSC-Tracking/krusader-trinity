@@ -47,7 +47,7 @@ class TQPopupMenu;
 class KMountPoint;
 
 class MediaButton : public TQToolButton  {
-   Q_OBJECT
+   TQ_OBJECT
   
 public: 
   MediaButton(TQWidget *parent=0, const char *name=0);

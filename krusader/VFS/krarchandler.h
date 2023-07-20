@@ -37,7 +37,7 @@
 #include <tdewallet.h>
 
 class KRarcHandler: public TQObject {
-  Q_OBJECT
+  TQ_OBJECT
   
 public:
   // return the number of files in the archive
@@ -70,7 +70,7 @@ private:
 };
 
 class KrShellProcess : public KShellProcess {
-	Q_OBJECT
+	TQ_OBJECT
   
 public:
 	KrShellProcess() : KShellProcess(), errorMsg( TQString() ), outputMsg( TQString() ) {
@@ -107,7 +107,7 @@ private:
 };
 
 class Kr7zEncryptionChecker : public KrShellProcess {
-	Q_OBJECT
+	TQ_OBJECT
   
 	
 public:

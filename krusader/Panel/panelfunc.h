@@ -40,7 +40,7 @@
 
 class ListPanelFunc : public TQObject{
 friend class ListPanel;
-	Q_OBJECT
+	TQ_OBJECT
   
 public slots:
 	inline vfile* getVFile(KrViewItem *item) { return files()->vfs_search(item->name()); }

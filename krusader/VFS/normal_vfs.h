@@ -45,7 +45,7 @@
  * As this is the most common case, we try to make it as fast and efficent as possible.
  */
 class normal_vfs : public vfs{
-	Q_OBJECT
+	TQ_OBJECT
   
 public:
 	// the constructor simply uses the inherited constructor

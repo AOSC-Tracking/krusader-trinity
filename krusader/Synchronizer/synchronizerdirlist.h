@@ -39,7 +39,7 @@
 
 class SynchronizerDirList : public TQObject, public TQDict<vfile>
 {
-  Q_OBJECT
+  TQ_OBJECT
   
 
 public:

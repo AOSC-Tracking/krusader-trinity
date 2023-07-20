@@ -39,7 +39,7 @@
 
 class Combiner : public TQProgressDialog
 {
-  Q_OBJECT
+  TQ_OBJECT
   
 
 private:

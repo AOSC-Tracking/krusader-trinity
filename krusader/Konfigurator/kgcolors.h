@@ -39,7 +39,7 @@
 
 class KgColors : public KonfiguratorPage
 {
-  Q_OBJECT
+  TQ_OBJECT
   
 
 public:

@@ -6,7 +6,7 @@
 
 // declare a dummy kapplication, just to get the X focusin focusout events
 class KrusaderApp: public TDEApplication {
-	Q_OBJECT
+	TQ_OBJECT
   
 public:
 	KrusaderApp(): TDEApplication() {}

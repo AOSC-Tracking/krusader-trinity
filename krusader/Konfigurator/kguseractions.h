@@ -39,7 +39,7 @@ class UserActionListView;
 
 class KgUserActions : public KonfiguratorPage
 {
-  Q_OBJECT
+  TQ_OBJECT
   
 
 public:

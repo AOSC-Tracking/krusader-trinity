@@ -15,7 +15,7 @@ NEW: a special setText() method allows to choose which part of the string should
      be displayed (example: make sure that search results won't be cut out)
 */
 class KrSqueezedTextLabel : public KSqueezedTextLabel {
-Q_OBJECT
+TQ_OBJECT
   
   public:
     KrSqueezedTextLabel(TQWidget *parent = 0, const char *name = 0);

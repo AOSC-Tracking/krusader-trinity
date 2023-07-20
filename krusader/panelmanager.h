@@ -14,7 +14,7 @@ class TQToolButton;
  * Implements tabbed-browsing by managing a list of tabs and corrosponding panels.
  */
 class PanelManager: public TQWidget {
-    Q_OBJECT
+    TQ_OBJECT
   
 
   public:

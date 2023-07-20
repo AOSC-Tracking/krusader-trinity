@@ -29,7 +29,7 @@ class TQDomDocument;
  * @author Jonas Bähr (http://www.jonas-baehr.de)
  */
 class KrAction: public TDEAction, public KrActionBase {
-   Q_OBJECT
+   TQ_OBJECT
   
    public:
       KrAction( TDEActionCollection *parent, const char* name );
@@ -121,7 +121,7 @@ class TQFont;
  * @author Shie Erlich, Jonas Bähr
  */
 class KrActionProcDlg: public KDialogBase {
-      Q_OBJECT
+      TQ_OBJECT
   
    public:
       KrActionProcDlg( TQString caption, bool enableStderr = false, TQWidget *parent = 0 );
@@ -145,7 +145,7 @@ class KrActionProcDlg: public KDialogBase {
  * @todo jonas: call a list of commands separately (I began it but it doesn't work)
  */
 class KrActionProc: public TQObject {
-      Q_OBJECT
+      TQ_OBJECT
   
    public:
 

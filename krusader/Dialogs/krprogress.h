@@ -33,7 +33,7 @@
 #include <tqobject.h>
 
 class KrProgress : public TDEIO::ProgressBase {
-  Q_OBJECT
+  TQ_OBJECT
   
 public:
 

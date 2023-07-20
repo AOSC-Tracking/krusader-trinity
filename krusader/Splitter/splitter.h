@@ -39,7 +39,7 @@
  
 class Splitter : public TQProgressDialog
 {
-  Q_OBJECT
+  TQ_OBJECT
   
   
 private:

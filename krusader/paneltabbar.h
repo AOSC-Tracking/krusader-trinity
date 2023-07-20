@@ -43,7 +43,7 @@ public:
  * to create a new tab, close the current tab and change a panel when a tab was clicked
  */
 class PanelTabBar : public TQTabBar {
-  Q_OBJECT
+  TQ_OBJECT
   
 public:
   PanelTabBar( TQWidget *parent );

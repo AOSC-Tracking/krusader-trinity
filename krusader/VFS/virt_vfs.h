@@ -27,7 +27,7 @@
   */
 
 class virt_vfs : public vfs  {
-Q_OBJECT
+TQ_OBJECT
   
 public: 
 	virt_vfs(TQObject* panel, bool quiet=false);

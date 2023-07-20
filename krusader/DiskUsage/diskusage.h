@@ -62,7 +62,7 @@ class LoaderWidget;
 
 class DiskUsage : public TQWidgetStack
 {
-  Q_OBJECT
+  TQ_OBJECT
   
   
 public:
@@ -176,7 +176,7 @@ protected:
 
 class LoaderWidget : public TQScrollView
 {
-  Q_OBJECT
+  TQ_OBJECT
   
   
 public:

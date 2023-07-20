@@ -5,7 +5,7 @@
 
 class QueueWidget: public KTabWidget
 {
-	Q_OBJECT
+	TQ_OBJECT
   
 public:
 	QueueWidget();

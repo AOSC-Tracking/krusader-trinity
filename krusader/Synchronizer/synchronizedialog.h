@@ -41,7 +41,7 @@
 
 class SynchronizeDialog : TQDialog
 {
-  Q_OBJECT
+  TQ_OBJECT
   
   
   public:

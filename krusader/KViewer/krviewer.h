@@ -38,7 +38,7 @@ class TQPopupMenu;
 class PanelViewerBase;
 
 class KrViewer : public KParts::MainWindow {
-	Q_OBJECT
+	TQ_OBJECT
   
 public:
 	virtual ~KrViewer();
@@ -111,7 +111,7 @@ private:
 };
 
 class Invoker : public TQObject {
-	Q_OBJECT
+	TQ_OBJECT
   
 	
 public:

@@ -49,7 +49,7 @@
  * make it possible to use a consistent API for all types of VFSs.
  */
 class vfs: public TQObject{
-	Q_OBJECT
+	TQ_OBJECT
   
 public:
 	typedef TQDict<vfile> vfileDict;	

@@ -27,7 +27,7 @@ typedef struct _UrlNode {
 class PopularUrlsDlg;
 
 class PopularUrls : public TQObject {
-	Q_OBJECT
+	TQ_OBJECT
   
 public:
 	PopularUrls(TQObject *parent = 0, const char *name = 0);
@@ -63,7 +63,7 @@ class TDEListView;
 class TDEListViewSearchLine;
 
 class PopularUrlsDlg: public KDialogBase {
-	Q_OBJECT
+	TQ_OBJECT
   
 public:
 	PopularUrlsDlg();

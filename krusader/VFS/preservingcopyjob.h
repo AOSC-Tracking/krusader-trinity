@@ -59,7 +59,7 @@ public:
 
 class PreservingCopyJob : public TDEIO::CopyJob
 {
-  Q_OBJECT
+  TQ_OBJECT
   
 
 public:

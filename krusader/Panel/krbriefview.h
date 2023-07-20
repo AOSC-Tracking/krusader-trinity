@@ -55,7 +55,7 @@ class TQHeader;
  */
 class KrBriefView: public TDEIconView, public KrView {
 	friend class KrBriefViewItem;
-	Q_OBJECT
+	TQ_OBJECT
   
 public:
 	KrBriefView( TQHeader *header, TQWidget *parent, bool &left, TDEConfig *cfg = krConfig, const char *name = 0 );
