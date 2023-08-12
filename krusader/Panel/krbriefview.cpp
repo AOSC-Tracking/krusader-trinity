@@ -1266,7 +1266,7 @@ bool KrBriefView::event( TQEvent *e ) {
 
 bool KrBriefView::eventFilter( TQObject * watched, TQEvent * e )
 {
-  if( TQT_BASE_OBJECT(watched) == TQT_BASE_OBJECT(horizontalScrollBar()) )
+  if( watched == horizontalScrollBar() )
   {
     if( e->type() == TQEvent::Hide || e->type() == TQEvent::Show )
     {
@@ -1275,7 +1275,7 @@ bool KrBriefView::eventFilter( TQObject * watched, TQEvent * e )
       return res;
     }
   }
-  else if( TQT_BASE_OBJECT(watched) == TQT_BASE_OBJECT(header) )
+  else if( watched == header )
   {
     if( e->type() == TQEvent::MouseButtonPress && ((TQMouseEvent *)e )->button() == Qt::RightButton )
     {
