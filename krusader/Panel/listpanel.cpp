@@ -390,7 +390,7 @@ void ListPanel::setProperties( int prop )
 }
 
 bool ListPanel::eventFilter ( TQObject * watched, TQEvent * e ) {
-	if( e->type() == TQEvent::KeyPress && TQT_BASE_OBJECT(origin->lineEdit()) == TQT_BASE_OBJECT(watched) ) {
+	if( e->type() == TQEvent::KeyPress && origin->lineEdit() == watched ) {
 		TQKeyEvent *ke = (TQKeyEvent *)e;
 		
 		if( ( ke->key() ==  Key_Down ) && ( ke->state() == ControlButton ) ) {

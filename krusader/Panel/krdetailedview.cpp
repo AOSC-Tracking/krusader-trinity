@@ -1356,7 +1356,7 @@ bool KrDetailedView::event( TQEvent *e ) {
 
 bool KrDetailedView::eventFilter( TQObject * watched, TQEvent * e )
 {
-  if( TQT_BASE_OBJECT(watched) == TQT_BASE_OBJECT(renameLineEdit()) )
+  if( watched == renameLineEdit() )
   {
     if( currentlyRenamedItem && e->type() == TQEvent::Hide )
     {
@@ -1371,7 +1371,7 @@ bool KrDetailedView::eventFilter( TQObject * watched, TQEvent * e )
     }
     return FALSE;
   }
-  else if( TQT_BASE_OBJECT(watched) == TQT_BASE_OBJECT(header()) )
+  else if( watched == header() )
   {
     if( e->type() == TQEvent::MouseButtonPress && ((TQMouseEvent *)e )->button() == Qt::RightButton )
     {

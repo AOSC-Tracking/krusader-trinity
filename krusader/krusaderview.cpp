@@ -289,7 +289,7 @@ void KrusaderView::switchFullScreenTE()
 
 
 bool KrusaderView::eventFilter ( TQObject * watched, TQEvent * e ) {
-  if( e->type() == TQEvent::AccelOverride && konsole_part && TQT_BASE_OBJECT(konsole_part->widget()) == TQT_BASE_OBJECT(watched) ) {
+  if( e->type() == TQEvent::AccelOverride && konsole_part && konsole_part->widget() == watched ) {
     TQKeyEvent *ke = (TQKeyEvent *)e;
     if( ( ke->key() ==  Key_Insert ) && ( ke->state()  == ShiftButton ) ) {
       ke->accept();
@@ -301,7 +301,7 @@ bool KrusaderView::eventFilter ( TQObject * watched, TQEvent * e ) {
       return true;
     }
   }
-  else if( e->type() == TQEvent::KeyPress && konsole_part && TQT_BASE_OBJECT(konsole_part->widget()) == TQT_BASE_OBJECT(watched) ) {
+  else if( e->type() == TQEvent::KeyPress && konsole_part && konsole_part->widget() == watched ) {
     TQKeyEvent *ke = (TQKeyEvent *)e;
     KKey pressedKey( ke );
 
