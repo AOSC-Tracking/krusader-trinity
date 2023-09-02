@@ -138,7 +138,7 @@ void KrBriefView::setup() {
 
    setSelectionMode( TQIconView::Extended );
 
-   setFocusPolicy( TQ_StrongFocus );
+   setFocusPolicy( TQWidget::StrongFocus );
    restoreSettings();
    refreshColors();
 

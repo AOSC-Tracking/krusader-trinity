@@ -39,7 +39,7 @@
 DUFilelight::DUFilelight( DiskUsage *usage, const char *name )
   : RadialMap::Widget( usage, name ), diskUsage( usage ), currentDir( 0 ), refreshNeeded( true )
 {
-   setFocusPolicy( TQ_StrongFocus );
+   setFocusPolicy( TQWidget::StrongFocus );
 
    connect( diskUsage, TQT_SIGNAL( enteringDirectory( Directory * ) ), this, TQT_SLOT( slotDirChanged( Directory * ) ) );
    connect( diskUsage, TQT_SIGNAL( clearing() ), this, TQT_SLOT( clear() ) );

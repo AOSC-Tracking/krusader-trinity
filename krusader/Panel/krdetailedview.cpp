@@ -214,7 +214,7 @@ void KrDetailedView::setup() {
 
 	connect( header(), TQT_SIGNAL(clicked(int)), this, TQT_SLOT(slotSortOrderChanged(int )));
 
-   setFocusPolicy( TQ_StrongFocus );
+   setFocusPolicy( TQWidget::StrongFocus );
    restoreSettings();
    refreshColors();
 
