@@ -432,7 +432,7 @@ void KrBookmarkHandler::bookmarksChanged(const TQString&, const TQString&) {
 bool KrBookmarkHandler::eventFilter( TQObject *obj, TQEvent *ev ) {
 	if (ev->type() == TQEvent::MouseButtonRelease) {
 		switch (TQT_TQMOUSEEVENT(ev)->button()) {
-			case Qt::RightButton:
+			case TQt::RightButton:
 				_middleClick = false;
 				if( obj->inherits( "TQPopupMenu" ) ) {
 					int id = static_cast<TQPopupMenu*>(TQT_TQWIDGET(obj))->idAt( TQT_TQMOUSEEVENT(ev)->pos() );
@@ -451,10 +451,10 @@ bool KrBookmarkHandler::eventFilter( TQObject *obj, TQEvent *ev ) {
 						}
 					}
 				}
-			case Qt::LeftButton:
+			case TQt::LeftButton:
 				_middleClick = false;
 				break;
-			case Qt::MidButton:
+			case TQt::MidButton:
 				_middleClick = true;
 				break;
 			default:

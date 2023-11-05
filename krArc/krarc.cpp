@@ -86,7 +86,7 @@ tdeio_krarcProtocol::tdeio_krarcProtocol(const TQCString &pool_socket, const TQC
 	dirDict.setAutoDelete(true);
 
 	arcTempDir = locateLocal("tmp",TQString());
-	TQString dirName = "krArc"+TQDateTime::currentDateTime().toString(Qt::ISODate);
+	TQString dirName = "krArc"+TQDateTime::currentDateTime().toString(TQt::ISODate);
 	dirName.replace(TQRegExp(":"),"_");
 	TQDir(arcTempDir).mkdir(dirName);
 	arcTempDir = arcTempDir+dirName+"/";

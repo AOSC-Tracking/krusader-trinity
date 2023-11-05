@@ -57,7 +57,7 @@ AdvancedFilter::AdvancedFilter( FilterTabs *tabs, TQWidget *parent, const char *
   TQGroupBox *sizeGroup = new TQGroupBox( this, "sizeGroup" );
   sizeGroup->setSizePolicy( TQSizePolicy( (TQSizePolicy::SizeType)5, (TQSizePolicy::SizeType)1, sizeGroup->sizePolicy().hasHeightForWidth() ) );
   sizeGroup->setTitle( i18n( "Size" ) );
-  sizeGroup->setColumnLayout(0, Qt::Vertical );
+  sizeGroup->setColumnLayout(0, TQt::Vertical );
   sizeGroup->layout()->setSpacing( 0 );
   sizeGroup->layout()->setMargin( 0 );
   TQGridLayout *sizeLayout = new TQGridLayout( sizeGroup->layout() );
@@ -112,7 +112,7 @@ AdvancedFilter::AdvancedFilter( FilterTabs *tabs, TQWidget *parent, const char *
   TQButtonGroup *dateGroup = new TQButtonGroup( this, "dateGroup" );
   dateGroup->setTitle( i18n( "Date" ) );
   dateGroup->setExclusive( true );
-  dateGroup->setColumnLayout(0, Qt::Vertical );
+  dateGroup->setColumnLayout(0, TQt::Vertical );
   dateGroup->layout()->setSpacing( 0 );
   dateGroup->layout()->setMargin( 0 );
   TQGridLayout *dateLayout = new TQGridLayout( dateGroup->layout() );
@@ -211,7 +211,7 @@ AdvancedFilter::AdvancedFilter( FilterTabs *tabs, TQWidget *parent, const char *
 
   TQGroupBox *ownershipGroup = new TQGroupBox( this, "ownershipGroup" );
   ownershipGroup->setTitle( i18n( "Ownership" ) );
-  ownershipGroup->setColumnLayout(0, Qt::Vertical );
+  ownershipGroup->setColumnLayout(0, TQt::Vertical );
   ownershipGroup->layout()->setSpacing( 0 );
   ownershipGroup->layout()->setMargin( 0 );
   TQGridLayout *ownershipLayout = new TQGridLayout( ownershipGroup->layout() );

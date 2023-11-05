@@ -443,7 +443,7 @@ void KrBriefView::contentsMousePressEvent( TQMouseEvent * e ) {
 
    TQIconViewItem * oldCurrent = currentItem();
    TQIconViewItem *newCurrent = findItem( e->pos() );
-   if (e->button() == Qt::RightButton)
+   if (e->button() == TQt::RightButton)
    {
 	if (KrSelectionMode::getSelectionHandler()->rightButtonSelects() ||
 		(((e->state() & ShiftButton) || (e->state() & ControlButton))) && KrSelectionMode::getSelectionHandler()->shiftCtrlRightButtonSelects())
@@ -501,7 +501,7 @@ void KrBriefView::contentsMousePressEvent( TQMouseEvent * e ) {
        e->accept();
      }
    }
-   if (e->button() == Qt::LeftButton)
+   if (e->button() == TQt::LeftButton)
    {
      dragStartPos = e->pos();
 	  if (KrSelectionMode::getSelectionHandler()->leftButtonSelects() ||
@@ -629,7 +629,7 @@ void KrBriefView::contentsMousePressEvent( TQMouseEvent * e ) {
 }
 
 void KrBriefView::contentsMouseReleaseEvent( TQMouseEvent * e ) {
-  if (e->button() == Qt::RightButton)
+  if (e->button() == TQt::RightButton)
     contextMenuTimer.stop();
 
   e = transformMouseEvent( e );
@@ -663,11 +663,11 @@ void KrBriefView::contentsMouseMoveEvent ( TQMouseEvent * e ) {
       CANCEL_TWO_CLICK_RENAME;
 
    if ( dragStartPos != TQPoint( -1, -1 ) &&
-        e->state() & Qt::LeftButton && ( dragStartPos - e->pos() ).manhattanLength() > TQApplication::startDragDistance() )
+        e->state() & TQt::LeftButton && ( dragStartPos - e->pos() ).manhattanLength() > TQApplication::startDragDistance() )
       startDrag();
    if (KrSelectionMode::getSelectionHandler()->rightButtonPreservesSelection()
       && KrSelectionMode::getSelectionHandler()->rightButtonSelects()
-      && KrSelectionMode::getSelectionHandler()->showContextMenu() >= 0 && e->state() == Qt::RightButton)
+      && KrSelectionMode::getSelectionHandler()->showContextMenu() >= 0 && e->state() == TQt::RightButton)
       {
          TQIconViewItem *newItem = findItem( e->pos() );
          e->accept();
@@ -1220,7 +1220,7 @@ void KrBriefView::setNameToMakeCurrent( TQIconViewItem * it ) {
 
 void KrBriefView::slotMouseClicked( int button, TQIconViewItem * item, const TQPoint& ) {
    pressedItem = 0; // if the signals are emitted, don't emit twice at contentsMouseReleaseEvent
-   if ( button == Qt::MidButton )
+   if ( button == TQt::MidButton )
       emit middleButtonClicked( dynamic_cast<KrViewItem *>( item ) );
 }
 
@@ -1277,7 +1277,7 @@ bool KrBriefView::eventFilter( TQObject * watched, TQEvent * e )
   }
   else if( watched == header )
   {
-    if( e->type() == TQEvent::MouseButtonPress && ((TQMouseEvent *)e )->button() == Qt::RightButton )
+    if( e->type() == TQEvent::MouseButtonPress && ((TQMouseEvent *)e )->button() == TQt::RightButton )
     {
       setColumnNr();
       return TRUE;

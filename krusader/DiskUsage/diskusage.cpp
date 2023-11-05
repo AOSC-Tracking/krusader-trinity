@@ -88,7 +88,7 @@ LoaderWidget::LoaderWidget( TQWidget *parent, const char *name ) : TQScrollView(
   TQGroupBox *loaderBox = new TQGroupBox( widget, "loaderGroupBox" );
   loaderBox->setFrameShape( TQGroupBox::Box );
   loaderBox->setFrameShadow( TQGroupBox::Sunken );
-  loaderBox->setColumnLayout(0, Qt::Vertical );
+  loaderBox->setColumnLayout(0, TQt::Vertical );
   loaderBox->layout()->setSpacing( 0 );
   loaderBox->layout()->setMargin( 0 );
   loaderBox->setSizePolicy( TQSizePolicy::Fixed, TQSizePolicy::Fixed );
@@ -1104,7 +1104,7 @@ bool DiskUsage::event( TQEvent * e )
   {
     TQKeyEvent* ke = (TQKeyEvent*) e;
 
-    if ( ke->state() == Qt::NoButton || ke->state() == Keypad )
+    if ( ke->state() == TQt::NoButton || ke->state() == Keypad )
     {
       switch ( ke->key() )
       {

@@ -155,7 +155,7 @@ TQGroupBox* KonfiguratorPage::createFrame( TQString text, TQWidget *parent,
   groupBox->setFrameShadow( TQGroupBox::Sunken );
   if( !text.isNull() )
     groupBox->setTitle( text );
-  groupBox->setColumnLayout(0, Qt::Vertical );
+  groupBox->setColumnLayout(0, TQt::Vertical );
   groupBox->layout()->setSpacing( 0 );
   groupBox->layout()->setMargin( 0 );
   return groupBox;
@@ -232,7 +232,7 @@ KonfiguratorRadioButtons* KonfiguratorPage::createRadioButtonGroup( TQString cls
   radioWidget->setTitle( "" );
   radioWidget->setExclusive( true );
   radioWidget->setRadioButtonExclusive( true );
-  radioWidget->setColumnLayout(0, Qt::Vertical );
+  radioWidget->setColumnLayout(0, TQt::Vertical );
 
   TQGridLayout *layout = new TQGridLayout( radioWidget->layout() );
   layout->setAlignment( TQt::AlignTop );

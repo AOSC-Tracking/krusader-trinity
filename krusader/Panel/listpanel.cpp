@@ -260,7 +260,7 @@ ListPanel::ListPanel( TQString typeIn, TQWidget *parent, bool &left, const char 
 	// create a splitter to hold the view and the popup
 	splt = new PercentalSplitter(this);
 	splt->setChildrenCollapsible(true);
-	splt->setOrientation(Qt::Vertical);
+	splt->setOrientation(TQt::Vertical);
 
 	createView();
 	
@@ -996,7 +996,7 @@ void ListPanel::keyPressEvent( TQKeyEvent *e ) {
          default:
          // if we got this, it means that the view is not doing
          // the quick search thing, so send the characters to the commandline, if normal key
-         if ( e->state() == Qt::NoButton )
+         if ( e->state() == TQt::NoButton )
             MAIN_VIEW->cmdLine->addText( e->text() );
 
          //e->ignore();

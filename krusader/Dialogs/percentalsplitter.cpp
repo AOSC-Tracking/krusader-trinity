@@ -49,7 +49,7 @@ public:
       TQString tipString = splitter->toolTipString();
       TQRect rect = TQRect( parentWidget()->rect() );
 
-      if( splitter->orientation() == Qt::Vertical ) {
+      if( splitter->orientation() == TQt::Vertical ) {
         rect.setY( splitter->sizes()[ 0 ] );
         rect.setHeight( splitter->handleWidth() );
       }
@@ -94,7 +94,7 @@ void PercentalSplitter::setRubberband ( int p ) {
   const int rBord = 3; // customizable?
   int hw = handleWidth();
     
-  if( orientation() == Qt::Horizontal ) {
+  if( orientation() == TQt::Horizontal ) {
     if ( opaqueOldPos >= 0 ) {
       if( label == 0 )
         paint.drawRect( opaqueOldPos + hw / 2 - rBord, r.y(), 2 * rBord, r.height() );
@@ -148,7 +148,7 @@ void PercentalSplitter::setRubberband ( int p ) {
     label->setText( toolTipString( p ) );
     label->adjustSize();
 
-    if( orientation() == Qt::Horizontal ) {
+    if( orientation() == TQt::Horizontal ) {
       labelLocation = mapToGlobal( TQPoint( p - label->width()/2, r.y() + r.height()/2 ) );
       if( labelLocation.x() < 0 )
         labelLocation.setX( 0 );
@@ -165,7 +165,7 @@ void PercentalSplitter::setRubberband ( int p ) {
 #endif
 
     TQPoint labelLoc = mapFromGlobal( labelLocation );
-    if( orientation() == Qt::Horizontal ) {
+    if( orientation() == TQt::Horizontal ) {
       if( labelLocation.x() + label->width() > screen.width() )
         labelLocation.setX( screen.width() - label->width() );
       label->move( labelLocation );

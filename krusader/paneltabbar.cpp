@@ -55,17 +55,17 @@ void PanelTabBar::mousePressEvent( TQMouseEvent* e ) {
   setCurrentTab( clickedTab );
   emit changePanel(dynamic_cast<PanelTab*>(clickedTab)->panel);
 
-  if ( e->button() == Qt::RightButton ) {
+  if ( e->button() == TQt::RightButton ) {
     // show the popup menu
     _panelActionMenu->popup( e->globalPos() );
   } else
-  if ( e->button() == Qt::LeftButton ) { // we need to change tabs
+  if ( e->button() == TQt::LeftButton ) { // we need to change tabs
     // first, find the correct panel to load
     int id = currentTab();
     ListPanel *listpanel = dynamic_cast<PanelTab*>(tab(id))->panel;
     emit changePanel(listpanel);
   } else
-  if (e->button() == Qt::MidButton) { // close the current tab
+  if (e->button() == TQt::MidButton) { // close the current tab
     emit closeCurrentTab();
   }
   TQTabBar::mousePressEvent(e);

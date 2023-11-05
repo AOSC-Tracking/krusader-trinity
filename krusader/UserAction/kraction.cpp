@@ -56,7 +56,7 @@ _stdout(0), _stderr(0), _currentTextEdit(0) {
    TQVBox *page = makeVBoxMainWidget();
    // do we need to separate stderr and stdout?
    if ( enableStderr ) {
-      TQSplitter *splitt = new TQSplitter( Qt::Vertical, page );
+      TQSplitter *splitt = new TQSplitter( TQt::Vertical, page );
       // create stdout
       TQVBox *stdoutBox = new TQVBox( splitt, "stdout VBox" );
       stdoutBox->setSpacing( 6 );

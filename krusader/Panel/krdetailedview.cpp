@@ -533,7 +533,7 @@ void KrDetailedView::contentsMousePressEvent( TQMouseEvent * e ) {
 
    TQListViewItem * oldCurrent = currentItem();
    TQListViewItem *newCurrent = itemAt( contentsToViewport( e->pos() ) );
-   if (e->button() == Qt::RightButton)
+   if (e->button() == TQt::RightButton)
    {
 	if (KrSelectionMode::getSelectionHandler()->rightButtonSelects() ||
 		(((e->state() & ShiftButton) || (e->state() & ControlButton))) && KrSelectionMode::getSelectionHandler()->shiftCtrlRightButtonSelects())
@@ -591,7 +591,7 @@ void KrDetailedView::contentsMousePressEvent( TQMouseEvent * e ) {
        e->accept();
      }
    }
-   if (e->button() == Qt::LeftButton)
+   if (e->button() == TQt::LeftButton)
    {
      dragStartPos = e->pos();
 	  if (KrSelectionMode::getSelectionHandler()->leftButtonSelects() ||
@@ -715,7 +715,7 @@ void KrDetailedView::contentsMousePressEvent( TQMouseEvent * e ) {
 }
 
 void KrDetailedView::contentsMouseReleaseEvent( TQMouseEvent * e ) {
-  if (e->button() == Qt::RightButton)
+  if (e->button() == TQt::RightButton)
     contextMenuTimer.stop();
   TDEListView::contentsMouseReleaseEvent( e );
 
@@ -743,11 +743,11 @@ void KrDetailedView::contentsMouseMoveEvent ( TQMouseEvent * e ) {
    if ( ( singleClicked || renameTimer.isActive() ) && itemAt( contentsToViewport( e->pos() ) ) != clickedItem )
       CANCEL_TWO_CLICK_RENAME;
    if ( dragStartPos != TQPoint( -1, -1 ) &&
-        e->state() & Qt::LeftButton && ( dragStartPos - e->pos() ).manhattanLength() > TQApplication::startDragDistance() )
+        e->state() & TQt::LeftButton && ( dragStartPos - e->pos() ).manhattanLength() > TQApplication::startDragDistance() )
       startDrag();
    if (KrSelectionMode::getSelectionHandler()->rightButtonPreservesSelection()
       && KrSelectionMode::getSelectionHandler()->rightButtonSelects()
-      && KrSelectionMode::getSelectionHandler()->showContextMenu() >= 0 && e->state() == Qt::RightButton)
+      && KrSelectionMode::getSelectionHandler()->showContextMenu() >= 0 && e->state() == TQt::RightButton)
       {
          TQListViewItem *newItem = itemAt( contentsToViewport( e->pos() ) );
          e->accept();
@@ -1312,7 +1312,7 @@ void KrDetailedView::setNameToMakeCurrent( TQListViewItem * it ) {
 
 void KrDetailedView::slotMouseClicked( int button, TQListViewItem * item, const TQPoint&, int ) {
    pressedItem = 0; // if the signals are emitted, don't emit twice at contentsMouseReleaseEvent
-   if ( button == Qt::MidButton )
+   if ( button == TQt::MidButton )
       emit middleButtonClicked( dynamic_cast<KrViewItem *>( item ) );
 }
 
@@ -1373,7 +1373,7 @@ bool KrDetailedView::eventFilter( TQObject * watched, TQEvent * e )
   }
   else if( watched == header() )
   {
-    if( e->type() == TQEvent::MouseButtonPress && ((TQMouseEvent *)e )->button() == Qt::RightButton )
+    if( e->type() == TQEvent::MouseButtonPress && ((TQMouseEvent *)e )->button() == TQt::RightButton )
     {
       selectColumns();
       return TRUE;

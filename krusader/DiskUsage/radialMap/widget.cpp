@@ -116,7 +116,7 @@ RadialMap::Widget::createFromCache( const Directory *tree )
 void
 RadialMap::Widget::sendFakeMouseEvent() //slot
 {
-   TQMouseEvent me( TQEvent::MouseMove, mapFromGlobal( TQCursor::pos() ), Qt::NoButton, Qt::NoButton );
+   TQMouseEvent me( TQEvent::MouseMove, mapFromGlobal( TQCursor::pos() ), TQt::NoButton, TQt::NoButton );
    TQApplication::sendEvent( this, &me );
 }
 
