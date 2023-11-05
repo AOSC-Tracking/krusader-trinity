@@ -503,7 +503,7 @@ bool MediaButton::eventFilter( TQObject *o, TQEvent *e ) {
 	if( o == popupMenu ) {
 		if( e->type() == TQEvent::MouseButtonPress || e->type() == TQEvent::MouseButtonRelease ) {
 			TQMouseEvent *m = TQT_TQMOUSEEVENT(e);
-			if( m->button() == Qt::RightButton ) {
+			if( m->button() == TQt::RightButton ) {
 				if( e->type() == TQEvent::MouseButtonPress ) {
 					int id = popupMenu->idAt( m->pos() );
 					if( id != -1 )

@@ -149,7 +149,7 @@ RadialMap::Widget::mousePressEvent( TQMouseEvent *e )
       const KURL url   = Widget::url( m_focus->file() );
       const bool isDir = m_focus->file()->isDir();
 
-      if( e->button() == Qt::RightButton )
+      if( e->button() == TQt::RightButton )
       {
          TDEPopupMenu popup;
          popup.insertTitle( m_focus->file()->fullPath( m_tree ) );
@@ -214,7 +214,7 @@ RadialMap::Widget::mousePressEvent( TQMouseEvent *e )
          
          m_tip.hide(); //user expects this
 
-         if( !isDir || e->button() == Qt::MidButton )
+         if( !isDir || e->button() == TQt::MidButton )
          {
             TDEIconEffect::visualActivate( this, rect );
             new KRun( url, this, true ); //FIXME see above

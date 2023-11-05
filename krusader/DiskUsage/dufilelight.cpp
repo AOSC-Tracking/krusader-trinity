@@ -83,7 +83,7 @@ File * DUFilelight::getCurrentFile()
 
 void DUFilelight::mousePressEvent( TQMouseEvent *event )
 {
-   if( event->button() == Qt::RightButton )
+   if( event->button() == TQt::RightButton )
    {
      File * file = 0;
      
@@ -120,7 +120,7 @@ void DUFilelight::mousePressEvent( TQMouseEvent *event )
           
      diskUsage->rightClickMenu( file, &filelightPopup, i18n( "Filelight" ) );
      return;     
-   }else if( event->button() == Qt::LeftButton )
+   }else if( event->button() == TQt::LeftButton )
    {
      const RadialMap::Segment * focus = focusSegment();
      

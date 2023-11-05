@@ -1110,7 +1110,7 @@ void SynchronizerGUI::initGUI(TQWidget* /* parent */, TQString profileName, KURL
   TQGroupBox *compareDirs = new TQGroupBox( synchronizerTab, "SyncCompareDirectories" );
   compareDirs->setSizePolicy( TQSizePolicy::Expanding, TQSizePolicy::Fixed);
   compareDirs->setTitle( i18n( "Directory Comparison" ) );
-  compareDirs->setColumnLayout(0, Qt::Vertical );
+  compareDirs->setColumnLayout(0, TQt::Vertical );
   compareDirs->layout()->setSpacing( 0 );
   compareDirs->layout()->setMargin( 0 );
 
@@ -1210,7 +1210,7 @@ void SynchronizerGUI::initGUI(TQWidget* /* parent */, TQString profileName, KURL
   TQGroupBox *showOptions  = new TQGroupBox( optionBox, "SyncOptionBox" );
   showOptions->setTitle( i18n( "S&how options" ) );
   showOptions->setSizePolicy( TQSizePolicy::Fixed, TQSizePolicy::Fixed);
-  showOptions->setColumnLayout(0, Qt::Vertical );
+  showOptions->setColumnLayout(0, TQt::Vertical );
   showOptions->layout()->setSpacing( 0 );
   showOptions->layout()->setMargin( 0 );
   TQGridLayout *showOptionsLayout = new TQGridLayout( showOptions->layout() );
@@ -1353,7 +1353,7 @@ void SynchronizerGUI::initGUI(TQWidget* /* parent */, TQString profileName, KURL
 
   TQGroupBox *optionsGroup = new TQGroupBox( generalFilter, "options" );
   optionsGroup->setTitle( i18n( "&Options" ) );
-  optionsGroup->setColumnLayout(0, Qt::Vertical );
+  optionsGroup->setColumnLayout(0, TQt::Vertical );
   optionsGroup->layout()->setSpacing( 0 );
   optionsGroup->layout()->setMargin( 0 );
   TQGridLayout *optionsLayout = new TQGridLayout( optionsGroup->layout() );

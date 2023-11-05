@@ -182,7 +182,7 @@ PackGUIBase::PackGUIBase( TQWidget* parent,  const char* name, bool modal, WFlag
 
     TQVBox * sliderVBox = new TQVBox( advancedWidget );
 
-    compressionSlider = new TQSlider( 1, 9, 1, 5, Qt::Horizontal, sliderVBox, "compressionSlider" );
+    compressionSlider = new TQSlider( 1, 9, 1, 5, TQt::Horizontal, sliderVBox, "compressionSlider" );
     compressionSlider->setTickmarks( TQSlider::Below );
 
     TQHBox * minmaxHBox = new TQHBox( sliderVBox );

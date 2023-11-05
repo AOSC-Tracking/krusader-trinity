@@ -61,7 +61,7 @@ void KrusaderView::start( TQStringList leftTabs, TQStringList leftTypes, TQValue
   mainLayout = new TQGridLayout( this, 1, 1 );
   // vertical splitter
   vert_splitter = new TQSplitter( this ); // splits between panels and terminal/cmdline
-  vert_splitter->setOrientation( Qt::Vertical );
+  vert_splitter->setOrientation( TQt::Vertical );
   // horizontal splitter
   horiz_splitter = new PercentalSplitter( vert_splitter );
   ( terminal_dock = new TQHBox( vert_splitter ) ) ->hide(); // create it hidden
@@ -407,9 +407,9 @@ void KrusaderView::savePanelProfiles( TQString group )
 }
 
 void KrusaderView::toggleVerticalMode() {
-	if (horiz_splitter->orientation() == Qt::Vertical)
-		horiz_splitter->setOrientation(Qt::Horizontal);
-	else horiz_splitter->setOrientation(Qt::Vertical);
+	if (horiz_splitter->orientation() == TQt::Vertical)
+		horiz_splitter->setOrientation(TQt::Horizontal);
+	else horiz_splitter->setOrientation(TQt::Vertical);
 }
 
 #include "krusaderview.moc"

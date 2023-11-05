@@ -53,7 +53,7 @@ GeneralFilter::GeneralFilter( FilterTabs *tabs, int properties, TQWidget *parent
 
   TQGroupBox *nameGroup = new TQGroupBox( this, "nameGroup" );
   nameGroup->setTitle( i18n( "File name" ) );
-  nameGroup->setColumnLayout(0, Qt::Vertical );
+  nameGroup->setColumnLayout(0, TQt::Vertical );
   nameGroup->layout()->setSpacing( 0 );
   nameGroup->layout()->setMargin( 0 );
   TQGridLayout *nameGroupLayout = new TQGridLayout( nameGroup->layout() );
@@ -113,7 +113,7 @@ GeneralFilter::GeneralFilter( FilterTabs *tabs, int properties, TQWidget *parent
 
     TQGroupBox *profileHandler = new TQGroupBox( this, "profileHandler" );
     profileHandler->setTitle( i18n( "&Profile handler" ) );
-    profileHandler->setColumnLayout(0, Qt::Vertical );
+    profileHandler->setColumnLayout(0, TQt::Vertical );
     profileHandler->layout()->setSpacing( 0 );
     profileHandler->layout()->setMargin( 0 );
     TQGridLayout *profileLayout = new TQGridLayout( profileHandler->layout() );
@@ -153,7 +153,7 @@ GeneralFilter::GeneralFilter( FilterTabs *tabs, int properties, TQWidget *parent
 
     TQGroupBox *searchInGroup = new TQGroupBox( this, "searchInGroup" );
     searchInGroup->setTitle( i18n( "&Search in" ) );
-    searchInGroup->setColumnLayout(0, Qt::Vertical );
+    searchInGroup->setColumnLayout(0, TQt::Vertical );
     searchInGroup->layout()->setSpacing( 0 );
     searchInGroup->layout()->setMargin( 0 );
     TQGridLayout *searchInLayout = new TQGridLayout( searchInGroup->layout() );
@@ -173,7 +173,7 @@ GeneralFilter::GeneralFilter( FilterTabs *tabs, int properties, TQWidget *parent
 
     TQGroupBox *dontSearchInGroup = new TQGroupBox( this, "dontSearchInGroup" );
     dontSearchInGroup->setTitle( i18n( "&Don't search in" ) );
-    dontSearchInGroup->setColumnLayout(0, Qt::Vertical );
+    dontSearchInGroup->setColumnLayout(0, TQt::Vertical );
     dontSearchInGroup->layout()->setSpacing( 0 );
     dontSearchInGroup->layout()->setMargin( 0 );
     TQGridLayout *dontSearchInLayout = new TQGridLayout( dontSearchInGroup->layout() );
@@ -193,7 +193,7 @@ GeneralFilter::GeneralFilter( FilterTabs *tabs, int properties, TQWidget *parent
 
   TQGroupBox *containsGroup = new TQGroupBox( this, "containsGroup" );
   containsGroup->setTitle( i18n( "Containing text" ) );
-  containsGroup->setColumnLayout(0, Qt::Vertical );
+  containsGroup->setColumnLayout(0, TQt::Vertical );
   containsGroup->layout()->setSpacing( 0 );
   containsGroup->layout()->setMargin( 0 );
   TQGridLayout *containsLayout = new TQGridLayout( containsGroup->layout() );

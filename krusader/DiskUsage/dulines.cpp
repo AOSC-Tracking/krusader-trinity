@@ -410,7 +410,7 @@ bool DULines::doubleClicked( TQListViewItem * item )
 
 void DULines::contentsMouseDoubleClickEvent ( TQMouseEvent * e )
 {
-  if ( e || e->button() == Qt::LeftButton )
+  if ( e || e->button() == TQt::LeftButton )
   {
     TQPoint vp = contentsToViewport(e->pos());
     TQListViewItem * item = itemAt( vp );

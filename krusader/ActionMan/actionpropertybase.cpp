@@ -63,7 +63,7 @@ ActionPropertyBase::ActionPropertyBase( TQWidget* parent, const char* name, WFla
 
     bgAccept = new TQButtonGroup( tab, "bgAccept" );
     bgAccept->setSizePolicy( TQSizePolicy( (TQSizePolicy::SizeType)5, (TQSizePolicy::SizeType)1, 0, 0, bgAccept->sizePolicy().hasHeightForWidth() ) );
-    bgAccept->setColumnLayout(0, Qt::Vertical );
+    bgAccept->setColumnLayout(0, TQt::Vertical );
     bgAccept->layout()->setSpacing( 6 );
     bgAccept->layout()->setMargin( 11 );
     bgAcceptLayout = new TQGridLayout( bgAccept->layout() );
@@ -173,7 +173,7 @@ ActionPropertyBase::ActionPropertyBase( TQWidget* parent, const char* name, WFla
 
     bgExecType = new TQButtonGroup( tab, "bgExecType" );
     bgExecType->setSizePolicy( TQSizePolicy( (TQSizePolicy::SizeType)5, (TQSizePolicy::SizeType)1, 0, 0, bgExecType->sizePolicy().hasHeightForWidth() ) );
-    bgExecType->setColumnLayout(0, Qt::Vertical );
+    bgExecType->setColumnLayout(0, TQt::Vertical );
     bgExecType->layout()->setSpacing( 6 );
     bgExecType->layout()->setMargin( 11 );
     bgExecTypeLayout = new TQGridLayout( bgExecType->layout() );
@@ -205,7 +205,7 @@ ActionPropertyBase::ActionPropertyBase( TQWidget* parent, const char* name, WFla
 
     gbShowonly = new TQGroupBox( tab_2, "gbShowonly" );
     gbShowonly->setSizePolicy( TQSizePolicy( (TQSizePolicy::SizeType)7, (TQSizePolicy::SizeType)7, 0, 0, gbShowonly->sizePolicy().hasHeightForWidth() ) );
-    gbShowonly->setColumnLayout(0, Qt::Vertical );
+    gbShowonly->setColumnLayout(0, TQt::Vertical );
     gbShowonly->layout()->setSpacing( 6 );
     gbShowonly->layout()->setMargin( 11 );
     gbShowonlyLayout = new TQGridLayout( gbShowonly->layout() );
