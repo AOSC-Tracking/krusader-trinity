@@ -752,6 +752,8 @@ TQString KRarcHandler::detectArchive( bool &encrypted, TQString fileName, bool c
 						encrypted = proc.isEncrypted();
 					}
 				}
+				else if( type == "xz" && (fileName.endsWith(".tar.xz") || fileName.endsWith(".txz")) )
+				    type = "txz";
 				return type;
 			}
 		}
@@ -774,15 +776,6 @@ TQString KRarcHandler::detectArchive( bool &encrypted, TQString fileName, bool c
 					return "tar";
 			}
 		}
-	}
-
-	if (fileName.endsWith(".tar.xz"))
-	{
-	  return "txz";
-	}
-	else if (fileName.endsWith(".xz"))
-	{
-	  return "xz";
 	}
 
 	return TQString();
