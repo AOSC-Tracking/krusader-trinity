@@ -835,7 +835,7 @@ TQRect KrDetailedView::drawItemHighlighter(TQPainter *painter, TQListViewItem *i
     r = itemRect(item);
 
     if (painter)
-       style().tqdrawPrimitive(TQStyle::PE_FocusRect, painter, r, colorGroup(),
+       style().drawPrimitive(TQStyle::PE_FocusRect, painter, r, colorGroup(),
                              TQStyle::Style_FocusAtBorder, colorGroup().highlight());
   }
   return r;
