@@ -431,11 +431,11 @@ void KrBookmarkHandler::bookmarksChanged(const TQString&, const TQString&) {
 
 bool KrBookmarkHandler::eventFilter( TQObject *obj, TQEvent *ev ) {
 	if (ev->type() == TQEvent::MouseButtonRelease) {
-		switch (TQT_TQMOUSEEVENT(ev)->button()) {
+		switch (static_cast<TQMouseEvent*>(ev)->button()) {
 			case TQt::RightButton:
 				_middleClick = false;
 				if( obj->inherits( "TQPopupMenu" ) ) {
-					int id = static_cast<TQPopupMenu*>(TQT_TQWIDGET(obj))->idAt( TQT_TQMOUSEEVENT(ev)->pos() );
+					int id = static_cast<TQPopupMenu*>(TQT_TQWIDGET(obj))->idAt( static_cast<TQMouseEvent*>(ev)->pos() );
 					
 					if( obj == _mainBookmarkPopup && _specialBookmarkIDs.contains( id ) ) {
 						rightClickOnSpecialBookmark();
