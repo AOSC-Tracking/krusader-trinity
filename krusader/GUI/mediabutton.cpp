@@ -502,7 +502,7 @@ void MediaButton::addMountPoint( KMountPoint * mp, bool isMounted ) {
 bool MediaButton::eventFilter( TQObject *o, TQEvent *e ) {
 	if( o == popupMenu ) {
 		if( e->type() == TQEvent::MouseButtonPress || e->type() == TQEvent::MouseButtonRelease ) {
-			TQMouseEvent *m = TQT_TQMOUSEEVENT(e);
+			TQMouseEvent *m = static_cast<TQMouseEvent*>(e);
 			if( m->button() == TQt::RightButton ) {
 				if( e->type() == TQEvent::MouseButtonPress ) {
 					int id = popupMenu->idAt( m->pos() );
