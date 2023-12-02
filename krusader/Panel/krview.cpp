@@ -108,7 +108,7 @@ TQPixmap KrView::getIcon( vfile *vf /*, KRListItem::cmpColor color*/ ) {
    // if it's a symlink - add an arrow overlay
    if ( vf->vfile_isSymLink() ) {
       TQPixmap link( link_xpm );
-      bitBlt ( TQT_TQPAINTDEVICE(&icon), 0, icon.height() - 11, TQT_TQPAINTDEVICE(&link), 0, 21, 10, 11, TQt::CopyROP, false );
+      bitBlt ( &icon, 0, icon.height() - 11, &link, 0, 21, 10, 11, TQt::CopyROP, false );
       icon.setMask( icon.createHeuristicMask( false ) );
    }
 
