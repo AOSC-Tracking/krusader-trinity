@@ -8,12 +8,13 @@
 # Denis Koryavov <dkoryavov@rambler.ru>, 2005.
 # Nick Shaforostoff <shafff@ukr.net>, 2005.
 # Dmitry A. Bugay <sam@vhnet.ru>, 2006, 2007.
+# Andrei Stepanov <adem4ik@gmail.com>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: krusader-1.80.0-beta2\n"
 "POT-Creation-Date: 2022-09-13 18:34+0000\n"
-"PO-Revision-Date: 2020-01-04 14:07+0000\n"
-"Last-Translator: Serg Bormant <bormant@mail.ru>\n"
+"PO-Revision-Date: 2023-12-02 20:14+0000\n"
+"Last-Translator: Andrei Stepanov <adem4ik@gmail.com>\n"
 "Language-Team: Russian <https://mirror.git.trinitydesktop.org/weblate/"
 "projects/applications/krusader/ru/>\n"
 "Language: ru\n"
@@ -22,7 +23,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 3.10\n"
+"X-Generator: Weblate 4.17\n"
 
 #. Instead of a literal translation, add your name to the end of the list (separated by a comma).
 msgid ""
@@ -1563,11 +1564,11 @@ msgstr "Байт"
 
 #: Filter/advancedfilter.cpp:79 Filter/advancedfilter.cpp:95
 msgid "KB"
-msgstr "Кб"
+msgstr "КБ"
 
 #: Filter/advancedfilter.cpp:80 Filter/advancedfilter.cpp:96
 msgid "MB"
-msgstr "Мб"
+msgstr "МБ"
 
 #: Filter/advancedfilter.cpp:85
 msgid "&Smaller than"
@@ -3797,15 +3798,15 @@ msgstr "%1 Тб"
 
 #: MountMan/kmountman.cpp:231
 msgid "%1 GB"
-msgstr "%1 Гб"
+msgstr "%1 ГБ"
 
 #: MountMan/kmountman.cpp:236
 msgid "%1 MB"
-msgstr "%1 Mб"
+msgstr "%1 МБ"
 
 #: MountMan/kmountman.cpp:241
 msgid "%1 KB"
-msgstr "%1 Kб"
+msgstr "%1 КБ"
 
 #: MountMan/kmountman.cpp:250
 msgid "MountMan is not operational. Sorry"
