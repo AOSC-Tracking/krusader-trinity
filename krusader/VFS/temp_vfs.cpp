@@ -41,7 +41,7 @@
 #include "../krservices.h"
 
 temp_vfs::temp_vfs( TQString origin, TQString type, TQWidget* panel, bool ):
-          normal_vfs(TQT_TQOBJECT(panel)){
+          normal_vfs(panel){
   vfs_type=TEMP;
    // first we need to create a temp diretory
   tmpDir = krApp->getTempDir();

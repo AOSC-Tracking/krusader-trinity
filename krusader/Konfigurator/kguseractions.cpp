@@ -99,7 +99,7 @@ KgUserActions::KgUserActions( bool first, TQWidget* parent,  const char* name ) 
 }
 
 void KgUserActions::startActionMan() {
-   ActionMan actionMan( TQT_TQWIDGET(parent()) );
+   ActionMan actionMan( static_cast<TQWidget*>(parent()) );
 }
 
 

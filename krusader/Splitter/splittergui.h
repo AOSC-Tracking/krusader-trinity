@@ -60,7 +60,7 @@ struct PredefinedDevice
     {
       setMaxValue( 0x7FFFFFFF );     /* setting the minimum and maximum values */
       setMinValue( 1 );
-      TQDoubleValidator *dval = new TQDoubleValidator( TQT_TQOBJECT(this) );
+      TQDoubleValidator *dval = new TQDoubleValidator( this );
       setValidator ( dval );
     }
 

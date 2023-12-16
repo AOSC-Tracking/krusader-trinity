@@ -53,7 +53,7 @@ FilterTabs::FilterTabs( int properties, TQTabWidget *tabWidget, TQObject *parent
 
 FilterTabs * FilterTabs::addTo( TQTabWidget *tabWidget, int props )
 {
-  return new FilterTabs( props, tabWidget, TQT_TQOBJECT(tabWidget) );
+  return new FilterTabs( props, tabWidget, tabWidget );
 }
 
 void FilterTabs::saveToProfile( TQString name )

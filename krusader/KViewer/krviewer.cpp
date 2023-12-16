@@ -53,7 +53,7 @@
 TQPtrList<KrViewer> KrViewer::viewers;
 
 KrViewer::KrViewer( TQWidget *parent, const char *name ) :
-KParts::MainWindow( parent, name ), manager( this, TQT_TQOBJECT(this) ), tabBar( this ), returnFocusTo( 0 ), returnFocusTab( 0 ),
+KParts::MainWindow( parent, name ), manager( this, this ), tabBar( this ), returnFocusTo( 0 ), returnFocusTab( 0 ),
                                     reservedKeys(), reservedKeyIDs() {
 
 	//setWFlags(WType_TopLevel | WDestructiveClose);
@@ -64,11 +64,11 @@ KParts::MainWindow( parent, name ), manager( this, TQT_TQOBJECT(this) ), tabBar(
 	tmpFile.setAutoDelete( true );
 
 	connect( &manager, TQT_SIGNAL( activePartChanged( KParts::Part* ) ),
-	         TQT_TQOBJECT(this), TQT_SLOT( createGUI( KParts::Part* ) ) );
+	         this, TQT_SLOT( createGUI( KParts::Part* ) ) );
 	connect( &tabBar, TQT_SIGNAL( currentChanged( TQWidget *) ),
-	         TQT_TQOBJECT(this), TQT_SLOT( tabChanged(TQWidget*) ) );
+	         this, TQT_SLOT( tabChanged(TQWidget*) ) );
 	connect( &tabBar, TQT_SIGNAL( closeRequest( TQWidget *) ),
-	         TQT_TQOBJECT(this), TQT_SLOT( tabCloseRequest(TQWidget*) ) );
+	         this, TQT_SLOT( tabCloseRequest(TQWidget*) ) );
 
 	tabBar.setTabReorderingEnabled(false);
 #if KDE_IS_VERSION(3,4,0)
@@ -78,28 +78,28 @@ KParts::MainWindow( parent, name ), manager( this, TQT_TQOBJECT(this) ), tabBar(
 //	"document-save-as"
 	setCentralWidget( &tabBar );
 
-	printAction = KStdAction::print( TQT_TQOBJECT(this), TQT_SLOT( print() ), 0, 0 );
-	copyAction = KStdAction::copy( TQT_TQOBJECT(this), TQT_SLOT( copy() ), 0, 0 );
+	printAction = KStdAction::print( this, TQT_SLOT( print() ), 0, 0 );
+	copyAction = KStdAction::copy( this, TQT_SLOT( copy() ), 0, 0 );
 
 	viewerMenu = new TQPopupMenu( this );
-	viewerMenu->insertItem( i18n( "&Generic viewer" ), TQT_TQOBJECT(this), TQT_SLOT( viewGeneric() ), CTRL + SHIFT + Key_G, 1 );
-	viewerMenu->insertItem( i18n( "&Text viewer" ), TQT_TQOBJECT(this), TQT_SLOT( viewText() ), CTRL + SHIFT + Key_T, 2 );
-	viewerMenu->insertItem( i18n( "&Hex viewer" ), TQT_TQOBJECT(this), TQT_SLOT( viewHex() ), CTRL + SHIFT + Key_H, 3 );
+	viewerMenu->insertItem( i18n( "&Generic viewer" ), this, TQT_SLOT( viewGeneric() ), CTRL + SHIFT + Key_G, 1 );
+	viewerMenu->insertItem( i18n( "&Text viewer" ), this, TQT_SLOT( viewText() ), CTRL + SHIFT + Key_T, 2 );
+	viewerMenu->insertItem( i18n( "&Hex viewer" ), this, TQT_SLOT( viewHex() ), CTRL + SHIFT + Key_H, 3 );
 	viewerMenu->insertSeparator();
-	viewerMenu->insertItem( i18n( "Text &editor" ), TQT_TQOBJECT(this), TQT_SLOT( editText() ), CTRL + SHIFT + Key_E, 4 );
+	viewerMenu->insertItem( i18n( "Text &editor" ), this, TQT_SLOT( editText() ), CTRL + SHIFT + Key_E, 4 );
 	viewerMenu->insertSeparator();
-	viewerMenu->insertItem( i18n( "&Next tab" ), TQT_TQOBJECT(this), TQT_SLOT( nextTab() ), ALT+Key_Right );
-	viewerMenu->insertItem( i18n( "&Previous tab" ), TQT_TQOBJECT(this), TQT_SLOT( prevTab() ), ALT+Key_Left );
+	viewerMenu->insertItem( i18n( "&Next tab" ), this, TQT_SLOT( nextTab() ), ALT+Key_Right );
+	viewerMenu->insertItem( i18n( "&Previous tab" ), this, TQT_SLOT( prevTab() ), ALT+Key_Left );
 
-	detachActionIndex = viewerMenu->insertItem( i18n( "&Detach tab" ), TQT_TQOBJECT(this), TQT_SLOT( detachTab() ), CTRL + SHIFT + Key_D );
+	detachActionIndex = viewerMenu->insertItem( i18n( "&Detach tab" ), this, TQT_SLOT( detachTab() ), CTRL + SHIFT + Key_D );
 	//no point in detaching only one tab..
 	viewerMenu->setItemEnabled(detachActionIndex,false);	
 	viewerMenu->insertSeparator();
-	viewerMenu->insertItem( printAction->text(), TQT_TQOBJECT(this), TQT_SLOT( print() ), printAction->shortcut() );
-	viewerMenu->insertItem( copyAction->text(), TQT_TQOBJECT(this), TQT_SLOT( copy() ), copyAction->shortcut() );
+	viewerMenu->insertItem( printAction->text(), this, TQT_SLOT( print() ), printAction->shortcut() );
+	viewerMenu->insertItem( copyAction->text(), this, TQT_SLOT( copy() ), copyAction->shortcut() );
 	viewerMenu->insertSeparator();
-	tabCloseID = viewerMenu->insertItem( i18n( "&Close current tab" ), TQT_TQOBJECT(this), TQT_SLOT( tabCloseRequest() ), Key_Escape );
-	closeID = viewerMenu->insertItem( i18n( "&Quit" ), TQT_TQOBJECT(this), TQT_SLOT( close() ), CTRL + Key_Q );
+	tabCloseID = viewerMenu->insertItem( i18n( "&Close current tab" ), this, TQT_SLOT( tabCloseRequest() ), Key_Escape );
+	closeID = viewerMenu->insertItem( i18n( "&Quit" ), this, TQT_SLOT( close() ), CTRL + Key_Q );
 
 	//toolBar() ->insertLined("Edit:",1,"",this,"",true ,i18n("Enter an URL to edit and press enter"));
 	
@@ -111,7 +111,7 @@ KParts::MainWindow( parent, name ), manager( this, TQT_TQOBJECT(this) ), tabBar(
 KrViewer::~KrViewer() {
 
 	disconnect( &manager, TQT_SIGNAL( activePartChanged( KParts::Part* ) ),
-	            TQT_TQOBJECT(this), TQT_SLOT( createGUI( KParts::Part* ) ) );
+	            this, TQT_SLOT( createGUI( KParts::Part* ) ) );
 
 	viewers.remove( this );
 	delete printAction;
@@ -125,7 +125,7 @@ void KrViewer::createGUI( KParts::Part* part ) {
 	
 	// and show the new part widget
 	connect( part, TQT_SIGNAL( setStatusBarText( const TQString& ) ),
-	         TQT_TQOBJECT(this), TQT_SLOT( slotSetStatusBarText( const TQString& ) ) );
+	         this, TQT_SLOT( slotSetStatusBarText( const TQString& ) ) );
 
 	KParts::MainWindow::createGUI( part );
 	toolBar() ->insertLineSeparator(0);
@@ -179,9 +179,9 @@ bool KrViewer::eventFilter (  TQObject * /* watched */, TQEvent * e )
 				// don't activate the close functions immediately!
 				// it can cause crash
 				if( id == tabCloseID )
-					TQTimer::singleShot( 0, TQT_TQOBJECT(this), TQT_SLOT( tabCloseRequest() ) );
+					TQTimer::singleShot( 0, this, TQT_SLOT( tabCloseRequest() ) );
 				else if( id == closeID )
-					TQTimer::singleShot( 0, TQT_TQOBJECT(this), TQT_SLOT( close() ) );
+					TQTimer::singleShot( 0, this, TQT_SLOT( close() ) );
 				else {
 					int index = viewerMenu->indexOf( id );
 					viewerMenu->activateItemAt( index );
@@ -439,7 +439,7 @@ void KrViewer::editText(){
 }
 
 void KrViewer::checkModified(){
-	TQTimer::singleShot( 1000, TQT_TQOBJECT(this), TQT_SLOT(checkModified()) );
+	TQTimer::singleShot( 1000, this, TQT_SLOT(checkModified()) );
 
 	PanelViewerBase* pvb = static_cast<PanelViewerBase*>( tabBar.currentPage() );
 	if( !pvb ) return;
@@ -609,10 +609,10 @@ bool KrViewer::viewGeneric() {
 		if ( mimetype.contains( "html" ) ) {
 			TDEHTMLPart * p = new TDEHTMLPart( this, 0, 0, 0, TDEHTMLPart::BrowserViewGUI );
 			connect( p->browserExtension(), TQT_SIGNAL( openURLRequest( const KURL &, const KParts::URLArgs & ) ),
-			         TQT_TQOBJECT(this), TQT_SLOT( handleOpenURLRequest( const KURL &, const KParts::URLArgs & ) ) );
+			         this, TQT_SLOT( handleOpenURLRequest( const KURL &, const KParts::URLArgs & ) ) );
 			/* At JavaScript self.close() the TDEHTMLPart destroys itself.  */
 			/* After destruction, just close the window */
-			connect( p, TQT_SIGNAL( destroyed() ), TQT_TQOBJECT(this), TQT_SLOT( close() ) );
+			connect( p, TQT_SIGNAL( destroyed() ), this, TQT_SLOT( close() ) );
 
 			p-> openURL( url );
 			generic_part = p;
