@@ -872,7 +872,7 @@ void ListPanel::handleDropOnView( TQDropEvent *e, TQWidget *widget ) {
       dir = i->name();
    }
    TQWidget *notify = ( !e->source() ? 0 : e->source() );
-   tempFiles->vfs_addFiles( &URLs, mode, TQT_TQOBJECT(notify), dir );
+   tempFiles->vfs_addFiles( &URLs, mode, notify, dir );
 }
 
 void ListPanel::startDragging( TQStringList names, TQPixmap px ) {

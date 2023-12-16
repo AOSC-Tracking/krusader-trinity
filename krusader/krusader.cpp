@@ -213,7 +213,7 @@ Krusader::Krusader() : KParts::MainWindow(0,0,WType_TopLevel|WDestructiveClose|T
 
    // create the "krusader"
    App = this;
-   slot = new KRslots(TQT_TQOBJECT(this));
+   slot = new KRslots(this);
    setXMLFile( "krusaderui.rc" ); // kpart-related xml file
 
    plzWait = new KRPleaseWaitHandler();
@@ -245,7 +245,7 @@ Krusader::Krusader() : KParts::MainWindow(0,0,WType_TopLevel|WDestructiveClose|T
    // create bookman
    bookman = new KrBookmarkHandler();
 
-   popularUrls = new PopularUrls(TQT_TQOBJECT(this));
+   popularUrls = new PopularUrls(this);
 
    queueManager = new QueueManager();
 
@@ -370,7 +370,7 @@ Krusader::Krusader() : KParts::MainWindow(0,0,WType_TopLevel|WDestructiveClose|T
    sysTray->setPixmap( iconLoader->loadIcon( privIcon(), TDEIcon::Panel, 22 ) );
    sysTray->hide();
 
-   connect( sysTray, TQT_SIGNAL( quitSelected() ), TQT_TQOBJECT(this), TQT_SLOT( setDirectExit() ) );
+   connect( sysTray, TQT_SIGNAL( quitSelected() ), this, TQT_SLOT( setDirectExit() ) );
 
    setCentralWidget( mainView );
    config->setGroup( "Startup" );
@@ -511,7 +511,7 @@ void Krusader::hideEvent ( TQHideEvent *e ) {
 
    bool isModalTopWidget = false;
 
-   TQWidget *actWnd = TQT_TQWIDGET(tqApp->activeWindow());
+   TQWidget *actWnd = tqApp->activeWindow();
    if ( actWnd )
       isModalTopWidget = actWnd->isModal();
 
@@ -539,7 +539,7 @@ void Krusader::setupAccels() {
                    SHIFT + Key_F3, SLOTS, TQT_SLOT( viewDlg() ) );
    // Tab
    accels->insert( "Tab-Switch panel", i18n( "Tab: switch panel" ), TQString(),
-                   Key_Tab, TQT_TQOBJECT(mainView), TQT_SLOT( panelSwitch() ) );
+                   Key_Tab, mainView, TQT_SLOT( panelSwitch() ) );
 
 }
 
@@ -566,7 +566,7 @@ void Krusader::setupActions() {
    new TDEToggleAction( i18n("Show Actions Toolbar"), 0, SLOTS, TQT_SLOT( toggleActionsToolbar() ),
                       actionCollection(), "toggle actions toolbar" );
    actShowStatusBar = KStdAction::showStatusbar( SLOTS, TQT_SLOT( toggleStatusbar() ), actionCollection(), "std_statusbar" );
-   KStdAction::quit( TQT_TQOBJECT(this), TQT_SLOT( slotClose() ), actionCollection(), "std_quit" );
+   KStdAction::quit( this, TQT_SLOT( slotClose() ), actionCollection(), "std_quit" );
    KStdAction::configureToolbars( SLOTS, TQT_SLOT( configToolbar() ), actionCollection(), "std_config_toolbar" );
    KStdAction::keyBindings( SLOTS, TQT_SLOT( configKeys() ), actionCollection(), "std_config_keys" );
 
@@ -615,7 +615,7 @@ void Krusader::setupActions() {
    actFTPNewConnect = new TDEAction( i18n( "New Net &Connection..." ), "connect_creating", CTRL + Key_N,
                                    SLOTS, TQT_SLOT( newFTPconnection() ), actionCollection(), "ftp new connection" );
    actProfiles = new TDEAction( i18n( "Pro&files" ), "kr_profile", ALT + Key_L,
-                                   TQT_TQOBJECT(MAIN_VIEW), TQT_SLOT( profiles() ), actionCollection(), "profile" );
+                                   MAIN_VIEW, TQT_SLOT( profiles() ), actionCollection(), "profile" );
    actCalculate = new TDEAction( i18n( "Calculate &Occupied Space" ), "kcalc", 0,
                                SLOTS, TQT_SLOT( calcSpace() ), actionCollection(), "calculate" );
    actCreateChecksum = new TDEAction( i18n( "Create Checksum..." ), "application-octet-stream", 0,
@@ -721,7 +721,7 @@ void Krusader::setupActions() {
    actRoot = new TDEAction( i18n( "Root" ), "go-top", CTRL + Key_Backspace,
                           SLOTS, TQT_SLOT( root() ), actionCollection(), "root" );
    actSavePosition = new TDEAction( i18n( "Save &Position" ), 0,
-                                  TQT_TQOBJECT(krApp), TQT_SLOT( savePosition() ), actionCollection(), "save position" );
+                                  krApp, TQT_SLOT( savePosition() ), actionCollection(), "save position" );
    actAllFilter = new TDEAction( i18n( "&All Files" ), SHIFT + Key_F10,
                                SLOTS, TQT_SLOT( allFilter() ), actionCollection(), "all files" );
    //actExecFilter = new TDEAction( i18n( "&Executables" ), SHIFT + Key_F11,
@@ -760,7 +760,7 @@ void Krusader::setupActions() {
                 SLOTS, TQT_SLOT( newSymlink() ), actionCollection(), "new symlink");
    new TDEToggleAction( i18n( "Toggle Popup Panel" ), ALT + Key_Down, SLOTS,
                             TQT_SLOT( togglePopupPanel() ), actionCollection(), "toggle popup panel" );
-   actVerticalMode = new TDEToggleAction( i18n( "Vertical Mode" ), "view_top_bottom", ALT + CTRL + Key_R, TQT_TQOBJECT(MAIN_VIEW),
+   actVerticalMode = new TDEToggleAction( i18n( "Vertical Mode" ), "view_top_bottom", ALT + CTRL + Key_R, MAIN_VIEW,
                                         TQT_SLOT( toggleVerticalMode() ), actionCollection(), "toggle vertical mode" );
    actNewTab = new TDEAction( i18n( "New Tab" ), "tab_new", ALT + CTRL + Key_N, SLOTS,
                             TQT_SLOT( newTab() ), actionCollection(), "new tab" );
@@ -798,7 +798,7 @@ void Krusader::setupActions() {
    actF9 = new TDEAction( i18n( "Rename" ), Key_F9,
                         SLOTS, TQT_SLOT( rename() ) , actionCollection(), "F9_Rename" );
    actF10 = new TDEAction( i18n( "Quit" ), Key_F10,
-                         TQT_TQOBJECT(this), TQT_SLOT( slotClose() ) , actionCollection(), "F10_Quit" );
+                         this, TQT_SLOT( slotClose() ) , actionCollection(), "F10_Quit" );
    actPopularUrls = new TDEAction( i18n("Popular URLs..."), CTRL+Key_Z,
                                  popularUrls, TQT_SLOT( showDialog() ), actionCollection(), "Popular_Urls");
    actLocationBar = new TDEAction( i18n("Go to Location Bar"), CTRL+Key_L,
@@ -808,7 +808,7 @@ void Krusader::setupActions() {
    actSetJumpBack = new TDEAction( i18n("Set Jump Back Point"), "kr_setjumpback", CTRL+SHIFT+Key_J,
                                  SLOTS, TQT_SLOT( slotSetJumpBack() ), actionCollection(), "set_jump_back");
    actSwitchFullScreenTE = new TDEAction( i18n( "Toggle Fullwidget Terminal Emulator" ), 0, CTRL + Key_F,
-                                        TQT_TQOBJECT(MAIN_VIEW), TQT_SLOT( switchFullScreenTE() ), actionCollection(), "switch_fullscreen_te" );
+                                        MAIN_VIEW, TQT_SLOT( switchFullScreenTE() ), actionCollection(), "switch_fullscreen_te" );
 
    // and at last we can set the tool-tips
    actSelect->setToolTip( i18n( "Select files using a filter" ) );
@@ -979,7 +979,7 @@ bool Krusader::queryClose() {
 
       for(;;) {
         TQWidgetList * list = TQApplication::topLevelWidgets();
-        TQWidget *activeModal = TQT_TQWIDGET(TQApplication::activeModalWidget());
+        TQWidget *activeModal = TQApplication::activeModalWidget();
         TQWidget *w = list->first();
 
         if( activeModal && activeModal != this && activeModal != menuBar() && activeModal != sysTray && list->contains( activeModal ) && !activeModal->isHidden() )

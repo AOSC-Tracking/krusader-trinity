@@ -130,7 +130,7 @@ void PercentalSplitter::setRubberband ( int p ) {
     int scr = TQApplication::desktop()->screenNumber( this );
       
     if( label == 0 ) {
-      label = new TQLabel( TQT_TQWIDGET(TQApplication::desktop()->screen( scr )), "SplitterPercent", WStyle_StaysOnTop | 
+      label = new TQLabel( TQApplication::desktop()->screen( scr ), "SplitterPercent", WStyle_StaysOnTop | 
                           WStyle_Customize | WStyle_NoBorder | WStyle_Tool | WX11BypassWM );
       label->setMargin(1);
       label->setAutoMask( FALSE );

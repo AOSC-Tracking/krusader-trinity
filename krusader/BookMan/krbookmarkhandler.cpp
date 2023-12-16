@@ -435,7 +435,7 @@ bool KrBookmarkHandler::eventFilter( TQObject *obj, TQEvent *ev ) {
 			case TQt::RightButton:
 				_middleClick = false;
 				if( obj->inherits( "TQPopupMenu" ) ) {
-					int id = static_cast<TQPopupMenu*>(TQT_TQWIDGET(obj))->idAt( static_cast<TQMouseEvent*>(ev)->pos() );
+					int id = static_cast<TQPopupMenu*>(obj)->idAt( static_cast<TQMouseEvent*>(ev)->pos() );
 					
 					if( obj == _mainBookmarkPopup && _specialBookmarkIDs.contains( id ) ) {
 						rightClickOnSpecialBookmark();
@@ -446,7 +446,7 @@ bool KrBookmarkHandler::eventFilter( TQObject *obj, TQEvent *ev ) {
 						TQMap<int, KrBookmark*> * table = _bookmarkIDTable[ obj ];
 						if( table && table->count( id ) ) {
 							KrBookmark *bm = (*table)[ id ];
-							rightClicked( static_cast<TQPopupMenu*>(TQT_TQWIDGET(obj)), id, bm );
+							rightClicked( static_cast<TQPopupMenu*>(obj), id, bm );
 							return true;
 						}
 					}

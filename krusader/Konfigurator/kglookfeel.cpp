@@ -141,7 +141,7 @@ void KgLookFeel::setupPanelTab() {
      { i18n( "32" ),  "32" },
      { i18n( "48" ),  "48" }};
   KonfiguratorComboBox *iconCombo = createComboBox( "Look&Feel", "Filelist Icon Size", _FilelistIconSize, iconSizes, 4, hbox2, true, true, PAGE_PANEL );
-  iconCombo->lineEdit()->setValidator( new TQRegExpValidator( TQRegExp( "[1-9]\\d{0,1}" ), TQT_TQOBJECT(iconCombo) ) );
+  iconCombo->lineEdit()->setValidator( new TQRegExpValidator( TQRegExp( "[1-9]\\d{0,1}" ), iconCombo ) );
   createSpacer ( hbox2 );
   panelGrid->addWidget( hbox2, 1, 0 );
 

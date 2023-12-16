@@ -116,7 +116,7 @@ KParts::ReadOnlyPart* PanelViewer::getPart( TQString mimetype ) {
 		{
 			factory = KLibLoader::self() ->factory( ptr->library().latin1() );
 			if ( factory ) {
-				part = static_cast<KParts::ReadOnlyPart *>( factory->create( TQT_TQOBJECT(this),
+				part = static_cast<KParts::ReadOnlyPart *>( factory->create( this,
 				        ptr->name().latin1(), TQString( "KParts::ReadOnlyPart" ).latin1(), args ) );
 			}
 		}
@@ -137,7 +137,7 @@ KParts::ReadOnlyPart* PanelViewer::getHexPart(){
 	KLibFactory * factory = KLibLoader::self() ->factory( "libkhexedit2part" );
 	if ( factory ) {
 		// Create the part
-		part = ( KParts::ReadOnlyPart * ) factory->create( TQT_TQOBJECT(this), "hexedit2part","KParts::ReadOnlyPart" );
+		part = ( KParts::ReadOnlyPart * ) factory->create( this, "hexedit2part","KParts::ReadOnlyPart" );
 	}
 
 	return part;
@@ -279,7 +279,7 @@ KParts::ReadWritePart* PanelEditor::getPart( TQString mimetype ) {
 		{
 			factory = KLibLoader::self() ->factory( ptr->library().latin1() );
 			if ( factory ) {
-				part = static_cast<KParts::ReadWritePart *>( factory->create( TQT_TQOBJECT(this),
+				part = static_cast<KParts::ReadWritePart *>( factory->create( this,
 				        ptr->name().latin1(), TQString( "KParts::ReadWritePart" ).latin1(), args ) );
 			}
 		}

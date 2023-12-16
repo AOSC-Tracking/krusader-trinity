@@ -148,7 +148,7 @@ void ListPanelFunc::immediateOpenUrl( const KURL& urlIn ) {
 		KURL u = urlStack.pop();
 		//u.adjustPath(-1); // remove trailing "/"
 		u.cleanPath(); // Resolves "." and ".." components in path.
-		v = KrVfsHandler::getVfs( u, TQT_TQOBJECT(panel), files() );
+		v = KrVfsHandler::getVfs( u, panel, files() );
 		if ( !v )
 			continue; //this should not happen !
 		if ( v != vfsP ) {
@@ -1153,7 +1153,7 @@ ListPanelFunc::~ListPanelFunc() {
 
 vfs* ListPanelFunc::files() {
 	if ( !vfsP )
-		vfsP = KrVfsHandler::getVfs( "/", TQT_TQOBJECT(panel), 0 );
+		vfsP = KrVfsHandler::getVfs( "/", panel, 0 );
 	return vfsP;
 }
 

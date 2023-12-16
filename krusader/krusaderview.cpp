@@ -162,7 +162,7 @@ void KrusaderView::createTE() {
       TQWidget *focusW = tqApp->focusWidget();
       // Create the part
       konsole_part = ( KParts::ReadOnlyPart * )
-                          factory->create( TQT_TQOBJECT(terminal_dock), "konsolepart",
+                          factory->create( terminal_dock, "konsolepart",
                                            "KParts::ReadOnlyPart" );
       if( konsole_part ) { //loaded successfully
         connect( konsole_part, TQT_SIGNAL( destroyed() ),
