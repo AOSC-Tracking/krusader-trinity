@@ -124,8 +124,8 @@ KParts::ReadOnlyPart* PanelViewer::getPart( TQString mimetype ) {
 	if ( part ) {
 		KParts::BrowserExtension * ext = KParts::BrowserExtension::childObject( part );
 		if ( ext ) {
-			connect( ext, TQT_SIGNAL( openURLRequestDelayed( const KURL &, const KParts::URLArgs & ) ), this, TQT_SLOT( openURL( const KURL & ) ) );
-			connect( ext, TQT_SIGNAL( openURLRequestDelayed( const KURL &, const KParts::URLArgs & ) ), this, TQT_SIGNAL( openURLRequest( const KURL & ) ) );
+			connect( ext, TQ_SIGNAL( openURLRequestDelayed( const KURL &, const KParts::URLArgs & ) ), this, TQ_SLOT( openURL( const KURL & ) ) );
+			connect( ext, TQ_SIGNAL( openURLRequestDelayed( const KURL &, const KParts::URLArgs & ) ), this, TQ_SIGNAL( openURLRequest( const KURL & ) ) );
 		}
 	}
 	return part;
@@ -231,7 +231,7 @@ KParts::ReadOnlyPart* PanelEditor::openURL( const KURL &url, KrViewer::Mode mode
 
 	bool create = true;
 	TDEIO::StatJob* statJob = TDEIO::stat( url, false );
-	connect( statJob, TQT_SIGNAL( result( TDEIO::Job* ) ), this, TQT_SLOT( slotStatResult( TDEIO::Job* ) ) );
+	connect( statJob, TQ_SIGNAL( result( TDEIO::Job* ) ), this, TQ_SLOT( slotStatResult( TDEIO::Job* ) ) );
 	busy = true;
 	while ( busy ) tqApp->processEvents();
 	if( !entry.isEmpty() ) {
@@ -287,8 +287,8 @@ KParts::ReadWritePart* PanelEditor::getPart( TQString mimetype ) {
 	if ( part ) {
 		KParts::BrowserExtension * ext = KParts::BrowserExtension::childObject( part );
 		if ( ext ) {
-			connect( ext, TQT_SIGNAL( openURLRequestDelayed( const KURL &, const KParts::URLArgs & ) ), this, TQT_SLOT( openURL( const KURL & ) ) );
-			connect( ext, TQT_SIGNAL( openURLRequestDelayed( const KURL &, const KParts::URLArgs & ) ), this, TQT_SIGNAL( openURLRequest( const KURL & ) ) );
+			connect( ext, TQ_SIGNAL( openURLRequestDelayed( const KURL &, const KParts::URLArgs & ) ), this, TQ_SLOT( openURL( const KURL & ) ) );
+			connect( ext, TQ_SIGNAL( openURLRequestDelayed( const KURL &, const KParts::URLArgs & ) ), this, TQ_SIGNAL( openURLRequest( const KURL & ) ) );
 		}
 	}
 	return part;

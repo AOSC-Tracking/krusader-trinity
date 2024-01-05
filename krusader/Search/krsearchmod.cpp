@@ -56,10 +56,10 @@ KRSearchMod::KRSearchMod( const KRQuery* q )
 {
   stopSearch = false; /// ===> added
   query = new KRQuery( *q );
-  connect( query, TQT_SIGNAL( status( const TQString & ) ), 
-           this,  TQT_SIGNAL( searching(const TQString&) ) );
-  connect( query, TQT_SIGNAL( processEvents( bool & ) ), 
-           this,  TQT_SLOT  ( slotProcessEvents( bool & ) ) );
+  connect( query, TQ_SIGNAL( status( const TQString & ) ), 
+           this,  TQ_SIGNAL( searching(const TQString&) ) );
+  connect( query, TQ_SIGNAL( processEvents( bool & ) ), 
+           this,  TQ_SLOT  ( slotProcessEvents( bool & ) ) );
 
   remote_vfs = 0;
   virtual_vfs = 0;

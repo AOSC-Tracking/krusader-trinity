@@ -165,8 +165,8 @@ void KrusaderView::createTE() {
                           factory->create( terminal_dock, "konsolepart",
                                            "KParts::ReadOnlyPart" );
       if( konsole_part ) { //loaded successfully
-        connect( konsole_part, TQT_SIGNAL( destroyed() ),
-                 this, TQT_SLOT( killTerminalEmulator() ) );
+        connect( konsole_part, TQ_SIGNAL( destroyed() ),
+                 this, TQ_SLOT( killTerminalEmulator() ) );
         tqApp->installEventFilter( this );
       } else {
         tqApp->removeEventFilter( this );
@@ -241,7 +241,7 @@ void KrusaderView::slotTerminalEmulator( bool show ) {
 
     // BUGFIX: TE scrolling bug (see upper)
     //         show the Konsole part delayed
-    TQTimer::singleShot( 0, konsole_part->widget(), TQT_SLOT( show() ) );
+    TQTimer::singleShot( 0, konsole_part->widget(), TQ_SLOT( show() ) );
 
     if( konsole_part->widget() ) {
       konsole_part->widget()->setFocus();
@@ -370,8 +370,8 @@ void KrusaderView::profiles( TQString profileName )
 {
   ProfileManager profileManager( "Panel" );
   profileManager.hide();
-  connect( &profileManager, TQT_SIGNAL( saveToProfile( TQString ) ), this, TQT_SLOT( savePanelProfiles( TQString ) ) );
-  connect( &profileManager, TQT_SIGNAL( loadFromProfile( TQString ) ), this, TQT_SLOT( loadPanelProfiles( TQString ) ) );
+  connect( &profileManager, TQ_SIGNAL( saveToProfile( TQString ) ), this, TQ_SLOT( savePanelProfiles( TQString ) ) );
+  connect( &profileManager, TQ_SIGNAL( loadFromProfile( TQString ) ), this, TQ_SLOT( loadPanelProfiles( TQString ) ) );
   if( profileName.isEmpty() )
     profileManager.profilePopup();
   else

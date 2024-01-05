@@ -39,7 +39,7 @@ KRdirWatch::KRdirWatch(int msec,bool dirOnly):
   delay(msec),t(this), changed(false) {
   if(dirOnly) dir.setFilter( TQDir::Dirs | TQDir::Hidden | TQDir::NoSymLinks );
   watched.setAutoDelete(true);
-  connect(&t,TQT_SIGNAL(timeout()),this, TQT_SLOT(checkDirs()));
+  connect(&t,TQ_SIGNAL(timeout()),this, TQ_SLOT(checkDirs()));
   startScan();
 }
 

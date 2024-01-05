@@ -49,37 +49,37 @@ ActionProperty::ActionProperty( TQWidget *parent, const char *name, KrAction *ac
    // fill with all existing categories
    cbCategory->insertStringList( krUserAction->allCategories() );
 
-   connect( ButtonAddPlaceholder, TQT_SIGNAL( clicked() ), this, TQT_SLOT( addPlaceholder() ) );
-   connect( ButtonAddStartpath, TQT_SIGNAL( clicked() ), this, TQT_SLOT( addStartpath() ) );
-   connect( ButtonNewProtocol, TQT_SIGNAL( clicked() ), this, TQT_SLOT( newProtocol() ) );
-   connect( ButtonEditProtocol, TQT_SIGNAL( clicked() ), this, TQT_SLOT( editProtocol() ) );
-   connect( ButtonRemoveProtocol, TQT_SIGNAL( clicked() ), this, TQT_SLOT( removeProtocol() ) );
-   connect( ButtonAddPath, TQT_SIGNAL( clicked() ), this, TQT_SLOT( addPath() ) );
-   connect( ButtonEditPath, TQT_SIGNAL( clicked() ), this, TQT_SLOT( editPath() ) );
-   connect( ButtonRemovePath, TQT_SIGNAL( clicked() ), this, TQT_SLOT( removePath() ) );
-   connect( ButtonAddMime, TQT_SIGNAL( clicked() ), this, TQT_SLOT( addMime() ) );
-   connect( ButtonEditMime, TQT_SIGNAL( clicked() ), this, TQT_SLOT( editMime() ) );
-   connect( ButtonRemoveMime, TQT_SIGNAL( clicked() ), this, TQT_SLOT( removeMime() ) );
-   connect( ButtonNewFile, TQT_SIGNAL( clicked() ), this, TQT_SLOT( newFile() ) );
-   connect( ButtonEditFile, TQT_SIGNAL( clicked() ), this, TQT_SLOT( editFile() ) );
-   connect( ButtonRemoveFile, TQT_SIGNAL( clicked() ), this, TQT_SLOT( removeFile() ) );
-   connect( KeyButtonShortcut, TQT_SIGNAL( capturedShortcut(const TDEShortcut&) ), this, TQT_SLOT( changedShortcut(const TDEShortcut&) ) );
+   connect( ButtonAddPlaceholder, TQ_SIGNAL( clicked() ), this, TQ_SLOT( addPlaceholder() ) );
+   connect( ButtonAddStartpath, TQ_SIGNAL( clicked() ), this, TQ_SLOT( addStartpath() ) );
+   connect( ButtonNewProtocol, TQ_SIGNAL( clicked() ), this, TQ_SLOT( newProtocol() ) );
+   connect( ButtonEditProtocol, TQ_SIGNAL( clicked() ), this, TQ_SLOT( editProtocol() ) );
+   connect( ButtonRemoveProtocol, TQ_SIGNAL( clicked() ), this, TQ_SLOT( removeProtocol() ) );
+   connect( ButtonAddPath, TQ_SIGNAL( clicked() ), this, TQ_SLOT( addPath() ) );
+   connect( ButtonEditPath, TQ_SIGNAL( clicked() ), this, TQ_SLOT( editPath() ) );
+   connect( ButtonRemovePath, TQ_SIGNAL( clicked() ), this, TQ_SLOT( removePath() ) );
+   connect( ButtonAddMime, TQ_SIGNAL( clicked() ), this, TQ_SLOT( addMime() ) );
+   connect( ButtonEditMime, TQ_SIGNAL( clicked() ), this, TQ_SLOT( editMime() ) );
+   connect( ButtonRemoveMime, TQ_SIGNAL( clicked() ), this, TQ_SLOT( removeMime() ) );
+   connect( ButtonNewFile, TQ_SIGNAL( clicked() ), this, TQ_SLOT( newFile() ) );
+   connect( ButtonEditFile, TQ_SIGNAL( clicked() ), this, TQ_SLOT( editFile() ) );
+   connect( ButtonRemoveFile, TQ_SIGNAL( clicked() ), this, TQ_SLOT( removeFile() ) );
+   connect( KeyButtonShortcut, TQ_SIGNAL( capturedShortcut(const TDEShortcut&) ), this, TQ_SLOT( changedShortcut(const TDEShortcut&) ) );
    // track modifications:
-   connect( leDistinctName, TQT_SIGNAL( textChanged(const TQString&) ), TQT_SLOT( setModified() ) );
-   connect( leTitle, TQT_SIGNAL( textChanged(const TQString&) ), TQT_SLOT( setModified() ) );
-   connect( ButtonIcon, TQT_SIGNAL( iconChanged(TQString) ), TQT_SLOT( setModified() ) );
-   connect( cbCategory, TQT_SIGNAL( textChanged(const TQString&) ), TQT_SLOT( setModified() ) );
-   connect( leTooltip, TQT_SIGNAL( textChanged(const TQString&) ), TQT_SLOT( setModified() ) );
-   connect( textDescription, TQT_SIGNAL( textChanged() ), TQT_SLOT( setModified() ) );
-   connect( leDistinctName, TQT_SIGNAL( textChanged(const TQString&) ), TQT_SLOT( setModified() ) );
-   connect( leCommandline, TQT_SIGNAL( textChanged(const TQString&) ), TQT_SLOT( setModified() ) );
-   connect( leStartpath, TQT_SIGNAL( textChanged(const TQString&) ), TQT_SLOT( setModified() ) );
-   connect( bgExecType, TQT_SIGNAL( clicked(int) ), TQT_SLOT( setModified() ) );
-   connect( bgAccept, TQT_SIGNAL( clicked(int) ), TQT_SLOT( setModified() ) );
-   connect( KeyButtonShortcut, TQT_SIGNAL( capturedShortcut(const TDEShortcut&) ), TQT_SLOT( setModified() ) );
-   connect( leDifferentUser, TQT_SIGNAL( textChanged(const TQString&) ), TQT_SLOT( setModified() ) );
-   connect( chkDifferentUser, TQT_SIGNAL( clicked() ), TQT_SLOT( setModified() ) );
-   connect( chkConfirmExecution, TQT_SIGNAL( clicked() ), TQT_SLOT( setModified() ) );
+   connect( leDistinctName, TQ_SIGNAL( textChanged(const TQString&) ), TQ_SLOT( setModified() ) );
+   connect( leTitle, TQ_SIGNAL( textChanged(const TQString&) ), TQ_SLOT( setModified() ) );
+   connect( ButtonIcon, TQ_SIGNAL( iconChanged(TQString) ), TQ_SLOT( setModified() ) );
+   connect( cbCategory, TQ_SIGNAL( textChanged(const TQString&) ), TQ_SLOT( setModified() ) );
+   connect( leTooltip, TQ_SIGNAL( textChanged(const TQString&) ), TQ_SLOT( setModified() ) );
+   connect( textDescription, TQ_SIGNAL( textChanged() ), TQ_SLOT( setModified() ) );
+   connect( leDistinctName, TQ_SIGNAL( textChanged(const TQString&) ), TQ_SLOT( setModified() ) );
+   connect( leCommandline, TQ_SIGNAL( textChanged(const TQString&) ), TQ_SLOT( setModified() ) );
+   connect( leStartpath, TQ_SIGNAL( textChanged(const TQString&) ), TQ_SLOT( setModified() ) );
+   connect( bgExecType, TQ_SIGNAL( clicked(int) ), TQ_SLOT( setModified() ) );
+   connect( bgAccept, TQ_SIGNAL( clicked(int) ), TQ_SLOT( setModified() ) );
+   connect( KeyButtonShortcut, TQ_SIGNAL( capturedShortcut(const TDEShortcut&) ), TQ_SLOT( setModified() ) );
+   connect( leDifferentUser, TQ_SIGNAL( textChanged(const TQString&) ), TQ_SLOT( setModified() ) );
+   connect( chkDifferentUser, TQ_SIGNAL( clicked() ), TQ_SLOT( setModified() ) );
+   connect( chkConfirmExecution, TQ_SIGNAL( clicked() ), TQ_SLOT( setModified() ) );
    // The modified-state of the ShowOnly-lists is tracked in the access-functions below
 }
 

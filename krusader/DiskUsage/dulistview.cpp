@@ -86,15 +86,15 @@ DUListView::DUListView( DiskUsage *usage, const char *name )
   
   setSorting( 2 );
 
-  connect( diskUsage, TQT_SIGNAL( enteringDirectory( Directory * ) ), this, TQT_SLOT( slotDirChanged( Directory * ) ) );
-  connect( diskUsage, TQT_SIGNAL( clearing() ), this, TQT_SLOT( clear() ) );
-  connect( diskUsage, TQT_SIGNAL( changed( File * ) ), this, TQT_SLOT( slotChanged( File * ) ) );
-  connect( diskUsage, TQT_SIGNAL( deleted( File * ) ), this, TQT_SLOT( slotDeleted( File * ) ) );
+  connect( diskUsage, TQ_SIGNAL( enteringDirectory( Directory * ) ), this, TQ_SLOT( slotDirChanged( Directory * ) ) );
+  connect( diskUsage, TQ_SIGNAL( clearing() ), this, TQ_SLOT( clear() ) );
+  connect( diskUsage, TQ_SIGNAL( changed( File * ) ), this, TQ_SLOT( slotChanged( File * ) ) );
+  connect( diskUsage, TQ_SIGNAL( deleted( File * ) ), this, TQ_SLOT( slotDeleted( File * ) ) );
 
-  connect( this, TQT_SIGNAL(rightButtonPressed(TQListViewItem *, const TQPoint &, int)),
-           this, TQT_SLOT( slotRightClicked(TQListViewItem *) ) );
-  connect( this, TQT_SIGNAL( expanded ( TQListViewItem * ) ), 
-           this, TQT_SLOT( slotExpanded( TQListViewItem * ) ) ); 
+  connect( this, TQ_SIGNAL(rightButtonPressed(TQListViewItem *, const TQPoint &, int)),
+           this, TQ_SLOT( slotRightClicked(TQListViewItem *) ) );
+  connect( this, TQ_SIGNAL( expanded ( TQListViewItem * ) ), 
+           this, TQ_SLOT( slotExpanded( TQListViewItem * ) ) ); 
 }
 
 DUListView::~ DUListView()

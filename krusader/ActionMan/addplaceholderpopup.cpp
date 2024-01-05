@@ -173,7 +173,7 @@ ParameterDialog::ParameterDialog( const exp_placeholder* currentPlaceholder, TQW
    line->setFrameShape( TQFrame::HLine );
    line->setFrameShadow( TQFrame::Sunken );
 
-   connect( this, TQT_SIGNAL(defaultClicked()), this, TQT_SLOT(reset()) );
+   connect( this, TQ_SIGNAL(defaultClicked()), this, TQ_SLOT(reset()) );
 }
 
 TQString ParameterDialog::getParameter() {
@@ -257,7 +257,7 @@ ParameterPlaceholder::ParameterPlaceholder( const exp_parameter& parameter, TQWi
    _lineEdit = new KLineEdit( hbox );
    _button = new TQToolButton( hbox);
    _button->setText( i18n("add") );
-   connect( _button, TQT_SIGNAL(clicked()), this, TQT_SLOT(addPlaceholder()) );
+   connect( _button, TQ_SIGNAL(clicked()), this, TQ_SLOT(addPlaceholder()) );
 }
 
 TQString ParameterPlaceholder::text() {
@@ -347,7 +347,7 @@ ParameterFile::ParameterFile( const exp_parameter& parameter, TQWidget* parent )
    _button = new TQToolButton( hbox);
    TDEIconLoader *iconLoader = new TDEIconLoader();
   _button->setPixmap( iconLoader->loadIcon( "document-open", TDEIcon::Toolbar, 16 ) );
-   connect( _button, TQT_SIGNAL(clicked()), this, TQT_SLOT(addFile()) );
+   connect( _button, TQ_SIGNAL(clicked()), this, TQ_SLOT(addFile()) );
 }
 
 TQString ParameterFile::text() {
@@ -440,10 +440,10 @@ ParameterGoto::ParameterGoto( const exp_parameter& parameter, TQWidget* parent )
    _dirButton = new TQToolButton( hbox );
    TDEIconLoader *iconLoader = new TDEIconLoader();
   _dirButton->setPixmap( iconLoader->loadIcon( "document-open", TDEIcon::Toolbar, 16 ) );
-   connect( _dirButton, TQT_SIGNAL(clicked()), this, TQT_SLOT(setDir()) );
+   connect( _dirButton, TQ_SIGNAL(clicked()), this, TQ_SLOT(setDir()) );
    _placeholderButton = new TQToolButton( hbox);
    _placeholderButton->setText( i18n("add") );
-   connect( _placeholderButton, TQT_SIGNAL(clicked()), this, TQT_SLOT(addPlaceholder()) );
+   connect( _placeholderButton, TQ_SIGNAL(clicked()), this, TQ_SLOT(addPlaceholder()) );
 }
 
 TQString ParameterGoto::text() {

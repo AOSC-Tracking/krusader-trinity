@@ -323,11 +323,11 @@ bool KRarcHandler::unpack( TQString archive, TQString type, TQString password, T
   // tell the user to wait
   krApp->startWaiting( i18n( "Unpacking File(s)" ), count, true );
   if ( count != 0 ) {
-    connect( &proc, TQT_SIGNAL( receivedStdout( TDEProcess*, char*, int ) ),
-             krApp, TQT_SLOT( incProgress( TDEProcess*, char*, int ) ) );
+    connect( &proc, TQ_SIGNAL( receivedStdout( TDEProcess*, char*, int ) ),
+             krApp, TQ_SLOT( incProgress( TDEProcess*, char*, int ) ) );
     if( type == "-rpm" )
-      connect( &proc, TQT_SIGNAL( receivedStderr( TDEProcess*, char*, int ) ),
-               krApp, TQT_SLOT( incProgress( TDEProcess*, char*, int ) ) );
+      connect( &proc, TQ_SIGNAL( receivedStderr( TDEProcess*, char*, int ) ),
+               krApp, TQ_SLOT( incProgress( TDEProcess*, char*, int ) ) );
   }
 
   // start the unpacking process
@@ -395,8 +395,8 @@ bool KRarcHandler::test( TQString archive, TQString type, TQString password, lon
 
   // tell the user to wait
   krApp->startWaiting( i18n( "Testing Archive" ), count, true );
-  if ( count != 0 ) connect( &proc, TQT_SIGNAL( receivedStdout( TDEProcess*, char*, int ) ),
-                               krApp, TQT_SLOT( incProgress( TDEProcess*, char*, int ) ) );
+  if ( count != 0 ) connect( &proc, TQ_SIGNAL( receivedStdout( TDEProcess*, char*, int ) ),
+                               krApp, TQ_SLOT( incProgress( TDEProcess*, char*, int ) ) );
 
   // start the unpacking process
   proc.start( TDEProcess::NotifyOnExit, TDEProcess::AllOutput );
@@ -508,8 +508,8 @@ bool KRarcHandler::pack( TQStringList fileNames, TQString type, TQString dest, l
   // tell the user to wait
   krApp->startWaiting( i18n( "Packing File(s)" ), count, true );
   if ( count != 0 )
-    connect( &proc, TQT_SIGNAL( receivedStdout( TDEProcess*, char*, int ) ),
-             krApp, TQT_SLOT( incProgress( TDEProcess*, char*, int ) ) );
+    connect( &proc, TQ_SIGNAL( receivedStdout( TDEProcess*, char*, int ) ),
+             krApp, TQ_SLOT( incProgress( TDEProcess*, char*, int ) ) );
 
   // start the packing process
   proc.start( TDEProcess::NotifyOnExit, TDEProcess::AllOutput );

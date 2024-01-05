@@ -365,8 +365,8 @@ ActionPropertyBase::ActionPropertyBase( TQWidget* parent, const char* name, WFla
     clearWState( WState_Polished );
 
     // signals and slots connections
-    connect( radioCollectOutput, TQT_SIGNAL( toggled(bool) ), chkSeparateStdError, TQT_SLOT( setEnabled(bool) ) );
-    connect( chkDifferentUser, TQT_SIGNAL( toggled(bool) ), leDifferentUser, TQT_SLOT( setEnabled(bool) ) );
+    connect( radioCollectOutput, TQ_SIGNAL( toggled(bool) ), chkSeparateStdError, TQ_SLOT( setEnabled(bool) ) );
+    connect( chkDifferentUser, TQ_SIGNAL( toggled(bool) ), leDifferentUser, TQ_SLOT( setEnabled(bool) ) );
 }
 
 /*

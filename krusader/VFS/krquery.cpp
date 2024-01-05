@@ -113,14 +113,14 @@ KRQuery& KRQuery::operator=(const KRQuery &old) {
 
 void KRQuery::connectNotify ( const char * signal ) {
   TQString signalString  = TQString( signal ).replace( " ", "" );
-  TQString processString = TQString( TQT_SIGNAL( processEvents( bool & ) ) ).replace( " ", "" );
+  TQString processString = TQString( TQ_SIGNAL( processEvents( bool & ) ) ).replace( " ", "" );
   if( signalString == processString )
     processEventsConnected++;
 }
 
 void KRQuery::disconnectNotify ( const char * signal ) {
   TQString signalString  = TQString( signal ).replace( " ", "" );
-  TQString processString = TQString( TQT_SIGNAL( processEvents( bool & ) ) ).replace( " ", "" );
+  TQString processString = TQString( TQ_SIGNAL( processEvents( bool & ) ) ).replace( " ", "" );
   if( signalString == processString )
     processEventsConnected--;
 }
@@ -410,10 +410,10 @@ bool KRQuery::containsContent( TQString file ) const
 bool KRQuery::containsContent( KURL url ) const
 {
   TDEIO::TransferJob *contentReader = TDEIO::get( url, false, false );
-  connect(contentReader, TQT_SIGNAL(data(TDEIO::Job *, const TQByteArray &)),
-          this, TQT_SLOT(containsContentData(TDEIO::Job *, const TQByteArray &)));
-  connect(contentReader, TQT_SIGNAL( result( TDEIO::Job* ) ),
-          this, TQT_SLOT(containsContentFinished( TDEIO::Job* ) ) );
+  connect(contentReader, TQ_SIGNAL(data(TDEIO::Job *, const TQByteArray &)),
+          this, TQ_SLOT(containsContentData(TDEIO::Job *, const TQByteArray &)));
+  connect(contentReader, TQ_SIGNAL( result( TDEIO::Job* ) ),
+          this, TQ_SLOT(containsContentFinished( TDEIO::Job* ) ) );
 
   busy = true;
   containsContentResult = false;

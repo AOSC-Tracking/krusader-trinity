@@ -159,7 +159,7 @@ LoaderWidget::LoaderWidget( TQWidget *parent, const char *name ) : TQScrollView(
 
   addChild( widget );
 
-  connect( cancelButton, TQT_SIGNAL( clicked() ), this, TQT_SLOT( slotCancelled() ) );
+  connect( cancelButton, TQ_SIGNAL( clicked() ), this, TQ_SLOT( slotCancelled() ) );
 }
 
 void LoaderWidget::resizeEvent ( TQResizeEvent *e )
@@ -215,7 +215,7 @@ DiskUsage::DiskUsage( TQString confGroup, TQWidget *parent, char *name ) : TQWid
   Filelight::Config::read();
   propertyMap.setAutoDelete( true );
 
-  connect( &loadingTimer, TQT_SIGNAL( timeout() ), this, TQT_SLOT( slotLoadDirectory() ) );
+  connect( &loadingTimer, TQ_SIGNAL( timeout() ), this, TQ_SLOT( slotLoadDirectory() ) );
 }
 
 DiskUsage::~DiskUsage()
@@ -646,7 +646,7 @@ int DiskUsage::del( File *file, bool calcPercents, int depth )
 #else
     job = new TDEIO::CopyJob( url,TDEGlobalSettings::trashPath(),TDEIO::CopyJob::Move,false,true );
 #endif
-    connect(job,TQT_SIGNAL(result(TDEIO::Job*)),krApp,TQT_SLOT(changeTrashIcon()));
+    connect(job,TQ_SIGNAL(result(TDEIO::Job*)),krApp,TQ_SLOT(changeTrashIcon()));
   }
   else
   {

@@ -87,10 +87,10 @@ void Combiner::combine()
     
     combineReadJob = TDEIO::get( splURL, false, false );
 
-    connect(combineReadJob, TQT_SIGNAL(data(TDEIO::Job *, const TQByteArray &)),
-            this, TQT_SLOT(combineSplitFileDataReceived(TDEIO::Job *, const TQByteArray &)));
-    connect(combineReadJob, TQT_SIGNAL(result(TDEIO::Job*)),
-            this, TQT_SLOT(combineSplitFileFinished(TDEIO::Job *)));
+    connect(combineReadJob, TQ_SIGNAL(data(TDEIO::Job *, const TQByteArray &)),
+            this, TQ_SLOT(combineSplitFileDataReceived(TDEIO::Job *, const TQByteArray &)));
+    connect(combineReadJob, TQ_SIGNAL(result(TDEIO::Job*)),
+            this, TQ_SLOT(combineSplitFileFinished(TDEIO::Job *)));
   }
 
   exec();
@@ -197,13 +197,13 @@ void Combiner::openNextFile()
       /* creating a write job */
   combineReadJob = TDEIO::get( readURL, false, false );
 
-  connect(combineReadJob, TQT_SIGNAL(data(TDEIO::Job *, const TQByteArray &)),
-          this, TQT_SLOT(combineDataReceived(TDEIO::Job *, const TQByteArray &)));
-  connect(combineReadJob, TQT_SIGNAL(result(TDEIO::Job*)),
-          this, TQT_SLOT(combineReceiveFinished(TDEIO::Job *)));
+  connect(combineReadJob, TQ_SIGNAL(data(TDEIO::Job *, const TQByteArray &)),
+          this, TQ_SLOT(combineDataReceived(TDEIO::Job *, const TQByteArray &)));
+  connect(combineReadJob, TQ_SIGNAL(result(TDEIO::Job*)),
+          this, TQ_SLOT(combineReceiveFinished(TDEIO::Job *)));
   if( hasValidSplitFile )
-    connect(combineReadJob, TQT_SIGNAL(percent (TDEIO::Job *, unsigned long)),
-                            this, TQT_SLOT(combineWritePercent(TDEIO::Job *, unsigned long)));
+    connect(combineReadJob, TQ_SIGNAL(percent (TDEIO::Job *, unsigned long)),
+                            this, TQ_SLOT(combineWritePercent(TDEIO::Job *, unsigned long)));
   
 }
 
@@ -228,10 +228,10 @@ void Combiner::combineDataReceived(TDEIO::Job *, const TQByteArray &byteArray)
     
     combineWriteJob = TDEIO::put( writeURL, permissions, true, false, false );    
 
-    connect(combineWriteJob, TQT_SIGNAL(dataReq(TDEIO::Job *, TQByteArray &)),
-                             this, TQT_SLOT(combineDataSend(TDEIO::Job *, TQByteArray &)));
-    connect(combineWriteJob, TQT_SIGNAL(result(TDEIO::Job*)),
-                             this, TQT_SLOT(combineSendFinished(TDEIO::Job *)));
+    connect(combineWriteJob, TQ_SIGNAL(dataReq(TDEIO::Job *, TQByteArray &)),
+                             this, TQ_SLOT(combineDataSend(TDEIO::Job *, TQByteArray &)));
+    connect(combineWriteJob, TQ_SIGNAL(result(TDEIO::Job*)),
+                             this, TQ_SLOT(combineSendFinished(TDEIO::Job *)));
   }  
 
   if( combineWriteJob )

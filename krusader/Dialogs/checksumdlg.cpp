@@ -541,7 +541,7 @@ ChecksumResultsDlg::ChecksumResultsDlg(const TQStringList& stdOut, const TQStrin
 		hlayout2->addWidget(checksumFile, TQt::AlignLeft);
 		layout->addMultiCellLayout(hlayout2, row, row,0,1, TQt::AlignLeft);
 		++row;
-		connect(saveFileCb, TQT_SIGNAL(toggled(bool)), checksumFile, TQT_SLOT(setEnabled(bool)));
+		connect(saveFileCb, TQ_SIGNAL(toggled(bool)), checksumFile, TQ_SLOT(setEnabled(bool)));
 		checksumFile->setFocus();
 	}
 	
@@ -550,9 +550,9 @@ ChecksumResultsDlg::ChecksumResultsDlg(const TQStringList& stdOut, const TQStrin
 		onePerFile = new TQCheckBox(i18n("Checksum file for each source file"), plainPage());
 		onePerFile->setChecked(false);
 		// clicking this, disables the 'save as' part
-		connect(onePerFile, TQT_SIGNAL(toggled(bool)), saveFileCb, TQT_SLOT(toggle()));
-		connect(onePerFile, TQT_SIGNAL(toggled(bool)), saveFileCb, TQT_SLOT(setDisabled(bool)));
-		connect(onePerFile, TQT_SIGNAL(toggled(bool)), checksumFile, TQT_SLOT(setDisabled(bool)));
+		connect(onePerFile, TQ_SIGNAL(toggled(bool)), saveFileCb, TQ_SLOT(toggle()));
+		connect(onePerFile, TQ_SIGNAL(toggled(bool)), saveFileCb, TQ_SLOT(setDisabled(bool)));
+		connect(onePerFile, TQ_SIGNAL(toggled(bool)), checksumFile, TQ_SLOT(setDisabled(bool)));
 		layout->addMultiCellWidget(onePerFile, row, row,0,1, TQt::AlignLeft);
 		++row;
 	}

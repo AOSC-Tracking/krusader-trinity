@@ -86,9 +86,9 @@ KCMDLine::KCMDLine( TQWidget *parent, const char *name ) : TQWidget( parent, nam
   TQStringList list = krConfig->readListEntry( "cmdline history" );
   cmdLine->setHistoryItems( list );
 
-  connect( cmdLine, TQT_SIGNAL( returnPressed(const TQString &) ), this, TQT_SLOT( slotRun() ) );
-  connect( cmdLine, TQT_SIGNAL( returnPressed(const TQString &) ), cmdLine, TQT_SLOT( clearEdit() ) );
-  connect( cmdLine, TQT_SIGNAL( returnToPanel() ), this, TQT_SLOT( slotReturnFocus() ));
+  connect( cmdLine, TQ_SIGNAL( returnPressed(const TQString &) ), this, TQ_SLOT( slotRun() ) );
+  connect( cmdLine, TQ_SIGNAL( returnPressed(const TQString &) ), cmdLine, TQ_SLOT( clearEdit() ) );
+  connect( cmdLine, TQ_SIGNAL( returnToPanel() ), this, TQ_SLOT( slotReturnFocus() ));
 
   TQWhatsThis::add
     ( cmdLine, i18n( "<qt><p>Well, it's actually quite simple: You type your command here and Krusader obeys.</p><p><b>Tip</b>: Move within command line history with &lt;Up&gt; and &lt;Down&gt; arrows.</p></qt>" ) );
@@ -98,7 +98,7 @@ KCMDLine::KCMDLine( TQWidget *parent, const char *name ) : TQWidget( parent, nam
   buttonAddPlaceholder->setFixedSize(22,20);
   buttonAddPlaceholder->adjustSize();
   buttonAddPlaceholder->setPixmap( SmallIcon( "add" ) );
-  connect( buttonAddPlaceholder, TQT_SIGNAL( clicked() ), this, TQT_SLOT( addPlaceholder() ) );
+  connect( buttonAddPlaceholder, TQ_SIGNAL( clicked() ), this, TQ_SLOT( addPlaceholder() ) );
   TQWhatsThis::add( buttonAddPlaceholder, i18n( "Add <b>Placeholders</b> for the selected files in the panel." ) );
 
   layout->addWidget( buttonAddPlaceholder, 0, 2 );

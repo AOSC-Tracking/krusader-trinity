@@ -83,8 +83,8 @@ PackGUIBase::PackGUIBase( TQWidget* parent,  const char* name, bool modal, WFlag
 
     typeData = new TQComboBox( FALSE, this, "typeData" );
     typeData->setSizePolicy( TQSizePolicy( (TQSizePolicy::SizeType)1, (TQSizePolicy::SizeType)0 ) );
-    connect( typeData, TQT_SIGNAL( activated( const TQString & ) ), this,  TQT_SLOT( checkConsistency() ) );
-    connect( typeData, TQT_SIGNAL( highlighted( const TQString & ) ), this,  TQT_SLOT( checkConsistency() ) );
+    connect( typeData, TQ_SIGNAL( activated( const TQString & ) ), this,  TQ_SLOT( checkConsistency() ) );
+    connect( typeData, TQ_SIGNAL( highlighted( const TQString & ) ), this,  TQ_SLOT( checkConsistency() ) );
     hbox->addWidget( typeData );
 
     grid->addLayout( hbox, 1, 0 );
@@ -145,7 +145,7 @@ PackGUIBase::PackGUIBase( TQWidget* parent,  const char* name, bool modal, WFlag
     compressLayout->setMargin( 0 );
 
     multipleVolume = new TQCheckBox( i18n( "Multiple volume archive" ), advancedWidget, "multipleVolume" );
-    connect( multipleVolume, TQT_SIGNAL( toggled( bool ) ), this, TQT_SLOT( checkConsistency() ) );
+    connect( multipleVolume, TQ_SIGNAL( toggled( bool ) ), this, TQ_SLOT( checkConsistency() ) );
     compressLayout->addWidget( multipleVolume, 0, 0 );
 
     TQHBoxLayout * volumeHbox = new TQHBoxLayout;
@@ -172,7 +172,7 @@ PackGUIBase::PackGUIBase( TQWidget* parent,  const char* name, bool modal, WFlag
     compressLayout->addLayout ( volumeHbox );
 
     setCompressionLevel = new TQCheckBox( i18n( "Set compression level" ), advancedWidget, "multipleVolume" );
-    connect( setCompressionLevel, TQT_SIGNAL( toggled( bool ) ), this, TQT_SLOT( checkConsistency() ) );
+    connect( setCompressionLevel, TQ_SIGNAL( toggled( bool ) ), this, TQ_SLOT( checkConsistency() ) );
     compressLayout->addWidget( setCompressionLevel, 0, 0 );
 
     TQHBoxLayout * sliderHbox = new TQHBoxLayout;
@@ -213,7 +213,7 @@ PackGUIBase::PackGUIBase( TQWidget* parent,  const char* name, bool modal, WFlag
 
     password = new TQLineEdit( advancedWidget, "password" );
     password->setEchoMode( TQLineEdit::Password );
-    connect( password, TQT_SIGNAL( textChanged ( const TQString & ) ), this, TQT_SLOT( checkConsistency() ) );
+    connect( password, TQ_SIGNAL( textChanged ( const TQString & ) ), this, TQ_SLOT( checkConsistency() ) );
 
     passwordGrid->addWidget( password, 0, 1 );
 
@@ -223,7 +223,7 @@ PackGUIBase::PackGUIBase( TQWidget* parent,  const char* name, bool modal, WFlag
 
     passwordAgain = new TQLineEdit( advancedWidget, "password" );
     passwordAgain->setEchoMode( TQLineEdit::Password );
-    connect( passwordAgain, TQT_SIGNAL( textChanged ( const TQString & ) ), this, TQT_SLOT( checkConsistency() ) );
+    connect( passwordAgain, TQ_SIGNAL( textChanged ( const TQString & ) ), this, TQ_SLOT( checkConsistency() ) );
 
     passwordGrid->addWidget( passwordAgain, 1, 1 );
 
@@ -292,10 +292,10 @@ PackGUIBase::PackGUIBase( TQWidget* parent,  const char* name, bool modal, WFlag
     grid->addLayout( hbox_6, 6, 0 );
 
     // signals and slots connections
-    connect( okButton, TQT_SIGNAL( clicked() ), this, TQT_SLOT( accept() ) );
-    connect( advancedButton, TQT_SIGNAL( clicked() ), this, TQT_SLOT( expand() ) );
-    connect( cancelButton, TQT_SIGNAL( clicked() ), this, TQT_SLOT( reject() ) );
-    connect( browseButton, TQT_SIGNAL( clicked() ), this, TQT_SLOT( browse() ) );
+    connect( okButton, TQ_SIGNAL( clicked() ), this, TQ_SLOT( accept() ) );
+    connect( advancedButton, TQ_SIGNAL( clicked() ), this, TQ_SLOT( expand() ) );
+    connect( cancelButton, TQ_SIGNAL( clicked() ), this, TQ_SLOT( reject() ) );
+    connect( browseButton, TQ_SIGNAL( clicked() ), this, TQ_SLOT( browse() ) );
 }
 
 /*  

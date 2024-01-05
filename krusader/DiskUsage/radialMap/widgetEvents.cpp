@@ -196,7 +196,7 @@ RadialMap::Widget::mousePressEvent( TQMouseEvent *e )
             if( userIntention == KMessageBox::Continue ) {
                TDEIO::Job *job = TDEIO::del( url );
                job->setWindow( this );
-               connect( job, TQT_SIGNAL(result( TDEIO::Job* )), TQT_SLOT(deleteJobFinished( TDEIO::Job* )) );
+               connect( job, TQ_SIGNAL(result( TDEIO::Job* )), TQ_SLOT(deleteJobFinished( TDEIO::Job* )) );
                TQApplication::setOverrideCursor( KCursor::workingCursor() );
             }
          }

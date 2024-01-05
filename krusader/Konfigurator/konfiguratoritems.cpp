@@ -45,8 +45,8 @@ KonfiguratorExtension::KonfiguratorExtension( TQObject *obj, TQString cfgClass, 
 void KonfiguratorExtension::connectNotify( const char *signal )
 {
   TQString signalString    = TQString( signal ).replace( " ", "" );
-  TQString applyString     = TQString( TQT_SIGNAL( applyManually(TQObject *,TQString, TQString) ) ).replace( " ", "" );
-  TQString defaultsString  = TQString( TQT_SIGNAL( setDefaultsManually(TQObject *) ) ).replace( " ", "" );
+  TQString applyString     = TQString( TQ_SIGNAL( applyManually(TQObject *,TQString, TQString) ) ).replace( " ", "" );
+  TQString defaultsString  = TQString( TQ_SIGNAL( setDefaultsManually(TQObject *) ) ).replace( " ", "" );
 
   if( signalString == applyString )
     applyConnected = true;
@@ -96,11 +96,11 @@ KonfiguratorCheckBox::KonfiguratorCheckBox( TQString cls, TQString name, bool df
     defaultValue( dflt )
 {
   ext = new KonfiguratorExtension( this, cls, name, rst, pg );
-  connect( ext, TQT_SIGNAL( applyAuto(TQObject *,TQString, TQString) ), this, TQT_SLOT( slotApply(TQObject *,TQString, TQString) ) );
-  connect( ext, TQT_SIGNAL( setDefaultsAuto(TQObject *) ), this, TQT_SLOT( slotSetDefaults(TQObject *) ) );
-  connect( ext, TQT_SIGNAL( setInitialValue(TQObject *) ), this, TQT_SLOT( loadInitialValue() ) );
+  connect( ext, TQ_SIGNAL( applyAuto(TQObject *,TQString, TQString) ), this, TQ_SLOT( slotApply(TQObject *,TQString, TQString) ) );
+  connect( ext, TQ_SIGNAL( setDefaultsAuto(TQObject *) ), this, TQ_SLOT( slotSetDefaults(TQObject *) ) );
+  connect( ext, TQ_SIGNAL( setInitialValue(TQObject *) ), this, TQ_SLOT( loadInitialValue() ) );
 
-  connect( this, TQT_SIGNAL( stateChanged( int ) ), ext, TQT_SLOT( setChanged() ) );
+  connect( this, TQ_SIGNAL( stateChanged( int ) ), ext, TQ_SLOT( setChanged() ) );
   loadInitialValue();
 }
 
@@ -136,11 +136,11 @@ KonfiguratorSpinBox::KonfiguratorSpinBox( TQString cls, TQString name, int dflt,
     defaultValue( dflt )
 {
   ext = new KonfiguratorExtension( this, cls, name, rst, pg );
-  connect( ext, TQT_SIGNAL( applyAuto(TQObject *,TQString, TQString) ), this, TQT_SLOT( slotApply(TQObject *,TQString, TQString) ) );
-  connect( ext, TQT_SIGNAL( setDefaultsAuto(TQObject *) ), this, TQT_SLOT( slotSetDefaults(TQObject *) ) );
-  connect( ext, TQT_SIGNAL( setInitialValue(TQObject *) ), this, TQT_SLOT( loadInitialValue() ) );
+  connect( ext, TQ_SIGNAL( applyAuto(TQObject *,TQString, TQString) ), this, TQ_SLOT( slotApply(TQObject *,TQString, TQString) ) );
+  connect( ext, TQ_SIGNAL( setDefaultsAuto(TQObject *) ), this, TQ_SLOT( slotSetDefaults(TQObject *) ) );
+  connect( ext, TQ_SIGNAL( setInitialValue(TQObject *) ), this, TQ_SLOT( loadInitialValue() ) );
 
-  connect( this, TQT_SIGNAL( valueChanged(int) ), ext, TQT_SLOT( setChanged() ) );
+  connect( this, TQ_SIGNAL( valueChanged(int) ), ext, TQ_SLOT( setChanged() ) );
 
   setMinValue( min );
   setMaxValue( max );
@@ -208,9 +208,9 @@ KonfiguratorRadioButtons::KonfiguratorRadioButtons( TQString cls, TQString name,
     TQButtonGroup( parent, widgetName ), defaultValue( dflt )
 {
   ext = new KonfiguratorExtension( this, cls, name, rst, pg );
-  connect( ext, TQT_SIGNAL( applyAuto(TQObject *,TQString, TQString) ), this, TQT_SLOT( slotApply(TQObject *,TQString, TQString) ) );
-  connect( ext, TQT_SIGNAL( setDefaultsAuto(TQObject *) ), this, TQT_SLOT( slotSetDefaults(TQObject *) ) );
-  connect( ext, TQT_SIGNAL( setInitialValue(TQObject *) ), this, TQT_SLOT( loadInitialValue() ) );
+  connect( ext, TQ_SIGNAL( applyAuto(TQObject *,TQString, TQString) ), this, TQ_SLOT( slotApply(TQObject *,TQString, TQString) ) );
+  connect( ext, TQ_SIGNAL( setDefaultsAuto(TQObject *) ), this, TQ_SLOT( slotSetDefaults(TQObject *) ) );
+  connect( ext, TQ_SIGNAL( setInitialValue(TQObject *) ), this, TQ_SLOT( loadInitialValue() ) );
 }
 
 KonfiguratorRadioButtons::~KonfiguratorRadioButtons()
@@ -224,7 +224,7 @@ void KonfiguratorRadioButtons::addRadioButton( TQRadioButton *radioWidget, TQStr
   radioNames.push_back( name );
   radioValues.push_back( value );
 
-  connect( radioWidget, TQT_SIGNAL( stateChanged(int) ), ext, TQT_SLOT( setChanged() ) );
+  connect( radioWidget, TQ_SIGNAL( stateChanged(int) ), ext, TQ_SLOT( setChanged() ) );
 }
 
 TQRadioButton * KonfiguratorRadioButtons::find( int index )
@@ -303,11 +303,11 @@ KonfiguratorEditBox::KonfiguratorEditBox( TQString cls, TQString name, TQString 
     defaultValue( dflt )
 {
   ext = new KonfiguratorExtension( this, cls, name, rst, pg );
-  connect( ext, TQT_SIGNAL( applyAuto(TQObject *,TQString, TQString) ), this, TQT_SLOT( slotApply(TQObject *,TQString, TQString) ) );
-  connect( ext, TQT_SIGNAL( setDefaultsAuto(TQObject *) ), this, TQT_SLOT( slotSetDefaults(TQObject *) ) );
-  connect( ext, TQT_SIGNAL( setInitialValue(TQObject *) ), this, TQT_SLOT( loadInitialValue() ) );
+  connect( ext, TQ_SIGNAL( applyAuto(TQObject *,TQString, TQString) ), this, TQ_SLOT( slotApply(TQObject *,TQString, TQString) ) );
+  connect( ext, TQ_SIGNAL( setDefaultsAuto(TQObject *) ), this, TQ_SLOT( slotSetDefaults(TQObject *) ) );
+  connect( ext, TQ_SIGNAL( setInitialValue(TQObject *) ), this, TQ_SLOT( loadInitialValue() ) );
 
-  connect( this, TQT_SIGNAL( textChanged(const TQString &) ), ext, TQT_SLOT( setChanged() ) );
+  connect( this, TQ_SIGNAL( textChanged(const TQString &) ), ext, TQ_SLOT( setChanged() ) );
 
   loadInitialValue();
 }
@@ -345,11 +345,11 @@ KonfiguratorURLRequester::KonfiguratorURLRequester( TQString cls, TQString name,
     defaultValue( dflt )
 {
   ext = new KonfiguratorExtension( this, cls, name, rst, pg );
-  connect( ext, TQT_SIGNAL( applyAuto(TQObject *,TQString, TQString) ), this, TQT_SLOT( slotApply(TQObject *,TQString, TQString) ) );
-  connect( ext, TQT_SIGNAL( setDefaultsAuto(TQObject *) ), this, TQT_SLOT( slotSetDefaults(TQObject *) ) );
-  connect( ext, TQT_SIGNAL( setInitialValue(TQObject *) ), this, TQT_SLOT( loadInitialValue() ) );
+  connect( ext, TQ_SIGNAL( applyAuto(TQObject *,TQString, TQString) ), this, TQ_SLOT( slotApply(TQObject *,TQString, TQString) ) );
+  connect( ext, TQ_SIGNAL( setDefaultsAuto(TQObject *) ), this, TQ_SLOT( slotSetDefaults(TQObject *) ) );
+  connect( ext, TQ_SIGNAL( setInitialValue(TQObject *) ), this, TQ_SLOT( loadInitialValue() ) );
 
-  connect( this, TQT_SIGNAL( textChanged(const TQString &) ), ext, TQT_SLOT( setChanged() ) );
+  connect( this, TQ_SIGNAL( textChanged(const TQString &) ), ext, TQ_SLOT( setChanged() ) );
 
   button()->setIconSet( SmallIcon( "document-open" ) );
   loadInitialValue();
@@ -387,15 +387,15 @@ KonfiguratorFontChooser::KonfiguratorFontChooser( TQString cls, TQString name, T
     defaultValue( dflt )
 {
   ext = new KonfiguratorExtension( this, cls, name, rst, pg );
-  connect( ext, TQT_SIGNAL( applyAuto(TQObject *,TQString, TQString) ), this, TQT_SLOT( slotApply(TQObject *,TQString, TQString) ) );
-  connect( ext, TQT_SIGNAL( setDefaultsAuto(TQObject *) ), this, TQT_SLOT( slotSetDefaults(TQObject *) ) );
-  connect( ext, TQT_SIGNAL( setInitialValue(TQObject *) ), this, TQT_SLOT( loadInitialValue() ) );
+  connect( ext, TQ_SIGNAL( applyAuto(TQObject *,TQString, TQString) ), this, TQ_SLOT( slotApply(TQObject *,TQString, TQString) ) );
+  connect( ext, TQ_SIGNAL( setDefaultsAuto(TQObject *) ), this, TQ_SLOT( slotSetDefaults(TQObject *) ) );
+  connect( ext, TQ_SIGNAL( setInitialValue(TQObject *) ), this, TQ_SLOT( loadInitialValue() ) );
 
   pLabel = new TQLabel( this );
   pLabel->setMinimumWidth( 150 );
   pToolButton = new TQToolButton( this );
 
-  connect( pToolButton, TQT_SIGNAL( clicked() ), this, TQT_SLOT( slotBrowseFont() ) );
+  connect( pToolButton, TQ_SIGNAL( clicked() ), this, TQ_SLOT( slotBrowseFont() ) );
 
   pToolButton->setIconSet( SmallIcon( "document-open" ) );
 
@@ -459,13 +459,13 @@ KonfiguratorComboBox::KonfiguratorComboBox( TQString cls, TQString name, TQStrin
   }
 
   ext = new KonfiguratorExtension( this, cls, name, rst, pg );
-  connect( ext, TQT_SIGNAL( applyAuto(TQObject *,TQString, TQString) ), this, TQT_SLOT( slotApply(TQObject *,TQString, TQString) ) );
-  connect( ext, TQT_SIGNAL( setDefaultsAuto(TQObject *) ), this, TQT_SLOT( slotSetDefaults(TQObject *) ) );
-  connect( ext, TQT_SIGNAL( setInitialValue(TQObject *) ), this, TQT_SLOT( loadInitialValue() ) );
+  connect( ext, TQ_SIGNAL( applyAuto(TQObject *,TQString, TQString) ), this, TQ_SLOT( slotApply(TQObject *,TQString, TQString) ) );
+  connect( ext, TQ_SIGNAL( setDefaultsAuto(TQObject *) ), this, TQ_SLOT( slotSetDefaults(TQObject *) ) );
+  connect( ext, TQ_SIGNAL( setInitialValue(TQObject *) ), this, TQ_SLOT( loadInitialValue() ) );
 
-//  connect( this, TQT_SIGNAL( highlighted(int) ), ext, TQT_SLOT( setChanged() ) ); /* Removed because of startup combo failure */
-  connect( this, TQT_SIGNAL( activated(int) ), ext, TQT_SLOT( setChanged() ) );
-  connect( this, TQT_SIGNAL( textChanged ( const TQString & ) ), ext, TQT_SLOT( setChanged() ) );
+//  connect( this, TQ_SIGNAL( highlighted(int) ), ext, TQ_SLOT( setChanged() ) ); /* Removed because of startup combo failure */
+  connect( this, TQ_SIGNAL( activated(int) ), ext, TQ_SLOT( setChanged() ) );
+  connect( this, TQ_SIGNAL( textChanged ( const TQString & ) ), ext, TQ_SLOT( setChanged() ) );
 
   setEditable( editable );
   loadInitialValue();
@@ -531,9 +531,9 @@ KonfiguratorColorChooser::KonfiguratorColorChooser( TQString cls, TQString name,
 {
   ext = new KonfiguratorExtension( this, cls, name, rst, pg );
 
-  connect( ext, TQT_SIGNAL( applyAuto(TQObject *,TQString, TQString) ), this, TQT_SLOT( slotApply(TQObject *,TQString, TQString) ) );
-  connect( ext, TQT_SIGNAL( setDefaultsAuto(TQObject *) ), this, TQT_SLOT( slotSetDefaults(TQObject *) ) );
-  connect( ext, TQT_SIGNAL( setInitialValue(TQObject *) ), this, TQT_SLOT( loadInitialValue() ) );
+  connect( ext, TQ_SIGNAL( applyAuto(TQObject *,TQString, TQString) ), this, TQ_SLOT( slotApply(TQObject *,TQString, TQString) ) );
+  connect( ext, TQ_SIGNAL( setDefaultsAuto(TQObject *) ), this, TQ_SLOT( slotSetDefaults(TQObject *) ) );
+  connect( ext, TQ_SIGNAL( setInitialValue(TQObject *) ), this, TQ_SLOT( loadInitialValue() ) );
 
   addColor( i18n("Custom color" ),  TQColor( 255, 255, 255 ) );
   addColor( i18n("Default" ),       defaultValue );
@@ -562,7 +562,7 @@ KonfiguratorColorChooser::KonfiguratorColorChooser( TQString cls, TQString name,
   addColor( i18n("Dark Gray" ),     TQt::darkGray );
   addColor( i18n("Black" ),         TQt::black );
 
-  connect( this, TQT_SIGNAL( activated(int) ),   this, TQT_SLOT( slotCurrentChanged( int ) ) );
+  connect( this, TQ_SIGNAL( activated(int) ),   this, TQ_SLOT( slotCurrentChanged( int ) ) );
 
   loadInitialValue();
 }
@@ -743,9 +743,9 @@ KonfiguratorListBox::KonfiguratorListBox( TQString cls, TQString name, TQStringL
     defaultValue( dflt )
 {
   ext = new KonfiguratorExtension( this, cls, name, rst, pg );
-  connect( ext, TQT_SIGNAL( applyAuto(TQObject *,TQString, TQString) ), this, TQT_SLOT( slotApply(TQObject *,TQString, TQString) ) );
-  connect( ext, TQT_SIGNAL( setDefaultsAuto(TQObject *) ), this, TQT_SLOT( slotSetDefaults(TQObject *) ) );
-  connect( ext, TQT_SIGNAL( setInitialValue(TQObject *) ), this, TQT_SLOT( loadInitialValue() ) );
+  connect( ext, TQ_SIGNAL( applyAuto(TQObject *,TQString, TQString) ), this, TQ_SLOT( slotApply(TQObject *,TQString, TQString) ) );
+  connect( ext, TQ_SIGNAL( setDefaultsAuto(TQObject *) ), this, TQ_SLOT( slotSetDefaults(TQObject *) ) );
+  connect( ext, TQ_SIGNAL( setInitialValue(TQObject *) ), this, TQ_SLOT( loadInitialValue() ) );
 
   loadInitialValue();
 }

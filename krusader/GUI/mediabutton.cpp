@@ -88,11 +88,11 @@ MediaButton::MediaButton( TQWidget *parent, const char *name ) : TQToolButton( p
 
 	setPopup( popupMenu );
 
-	connect( popupMenu, TQT_SIGNAL( aboutToShow() ), this, TQT_SLOT( slotAboutToShow() ) );
-	connect( popupMenu, TQT_SIGNAL( aboutToHide() ), this, TQT_SLOT( slotAboutToHide() ) );
-	connect( popupMenu, TQT_SIGNAL( activated( int ) ), this, TQT_SLOT( slotPopupActivated( int ) ) );
+	connect( popupMenu, TQ_SIGNAL( aboutToShow() ), this, TQ_SLOT( slotAboutToShow() ) );
+	connect( popupMenu, TQ_SIGNAL( aboutToHide() ), this, TQ_SLOT( slotAboutToHide() ) );
+	connect( popupMenu, TQ_SIGNAL( activated( int ) ), this, TQ_SLOT( slotPopupActivated( int ) ) );
 
-	connect( &mountCheckerTimer, TQT_SIGNAL( timeout() ), this, TQT_SLOT( slotTimeout() ) );
+	connect( &mountCheckerTimer, TQ_SIGNAL( timeout() ), this, TQ_SLOT( slotTimeout() ) );
 }
 
 MediaButton::~MediaButton() {
@@ -130,10 +130,10 @@ void MediaButton::slotAboutToHide() {
 
 void MediaButton::createListWithMedia() {
 	TDEIO::ListJob *job = TDEIO::listDir( KURL( "media:/" ), false );
-	connect( job, TQT_SIGNAL( entries( TDEIO::Job*, const TDEIO::UDSEntryList& ) ),
-		this, TQT_SLOT( slotEntries( TDEIO::Job*, const TDEIO::UDSEntryList& ) ) );
-	connect( job, TQT_SIGNAL( result( TDEIO::Job* ) ),
-		this, TQT_SLOT( slotListResult( TDEIO::Job* ) ) );
+	connect( job, TQ_SIGNAL( entries( TDEIO::Job*, const TDEIO::UDSEntryList& ) ),
+		this, TQ_SLOT( slotEntries( TDEIO::Job*, const TDEIO::UDSEntryList& ) ) );
+	connect( job, TQ_SIGNAL( result( TDEIO::Job* ) ),
+		this, TQ_SLOT( slotListResult( TDEIO::Job* ) ) );
 	busy = true;
 	
 	if( !busy )
@@ -479,8 +479,8 @@ void MediaButton::addMountPoint( KMountPoint * mp, bool isMounted ) {
 	
 	if( isMounted ) {
 		KDiskFreeSp *sp = KDiskFreeSp::findUsageInfo( mp->mountPoint() );
-		connect( sp, TQT_SIGNAL( foundMountPoint( const TQString &, unsigned long, unsigned long, unsigned long ) ),
-		         this, TQT_SLOT( gettingSpaceData( const TQString&, unsigned long, unsigned long, unsigned long ) ) );
+		connect( sp, TQ_SIGNAL( foundMountPoint( const TQString &, unsigned long, unsigned long, unsigned long ) ),
+		         this, TQ_SLOT( gettingSpaceData( const TQString&, unsigned long, unsigned long, unsigned long ) ) );
 	}
 	
 	TQPixmap pixmap = FL_LOADICON( KMimeType::mimeType( mime ) ->icon( TQString(), true ) );

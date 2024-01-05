@@ -91,8 +91,8 @@ int PanelTabBar::addPanel(ListPanel *panel, bool setCurrent ) {
     krCloseTab->setEnabled(true);
   }
 
-  connect(dynamic_cast<PanelTab*>(tab(newId))->panel, TQT_SIGNAL(pathChanged(ListPanel*)),
-          this, TQT_SLOT(updateTab(ListPanel*)));
+  connect(dynamic_cast<PanelTab*>(tab(newId))->panel, TQ_SIGNAL(pathChanged(ListPanel*)),
+          this, TQ_SLOT(updateTab(ListPanel*)));
 
   return newId;
 }

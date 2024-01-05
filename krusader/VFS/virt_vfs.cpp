@@ -126,12 +126,12 @@ void virt_vfs::vfs_delFiles( TQStringList *fileNames ) {
 #else
 		job = new TDEIO::CopyJob( filesUrls, TDEGlobalSettings::trashPath(), TDEIO::CopyJob::Move, false, true );
 #endif
-		connect( job, TQT_SIGNAL( result( TDEIO::Job* ) ), krApp, TQT_SLOT( changeTrashIcon() ) );
+		connect( job, TQ_SIGNAL( result( TDEIO::Job* ) ), krApp, TQ_SLOT( changeTrashIcon() ) );
 	} else
 		job = new TDEIO::DeleteJob( filesUrls, false, true );
 
 	// refresh will remove the deleted files...
-	connect( job, TQT_SIGNAL( result( TDEIO::Job* ) ), this, TQT_SLOT( vfs_refresh( TDEIO::Job* ) ) );
+	connect( job, TQ_SIGNAL( result( TDEIO::Job* ) ), this, TQ_SLOT( vfs_refresh( TDEIO::Job* ) ) );
 }
 
 void virt_vfs::vfs_removeFiles( TQStringList *fileNames ) {
@@ -205,7 +205,7 @@ void virt_vfs::vfs_rename( const TQString& fileName, const TQString& newName ) {
 	virtVfsDict[ path ] ->append( dest );
 
 	TDEIO::Job *job = new TDEIO::CopyJob( fileUrls, dest, TDEIO::CopyJob::Move, true, false );
-	connect( job, TQT_SIGNAL( result( TDEIO::Job* ) ), this, TQT_SLOT( vfs_refresh( TDEIO::Job* ) ) );
+	connect( job, TQ_SIGNAL( result( TDEIO::Job* ) ), this, TQ_SLOT( vfs_refresh( TDEIO::Job* ) ) );
 }
 
 void virt_vfs::slotStatResult( TDEIO::Job* job ) {
@@ -229,7 +229,7 @@ vfile* virt_vfs::stat( const KURL& url ) {
 	else {
 		busy = true;
 		TDEIO::StatJob* statJob = TDEIO::stat( url, false );
-		connect( statJob, TQT_SIGNAL( result( TDEIO::Job* ) ), this, TQT_SLOT( slotStatResult( TDEIO::Job* ) ) );
+		connect( statJob, TQ_SIGNAL( result( TDEIO::Job* ) ), this, TQ_SLOT( slotStatResult( TDEIO::Job* ) ) );
 		while ( busy && vfs_processEvents() );
 		if( entry.isEmpty()  ) return 0; // statJob failed
 		

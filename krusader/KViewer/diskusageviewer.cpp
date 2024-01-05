@@ -56,9 +56,9 @@ void DiskUsageViewer::openURL( KURL url )
   {
     diskUsage = new DiskUsage( "DiskUsageViewer", this );
     
-    connect( diskUsage, TQT_SIGNAL( enteringDirectory( Directory * ) ), this, TQT_SLOT( slotUpdateStatus() ) );
-    connect( diskUsage, TQT_SIGNAL( status( TQString ) ), this, TQT_SLOT( slotUpdateStatus( TQString ) ) );
-    connect( diskUsage, TQT_SIGNAL( newSearch() ), this, TQT_SLOT( slotNewSearch() ) );
+    connect( diskUsage, TQ_SIGNAL( enteringDirectory( Directory * ) ), this, TQ_SLOT( slotUpdateStatus() ) );
+    connect( diskUsage, TQ_SIGNAL( status( TQString ) ), this, TQ_SLOT( slotUpdateStatus( TQString ) ) );
+    connect( diskUsage, TQ_SIGNAL( newSearch() ), this, TQ_SLOT( slotNewSearch() ) );
     layout->addWidget( diskUsage, 0, 0 );
     this->show();
     diskUsage->show();

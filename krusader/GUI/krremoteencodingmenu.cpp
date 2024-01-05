@@ -46,7 +46,7 @@
 KrRemoteEncodingMenu::KrRemoteEncodingMenu(const TQString &text, const TQString &icon, TQObject *parent, const char *name) :
   TDEActionMenu( text, icon, parent, name ), settingsLoaded( false )
 {
-  connect(popupMenu(), TQT_SIGNAL(aboutToShow()), this, TQT_SLOT(slotAboutToShow()));
+  connect(popupMenu(), TQ_SIGNAL(aboutToShow()), this, TQ_SLOT(slotAboutToShow()));
 }
 
 void KrRemoteEncodingMenu::slotAboutToShow()
@@ -91,11 +91,11 @@ void KrRemoteEncodingMenu::loadSettings()
   TQStringList::ConstIterator it;
   int count = 0;
   for (it = encodingNames.begin(); it != encodingNames.end(); ++it)
-    menu->insertItem(*it, this, TQT_SLOT(slotItemSelected(int)), 0, ++count);
+    menu->insertItem(*it, this, TQ_SLOT(slotItemSelected(int)), 0, ++count);
   menu->insertSeparator();
 
-  menu->insertItem(i18n("Reload"), this, TQT_SLOT(slotReload()), 0, ++count);
-  menu->insertItem(i18n("Default"), this, TQT_SLOT(slotDefault()), 0, ++count);
+  menu->insertItem(i18n("Reload"), this, TQ_SLOT(slotReload()), 0, ++count);
+  menu->insertItem(i18n("Default"), this, TQ_SLOT(slotDefault()), 0, ++count);
   defaultID = count;
 }
 
@@ -103,7 +103,7 @@ int KrRemoteEncodingMenu::plug( TQWidget *widget, int index )
 {
   if( widget->inherits( "TQPopupMenu" ) )
   {
-    connect( widget, TQT_SIGNAL(aboutToShow()), this, TQT_SLOT(slotCheckEnabled()));
+    connect( widget, TQ_SIGNAL(aboutToShow()), this, TQ_SLOT(slotCheckEnabled()));
     slotCheckEnabled();
   }
 
@@ -201,7 +201,7 @@ void KrRemoteEncodingMenu::updateKIOSlaves()
   delete client;
 
   // Reload the page with the new charset
-  TQTimer::singleShot( 500, ACTIVE_FUNC, TQT_SLOT( refresh() ) );
+  TQTimer::singleShot( 500, ACTIVE_FUNC, TQ_SLOT( refresh() ) );
 }
 
 #include "krremoteencodingmenu.moc"

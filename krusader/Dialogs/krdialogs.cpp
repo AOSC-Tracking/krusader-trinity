@@ -152,7 +152,7 @@ KURLRequesterDlgForCopy::KURLRequesterDlgForCopy( const TQString& urlName, const
 		line->setFrameStyle( TQFrame::HLine | TQFrame::Sunken );
 		topLayout->addWidget( line );
 		copyDirStructureCB = new TQCheckBox(i18n("Keep virtual directory structure"), plainPage());
-		connect( copyDirStructureCB, TQT_SIGNAL( toggled( bool ) ), this, TQT_SLOT( slotDirStructCBChanged() ) );
+		connect( copyDirStructureCB, TQ_SIGNAL( toggled( bool ) ), this, TQ_SLOT( slotDirStructCBChanged() ) );
 		copyDirStructureCB->setChecked( false );
 		topLayout->addWidget( copyDirStructureCB );
 		TQHBox * hbox = new TQHBox( plainPage(), "copyDirStructure" );
@@ -173,12 +173,12 @@ KURLRequesterDlgForCopy::KURLRequesterDlgForCopy( const TQString& urlName, const
 		topLayout->addWidget( hbox );
 	}
 	urlRequester_->setFocus();
-	connect( urlRequester_->lineEdit(), TQT_SIGNAL(textChanged(const TQString&)),
-		TQT_SLOT(slotTextChanged(const TQString&)) );
+	connect( urlRequester_->lineEdit(), TQ_SIGNAL(textChanged(const TQString&)),
+		TQ_SLOT(slotTextChanged(const TQString&)) );
 	bool state = !urlName.isEmpty();
 	enableButtonOK( state );
 	enableButton( KDialogBase::User1, state );
-	connect( this, TQT_SIGNAL( user1Clicked() ), TQT_SLOT( slotClear() ) );
+	connect( this, TQ_SIGNAL( user1Clicked() ), TQ_SLOT( slotClear() ) );
 }
 
 KURLRequesterDlgForCopy::KURLRequesterDlgForCopy() {
@@ -235,8 +235,8 @@ KRGetDate::KRGetDate(TQDate date, TQWidget *parent, const char *name) : KDialog(
   setMinimumSize(dateWidget->sizeHint());
   setMaximumSize(dateWidget->sizeHint());
   resize(minimumSize());
-  connect(dateWidget, TQT_SIGNAL(dateSelected(TQDate)), this, TQT_SLOT(setDate(TQDate)));
-  connect(dateWidget, TQT_SIGNAL(dateEntered(TQDate)), this, TQT_SLOT(setDate(TQDate)));
+  connect(dateWidget, TQ_SIGNAL(dateSelected(TQDate)), this, TQ_SLOT(setDate(TQDate)));
+  connect(dateWidget, TQ_SIGNAL(dateEntered(TQDate)), this, TQ_SLOT(setDate(TQDate)));
 
   // keep the original date - incase ESC is pressed
   originalDate  = date;

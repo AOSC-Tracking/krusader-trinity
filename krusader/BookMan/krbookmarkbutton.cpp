@@ -22,7 +22,7 @@ KrBookmarkButton::KrBookmarkButton(TQWidget *parent): TQToolButton(parent) {
 	acmBookmarks->popupMenu()->setKeyboardShortcutsExecute(true);
 
 	setPopup(acmBookmarks->popupMenu());
-	connect(this, TQT_SIGNAL(pressed()), this, TQT_SLOT(populate()));
+	connect(this, TQ_SIGNAL(pressed()), this, TQ_SLOT(populate()));
 	populate();
 }
 

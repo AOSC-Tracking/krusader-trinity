@@ -32,7 +32,7 @@ TQWidget( parent, "PanelManager" ), _layout( 0 ), _left( left ),
    _newTab->setTextLabel( i18n( "Open a new tab in home" ) );
    _newTab->setIconSet( SmallIcon( "tab_new" ) );
    _newTab->adjustSize();	
-   connect( _newTab, TQT_SIGNAL( clicked() ), this, TQT_SLOT( slotNewTab() ) );
+   connect( _newTab, TQ_SIGNAL( clicked() ), this, TQ_SLOT( slotNewTab() ) );
 
    // close tab button
    _closeTab = new TQToolButton( this );
@@ -40,14 +40,14 @@ TQWidget( parent, "PanelManager" ), _layout( 0 ), _left( left ),
    _closeTab->setTextLabel( i18n( "Close current tab" ) );
    _closeTab->setIconSet( SmallIcon( "tab_remove" ) );
    _closeTab->adjustSize();   
-   connect( _closeTab, TQT_SIGNAL( clicked() ), this, TQT_SLOT( slotCloseTab() ) );
+   connect( _closeTab, TQ_SIGNAL( clicked() ), this, TQ_SLOT( slotCloseTab() ) );
    _closeTab->setEnabled( false ); // disabled when there's only 1 tab
 
    // tab-bar
    _tabbar = new PanelTabBar( this );
-   connect( _tabbar, TQT_SIGNAL( changePanel( ListPanel* ) ), this, TQT_SLOT( slotChangePanel( ListPanel * ) ) );
-   connect( _tabbar, TQT_SIGNAL( closeCurrentTab() ), this, TQT_SLOT( slotCloseTab() ) );
-   connect( _tabbar, TQT_SIGNAL( newTab( const KURL& ) ), this, TQT_SLOT( slotNewTab( const KURL& ) ) );
+   connect( _tabbar, TQ_SIGNAL( changePanel( ListPanel* ) ), this, TQ_SLOT( slotChangePanel( ListPanel * ) ) );
+   connect( _tabbar, TQ_SIGNAL( closeCurrentTab() ), this, TQ_SLOT( slotCloseTab() ) );
+   connect( _tabbar, TQ_SIGNAL( newTab( const KURL& ) ), this, TQ_SLOT( slotNewTab( const KURL& ) ) );
 
    _layout->addMultiCellWidget( _stack, 0, 0, 0, 2 );
    _layout->addWidget( _newTab, 1, 0 );
@@ -85,7 +85,7 @@ ListPanel* PanelManager::createPanel( TQString type, bool setCurrent ) {
      _stack->raiseWidget( p );
 
    // connect the activePanelChanged signal to enable/disable actions
-   connect( p, TQT_SIGNAL( activePanelChanged( ListPanel* ) ), this, TQT_SLOT( slotRefreshActions() ) );
+   connect( p, TQ_SIGNAL( activePanelChanged( ListPanel* ) ), this, TQ_SLOT( slotRefreshActions() ) );
    return p;
 }
 
@@ -276,8 +276,8 @@ void PanelManager::slotRecreatePanels() {
      _stack->removeWidget( oldPanel );
 
      disconnect( oldPanel );
-     connect( newPanel, TQT_SIGNAL( activePanelChanged( ListPanel* ) ), this, TQT_SLOT( slotRefreshActions() ) );
-     connect( newPanel, TQT_SIGNAL( pathChanged(ListPanel*) ), _tabbar, TQT_SLOT(updateTab(ListPanel*)));
+     connect( newPanel, TQ_SIGNAL( activePanelChanged( ListPanel* ) ), this, TQ_SLOT( slotRefreshActions() ) );
+     connect( newPanel, TQ_SIGNAL( pathChanged(ListPanel*) ), _tabbar, TQ_SLOT(updateTab(ListPanel*)));
 
      newPanel->otherPanel = _other;
      if( _other->otherPanel == oldPanel )
@@ -336,7 +336,7 @@ void PanelManager::deletePanel( ListPanel * p ) {
      ACTIVE_PANEL = _self;
 
   if( p && p->func && p->func->files() && !p->func->files()->vfs_canDelete() ) {
-    connect( p->func->files(), TQT_SIGNAL( deleteAllowed() ), p, TQT_SLOT( deleteLater() ) );
+    connect( p->func->files(), TQ_SIGNAL( deleteAllowed() ), p, TQ_SLOT( deleteLater() ) );
     p->func->files()->vfs_requestDelete();
     return;
   }

@@ -235,22 +235,22 @@ KrSearchDialog::KrSearchDialog( TQString profile, TQWidget* parent,  const char*
 
   // signals and slots connections
 
-  connect( mainSearchBtn, TQT_SIGNAL( clicked() ), this, TQT_SLOT( startSearch() ) );
-  connect( mainStopBtn, TQT_SIGNAL( clicked() ), this, TQT_SLOT( stopSearch() ) );
-  connect( resultsList, TQT_SIGNAL( returnPressed(TQListViewItem*) ), this,
-  	TQT_SLOT( resultDoubleClicked(TQListViewItem*) ) );
-  connect( resultsList, TQT_SIGNAL( doubleClicked(TQListViewItem*) ), this,
-  	TQT_SLOT( resultDoubleClicked(TQListViewItem*) ) );
-  connect( resultsList, TQT_SIGNAL( currentChanged(TQListViewItem*) ), this,
-  		TQT_SLOT( resultClicked(TQListViewItem*) ) );
-  connect( resultsList, TQT_SIGNAL( clicked(TQListViewItem*) ), this,
-  		TQT_SLOT( resultClicked(TQListViewItem*) ) );
-  connect( resultsList, TQT_SIGNAL( rightButtonClicked(TQListViewItem*,const TQPoint&,int) ), this, TQT_SLOT( rightClickMenu(TQListViewItem*, const TQPoint&, int) ) );
-  connect( mainCloseBtn, TQT_SIGNAL( clicked() ), this, TQT_SLOT( closeDialog() ) );
-  connect( mainFeedToListBoxBtn, TQT_SIGNAL( clicked() ), this, TQT_SLOT( feedToListBox() ) );
+  connect( mainSearchBtn, TQ_SIGNAL( clicked() ), this, TQ_SLOT( startSearch() ) );
+  connect( mainStopBtn, TQ_SIGNAL( clicked() ), this, TQ_SLOT( stopSearch() ) );
+  connect( resultsList, TQ_SIGNAL( returnPressed(TQListViewItem*) ), this,
+  	TQ_SLOT( resultDoubleClicked(TQListViewItem*) ) );
+  connect( resultsList, TQ_SIGNAL( doubleClicked(TQListViewItem*) ), this,
+  	TQ_SLOT( resultDoubleClicked(TQListViewItem*) ) );
+  connect( resultsList, TQ_SIGNAL( currentChanged(TQListViewItem*) ), this,
+  		TQ_SLOT( resultClicked(TQListViewItem*) ) );
+  connect( resultsList, TQ_SIGNAL( clicked(TQListViewItem*) ), this,
+  		TQ_SLOT( resultClicked(TQListViewItem*) ) );
+  connect( resultsList, TQ_SIGNAL( rightButtonClicked(TQListViewItem*,const TQPoint&,int) ), this, TQ_SLOT( rightClickMenu(TQListViewItem*, const TQPoint&, int) ) );
+  connect( mainCloseBtn, TQ_SIGNAL( clicked() ), this, TQ_SLOT( closeDialog() ) );
+  connect( mainFeedToListBoxBtn, TQ_SIGNAL( clicked() ), this, TQ_SLOT( feedToListBox() ) );
 
-  connect( profileManager, TQT_SIGNAL( loadFromProfile( TQString ) ), filterTabs, TQT_SLOT( loadFromProfile( TQString ) ) );
-  connect( profileManager, TQT_SIGNAL( saveToProfile( TQString ) ), filterTabs, TQT_SLOT( saveToProfile( TQString ) ) );
+  connect( profileManager, TQ_SIGNAL( loadFromProfile( TQString ) ), filterTabs, TQ_SLOT( loadFromProfile( TQString ) ) );
+  connect( profileManager, TQ_SIGNAL( saveToProfile( TQString ) ), filterTabs, TQ_SLOT( saveToProfile( TQString ) ) );
 
   // tab order
 
@@ -403,11 +403,11 @@ void KrSearchDialog::startSearch() {
     searcher = 0;
   }
   searcher  = new KRSearchMod(query);
-  connect(searcher, TQT_SIGNAL(searching(const TQString&)),
-          searchingLabel, TQT_SLOT(setText(const TQString&)));
-  connect(searcher, TQT_SIGNAL(found(TQString,TQString,TDEIO::filesize_t,time_t,TQString,TQString)),
-                this, TQT_SLOT(found(TQString,TQString,TDEIO::filesize_t,time_t,TQString,TQString)));
-  connect(searcher, TQT_SIGNAL(finished()), this, TQT_SLOT(stopSearch()));
+  connect(searcher, TQ_SIGNAL(searching(const TQString&)),
+          searchingLabel, TQ_SLOT(setText(const TQString&)));
+  connect(searcher, TQ_SIGNAL(found(TQString,TQString,TDEIO::filesize_t,time_t,TQString,TQString)),
+                this, TQ_SLOT(found(TQString,TQString,TDEIO::filesize_t,time_t,TQString,TQString)));
+  connect(searcher, TQ_SIGNAL(finished()), this, TQ_SLOT(stopSearch()));
 
   isSearching = true;
   searcher->start();

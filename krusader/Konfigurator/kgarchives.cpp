@@ -81,7 +81,7 @@ KgArchives::KgArchives( bool first, TQWidget* parent,  const char* name ) :
   TQPushButton *btnAutoConfigure = new TQPushButton( i18n( "Auto Configure" ), hbox, "kgAutoConfigure" );
   createSpacer( hbox, "spacer2" );
   generalGrid->addWidget( hbox, 3, 0 );
-  connect( btnAutoConfigure, TQT_SIGNAL( clicked() ), this, TQT_SLOT( slotAutoConfigure() ) );
+  connect( btnAutoConfigure, TQ_SIGNAL( clicked() ), this, TQ_SLOT( slotAutoConfigure() ) );
 
   kgArchivesLayout->addWidget( generalGrp, 0 ,0 );
 

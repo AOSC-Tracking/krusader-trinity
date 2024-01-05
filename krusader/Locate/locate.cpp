@@ -152,12 +152,12 @@ LocateDlg::LocateDlg() : KDialogBase(0,0,false,"Locate", KDialogBase::User1 | KD
   resultList->addColumn( i18n("Results"), TQFontMetrics(resultList->font()).width("W") * 60 );
   resultList->setColumnWidthMode(0,TQListView::Maximum);
 
-  connect( resultList,TQT_SIGNAL(rightButtonPressed(TQListViewItem *, const TQPoint &, int)),
-           this, TQT_SLOT(slotRightClick(TQListViewItem *)));
-  connect( resultList,TQT_SIGNAL(doubleClicked(TQListViewItem *)),
-           this, TQT_SLOT(slotDoubleClick(TQListViewItem *)));
-  connect( resultList,TQT_SIGNAL(returnPressed(TQListViewItem *)),
-           this, TQT_SLOT(slotDoubleClick(TQListViewItem *)));
+  connect( resultList,TQ_SIGNAL(rightButtonPressed(TQListViewItem *, const TQPoint &, int)),
+           this, TQ_SLOT(slotRightClick(TQListViewItem *)));
+  connect( resultList,TQ_SIGNAL(doubleClicked(TQListViewItem *)),
+           this, TQ_SLOT(slotDoubleClick(TQListViewItem *)));
+  connect( resultList,TQ_SIGNAL(returnPressed(TQListViewItem *)),
+           this, TQ_SLOT(slotDoubleClick(TQListViewItem *)));
            
   grid->addWidget( resultList, 3, 0 );
 
@@ -171,7 +171,7 @@ LocateDlg::LocateDlg() : KDialogBase(0,0,false,"Locate", KDialogBase::User1 | KD
   {
     if( updateProcess->isRunning() )
     {
-      connect( updateProcess, TQT_SIGNAL(processExited(TDEProcess *)), this, TQT_SLOT(updateFinished()));
+      connect( updateProcess, TQ_SIGNAL(processExited(TDEProcess *)), this, TQ_SLOT(updateFinished()));
       enableButton( KDialogBase::User2, false );
     }
     else
@@ -202,7 +202,7 @@ void LocateDlg::slotUser2()   /* The Update DB button */
     *updateProcess << KrServices::fullPathName( "updatedb" );
     *updateProcess << KrServices::separateArgs( krConfig->readEntry( "UpdateDB Arguments", "" ) );
     
-    connect( updateProcess, TQT_SIGNAL(processExited(TDEProcess *)), this, TQT_SLOT(updateFinished()));
+    connect( updateProcess, TQ_SIGNAL(processExited(TDEProcess *)), this, TQ_SLOT(updateFinished()));
     updateProcess->start(TDEProcess::NotifyOnExit);
     enableButton( KDialogBase::User2, false );
   }
@@ -247,10 +247,10 @@ void LocateDlg::slotUser3()   /* The locate button */
   stopping = false;
   
   TDEProcess locateProc;
-  connect( &locateProc, TQT_SIGNAL( receivedStdout(TDEProcess *, char *, int) ),
-            this, TQT_SLOT( processStdout(TDEProcess *, char *, int) ) );
-  connect( &locateProc, TQT_SIGNAL( receivedStderr(TDEProcess *, char *, int) ),
-            this, TQT_SLOT( processStderr(TDEProcess *, char *, int) ) );
+  connect( &locateProc, TQ_SIGNAL( receivedStdout(TDEProcess *, char *, int) ),
+            this, TQ_SLOT( processStdout(TDEProcess *, char *, int) ) );
+  connect( &locateProc, TQ_SIGNAL( receivedStderr(TDEProcess *, char *, int) ),
+            this, TQ_SLOT( processStderr(TDEProcess *, char *, int) ) );
 
   locateProc << KrServices::fullPathName( "locate" );
   if( !isCs )

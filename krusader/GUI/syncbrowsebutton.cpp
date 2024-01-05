@@ -46,7 +46,7 @@ SyncBrowseButton::SyncBrowseButton(TQWidget *parent, const char *name) : TQToolB
 			"When active, each directory change is performed in the\n"
 			"active and inactive panel - if possible." ), true );	//set this as toop-tip (somehow whatsthis::add(this, ...) don't work)
 
-  connect( this, TQT_SIGNAL(toggled(bool)), this, TQT_SLOT(slotToggled(bool)) );
+  connect( this, TQ_SIGNAL(toggled(bool)), this, TQ_SLOT(slotToggled(bool)) );
 }
 
 SyncBrowseButton::~SyncBrowseButton() {

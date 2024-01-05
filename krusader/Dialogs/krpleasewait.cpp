@@ -48,7 +48,7 @@ KRPleaseWait::KRPleaseWait( TQString msg, int count, bool cancel ):
   setAutoClose(false);
 	setAutoReset(false);
 	
-	connect( timer,TQT_SIGNAL(timeout()), this, TQT_SLOT(cycleProgress()));
+	connect( timer,TQ_SIGNAL(timeout()), this, TQ_SLOT(cycleProgress()));
 
   TQProgressBar* progress = new TQProgressBar(count,this);
   progress->setCenterIndicator(true);
@@ -101,7 +101,7 @@ void KRPleaseWaitHandler::stopWait(){
 void KRPleaseWaitHandler::startWaiting( TQString msg, int count , bool cancel){
   if ( dlg == 0 ){
     dlg = new KRPleaseWait( msg , count, cancel);
-		connect( dlg,TQT_SIGNAL(cancelled()),this,TQT_SLOT(killJob()) );
+		connect( dlg,TQ_SIGNAL(cancelled()),this,TQ_SLOT(killJob()) );
   }
   incMutex=cycleMutex=_wasCancelled=false;
   dlg->setProgress(0);
@@ -122,7 +122,7 @@ void KRPleaseWaitHandler::cycleProgress(){
   if (cycleMutex) return;
   cycleMutex=true;
   if (dlg) dlg->cycleProgress();
-  if (cycle) TQTimer::singleShot(2000,this,TQT_SLOT(cycleProgress()));
+  if (cycle) TQTimer::singleShot(2000,this,TQ_SLOT(cycleProgress()));
   cycleMutex=false;
 }
 

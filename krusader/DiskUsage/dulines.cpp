@@ -248,15 +248,15 @@ DULines::DULines( DiskUsage *usage, const char *name )
   
   toolTip = new DULinesToolTip( diskUsage, viewport(), this );
 
-  connect( diskUsage, TQT_SIGNAL( enteringDirectory( Directory * ) ), this, TQT_SLOT( slotDirChanged( Directory * ) ) );
-  connect( diskUsage, TQT_SIGNAL( clearing() ), this, TQT_SLOT( clear() ) );
+  connect( diskUsage, TQ_SIGNAL( enteringDirectory( Directory * ) ), this, TQ_SLOT( slotDirChanged( Directory * ) ) );
+  connect( diskUsage, TQ_SIGNAL( clearing() ), this, TQ_SLOT( clear() ) );
   
-  connect( header(), TQT_SIGNAL( sizeChange( int, int, int ) ), this, TQT_SLOT( sectionResized( int ) ) );
+  connect( header(), TQ_SIGNAL( sizeChange( int, int, int ) ), this, TQ_SLOT( sectionResized( int ) ) );
 
-  connect( this, TQT_SIGNAL(rightButtonPressed(TQListViewItem *, const TQPoint &, int)),
-           this, TQT_SLOT( slotRightClicked(TQListViewItem *) ) );
-  connect( diskUsage, TQT_SIGNAL( changed( File * ) ), this, TQT_SLOT( slotChanged( File * ) ) );
-  connect( diskUsage, TQT_SIGNAL( deleted( File * ) ), this, TQT_SLOT( slotDeleted( File * ) ) );
+  connect( this, TQ_SIGNAL(rightButtonPressed(TQListViewItem *, const TQPoint &, int)),
+           this, TQ_SLOT( slotRightClicked(TQListViewItem *) ) );
+  connect( diskUsage, TQ_SIGNAL( changed( File * ) ), this, TQ_SLOT( slotChanged( File * ) ) );
+  connect( diskUsage, TQ_SIGNAL( deleted( File * ) ), this, TQ_SLOT( slotDeleted( File * ) ) );
 }
 
 DULines::~DULines()
@@ -457,7 +457,7 @@ void DULines::slotRightClicked( TQListViewItem *item )
     file = ((DULinesItem *)item)->getFile();
 
   TDEPopupMenu linesPopup;    
-  int lid = linesPopup.insertItem( i18n("Show file sizes"), this, TQT_SLOT( slotShowFileSizes() ) );
+  int lid = linesPopup.insertItem( i18n("Show file sizes"), this, TQ_SLOT( slotShowFileSizes() ) );
   linesPopup.setItemChecked( lid, showFileSize );
     
   diskUsage->rightClickMenu( file, &linesPopup, i18n( "Lines" ) );
@@ -493,7 +493,7 @@ void DULines::slotChanged( File * item )
         if( !refreshNeeded )
         {
           refreshNeeded = true;
-          TQTimer::singleShot( 0, this, TQT_SLOT( slotRefresh() ) );
+          TQTimer::singleShot( 0, this, TQ_SLOT( slotRefresh() ) );
         }
         break;
       }

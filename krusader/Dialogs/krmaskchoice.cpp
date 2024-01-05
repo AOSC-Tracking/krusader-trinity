@@ -136,16 +136,16 @@ KRMaskChoice::KRMaskChoice( TQWidget* parent,  const char* name, bool modal, WFl
     hbox_3->addWidget( PushButton3_2 );
 
     // signals and slots connections
-    connect( PushButton3_2, TQT_SIGNAL( clicked() ), this, TQT_SLOT( reject() ) );
-    connect( PushButton3, TQT_SIGNAL( clicked() ), this, TQT_SLOT( accept() ) );
-    connect( PushButton7, TQT_SIGNAL( clicked() ), this, TQT_SLOT( addSelection() ) );
-    connect( PushButton7_2, TQT_SIGNAL( clicked() ), this, TQT_SLOT( deleteSelection() ) );
-    connect( PushButton7_3, TQT_SIGNAL( clicked() ), this, TQT_SLOT( clearSelections() ) );
-    connect( selection, TQT_SIGNAL( activated(const TQString&) ), selection, TQT_SLOT( setEditText(const TQString &) ) );
-    connect( selection->lineEdit(), TQT_SIGNAL( returnPressed() ), this, TQT_SLOT( accept() ));
-    connect( preSelections, TQT_SIGNAL( doubleClicked(TQListBoxItem*) ), this, TQT_SLOT( acceptFromList(TQListBoxItem *) ) );
-    connect( preSelections, TQT_SIGNAL( highlighted(const TQString&) ), selection, TQT_SLOT( setEditText(const TQString &) ) );
-    connect( preSelections, TQT_SIGNAL( returnPressed(TQListBoxItem*) ), this, TQT_SLOT( acceptFromList(TQListBoxItem *) ) );
+    connect( PushButton3_2, TQ_SIGNAL( clicked() ), this, TQ_SLOT( reject() ) );
+    connect( PushButton3, TQ_SIGNAL( clicked() ), this, TQ_SLOT( accept() ) );
+    connect( PushButton7, TQ_SIGNAL( clicked() ), this, TQ_SLOT( addSelection() ) );
+    connect( PushButton7_2, TQ_SIGNAL( clicked() ), this, TQ_SLOT( deleteSelection() ) );
+    connect( PushButton7_3, TQ_SIGNAL( clicked() ), this, TQ_SLOT( clearSelections() ) );
+    connect( selection, TQ_SIGNAL( activated(const TQString&) ), selection, TQ_SLOT( setEditText(const TQString &) ) );
+    connect( selection->lineEdit(), TQ_SIGNAL( returnPressed() ), this, TQ_SLOT( accept() ));
+    connect( preSelections, TQ_SIGNAL( doubleClicked(TQListBoxItem*) ), this, TQ_SLOT( acceptFromList(TQListBoxItem *) ) );
+    connect( preSelections, TQ_SIGNAL( highlighted(const TQString&) ), selection, TQ_SLOT( setEditText(const TQString &) ) );
+    connect( preSelections, TQ_SIGNAL( returnPressed(TQListBoxItem*) ), this, TQ_SLOT( acceptFromList(TQListBoxItem *) ) );
 }
 
 /*  

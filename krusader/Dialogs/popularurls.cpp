@@ -253,13 +253,13 @@ PopularUrlsDlg::PopularUrlsDlg():
 	setTabOrder(search, urls);
 	setTabOrder(urls, actionButton(Close));
 	
-	connect(urls, TQT_SIGNAL(executed(TQListViewItem*)), 
-		this, TQT_SLOT(slotItemSelected(TQListViewItem*)));
-	connect(urls, TQT_SIGNAL(returnPressed(TQListViewItem*)), 
-		this, TQT_SLOT(slotItemSelected(TQListViewItem*)));		
-	connect(btn, TQT_SIGNAL(clicked()), search, TQT_SLOT(clear()));
-	connect(search, TQT_SIGNAL(returnPressed(const TQString&)), 
-		this, TQT_SLOT(slotSearchReturnPressed(const TQString&)));
+	connect(urls, TQ_SIGNAL(executed(TQListViewItem*)), 
+		this, TQ_SLOT(slotItemSelected(TQListViewItem*)));
+	connect(urls, TQ_SIGNAL(returnPressed(TQListViewItem*)), 
+		this, TQ_SLOT(slotItemSelected(TQListViewItem*)));		
+	connect(btn, TQ_SIGNAL(clicked()), search, TQ_SLOT(clear()));
+	connect(search, TQ_SIGNAL(returnPressed(const TQString&)), 
+		this, TQ_SLOT(slotSearchReturnPressed(const TQString&)));
 }
 
 void PopularUrlsDlg::slotItemSelected(TQListViewItem *it) {

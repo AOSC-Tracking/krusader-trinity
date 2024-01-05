@@ -70,8 +70,8 @@ Konfigurator::Konfigurator( bool f, int startPage ) : KDialogBase(0,0,true,"Konf
 
   setHelp("konfigurator");
   
-  connect( widget, TQT_SIGNAL( aboutToShowPage(TQWidget *) ), this, TQT_SLOT( slotPageSwitch() ) );
-  connect( &restoreTimer, TQT_SIGNAL(timeout()), this, TQT_SLOT(slotRestorePage()));
+  connect( widget, TQ_SIGNAL( aboutToShowPage(TQWidget *) ), this, TQ_SLOT( slotPageSwitch() ) );
+  connect( &restoreTimer, TQ_SIGNAL(timeout()), this, TQ_SLOT(slotRestorePage()));
   
   createLayout( startPage );
   setMainWidget(widget);
@@ -81,7 +81,7 @@ Konfigurator::Konfigurator( bool f, int startPage ) : KDialogBase(0,0,true,"Konf
 void Konfigurator::newContent(KonfiguratorPage *page)
 {
   kgFrames.append(page);
-  connect( page, TQT_SIGNAL( sigChanged() ), this, TQT_SLOT( slotApplyEnable() ) );
+  connect( page, TQ_SIGNAL( sigChanged() ), this, TQ_SLOT( slotApplyEnable() ) );
 }
 
 void Konfigurator::createLayout( int startPage )

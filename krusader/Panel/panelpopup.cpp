@@ -43,7 +43,7 @@ PanelPopup::PanelPopup( TQSplitter *parent, bool left ) : TQWidget( parent ),
 	// create the label+buttons setup
 	dataLine = new KrSqueezedTextLabel(this);
 	dataLine->setText("blah blah");
-	connect( dataLine, TQT_SIGNAL( clicked() ), this, TQT_SLOT( setFocus() ) );
+	connect( dataLine, TQ_SIGNAL( clicked() ), this, TQ_SLOT( setFocus() ) );
 	krConfig->setGroup( "Look&Feel" );
    dataLine->setFont( krConfig->readFontEntry( "Filelist Font", _FilelistFont ) );
    // --- hack: setup colors to be the same as an inactive panel
@@ -60,7 +60,7 @@ PanelPopup::PanelPopup( TQSplitter *parent, bool left ) : TQWidget( parent ),
 	btns = new TQButtonGroup(this);
 	btns->setExclusive(true);
 	btns->hide();	// it should be invisible
-	connect(btns, TQT_SIGNAL(clicked(int)), this, TQT_SLOT(tabSelected(int)));
+	connect(btns, TQ_SIGNAL(clicked(int)), this, TQ_SLOT(tabSelected(int)));
 	
 	treeBtn = new TQToolButton(this);
 	TQToolTip::add(treeBtn, i18n("Tree Panel: a tree view of the local file system"));
@@ -111,8 +111,8 @@ PanelPopup::PanelPopup( TQSplitter *parent, bool left ) : TQWidget( parent ),
    // create the tree part ----------
 	tree = new KFileTreeView( stack );
 	tree->setAcceptDrops(true);
-	connect(tree, TQT_SIGNAL(dropped (TQWidget *, TQDropEvent *, KURL::List &, KURL &)), 
-		this, TQT_SLOT(slotDroppedOnTree(TQWidget *, TQDropEvent *, KURL::List&, KURL& )));
+	connect(tree, TQ_SIGNAL(dropped (TQWidget *, TQDropEvent *, KURL::List &, KURL &)), 
+		this, TQ_SLOT(slotDroppedOnTree(TQWidget *, TQDropEvent *, KURL::List&, KURL& )));
    stack->addWidget( tree, Tree );
    tree->addColumn( "" );
 	// add ~
@@ -126,7 +126,7 @@ PanelPopup::PanelPopup( TQSplitter *parent, bool left ) : TQWidget( parent ),
 	tree->branch( i18n( "Root" ) ) ->setChildRecurse(false);
 	tree->branch( i18n( "Root" ) ) ->setOpen( true );
    tree->header() ->setHidden( true );
-	connect(tree, TQT_SIGNAL(doubleClicked(TQListViewItem*)), this, TQT_SLOT(treeSelection(TQListViewItem*)));
+	connect(tree, TQ_SIGNAL(doubleClicked(TQListViewItem*)), this, TQ_SLOT(treeSelection(TQListViewItem*)));
    // start listing the tree
    tree->branch( i18n( "Root" ) ) ->root();
 	tree->branch( i18n( "Home" ) ) ->root();
@@ -139,14 +139,14 @@ PanelPopup::PanelPopup( TQSplitter *parent, bool left ) : TQWidget( parent ),
 	
 	panelviewer = new PanelViewer(stack);
 	stack->addWidget(panelviewer, View);
-	connect(panelviewer, TQT_SIGNAL(openURLRequest(const KURL &)), this, TQT_SLOT(handleOpenURLRequest(const KURL &)));
+	connect(panelviewer, TQ_SIGNAL(openURLRequest(const KURL &)), this, TQ_SLOT(handleOpenURLRequest(const KURL &)));
 	
 	// create the disk usage view
 	
 	diskusage = new DiskUsageViewer( stack );
 	diskusage->setStatusLabel( dataLine, i18n("Disk Usage: ") );
 	stack->addWidget( diskusage, DskUsage );
-	connect(diskusage, TQT_SIGNAL(openURLRequest(const KURL &)), this, TQT_SLOT(handleOpenURLRequest(const KURL &)));
+	connect(diskusage, TQ_SIGNAL(openURLRequest(const KURL &)), this, TQ_SLOT(handleOpenURLRequest(const KURL &)));
 	
 	// create the quick-panel part ----
 	
@@ -164,26 +164,26 @@ PanelPopup::PanelPopup( TQSplitter *parent, bool left ) : TQWidget( parent ),
 	quickSelectCombo->setCurrentText( "*" );
 	quickSelectCombo->setSizePolicy( TQSizePolicy( TQSizePolicy::Expanding, TQSizePolicy::Preferred ) );
 
-	connect(quickSelectCombo, TQT_SIGNAL(returnPressed(const TQString& )),
-		this, TQT_SLOT(quickSelect(const TQString& )));
+	connect(quickSelectCombo, TQ_SIGNAL(returnPressed(const TQString& )),
+		this, TQ_SLOT(quickSelect(const TQString& )));
 	
 	TQToolButton *qselectBtn = new TQToolButton(quickPanel);
 	qselectBtn->setPixmap(krLoader->loadIcon( "kr_selectall", TDEIcon::Toolbar, 16 ));
 	qselectBtn->setFixedSize(20, 20);
 	TQToolTip::add( qselectBtn, i18n("apply the selection") );
-	connect(qselectBtn, TQT_SIGNAL(clicked()), this, TQT_SLOT(quickSelect()));
+	connect(qselectBtn, TQ_SIGNAL(clicked()), this, TQ_SLOT(quickSelect()));
 
 	TQToolButton *qstoreBtn = new TQToolButton(quickPanel);
 	qstoreBtn->setPixmap(krLoader->loadIcon( "document-save", TDEIcon::Toolbar, 16 ));
 	qstoreBtn->setFixedSize(20, 20);
 	TQToolTip::add( qstoreBtn, i18n("store the current selection") );
-	connect(qstoreBtn, TQT_SIGNAL(clicked()), this, TQT_SLOT(quickSelectStore()));
+	connect(qstoreBtn, TQ_SIGNAL(clicked()), this, TQ_SLOT(quickSelectStore()));
 	
 	TQToolButton *qsettingsBtn = new TQToolButton(quickPanel);
 	qsettingsBtn->setPixmap(krLoader->loadIcon( "configure", TDEIcon::Toolbar, 16 ));
 	qsettingsBtn->setFixedSize(20, 20);
 	TQToolTip::add( qsettingsBtn, i18n("select group dialog") );
-	connect(qsettingsBtn, TQT_SIGNAL(clicked()), krSelect, TQT_SLOT(activate()));
+	connect(qsettingsBtn, TQ_SIGNAL(clicked()), krSelect, TQ_SLOT(activate()));
 
 	qlayout->addWidget(selectLabel,0,0);
 	qlayout->addWidget(quickSelectCombo,0,1);

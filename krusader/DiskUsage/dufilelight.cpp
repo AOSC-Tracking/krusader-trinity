@@ -41,13 +41,13 @@ DUFilelight::DUFilelight( DiskUsage *usage, const char *name )
 {
    setFocusPolicy( TQWidget::StrongFocus );
 
-   connect( diskUsage, TQT_SIGNAL( enteringDirectory( Directory * ) ), this, TQT_SLOT( slotDirChanged( Directory * ) ) );
-   connect( diskUsage, TQT_SIGNAL( clearing() ), this, TQT_SLOT( clear() ) );
-   connect( diskUsage, TQT_SIGNAL( changed( File * ) ), this, TQT_SLOT( slotChanged( File * ) ) );
-   connect( diskUsage, TQT_SIGNAL( deleted( File * ) ), this, TQT_SLOT( slotChanged( File * ) ) );
-   connect( diskUsage, TQT_SIGNAL( changeFinished()  ), this, TQT_SLOT( slotRefresh() ) );
-   connect( diskUsage, TQT_SIGNAL( deleteFinished()  ), this, TQT_SLOT( slotRefresh() ) );
-   connect( diskUsage, TQT_SIGNAL( aboutToShow( TQWidget * ) ), this, TQT_SLOT( slotAboutToShow( TQWidget * ) ) );
+   connect( diskUsage, TQ_SIGNAL( enteringDirectory( Directory * ) ), this, TQ_SLOT( slotDirChanged( Directory * ) ) );
+   connect( diskUsage, TQ_SIGNAL( clearing() ), this, TQ_SLOT( clear() ) );
+   connect( diskUsage, TQ_SIGNAL( changed( File * ) ), this, TQ_SLOT( slotChanged( File * ) ) );
+   connect( diskUsage, TQ_SIGNAL( deleted( File * ) ), this, TQ_SLOT( slotChanged( File * ) ) );
+   connect( diskUsage, TQ_SIGNAL( changeFinished()  ), this, TQ_SLOT( slotRefresh() ) );
+   connect( diskUsage, TQ_SIGNAL( deleteFinished()  ), this, TQ_SLOT( slotRefresh() ) );
+   connect( diskUsage, TQ_SIGNAL( aboutToShow( TQWidget * ) ), this, TQ_SLOT( slotAboutToShow( TQWidget * ) ) );
 }
 
 void DUFilelight::slotDirChanged( Directory *dir )
@@ -93,30 +93,30 @@ void DUFilelight::mousePressEvent( TQMouseEvent *event )
        file = (File *)focus->file();
 
      TDEPopupMenu filelightPopup;
-     filelightPopup.insertItem( i18n("Zoom In"),  this, TQT_SLOT( zoomIn() ), Key_Plus );
-     filelightPopup.insertItem( i18n("Zoom Out"), this, TQT_SLOT( zoomOut() ), Key_Minus );
+     filelightPopup.insertItem( i18n("Zoom In"),  this, TQ_SLOT( zoomIn() ), Key_Plus );
+     filelightPopup.insertItem( i18n("Zoom Out"), this, TQ_SLOT( zoomOut() ), Key_Minus );
      
      TDEPopupMenu schemePopup;           
-     schemePopup.insertItem( i18n("Rainbow"),       this, TQT_SLOT( schemeRainbow() ) );
-     schemePopup.insertItem( i18n("High Contrast"), this, TQT_SLOT( schemeHighContrast() ) );
-     schemePopup.insertItem( i18n("TDE"),           this, TQT_SLOT( schemeKDE() ) );
+     schemePopup.insertItem( i18n("Rainbow"),       this, TQ_SLOT( schemeRainbow() ) );
+     schemePopup.insertItem( i18n("High Contrast"), this, TQ_SLOT( schemeHighContrast() ) );
+     schemePopup.insertItem( i18n("TDE"),           this, TQ_SLOT( schemeKDE() ) );
 
      filelightPopup.insertItem( TQPixmap(), &schemePopup, SCHEME_POPUP_ID );
      filelightPopup.changeItem( SCHEME_POPUP_ID, i18n( "Scheme" ) );     
 
-     filelightPopup.insertItem( i18n("Increase contrast"), this, TQT_SLOT( increaseContrast() ) );
-     filelightPopup.insertItem( i18n("Decrease contrast"), this, TQT_SLOT( decreaseContrast() ) );
+     filelightPopup.insertItem( i18n("Increase contrast"), this, TQ_SLOT( increaseContrast() ) );
+     filelightPopup.insertItem( i18n("Decrease contrast"), this, TQ_SLOT( decreaseContrast() ) );
           
-     int aid = filelightPopup.insertItem( i18n("Use anti-aliasing" ), this, TQT_SLOT( changeAntiAlias() ) );
+     int aid = filelightPopup.insertItem( i18n("Use anti-aliasing" ), this, TQ_SLOT( changeAntiAlias() ) );
      filelightPopup.setItemChecked( aid, Filelight::Config::antiAliasFactor > 1 );
      
-     int sid = filelightPopup.insertItem( i18n("Show small files" ), this, TQT_SLOT( showSmallFiles() ) );
+     int sid = filelightPopup.insertItem( i18n("Show small files" ), this, TQ_SLOT( showSmallFiles() ) );
      filelightPopup.setItemChecked( sid, Filelight::Config::showSmallFiles );
      
-     int vid = filelightPopup.insertItem( i18n("Vary label font sizes" ), this, TQT_SLOT( varyLabelFontSizes() ) );
+     int vid = filelightPopup.insertItem( i18n("Vary label font sizes" ), this, TQ_SLOT( varyLabelFontSizes() ) );
      filelightPopup.setItemChecked( vid, Filelight::Config::varyLabelFontSizes );
 
-     filelightPopup.insertItem( i18n("Minimum font size"), this, TQT_SLOT( minFontSize() ) );     
+     filelightPopup.insertItem( i18n("Minimum font size"), this, TQ_SLOT( minFontSize() ) );     
           
      diskUsage->rightClickMenu( file, &filelightPopup, i18n( "Filelight" ) );
      return;     

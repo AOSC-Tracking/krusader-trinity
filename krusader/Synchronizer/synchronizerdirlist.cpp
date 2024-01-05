@@ -154,10 +154,10 @@ bool SynchronizerDirList::load( const TQString &urlIn, bool wait ) {
     return true;
   } else {
     TDEIO::Job *job = TDEIO::listDir( url, false, true );
-    connect( job, TQT_SIGNAL( entries( TDEIO::Job*, const TDEIO::UDSEntryList& ) ),
-             this, TQT_SLOT( slotEntries( TDEIO::Job*, const TDEIO::UDSEntryList& ) ) );
-    connect( job, TQT_SIGNAL( result( TDEIO::Job* ) ),
-             this, TQT_SLOT( slotListResult( TDEIO::Job* ) ) );
+    connect( job, TQ_SIGNAL( entries( TDEIO::Job*, const TDEIO::UDSEntryList& ) ),
+             this, TQ_SLOT( slotEntries( TDEIO::Job*, const TDEIO::UDSEntryList& ) ) );
+    connect( job, TQ_SIGNAL( result( TDEIO::Job* ) ),
+             this, TQ_SLOT( slotListResult( TDEIO::Job* ) ) );
     busy = true;
 
     if( !wait )

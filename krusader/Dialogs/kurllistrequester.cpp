@@ -77,11 +77,11 @@ KURLListRequester::KURLListRequester( TQWidget *parent, const char * name ) : TQ
   
   // connection table
   
-  connect( urlAddBtn, TQT_SIGNAL( clicked() ), this, TQT_SLOT( slotAdd() ) );
-  connect( urlBrowseBtn, TQT_SIGNAL( clicked() ), this, TQT_SLOT( slotBrowse() ) );
-  connect( urlLineEdit, TQT_SIGNAL( returnPressed(const TQString&) ), this, TQT_SLOT( slotAdd() ) );
-  connect( urlListBox, TQT_SIGNAL( rightButtonClicked ( TQListBoxItem *, const TQPoint & ) ), this,
-                       TQT_SLOT( slotRightClicked( TQListBoxItem * ) ) );
+  connect( urlAddBtn, TQ_SIGNAL( clicked() ), this, TQ_SLOT( slotAdd() ) );
+  connect( urlBrowseBtn, TQ_SIGNAL( clicked() ), this, TQ_SLOT( slotBrowse() ) );
+  connect( urlLineEdit, TQ_SIGNAL( returnPressed(const TQString&) ), this, TQ_SLOT( slotAdd() ) );
+  connect( urlListBox, TQ_SIGNAL( rightButtonClicked ( TQListBoxItem *, const TQPoint & ) ), this,
+                       TQ_SLOT( slotRightClicked( TQListBoxItem * ) ) );
 }
 
 void KURLListRequester::slotAdd()

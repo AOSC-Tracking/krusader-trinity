@@ -183,8 +183,8 @@ bool KrArchiverResultTable::addRow(SearchObject* search, TQGridLayout* grid)
   _label->setMargin(5);
   _label->setAlignment(TQt::AlignTop);
   grid->addWidget(_label, _numRows, 0);
-  connect(_label, TQT_SIGNAL(leftClickedURL(const TQString&)),
-                      TQT_SLOT(website(const TQString&)));
+  connect(_label, TQ_SIGNAL(leftClickedURL(const TQString&)),
+                      TQ_SLOT(website(const TQString&)));
 
   // Found column
   _label = new TQLabel( arch->getPath(), this );
@@ -336,8 +336,8 @@ bool KrToolResultTable::addRow(SearchObject* search, TQGridLayout* grid)
     KURLLabel* l = new KURLLabel( (*it)->getWebsite(), (*it)->getAppName(), toolBox);
     l->setAlignment(TQt::AlignLeft | TQt::AlignTop);
     l->setMargin(5);
-    connect(l, TQT_SIGNAL(leftClickedURL(const TQString&)),
-               TQT_SLOT(website(const TQString&)));
+    connect(l, TQ_SIGNAL(leftClickedURL(const TQString&)),
+               TQ_SLOT(website(const TQString&)));
   }
   grid->addWidget(toolBox, _numRows, 1);
 

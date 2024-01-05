@@ -129,7 +129,7 @@ void KMountMan::mount( TQString mntPoint, bool blocking ) {
 	   waiting = true; // prepare to block
 	TDEIO::SimpleJob *job = TDEIO::mount(false, m->mountType().local8Bit(), m->mountedFrom(), m->mountPoint(), false);
 	new KrProgress(job);
-	connect(job, TQT_SIGNAL(result(TDEIO::Job* )), this, TQT_SLOT(jobResult(TDEIO::Job* )));
+	connect(job, TQ_SIGNAL(result(TDEIO::Job* )), this, TQ_SLOT(jobResult(TDEIO::Job* )));
 	while (blocking && waiting) {
 		tqApp->processEvents();
 		usleep( 1000 );
@@ -141,7 +141,7 @@ void KMountMan::unmount( TQString mntPoint, bool blocking ) {
 	   waiting = true; // prepare to block
 	TDEIO::SimpleJob *job = TDEIO::unmount(mntPoint, false);
 	new KrProgress(job);
-	connect(job, TQT_SIGNAL(result(TDEIO::Job* )), this, TQT_SLOT(jobResult(TDEIO::Job* )));
+	connect(job, TQ_SIGNAL(result(TDEIO::Job* )), this, TQ_SLOT(jobResult(TDEIO::Job* )));
 	while (blocking && waiting) {
 		tqApp->processEvents();
 		usleep( 1000 );
@@ -290,14 +290,14 @@ void KMountMan::quickList() {
 
       ( ( TDEToolBarPopupAction* ) krMountMan ) ->popupMenu() ->insertItem( text, idx );
    }
-   connect( ( ( TDEToolBarPopupAction* ) krMountMan ) ->popupMenu(), TQT_SIGNAL( activated( int ) ),
-            this, TQT_SLOT( delayedPerformAction( int ) ) );
+   connect( ( ( TDEToolBarPopupAction* ) krMountMan ) ->popupMenu(), TQ_SIGNAL( activated( int ) ),
+            this, TQ_SLOT( delayedPerformAction( int ) ) );
 
 }
 
 void KMountMan::delayedPerformAction( int idx ) {
    __delayedIdx = idx;
-   TQTimer::singleShot(0, this, TQT_SLOT(performAction(int)));   
+   TQTimer::singleShot(0, this, TQ_SLOT(performAction(int)));   
 }
 
 void KMountMan::performAction( int idx ) {
@@ -321,7 +321,7 @@ void KMountMan::performAction( int idx ) {
    // free memory
    delete[] _actions;
    _actions = 0L;
-   disconnect( ( ( TDEToolBarPopupAction* ) krMountMan ) ->popupMenu(), TQT_SIGNAL( activated( int ) ), 0, 0 );
+   disconnect( ( ( TDEToolBarPopupAction* ) krMountMan ) ->popupMenu(), TQ_SIGNAL( activated( int ) ), 0, 0 );
 }
 
 #include "kmountman.moc"

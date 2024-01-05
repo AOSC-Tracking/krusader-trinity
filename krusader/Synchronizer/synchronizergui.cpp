@@ -1475,50 +1475,50 @@ void SynchronizerGUI::initGUI(TQWidget* /* parent */, TQString profileName, KURL
 
   /* =============================== Connect table ================================ */
 
-  connect( syncList,TQT_SIGNAL(rightButtonPressed(TQListViewItem *, const TQPoint &, int)),
-           this, TQT_SLOT(rightMouseClicked(TQListViewItem *)));
-  connect( syncList,TQT_SIGNAL(doubleClicked(TQListViewItem *, const TQPoint &, int)),
-           this, TQT_SLOT(doubleClicked(TQListViewItem *)));
+  connect( syncList,TQ_SIGNAL(rightButtonPressed(TQListViewItem *, const TQPoint &, int)),
+           this, TQ_SLOT(rightMouseClicked(TQListViewItem *)));
+  connect( syncList,TQ_SIGNAL(doubleClicked(TQListViewItem *, const TQPoint &, int)),
+           this, TQ_SLOT(doubleClicked(TQListViewItem *)));
   
-  connect( syncList,TQT_SIGNAL(contextMenuRequested(TQListViewItem *, const TQPoint &, int)),
-           this, TQT_SLOT(rightMouseClicked(TQListViewItem *)));
+  connect( syncList,TQ_SIGNAL(contextMenuRequested(TQListViewItem *, const TQPoint &, int)),
+           this, TQ_SLOT(rightMouseClicked(TQListViewItem *)));
    
-  connect( profileManager, TQT_SIGNAL( loadFromProfile( TQString ) ), this, TQT_SLOT( loadFromProfile( TQString ) ) );
-  connect( profileManager, TQT_SIGNAL( saveToProfile( TQString ) ), this, TQT_SLOT( saveToProfile( TQString ) ) );
+  connect( profileManager, TQ_SIGNAL( loadFromProfile( TQString ) ), this, TQ_SLOT( loadFromProfile( TQString ) ) );
+  connect( profileManager, TQ_SIGNAL( saveToProfile( TQString ) ), this, TQ_SLOT( saveToProfile( TQString ) ) );
 
-  connect( btnSwapSides,      TQT_SIGNAL( clicked() ), this, TQT_SLOT( swapSides() ) );
-  connect( btnCompareDirs,    TQT_SIGNAL( clicked() ), this, TQT_SLOT( compare() ) );
-  connect( btnStopComparing,  TQT_SIGNAL( clicked() ), this, TQT_SLOT( stop() ) );
-  connect( btnFeedToListBox,  TQT_SIGNAL( clicked() ), this, TQT_SLOT( feedToListBox() ) );
-  connect( btnSynchronize,    TQT_SIGNAL( clicked() ), this, TQT_SLOT( synchronize() ) );
-  connect( btnScrollResults,  TQT_SIGNAL( toggled(bool) ), this, TQT_SLOT( setScrolling(bool) ) );
-  connect( btnCloseSync,      TQT_SIGNAL( clicked() ), this, TQT_SLOT( closeDialog() ) );
+  connect( btnSwapSides,      TQ_SIGNAL( clicked() ), this, TQ_SLOT( swapSides() ) );
+  connect( btnCompareDirs,    TQ_SIGNAL( clicked() ), this, TQ_SLOT( compare() ) );
+  connect( btnStopComparing,  TQ_SIGNAL( clicked() ), this, TQ_SLOT( stop() ) );
+  connect( btnFeedToListBox,  TQ_SIGNAL( clicked() ), this, TQ_SLOT( feedToListBox() ) );
+  connect( btnSynchronize,    TQ_SIGNAL( clicked() ), this, TQ_SLOT( synchronize() ) );
+  connect( btnScrollResults,  TQ_SIGNAL( toggled(bool) ), this, TQ_SLOT( setScrolling(bool) ) );
+  connect( btnCloseSync,      TQ_SIGNAL( clicked() ), this, TQ_SLOT( closeDialog() ) );
 
-  connect( cbSubdirs,         TQT_SIGNAL( toggled(bool) ), this, TQT_SLOT( subdirsChecked( bool ) ) );
-  connect( cbAsymmetric,      TQT_SIGNAL( toggled(bool) ), this, TQT_SLOT( setPanelLabels() ) );
+  connect( cbSubdirs,         TQ_SIGNAL( toggled(bool) ), this, TQ_SLOT( subdirsChecked( bool ) ) );
+  connect( cbAsymmetric,      TQ_SIGNAL( toggled(bool) ), this, TQ_SLOT( setPanelLabels() ) );
 
-  connect( &synchronizer,     TQT_SIGNAL( comparedFileData( SynchronizerFileItem * ) ), this,
-                              TQT_SLOT( addFile( SynchronizerFileItem * ) ) );
-  connect( &synchronizer,     TQT_SIGNAL( markChanged( SynchronizerFileItem *, bool ) ), this,
-                              TQT_SLOT( markChanged( SynchronizerFileItem *, bool ) ) );
-  connect( &synchronizer,     TQT_SIGNAL( statusInfo( TQString ) ), this, TQT_SLOT( statusInfo( TQString ) ) );
+  connect( &synchronizer,     TQ_SIGNAL( comparedFileData( SynchronizerFileItem * ) ), this,
+                              TQ_SLOT( addFile( SynchronizerFileItem * ) ) );
+  connect( &synchronizer,     TQ_SIGNAL( markChanged( SynchronizerFileItem *, bool ) ), this,
+                              TQ_SLOT( markChanged( SynchronizerFileItem *, bool ) ) );
+  connect( &synchronizer,     TQ_SIGNAL( statusInfo( TQString ) ), this, TQ_SLOT( statusInfo( TQString ) ) );
 
-  connect( btnLeftToRight,    TQT_SIGNAL( toggled(bool) ), this, TQT_SLOT( refresh() ) );
-  connect( btnEquals,         TQT_SIGNAL( toggled(bool) ), this, TQT_SLOT( refresh() ) );
-  connect( btnDifferents,     TQT_SIGNAL( toggled(bool) ), this, TQT_SLOT( refresh() ) );
-  connect( btnRightToLeft,    TQT_SIGNAL( toggled(bool) ), this, TQT_SLOT( refresh() ) );
-  connect( btnDeletable,      TQT_SIGNAL( toggled(bool) ), this, TQT_SLOT( refresh() ) );
-  connect( btnDuplicates,     TQT_SIGNAL( toggled(bool) ), this, TQT_SLOT( refresh() ) );
-  connect( btnSingles,        TQT_SIGNAL( toggled(bool) ), this, TQT_SLOT( refresh() ) );
+  connect( btnLeftToRight,    TQ_SIGNAL( toggled(bool) ), this, TQ_SLOT( refresh() ) );
+  connect( btnEquals,         TQ_SIGNAL( toggled(bool) ), this, TQ_SLOT( refresh() ) );
+  connect( btnDifferents,     TQ_SIGNAL( toggled(bool) ), this, TQ_SLOT( refresh() ) );
+  connect( btnRightToLeft,    TQ_SIGNAL( toggled(bool) ), this, TQ_SLOT( refresh() ) );
+  connect( btnDeletable,      TQ_SIGNAL( toggled(bool) ), this, TQ_SLOT( refresh() ) );
+  connect( btnDuplicates,     TQ_SIGNAL( toggled(bool) ), this, TQ_SLOT( refresh() ) );
+  connect( btnSingles,        TQ_SIGNAL( toggled(bool) ), this, TQ_SLOT( refresh() ) );
 
-  connect( fileFilter,        TQT_SIGNAL( textChanged( const TQString & ) ), this, TQT_SLOT( connectFilters( const TQString & ) ) );
-  connect( generalFilter->searchFor, TQT_SIGNAL( textChanged( const TQString & ) ), this, TQT_SLOT( connectFilters( const TQString & ) ) );
-  connect( generalFilter->searchFor, TQT_SIGNAL( textChanged( const TQString & ) ), this, TQT_SLOT( setCompletion() ) );
-  connect( generalFilter->dontSearchIn, TQT_SIGNAL( checkValidity( TQString &, TQString & ) ),
-           this, TQT_SLOT( checkExcludeURLValidity( TQString &, TQString & ) ) );
+  connect( fileFilter,        TQ_SIGNAL( textChanged( const TQString & ) ), this, TQ_SLOT( connectFilters( const TQString & ) ) );
+  connect( generalFilter->searchFor, TQ_SIGNAL( textChanged( const TQString & ) ), this, TQ_SLOT( connectFilters( const TQString & ) ) );
+  connect( generalFilter->searchFor, TQ_SIGNAL( textChanged( const TQString & ) ), this, TQ_SLOT( setCompletion() ) );
+  connect( generalFilter->dontSearchIn, TQ_SIGNAL( checkValidity( TQString &, TQString & ) ),
+           this, TQ_SLOT( checkExcludeURLValidity( TQString &, TQString & ) ) );
 
-  connect( profileManager, TQT_SIGNAL( loadFromProfile( TQString ) ), filterTabs, TQT_SLOT( loadFromProfile( TQString ) ) );
-  connect( profileManager, TQT_SIGNAL( saveToProfile( TQString ) ), filterTabs, TQT_SLOT( saveToProfile( TQString ) ) );
+  connect( profileManager, TQ_SIGNAL( loadFromProfile( TQString ) ), filterTabs, TQ_SLOT( loadFromProfile( TQString ) ) );
+  connect( profileManager, TQ_SIGNAL( saveToProfile( TQString ) ), filterTabs, TQ_SLOT( saveToProfile( TQString ) ) );
 
   setPanelLabels();
   setCompletion();

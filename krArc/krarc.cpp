@@ -314,8 +314,8 @@ void tdeio_krarcProtocol::get(const KURL& url, int tries ){
 		emit mimeType( mt->name() );
 		proc << getCmd << convertName( arcFile->url().path() )+" ";
 		if( arcType != "gzip" && arcType != "bzip2" && arcType != "xz") proc << convertFileName( file );
-		connect(&proc,TQT_SIGNAL(receivedStdout(TDEProcess*,char*,int)),
-				this,TQT_SLOT(receivedData(TDEProcess*,char*,int)) );
+		connect(&proc,TQ_SIGNAL(receivedStdout(TDEProcess*,char*,int)),
+				this,TQ_SLOT(receivedData(TDEProcess*,char*,int)) );
 	}
 	infoMessage(i18n("Unpacking %1 ...").arg( url.fileName() ) );
 	// change the working directory to our arcTempDir
@@ -1531,8 +1531,8 @@ TQString tdeio_krarcProtocol::detectArchive( bool &encrypted, TQString fileName 
 
 						KrShellProcess proc;
 						proc << testCmd << convertName( fileName );
-						connect( &proc, TQT_SIGNAL( receivedStdout(TDEProcess*,char*,int) ),
-						         this, TQT_SLOT( checkOutputForPassword( TDEProcess*,char*,int ) ) );
+						connect( &proc, TQ_SIGNAL( receivedStdout(TDEProcess*,char*,int) ),
+						         this, TQ_SLOT( checkOutputForPassword( TDEProcess*,char*,int ) ) );
 						proc.start(TDEProcess::Block,TDEProcess::AllOutput);
 						encrypted = this->encrypted;
 

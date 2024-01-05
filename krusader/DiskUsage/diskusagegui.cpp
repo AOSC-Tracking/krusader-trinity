@@ -100,16 +100,16 @@ DiskUsageGUI::DiskUsageGUI( KURL openDir, TQWidget* parent, const char *name )
   status->setFrameShadow( TQLabel::Sunken );  
   duGrid->addWidget( status, 2, 0 );
   
-  connect( diskUsage, TQT_SIGNAL( status( TQString ) ), this, TQT_SLOT( setStatus( TQString ) ) );
-  connect( diskUsage, TQT_SIGNAL( viewChanged( int ) ), this, TQT_SLOT( slotViewChanged( int ) ) );
-  connect( diskUsage, TQT_SIGNAL( newSearch() ), this,  TQT_SLOT( newSearch() ) );
-  connect( diskUsage, TQT_SIGNAL( loadFinished( bool ) ), this,  TQT_SLOT( slotLoadFinished( bool ) ) );
-  connect( btnNewSearch, TQT_SIGNAL( clicked() ), this, TQT_SLOT( newSearch() ) );
-  connect( btnRefresh, TQT_SIGNAL( clicked() ), this, TQT_SLOT( loadUsageInfo() ) );
-  connect( btnDirUp, TQT_SIGNAL( clicked() ), diskUsage, TQT_SLOT( dirUp() ) );
-  connect( btnLines, TQT_SIGNAL( clicked() ), this, TQT_SLOT( selectLinesView() ) );
-  connect( btnDetailed, TQT_SIGNAL( clicked() ), this, TQT_SLOT( selectListView() ) );
-  connect( btnFilelight, TQT_SIGNAL( clicked() ), this, TQT_SLOT( selectFilelightView() ) );  
+  connect( diskUsage, TQ_SIGNAL( status( TQString ) ), this, TQ_SLOT( setStatus( TQString ) ) );
+  connect( diskUsage, TQ_SIGNAL( viewChanged( int ) ), this, TQ_SLOT( slotViewChanged( int ) ) );
+  connect( diskUsage, TQ_SIGNAL( newSearch() ), this,  TQ_SLOT( newSearch() ) );
+  connect( diskUsage, TQ_SIGNAL( loadFinished( bool ) ), this,  TQ_SLOT( slotLoadFinished( bool ) ) );
+  connect( btnNewSearch, TQ_SIGNAL( clicked() ), this, TQ_SLOT( newSearch() ) );
+  connect( btnRefresh, TQ_SIGNAL( clicked() ), this, TQ_SLOT( loadUsageInfo() ) );
+  connect( btnDirUp, TQ_SIGNAL( clicked() ), diskUsage, TQ_SLOT( dirUp() ) );
+  connect( btnLines, TQ_SIGNAL( clicked() ), this, TQ_SLOT( selectLinesView() ) );
+  connect( btnDetailed, TQ_SIGNAL( clicked() ), this, TQ_SLOT( selectListView() ) );
+  connect( btnFilelight, TQ_SIGNAL( clicked() ), this, TQ_SLOT( selectFilelightView() ) );  
   
   krConfig->setGroup( "DiskUsage" ); 
   
@@ -220,7 +220,7 @@ bool DiskUsageGUI::newSearch()
   if (tmp.isEmpty()) return false;
   baseDirectory = tmp;
   
-  TQTimer::singleShot( 0, this, TQT_SLOT( loadUsageInfo() ) );
+  TQTimer::singleShot( 0, this, TQ_SLOT( loadUsageInfo() ) );
   return true;
 }
 

@@ -72,12 +72,12 @@ void CompareTask::start() {
     m_loadFinished = m_otherLoadFinished = false;
 
     m_dirList = new SynchronizerDirList( parentWidget, ignoreHidden );
-    connect( m_dirList, TQT_SIGNAL( finished( bool ) ), this, TQT_SLOT( slotFinished( bool ) ));
+    connect( m_dirList, TQ_SIGNAL( finished( bool ) ), this, TQ_SLOT( slotFinished( bool ) ));
     m_dirList->load( m_url, false );
 
     if( m_duplicate ) {
       m_otherDirList = new SynchronizerDirList( parentWidget, ignoreHidden );
-      connect( m_otherDirList, TQT_SIGNAL( finished( bool ) ), this, TQT_SLOT( slotOtherFinished( bool ) ));
+      connect( m_otherDirList, TQ_SIGNAL( finished( bool ) ), this, TQ_SLOT( slotOtherFinished( bool ) ));
       m_otherDirList->load( m_otherUrl, false );
     }
   }
@@ -144,7 +144,7 @@ void CompareContentTask::start() {
     }
 
     timer = new TQTimer( this );
-    connect( timer, TQT_SIGNAL(timeout()), this, TQT_SLOT(sendStatusMessage()) );
+    connect( timer, TQ_SIGNAL(timeout()), this, TQ_SLOT(sendStatusMessage()) );
     timer->start( 1000, true );
 
     localFileCompareCycle();
@@ -152,19 +152,19 @@ void CompareContentTask::start() {
     leftReadJob = TDEIO::get( leftURL, false, false );
     rightReadJob = TDEIO::get( rightURL, false, false );
 
-    connect(leftReadJob, TQT_SIGNAL(data(TDEIO::Job *, const TQByteArray &)),
-            this, TQT_SLOT(slotDataReceived(TDEIO::Job *, const TQByteArray &)));
-    connect(rightReadJob, TQT_SIGNAL(data(TDEIO::Job *, const TQByteArray &)),
-            this, TQT_SLOT(slotDataReceived(TDEIO::Job *, const TQByteArray &)));
-    connect(leftReadJob, TQT_SIGNAL(result(TDEIO::Job*)),
-            this, TQT_SLOT(slotFinished(TDEIO::Job *)));
-    connect(rightReadJob, TQT_SIGNAL(result(TDEIO::Job*)),
-            this, TQT_SLOT(slotFinished(TDEIO::Job *)));
+    connect(leftReadJob, TQ_SIGNAL(data(TDEIO::Job *, const TQByteArray &)),
+            this, TQ_SLOT(slotDataReceived(TDEIO::Job *, const TQByteArray &)));
+    connect(rightReadJob, TQ_SIGNAL(data(TDEIO::Job *, const TQByteArray &)),
+            this, TQ_SLOT(slotDataReceived(TDEIO::Job *, const TQByteArray &)));
+    connect(leftReadJob, TQ_SIGNAL(result(TDEIO::Job*)),
+            this, TQ_SLOT(slotFinished(TDEIO::Job *)));
+    connect(rightReadJob, TQ_SIGNAL(result(TDEIO::Job*)),
+            this, TQ_SLOT(slotFinished(TDEIO::Job *)));
 
     rightReadJob->suspend();
 
     timer = new TQTimer( this );
-    connect( timer, TQT_SIGNAL(timeout()), this, TQT_SLOT(sendStatusMessage()) );
+    connect( timer, TQ_SIGNAL(timeout()), this, TQ_SLOT(sendStatusMessage()) );
     timer->start( 1000, true );
   }
 }
@@ -217,7 +217,7 @@ void CompareContentTask::localFileCompareCycle() {
     return;
   }
 
-  TQTimer::singleShot( 0, this, TQT_SLOT( localFileCompareCycle() ) );
+  TQTimer::singleShot( 0, this, TQ_SLOT( localFileCompareCycle() ) );
 }
 
 

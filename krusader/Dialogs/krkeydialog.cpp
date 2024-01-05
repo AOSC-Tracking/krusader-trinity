@@ -41,12 +41,12 @@ KrKeyDialog::KrKeyDialog( TQWidget * parent ) : KKeyDialog( false /* allow lette
    KPushButton* importButton = new KPushButton( i18n("Import shortcuts"), buttonBox );
    TQWhatsThis::add( importButton, i18n( "Load a keybinding profile, e.g., total_commander.keymap" ) );
    buttonBoxLayout->insertWidget( 1, importButton ); // the defaults-button should stay on position 0
-   connect( importButton, TQT_SIGNAL( clicked() ), TQT_SLOT( slotImportShortcuts() ) );
+   connect( importButton, TQ_SIGNAL( clicked() ), TQ_SLOT( slotImportShortcuts() ) );
 
    KPushButton* exportButton = new KPushButton( i18n("Export shortcuts"), buttonBox );
    TQWhatsThis::add( exportButton, i18n( "Save current keybindings in a keymap file." ) );
    buttonBoxLayout->insertWidget( 2, exportButton );
-   connect( exportButton, TQT_SIGNAL( clicked() ), TQT_SLOT( slotExportShortcuts() ) );
+   connect( exportButton, TQ_SIGNAL( clicked() ), TQ_SLOT( slotExportShortcuts() ) );
 
    // Also quite HACK 'isch but unfortunately KKeyDialog don't giveus access to this widget
    _chooser = static_cast<KKeyChooser*>( mainWidget() );

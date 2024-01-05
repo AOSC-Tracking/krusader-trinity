@@ -19,7 +19,7 @@
 
 // ------------------------ for internal use
 #define BOOKMARKS_FILE	"krusader/krbookmarks.xml"
-#define CONNECT_BM(X)	{ disconnect(X, TQT_SIGNAL(activated(const KURL&)), 0, 0); connect(X, TQT_SIGNAL(activated(const KURL&)), this, TQT_SLOT(slotActivated(const KURL&))); }
+#define CONNECT_BM(X)	{ disconnect(X, TQ_SIGNAL(activated(const KURL&)), 0, 0); connect(X, TQ_SIGNAL(activated(const KURL&)), this, TQ_SLOT(slotActivated(const KURL&))); }
 											
 KrBookmarkHandler::KrBookmarkHandler(): TQObject(0), _middleClick(false), _mainBookmarkPopup( 0 ), _specialBookmarkIDs(), _bookmarkIDTable() {
 	// create our own action collection and make the shortcuts apply only to parent
@@ -36,7 +36,7 @@ KrBookmarkHandler::KrBookmarkHandler(): TQObject(0), _middleClick(false), _mainB
 
 	// hack
 	manager = KBookmarkManager::managerForFile(locateLocal( "data", BOOKMARKS_FILE ), false);
-	connect(manager, TQT_SIGNAL(changed(const TQString&, const TQString& )), this, TQT_SLOT(bookmarksChanged(const TQString&, const TQString& )));
+	connect(manager, TQ_SIGNAL(changed(const TQString&, const TQString& )), this, TQ_SLOT(bookmarksChanged(const TQString&, const TQString& )));
 }
 
 KrBookmarkHandler::~KrBookmarkHandler() {
@@ -403,8 +403,8 @@ void KrBookmarkHandler::buildMenu(KrBookmark *parent, TDEPopupMenu *menu) {
 		_specialBookmarkIDs.append( itemIndex );
 	
 		// make sure the menu is connected to us
-		disconnect(menu, TQT_SIGNAL(activated(int)), 0, 0);
-		connect(menu, TQT_SIGNAL(activated(int)), this, TQT_SLOT(menuOperation(int)));
+		disconnect(menu, TQ_SIGNAL(activated(int)), 0, 0);
+		connect(menu, TQ_SIGNAL(activated(int)), this, TQ_SLOT(menuOperation(int)));
 	}
 
 	menu->installEventFilter(this);
@@ -493,8 +493,8 @@ void KrBookmarkHandler::rightClickOnSpecialBookmark() {
 	menu.insertItem( i18n( "Jump back" ), JUMP_BACK_ID );
 	menu.setItemChecked( JUMP_BACK_ID, hasJumpback );
 	
-	connect( _mainBookmarkPopup, TQT_SIGNAL( highlighted( int ) ), &menu, TQT_SLOT( close() ) );
-	connect( _mainBookmarkPopup, TQT_SIGNAL( activated( int ) ), &menu, TQT_SLOT( close() ) );
+	connect( _mainBookmarkPopup, TQ_SIGNAL( highlighted( int ) ), &menu, TQ_SLOT( close() ) );
+	connect( _mainBookmarkPopup, TQ_SIGNAL( activated( int ) ), &menu, TQ_SLOT( close() ) );
 	
 	int result = menu.exec( TQCursor::pos() );
 	bool doCloseMain = true;
@@ -540,8 +540,8 @@ void KrBookmarkHandler::rightClicked( TQPopupMenu *menu, int /*id*/, KrBookmark 
 	popup.insertSeparator();
 	popup.insertItem( krLoader->loadIcon( "edit-delete", TDEIcon::Panel ), i18n( "Delete" ), DELETE_ID );
 	
-	connect( menu, TQT_SIGNAL( highlighted( int ) ), &popup, TQT_SLOT( close() ) );
-	connect( menu, TQT_SIGNAL( activated( int ) ), &popup, TQT_SLOT( close() ) );
+	connect( menu, TQ_SIGNAL( highlighted( int ) ), &popup, TQ_SLOT( close() ) );
+	connect( menu, TQ_SIGNAL( activated( int ) ), &popup, TQ_SLOT( close() ) );
 	
 	int result = popup.exec( TQCursor::pos() );
 	

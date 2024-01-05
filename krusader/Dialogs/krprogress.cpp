@@ -103,7 +103,7 @@ KrProgress::KrProgress( TDEIO::Job* job )
   hBox->addStretch(1);
 
   KPushButton *pb = new KPushButton( KStdGuiItem::cancel(), this );
-  connect( pb, TQT_SIGNAL( clicked() ), TQT_SLOT( slotStop() ) );
+  connect( pb, TQ_SIGNAL( clicked() ), TQ_SLOT( slotStop() ) );
   hBox->addWidget( pb );
 
   resize( sizeHint() );
@@ -115,16 +115,16 @@ KrProgress::KrProgress( TDEIO::Job* job )
   setOnlyClean(false);
   setStopOnClose(true);
   // Connect global progress info signals
-  connect( job, TQT_SIGNAL( percent( TDEIO::Job*, unsigned long ) ),
-                TQT_SLOT( slotPercent( TDEIO::Job*, unsigned long ) ) );
-  connect( job, TQT_SIGNAL( infoMessage( TDEIO::Job*, const TQString & ) ),
-                TQT_SLOT( slotInfoMessage( TDEIO::Job*, const TQString & ) ) );
-  connect( job, TQT_SIGNAL( totalSize( TDEIO::Job*, TDEIO::filesize_t ) ),
-                TQT_SLOT( slotTotalSize( TDEIO::Job*, TDEIO::filesize_t ) ) );
-  connect( job, TQT_SIGNAL( processedSize( TDEIO::Job*, TDEIO::filesize_t ) ),
-                TQT_SLOT( slotProcessedSize( TDEIO::Job*, TDEIO::filesize_t ) ) );
-  connect( job, TQT_SIGNAL( speed( TDEIO::Job*, unsigned long ) ),
-                TQT_SLOT( slotSpeed( TDEIO::Job*, unsigned long ) ) );
+  connect( job, TQ_SIGNAL( percent( TDEIO::Job*, unsigned long ) ),
+                TQ_SLOT( slotPercent( TDEIO::Job*, unsigned long ) ) );
+  connect( job, TQ_SIGNAL( infoMessage( TDEIO::Job*, const TQString & ) ),
+                TQ_SLOT( slotInfoMessage( TDEIO::Job*, const TQString & ) ) );
+  connect( job, TQ_SIGNAL( totalSize( TDEIO::Job*, TDEIO::filesize_t ) ),
+                TQ_SLOT( slotTotalSize( TDEIO::Job*, TDEIO::filesize_t ) ) );
+  connect( job, TQ_SIGNAL( processedSize( TDEIO::Job*, TDEIO::filesize_t ) ),
+                TQ_SLOT( slotProcessedSize( TDEIO::Job*, TDEIO::filesize_t ) ) );
+  connect( job, TQ_SIGNAL( speed( TDEIO::Job*, unsigned long ) ),
+                TQ_SLOT( slotSpeed( TDEIO::Job*, unsigned long ) ) );
 
   // change to modal & move to Krusader's center
     TQPoint center((krApp->width()-width())/2,(krApp->height()-height())/2);

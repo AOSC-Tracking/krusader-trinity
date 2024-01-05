@@ -55,7 +55,7 @@ KgUserActions::KgUserActions( bool first, TQWidget* parent,  const char* name ) 
    		), InfoGroup, "InformationLabel" );
    InfoGrid->addWidget( labelInfo, 0, 0 );
    KPushButton *actionmanButton = new KPushButton( i18n("Start ActionMan"), InfoGroup, "actionmanButton");
-   connect( actionmanButton, TQT_SIGNAL( clicked() ), TQT_SLOT( startActionMan() ) );
+   connect( actionmanButton, TQ_SIGNAL( clicked() ), TQ_SLOT( startActionMan() ) );
    InfoGrid->addWidget( actionmanButton, 1, 0 );
 
    kgUserActionLayout->addWidget( InfoGroup, 0 ,0 );
