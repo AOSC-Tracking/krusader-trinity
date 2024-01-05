@@ -15,7 +15,7 @@ KrAddBookmarkDlg::KrAddBookmarkDlg(TQWidget *parent, KURL url):
 	// create the 'new folder' button
 	setButtonText(KDialogBase::User1, i18n("New Folder"));
 	showButton(KDialogBase::User1, false); // hide it until _createIn is shown
-	connect(this, TQT_SIGNAL(user1Clicked()), this, TQT_SLOT(newFolder()));
+	connect(this, TQ_SIGNAL(user1Clicked()), this, TQ_SLOT(newFolder()));
 
 	// create the main widget
 	TQWidget *page = new TQWidget(this);
@@ -46,7 +46,7 @@ KrAddBookmarkDlg::KrAddBookmarkDlg(TQWidget *parent, KURL url):
 	_createInBtn = new TQToolButton(page);
 	_createInBtn->setPixmap(krLoader->loadIcon("go-down", TDEIcon::Small));
 	_createInBtn->setToggleButton(true);
-	connect(_createInBtn, TQT_SIGNAL(toggled(bool)), this, TQT_SLOT(toggleCreateIn(bool )));
+	connect(_createInBtn, TQ_SIGNAL(toggled(bool)), this, TQ_SLOT(toggleCreateIn(bool )));
 	layout->addWidget(_createInBtn, 2, 2);
 
 	setDetailsWidget(createInWidget());
@@ -76,7 +76,7 @@ TQWidget *KrAddBookmarkDlg::createInWidget() {
 	populateCreateInWidget(krBookMan->_root, item);
 	_createIn->setCurrentItem(item);
 	createInSelection(item);
-	connect(_createIn, TQT_SIGNAL(selectionChanged(TQListViewItem*)), this, TQT_SLOT(createInSelection(TQListViewItem*)));
+	connect(_createIn, TQ_SIGNAL(selectionChanged(TQListViewItem*)), this, TQ_SLOT(createInSelection(TQListViewItem*)));
 	
 	return _createIn;
 }

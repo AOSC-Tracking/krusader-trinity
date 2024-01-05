@@ -238,21 +238,21 @@ remoteManBase::remoteManBase( TQWidget* parent,  const char* name, bool modal, W
     remoteManBaseLayout->addWidget( TextLabel1_4, 3, 1 );
 
     // signals and slots connections
-    connect( closeBtn, TQT_SIGNAL( clicked() ), this, TQT_SLOT( accept() ) );
-    connect( addBtn, TQT_SIGNAL( clicked() ), this, TQT_SLOT( addSession() ) );
-    connect( removeBtn, TQT_SIGNAL( clicked() ), this, TQT_SLOT( removeSession() ) );
-    connect( sessions, TQT_SIGNAL( selectionChanged(TQListViewItem*) ), this, TQT_SLOT( refreshData() ) );
-    connect( sessions, TQT_SIGNAL( selectionChanged() ), this, TQT_SLOT( refreshData() ) );
-    connect( sessions, TQT_SIGNAL( expanded(TQListViewItem*) ), this, TQT_SLOT( refreshData() ) );
-    connect( sessions, TQT_SIGNAL( currentChanged(TQListViewItem*) ), this, TQT_SLOT( refreshData() ) );
-    connect( sessions, TQT_SIGNAL( mouseButtonClicked(int,TQListViewItem*,const 
-TQPoint&,int) ), this, TQT_SLOT( refreshData() ) );
-    connect( sessions, TQT_SIGNAL( collapsed(TQListViewItem*) ), this, TQT_SLOT( refreshData() ) );
-    connect( connectBtn, TQT_SIGNAL( clicked() ), this, TQT_SLOT( connection() ) );
-    connect( sessionName, TQT_SIGNAL( textChanged(const TQString&) ), this, TQT_SLOT( updateName(const TQString&) ) );
-    connect( newGroupBtn, TQT_SIGNAL( clicked() ), this, TQT_SLOT( addGroup() ) );
-    connect( anonymous, TQT_SIGNAL( clicked() ), this, TQT_SLOT( refreshData() ) );
-    connect( protocol, TQT_SIGNAL(activated(int)), this, TQT_SLOT(refreshData()));
+    connect( closeBtn, TQ_SIGNAL( clicked() ), this, TQ_SLOT( accept() ) );
+    connect( addBtn, TQ_SIGNAL( clicked() ), this, TQ_SLOT( addSession() ) );
+    connect( removeBtn, TQ_SIGNAL( clicked() ), this, TQ_SLOT( removeSession() ) );
+    connect( sessions, TQ_SIGNAL( selectionChanged(TQListViewItem*) ), this, TQ_SLOT( refreshData() ) );
+    connect( sessions, TQ_SIGNAL( selectionChanged() ), this, TQ_SLOT( refreshData() ) );
+    connect( sessions, TQ_SIGNAL( expanded(TQListViewItem*) ), this, TQ_SLOT( refreshData() ) );
+    connect( sessions, TQ_SIGNAL( currentChanged(TQListViewItem*) ), this, TQ_SLOT( refreshData() ) );
+    connect( sessions, TQ_SIGNAL( mouseButtonClicked(int,TQListViewItem*,const 
+TQPoint&,int) ), this, TQ_SLOT( refreshData() ) );
+    connect( sessions, TQ_SIGNAL( collapsed(TQListViewItem*) ), this, TQ_SLOT( refreshData() ) );
+    connect( connectBtn, TQ_SIGNAL( clicked() ), this, TQ_SLOT( connection() ) );
+    connect( sessionName, TQ_SIGNAL( textChanged(const TQString&) ), this, TQ_SLOT( updateName(const TQString&) ) );
+    connect( newGroupBtn, TQ_SIGNAL( clicked() ), this, TQ_SLOT( addGroup() ) );
+    connect( anonymous, TQ_SIGNAL( clicked() ), this, TQ_SLOT( refreshData() ) );
+    connect( protocol, TQ_SIGNAL(activated(int)), this, TQ_SLOT(refreshData()));
 
     // tab order
     setTabOrder( sessionName, hostName );

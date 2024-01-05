@@ -82,12 +82,12 @@ PreservingCopyJob::PreservingCopyJob( const KURL::List& src, const KURL& dest, C
 {
   if( dest.isLocalFile() )
   {
-    connect( this, TQT_SIGNAL( aboutToCreate (TDEIO::Job *, const TQValueList< TDEIO::CopyInfo > &) ),
-             this, TQT_SLOT( slotAboutToCreate (TDEIO::Job *, const TQValueList< TDEIO::CopyInfo > &) ) );
-    connect( this, TQT_SIGNAL( copyingDone( TDEIO::Job *, const KURL &, const KURL &, bool, bool) ),
-             this, TQT_SLOT( slotCopyingDone( TDEIO::Job *, const KURL &, const KURL &, bool, bool) ) );
-    connect( this, TQT_SIGNAL( result( TDEIO::Job * ) ),
-             this, TQT_SLOT( slotFinished() ) );
+    connect( this, TQ_SIGNAL( aboutToCreate (TDEIO::Job *, const TQValueList< TDEIO::CopyInfo > &) ),
+             this, TQ_SLOT( slotAboutToCreate (TDEIO::Job *, const TQValueList< TDEIO::CopyInfo > &) ) );
+    connect( this, TQ_SIGNAL( copyingDone( TDEIO::Job *, const KURL &, const KURL &, bool, bool) ),
+             this, TQ_SLOT( slotCopyingDone( TDEIO::Job *, const KURL &, const KURL &, bool, bool) ) );
+    connect( this, TQ_SIGNAL( result( TDEIO::Job * ) ),
+             this, TQ_SLOT( slotFinished() ) );
   }
 }
 
@@ -173,10 +173,10 @@ void PreservingCopyJob::slotResult( Job *job ) {
   
   for( unsigned j=0; j != subjobs.count(); j++ ) {
     if( subjobs.at( j )->inherits( "TDEIO::ListJob" ) ) {
-      disconnect( subjobs.at( j ), TQT_SIGNAL( entries (TDEIO::Job *, const TDEIO::UDSEntryList &) ),
-                  this, TQT_SLOT( slotListEntries (TDEIO::Job *, const TDEIO::UDSEntryList &) ) );
-      connect( subjobs.at( j ), TQT_SIGNAL( entries (TDEIO::Job *, const TDEIO::UDSEntryList &) ),
-                  this, TQT_SLOT( slotListEntries (TDEIO::Job *, const TDEIO::UDSEntryList &) ) );
+      disconnect( subjobs.at( j ), TQ_SIGNAL( entries (TDEIO::Job *, const TDEIO::UDSEntryList &) ),
+                  this, TQ_SLOT( slotListEntries (TDEIO::Job *, const TDEIO::UDSEntryList &) ) );
+      connect( subjobs.at( j ), TQ_SIGNAL( entries (TDEIO::Job *, const TDEIO::UDSEntryList &) ),
+                  this, TQ_SLOT( slotListEntries (TDEIO::Job *, const TDEIO::UDSEntryList &) ) );
     }
   }
 }

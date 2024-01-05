@@ -64,9 +64,9 @@ A
 KMountManGUI::KMountManGUI() : KDialogBase( krApp, 0, true, "Mount.Man" ),
 info( 0 ), mountList( 0 ) {
 	watcher = new TQTimer( this );
-   connect( watcher, TQT_SIGNAL( timeout() ), this, TQT_SLOT( checkMountChange() ) );
+   connect( watcher, TQ_SIGNAL( timeout() ), this, TQ_SLOT( checkMountChange() ) );
 
-   connect( this, TQT_SIGNAL( finishedGettingSpaceData() ), this, TQT_SLOT( updateList() ) );
+   connect( this, TQ_SIGNAL( finishedGettingSpaceData() ), this, TQ_SLOT( updateList() ) );
    setButtonOK( i18n( "&Close" ) );
    showButtonApply( false ); showButtonCancel( false );
    setPlainCaption( i18n( "MountMan - Your Mount-Manager" ) );
@@ -79,14 +79,14 @@ info( 0 ), mountList( 0 ) {
    resize( minimumSize() );
 
    // connections
-   connect( mountList, TQT_SIGNAL( doubleClicked( TQListViewItem * ) ), this,
-            TQT_SLOT( doubleClicked( TQListViewItem* ) ) );
-   connect( mountList, TQT_SIGNAL( contextMenuRequested( TQListViewItem *, const TQPoint &, int ) ),
-            this, TQT_SLOT( clicked( TQListViewItem*, const TQPoint&, int ) ) );
-   connect( mountList, TQT_SIGNAL( clicked( TQListViewItem * ) ), this,
-            TQT_SLOT( changeActive( TQListViewItem * ) ) );
-   connect( mountList, TQT_SIGNAL( selectionChanged( TQListViewItem * ) ), this,
-            TQT_SLOT( changeActive( TQListViewItem * ) ) );
+   connect( mountList, TQ_SIGNAL( doubleClicked( TQListViewItem * ) ), this,
+            TQ_SLOT( doubleClicked( TQListViewItem* ) ) );
+   connect( mountList, TQ_SIGNAL( contextMenuRequested( TQListViewItem *, const TQPoint &, int ) ),
+            this, TQ_SLOT( clicked( TQListViewItem*, const TQPoint&, int ) ) );
+   connect( mountList, TQ_SIGNAL( clicked( TQListViewItem * ) ), this,
+            TQ_SLOT( changeActive( TQListViewItem * ) ) );
+   connect( mountList, TQ_SIGNAL( selectionChanged( TQListViewItem * ) ), this,
+            TQ_SLOT( changeActive( TQListViewItem * ) ) );
 
    getSpaceData();
    exec();
@@ -165,9 +165,9 @@ void KMountManGUI::getSpaceData() {
 			continue;
 		}
       KDiskFreeSp *sp = KDiskFreeSp::findUsageInfo( ( *it ) ->mountPoint() );
-      connect( sp, TQT_SIGNAL( foundMountPoint( const TQString &, unsigned long, unsigned long, unsigned long ) ),
-               this, TQT_SLOT( gettingSpaceData( const TQString&, unsigned long, unsigned long, unsigned long ) ) );
-      connect( sp, TQT_SIGNAL( done() ), this, TQT_SLOT( gettingSpaceData() ) );
+      connect( sp, TQ_SIGNAL( foundMountPoint( const TQString &, unsigned long, unsigned long, unsigned long ) ),
+               this, TQ_SLOT( gettingSpaceData( const TQString&, unsigned long, unsigned long, unsigned long ) ) );
+      connect( sp, TQ_SIGNAL( done() ), this, TQ_SLOT( gettingSpaceData() ) );
    }
 }
 
@@ -270,10 +270,10 @@ void KMountManGUI::doubleClicked( TQListViewItem *i ) {
 		return; // we don't want to refresh to swap, do we ?
 		 
    // change the active panel to this mountpoint
-   connect( ( TQObject* ) this, TQT_SIGNAL( refreshPanel( const KURL & ) ), ( TQObject* ) SLOTS,
-            TQT_SLOT( refresh( const KURL & ) ) );
+   connect( ( TQObject* ) this, TQ_SIGNAL( refreshPanel( const KURL & ) ), ( TQObject* ) SLOTS,
+            TQ_SLOT( refresh( const KURL & ) ) );
    emit refreshPanel( vfs::fromPathOrURL( i->text(2) ) ); // text(2) ? so ugly ... 
-   disconnect( this, TQT_SIGNAL( refreshPanel( const KURL & ) ), 0, 0 );
+   disconnect( this, TQ_SIGNAL( refreshPanel( const KURL & ) ), 0, 0 );
    slotClose();
 }
 

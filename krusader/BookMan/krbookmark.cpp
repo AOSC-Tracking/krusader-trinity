@@ -19,7 +19,7 @@ static const char* NAME_LAN = I18N_NOOP("Local Network");
 KrBookmark::KrBookmark(TQString name, KURL url, TDEActionCollection *parent, TQString icon, TQString actionName ):
 	TDEAction(name, 0, 0, 0, parent, actionName.isNull() ? BM_NAME(name).latin1() : BM_NAME(actionName).latin1()), 
 	_url(url), _folder(false), _separator(false) {
-	connect(this, TQT_SIGNAL(activated()), this, TQT_SLOT(activatedProxy()));
+	connect(this, TQ_SIGNAL(activated()), this, TQ_SLOT(activatedProxy()));
 	// do we have an icon?
 	if (!icon.isEmpty())
 		setIcon(icon);

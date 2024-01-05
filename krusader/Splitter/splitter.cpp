@@ -80,12 +80,12 @@ void Splitter::split( TDEIO::filesize_t splitSizeIn )
 
   splitReadJob = TDEIO::get( fileName, false, false );
     
-  connect(splitReadJob, TQT_SIGNAL(data(TDEIO::Job *, const TQByteArray &)),
-                        this, TQT_SLOT(splitDataReceived(TDEIO::Job *, const TQByteArray &)));
-  connect(splitReadJob, TQT_SIGNAL(result(TDEIO::Job*)),
-                        this, TQT_SLOT(splitReceiveFinished(TDEIO::Job *)));
-  connect(splitReadJob, TQT_SIGNAL(percent (TDEIO::Job *, unsigned long)),
-                        this, TQT_SLOT(splitReceivePercent(TDEIO::Job *, unsigned long)));
+  connect(splitReadJob, TQ_SIGNAL(data(TDEIO::Job *, const TQByteArray &)),
+                        this, TQ_SLOT(splitDataReceived(TDEIO::Job *, const TQByteArray &)));
+  connect(splitReadJob, TQ_SIGNAL(result(TDEIO::Job*)),
+                        this, TQ_SLOT(splitReceiveFinished(TDEIO::Job *)));
+  connect(splitReadJob, TQ_SIGNAL(percent (TDEIO::Job *, unsigned long)),
+                        this, TQ_SLOT(splitReceivePercent(TDEIO::Job *, unsigned long)));
 
   splitWriteJob = 0;
   noValidWriteJob = true;
@@ -152,10 +152,10 @@ void Splitter::splitCreateWriteJob()
       /* creating a write job */
   splitWriteJob = TDEIO::put( writeURL, permissions, true, false, false );
   outputFileSize = 0;
-  connect(splitWriteJob, TQT_SIGNAL(dataReq(TDEIO::Job *, TQByteArray &)),
-                         this, TQT_SLOT(splitDataSend(TDEIO::Job *, TQByteArray &)));
-  connect(splitWriteJob, TQT_SIGNAL(result(TDEIO::Job*)),
-                         this, TQT_SLOT(splitSendFinished(TDEIO::Job *)));
+  connect(splitWriteJob, TQ_SIGNAL(dataReq(TDEIO::Job *, TQByteArray &)),
+                         this, TQ_SLOT(splitDataSend(TDEIO::Job *, TQByteArray &)));
+  connect(splitWriteJob, TQ_SIGNAL(result(TDEIO::Job*)),
+                         this, TQ_SLOT(splitSendFinished(TDEIO::Job *)));
   noValidWriteJob = false;
 }
 
@@ -211,10 +211,10 @@ void Splitter::splitSendFinished(TDEIO::Job *job)
     writeURL      = destinationDir;
     writeURL.addPath( fileName.fileName() + ".crc" );
     splitWriteJob = TDEIO::put( writeURL, permissions, true, false, false );
-    connect(splitWriteJob, TQT_SIGNAL(dataReq(TDEIO::Job *, TQByteArray &)),
-                           this, TQT_SLOT(splitFileSend(TDEIO::Job *, TQByteArray &)));
-    connect(splitWriteJob, TQT_SIGNAL(result(TDEIO::Job*)),
-                           this, TQT_SLOT(splitFileFinished(TDEIO::Job *)));
+    connect(splitWriteJob, TQ_SIGNAL(dataReq(TDEIO::Job *, TQByteArray &)),
+                           this, TQ_SLOT(splitFileSend(TDEIO::Job *, TQByteArray &)));
+    connect(splitWriteJob, TQ_SIGNAL(result(TDEIO::Job*)),
+                           this, TQ_SLOT(splitFileFinished(TDEIO::Job *)));
   }
 }
 

@@ -107,7 +107,7 @@ void KgLookFeel::setupOperationTab() {
 
   quicksearchCheckboxes = createCheckBoxGroup( 2, 0, quicksearch, 2 /*count*/, quicksearchGroup, 0, PAGE_OPERATION );
   quicksearchGrid->addWidget( quicksearchCheckboxes, 0, 0 );
-  connect( quicksearchCheckboxes->find( "New Style Quicksearch" ), TQT_SIGNAL( stateChanged( int ) ), this, TQT_SLOT( slotDisable() ) );
+  connect( quicksearchCheckboxes->find( "New Style Quicksearch" ), TQ_SIGNAL( stateChanged( int ) ), this, TQ_SLOT( slotDisable() ) );
   slotDisable();
 
   lookAndFeelLayout->addWidget( quicksearchGroup, 1, 0 );
@@ -197,7 +197,7 @@ void KgLookFeel::setupPanelToolbarTab() {
   };
 
   panelToolbarActive = createCheckBoxGroup( 1, 0, panelToolbarActiveCheckbox, 1, tab_4, "panelToolbarActive", PAGE_PANELTOOLBAR);
-  connect( panelToolbarActive->find( "Panel Toolbar visible" ), TQT_SIGNAL( stateChanged( int ) ), this, TQT_SLOT( slotEnablePanelToolbar() ) );
+  connect( panelToolbarActive->find( "Panel Toolbar visible" ), TQ_SIGNAL( stateChanged( int ) ), this, TQ_SLOT( slotEnablePanelToolbar() ) );
     
   TQGroupBox * panelToolbarGrp = createFrame( i18n( "Visible Panel Toolbar buttons" ), tab_4, "panelToolbarGrp");
   TQGridLayout * panelToolbarGrid = createGridLayout( panelToolbarGrp->layout() );
@@ -253,7 +253,7 @@ void KgLookFeel::setupMouseModeTab() {
   mouseRadio = createRadioButtonGroup( "Look&Feel", "Mouse Selection", "0", 2, 2, mouseSelection, 4, mouseGeneralGroup, "myLook&FeelRadio", true, PAGE_MOUSE );
   mouseRadio->layout()->setMargin( 0 );
   mouseGeneralGrid->addWidget( mouseRadio, 0, 0 );
-  connect( mouseRadio, TQT_SIGNAL( clicked(int) ), TQT_SLOT( slotSelectionModeChanged() ) );
+  connect( mouseRadio, TQ_SIGNAL( clicked(int) ), TQ_SLOT( slotSelectionModeChanged() ) );
 
   mouseLayout->addMultiCellWidget( mouseGeneralGroup, 0,0, 0,1 );
 

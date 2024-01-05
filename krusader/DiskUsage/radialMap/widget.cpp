@@ -26,9 +26,9 @@ RadialMap::Widget::Widget( TQWidget *parent, const char *name )
 {
    setBackgroundColor( TQt::white );
 
-   connect( this, TQT_SIGNAL(created( const Directory* )), TQT_SLOT(sendFakeMouseEvent()) );
-   connect( this, TQT_SIGNAL(created( const Directory* )), TQT_SLOT(update()) );
-   connect( &m_timer, TQT_SIGNAL(timeout()), TQT_SLOT(resizeTimeout()) );
+   connect( this, TQ_SIGNAL(created( const Directory* )), TQ_SLOT(sendFakeMouseEvent()) );
+   connect( this, TQ_SIGNAL(created( const Directory* )), TQ_SLOT(update()) );
+   connect( &m_timer, TQ_SIGNAL(timeout()), TQ_SLOT(resizeTimeout()) );
 }
 
 TQString

@@ -177,7 +177,7 @@ void KrCalcSpaceDialog::exec(){
 		showResult(); // fill the invisible dialog with usefull data
 	}
 	// prepare and start the poll timer
-	connect(m_pollTimer, TQT_SIGNAL(timeout()), this, TQT_SLOT(timer()));
+	connect(m_pollTimer, TQ_SIGNAL(timeout()), this, TQ_SLOT(timer()));
 	m_pollTimer->start(100);
 	KDialogBase::exec(); // show the dialog
 }

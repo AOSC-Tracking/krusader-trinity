@@ -231,8 +231,8 @@ int main(int argc, char *argv[]) {
   signal(SIGHUP,sigterm_handler);
 
   // make sure we receive X's focus in/out events
-  TQObject::connect(&app, TQT_SIGNAL(windowActive()), krusader.slot, TQT_SLOT(windowActive()));
-  TQObject::connect(&app, TQT_SIGNAL(windowInactive()), krusader.slot, TQT_SLOT(windowInactive()));
+  TQObject::connect(&app, TQ_SIGNAL(windowActive()), krusader.slot, TQ_SLOT(windowActive()));
+  TQObject::connect(&app, TQ_SIGNAL(windowInactive()), krusader.slot, TQ_SLOT(windowInactive()));
 
   // and set krusader to be the main widget in it
   app.setMainWidget(&krusader);

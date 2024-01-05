@@ -85,15 +85,15 @@ newFTPGUI::newFTPGUI( TQWidget* parent,  const char* name, bool modal, WFlags fl
     prefix->setAcceptDrops( FALSE );
     prefix->setEnabled( TRUE );
     prefix->setSizePolicy( SIZE_MINIMUM );
-    connect( prefix,TQT_SIGNAL(activated(const TQString& )),
-               this,TQT_SLOT(slotTextChanged(const TQString& )));
+    connect( prefix,TQ_SIGNAL(activated(const TQString& )),
+               this,TQ_SLOT(slotTextChanged(const TQString& )));
 
     url = new KHistoryCombo( grid_host, "url" );
     url->setMaximumHeight( 20 );
     url->setMaxCount( 25 );
     url->setDuplicatesEnabled( false );
-    connect( url, TQT_SIGNAL( activated( const TQString& )),
-             url, TQT_SLOT( addToHistory( const TQString& )));
+    connect( url, TQ_SIGNAL( activated( const TQString& )),
+             url, TQ_SLOT( addToHistory( const TQString& )));
     // load the history and completion list after creating the history combo
     krConfig->setGroup("Private");
     TQStringList list = krConfig->readListEntry( "newFTP Completion list" );
@@ -135,8 +135,8 @@ newFTPGUI::newFTPGUI( TQWidget* parent,  const char* name, bool modal, WFlags fl
     hbox->addWidget( cancelBtn );
 
     // signals and slots connections
-    connect( connectBtn, TQT_SIGNAL( clicked() ), this, TQT_SLOT( accept() ) );
-    connect( cancelBtn, TQT_SIGNAL( clicked() ), this, TQT_SLOT( reject() ) );
+    connect( connectBtn, TQ_SIGNAL( clicked() ), this, TQ_SLOT( accept() ) );
+    connect( cancelBtn, TQ_SIGNAL( clicked() ), this, TQ_SLOT( reject() ) );
 
     // tab order
     setTabOrder( url, username );

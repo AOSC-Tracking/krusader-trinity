@@ -54,10 +54,10 @@ remoteMan::remoteMan() : remoteManBase(0,0,true), currentItem(0) {
   // some minor fixes, left out of the designer - do again in next version !
   password->setEchoMode(TQLineEdit::Password);
   // ===> should be moved to remoteManBase <=====
-  connect( hostName, TQT_SIGNAL( textChanged(const TQString&) ),
-           this, TQT_SLOT( updateConnect(const TQString&) ) );
-  connect( sessions, TQT_SIGNAL(doubleClicked(TQListViewItem *)), this, TQT_SLOT(connection()));
-  connect( sessions, TQT_SIGNAL(returnPressed(TQListViewItem *)), this, TQT_SLOT(connection()));
+  connect( hostName, TQ_SIGNAL( textChanged(const TQString&) ),
+           this, TQ_SLOT( updateConnect(const TQString&) ) );
+  connect( sessions, TQ_SIGNAL(doubleClicked(TQListViewItem *)), this, TQ_SLOT(connection()));
+  connect( sessions, TQ_SIGNAL(returnPressed(TQListViewItem *)), this, TQ_SLOT(connection()));
   // execute the main dialog
   exec();
 }

@@ -28,8 +28,8 @@ ActionMan::ActionMan( TQWidget * parent )
    userActionPage = new UserActionPage( this );
    setMainWidget( userActionPage );
 
-   connect( userActionPage, TQT_SIGNAL( changed() ), TQT_SLOT( slotEnableApplyButton() ) );
-   connect( userActionPage, TQT_SIGNAL( applied() ), TQT_SLOT( slotDisableApplyButton() ) );
+   connect( userActionPage, TQ_SIGNAL( changed() ), TQ_SLOT( slotEnableApplyButton() ) );
+   connect( userActionPage, TQ_SIGNAL( applied() ), TQ_SLOT( slotDisableApplyButton() ) );
    enableButtonApply( false );
 
    exec();

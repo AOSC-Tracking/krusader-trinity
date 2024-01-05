@@ -118,9 +118,9 @@ SynchronizeDialog::SynchronizeDialog( TQWidget* parent,  const char* name, bool 
 
   layout->addWidget( hbox );
 
-  connect( btnStart,  TQT_SIGNAL( clicked() ), this, TQT_SLOT( startSynchronization() ) );
-  connect( btnPause,  TQT_SIGNAL( clicked() ), this, TQT_SLOT( pauseOrResume() ) );
-  connect( btnClose,  TQT_SIGNAL( clicked() ), this, TQT_SLOT( reject() ) );
+  connect( btnStart,  TQ_SIGNAL( clicked() ), this, TQ_SLOT( startSynchronization() ) );
+  connect( btnPause,  TQ_SIGNAL( clicked() ), this, TQ_SLOT( pauseOrResume() ) );
+  connect( btnClose,  TQ_SIGNAL( clicked() ), this, TQ_SLOT( reject() ) );
   
   exec();
 }
@@ -134,10 +134,10 @@ void SynchronizeDialog::startSynchronization()
 {
   btnStart->setEnabled( false );
   btnPause->setEnabled( syncStarted = true );
-  connect( synchronizer,  TQT_SIGNAL( synchronizationFinished() ), this, TQT_SLOT( synchronizationFinished() ) );
-  connect( synchronizer,  TQT_SIGNAL( processedSizes( int, TDEIO::filesize_t, int, TDEIO::filesize_t, int, TDEIO::filesize_t ) ),
-                    this, TQT_SLOT( processedSizes( int, TDEIO::filesize_t, int, TDEIO::filesize_t, int, TDEIO::filesize_t) ) );
-  connect( synchronizer,  TQT_SIGNAL( pauseAccepted() ), this, TQT_SLOT( pauseAccepted() ) );
+  connect( synchronizer,  TQ_SIGNAL( synchronizationFinished() ), this, TQ_SLOT( synchronizationFinished() ) );
+  connect( synchronizer,  TQ_SIGNAL( processedSizes( int, TDEIO::filesize_t, int, TDEIO::filesize_t, int, TDEIO::filesize_t ) ),
+                    this, TQ_SLOT( processedSizes( int, TDEIO::filesize_t, int, TDEIO::filesize_t, int, TDEIO::filesize_t) ) );
+  connect( synchronizer,  TQ_SIGNAL( pauseAccepted() ), this, TQ_SLOT( pauseAccepted() ) );
 
   if( !cbRightToLeft->isChecked() ) leftCopySize = 0;
   if( !cbLeftToRight->isChecked() ) rightCopySize = 0;

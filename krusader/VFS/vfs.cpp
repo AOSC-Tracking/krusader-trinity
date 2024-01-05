@@ -49,8 +49,8 @@ vfs::vfs(TQObject* panel, bool quiet): vfs_busy(false), quietMode(quiet),disable
 	setVfsFilesP( new vfileDict() );
 	if ( panel ){
 		panelConnected = true;
-		connect(this,TQT_SIGNAL(startUpdate()),panel,TQT_SLOT(slotStartUpdate()));
-		connect(this,TQT_SIGNAL(incrementalRefreshFinished( const KURL& )),panel,TQT_SLOT(slotGetStats( const KURL& )));
+		connect(this,TQ_SIGNAL(startUpdate()),panel,TQ_SLOT(slotStartUpdate()));
+		connect(this,TQ_SIGNAL(incrementalRefreshFinished( const KURL& )),panel,TQ_SLOT(slotGetStats( const KURL& )));
 	}
 	else quietMode = true;
 }
@@ -316,7 +316,7 @@ void vfs::calculateURLSize( KURL url,  TDEIO::filesize_t* totalSize, unsigned lo
 	} else {
 		stat_busy = true;
 		TDEIO::StatJob* statJob = TDEIO::stat( url, false );
-		connect( statJob, TQT_SIGNAL( result( TDEIO::Job* ) ), this, TQT_SLOT( slotStatResultArrived( TDEIO::Job* ) ) );
+		connect( statJob, TQ_SIGNAL( result( TDEIO::Job* ) ), this, TQ_SLOT( slotStatResultArrived( TDEIO::Job* ) ) );
 		while ( !(*stop) && stat_busy ) {usleep(1000);}
 		if( entry.isEmpty()  ) return; // statJob failed
 		KFileItem kfi(entry, url, true );        
@@ -328,7 +328,7 @@ void vfs::calculateURLSize( KURL url,  TDEIO::filesize_t* totalSize, unsigned lo
 	}
 	
 	KDirSize* kds  = KDirSize::dirSizeJob( url );
-	connect( kds, TQT_SIGNAL( result( TDEIO::Job* ) ), this, TQT_SLOT( slotKdsResult( TDEIO::Job* ) ) );
+	connect( kds, TQ_SIGNAL( result( TDEIO::Job* ) ), this, TQ_SLOT( slotKdsResult( TDEIO::Job* ) ) );
 	while ( !(*stop) ){ 
 		// we are in a sepetate thread - so sleeping is OK
 		usleep(1000);

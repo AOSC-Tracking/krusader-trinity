@@ -120,13 +120,13 @@ TQFrame *line2 = createLine( generalGrp, "line2" );
   TQPixmap icon = krLoader->loadIcon("add",TDEIcon::Desktop, size );
   addButton->setFixedSize( icon.width() + 4, icon.height() + 4 );
   addButton->setPixmap( icon );
-  connect( addButton, TQT_SIGNAL( clicked() ), this, TQT_SLOT( slotAddExtension() ) );
+  connect( addButton, TQ_SIGNAL( clicked() ), this, TQ_SLOT( slotAddExtension() ) );
 
   TQToolButton *removeButton = new TQToolButton( hbox3, "removeBtnList" );
   icon = krLoader->loadIcon("remove",TDEIcon::Desktop, size );
   removeButton->setFixedSize( icon.width() + 4, icon.height() + 4 );
   removeButton->setPixmap( icon );
-  connect( removeButton, TQT_SIGNAL( clicked() ), this, TQT_SLOT( slotRemoveExtension() ) );
+  connect( removeButton, TQ_SIGNAL( clicked() ), this, TQ_SLOT( slotRemoveExtension() ) );
 
   TQStringList defaultAtomicExtensions;
   defaultAtomicExtensions += ".tar.gz";
@@ -161,8 +161,8 @@ TQFrame *line2 = createLine( generalGrp, "line2" );
   KonfiguratorURLRequester *urlReq3 = createURLRequester( "General", "Temp Directory", "/tmp/krusader.tmp",
                                       hbox, false );
   urlReq3->setMode( KFile::Directory );
-  connect( urlReq3->extension(), TQT_SIGNAL( applyManually(TQObject *,TQString, TQString) ),
-           this, TQT_SLOT( applyTempDir(TQObject *,TQString, TQString) ) );
+  connect( urlReq3->extension(), TQ_SIGNAL( applyManually(TQObject *,TQString, TQString) ),
+           this, TQ_SLOT( applyTempDir(TQObject *,TQString, TQString) ) );
   generalGrid->addMultiCellWidget( hbox, 13, 13, 0, 1 );
 
   TQLabel *label4 = new TQLabel( i18n( "Note: you must have full permissions for the temporary directory!" ),

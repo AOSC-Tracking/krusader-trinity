@@ -52,7 +52,7 @@ FilterDialog::FilterDialog(  TQWidget *parent, const char *name )
 
   generalFilter->searchFor->setFocus();
 
-  connect( filterTabs, TQT_SIGNAL( closeRequest(bool) ), this, TQT_SLOT( slotCloseRequest(bool) ) );
+  connect( filterTabs, TQ_SIGNAL( closeRequest(bool) ), this, TQ_SLOT( slotCloseRequest(bool) ) );
 
   exec();
 }

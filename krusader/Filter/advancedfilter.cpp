@@ -339,34 +339,34 @@ AdvancedFilter::AdvancedFilter( FilterTabs *tabs, TQWidget *parent, const char *
 
   // Connection table
 
-  connect( biggerThanEnabled, TQT_SIGNAL( toggled(bool) ), biggerThanAmount, TQT_SLOT( setEnabled(bool) ) );
-  connect( biggerThanEnabled, TQT_SIGNAL( toggled(bool) ), biggerThanType, TQT_SLOT( setEnabled(bool) ) );
-  connect( smallerThanEnabled, TQT_SIGNAL( toggled(bool) ), smallerThanAmount, TQT_SLOT( setEnabled(bool) ) );
-  connect( smallerThanEnabled, TQT_SIGNAL( toggled(bool) ), smallerThanType, TQT_SLOT( setEnabled(bool) ) );
-  connect( modifiedBetweenEnabled, TQT_SIGNAL( toggled(bool) ), modifiedBetweenData1, TQT_SLOT( setEnabled(bool) ) );
-  connect( modifiedBetweenEnabled, TQT_SIGNAL( toggled(bool) ), modifiedBetweenBtn1, TQT_SLOT( setEnabled(bool) ) );
-  connect( modifiedBetweenEnabled, TQT_SIGNAL( toggled(bool) ), modifiedBetweenData2, TQT_SLOT( setEnabled(bool) ) );
-  connect( modifiedBetweenEnabled, TQT_SIGNAL( toggled(bool) ), modifiedBetweenBtn2, TQT_SLOT( setEnabled(bool) ) );
-  connect( notModifiedAfterEnabled, TQT_SIGNAL( toggled(bool) ), notModifiedAfterData, TQT_SLOT( setEnabled(bool) ) );
-  connect( notModifiedAfterEnabled, TQT_SIGNAL( toggled(bool) ), notModifiedAfterBtn, TQT_SLOT( setEnabled(bool) ) );
-  connect( modifiedInTheLastEnabled, TQT_SIGNAL( toggled(bool) ), modifiedInTheLastData, TQT_SLOT( setEnabled(bool) ) );
-  connect( modifiedInTheLastEnabled, TQT_SIGNAL( toggled(bool) ), modifiedInTheLastType, TQT_SLOT( setEnabled(bool) ) );
-  connect( modifiedInTheLastEnabled, TQT_SIGNAL( toggled(bool) ), notModifiedInTheLastData, TQT_SLOT( setEnabled(bool) ) );
-  connect( modifiedInTheLastEnabled, TQT_SIGNAL( toggled(bool) ), notModifiedInTheLastType, TQT_SLOT( setEnabled(bool) ) );
-  connect( belongsToUserEnabled, TQT_SIGNAL( toggled(bool) ), belongsToUserData, TQT_SLOT( setEnabled(bool) ) );
-  connect( belongsToGroupEnabled, TQT_SIGNAL( toggled(bool) ), belongsToGroupData, TQT_SLOT( setEnabled(bool) ) );
-  connect( permissionsEnabled, TQT_SIGNAL( toggled(bool) ), ownerR, TQT_SLOT( setEnabled(bool) ) );
-  connect( permissionsEnabled, TQT_SIGNAL( toggled(bool) ), ownerW, TQT_SLOT( setEnabled(bool) ) );
-  connect( permissionsEnabled, TQT_SIGNAL( toggled(bool) ), ownerX, TQT_SLOT( setEnabled(bool) ) );
-  connect( permissionsEnabled, TQT_SIGNAL( toggled(bool) ), groupR, TQT_SLOT( setEnabled(bool) ) );
-  connect( permissionsEnabled, TQT_SIGNAL( toggled(bool) ), groupW, TQT_SLOT( setEnabled(bool) ) );
-  connect( permissionsEnabled, TQT_SIGNAL( toggled(bool) ), groupX, TQT_SLOT( setEnabled(bool) ) );
-  connect( permissionsEnabled, TQT_SIGNAL( toggled(bool) ), allR, TQT_SLOT( setEnabled(bool) ) );
-  connect( permissionsEnabled, TQT_SIGNAL( toggled(bool) ), allW, TQT_SLOT( setEnabled(bool) ) );
-  connect( permissionsEnabled, TQT_SIGNAL( toggled(bool) ), allX, TQT_SLOT( setEnabled(bool) ) );
-  connect( modifiedBetweenBtn1, TQT_SIGNAL( clicked() ), this, TQT_SLOT( modifiedBetweenSetDate1() ) );
-  connect( modifiedBetweenBtn2, TQT_SIGNAL( clicked() ), this, TQT_SLOT( modifiedBetweenSetDate2() ) );
-  connect( notModifiedAfterBtn, TQT_SIGNAL( clicked() ), this, TQT_SLOT( notModifiedAfterSetDate() ) );
+  connect( biggerThanEnabled, TQ_SIGNAL( toggled(bool) ), biggerThanAmount, TQ_SLOT( setEnabled(bool) ) );
+  connect( biggerThanEnabled, TQ_SIGNAL( toggled(bool) ), biggerThanType, TQ_SLOT( setEnabled(bool) ) );
+  connect( smallerThanEnabled, TQ_SIGNAL( toggled(bool) ), smallerThanAmount, TQ_SLOT( setEnabled(bool) ) );
+  connect( smallerThanEnabled, TQ_SIGNAL( toggled(bool) ), smallerThanType, TQ_SLOT( setEnabled(bool) ) );
+  connect( modifiedBetweenEnabled, TQ_SIGNAL( toggled(bool) ), modifiedBetweenData1, TQ_SLOT( setEnabled(bool) ) );
+  connect( modifiedBetweenEnabled, TQ_SIGNAL( toggled(bool) ), modifiedBetweenBtn1, TQ_SLOT( setEnabled(bool) ) );
+  connect( modifiedBetweenEnabled, TQ_SIGNAL( toggled(bool) ), modifiedBetweenData2, TQ_SLOT( setEnabled(bool) ) );
+  connect( modifiedBetweenEnabled, TQ_SIGNAL( toggled(bool) ), modifiedBetweenBtn2, TQ_SLOT( setEnabled(bool) ) );
+  connect( notModifiedAfterEnabled, TQ_SIGNAL( toggled(bool) ), notModifiedAfterData, TQ_SLOT( setEnabled(bool) ) );
+  connect( notModifiedAfterEnabled, TQ_SIGNAL( toggled(bool) ), notModifiedAfterBtn, TQ_SLOT( setEnabled(bool) ) );
+  connect( modifiedInTheLastEnabled, TQ_SIGNAL( toggled(bool) ), modifiedInTheLastData, TQ_SLOT( setEnabled(bool) ) );
+  connect( modifiedInTheLastEnabled, TQ_SIGNAL( toggled(bool) ), modifiedInTheLastType, TQ_SLOT( setEnabled(bool) ) );
+  connect( modifiedInTheLastEnabled, TQ_SIGNAL( toggled(bool) ), notModifiedInTheLastData, TQ_SLOT( setEnabled(bool) ) );
+  connect( modifiedInTheLastEnabled, TQ_SIGNAL( toggled(bool) ), notModifiedInTheLastType, TQ_SLOT( setEnabled(bool) ) );
+  connect( belongsToUserEnabled, TQ_SIGNAL( toggled(bool) ), belongsToUserData, TQ_SLOT( setEnabled(bool) ) );
+  connect( belongsToGroupEnabled, TQ_SIGNAL( toggled(bool) ), belongsToGroupData, TQ_SLOT( setEnabled(bool) ) );
+  connect( permissionsEnabled, TQ_SIGNAL( toggled(bool) ), ownerR, TQ_SLOT( setEnabled(bool) ) );
+  connect( permissionsEnabled, TQ_SIGNAL( toggled(bool) ), ownerW, TQ_SLOT( setEnabled(bool) ) );
+  connect( permissionsEnabled, TQ_SIGNAL( toggled(bool) ), ownerX, TQ_SLOT( setEnabled(bool) ) );
+  connect( permissionsEnabled, TQ_SIGNAL( toggled(bool) ), groupR, TQ_SLOT( setEnabled(bool) ) );
+  connect( permissionsEnabled, TQ_SIGNAL( toggled(bool) ), groupW, TQ_SLOT( setEnabled(bool) ) );
+  connect( permissionsEnabled, TQ_SIGNAL( toggled(bool) ), groupX, TQ_SLOT( setEnabled(bool) ) );
+  connect( permissionsEnabled, TQ_SIGNAL( toggled(bool) ), allR, TQ_SLOT( setEnabled(bool) ) );
+  connect( permissionsEnabled, TQ_SIGNAL( toggled(bool) ), allW, TQ_SLOT( setEnabled(bool) ) );
+  connect( permissionsEnabled, TQ_SIGNAL( toggled(bool) ), allX, TQ_SLOT( setEnabled(bool) ) );
+  connect( modifiedBetweenBtn1, TQ_SIGNAL( clicked() ), this, TQ_SLOT( modifiedBetweenSetDate1() ) );
+  connect( modifiedBetweenBtn2, TQ_SIGNAL( clicked() ), this, TQ_SLOT( modifiedBetweenSetDate2() ) );
+  connect( notModifiedAfterBtn, TQ_SIGNAL( clicked() ), this, TQ_SLOT( notModifiedAfterSetDate() ) );
 
   // fill the users and groups list
 

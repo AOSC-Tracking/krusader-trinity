@@ -96,7 +96,7 @@ KgStartup::KgStartup( bool first, TQWidget* parent,  const char* name ) :
     };
 
   uiCbGroup = createCheckBoxGroup( 2, 0, uiCheckBoxes, 8, uiGrp );
-  connect( uiCbGroup->find( "UI Save Settings" ), TQT_SIGNAL( stateChanged( int ) ), this, TQT_SLOT( slotDisable() ) );
+  connect( uiCbGroup->find( "UI Save Settings" ), TQ_SIGNAL( stateChanged( int ) ), this, TQ_SLOT( slotDisable() ) );
 
   uiGrid->addWidget( uiCbGroup, 1, 0 );
 

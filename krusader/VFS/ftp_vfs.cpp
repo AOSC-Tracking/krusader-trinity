@@ -179,21 +179,21 @@ bool ftp_vfs::populateVfsList( const KURL& origin, bool showHidden ) {
 	vfs_origin = origin;
 	vfs_origin.adjustPath(-1);
 
-	//TQTimer::singleShot( 0,this,TQT_SLOT(startLister()) );
+	//TQTimer::singleShot( 0,this,TQ_SLOT(startLister()) );
 	listError = false;
 	// Open the directory	marked by origin
 	krConfig->setGroup( "Look&Feel" );
 	//vfs_origin.adjustPath(+1);
 	TDEIO::Job *job = TDEIO::listDir( vfs_origin, false, showHidden );
-	connect( job, TQT_SIGNAL( entries( TDEIO::Job*, const TDEIO::UDSEntryList& ) ),
-	         this, TQT_SLOT( slotAddFiles( TDEIO::Job*, const TDEIO::UDSEntryList& ) ) );
-	connect( job, TQT_SIGNAL( redirection( TDEIO::Job*, const KURL& ) ),
-	         this, TQT_SLOT( slotRedirection( TDEIO::Job*, const KURL& ) ) );
-	connect( job, TQT_SIGNAL( permanentRedirection( TDEIO::Job*, const KURL&, const KURL& ) ),
-	         this, TQT_SLOT( slotPermanentRedirection( TDEIO::Job*, const KURL&, const KURL& ) ) );
+	connect( job, TQ_SIGNAL( entries( TDEIO::Job*, const TDEIO::UDSEntryList& ) ),
+	         this, TQ_SLOT( slotAddFiles( TDEIO::Job*, const TDEIO::UDSEntryList& ) ) );
+	connect( job, TQ_SIGNAL( redirection( TDEIO::Job*, const KURL& ) ),
+	         this, TQ_SLOT( slotRedirection( TDEIO::Job*, const KURL& ) ) );
+	connect( job, TQ_SIGNAL( permanentRedirection( TDEIO::Job*, const KURL&, const KURL& ) ),
+	         this, TQ_SLOT( slotPermanentRedirection( TDEIO::Job*, const KURL&, const KURL& ) ) );
 
-	connect( job, TQT_SIGNAL( result( TDEIO::Job* ) ),
-	         this, TQT_SLOT( slotListResult( TDEIO::Job* ) ) );
+	connect( job, TQ_SIGNAL( result( TDEIO::Job* ) ),
+	         this, TQ_SLOT( slotListResult( TDEIO::Job* ) ) );
 
 	job->setWindow( krApp );
 
@@ -225,9 +225,9 @@ void ftp_vfs::vfs_addFiles( KURL::List *fileUrls, TDEIO::CopyJob::CopyMode mode,
 	}
 
 	TDEIO::Job* job = new TDEIO::CopyJob( *fileUrls, destUrl, mode, false, true );
-	connect( job, TQT_SIGNAL( result( TDEIO::Job* ) ), this, TQT_SLOT( vfs_refresh( TDEIO::Job* ) ) );
+	connect( job, TQ_SIGNAL( result( TDEIO::Job* ) ), this, TQ_SLOT( vfs_refresh( TDEIO::Job* ) ) );
 	if ( mode == TDEIO::CopyJob::Move )  // notify the other panel
-		connect( job, TQT_SIGNAL( result( TDEIO::Job* ) ), toNotify, TQT_SLOT( vfs_refresh( TDEIO::Job* ) ) );
+		connect( job, TQ_SIGNAL( result( TDEIO::Job* ) ), toNotify, TQ_SLOT( vfs_refresh( TDEIO::Job* ) ) );
 }
 
 // remove a file from the vfs (physical)
@@ -243,7 +243,7 @@ void ftp_vfs::vfs_delFiles( TQStringList *fileNames ) {
 		filesUrls.append( url );
 	}
 	TDEIO::Job *job = new TDEIO::DeleteJob( filesUrls, false, true );
-	connect( job, TQT_SIGNAL( result( TDEIO::Job* ) ), this, TQT_SLOT( vfs_refresh( TDEIO::Job* ) ) );
+	connect( job, TQ_SIGNAL( result( TDEIO::Job* ) ), this, TQ_SLOT( vfs_refresh( TDEIO::Job* ) ) );
 }
 
 
@@ -273,7 +273,7 @@ void ftp_vfs::vfs_mkdir( const TQString& name ) {
 	url.addPath( name );
 
 	TDEIO::SimpleJob* job = TDEIO::mkdir( url );
-	connect( job, TQT_SIGNAL( result( TDEIO::Job* ) ), this, TQT_SLOT( vfs_refresh( TDEIO::Job* ) ) );
+	connect( job, TQ_SIGNAL( result( TDEIO::Job* ) ), this, TQ_SLOT( vfs_refresh( TDEIO::Job* ) ) );
 }
 
 void ftp_vfs::vfs_rename( const TQString& fileName, const TQString& newName ) {
@@ -287,7 +287,7 @@ void ftp_vfs::vfs_rename( const TQString& fileName, const TQString& newName ) {
 	newUrl.addPath( newName );
 
 	TDEIO::Job *job = new TDEIO::CopyJob( fileUrls, newUrl, TDEIO::CopyJob::Move, true, true );
-	connect( job, TQT_SIGNAL( result( TDEIO::Job* ) ), this, TQT_SLOT( vfs_refresh( TDEIO::Job* ) ) );
+	connect( job, TQ_SIGNAL( result( TDEIO::Job* ) ), this, TQ_SLOT( vfs_refresh( TDEIO::Job* ) ) );
 }
 
 TQString ftp_vfs::vfs_workingDir() {

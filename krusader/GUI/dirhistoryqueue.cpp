@@ -23,7 +23,7 @@
 DirHistoryQueue::DirHistoryQueue( ListPanel* p ) {
 	panel = p;
 
-	connect( panel, TQT_SIGNAL( pathChanged( ListPanel* ) ), this, TQT_SLOT( slotPathChanged( ListPanel* ) ) );
+	connect( panel, TQ_SIGNAL( pathChanged( ListPanel* ) ), this, TQ_SLOT( slotPathChanged( ListPanel* ) ) );
 }
 DirHistoryQueue::~DirHistoryQueue() {}
 

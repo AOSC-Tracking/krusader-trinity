@@ -954,7 +954,7 @@ void Synchronizer::executeTask( SynchronizerFileItem * task )
     if( task->isDir() )
     {
       TDEIO::SimpleJob *job = TDEIO::mkdir( leftURL );
-      connect(job,TQT_SIGNAL(result(TDEIO::Job*)),this,TQT_SLOT(slotTaskFinished(TDEIO::Job*)));
+      connect(job,TQ_SIGNAL(result(TDEIO::Job*)),this,TQ_SLOT(slotTaskFinished(TDEIO::Job*)));
       jobMap[ job ] = task;
       disableNewTasks = true;
     }
@@ -967,14 +967,14 @@ void Synchronizer::executeTask( SynchronizerFileItem * task )
       if( task->rightLink().isNull() ) {
         TDEIO::FileCopyJob *job = TDEIO::file_copy(rightURL, destURL, -1,
                                   overWrite || task->overWrite(), false, false );
-        connect(job,TQT_SIGNAL(processedSize (TDEIO::Job *, TDEIO::filesize_t )), this,
-                    TQT_SLOT  (slotProcessedSize (TDEIO::Job *, TDEIO::filesize_t )));
-        connect(job,TQT_SIGNAL(result(TDEIO::Job*)),this,TQT_SLOT(slotTaskFinished(TDEIO::Job*)));
+        connect(job,TQ_SIGNAL(processedSize (TDEIO::Job *, TDEIO::filesize_t )), this,
+                    TQ_SLOT  (slotProcessedSize (TDEIO::Job *, TDEIO::filesize_t )));
+        connect(job,TQ_SIGNAL(result(TDEIO::Job*)),this,TQ_SLOT(slotTaskFinished(TDEIO::Job*)));
         jobMap[ job ] = task;
       } else {
         TDEIO::SimpleJob *job = TDEIO::symlink( task->rightLink(), destURL,
                                             overWrite || task->overWrite(), false );
-        connect(job,TQT_SIGNAL(result(TDEIO::Job*)),this,TQT_SLOT(slotTaskFinished(TDEIO::Job*)));
+        connect(job,TQ_SIGNAL(result(TDEIO::Job*)),this,TQ_SLOT(slotTaskFinished(TDEIO::Job*)));
         jobMap[ job ] = task;
       }
     }
@@ -983,7 +983,7 @@ void Synchronizer::executeTask( SynchronizerFileItem * task )
     if( task->isDir() )
     {
       TDEIO::SimpleJob *job = TDEIO::mkdir( rightURL );
-      connect(job,TQT_SIGNAL(result(TDEIO::Job*)),this,TQT_SLOT(slotTaskFinished(TDEIO::Job*)));
+      connect(job,TQ_SIGNAL(result(TDEIO::Job*)),this,TQ_SLOT(slotTaskFinished(TDEIO::Job*)));
       jobMap[ job ] = task;
       disableNewTasks = true;
     }
@@ -996,14 +996,14 @@ void Synchronizer::executeTask( SynchronizerFileItem * task )
       if( task->leftLink().isNull() ) {
         TDEIO::FileCopyJob *job = TDEIO::file_copy(leftURL, destURL, -1,
                                   overWrite || task->overWrite(), false, false );
-        connect(job,TQT_SIGNAL(processedSize (TDEIO::Job *, TDEIO::filesize_t )), this,
-                    TQT_SLOT  (slotProcessedSize (TDEIO::Job *, TDEIO::filesize_t )));
-        connect(job,TQT_SIGNAL(result(TDEIO::Job*)),this,TQT_SLOT(slotTaskFinished(TDEIO::Job*)));
+        connect(job,TQ_SIGNAL(processedSize (TDEIO::Job *, TDEIO::filesize_t )), this,
+                    TQ_SLOT  (slotProcessedSize (TDEIO::Job *, TDEIO::filesize_t )));
+        connect(job,TQ_SIGNAL(result(TDEIO::Job*)),this,TQ_SLOT(slotTaskFinished(TDEIO::Job*)));
         jobMap[ job ] = task;
       } else {
         TDEIO::SimpleJob *job = TDEIO::symlink( task->leftLink(), destURL,
                                             overWrite || task->overWrite(), false );
-        connect(job,TQT_SIGNAL(result(TDEIO::Job*)),this,TQT_SLOT(slotTaskFinished(TDEIO::Job*)));
+        connect(job,TQ_SIGNAL(result(TDEIO::Job*)),this,TQ_SLOT(slotTaskFinished(TDEIO::Job*)));
         jobMap[ job ] = task;
       }
     }
@@ -1011,7 +1011,7 @@ void Synchronizer::executeTask( SynchronizerFileItem * task )
   case TT_DELETE:
     {
       TDEIO::DeleteJob *job = TDEIO::del( leftURL, false );
-      connect(job,TQT_SIGNAL(result(TDEIO::Job*)),this,TQT_SLOT(slotTaskFinished(TDEIO::Job*)));
+      connect(job,TQ_SIGNAL(result(TDEIO::Job*)),this,TQ_SLOT(slotTaskFinished(TDEIO::Job*)));
       jobMap[ job ] = task;
     }
     break;

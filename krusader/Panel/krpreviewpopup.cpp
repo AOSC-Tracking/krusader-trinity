@@ -24,7 +24,7 @@
 #include "../krusader.h"
 
 KrPreviewPopup::KrPreviewPopup(): id(1),noPreview(true){
-	connect(this,TQT_SIGNAL(activated(int)),this,TQT_SLOT(view(int)));
+	connect(this,TQ_SIGNAL(activated(int)),this,TQ_SLOT(view(int)));
 }
 
 void KrPreviewPopup::setUrls(const KURL::List* urls){
@@ -40,8 +40,8 @@ void KrPreviewPopup::setUrls(const KURL::List* urls){
 	}
 
 	pjob = new TDEIO::PreviewJob(files,200,200,200,1,true,true,0);
-	connect(pjob,TQT_SIGNAL(gotPreview(const KFileItem*,const TQPixmap&)),
-          this,TQT_SLOT(addPreview(const KFileItem*,const TQPixmap&)));
+	connect(pjob,TQ_SIGNAL(gotPreview(const KFileItem*,const TQPixmap&)),
+          this,TQ_SLOT(addPreview(const KFileItem*,const TQPixmap&)));
 }
 
 KrPreviewPopup::~KrPreviewPopup(){}

@@ -99,16 +99,16 @@ UserActionPage::UserActionPage( TQWidget* parent )
    actionProperties = new ActionProperty( split, "actionProperties" );
    actionProperties->setEnabled( false ); // if there are any actions in the list, the first is displayed and this widget is enabled
 
-   connect(  actionTree, TQT_SIGNAL( currentChanged(TQListViewItem*) ), TQT_SLOT( slotChangeCurrent() ) );
-   connect( newButton, TQT_SIGNAL( clicked() ), TQT_SLOT( slotNewAction() ) );
-   connect( removeButton, TQT_SIGNAL( clicked() ), TQT_SLOT( slotRemoveAction() ) );
-   connect( importButton, TQT_SIGNAL( clicked() ), TQT_SLOT( slotImport() ) );
-   connect( exportButton, TQT_SIGNAL( clicked() ), TQT_SLOT( slotExport() ) );
-   connect( copyButton, TQT_SIGNAL( clicked() ), TQT_SLOT( slotToClip() ) );
-   connect( pasteButton, TQT_SIGNAL( clicked() ), TQT_SLOT( slotFromClip() ) );
+   connect(  actionTree, TQ_SIGNAL( currentChanged(TQListViewItem*) ), TQ_SLOT( slotChangeCurrent() ) );
+   connect( newButton, TQ_SIGNAL( clicked() ), TQ_SLOT( slotNewAction() ) );
+   connect( removeButton, TQ_SIGNAL( clicked() ), TQ_SLOT( slotRemoveAction() ) );
+   connect( importButton, TQ_SIGNAL( clicked() ), TQ_SLOT( slotImport() ) );
+   connect( exportButton, TQ_SIGNAL( clicked() ), TQ_SLOT( slotExport() ) );
+   connect( copyButton, TQ_SIGNAL( clicked() ), TQ_SLOT( slotToClip() ) );
+   connect( pasteButton, TQ_SIGNAL( clicked() ), TQ_SLOT( slotFromClip() ) );
 
    // forwards the changed signal of the properties
-   connect ( actionProperties, TQT_SIGNAL( changed() ), TQT_SIGNAL( changed() ) );
+   connect ( actionProperties, TQ_SIGNAL( changed() ), TQ_SIGNAL( changed() ) );
 
    actionTree->setFirstActionCurrent();
    actionTree->setFocus();
@@ -126,16 +126,16 @@ bool UserActionPage::continueInSpiteOfChanges() {
    		i18n("The current action has been modified. Do you want to apply these changes?")
    	);
    if ( answer == KMessageBox::Cancel ) {
-      disconnect(  actionTree, TQT_SIGNAL( currentChanged(TQListViewItem*) ), this, TQT_SLOT( slotChangeCurrent() ) );
+      disconnect(  actionTree, TQ_SIGNAL( currentChanged(TQListViewItem*) ), this, TQ_SLOT( slotChangeCurrent() ) );
       actionTree->setCurrentAction( actionProperties->action() );
-      connect(  actionTree, TQT_SIGNAL( currentChanged(TQListViewItem*) ), TQT_SLOT( slotChangeCurrent() ) );
+      connect(  actionTree, TQ_SIGNAL( currentChanged(TQListViewItem*) ), TQ_SLOT( slotChangeCurrent() ) );
       return false;
    }
    if ( answer == KMessageBox::Yes ) {
       if ( ! actionProperties->validProperties() ) {
-         disconnect(  actionTree, TQT_SIGNAL( currentChanged(TQListViewItem*) ), this, TQT_SLOT( slotChangeCurrent() ) );
+         disconnect(  actionTree, TQ_SIGNAL( currentChanged(TQListViewItem*) ), this, TQ_SLOT( slotChangeCurrent() ) );
          actionTree->setCurrentAction( actionProperties->action() );
-         connect(  actionTree, TQT_SIGNAL( currentChanged(TQListViewItem*) ), TQT_SLOT( slotChangeCurrent() ) );
+         connect(  actionTree, TQ_SIGNAL( currentChanged(TQListViewItem*) ), TQ_SLOT( slotChangeCurrent() ) );
          return false;
       }
       slotUpdateAction();

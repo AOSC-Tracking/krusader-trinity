@@ -99,23 +99,23 @@ void KrBriefView::setup() {
    // decide on single click/double click selection
    if ( _config->readBoolEntry( "Single Click Selects", _SingleClickSelects ) &&
            TDEGlobalSettings::singleClick() ) {
-      connect( this, TQT_SIGNAL( executed( TQIconViewItem* ) ), this, TQT_SLOT( slotExecuted( TQIconViewItem* ) ) );
+      connect( this, TQ_SIGNAL( executed( TQIconViewItem* ) ), this, TQ_SLOT( slotExecuted( TQIconViewItem* ) ) );
    } else {
-      connect( this, TQT_SIGNAL( clicked( TQIconViewItem* ) ), this, TQT_SLOT( slotClicked( TQIconViewItem* ) ) );
-      connect( this, TQT_SIGNAL( doubleClicked( TQIconViewItem* ) ), this, TQT_SLOT( slotDoubleClicked( TQIconViewItem* ) ) );
+      connect( this, TQ_SIGNAL( clicked( TQIconViewItem* ) ), this, TQ_SLOT( slotClicked( TQIconViewItem* ) ) );
+      connect( this, TQ_SIGNAL( doubleClicked( TQIconViewItem* ) ), this, TQ_SLOT( slotDoubleClicked( TQIconViewItem* ) ) );
    }
 
    // a change in the selection needs to update totals
-   connect( this, TQT_SIGNAL( onItem( TQIconViewItem* ) ), this, TQT_SLOT( slotItemDescription( TQIconViewItem* ) ) );
-   connect( this, TQT_SIGNAL( contextMenuRequested( TQIconViewItem*, const TQPoint& ) ),
-            this, TQT_SLOT( handleContextMenu( TQIconViewItem*, const TQPoint& ) ) );
-	connect( this, TQT_SIGNAL( rightButtonPressed(TQIconViewItem*, const TQPoint&)),
-		this, TQT_SLOT(slotRightButtonPressed(TQIconViewItem*, const TQPoint&)));
-   connect( this, TQT_SIGNAL( currentChanged( TQIconViewItem* ) ), this, TQT_SLOT( setNameToMakeCurrent( TQIconViewItem* ) ) );
-   connect( this, TQT_SIGNAL( currentChanged( TQIconViewItem* ) ), this, TQT_SLOT( transformCurrentChanged( TQIconViewItem* ) ) );
-   connect( this, TQT_SIGNAL( mouseButtonClicked ( int, TQIconViewItem *, const TQPoint & ) ),
-            this, TQT_SLOT( slotMouseClicked ( int, TQIconViewItem *, const TQPoint & ) ) );
-   connect( &KrColorCache::getColorCache(), TQT_SIGNAL( colorsRefreshed() ), this, TQT_SLOT( refreshColors() ) );
+   connect( this, TQ_SIGNAL( onItem( TQIconViewItem* ) ), this, TQ_SLOT( slotItemDescription( TQIconViewItem* ) ) );
+   connect( this, TQ_SIGNAL( contextMenuRequested( TQIconViewItem*, const TQPoint& ) ),
+            this, TQ_SLOT( handleContextMenu( TQIconViewItem*, const TQPoint& ) ) );
+	connect( this, TQ_SIGNAL( rightButtonPressed(TQIconViewItem*, const TQPoint&)),
+		this, TQ_SLOT(slotRightButtonPressed(TQIconViewItem*, const TQPoint&)));
+   connect( this, TQ_SIGNAL( currentChanged( TQIconViewItem* ) ), this, TQ_SLOT( setNameToMakeCurrent( TQIconViewItem* ) ) );
+   connect( this, TQ_SIGNAL( currentChanged( TQIconViewItem* ) ), this, TQ_SLOT( transformCurrentChanged( TQIconViewItem* ) ) );
+   connect( this, TQ_SIGNAL( mouseButtonClicked ( int, TQIconViewItem *, const TQPoint & ) ),
+            this, TQ_SLOT( slotMouseClicked ( int, TQIconViewItem *, const TQPoint & ) ) );
+   connect( &KrColorCache::getColorCache(), TQ_SIGNAL( colorsRefreshed() ), this, TQ_SLOT( refreshColors() ) );
 
    // add whatever columns are needed to the listview
    krConfig->setGroup( nameInTDEConfig() );
@@ -131,10 +131,10 @@ void KrBriefView::setup() {
 
    // allow in-place renaming
 
-   connect( this, TQT_SIGNAL( itemRenamed ( TQIconViewItem * ) ),
-            this, TQT_SLOT( inplaceRenameFinished( TQIconViewItem * ) ) );
-   connect( &renameTimer, TQT_SIGNAL( timeout() ), this, TQT_SLOT( renameCurrentItem() ) );
-   connect( &contextMenuTimer, TQT_SIGNAL (timeout()), this, TQT_SLOT (showContextMenu()));
+   connect( this, TQ_SIGNAL( itemRenamed ( TQIconViewItem * ) ),
+            this, TQ_SLOT( inplaceRenameFinished( TQIconViewItem * ) ) );
+   connect( &renameTimer, TQ_SIGNAL( timeout() ), this, TQ_SLOT( renameCurrentItem() ) );
+   connect( &contextMenuTimer, TQ_SIGNAL (timeout()), this, TQ_SLOT (showContextMenu()));
 
    setSelectionMode( TQIconView::Extended );
 
@@ -152,7 +152,7 @@ void KrBriefView::setup() {
    header->setStretchEnabled( true );
 
    header->setSortIndicator( 0, sortDirection() ? TQt::Ascending : TQt::Descending );
-   connect( header, TQT_SIGNAL(clicked( int )), this, TQT_SLOT( changeSortOrder()));
+   connect( header, TQ_SIGNAL(clicked( int )), this, TQ_SLOT( changeSortOrder()));
 
    header->installEventFilter( this );
    header->show();
@@ -1295,7 +1295,7 @@ void KrBriefView::makeItemVisible( const KrViewItem *item ) {
 void KrBriefView::initOperator() {
 	_operator = new KrViewOperator(this, this);
 	// TQIconView emits selection changed, so chain them to operator
-	connect(this, TQT_SIGNAL(selectionChanged()), _operator, TQT_SIGNAL(selectionChanged()));
+	connect(this, TQ_SIGNAL(selectionChanged()), _operator, TQ_SIGNAL(selectionChanged()));
 }
 
 void KrBriefView::initProperties() {

@@ -116,8 +116,8 @@ ListPanel::ListPanel( TQString typeIn, TQWidget *parent, bool &left, const char 
    layout = new TQGridLayout( this, 3, 3 );
 
    mediaButton = new MediaButton( this, "mediaButton" );
-   connect( mediaButton, TQT_SIGNAL( pressed() ), this, TQT_SLOT( slotFocusOnMe() ) );
-   connect( mediaButton, TQT_SIGNAL( openUrl( const KURL& ) ), func, TQT_SLOT( openUrl( const KURL& ) ) );
+   connect( mediaButton, TQ_SIGNAL( pressed() ), this, TQ_SLOT( slotFocusOnMe() ) );
+   connect( mediaButton, TQ_SIGNAL( openUrl( const KURL& ) ), func, TQ_SLOT( openUrl( const KURL& ) ) );
 
    status = new KrSqueezedTextLabel( this );
    krConfig->setGroup( "Look&Feel" );
@@ -133,18 +133,18 @@ ListPanel::ListPanel( TQString typeIn, TQWidget *parent, bool &left, const char 
       ( status, i18n( "The statusbar displays information about the FILESYSTEM "
                       "which holds your current directory: Total size, free space, "
                       "type of filesystem, etc." ) );
-   connect( status, TQT_SIGNAL( clicked() ), this, TQT_SLOT( slotFocusOnMe() ) );
-   connect( status, TQT_SIGNAL( dropped( TQDropEvent *) ), this, TQT_SLOT( handleDropOnStatus(TQDropEvent *) ) );
+   connect( status, TQ_SIGNAL( clicked() ), this, TQ_SLOT( slotFocusOnMe() ) );
+   connect( status, TQ_SIGNAL( dropped( TQDropEvent *) ), this, TQ_SLOT( handleDropOnStatus(TQDropEvent *) ) );
 
    // ... create the history button
    dirHistoryQueue = new DirHistoryQueue( this );
    historyButton = new DirHistoryButton( dirHistoryQueue, this, "historyButton" );
-   connect( historyButton, TQT_SIGNAL( pressed() ), this, TQT_SLOT( slotFocusOnMe() ) );
-   connect( historyButton, TQT_SIGNAL( openUrl( const KURL& ) ), func, TQT_SLOT( openUrl( const KURL& ) ) );
+   connect( historyButton, TQ_SIGNAL( pressed() ), this, TQ_SLOT( slotFocusOnMe() ) );
+   connect( historyButton, TQ_SIGNAL( openUrl( const KURL& ) ), func, TQ_SLOT( openUrl( const KURL& ) ) );
 
 	bookmarksButton = new KrBookmarkButton(this);
-	connect( bookmarksButton, TQT_SIGNAL( pressed() ), this, TQT_SLOT( slotFocusOnMe() ) );
-   connect( bookmarksButton, TQT_SIGNAL( openUrl( const KURL& ) ), func, TQT_SLOT( openUrl( const KURL& ) ) );
+	connect( bookmarksButton, TQ_SIGNAL( pressed() ), this, TQ_SLOT( slotFocusOnMe() ) );
+   connect( bookmarksButton, TQ_SIGNAL( openUrl( const KURL& ) ), func, TQ_SLOT( openUrl( const KURL& ) ) );
 	TQWhatsThis::add
       ( bookmarksButton, i18n( "Open menu with bookmarks. You can also add "
                                "current location to the list, edit bookmarks "
@@ -162,20 +162,20 @@ ListPanel::ListPanel( TQString typeIn, TQWidget *parent, bool &left, const char 
    TQWhatsThis::add
       ( totals, i18n( "The totals bar shows how many files exist, "
                       "how many selected and the bytes math" ) );
-   connect( totals, TQT_SIGNAL( clicked() ), this, TQT_SLOT( slotFocusOnMe() ) );
-   connect( totals, TQT_SIGNAL( dropped( TQDropEvent *) ), this, TQT_SLOT( handleDropOnTotals(TQDropEvent *) ) );  
+   connect( totals, TQ_SIGNAL( clicked() ), this, TQ_SLOT( slotFocusOnMe() ) );
+   connect( totals, TQ_SIGNAL( dropped( TQDropEvent *) ), this, TQ_SLOT( handleDropOnTotals(TQDropEvent *) ) );  
    
 	// a cancel button for the inplace refresh mechanism
 	inlineRefreshCancelButton = new KPushButton(this);
 	inlineRefreshCancelButton->setFixedSize( 22, 20 );
 	inlineRefreshCancelButton->setPixmap(krLoader->loadIcon("cancel", TDEIcon::Toolbar, 16));
-	connect(inlineRefreshCancelButton, TQT_SIGNAL(clicked()), this, TQT_SLOT(inlineRefreshCancel()));
+	connect(inlineRefreshCancelButton, TQ_SIGNAL(clicked()), this, TQ_SLOT(inlineRefreshCancel()));
 
 	// a quick button to open the popup panel
 	popupBtn = new TQToolButton( this, "popupbtn" );
 	popupBtn->setFixedSize( 22, 20 );
 	popupBtn->setPixmap(krLoader->loadIcon("1uparrow", TDEIcon::Toolbar, 16));
-	connect(popupBtn, TQT_SIGNAL(clicked()), this, TQT_SLOT(togglePanelPopup()));
+	connect(popupBtn, TQ_SIGNAL(clicked()), this, TQ_SLOT(togglePanelPopup()));
 	TQToolTip::add(  popupBtn, i18n( "Open the popup panel" ) );
 	totalsLayout->addWidget(totals);
 	totalsLayout->addWidget(inlineRefreshCancelButton); inlineRefreshCancelButton->hide();
@@ -212,16 +212,16 @@ ListPanel::ListPanel( TQString typeIn, TQWidget *parent, bool &left, const char 
                                   "enter name of desired location to move there. "
                                   "Use of Net protocols like ftp or fish is possible." ) );
    origin->setMode( KFile::Directory | KFile::ExistingOnly );
-   connect( origin, TQT_SIGNAL( returnPressed( const TQString& ) ), func, TQT_SLOT( openUrl( const TQString& ) ) );
-   connect( origin, TQT_SIGNAL( returnPressed( const TQString& ) ), this, TQT_SLOT( slotFocusOnMe() ) );
-   connect( origin, TQT_SIGNAL( urlSelected( const TQString& ) ), func, TQT_SLOT( openUrl( const TQString& ) ) );
-   connect( origin, TQT_SIGNAL( urlSelected( const TQString& ) ), this, TQT_SLOT( slotFocusOnMe() ) );
+   connect( origin, TQ_SIGNAL( returnPressed( const TQString& ) ), func, TQ_SLOT( openUrl( const TQString& ) ) );
+   connect( origin, TQ_SIGNAL( returnPressed( const TQString& ) ), this, TQ_SLOT( slotFocusOnMe() ) );
+   connect( origin, TQ_SIGNAL( urlSelected( const TQString& ) ), func, TQ_SLOT( openUrl( const TQString& ) ) );
+   connect( origin, TQ_SIGNAL( urlSelected( const TQString& ) ), this, TQ_SLOT( slotFocusOnMe() ) );
    
 	// this is here on purpose, do not move up!
 	if (clearButton) {
 		clearOrigin->setFixedSize( 20, origin->button() ->height() );
-		connect(clearOrigin, TQT_SIGNAL(clicked()), origin->lineEdit(), TQT_SLOT(clear()));
-		connect(clearOrigin, TQT_SIGNAL(clicked()), origin->lineEdit(), TQT_SLOT(setFocus()));
+		connect(clearOrigin, TQ_SIGNAL(clicked()), origin->lineEdit(), TQ_SLOT(clear()));
+		connect(clearOrigin, TQ_SIGNAL(clicked()), origin->lineEdit(), TQ_SLOT(setFocus()));
 	}
 	//
    
@@ -229,25 +229,25 @@ ListPanel::ListPanel( TQString typeIn, TQWidget *parent, bool &left, const char 
    cdOtherButton->setFixedSize( 20, origin->button() ->height() );
    cdOtherButton->setText( i18n( "=" ) );
 	TQToolTip::add(  cdOtherButton, i18n( "Equal" ) );
-   connect( cdOtherButton, TQT_SIGNAL( clicked() ), this, TQT_SLOT( slotFocusAndCDOther() ) );
+   connect( cdOtherButton, TQ_SIGNAL( clicked() ), this, TQ_SLOT( slotFocusAndCDOther() ) );
 
    cdUpButton = new TQToolButton( hbox, "cdUpButton" );
    cdUpButton->setFixedSize( 20, origin->button() ->height() );
    cdUpButton->setText( i18n( ".." ) );
 	TQToolTip::add(  cdUpButton, i18n( "Up" ) );
-   connect( cdUpButton, TQT_SIGNAL( clicked() ), this, TQT_SLOT( slotFocusAndCDup() ) );
+   connect( cdUpButton, TQ_SIGNAL( clicked() ), this, TQ_SLOT( slotFocusAndCDup() ) );
 
    cdHomeButton = new TQToolButton( hbox, "cdHomeButton" );
    cdHomeButton->setFixedSize( 20, origin->button() ->height() );
    cdHomeButton->setText( i18n( "~" ) );
 	TQToolTip::add(  cdHomeButton, i18n( "Home" ) );
-   connect( cdHomeButton, TQT_SIGNAL( clicked() ), this, TQT_SLOT( slotFocusAndCDHome() ) );
+   connect( cdHomeButton, TQ_SIGNAL( clicked() ), this, TQ_SLOT( slotFocusAndCDHome() ) );
 
    cdRootButton = new TQToolButton( hbox, "cdRootButton" );
    cdRootButton->setFixedSize( 20, origin->button() ->height() );
    cdRootButton->setText( i18n( "/" ) );
 	TQToolTip::add(  cdRootButton, i18n( "Root" ) );
-   connect( cdRootButton, TQT_SIGNAL( clicked() ), this, TQT_SLOT( slotFocusAndCDRoot() ) );
+   connect( cdRootButton, TQ_SIGNAL( clicked() ), this, TQ_SLOT( slotFocusAndCDRoot() ) );
 
    // ... creates the button for sync-browsing
    syncBrowseButton = new SyncBrowseButton( hbox );
@@ -265,13 +265,13 @@ ListPanel::ListPanel( TQString typeIn, TQWidget *parent, bool &left, const char 
 	createView();
 	
    // make sure that a focus/path change reflects in the command line and activePanel
-   connect( this, TQT_SIGNAL( cmdLineUpdate( TQString ) ), SLOTS, TQT_SLOT( slotCurrentChanged( TQString ) ) );
-   connect( this, TQT_SIGNAL( activePanelChanged( ListPanel * ) ), SLOTS, TQT_SLOT( slotSetActivePanel( ListPanel * ) ) );
+   connect( this, TQ_SIGNAL( cmdLineUpdate( TQString ) ), SLOTS, TQ_SLOT( slotCurrentChanged( TQString ) ) );
+   connect( this, TQ_SIGNAL( activePanelChanged( ListPanel * ) ), SLOTS, TQ_SLOT( slotSetActivePanel( ListPanel * ) ) );
 	
 	// add a popup
 	popup = new PanelPopup(splt, left);
-	connect(popup, TQT_SIGNAL(selection(const KURL&)), SLOTS, TQT_SLOT(refresh(const KURL&)));
-	connect(popup, TQT_SIGNAL(hideMe()), this, TQT_SLOT(togglePanelPopup()));
+	connect(popup, TQ_SIGNAL(selection(const KURL&)), SLOTS, TQ_SLOT(refresh(const KURL&)));
+	connect(popup, TQ_SIGNAL(hideMe()), this, TQ_SLOT(togglePanelPopup()));
 	popup->hide();
 	
    // finish the layout
@@ -296,48 +296,48 @@ void ListPanel::createView()
 		view = new KrBriefView( header, splt, _left, krConfig );
 		view->init();
 		
-		connect( dynamic_cast<KrBriefView*>( view ), TQT_SIGNAL( middleButtonClicked( KrViewItem * ) ), SLOTS, TQT_SLOT( newTab( KrViewItem * ) ) );
-		connect( dynamic_cast<KrBriefView*>( view ), TQT_SIGNAL( currentChanged( KrViewItem * ) ), 
-			SLOTS, TQT_SLOT( updatePopupPanel( KrViewItem* ) ) );
+		connect( dynamic_cast<KrBriefView*>( view ), TQ_SIGNAL( middleButtonClicked( KrViewItem * ) ), SLOTS, TQ_SLOT( newTab( KrViewItem * ) ) );
+		connect( dynamic_cast<KrBriefView*>( view ), TQ_SIGNAL( currentChanged( KrViewItem * ) ), 
+			SLOTS, TQ_SLOT( updatePopupPanel( KrViewItem* ) ) );
 
 		// connect quicksearch
-		connect( quickSearch, TQT_SIGNAL( textChanged( const TQString& ) ),
-			dynamic_cast<KrBriefView*>( view ), TQT_SLOT( quickSearch( const TQString& ) ) );
-		connect( quickSearch, TQT_SIGNAL( otherMatching( const TQString&, int ) ),
-			dynamic_cast<KrBriefView*>( view ), TQT_SLOT( quickSearch( const TQString& , int ) ) );
-		connect( quickSearch, TQT_SIGNAL( stop( TQKeyEvent* ) ),
-			dynamic_cast<KrBriefView*>( view ), TQT_SLOT( stopQuickSearch( TQKeyEvent* ) ) );
-		connect( quickSearch, TQT_SIGNAL( process( TQKeyEvent* ) ),
-			dynamic_cast<KrBriefView*>( view ), TQT_SLOT( handleQuickSearchEvent( TQKeyEvent* ) ) );
+		connect( quickSearch, TQ_SIGNAL( textChanged( const TQString& ) ),
+			dynamic_cast<KrBriefView*>( view ), TQ_SLOT( quickSearch( const TQString& ) ) );
+		connect( quickSearch, TQ_SIGNAL( otherMatching( const TQString&, int ) ),
+			dynamic_cast<KrBriefView*>( view ), TQ_SLOT( quickSearch( const TQString& , int ) ) );
+		connect( quickSearch, TQ_SIGNAL( stop( TQKeyEvent* ) ),
+			dynamic_cast<KrBriefView*>( view ), TQ_SLOT( stopQuickSearch( TQKeyEvent* ) ) );
+		connect( quickSearch, TQ_SIGNAL( process( TQKeyEvent* ) ),
+			dynamic_cast<KrBriefView*>( view ), TQ_SLOT( handleQuickSearchEvent( TQKeyEvent* ) ) );
 	} else { /* Detailed */
 		panelType = "Detailed";
 		view = new KrDetailedView( splt, _left, krConfig );
 		view->init();
-		connect( dynamic_cast<KrDetailedView*>( view ), TQT_SIGNAL( middleButtonClicked( KrViewItem * ) ), SLOTS, TQT_SLOT( newTab( KrViewItem * ) ) );
-		connect( dynamic_cast<KrDetailedView*>( view ), TQT_SIGNAL( currentChanged( KrViewItem * ) ), 
-			SLOTS, TQT_SLOT( updatePopupPanel( KrViewItem * ) ) );
+		connect( dynamic_cast<KrDetailedView*>( view ), TQ_SIGNAL( middleButtonClicked( KrViewItem * ) ), SLOTS, TQ_SLOT( newTab( KrViewItem * ) ) );
+		connect( dynamic_cast<KrDetailedView*>( view ), TQ_SIGNAL( currentChanged( KrViewItem * ) ), 
+			SLOTS, TQ_SLOT( updatePopupPanel( KrViewItem * ) ) );
 		// connect quicksearch
-		connect( quickSearch, TQT_SIGNAL( textChanged( const TQString& ) ),
-			dynamic_cast<KrDetailedView*>( view ), TQT_SLOT( quickSearch( const TQString& ) ) );
-		connect( quickSearch, TQT_SIGNAL( otherMatching( const TQString&, int ) ),
-			dynamic_cast<KrDetailedView*>( view ), TQT_SLOT( quickSearch( const TQString& , int ) ) );
-		connect( quickSearch, TQT_SIGNAL( stop( TQKeyEvent* ) ),
-			dynamic_cast<KrDetailedView*>( view ), TQT_SLOT( stopQuickSearch( TQKeyEvent* ) ) );
-		connect( quickSearch, TQT_SIGNAL( process( TQKeyEvent* ) ),
-			dynamic_cast<KrDetailedView*>( view ), TQT_SLOT( handleQuickSearchEvent( TQKeyEvent* ) ) );
+		connect( quickSearch, TQ_SIGNAL( textChanged( const TQString& ) ),
+			dynamic_cast<KrDetailedView*>( view ), TQ_SLOT( quickSearch( const TQString& ) ) );
+		connect( quickSearch, TQ_SIGNAL( otherMatching( const TQString&, int ) ),
+			dynamic_cast<KrDetailedView*>( view ), TQ_SLOT( quickSearch( const TQString& , int ) ) );
+		connect( quickSearch, TQ_SIGNAL( stop( TQKeyEvent* ) ),
+			dynamic_cast<KrDetailedView*>( view ), TQ_SLOT( stopQuickSearch( TQKeyEvent* ) ) );
+		connect( quickSearch, TQ_SIGNAL( process( TQKeyEvent* ) ),
+			dynamic_cast<KrDetailedView*>( view ), TQ_SLOT( handleQuickSearchEvent( TQKeyEvent* ) ) );
 	}
 
-   connect( view->op(), TQT_SIGNAL( renameItem( const TQString &, const TQString & ) ),
-            func, TQT_SLOT( rename( const TQString &, const TQString & ) ) );
-   connect( view->op(), TQT_SIGNAL( executed( TQString& ) ), func, TQT_SLOT( execute( TQString& ) ) );
-   connect( view->op(), TQT_SIGNAL( needFocus() ), this, TQT_SLOT( slotFocusOnMe() ) );
-   connect( view->op(), TQT_SIGNAL( selectionChanged() ), this, TQT_SLOT( slotUpdateTotals() ) );
-   connect( view->op(), TQT_SIGNAL( itemDescription( TQString& ) ), krApp, TQT_SLOT( statusBarUpdate( TQString& ) ) );
-   connect( view->op(), TQT_SIGNAL( contextMenu( const TQPoint & ) ), this, TQT_SLOT( popRightClickMenu( const TQPoint & ) ) );
-   connect( view->op(), TQT_SIGNAL( emptyContextMenu( const TQPoint &) ), 
-   	this, TQT_SLOT( popEmptyRightClickMenu( const TQPoint & ) ) );
-   connect( view->op(), TQT_SIGNAL( letsDrag( TQStringList, TQPixmap ) ), this, TQT_SLOT( startDragging( TQStringList, TQPixmap ) ) );
-   connect( view->op(), TQT_SIGNAL( gotDrop( TQDropEvent * ) ), this, TQT_SLOT( handleDropOnView( TQDropEvent * ) ) );
+   connect( view->op(), TQ_SIGNAL( renameItem( const TQString &, const TQString & ) ),
+            func, TQ_SLOT( rename( const TQString &, const TQString & ) ) );
+   connect( view->op(), TQ_SIGNAL( executed( TQString& ) ), func, TQ_SLOT( execute( TQString& ) ) );
+   connect( view->op(), TQ_SIGNAL( needFocus() ), this, TQ_SLOT( slotFocusOnMe() ) );
+   connect( view->op(), TQ_SIGNAL( selectionChanged() ), this, TQ_SLOT( slotUpdateTotals() ) );
+   connect( view->op(), TQ_SIGNAL( itemDescription( TQString& ) ), krApp, TQ_SLOT( statusBarUpdate( TQString& ) ) );
+   connect( view->op(), TQ_SIGNAL( contextMenu( const TQPoint & ) ), this, TQ_SLOT( popRightClickMenu( const TQPoint & ) ) );
+   connect( view->op(), TQ_SIGNAL( emptyContextMenu( const TQPoint &) ), 
+   	this, TQ_SLOT( popEmptyRightClickMenu( const TQPoint & ) ) );
+   connect( view->op(), TQ_SIGNAL( letsDrag( TQStringList, TQPixmap ) ), this, TQ_SLOT( startDragging( TQStringList, TQPixmap ) ) );
+   connect( view->op(), TQ_SIGNAL( gotDrop( TQDropEvent * ) ), this, TQ_SLOT( handleDropOnView( TQDropEvent * ) ) );
 }
 
 void ListPanel::changeType( const TQString & type )
@@ -739,8 +739,8 @@ void ListPanel::slotGetStats( const KURL& url ) {
 
    status->setText( i18n( "Mt.Man: working ..." ) );
 	statsAgent = KDiskFreeSp::findUsageInfo( path );
-   connect( statsAgent, TQT_SIGNAL( foundMountPoint( const TQString &, unsigned long, unsigned long, unsigned long ) ),
-            this, TQT_SLOT( gotStats( const TQString &, unsigned long, unsigned long, unsigned long ) ) );
+   connect( statsAgent, TQ_SIGNAL( foundMountPoint( const TQString &, unsigned long, unsigned long, unsigned long ) ),
+            this, TQ_SLOT( gotStats( const TQString &, unsigned long, unsigned long, unsigned long ) ) );
 }
 
 void ListPanel::gotStats( const TQString &mountPoint, unsigned long kBSize,
@@ -1054,14 +1054,14 @@ void ListPanel::slotJobStarted(TDEIO::Job* job) {
    syncBrowseButton->setEnabled(false);
 
 	// connect to the job interface to provide in-panel refresh notification
-	connect( job, TQT_SIGNAL( infoMessage( TDEIO::Job*, const TQString & ) ),
-		TQT_SLOT( inlineRefreshInfoMessage( TDEIO::Job*, const TQString & ) ) );
-	connect( job, TQT_SIGNAL( percent( TDEIO::Job*, unsigned long ) ),
-      TQT_SLOT( inlineRefreshPercent( TDEIO::Job*, unsigned long ) ) );		
-	connect(job,TQT_SIGNAL(result(TDEIO::Job*)),
-         this,TQT_SLOT(inlineRefreshListResult(TDEIO::Job*)));
-	connect(job,TQT_SIGNAL(canceled(TDEIO::Job*)),
-         this,TQT_SLOT(inlineRefreshListResult(TDEIO::Job*)));
+	connect( job, TQ_SIGNAL( infoMessage( TDEIO::Job*, const TQString & ) ),
+		TQ_SLOT( inlineRefreshInfoMessage( TDEIO::Job*, const TQString & ) ) );
+	connect( job, TQ_SIGNAL( percent( TDEIO::Job*, unsigned long ) ),
+      TQ_SLOT( inlineRefreshPercent( TDEIO::Job*, unsigned long ) ) );		
+	connect(job,TQ_SIGNAL(result(TDEIO::Job*)),
+         this,TQ_SLOT(inlineRefreshListResult(TDEIO::Job*)));
+	connect(job,TQ_SIGNAL(canceled(TDEIO::Job*)),
+         this,TQ_SLOT(inlineRefreshListResult(TDEIO::Job*)));
 			
 	inlineRefreshJob = job;
 	

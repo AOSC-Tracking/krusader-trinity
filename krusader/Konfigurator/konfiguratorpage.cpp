@@ -303,7 +303,7 @@ void KonfiguratorPage::registerObject( KonfiguratorExtension *item )
   KonfiguratorExtension *currentItem = itemList.current();
   
   itemList.append( item );
-  connect( item, TQT_SIGNAL( sigChanged( bool ) ), this, TQT_SIGNAL ( sigChanged( ) ) );
+  connect( item, TQ_SIGNAL( sigChanged( bool ) ), this, TQ_SIGNAL ( sigChanged( ) ) );
 
   itemList.find( currentItem );
 }

@@ -48,7 +48,7 @@ ProfileManager::ProfileManager( TQString profileType, TQWidget * parent, const c
   
   this->profileType = profileType;
   
-  connect( this, TQT_SIGNAL( clicked() ), this, TQT_SLOT( profilePopup() ) );
+  connect( this, TQ_SIGNAL( clicked() ), this, TQ_SLOT( profilePopup() ) );
 
   krConfig->setGroup("Private");
   profileList = krConfig->readListEntry( profileType );

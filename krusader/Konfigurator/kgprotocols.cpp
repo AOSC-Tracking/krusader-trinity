@@ -128,14 +128,14 @@ KgProtocols::KgProtocols( bool first, TQWidget* parent,  const char* name ) :
 
   //  -------------------------- CONNECT TABLE ----------------------------------
 
-  connect( protocolList,      TQT_SIGNAL( selectionChanged() ), this, TQT_SLOT( slotDisableButtons() ) );
-  connect( linkList,          TQT_SIGNAL( selectionChanged() ), this, TQT_SLOT( slotDisableButtons() ) );
-  connect( mimeList,          TQT_SIGNAL( selectionChanged() ), this, TQT_SLOT( slotDisableButtons() ) );
-  connect( linkList,          TQT_SIGNAL( currentChanged( TQListViewItem *) ),   this, TQT_SLOT( slotDisableButtons() ) );
-  connect( btnAddProtocol,    TQT_SIGNAL( clicked() )         , this, TQT_SLOT( slotAddProtocol() ) );
-  connect( btnRemoveProtocol, TQT_SIGNAL( clicked() )         , this, TQT_SLOT( slotRemoveProtocol() ) );
-  connect( btnAddMime,        TQT_SIGNAL( clicked() )         , this, TQT_SLOT( slotAddMime() ) );
-  connect( btnRemoveMime,     TQT_SIGNAL( clicked() )         , this, TQT_SLOT( slotRemoveMime() ) );
+  connect( protocolList,      TQ_SIGNAL( selectionChanged() ), this, TQ_SLOT( slotDisableButtons() ) );
+  connect( linkList,          TQ_SIGNAL( selectionChanged() ), this, TQ_SLOT( slotDisableButtons() ) );
+  connect( mimeList,          TQ_SIGNAL( selectionChanged() ), this, TQ_SLOT( slotDisableButtons() ) );
+  connect( linkList,          TQ_SIGNAL( currentChanged( TQListViewItem *) ),   this, TQ_SLOT( slotDisableButtons() ) );
+  connect( btnAddProtocol,    TQ_SIGNAL( clicked() )         , this, TQ_SLOT( slotAddProtocol() ) );
+  connect( btnRemoveProtocol, TQ_SIGNAL( clicked() )         , this, TQ_SLOT( slotRemoveProtocol() ) );
+  connect( btnAddMime,        TQ_SIGNAL( clicked() )         , this, TQ_SLOT( slotAddMime() ) );
+  connect( btnRemoveMime,     TQ_SIGNAL( clicked() )         , this, TQ_SLOT( slotRemoveMime() ) );
 
   loadInitialValues();
   slotDisableButtons();

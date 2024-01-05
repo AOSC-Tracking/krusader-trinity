@@ -117,10 +117,10 @@ SplitterGUI::SplitterGUI( TQWidget* parent,  KURL fileURL, KURL defaultDir ) :
         
   setCaption(i18n("Krusader::Splitter"));
 
-  connect( sizeCombo, TQT_SIGNAL( activated(int) ), this, TQT_SLOT( sizeComboActivated( int ) ) );
-  connect( deviceCombo, TQT_SIGNAL( activated(int) ), this, TQT_SLOT( predefinedComboActivated( int ) ) );
-  connect( cancelBtn, TQT_SIGNAL( clicked() ), this, TQT_SLOT( reject() ) );
-  connect( splitBtn , TQT_SIGNAL( clicked() ), this, TQT_SLOT( splitPressed() ) );
+  connect( sizeCombo, TQ_SIGNAL( activated(int) ), this, TQ_SLOT( sizeComboActivated( int ) ) );
+  connect( deviceCombo, TQ_SIGNAL( activated(int) ), this, TQ_SLOT( predefinedComboActivated( int ) ) );
+  connect( cancelBtn, TQ_SIGNAL( clicked() ), this, TQ_SLOT( reject() ) );
+  connect( splitBtn , TQ_SIGNAL( clicked() ), this, TQ_SLOT( splitPressed() ) );
   
   predefinedComboActivated( 0 );  
   resultCode = exec();

@@ -41,7 +41,7 @@ m_job( 0L ) {
 	vb->addWidget( imageLabel, 1 );
 
 	timer = new TQTimer( this );
-	connect( timer, TQT_SIGNAL( timeout() ), TQT_SLOT( showPreview() ) );
+	connect( timer, TQ_SIGNAL( timeout() ), TQ_SLOT( showPreview() ) );
 
 	setSupportedMimeTypes( TDEIO::PreviewJob::supportedMimeTypes() );
 }
@@ -76,14 +76,14 @@ void KrusaderImageFilePreview::showPreview( const KURL &url, bool force ) {
 		int h = imageLabel->contentsRect().height() - 4;
 
 		m_job = createJob( url, w, h );
-		connect( m_job, TQT_SIGNAL( result( TDEIO::Job * ) ),
-		         this, TQT_SLOT( slotResult( TDEIO::Job * ) ) );
-		connect( m_job, TQT_SIGNAL( gotPreview( const KFileItem*,
+		connect( m_job, TQ_SIGNAL( result( TDEIO::Job * ) ),
+		         this, TQ_SLOT( slotResult( TDEIO::Job * ) ) );
+		connect( m_job, TQ_SIGNAL( gotPreview( const KFileItem*,
 		                                    const TQPixmap& ) ),
-		         TQT_SLOT( gotPreview( const KFileItem*, const TQPixmap& ) ) );
+		         TQ_SLOT( gotPreview( const KFileItem*, const TQPixmap& ) ) );
 
-		connect( m_job, TQT_SIGNAL( failed( const KFileItem* ) ),
-		         this, TQT_SLOT( slotFailed( const KFileItem* ) ) );
+		connect( m_job, TQ_SIGNAL( failed( const KFileItem* ) ),
+		         this, TQ_SLOT( slotFailed( const KFileItem* ) ) );
 	}
 }
 

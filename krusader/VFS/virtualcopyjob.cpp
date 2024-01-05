@@ -83,19 +83,19 @@ VirtualCopyJob::VirtualCopyJob( const TQStringList *names, vfs * vfs, const KURL
 	}
 	
 	if ( showProgressInfo ) {
-		connect( this, TQT_SIGNAL( totalFiles( TDEIO::Job*, unsigned long ) ),
-			Observer::self(), TQT_SLOT( slotTotalFiles( TDEIO::Job*, unsigned long ) ) );
-		connect( this, TQT_SIGNAL( totalDirs( TDEIO::Job*, unsigned long ) ),
-			Observer::self(), TQT_SLOT( slotTotalDirs( TDEIO::Job*, unsigned long ) ) );
-		connect( this, TQT_SIGNAL( processedFiles( TDEIO::Job*, unsigned long ) ),
-			Observer::self(), TQT_SLOT( slotProcessedFiles( TDEIO::Job*, unsigned long ) ) );
-		connect( this, TQT_SIGNAL( processedDirs( TDEIO::Job*, unsigned long ) ),
-			Observer::self(), TQT_SLOT( slotProcessedDirs( TDEIO::Job*, unsigned long ) ) );
-		connect( this, TQT_SIGNAL( percent( TDEIO::Job*, unsigned long ) ),
-			Observer::self(), TQT_SLOT( slotPercent( TDEIO::Job*, unsigned long ) ) );
+		connect( this, TQ_SIGNAL( totalFiles( TDEIO::Job*, unsigned long ) ),
+			Observer::self(), TQ_SLOT( slotTotalFiles( TDEIO::Job*, unsigned long ) ) );
+		connect( this, TQ_SIGNAL( totalDirs( TDEIO::Job*, unsigned long ) ),
+			Observer::self(), TQ_SLOT( slotTotalDirs( TDEIO::Job*, unsigned long ) ) );
+		connect( this, TQ_SIGNAL( processedFiles( TDEIO::Job*, unsigned long ) ),
+			Observer::self(), TQ_SLOT( slotProcessedFiles( TDEIO::Job*, unsigned long ) ) );
+		connect( this, TQ_SIGNAL( processedDirs( TDEIO::Job*, unsigned long ) ),
+			Observer::self(), TQ_SLOT( slotProcessedDirs( TDEIO::Job*, unsigned long ) ) );
+		connect( this, TQ_SIGNAL( percent( TDEIO::Job*, unsigned long ) ),
+			Observer::self(), TQ_SLOT( slotPercent( TDEIO::Job*, unsigned long ) ) );
 	}
 	
-	TQTimer::singleShot( 0, this, TQT_SLOT( slotStart() ) );
+	TQTimer::singleShot( 0, this, TQ_SLOT( slotStart() ) );
 }
 
 void VirtualCopyJob::slotStart() {
@@ -106,7 +106,7 @@ void VirtualCopyJob::slotStart() {
 			Observer::self()->slotCopying( this, m_baseURL, m_dest );
 	}
 	
-	connect(&m_reportTimer,TQT_SIGNAL(timeout()),this,TQT_SLOT(slotReport()));
+	connect(&m_reportTimer,TQ_SIGNAL(timeout()),this,TQ_SLOT(slotReport()));
 	m_reportTimer.start(REPORT_TIMEOUT,false);
 	
 	statNextDir();
@@ -158,7 +158,7 @@ void VirtualCopyJob::statNextDir() {
 	m_currentDir = KURL::relativeURL( m_baseURL, dirToCheck.upURL() );
 	
 	KDirSize* kds  = KDirSize::dirSizeJob( dirToCheck );
-	connect( kds, TQT_SIGNAL( result( TDEIO::Job* ) ), this, TQT_SLOT( slotKdsResult( TDEIO::Job* ) ) );
+	connect( kds, TQ_SIGNAL( result( TDEIO::Job* ) ), this, TQ_SLOT( slotKdsResult( TDEIO::Job* ) ) );
 }
 
 void VirtualCopyJob::slotKdsResult( TDEIO::Job * job ) {
@@ -189,7 +189,7 @@ void VirtualCopyJob::createNextDir() {
 		m_current.addPath( m_currentDir );
 	
 	TDEIO::Job *job = TDEIO::stat( m_current );
-	connect( job, TQT_SIGNAL( result( TDEIO::Job* ) ), this, TQT_SLOT( slotStatResult( TDEIO::Job* ) ) );
+	connect( job, TQ_SIGNAL( result( TDEIO::Job* ) ), this, TQ_SLOT( slotStatResult( TDEIO::Job* ) ) );
 }
 
 void VirtualCopyJob::slotStatResult( TDEIO::Job *job ) {
@@ -199,7 +199,7 @@ void VirtualCopyJob::slotStatResult( TDEIO::Job *job ) {
 		if( job->error() == TDEIO::ERR_DOES_NOT_EXIST && !url.equals( url.upURL(),true ) ) {
 			m_dirStack.push_back( url.fileName() );
 			TDEIO::Job *job = TDEIO::stat( url.upURL() );
-			connect( job, TQT_SIGNAL( result( TDEIO::Job* ) ), this, TQT_SLOT( slotStatResult( TDEIO::Job* ) ) );
+			connect( job, TQ_SIGNAL( result( TDEIO::Job* ) ), this, TQ_SLOT( slotStatResult( TDEIO::Job* ) ) );
 			return;
 		}
 		job->showErrorDialog( krApp );
@@ -214,7 +214,7 @@ void VirtualCopyJob::slotStatResult( TDEIO::Job *job ) {
 		m_dirStack.pop_back();
 		
 		TDEIO::Job *mkdir_job = TDEIO::mkdir( url );
-		connect( mkdir_job, TQT_SIGNAL( result( TDEIO::Job* ) ), this, TQT_SLOT( slotMkdirResult( TDEIO::Job* ) ) );
+		connect( mkdir_job, TQ_SIGNAL( result( TDEIO::Job* ) ), this, TQ_SLOT( slotMkdirResult( TDEIO::Job* ) ) );
 	}
 	else
 		copyCurrentDir();
@@ -236,7 +236,7 @@ void VirtualCopyJob::slotMkdirResult( TDEIO::Job *job ) {
 		m_dirStack.pop_back();
 	
 		TDEIO::Job *mkdir_job = TDEIO::mkdir( url );
-		connect( mkdir_job, TQT_SIGNAL( result( TDEIO::Job* ) ), this, TQT_SLOT( slotMkdirResult( TDEIO::Job* ) ) );
+		connect( mkdir_job, TQ_SIGNAL( result( TDEIO::Job* ) ), this, TQ_SLOT( slotMkdirResult( TDEIO::Job* ) ) );
 	}
 	else
 		copyCurrentDir();
@@ -248,19 +248,19 @@ void VirtualCopyJob::copyCurrentDir() {
 	TDEIO::CopyJob * copy_job = PreservingCopyJob::createCopyJob( m_pmode, *m_filesToCopy[ m_currentDir ], m_current,
 		m_mode, m_asMethod, false );
 	
-	connect( copy_job, TQT_SIGNAL( copying(TDEIO::Job *, const KURL &, const KURL &) ),
-		this, TQT_SLOT( slotCopying(TDEIO::Job *, const KURL &, const KURL &) ) );
-	connect( copy_job, TQT_SIGNAL( moving(TDEIO::Job *, const KURL &, const KURL &) ),
-		this, TQT_SLOT( slotMoving(TDEIO::Job *, const KURL &, const KURL &) ) );
-	connect( copy_job, TQT_SIGNAL( creatingDir(TDEIO::Job *, const KURL &) ),
-		this, TQT_SLOT( slotCreatingDir(TDEIO::Job *, const KURL &) ) );
-	connect( copy_job, TQT_SIGNAL( processedFiles (TDEIO::Job *, unsigned long) ),
-		this, TQT_SLOT( slotProcessedFiles (TDEIO::Job *, unsigned long) ) );
-	connect( copy_job, TQT_SIGNAL( processedDirs (TDEIO::Job *, unsigned long) ),
-		this, TQT_SLOT( slotProcessedDirs (TDEIO::Job *, unsigned long) ) );
-	connect( copy_job, TQT_SIGNAL( processedSize (TDEIO::Job *, TDEIO::filesize_t) ),
-		this, TQT_SLOT( slotProcessedSize (TDEIO::Job *, TDEIO::filesize_t) ) );
-	connect( copy_job, TQT_SIGNAL( result( TDEIO::Job* ) ), this, TQT_SLOT( slotCopyResult( TDEIO::Job* ) ) );
+	connect( copy_job, TQ_SIGNAL( copying(TDEIO::Job *, const KURL &, const KURL &) ),
+		this, TQ_SLOT( slotCopying(TDEIO::Job *, const KURL &, const KURL &) ) );
+	connect( copy_job, TQ_SIGNAL( moving(TDEIO::Job *, const KURL &, const KURL &) ),
+		this, TQ_SLOT( slotMoving(TDEIO::Job *, const KURL &, const KURL &) ) );
+	connect( copy_job, TQ_SIGNAL( creatingDir(TDEIO::Job *, const KURL &) ),
+		this, TQ_SLOT( slotCreatingDir(TDEIO::Job *, const KURL &) ) );
+	connect( copy_job, TQ_SIGNAL( processedFiles (TDEIO::Job *, unsigned long) ),
+		this, TQ_SLOT( slotProcessedFiles (TDEIO::Job *, unsigned long) ) );
+	connect( copy_job, TQ_SIGNAL( processedDirs (TDEIO::Job *, unsigned long) ),
+		this, TQ_SLOT( slotProcessedDirs (TDEIO::Job *, unsigned long) ) );
+	connect( copy_job, TQ_SIGNAL( processedSize (TDEIO::Job *, TDEIO::filesize_t) ),
+		this, TQ_SLOT( slotProcessedSize (TDEIO::Job *, TDEIO::filesize_t) ) );
+	connect( copy_job, TQ_SIGNAL( result( TDEIO::Job* ) ), this, TQ_SLOT( slotCopyResult( TDEIO::Job* ) ) );
 }
 
 void VirtualCopyJob::slotCopyResult( TDEIO::Job *job ) {

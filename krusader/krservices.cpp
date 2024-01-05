@@ -201,10 +201,10 @@ KEasyProcess::KEasyProcess(): TDEProcess() {
 }
 
 void KEasyProcess::init() {
-	connect(this, TQT_SIGNAL(receivedStdout(TDEProcess *, char *, int)),
-		this, TQT_SLOT(receivedStdout(TDEProcess *, char *, int)));
-	connect(this, TQT_SIGNAL(receivedStderr(TDEProcess *, char *, int)),
-		this, TQT_SLOT(receivedStderr(TDEProcess *, char *, int)));
+	connect(this, TQ_SIGNAL(receivedStdout(TDEProcess *, char *, int)),
+		this, TQ_SLOT(receivedStdout(TDEProcess *, char *, int)));
+	connect(this, TQ_SIGNAL(receivedStderr(TDEProcess *, char *, int)),
+		this, TQ_SLOT(receivedStderr(TDEProcess *, char *, int)));
 }
 
 void KEasyProcess::receivedStdout (TDEProcess * /* proc */, char *buffer, int buflen) {

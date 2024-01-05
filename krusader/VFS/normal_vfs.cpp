@@ -131,9 +131,9 @@ bool normal_vfs::populateVfsList(const KURL& origin, bool showHidden){
 	{
 		watcher = new KDirWatch();
 		// connect the watcher
-		connect(watcher,TQT_SIGNAL(dirty(const TQString&)),this,TQT_SLOT(vfs_slotDirty(const TQString&)));
-		connect(watcher,TQT_SIGNAL(created(const TQString&)),this, TQT_SLOT(vfs_slotCreated(const TQString&)));
-		connect(watcher,TQT_SIGNAL(deleted(const TQString&)),this, TQT_SLOT(vfs_slotDeleted(const TQString&)));	
+		connect(watcher,TQ_SIGNAL(dirty(const TQString&)),this,TQ_SLOT(vfs_slotDirty(const TQString&)));
+		connect(watcher,TQ_SIGNAL(created(const TQString&)),this, TQ_SLOT(vfs_slotCreated(const TQString&)));
+		connect(watcher,TQ_SIGNAL(deleted(const TQString&)),this, TQ_SLOT(vfs_slotDeleted(const TQString&)));	
 		watcher->addDir(vfs_getOrigin().path(-1),true); //start watching the new dir
 		watcher->startScan(true);
 	}
@@ -153,9 +153,9 @@ void normal_vfs::vfs_addFiles(KURL::List *fileUrls,TDEIO::CopyJob::CopyMode mode
   dest.setPath(vfs_workingDir()+"/"+dir);
 
   TDEIO::Job* job = PreservingCopyJob::createCopyJob( pmode, *fileUrls,dest,mode,false,true );
-  connect(job,TQT_SIGNAL(result(TDEIO::Job*)),this,TQT_SLOT(vfs_refresh()) );
+  connect(job,TQ_SIGNAL(result(TDEIO::Job*)),this,TQ_SLOT(vfs_refresh()) );
   if(mode == TDEIO::CopyJob::Move) // notify the other panel
-    connect(job,TQT_SIGNAL(result(TDEIO::Job*)),toNotify,TQT_SLOT(vfs_refresh(TDEIO::Job*)) );
+    connect(job,TQ_SIGNAL(result(TDEIO::Job*)),toNotify,TQ_SLOT(vfs_refresh(TDEIO::Job*)) );
   else
     job->setAutoErrorHandlingEnabled( true );
 }
@@ -190,12 +190,12 @@ void normal_vfs::vfs_delFiles(TQStringList *fileNames){
 #else
 	  job = new TDEIO::CopyJob(filesUrls,TDEGlobalSettings::trashPath(),TDEIO::CopyJob::Move,false,true );
 #endif
-	  connect(job,TQT_SIGNAL(result(TDEIO::Job*)),SLOTS,TQT_SLOT(changeTrashIcon()));
+	  connect(job,TQ_SIGNAL(result(TDEIO::Job*)),SLOTS,TQ_SLOT(changeTrashIcon()));
 	}
 	else
 	  job = new TDEIO::DeleteJob(filesUrls, false, true);
 	
-	connect(job,TQT_SIGNAL(result(TDEIO::Job*)),this,TQT_SLOT(vfs_refresh(TDEIO::Job*)));
+	connect(job,TQ_SIGNAL(result(TDEIO::Job*)),this,TQ_SLOT(vfs_refresh(TDEIO::Job*)));
 }
 
 // return a path to the file
@@ -236,7 +236,7 @@ void normal_vfs::vfs_rename(const TQString& fileName,const TQString& newName){
   dest.setPath(vfs_workingDir()+"/"+newName);
 
   TDEIO::Job *job = new TDEIO::CopyJob(fileUrls,dest,TDEIO::CopyJob::Move,true,false );
-  connect(job,TQT_SIGNAL(result(TDEIO::Job*)),this,TQT_SLOT(vfs_refresh(TDEIO::Job*)));
+  connect(job,TQ_SIGNAL(result(TDEIO::Job*)),this,TQ_SLOT(vfs_refresh(TDEIO::Job*)));
 }
 
 vfile* normal_vfs::vfileFromName(const TQString& name){
@@ -352,7 +352,7 @@ void normal_vfs::vfs_slotRefresh()
 	krConfig->setGroup("Advanced");
 	int maxRefreshFrequency = krConfig->readNumEntry("Max Refresh Frequency", 1000);
 	vfs_refresh();
-	disconnect( &refreshTimer, TQT_SIGNAL( timeout() ), this, TQT_SLOT( vfs_slotRefresh() ) );
+	disconnect( &refreshTimer, TQ_SIGNAL( timeout() ), this, TQ_SLOT( vfs_slotRefresh() ) );
 	refreshTimer.start( maxRefreshFrequency, true );
 }
 
@@ -360,11 +360,11 @@ bool normal_vfs::burstRefresh(const TQString& path ){
 	if( path == vfs_getOrigin().path(-1) ) {
 		if( !refreshTimer.isActive() ) {
 			// the directory itself is dirty - full refresh is needed
-			TQTimer::singleShot(0, this, TQT_SLOT( vfs_slotRefresh() ) ); // safety: dirty signal comes from KDirWatch!
+			TQTimer::singleShot(0, this, TQ_SLOT( vfs_slotRefresh() ) ); // safety: dirty signal comes from KDirWatch!
 			return true;
 		}
-		disconnect( &refreshTimer, TQT_SIGNAL( timeout() ), this, TQT_SLOT( vfs_slotRefresh() ) );
-		connect( &refreshTimer, TQT_SIGNAL( timeout() ), this, TQT_SLOT( vfs_slotRefresh() ) );
+		disconnect( &refreshTimer, TQ_SIGNAL( timeout() ), this, TQ_SLOT( vfs_slotRefresh() ) );
+		connect( &refreshTimer, TQ_SIGNAL( timeout() ), this, TQ_SLOT( vfs_slotRefresh() ) );
 		postponedRefreshURL = fromPathOrURL(path);
 		return true;
 	}

@@ -87,7 +87,7 @@ A
 ListPanelFunc::ListPanelFunc( ListPanel *parent ) :
 panel( parent ), inRefresh( false ), vfsP( 0 ) {
 	urlStack.push( "file:/" );
-	connect( &delayTimer, TQT_SIGNAL( timeout() ), this, TQT_SLOT( doOpenUrl() ) );
+	connect( &delayTimer, TQ_SIGNAL( timeout() ), this, TQ_SLOT( doOpenUrl() ) );
 }
 
 void ListPanelFunc::openUrl( const TQString& url, const TQString& nameToMakeCurrent ) {
@@ -155,7 +155,7 @@ void ListPanelFunc::immediateOpenUrl( const KURL& urlIn ) {
 			if( vfsP->vfs_canDelete() )
 				delete vfsP;
 			else {
-				connect( vfsP, TQT_SIGNAL( deleteAllowed() ), vfsP, TQT_SLOT( deleteLater() ) );
+				connect( vfsP, TQ_SIGNAL( deleteAllowed() ), vfsP, TQ_SLOT( deleteLater() ) );
 				vfsP->vfs_requestDelete();
 			}
 			vfsP = v; // v != 0 so this is safe
@@ -167,8 +167,8 @@ void ListPanelFunc::immediateOpenUrl( const KURL& urlIn ) {
 				return;
 			}
 		}
-		connect( files(), TQT_SIGNAL(startJob(TDEIO::Job* )),
-				panel, TQT_SLOT(slotJobStarted(TDEIO::Job* )));
+		connect( files(), TQ_SIGNAL(startJob(TDEIO::Job* )),
+				panel, TQ_SLOT(slotJobStarted(TDEIO::Job* )));
 		if ( vfsP->vfs_refresh( u ) ) {
 			break; // we have a valid refreshed URL now
 		}
@@ -191,19 +191,19 @@ void ListPanelFunc::immediateOpenUrl( const KURL& urlIn ) {
 		urlStack.push( files() ->vfs_getOrigin() );
 	}
 	// disconnect older signals
-	disconnect( files(), TQT_SIGNAL( addedVfile( vfile* ) ), 0, 0 );
-	disconnect( files(), TQT_SIGNAL( updatedVfile( vfile* ) ), 0, 0 );
-	disconnect( files(), TQT_SIGNAL( deletedVfile( const TQString& ) ), 0, 0 );
-	disconnect( files(), TQT_SIGNAL( cleared() ), 0, 0 );
+	disconnect( files(), TQ_SIGNAL( addedVfile( vfile* ) ), 0, 0 );
+	disconnect( files(), TQ_SIGNAL( updatedVfile( vfile* ) ), 0, 0 );
+	disconnect( files(), TQ_SIGNAL( deletedVfile( const TQString& ) ), 0, 0 );
+	disconnect( files(), TQ_SIGNAL( cleared() ), 0, 0 );
 	// connect to the vfs's dirwatch signals
-	connect( files(), TQT_SIGNAL( addedVfile( vfile* ) ),
-	         panel, TQT_SLOT( slotItemAdded( vfile* ) ) );
-	connect( files(), TQT_SIGNAL( updatedVfile( vfile* ) ),
-	         panel, TQT_SLOT( slotItemUpdated( vfile* ) ) );
-	connect( files(), TQT_SIGNAL( deletedVfile( const TQString& ) ),
-	         panel, TQT_SLOT( slotItemDeleted( const TQString& ) ) );
-	connect( files(), TQT_SIGNAL( cleared() ),
-	         panel, TQT_SLOT( slotCleared() ) );
+	connect( files(), TQ_SIGNAL( addedVfile( vfile* ) ),
+	         panel, TQ_SLOT( slotItemAdded( vfile* ) ) );
+	connect( files(), TQ_SIGNAL( updatedVfile( vfile* ) ),
+	         panel, TQ_SLOT( slotItemUpdated( vfile* ) ) );
+	connect( files(), TQ_SIGNAL( deletedVfile( const TQString& ) ),
+	         panel, TQ_SLOT( slotItemDeleted( const TQString& ) ) );
+	connect( files(), TQ_SIGNAL( cleared() ),
+	         panel, TQ_SLOT( slotCleared() ) );
 
 	// on local file system change the working directory
 	if ( files() ->vfs_getType() == vfs::NORMAL )
@@ -449,9 +449,9 @@ void ListPanelFunc::moveFiles() {
 	if( !virtualBaseURL.isEmpty() ) {
 		// keep the directory structure for virtual paths
 		VirtualCopyJob *vjob = new VirtualCopyJob( &fileNames, files(), dest, virtualBaseURL, pmode, TDEIO::CopyJob::Move, false, true );
-		connect( vjob, TQT_SIGNAL( result( TDEIO::Job* ) ), this, TQT_SLOT( refresh() ) );
+		connect( vjob, TQ_SIGNAL( result( TDEIO::Job* ) ), this, TQ_SLOT( refresh() ) );
 		if ( dest.equals( panel->otherPanel->virtualPath(), true ) )
-			connect( vjob, TQT_SIGNAL( result( TDEIO::Job* ) ), panel->otherPanel->func, TQT_SLOT( refresh() ) );
+			connect( vjob, TQ_SIGNAL( result( TDEIO::Job* ) ), panel->otherPanel->func, TQ_SLOT( refresh() ) );
 	}
 	// if we are not moving to the other panel :
 	else if ( !dest.equals( panel->otherPanel->virtualPath(), true ) ) {
@@ -461,10 +461,10 @@ void ListPanelFunc::moveFiles() {
 		TDEIO::Job* job = PreservingCopyJob::createCopyJob( pmode, *fileUrls, dest, TDEIO::CopyJob::Move, false, true );
 		job->setAutoErrorHandlingEnabled( true );
 		// refresh our panel when done
-		connect( job, TQT_SIGNAL( result( TDEIO::Job* ) ), this, TQT_SLOT( refresh() ) );
+		connect( job, TQ_SIGNAL( result( TDEIO::Job* ) ), this, TQ_SLOT( refresh() ) );
 		// and if needed the other panel as well
 		if ( dest.equals( panel->otherPanel->virtualPath(), true ) )
-			connect( job, TQT_SIGNAL( result( TDEIO::Job* ) ), panel->otherPanel->func, TQT_SLOT( refresh() ) );
+			connect( job, TQ_SIGNAL( result( TDEIO::Job* ) ), panel->otherPanel->func, TQ_SLOT( refresh() ) );
 
 	} else { // let the other panel do the dirty job
 		//check if copy is supported
@@ -597,9 +597,9 @@ void ListPanelFunc::copyFiles() {
 	if( !virtualBaseURL.isEmpty() ) {
 		// keep the directory structure for virtual paths
 		VirtualCopyJob *vjob = new VirtualCopyJob( &fileNames, files(), dest, virtualBaseURL, pmode, TDEIO::CopyJob::Copy, false, true );
-		connect( vjob, TQT_SIGNAL( result( TDEIO::Job* ) ), this, TQT_SLOT( refresh() ) );
+		connect( vjob, TQ_SIGNAL( result( TDEIO::Job* ) ), this, TQ_SLOT( refresh() ) );
 		if ( dest.equals( panel->otherPanel->virtualPath(), true ) )
-			connect( vjob, TQT_SIGNAL( result( TDEIO::Job* ) ), panel->otherPanel->func, TQT_SLOT( refresh() ) );
+			connect( vjob, TQ_SIGNAL( result( TDEIO::Job* ) ), panel->otherPanel->func, TQ_SLOT( refresh() ) );
 	}
 	// if we are  not copying to the other panel :
 	else if ( !dest.equals( panel->otherPanel->virtualPath(), true ) ) {
@@ -611,7 +611,7 @@ void ListPanelFunc::copyFiles() {
 		if ( dest.equals( panel->virtualPath(), true ) ||
 			dest.upURL().equals( panel->virtualPath(), true ) )
 			// refresh our panel when done
-			connect( job, TQT_SIGNAL( result( TDEIO::Job* ) ), this, TQT_SLOT( refresh() ) );
+			connect( job, TQ_SIGNAL( result( TDEIO::Job* ) ), this, TQ_SLOT( refresh() ) );
 	// let the other panel do the dirty job
 	} else {
 		//check if copy is supported
@@ -1110,7 +1110,7 @@ void ListPanelFunc::properties() {
 
 	// Show the properties dialog
 	KPropertiesDialog *dlg = new KPropertiesDialog( fi );
-	connect( dlg, TQT_SIGNAL( applied() ), SLOTS, TQT_SLOT( refresh() ) );
+	connect( dlg, TQ_SIGNAL( applied() ), SLOTS, TQ_SLOT( refresh() ) );
 }
 
 void ListPanelFunc::refreshActions() {
@@ -1144,7 +1144,7 @@ ListPanelFunc::~ListPanelFunc() {
 		if( vfsP->vfs_canDelete() )
 			delete vfsP;
 		else {
-			connect( vfsP, TQT_SIGNAL( deleteAllowed() ), vfsP, TQT_SLOT( deleteLater() ) );
+			connect( vfsP, TQ_SIGNAL( deleteAllowed() ), vfsP, TQ_SLOT( deleteLater() ) );
 			vfsP->vfs_requestDelete();
 		}
 	}

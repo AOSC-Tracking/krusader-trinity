@@ -66,10 +66,10 @@ KgColors::KgColors( bool first, TQWidget* parent,  const char* name ) :
 
   generals->layout()->setSpacing( 5 );
 
-  connect( generals->find( "KDE Default" ), TQT_SIGNAL( stateChanged( int ) ), this, TQT_SLOT( slotDisable() ) );
-  connect( generals->find( "Enable Alternate Background" ), TQT_SIGNAL( stateChanged( int ) ), this, TQT_SLOT( generatePreview() ) );
-  connect( generals->find( "Show Current Item Always" ), TQT_SIGNAL( stateChanged( int ) ), this, TQT_SLOT( slotDisable() ) );
-  connect( generals->find( "Dim Inactive Colors" ), TQT_SIGNAL( stateChanged( int ) ), this, TQT_SLOT( slotDisable() ) );
+  connect( generals->find( "KDE Default" ), TQ_SIGNAL( stateChanged( int ) ), this, TQ_SLOT( slotDisable() ) );
+  connect( generals->find( "Enable Alternate Background" ), TQ_SIGNAL( stateChanged( int ) ), this, TQ_SLOT( generatePreview() ) );
+  connect( generals->find( "Show Current Item Always" ), TQ_SIGNAL( stateChanged( int ) ), this, TQ_SLOT( slotDisable() ) );
+  connect( generals->find( "Dim Inactive Colors" ), TQ_SIGNAL( stateChanged( int ) ), this, TQ_SLOT( slotDisable() ) );
 
   kgColorsLayout->addMultiCellWidget( generalGrp, 0 ,0, 0, 2 );
   TQHBox *hbox = new TQHBox( parent );
@@ -83,7 +83,7 @@ KgColors::KgColors( bool first, TQWidget* parent,  const char* name ) :
 
   colorTabWidget = new TQTabWidget( colorsFrameGrp, "colorTabWidget" );
 
-  connect( colorTabWidget, TQT_SIGNAL( currentChanged ( TQWidget * ) ), this, TQT_SLOT( generatePreview() ) );
+  connect( colorTabWidget, TQ_SIGNAL( currentChanged ( TQWidget * ) ), this, TQ_SLOT( generatePreview() ) );
 
   colorsGrp = new TQWidget( colorTabWidget, "colorTab" );
   colorTabWidget->insertTab( colorsGrp, i18n( "Active" ) );
@@ -113,10 +113,10 @@ KgColors::KgColors( bool first, TQWidget* parent,  const char* name ) :
 
   colorsGrid->addWidget(createSpacer(colorsGrp, ""), itemList.count() - offset, 1);
 
-  connect( getColorSelector( "Foreground" ), TQT_SIGNAL( colorChanged() ), this, TQT_SLOT( slotForegroundChanged() ) );
-  connect( getColorSelector( "Background" ), TQT_SIGNAL( colorChanged() ), this, TQT_SLOT( slotBackgroundChanged() ) );
-  connect( getColorSelector( "Alternate Background" ), TQT_SIGNAL( colorChanged() ), this, TQT_SLOT( slotAltBackgroundChanged() ) );
-  connect( getColorSelector( "Marked Background" ), TQT_SIGNAL( colorChanged() ), this, TQT_SLOT( slotMarkedBackgroundChanged() ) );
+  connect( getColorSelector( "Foreground" ), TQ_SIGNAL( colorChanged() ), this, TQ_SLOT( slotForegroundChanged() ) );
+  connect( getColorSelector( "Background" ), TQ_SIGNAL( colorChanged() ), this, TQ_SLOT( slotBackgroundChanged() ) );
+  connect( getColorSelector( "Alternate Background" ), TQ_SIGNAL( colorChanged() ), this, TQ_SLOT( slotAltBackgroundChanged() ) );
+  connect( getColorSelector( "Marked Background" ), TQ_SIGNAL( colorChanged() ), this, TQ_SLOT( slotMarkedBackgroundChanged() ) );
 
   inactiveColorStack = new TQWidgetStack( colorTabWidget, "colorTab2" );
   colorTabWidget->insertTab( inactiveColorStack, i18n( "Inactive" ) );
@@ -150,10 +150,10 @@ KgColors::KgColors( bool first, TQWidget* parent,  const char* name ) :
 
   colorsGrid->addWidget(createSpacer(normalInactiveWidget, ""), itemList.count() - offset, 1);
 
-  connect( getColorSelector( "Inactive Foreground" ), TQT_SIGNAL( colorChanged() ), this, TQT_SLOT( slotInactiveForegroundChanged() ) );
-  connect( getColorSelector( "Inactive Background" ), TQT_SIGNAL( colorChanged() ), this, TQT_SLOT( slotInactiveBackgroundChanged() ) );
-  connect( getColorSelector( "Inactive Alternate Background" ), TQT_SIGNAL( colorChanged() ), this, TQT_SLOT( slotInactiveAltBackgroundChanged() ) );
-  connect( getColorSelector( "Inactive Marked Background" ), TQT_SIGNAL( colorChanged() ), this, TQT_SLOT( slotInactiveMarkedBackgroundChanged() ) );
+  connect( getColorSelector( "Inactive Foreground" ), TQ_SIGNAL( colorChanged() ), this, TQ_SLOT( slotInactiveForegroundChanged() ) );
+  connect( getColorSelector( "Inactive Background" ), TQ_SIGNAL( colorChanged() ), this, TQ_SLOT( slotInactiveBackgroundChanged() ) );
+  connect( getColorSelector( "Inactive Alternate Background" ), TQ_SIGNAL( colorChanged() ), this, TQ_SLOT( slotInactiveAltBackgroundChanged() ) );
+  connect( getColorSelector( "Inactive Marked Background" ), TQ_SIGNAL( colorChanged() ), this, TQ_SLOT( slotInactiveMarkedBackgroundChanged() ) );
 
   offset = endOfPanelColors = itemList.count();
 
@@ -171,7 +171,7 @@ KgColors::KgColors( bool first, TQWidget* parent,  const char* name ) :
   labelList.append( addLabel( colorsGrid, index, 0, i18n("Dim factor:"), colorsGrp, TQString( "ColorsLabel%1" ).arg( index ).ascii() ) );
   dimFactor = createSpinBox("Colors", "Dim Factor", 100, 0, 100, colorsGrp);
   dimFactor->setSizePolicy( TQSizePolicy::Expanding, TQSizePolicy::Fixed );
-  connect( dimFactor, TQT_SIGNAL( valueChanged( int ) ), this, TQT_SLOT( generatePreview() ) );
+  connect( dimFactor, TQ_SIGNAL( valueChanged( int ) ), this, TQ_SLOT( generatePreview() ) );
   colorsGrid->addWidget( dimFactor, index++, 1 );
 
   colorsGrid->addWidget(createSpacer(dimmedInactiveWidget, ""), itemList.count() + 1 - offset, 1);
@@ -230,8 +230,8 @@ KgColors::KgColors( bool first, TQWidget* parent,  const char* name ) :
   exportBtn = new KPushButton(i18n("Export color-scheme"),parent);
   kgColorsLayout->addWidget(exportBtn,2,1);
   kgColorsLayout->addWidget(createSpacer(parent, ""), 2,2);
-  connect(importBtn, TQT_SIGNAL(clicked()), this, TQT_SLOT(slotImportColors()));
-  connect(exportBtn, TQT_SIGNAL(clicked()), this, TQT_SLOT(slotExportColors()));
+  connect(importBtn, TQ_SIGNAL(clicked()), this, TQ_SLOT(slotImportColors()));
+  connect(exportBtn, TQ_SIGNAL(clicked()), this, TQ_SLOT(slotExportColors()));
 
   slotDisable();
 }
@@ -250,9 +250,9 @@ int KgColors::addColorSelector( TQString cfgName, TQString name, TQColor dflt, T
 
   colorsGrid->addWidget( chooser, index, 1 );
 
-  connect( chooser, TQT_SIGNAL( colorChanged() ), this, TQT_SLOT( generatePreview() ) );
+  connect( chooser, TQ_SIGNAL( colorChanged() ), this, TQ_SLOT( generatePreview() ) );
   if( !offset )
-    connect( chooser, TQT_SIGNAL( colorChanged() ), this, TQT_SLOT( slotActiveChanged() ) );
+    connect( chooser, TQ_SIGNAL( colorChanged() ), this, TQ_SLOT( slotActiveChanged() ) );
 
   itemList.append( chooser );
   itemNames.append( cfgName );

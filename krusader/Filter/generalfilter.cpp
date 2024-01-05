@@ -279,17 +279,17 @@ GeneralFilter::GeneralFilter( FilterTabs *tabs, int properties, TQWidget *parent
 
   if( properties & FilterTabs::HasProfileHandler )
   {
-    connect( profileAddBtn,       TQT_SIGNAL(clicked()) , this, TQT_SLOT( slotAddBtnClicked() ) );
-    connect( profileLoadBtn,      TQT_SIGNAL(clicked()) , this, TQT_SLOT( slotLoadBtnClicked() ) );
-    connect( profileOverwriteBtn, TQT_SIGNAL(clicked()) , this, TQT_SLOT( slotOverwriteBtnClicked() ) );
-    connect( profileRemoveBtn,    TQT_SIGNAL(clicked()) , this, TQT_SLOT( slotRemoveBtnClicked() ) );
-    connect( profileListBox,      TQT_SIGNAL(doubleClicked(TQListBoxItem *)) , this, TQT_SLOT( slotProfileDoubleClicked(TQListBoxItem *) ) );
-    connect( profileManager,      TQT_SIGNAL(loadFromProfile(TQString )), fltTabs, TQT_SLOT( loadFromProfile(TQString ) ) );
-    connect( profileManager,      TQT_SIGNAL(saveToProfile(TQString )), fltTabs, TQT_SLOT( saveToProfile(TQString ) ) );
+    connect( profileAddBtn,       TQ_SIGNAL(clicked()) , this, TQ_SLOT( slotAddBtnClicked() ) );
+    connect( profileLoadBtn,      TQ_SIGNAL(clicked()) , this, TQ_SLOT( slotLoadBtnClicked() ) );
+    connect( profileOverwriteBtn, TQ_SIGNAL(clicked()) , this, TQ_SLOT( slotOverwriteBtnClicked() ) );
+    connect( profileRemoveBtn,    TQ_SIGNAL(clicked()) , this, TQ_SLOT( slotRemoveBtnClicked() ) );
+    connect( profileListBox,      TQ_SIGNAL(doubleClicked(TQListBoxItem *)) , this, TQ_SLOT( slotProfileDoubleClicked(TQListBoxItem *) ) );
+    connect( profileManager,      TQ_SIGNAL(loadFromProfile(TQString )), fltTabs, TQ_SLOT( loadFromProfile(TQString ) ) );
+    connect( profileManager,      TQ_SIGNAL(saveToProfile(TQString )), fltTabs, TQ_SLOT( saveToProfile(TQString ) ) );
   }
 
-  connect( searchFor, TQT_SIGNAL(activated(const TQString&)), searchFor, TQT_SLOT(addToHistory(const TQString&)));
-  connect( containsText, TQT_SIGNAL(activated(const TQString&)), containsText, TQT_SLOT(addToHistory(const TQString&)));
+  connect( searchFor, TQ_SIGNAL(activated(const TQString&)), searchFor, TQ_SLOT(addToHistory(const TQString&)));
+  connect( containsText, TQ_SIGNAL(activated(const TQString&)), containsText, TQ_SLOT(addToHistory(const TQString&)));
 
   // load the completion and history lists
   // ==> search for

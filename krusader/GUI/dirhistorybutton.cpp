@@ -44,8 +44,8 @@ DirHistoryButton::DirHistoryButton( DirHistoryQueue* hQ, TQWidget *parent, const
 
 	historyQueue = hQ;
 
-	connect( popupMenu, TQT_SIGNAL( aboutToShow() ), this, TQT_SLOT( slotAboutToShow() ) );
-	connect( popupMenu, TQT_SIGNAL( activated( int ) ), this, TQT_SLOT( slotPopupActivated( int ) ) );
+	connect( popupMenu, TQ_SIGNAL( aboutToShow() ), this, TQ_SLOT( slotAboutToShow() ) );
+	connect( popupMenu, TQ_SIGNAL( activated( int ) ), this, TQ_SLOT( slotPopupActivated( int ) ) );
 }
 
 DirHistoryButton::~DirHistoryButton() {}

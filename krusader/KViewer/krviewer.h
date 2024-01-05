@@ -116,7 +116,7 @@ class Invoker : public TQObject {
 	
 public:
 	Invoker( TQObject *recv, const char * slot ) {
-		connect( this, TQT_SIGNAL( invokeSignal() ), recv, slot );
+		connect( this, TQ_SIGNAL( invokeSignal() ), recv, slot );
 	}
 	
 	void invoke() {

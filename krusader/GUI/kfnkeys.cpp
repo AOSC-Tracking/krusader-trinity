@@ -51,49 +51,49 @@ KFnKeys::KFnKeys(TQWidget *parent, char *name): TQWidget(parent,name) {
       TQToolTip::add( F2, "<qt>" + i18n( "<p>Open terminal in current directory.</p>"
                      "<p>The terminal can be defined in Konfigurator, "
                      "default is <b>konsole</b>.</p>" ) + "</qt>" );
-      connect(F2,TQT_SIGNAL(clicked()), SLOTS, TQT_SLOT(terminal()));
+      connect(F2,TQ_SIGNAL(clicked()), SLOTS, TQ_SLOT(terminal()));
       SETUP(F2);
 			
 		F3=new TQPushButton( i18n("F3 View  ") ,this);	
 			TQToolTip::add( F3, i18n( "Open file in viewer." ) );
-			connect(F3,TQT_SIGNAL(clicked()), SLOTS, TQT_SLOT(view()));
+			connect(F3,TQ_SIGNAL(clicked()), SLOTS, TQ_SLOT(view()));
 			SETUP(F3);
 		
 		F4=new TQPushButton( i18n("F4 Edit  ") ,this);
 			TQToolTip::add( F4, "<qt>" + i18n( "<p>Edit file.</p>"
 									   "<p>The editor can be defined in Konfigurator, "
 									   "default is <b>internal editor</b>.</p>" ) + "</qt>" );
-			connect(F4,TQT_SIGNAL(clicked()), SLOTS, TQT_SLOT(edit()));
+			connect(F4,TQ_SIGNAL(clicked()), SLOTS, TQ_SLOT(edit()));
 			SETUP(F4);
 			
 		F5=new TQPushButton( i18n("F5 Copy  ") ,this);	
 			TQToolTip::add( F5, i18n( "Copy file from one panel to the other." ) );
-			connect(F5,TQT_SIGNAL(clicked()), SLOTS, TQT_SLOT(copyFiles()));
+			connect(F5,TQ_SIGNAL(clicked()), SLOTS, TQ_SLOT(copyFiles()));
 			SETUP(F5);
 			
 		F6=new TQPushButton( i18n("F6 Move") ,this);
 			TQToolTip::add( F6, i18n( "Move file from one panel to the other." ) );
-			connect(F6,TQT_SIGNAL(clicked()), SLOTS, TQT_SLOT(moveFiles()));
+			connect(F6,TQ_SIGNAL(clicked()), SLOTS, TQ_SLOT(moveFiles()));
 			SETUP(F6);
 			
 		F7=new TQPushButton( i18n("F7 Mkdir ") ,this);	
 			TQToolTip::add( F7, i18n( "Create directory in current panel." ) );
-			connect(F7,TQT_SIGNAL(clicked()), SLOTS, TQT_SLOT(mkdir()));
+			connect(F7,TQ_SIGNAL(clicked()), SLOTS, TQ_SLOT(mkdir()));
 			SETUP(F7);
 			
 		F8=new TQPushButton( i18n("F8 Delete") ,this);
 			TQToolTip::add( F8, i18n( "Delete file, directory, etc." ) );
-			connect(F8,TQT_SIGNAL(clicked()), SLOTS, TQT_SLOT(deleteFiles()));
+			connect(F8,TQ_SIGNAL(clicked()), SLOTS, TQ_SLOT(deleteFiles()));
 			SETUP(F8);
 			
 		F9=new TQPushButton( i18n("F9 Rename") ,this);	
 			TQToolTip::add( F9, i18n( "Rename file, directory, etc." ) );
-			connect(F9,TQT_SIGNAL(clicked()), SLOTS, TQT_SLOT(rename()));
+			connect(F9,TQ_SIGNAL(clicked()), SLOTS, TQ_SLOT(rename()));
 			SETUP(F9);
 			
 		F10=new TQPushButton( i18n("F10 Quit ") ,this);
 			TQToolTip::add( F10, i18n( "Quit Krusader." ) );
-			connect(F10,TQT_SIGNAL(clicked()),krApp, TQT_SLOT(slotClose()));
+			connect(F10,TQ_SIGNAL(clicked()),krApp, TQ_SLOT(slotClose()));
 			SETUP(F10);
 
     // set a tighter box around the keys

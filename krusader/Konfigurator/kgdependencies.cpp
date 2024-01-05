@@ -136,8 +136,8 @@ void KgDependencies::addApplication( TQString name, TQGridLayout *grid, int row,
   addLabel( grid, row, 0, name, parent, (TQString( "label:" )+name).ascii() );
 
   KonfiguratorURLRequester *fullPath = createURLRequester( "Dependencies", name, dflt, parent, false, page );
-  connect( fullPath->extension(), TQT_SIGNAL( applyManually( TQObject *, TQString, TQString ) ),
-           this, TQT_SLOT( slotApply( TQObject *, TQString, TQString ) ) );
+  connect( fullPath->extension(), TQ_SIGNAL( applyManually( TQObject *, TQString, TQString ) ),
+           this, TQ_SLOT( slotApply( TQObject *, TQString, TQString ) ) );
   grid->addWidget( fullPath, row, 1 );
 }
 

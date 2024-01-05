@@ -47,10 +47,10 @@ KDiskFreeSp::KDiskFreeSp(TQObject *parent, const char *name)
 {
     dfProc = new TDEProcess(); TQ_CHECK_PTR(dfProc);
     dfProc->setEnvironment("LANGUAGE", "C");
-    connect( dfProc, TQT_SIGNAL(receivedStdout(TDEProcess *, char *, int) ),
-             this, TQT_SLOT (receivedDFStdErrOut(TDEProcess *, char *, int)) );
-    connect(dfProc,TQT_SIGNAL(processExited(TDEProcess *) ),
-            this, TQT_SLOT(dfDone() ) );
+    connect( dfProc, TQ_SIGNAL(receivedStdout(TDEProcess *, char *, int) ),
+             this, TQ_SLOT (receivedDFStdErrOut(TDEProcess *, char *, int)) );
+    connect(dfProc,TQ_SIGNAL(processExited(TDEProcess *) ),
+            this, TQ_SLOT(dfDone() ) );
 
     readingDFStdErrOut=false;
 }

@@ -80,9 +80,9 @@ _stdout(0), _stderr(0), _currentTextEdit(0) {
    }
 
    _currentTextEdit = _stdout;
-   connect( _stdout, TQT_SIGNAL( clicked(int, int) ), TQT_SLOT( currentTextEditChanged() ) );
+   connect( _stdout, TQ_SIGNAL( clicked(int, int) ), TQ_SLOT( currentTextEditChanged() ) );
    if (_stderr)
-      connect( _stderr, TQT_SIGNAL( clicked(int, int) ), TQT_SLOT( currentTextEditChanged() ) );
+      connect( _stderr, TQ_SIGNAL( clicked(int, int) ), TQ_SLOT( currentTextEditChanged() ) );
 
    krConfig->setGroup( "UserActions" );
    normalFont = krConfig->readFontEntry( "Normal Font", _UserActions_NormalFont );
@@ -98,7 +98,7 @@ _stdout(0), _stderr(0), _currentTextEdit(0) {
    TQCheckBox* useFixedFont = new TQCheckBox( i18n("Use font with fixed width"), buttonBox );
    buttonBoxLayout->insertWidget( 0, useFixedFont );
    useFixedFont->setChecked( startupState );
-   connect( useFixedFont, TQT_SIGNAL( toggled(bool) ), TQT_SLOT( toggleFixedFont(bool) ) );
+   connect( useFixedFont, TQ_SIGNAL( toggled(bool) ), TQ_SLOT( toggleFixedFont(bool) ) );
 }
 
 void KrActionProcDlg::addStderr( TDEProcess *, char *buffer, int buflen ) {
@@ -176,8 +176,8 @@ void KrActionProcDlg::currentTextEditChanged() {
 KrActionProc::KrActionProc( KrActionBase* action ) : TQObject(), _action( action ), _proc( new TDEProcess(this) ), _output( 0 ) {
    _proc->setUseShell( true );
 
-   connect( _proc, TQT_SIGNAL( processExited( TDEProcess* ) ),
-            this, TQT_SLOT( processExited( TDEProcess* ) ) ) ;
+   connect( _proc, TQ_SIGNAL( processExited( TDEProcess* ) ),
+            this, TQ_SLOT( processExited( TDEProcess* ) ) ) ;
 }
 
 KrActionProc::~KrActionProc() {
@@ -244,9 +244,9 @@ void KrActionProc::start( TQStringList cmdLineList ) {
          separateStderr = true;
       _output = new KrActionProcDlg( _action->text(), separateStderr );
       // connect the output to the dialog
-      connect( _proc, TQT_SIGNAL( receivedStderr( TDEProcess*, char*, int ) ), _output, TQT_SLOT( addStderr( TDEProcess*, char *, int ) ) );
-      connect( _proc, TQT_SIGNAL( receivedStdout( TDEProcess*, char*, int ) ), _output, TQT_SLOT( addStdout( TDEProcess*, char *, int ) ) );
-      connect( _output, TQT_SIGNAL( cancelClicked() ), this, TQT_SLOT( kill() ) );
+      connect( _proc, TQ_SIGNAL( receivedStderr( TDEProcess*, char*, int ) ), _output, TQ_SLOT( addStderr( TDEProcess*, char *, int ) ) );
+      connect( _proc, TQ_SIGNAL( receivedStdout( TDEProcess*, char*, int ) ), _output, TQ_SLOT( addStdout( TDEProcess*, char *, int ) ) );
+      connect( _output, TQ_SIGNAL( cancelClicked() ), this, TQ_SLOT( kill() ) );
       _output->show();
       for ( TQStringList::Iterator it = cmdLineList.begin(); it != cmdLineList.end(); ++it) {
          if ( ! cmd.isEmpty() )
@@ -281,7 +281,7 @@ void KrActionProc::processExited( TDEProcess * ) {
 //////////////////////////////////////////////////////////////////////////////////////////////////////
 
 KrAction::KrAction( TDEActionCollection *parent, const char* name ) : TDEAction( parent, name ) {
-   connect(this, TQT_SIGNAL(activated()), this, TQT_SLOT(exec()) );
+   connect(this, TQ_SIGNAL(activated()), this, TQ_SLOT(exec()) );
 }
 
 KrAction::~KrAction() {

@@ -74,10 +74,10 @@ class KrShellProcess : public KShellProcess {
   
 public:
 	KrShellProcess() : KShellProcess(), errorMsg( TQString() ), outputMsg( TQString() ) {
-		connect(this,TQT_SIGNAL(receivedStderr(TDEProcess*,char*,int)),
-				this,TQT_SLOT(receivedErrorMsg(TDEProcess*,char*,int)) );
-		connect(this,TQT_SIGNAL(receivedStdout(TDEProcess*,char*,int)),
-				this,TQT_SLOT(receivedOutputMsg(TDEProcess*,char*,int)) );
+		connect(this,TQ_SIGNAL(receivedStderr(TDEProcess*,char*,int)),
+				this,TQ_SLOT(receivedErrorMsg(TDEProcess*,char*,int)) );
+		connect(this,TQ_SIGNAL(receivedStdout(TDEProcess*,char*,int)),
+				this,TQ_SLOT(receivedOutputMsg(TDEProcess*,char*,int)) );
 	}
 	
 	TQString getErrorMsg() {
@@ -112,8 +112,8 @@ class Kr7zEncryptionChecker : public KrShellProcess {
 	
 public:
 	Kr7zEncryptionChecker() : KrShellProcess(), encrypted( false ), lastData() {
-		connect(this,TQT_SIGNAL(receivedStdout(TDEProcess*,char*,int)),
-				this,TQT_SLOT(processStdout(TDEProcess*,char*,int)) );
+		connect(this,TQ_SIGNAL(receivedStdout(TDEProcess*,char*,int)),
+				this,TQ_SLOT(processStdout(TDEProcess*,char*,int)) );
 	}
 
 public slots:
