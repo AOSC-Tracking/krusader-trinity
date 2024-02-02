@@ -247,7 +247,7 @@
         <slot>one()</slot>
     </connection>
 </connections>
-<Q_SLOTS>
+<slots>
     <slot>one()</slot>
     <slot>two()</slot>
     <slot>three()</slot>
@@ -262,6 +262,6 @@
     <slot>minus()</slot>
     <slot>equals()</slot>
     <slot>setCap()</slot>
-</Q_SLOTS>
+</slots>
 <layoutdefaults spacing="6" margin="11"/>
 </UI>
