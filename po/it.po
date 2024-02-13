@@ -6,19 +6,22 @@
 #
 # Luigi Curzi <luigi_curzi@yahoo.it>, 2006.
 # Giuseppe Bordoni <geppo@geppozone.com>, 2003, 2004, 2005, 2006, 2007.
+# Michele Calgaro <michele.calgaro@yahoo.it>, 2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: krusader-1.80.0\n"
 "Report-Msgid-Bugs-To: Dirk Eschler <deschler@users.sourceforge.net>\n"
 "POT-Creation-Date: 2022-09-13 18:34+0000\n"
-"PO-Revision-Date: 2007-04-05 14:23+0200\n"
-"Last-Translator: Giuseppe Bordoni <geppo@geppozone.com>\n"
-"Language-Team: krusader-i18n <krusader-i18n@googlegroups.com>\n"
-"Language: \n"
+"PO-Revision-Date: 2024-02-13 04:08+0000\n"
+"Last-Translator: Michele Calgaro <michele.calgaro@yahoo.it>\n"
+"Language-Team: Italian <https://mirror.git.trinitydesktop.org/weblate/"
+"projects/applications/krusader/it/>\n"
+"Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.9.1\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.17\n"
 
 #. Instead of a literal translation, add your name to the end of the list (separated by a comma).
 msgid ""
@@ -184,7 +187,7 @@ msgid ""
 msgstr ""
 "Nome univoco del <b>Menu utente</b>. È usato solo in <i>Konfigurator</i> e "
 "non appare in nessun altro menu.<p><b>Nota</b>: Il <i>Titolo</i> mostrato "
-"nel <b>Menu utente</b> può essere impostato sotto.</p>"
+"nel <b>Menu utente</b> può essere impostato sotto."
 
 #: ActionMan/actionpropertybase.cpp:399 ActionMan/actionpropertybase.cpp:416
 #: ActionMan/actionpropertybase.ui:175 ActionMan/actionpropertybase.ui:316
@@ -256,7 +259,7 @@ msgid ""
 "The <i>Tooltip</i> is shown when the mouse cursor is hold over an entry of "
 "the <b>Useraction Toolbar</b>."
 msgstr ""
-"Il <b>Suggerimento</b> è mostrato quando il puntatore del mouse si sposta "
+"Il <i>Suggerimento</i> è mostrato quando il puntatore del mouse si sposta "
 "sopra una voce della <b>Barra degli strumenti del Menu utente</b>."
 
 #: ActionMan/actionpropertybase.cpp:408 ActionMan/actionpropertybase.cpp:421
@@ -289,7 +292,7 @@ msgstr ""
 "complessa sequenza di comandi multipli con <b>Segnaposti</b>.<p>\n"
 "Esempio: <ul><code><li>eject /mnt/cdrom</li><li>amarok --append "
 "%aList(\"Selected\")%</li></code></ul>\n"
-"Per favore consultare il manuale per imparare di più sulla sintassi.</p>"
+"Per favore consultare il manuale per imparare di più sulla sintassi."
 
 #: ActionMan/actionpropertybase.cpp:415 ActionMan/actionpropertybase.ui:313
 #, no-c-format
@@ -612,7 +615,7 @@ msgstr "URL:"
 
 #: BookMan/kraddbookmarkdlg.cpp:40
 msgid "Create in:"
-msgstr "Crea in: "
+msgstr "Crea in:"
 
 #: BookMan/kraddbookmarkdlg.cpp:103
 msgid "Folder name:"
@@ -1035,7 +1038,7 @@ msgstr ""
 
 #: Dialogs/krprogress.cpp:225
 msgid "Working"
-msgstr "Elaborazione in corso..."
+msgstr "Elaborazione in corso"
 
 #: Dialogs/krprogress.cpp:233
 msgid "%1/s ( %2 remaining )"
@@ -1083,7 +1086,7 @@ msgstr "Nuova connessione di rete"
 
 #: Dialogs/newftpgui.cpp:62
 msgid "About to connect to..."
-msgstr "Dati connessione"
+msgstr "Sto per connettermi a..."
 
 #: Dialogs/newftpgui.cpp:70
 msgid "Protocol:"
@@ -1218,7 +1221,7 @@ msgstr "Impossibile comprimere! Le password sono diverse!"
 
 #: Dialogs/packguibase.cpp:404
 msgid "Invalid volume size!"
-msgstr "Dimensione del volume non valida"
+msgstr "Dimensione del volume non valida!"
 
 #: Dialogs/packguibase.cpp:434
 msgid ""
@@ -1582,7 +1585,7 @@ msgstr "&e"
 
 #: Filter/advancedfilter.cpp:157
 msgid "&Not modified after"
-msgstr "N&on modificato dopo il "
+msgstr "N&on modificato dopo il"
 
 #: Filter/advancedfilter.cpp:173
 msgid "Mod&ified in the last"
@@ -2142,7 +2145,7 @@ msgstr "Impossibile aprire "
 #: KViewer/krviewer.cpp:292 KViewer/krviewer.cpp:327 KViewer/krviewer.cpp:438
 #: KViewer/krviewer.cpp:501
 msgid "Editing"
-msgstr " Modifica"
+msgstr "Modifica"
 
 #: KViewer/krviewer.cpp:579
 msgid "Sorry, can't find internal editor"
@@ -2154,8 +2157,7 @@ msgstr "KrViewer è impossibilitato a scaricare: "
 
 #: KViewer/panelviewer.cpp:33
 msgid "No file selected or selected file can't be displayed."
-msgstr ""
-"Nessun file selezionato oppure i file non possono essere visualizzati. "
+msgstr "Nessun file selezionato oppure i file non possono essere visualizzati."
 
 #: Konfigurator/kgadvanced.cpp:48 Konfigurator/kgarchives.cpp:51
 #: Konfigurator/kgcolors.cpp:51 Konfigurator/kgdependencies.cpp:53
@@ -2325,7 +2327,7 @@ msgstr "7zip"
 
 #: Konfigurator/kgarchives.cpp:70
 msgid "Xz"
-msgstr ""
+msgstr "Xz"
 
 #: Konfigurator/kgarchives.cpp:76
 msgid ""
@@ -2820,7 +2822,7 @@ msgstr "Aggiungi una nuova estensione atomica"
 
 #: Konfigurator/kggeneral.cpp:196
 msgid "Extension: "
-msgstr "Estensione:"
+msgstr "Estensione: "
 
 #: Konfigurator/kggeneral.cpp:201
 msgid ""
@@ -2872,7 +2874,7 @@ msgstr ""
 
 #: Konfigurator/kglookfeel.cpp:88
 msgid "Rename selects extension"
-msgstr "Rinominare le estensioni selezionate?"
+msgstr "Rinominare le estensioni selezionate"
 
 #: Konfigurator/kglookfeel.cpp:88
 msgid ""
@@ -2928,7 +2930,7 @@ msgid ""
 "non-capital letters (UNIX default)."
 msgstr ""
 "Tutti i file che iniziano con le maiuscole compaiono prima dei file che "
-"iniziano con le minuscole (impostazione predefinita di UNIX)"
+"iniziano con le minuscole (impostazione predefinita di UNIX)."
 
 #: Konfigurator/kglookfeel.cpp:121 paneltabbar.cpp:35
 msgid "Panel"
@@ -3193,7 +3195,7 @@ msgstr "Il tasto sinistro del mouse seleziona"
 
 #: Konfigurator/kglookfeel.cpp:286
 msgid "If checked, left clicking an item will select it."
-msgstr "Se impostato, il clic sinistro su un elemento lo seleziona"
+msgstr "Se impostato, il clic sinistro su un elemento lo seleziona."
 
 #: Konfigurator/kglookfeel.cpp:288
 msgid "Left mouse button preserves selection"
@@ -3530,7 +3532,7 @@ msgstr "Avanzate"
 
 #: Konfigurator/konfigurator.cpp:104
 msgid "Be sure you know what you're doing!"
-msgstr "Assicurarsi di sapere esattamente cosa si sta facendo"
+msgstr "Assicurarsi di sapere esattamente cosa si sta facendo!"
 
 #: Konfigurator/konfigurator.cpp:107
 msgid "Customize the way Krusader deals with archives"
@@ -3851,7 +3853,7 @@ msgstr "%1 kB"
 
 #: MountMan/kmountman.cpp:250
 msgid "MountMan is not operational. Sorry"
-msgstr "MountMan non è operativo. Siamo spiacenti."
+msgstr "MountMan non è operativo. Siamo spiacenti"
 
 #: MountMan/kmountmangui.cpp:72
 msgid "MountMan - Your Mount-Manager"
@@ -3957,7 +3959,7 @@ msgstr "Modificato"
 
 #: Panel/krdetailedview.cpp:108 Panel/krdetailedview.cpp:1463
 msgid "Perms"
-msgstr "Perm."
+msgstr "Permessi"
 
 #: Panel/krdetailedview.cpp:109 Panel/krdetailedview.cpp:1466
 msgid "rwx"
@@ -4222,7 +4224,7 @@ msgstr "Nessuna informazione sullo spazio in [proc]"
 
 #: Panel/listpanel.cpp:740
 msgid "Mt.Man: working ..."
-msgstr "MountMan: elaborazione in corso... "
+msgstr "MountMan: elaborazione in corso..."
 
 #: Panel/listpanel.cpp:754
 msgid "unknown"
@@ -4307,7 +4309,7 @@ msgstr "Errore nella creazione di un nuovo collegamento simbolico: "
 
 #: Panel/panelfunc.cpp:338 Panel/panelfunc.cpp:342
 msgid " To: "
-msgstr " A:  "
+msgstr " A: "
 
 #: Panel/panelfunc.cpp:356
 msgid "No permissions to view this file."
@@ -4404,9 +4406,9 @@ msgid ""
 "<qt>Do you really want to delete these %n items <b>physically</b> (not just "
 "removing them from the virtual items)?</qt>"
 msgstr ""
-"<qt>Vuoi veramente eliminare questo elemento <b>fisicamente</b>(non solo "
+"<qt>Vuoi veramente eliminare questo elemento <b>fisicamente</b> (non solo "
 "rimuoverlo dagli elementi virtuali)?</qt>\n"
-"<qt>Vuoi veramente eliminare questi elementi <b>fisicamente</b>(non solo "
+"<qt>Vuoi veramente eliminare questi %n elementi <b>fisicamente</b> (non solo "
 "rimuoverli dagli elementi virtuali)?</qt>"
 
 #: Panel/panelfunc.cpp:657
@@ -4491,25 +4493,24 @@ msgstr ""
 "Estrazione di %n file in:"
 
 #: Panel/panelfunc.cpp:950
-#, fuzzy
 msgid ""
 "The destination folder does not exist.\n"
 "Do you want to create it?"
-msgstr "Questo file esiste già. Si vuole sovrascrivere?"
+msgstr ""
+"La cartella di destinazione non esiste.\n"
+"Vuoi crearla?"
 
 #: Panel/panelfunc.cpp:951
-#, fuzzy
 msgid "Create folder"
-msgstr "Crea nuovo"
+msgstr "Creare cartella"
 
 #: Panel/panelfunc.cpp:957
 msgid "Unable to create the destionation folder. Aborting operation."
-msgstr ""
+msgstr "Impossibile creare la cartella di destinazione. Operazione interrotta."
 
 #: Panel/panelfunc.cpp:957
-#, fuzzy
 msgid "Error!"
-msgstr "Errore"
+msgstr "Errore!"
 
 #: Panel/panelfunc.cpp:981
 msgid "%1, unknown archive type"
@@ -5104,7 +5105,7 @@ msgstr ""
 
 #: Synchronizer/synchronizergui.cpp:1268
 msgid "Show files marked to delete. (CTRL+T)"
-msgstr "Mostra i file selezionati per l'eliminazione (Ctrl+T)."
+msgstr "Mostra i file selezionati per l'eliminazione. (Ctrl+T)"
 
 #: Synchronizer/synchronizergui.cpp:1272
 msgid "Duplicates"
@@ -5359,7 +5360,7 @@ msgstr "Maschera filtro (*.h, *.cpp, ecc.)"
 
 #: UserAction/expander.cpp:420
 msgid "Current File (!= Selected File)..."
-msgstr "File attuale (diverso da file selezionato)"
+msgstr "File attuale (diverso da file selezionato)..."
 
 #: UserAction/expander.cpp:423 UserAction/expander.cpp:456
 #: UserAction/expander.cpp:488 UserAction/expander.cpp:775
@@ -5823,7 +5824,7 @@ msgstr "Compressione file"
 
 #: VFS/krarchandler.cpp:527
 msgid "Failed to pack %1!"
-msgstr "Errore nel comprimere %1! "
+msgstr "Errore nel comprimere %1!"
 
 #: VFS/krarchandler.cpp:536
 msgid "Failed to pack: "
@@ -5937,10 +5938,10 @@ msgstr ""
 "Konfigurator."
 
 #: krslots.cpp:509
-#, fuzzy
 msgid "Can't find \"KsysCtrl\". Please install the TDE admin package"
 msgstr ""
-"Impossibile trovare \"KsysCtrl\". Per favore installa il pacchetto TDE admin"
+"Impossibile trovare \"KsysCtrl\". Per favore installa il pacchetto di "
+"amministrazione di TDE"
 
 #: krslots.cpp:517
 msgid ""
@@ -6069,7 +6070,7 @@ msgstr "Scambia &pannelli"
 
 #: krusader.cpp:598
 msgid "Sw&ap Sides"
-msgstr "Sc&ambia pannelli."
+msgstr "Sc&ambia pannelli"
 
 #: krusader.cpp:604
 msgid "popup cmdline"
@@ -6089,7 +6090,7 @@ msgstr "Prova &archivio"
 
 #: krusader.cpp:615
 msgid "New Net &Connection..."
-msgstr "&Nuova connessione di rete"
+msgstr "&Nuova connessione di rete..."
 
 #: krusader.cpp:617
 msgid "Pro&files"
@@ -6448,77 +6449,77 @@ msgstr "Chiude la linguetta attuale"
 #: calc.ui:16
 #, no-c-format
 msgid "JS Calculator"
-msgstr ""
+msgstr "Calcolatrice JS"
 
 #: calc.ui:43
 #, no-c-format
 msgid "+"
-msgstr ""
+msgstr "+"
 
 #: calc.ui:51
 #, no-c-format
 msgid "AC"
-msgstr ""
+msgstr "AC"
 
 #: calc.ui:75
 #, no-c-format
 msgid "CL"
-msgstr ""
+msgstr "CL"
 
 #: calc.ui:83
 #, no-c-format
 msgid "0"
-msgstr ""
+msgstr "0"
 
 #: calc.ui:91
-#, fuzzy, no-c-format
+#, no-c-format
 msgid "4"
-msgstr "48"
+msgstr "4"
 
 #: calc.ui:99
-#, fuzzy, no-c-format
+#, no-c-format
 msgid "2"
-msgstr "22"
+msgstr "2"
 
 #: calc.ui:107
 #, no-c-format
 msgid "5"
-msgstr ""
+msgstr "5"
 
 #: calc.ui:115
-#, fuzzy, no-c-format
+#, no-c-format
 msgid "3"
-msgstr "32"
+msgstr "3"
 
 #: calc.ui:123
 #, no-c-format
 msgid "7"
-msgstr ""
+msgstr "7"
 
 #: calc.ui:131
-#, fuzzy, no-c-format
+#, no-c-format
 msgid "6"
-msgstr "16"
+msgstr "6"
 
 #: calc.ui:139
-#, fuzzy, no-c-format
+#, no-c-format
 msgid "8"
-msgstr "48"
+msgstr "8"
 
 #: calc.ui:147
 #, no-c-format
 msgid "9"
-msgstr ""
+msgstr "9"
 
 #: calc.ui:155
-#, fuzzy, no-c-format
+#, no-c-format
 msgid "1"
-msgstr "16"
+msgstr "1"
 
 #: calc.ui:165
-#, fuzzy, no-c-format
+#, no-c-format
 msgid "Set as caption"
-msgstr "Come attivo"
+msgstr "Imposta come titolo"
 
 #: krusaderui.rc:51
 #, no-c-format
@@ -6546,89 +6547,89 @@ msgid "&Window"
 msgstr "&Finestra"
 
 #: mount.ui:24
-#, fuzzy, no-c-format
+#, no-c-format
 msgid "Mount a Filesystem"
-msgstr "Filesystem virtuale"
+msgstr "Monta un filesystem"
 
 #: mount.ui:96
-#, fuzzy, no-c-format
+#, no-c-format
 msgid "Device"
-msgstr "Dispositivi"
+msgstr "Dispositivo"
 
 #: mount.ui:112
 #, no-c-format
 msgid "<auto>"
-msgstr ""
+msgstr "<auto>"
 
 #: mount.ui:117
 #, no-c-format
 msgid "ext2"
-msgstr ""
+msgstr "ext2"
 
 #: mount.ui:122
 #, no-c-format
 msgid "ext3"
-msgstr ""
+msgstr "ext3"
 
 #: mount.ui:127
 #, no-c-format
 msgid "vfat"
-msgstr ""
+msgstr "vfat"
 
 #: mount.ui:132
 #, no-c-format
 msgid "ntfs"
-msgstr ""
+msgstr "ntfs"
 
 #: mount.ui:147
-#, fuzzy, no-c-format
+#, no-c-format
 msgid "Filesystem"
 msgstr "Filesystem"
 
 #: mount.ui:155
-#, fuzzy, no-c-format
+#, no-c-format
 msgid "Mountpoint"
 msgstr "Punto di montaggio"
 
 #: mount.ui:163
 #, no-c-format
 msgid "additional mount-options:"
-msgstr ""
+msgstr "opzioni di montaggio aggiuntive:"
 
 #: recode.ui:25
-#, fuzzy, no-c-format
+#, no-c-format
 msgid "Recode file names"
-msgstr "Nuovo nome file"
+msgstr "Ricodificare i nomi dei file"
 
 #: recode.ui:97
 #, no-c-format
 msgid "INPUT:"
-msgstr ""
+msgstr "INGRESSO:"
 
 #: recode.ui:105
 #, no-c-format
 msgid "OUTPUT:"
-msgstr ""
+msgstr "USCITA:"
 
 #: recode.ui:113
 #, no-c-format
 msgid "Charset: "
-msgstr ""
+msgstr "Set di caratteri: "
 
 #: recode.ui:137
 #, no-c-format
 msgid "End of line: "
-msgstr ""
+msgstr "Carattere di fine riga: "
 
 #: recode.ui:161
 #, no-c-format
 msgid "MIME Encoding: "
-msgstr ""
+msgstr "Codifica MIME: "
 
 #: recode.ui:185
-#, fuzzy, no-c-format
+#, no-c-format
 msgid "Dump type: "
-msgstr "&Tipo:"
+msgstr "Tipo di dump: "
 
 #~ msgid "Remove"
 #~ msgstr "Rimuovi"
