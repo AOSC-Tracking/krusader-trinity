@@ -290,8 +290,8 @@ msgstr ""
 "<i>Comando</i> definisce il comando che sarà eseguito quando il <b>Menu "
 "utente</b> è richiamato. Può essere un semplice comando da shell o una "
 "complessa sequenza di comandi multipli con <b>Segnaposti</b>.<p>\n"
-"Esempio: <ul><code><li>eject /mnt/cdrom</li><li>amarok --append %aList("
-"\"Selected\")%</li></code></ul>\n"
+"Esempio: <ul><code><li>eject /mnt/cdrom</li><li>amarok --append "
+"%aList(\"Selected\")%</li></code></ul>\n"
 "Per favore consultare il manuale per imparare di più sulla sintassi."
 
 #: ActionMan/actionpropertybase.cpp:415 ActionMan/actionpropertybase.ui:313
