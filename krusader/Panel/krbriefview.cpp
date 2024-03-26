@@ -189,7 +189,7 @@ void KrBriefView::redrawColumns()
 
    setGridX( width() / PROPS->numberOfColumns );
 
-   // QT bug, it's important for recalculating the bounding rectangle
+   // TQt bug, it's important for recalculating the bounding rectangle
    for( TQIconViewItem * item = firstItem(); item; item = item->nextItem() )
    {
       TQString txt = item->text();

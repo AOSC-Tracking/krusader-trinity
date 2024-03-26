@@ -30,12 +30,12 @@
 #ifndef VFS_H
 #define VFS_H
 
-// QT includes
+// TQt includes
 #include <tqstring.h>
 #include <tqvaluelist.h>
 #include <tqobject.h>
 #include <tqdict.h>
-// KDE includes
+// TDE includes
 #include <kurl.h>
 #include <tdeio/jobclasses.h>
 // Krusader includes

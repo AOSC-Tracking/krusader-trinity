@@ -32,7 +32,7 @@
 #ifndef FTP_VFS
 #define FTP_VFS
 
-// KDE includes
+// TDE includes
 #include <kdirlister.h>
 // Krusader includes
 #include "vfs.h"

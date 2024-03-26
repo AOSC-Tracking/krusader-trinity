@@ -35,12 +35,12 @@
 #ifdef BSD
 #include <sys/types.h>
 #endif 
-// QT includes
+// TQt includes
 #include <tqdir.h>
 #include <tqregexp.h>
 #include <tqtimer.h>
 #include <tqeventloop.h>
-// KDE includes
+// TDE includes
 #include <tdeio/jobclasses.h>
 #include <tdelocale.h>
 #include <tdeio/job.h>

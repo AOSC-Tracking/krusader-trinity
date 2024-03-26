@@ -241,8 +241,8 @@ AC_DEFUN([KDE_FIND_PATH],
 
 AC_DEFUN([KDE_MOC_ERROR_MESSAGE],
 [
-    AC_MSG_ERROR([No Qt meta object compiler (moc) found!
-Please check whether you installed Qt correctly.
+    AC_MSG_ERROR([No TQt meta object compiler (moc) found!
+Please check whether you installed TQt correctly.
 You need to have a running moc binary.
 configure tried to run $ac_cv_path_moc and the test didn't
 succeed. If configure shouldn't have tried this one, set
@@ -253,8 +253,8 @@ configure.
 
 AC_DEFUN([KDE_UIC_ERROR_MESSAGE],
 [
-    AC_MSG_WARN([No Qt ui compiler (uic) found!
-Please check whether you installed Qt correctly.
+    AC_MSG_WARN([No TQt ui compiler (uic) found!
+Please check whether you installed TQt correctly.
 You need to have a running uic binary.
 configure tried to run $ac_cv_path_uic and the test didn't
 succeed. If configure shouldn't have tried this one, set
@@ -306,7 +306,7 @@ AC_DEFUN([AC_PATH_TQT_MOC_UIC],
    for dir in $kde_qt_dirs; do
       qt_bindirs="$qt_bindirs $dir/bin $dir/src/moc"
    done
-   qt_bindirs="$qt_bindirs /usr/bin /usr/X11R6/bin /usr/local/qt/bin"
+   qt_bindirs="$qt_bindirs /usr/bin /usr/X11R6/bin /usr/local/tqt/bin"
    if test ! "$ac_qt_bindir" = "NO"; then
       qt_bindirs="$ac_qt_bindir $qt_bindirs"
    fi
@@ -378,7 +378,7 @@ if AC_TRY_EVAL(ac_link) && test -s conftest; then
 else
   AC_MSG_ERROR([your system fails at linking a small KDE application!
 Check, if your compiler is installed correctly and if you have used the
-same compiler to compile Qt and tdelibs as you did use now.
+same compiler to compile TQt and tdelibs as you did use now.
 For more details about this problem, look at the end of config.log.])
 fi
 
@@ -874,21 +874,21 @@ AC_REQUIRE([KDE_CHECK_LIB64])
 
 AC_ARG_ENABLE(
   embedded,
-  AC_HELP_STRING([--enable-embedded],[link to Qt-embedded, don't use X]),
+  AC_HELP_STRING([--enable-embedded],[link to TQt-embedded, don't use X]),
   kde_use_qt_emb=$enableval,
   kde_use_qt_emb=no
 )
 
 AC_ARG_ENABLE(
   qtopia,
-  AC_HELP_STRING([--enable-qtopia],[link to Qt-embedded, link to the Qtopia Environment]),
+  AC_HELP_STRING([--enable-qtopia],[link to TQt-embedded, link to the Qtopia Environment]),
   kde_use_qt_emb_palm=$enableval,
   kde_use_qt_emb_palm=no
 )
 
 AC_ARG_ENABLE(
   mac,
-  AC_HELP_STRING([--enable-mac],[link to Qt/Mac (don't use X)]),
+  AC_HELP_STRING([--enable-mac],[link to TQt/Mac (don't use X)]),
   kde_use_qt_mac=$enableval,
   kde_use_qt_mac=no
 )
@@ -1046,7 +1046,7 @@ LIB_XEXT="-lXext"
 QTE_NORTTI=""
 
 elif test "$kde_use_qt_emb" = "yes"; then
-  dnl We're using QT Embedded
+  dnl We're using TQT Embedded
   CPPFLAGS=-DQWS
   CXXFLAGS="$CXXFLAGS -fno-rtti"
   QTE_NORTTI="-fno-rtti -DQWS"
@@ -1060,7 +1060,7 @@ elif test "$kde_use_qt_emb" = "yes"; then
   x_includes=""
   x_libraries=""
 elif test "$kde_use_qt_mac" = "yes"; then
-  dnl We're using QT/Mac (I use QT_MAC so that qglobal.h doesn't *have* to
+  dnl We're using TQT/Mac (I use QT_MAC so that qglobal.h doesn't *have* to
   dnl be included to get the information) --Sam
   CXXFLAGS="$CXXFLAGS -DQT_MAC -no-cpp-precomp"
   CFLAGS="$CFLAGS -DQT_MAC -no-cpp-precomp"
@@ -1239,7 +1239,7 @@ fi
 AC_DEFUN([KDE_CHECK_QT_DIRECT],
 [
 AC_REQUIRE([KDE_USE_TQT])
-AC_MSG_CHECKING([if Qt compiles without flags])
+AC_MSG_CHECKING([if TQt compiles without flags])
 AC_CACHE_VAL(kde_cv_qt_direct,
 [
 AC_LANG_SAVE
@@ -1294,7 +1294,7 @@ fi
 ])
 
 dnl ------------------------------------------------------------------------
-dnl Try to find the Qt headers and libraries.
+dnl Try to find the TQt headers and libraries.
 dnl $(QT_LDFLAGS) will be -Ltqtliblocation (if needed)
 dnl and $(TQT_INCLUDES) will be -Iqthdrlocation (if needed)
 dnl ------------------------------------------------------------------------
@@ -1306,12 +1306,12 @@ AC_REQUIRE([KDE_USE_TQT])
 AC_REQUIRE([KDE_CHECK_LIB64])
 
 dnl ------------------------------------------------------------------------
-dnl Add configure flag to enable linking to MT version of Qt library.
+dnl Add configure flag to enable linking to MT version of TQt library.
 dnl ------------------------------------------------------------------------
 
 AC_ARG_ENABLE(
   mt,
-  AC_HELP_STRING([--disable-mt],[link to non-threaded Qt (deprecated)]),
+  AC_HELP_STRING([--disable-mt],[link to non-threaded TQt (deprecated)]),
   kde_use_qt_mt=$enableval,
   [
     if test $kde_qtver = 3; then
@@ -1325,7 +1325,7 @@ AC_ARG_ENABLE(
 USING_QT_MT=""
 
 dnl ------------------------------------------------------------------------
-dnl If we not get --disable-qt-mt then adjust some vars for the host.
+dnl If we not get --disable-tqt-mt then adjust some vars for the host.
 dnl ------------------------------------------------------------------------
 
 KDE_MT_LDFLAGS=
@@ -1346,7 +1346,7 @@ AC_SUBST(KDE_MT_LIBS)
 kde_qt_was_given=yes
 
 dnl ------------------------------------------------------------------------
-dnl If we haven't been told how to link to Qt, we work it out for ourselves.
+dnl If we haven't been told how to link to TQt, we work it out for ourselves.
 dnl ------------------------------------------------------------------------
 if test -z "$LIBTQT_GLOB"; then
   if test "x$kde_use_qt_emb" = "xyes"; then
@@ -1357,12 +1357,12 @@ if test -z "$LIBTQT_GLOB"; then
 fi
 
 dnl ------------------------------------------------------------
-dnl If we got --enable-embedded then adjust the Qt library name.
+dnl If we got --enable-embedded then adjust the TQt library name.
 dnl ------------------------------------------------------------
 if test "x$kde_use_qt_emb" = "xyes"; then
   tqtlib="qte"
 else
-  tqtlib="qt"
+  tqtlib="tqt"
 fi
 
 kde_int_qt="-l$tqtlib"
@@ -1383,7 +1383,7 @@ dnl ------------------------------------------------------------
 fi
 
 dnl ------------------------------------------------------------------------
-dnl If we got --enable-qt-mt then adjust the Qt library name for the host.
+dnl If we got --enable-tqt-mt then adjust the TQt library name for the host.
 dnl ------------------------------------------------------------------------
 
 if test "x$kde_use_qt_mt" = "xyes"; then
@@ -1407,7 +1407,7 @@ if test $kde_qtver = 3; then
   LIBTQT="$LIBTQT $LIBDL"
 fi
 
-AC_MSG_CHECKING([for Qt])
+AC_MSG_CHECKING([for TQt])
 
 if test "x$kde_use_qt_emb" != "xyes" && test "x$kde_use_qt_mac" != "xyes"; then
 LIBTQT="$LIBTQT $X_PRE_LIBS -lXext -lX11 $LIBSM $LIBSOCKET"
@@ -1415,35 +1415,35 @@ fi
 ac_tqt_includes=NO ac_qt_libraries=NO ac_qt_bindir=NO
 qt_libraries=""
 tqt_includes=""
-AC_ARG_WITH(qt-dir,
-    AC_HELP_STRING([--with-qt-dir=DIR],[where the root of Qt is installed ]),
+AC_ARG_WITH(tqt-dir,
+    AC_HELP_STRING([--with-tqt-dir=DIR],[where the root of TQt is installed ]),
     [  ac_tqt_includes="$withval"/include
        ac_qt_libraries="$withval"/lib${tdelibsuff}
        ac_qt_bindir="$withval"/bin
     ])
 
-AC_ARG_WITH(qt-includes,
-    AC_HELP_STRING([--with-qt-includes=DIR],[where the Qt includes are. ]),
+AC_ARG_WITH(tqt-includes,
+    AC_HELP_STRING([--with-tqt-includes=DIR],[where the TQt includes are. ]),
     [
        ac_tqt_includes="$withval"
     ])
 
 kde_qt_libs_given=no
 
-AC_ARG_WITH(qt-libraries,
-    AC_HELP_STRING([--with-qt-libraries=DIR],[where the Qt library is installed.]),
+AC_ARG_WITH(tqt-libraries,
+    AC_HELP_STRING([--with-tqt-libraries=DIR],[where the TQt library is installed.]),
     [  ac_qt_libraries="$withval"
        kde_qt_libs_given=yes
     ])
 
 AC_CACHE_VAL(ac_cv_have_qt,
-[#try to guess Qt locations
+[#try to guess TQt locations
 
 qt_incdirs=""
 for dir in $kde_qt_dirs; do
    qt_incdirs="$qt_incdirs $dir/include $dir"
 done
-qt_incdirs="$QTINC $qt_incdirs /usr/local/qt/include /usr/include/qt /usr/include /usr/X11R6/include/X11/qt /usr/X11R6/include/qt /usr/X11R6/include/qt2 /usr/include/qt3 $x_includes"
+qt_incdirs="$QTINC $qt_incdirs /usr/local/tqt/include /usr/include/tqt /usr/include /usr/X11R6/include/X11/tqt /usr/X11R6/include/qt /usr/X11R6/include/qt2 /usr/include/qt3 $x_includes"
 if test ! "$ac_tqt_includes" = "NO"; then
    qt_incdirs="$ac_tqt_includes $qt_incdirs"
 fi
@@ -1461,12 +1461,12 @@ qt_libdirs=""
 for dir in $kde_qt_dirs; do
    qt_libdirs="$qt_libdirs $dir/lib${tdelibsuff} $dir"
 done
-qt_libdirs="$TQTLIB $qt_libdirs /usr/X11R6/lib /usr/lib /usr/local/qt/lib $x_libraries"
+qt_libdirs="$TQTLIB $qt_libdirs /usr/X11R6/lib /usr/lib /usr/local/tqt/lib $x_libraries"
 if test ! "$ac_qt_libraries" = "NO"; then
   qt_libdir=$ac_qt_libraries
 else
   qt_libdirs="$ac_qt_libraries $qt_libdirs"
-  # if the Qt was given, the chance is too big that libtqt.* doesn't exist
+  # if the TQt was given, the chance is too big that libtqt.* doesn't exist
   qt_libdir=NONE
   for dir in $qt_libdirs; do
     try="ls -1 $dir/${LIBTQT_GLOB}"
@@ -1521,14 +1521,14 @@ if test "$ac_tqt_includes" = NO || test "$ac_qt_libraries" = NO; then
   else
     if test "x$kde_use_qt_mt" = "xyes"; then
        missing_qt_mt="
-Make sure that you have compiled Qt with thread support!"
+Make sure that you have compiled TQt with thread support!"
        ac_qt_notfound="(library $tqtlib-mt)";
     else
        ac_qt_notfound="(library $tqtlib)";
     fi
   fi
 
-  AC_MSG_ERROR([Qt ($kde_qt_minversion) $ac_qt_notfound not found. Please check your installation!
+  AC_MSG_ERROR([TQt ($kde_qt_minversion) $ac_qt_notfound not found. Please check your installation!
 For more details about this problem, look at the end of config.log.$missing_qt_mt])
 else
   have_qt="yes"
@@ -1646,10 +1646,10 @@ if test "$kde_cv_uic_plugins" != yes; then
 	AC_MSG_ERROR([
 you need to install tdelibs first.
 
-If you did install tdelibs, then the Qt version that is picked up by
+If you did install tdelibs, then the TQt version that is picked up by
 this configure is not the same version you used to compile tdelibs. 
-The Qt Plugin installed by tdelibs is *ONLY* loadable if it is the 
-_same Qt version_, compiled with the _same compiler_ and the same Qt
+The TQt Plugin installed by tdelibs is *ONLY* loadable if it is the 
+_same TQt version_, compiled with the _same compiler_ and the same TQt
 configuration settings.
 ])
 fi
@@ -2022,14 +2022,14 @@ For more details about this problem, look at the end of config.log.])
 
 AC_DEFUN([KDE_CHECK_KDEQTADDON],
 [
-AC_MSG_CHECKING(for kde-qt-addon)
+AC_MSG_CHECKING(for kde-tqt-addon)
 AC_CACHE_VAL(kde_cv_have_kdetqtaddon,
 [
  kde_ldflags_safe="$LDFLAGS"
  kde_libs_safe="$LIBS"
  kde_cxxflags_safe="$CXXFLAGS"
 
- LIBS="-lkde-qt-addon $LIBTQT $LIBS"
+ LIBS="-lkde-tqt-addon $LIBTQT $LIBS"
  CXXFLAGS="$CXXFLAGS -I$prefix/include -I$prefix/include/tde $all_includes"
  LDFLAGS="$LDFLAGS $all_libraries $USER_LDFLAGS"
 
@@ -2051,8 +2051,8 @@ AC_CACHE_VAL(kde_cv_have_kdetqtaddon,
 AC_MSG_RESULT($kde_cv_have_kdetqtaddon)
 
 if test "$kde_cv_have_kdetqtaddon" = "no"; then
-  AC_MSG_ERROR([Can't find libkde-qt-addon. You need to install it first.
-It is a separate package (and CVS module) named kde-qt-addon.])
+  AC_MSG_ERROR([Can't find libkde-tqt-addon. You need to install it first.
+It is a separate package (and CVS module) named kde-tqt-addon.])
 fi
 ])
 
@@ -2584,7 +2584,7 @@ AH_VERBATIM(_AC_CHECK_JPEG,
 AC_DEFUN([KDE_CHECK_QT_JPEG],
 [
 if test -n "$LIBJPEG"; then
-AC_MSG_CHECKING([if Qt needs $LIBJPEG])
+AC_MSG_CHECKING([if TQt needs $LIBJPEG])
 AC_CACHE_VAL(kde_cv_qt_jpeg,
 [
 AC_LANG_SAVE
@@ -3240,7 +3240,7 @@ AC_DEFUN([AC_CHECK_COMPILERS],
   AM_CONDITIONAL(unsermake_enable_pch, test "$kde_use_pch" = "yes" && test "$kde_gcc_supports_pch" = "yes")
   if test "$CXX" = "KCC"; then
     dnl unfortunately we currently cannot disable exception support in KCC
-    dnl because doing so is binary incompatible and Qt by default links with exceptions :-(
+    dnl because doing so is binary incompatible and TQt by default links with exceptions :-(
     dnl KDE_CHECK_COMPILER_FLAG(-no_exceptions,[CXXFLAGS="$CXXFLAGS --no_exceptions"])
     dnl KDE_CHECK_COMPILER_FLAG(-exceptions, [USE_EXCEPTIONS="--exceptions"], USE_EXCEPTIONS=	)
 
@@ -3401,7 +3401,7 @@ AC_DEFUN([KDE_ENABLE_HIDDEN_VISIBILITY],
           [kde_have_gcc_visibility=$enableval],
           [kde_have_gcc_visibility=no])
 
-      AC_CACHE_CHECK([if Qt is patched for -fvisibility], kde_cv_val_qt_gcc_visibility_patched,
+      AC_CACHE_CHECK([if TQt is patched for -fvisibility], kde_cv_val_qt_gcc_visibility_patched,
         [
           AC_LANG_SAVE
           AC_LANG_CPLUSPLUS
@@ -3987,7 +3987,7 @@ AC_DEFUN([AC_HAVE_GL],
  AC_ARG_WITH(gl,AC_HELP_STRING([--without-gl],[disable 3D GL modes]),
 	gl_test=$withval, gl_test="yes")
  if test "x$kde_use_qt_emb" = "xyes"; then
-   # GL and Qt Embedded is a no-go for now.
+   # GL and TQt Embedded is a no-go for now.
    ac_cv_have_gl=no
  elif test "x$gl_test" = xno; then
    ac_cv_have_gl=no
@@ -4678,7 +4678,7 @@ AC_LANG_RESTORE
 if eval "test \"`echo $ac_cv_lib_qimgio`\" = yes"; then
   LIBQIMGIO="-lqimgio -lpng -lz $LIBJPEG"
   AC_MSG_RESULT(yes)
-  AC_DEFINE_UNQUOTED(HAVE_QIMGIO, 1, [Define if you have the Qt extension qimgio available])
+  AC_DEFINE_UNQUOTED(HAVE_QIMGIO, 1, [Define if you have the TQt extension qimgio available])
   AC_SUBST(LIBQIMGIO)
 else
   AC_MSG_RESULT(not found)
@@ -5499,13 +5499,13 @@ the end of config.log])
 
 AC_DEFUN([KDE_INIT_DOXYGEN],
 [
-AC_MSG_CHECKING([for Qt docs])
+AC_MSG_CHECKING([for TQt docs])
 kde_qtdir=
 if test "${with_qt_dir+set}" = set; then
   kde_qtdir="$with_qt_dir"
 fi
 
-AC_FIND_FILE(qsql.html, [ $kde_qtdir/doc/html $TQTDIR/doc/html /usr/share/doc/packages/qt3/html /usr/lib/qt/doc /usr/lib/qt3/doc /usr/lib/qt3/doc/html /usr/doc/qt3/html /usr/doc/qt3 /usr/share/doc/qt3-doc /usr/share/qt3/doc/html /usr/X11R6/share/doc/qt/html ], TQTDOCDIR)
+AC_FIND_FILE(qsql.html, [ $kde_qtdir/doc/html $TQTDIR/doc/html /usr/share/doc/packages/qt3/html /usr/lib/tqt/doc /usr/lib/qt3/doc /usr/lib/qt3/doc/html /usr/doc/qt3/html /usr/doc/qt3 /usr/share/doc/qt3-doc /usr/share/qt3/doc/html /usr/X11R6/share/doc/tqt/html ], TQTDOCDIR)
 AC_MSG_RESULT($TQTDOCDIR)
 
 AC_SUBST(TQTDOCDIR)

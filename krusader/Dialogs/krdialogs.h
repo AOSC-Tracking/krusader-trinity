@@ -31,13 +31,13 @@
 #ifndef KCHOSEDIR_H
 #define KCHOSEDIR_H
 
-// KDE includes
+// TDE includes
 #include <kdialog.h>
 #include <kanimwidget.h>
 #include <kurlrequesterdlg.h>
 #include <kdatepicker.h>
 #include <kdialogbase.h>
-// QT includes
+// TQt includes
 #include <tqlineedit.h>
 #include <tqlayout.h>
 #include <tqlabel.h>

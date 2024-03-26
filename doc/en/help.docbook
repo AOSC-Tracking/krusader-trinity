@@ -130,8 +130,8 @@
     <emphasis role="bold">Porting &krusader; to
     &Windows;</emphasis>
   </para>
-  <para>&krusader; is written using &Qt; as
-  well as &kde;libs. As long as &kde;libs
+  <para>&krusader; is written using &TQt; as
+  well as &tde;libs. As long as &tde;libs
   does not run on &Windows;, porting
   &krusader; is not an option. However, we do believe
   that once &Qt;4-GPL is released, efforts will be made

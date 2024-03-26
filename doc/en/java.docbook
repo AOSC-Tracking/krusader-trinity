@@ -45,7 +45,7 @@
     located but the current dir of the active Panel of Krusader.
     This needs to stay like this. However, for referencing
     additional files like .ui (Userinterface, exported by
-    &Qt;'s Designer) one needs the path of the script.
+    &TQt;'s Designer) one needs the path of the script.
     The alternative where absolute paths are used is more than
     unhandy. For this reason the Variable "scriptDir" was
     introduced. If a Script wants to load a &GUI; from a
@@ -79,9 +79,9 @@
     &kjsembed-url;. Some examples which show the power
     of this library can be found
     <ulink url="http://xmelegance.org/kjsembed/examples/index.html">
-    here</ulink>. Support for all of KDE's ground-laying technologies
+    here</ulink>. Support for all of TDE's ground-laying technologies
     such as DCOP or KParts is provided. You can even load whole
-    GUIs from .ui-files, created with &Qt;'s Designer.
+    GUIs from .ui-files, created with &TQt;'s Designer.
     An example extension making use of this can be found 
     <ulink url="http://www.krusader.org/phpBB/viewtopic.php?p=4832#4832">
     here</ulink>.</para>

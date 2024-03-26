@@ -19,7 +19,7 @@
 #include <tqfile.h>
 #include <tqpopupmenu.h> 
 #include <tqtimer.h>
-// KDE includes
+// TDE includes
 #include <tdemenubar.h>
 #include <kmimetype.h>
 #include <tdelocale.h>

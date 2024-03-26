@@ -31,13 +31,13 @@
 
 // Krusader includes
 #include "krdialogs.h"
-// QT includes
+// TQt includes
 #include <tqmessagebox.h>
 #include <tqwidget.h>
 #include <tqapplication.h>
 #include <tqfontmetrics.h>
 #include <tqtooltip.h>
-// KDE includes
+// TDE includes
 #include <tdelocale.h>
 #include <kurlcompletion.h>
 #include <tdeapplication.h>

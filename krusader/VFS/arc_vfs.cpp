@@ -33,12 +33,12 @@
 #include <sys/types.h>
 #include <dirent.h>
 #include <time.h>
-// QT includes
+// TQt includes
 #include <tqregexp.h>
 #include <tqdir.h>
 #include <tqdatetime.h>
 #include <tqfileinfo.h>
-// KDE includes
+// TDE includes
 #include <tdemessagebox.h>
 #include <tdelocale.h>
 #include <kprocess.h>

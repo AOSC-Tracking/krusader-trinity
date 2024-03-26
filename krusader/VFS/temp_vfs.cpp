@@ -29,7 +29,7 @@
  ***************************************************************************/
 // TQt includes
 #include <tqdir.h>
-// KDE includes
+// TDE includes
 #include <tdemessagebox.h>
 #include <kprocess.h>
 // Krusader includes

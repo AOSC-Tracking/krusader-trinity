@@ -33,12 +33,12 @@
 #ifndef KRUSADERSTATUS_H
 #define KRUSADERSTATUS_H
 
-// QT includes
+// TQt includes
 #include <tqlabel.h>
 #include <tqwidget.h>
 #include <tqframe.h>
 
-// KDE includes
+// TDE includes
 #include <kstatusbar.h>
 #include <tdelocale.h>
 

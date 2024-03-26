@@ -27,9 +27,9 @@
 *   (at your option) any later version.                                   *
 *                                                                         *
 ***************************************************************************/
-// QT includes
+// TQt includes
 #include <tqtextstream.h>
-// KDE includes
+// TDE includes
 #include <kprocess.h>
 #include <tdetempfile.h>
 #include <tdelocale.h>

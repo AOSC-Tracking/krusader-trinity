@@ -284,7 +284,7 @@
 #define  _BtnSingles        true
 
 /////////////////////// [Custom Selection Mode]
-// QT Selection
+// TQt Selection
 #define _TQtSelection			false
 // Left Selects
 #define _LeftSelects			true

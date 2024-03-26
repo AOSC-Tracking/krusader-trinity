@@ -37,7 +37,7 @@
 #include <config.h>
 #endif
 
-// KDE includes
+// TDE includes
 #include <tdeapplication.h>
 #include <tdeparts/mainwindow.h>
 #include <kstdaction.h>

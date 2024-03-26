@@ -32,10 +32,10 @@
 #include <sys/types.h>
 #include <unistd.h>
 #include <dirent.h>
-// QT includes
+// TQt includes
 #include <tqdir.h>
 #include <tqtimer.h>
-// KDE includes
+// TDE includes
 #include <tdemessagebox.h>
 #include <kmimetype.h>
 #include <tdeio/jobclasses.h>

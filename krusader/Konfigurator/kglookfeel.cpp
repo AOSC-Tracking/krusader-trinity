@@ -278,7 +278,7 @@ void KgLookFeel::setupMouseModeTab() {
      // {cfg_class,   cfg_name,   default
      // 	text,  restart,
      // 	tooltip }
-     {"Custom Selection Mode",  "QT Selection",  _TQtSelection,
+     {"Custom Selection Mode",  "TQt Selection",  _TQtSelection,
      	i18n( "Based on TDE's selection mode" ), true,
      	i18n( "If checked, use a mode based on TDE's style." ) },
      {"Custom Selection Mode",  "Left Selects",  _LeftSelects,
@@ -352,7 +352,7 @@ void KgLookFeel::slotEnablePanelToolbar()
 
 void KgLookFeel::slotSelectionModeChanged() {
   bool enable = mouseRadio->find( i18n("Custom Selection Mode") )->isChecked();
-  mouseCheckboxes->find( "QT Selection" )->setEnabled( enable );
+  mouseCheckboxes->find( "TQt Selection" )->setEnabled( enable );
   mouseCheckboxes->find( "Left Selects" )->setEnabled( enable );
   mouseCheckboxes->find( "Left Preserves" )->setEnabled( enable );
   mouseCheckboxes->find( "ShiftCtrl Left Selects" )->setEnabled( enable );

@@ -45,8 +45,8 @@ uninstall-local:
 # kde_bindir          Where executables should go to. Use bin_PROGRAMS or bin_SCRIPTS.
 # kde_libdir          Where shared libraries should go to. Use lib_LTLIBRARIES.
 # kde_moduledir       Where modules (e.g. parts) should go to. Use kde_module_LTLIBRARIES.
-# kde_styledir        Where Qt/KDE widget styles should go to (new in KDE 3).
-# kde_designerdir     Where Qt Designer plugins should go to (new in KDE 3).
+# kde_styledir        Where TQt/TDE widget styles should go to.
+# kde_designerdir     Where TQt Designer plugins should go to.
 
 
 # make messages.po. Move this one to ../po/ and "make merge" in po
