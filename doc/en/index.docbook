@@ -172,8 +172,8 @@ http://groups.google.com/group/krusader-devel/browse_thread/thread/d102adec2edcf
 <!ENTITY afterstep-url '<ulink url="http://www.afterstep.org/"><application>AfterStep</application></ulink>'>
 <!ENTITY xfce-url '<ulink url="http://www.xfce.org/"><application>XFce</application></ulink>'>
 
-<!ENTITY debian-qt-a-url '<ulink url="http://www.krusader.org/phpBB/viewtopic.php?t=710">in our forum</ulink>'>
-<!ENTITY debian-qt-b-url '<ulink url="http://opendoorsoftware.com/cgi/http.pl?p=DebianQTChecklist">instructions</ulink>'>
+<!ENTITY debian-tqt-a-url '<ulink url="http://www.krusader.org/phpBB/viewtopic.php?t=710">in our forum</ulink>'>
+<!ENTITY debian-tqt-b-url '<ulink url="http://opendoorsoftware.com/cgi/http.pl?p=DebianQTChecklist">instructions</ulink>'>
 <!ENTITY freenode-url '<ulink url="http://freenode.net">freenode.org</ulink>'>
 <!ENTITY fink-url '<ulink url="http://www.finkproject.org/">fink</ulink>'>
 <!ENTITY kjsembed-url '<ulink url="http://xmelegance.org/kjsembed/">KJSEmbed</ulink>'>

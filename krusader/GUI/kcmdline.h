@@ -33,13 +33,13 @@
 #ifndef KCMDLINE_H
 #define KCMDLINE_H
 
-// QT includes
+// TQt includes
 #include <tqwidget.h>
 #include <tqlabel.h>
 #include <tqlayout.h>
 #include <tqtoolbutton.h>
 
-// KDE includes
+// TDE includes
 #include <klineedit.h>
 #include <kshellcompletion.h>
 #include <kcombobox.h>

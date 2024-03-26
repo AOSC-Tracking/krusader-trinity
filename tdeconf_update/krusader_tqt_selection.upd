@@ -1,0 +1,4 @@
+Id=krusader_qt_selection_renaming
+File=krusaderrc
+Group=Custom Selection Mode
+Key=QT Selection,TQt Selection

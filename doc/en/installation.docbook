@@ -598,17 +598,17 @@ Please don't use the <filename>/usr/local</filename> directory as it simply won'
           <envar>TQTDIR</envar>and 
           <envar>TDEDIR</envar>. &krusader;'s 
           <command>./configure</command> script needs to know where
-          the &Qt; and &kde; directories
+          the &TQt; and &tde; directories
           are.</para>
           <para>
           <envar>TQTDIR</envar>: 
-          <replaceable>&lt;path to your Qt
+          <replaceable>&lt;path to your TQt
           installation&gt;</replaceable> &eg; 
-          <filename>/usr/lib/qt3</filename> or 
-          <filename>/usr/qt3</filename></para>
+          <filename>/usr/lib/tqt3</filename> or 
+          <filename>/usr/tqt3</filename></para>
           <para>
           <envar>TDEDIR</envar>: 
-          <replaceable>&lt;path to your KDE
+          <replaceable>&lt;path to your TDE
           installation&gt;</replaceable> &eg; 
           <filename>/usr</filename> or 
           <filename>/opt/trinity</filename></para>
@@ -648,7 +648,7 @@ Please don't use the <filename>/usr/local</filename> directory as it simply won'
             lifetime of your current shell. When you close your
             terminal and open a new one they will be gone. Assuming
             &krusader; is not the only
-            &Qt;/&kde; program you want to
+            &TQt;/&tde; program you want to
             compile, we recommend to make these settings permanent
             (&eg; append both export commands to your 
             <filename class="directory">/etc/profile</filename>)
@@ -1127,7 +1127,7 @@ make[1]: Leaving directory `/home/source/krusader_trinity'
     <screen><prompt>$</prompt> <userinput><command>krusader</command><replaceable>--profile &lt;panel-profile&gt;</replaceable></userinput></screen>
     <screen><prompt>$</prompt> <userinput><command>krusader</command> <replaceable>--profile ftp-managment</replaceable></userinput></screen>
     </para>
-    <para>The standard &Qt; and &kde;
+    <para>The standard &TQt; and &tde;
     command-line options are available, and can be listed by
     entering 
     <userinput>
@@ -1138,21 +1138,21 @@ make[1]: Leaving directory `/home/source/krusader_trinity'
       <title>Other command-line options:</title>
       <varlistentry>
         <term>
-          <option>--help-qt</option>
+          <option>--help-tqt</option>
         </term>
         <listitem>
           <para>
-            <action>List Qt-specific options</action>
+            <action>List TQt-specific options</action>
           </para>
         </listitem>
       </varlistentry>
       <varlistentry>
         <term>
-          <option>--help-kde</option>
+          <option>--help-tde</option>
         </term>
         <listitem>
           <para>
-            <action>List KDE-specific options</action>
+            <action>List TDE-specific options</action>
           </para>
         </listitem>
       </varlistentry>

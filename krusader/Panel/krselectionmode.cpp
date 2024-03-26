@@ -46,7 +46,7 @@ void KrSelectionMode::resetSelectionHandler() {
 
 void UserSelectionMode::init() {
 	krConfig->setGroup("Custom Selection Mode");
-	_useTQTSelection = krConfig->readBoolEntry("QT Selection", _TQtSelection);
+	_useTQTSelection = krConfig->readBoolEntry("TQt Selection", _TQtSelection);
 	_leftButtonSelects = krConfig->readBoolEntry("Left Selects", _LeftSelects);
 	_leftButtonPreservesSelection = krConfig->readBoolEntry("Left Preserves", _LeftPreserves);
 	_shiftCtrlLeftButtonSelects = krConfig->readBoolEntry("ShiftCtrl Left Selects", _ShiftCtrlLeft);

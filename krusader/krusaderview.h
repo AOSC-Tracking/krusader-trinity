@@ -32,14 +32,14 @@
 #ifndef KRUSADERVIEW_H
 #define KRUSADERVIEW_H
 
-// KDE includes
+// TDE includes
 #include <tdelistview.h>
 #include <tdelocale.h>
 #include <tdeaccel.h>
 #include <tdeapplication.h>
 #include <tdeparts/part.h>
 
-// QT includes
+// TQt includes
 #include <tqlayout.h>
 #include <tqsplitter.h>
 #include <tqwidget.h>

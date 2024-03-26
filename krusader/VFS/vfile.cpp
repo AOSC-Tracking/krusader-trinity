@@ -35,7 +35,7 @@
 #include <sys/stat.h>
 // TQt includes
 #include <tqdatetime.h>
-// KDE includes
+// TDE includes
 #include <kmimetype.h>
 #include <tdeversion.h>
 // Krusader includes

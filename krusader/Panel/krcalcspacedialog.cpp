@@ -33,7 +33,7 @@ A
 #include <tqtimer.h>
 #include <tqlayout.h>
 #include <tqlabel.h>
-// KDE Includes
+// TDE Includes
 #include <tdelocale.h>
 #include <kcursor.h>
 // Krusader Includes

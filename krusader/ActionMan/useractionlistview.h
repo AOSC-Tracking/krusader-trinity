@@ -69,7 +69,7 @@ public:
    void update();
 
    /**
-    * This reimplements qt's compare-function in order to have categories on the top of the list
+    * This reimplements TQt's compare-function in order to have categories on the top of the list
     */
    int compare ( TQListViewItem * i, int col, bool ascending ) const;
 

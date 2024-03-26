@@ -30,11 +30,11 @@ A
 #ifndef KMOUNTMAN_H
 #define KMOUNTMAN_H
 
-// QT includes
+// TQt includes
 #include <tqobject.h>
 #include <tqstring.h>
 
-// KDE includes
+// TDE includes
 #include <tdeversion.h>
 #include <tdeio/jobclasses.h>
 #include <tdeio/job.h>

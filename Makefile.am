@@ -9,7 +9,7 @@ if with_iso
 ISODIR = iso
 endif
 
-SUBDIRS = krusader po pics doc krArc $(ISODIR) virt $(TARDIR)
+SUBDIRS = krusader po pics doc krArc $(ISODIR) tdeconf_update virt $(TARDIR)
 
 EXTRA_DIST = krusader.kdevprj admin AUTHORS COPYING ChangeLog INSTALL README TODO krusader.lsm krusader.spec 
 

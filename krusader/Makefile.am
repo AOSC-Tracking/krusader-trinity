@@ -62,7 +62,7 @@ krusader_SOURCES = \
 METASOURCES = AUTO
 
 
-# set the include path for X, qt and KDE
+# set the include path for X, tqt and TDE
 INCLUDES= $(all_includes)
 
 # these are the libs which are liked together for krusader.
@@ -142,8 +142,8 @@ KDE_ICON = krusader krusader2 krusader_blue krusader_red krusader_root krusader_
 # kde_bindir		Where executables should go to. Use bin_PROGRAMS or bin_SCRIPTS.
 # kde_libdir		Where shared libraries should go to. Use lib_LTLIBRARIES.
 # kde_moduledir		Where modules (e.g. parts) should go to. Use kde_module_LTLIBRARIES.
-# kde_styledir		Where Qt/KDE widget styles should go to (new in KDE 3).
-# kde_designerdir	Where Qt Designer plugins should go to (new in KDE 3).
+# kde_styledir		Where TQt/TDE widget styles should go to.
+# kde_designerdir	Where TQt Designer plugins should go to.
 
 
 # this installes the .desktop-files at hte right place

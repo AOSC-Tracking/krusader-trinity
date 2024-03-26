@@ -66,7 +66,7 @@
           is &kde;, because it relies on services
           provided by the &kde; base libraries. Only
           some shared libraries are needed &eg;
-          &kde; libraries, &Qt; libraries,
+          &kde; libraries, &TQt; libraries,
           &etc; This means that &krusader;
           runs on &gnome-url;,
           &afterstep-url;, &xfce-url; and
@@ -483,8 +483,8 @@
         </answer>
       </qandaentry>
       <qandaentry>
-        <question id="faqi_deb-qt">
-          <para>&debian; complains about &Qt;
+        <question id="faqi_deb-tqt">
+          <para>&debian; complains about &TQt;
           when running 
           <command>./configure</command>, what's wrong?</para>
         </question>
@@ -499,9 +499,9 @@
           <prompt>$</prompt> <userinput><command>export</command> CPP=<replaceable>/usr/bin/cpp-3.2</replaceable></userinput>
           </screen> 
           For more information please take a look
-          &debian-qt-a-url; and at the
-          &debian-qt-b-url; on how to build a
-          &Qt;/&kde;3 application on
+          &debian-tqt-a-url; and at the
+          &debian-tqt-b-url; on how to build a
+          &TQt;/&tde; application on
           &debian;.</para>
           <para></para>
           <!-- Empty line to make it more readable -->
@@ -518,7 +518,7 @@
           <para>This problem occurs when you use the
           &nvidia; installer and not the official
           &nvidia; packages of your distribution.
-          &krusader; is based on &Qt; which
+          &krusader; is based on &TQt; which
           can be linked against the X OpenGL libraries. As a result
           &krusader; may look for OpenGL as well. The
           problem is that the &nvidia; installer (prior
@@ -741,35 +741,6 @@
     <title>Usage &FAQ;</title>
     <qandaset>
       <qandaentry>
-        <question id="faqu_qt355">
-          <para>&krusader; keeps crashing, why?</para>
-        </question>
-        <answer>
-          <para>We've been receiving a lot of emails and bug
-          reports (December 2005) regarding random crashes,
-          especially during file operations such as copy, move,
-          etc. 
-          <emphasis role="bold">These crashes are related to
-          &Qt; 3.3.5 and NOT
-          &krusader;.</emphasis> It seems that
-          &Qt; 3.3.5 introduced a serious bug which is
-          currently (December 2005) causing random crashes in many
-          &kde; applications including
-          &konqueror;. You can use Google to find out
-          more. As far as we know, &debian;-Sid and
-          &SuSE; already posted new &Qt;
-          binaries that fix the problem, and &gentoo;
-          has masked &Qt; 3.3.5 completely. As for now,
-          you either need &Qt; 3.3.4 or a fixed
-          &Qt; 3.3.5 or a higer version, depending on
-          your distribution. More information is available on our 
-          <ulink url="http://krusader.sourceforge.net/phpBB/viewtopic.php?t=1407">
-          website</ulink>.</para>
-          <para></para>
-          <!-- Empty line to make it more readable -->
-        </answer>
-      </qandaentry>
-      <qandaentry>
         <question id="faqu_supermount">
           <para>When I try to mount/unmount my cdrom/floppy,
           &krusader; reports something about a
@@ -824,9 +795,9 @@
           using a multi-threaded design - this way if we get stuck,
           we don't hang the entire application event loop, but we
           don't think that the time is right for adding threads, we
-          are not sure that *all* the &kde; systems out
-          there are using &Qt;-mt (the multi threaded
-          version of the &Qt; library), and the Krusader
+          are not sure that *all* the &tde; systems out
+          there are using &TQt;-mt (the multi threaded
+          version of the &TQt; library), and the Krusader
           Krew may not be the right people to address this major
           issue in any case; so currently this is just a bug we
           have to learn to live with.</para>

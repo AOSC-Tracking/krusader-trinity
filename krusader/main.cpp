@@ -28,7 +28,7 @@
  *                                                                         *
  ***************************************************************************/
 
-// KDE includes
+// TDE includes
 #include <tdecmdlineargs.h>
 #include <tdeaboutdata.h>
 #include <tdelocale.h>

@@ -29,12 +29,12 @@
 #ifndef VFILE_H
 #define VFILE_H
 
-// QT includes
+// TQt includes
 #include <tqstring.h>
 #include <tqobject.h>
 // System includes
 #include <sys/types.h>
-// KDE includes
+// TDE includes
 #include <tdeio/global.h>
 #include <kmimetype.h>
 

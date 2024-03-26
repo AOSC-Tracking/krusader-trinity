@@ -34,7 +34,7 @@
 
 /* --=={ Patch by Heiner <h.eichmann@gmx.de> }==-- */
 
-// KDE Includes
+// TDE Includes
 #include <kdialogbase.h>
 #include <tdeio/jobclasses.h>
 // TQt Includes

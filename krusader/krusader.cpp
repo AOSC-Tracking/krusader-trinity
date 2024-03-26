@@ -34,7 +34,7 @@ YP   YD 88   YD ~Y8888P' `8888Y' YP   YP Y8888D' Y88888P 88   YD
 #ifdef BSD
 #include <sys/types.h>
 #endif
-// KDE includes
+// TDE includes
 #include <tdemessagebox.h>
 #include <tdeaction.h>
 #include <kcursor.h>
@@ -52,7 +52,7 @@ YP   YD 88   YD ~Y8888P' `8888Y' YP   YP Y8888D' Y88888P 88   YD
 #endif
 
 #include <tdeversion.h>
-// QT includes
+// TQt includes
 #include <tqpixmap.h>
 #include <tqstringlist.h>
 #include <tqdir.h>

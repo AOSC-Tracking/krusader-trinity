@@ -30,7 +30,7 @@ YP   YD 88   YD ~Y8888P' `8888Y' YP   YP Y8888D' Y88888P 88   YD
 #include <sys/param.h>
 #include <time.h>
 #include "kmountman.h" 
-// KDE includes
+// TDE includes
 #include <tdemessagebox.h>
 #include <kprocess.h>
 #include <tdelocale.h>

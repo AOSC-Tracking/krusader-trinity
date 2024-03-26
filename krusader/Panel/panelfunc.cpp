@@ -33,7 +33,7 @@ A
 #include <tqtextstream.h>
 #include <tqeventloop.h>
 #include <tqclipboard.h>
-// KDE Includes
+// TDE Includes
 #include <tdelocale.h>
 #include <kprocess.h>
 #include <kpropertiesdialog.h>

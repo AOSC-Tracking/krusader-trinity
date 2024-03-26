@@ -17,9 +17,9 @@
 
 #include <stdlib.h>
 #include <unistd.h>
-// QT includes
+// TQt includes
 #include <tqdir.h>
-// KDE includes
+// TDE includes
 #include <kdebug.h>
 // Krusader includes
 #include "krservices.h"

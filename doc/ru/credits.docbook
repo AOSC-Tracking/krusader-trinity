@@ -99,9 +99,9 @@
 > </listitem
 > </itemizedlist
 > The project is written using <application
->KDevelop</application
+>TDevelop</application
 > and <application
->&Qt; Designer</application
+>&TQt; Designer</application
 >. </para>
 
 <para

@@ -499,24 +499,24 @@
 >TDEDIR</envar
 >. &krusader;'s <command
 >./configure</command
-> script needs to know where the &Qt; and &kde; directories are. </para>
+> script needs to know where the &TQt; and &tde; directories are. </para>
 
 <para
 ><envar
 >TQTDIR</envar
 > : <replaceable
->&lt;path to your Qt installation&gt;</replaceable
+>&lt;path to your TQt installation&gt;</replaceable
 > &eg; <filename
->/usr/lib/qt3</filename
+>/usr/lib/tqt3</filename
 > or <filename
->/usr/qt3</filename
+>/usr/tqt3</filename
 ></para>
 
 <para
 ><envar
 >TDEDIR</envar
 > : <replaceable
->&lt;path to your KDE installation&gt;</replaceable
+>&lt;path to your TDE installation&gt;</replaceable
 > &eg; <filename
 >/usr</filename
 > or <filename
@@ -558,7 +558,7 @@
 
   <note
 ><para
->These enviroment variables are only set for the lifetime of your current shell. When you close your terminal and open a new one they will be gone. Assuming &krusader; is not the only &Qt;/&kde; program you want to compile, we recommend to make these settings permanent (&eg; append both export commands to your <filename class="directory"
+>These enviroment variables are only set for the lifetime of your current shell. When you close your terminal and open a new one they will be gone. Assuming &krusader; is not the only &TQt;/&tde; program you want to compile, we recommend to make these settings permanent (&eg; append both export commands to your <filename class="directory"
 >/etc/profile</filename
 >) file.</para
 ></note>
@@ -1068,7 +1068,7 @@ foo</screen>
 </para>
 
 <para
->The standard &Qt; and &kde; command-line options are available, and can be listed by entering <userinput
+>The standard &TQt; and &tde; command-line options are available, and can be listed by entering <userinput
 ><command
 >krusader</command
 > <option
@@ -1082,24 +1082,24 @@ foo</screen>
   <varlistentry>
     <term
 ><option
->--help-qt</option
+>--help-tqt</option
 ></term>
     <listitem
 ><para
 ><action
->List Qt-specific options</action
+>List TQt-specific options</action
 ></para
 ></listitem>
   </varlistentry>
   <varlistentry>
     <term
 ><option
->--help-kde</option
+>--help-tde</option
 ></term>
     <listitem
 ><para
 ><action
->List KDE-specific options</action
+>List TDE-specific options</action
 ></para
 ></listitem>
   </varlistentry>

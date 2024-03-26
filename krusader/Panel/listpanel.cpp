@@ -30,7 +30,7 @@ YP   YD 88   YD ~Y8888P' `8888Y' YP   YP Y8888D' Y88888P 88   YD
 
 #include <unistd.h>
 #include <sys/param.h>
-// QT includes
+// TQt includes
 #include <tqbitmap.h>
 #include <tqwhatsthis.h>
 #include <tqstringlist.h>
@@ -40,7 +40,7 @@ YP   YD 88   YD ~Y8888P' `8888Y' YP   YP Y8888D' Y88888P 88   YD
 #include <tqtimer.h>
 #include <tqregexp.h> 
 #include <tqsplitter.h>
-// KDE includes
+// TDE includes
 #include <tdepopupmenu.h>
 #include <kprocess.h>
 #include <tdemessagebox.h>

@@ -8,22 +8,6 @@ many new Krusader Extensions sent in by our users + bugfixes.
 We would like to thank all of the community for keeping us sharp all these
 years throughout our release cycles. 
 
-IMPORTANT: Crashes in Krusader caused by Qt 3.3.5
-------------------------------------------------------------------------
-We've been getting a lot of emails and bug reports regarding random
-crashes in Krusader, especially during some file operations (copy/move
-etc.). These crashes are related to Qt 3.3.5 and NOT Krusader.
-It seems that Qt 3.3.5 introduced a serious bug which is now causing
-random crashes in many KDE applications including Konqueror. You can
-google for it to find out more. 
-
-As far as we know, Debian and SUSE already posted new Qt binaries that
-fix the problem, and Gentoo has masked Qt 3.3.5 completely.
-As for now, you either need Qt 3.3.4 or a fixed Qt 3.3.5, depending on
-your distribution. For more information is available on our website at
-http://krusader.sourceforge.net/phpBB/viewtopic.php?t=1407
-------------------------------------------------------------------------
-
 Krusader 1.90.0 contains plenty of changes, bug fixes and updates
 in response to reports and requests from our users.
 Special thanks goes to Václav Juza for testing, debugging and general help!

@@ -250,15 +250,15 @@ fi
 
 if test x$GXX = "xyes" -a x$kde_have_gcc_visibility = "xyes" -a x$kde_cv_val_qt_gcc_visibility_patched = "xno"; then
   echo ""
-  echo "Your GCC supports symbol visibility, but the patch for Qt supporting visibility"
+  echo "Your GCC supports symbol visibility, but the patch for TQt supporting visibility"
   echo "was not included. Therefore, GCC symbol visibility support remains disabled."
   echo ""
-  echo "For better performance, consider including the Qt visibility supporting patch"
+  echo "For better performance, consider including the TQt visibility supporting patch"
   echo "located at:"
   echo ""
   echo "http://bugs.kde.org/show_bug.cgi?id=109386"
   echo ""
-  echo "and recompile all of Qt and KDE. Note, this is entirely optional and"
+  echo "and recompile all of TQt and TDE. Note, this is entirely optional and"
   echo "everything will continue to work just fine without it."
   echo ""
 fi

@@ -238,7 +238,7 @@ void MediaButton::createListWithoutMedia() {
 	   2. the menu is corrected, when the HDD volume sizes arrive from df
 	
 	   when the volume sizes are added to the items, some cases widget resize
-	   is necessary. If transparency is set for the widget, QT produces weird
+	   is necessary. If transparency is set for the widget, TQt produces weird
 	   looking widgets, and that's why this workaround is used.
 	   Here we add additional spaces to the mounted HDD elements for avoiding
 	   the buggy widget resize. These are extra spaces. */
@@ -438,7 +438,7 @@ void MediaButton::addMountPoint( KMountPoint * mp, bool isMounted ) {
 	
 	/* WORKAROUND CODE START */
 	/* add spaces to avoid widget resize in gettingSpaceData,
-	   which is buggy in QT when transparency is set */
+	   which is buggy in TQt when transparency is set */
 	TQString extSpc = ( isMounted && type == "hdd" ) ? extraSpaces : "";
 	/* WORKAROUND CODE END */
 		

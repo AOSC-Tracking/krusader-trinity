@@ -34,7 +34,7 @@
 #include <tqprogressdialog.h>
 #include <tqlistview.h>
 #include <tqpixmapcache.h>
-// KDE includes
+// TDE includes
 #include <tdelocale.h>
 #include <kprocess.h>
 #include <tdemessagebox.h>

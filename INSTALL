@@ -348,8 +348,8 @@ the FAQ. If the problem persists, use the help_request to ask for help.
    6. Change to the directory containing the sources.
       $ cd krusader-x.xx
    7. Check the environment variables TQTDIRand TDEDIR. Krusader's ./configure
-      script needs to know where the Qt&#8482; and KDE directories are.
-      TQTDIR: <path to your Qt installation> e.g. /usr/lib/qt3 or /usr/qt3
+      script needs to know where the TQt&#8482; and TDE directories are.
+      TQTDIR: <path to your TQt installation> e.g. /usr/lib/tqt3 or /usr/tqt3
       TDEDIR: <path to your KDE installation> e.g. /usr or /opt/trinity
       Normally your distribution will set them for you, but experience has
       shown that some do not. You can easily check the values with the echo
@@ -374,7 +374,7 @@ the FAQ. If the problem persists, use the help_request to ask for help.
       **** Note ****
       These enviroment variables are only set for the lifetime of your current
       shell. When you close your terminal and open a new one they will be gone.
-      Assuming Krusader is not the only Qt&#8482;/KDE program you want to
+      Assuming Krusader is not the only TQt&#8482;/TDE program you want to
       compile, we recommend to make these settings permanent (e.g. append both
       export commands to your /etc/profile) file.
       If you can notdetermine your TDEDIR, tde-config --prefix might help you.
@@ -581,13 +581,13 @@ $ krusader --left=/mnt/cdrom --right=ftp://downloads@myserver.net
 $ krusader --left=<path1>,<path2> --right=<path1>,<path2>,<path3>
 $ krusader--profile <panel-profile>
 $ krusader --profile ftp-managment
-The standard Qt&#8482; and KDE command-line options are available, and can be
+The standard TQt&#8482; and TDE command-line options are available, and can be
 listed by entering krusader --help.
 Other command-line options:
-  --help-qt
-      List Qt-specific options
-  --help-kde
-      List KDE-specific options
+  --help-tqt
+      List TQt-specific options
+  --help-tde
+      List TDE-specific options
   --help-all
       List all options
   --author

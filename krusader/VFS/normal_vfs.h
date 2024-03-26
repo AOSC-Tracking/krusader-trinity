@@ -31,9 +31,9 @@
 #ifndef NORMAL_VFS
 #define NORMAL_VFS
 
-// QT includes
+// TQt includes
 #include <tqstring.h>
-// KDE includes
+// TDE includes
 #include <tdefileitem.h>
 #include <kdirwatch.h>
 #include <kurl.h>
