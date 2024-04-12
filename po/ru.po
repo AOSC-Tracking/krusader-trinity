@@ -8,12 +8,12 @@
 # Denis Koryavov <dkoryavov@rambler.ru>, 2005.
 # Nick Shaforostoff <shafff@ukr.net>, 2005.
 # Dmitry A. Bugay <sam@vhnet.ru>, 2006, 2007.
-# Andrei Stepanov <adem4ik@gmail.com>, 2023.
+# Andrei Stepanov <adem4ik@gmail.com>, 2023, 2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: krusader-1.80.0-beta2\n"
 "POT-Creation-Date: 2022-09-13 18:34+0000\n"
-"PO-Revision-Date: 2023-12-02 20:14+0000\n"
+"PO-Revision-Date: 2024-04-13 17:44+0000\n"
 "Last-Translator: Andrei Stepanov <adem4ik@gmail.com>\n"
 "Language-Team: Russian <https://mirror.git.trinitydesktop.org/weblate/"
 "projects/applications/krusader/ru/>\n"
@@ -21,8 +21,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Generator: Weblate 4.17\n"
 
 #. Instead of a literal translation, add your name to the end of the list (separated by a comma).
@@ -4604,7 +4604,7 @@ msgstr "Cое&динится"
 
 #: RemoteMan/remotemanbase.cpp:170
 msgid "New &Group"
-msgstr "Новая &Группа"
+msgstr "Новая гру&ппа"
 
 #: RemoteMan/remotemanbase.cpp:179
 msgid "New Connec&tion"
