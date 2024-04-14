@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: krusader-1.80.0-beta2\n"
 "Report-Msgid-Bugs-To: Dirk Eschler <deschler@users.sourceforge.net>\n"
-"POT-Creation-Date: 2022-09-13 18:34+0000\n"
+"POT-Creation-Date: 2024-04-14 18:21+0000\n"
 "PO-Revision-Date: 2007-03-27 20:25+0200\n"
 "Last-Translator: Vaclav Juza <vaclavjuza@seznam.cz>\n"
 "Language-Team: krusader-i18n <krusader-i18n@googlegroups.com>\n"
@@ -5325,7 +5325,7 @@ msgstr "Cesta Panelu..."
 
 #: UserAction/expander.cpp:362 UserAction/expander.cpp:424
 #: UserAction/expander.cpp:458 UserAction/expander.cpp:490
-#: UserAction/expander.cpp:777
+#: UserAction/expander.cpp:795
 msgid "Automatically escape spaces"
 msgstr "Automaticky zneškodnit mezery"
 
@@ -5350,7 +5350,7 @@ msgid "Current File (!= Selected File)..."
 msgstr "Současný Soubor (!= Vybraný Soubor)..."
 
 #: UserAction/expander.cpp:423 UserAction/expander.cpp:456
-#: UserAction/expander.cpp:488 UserAction/expander.cpp:775
+#: UserAction/expander.cpp:488 UserAction/expander.cpp:793
 msgid "Omit the current path (optional)"
 msgstr "Vynechat aktuální cestu (nepovinné)"
 
@@ -5359,7 +5359,7 @@ msgid "Item List of..."
 msgstr "Seznam Položek ..."
 
 #: UserAction/expander.cpp:454 UserAction/expander.cpp:486
-#: UserAction/expander.cpp:774
+#: UserAction/expander.cpp:792
 msgid "Which items:"
 msgstr "Které položky:"
 
@@ -5368,7 +5368,7 @@ msgid "Separator between the items (optional):"
 msgstr "Oddělovač mezi položkami (nepovinné):"
 
 #: UserAction/expander.cpp:457 UserAction/expander.cpp:489
-#: UserAction/expander.cpp:776
+#: UserAction/expander.cpp:794
 msgid "Mask (optional, all but 'Selected'):"
 msgstr "Maska (nepovinné, nepoužívá se pro 'Vybrané'):"
 
@@ -5456,92 +5456,92 @@ msgstr "Kam se má kopírovat:"
 msgid "Expander: %Each% may not be in the second argument of %Copy%"
 msgstr "Expander: %Each% nemůže být v druhém parametru %Copy%"
 
-#: UserAction/expander.cpp:675
+#: UserAction/expander.cpp:676 UserAction/expander.cpp:683
 msgid "Expander: invalid URL's in %_Copy(\"src\", \"dest\")%"
 msgstr "Expander: neplatná URL v %_Copy(\"src\",\"dest\")%"
 
-#: UserAction/expander.cpp:686
+#: UserAction/expander.cpp:695
 msgid "Move/Rename a File/Folder..."
 msgstr "Přesunout/Přejmenovat Soubor/Složku..."
 
-#: UserAction/expander.cpp:689
+#: UserAction/expander.cpp:698
 msgid "What to move/rename:"
 msgstr "Co přesunout/přejmenovat:"
 
-#: UserAction/expander.cpp:690
+#: UserAction/expander.cpp:699
 msgid "New target/name:"
 msgstr "Nový cíl/název:"
 
-#: UserAction/expander.cpp:696
+#: UserAction/expander.cpp:705
 msgid "%Each% may not be in the second argument of %Move%"
 msgstr "%Each% nemůže být druhý argument %Move%"
 
-#: UserAction/expander.cpp:706
+#: UserAction/expander.cpp:716 UserAction/expander.cpp:723
 msgid "Expander: invalid URL's in %_Move(\"src\", \"dest\")%"
 msgstr "Expander: neplatná URL v %_Move(\"src\",\"dest\")%"
 
-#: UserAction/expander.cpp:717
+#: UserAction/expander.cpp:735
 msgid "Load a Synchronizer Profile..."
 msgstr "Otevřít Profil Synchronizeru..."
 
-#: UserAction/expander.cpp:720 UserAction/expander.cpp:738
-#: UserAction/expander.cpp:756
+#: UserAction/expander.cpp:738 UserAction/expander.cpp:756
+#: UserAction/expander.cpp:774
 msgid "Choose a profile:"
 msgstr "Vyberte profil:"
 
-#: UserAction/expander.cpp:724
+#: UserAction/expander.cpp:742
 msgid "Expander: no profile specified for %_Sync(profile)%"
 msgstr "Expander: není určen žádný profil pro %_Sync(profil)%"
 
-#: UserAction/expander.cpp:735
+#: UserAction/expander.cpp:753
 msgid "Load a Searchmodule Profile..."
 msgstr "Otevřít Profil Vyhledávacího modulu..."
 
-#: UserAction/expander.cpp:742
+#: UserAction/expander.cpp:760
 msgid "Expander: no profile specified for %_NewSearch(profile)%"
 msgstr "Expander: není určen žádný profil pro %_NewSearch(profil)%"
 
-#: UserAction/expander.cpp:753
+#: UserAction/expander.cpp:771
 msgid "Load a Panel Profile..."
 msgstr "Načíst Profil Panelu..."
 
-#: UserAction/expander.cpp:760
+#: UserAction/expander.cpp:778
 msgid "Expander: no profile specified for %_Profile(profile)%; abort..."
 msgstr "Expander: není určen žádný profil pro %_Profile(profil)%; končím..."
 
-#: UserAction/expander.cpp:771
+#: UserAction/expander.cpp:789
 msgid "Separate Program Call for Each..."
 msgstr "Samostatné volání programu pro každou položku..."
 
-#: UserAction/expander.cpp:803
+#: UserAction/expander.cpp:821
 msgid "Set Sorting for This Panel..."
 msgstr "Nastavit řazení v tomto panelu..."
 
-#: UserAction/expander.cpp:806
+#: UserAction/expander.cpp:824
 msgid "Choose a column:"
 msgstr "Vyberte sloupec:"
 
-#: UserAction/expander.cpp:807
+#: UserAction/expander.cpp:825
 msgid "Choose a sort sequence:"
 msgstr "Vyberte směr řazení:"
 
-#: UserAction/expander.cpp:813
+#: UserAction/expander.cpp:831
 msgid "Expander: no column specified for %_ColSort(column)%"
 msgstr "Expander: není určen žádný sloupec pro %_ColSort(sloupec)%"
 
-#: UserAction/expander.cpp:885
+#: UserAction/expander.cpp:903
 msgid "Expander: unknown column specified for %_ColSort(%1)%"
 msgstr "Expander: neznámý sloupec určen pro %_ColSort(%1)%"
 
-#: UserAction/expander.cpp:897
+#: UserAction/expander.cpp:915
 msgid "Set Relation Between the Panels..."
 msgstr "Nastavit poměr velikosti panelů..."
 
-#: UserAction/expander.cpp:900
+#: UserAction/expander.cpp:918
 msgid "Set the new size in percent:"
 msgstr "Nastavte novou velikost v procentech:"
 
-#: UserAction/expander.cpp:912
+#: UserAction/expander.cpp:930
 msgid ""
 "Expander: Value %1 out of range for %_PanelSize(percent)%. The first "
 "parameter has to be >0 and <100"
@@ -5549,15 +5549,15 @@ msgstr ""
 "Expander: Hodnota %1 mimo rozsah pro %_PanelSize(procenta)%. Parametr musí "
 "být >0 a <100"
 
-#: UserAction/expander.cpp:936
+#: UserAction/expander.cpp:954
 msgid "Execute a JavaScript Extension..."
 msgstr "Vykonat Javascriptové rozšíření..."
 
-#: UserAction/expander.cpp:939
+#: UserAction/expander.cpp:957
 msgid "Location of the script"
 msgstr "Umístění skriptu"
 
-#: UserAction/expander.cpp:940
+#: UserAction/expander.cpp:958
 msgid ""
 "Set some variables for the execution (optional).\n"
 "i.e. \"return=return_var;foo=bar\", consult the handbook for more information"
@@ -5566,49 +5566,49 @@ msgstr ""
 "např. \"return=navratova_promenna;foo=bar\", více informací naleznete v "
 "příručce."
 
-#: UserAction/expander.cpp:944
+#: UserAction/expander.cpp:962
 msgid "Expander: no script specified for %_Script(script)%"
 msgstr "Expander: není určen žádný skript pro %_Script(skript)%"
 
-#: UserAction/expander.cpp:986
+#: UserAction/expander.cpp:1004
 msgid "View File with Krusader's Internal Viewer..."
 msgstr "Zobrazit soubor se zabudovaným prohlížečem Krusaderu..."
 
-#: UserAction/expander.cpp:989
+#: UserAction/expander.cpp:1007
 msgid "Which file to view (normally '%aCurrent%'):"
 msgstr "Který soubor zobrazit (normálně '%aCurrent%'):"
 
-#: UserAction/expander.cpp:990
+#: UserAction/expander.cpp:1008
 msgid "Choose a view mode:"
 msgstr "Vyberte režim zobrazení:"
 
-#: UserAction/expander.cpp:993
+#: UserAction/expander.cpp:1011
 msgid "Choose a window mode:"
 msgstr "Vyberte režim okna:"
 
-#: UserAction/expander.cpp:997
+#: UserAction/expander.cpp:1015
 msgid "Expander: no file to view in %_View(filename)%"
 msgstr "Expander: žádný soubor k prohlížení v %_View(názevSouboru)%"
 
-#: UserAction/expander.cpp:1034
+#: UserAction/expander.cpp:1052
 #, c-format
 msgid "%Each% is not allowed in parameter to %1"
 msgstr "%Each% není povoleno v parametru pro %1"
 
-#: UserAction/expander.cpp:1055
+#: UserAction/expander.cpp:1073
 msgid "Expander: Bad panel specifier %1 in placeholder %2"
 msgstr "Expander: špatné určení panelu %1 v zástupci %2"
 
-#: UserAction/expander.cpp:1084
+#: UserAction/expander.cpp:1102
 #, c-format
 msgid "Error: unterminated % in Expander::expandCurrent"
 msgstr "Chyba: Neukončené %"
 
-#: UserAction/expander.cpp:1114
+#: UserAction/expander.cpp:1132
 msgid "Error: unrecognized %%%1%2%% in Expander::expand"
 msgstr "Chyba: nerozpoznané %%%1%2%%."
 
-#: UserAction/expander.cpp:1150
+#: UserAction/expander.cpp:1168
 msgid "Error: missing ')' in Expander::separateParameter"
 msgstr "Chyba: chybí ')'."
 

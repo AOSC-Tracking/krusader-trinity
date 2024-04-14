@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: krusader-1.80.0-beta2\n"
 "Report-Msgid-Bugs-To: Dirk Eschler <deschler@users.sourceforge.net>\n"
-"POT-Creation-Date: 2022-09-13 18:34+0000\n"
+"POT-Creation-Date: 2024-04-14 18:21+0000\n"
 "PO-Revision-Date: 2019-12-23 23:40+0000\n"
 "Last-Translator: Chris <xchrisx@uber.space>\n"
 "Language-Team: German <https://mirror.git.trinitydesktop.org/weblate/"
@@ -5366,7 +5366,7 @@ msgstr "Adresse des Dateifensters ..."
 
 #: UserAction/expander.cpp:362 UserAction/expander.cpp:424
 #: UserAction/expander.cpp:458 UserAction/expander.cpp:490
-#: UserAction/expander.cpp:777
+#: UserAction/expander.cpp:795
 msgid "Automatically escape spaces"
 msgstr "Leerzeichen automatisch schützen"
 
@@ -5393,7 +5393,7 @@ msgid "Current File (!= Selected File)..."
 msgstr "Aktuelle Datei (!= Ausgewählte Datei) ..."
 
 #: UserAction/expander.cpp:423 UserAction/expander.cpp:456
-#: UserAction/expander.cpp:488 UserAction/expander.cpp:775
+#: UserAction/expander.cpp:488 UserAction/expander.cpp:793
 msgid "Omit the current path (optional)"
 msgstr "Den aktuellen Pfad auslassen (optional)"
 
@@ -5402,7 +5402,7 @@ msgid "Item List of..."
 msgstr "Eine Liste von Elementen ..."
 
 #: UserAction/expander.cpp:454 UserAction/expander.cpp:486
-#: UserAction/expander.cpp:774
+#: UserAction/expander.cpp:792
 msgid "Which items:"
 msgstr "Welche Elemente:"
 
@@ -5411,7 +5411,7 @@ msgid "Separator between the items (optional):"
 msgstr "Trenner zwischen den Elementen (optional):"
 
 #: UserAction/expander.cpp:457 UserAction/expander.cpp:489
-#: UserAction/expander.cpp:776
+#: UserAction/expander.cpp:794
 msgid "Mask (optional, all but 'Selected'):"
 msgstr "Maskieren (optional, alle außer 'Ausgewählte'):"
 
@@ -5501,92 +5501,92 @@ msgstr "Wohin kopieren:"
 msgid "Expander: %Each% may not be in the second argument of %Copy%"
 msgstr "Expander: %Each% ist kein gültiges zweites Argument von %Copy%"
 
-#: UserAction/expander.cpp:675
+#: UserAction/expander.cpp:676 UserAction/expander.cpp:683
 msgid "Expander: invalid URL's in %_Copy(\"src\", \"dest\")%"
 msgstr "Expander: Ungültige Adresse in %_Copy(\"src\", \"dest\")%"
 
-#: UserAction/expander.cpp:686
+#: UserAction/expander.cpp:695
 msgid "Move/Rename a File/Folder..."
 msgstr "Datei/Verzeichnis verschieben oder umbenennen ..."
 
-#: UserAction/expander.cpp:689
+#: UserAction/expander.cpp:698
 msgid "What to move/rename:"
 msgstr "Was verschieben/umbenennen:"
 
-#: UserAction/expander.cpp:690
+#: UserAction/expander.cpp:699
 msgid "New target/name:"
 msgstr "Neues Ziel / Neuer Name:"
 
-#: UserAction/expander.cpp:696
+#: UserAction/expander.cpp:705
 msgid "%Each% may not be in the second argument of %Move%"
 msgstr "%Each% ist kein gültiges zweites Argument von %Move%"
 
-#: UserAction/expander.cpp:706
+#: UserAction/expander.cpp:716 UserAction/expander.cpp:723
 msgid "Expander: invalid URL's in %_Move(\"src\", \"dest\")%"
 msgstr "Expander: Ungültige Adressen in %_Move(\"src\", \"dest\")%"
 
-#: UserAction/expander.cpp:717
+#: UserAction/expander.cpp:735
 msgid "Load a Synchronizer Profile..."
 msgstr "Synchronizer-Profil laden ..."
 
-#: UserAction/expander.cpp:720 UserAction/expander.cpp:738
-#: UserAction/expander.cpp:756
+#: UserAction/expander.cpp:738 UserAction/expander.cpp:756
+#: UserAction/expander.cpp:774
 msgid "Choose a profile:"
 msgstr "Profil auswählen:"
 
-#: UserAction/expander.cpp:724
+#: UserAction/expander.cpp:742
 msgid "Expander: no profile specified for %_Sync(profile)%"
 msgstr "Expander: Kein Profil spezifiziert für %_Sync(profile)%"
 
-#: UserAction/expander.cpp:735
+#: UserAction/expander.cpp:753
 msgid "Load a Searchmodule Profile..."
 msgstr "Suchmodul-Profil laden ..."
 
-#: UserAction/expander.cpp:742
+#: UserAction/expander.cpp:760
 msgid "Expander: no profile specified for %_NewSearch(profile)%"
 msgstr "Expander: Kein Profil spezifiziert für %_NewSearch(profile)%"
 
-#: UserAction/expander.cpp:753
+#: UserAction/expander.cpp:771
 msgid "Load a Panel Profile..."
 msgstr "Dateifenster-Profil laden ..."
 
-#: UserAction/expander.cpp:760
+#: UserAction/expander.cpp:778
 msgid "Expander: no profile specified for %_Profile(profile)%; abort..."
 msgstr "Expander: Kein Profil spezifiziert für %_Profile(profile)%; Abbruch..."
 
-#: UserAction/expander.cpp:771
+#: UserAction/expander.cpp:789
 msgid "Separate Program Call for Each..."
 msgstr "Separater Programmaufruf für alle ..."
 
-#: UserAction/expander.cpp:803
+#: UserAction/expander.cpp:821
 msgid "Set Sorting for This Panel..."
 msgstr "Sortiermethode für dieses Dateifenster festlegen ..."
 
-#: UserAction/expander.cpp:806
+#: UserAction/expander.cpp:824
 msgid "Choose a column:"
 msgstr "Eine Spalte auswählen:"
 
-#: UserAction/expander.cpp:807
+#: UserAction/expander.cpp:825
 msgid "Choose a sort sequence:"
 msgstr "Eine Sortiersequenz auswählen:"
 
-#: UserAction/expander.cpp:813
+#: UserAction/expander.cpp:831
 msgid "Expander: no column specified for %_ColSort(column)%"
 msgstr "Expander: Keine Spalte spezifiziert für %_ColSort(column)%"
 
-#: UserAction/expander.cpp:885
+#: UserAction/expander.cpp:903
 msgid "Expander: unknown column specified for %_ColSort(%1)%"
 msgstr "Expander: Unbekannte Spalte spezifiziert für %_ColSort(%1)%"
 
-#: UserAction/expander.cpp:897
+#: UserAction/expander.cpp:915
 msgid "Set Relation Between the Panels..."
 msgstr "Größenverhältnis der Dateifenster festlegen ..."
 
-#: UserAction/expander.cpp:900
+#: UserAction/expander.cpp:918
 msgid "Set the new size in percent:"
 msgstr "Neue Größe in Prozent angeben:"
 
-#: UserAction/expander.cpp:912
+#: UserAction/expander.cpp:930
 msgid ""
 "Expander: Value %1 out of range for %_PanelSize(percent)%. The first "
 "parameter has to be >0 and <100"
@@ -5595,15 +5595,15 @@ msgstr ""
 "%_PanelSize(percent)%. Der erste Parameter muss größer 0 und kleiner 100 "
 "sein."
 
-#: UserAction/expander.cpp:936
+#: UserAction/expander.cpp:954
 msgid "Execute a JavaScript Extension..."
 msgstr "Eine JavaScript-Erweiterung ausführen ..."
 
-#: UserAction/expander.cpp:939
+#: UserAction/expander.cpp:957
 msgid "Location of the script"
 msgstr "Adresse des Skripts"
 
-#: UserAction/expander.cpp:940
+#: UserAction/expander.cpp:958
 msgid ""
 "Set some variables for the execution (optional).\n"
 "i.e. \"return=return_var;foo=bar\", consult the handbook for more information"
@@ -5611,49 +5611,49 @@ msgstr ""
 "Variablen zuweisen (optional), z.B. \"return=return_var;foo=bar\".\n"
 "Siehe Handbuch für weitere Informationen."
 
-#: UserAction/expander.cpp:944
+#: UserAction/expander.cpp:962
 msgid "Expander: no script specified for %_Script(script)%"
 msgstr "Expander: Kein Skript spezifiziert für %_Script(script)%"
 
-#: UserAction/expander.cpp:986
+#: UserAction/expander.cpp:1004
 msgid "View File with Krusader's Internal Viewer..."
 msgstr "Datei mit Krusaders internem Viewer anzeigen ..."
 
-#: UserAction/expander.cpp:989
+#: UserAction/expander.cpp:1007
 msgid "Which file to view (normally '%aCurrent%'):"
 msgstr "Anzuzeigende Datei (standardmäßig '%aCurrent%'):"
 
-#: UserAction/expander.cpp:990
+#: UserAction/expander.cpp:1008
 msgid "Choose a view mode:"
 msgstr "Anzeigemodus auswählen:"
 
-#: UserAction/expander.cpp:993
+#: UserAction/expander.cpp:1011
 msgid "Choose a window mode:"
 msgstr "Fenstermodus auswählen:"
 
-#: UserAction/expander.cpp:997
+#: UserAction/expander.cpp:1015
 msgid "Expander: no file to view in %_View(filename)%"
 msgstr "Expander: Keine Datei zum anzeigen in %_View(filename)%"
 
-#: UserAction/expander.cpp:1034
+#: UserAction/expander.cpp:1052
 #, c-format
 msgid "%Each% is not allowed in parameter to %1"
 msgstr "%Each% ist nicht zulässig für den Parameter %1"
 
-#: UserAction/expander.cpp:1055
+#: UserAction/expander.cpp:1073
 msgid "Expander: Bad panel specifier %1 in placeholder %2"
 msgstr "Expander: Ungültige Dateifensterspezifikation %1 in Platzhalter %2"
 
-#: UserAction/expander.cpp:1084
+#: UserAction/expander.cpp:1102
 #, c-format
 msgid "Error: unterminated % in Expander::expandCurrent"
 msgstr "Fehler: Unterminiertes % in Expander::expandCurrent"
 
-#: UserAction/expander.cpp:1114
+#: UserAction/expander.cpp:1132
 msgid "Error: unrecognized %%%1%2%% in Expander::expand"
 msgstr "Fehler: Unerkanntes %%%1%2%% in Expander::expand"
 
-#: UserAction/expander.cpp:1150
+#: UserAction/expander.cpp:1168
 msgid "Error: missing ')' in Expander::separateParameter"
 msgstr "Fehler: Fehlendes ')' in Expander::separateParameter"
 

@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: krusader-1.80.0\n"
 "Report-Msgid-Bugs-To: Dirk Eschler <deschler@users.sourceforge.net>\n"
-"POT-Creation-Date: 2022-09-13 18:34+0000\n"
+"POT-Creation-Date: 2024-04-14 18:21+0000\n"
 "PO-Revision-Date: 2007-06-30 23:59+0200\n"
 "Last-Translator: Sasa Tomic <tomic80@gmail.com>\n"
 "Language-Team: krusader-i18n <krusader-i18n@googlegroups.com>\n"
@@ -5318,7 +5318,7 @@ msgstr "Путања панела..."
 
 #: UserAction/expander.cpp:362 UserAction/expander.cpp:424
 #: UserAction/expander.cpp:458 UserAction/expander.cpp:490
-#: UserAction/expander.cpp:777
+#: UserAction/expander.cpp:795
 msgid "Automatically escape spaces"
 msgstr "Аутоматски избегни размаке"
 
@@ -5343,7 +5343,7 @@ msgid "Current File (!= Selected File)..."
 msgstr "Тренутни фајл (!= означени фајл)..."
 
 #: UserAction/expander.cpp:423 UserAction/expander.cpp:456
-#: UserAction/expander.cpp:488 UserAction/expander.cpp:775
+#: UserAction/expander.cpp:488 UserAction/expander.cpp:793
 msgid "Omit the current path (optional)"
 msgstr "Изостави тренутну путању (опционо)"
 
@@ -5352,7 +5352,7 @@ msgid "Item List of..."
 msgstr "Ставка листа од ..."
 
 #: UserAction/expander.cpp:454 UserAction/expander.cpp:486
-#: UserAction/expander.cpp:774
+#: UserAction/expander.cpp:792
 msgid "Which items:"
 msgstr "Које ставке:"
 
@@ -5361,7 +5361,7 @@ msgid "Separator between the items (optional):"
 msgstr "Раздвајач између ставки (опционо):"
 
 #: UserAction/expander.cpp:457 UserAction/expander.cpp:489
-#: UserAction/expander.cpp:776
+#: UserAction/expander.cpp:794
 msgid "Mask (optional, all but 'Selected'):"
 msgstr "Маска (опционо, све сем „Означено“):"
 
@@ -5449,92 +5449,92 @@ msgstr "Где да се копира:"
 msgid "Expander: %Each% may not be in the second argument of %Copy%"
 msgstr "Проширивач: %Each% не може да буде други аргумент за %Copy%"
 
-#: UserAction/expander.cpp:675
+#: UserAction/expander.cpp:676 UserAction/expander.cpp:683
 msgid "Expander: invalid URL's in %_Copy(\"src\", \"dest\")%"
 msgstr "Проширивач: невалидни URL-ови у %_Copy(\"src\", \"dest\")%"
 
-#: UserAction/expander.cpp:686
+#: UserAction/expander.cpp:695
 msgid "Move/Rename a File/Folder..."
 msgstr "Премести/преименуј фајл/фасциклу..."
 
-#: UserAction/expander.cpp:689
+#: UserAction/expander.cpp:698
 msgid "What to move/rename:"
 msgstr "Шта да се премести/преименује"
 
-#: UserAction/expander.cpp:690
+#: UserAction/expander.cpp:699
 msgid "New target/name:"
 msgstr "Нова мета/име:"
 
-#: UserAction/expander.cpp:696
+#: UserAction/expander.cpp:705
 msgid "%Each% may not be in the second argument of %Move%"
 msgstr "%Each% не може да буде други аргумент за %Move%"
 
-#: UserAction/expander.cpp:706
+#: UserAction/expander.cpp:716 UserAction/expander.cpp:723
 msgid "Expander: invalid URL's in %_Move(\"src\", \"dest\")%"
 msgstr "Проширивач: невалидни URL-ови у %_Move(\"src\", \"dest\")%"
 
-#: UserAction/expander.cpp:717
+#: UserAction/expander.cpp:735
 msgid "Load a Synchronizer Profile..."
 msgstr "Учитај профил синхронизатора..."
 
-#: UserAction/expander.cpp:720 UserAction/expander.cpp:738
-#: UserAction/expander.cpp:756
+#: UserAction/expander.cpp:738 UserAction/expander.cpp:756
+#: UserAction/expander.cpp:774
 msgid "Choose a profile:"
 msgstr "Одабери профил:"
 
-#: UserAction/expander.cpp:724
+#: UserAction/expander.cpp:742
 msgid "Expander: no profile specified for %_Sync(profile)%"
 msgstr "Проширивач: профил није специфициран за %_Sync(profile)%"
 
-#: UserAction/expander.cpp:735
+#: UserAction/expander.cpp:753
 msgid "Load a Searchmodule Profile..."
 msgstr "Учитај профил модула тражења..."
 
-#: UserAction/expander.cpp:742
+#: UserAction/expander.cpp:760
 msgid "Expander: no profile specified for %_NewSearch(profile)%"
 msgstr "Проширивач: профил није специфициран за %_NewSearch(profile)%"
 
-#: UserAction/expander.cpp:753
+#: UserAction/expander.cpp:771
 msgid "Load a Panel Profile..."
 msgstr "Учитај профил панела..."
 
-#: UserAction/expander.cpp:760
+#: UserAction/expander.cpp:778
 msgid "Expander: no profile specified for %_Profile(profile)%; abort..."
 msgstr "Проширивач: профил није специфициран за %_Profile(profile)%; откажи..."
 
-#: UserAction/expander.cpp:771
+#: UserAction/expander.cpp:789
 msgid "Separate Program Call for Each..."
 msgstr "Раздвоји позив програма за сваки..."
 
-#: UserAction/expander.cpp:803
+#: UserAction/expander.cpp:821
 msgid "Set Sorting for This Panel..."
 msgstr "Постави сортирање за овај панел..."
 
-#: UserAction/expander.cpp:806
+#: UserAction/expander.cpp:824
 msgid "Choose a column:"
 msgstr "Одабери колону:"
 
-#: UserAction/expander.cpp:807
+#: UserAction/expander.cpp:825
 msgid "Choose a sort sequence:"
 msgstr "Одабери секвенцу сортирања:"
 
-#: UserAction/expander.cpp:813
+#: UserAction/expander.cpp:831
 msgid "Expander: no column specified for %_ColSort(column)%"
 msgstr "Проширивач: колона није специфицирана за %_ColSort(column)%"
 
-#: UserAction/expander.cpp:885
+#: UserAction/expander.cpp:903
 msgid "Expander: unknown column specified for %_ColSort(%1)%"
 msgstr "Проширивач: непозната колона специфицирана за %_ColSort(%1)%"
 
-#: UserAction/expander.cpp:897
+#: UserAction/expander.cpp:915
 msgid "Set Relation Between the Panels..."
 msgstr "Постави релацију између панела..."
 
-#: UserAction/expander.cpp:900
+#: UserAction/expander.cpp:918
 msgid "Set the new size in percent:"
 msgstr "Постави нову величину у процентима:"
 
-#: UserAction/expander.cpp:912
+#: UserAction/expander.cpp:930
 msgid ""
 "Expander: Value %1 out of range for %_PanelSize(percent)%. The first "
 "parameter has to be >0 and <100"
@@ -5542,15 +5542,15 @@ msgstr ""
 "Проширивач: вредност %1 је изван опсега за %_PanelSize(percent)%. Први "
 "параметар мора да буде >0 и <100"
 
-#: UserAction/expander.cpp:936
+#: UserAction/expander.cpp:954
 msgid "Execute a JavaScript Extension..."
 msgstr "Изврши JavaScript проширење..."
 
-#: UserAction/expander.cpp:939
+#: UserAction/expander.cpp:957
 msgid "Location of the script"
 msgstr "Локација скрипта"
 
-#: UserAction/expander.cpp:940
+#: UserAction/expander.cpp:958
 msgid ""
 "Set some variables for the execution (optional).\n"
 "i.e. \"return=return_var;foo=bar\", consult the handbook for more information"
@@ -5559,49 +5559,49 @@ msgstr ""
 "нпр. „return=return_var;foo=bar“, консултујте документацију за још "
 "информација"
 
-#: UserAction/expander.cpp:944
+#: UserAction/expander.cpp:962
 msgid "Expander: no script specified for %_Script(script)%"
 msgstr "Проширивач: скрипт није специфициран за %_Script(script)%"
 
-#: UserAction/expander.cpp:986
+#: UserAction/expander.cpp:1004
 msgid "View File with Krusader's Internal Viewer..."
 msgstr "Прегледај фајл помоћу интерног прегледача Krusader-а..."
 
-#: UserAction/expander.cpp:989
+#: UserAction/expander.cpp:1007
 msgid "Which file to view (normally '%aCurrent%'):"
 msgstr "Који фајл се прегледа (обично '%aCurrent%'):"
 
-#: UserAction/expander.cpp:990
+#: UserAction/expander.cpp:1008
 msgid "Choose a view mode:"
 msgstr "Одабери режим прегледања:"
 
-#: UserAction/expander.cpp:993
+#: UserAction/expander.cpp:1011
 msgid "Choose a window mode:"
 msgstr "Одабери режим прозора:"
 
-#: UserAction/expander.cpp:997
+#: UserAction/expander.cpp:1015
 msgid "Expander: no file to view in %_View(filename)%"
 msgstr "Проширивач: нема фајла жа прегледање у %_View(filename)%"
 
-#: UserAction/expander.cpp:1034
+#: UserAction/expander.cpp:1052
 #, c-format
 msgid "%Each% is not allowed in parameter to %1"
 msgstr "%Each% није валидно као параметар за %1"
 
-#: UserAction/expander.cpp:1055
+#: UserAction/expander.cpp:1073
 msgid "Expander: Bad panel specifier %1 in placeholder %2"
 msgstr "Проширивач: лош спецификатор панела %1 у шаблону %2"
 
-#: UserAction/expander.cpp:1084
+#: UserAction/expander.cpp:1102
 #, c-format
 msgid "Error: unterminated % in Expander::expandCurrent"
 msgstr "Грешка: незавршен % у Expander::expandCurrent"
 
-#: UserAction/expander.cpp:1114
+#: UserAction/expander.cpp:1132
 msgid "Error: unrecognized %%%1%2%% in Expander::expand"
 msgstr "Грешка: непрепознат %%%1%2%% у Expander::expand"
 
-#: UserAction/expander.cpp:1150
+#: UserAction/expander.cpp:1168
 msgid "Error: missing ')' in Expander::separateParameter"
 msgstr "Грешка: недостаје ')' у Expander::separateParameter"
 
