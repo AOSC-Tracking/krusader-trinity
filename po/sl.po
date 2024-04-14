@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: krusader-1.80.0\n"
 "Report-Msgid-Bugs-To: Dirk Eschler <deschler@users.sourceforge.net>\n"
-"POT-Creation-Date: 2022-09-13 18:34+0000\n"
+"POT-Creation-Date: 2024-04-14 18:21+0000\n"
 "PO-Revision-Date: 2007-04-04 15:43+0100\n"
 "Last-Translator: Matej Urbancic <matej.urban@gmail.com>\n"
 "Language-Team: krusader-i18n <krusader-i18n@googlegroups.com>\n"
@@ -5299,7 +5299,7 @@ msgstr "Pot pladnja ..."
 
 #: UserAction/expander.cpp:362 UserAction/expander.cpp:424
 #: UserAction/expander.cpp:458 UserAction/expander.cpp:490
-#: UserAction/expander.cpp:777
+#: UserAction/expander.cpp:795
 msgid "Automatically escape spaces"
 msgstr "Samodejno preskoči presledke"
 
@@ -5326,7 +5326,7 @@ msgid "Current File (!= Selected File)..."
 msgstr "Trenutna datoteka (!= označena datoteka) ..."
 
 #: UserAction/expander.cpp:423 UserAction/expander.cpp:456
-#: UserAction/expander.cpp:488 UserAction/expander.cpp:775
+#: UserAction/expander.cpp:488 UserAction/expander.cpp:793
 msgid "Omit the current path (optional)"
 msgstr "Zanemari trenutno pot (izbirno)"
 
@@ -5335,7 +5335,7 @@ msgid "Item List of..."
 msgstr "Spisek predmetov ..."
 
 #: UserAction/expander.cpp:454 UserAction/expander.cpp:486
-#: UserAction/expander.cpp:774
+#: UserAction/expander.cpp:792
 msgid "Which items:"
 msgstr "Kateri predmeti:"
 
@@ -5344,7 +5344,7 @@ msgid "Separator between the items (optional):"
 msgstr "Delivec med predmeti (izbirno):"
 
 #: UserAction/expander.cpp:457 UserAction/expander.cpp:489
-#: UserAction/expander.cpp:776
+#: UserAction/expander.cpp:794
 msgid "Mask (optional, all but 'Selected'):"
 msgstr "Maska (izbirno, vse z izjemo 'Označeno')"
 
@@ -5432,96 +5432,96 @@ msgstr "Kam kopirati:"
 msgid "Expander: %Each% may not be in the second argument of %Copy%"
 msgstr "Razširjene možnosti: %Each% ni nujno drugo določilo %Copy%"
 
-#: UserAction/expander.cpp:675
+#: UserAction/expander.cpp:676 UserAction/expander.cpp:683
 msgid "Expander: invalid URL's in %_Copy(\"src\", \"dest\")%"
 msgstr ""
 "Razširjene možnosti: neveljavna povezava naslova v %_Copy(\"src\", \"dest\")%"
 
-#: UserAction/expander.cpp:686
+#: UserAction/expander.cpp:695
 msgid "Move/Rename a File/Folder..."
 msgstr "Premikanje/Preimenovanje datotek/map ..."
 
-#: UserAction/expander.cpp:689
+#: UserAction/expander.cpp:698
 msgid "What to move/rename:"
 msgstr "Kaj premakniti/preimenovati:"
 
-#: UserAction/expander.cpp:690
+#: UserAction/expander.cpp:699
 msgid "New target/name:"
 msgstr "Nov cilj/ime:"
 
-#: UserAction/expander.cpp:696
+#: UserAction/expander.cpp:705
 msgid "%Each% may not be in the second argument of %Move%"
 msgstr "Razširjene možnosti: %Each% ni nujno drugo določilo %Move%"
 
-#: UserAction/expander.cpp:706
+#: UserAction/expander.cpp:716 UserAction/expander.cpp:723
 msgid "Expander: invalid URL's in %_Move(\"src\", \"dest\")%"
 msgstr ""
 "Razširjene možnosti: neveljavna povezava naslova v %_Move(\"src\", \"dest\")%"
 
-#: UserAction/expander.cpp:717
+#: UserAction/expander.cpp:735
 msgid "Load a Synchronizer Profile..."
 msgstr "Naloži profil usklajevalnika ..."
 
-#: UserAction/expander.cpp:720 UserAction/expander.cpp:738
-#: UserAction/expander.cpp:756
+#: UserAction/expander.cpp:738 UserAction/expander.cpp:756
+#: UserAction/expander.cpp:774
 msgid "Choose a profile:"
 msgstr "Izbor profila:"
 
-#: UserAction/expander.cpp:724
+#: UserAction/expander.cpp:742
 msgid "Expander: no profile specified for %_Sync(profile)%"
 msgstr "Razširjene možnosti: ni določenega profila za %_Sync(profile)%"
 
-#: UserAction/expander.cpp:735
+#: UserAction/expander.cpp:753
 msgid "Load a Searchmodule Profile..."
 msgstr "Naloži profil iskalnika ..."
 
-#: UserAction/expander.cpp:742
+#: UserAction/expander.cpp:760
 msgid "Expander: no profile specified for %_NewSearch(profile)%"
 msgstr "Razširjene možnosti: ni določenega profila za %_NewSearch(profile)%"
 
-#: UserAction/expander.cpp:753
+#: UserAction/expander.cpp:771
 msgid "Load a Panel Profile..."
 msgstr "Naloži profil okna ..."
 
-#: UserAction/expander.cpp:760
+#: UserAction/expander.cpp:778
 msgid "Expander: no profile specified for %_Profile(profile)%; abort..."
 msgstr ""
 "Razširjene možnosti: ni določenega profila za %_Profile(profile)%; "
 "prekinjam..."
 
-#: UserAction/expander.cpp:771
+#: UserAction/expander.cpp:789
 msgid "Separate Program Call for Each..."
 msgstr "Ločeni klic programov za vsak ..."
 
-#: UserAction/expander.cpp:803
+#: UserAction/expander.cpp:821
 msgid "Set Sorting for This Panel..."
 msgstr "Določitev razvrščanja za to okno ..."
 
-#: UserAction/expander.cpp:806
+#: UserAction/expander.cpp:824
 msgid "Choose a column:"
 msgstr "Izbor stolpca:"
 
-#: UserAction/expander.cpp:807
+#: UserAction/expander.cpp:825
 msgid "Choose a sort sequence:"
 msgstr "Izbor zaporedje razvrščanja:"
 
-#: UserAction/expander.cpp:813
+#: UserAction/expander.cpp:831
 msgid "Expander: no column specified for %_ColSort(column)%"
 msgstr "Razširjene možnosti: n določenega stolpca za %_ColSort(column)%"
 
-#: UserAction/expander.cpp:885
+#: UserAction/expander.cpp:903
 msgid "Expander: unknown column specified for %_ColSort(%1)%"
 msgstr "Razširjene možnosti: neznan stolpec določen za %_ColSort(%1)%"
 
-#: UserAction/expander.cpp:897
+#: UserAction/expander.cpp:915
 msgid "Set Relation Between the Panels..."
 msgstr "Določilo povezav med okni ..."
 
-#: UserAction/expander.cpp:900
+#: UserAction/expander.cpp:918
 msgid "Set the new size in percent:"
 msgstr "Določi novo velikost v odstotkih:"
 
-#: UserAction/expander.cpp:912
+#: UserAction/expander.cpp:930
 msgid ""
 "Expander: Value %1 out of range for %_PanelSize(percent)%. The first "
 "parameter has to be >0 and <100"
@@ -5529,15 +5529,15 @@ msgstr ""
 "Razširjene možnosti: Vrednost %1 je izven območja za %_PanelSize(percent)%. "
 "Prvo določilo mora biti večje od 0 in manjše od 100."
 
-#: UserAction/expander.cpp:936
+#: UserAction/expander.cpp:954
 msgid "Execute a JavaScript Extension..."
 msgstr "Izvedi JavaSkript razširitev ..."
 
-#: UserAction/expander.cpp:939
+#: UserAction/expander.cpp:957
 msgid "Location of the script"
 msgstr "Lokacija skripta"
 
-#: UserAction/expander.cpp:940
+#: UserAction/expander.cpp:958
 msgid ""
 "Set some variables for the execution (optional).\n"
 "i.e. \"return=return_var;foo=bar\", consult the handbook for more information"
@@ -5546,49 +5546,49 @@ msgstr ""
 "npr. \"return=return_var;foo=bar\", več podrobnosti je zapisanih v "
 "dokumentaciji"
 
-#: UserAction/expander.cpp:944
+#: UserAction/expander.cpp:962
 msgid "Expander: no script specified for %_Script(script)%"
 msgstr "Razširjene možnosti: ni določenega skripta za %_Script(script)%"
 
-#: UserAction/expander.cpp:986
+#: UserAction/expander.cpp:1004
 msgid "View File with Krusader's Internal Viewer..."
 msgstr "Pogled datoteke z vgrajenim pregledovalnikom ..."
 
-#: UserAction/expander.cpp:989
+#: UserAction/expander.cpp:1007
 msgid "Which file to view (normally '%aCurrent%'):"
 msgstr "Katera datoteka naj bo pregledana (normalno '%aCurrent%')"
 
-#: UserAction/expander.cpp:990
+#: UserAction/expander.cpp:1008
 msgid "Choose a view mode:"
 msgstr "Izbor načina pregledovanja:"
 
-#: UserAction/expander.cpp:993
+#: UserAction/expander.cpp:1011
 msgid "Choose a window mode:"
 msgstr "Izbor načina okna:"
 
-#: UserAction/expander.cpp:997
+#: UserAction/expander.cpp:1015
 msgid "Expander: no file to view in %_View(filename)%"
 msgstr "Razširjene možnosti: ni izbrane datoteke za pogled v %_View(filename)%"
 
-#: UserAction/expander.cpp:1034
+#: UserAction/expander.cpp:1052
 #, c-format
 msgid "%Each% is not allowed in parameter to %1"
 msgstr "%Each% ni dovoljeno določilo za %1"
 
-#: UserAction/expander.cpp:1055
+#: UserAction/expander.cpp:1073
 msgid "Expander: Bad panel specifier %1 in placeholder %2"
 msgstr "Razširjene možnosti: Neprimern določilo pladnja %1 v držalu %2"
 
-#: UserAction/expander.cpp:1084
+#: UserAction/expander.cpp:1102
 #, c-format
 msgid "Error: unterminated % in Expander::expandCurrent"
 msgstr "Napaka: nekončano opravilo % v rezširjenem meniju::expandCurrent"
 
-#: UserAction/expander.cpp:1114
+#: UserAction/expander.cpp:1132
 msgid "Error: unrecognized %%%1%2%% in Expander::expand"
 msgstr "Napaka: neprepoznano %%%1%2%% v razširjenih možnostih::expand"
 
-#: UserAction/expander.cpp:1150
+#: UserAction/expander.cpp:1168
 msgid "Error: missing ')' in Expander::separateParameter"
 msgstr "Napaka: manjka ')' in Expander::separateParameter"
 
