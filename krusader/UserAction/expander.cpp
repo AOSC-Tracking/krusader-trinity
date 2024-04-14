@@ -671,9 +671,18 @@ TagString exp_Copy::expFunc( const ListPanel*, const TagStringList& parameter, c
    // or transform(...) ?
    KURL dest = vfs::fromPathOrURL( parameter[1].string() );
 
-   if ( !dest.isValid() || find_if(src.constBegin(),src.constEnd(),not1(mem_fun_ref(&KURL::isValid) ))!=src.end()) {
+   if (!dest.isValid())
+   {
       setError(exp, Error(Error::S_FATAL,Error::C_ARGUMENT,i18n("Expander: invalid URL's in %_Copy(\"src\", \"dest\")%") ));
       return TQString();
+   }
+   for (const KURL &url : src)
+   {
+     if (!url.isValid())
+     {
+      setError(exp, Error(Error::S_FATAL,Error::C_ARGUMENT,i18n("Expander: invalid URL's in %_Copy(\"src\", \"dest\")%") ));
+      return TQString();
+     }
    }
 
    PreservingCopyJob::createCopyJob( PM_DEFAULT, src, dest, TDEIO::CopyJob::Copy, false, true );
@@ -702,9 +711,18 @@ TagString exp_Move::expFunc( const ListPanel*, const TagStringList& parameter, c
    // or transform(...) ?
    KURL dest = vfs::fromPathOrURL( parameter[1].string() );
 
-   if ( !dest.isValid() || find_if(src.constBegin(),src.constEnd(),not1(mem_fun_ref(&KURL::isValid) ))!=src.end()) {
+   if (!dest.isValid())
+   {
       setError(exp, Error(Error::S_FATAL,Error::C_ARGUMENT,i18n("Expander: invalid URL's in %_Move(\"src\", \"dest\")%") ));
       return TQString();
+   }
+   for (const KURL &url : src)
+   {
+     if (!url.isValid())
+     {
+      setError(exp, Error(Error::S_FATAL,Error::C_ARGUMENT,i18n("Expander: invalid URL's in %_Move(\"src\", \"dest\")%") ));
+      return TQString();
+     }
    }
 
    PreservingCopyJob::createCopyJob( PM_DEFAULT, src, dest, TDEIO::CopyJob::Move, false, true );
