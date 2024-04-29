@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: krusader-1.80.0-beta2\n"
 "POT-Creation-Date: 2024-04-14 18:21+0000\n"
-"PO-Revision-Date: 2024-04-13 17:44+0000\n"
+"PO-Revision-Date: 2024-04-25 17:50+0000\n"
 "Last-Translator: Andrei Stepanov <adem4ik@gmail.com>\n"
 "Language-Team: Russian <https://mirror.git.trinitydesktop.org/weblate/"
 "projects/applications/krusader/ru/>\n"
@@ -1200,7 +1200,7 @@ msgstr "&Дополнительно"
 
 #: Dialogs/packguibase.cpp:284
 msgid "Ok"
-msgstr "OK"
+msgstr "Хорошо"
 
 #: Dialogs/packguibase.cpp:333
 msgid "No password specified"
