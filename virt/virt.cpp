@@ -36,7 +36,7 @@ using namespace TDEIO;
 #define VIRT_PROTOCOL "virt"
 
 #if KDE_IS_VERSION(3,4,0)
-extern "C" { int KDE_EXPORT kdemain( int argc, char **argv ); }
+extern "C" { int TDE_EXPORT kdemain( int argc, char **argv ); }
 #else
 extern "C" { int kdemain( int argc, char **argv ); }
 #endif
