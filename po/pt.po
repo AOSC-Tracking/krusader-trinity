@@ -7,19 +7,22 @@
 # Bruno Queiros <brunoqueiros@portugalmail.com>, 2004, 2005.
 # Bruno Miguel Queirós <brunoqueiros@portugalmail.com>, 2006.
 # Bruno Queiros <brunomiguelqueiros@sapo.pt>, 2007.
+# Hugo Carvalho <hugokarvalho@hotmail.com>, 2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: krusader-1.80.0\n"
 "Report-Msgid-Bugs-To: Dirk Eschler <deschler@users.sourceforge.net>\n"
 "POT-Creation-Date: 2024-04-14 18:21+0000\n"
-"PO-Revision-Date: 2007-06-10 00:15+0100\n"
-"Last-Translator: Bruno Queiros <brunomiguelqueiros@sapo.pt>\n"
-"Language-Team: krusader-i18n <krusader-i18n@googlegroups.com>\n"
-"Language: \n"
+"PO-Revision-Date: 2024-05-03 22:00+0000\n"
+"Last-Translator: Hugo Carvalho <hugokarvalho@hotmail.com>\n"
+"Language-Team: Portuguese <https://mirror.git.trinitydesktop.org/weblate/"
+"projects/applications/krusader/pt/>\n"
+"Language: pt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.11.4\n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Generator: Weblate 4.17\n"
 
 #. Instead of a literal translation, add your name to the end of the list (separated by a comma).
 msgid ""
@@ -35,7 +38,7 @@ msgstr "brunoqueiros@portugalmail.com"
 
 #: ActionMan/actionman.cpp:26
 msgid "ActionMan - Manage Your Useractions"
-msgstr "ActionMan - Gerir  as Suas Acçõesutilizador "
+msgstr "ActionMan - Gerir as Suas Acçõesutilizador"
 
 #: ActionMan/actionproperty.cpp:295
 msgid "New protocol"
@@ -138,7 +141,7 @@ msgid ""
 "A detailed description of the <b>Useraction</b>. It is only displayed in the "
 "<i>Konfigurator</i> and via <code>Shift-F1</code>."
 msgstr ""
-"Uma descrição detalhada sobre  <b>Acçãoutilizador</b>. só é mostrada "
+"Uma descrição detalhada sobre <b>Acçãoutilizador</b>. só é mostrada "
 "no<i>Konfigurador</i> e via <code>Shift-F1</code>."
 
 #: ActionMan/actionpropertybase.cpp:390 ActionMan/actionpropertybase.ui:83
@@ -164,7 +167,7 @@ msgstr "URL s(remotos e locais)"
 #: ActionMan/actionpropertybase.cpp:394 ActionMan/actionpropertybase.ui:111
 #, no-c-format
 msgid "Substitute the <b>Placeholders</b> with valid URL's."
-msgstr "Substitua os <b>marcadores</b> por URL s válidos"
+msgstr "Substitua os <b>marcadores</b> por URL s válidos."
 
 #: ActionMan/actionpropertybase.cpp:395 ActionMan/actionpropertybase.cpp:397
 #: ActionMan/actionpropertybase.ui:121 ActionMan/actionpropertybase.ui:140
@@ -211,7 +214,7 @@ msgid ""
 "title in the <b>Usermenu</b>."
 msgstr ""
 "Cada <b>Acçãoutilizador</b> pode ter o seu icone. Aparecerá à frente do "
-"título no  <b>Menutilizador</b>."
+"título no <b>Menutilizador</b>."
 
 #: ActionMan/actionpropertybase.cpp:402 ActionMan/actionpropertybase.ui:226
 #, no-c-format
@@ -1255,7 +1258,7 @@ msgstr "Urls Populares"
 
 #: Dialogs/popularurls.cpp:245
 msgid " &Search: "
-msgstr "Procurar(&S):"
+msgstr " &Procurar: "
 
 #: DiskUsage/diskusage.cpp:102
 msgid "Loading Usage Information"
@@ -1475,7 +1478,7 @@ msgstr "Nome"
 
 #: DiskUsage/dulines.cpp:460
 msgid "Show file sizes"
-msgstr "Mostrar tamanho dos ficheiros:"
+msgstr "Mostrar tamanho dos ficheiros"
 
 #: DiskUsage/dulistview.cpp:62
 msgid "Total size"
@@ -1540,7 +1543,7 @@ msgid ""
 "<qt>The directory at <i>'%1'</i> will be <b>recursively</b> and "
 "<b>permanently</b> deleted!</qt>"
 msgstr ""
-"<qt>O directório em  <i>'%1'</i> será <b>recursivamente</b> e "
+"<qt>O directório em <i>'%1'</i> será <b>recursivamente</b> e "
 "<b>permanentemente</b> apagado!</qt>"
 
 #: DiskUsage/radialMap/widgetEvents.cpp:193
@@ -1765,7 +1768,7 @@ msgstr ""
 "(slash) (<code>*pattern*/</code>), significa que o padrão diz respeito a "
 "pesquisas recursivas de directórios.<ul><li><code>pattern</code> - significa "
 "procurar os ficheiros/directórios cujo nome é <code>pattern</code>, pesquisa "
-"recursiva procura em todos os subdirectórios independentemente do valor de  "
+"recursiva procura em todos os subdirectórios independentemente do valor de "
 "<code>pattern</code></li><li><code>pattern/</code> - significa procurar "
 "todos os ficheiros/directórios, mas pesquisa recursiva procura através/"
 "exclui os directórios que o nome é <code>pattern</code></li></ul><p></"
@@ -2328,7 +2331,7 @@ msgstr "7zip"
 
 #: Konfigurator/kgarchives.cpp:70
 msgid "Xz"
-msgstr ""
+msgstr "Xz"
 
 #: Konfigurator/kgarchives.cpp:76
 msgid ""
@@ -2771,7 +2774,7 @@ msgid ""
 "will work in a single, tabbed mode"
 msgstr ""
 "Se seleccionado, cada ficheiro irá abrir numa janela separada, senão, o "
-"visualizador irá trabalhar num único, modo separado."
+"visualizador irá trabalhar num único, modo separado"
 
 #: Konfigurator/kggeneral.cpp:115
 msgid "Atomic extensions:"
@@ -2791,7 +2794,7 @@ msgid ""
 "krusader changes the current directory in the terminal emulator."
 msgstr ""
 "Quando seleccionado, sempre que o painel é alterado (por exemplo, ao "
-"pressionar TAB), krusader  muda o directório actual no emulador de terminal."
+"pressionar TAB), krusader muda o directório actual no emulador de terminal."
 
 #: Konfigurator/kggeneral.cpp:160
 msgid "Temp Directory:"
@@ -3048,7 +3051,7 @@ msgstr "Botão abrir"
 
 #: Konfigurator/kglookfeel.cpp:209
 msgid "Opens the directory browser."
-msgstr "Abrir o navegador dos directórios"
+msgstr "Abrir o navegador dos directórios."
 
 #: Konfigurator/kglookfeel.cpp:210
 msgid "Equal button (=)"
@@ -3277,7 +3280,7 @@ msgid ""
 "(except from selecting the folder) \n"
 "calculate space occupied by the folder (recursively)."
 msgstr ""
-"Se seleccionado, premindo a barra de espaços enquanto o currente item  é uma "
+"Se seleccionado, premindo a barra de espaços enquanto o atual item é uma "
 "pasta, irá (sem ser seleccionado de uma pasta) \n"
 "calcular o espaço ocupado pela pasta (recursivamente)."
 
@@ -3484,7 +3487,7 @@ msgstr "Execução do terminal"
 
 #: Konfigurator/kguseractions.cpp:68
 msgid "Terminal for UserActions:"
-msgstr "Terminal para Acções do Utilizador"
+msgstr "Terminal para Acções do Utilizador:"
 
 #: Konfigurator/kguseractions.cpp:78
 msgid "Output collection"
@@ -4074,7 +4077,7 @@ msgstr ""
 
 #: Panel/krpopupmenu.cpp:339
 msgid "Can't open \"%1\""
-msgstr "Impossível abrir  \"%1\""
+msgstr "Impossível abrir \"%1\""
 
 #: Panel/krpreviewpopup.cpp:32
 msgid "Preview not available"
@@ -4314,7 +4317,7 @@ msgstr "Não tem permissões para ver este ficheiro."
 
 #: Panel/panelfunc.cpp:380
 msgid "<qt>Can't open <b>%1</b></qt>"
-msgstr "<qt>Não consigo abrir  <b>%1</b></qt>"
+msgstr "<qt>Não consigo abrir <b>%1</b></qt>"
 
 #: Panel/panelfunc.cpp:391
 msgid "You can't edit a directory"
@@ -4490,25 +4493,24 @@ msgstr ""
 "Extrair %n ficheiros para:"
 
 #: Panel/panelfunc.cpp:950
-#, fuzzy
 msgid ""
 "The destination folder does not exist.\n"
 "Do you want to create it?"
-msgstr "Este ficheiro já existe.Você quer substituí-lo?"
+msgstr ""
+"A pasta de destino não existe.\n"
+"Pretende criá-la?"
 
 #: Panel/panelfunc.cpp:951
-#, fuzzy
 msgid "Create folder"
-msgstr "Criar Novo"
+msgstr "Criar pasta"
 
 #: Panel/panelfunc.cpp:957
 msgid "Unable to create the destionation folder. Aborting operation."
-msgstr ""
+msgstr "Não foi possível criar a pasta do destino. Abortar a operação."
 
 #: Panel/panelfunc.cpp:957
-#, fuzzy
 msgid "Error!"
-msgstr "Erro"
+msgstr "Erro!"
 
 #: Panel/panelfunc.cpp:981
 msgid "%1, unknown archive type"
@@ -5489,7 +5491,7 @@ msgstr "Mover/Renomear o que:"
 
 #: UserAction/expander.cpp:699
 msgid "New target/name:"
-msgstr "Novo alvo/nome."
+msgstr "Novo alvo/nome:"
 
 #: UserAction/expander.cpp:705
 msgid "%Each% may not be in the second argument of %Move%"
@@ -5879,7 +5881,7 @@ msgstr ""
 
 #: krslots.cpp:113
 msgid "Sending file: "
-msgstr "A Enviar ficheiro:"
+msgstr "A Enviar ficheiro: "
 
 #: krslots.cpp:149
 msgid "Don't know which files to compare."
@@ -5939,11 +5941,9 @@ msgstr ""
 "konfigurador."
 
 #: krslots.cpp:509
-#, fuzzy
 msgid "Can't find \"KsysCtrl\". Please install the TDE admin package"
 msgstr ""
-"Não consigo encontrar \"Ksys Ctrl\". Por favor instale o pacote de "
-"administração TDE"
+"Não consigo encontrar \"KsysCtrl\". Instale o pacote de administração TDE"
 
 #: krslots.cpp:517
 msgid ""
@@ -6204,7 +6204,7 @@ msgstr "&MountMan..."
 
 #: krusader.cpp:707
 msgid "&Search..."
-msgstr "Procurar(&S...)"
+msgstr "&Procurar..."
 
 #: krusader.cpp:709
 msgid "&Locate..."
@@ -6240,7 +6240,7 @@ msgstr "&Personalizada"
 
 #: krusader.cpp:731
 msgid "Compare b&y Content..."
-msgstr "Comparar por Conteúdo...(&y)"
+msgstr "Comparar &por Conteúdo..."
 
 #: krusader.cpp:733
 msgid "Multi &Rename..."
@@ -6451,77 +6451,77 @@ msgstr "Fechar separador actual"
 #: calc.ui:16
 #, no-c-format
 msgid "JS Calculator"
-msgstr ""
+msgstr "Calculadora JS"
 
 #: calc.ui:43
 #, no-c-format
 msgid "+"
-msgstr ""
+msgstr "+"
 
 #: calc.ui:51
 #, no-c-format
 msgid "AC"
-msgstr ""
+msgstr "AC"
 
 #: calc.ui:75
 #, no-c-format
 msgid "CL"
-msgstr ""
+msgstr "CL"
 
 #: calc.ui:83
 #, no-c-format
 msgid "0"
-msgstr ""
+msgstr "0"
 
 #: calc.ui:91
-#, fuzzy, no-c-format
+#, no-c-format
 msgid "4"
-msgstr "48"
+msgstr "4"
 
 #: calc.ui:99
-#, fuzzy, no-c-format
+#, no-c-format
 msgid "2"
-msgstr "22"
+msgstr "2"
 
 #: calc.ui:107
 #, no-c-format
 msgid "5"
-msgstr ""
+msgstr "5"
 
 #: calc.ui:115
-#, fuzzy, no-c-format
+#, no-c-format
 msgid "3"
-msgstr "32"
+msgstr "3"
 
 #: calc.ui:123
 #, no-c-format
 msgid "7"
-msgstr ""
+msgstr "7"
 
 #: calc.ui:131
-#, fuzzy, no-c-format
+#, no-c-format
 msgid "6"
-msgstr "16"
+msgstr "6"
 
 #: calc.ui:139
-#, fuzzy, no-c-format
+#, no-c-format
 msgid "8"
-msgstr "48"
+msgstr "8"
 
 #: calc.ui:147
 #, no-c-format
 msgid "9"
-msgstr ""
+msgstr "9"
 
 #: calc.ui:155
-#, fuzzy, no-c-format
+#, no-c-format
 msgid "1"
-msgstr "16"
+msgstr "1"
 
 #: calc.ui:165
-#, fuzzy, no-c-format
+#, no-c-format
 msgid "Set as caption"
-msgstr "Mesmo que activo"
+msgstr "Definir como legenda"
 
 #: krusaderui.rc:51
 #, no-c-format
@@ -6549,89 +6549,89 @@ msgid "&Window"
 msgstr "Janela(&W)"
 
 #: mount.ui:24
-#, fuzzy, no-c-format
+#, no-c-format
 msgid "Mount a Filesystem"
-msgstr "Sistema de Ficheiros Virtual"
+msgstr "Montar um sistema de ficheiros"
 
 #: mount.ui:96
-#, fuzzy, no-c-format
+#, no-c-format
 msgid "Device"
-msgstr "Dispositivos"
+msgstr "Dispositivo"
 
 #: mount.ui:112
 #, no-c-format
 msgid "<auto>"
-msgstr ""
+msgstr "<auto>"
 
 #: mount.ui:117
 #, no-c-format
 msgid "ext2"
-msgstr ""
+msgstr "ext2"
 
 #: mount.ui:122
 #, no-c-format
 msgid "ext3"
-msgstr ""
+msgstr "ext3"
 
 #: mount.ui:127
 #, no-c-format
 msgid "vfat"
-msgstr ""
+msgstr "vfat"
 
 #: mount.ui:132
 #, no-c-format
 msgid "ntfs"
-msgstr ""
+msgstr "ntfs"
 
 #: mount.ui:147
-#, fuzzy, no-c-format
+#, no-c-format
 msgid "Filesystem"
-msgstr "Sistema de Ficheiros"
+msgstr "Sistema de ficheiros"
 
 #: mount.ui:155
-#, fuzzy, no-c-format
+#, no-c-format
 msgid "Mountpoint"
-msgstr "Ponto de Montagem"
+msgstr "Ponto de montagem"
 
 #: mount.ui:163
 #, no-c-format
 msgid "additional mount-options:"
-msgstr ""
+msgstr "opções de montagem adicionais:"
 
 #: recode.ui:25
-#, fuzzy, no-c-format
+#, no-c-format
 msgid "Recode file names"
-msgstr "Novo nome de ficheiro"
+msgstr "Recodificar nomes de ficheiro"
 
 #: recode.ui:97
 #, no-c-format
 msgid "INPUT:"
-msgstr ""
+msgstr "ENTRADA:"
 
 #: recode.ui:105
 #, no-c-format
 msgid "OUTPUT:"
-msgstr ""
+msgstr "SAÍDA:"
 
 #: recode.ui:113
 #, no-c-format
 msgid "Charset: "
-msgstr ""
+msgstr "Conjunto de caracteres: "
 
 #: recode.ui:137
 #, no-c-format
 msgid "End of line: "
-msgstr ""
+msgstr "Fim de linha: "
 
 #: recode.ui:161
 #, no-c-format
 msgid "MIME Encoding: "
-msgstr ""
+msgstr "Codificação MIME: "
 
 #: recode.ui:185
-#, fuzzy, no-c-format
+#, no-c-format
 msgid "Dump type: "
-msgstr "D&O tipo:"
+msgstr "Tipo de depósito: "
 
 #~ msgid "Remove"
 #~ msgstr "Remover"
