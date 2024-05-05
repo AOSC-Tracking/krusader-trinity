@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: krusader-1.80.0-beta2\n"
 "POT-Creation-Date: 2024-04-14 18:21+0000\n"
-"PO-Revision-Date: 2024-04-25 17:50+0000\n"
+"PO-Revision-Date: 2024-05-06 04:00+0000\n"
 "Last-Translator: Andrei Stepanov <adem4ik@gmail.com>\n"
 "Language-Team: Russian <https://mirror.git.trinitydesktop.org/weblate/"
 "projects/applications/krusader/ru/>\n"
@@ -604,7 +604,7 @@ msgstr "Добавить закладку"
 
 #: BookMan/kraddbookmarkdlg.cpp:16 BookMan/kraddbookmarkdlg.cpp:103
 msgid "New Folder"
-msgstr "Новая папка"
+msgstr "Новый каталог"
 
 #: BookMan/kraddbookmarkdlg.cpp:26 DiskUsage/diskusage.cpp:1030
 msgid "Name:"
@@ -620,7 +620,7 @@ msgstr "Создать в:"
 
 #: BookMan/kraddbookmarkdlg.cpp:103
 msgid "Folder name:"
-msgstr "Имя папки:"
+msgstr "Имя каталога:"
 
 #: BookMan/krbookmark.cpp:12 krusader.cpp:753
 msgid "Media"
@@ -1143,7 +1143,7 @@ msgstr ""
 
 #: Dialogs/packgui.cpp:96
 msgid "Please select a directory"
-msgstr "Выберите каталог"
+msgstr "Пожалуйста, выберите каталог"
 
 #: Dialogs/packguibase.cpp:68 Dialogs/packguibase.cpp:122
 msgid "Pack"
@@ -2679,7 +2679,7 @@ msgstr "Файлы будут полностью удаляться."
 
 #: Konfigurator/kggeneral.cpp:61
 msgid "Move to trash"
-msgstr "Переместить в корзину"
+msgstr "Убрать в корзину"
 
 #: Konfigurator/kggeneral.cpp:61
 msgid "Files will be moved to trash when deleted."
@@ -3651,7 +3651,7 @@ msgstr "Инструмент"
 
 #: Konfigurator/krresulttable.cpp:287
 msgid "Status"
-msgstr "Статус"
+msgstr "Состояние"
 
 #: KrJS/krjs.cpp:65
 msgid ""
@@ -3660,7 +3660,7 @@ msgid ""
 "%3"
 msgstr ""
 "В %1:\n"
-"Не отловленная ошибка JavaScript '%2'\n"
+"Не отловленная ошибка JavaScript «%2»\n"
 "%3"
 
 #: KrJS/krjs.cpp:66
@@ -3670,7 +3670,7 @@ msgid ""
 "%4"
 msgstr ""
 "В %1:\n"
-"Не отловленная ошибка JavaScript '%2' в строке %3\n"
+"Не отловленная ошибка JavaScript «%2» в строке %3\n"
 "%4"
 
 #: KrJS/krjs.cpp:68 KrJS/krjs.cpp:73
@@ -3972,7 +3972,7 @@ msgstr "Переименовать"
 
 #: Panel/krpopupmenu.cpp:143
 msgid "Move to Trash"
-msgstr "Переместить в корзину"
+msgstr "Убрать в корзину"
 
 #: Panel/krpopupmenu.cpp:149
 msgid "Shred"
@@ -4464,11 +4464,11 @@ msgstr ""
 
 #: Panel/panelfunc.cpp:951
 msgid "Create folder"
-msgstr "Создать папку"
+msgstr "Создать каталог"
 
 #: Panel/panelfunc.cpp:957
 msgid "Unable to create the destionation folder. Aborting operation."
-msgstr "Не удалось создать папку назначения. Операция прервана."
+msgstr "Не удалось создать каталог назначения. Операция прервана."
 
 #: Panel/panelfunc.cpp:957
 msgid "Error!"
