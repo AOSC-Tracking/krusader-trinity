@@ -3428,7 +3428,7 @@ AC_DEFUN([KDE_ENABLE_HIDDEN_VISIBILITY],
         CXXFLAGS="$CXXFLAGS -fvisibility=hidden"
         KDE_CHECK_VISIBILITY_GCC_BUG
         HAVE_GCC_VISIBILITY=1
-        AC_DEFINE_UNQUOTED(__KDE_HAVE_GCC_VISIBILITY, "$HAVE_GCC_VISIBILITY", [define to 1 if -fvisibility is supported])
+        AC_DEFINE_UNQUOTED(__TDE_HAVE_GCC_VISIBILITY, "$HAVE_GCC_VISIBILITY", [define to 1 if -fvisibility is supported])
       fi
     ])
   fi
